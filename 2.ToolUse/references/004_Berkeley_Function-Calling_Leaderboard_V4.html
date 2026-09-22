@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NRZJLJCSH6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        gtag("config", "G-NRZJLJCSH6");
+    </script>
+    <script src="assets/lib/chart.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-autocolors"></script>
+    <script type="text/javascript">
+        window.PlotlyConfig = { MathJaxConfig: "local" };
+    </script>
+    <script type="text/javascript" src="treemap.js"></script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description"
+        content="Explore The Berkeley Function Calling Leaderboard (also called The Berkeley Tool Calling Leaderboard) to see the LLM's ability to call functions (aka tools) accurately." />
+
+    <!-- Include Semantic UI CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" />
+    <link rel="stylesheet" href="assets/css/api-explorer.css" />
+    <link rel="stylesheet" href="assets/css/common-styles.css" />
+    <link rel="stylesheet" href="assets/css/Highlight-Clean-leaderboard.css" />
+    <link rel="stylesheet" href="assets/css/leaderboard.css" />
+    <link rel="stylesheet" href="assets/css/leaderboard_main.css" />
+    <link rel="stylesheet" href="assets/css/treemap.css" />
+    <link rel="stylesheet" href="assets/css/contact.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+    <title>
+        Berkeley Function Calling Leaderboard (BFCL) V4
+    </title>
+
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar" style="
+        position: absolute;
+        top: 0;
+        right: 20px;
+        padding: 10px;
+        z-index: 100;
+        font-size: 18px;
+      ">
+        <a href="index.html">Home</a>
+        <a href="blogs/15_bfcl_v4_web_search.html">Blog</a>
+        <a href="#api-explorer">Try it Out!</a>
+        <a href="#leaderboard">Leaderboard</a>
+    </div>
+
+    <div class="highlight-clean" style="padding-bottom: 10px">
+        <!-- Title Section -->
+        <h1 class="text-center">
+            <img src="assets/img/Cal.png" alt="UC Berkeley Logo" class="header-image" />
+            Berkeley Function-Calling Leaderboard
+        </h1>
+        <div>
+            <p></p>
+        </div>
+        <!-- Author Section -->
+        <!-- <div class="container" id="author" style="background: white">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4></h4>
+                    <h5 class="text-center">Gorilla LLM Team</h5>
+                </div>
+            </div>
+        </div>
+        <div>
+            <p></p>
+        </div> -->
+    </div>
+
+    <!-- Leaderboard Section -->
+    <div class="container" id="leaderboard" style="background: #e5effc">
+        <div class="col-md-12">
+            <h2>BFCL: From Tool Use to Agentic Evaluation of Large Language Models</h2>
+
+            <p class="text-center">
+                The Berkeley Function Calling Leaderboard (BFCL) V4
+                evaluates the
+                LLM's ability to call functions (aka tools) accurately. This
+                leaderboard consists of real-world data and will be updated periodically. For more information on the
+                evaluation dataset and methodology, please refer to our blogs: <a
+                    href="blogs/8_berkeley_function_calling_leaderboard.html">BFCL-v1</a> introducing AST as an
+                evaluation metric,
+                <a href="blogs/12_bfcl_v2_live.html">BFCL-v2</a> introducing enterprise and OSS-contributed functions,
+                <a href="blogs/13_bfcl_v3_multi_turn.html">BFCL-v3</a> introducing multi-turn interactions, and
+                <a href="blogs/15_bfcl_v4_web_search.html">BFCL-v4</a> introducing holistic agentic evaluation. Checkout <a
+                    href="https://github.com/ShishirPatil/gorilla/tree/main/berkeley-function-call-leaderboard">code and
+                    data</a>.
+            </p>
+
+            <div class="mb-3">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                    <!-- Last Updated Section -->
+                    <div>
+                        <span>
+                            <b><i style="font-size: 1.0em;">Last Updated:
+                                    2026-04-12 &nbsp;&nbsp;&nbsp;&nbsp; <a
+                                        href="https://github.com/ShishirPatil/gorilla/blob/main/berkeley-function-call-leaderboard/CHANGELOG.md">[Change
+                                        Log]</a>
+                                </i></b>
+                        </span>
+                    </div>
+
+                    <!-- Search Section -->
+                    <div class="d-flex ms-md-auto mt-3 mt-md-0 justify-content-end"
+                        style="gap: 5px; width: 100%; max-width: 360px;">
+                        <input type="text" id="search-input" class="form-control flex-grow-1"
+                            placeholder="Search model names..." />
+                        <button id="search-btn" class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+            </div>
+            <div class="table-container">
+                <table id="leaderboard-table">
+                    <thead id="leaderboard-head">
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <p></p>
+            <p>
+                <b>FC</b> = native support for function/tool calling.
+                <b>Prompt</b> = walk-around for function calling, using model's normal text generation capability.
+            </p>
+            <p>
+                <b>Cost</b> is calculated as an estimate of the cost for the entire benchmark, in USD.
+                <b>Latency</b> is measured in seconds.
+            </p>
+            <p>
+                <b>Overall Accuracy</b> is the <b>unweighted</b> average of all the sub-categories.
+                For details on score composition, please refer to our <a
+                    href="https://gorilla.cs.berkeley.edu/blogs/13_bfcl_v3_multi_turn.html#leaderboard-composition">blog</a>.
+            </p>
+            <p>
+                <b>Format sensitivity</b> test cases are only supported for prompt (non-FC) models.
+            </p>
+            <p>
+                Click on column header to sort. If you would like to add
+                your model or contribute test-cases, please contact us via <a
+                    href="https://discord.gg/grXXvj9Whz">discord</a>.
+            </p>
+            <p>
+                Models are evaluated using commit <b>f7cf735</b>.
+                All the model response we obtained is available <a
+                    href="https://github.com/HuanzhiMao/BFCL-Result">here</a>.
+                To reproduce the results, please either checkout our codebase at
+                <a href="https://github.com/ShishirPatil/gorilla/commit/f7cf7359b7ac615a0b294831c5ba2bc95ee4a000">this
+                    checkpoint</a>,
+                or install the PyPI package <code>pip install bfcl-eval==2025.12.17</code>.
+            </p>
+        </div>
+    </div>
+    <div>
+        <p></p>
+    </div>
+
+    <div class="container chart-container" style="background: white">
+        <div class="chart-inner-container">
+            <h2>Wagon Wheel</h2>
+            <p class="text-center">
+                The following chart shows the comparison of the models based on a few
+                metrics. You can select and deselect which models to compare. More
+                information on each metric can be found in the
+                <a href="blogs/8_berkeley_function_calling_leaderboard.html#benchmarking">blog</a>.
+            </p>
+            <div class="ui container">
+                <div class="ui form">
+                    <div class="dropdown-container">
+                        <label class="dropdown-label">Select Models to Compare</label>
+                        <button id="clear-all-btn" class="btn btn-primary" type="button">Clear All</button>
+                        <!-- Clear All Button -->
+                    </div>
+                    <div id="dataset-dropdown" class="ui fluid multiple search selection dropdown">
+                        <input id="search-dropdown" type="hidden" name="datasets">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Search models...</div>
+                        <div class="menu"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart container to make the chart responsive -->
+            <div id="myChart-container">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="treemap-container" id="treemap" style="background: #e5effc">
+        <h2>Error Type Analysis</h2>
+        <p class="text-center">
+            This interactive treemap shows the distribution of error types across
+            different models. The size of each block represents the number of errors
+            encountered by that model. Errors are categorized hierarchically,
+            encompassing both top-level errors (e.g., Value Errors) and more
+            specific subsidiary errors (e.g., Invalid String Format). You can hover
+            over and click on each block to see the detailed breakdown of error
+            types for different models. For more information on how these errors are
+            identified and addressed, refer to our
+            <a href="blogs/8_berkeley_function_calling_leaderboard.html#metrics">evaluation metrics</a> and insight blog
+            (coming soon).
+        </p>
+
+        <div id="65eaa7cb-b38b-4e90-b8e2-7be2b3d11428" class="plotly-graph-div" style="height:100%; width:100%;"></div>
+    </div> -->
+
+    <!-- API Explorer Section -->
+    <div id="api-explorer" class="container" style="background: #e5effc">
+        <div class="col-md-12">
+            <h2>Function Calling Demo</h2>
+            <p class="text-center">
+                In this demo for function calling, you can enter a prompt and a
+                function and see the output. There will be two outputs (and two output
+                boxes accordingly): one in the actual code format (the top one) and
+                the other in the OpenAI compatible format (the bottom one). Note that
+                the OpenAI compatible format output is only available if the actual
+                code output has valid syntax and can be parsed. We also provide you a
+                few examples to try out and get a sense of the input format and the
+                output.
+            </p>
+            <!-- Example Section -->
+            <div id="examples">
+                <button id="example-btn-1">Example 1</button>
+                <button id="example-btn-2">Example 2</button>
+                <button id="example-btn-3">Example 3</button>
+            </div>
+            <div>
+                <p></p>
+            </div>
+            <div class="container" id="demo-input-container">
+                <div class="inputs">
+                    <div>
+                        Model:
+                        <select name="option" id="model-dropdown">
+                            <option value="gorilla-openfunctions-v2">
+                                Gorilla OpenFunctions-v2
+                            </option>
+                            <!-- <option value="gpt-4-1106-preview">GPT-4-1106-Preview</option>
+                            <option value="gpt-4-0125-preview">GPT-4-0125-Preview</option>
+                            <option value="gpt-4-0613">GPT-4-0613</option>
+                            <option value="gpt-3.5-turbo">GPT-3.5-Turbo</option>
+                            <option value="gpt-3.5-turbo-0613">GPT-3.5-Turbo-0613</option> -->
+                        </select>
+                    </div>
+                    <div>
+                        <br />
+                    </div>
+                    <div>
+                        <label for="temperatureSlider">Temperature:</label>
+                        <input type="range" id="temperatureSlider" name="temperature" min="0" max="1" value="0.7"
+                            step="0.1" oninput="temperatureValue.value = temperatureSlider.value" />
+                        <output id="temperatureValue">0.7</output>
+                    </div>
+                    <div>
+                        <p></p>
+                    </div>
+
+                    <textarea id="input-text" placeholder="Enter your prompt here" rows="3"></textarea>
+                    <textarea id="input-function" placeholder="Enter your function description here"
+                        rows="10"></textarea>
+                    <button class="api-explorer-button" id="submit-btn">Submit</button>
+                </div>
+                <div class="output-section">
+                    <div class="output" id="code-output">Output will be shown here:</div>
+                    <div class="output" id="json-output" style="white-space: pre-wrap;">OpenAI compatible format output:
+                    </div>
+
+                    <div class="button-container">
+                        <button class="thumbs" id="thumbs-up-btn" onclick="sendFeedbackPositive()"
+                            style="display: none;">👍</button>
+                        <button class="thumbs thumbs-down" id="thumbs-down-btn" onclick="sendFeedbackNegative()"
+                            style="display: none;">👎</button>
+
+                        <button id="report-issue-btn" style="display: none;">Report Issue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <p></p>
+    </div>
+
+    <div class="container shorter-container" style="background: #e5effc">
+        <!-- Contact Us Section -->
+        <div class="col-md-6 contact-us">
+            <h2>Contact Us</h2>
+            <form class="submit-to-google-sheet" name="submit-to-google-sheet">
+                <input type="text" name="Name" placeholder="Your Name" required />
+                <input type="Email" name="Email" placeholder="Your Email" required />
+                <input type="Organization" name="Organization" placeholder="Your Organization" />
+                <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                <button type="submit" class="btn-secondary2">Submit</button>
+            </form>
+            <span id="msg"></span>
+        </div>
+
+        <!-- Citation Section -->
+        <div class="col-md-6">
+            <h2>Citation</h2>
+            <pre>
+                <code>
+@inproceedings{patil2025bfcl,
+title={The Berkeley Function Calling Leaderboard (BFCL): From Tool Use to Agentic Evaluation of Large Language Models}, 
+author={Patil, Shishir G. and Mao, Huanzhi and Cheng-Jie Ji, Charlie and Yan, Fanjia and Suresh, Vishnu and Stoica, Ion and E. Gonzalez, Joseph},
+booktitle={Forty-second International Conference on Machine Learning},
+year={2025},
+}
+          </code></pre>
+        </div>
+    </div>
+</body>
+
+<!-- Include jQuery first -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Include Semantic UI JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.js"></script>
+<!-- Include Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="index_main.js"></script>
+<script type="text/javascript" src="treemap_main.js"></script>
+
+</html>

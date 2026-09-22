@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Odysseys — a benchmark for long-horizon web agents</title>
+<meta name="description" content="Odysseys is a benchmark of 200 long-horizon web agent tasks, evaluated with rubric-based scoring on the live internet.">
+<link rel="canonical" href="https://odysseysbench.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://odysseysbench.com/">
+<meta property="og:title" content="Odysseys — a benchmark for long-horizon web agents">
+<meta property="og:description" content="Odysseys is a benchmark of 200 long-horizon web agent tasks, evaluated with rubric-based scoring on the live internet.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🚐%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">Odysseys</a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="viewer.html">Tasks</a>
+      <a href="paper.html">Paper</a>
+    </div>
+  </div>
+</nav>
+
+<main class="page">
+
+  <div class="title-block hero">
+    <h1 class="hero-title">Odysseys</h1>
+    <p class="hero-full-title">Benchmarking Web Agents on Realistic Long Horizon Tasks</p>
+    <p class="hero-authors">
+      <a href="https://lawrencekjang.github.io/">Lawrence Jang</a><sup>*</sup>,
+      <a href="https://jykoh.com/">Jing Yu Koh</a><sup>*</sup>,
+      <a href="https://dpfried.github.io/">Daniel Fried</a>,
+      <a href="https://www.cs.cmu.edu/~rsalakhu/">Ruslan Salakhutdinov</a>
+    </p>
+    <p class="hero-aff">Carnegie Mellon University <span class="hero-eq">· <sup>*</sup>Equal contribution</span></p>
+  </div>
+
+  <div class="abstract">
+    <p>Existing web agent benchmarks have largely converged on short, single-site tasks that frontier models are approaching saturation on. However, real-world web use consists of long-horizon, multi-site workflows. Common tasks such as comparing products across different domains, planning trips across multiple services, or summarizing information from multiple search queries require sustained context and cross-site reasoning over potentially hours of browsing.</p>
+    <p>To capture and evaluate such behaviors, we introduce Odysseys, a benchmark of 200 long-horizon web tasks derived from real-world browsing sessions and evaluated on the live Internet. We find that binary pass/fail evaluation is inadequate for long-horizon settings and introduce a rubric-based evaluation, annotating each task with a set of graded rubric checkpoints that yields higher agreement with human judgment than commonly used trajectory-level LLM-as-a-judge metrics. We evaluate several leading frontier models and find that the strongest achieves 44.5% perfect task success, leaving substantial headroom. Beyond success rate, we argue that efficiency is a first-class concern for long-horizon agents and introduce a Trajectory Efficiency metric (rubric score per step) on which even frontier agents reach only 1.15%.</p>
+  </div>
+
+  <div class="links-row">
+    <a href="https://arxiv.org/pdf/2604.24964" class="page-link">PDF <span class="arr">↓</span></a>
+    <a href="paper.html" class="page-link">Paper <span class="arr">→</span></a>
+    <a href="leaderboard.html" class="page-link">Leaderboard <span class="arr">→</span></a>
+    <a href="viewer.html" class="page-link">Task viewer <span class="arr">→</span></a>
+    <a href="https://github.com/ljang0/Odysseys/blob/main/data/odysseys.json" class="page-link">Task JSON <span class="arr">↗</span></a>
+  </div>
+
+  <div class="numbers">
+    <div class="n"><div class="big">200</div><div class="lbl">tasks</div></div>
+    <div class="n"><div class="big">44.5%</div><div class="lbl">best model</div></div>
+  </div>
+
+  <div class="section">
+    <h2>Example task</h2>
+    <p class="section-lead">Each task is a first-person request that a user might realistically give a computer-use agent. Tasks are paired with rubric items that decompose progress into verifiable checkpoints.</p>
+
+    <figure>
+      <img src="assets/figures/odyssey_figure1_v13.png" alt="Odysseys task figure showing an example task, trajectory, and rubric evaluation">
+      <figcaption>
+        <span class="fn">Figure 1.</span>
+        An Odysseys task (with simplified task description), the agent's browsing trajectory, and the rubric-based evaluation that grades partial progress across the full workflow.
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="section">
+    <h2>Example trajectories</h2>
+    <p class="section-lead">Recordings of frontier agents executing Odysseys tasks. Pick a task to watch the full browser session.</p>
+
+    <div class="task-explorer" id="taskExplorer">
+      <div class="te-head">
+        <div class="te-chips" id="teChips"></div>
+      </div>
+      <div class="te-titlebar">
+        <h4 class="te-title" id="teTitle"></h4>
+        <div class="te-meta">
+          <span class="te-level" id="teLevel">easy</span>
+          <span class="te-model" id="teModel">Opus 4.6</span>
+        </div>
+      </div>
+      <div class="te-video-wrap">
+        <video id="teVideo" controls preload="metadata" playsinline></video>
+      </div>
+      <details class="te-prompt-details">
+        <summary>Full task prompt given to the agent</summary>
+        <p class="te-prompt" id="tePrompt"></p>
+      </details>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Headline result</h2>
+    <p class="section-lead">Performance scales with step budget but plateaus well short of full completion. All models show a broadly sigmoidal curve; frontier API models climb steeper and higher, but none approach the ceiling.</p>
+
+    <figure>
+      <img src="assets/figures/success_vs_steps_rubrics.png" alt="Success vs step budget for all models on Odysseys" style="max-width: min(620px, 100%); margin: 0 auto;">
+      <figcaption>
+        <span class="fn">Figure 2.</span>
+        Perfect rubric rate as a function of step budget, for each evaluated model. Rates stay near zero for the first ~15 steps, rise through the 20 to 70 range, and taper past ~80 as models approach their practical ceiling.
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="section">
+    <h2>Contents</h2>
+    <nav class="sitemap">
+      <a href="leaderboard.html">
+        <div>
+          <div class="sm-title">Leaderboard</div>
+          <p class="sm-sub">Nine entries — frontier, open-weight, and terminal-style agents — ranked by rubric average, perfect-task rate, trajectory efficiency, and trajectory-level LLM judge.</p>
+        </div>
+        <span class="sm-arrow">→</span>
+      </a>
+      <a href="viewer.html">
+        <div>
+          <div class="sm-title">Task viewer</div>
+          <p class="sm-sub">Read every one of the 200 task prompts. Filter by difficulty or category, expand any task to inspect its rubric checkpoints.</p>
+        </div>
+        <span class="sm-arrow">→</span>
+      </a>
+      <a href="paper.html">
+        <div>
+          <div class="sm-title">Paper</div>
+          <p class="sm-sub">Method and findings from the paper, with interactive charts and trajectory recordings.</p>
+        </div>
+        <span class="sm-arrow">→</span>
+      </a>
+    </nav>
+  </div>
+
+</main>
+
+<footer>
+  <span>Odysseys</span>
+  <span><a href="leaderboard.html">Leaderboard</a> · <a href="viewer.html">Tasks</a> · <a href="paper.html">Paper</a></span>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/runs.js"></script>
+<script src="js/paper.js"></script>
+</body>
+</html>
