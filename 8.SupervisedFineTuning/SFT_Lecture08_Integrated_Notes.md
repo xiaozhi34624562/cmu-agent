@@ -1357,70 +1357,84 @@ def supervised_spans(
 
 ### D.1 如何使用来源标记
 
-正文中的 `S00` 为讲义，`S01` 至 `S19` 与参考文件编号对应。来源链接跳到本文索引，不依赖这些文件在本地的存放路径。PDF 页码按本次提供版本定位，HTML 使用章节名。
+正文中的 `S00` 为讲义，`S01` 至 `S19` 与参考文件编号对应。正文来源链接跳到本文索引，索引中的文件名链接到本目录实际附件。PDF 页码为所收录版本的物理页码，HTML 使用章节名。
 
-文档保留可离线阅读的“来源编号 + 章节/页码”。部分段落后还有 HTML 注释形式的原会话引用，用于保留检索溯源；普通 Markdown 渲染不会显示这些注释，不影响正文阅读。
+文档保留可离线阅读的“来源编号 + 章节/页码”，并已清除依赖原会话的内部引用标记。索引列出可核对的 PDF 版本；未提供独立版本号的资料以本地附件及其 SHA-256 摘要标识，不推测下载日期。
 
 ### D.2 主讲义
 
 <a id="src-s00"></a>
-**S00｜`lecture-08-sft.pdf`**  
+**S00｜[lecture-08-sft.pdf](lecture-08-sft.pdf)**  
+本地附件 SHA-256：`1598a8bd9784ec044f89b8951af52bb2f80c0236b73aada0ca4cc3038049c4e3`。  
 *Supervised Fine-Tuning for Agents*，Yueqi Song，49 页。主线为权重更新、轨迹 token 化、轨迹选择、统一格式、训练执行、闭环验证和 RL 交接。第 49 页为具体 masking flags。本文按它组织，而不是用另一套主题替代课程。
 
 ### D.3 模型报告：理解 SFT 在完整训练中的位置
 
 <a id="src-s01"></a>
-**S01｜`001_Kimi_K3.pdf`**  
+**S01｜[001_Kimi_K3.pdf](references/001_Kimi_K3.pdf)**  
+PDF 版本标注：arXiv:2607.24653v2 [cs.CL] 7 Aug 2026。  
 *Kimi K3: Open Frontier Intelligence*。重点读 §4.1（第 12–14 页）与附录 F（第 46–47 页）：冷启动、领域/努力级别专家、MOPD、部署相关量化和 XTML。本文不展开其预训练架构与排行榜，因为那不是本节 SFT 的中心。
 
 <a id="src-s02"></a>
-**S02｜`002_DeepSeek-R1.pdf`**  
+**S02｜[002_DeepSeek-R1.pdf](references/002_DeepSeek-R1.pdf)**  
+PDF 版本标注：arXiv:2501.12948v2 [cs.CL] 4 Jan 2026。  
 *DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning*。本次文件为 86 页版本。重点读 §3、附录 B.3.3（第 26–27 页）与附录 F（第 60–61 页）：冷启动、再次 SFT、数据统计、小模型蒸馏。不要把它与不同版本的页码或数据细节混用。
 
 <a id="src-s03"></a>
-**S03｜`003_Nemotron_3_Ultra.pdf`**  
+**S03｜[003_Nemotron_3_Ultra.pdf](references/003_Nemotron_3_Ultra.pdf)**  
+本地附件 SHA-256：`b8c5e9bb8f29bdff41f876a24f5da8bc1762e16d12dbece512c443a96cbbc859`。  
 *Nemotron 3 Ultra: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning*。重点读 §3.1（第 15–20 页）与 §3.3（第 20–21 页）：两阶段 SFT、人工推理截断、聊天历史 mask、SWE 过程筛选、packing 和 MOPD。注意学生、领域教师的不同配方不要混成一个。
 
 <a id="src-s04"></a>
-**S04｜`004_MAI-Thinking-1.pdf`**  
+**S04｜[004_MAI-Thinking-1.pdf](references/004_MAI-Thinking-1.pdf)**  
+本地附件 SHA-256：`a267d745b1eb3792a8abf58e71e204a6f44f9c18eeb5ad8671320deae71986bd`。  
 *MAI-Thinking-1: Building a Hill-Climbing Machine*。重点读 §3.1.4–3.1.5（第 34–37 页）与 §3.5（第 49 页）：自蒸馏的用途、checkpoint 多样性、长上下文保持、MoE 均衡、能力整合与样本/token 比例。
 
 <a id="src-s05"></a>
-**S05｜`005_K2_Horizon_model_card.html`**  
+**S05｜[005_K2_Horizon_model_card.html](references/005_K2_Horizon_model_card.html)**  
+本地附件 SHA-256：`b981a0a570d3e9155d2fc62cf29537f31b2e78164d5ce47fb2accfa2931a13d8`。  
 IFM/K2-Horizon-375B-A23B 模型卡，重点是 Training Overview。它提供 RL 专家合并后的三阶段 SFT 时序、步数、阶段 token 和序列长度。不是 Kimi K2；未报告的 RL 总预算不能由 SFT 表推断。
 
 <a id="src-s06"></a>
-**S06｜`006_Kimi_K2.pdf`**  
+**S06｜[006_Kimi_K2.pdf](references/006_Kimi_K2.pdf)**  
+PDF 版本标注：arXiv:2507.20534v2 [cs.LG] 3 Feb 2026。  
 *Kimi K2: Open Agentic Intelligence*。重点读 §3.1–3.1.1（第 9–11 页），尤其 Figure 8：工具库、Agent 配置、带 rubric 的任务、用户与工具模拟、真实沙箱补充。适合用来理解训练数据生产系统，而不是只借用一句“使用合成数据”。
 
 ### D.4 数据、监督目标与模仿学习
 
 <a id="src-s07"></a>
-**S07｜`007_OpenThoughts-Agent.pdf`**  
+**S07｜[007_OpenThoughts-Agent.pdf](references/007_OpenThoughts-Agent.pdf)**  
+PDF 版本标注：arXiv:2606.24855v1 [cs.AI] 23 Jun 2026。  
 实际论文题名为 *Data Recipes for Agentic Models*。重点读 §3–4（第 4–8 页）、Table 1（第 3 页）、Table 11（第 11 页）：任务与教师消融、轨迹筛选、扩展数据、评测口径和 SFT→RL。其 RL 研究限制在 8B，最大 SFT 数据为 100K，不能默认外推到任意底座或百万级数据。
 
 <a id="src-s08"></a>
-**S08｜`008_SWE-Gym.pdf`**  
+**S08｜[008_SWE-Gym.pdf](references/008_SWE-Gym.pdf)**  
+PDF 版本标注：arXiv:2412.21139v2 [cs.SE] 6 Jun 2025。  
 *Training Software Engineering Agents and Verifiers with SWE-Gym*。重点读 §3–5（第 3–8 页）：训练环境、491 条示范、OpenHands 与 MoatlessTools、自训练负面结果、每任务上限、验证器与两种 scaling。非常适合连接工程设施与学习算法。
 
 <a id="src-s09"></a>
-**S09｜`009_Agent_Data_Protocol.pdf`**  
+**S09｜[009_Agent_Data_Protocol.pdf](references/009_Agent_Data_Protocol.pdf)**  
+PDF 版本标注：arXiv:2510.24702v2 [cs.CL] 4 Mar 2026。  
 *Agent Data Protocol: Unifying Datasets for Diverse, Effective Fine-Tuning of LLM Agents*。重点读 §3（第 4–6 页）与 §6.2（第 9 页）：语义表示、转换责任、数据混合与跨任务结果。协议允许什么，与某个实验如何筛选数据，是两层问题。
 
 <a id="src-s10"></a>
-**S10｜`010_BalanceSFT.pdf`**  
+**S10｜[010_BalanceSFT.pdf](references/010_BalanceSFT.pdf)**  
+PDF 版本标注：arXiv:2505.20192v3 [cs.LG] 25 Nov 2025。  
 *BalanceSFT: Improving LLM Function Calling with Balanced Training Signals and Data Hardness*。重点读 §3（第 3–4 页）、§4.2 与 Table 5（第 5、7 页）：SSB、HDR、CoT 数据选择和组件消融。阅读结果时务必把损失改进与数据改进分开。
 
 <a id="src-s11"></a>
-**S11｜`011_Instruction_Modelling.pdf`**  
+**S11｜[011_Instruction_Modelling.pdf](references/011_Instruction_Modelling.pdf)**  
+PDF 版本标注：arXiv:2405.14394v2 [cs.CL] 2 Oct 2024。  
 实际论文题名为 *Instruction Tuning With Loss Over Instructions*。重点读 §3（第 4 页）与 §4.2–4.3（第 6–7 页）：联合输入输出建模、低资源条件、相同回答 loss 口径下的过拟合分析。
 
 <a id="src-s12"></a>
-**S12｜`012_Weighted_Instruction_Tuning.pdf`**  
+**S12｜[012_Weighted_Instruction_Tuning.pdf](references/012_Weighted_Instruction_Tuning.pdf)**  
+PDF 版本标注：arXiv:2507.07817v2 [cs.CL] 15 Jul 2025。  
 实际论文题名为 *On the Effect of Instruction Tuning Loss on Generalization*。重点读 §2（第 3 页）、§4.1（第 6 页）与 §4.2（第 7 页起）：两个权重、非零权重 token 计数归一化、下游指标差异与 DPO 交接。不要将本文举例的平均最佳值当作固定配方。
 
 <a id="src-s13"></a>
-**S13｜`013_DAgger.html`**  
+**S13｜[013_DAgger.html](references/013_DAgger.html)**  
+本地附件 SHA-256：`e515cc08883fb65a967c7cc1cd4905107d7dc31aeed4a71c254ea250a670ad75`。  
 *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning*，Ross、Gordon、Bagnell。上传文件是 PMLR 摘要与书目信息页，不是论文全文。摘要支持序列决策分布依赖策略与在线学习的核心定位；正文的具体定理与算法来自下面的补充原文。
 
 <a id="src-s13-pdf"></a>
@@ -1432,27 +1446,33 @@ PMLR 15:627–635，2011，原文 §2 与 Algorithm 3.1。保留前文已有的�
 ### D.5 工程接口：用来核对目标是否被正确实现
 
 <a id="src-s14"></a>
-**S14｜`014_Transformers_chat_templates.html`**  
+**S14｜[014_Transformers_chat_templates.html](references/014_Transformers_chat_templates.html)**  
+本地附件 SHA-256：`c26efe5f7a0c9e3f59c3622881fe38d9d2930809b693d8e50368b2a66f4aa282`。  
 重点：消息如何序列化，generation prompt，特殊 token 重复添加问题。它回答“模型看到什么”。
 
 <a id="src-s15"></a>
-**S15｜`015_Transformers_apply_chat_template.html`**  
+**S15｜[015_Transformers_apply_chat_template.html](references/015_Transformers_apply_chat_template.html)**  
+本地附件 SHA-256：`3e854428dac59e936cff2eab06ed691fa414b9cf5008b08c2c1adec0dac9cc25`。  
 重点：`apply_chat_template` 参数、`return_assistant_tokens_mask` 与 generation 标记。它回答“如何从模板得到监督范围”。
 
 <a id="src-s16"></a>
-**S16｜`016_TRL_SFTTrainer.html`**  
+**S16｜[016_TRL_SFTTrainer.html](references/016_TRL_SFTTrainer.html)**  
+本地附件 SHA-256：`b5bc62409885b1328e94b84c17b43f91c1de86ab58bd0c3c601510ee88a8b2be`。  
 重点：conversational 与 prompt-completion 数据、assistant-only 与 completion-only loss、packing。它回答“训练器怎样使用这些表示”。
 
 <a id="src-s17"></a>
-**S17｜`017_TRL_training_chat_templates.html`**  
+**S17｜[017_TRL_training_chat_templates.html](references/017_TRL_training_chat_templates.html)**  
+本地附件 SHA-256：`5398bf1ca02b99d0bee77c3a1d5dc23b39cc5cb1e789102ff29894aca1000ebb`。  
 重点：训练模板补丁、推理保留、停止标记和 prefix-preserving。它解释“推理模板为什么不能不检查就直接拿来训练”。
 
 <a id="src-s18"></a>
-**S18｜`018_Axolotl_conversation_datasets.html`**  
+**S18｜[018_Axolotl_conversation_datasets.html](references/018_Axolotl_conversation_datasets.html)**  
+本地附件 SHA-256：`728defb5e2476ae00e9f0a11b3aa223b513929c9b23d8ebafa0f91d3ebb66871`。  
 重点：角色选择、EOS、工具格式、逐消息与片段级监督控制，以及异构工具参数的存储类型问题。它提供另一种实现同类监督设计的方式。
 
 <a id="src-s19"></a>
-**S19｜`019_LLaMA-Factory.md`**  
+**S19｜[019_LLaMA-Factory.md](references/019_LLaMA-Factory.md)**  
+本地附件 SHA-256：`7c72bce01922b0ab829b3562b1196ed9d17d77d2543e562b871ee5e0f6f29b0a`。  
 重点：训练目标与参数更新方式的区分、数据准备、工具使用与 `neat_packing` 等能力。`train_on_prompt`、`mask_history` 的本文具体对照来自讲义附录；不要把 README 当作每个底层参数的完整规范。
 
 ### D.6 建议的联读顺序
