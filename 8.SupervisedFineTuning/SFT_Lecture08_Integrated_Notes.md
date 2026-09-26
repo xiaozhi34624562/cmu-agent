@@ -2,9 +2,10 @@
 
 > **核心问题：一段运行经验经过筛选、表示、监督与优化之后，究竟把什么行为写进了模型？这些行为能否在模型自己的运行轨迹上继续有效？**
 
-**面向读者：** LLM 开发工程师。  
-**主要材料：** Yueqi Song 的 *Supervised Fine-Tuning for Agents*（`lecture-08-sft.pdf`），以及本次提供的 19 份参考资料。  
-**整理方式：** 以讲义的七条主线组织，将前面讲解中的概念、论文实验、公式、工程方法和边界条件合并。  
+**面向读者：** LLM 开发工程师。
+**主要材料：** Yueqi Song 的 *Supervised Fine-Tuning for Agents*（`lecture-08-sft.pdf`），以及本次提供的 19 份参考资料。
+**整理方式：** 以讲义的七条主线组织，整合概念、论文实验、公式、工程方法和边界条件。
+
 **阅读约定：** 页码均指所提供 PDF 的文件页序；HTML 以章节名定位。文中的模型成绩和训练配方是这些文件版本报告的结果，不代表最新排行榜或通用推荐配置。标为“推导”“工程建议”“教学示例”的内容，是对材料的解释与应用，不冒充论文已经验证的结论。公式使用 Markdown 数学语法，需要阅读器支持数学渲染。
 
 ---
@@ -41,7 +42,9 @@ Lecture-08 的副标题是 **Turning recorded trajectories into weights：把记
 | Knowing it worked | 第 42–45 页 | DAgger、SWE-Gym、OpenThoughts-Agent | Teacher forcing 下的预测准确，为什么不能保证自由执行？ |
 | Handing off to RL | 第 47 页 | R1、MAI、Horizon、Kimi K3、Nemotron | SFT 在哪里开始、在哪里结束？是否只负责冷启动？ |
 
-这不是“讲义加若干论文摘要”。每组资料承担不同的论证角色：SWE-Gym 提供可执行训练环境；Kimi K2 解释数据生产如何扩展；OpenThoughts-Agent 用消融实验比较数据配方；IM、WIT 和 BalanceSFT研究监督目标；ADP 和模板资料负责将经验转成训练输入；MAI、Horizon 与多教师蒸馏展示模型迭代的不同路径。
+这不是“讲义加若干论文摘要”。每组资料承担不同的论证角色：SWE-Gym 提供可执行训练环境；Kimi K2 解释数据生产如何扩展；OpenThoughts-Agent 用消融实验比较数据配方；IM、WIT 和 BalanceSFT 研究监督目标；ADP 和模板资料负责将经验转成训练输入；MAI、Horizon 与多教师蒸馏展示模型迭代的不同路径。
+
+本文据此选择参考资料：重点补充会改变数据、监督、执行与评测判断的内容；模型架构、预训练系统和完整 RL 算法保留为扩展阅读。资料入口见本目录 [SOURCES.md](SOURCES.md)，其中 Readings 为 None，本篇联读材料为讲义与 19 份 references。
 
 **贯穿全文的判断：SFT 的核心不是数据条数或 epoch 数，而是在什么可见状态下，哪些行为值得被反复模仿。**
 
@@ -221,6 +224,8 @@ labels[:, 1:]   # 对应的目标 token
 
 **推导。** 将教师推理 mask 掉，不能消除学生对它的依赖。训练时如果关键参数只在教师推理中出现，部署时却没有这段内容，模型仍然面对输入条件变化。Mask 控制“直接学什么”，不控制“依赖了什么”。
 
+还要先问：这类任务是否需要推理示范？R1 的非推理 SFT 数据并非一律带 CoT；部分任务由 DeepSeek-V3 生成辅助推理，而“hello”这类简单请求不提供 CoT。这说明是否生成推理，也可以随任务而变，并不是选定一个模型后所有样本都必须采用同一长度或风格。[S02，附录 B.3.3，第 26 页](#src-s02)
+
 ### 3.6 Nemotron 的截断推理：不要把预算结束教成自然结束
 
 Nemotron 为推理预算控制构造了一部分样本：推理在随机预算处截断，最终回答保持不变，并将人工截断处的 `</think>` 从 SFT loss 中排除。[S03，§3.1.1，第 16 页](#src-s03)
@@ -268,6 +273,12 @@ IM 对训练数据拟合稍弱，却在新数据上更好。作者将其作为�
 
 **适用边界。** IM 作者并未将方法定位为替代所有 instruction tuning 的统一默认方案。长工具日志、网页噪声和多轮 Agent 的数据结构，与论文重点验证的小样本指令任务不同。不能从该结果直接推出“所有工具观察都应该计算 loss”。
 
+#### 不只看新能力，也看 instruction-tuning tax
+
+IM 将指令微调后部分原有能力下降称为 instruction-tuning tax。其低资源实验中，IM 在多个 epoch 上较好保留了传统 NLP 任务表现。论文还比较了另一种正则化：在普通 IT 中加入 KL loss，虽然缓解传统 NLP 能力下降，却明显削弱了该设置下的开放生成表现。例如 LIMA 上 AlpacaEval 2.0 胜率从 2.58% 降到 0.06%。[S11，§4.3、Figure 4、Table 3，第 7–8 页](#src-s11)
+
+这并不说明 KL 正则普遍无效，而是说明“限制模型偏离原分布”与“获得目标交互行为”可能存在取舍，必须同时评测。论文也检查了输出长度：在所比较的 Tulu 数据规模下，IM 与 IT 的输出长度接近，但 IM 的 AlpacaEval 1.0 胜率仍更高，因此不能简单把该收益解释成回答更长。[S11，§4.4、Figure 6，第 8–9 页](#src-s11)
+
 ### 4.2 WIT：输入与回答不必只能选 0 或 1
 
 WIT 将 prompt、response 分别赋予权重 $\lambda_p,\lambda_r$。设 $S_p,S_r$ 为两部分负对数似然之和，$N_p,N_r$ 为 token 数，可将其公式简写为：
@@ -294,6 +305,14 @@ WIT 在不同模型、数据集和权重配置下进行了 525 次 SFT 实验，
 因此，这次修改既加入了输入监督，也改变了回答项的绝对尺度。将公式替换成除以 $\sum_t w_t$ 的另一种 weighted loss，并不属于原样复现。
 
 **工程建议。** 同时记录 loss 的分段组成、归一化方式和梯度统计。不能把性能变化全部归因于“模型更加重视输入”。损失整体缩放对优化的影响还与优化器、裁剪、数值精度等有关，也不宜简单等同于线性改变学习率。
+
+#### 输入扰动与后续 DPO：最优配置取决于最终用途
+
+WIT 还使用 POSIX 衡量模型对保持任务意图的提示变化的敏感性，包括拼写变化、改写和格式变化。在 15 组模型与数据组合中，常规 IT 只有一组是提示敏感性最优配置；较低的回答权重通常降低敏感性，但兼顾任务成绩仍需折中。低敏感性本身不能证明任务完成得好。[S12，§4.3、Figure 4，第 8–9 页](#src-s12)
+
+其后续 DPO 实验也不只是“收益仍存在”：按 DPO 后成绩选出的最佳 WIT 配置，相对常规 IT 后接 DPO 的平均相对增益约为 8.01%；若沿用 DPO 前的最优 WIT 配置，该增益约为 2.44%。这两个数字使用不同的配置选择口径，都是相对增益，不是百分点；它们提示 SFT 终点与后续偏好训练终点可能偏好不同配置。[S12，§4.2、Table 3，第 7–8 页](#src-s12)
+
+WIT 对数据属性与最优权重的分析还发现，更长 prompt 与更低最优 prompt 权重相关。它不推翻 IM 在长输入、短输出、小数据条件下的收益：两篇论文比较的目标、数据与模型不同，且相关性不是因果规律。不能只按输入长度为新任务指定权重。[S12，§5.1，第 9–10 页](#src-s12)
 
 ### 4.3 BalanceSFT：长解释可能遮住短动作
 
@@ -359,6 +378,8 @@ $$
 
 **实践顺序：先建立语义正确的 assistant-only 基线，再针对明确瓶颈改变某一个监督维度。** 同时改变 prompt loss、推理权重、困难数据和训练预算，会让结果难以解释。
 
+**扩展阅读入口。** 收录的 TRL 文档还介绍了 Dynamic Fine-Tuning（DFT）及 `loss_type="dft"`。这表明 SFTTrainer 并非只支持普通 NLL；但该页面的接口介绍不足以在此复述完整方法或宣称它优于本章三种方案，研究时应继续阅读其链接的原论文。[S16，Computing the loss](#src-s16)
+
 <a id="chapter-5"></a>
 ## 5. 数据生产：先有可验证环境，再谈高质量轨迹
 
@@ -381,6 +402,14 @@ SWE-Gym 包含 **2,438 个任务、11 个 Python 仓库**，为任务提供执�
 ```
 
 **工程解释。** Agent 的环境不仅是测试设施，也是数据生产设施。没有可信的状态转移，“测试通过”可能只是模型写出来的一句话。
+
+#### 验收器也要先通过验收
+
+MAI 的 SWE 环境构建提供了一个更具体的例子：在初始代码上应用测试改动，再比较应用修复前后的结果。Fail-to-pass（F2P）测试检查问题是否被修复，pass-to-pass（P2P）测试检查既有功能是否保持；没有有效 F2P 的任务被丢弃。环境还需要在实际训练沙箱中重复验证“空 patch 失败、gold patch 成功”，并过滤不稳定测试。[S04，§3.3.1，第 41–42 页](#src-s04)
+
+该流程原本用于 RL 环境，迁移到 SFT 轨迹生产属于工程借鉴：只有结果标签可信，成功轨迹筛选才有意义。问题描述还应足以支持测试要求，不能让模型猜测隐藏测试中的未声明需求。
+
+验收也可以分层。Nemotron 的 CUDA 数据先检查编译与数值正确性，再在合格候选中按实测运行时间选择；性能快不能补偿结果错误。这是具体领域的数据构建案例，不是所有 SFT 任务都需要运行时性能指标。[S03，§3.1.1，第 18–19 页](#src-s03)
 
 ### 5.2 少量高质量轨迹可以有效，但不存在通用最低条数
 
@@ -416,7 +445,23 @@ OpenThoughts-Agent 不仅提出一套数据管线，还做了上百次消融，�
 
 它使用三个核心 benchmark 的阶段内标准化成绩综合排名，并将其他任务保留到数据管线选择结束后评测。这比只追逐某一个 benchmark 更能检查泛化。[S07，第 4–5 页](#src-s07)
 
-### 5.5 最强教师不一定是最好的老师
+### 5.5 先选任务来源，再选教师
+
+OpenThoughts-Agent 比较了 95 种任务生成策略，涵盖不同来源、合成方式与知识领域。来源选择是其管线消融中成绩跨度最大的环节：SWE-smith 等代码问题有利于 SWE-bench，而 StackExchange SuperUser 等人类基础设施问答更有利于终端任务。因此，教师回答质量之外，先要判断任务是否覆盖学生需要学习的工作。[S07，§3.1、Table 2，第 5 页](#src-s07)
+
+其 Top-N 混合实验在固定 10K 任务规模下，从排名前 N 的来源各采样约 10K/N 条。Top-4 或 Top-8 能取得较均衡的表现，相比单一最佳来源，减少只擅长某个 benchmark 的偏向。这不是“来源越多越好”；扩大到 100K 数据时的来源扩展结果见 6.6。[S07，§3.2、Table 3，第 5–6 页](#src-s07)
+
+**工程建议。** 在来源层先比较小规模学生收益，记录各任务族的改善与退化，再选择混合。不能让拥有最多原始数据的来源自然占据全部训练预算。
+
+### 5.6 先筛任务，还是生成之后筛轨迹？
+
+两者作用位置不同。任务筛选决定把生成预算花在哪里；轨迹筛选决定同一任务的哪些执行记录值得学习。OpenThoughts-Agent 在生成 Agent 轨迹前，使用 GPT-5 对任务的回答长度、LLM 评分、embedding 多样性等信号选择任务。[S07，§3.4、Table 5，第 6 页](#src-s07)
+
+其“GPT-5 回答最长”任务筛选策略，三个 benchmark 的原始平均成绩为 17.43%，随机选择为 14.10%，相差约 3.33 个百分点。这是利用另一模型的回答长度作为任务筛选信号，不是要求学生模仿这份回答，也不是过滤 Agent 的实际交互轮数。第 6 章的最少五轮过滤属于后一个环节。
+
+**证据边界。** 长回答可能与任务复杂度等属性相关，但该实验没有证明长度等于难度或质量。若任务本身不可解、依赖不存在的环境或描述不清，应先排除这些问题，不能将它们自动归为有价值的困难任务。
+
+### 5.7 最强教师不一定是最好的老师
 
 OpenThoughts-Agent 的教师消融如下。这里记录的是**使用相应教师轨迹训练后的学生表现**，不是教师自身得分。
 
@@ -433,7 +478,7 @@ OpenThoughts-Agent 的教师消融如下。这里记录的是**使用相应教�
 
 **工程建议。** 在相同任务与相近生成预算下，用候选教师各生成一小批数据，训练相同学生后比较。教师排行榜可以用于初筛，学生收益才是数据选择的最终依据。
 
-### 5.6 不要把“更复杂的任务描述”自动当作更好的数据
+### 5.8 不要把“更复杂的任务描述”自动当作更好的数据
 
 OpenThoughts-Agent 比较加约束、提高难度、合并任务、加入提示等增强策略。在其小规模消融中，没有一种可靠优于不增强的原始描述；但在更大规模且原始表达覆盖不足时，特定描述改写又产生收益。两组实验对应不同问题，不能选其中一组宣称“增强一定有效”或“一定没用”。[S07，§3.3、Table 4、第 6 页；§4、第 8 页](#src-s07)
 
@@ -457,11 +502,13 @@ SWE-Gym 在受约束工作流的迭代训练中观察到这种容易任务偏置
 
 **工程建议。** 同时记录独立任务数、每任务轨迹数和各难度桶的保留率。只有“成功样本总数”，无法说明数据覆盖是否改善。
 
-### 6.2 Nemotron：成功轨迹仍然需要过程检查
+### 6.2 成功轨迹仍然需要过程与表达质量检查
 
 Nemotron 对软件工程轨迹检查有效提交、无收敛的编辑—测试循环、长期探索但少有修改、畸形工具调用、最终 patch 的调试残留，以及修改后从未测试等问题。它还按自己的任务设置过滤部分 git 操作。[S03，§3.1.1，第 17 页](#src-s03)
 
 这些不是所有项目通用的禁令。例如，某些真实任务本来就需要合法的远程仓库操作。应当复用“按任务语义检查过程”的方法，而不是不加区分地复制整张过滤列表。
+
+R1 展示了另一类筛选：约 60 万条推理数据先生成多个候选并保留正确回答，其中部分任务使用规则判定，另一些将参考答案与候选交给 DeepSeek-V3 评审；同时过滤混合语言、过长段落、代码块等影响其目标推理风格的内容。这些是该版本对推理文本的选择，不能复制成“Coding Agent 轨迹不得出现代码块”。[S02，附录 B.3.3，第 26 页](#src-s02)
 
 ### 6.3 失败观察、错误动作与无效循环不能混为一谈
 
@@ -472,11 +519,15 @@ Nemotron 对软件工程轨迹检查有效提交、无收敛的编辑—测试�
 | 重复同一命令且没有新增信息 | 无效循环 | 考虑过滤或重新生成 |
 | 看似成功，但修改后没有验收 | 缺乏可靠结果证据 | 不仅凭最终文字认定为优质轨迹 |
 
-这是工程判断框架，不是三篇论文使用的统一标注标准。
+这是工程判断框架，不是这些参考资料共同采用的统一标注标准。
 
 一个重要技巧是：保留错误动作及其后果作为上下文，对明确不希望模仿的错误动作关闭直接 loss，监督后面的纠正行为。但这只是“不奖励模仿错误”，不是显式惩罚错误。
 
 更重要的是，**不能删掉某个会改变环境的动作，却保留它造成的后续观察。** 那样的轨迹不再因果一致。若要精简，最好重放整理后的动作序列，确认观察仍然成立。
+
+**来自数据配方的具体实例。** Nemotron 的 CUDA 修复样本包含 PyTorch 参考实现、错误 CUDA kernel、对应错误信息和修正版；优化样本则包含慢 kernel、Nsight Compute 日志和优化版。错误代码与日志构成有意义的输入条件，目标是根据反馈修复或优化。[S03，§3.1.1，第 19 页](#src-s03)
+
+这些是带反馈的修复数据，不应据此声称论文已经采用了前述逐动作 mask 方案。失败轨迹还可以用于训练判断成功与否的 verifier，其监督方式与 actor 模仿不同，见 11.3。
 
 ### 6.4 HDR：困难任务池保存的是待解决问题，不是错误答案
 
@@ -509,9 +560,9 @@ BalanceSFT 首先通过基础质量检查与答案检查，将数据划分为合
 
 ### 6.6 多样性至少有四种，不能都用数据行数表示
 
-**任务多样性**：真正不同的问题。  
-**表达多样性**：同一问题的不同表述。  
-**状态与路径多样性**：同一任务从不同中间状态、通过不同路径完成。  
+**任务多样性**：真正不同的问题。
+**表达多样性**：同一问题的不同表述。
+**状态与路径多样性**：同一任务从不同中间状态、通过不同路径完成。
 **运行协议多样性**：工具定义、提示、观察与上下文管理方式不同。
 
 这是对前述资料的组织性解释，四类不一定相互独立。
@@ -583,7 +634,9 @@ ADP 的质量检查中“多数工具调用配有英文 thought”及其阈值�
 | Qwen2.5-7B-Instruct / WebArena | 16.0% | 20.1% |
 | Qwen3-8B / AgentBench OS | 21.5% | 25.7% |
 
-每一行是在该 benchmark 对应的相同模型与 harness 下比较数据混合；不表示三行使用相同模型。论文支持综合数据在这些设置中有效，但表格不构成“固定总训练量后，仅多样性这一因素”的纯因果证明。[S09，Table 6，第 9 页](#src-s09)
+每一行是在该 benchmark 对应的相同模型与 harness 下比较数据混合；不表示三行使用相同模型。这里的“ADP 综合数据”也不是每个模型都使用全部来源：OpenHands、SWE-Agent 使用约 30K 非网页数据，AgentLab 使用约 20K 网页数据。协议支持统一接入，不代表训练必须混合所有领域。[S09，Table 6，第 9 页；附录 C.1，第 19 页](#src-s09)
+
+附录进一步补做了等样本数对照：将 SWE-smith 上采样到约 30K，Qwen3-8B / OpenHands 成绩仍为 11.0%，约 30K ADP 混合数据为 16.6%。这支持收益并非仅由样本条数更多造成。等样本数仍不保证等输入 token、等目标 token 或等算力，也没有单独隔离“统一格式”与“数据内容”的贡献。[S09，附录 E.1、Table 10，第 20 页](#src-s09)
 
 **工程建议。** 比较配方时同时报告任务数、轨迹数、总 token、受监督 token、训练步数与算力预算。否则很难区分覆盖更广与训练更多的作用。
 
@@ -603,6 +656,12 @@ Kimi K3 的 XTML 围绕可扩展性、较低格式学习代价和解析/约束�
 
 **综合解释：能由协议消除的歧义，不要全部留给模型用参数去猜。** 清晰的控制事件、参数类型和结果关联，有助于让训练目标与执行语义对应；但它们本身不保证任务推理正确。
 
+#### 对照 Kimi K2：工具声明、调用与结果是三个部分
+
+Kimi K2 附录 B 将工具协议拆成工具声明、assistant 调用段、工具结果。声明主要使用 TypeScript，以较简洁的形式表达参数类型；部分训练数据仍使用 JSON 声明以兼容其他框架。调用参数使用 JSON 序列化，并以唯一 call id 关联并行调用与结果。[S06，附录 B，第 26–27 页](#src-s06)
+
+这说明“工具定义采用什么语言”与“调用参数怎样编码”可以分别设计。K2 还使用约束解码保证调用结构和参数 schema；该机制有助于格式有效性，却不能保证选对工具、理解对任务或得到正确结果。这里的 K2 协议与 K3 的 XTML 是两个版本的具体设计，不应混用标记。
+
 <a id="chapter-8"></a>
 ## 8. 从论文目标到正确的训练输入：最危险的 bug 往往很安静
 
@@ -611,6 +670,10 @@ Kimi K3 的 XTML 围绕可扩展性、较低格式学习代价和解析/约束�
 “数据里写了 `role=assistant`”并不等于训练器知道哪些部分应该学习。讲义第 13 页描述了三个步骤：模板渲染并记录 assistant 字符跨度；tokenize 将字符跨度映射为 token 位置；据此构造 mask。[S00，第 13 页](#src-s00)
 
 因此，审核训练数据至少要看三层：原始交互记录、渲染后的文本、最终 batch 中的 `input_ids` 与 `labels`。只看第一层是不够的。
+
+**字符边界不一定是 token 边界。** Axolotl 的片段级监督示例提示，BPE 可能把空格与后一个词合成一个 token。若将 `"Let me think... "` 设为不训练、紧接着将 `"The answer is 4."` 设为训练，跨越边界的 token 在其处理方式中会被 mask。把空格放到后一片段开头，可以避免这类边界问题。[S18，Whitespace at part boundaries](#src-s18)
+
+这不是所有 tokenizer 的统一切分规则，而是为什么不能仅按字符范围猜测监督范围的具体例子。混合中文、英文、标点、代码与特殊标记时，都应解码最终受监督 token 检查；附录 A 的展示函数用于帮助观察这些结果。
 
 ### 8.2 一个模板处理可能抹掉整段蒸馏目标
 
@@ -636,6 +699,12 @@ Transformers 文档提醒：chat template 通常已包含所需特殊 token。�
 
 **工程建议。** 对固定对话保存渲染快照和 token 快照，尤其覆盖空内容、工具调用、多轮消息、推理开关、结束标记与特殊字符。字符串看起来接近，不代表 token 序列相同。
 
+#### 开始新消息与续写已有消息
+
+`add_generation_prompt=True` 在模板支持时添加新 assistant 消息的起始前缀；`continue_final_message=True` 则去掉最后一条消息的结束标记，让模型继续已有内容。例如最后的 assistant 内容是 `{"name": "` 时，续写是在完成这个 JSON，而不是再创建一条 assistant 消息。两者不能同时使用。[S14，add_generation_prompt / continue_final_message](#src-s14)
+
+完整对话的 SFT 预处理通常使用 `add_generation_prompt=False`：样本已经包含目标回答，不需要在结尾再开启一轮。该规则不意味着在线生成也应关闭它。收录版本还支持指定推理字段进行 prefill；能否使用取决于字段和模板是否匹配。附录 A 处理的是完整纯文本对话，不是未完成回答的续写。
+
 ### 8.4 Prefix-preserving：追加消息后，旧历史不应意外变化
 
 讲义第 39 页展示的失败模式是：追加工具消息触发模板中的条件逻辑，导致前面的 assistant 内容重新渲染，旧前缀发生变化。TRL 文档也专门讨论工具交互中的 prefix-preserving 要求。[S00，第 39 页](#src-s00)；[S17，Training chat templates](#src-s17)
@@ -658,6 +727,21 @@ Transformers 文档提醒：chat template 通常已包含所需特殊 token。�
 对应 [S15，apply_chat_template](#src-s15)、[S16，SFTTrainer](#src-s16)、[S18，Conversation](#src-s18)、[S00，第 49 页](#src-s00)。以上是所提供文档的接口语义，安装版本是否一致需要在本地核对。
 
 Boolean mask 只回答“是否训练这个位置”，不自动实现 WIT 或 SSB 的连续加权。即使框架有 `weight` 字段，也要核对其取值与语义，不能从名称推断它支持任意实数权重。
+
+Axolotl 此处的 content part `weight` 实际仅支持 0/1，也可用 `train: true/false` 指定片段监督；它不是 WIT 的连续权重。另需将模板中的 EOT/EOS 与 tokenizer 配置对齐：收录文档允许通过 `eot_tokens`、`train_on_eot` 分别处理回合结束与序列结束，并要求所配置的 EOT 标记在 tokenizer 中是单个 token。[S18，Content parts with per-part training control；Using template with different token for EOT and EOS](#src-s18)
+
+#### TRL 默认值还取决于数据形态
+
+下表按收录的 SFTTrainer 文档说明，假设没有额外的自定义 loss 或 mask：
+
+| 数据形态 | loss 配置 | 监督目标 |
+|---|---|---|
+| Language-modeling 数据，包括完整 `messages` 对话 | `completion_only_loss=None`、`assistant_only_loss=False`（默认） | 全序列有效 token；角色字段本身不自动排除 user/tool |
+| Prompt-completion 数据 | `completion_only_loss=None`（默认） | completion 部分 |
+| Conversational 数据 | `assistant_only_loss=True`，模板支持 generation mask | 所选范围内的 assistant 输出 |
+| Conversational prompt-completion 数据 | `completion_only_loss=True` 且 `assistant_only_loss=True` | completion 范围与 assistant 范围的交集 |
+
+所以，“提供了 `messages`”与“已经只训练 assistant”不是同一件事；把历史放进 prompt，还可能使历史中的 assistant 回合退出监督。应先确定目标回合，再设计数据字段和开关。[S16，Train on assistant messages only / Train on completion only；SFTConfig](#src-s16)
 
 ### 8.6 数据存储类型与模型输入类型也要区分
 
@@ -688,11 +772,13 @@ $$
 W'=W+\frac{\alpha}{r}BA
 $$
 
-其中 $W\in\mathbb R^{d_{out}\times d_{in}}$ 保持冻结，低秩增量的参数量约为 $r(d_{in}+d_{out})$，而非整个矩阵的参数量。这是前面讲解中的参数化背景，不是 Lecture-08 对 LoRA 的专项实验结论。
+其中 $W\in\mathbb R^{d_{out}\times d_{in}}$ 保持冻结，低秩增量的参数量约为 $r(d_{in}+d_{out})$，而非整个矩阵的参数量。这是理解参数更新方式所需的背景，不是 Lecture-08 对 LoRA 的专项实验结论。
 
 减少可训练参数能够减少相应梯度和优化器状态需求，但不意味着长序列前向、激活与必要的反向计算成本消失。全参数 SFT、LoRA-SFT、QLoRA-SFT 在相同数据上出现不同表现时，不能只把原因归给数据；更新空间与数值条件也变了。S19 将这些训练方式分别列出。[S19，Features](#src-s19)
 
 **工程建议。** 先用资源允许的更新方式建立可靠基线，再单独比较参数化方式。不要把“使用了 LoRA”当作已经设计好了 SFT。
+
+**较小资源规模的论文案例。** SWE-Gym 的 MoatlessTools 32B 实验使用单张 H100、Unsloth LoRA、rank 64、batch 8、10,240 上下文、5 epochs 和 $5\times10^{-4}$ 学习率。它针对受约束工作流，不能当作 OpenHands 的 491 条长轨迹实验配方，也不能推断同样资源足以处理任意 32B 长上下文训练。[S08，附录 B.3，第 15 页](#src-s08)
 
 ### 9.2 工具观察不算 loss，也依然需要处理
 
@@ -710,6 +796,8 @@ $$
 
 这些是对讲义“观察作为条件上下文”的工程推导，不是用一个比率取代任务评测。
 
+**实现上的节省仍然可能存在。** 收录的 TRL 文档描述 `chunked_nll`：仅对未忽略目标对应的隐藏状态计算 `lm_head` 投影，并分块计算交叉熵，以减少完整词表 logits 的峰值内存；其数学目标与普通 NLL 相同。这类优化减少的是输出投影和 loss 计算的开销，不意味着可以省略条件上下文在主干网络中的处理。[S16，Computing the loss；SFTConfig.loss_type](#src-s16)
+
 ### 9.3 长度分布决定训练成本，也可能决定学到什么
 
 长轨迹常常把最终验证、错误恢复或提交动作放在末尾。简单右截断可能丢掉这些目标；左截断则可能丢掉原始约束、工具定义或关键证据。
@@ -718,19 +806,33 @@ $$
 
 尤其要防止训练时给予学生全量历史，部署时却经过多次压缩；这会同时改变模型能够利用的证据与记忆条件。MAI 报告过较短轨迹自蒸馏造成长上下文能力遗忘，并通过混入 mid-training 数据缓解。[S04，§3.1.4，第 36 页](#src-s04)
 
+**上下文管理本身也可以进入训练数据。** Nemotron 的搜索教师使用加入上下文管理行为的轨迹做 SFT，覆盖 discard-all resets 和基于摘要的压缩，主要采用超出预算后移除早期搜索观察的方式。这里训练的是有限上下文下继续搜索的工作方式，不是将模型的物理上下文窗口无限扩大。[S03，§3.3.2，Search Teacher，第 23 页](#src-s03)
+
+模板与框架仍要显式检查长度配置。收录的 TRL 文档中，`max_length` 默认是 1024；若直接用于长轨迹而未调整，尾部动作可能被截掉。具体默认值随版本变化，本文引用的是附件快照，不应替代安装版本的配置核对。[S16，SFTConfig.max_length](#src-s16)
+
 ### 9.4 Packing：完整性、混合与隔离分别检查
 
 Nemotron 的 best-fit packing 轮流读取不同来源，维护固定规模的未完成 pack，将新对话放进最适合的剩余空间；不拆分、不截断完整对话；同一 pack 避免重复 prompt，最后再打乱 pack。[S03，§3.1.2，第 19–20 页](#src-s03)
 
 这既减少 padding，也防止每段训练连续看到单一数据源。但必须区分：
 
-**完整对话打包**：保护轨迹语义。  
-**充分混合来源**：管理优化过程中的局部分布。  
+**完整对话打包**：保护轨迹语义。
+**充分混合来源**：管理优化过程中的局部分布。
 **跨样本注意力隔离**：决定一条样本能否看到另一条样本。
 
 原文该段 packing 描述没有完整交代注意力隔离实现。不能从“完整对话”推断“严格隔离”。
 
 **实现解释。** EOS 本身不建立注意力屏障，重置 position IDs 也不必然实现隔离。如果希望 pack 内样本独立，必须核对分段注意力或变长序列边界的具体实现，并避免在独立段起点形成错误的跨段预测目标。LLaMA-Factory 资料专门列出 `neat_packing` 对应的 contamination-free packed training，也说明 packing 是需要读语义的配置。[S19，Changelog](#src-s19)
+
+还要区分超长样本处理。收录的 TRL 文档列出以下策略，其名称不能替代语义检查：
+
+| `packing_strategy` | 文档描述的溢出处理 | 需要检查的目标 |
+|---|---|---|
+| `bfd` | Best-fit decreasing，截断溢出 | 是否丢掉最后验证、提交和结束标记 |
+| `bfd_split` | Best-fit decreasing，拆分溢出序列 | 后续片段是否仍有必要历史 |
+| `wrapped` | 更积极地拼接，可在序列中途切断 | 消息、工具调用和任务边界是否被切开 |
+
+因此，启用 TRL packing 不等于复现 Nemotron 的“不拆分、不截断”。`padding_free` 则描述消除 padding 的计算方式；它与数据完整性、注意力隔离仍需分别核对。[S16，SFTConfig.packing_strategy / padding_free](#src-s16)
 
 ### 9.5 梯度累积：平均方式会改变训练目标
 
@@ -771,6 +873,8 @@ $$
 
 这是目标组成分析，不是实际梯度范数或模型能力的等式。MAI 与 BalanceSFT 联读后，正确结论不是“长度失衡必然失败”，而是“必须检查长度如何改变监督，再用任务表现判断是否需要调整”。
 
+**ADP 的采样实例。** 其附录为含 $n_d$ 条原始轨迹的数据集 $d$ 设置倍率 $w_d$，每 epoch 抽取 $\lceil w_d n_d\rceil$ 条：下采样不放回，上采样有放回。例如 SWE-Gym 的倍率为 3，Orca AgentInstruct 为 0.001。由此推导，来源占比取决于 $w_d n_d$，并不是把倍率直接当作最终百分比；token 占比还要考虑长度。不同 harness 先筛选适用领域，再采用这套采样机制，见 7.4。[S09，附录 C–C.1，第 18–19 页](#src-s09)
+
 ### 9.7 阅读真实配方：讲义给概览，论文给阶段细节
 
 | 实验/阶段 | 序列长度 | 全局 batch | 学习率与目的 |
@@ -779,11 +883,14 @@ $$
 | Nemotron SFT Stage 1 | packed 294,912 | 64 | 峰值 $1.5\times10^{-5}$，最低 $10^{-6}$ |
 | Nemotron SFT Stage 2 | packed 515,000 | 64 | 峰值 $10^{-5}$，最低 $2\times10^{-6}$；加入更长数据 |
 | MAI self-distillation | packed 128K | 2,048 | $1.7\times10^{-5}\rightarrow5.2\times10^{-6}$，2% warmup |
+| MAI consolidation SFT | 复用自蒸馏管线；§3.5 未重列长度 | §3.5 未重列 | 4 epochs，峰值 $10^{-5}$，学习率衰减至其一半 |
 | K2 Horizon SFT | 512K，三个阶段 | 模型卡该表未列 | 最后阶段在高质量子集上衰减学习率 |
 
-来源：[S07，§3，第 4 页](#src-s07)；[S03，§3.1，第 15 页](#src-s03)；[S04，§3.1.5，第 36 页](#src-s04)；[S05，Training Overview](#src-s05)。
+来源：[S07，§3，第 4 页](#src-s07)；[S03，§3.1，第 15 页](#src-s03)；[S04，§3.1.5、§3.5，第 36、49 页](#src-s04)；[S05，Training Overview](#src-s05)。
 
 **细节说明。** 讲义第 36 页用一行概括 Nemotron 的学习率；其报告分别给出了两个阶段的不同取值，上表按报告分开列出，而不是把概览当成两个阶段完全相同。不同论文中的 batch 单位和 packing 方式也不同，不能直接比较为相同数量的原始对话。
+
+OpenThoughts-Agent 的附录也区分实验配方：8B 使用 `qwen3_nothink` 模板，各数据规模均训练 7 epochs；32B 使用 thinking 模板，3.16K/10K 训练 7 epochs，31.6K/100K 训练 5 epochs，并改变梯度裁剪阈值。因此，“使用同一数据管线”不表示不同规模的模型与数据实验只改变一个变量。模板名称也不能单独证明实际输入中没有推理，仍须检查渲染结果。[S07，附录 C、Tables 16–19，第 25–26 页](#src-s07)
 
 Nemotron 的 SFT 还保留了 MTP 辅助目标，使用两个共享权重的 MTP 层和每 token 0.1 的辅助损失系数。这提醒我们：讲义中的基本交叉熵是主线，不代表所有工业训练配方都只有这一个损失项。[S03，§3.1，第 15 页](#src-s03)
 
@@ -816,13 +923,13 @@ $$
 
 ### 10.2 一个理论边界：错误可能沿任务链条放大
 
-**来自 DAgger 原论文的补充阅读，不是上传 HTML 摘要本身包含的公式。** 在单步代价有界、模仿损失上界控制动作错误的条件下，论文 Theorem 2.1 给出：
+**来自 DAgger 原论文的补充阅读，不是本地 HTML 摘要本身包含的公式。** 设 $T$ 为任务步数，$J(\pi)$ 为执行策略 $\pi$ 的期望累计代价，$\pi^*$ 为专家策略。在单步代价位于 $[0,1]$、模仿损失上界控制动作错误的条件下，论文 Theorem 2.1 给出：
 
 $$
 J(\pi)\le J(\pi^*)+T^2\epsilon
 $$
 
-其中 $\epsilon$ 在专家状态分布上测量。Theorem 2.2 改为在自身状态分布上控制错误，并以 $u$ 约束一次偏离后再跟随专家的额外代价，得到 $J(\pi)\le J(\pi^*)+uT\epsilon$；$u$ 本身仍可能随 $T$ 增长。[S13-PDF，§2](#src-s13-pdf)
+其中 $\epsilon$ 在专家状态分布上测量。Theorem 2.2 改为在学习策略自身的状态分布上控制错误，此时 $\epsilon$ 也在该分布上测量；它以 $u$ 约束一次偏离后再跟随专家的额外代价，得到 $J(\pi)\le J(\pi^*)+uT\epsilon$；$u$ 本身仍可能随 $T$ 增长。[S13-PDF，§2](#src-s13-pdf)
 
 **解释与边界。** 这些式子说明，只在专家走过的路径上保证小错误，不足以保证长任务闭环表现；不是每个 Agent 必然按平方速度退化，也不是普通神经网络 SFT 自动满足理论条件。工程上更重要的问题是：第一次偏离后是否还有可学习、可执行的恢复路径。
 
@@ -877,6 +984,24 @@ $$
 
 两者与 DAgger 的联系在于关注学生遇到的状态；区别在于标签与优化方式不同。只有教师文本输出时，可以做示范蒸馏或专家纠正后的 SFT；复现概率级蒸馏则需要相应概率计算和训练基础设施。
 
+### 10.6 学生访问的状态，也可能超出教师熟悉的分布
+
+On-policy 蒸馏把监督放在学生自身生成的轨迹上，却不自动保证教师在这些状态上能给出可靠信号。Nemotron 的教师与学生在不同 SFT 管线上分别开发，直接进行 MOPD 整合表现不佳。作者提出，推理行为与输出分布的差异可能使学生轨迹对教师而言成为分布外输入。[S03，§3.3.3，第 27 页](#src-s03)
+
+为此，作者在 MOPD 前让学生用教师训练分布中的数据做一次轻量 SFT。下面比较的是**后续 MOPD 的结果**，不是只做 warmup 后的成绩：
+
+| 评测 | 无轻量 SFT warmup | 有轻量 SFT warmup |
+|---|---:|---:|
+| GDPVal | 35.3 | 46.7 |
+| BrowseComp | 33.0 | 44.4 |
+| HLE，无工具 | 26.3 | 26.7 |
+
+这里的 warmup 是一次监督训练阶段，不是学习率预热。它在两项 Agent 评测中帮助明显，在 HLE 上收益很小。[S03，Table 4，第 27 页](#src-s03)
+
+作者进一步区分两类差距：学生已经能够采样某类轨迹，只需教师改善其动作偏好；或者教师从额外数据中学会了学生很少能采样到的推理路径。后者未必靠短暂分布对齐即可弥补。这是作者对实验的解释，不是已经证明的通用分解定理。[S03，§3.3.4，第 28 页](#src-s03)
+
+**工程含义。** 排查蒸馏不提升时，除了教师实力，还应检查学生状态与教师熟悉的任务、格式和策略是否匹配。这个案例补充了 DAgger 的工程迁移边界，但不等于 DAgger 原定理的一部分。
+
 <a id="chapter-11"></a>
 ## 11. 如何评测真正的能力提升？
 
@@ -885,6 +1010,10 @@ $$
 讲义建议先确认模型能拟合二十条样本，再在目标 harness 里执行可验收任务。[S00，第 43 页](#src-s00)
 
 小样本拟合主要检查 labels、参数更新、模板和优化过程是否工作；独立任务评测才检查泛化。两者不能互相替代。小样本 loss 降得很低，也不意味着模型学会了未见任务。
+
+收录的 TRL 文档中，`loss`、`mean_token_accuracy` 和 `entropy` 都按未 mask 的目标 token 统计；`grad_norm` 是裁剪前梯度范数，MoE 的 `aux_loss` 是乘路由系数前的负载均衡辅助损失。改变 mask 后，日志中的统计对象也变了，不能直接把更低 loss 当成同一任务上的提升。[S16，Logged metrics](#src-s16)
+
+**工程建议。** 在总体指标之外，按推理、工具名与参数、最终回答、结束标记分别查看目标覆盖和预测质量。尤其是长推理占多数时，总 token accuracy 可能掩盖短调用错误；较低 entropy 也不自动代表正确或更适合后续 RL。
 
 ### 11.2 评测至少分四层
 
@@ -898,6 +1027,8 @@ $$
 这是工程评测框架。SWE-Gym 同时报告解决率、空 patch、卡循环和轮数，说明单一结果分数不足以解释行为变化。其 32B Verified 设置中，解决率提升的同时平均轮数也增加，部分过程指标没有同步改善。[S08，Table 3，第 6 页](#src-s08)
 
 因此，“更高成功率”既可能来自更合理的策略，也可能部分来自更长尝试。要结合预算解释。
+
+还可以增加保持任务意图的输入扰动评测，例如改写请求、改变无关排版或修正拼写后，任务表现是否稳定。WIT 的 POSIX 实验提供了提示敏感性的证据（见 4.2）；将它扩展到 Agent 时，必须确认改写没有改变工具参数、权限或验收要求，最终仍应检查执行结果。
 
 ### 11.3 能产生正确候选，与能选出正确候选，是两种能力
 
@@ -913,6 +1044,14 @@ SWE-Gym 用成功/失败轨迹训练结果验证器。验证器读取任务与�
 
 **工程解释。** Pass@k 高而 Best@k 低，说明不只是 actor 需要改进，verifier 也是瓶颈。Best@16 包含多次采样和选择计算，不能当作单次 Agent 成绩去比较。
 
+#### Actor 与 verifier 对失败数据的用途不同
+
+SWE-Gym 的 OpenHands verifier 数据包含教师生成的 443 条成功轨迹、学生生成的 875 条成功轨迹，再从对应来源配入等量失败轨迹，共 2,636 条。这是 verifier 小节报告的计数，该节另注明只保留 32K token 内的轨迹。其计数与 actor 小节的 491/868 条并不完全一致，本文分别保留报告值，不将差异全部解释为长度过滤。[S08，§5.1.1，第 7 页](#src-s08)
+
+模型学习的是根据整条轨迹输出成功或失败标签；推理时将 `<YES>` 与 `<NO>` 的概率归一化用于排序。失败执行记录作为判断依据，不是在要求 actor 模仿失败动作。论文比较发现，混合教师与学生数据优于只用教师数据，后者的选择收益较早达到平台。这说明 verifier 也需要覆盖将来要判断的学生行为分布。[S08，§5.1.1、Figure 8，第 7、20 页](#src-s08)
+
+论文还报告 OpenHands verifier 的 LoRA 设置在 Best@8 上为 29.8%，全参数设置为 27.2%，作者提出可能与正则化有关。这是该实验的比较，不支持“verifier 一律应使用 LoRA”，也不能把它与不同训练设置下的数据消融成绩当成同一组数值。[S08，§5.1.1，第 7 页；附录 B.2，第 13、15 页](#src-s08)
+
 ### 11.4 一个跨论文实验假设：先在 verifier 上测试 IM
 
 SWE-Gym verifier 的形态是长轨迹输入、短判断输出，比长输出 Agent 更接近 IM 重点研究的长输入短输出设置。
@@ -925,6 +1064,10 @@ SWE-Gym verifier 的形态是长轨迹输入、短判断输出，比长输出 Ag
 
 **工程建议。** 固定环境初始状态、工具集合、上下文策略、最大执行步数、超时、采样参数和重试方式。将开发集用于配方选择，将最终测试集用于独立验收；不要反复根据最终测试集改数据后仍把它当未见评测。
 
+仅按已知父任务 id 分组，还不能发现跨来源的近重复题目。MAI 对 STEM 与竞赛代码数据依次采用问题哈希精确去重、字符 n-gram / MinHash 模糊去重和向量相似度去重，并与评测集去污染。[S04，§3.2.3，第 39 页](#src-s04)
+
+该流程原本用于 RL 数据，借用于 SFT 时，应分别检查训练集内部重复与训练—评测重叠。相似度只能生成可疑候选：共享主题不一定是同一道题；固定阈值也不能保证识别所有语义改写。需要抽查误删与漏检，并保留来源关系。
+
 OpenThoughts-Agent 的部分综合表按模型在原始 harness 与 Terminus-2 中的更高成绩报告。它与固定单一 harness 的消融表不是同一种比较口径。[S07，Table 1，第 3 页](#src-s07)
 
 ### 11.6 未专项训练的能力也需要回归
@@ -932,6 +1075,10 @@ OpenThoughts-Agent 的部分综合表按模型在原始 harness 与 Terminus-2 �
 讲义第 45 页提醒：训练一种能力会移动其他能力，即使你没有测量。[S00，第 45 页](#src-s00)
 
 MAI 的实际例子是：自蒸馏要防止长上下文行为遗忘；最终轻量 RL 还保留少量 STEM/coding 数据和较长训练上下文，以避免复杂推理缓慢退化。[S04，§3.1.4、§3.5，第 36、49 页](#src-s04)
+
+BalanceSFT 提供了更直接的非目标能力对照。在其函数调用训练实验中，Qwen2.5-Coder-7B-Instruct 的 HumanEval Pass@1 约为 0.866，普通 SFT 后约为 0.470，BalanceSFT 后约为 0.841。该结果说明应同时看工具能力与原有代码能力；它比较的是完整 BalanceSFT 方法，不能将能力保持全部归因于 SSB，也不代表普通 SFT 在其他设置中必然如此退化。[S10，§4.5、Figure 4b，第 8 页](#src-s10)
+
+IM 的 instruction-tuning tax 与 KL 对照（见 4.1）提供了另一个角度：保留原有能力与学会新的交互行为应一起检验，任何一种正则化都不能只凭单组指标判定成功。
 
 **工程建议。** 目标能力以外，至少保留一组通用指令遵循、长输入信息使用、正常停止和基础任务回归。不能将“没有测到退化”表述为“没有退化”。
 
@@ -952,11 +1099,15 @@ R1-Zero 从基础模型直接进行 RL，没有先做 SFT。R1 则加入几千�
 
 因此，SFT 在该流程中不仅教输出结构，也承担组织与混合能力的作用。R1-Zero 同时说明“所有 RL 必须先 SFT”不是普遍规律。
 
+R1 还比较了小模型的两条路线：Qwen2.5-32B-Base 直接进行超过 10K 步 RL 后，AIME 2024 Pass@1 为 47.0%；R1-Distill-Qwen-32B 为 72.6%。这是该论文中高质量教师数据蒸馏优于其直接 RL 配方的证据，不是等总算力比较，也没有将训练教师本身的成本消除。不能概括成“小模型不能 RL”或“SFT 总是优于 RL”。[S02，附录 F.1、Table 16，第 61–62 页](#src-s02)
+
 ### 12.3 Kimi K3 与 Nemotron：基础策略、领域专家与多教师整合
 
 Kimi K3 的报告将后训练分为 SFT、领域/推理努力级别的 RL 专家、MOPD。其三类广义领域与三个努力级别组合成九个专家，再进行整合。[S01，§4.1，第 12–14 页](#src-s01)
 
 Nemotron 同样先建立 SFT 与统一 RLVR 的学生，再用十余个领域教师提供密集指导，并进行多轮教师—学生迭代。[S03，§3.3，第 20–21 页](#src-s03)
+
+Nemotron 的阶段图还包含 RLVR 之后、MOPD 之前的一次轻量 SFT warmup，用来改善学生与教师的分布匹配；其消融见 10.6。因此不能将它简化为一次 SFT 后就只进行 RL 和蒸馏。这里的阶段名称描述不同目标，某次 SFT 也可能是下一种训练方法的准备步骤。[S03，Figure 9，第 15 页；§3.3.3，第 27 页](#src-s03)
 
 这些流程不能被概括成“所有教师轨迹混在一起做一次普通 SFT”。其中有学生 rollout、教师评分、异步更新和专门的蒸馏目标。
 
@@ -971,6 +1122,12 @@ MAI 的自蒸馏收集 RL 运行中的轨迹，对一个 **mid-trained checkpoin
 MAI 的自蒸馏消融还报告：百万量级轨迹在其设置中已足以较好传递能力；更大数据量收益递减且可能限制后续探索；多个较强后期 checkpoint 的轨迹比只用最终 checkpoint 更有利于恢复后的 RL；固定 token 预算时，prompt 多样性比每 prompt 更多轨迹有价值。[S04，第 35–36 页](#src-s04)
 
 作者也观察到包含部分最终答案错误的轨迹与仅成功轨迹表现相近，但最终仍使用成功轨迹，因为成功数据足够。这是该设置的观察，不能变成“错误答案都可以直接作为 SFT 目标”的建议。
+
+#### 爬升中的自蒸馏，与最终多教师整合
+
+MAI 最终将 STEM/coding、Agent、帮助性与安全三个教师整合为一个模型，再做轻量 RL。整合 SFT 复用了自蒸馏管线，但并非三个领域使用同一套过滤：STEM 与 Agent 采样多个较强后期 checkpoint 的正确轨迹，主要轻量清理退化 CoT；帮助性与安全还使用评审与启发式检查风格、结构和已知缺陷。[S04，§3.5，第 49 页](#src-s04)
+
+最终整合 SFT 使用 4 epochs，学习率从 $10^{-5}$ 衰减至其一半，与前述爬升中的标准自蒸馏配方区分开来（见 9.7）。混合比例见 9.6；随后轻量 RL 继续处理安全、过度拒绝和风格，同时保留少量 STEM/coding 与长上下文训练，避免整合过程损害复杂推理能力。
 
 ### 12.5 K2 Horizon：SFT 也可以出现在 RL 专家合并之后
 
@@ -1004,6 +1161,8 @@ OpenThoughts-Agent 的 Table 11 在 8B、Terminus-2 与三个核心 benchmark �
 
 独立部署关心当前成功率、成本、稳定性；作为 RL 起点还关心输出分布、可探索策略与后续可提升性。两种目的应采用不同的 checkpoint 选择标准。
 
+WIT 的 DPO 实验也观察到监督权重的最优配置会随后续训练改变，见 4.2。这是另一个后续训练阶段的证据，不能将 DPO 与 Agent RL 的实验混成一组，但共同提示应围绕最终用途选择 SFT 配方。
+
 ### 12.7 一张生命周期对照表
 
 | 材料 | SFT 的关键角色 | 对工程理解的贡献 |
@@ -1013,7 +1172,7 @@ OpenThoughts-Agent 的 Table 11 在 8B、Terminus-2 与三个核心 benchmark �
 | OpenThoughts-Agent | 数据配方研究；为 Agent RL 建立起点 | 需要用消融选择数据与起点 |
 | MAI | 自蒸馏、换底座、恢复、能力整合 | 轨迹可作为独立于旧权重的行为资产 |
 | K2 Horizon | RL 专家合并后的领域覆盖训练 | SFT 不一定在 RL 前 |
-| Kimi K3 / Nemotron | 基础策略与后续多教师体系中的组成部分 | 不能把完整后训练都叫普通 SFT |
+| Kimi K3 / Nemotron | 基础策略与多教师体系；Nemotron 还用轻量 SFT 对齐蒸馏分布 | on-policy 指导仍依赖师生分布匹配 |
 
 这张表是前述原文流程的归纳，不意味着任何单一团队都需要复现全部阶段。
 
@@ -1049,8 +1208,9 @@ OpenThoughts-Agent 的 Table 11 在 8B、Terminus-2 与三个核心 benchmark �
 
 ```text
 任务登记与分组切分
+→ 来源选择与生成前任务筛选
 → 教师生成或人工示范
-→ 环境执行和验收
+→ 环境执行和验收（验收器已独立验证）
 → 语义标准化
 → 结果与过程质量检查
 → harness 适配
@@ -1060,7 +1220,7 @@ OpenThoughts-Agent 的 Table 11 在 8B、Terminus-2 与三个核心 benchmark �
 → 再扩大数据与训练预算
 ```
 
-保留原始轨迹，不要只保留最终渲染文本。将过滤原因、环境错误、超时与模型错误分别记录；生成环境失败不应自动算成模型任务失败或困难样本。
+保留原始轨迹，不要只保留最终渲染文本。生成前后均检查训练—评测重叠，并按父任务归并改写与重复采样。将过滤原因、环境错误、超时与模型错误分别记录；生成环境失败不应自动算成模型任务失败或困难样本。
 
 ### 13.4 用单变量实验回答一个问题
 
@@ -1084,7 +1244,7 @@ OpenThoughts-Agent 的 Table 11 在 8B、Terminus-2 与三个核心 benchmark �
 | loss 很低但调用仍错 | 是否监督了工具参数、协议一致性 | 再训练几个 epoch 一定好 |
 | 离线很好、上线明显差 | 模板、上下文裁剪、历史推理、工具版本 | 模型随机不稳定 |
 | 首次错误后迅速失控 | 学生状态覆盖、恢复数据、环境可恢复性 | 只增加完美教师答案 |
-| 总成绩升，目标调用反而退化 | 分段损失、任务配比、长度份额 | loss 下降代表所有能力改善 |
+| 总成绩升，目标调用反而退化 | 分段 loss/accuracy、目标覆盖、任务配比与长度份额 | 总体 token 指标代表所有能力改善 |
 | 数据越多成绩越差 | 每任务重复、来源质量、过拟合、预算变化 | SFT 天生不能扩展 |
 | SFT 好但接 RL 不提升 | 起点分布、任务难度、奖励与运行协议 | SFT checkpoint 越强一定越适合 RL |
 
@@ -1142,14 +1302,16 @@ experiment/
 | 蒸馏和 SFT 是两种互斥方法 | 蒸馏可以通过 SFT 实现 |
 | 不计算 prompt loss，模型就不理解输入 | 条件输入仍影响目标输出，仍可通过后续损失学习 |
 | assistant-only 就是只训练最后一轮 | 角色选择与回合选择是不同维度 |
+| 带 messages 字段就默认只训练 assistant | 数据形态、loss 开关和模板共同决定监督范围 |
 | 最终成功意味着所有中间动作都值得模仿 | 无效循环与坏习惯也可能伴随成功 |
 | 删除失败动作就能得到干净轨迹 | 可能破坏后续观察的因果一致性 |
 | 最长或最短的轨迹必然更好 | 不同实验条件下，长度只是不同质量属性的代理 |
-| 综合数据提升证明多样性单独有效 | 还需排除总数据量、预算与配比变化 |
+| 综合数据提升证明多样性单独有效 | 等样本数对照仍需区分 token/算力、数据内容与格式的贡献 |
 | `packing=True` 自动保证样本独立 | 完整性、混合与注意力隔离需要分别检查 |
 | SFT 的最优 checkpoint 一定是 RL 的最佳起点 | 当前成绩与后续可提升性是不同目标 |
 | Pass@16 可以当成单次模型能力 | 它包含额外采样预算，Best@16 还包含选择能力 |
 | 回流成功样本就是可靠自进化 | SWE-Gym 提供了具体反例，必须闭环验证 |
+| 学生轨迹上的教师评分必然可靠 | 学生轨迹也可能超出教师熟悉的分布，需检查分布匹配 |
 
 ### 14.4 对来源保持严谨的五个边界
 
@@ -1296,6 +1458,8 @@ def supervised_spans(
 
 最小单元测试应覆盖：正常对话；缺少 mask；mask 长度错误；非二值 mask；超长样本；只有首位置被监督；完全没有监督目标；多段 assistant 目标的展示。
 
+真实 tokenizer 的样例还应覆盖片段边界空格、中文与英文混合、工具参数、推理结束与消息结束，以及完整回答和 prefill 的区别。如果另行实现 Axolotl 式片段 mask，应检查跨边界 token 的处理；本附录函数本身只接收模板提供的 assistant mask，不实现片段重加权。
+
 模拟测试只能检查程序分支。真实 tokenizer 的字符—token 边界、特殊 token、工具序列化和 generation mask，仍需使用目标模型的真实模板测试。本文代码未执行模型微调，也没有声称已经验证某个模型的训练效果。
 
 <a id="appendix-b"></a>
@@ -1324,6 +1488,9 @@ def supervised_spans(
 | On-policy | 数据由当前或接近当前策略产生 | 具体系统可能有异步带来的版本滞后 |
 | DAgger | 聚合当前策略状态上的专家动作标签 | 不等于成功轨迹自训练 |
 | MOPD | 多教师在学生生成状态上的蒸馏 | 不是普通离线教师文本 SFT |
+| MOPD warmup | 蒸馏前在教师分布上进行的轻量 SFT | 不是学习率 warmup |
+| POSIX | WIT 使用的提示敏感性指标 | 低敏感性不等于任务正确 |
+| F2P / P2P | 修复后由失败转通过 / 保持通过的测试 | 分别检验问题修复与已有功能回归 |
 | Pass@k | 多个候选里是否有成功解 | 衡量发现能力而非选择能力 |
 | Best@k | 排序后选出的候选是否成功 | 同时依赖验证器 |
 | Checkpoint | 某一训练阶段的参数快照 | 最终成绩好不一定最适合继续 RL |
@@ -1342,12 +1509,16 @@ def supervised_spans(
 | SWE-Gym Figure 3 | Pass@16 42.8%，Best@16 32.0% | 候选生成与候选选择有不同瓶颈 | 32.0% 是同预算单次表现 |
 | IM Figure 3 | 训练回答 loss 较高，测试回答 loss 较低 | 小数据下过拟合需要单独处理 | 输入全算 loss 总是好 |
 | WIT §4 | 最优权重随模型与指标变化 | 监督分配影响泛化与后续训练 | 存在统一最佳权重 |
+| WIT §4.2–4.3 | 提示敏感性与 DPO 后最优配置也随权重变化 | 配方应按最终用途评测 | 提示不敏感就一定答得对 |
 | BalanceSFT Table 5 | SSB 与 HDR 各有增益 | 监督分配与困难数据互补 | 全部增益来自新 loss |
+| BalanceSFT Figure 4b | 普通 SFT 与完整方法对原有代码能力的影响不同 | 目标能力与非目标回归应一起测 | 能力保持已被证明完全来自 SSB |
 | OT-Agent Table 6 | 更强模型没有产生更强学生 | 教师的教学价值要由学生衡量 | 排名最高教师必然最优 |
+| OT-Agent Tables 2–5 | 任务来源、混合与生成前筛选改变学生成绩 | 数据工厂先决定做什么任务，再选择示范 | 任务筛选就是轨迹长度过滤 |
 | OT-Agent Table 7 | 至少五轮过滤在其比较中有效 | 适当代理指标可能改善数据 | 五轮以上都是高质量 |
 | OT-Agent §4 | 同一底层问题的描述扩展有效 | 表达覆盖可能是瓶颈 | 实验增加了大量独立底层问题 |
-| ADP Table 6 | 混合数据优于部分单域设置 | 统一数据可以带来迁移收益 | 已完全隔离总数据量影响 |
+| ADP Table 6、附录 Table 10 | 混合数据更好；约 30K 等样本数对照仍为 11.0%→16.6% | 收益不只是样本条数更多；各 harness 按适用领域混合 | 已匹配所有 token/算力预算，或收益都来自格式 |
 | MAI §3.1.4 | 多个较强后期 checkpoint 轨迹有用 | 保留策略多样性可能有利于后续 RL | 越早或越晚的轨迹越好 |
+| Nemotron Table 4 | MOPD 前轻量 SFT 明显改善部分 Agent 评测 | 师生分布匹配影响后续蒸馏 | warmup 对所有领域同样有效 |
 | Horizon model card | RL 专家合并后再做三阶段 SFT | SFT 不只位于 RL 之前 | 所有模型都是线性 SFT→RL |
 
 以上为正文已引用实验的回顾，不引入额外实验结论。
@@ -1364,115 +1535,115 @@ def supervised_spans(
 ### D.2 主讲义
 
 <a id="src-s00"></a>
-**S00｜[lecture-08-sft.pdf](lecture-08-sft.pdf)**  
-本地附件 SHA-256：`1598a8bd9784ec044f89b8951af52bb2f80c0236b73aada0ca4cc3038049c4e3`。  
+**S00｜[lecture-08-sft.pdf](lecture-08-sft.pdf)**
+本地附件 SHA-256：`1598a8bd9784ec044f89b8951af52bb2f80c0236b73aada0ca4cc3038049c4e3`。
 *Supervised Fine-Tuning for Agents*，Yueqi Song，49 页。主线为权重更新、轨迹 token 化、轨迹选择、统一格式、训练执行、闭环验证和 RL 交接。第 49 页为具体 masking flags。本文按它组织，而不是用另一套主题替代课程。
 
 ### D.3 模型报告：理解 SFT 在完整训练中的位置
 
 <a id="src-s01"></a>
-**S01｜[001_Kimi_K3.pdf](references/001_Kimi_K3.pdf)**  
-PDF 版本标注：arXiv:2607.24653v2 [cs.CL] 7 Aug 2026。  
+**S01｜[001_Kimi_K3.pdf](references/001_Kimi_K3.pdf)**
+PDF 版本标注：arXiv:2607.24653v2 [cs.CL] 7 Aug 2026。
 *Kimi K3: Open Frontier Intelligence*。重点读 §4.1（第 12–14 页）与附录 F（第 46–47 页）：冷启动、领域/努力级别专家、MOPD、部署相关量化和 XTML。本文不展开其预训练架构与排行榜，因为那不是本节 SFT 的中心。
 
 <a id="src-s02"></a>
-**S02｜[002_DeepSeek-R1.pdf](references/002_DeepSeek-R1.pdf)**  
-PDF 版本标注：arXiv:2501.12948v2 [cs.CL] 4 Jan 2026。  
-*DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning*。本次文件为 86 页版本。重点读 §3、附录 B.3.3（第 26–27 页）与附录 F（第 60–61 页）：冷启动、再次 SFT、数据统计、小模型蒸馏。不要把它与不同版本的页码或数据细节混用。
+**S02｜[002_DeepSeek-R1.pdf](references/002_DeepSeek-R1.pdf)**
+PDF 版本标注：arXiv:2501.12948v2 [cs.CL] 4 Jan 2026。
+*DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning*。本次文件为 86 页版本。重点读 §3、附录 B.3.3（第 26–27 页）与附录 F–F.1（第 60–62 页）：冷启动、再次 SFT、推理筛选与数据统计、小模型蒸馏及其直接 RL 对照。不要把它与不同版本的页码或数据细节混用。
 
 <a id="src-s03"></a>
-**S03｜[003_Nemotron_3_Ultra.pdf](references/003_Nemotron_3_Ultra.pdf)**  
-本地附件 SHA-256：`b8c5e9bb8f29bdff41f876a24f5da8bc1762e16d12dbece512c443a96cbbc859`。  
-*Nemotron 3 Ultra: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning*。重点读 §3.1（第 15–20 页）与 §3.3（第 20–21 页）：两阶段 SFT、人工推理截断、聊天历史 mask、SWE 过程筛选、packing 和 MOPD。注意学生、领域教师的不同配方不要混成一个。
+**S03｜[003_Nemotron_3_Ultra.pdf](references/003_Nemotron_3_Ultra.pdf)**
+本地附件 SHA-256：`b8c5e9bb8f29bdff41f876a24f5da8bc1762e16d12dbece512c443a96cbbc859`。
+*Nemotron 3 Ultra: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning*。重点读 §3.1（第 15–20 页）、§3.3.1–3.3.2（第 20–23 页）与 §3.3.3–3.3.4（第 27–28 页）：两阶段 SFT、推理截断、聊天历史 mask、过程筛选、CUDA 修复、packing、搜索上下文管理、MOPD 与轻量 SFT warmup。注意学生、领域教师的不同配方不要混成一个。
 
 <a id="src-s04"></a>
-**S04｜[004_MAI-Thinking-1.pdf](references/004_MAI-Thinking-1.pdf)**  
-本地附件 SHA-256：`a267d745b1eb3792a8abf58e71e204a6f44f9c18eeb5ad8671320deae71986bd`。  
-*MAI-Thinking-1: Building a Hill-Climbing Machine*。重点读 §3.1.4–3.1.5（第 34–37 页）与 §3.5（第 49 页）：自蒸馏的用途、checkpoint 多样性、长上下文保持、MoE 均衡、能力整合与样本/token 比例。
+**S04｜[004_MAI-Thinking-1.pdf](references/004_MAI-Thinking-1.pdf)**
+本地附件 SHA-256：`a267d745b1eb3792a8abf58e71e204a6f44f9c18eeb5ad8671320deae71986bd`。
+*MAI-Thinking-1: Building a Hill-Climbing Machine*。重点读 §3.1.4–3.1.5（第 34–37 页）与 §3.5（第 49 页）：自蒸馏的用途、checkpoint 多样性、长上下文保持、MoE 均衡、最终整合配方与样本/token 比例。§3.2.3、§3.3.1（第 39、41–42 页）的去污染与环境验收原用于 RL，本文明确标为对 SFT 数据工厂的工程借鉴。
 
 <a id="src-s05"></a>
-**S05｜[005_K2_Horizon_model_card.html](references/005_K2_Horizon_model_card.html)**  
-本地附件 SHA-256：`b981a0a570d3e9155d2fc62cf29537f31b2e78164d5ce47fb2accfa2931a13d8`。  
+**S05｜[005_K2_Horizon_model_card.html](references/005_K2_Horizon_model_card.html)**
+本地附件 SHA-256：`b981a0a570d3e9155d2fc62cf29537f31b2e78164d5ce47fb2accfa2931a13d8`。
 IFM/K2-Horizon-375B-A23B 模型卡，重点是 Training Overview。它提供 RL 专家合并后的三阶段 SFT 时序、步数、阶段 token 和序列长度。不是 Kimi K2；未报告的 RL 总预算不能由 SFT 表推断。
 
 <a id="src-s06"></a>
-**S06｜[006_Kimi_K2.pdf](references/006_Kimi_K2.pdf)**  
-PDF 版本标注：arXiv:2507.20534v2 [cs.LG] 3 Feb 2026。  
-*Kimi K2: Open Agentic Intelligence*。重点读 §3.1–3.1.1（第 9–11 页），尤其 Figure 8：工具库、Agent 配置、带 rubric 的任务、用户与工具模拟、真实沙箱补充。适合用来理解训练数据生产系统，而不是只借用一句“使用合成数据”。
+**S06｜[006_Kimi_K2.pdf](references/006_Kimi_K2.pdf)**
+PDF 版本标注：arXiv:2507.20534v2 [cs.LG] 3 Feb 2026。
+*Kimi K2: Open Agentic Intelligence*。重点读 §3.1–3.1.1（第 9–11 页），尤其 Figure 8：工具库、Agent 配置、带 rubric 的任务、用户与工具模拟、真实沙箱补充。附录 B（第 26–27 页）补充工具声明、调用参数、结果关联与约束解码。适合用来理解训练数据生产系统与协议设计，而不是只借用一句“使用合成数据”。
 
 ### D.4 数据、监督目标与模仿学习
 
 <a id="src-s07"></a>
-**S07｜[007_OpenThoughts-Agent.pdf](references/007_OpenThoughts-Agent.pdf)**  
-PDF 版本标注：arXiv:2606.24855v1 [cs.AI] 23 Jun 2026。  
-实际论文题名为 *Data Recipes for Agentic Models*。重点读 §3–4（第 4–8 页）、Table 1（第 3 页）、Table 11（第 11 页）：任务与教师消融、轨迹筛选、扩展数据、评测口径和 SFT→RL。其 RL 研究限制在 8B，最大 SFT 数据为 100K，不能默认外推到任意底座或百万级数据。
+**S07｜[007_OpenThoughts-Agent.pdf](references/007_OpenThoughts-Agent.pdf)**
+PDF 版本标注：arXiv:2606.24855v1 [cs.AI] 23 Jun 2026。
+实际论文题名为 *Data Recipes for Agentic Models*。重点读 §3–4（第 4–8 页）、Table 1（第 3 页）、Table 11（第 11 页）：任务来源与混合、生成前任务筛选、教师与轨迹消融、扩展数据、评测口径和 SFT→RL。附录 C（第 25–26 页）区分模型规模、模板与数据规模对应的训练设置。其 RL 研究限制在 8B，最大 SFT 数据为 100K，不能默认外推到任意底座或百万级数据。
 
 <a id="src-s08"></a>
-**S08｜[008_SWE-Gym.pdf](references/008_SWE-Gym.pdf)**  
-PDF 版本标注：arXiv:2412.21139v2 [cs.SE] 6 Jun 2025。  
-*Training Software Engineering Agents and Verifiers with SWE-Gym*。重点读 §3–5（第 3–8 页）：训练环境、491 条示范、OpenHands 与 MoatlessTools、自训练负面结果、每任务上限、验证器与两种 scaling。非常适合连接工程设施与学习算法。
+**S08｜[008_SWE-Gym.pdf](references/008_SWE-Gym.pdf)**
+PDF 版本标注：arXiv:2412.21139v2 [cs.SE] 6 Jun 2025。
+*Training Software Engineering Agents and Verifiers with SWE-Gym*。重点读 §3–5（第 3–8 页）：训练环境、491 条示范、OpenHands 与 MoatlessTools、自训练负面结果、每任务上限、验证器与两种 scaling。附录 B（第 13–16 页）提供训练配置，Figure 8（第 20 页）补充 verifier 数据消融。非常适合连接工程设施与学习算法。
 
 <a id="src-s09"></a>
-**S09｜[009_Agent_Data_Protocol.pdf](references/009_Agent_Data_Protocol.pdf)**  
-PDF 版本标注：arXiv:2510.24702v2 [cs.CL] 4 Mar 2026。  
-*Agent Data Protocol: Unifying Datasets for Diverse, Effective Fine-Tuning of LLM Agents*。重点读 §3（第 4–6 页）与 §6.2（第 9 页）：语义表示、转换责任、数据混合与跨任务结果。协议允许什么，与某个实验如何筛选数据，是两层问题。
+**S09｜[009_Agent_Data_Protocol.pdf](references/009_Agent_Data_Protocol.pdf)**
+PDF 版本标注：arXiv:2510.24702v2 [cs.CL] 4 Mar 2026。
+*Agent Data Protocol: Unifying Datasets for Diverse, Effective Fine-Tuning of LLM Agents*。重点读 §3（第 4–6 页）、§6.2（第 9 页）与附录 C–E（第 18–20 页）：语义表示、转换责任、数据混合、分域采样及等样本数对照。协议允许什么，与某个实验如何筛选数据，是两层问题。
 
 <a id="src-s10"></a>
-**S10｜[010_BalanceSFT.pdf](references/010_BalanceSFT.pdf)**  
-PDF 版本标注：arXiv:2505.20192v3 [cs.LG] 25 Nov 2025。  
-*BalanceSFT: Improving LLM Function Calling with Balanced Training Signals and Data Hardness*。重点读 §3（第 3–4 页）、§4.2 与 Table 5（第 5、7 页）：SSB、HDR、CoT 数据选择和组件消融。阅读结果时务必把损失改进与数据改进分开。
+**S10｜[010_BalanceSFT.pdf](references/010_BalanceSFT.pdf)**
+PDF 版本标注：arXiv:2505.20192v3 [cs.LG] 25 Nov 2025。
+*BalanceSFT: Improving LLM Function Calling with Balanced Training Signals and Data Hardness*。重点读 §3（第 3–4 页）、§4.2 与 Table 5（第 5、7 页）：SSB、HDR、CoT 数据选择和组件消融。§4.5、Figure 4b（第 8 页）还比较了非目标代码能力的保持。阅读结果时务必把损失改进与数据改进分开。
 
 <a id="src-s11"></a>
-**S11｜[011_Instruction_Modelling.pdf](references/011_Instruction_Modelling.pdf)**  
-PDF 版本标注：arXiv:2405.14394v2 [cs.CL] 2 Oct 2024。  
-实际论文题名为 *Instruction Tuning With Loss Over Instructions*。重点读 §3（第 4 页）与 §4.2–4.3（第 6–7 页）：联合输入输出建模、低资源条件、相同回答 loss 口径下的过拟合分析。
+**S11｜[011_Instruction_Modelling.pdf](references/011_Instruction_Modelling.pdf)**
+PDF 版本标注：arXiv:2405.14394v2 [cs.CL] 2 Oct 2024。
+实际论文题名为 *Instruction Tuning With Loss Over Instructions*。重点读 §3（第 4 页）与 §4.2–4.4（第 5–9 页）：联合输入输出建模、低资源条件、相同回答 loss 口径、instruction-tuning tax、KL 对照及输出长度检查。
 
 <a id="src-s12"></a>
-**S12｜[012_Weighted_Instruction_Tuning.pdf](references/012_Weighted_Instruction_Tuning.pdf)**  
-PDF 版本标注：arXiv:2507.07817v2 [cs.CL] 15 Jul 2025。  
-实际论文题名为 *On the Effect of Instruction Tuning Loss on Generalization*。重点读 §2（第 3 页）、§4.1（第 6 页）与 §4.2（第 7 页起）：两个权重、非零权重 token 计数归一化、下游指标差异与 DPO 交接。不要将本文举例的平均最佳值当作固定配方。
+**S12｜[012_Weighted_Instruction_Tuning.pdf](references/012_Weighted_Instruction_Tuning.pdf)**
+PDF 版本标注：arXiv:2507.07817v2 [cs.CL] 15 Jul 2025。
+实际论文题名为 *On the Effect of Instruction Tuning Loss on Generalization*。重点读 §2（第 3 页）、§4.1（第 6 页）与 §4.2（第 7 页起）：两个权重、非零权重 token 计数归一化、下游指标差异与 DPO 交接。§4.3–5.1（第 8–10 页）补充提示敏感性与权重相关因素。不要将本文举例的平均最佳值当作固定配方。
 
 <a id="src-s13"></a>
-**S13｜[013_DAgger.html](references/013_DAgger.html)**  
-本地附件 SHA-256：`e515cc08883fb65a967c7cc1cd4905107d7dc31aeed4a71c254ea250a670ad75`。  
+**S13｜[013_DAgger.html](references/013_DAgger.html)**
+本地附件 SHA-256：`e515cc08883fb65a967c7cc1cd4905107d7dc31aeed4a71c254ea250a670ad75`。
 *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning*，Ross、Gordon、Bagnell。上传文件是 PMLR 摘要与书目信息页，不是论文全文。摘要支持序列决策分布依赖策略与在线学习的核心定位；正文的具体定理与算法来自下面的补充原文。
 
 <a id="src-s13-pdf"></a>
-**S13-PDF｜上传摘要页所链接的 DAgger 原论文**  
-PMLR 15:627–635，2011，原文 §2 与 Algorithm 3.1。保留前文已有的理论补充，明确区别于 HTML 摘要；不将定理无条件迁移到任意 LLM 训练。
+**S13-PDF｜上传摘要页所链接的 DAgger 原论文**
+PMLR 15:627–635，2011，原文 §2 与 Algorithm 3.1。本文的理论补充取自该原文，明确区别于 HTML 摘要；不将定理无条件迁移到任意 LLM 训练。
 
-原文定位：`https://proceedings.mlr.press/v15/ross11a/ross11a.pdf`
+原文定位：[PMLR 原论文 PDF](https://proceedings.mlr.press/v15/ross11a/ross11a.pdf)，§2 位于文件第 2–3 页。
 
 ### D.5 工程接口：用来核对目标是否被正确实现
 
 <a id="src-s14"></a>
-**S14｜[014_Transformers_chat_templates.html](references/014_Transformers_chat_templates.html)**  
-本地附件 SHA-256：`c26efe5f7a0c9e3f59c3622881fe38d9d2930809b693d8e50368b2a66f4aa282`。  
-重点：消息如何序列化，generation prompt，特殊 token 重复添加问题。它回答“模型看到什么”。
+**S14｜[014_Transformers_chat_templates.html](references/014_Transformers_chat_templates.html)**
+本地附件 SHA-256：`c26efe5f7a0c9e3f59c3622881fe38d9d2930809b693d8e50368b2a66f4aa282`。
+重点：消息如何序列化，generation prompt 与 prefill 的区别，特殊 token 重复添加问题。它回答“模型看到什么”。
 
 <a id="src-s15"></a>
-**S15｜[015_Transformers_apply_chat_template.html](references/015_Transformers_apply_chat_template.html)**  
-本地附件 SHA-256：`3e854428dac59e936cff2eab06ed691fa414b9cf5008b08c2c1adec0dac9cc25`。  
+**S15｜[015_Transformers_apply_chat_template.html](references/015_Transformers_apply_chat_template.html)**
+本地附件 SHA-256：`3e854428dac59e936cff2eab06ed691fa414b9cf5008b08c2c1adec0dac9cc25`。
 重点：`apply_chat_template` 参数、`return_assistant_tokens_mask` 与 generation 标记。它回答“如何从模板得到监督范围”。
 
 <a id="src-s16"></a>
-**S16｜[016_TRL_SFTTrainer.html](references/016_TRL_SFTTrainer.html)**  
-本地附件 SHA-256：`b5bc62409885b1328e94b84c17b43f91c1de86ab58bd0c3c601510ee88a8b2be`。  
-重点：conversational 与 prompt-completion 数据、assistant-only 与 completion-only loss、packing。它回答“训练器怎样使用这些表示”。
+**S16｜[016_TRL_SFTTrainer.html](references/016_TRL_SFTTrainer.html)**
+本地附件 SHA-256：`b5bc62409885b1328e94b84c17b43f91c1de86ab58bd0c3c601510ee88a8b2be`。
+重点：数据形态与默认 loss、assistant-only/completion-only 的组合、packing 溢出处理、长度配置、chunked NLL 与日志指标。它回答“训练器怎样使用这些表示”。
 
 <a id="src-s17"></a>
-**S17｜[017_TRL_training_chat_templates.html](references/017_TRL_training_chat_templates.html)**  
-本地附件 SHA-256：`5398bf1ca02b99d0bee77c3a1d5dc23b39cc5cb1e789102ff29894aca1000ebb`。  
+**S17｜[017_TRL_training_chat_templates.html](references/017_TRL_training_chat_templates.html)**
+本地附件 SHA-256：`5398bf1ca02b99d0bee77c3a1d5dc23b39cc5cb1e789102ff29894aca1000ebb`。
 重点：训练模板补丁、推理保留、停止标记和 prefix-preserving。它解释“推理模板为什么不能不检查就直接拿来训练”。
 
 <a id="src-s18"></a>
-**S18｜[018_Axolotl_conversation_datasets.html](references/018_Axolotl_conversation_datasets.html)**  
-本地附件 SHA-256：`728defb5e2476ae00e9f0a11b3aa223b513929c9b23d8ebafa0f91d3ebb66871`。  
-重点：角色选择、EOS、工具格式、逐消息与片段级监督控制，以及异构工具参数的存储类型问题。它提供另一种实现同类监督设计的方式。
+**S18｜[018_Axolotl_conversation_datasets.html](references/018_Axolotl_conversation_datasets.html)**
+本地附件 SHA-256：`728defb5e2476ae00e9f0a11b3aa223b513929c9b23d8ebafa0f91d3ebb66871`。
+重点：角色选择、EOT/EOS、工具格式、逐消息与片段级监督控制、BPE 边界，以及异构工具参数的存储类型问题。它提供另一种实现同类监督设计的方式。
 
 <a id="src-s19"></a>
-**S19｜[019_LLaMA-Factory.md](references/019_LLaMA-Factory.md)**  
-本地附件 SHA-256：`7c72bce01922b0ab829b3562b1196ed9d17d77d2543e562b871ee5e0f6f29b0a`。  
+**S19｜[019_LLaMA-Factory.md](references/019_LLaMA-Factory.md)**
+本地附件 SHA-256：`7c72bce01922b0ab829b3562b1196ed9d17d77d2543e562b871ee5e0f6f29b0a`。
 重点：训练目标与参数更新方式的区分、数据准备、工具使用与 `neat_packing` 等能力。`train_on_prompt`、`mask_history` 的本文具体对照来自讲义附录；不要把 README 当作每个底层参数的完整规范。
 
 ### D.6 建议的联读顺序
@@ -1520,7 +1691,23 @@ Packing 是放置样本的方法，EOS 是序列符号；跨样本是否能互�
 
 当前模仿质量与后续探索空间是不同目标。配方可能在提高当前表现的同时过度集中输出分布。需要让不同 SFT 候选接上相同 RL 条件后再比较，而不是仅看 SFT 排名。
 
-### E.10 如何判断自己真的理解了这节课？
+### E.10 为什么 ADP 的等样本数对照仍不能说明全部机制？
+
+它排除了“只是多了训练样本”这一解释，但不自动匹配 token、更新计算量，也没有单独隔离格式与内容的贡献。不同 harness 还筛选了不同领域，不能理解为所有来源都无差别混合。
+
+### E.11 为什么需要区分任务筛选与轨迹筛选？
+
+前者决定生成预算投向哪些问题，后者决定哪些执行记录值得学习。OpenThoughts-Agent 用 GPT-5 回答长度筛任务，与用 Agent 交互轮数筛轨迹是两个环节，不能合成“所有长数据都更好”。
+
+### E.12 On-policy 蒸馏为什么还可能需要 SFT？
+
+学生访问的状态可能超出教师熟悉的分布。Nemotron 用轻量 SFT 改善师生轨迹匹配，在部分 Agent 评测上提高了后续 MOPD 结果；但这不能保证补足学生从未学会、也很少采样到的推理路径。
+
+### E.13 提供 messages 字段，是否自动得到只监督 assistant 的目标？
+
+不一定。监督由数据形态、completion 范围、assistant mask 和实际模板共同决定。收录的 TRL 默认对完整 language-modeling 对话计算全序列 loss；开启 assistant-only 后，还要检查 prompt/completion 划分是否排除了历史回答。
+
+### E.14 如何判断自己真的理解了这节课？
 
 能够拿到一条轨迹，明确说出哪些信息是条件、哪些行为是目标、哪些片段不应模仿；能解释数据筛选如何改变分布；能检查渲染、mask 与 batch；能用目标 harness 验证自由执行；并且对论文结果的适用范围作出准确判断。
 
