@@ -1,0 +1,22 @@
+{ 
+    "challenge_id": "multi-source-augmentation",
+    "gpu": true,
+    "hf_models": [
+        {
+            "repo_id": "sentence-transformers/all-MiniLM-L6-v2",
+            "revision": "main"   
+        },
+        {
+            "repo_id": "openai/clip-vit-large-patch14-336",
+            "revision": "main"
+        },
+        {
+            "repo_id": "BAAI/bge-large-en-v1.5", 
+            "revision": "main"
+        },
+        {
+            "repo_id": "rbiswasfc/aicrowd-kddcup-v9",
+            "revision": "main"
+        }
+    ]
+}
