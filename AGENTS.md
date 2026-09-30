@@ -18,6 +18,7 @@
 | `8.SupervisedFineTuning/` | SFT、数据格式、损失设计与训练实践 |
 | `9.TrainingRLBasics/` | 强化学习基础、策略梯度、GRPO 与 DrGRPO |
 | `10.DeepResearchAgents/` | Deep Research Agent、搜索、研究基准与评测 |
+| `11.AdvancedRLAlgorithms/` | 面向 Agent 的进阶强化学习算法、信用分配、PPO 系列、可靠奖励与蒸馏 |
 
 课程目录中的 `SOURCES.md` 列出讲义、阅读材料和来源链接；综合笔记通常按课程讲义与参考资料组织，并标注引用位置和结论边界。
 
@@ -38,4 +39,3 @@
 - 更新作业代码时，在对应作业目录中查看其 `README.md`、`ASSIGNMENT.md` 和 `pyproject.toml`，按该作业自己的环境与说明工作。不要假设仓库根目录有通用测试套件。
 - 保留作业、挑战赛和上游快照中的原始文件结构。不要把根仓库误配置成这些子目录的工作环境，也不要覆盖未经本次任务授权修改的内容。
 - 上传前排除 `.DS_Store`、缓存、实际凭据和本地环境文件；保留明确作为示例的 `.env.example`。二进制资料应保留原文件，不做可能损坏内容的文本转换。
-
