@@ -20,7 +20,7 @@
 | `10.DeepResearchAgents/` | Deep Research Agent、搜索、研究基准与评测 |
 | `11.AdvancedRLAlgorithms/` | 面向 Agent 的进阶强化学习算法、信用分配、PPO 系列、可靠奖励与蒸馏 |
 
-课程目录中的 `SOURCES.md` 列出讲义、阅读材料和来源链接；综合笔记通常按课程讲义与参考资料组织，并标注引用位置和结论边界。
+课程目录中的 `SOURCES.md` 列出讲义、阅读材料和来源链接；综合笔记通常按课程讲义与参考资料组织，并标注引用位置和结论边界。`10.DeepResearchAgents/` 可包含与 Deep Research 相关的金融 Agent 研究补充，例如 FutureX-Pro、MBABench、AURA 等论文核查笔记。
 
 其他资料位于：
 
