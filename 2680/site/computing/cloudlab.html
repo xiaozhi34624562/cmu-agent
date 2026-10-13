@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="../vendor/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="../vendor/bootstrap.bundle.min.js"></script>
+<meta content="CS2680 CloudLab setup: bare-metal machines for project work that needs the kernel, the network, or reproducible isolation" name="description"/>
+<meta content="Juncheng Yang" name="author"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="CS2680 Modern AI Systems — CloudLab" property="og:title"/>
+<meta content="CS2680 CloudLab setup: bare-metal machines for project work that needs the kernel, the network, or reproducible isolation" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="CS2680 Modern AI Systems" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<link href="../css/main.css" rel="stylesheet"/>
+<title>CS2680 Modern AI Systems — CloudLab</title>
+</head>
+<body>
+<div id="site-header"></div>
+<script src="../header.js"></script>
+<div class="container page">
+<div class="row">
+<div class="col-12">
+<div class="title">CS2680 Modern AI Systems: Agents and System Optimizations</div>
+</div>
+<div class="col-12 title2">
+        CloudLab: a whole machine, when you need one
+      </div>
+<div class="col-12 section" id="cloudlab">
+<h1>CloudLab</h1>
+<p class="lead"><a href="https://cloudlab.us" rel="noopener" target="_blank">CloudLab</a> provides
+          <strong>bare-metal machines</strong> for research and teaching, free of charge, with full control over the
+          software stack. You get the physical node, root on it, and nobody else on it.</p>
+<p>That makes it the right choice in two situations. First, when you need a machine that the public internet
+          can reach and that you hold root on, which is where the optional public deployment of
+          <a href="../assignments/assignment1.html">Assignment 1</a>'s frontend goes (the course HPC's compute nodes
+          are not reachable from outside, and your laptop should not be). Second, when your <a href="../project.html">project</a> needs to touch the kernel, the
+          network, or the storage layer, or needs reproducible isolation that a shared HPC cannot give you:
+          a latency measurement with no co-tenant, a scheduler you have to patch, a device you have to configure.
+          However, for compute alone it is the wrong choice: training on a GPU that the
+          <a href="cluster.html">course HPC</a> would have handed you in one <code>srun</code> is slower to set up and
+          no better.</p>
+</div>
+<div class="col-12 section" id="access">
+<h1>Getting access</h1>
+<!-- TODO: create the CS2680 CloudLab project and publish its name here, so students join it rather than
+             requesting projects of their own. -->
+<p><strong>Project name: TBD.</strong> CloudLab organizes people into <em>projects</em>, and you want to
+          <strong>join</strong> the course project rather than start one of your own, because a new project needs a
+          faculty PI and an approval round. The course project name will be posted here.</p>
+<p>Then, at <a href="https://cloudlab.us" rel="noopener" target="_blank">cloudlab.us</a>:</p>
+<ol>
+<li>Sign up with your Harvard email and request to join the course project.</li>
+<li>Upload an <strong>SSH public key</strong>. CloudLab does not do passwords; the key you upload is the only
+            way onto your nodes, and it is installed on every node you instantiate afterwards.</li>
+<li>Wait for the join request to be approved. This is a person clicking a button, so it is not instant.</li>
+</ol>
+</div>
+<div class="col-12 section" id="using">
+<h1>How it works, in the four terms you need</h1>
+<ul>
+<li><strong>Profile</strong>. A reusable description of a topology: how many nodes, which hardware
+            type, which disk image, what runs on boot. Start from an existing profile
+            (<code>small-lan</code> and the Ubuntu single-node profiles cover most needs) and write your own once you
+            know what you want. A profile is also how a result becomes reproducible: publishing yours lets a reader
+            instantiate the same machines you measured on.</li>
+<li><strong>Experiment</strong>. A running instance of a profile. You pick a cluster, it provisions
+            real hardware, and a few minutes later you have SSH.</li>
+<li><strong>Cluster.</strong> Utah, Wisconsin, Clemson, Massachusetts and others, each with different
+            node types. Availability differs per cluster and per hardware type; the list shows what is free before you
+            commit.</li>
+<li><strong>Expiration</strong>. Experiments expire, by default in hours, and you extend them from
+            the experiment page with a reason. Short extensions are approved automatically; longer ones require
+            CloudLab staff.</li>
+</ul>
+<div class="tip">
+<strong>An expired experiment is wiped.</strong> When the clock runs out the nodes are reclaimed and
+          reimaged, and whatever was on local disk is gone with them: measurements, logs, the one plot you had
+          not copied off yet. Push results to a repository or to your laptop as you go, and treat the node's disk as
+          scratch space.
+        </div>
+<p>Two more habits. <strong>Extend before you need it</strong>, because you cannot extend an experiment that
+          has already expired. And <strong>terminate when you are done</strong>: the hardware is genuinely scarce, it
+          is shared with researchers who are not in this course, and holding idle nodes is the one thing that gets a
+          project's access questioned.</p>
+</div>
+<div class="col-12 section" id="related">
+<h1>Related</h1>
+<ul>
+<li><a href="index.html">Computing setup</a>. The other environments this course uses.</li>
+<li><a href="cluster.html">HPC</a>. The default for GPU and agent work.</li>
+<li><a href="../project.html#resources">Final project compute</a>. Choosing between these for project
+            work.</li>
+<li><a href="https://docs.cloudlab.us/" rel="noopener" target="_blank">CloudLab documentation</a>. The
+            authoritative manual, including the profile language.</li>
+</ul>
+</div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="container">
+<p><a href="https://madsys.seas.harvard.edu/" rel="noopener" target="_blank">MadSys Research Group</a> · <a href="https://seas.harvard.edu/" rel="noopener" target="_blank">Harvard John A. Paulson School of Engineering and Applied Sciences</a></p>
+<p class="footer-policies"><a href="https://trademark.harvard.edu/pages/trademark-notice" rel="noopener" target="_blank">Trademark Notice</a> · <a href="https://accessibility.harvard.edu/" rel="noopener" target="_blank">Accessibility</a> · <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" rel="noopener" target="_blank">Digital Accessibility</a> · <a href="https://privsec.harvard.edu/harvard-university-privacy-statement" rel="noopener" target="_blank">Privacy Statement</a></p>
+<p class="footer-copyright">© 2026 Juncheng Yang</p>
+</div>
+</footer>
+</body>
+</html>

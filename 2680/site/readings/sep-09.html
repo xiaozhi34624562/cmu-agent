@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="../vendor/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="../vendor/bootstrap.bundle.min.js"></script>
+<meta content="CS2680 Modern AI Systems readings for the Agents use I: How Claude Code Works meeting" name="description"/>
+<meta content="Juncheng Yang" name="author"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="CS2680 Modern AI Systems — Readings: Agents use I: How Claude Code Works" property="og:title"/>
+<meta content="CS2680 Modern AI Systems readings for the Agents use I: How Claude Code Works meeting" property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="CS2680 Modern AI Systems" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<link href="../css/main.css" rel="stylesheet"/>
+<title>CS2680 Modern AI Systems — Readings: Agents use I: How Claude Code Works</title>
+</head>
+<body>
+<div id="site-header"></div>
+<script src="../header.js"></script>
+<div class="container page">
+<div class="row">
+<div class="col-12">
+<div class="title">CS2680 Modern AI Systems: Agents and System Optimizations</div>
+</div>
+<div class="col-12 title2">
+        Readings
+      </div>
+<div class="col-12">
+<div class="section">
+<div class="subsection reading-meeting" data-schedule="https://www.youtube.com/watch?v=EWvNQjAaOHw https://code.claude.com/docs/en/best-practices https://simonwillison.net/guides/agentic-engineering-patterns/" id="sep-09">
+<h2><span class="reading-date">Sep 9</span> Agents use I: How Claude Code Works</h2>
+<div class="table-responsive">
+<table class="table table-hover readings-table">
+<thead>
+<tr class="table-light">
+<th scope="col">Paper</th>
+<th scope="col">Year</th>
+<th scope="col">Why read it</th>
+</tr>
+</thead>
+<tr class="reading-topic">
+<th colspan="3" scope="colgroup">A first operating loop</th>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/watch?v=EWvNQjAaOHw" rel="noopener noreferrer" target="_blank"><strong class="reading-name">How I use LLMs</strong></a><span class="reading-subtitle">Andrej Karpathy</span></td>
+<td>2025</td>
+<td>
+<p><strong>Background.</strong> Consumer LLM products place model selection, reasoning controls, tools, file upload, coding features, and persistent instructions behind one chat interface. A new user can stay in the text box without learning what the rest of the interface changes.</p>
+<p><strong>Problem.</strong> The interface does not tell you which capability a task needs or what each choice costs. A poor model choice, missing context, or unnecessary tool call can reduce quality or add latency without producing an explicit error.</p>
+<p><strong>Key idea.</strong> Walk through the product surface in the order a user encounters it, using concrete tasks to show when model selection, reasoning, tools, files, coding, and persistent instructions change the result.</p>
+<p><strong>Why it matters.</strong> Start here if the agent ecosystem is new to you. The demonstrations also expose the workload behind the interface: one user task can create several model calls, tool calls, and growing prompts. Those are the quantities the rest of the course measures.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://code.claude.com/docs/en/best-practices" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Best practices for Claude Code</strong></a><span class="reading-subtitle">Best practices for Claude Code (Anthropic)</span></td>
+<td>—</td>
+<td>
+<p><strong>Background.</strong> A terminal coding agent can inspect a repository, edit files, run commands, and continue until it decides the task is complete. Its context contains the conversation, file contents, and command output accumulated during that work.</p>
+<p><strong>Problem.</strong> Two resources need explicit management. Without a check the agent can run, “looks done” is its only stopping signal. Without context discipline, exploration and command output consume the window before the task is complete.</p>
+<p><strong>Key idea.</strong> Give every task an executable verifier, then separate exploration, planning, implementation, and commit. Provide specific context, course-correct early, clear unrelated work from the session, and use subagents or parallel sessions only when their outputs can be reviewed and combined.</p>
+<p><strong>Why it matters.</strong> Treat the guide as both a user manual and a workload description. Verification changes when a run can stop; context management changes prompt length; subagents and parallel sessions change the number and dependency structure of model calls. Assignment 1 records each of those effects.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://simonwillison.net/guides/agentic-engineering-patterns/" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Agentic Engineering Patterns</strong></a><span class="reading-subtitle">Agentic Engineering Patterns (Simon Willison)</span></td>
+<td>2026</td>
+<td>
+<p><strong>Background.</strong> Practice around coding agents is distributed across product documentation, blog posts, and individual prompts. The same techniques recur under different names, which makes experience difficult to transfer between tools.</p>
+<p><strong>Problem.</strong> Advice without a shared vocabulary is hard to compare or apply to a failure. A user needs to know whether a task calls for a smaller prompt, a test loop, a checkpoint, a subagent, or a different interface.</p>
+<p><strong>Key idea.</strong> Organize an evolving field guide around reusable practices, including Git as the recovery mechanism, subagents for bounded work, red-green testing, agent-driven manual testing, code walkthroughs, and annotated examples of real prompts.</p>
+<p><strong>Why it matters.</strong> Use this as a reference after the two readings above rather than as a linear feature tour. It connects each user habit to a control mechanism the harness can expose, which is the bridge from using an agent in this lecture to designing one in Lecture 4.</p>
+</td>
+</tr>
+<tr class="reading-topic">
+<th colspan="3" scope="colgroup">Configuration, context cost, and enforcement</th>
+</tr>
+<tr>
+<td><a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Equipping agents for the real world with Agent Skills</strong></a><span class="reading-subtitle">Equipping agents for the real world with Agent Skills (Anthropic)</span></td>
+<td>2025</td>
+<td>
+<p><strong>Background.</strong> Persistent instruction files place an entire operating manual in the prompt, even when the current task needs only one procedure. Installing more procedures can therefore consume context before the user asks for anything.</p>
+<p><strong>Problem.</strong> An agent needs enough information to discover a relevant capability without paying to load every capability in full on every call. The loading policy must also package scripts and reference material that are useful only after a procedure is selected.</p>
+<p><strong>Key idea.</strong> Use three levels of progressive disclosure: load each skill’s name and description at startup, read its SKILL.md body when selected, and open bundled files only when a later step needs them.</p>
+<p><strong>Why it matters.</strong> This is a concrete context-admission policy. The description imposes a standing token cost, while the body and resources are paid only on use. Read it against Lecture 2's context-rent discussion and ask which level each instruction actually deserves.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://www.anthropic.com/engineering/code-execution-with-mcp" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Code execution with MCP</strong></a><span class="reading-subtitle">Code execution with MCP: Building more efficient agents (Anthropic)</span></td>
+<td>2025</td>
+<td>
+<p><strong>Background.</strong> Many MCP hosts place every enabled tool definition in the model’s prompt and return every intermediate tool result through the conversation. Tool catalogs and data then compete with the user’s task for the same context.</p>
+<p><strong>Problem.</strong> Direct tool calling repeats schemas on every model call and serializes large results through the model even when ordinary code could filter or combine them. The overhead grows with both the number of tools and the length of the workflow.</p>
+<p><strong>Key idea.</strong> Present tools as code APIs that the agent can discover on demand, then execute loops, joins, filtering, and error handling outside the model. Only selected definitions and compact results enter the context.</p>
+<p><strong>Findings.</strong> In the article’s worked example, on-demand discovery reduces tool-definition input from 150,000 tokens to 2,000 tokens, a 98.7% reduction. The example demonstrates a mechanism rather than a benchmark over a representative task distribution.</p>
+<p><strong>Why it matters.</strong> It makes context admission actionable. Tool selection becomes retrieval, intermediate data can remain outside the prompt, and several dependent tool operations can run without inserting another model call between them.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://blog.lawrencejones.dev/demystifying-skills-and-mcps" rel="noopener noreferrer" target="_blank"><strong class="reading-name">demystifying skills and MCPs</strong></a><span class="reading-subtitle">How skills and MCPs actually work (Lawrence Jones)</span><span class="reading-also">also <a href="sep-16.html">Sep 16</a></span></td>
+<td>2026</td>
+<td>
+<p><strong>Background.</strong> Skills and MCP servers are installed into the same context window, and both reach the model as text it reads before deciding anything. A user configuring an agent therefore has three places to put one piece of guidance: the system prompt, a skill, or the tool itself.</p>
+<p><strong>Problem.</strong> The three are not interchangeable, and the difference is not a matter of wording. The system prompt outranks the user's own messages by construction, so a rule written there is obeyed rather than weighed. A tool description is resident on every turn whether or not the turn needs it. A requirement stated as prose in either place is one the model can reason its way past.</p>
+<p><strong>Key idea.</strong> Separate capability from know-how, then match each to the placement that makes the model treat it correctly. MCP supplies capability as a tool list merged into the prompt, close enough to an ordinary HTTP API that an OpenAPI specification does the same job. A skill supplies know-how as ordinary thread messages below the system prompt, which is what allows the model to weigh it against the task. A non-negotiable goes into neither and becomes a required tool argument, since an argument the model has to supply is not one it can argue with.</p>
+<p><strong>Findings.</strong> A skill description costs roughly 100 tokens of resident context, and its body of a few thousand tokens loads only once that description matches the task, which is the three-level admission policy Agent Skills describes, reached independently from one team's practice. The post also reports what misplacement costs: a system-prompt rule instructing the agent to split long telemetry queries made it refuse legitimate week-long requests, and the identical rule reloaded as a skill restored the intended behavior. The author attributes much of the hallucination he sees from frontier models to prompts that leave no compliant answer available, such as demanding three to five tags for an empty document.</p>
+<p><strong>Why it matters.</strong> It turns Lecture 2's distinction between resident and retrieved context into a rule you can apply per instruction rather than per file. Ask of each line of configuration whether it has to be resident, whether it should be weighed or obeyed, and whether it is a constraint the model should be unable to decline. The three answers select the system prompt, a skill, or the tool signature, and the same three questions apply to a persistent instruction file and to a connected MCP server.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://code.claude.com/docs/en/hooks" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Claude Code hooks reference</strong></a><span class="reading-subtitle">Hooks reference (Anthropic)</span></td>
+<td>—</td>
+<td>
+<p><strong>Background.</strong> Instruction files and skills influence an agent only when the model notices and follows their text. Some requirements, such as blocking writes to a protected directory, cannot depend on that cooperation.</p>
+<p><strong>Problem.</strong> Repeating “never do this” in the prompt spends tokens without enforcing the boundary. The host needs a deterministic interception point before an action and observable signals after actions and session events.</p>
+<p><strong>Key idea.</strong> Register handlers on lifecycle events such as SessionStart, PreToolUse, PostToolUse, and Stop. A PreToolUse command hook can inspect a proposed call and block it before the permission check or tool execution.</p>
+<p><strong>Why it matters.</strong> Hooks draw the line between guidance and enforcement. Read the event table rather than every schema: identify which requirements belong in context, which belong in an automatic repair, and which must be rejected before they run.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://scott-fryxell.github.io/blog/the-harness-is-the-thing" rel="noopener noreferrer" target="_blank"><strong class="reading-name">The Harness Is the Thing</strong></a><span class="reading-subtitle">The Harness Is the Thing (Scott Fryxell)</span></td>
+<td>2026</td>
+<td>
+<p><strong>Background.</strong> A developer who works across several coding agents keeps the configuration that shapes them, including an instruction file, skills, extensions, scripts, and a work directory, outside any one product. That surrounding structure, rather than the model behind the terminal, is what this post calls the harness.</p>
+<p><strong>Problem.</strong> A single prompt that plans, implements, and critiques the same task confuses its own objectives, and sending every step to a frontier model pays the highest available price for work a cheaper model finishes. Configuration written against one vendor’s tool has to be rewritten when the developer switches tools.</p>
+<p><strong>Key idea.</strong> Keep the instruction file, the skills, and the scripts they call in one repository that every terminal agent loads, then isolate the roles a task passes through: exploration produces a plan, the plan becomes an explicit DAG of tasks, a worker implements one node at a time, a critic simplifies and questions the result, and a promoter communicates the finished work. Route each role to a model chosen for it, reserving the frontier model for planning, the first task, and promotion, and running maintenance work on a cheaper one.</p>
+<p><strong>Findings.</strong> The author reports that the split cut their frontier-model usage in their most intense contexts by 75%, leaving two twenty-dollar monthly subscriptions sufficient for both client and personal work. The number is one developer’s self-report across their own projects rather than a controlled measurement, and the post concedes that confirming which harness changes helped will require an empirical approach it has not yet applied.</p>
+<p><strong>Why it matters.</strong> It is the practitioner’s side of the question Guardrails Beat Guidance studies below, and the two disagree usefully about what counts as evidence for a configuration choice. Read it for the framing the rest of the course assumes: models become interchangeable parts, and what the user designs is the harness, meaning the roles, the model routing, the scripts, and the files that persist between sessions.</p>
+</td>
+</tr>
+<tr class="reading-topic">
+<th colspan="3" scope="colgroup">Evidence on harness configuration and cost</th>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2604.11088" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Guardrails Beat Guidance</strong></a><span class="reading-subtitle">A Large-Scale Study of Rules, Skills, and Persistent Configuration for Coding Agents</span></td>
+<td>2026</td>
+<td>
+<p><strong>Background.</strong> Coding agents load repository rules, skills, and persistent configuration as context. Teams write these files from experience, but a plausible rule is not evidence that the rule caused a better result.</p>
+<p><strong>Problem.</strong> Rule content, polarity, position, and the mere presence of additional context are confounded unless each is varied against a no-rule control. Observational examples therefore cannot identify which instruction helped.</p>
+<p><strong>Key idea.</strong> Extract 25,532 rules from 679 public rule files, then run more than 5,000 Claude Code trials while varying curated, random, shuffled, mismatched, and individually ablated rules.</p>
+<p><strong>Findings.</strong> Curated and random rule sets both improve pass rate by 13.8 percentage points over the no-rule baseline on the paper’s 58-task subset. In the individual ablations, beneficial rules are negative constraints and harmful rules are positive directives.</p>
+<p><strong>Why it matters.</strong> The random-rule control shows why a rule should not receive credit without an ablation. Treat the polarity result as a strong hypothesis rather than a universal law, because the experiment uses one harness, one model, and one benchmark subset.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2608.08654" rel="noopener noreferrer" target="_blank"><strong class="reading-name">The Scaffolding Matters More Than the Interface</strong></a><span class="reading-subtitle">A Controlled Comparison of MCP and CLI Tool Use Across Seven Agent Scaffoldings, Five Language Models, and One Software Task</span></td>
+<td>2026</td>
+<td>
+<p><strong>Background.</strong> An agent can reach repository operations through MCP tools or by writing ordinary command-line commands. Comparisons often attribute a cost difference to the interface even when the surrounding harness also changes.</p>
+<p><strong>Problem.</strong> System prompts, tool descriptions, retry behavior, and whether the agent follows the assigned route can all differ between runs. An unpaired comparison therefore measures several variables at once.</p>
+<p><strong>Key idea.</strong> Hold one six-operation software task fixed, run it across seven agent scaffoldings and five models, pair MCP and CLI runs where the scaffold supports both, and verify the repository state instead of trusting the agent’s completion claim.</p>
+<p><strong>Findings.</strong> Thirteen paired MCP-to-CLI cost ratios range from 0.43× to 29×. The scaffold dominates the result, and agents frequently ignore the interface they were assigned.</p>
+<p><strong>Why it matters.</strong> It sets a methodological requirement for interface comparisons: verify the route actually used and hold the harness fixed. The evidence comes from one small task, so the instability of the ratio, not any one ratio, is the result to retain.</p>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="note-nav">
+<span class="nav-spacer"></span>
+<a href="sep-14.html">Agents use II: 100x Engineer with Multi-agents →</a>
+</div>
+</div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="container">
+<p><a href="https://madsys.seas.harvard.edu/" rel="noopener" target="_blank">MadSys Research Group</a> · <a href="https://seas.harvard.edu/" rel="noopener" target="_blank">Harvard John A. Paulson School of Engineering and Applied Sciences</a></p>
+<p class="footer-policies"><a href="https://trademark.harvard.edu/pages/trademark-notice" rel="noopener" target="_blank">Trademark Notice</a> · <a href="https://accessibility.harvard.edu/" rel="noopener" target="_blank">Accessibility</a> · <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" rel="noopener" target="_blank">Digital Accessibility</a> · <a href="https://privsec.harvard.edu/harvard-university-privacy-statement" rel="noopener" target="_blank">Privacy Statement</a></p>
+<p class="footer-copyright">© 2026 Juncheng Yang</p>
+</div>
+</footer>
+</body>
+</html>

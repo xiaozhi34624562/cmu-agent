@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="vendor/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="vendor/bootstrap.bundle.min.js"></script>
+<meta content="CS2680 expected background, grading, leaderboard scoring, late days, AI use, attendance, academic integrity, accommodations, and frequently asked questions" name="description"/>
+<meta content="Juncheng Yang" name="author"/>
+<link href="favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="CS2680 Modern AI Systems — Policy &amp; FAQ" property="og:title"/>
+<meta content="CS2680 expected background, grading, leaderboard scoring, late days, AI use, attendance, academic integrity, accommodations, and frequently asked questions" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="CS2680 Modern AI Systems" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<link href="css/main.css" rel="stylesheet"/>
+<title>CS2680 Modern AI Systems — Policy &amp; FAQ</title>
+</head>
+<body>
+<div id="site-header"></div>
+<script src="header.js"></script>
+<div class="container page">
+<div class="row">
+<div class="col-12">
+<div class="title">CS2680 Modern AI Systems: Agents and System Optimizations</div>
+</div>
+<div class="col-12 title2">
+        Course policy and FAQ
+      </div>
+<div class="col-12 section" id="policy">
+<div class="subsection" id="background">
+<h2>Background we assume</h2>
+<p>This is a graduate-level computer systems course. The first few meetings do not touch systems, but the second half is system-heavy. Some students read computer systems as a synonym for computer science, and the two are not interchangeable here.</p>
+<p>If you are not familiar with most of the terms below, this course might not be a good fit for you: latency, throughput, tail latency, scalability, Amdahl’s law, process, threads, coroutine, concurrency, mutex, atomic operation, race condition, deadlock, starvation, cache coherence, false sharing, virtual memory, page fault, context switch, system call, interrupt, DMA, copy-on-write, NUMA, IOPS, locality, working set, LRU, write-ahead log, durability, transaction, ACID, serializability, B-tree, RPC, partitioning, fault tolerance, load balancing, congestion control, NIC, RDMA, batching, pipelining, asynchronous execution.</p>
+<p>A few unfamiliar terms are not a problem, and the <a href="index.html#overview">background reading</a> on the home page covers the usual gaps. The warning is about the case where most of the list is new to you.</p>
+</div>
+<hr/>
+<div class="subsection" id="grading">
+<h2>Grading breakdown</h2>
+<table class="table table-bordered policy-grade-table">
+<thead>
+<tr class="table-light">
+<th scope="col">Component</th>
+<th scope="col">Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assignment 1 — experience a coding agent: build a web UI for Claude Code</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>Assignment 2 — build an agent</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>Assignment 3 — make the agent smarter, faster, cheaper</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>Assignment 4 — serve your own agent</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>Assignment 5 — optimize the full stack</td>
+<td>10%</td>
+</tr>
+<tr>
+<td><a href="project.html">Final project</a></td>
+<td>20%</td>
+</tr>
+<tr>
+<td>Class Participation</td>
+<td>10%</td>
+</tr>
+<tr class="table-light">
+<td><strong>Bonus</strong> (optional presentations, course feedback &amp; problems AI cannot solve)</td>
+<td>up to 10%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>We enforce a 20% A policy.</strong> No more than 20% of the class receives an A, as announced in class.</p>
+</div>
+<hr/>
+<div class="subsection" id="leaderboard-grading">
+<h2>Leaderboard grading for Assignments 3 and 5</h2>
+<p>Assignment 3 and Assignment 5 are scored on a leaderboard. Each is scored out of 100 points, which scale to 20% of the course grade for Assignment 3 and 10% for Assignment 5 in the <a href="#grading">breakdown above</a>. Of those 100 points, 80 are for system performance and 20 are for the write-up (a published blog post) and the video.</p>
+<p>The two assignments rank on different metrics. Assignment 3 ranks on task solve rate and cost. Assignment 5 ranks on task solve rate, API and GPU cost, and latency.</p>
+<p><strong>Performance score.</strong> The 80 performance points come from your rank on the leaderboard, and the provided baseline sets a floor under them:</p>
+<p class="leaderboard-formula">performance score = max(80 − rank, 50 if you beat the baseline)</p>
+<p>Beating the baseline therefore guarantees at least 50 of the 80 points, and the baseline is designed to be relatively easy to beat. At rank 30 the two terms are equal, so the floor changes nothing inside the top 30 and your score there is 80 − rank. Your score for the assignment is the performance score plus the write-up and video score.</p>
+<p>Four cases, each with a write-up and video score of 18 out of 20:</p>
+<div class="table-responsive">
+<table class="table table-bordered rubric-table">
+<thead>
+<tr class="table-light">
+<th scope="col">Rank</th>
+<th scope="col">Baseline beaten</th>
+<th scope="col">Performance</th>
+<th scope="col">Assignment score</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>35</td><td>no</td><td>45</td><td>63</td></tr>
+<tr><td>35</td><td>yes</td><td>50</td><td>68</td></tr>
+<tr><td>20</td><td>yes</td><td>60</td><td>78</td></tr>
+<tr><td>5</td><td>yes</td><td>75</td><td>93</td></tr>
+</tbody>
+</table>
+</div>
+<p>Most of you will not score 80 or higher on these two assignments. There are <a href="#bonus">bonus points</a> available throughout the semester to make that up.</p>
+</div>
+<hr/>
+<div class="subsection" id="late-days">
+<h2>Late days</h2>
+<p>You have <strong>four late days</strong> for the semester, to spend as you like across the assignments. Late days are counted in whole days: a submission one minute past the deadline consumes one full late day.</p>
+<p>For Assignment 3, Assignment 5 and the project, the write-up is a published blog post and the deadline is the moment the <strong>pull request is open</strong> — not the moment it is merged.
+          </p>
+<ul>
+<li>Late days are per student.</li>
+<li>Once your late days are exhausted, late work loses 20% of its value per day, to a floor of zero after five days.</li>
+<li>Late days <strong>cannot</strong> be applied to the student sharing sessions or the final project poster session.</li>
+<li>If something serious comes up (illness, family emergency, accommodation needs), email the instructor and TFs. </li>
+</ul>
+</div>
+<hr/>
+<div class="subsection" id="guest-speakers">
+<h2>Attending guest speakers' lectures</h2>
+<p>We plan to host guest speakers from industry who build the systems we study. These are among the most valuable sessions of the course and attendance is expected. Please come with questions — the speakers are giving up their time and a silent room is a wasted opportunity.</p>
+<p>Recording, photographing, or redistributing guest lectures is not permitted unless the speaker explicitly agrees.</p>
+<p>We will arrange meetings with the speakers to ensure that all students have the opportunity to interact with them. There will also be an optional lunch for anyone who wants to meet the speakers in a more relaxed setting.</p>
+</div>
+<hr/>
+<div class="subsection" id="bonus">
+<h2>Bonus points</h2>
+<p>Bonus credit is capped at 10% overall, even when the activities below add up to more.</p>
+<ul>
+<li><strong>Optional presentations up to 4% each.</strong> Present your Assignment 1 frontend at the sharing session or volunteer to present a paper during a discussion meeting. Each presentation can earn up to four bonus percentage points; the <a href="discussion.html#presentation-feedback">presentation feedback criteria</a> explain how.</li>
+<li><strong>Course feedback up to 4%.</strong> Substantive feedback on lectures, readings, assignments, or the pacing of the course, submitted during the semester. Critical feedback is worth the same as praise; it is usually worth more.</li>
+<li><strong>Problems current AI cannot solve, 2% each.</strong> Find a question in this course's subject area that ChatGPT, Claude, and Gemini all get wrong — either they cannot solve it, or they answer confidently from expired knowledge.</li>
+</ul>
+<h3>What counts as an AI-stumper submission</h3>
+<p>This field moves faster than model training runs, so a great deal of what these systems "know" about GPUs,
+            serving frameworks, and kernel APIs is quietly out of date. Finding those gaps is a genuinely useful skill
+            and it is the point of this exercise. A submission needs all four of:</p>
+<ul>
+<li>The <strong>exact prompt</strong>, reproducible verbatim.</li>
+<li>The <strong>responses</strong> from all three models, with the date and the model version you used.</li>
+<li>The <strong>correct answer</strong>, with evidence: a primary source, a specification, or a
+              measurement you took yourself.</li>
+<li>A sentence on <strong>why</strong> the models failed: genuinely unsolved, out-of-date training data,
+              a plausible-sounding fabrication, or a reasoning failure.</li>
+</ul>
+<div class="tip">
+<strong>The bar:</strong> your answer must be right. A submission where the models were correct and you
+            were not earns nothing, and checking that carefully before submitting is most of the exercise.
+            Questions that are merely obscure trivia do not count; the question should matter to someone building
+            these systems.
+          </div>
+</div>
+<hr/>
+<div class="subsection" id="ai-policy">
+<h2>AI use policy</h2>
+<p>You are encouraged to use AI tools in this course.</p>
+<p><strong>Disclose.</strong> Every submitted artifact must include a short note describing which tools you used and for what: a couple of sentences is enough. Undisclosed AI use is an integrity violation; you will not be penalized for using AI tools in your assignments.</p>
+<p><strong>Hand in the record.</strong> Assignment 1 takes three artifacts: your code, the write-up, and an <a href="computing/claude-code.html#export">archive of your Claude Code session files</a>. Claude Code is required in every assignment, so each of the five takes the same three artifacts. We read these to see how the class is working with an agent and to give you feedback on it, and they may be used in grading as the evidence behind the process claims in your write-up. They add no separate weight to the <a href="#grading">breakdown above</a>.</p>
+<p><strong>Own it.</strong> You are responsible for everything you submit. If an AI tool generates code with a subtle bug, a benchmark with a methodological flaw, or a claim about a paper that the paper does not make, that is your error. In discussion, in your presentation, and in questions afterwards, you will be expected to explain your own work without assistance.</p>
+</div>
+<hr/>
+<div class="subsection" id="attendance">
+<h2>Attendance, participation, and laptop use</h2>
+<p>Attendance is expected. Participation is 10% of the grade and cannot be earned from an empty seat. Paper presentations are optional and can earn bonus credit; participation can be earned throughout class discussions and student sharing sessions.</p>
+<p><strong>The participation score is for active participation.</strong> Many of you are already doing this well. However, we do not track attendance, so showing up is not participation on its own, and no participation means a participation score of zero.</p>
+<p>Laptops and tablets are welcome for note-taking and learning. Please keep them closed during student presentations and guest lectures; presenting to a wall of screens is dispiriting, and your classmates deserve the same attention you will want when it is your turn.</p>
+<p>If you must miss a class, no permission is needed. However, let the instructor and TFs know in advance.</p>
+</div>
+<hr/>
+<div class="subsection" id="religious-observance">
+<h2>Religious and spiritual observance</h2>
+<p>Harvard supports students in observing their religious and spiritual traditions while participating fully in their academic work. If a religious or spiritual observance conflicts with a class meeting, an assignment, or any other course requirement, please contact me as early as possible so that we can try to identify an appropriate academic flexibility consistent with course requirements and University policies.</p>
+<p>Because observances and practices vary across traditions and individuals, you do not need to limit requests to dates included on a published religious calendar. Students are encouraged to review the <a href="https://www.hds.harvard.edu/community-life/religious-and-spiritual-life/multifaith-calendar" rel="noopener noreferrer" target="_blank">Harvard Multifaith Calendar</a> and the <a href="https://chaplains.harvard.edu/" rel="noopener noreferrer" target="_blank">Harvard Chaplains</a> resources at the beginning of the semester, and to communicate anticipated conflicts early whenever possible.</p>
+</div>
+<hr/>
+<div class="subsection" id="integrity">
+<h2>Academic integrity</h2>
+<p>Discussing ideas with classmates is encouraged. Reading papers together, arguing about a design, and debugging alongside each other are all part of how systems work gets done.</p>
+<p>What is not acceptable: submitting work you did not do, copying text or code without attribution, fabricating experimental results, or misrepresenting what a measurement shows. Fabricated numbers are the one thing in this course that will be treated as a serious violation without exception — a systems paper whose evaluation cannot be trusted is worthless, and the same holds here.</p>
+<p>The poster session, which carries half the final project grade, is partly peer-scored, and that puts two more items on that list: agreeing with somebody to trade favorable scores, and marking somebody down over a critical review you believe was theirs. Reviews are anonymous to the presenter and signed to the instructor for exactly that reason.</p>
+<p>Cite your sources: papers, blog posts, repositories, and AI tools alike. All work is subject to the <a href="https://honorcouncil.fas.harvard.edu/honor-code" rel="noopener noreferrer" target="_blank">Harvard College Honor Code</a> and to GSAS academic integrity policy where applicable.</p>
+</div>
+<hr/>
+<div class="subsection" id="diversity">
+<h2>All students welcome</h2>
+<p>This course is intended for students of all backgrounds. Students come to AI systems from machine learning, from operating systems, from computational biology, and from industry, and the mix is what makes the discussions interesting. Nobody arrives knowing all of it.</p>
+<p>Students needing academic accommodations should contact the <a href="https://dao.fas.harvard.edu/" rel="noopener noreferrer" target="_blank">Disability Access Office</a> and let the instructor know as early in the semester as possible, ideally within the first two weeks.</p>
+</div>
+<hr/>
+<div class="subsection" id="auditing">
+<h2>Auditing the course</h2>
+<p>Auditors are welcome if there is room. Please email the instructor before the first class. Auditors are expected to do the reading for discussion sessions they attend — the discussion format depends on it — but do not submit assignments and are not graded.</p>
+</div>
+<hr/>
+<div class="subsection" id="wellbeing">
+<h2>Well-being and mental health</h2>
+<p>Graduate systems courses have a way of expanding to fill all available time. The five assignments are substantial, and the <a href="project.html">final project</a> runs on top of the last of them — so scope the project to what the weeks actually hold rather than to what you would like it to be. If the workload is becoming unmanageable, talk to the instructor before it becomes a crisis; project scope in particular can usually be adjusted.</p>
+<p>Harvard has resources available at any hour:</p>
+<ul>
+<li><a href="https://camhs.huhs.harvard.edu/" rel="noopener noreferrer" target="_blank">Counseling and Mental Health Services (CAMHS)</a>. 617-495-2042, available 24/7</li>
+<li><a href="https://academicresourcecenter.harvard.edu/" rel="noopener noreferrer" target="_blank">FAS Academic Resource Center</a></li>
+</ul>
+<p>Your health matters more than any deadline on this page.</p>
+</div>
+<hr/>
+<div class="subsection" id="faq">
+<h2>Frequently asked questions</h2>
+<p>Questions that come up most often. If yours is not here, email the <a href="index.html#staff">course staff</a> or come to office hours. If it is a good question it will end up on this page.</p>
+<div class="faq-list">
+<div class="faq-item">
+<h3>Do I need to know CUDA?</h3>
+<p>No. No assignment requires it, and we do not assume prior CUDA experience. One or two classes cover GPU architecture and programming, which is enough to reason about serving cost. You can go further on your own if you want the kernel-level optimization path in Assignment 5.</p>
+</div>
+<div class="faq-item">
+<h3>Is this a machine learning course?</h3>
+<p>No. Model quality matters here as a constraint and a measured outcome, not as the course's central object of study. We ask what it costs to serve an agent, and how an agent and system change moves cost, latency, throughput, or task success. If you want to study model architectures, or learning theory, this is the wrong course. If you want to know why inference is memory-bound and what anyone can do about it, this is the right one.</p>
+</div>
+<div class="faq-item">
+<h3>What programming languages will be used?</h3>
+<p>You need to know Python and shell. You may touch JavaScript, C/C++, Rust or other programming languages during the course, but your agent should be able to help you navigate it. </p>
+</div>
+<div class="faq-item">
+<h3>Is attendance mandatory?</h3>
+<p>Attendance is expected and participation is part of your grade.</p>
+</div>
+<div class="faq-item">
+<h3>Will lectures be recorded?</h3>
+<p>No, the lectures will not be recorded.</p>
+</div>
+<div class="faq-item">
+<h3>Can I audit the course?</h3>
+<p>Yes, if there is room. Email the instructor before the first class. We are not able to provide access to computing for auditing students.</p>
+</div>
+<div class="faq-item">
+<h3>Is there an exam?</h3>
+<p>No. There is no midterm and no final.</p>
+</div>
+<div class="faq-item">
+<h3>Do I need my own GPUs or pay for API costs?</h3>
+<p>No. We will cover all costs for the course as long as it is reasonable use for the course.</p>
+</div>
+<div class="faq-item">
+<h3>How much work is this course?</h3>
+<p>Plan on reading a few papers each week, plus the five assignments. Expect to spend a significant amount of time learning and experimenting on your own after class. If you want an A, plan on it.</p>
+</div>
+<div class="faq-item">
+<h3>My question is not here.</h3>
+<p>Email the <a href="index.html#staff">course staff</a> or come to office hours. If it is a good question it will end up on this page.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="container">
+<p><a href="https://madsys.seas.harvard.edu/" rel="noopener" target="_blank">MadSys Research Group</a> · <a href="https://seas.harvard.edu/" rel="noopener" target="_blank">Harvard John A. Paulson School of Engineering and Applied Sciences</a></p>
+<p class="footer-policies"><a href="https://trademark.harvard.edu/pages/trademark-notice" rel="noopener" target="_blank">Trademark Notice</a> · <a href="https://accessibility.harvard.edu/" rel="noopener" target="_blank">Accessibility</a> · <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" rel="noopener" target="_blank">Digital Accessibility</a> · <a href="https://privsec.harvard.edu/harvard-university-privacy-statement" rel="noopener" target="_blank">Privacy Statement</a></p>
+<p class="footer-copyright">© 2026 Juncheng Yang</p>
+</div>
+</footer>
+</body>
+</html>

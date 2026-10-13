@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="vendor/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="vendor/bootstrap.bundle.min.js"></script>
+<meta content="CS2680 final project: build a useful AI system or conduct original research on agents or the systems that run them. Two tracks, three deliverables, and 20% of the course grade." name="description"/>
+<meta content="Juncheng Yang" name="author"/>
+<link href="favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="CS2680 Modern AI Systems — Final Project" property="og:title"/>
+<meta content="CS2680 final project: build a useful AI system or conduct original research on agents or the systems that run them. Two tracks, three deliverables, and 20% of the course grade." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="CS2680 Modern AI Systems" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<link href="css/main.css" rel="stylesheet"/>
+<title>CS2680 Modern AI Systems — Final Project</title>
+</head>
+<body>
+<div id="site-header"></div>
+<script src="header.js"></script>
+<div class="container page">
+<div class="row">
+<div class="col-12">
+<div class="title">CS2680 Modern AI Systems: Agents and System Optimizations</div>
+</div>
+<div class="col-12 title2">Final project</div>
+<div class="col-12 section" id="project-overview">
+<h1>Final project</h1>
+<p class="lead">In the final project, you choose a problem, build a system or an experiment to address it, and support one claim with measurements.</p>
+<p>In the assignments, the course specifies the problem and the evaluation. In the project, you choose both. You can take one of two tracks: the <a href="#product-track">product track</a>, in which you build a tool that solves a practical problem, or the <a href="#research-track">research track</a>, in which you make an original claim about agents or the systems that run them. Both tracks have the same deadlines, deliverables, and rubric. The research track is held to a higher standard of novelty and evidence.</p>
+<p>The project is individual and is worth <strong>20% of the course grade</strong>. Each student submits one proposal, presents one poster and demo, and publishes one blog post and repository. You can start before the proposal deadline. Email the instructor if you want feedback on an idea or its scope, need a compute allocation, or want someone to read a draft.</p>
+<h2 id="deliverables">Deliverables and deadlines</h2>
+<div class="table-responsive">
+<table class="table table-bordered">
+<thead>
+<tr class="table-light">
+<th scope="col">Due</th>
+<th scope="col">Deliverable</th>
+<th scope="col">Weight</th>
+<th scope="col">How to submit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Wed Oct 28</strong>, 11:59pm</td>
+<td><a href="#proposal">Proposal</a></td>
+<td>2%</td>
+<td>One PDF on Canvas</td>
+</tr>
+<tr>
+<td><strong>Mon Dec 7</strong>, 9:00am–1:00pm</td>
+<td><a href="#poster">Poster and demo</a>, including <a href="#peer-review">peer evaluation</a></td>
+<td>10%</td>
+<td>In person, SEC 1.402</td>
+</tr>
+<tr>
+<td><strong>Tue Dec 8</strong>, 11:59pm</td>
+<td><a href="#blog">Blog post and repository</a></td>
+<td>8%</td>
+<td>Pull request to the course blog repository</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr/>
+</div>
+<div class="col-12 section" id="tracks">
+<h1>Choose a track</h1>
+<p>Choose the track that matches the claim you want to make, and name it in the proposal. You can switch later by emailing the instructor.</p>
+<h2 id="product-track">Product track: build a useful tool</h2>
+<p>Build an AI system that solves a real problem better than the strongest available alternative. The gap can come from missing context, poor reliability, high cost, slow response, privacy constraints, or a workflow that existing tools do not support.</p>
+<p>Suitable directions include:</p>
+<ul>
+<li><strong>Research workflows.</strong> Automate experiments, reproduce results, analyze papers, or manage research artifacts.</li>
+<li><strong>Learning.</strong> Build a grounded study tool or a system for practicing a skill.</li>
+<li><strong>Personal workflows.</strong> Improve a repetitive task in your own work or daily life.</li>
+<li><strong>A course extension.</strong> Take an assignment substantially beyond its graded requirements. Your submitted work is the starting point, and the proposal must state what is new.</li>
+</ul>
+<h2 id="research-track">Research track: conduct original research</h2>
+<p>The research track requires an original, falsifiable claim about agents or AI systems. The work must establish a result that the closest published work does not provide, explain why the result occurs, and define the conditions under which it holds. A polished implementation, a reproduction, a benchmark, or a set of measurements does not meet this bar by itself.</p>
+<p>You can work on either side of the course:</p>
+<ul>
+<li><strong>Agent-side research.</strong> Study or improve planning, tool use, memory, context management, verification, multi-agent coordination, evaluation, or another part of the agent loop. The quantity you measure is the agent's behavior, capability, reliability, or cost.</li>
+<li><strong>Systems-side research.</strong> Study or improve inference, batching, scheduling, caching, routing, quantization, compression, kernels, or another layer that runs the agent or model. The quantity you measure is system performance, efficiency, scalability, or reliability.</li>
+</ul>
+<p>On either side, the contribution can take one of four forms:</p>
+<ul>
+<li><strong>Measurement.</strong> Report a behavior, bottleneck, or tradeoff that prior work does not report, then explain its cause and the conditions under which it appears. Running an existing benchmark on a different model or machine does not count unless it leads to a new conclusion.</li>
+<li><strong>Mechanism.</strong> Propose a method, policy, or design and compare it with the strongest published alternative. Isolate the mechanism with an ablation, and explain when it helps, when it does not, and why.</li>
+<li><strong>Reproduction and boundary.</strong> Reproduce a published result, then identify the workload or condition under which the claim stops holding. The reproduction alone does not count as a contribution.</li>
+<li><strong>Instrument.</strong> Build a benchmark, trace, or measurement harness that makes a previously unanswered question answerable. Validate the instrument, then use it to answer the question.</li>
+</ul>
+<div class="evaluation-lens">
+<h4>Which track to choose</h4>
+<p class="mb-0">If the main contribution is a useful application, choose the product track and evaluate it rigorously. Choose the research track if you can state the new claim, name the closest published claim, and design a controlled experiment that distinguishes the two.</p>
+</div>
+<hr/>
+</div>
+<div class="col-12 section" id="proposal">
+<h1>Proposal</h1>
+<div class="table-responsive">
+<table class="table table-bordered">
+<tbody>
+<tr>
+<th scope="row">Due</th>
+<td><strong>Wed Oct 28, 11:59pm</strong></td>
+</tr>
+<tr>
+<th scope="row">Weight</th>
+<td>2% of the course grade</td>
+</tr>
+<tr>
+<th scope="row">Submit</th>
+<td>One PDF on Canvas <!-- TODO: link the Canvas proposal assignment --></td>
+</tr>
+<tr>
+<th scope="row">Length</th>
+<td>No page limit</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The proposal lets the course staff check that the project is specific, can be completed in five weeks, and will be evaluated against the right baselines before most of the work begins. Include the nine sections below, in this order. Each section lists what it must contain for both tracks and, where they differ, for each track.</p>
+<ol>
+<li><strong>Title and summary.</strong> Give a title, your name, and your track. For the research track, also state whether the work is agent-side or systems-side. Then summarize in one paragraph the problem, your approach, and how you will evaluate it.</li>
+<li><strong>Problem.</strong> Describe the problem you will solve or the question you will answer, who has it, and why it matters. For the product track, describe the current workflow and what it costs in time, money, or errors. For the research track, state the question in terms of a quantity you can measure.</li>
+<li><strong>Existing work and the gap.</strong> Identify the closest existing systems or published results and report what you tested. For the product track, run at least three of the closest commercial tools, open-source systems, or research prototypes on your own task, give the same input directly to a frontier model, and describe how each one fails. For the research track, cite the closest published work, state what it leaves unsettled, and report what you have reproduced so far or how you will reproduce the closest result in your setup. End the section with the gap in one testable sentence. For the product track, the sentence states what your system will do that the strongest alternative cannot. For the research track, it states what your experiment will establish that the closest published result does not. <a href="#the-gap">Finding the gap</a> explains how to do this survey.</li>
+<li><strong>Claim.</strong> State the claim that the evaluation will test. For the product track, state the improvement you expect over the baselines in terms of a metric. For the research track, state a falsifiable hypothesis: the result you expect, the conditions under which you expect it, and the result that would show the hypothesis is wrong.</li>
+<li><strong>Design.</strong> Describe the system or experiment you will build: its main components, which parts you will write and which you will reuse (models, frameworks, or assignment code), and the technical challenges you expect. For a course extension, state what is new beyond the assignment's graded requirements. For the research track, describe the mechanism, measurement, or instrument and how you will isolate its effect.</li>
+<li><strong>Evaluation plan.</strong> Name the two baselines for your track (see <a href="#baselines">Use the right baselines</a>), the workload or task set and its size, the metrics and how each one relates to the claim, and the protocol, including the number of repeated trials and the ablation. If you will tune on examples, name the held-out set. For the research track, also name the boundary condition you will test and explain how the plan meets the <a href="#research-bar">research evidence bar</a>.</li>
+<li><strong>Goals.</strong> State three levels of outcome, each as a concrete artifact or measurement. The <strong>75% goal</strong> is the minimum result you are confident you can deliver even if the main idea does not work, such as a working end-to-end prototype with baseline measurements. The <strong>100% goal</strong> is the result you plan to deliver. The <strong>125% goal</strong> is an extension you will attempt if you reach the 100% goal early. The blog post reports which goal you reached.</li>
+<li><strong>Plan and resources.</strong> Give a week-by-week plan for the five weeks (see <a href="#pacing">Plan for five weeks</a>), including the week of the first end-to-end measurement. Name the compute resource from the <a href="#resources">compute table</a>, the models, and an estimate of API cost or GPU hours. Describe the data you will use, where it goes if you call a hosted API, and any restrictions on it. List the main risks and what you will do if each one occurs.</li>
+<li><strong>References.</strong> Cite every system, paper, and dataset named in the proposal.</li>
+</ol>
+<p>The proposal is graded on completeness and specificity: whether all nine sections are present, whether the gap is supported by tests or reproductions you report, and whether the baselines, workload, and metrics are specific enough to run. The track and plan are not binding. If the project changes direction after the proposal, email the instructor with the new track or plan.</p>
+<hr/>
+</div>
+<div class="col-12 section" id="poster">
+<h1>Poster and demo</h1>
+<p><strong>Mon Dec 7, 9:00am–1:00pm, SEC 1.402</strong> · 10%</p>
+<p>Present the project as a poster at the poster session after classes end. A visitor should be able to find the problem, the gap, the system or experiment, and the main result within a few minutes. Include at least one figure that is legible from two meters away. If a live demonstration suits the project, prepare a version that runs reliably in about two minutes.</p>
+<h2 id="peer-review">Peer evaluation</h2>
+<p>The poster session includes peer evaluation, and peer scores count toward the project grade. Each student reviews several other projects, and the reviews are part of the deliverable.</p>
+<!-- TODO: the number of reviews per student, the score sheet, and how peer scores combine are not settled here; docs/syllabus.md promises four randomly assigned reviewers, a median rather than a mean, instructor override, and a penalty for skipped reviews, while policy.html says only that the session is partly peer-scored. Reconcile both against this page. -->
+<div class="tip"><strong>Late days do not apply to the poster session.</strong> If you have a conflict you cannot move, such as a religious observance, illness, or required travel, email the instructor in advance. See the <a href="policy.html#late-days">late-day policy</a>.</div>
+<hr/>
+</div>
+<div class="col-12 section" id="blog">
+<h1>Blog post and repository</h1>
+<p><strong>Tue Dec 8, 11:59pm</strong> · 8%</p>
+<p>Publish the write-up on the <a href="https://blog.cs2680.com/" rel="noopener noreferrer" target="_blank">course blog</a> by opening a pull request to the course blog repository, following the <a href="https://blog.cs2680.com/publish/" rel="noopener noreferrer" target="_blank">publishing guide</a>. The deadline is the time the pull request is opened. It does not need to be merged by then.</p>
+<h2>Blog post</h2>
+<p>Write for a general technical audience, using the assignment write-ups as a model. There is no length requirement. The post must cover eight items:</p>
+<ol>
+<li>The problem or question, and the gap relative to the closest existing systems or published results.</li>
+<li>The design of the system or experiment.</li>
+<li>The evaluation method: baselines, workload, metrics, and protocol.</li>
+<li>The results, including comparisons in which your system or hypothesis did worse.</li>
+<li>The limitations, failure modes, and threats to validity.</li>
+<li>Which of the proposal's goals (75%, 100%, or 125%) you reached, and what changed since the proposal.</li>
+<li>Links to the repository and to any public demo.</li>
+<li>The note required by the <a href="policy.html#ai-policy">AI use policy</a>: what you delegated to AI, what you did yourself, where AI helped, where it misled you, how you detected the problem, and what it cost.</li>
+</ol>
+<h2>Repository</h2>
+<p>The repository must let another person reproduce the main result. Include an installation and execution guide, the raw measurements behind each figure, the scripts that generate the figures, and the hardware, software versions, and workload used for every reported number. Label all axes and units, and keep figures legible in print and in grayscale.</p>
+<hr/>
+</div>
+<div class="col-12 section" id="grading">
+<h1>Grading</h1>
+<p>The proposal is graded as described in <a href="#proposal">Proposal</a>, and the poster session is partly scored by peers. The blog post and repository are graded on the four dimensions below, weighted equally. Both tracks use the same dimensions. Research projects are held to a higher standard of novelty, experimental control, reproducibility, and engagement with published work because they claim to add to the published record.</p>
+<div class="table-responsive">
+<table class="table table-bordered rubric-table">
+<thead>
+<tr class="table-light">
+<th scope="col">Dimension</th>
+<th scope="col">What strong work shows</th>
+<th scope="col">Warning sign</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Problem and motivation</strong></td>
+<td>A clear problem or question, a thorough review of what already exists, and a testable gap</td>
+<td>An existing tool already solves the problem, or a paper already reports the answer</td>
+</tr>
+<tr>
+<td><strong>Technical execution</strong></td>
+<td>A substantial, technically sound implementation or measurement</td>
+<td>Code that works only on one machine, one input, or one run</td>
+</tr>
+<tr>
+<td><strong>Evaluation</strong></td>
+<td>Appropriate baselines and metrics, controlled comparisons, and conclusions supported by the experiments</td>
+<td>Single-run numbers, a weak baseline, or a comparison between your run and an unreproduced number from a paper</td>
+</tr>
+<tr>
+<td><strong>Reporting</strong></td>
+<td>Clear claims, reproducible evidence, and an accurate account of limitations and negative results</td>
+<td>A figure or claim that the underlying measurements do not support</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A project whose main idea does not work can still earn nearly full credit if the blog post explains what you expected, what you measured, and why the two differ. A claim that your measurements do not support loses credit whether the result is favorable or unfavorable.</p>
+<hr/>
+</div>
+<div class="col-12 section" id="the-gap">
+<h1>Finding the gap</h1>
+<p>Before building, find out what already exists and state its limitation in one testable sentence. Do this before the proposal, so that you can change the project early if an existing tool or paper already covers it.</p>
+<h2>For a product project</h2>
+<p>Run the closest commercial tools, open-source systems, and research prototypes on your own task. Also give the same input directly to a frontier model; this counts as a baseline even if it seems too simple. Record the specific failure you observe. For example, “It cannot read my cluster's job queue” is a testable gap, whereas “Nothing like this exists” is not.</p>
+<h2>For a research project</h2>
+<p>Read the closest published work on the agent side or the systems side and identify the claim it leaves unsettled. Research gaps commonly come from three sources. First, nobody has measured the behavior on your workload, model, or hardware. Second, a published result depends on conditions that should change the answer under yours. Third, two published results disagree. A plan to try an idea and see whether it works is not yet a research question; state the result you expect and why.</p>
+<p><strong>Reproduce the closest result first.</strong> A number reported in a paper was measured with a different model, prompt, task set, GPU, software version, or workload. Comparing your run against that number confounds your change with those differences, so reproduce the closest result in your own setup before you try to improve on it. If the published artifact cannot be reproduced, document why and build the closest comparison you can justify.</p>
+<div class="tip"><strong>Know where your data goes.</strong> A hosted API sends your data off your machine. Before using unpublished results, collaborators' data, human-subjects data, or private communications, check your lab's rules and any IRB conditions. If the data cannot leave your machine, serve a model yourself as in <a href="assignments/index.html#assignment-4">Assignment 4</a>.</div>
+<hr/>
+</div>
+<div class="col-12 section" id="build-and-measure">
+<h1>Evaluation</h1>
+<h2 id="baselines">Use the right baselines</h2>
+<div class="table-responsive">
+<table class="table table-bordered">
+<thead>
+<tr class="table-light">
+<th scope="col">Track</th>
+<th scope="col">Baseline 1</th>
+<th scope="col">Baseline 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Product</strong></td>
+<td>The strongest existing system, run on your tasks</td>
+<td>The current by-hand workflow, timed before your tool changes it</td>
+</tr>
+<tr>
+<td><strong>Research</strong></td>
+<td>The unmodified agent or system</td>
+<td>The strongest published method or result, reproduced in your setup</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>If you introduce a mechanism, isolate it with an ablation or another controlled comparison. Report the configurations that perform worse as well as those that perform better, and include the strongest comparison even if your system loses to it.</p>
+<h2 id="research-bar">The research evidence bar</h2>
+<p>A research result must hold beyond the run that produced it. Before the main experiment, state the hypothesis and fix the protocol. Then run repeated trials, report variation or uncertainty, isolate the proposed cause, test at least one boundary condition, and keep the artifacts needed to reproduce the result.</p>
+<p>For <strong>agent-side research</strong>, fix the model version, prompts, tools, task set, and success criteria. Use held-out tasks if you tuned the method on examples, and separate capability from token cost, latency, and run-to-run variation. For <strong>systems-side research</strong>, fix the hardware and software stack, describe the workload, measure under controlled load, and report both central and tail behavior where applicable.</p>
+<p>A single benchmark score, one favorable prompt example, or one throughput number does not meet this bar.</p>
+<h2>Choose metrics that match the claim</h2>
+<p>Agent projects may need success rate, latency, cost, token usage, number of steps, resource use, and human effort. Serving projects may need throughput, time to first token, per-token latency, tail latency, memory use, cache hit ratio, and prefill work avoided. A latency result must state the request rate at which it was measured.</p>
+<p><strong>Measure one level deeper.</strong> Break the top-line result into the components that explain it. For example, “The agent took 60 seconds” reports what happened, while “Tool calls took 40 seconds, including one 30-second call that could run in parallel” shows what to change. Ousterhout's <a href="https://cacm.acm.org/research/always-measure-one-level-deeper/" rel="noopener noreferrer" target="_blank">Always Measure One Level Deeper</a> explains this practice.</p>
+<p>Fix the workload, task set, and metrics before the main experiment. For the product track, time the by-hand workflow before your tool changes it. For the research track, do not choose the workload after seeing which one gives the strongest result.</p>
+<hr/>
+</div>
+<div class="col-12 section" id="pacing">
+<h1>Plan for five weeks</h1>
+<ol>
+<li><strong>Week 1.</strong> Fix the problem or question. Test the closest systems or reproduce the closest result, and record the baseline.</li>
+<li><strong>Week 2.</strong> Run an end-to-end prototype or a small version of the complete experiment.</li>
+<li><strong>Weeks 3 and 4.</strong> Improve the system and run the controlled experiments.</li>
+<li><strong>Week 5.</strong> Analyze the results and prepare the poster, demo, blog post, and repository.</li>
+</ol>
+<p>Run the complete path once and take the first measurement before building more infrastructure. If the project needs a GPU, include queue time and reruns in the plan.</p>
+<p>The project overlaps with <a href="assignments/index.html#assignment-4">Assignment 4</a> (due Tue Nov 10) and <a href="assignments/index.html#assignment-5">Assignment 5</a> (due Sun Nov 29). The poster session is Mon Dec 7 and the blog post is due Tue Dec 8, so start the poster and the blog post before the final week.</p>
+<hr/>
+</div>
+<div class="col-12 section" id="resources">
+<h1>Choose the compute you need</h1>
+<p>The <a href="computing/index.html">computing setup</a> page has access instructions. Choose the simplest resource that can run the experiment. Most projects fit on a laptop, model API access, or a small number of GPUs. Contact the instructor early if the project needs hardware that is not listed here or a large amount of compute.</p>
+<div class="table-responsive">
+<table class="table table-bordered">
+<thead>
+<tr class="table-light">
+<th scope="col">Resource</th>
+<th scope="col">Use it when</th>
+<th scope="col">Plan for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="computing/api.html">Course model API</a></td>
+<td>You need a hosted frontier model but do not need to control the serving stack</td>
+<td>Request cost and data leaving your machine</td>
+</tr>
+<tr>
+<td><a href="computing/cluster.html">Course HPC</a></td>
+<td>You need CPU or RTX PRO 6000 Blackwell GPU resources; this is the default for most serving projects</td>
+<td>A three-day CPU job limit, a two-day GPU job limit, and a shared GPU pool</td>
+</tr>
+<tr>
+<td>AWS</td>
+<td>You need cloud resources covered by an announced course allocation</td>
+<td>Do not depend on credits until the allocation is confirmed</td>
+</tr>
+<tr>
+<td><a href="https://www.rc.fas.harvard.edu/" rel="noopener noreferrer" target="_blank">FASRC</a></td>
+<td>You already have or can obtain access to research CPU nodes or GPUs such as H100 and H200</td>
+<td>Access approval and queue time</td>
+</tr>
+<tr>
+<td><a href="computing/cloudlab.html">CloudLab</a></td>
+<td>You need bare metal, kernel or network access, or isolation from a shared cluster</td>
+<td>Environment setup and experiment reproducibility</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Start with the least expensive model and the smallest complete experiment. Set a spending cap before each API run, stop cloud jobs when they finish, and run a small sweep before the full one. A late GPU allocation is not grounds for an extension, but the course staff can help you debug access and adjust the scope.</p>
+<hr/>
+</div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="container">
+<p><a href="https://madsys.seas.harvard.edu/" rel="noopener" target="_blank">MadSys Research Group</a> · <a href="https://seas.harvard.edu/" rel="noopener" target="_blank">Harvard John A. Paulson School of Engineering and Applied Sciences</a></p>
+<p class="footer-policies"><a href="https://trademark.harvard.edu/pages/trademark-notice" rel="noopener" target="_blank">Trademark Notice</a> · <a href="https://accessibility.harvard.edu/" rel="noopener" target="_blank">Accessibility</a> · <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" rel="noopener" target="_blank">Digital Accessibility</a> · <a href="https://privsec.harvard.edu/harvard-university-privacy-statement" rel="noopener" target="_blank">Privacy Statement</a></p>
+<p class="footer-copyright">© 2026 Juncheng Yang</p>
+</div>
+</footer>
+</body>
+</html>

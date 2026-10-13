@@ -1,0 +1,113 @@
+# 12. Efficient agentic systems: scheduling and prefix caching
+
+- Date: 2026-11-02
+
+## Slides
+
+- No slides linked on the course website as of 2026-10-13.
+
+## Readings
+
+- [agentic AI workloads](readings/001_agentic_AI_workloads_4e4228.pdf)
+  - Source: https://arxiv.org/abs/2605.26297
+- [agentic workload characterization](readings/002_agentic_workload_characterization_b8d415.pdf)
+  - Source: https://arxiv.org/abs/2608.15127
+- [TraceLab](readings/003_TraceLab_7862c7.pdf)
+  - Source: https://arxiv.org/abs/2606.30560
+- [CacheWise](readings/004_CacheWise_17b9f5.pdf)
+  - Source: https://arxiv.org/abs/2606.16824
+- [architectural implications](readings/005_architectural_implications_d62900.pdf)
+  - Source: https://arxiv.org/abs/2608.04458
+- [XPerf](readings/006_XPerf_e1cebc.pdf)
+  - Source: https://arxiv.org/abs/2608.20370
+- [when does disaggregation pay](readings/007_when_does_disaggregation_pay_58520a.pdf)
+  - Source: https://arxiv.org/abs/2608.03741
+- [compound AI systems](readings/008_compound_AI_systems_21e41c.html)
+  - Source: https://bair.berkeley.edu/blog/2024/02/18/compound-ai-systems/
+- [Parrot](readings/009_Parrot_0c450f.html)
+  - Source: https://www.usenix.org/conference/osdi24/presentation/lin-chaofan
+- [Pythia](readings/010_Pythia_ffed4e.pdf)
+  - Source: https://arxiv.org/abs/2604.25899
+- [workflow-aware serving](readings/011_workflow_aware_serving_960f08.pdf)
+  - Source: https://arxiv.org/abs/2607.02942
+- [software-defined agentic serving](readings/012_software_defined_agentic_serving_47ff6c.pdf)
+  - Source: https://arxiv.org/abs/2601.03197
+- [Pie](readings/013_Pie_846b00.pdf)
+  - Source: https://arxiv.org/abs/2510.24051
+- [Nalar](readings/014_Nalar_df5f1e.pdf)
+  - Source: https://arxiv.org/abs/2601.05109
+- [Murakkab](readings/015_Murakkab_87092a.html)
+  - Source: https://www.usenix.org/conference/osdi26/presentation/chaudhry
+- [Agentix](readings/016_Agentix_65f9e7.html)
+  - Source: https://www.usenix.org/conference/nsdi26/presentation/luo
+- [SAGA](readings/017_SAGA_4f1b7d.pdf)
+  - Source: https://arxiv.org/abs/2605.00528
+- [SMetric](readings/018_SMetric_23d964.pdf)
+  - Source: https://arxiv.org/abs/2607.08565
+- [observation not prediction](readings/019_observation_not_prediction_1d06eb.pdf)
+  - Source: https://arxiv.org/abs/2606.01839
+- [Kairos](readings/020_Kairos_058748.pdf)
+  - Source: https://arxiv.org/abs/2508.06948
+- [Maestro](readings/021_Maestro_35d41f.pdf)
+  - Source: https://arxiv.org/abs/2606.12950
+- [agentic batch query optimization](readings/022_agentic_batch_query_optimization_1f2366.pdf)
+  - Source: https://arxiv.org/abs/2509.02121
+- Ayo (formerly Teola) — [online source](https://doi.org/10.1145/3676641.3716278)
+  - Source: https://doi.org/10.1145/3676641.3716278
+- [Helium](readings/023_Helium_23aeab.pdf)
+  - Source: https://arxiv.org/abs/2603.16104
+- [HexAGenT](readings/024_HexAGenT_924ac4.pdf)
+  - Source: https://arxiv.org/abs/2605.16637
+- [KVFlow](readings/025_KVFlow_443e20.html)
+  - Source: https://papers.neurips.cc/paper_files/paper/2025/hash/b7971d31a7d5eb0f1eed2f8f6f368195-Abstract-Conference.html
+- [rollout infrastructure tax](readings/026_rollout_infrastructure_tax_7ef299.pdf)
+  - Source: https://arxiv.org/abs/2607.01415
+- [TideRL](readings/027_TideRL_b9451c.pdf)
+  - Source: https://arxiv.org/abs/2608.10402
+- [Libra](readings/028_Libra_8dd03e.pdf)
+  - Source: https://arxiv.org/abs/2606.03077
+- [MISA-T](readings/029_MISA_T_4a6863.pdf)
+  - Source: https://arxiv.org/abs/2608.11152
+- [SGLang / RadixAttention](readings/030_SGLang_RadixAttention_63ebb2.pdf)
+  - Source: https://arxiv.org/abs/2312.07104
+- [CachedAttention](readings/031_CachedAttention_2858cf.pdf)
+  - Source: https://arxiv.org/abs/2403.19708
+- [Marconi](readings/032_Marconi_dc9d77.pdf)
+  - Source: https://arxiv.org/abs/2411.19379
+- [LPC](readings/033_LPC_f049e9.html)
+  - Source: https://openreview.net/forum?id=Vj48eXaQDM
+- [Mooncake](readings/034_Mooncake_18d3e5.pdf)
+  - Source: https://arxiv.org/abs/2407.00079
+- [MemServe](readings/035_MemServe_3780c5.pdf)
+  - Source: https://arxiv.org/abs/2406.17565
+- [LMCache](readings/036_LMCache_63ff14.pdf)
+  - Source: https://arxiv.org/abs/2510.09665
+- [TokenLake](readings/037_TokenLake_4a441c.pdf)
+  - Source: https://arxiv.org/abs/2508.17219
+- [Prompt Cache](readings/038_Prompt_Cache_595351.pdf)
+  - Source: https://arxiv.org/abs/2311.04934
+- [CacheGen](readings/039_CacheGen_56fe08.pdf)
+  - Source: https://arxiv.org/abs/2310.07240
+- [CacheBlend](readings/040_CacheBlend_9eb3c8.pdf)
+  - Source: https://arxiv.org/abs/2405.16444
+- [DroidSpeak](readings/041_DroidSpeak_2241c5.pdf)
+  - Source: https://arxiv.org/abs/2411.02820
+- [HYPIC](readings/042_HYPIC_3746be.pdf)
+  - Source: https://arxiv.org/abs/2607.01299
+- S3-FIFO — [online source](https://doi.org/10.1145/3600006.3613147)
+  - Source: https://doi.org/10.1145/3600006.3613147
+- [SIEVE](readings/043_SIEVE_163c29.html)
+  - Source: https://www.usenix.org/conference/nsdi24/presentation/zhang-yazhuo
+- [LRB](readings/044_LRB_bcfc0e.html)
+  - Source: https://www.usenix.org/conference/nsdi20/presentation/song
+- [TinyLFU](readings/045_TinyLFU_1fd661.pdf)
+  - Source: https://arxiv.org/abs/1512.00727
+- [libCacheSim](readings/046_libCacheSim_75d694.html)
+  - Source: https://libcachesim.com/
+- [CacheLib](readings/047_CacheLib_aa03e2.html)
+  - Source: https://www.usenix.org/conference/osdi20/presentation/berg
+
+## References
+
+- [Full course reading list](../site/readings.html)
+  - Source: https://cs2680.com/readings.html#nov-02

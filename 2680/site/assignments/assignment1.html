@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="../vendor/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="../vendor/bootstrap.bundle.min.js"></script>
+<meta content="CS2680 Assignment 1: build a web frontend for Claude Code and watch an agent work from the outside" name="description"/>
+<meta content="Juncheng Yang" name="author"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="CS2680 Modern AI Systems — Assignment 1: Experience a coding agent" property="og:title"/>
+<meta content="CS2680 Assignment 1: build a web frontend for Claude Code and watch an agent work from the outside" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="CS2680 Modern AI Systems" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<link href="../css/main.css" rel="stylesheet"/>
+<title>CS2680 Modern AI Systems — Assignment 1: Experience a coding agent</title>
+</head>
+<body>
+<div id="site-header"></div>
+<script src="../header.js"></script>
+<div class="container page">
+<div class="row">
+<div class="col-12">
+<div class="title">CS2680 Modern AI Systems: Agents and System Optimizations</div>
+</div>
+<div class="col-12 title2">
+Assignment 1 — Experience a coding agent
+      </div>
+<div class="col-12 section" id="assignment-1">
+<h1>Assignment 1 — Experience a coding agent <span class="para-heading-inline">(10%)</span></h1>
+<p><strong>Out</strong> Wed Sep 2 · <strong>due</strong> Sun Sep 20, 11:59pm · individual ·
+          <a href="index.html">all five assignments</a></p>
+<p class="lead">Build a web page that drives <a href="../computing/claude-code.html">Claude Code</a>: you type
+          a request, the agent works on a directory of your choice, and the page shows you what it is doing while it
+          does it.</p>
+<p>The assignment is deliberately small, and it is the one assignment nothing later in the course is measured
+          against. Serving it on your own machine is enough. This is a creative task. Part 2 fixes what the page must do; how it looks and how it works are yours to
+          design, and the interesting decisions (what a run in progress should look like, how much of a tool result to
+          show, how a failure should read) are exactly the ones the spec leaves open.</p>
+<p>All five assignments submit code through one private GitHub repository shared with the teaching fellows;
+          this assignment lives in its <code>assignment1/</code> directory. See
+          <a href="#deliverables">Deliverables</a>.</p>
+<div class="tip">
+<strong>Build the frontend with Claude Code too.</strong> It is the fastest way to get a working page, and
+          watching the agent build it teaches you what the page should show.
+        </div>
+<h2 id="goals">Learning goals</h2>
+<ul>
+<li>Use Claude Code to build working software.</li>
+<li>Drive an agent programmatically (headless mode and its event stream) rather than only interactively.</li>
+<li>Watch a trajectory as it happens: what the agent reads, what it runs, and what that costs.</li>
+</ul>
+<h2 id="part-1">Part 1 — Drive Claude Code from a terminal</h2>
+<p><strong>Headless mode.</strong> Claude Code runs non-interactively when invoked with <code>-p</code>, and
+          with <code>--output-format stream-json</code> it prints one JSON event per line as the run proceeds (in
+          print mode, this output format also requires <code>--verbose</code>). The stream is an init event, then
+          assistant messages and tool calls and their results, then a final result event carrying
+          <code>total_cost_usd</code>, <code>duration_ms</code>, <code>num_turns</code>, and the
+          <code>session_id</code>. A minimal run, with the events trimmed to their load-bearing fields:</p>
+<pre><code>$ claude -p "Say hello in one short sentence." --output-format stream-json --verbose
+{"type":"system","subtype":"init","session_id":"fe891e8a-…","cwd":"…","model":"…","tools":[…],…}
+{"type":"assistant","message":{"role":"assistant","content":[{"type":"text","text":"Hello! How can I help you today?"}],…},…}
+{"type":"result","subtype":"success","num_turns":1,"duration_ms":4333,"total_cost_usd":0.137852,"session_id":"fe891e8a-…",…}</code></pre>
+<p>A prompt that makes the agent work (e.g. “read main.py and add a <code>--help</code> flag”)
+          interleaves more assistant events whose content is <code>tool_use</code> blocks, and user events carrying the
+          matching <code>tool_result</code>; those are what your page will render. Passing the result event's
+          session id back (<code>claude -p --resume &lt;session-id&gt; "&lt;follow-up&gt;" …</code>) continues the
+          conversation. See the
+          <a href="https://code.claude.com/docs/en/headless" rel="noopener" target="_blank">headless mode documentation</a>.</p>
+<p>Before writing any web code, run this in a terminal against a scratch directory and read the events it
+          prints, because the frontend you build in Part 2 is a renderer for exactly this stream. Then save one
+          complete run to a file
+          (<code>claude -p "&lt;prompt&gt;" --output-format stream-json --verbose &gt; events.jsonl</code>); it becomes
+          your test input in Part 2.</p>
+<div class="tip">
+<strong>Turn on auto-accept so runs are not stopped by permission prompts.</strong> By default, Claude Code
+          asks before editing a file or running a command. In an interactive session, press Shift+Tab to switch into
+          auto-accept mode. In a headless run there is nobody to ask, so requests that need approval are refused
+          instead: start the run with <code>--dangerously-skip-permissions</code> to auto-approve everything (the
+          right choice against a scratch directory), or with <code>--allowedTools</code> (e.g.
+          <code>--allowedTools "Edit" "Bash(pytest:*)"</code>) to auto-approve only the named tools, and pass the
+          same flag when your Part 2 server spawns the agent.
+        </div>
+<div class="tip">
+<strong>Authenticate with your Harvard login, and do not use the Agent SDK or an API key.</strong> Headless
+          mode reads the same stored credential as interactive Claude Code, so the
+          <a href="../computing/claude-code.html">Harvard login</a> you already have is the whole setup. The Agent SDK
+          is the wrong tool here for two reasons. First, Anthropic's
+          <a href="https://code.claude.com/docs/en/legal-and-compliance" rel="noopener" target="_blank">usage policy</a>
+          directs SDK use to API keys from Claude Console, which the course does not provide. Second, an exported
+          <code>ANTHROPIC_API_KEY</code> takes precedence over your Harvard login, so setting one silently bills your
+          own account.
+        </div>
+<h2 id="part-2">Part 2 — The frontend</h2>
+<p>Now put a web page in front of what you just ran: your server spawns the Part 1 command as a subprocess,
+          forwards its events to the browser, and keeps the session id so a follow-up prompt can resume. The page needs
+          seven features. Each is stated as what the page must
+          do; how it does it is yours to decide. The sketch under each feature shows the behavior it requires, not a
+          design you must copy.</p>
+<ol>
+<li><strong>Submit a prompt.</strong> A text box sends your request to Claude Code, which runs against a
+            working directory you choose, and the page can start another run when the first finishes.
+            <svg aria-label="Sketch: a working-directory field, a prompt box, and a run button" class="feature-demo" role="img" viewbox="0 0 560 122">
+<rect fill="#FFFFFF" height="120" rx="8" stroke="#C4CAD3" stroke-width="1.5" width="558" x="1" y="1"></rect>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="12" x="20" y="30">working directory</text>
+<rect fill="#F7F8FA" height="24" rx="4" stroke="#DEE2E7" width="220" x="140" y="14"></rect>
+<text fill="#1E2126" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="150" y="30">~/scratch/demo-repo</text>
+<line stroke="#E9ECEF" x1="20" x2="540" y1="48" y2="48"></line>
+<rect fill="#FFFFFF" height="44" rx="4" stroke="#DEE2E7" width="436" x="20" y="60"></rect>
+<text fill="#1E2126" font-family="Lato, Arial, sans-serif" font-size="13" x="32" y="87">find the bug that makes test_parse fail and fix it</text>
+<rect fill="#8C1515" height="44" rx="4" width="72" x="468" y="60"></rect>
+<text fill="#FFFFFF" font-family="Lato, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle" x="504" y="87">Run</text>
+</svg></li>
+<li><strong>Show the trajectory live.</strong> The trajectory is what the agent did, event by event: the
+            assistant's text, and every tool call with its name and input (reading <code>parser.py</code>, running
+            <code>pytest</code>, editing a file). Render each event when it arrives, not after the run ends. The
+            assistant's text is usually markdown, so render it as formatting rather than showing the raw markup.
+            <svg aria-label="Sketch: assistant text and tool calls appearing one by one while the run is live" class="feature-demo" role="img" viewbox="0 0 560 140">
+<rect fill="#FFFFFF" height="138" rx="8" stroke="#C4CAD3" stroke-width="1.5" width="558" x="1" y="1"></rect>
+<circle cx="483" cy="26" fill="#B26B00" r="4"></circle>
+<text fill="#B26B00" font-family="Lato, Arial, sans-serif" font-size="12" text-anchor="end" x="540" y="30">running</text>
+<text fill="#1E2126" font-family="Lato, Arial, sans-serif" font-size="13" x="20" y="32">The test expects a trailing newline. I will read the parser first.</text>
+<rect fill="#F5E8E7" height="18" rx="9" width="42" x="20" y="47"></rect>
+<text fill="#6E1010" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="41" y="60">Read</text>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="72" y="60">tests/test_parse.py</text>
+<text fill="#1E7E38" font-family="Lato, Arial, sans-serif" font-size="13" text-anchor="end" x="540" y="60">✓</text>
+<rect fill="#F5E8E7" height="18" rx="9" width="42" x="20" y="75"></rect>
+<text fill="#6E1010" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="41" y="88">Bash</text>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="72" y="88">pytest -x</text>
+<text fill="#1E7E38" font-family="Lato, Arial, sans-serif" font-size="13" text-anchor="end" x="540" y="88">✓</text>
+<rect fill="#F5E8E7" height="18" rx="9" width="42" x="20" y="103"></rect>
+<text fill="#6E1010" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="41" y="116">Edit</text>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="72" y="116">src/parser.py</text>
+<circle cx="487" cy="112" fill="#B26B00" r="4"></circle>
+<text fill="#B26B00" font-family="Lato, Arial, sans-serif" font-size="12" text-anchor="end" x="540" y="116">pending</text>
+</svg></li>
+<li><strong>Show tool results.</strong> Each tool call's result appears with it, and long ones are cut down
+            deliberately (a test log can run thousands of lines, and a page it buries is a page nobody reads). How much
+            to show and how to fold the rest is a design decision you should make.
+            <svg aria-label="Sketch: a tool call with its result shown beneath it, long output folded" class="feature-demo" role="img" viewbox="0 0 560 142">
+<rect fill="#FFFFFF" height="140" rx="8" stroke="#C4CAD3" stroke-width="1.5" width="558" x="1" y="1"></rect>
+<rect fill="#F5E8E7" height="18" rx="9" width="42" x="20" y="19"></rect>
+<text fill="#6E1010" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="41" y="32">Bash</text>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="72" y="32">pytest -x</text>
+<text fill="#1E7E38" font-family="Lato, Arial, sans-serif" font-size="13" text-anchor="end" x="540" y="32">✓</text>
+<rect fill="#F7F8FA" height="72" rx="4" stroke="#DEE2E7" width="496" x="44" y="48"></rect>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="56" y="70">FAILED tests/test_parse.py::test_parse</text>
+<text fill="#A8322E" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="56" y="90">ValueError: unexpected token ')'</text>
+<text fill="#8B9199" font-family="Lato, Arial, sans-serif" font-size="12" font-style="italic" x="56" y="111">▸ 87 more lines, folded</text>
+</svg></li>
+<li><strong>Show status, per tool call and per run.</strong> Status lives at two levels, and the page shows
+            both, the way the Claude Code terminal does. (1) Per tool call: a call is pending from the moment its
+            <code>tool_use</code> block arrives until the matching <code>tool_result</code> attaches (the two share
+            the call's id), and a result that reports an error is visibly one. (2) Per run: the agent works
+            autonomously until the final result event ends the round, so show whether the run is in progress,
+            finished, or failed, and a failing run (a bad directory, an agent error) produces a visible error rather
+            than a page that waits forever.
+            <svg aria-label="Sketch: per-tool-call status while the run proceeds, a per-run status when the round ends, and a failing run showing its error" class="feature-demo" role="img" viewbox="0 0 560 258">
+<rect fill="#FFFFFF" height="256" rx="8" stroke="#C4CAD3" stroke-width="1.5" width="558" x="1" y="1"></rect>
+<text fill="#8B9199" font-family="Lato, Arial, sans-serif" font-size="11" font-style="italic" x="20" y="26">during the run · per tool call</text>
+<rect fill="#F5E8E7" height="18" rx="9" width="42" x="20" y="37"></rect>
+<text fill="#6E1010" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="41" y="50">Bash</text>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="72" y="50">pytest -x</text>
+<text fill="#1E7E38" font-family="Lato, Arial, sans-serif" font-size="13" text-anchor="end" x="540" y="50">✓</text>
+<rect fill="#F5E8E7" height="18" rx="9" width="42" x="20" y="65"></rect>
+<text fill="#6E1010" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="41" y="78">Edit</text>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="72" y="78">src/parser.py</text>
+<circle cx="487" cy="74" fill="#B26B00" r="4"></circle>
+<text fill="#B26B00" font-family="Lato, Arial, sans-serif" font-size="12" text-anchor="end" x="540" y="78">pending</text>
+<line stroke="#E9ECEF" x1="20" x2="540" y1="94" y2="94"></line>
+<text fill="#8B9199" font-family="Lato, Arial, sans-serif" font-size="11" font-style="italic" x="20" y="118">the round ends · per run</text>
+<text fill="#1E2126" font-family="Lato, Arial, sans-serif" font-size="13" x="20" y="142">All 12 tests pass.</text>
+<text fill="#1E7E38" font-family="Lato, Arial, sans-serif" font-size="12" text-anchor="end" x="540" y="142">✓ finished</text>
+<line stroke="#E9ECEF" x1="20" x2="540" y1="158" y2="158"></line>
+<text fill="#8B9199" font-family="Lato, Arial, sans-serif" font-size="11" font-style="italic" x="20" y="182">a failing run</text>
+<rect fill="#EFF1F4" height="18" rx="9" width="38" x="20" y="193"></rect>
+<text fill="#3B4147" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="39" y="206">You</text>
+<text fill="#1E2126" font-family="Lato, Arial, sans-serif" font-size="13" x="70" y="206">start a run in /bad/path</text>
+<text fill="#A8322E" font-family="Lato, Arial, sans-serif" font-size="12" text-anchor="end" x="540" y="206">✕ failed</text>
+<rect fill="#FCF6F5" height="26" rx="4" stroke="#E7CFCE" width="520" x="20" y="218"></rect>
+<text fill="#A8322E" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="32" y="235">Error: /bad/path is not a directory (exit 1)</text>
+</svg></li>
+<li><strong>Continue the conversation.</strong> A follow-up prompt resumes the same session, so the agent
+            keeps its context from the previous turn.
+            <svg aria-label="Sketch: a second prompt resuming the session id the first run returned" class="feature-demo" role="img" viewbox="0 0 560 198">
+<rect fill="#FFFFFF" height="196" rx="8" stroke="#C4CAD3" stroke-width="1.5" width="558" x="1" y="1"></rect>
+<rect fill="#EFF1F4" height="18" rx="9" width="38" x="20" y="21"></rect>
+<text fill="#3B4147" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="39" y="34">You</text>
+<text fill="#1E2126" font-family="Lato, Arial, sans-serif" font-size="13" x="70" y="34">add a --json flag to the CLI</text>
+<text fill="#8B9199" font-family="Lato, Arial, sans-serif" font-size="11" font-style="italic" x="44" y="62">▸ 23 events, folded</text>
+<text fill="#1E2126" font-family="Lato, Arial, sans-serif" font-size="13" x="20" y="90">Added the --json flag and updated the tests.</text>
+<text fill="#1E7E38" font-family="Lato, Arial, sans-serif" font-size="12" text-anchor="end" x="540" y="90">✓ finished</text>
+<text fill="#8B9199" font-family="'Lucida Console', Monaco, monospace" font-size="11" x="44" y="114">$0.58 · 42 s · 12 turns · session_id <tspan fill="#6E1010">fe891e8a-…</tspan></text>
+<line stroke="#E9ECEF" x1="20" x2="540" y1="134" y2="134"></line>
+<rect fill="#EFF1F4" height="18" rx="9" width="38" x="20" y="145"></rect>
+<text fill="#3B4147" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="39" y="158">You</text>
+<text fill="#1E2126" font-family="Lato, Arial, sans-serif" font-size="13" x="70" y="158">now update the README for it</text>
+<circle cx="483" cy="154" fill="#B26B00" r="4"></circle>
+<text fill="#B26B00" font-family="Lato, Arial, sans-serif" font-size="12" text-anchor="end" x="540" y="158">running</text>
+<text fill="#8B9199" font-family="'Lucida Console', Monaco, monospace" font-size="11" x="44" y="180">resumed session <tspan fill="#6E1010">fe891e8a-…</tspan></text>
+</svg></li>
+<li><strong>Show the run's numbers.</strong> When a run finishes, display its cost in dollars, its wall-clock
+            duration, and its number of turns. Claude Code reports all three in its final result event, so this is a
+            display feature, not a measurement exercise.
+            <svg aria-label="Sketch: the run's cost, duration, and turn count shown when it finishes" class="feature-demo" role="img" viewbox="0 0 560 74">
+<rect fill="#FFFFFF" height="72" rx="8" stroke="#C4CAD3" stroke-width="1.5" width="558" x="1" y="1"></rect>
+<text fill="#1E2126" font-family="Lato, Arial, sans-serif" font-size="13" x="20" y="32">Added the --json flag and updated the tests.</text>
+<text fill="#1E7E38" font-family="Lato, Arial, sans-serif" font-size="12" text-anchor="end" x="540" y="32">✓ finished</text>
+<text fill="#8B9199" font-family="'Lucida Console', Monaco, monospace" font-size="11" x="44" y="56">$0.58 · 42 s · 12 turns · session_id <tspan fill="#6E1010">fe891e8a-…</tspan></text>
+</svg></li>
+<li><strong>Show the trajectory as a tree.</strong> The event sequence you rendered in feature 2 is not
+            always flat: Claude Code can delegate work to subagents, and every event a subagent emits carries a
+            <code>parent_tool_use_id</code> naming the tool call that spawned it (events from the main agent carry
+            <code>null</code> there). Nest each subagent's events under that tool call, collapsible so a long subagent
+            run does not bury the main agent's events, and keep a run with no subagents rendering as the flat list of
+            feature 2. In addition, show an outline of the whole trajectory beside the dialogue, just the call names,
+            like a table of contents, so the reader can survey the run and jump to a call. Whenever the window is
+            wide enough, the outline is displayed alongside the dialogue rather than as a strip fixed to the top of
+            the page; on a narrow window it may fold away. Beyond
+            these two views, you are welcome to design a better visualization of the trajectory.
+            Subagents appear only when a run uses one,
+            so demonstrate this with a prompt that asks for one (“use a subagent to survey this
+            directory”).
+            <svg aria-label="Sketch: two parallel subagents branching from a subagents node, one expanded and one collapsed, with an outline of the call names beside the dialogue" class="feature-demo" role="img" viewbox="0 0 560 262">
+<rect fill="#FFFFFF" height="260" rx="8" stroke="#C4CAD3" stroke-width="1.5" width="558" x="1" y="1"></rect>
+<rect fill="#F5E8E7" height="18" rx="9" width="42" x="20" y="19"></rect>
+<text fill="#6E1010" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="41" y="32">Bash</text>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="72" y="32">pytest -x</text>
+<text fill="#1E7E38" font-family="Lato, Arial, sans-serif" font-size="13" text-anchor="end" x="404" y="32">✓</text>
+<rect fill="#EEF4FF" height="18" rx="9" width="52" x="20" y="45"></rect>
+<text fill="#0B5ED7" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="46" y="58">Tasks</text>
+<path d="M 28 63 V 208 M 28 88 H 36 M 28 208 H 36" fill="none" stroke="#C4CAD3" stroke-width="1.5"></path>
+<path d="M 40 80 L 52 80 L 46 89 Z" fill="#646A72"></path>
+<rect fill="#EEF4FF" height="18" rx="9" width="42" x="58" y="79"></rect>
+<text fill="#0B5ED7" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="79" y="92">Task</text>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="110" y="92">survey this directory</text>
+<rect fill="#F5E8E7" height="18" rx="9" width="42" x="90" y="107"></rect>
+<text fill="#6E1010" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="111" y="120">Read</text>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="142" y="120">src/parser.py</text>
+<text fill="#1E7E38" font-family="Lato, Arial, sans-serif" font-size="13" text-anchor="end" x="404" y="120">✓</text>
+<rect fill="#F5E8E7" height="18" rx="9" width="42" x="90" y="135"></rect>
+<text fill="#6E1010" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="111" y="148">Grep</text>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="142" y="148">"TODO"</text>
+<text fill="#1E7E38" font-family="Lato, Arial, sans-serif" font-size="13" text-anchor="end" x="404" y="148">✓</text>
+<text fill="#3B4147" font-family="Lato, Arial, sans-serif" font-size="12.5" x="90" y="176">A small parser package with one failing test.</text>
+<rect fill="#EEF4FF" height="18" rx="9" width="42" x="58" y="199"></rect>
+<text fill="#0B5ED7" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="79" y="212">Task</text>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="110" y="212">summarize the README</text>
+<text fill="#8B9199" font-family="Lato, Arial, sans-serif" font-size="11" font-style="italic" x="266" y="212">· 4 events collapsed</text>
+<rect fill="#F5E8E7" height="18" rx="9" width="42" x="20" y="231"></rect>
+<text fill="#6E1010" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="41" y="244">Edit</text>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="72" y="244">src/parser.py</text>
+<text fill="#1E7E38" font-family="Lato, Arial, sans-serif" font-size="13" text-anchor="end" x="404" y="244">✓</text>
+<rect fill="#F7F8FA" height="176" rx="4" stroke="#DEE2E7" width="120" x="420" y="16"></rect>
+<text fill="#8B9199" font-family="Lato, Arial, sans-serif" font-size="10.5" font-style="italic" x="430" y="36">outline</text>
+<path d="M 480 62 V 69 M 452 69 H 512 M 452 69 V 76 M 512 69 V 76 M 452 92 V 102 M 452 118 V 128 M 452 144 V 151 M 452 151 H 512 M 512 151 V 92 M 480 151 V 158" fill="none" stroke="#C4CAD3" stroke-width="1.2"></path>
+<rect fill="#F5E8E7" height="16" rx="8" width="48" x="456" y="46"></rect>
+<text fill="#6E1010" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="480" y="58">Bash</text>
+<rect fill="#EEF4FF" height="16" rx="8" width="48" x="428" y="76"></rect>
+<text fill="#0B5ED7" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="452" y="88">Task</text>
+<rect fill="#EEF4FF" height="16" rx="8" width="48" x="488" y="76"></rect>
+<text fill="#0B5ED7" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="512" y="88">Task</text>
+<rect fill="#F5E8E7" height="16" rx="8" width="48" x="428" y="102"></rect>
+<text fill="#6E1010" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="452" y="114">Read</text>
+<rect fill="#F5E8E7" height="16" rx="8" width="48" x="428" y="128"></rect>
+<text fill="#6E1010" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="452" y="140">Grep</text>
+<rect fill="#F5E8E7" height="16" rx="8" width="48" x="456" y="158"></rect>
+<text fill="#6E1010" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="480" y="170">Edit</text>
+</svg></li>
+</ol>
+<p><strong>Put together, the seven features are one page.</strong> The sketch below shows one possible whole:
+          a first run that finished with its numbers, a second run resumed from the same session and still in
+          progress, one tool result expanded and folded, and a subagent nested under its Task call. It shows the
+          behavior, not a design you must copy.</p>
+<svg aria-label="Static demo: the whole page, composing the seven features into one view, with an outline of the call names beside the dialogue" class="feature-demo feature-demo-full" role="img" viewbox="0 0 724 638">
+<rect fill="#FFFFFF" height="636" rx="8" stroke="#C4CAD3" stroke-width="1.5" width="722" x="1" y="1"></rect>
+<rect fill="#F7F8FA" height="546" rx="4" stroke="#DEE2E7" width="144" x="560" y="14"></rect>
+<text fill="#8B9199" font-family="Lato, Arial, sans-serif" font-size="10.5" font-style="italic" x="572" y="36">outline</text>
+<g opacity="0.3">
+<rect fill="#F5E8E7" height="16" rx="8" width="48" x="608" y="56"></rect>
+<text fill="#6E1010" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="632" y="68">Read</text>
+</g>
+<path d="M 632 72 V 82" fill="none" opacity="0.65" stroke="#C4CAD3" stroke-width="1.2"></path>
+<path d="M 632 98 V 108 M 632 124 V 134 M 632 150 V 160 M 632 176 V 186 M 632 202 V 212 M 632 228 V 238 M 632 254 V 264 M 632 280 V 290 M 632 306 V 316 M 632 332 V 342 M 632 358 V 368" fill="none" stroke="#C4CAD3" stroke-width="1.2"></path>
+<rect fill="#F5E8E7" height="16" rx="8" width="48" x="608" y="82"></rect>
+<text fill="#6E1010" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="632" y="94">Read</text>
+<rect fill="#F5E8E7" height="16" rx="8" width="48" x="608" y="108"></rect>
+<text fill="#6E1010" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="632" y="120">Grep</text>
+<rect fill="#F5E8E7" height="16" rx="8" width="48" x="608" y="134"></rect>
+<text fill="#6E1010" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="632" y="146">Edit</text>
+<rect fill="#F5E8E7" height="16" rx="8" width="48" x="608" y="160"></rect>
+<text fill="#6E1010" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="632" y="172">Bash</text>
+<rect fill="#F5E8E7" height="16" rx="8" width="48" x="608" y="186"></rect>
+<text fill="#6E1010" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="632" y="198">Read</text>
+<rect fill="#F5E8E7" height="16" rx="8" width="48" x="608" y="212"></rect>
+<text fill="#6E1010" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="632" y="224">Edit</text>
+<rect fill="#F5E8E7" height="16" rx="8" width="48" x="608" y="238"></rect>
+<text fill="#6E1010" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="632" y="250">Bash</text>
+<rect fill="#F5E8E7" height="16" rx="8" width="48" x="608" y="264"></rect>
+<text fill="#6E1010" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="632" y="276">Edit</text>
+<rect fill="#F5E8E7" height="16" rx="8" width="48" x="608" y="290"></rect>
+<text fill="#6E1010" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="632" y="302">Bash</text>
+<rect fill="#F5E8E7" height="16" rx="8" width="48" x="608" y="316"></rect>
+<text fill="#6E1010" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="632" y="328">Bash</text>
+<rect fill="#EFF1F4" height="16" rx="8" width="48" x="608" y="342"></rect>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="632" y="354">You</text>
+<path d="M 632 384 V 392 M 600 392 H 664 M 600 392 V 400 M 664 392 V 400 M 600 416 V 426 M 664 416 V 426 M 600 442 V 452 M 664 442 V 452 M 600 468 V 475 M 664 468 V 475 M 600 475 H 664 M 632 475 V 482" fill="none" stroke="#C4CAD3" stroke-width="1.2"></path>
+<rect fill="#F5E8E7" height="16" rx="8" width="48" x="608" y="368"></rect>
+<text fill="#6E1010" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="632" y="380">Read</text>
+<rect fill="#EEF4FF" height="16" rx="8" width="48" x="576" y="400"></rect>
+<text fill="#0B5ED7" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="600" y="412">Task</text>
+<rect fill="#EEF4FF" height="16" rx="8" width="48" x="640" y="400"></rect>
+<text fill="#0B5ED7" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="664" y="412">Task</text>
+<rect fill="#F5E8E7" height="16" rx="8" width="48" x="576" y="426"></rect>
+<text fill="#6E1010" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="600" y="438">Read</text>
+<rect fill="#F5E8E7" height="16" rx="8" width="48" x="640" y="426"></rect>
+<text fill="#6E1010" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="664" y="438">Glob</text>
+<rect fill="#F5E8E7" height="16" rx="8" width="48" x="576" y="452"></rect>
+<text fill="#6E1010" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="600" y="464">Grep</text>
+<rect fill="#F5E8E7" height="16" rx="8" width="48" x="640" y="452"></rect>
+<text fill="#6E1010" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="664" y="464">Read</text>
+<rect fill="#FDF6E7" height="16" rx="8" stroke="#B26B00" stroke-width="1.2" width="48" x="608" y="482"></rect>
+<text fill="#B26B00" font-family="'Lucida Console', Monaco, monospace" font-size="9.5" text-anchor="middle" x="632" y="494">Edit</text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="12" x="20" y="30">working directory</text>
+<rect fill="#F7F8FA" height="24" rx="4" stroke="#DEE2E7" width="220" x="140" y="14"></rect>
+<text fill="#1E2126" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="150" y="30">~/scratch/demo-repo</text>
+<line stroke="#E9ECEF" x1="20" x2="540" y1="48" y2="48"></line>
+<rect fill="#EFF1F4" height="18" rx="9" width="38" x="20" y="59"></rect>
+<text fill="#3B4147" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="39" y="72">You</text>
+<text fill="#1E2126" font-family="Lato, Arial, sans-serif" font-size="13" x="70" y="72">add a --json flag to the CLI</text>
+<text fill="#8B9199" font-family="Lato, Arial, sans-serif" font-size="11" font-style="italic" x="44" y="100">▸ 23 events, folded</text>
+<text fill="#1E2126" font-family="Lato, Arial, sans-serif" font-size="13" x="20" y="128">Added the --json flag and updated the tests.</text>
+<text fill="#1E7E38" font-family="Lato, Arial, sans-serif" font-size="12" text-anchor="end" x="540" y="128">✓ finished</text>
+<text fill="#8B9199" font-family="'Lucida Console', Monaco, monospace" font-size="11" x="44" y="152">$0.58 · 42 s · 12 turns · session_id <tspan fill="#6E1010">fe891e8a-…</tspan></text>
+<line stroke="#E9ECEF" x1="20" x2="540" y1="172" y2="172"></line>
+<rect fill="#EFF1F4" height="18" rx="9" width="38" x="20" y="183"></rect>
+<text fill="#3B4147" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="39" y="196">You</text>
+<text fill="#1E2126" font-family="Lato, Arial, sans-serif" font-size="13" x="70" y="196">use subagents to survey the repo, then update the README</text>
+<circle cx="487" cy="192" fill="#B26B00" r="4"></circle>
+<text fill="#B26B00" font-family="Lato, Arial, sans-serif" font-size="12" text-anchor="end" x="540" y="196">running</text>
+<text fill="#8B9199" font-family="'Lucida Console', Monaco, monospace" font-size="11" x="44" y="218">resumed session <tspan fill="#6E1010">fe891e8a-…</tspan></text>
+<text fill="#1E2126" font-family="Lato, Arial, sans-serif" font-size="13" x="20" y="242">I will run two surveys, then edit the README.</text>
+<rect fill="#F5E8E7" height="18" rx="9" width="42" x="20" y="257"></rect>
+<text fill="#6E1010" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="41" y="270">Read</text>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="72" y="270">README.md</text>
+<text fill="#1E7E38" font-family="Lato, Arial, sans-serif" font-size="13" text-anchor="end" x="540" y="270">✓</text>
+<rect fill="#F7F8FA" height="64" rx="4" stroke="#DEE2E7" width="496" x="44" y="282"></rect>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="56" y="302"># demo-cli</text>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="56" y="320">A small CLI for parsing logs.</text>
+<text fill="#8B9199" font-family="Lato, Arial, sans-serif" font-size="11" font-style="italic" x="56" y="338">▸ 34 more lines, folded</text>
+<rect fill="#EEF4FF" height="18" rx="9" width="52" x="20" y="352"></rect>
+<text fill="#0B5ED7" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="46" y="365">Tasks</text>
+<path d="M 28 370 V 506 M 28 394 H 36 M 28 506 H 36" fill="none" stroke="#C4CAD3" stroke-width="1.5"></path>
+<path d="M 40 386 L 52 386 L 46 395 Z" fill="#646A72"></path>
+<rect fill="#EEF4FF" height="18" rx="9" width="42" x="58" y="385"></rect>
+<text fill="#0B5ED7" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="79" y="398">Task</text>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="110" y="398">survey the code</text>
+<rect fill="#F5E8E7" height="18" rx="9" width="42" x="90" y="413"></rect>
+<text fill="#6E1010" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="111" y="426">Read</text>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="142" y="426">src/cli.py</text>
+<text fill="#1E7E38" font-family="Lato, Arial, sans-serif" font-size="13" text-anchor="end" x="540" y="426">✓</text>
+<rect fill="#F5E8E7" height="18" rx="9" width="42" x="90" y="441"></rect>
+<text fill="#6E1010" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="111" y="454">Grep</text>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="142" y="454">"--json"</text>
+<text fill="#1E7E38" font-family="Lato, Arial, sans-serif" font-size="13" text-anchor="end" x="540" y="454">✓</text>
+<text fill="#3B4147" font-family="Lato, Arial, sans-serif" font-size="12.5" x="90" y="482">cli.py implements --json.</text>
+<rect fill="#EEF4FF" height="18" rx="9" width="42" x="58" y="497"></rect>
+<text fill="#0B5ED7" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="79" y="510">Task</text>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="110" y="510">survey the docs</text>
+<text fill="#8B9199" font-family="Lato, Arial, sans-serif" font-size="11" font-style="italic" x="230" y="510">· 5 events collapsed</text>
+<rect fill="#F5E8E7" height="18" rx="9" width="42" x="20" y="525"></rect>
+<text fill="#6E1010" font-family="Lato, Arial, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" x="41" y="538">Edit</text>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="12" x="72" y="538">README.md</text>
+<circle cx="487" cy="534" fill="#B26B00" r="4"></circle>
+<text fill="#B26B00" font-family="Lato, Arial, sans-serif" font-size="12" text-anchor="end" x="540" y="538">pending</text>
+<line stroke="#E9ECEF" x1="20" x2="540" y1="560" y2="560"></line>
+<rect fill="#FFFFFF" height="44" rx="4" stroke="#DEE2E7" width="436" x="20" y="576"></rect>
+<text fill="#8B9199" font-family="Lato, Arial, sans-serif" font-size="13" font-style="italic" x="32" y="603">type a follow-up…</text>
+<rect fill="#8C1515" height="44" rx="4" width="72" x="468" y="576"></rect>
+<text fill="#FFFFFF" font-family="Lato, Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle" x="504" y="603">Run</text>
+</svg>
+<p><strong>Try to improve beyond the required features.</strong> An agent usually does the minimal job that
+          meets the expectation of your prompt, so the first working version of your frontend will probably not be
+          friendly to use. The seven features are just the basic requirement, but you can be more creative: make the
+          page more intuitive, make what you are looking for easier to find, and make a run in progress easier to
+          follow. Use the page yourself, notice where it annoys you, and fix that. Much of the
+          enjoyment of this assignment is watching your frontend grow friendlier to a human with each change, and
+          the writeup's first section asks for the improvements you made.</p>
+<p><strong>Give the agent something to work on.</strong> Your page drives Claude Code against a working
+          directory, and a demo on an empty one shows nothing worth watching, so keep a small real codebase around for
+          the agent (separate from the frontend's own repository is simplest). Any project with a few files and a test
+          suite works: an old class project, a small open-source tool you use, or a copy of the frontend you are
+          building itself. Tasks that demo well are concrete and multi-step (“find the bug that makes
+          <code>test_parse</code> fail and fix it”, “add a <code>--json</code> flag and update the
+          README”), because they make the agent read, run, and edit, which is exactly what features 2 and 3
+          display.</p>
+<p><strong>Test efficiently by replaying a recorded stream.</strong> Develop the rendering against a saved
+          <code>events.jsonl</code>, by giving your server a replay mode that reads the file instead of spawning the
+          agent. A live run
+          takes a minute or more and spends real usage, while replaying a recorded stream is instant and free, so it is
+          the difference between a ten-second edit-test loop and a one-minute one. Test against live runs at the end,
+          because two things only they can exercise: the events must render <em>as they arrive</em> rather than after
+          the run ends, and session resume needs a real session id. For the tree view, save a second
+          <code>events.jsonl</code> from a run that spawns a subagent, so that rendering too can be developed in
+          replay.</p>
+<p>Any language and any web stack are fine. However, do not use an agent framework or reimplement the agent
+          loop (that is Assignment 2).</p>
+<p><strong>Where to run it.</strong> Your own machine is enough, and grading does not require a public URL.
+          If you want the page reachable from other devices, a <a href="../computing/cloudlab.html">CloudLab</a> or
+          AWS machine works too; in that case put a random access token in front of it (e.g.
+          <code>openssl rand -hex 16</code>, kept out of the repository) and reject every request without it, because
+          a public page here is a remote control for a process that reads files and runs commands on that machine.
+          Either way, point the agent at a scratch directory rather than at your home directory: your page, your
+          screenshot, and your demo show everything it reads. If you have trouble getting set up on your own laptop,
+          feel free to reach out to the teaching fellows for help.</p>
+<h2 id="part-3">Part 3 — Writeup</h2>
+<p>Markdown or PDF, committed to the repository as <code>assignment1/writeup.md</code> or
+          <code>assignment1/writeup.pdf</code>. There is no page limit, and do not pad:
+          a brief writeup that makes every point clearly is enough. <strong>Write the prose yourself.</strong> The writeup reports
+          what you observed and learned, so a writeup generated entirely by AI defeats that purpose and will incur a
+          penalty. The writeup includes three sections:
+        </p>
+<ol>
+<li><strong>What you built.</strong> One paragraph and one screenshot of what the frontend does, plus the
+            improvements you made beyond the seven required features, as a bullet list or folded into the paragraph
+            if the list is too long.</li>
+<li><strong>What you learned.</strong> Three observations are required, each tied to a specific moment in a
+            session. (1) How the agent works: where it spent more time than you expected, what it read that you
+            would not have read, or how it approached the task differently than you would have. (2) A pitfall: what
+            went wrong or surprised you, how you noticed, and what you would warn a classmate about. (3) A lesson:
+            what you would do differently the next time you use an agent, how you would prompt, scope, or supervise
+            it better, and what in the session taught you that. Beyond these three, you are welcome to add more:
+            insights, or new tools, skills, and plugins you picked up along the way.</li>
+<li><strong>One thing you would change.</strong> If you could change one thing about how Claude Code works
+            (not about your frontend), what would it be, and what did you see that makes you want it?</li>
+</ol>
+<h2 id="stretch">If you want more</h2>
+<p>None of the following is required or graded, but each is a real feature of the tool you have just built, and
+          the students who enjoy this assignment tend to keep using their frontend all semester: a stop button that
+          cancels a running agent, approve or deny buttons for permission prompts, a diff view of the files the agent
+          changed, and several sessions running in parallel tabs.</p>
+<h2 id="deliverables">Deliverables</h2>
+<p>One repository serves the whole course: all five assignments submit their code, writeup, and session
+          files through a single <strong>private GitHub repository</strong>, shared with the instructor and the
+          teaching fellows and nobody else. Only the demo video is uploaded to Canvas. Create it once, put this assignment in an <code>assignment1/</code> directory, and later assignments
+          go in <code>assignment2/</code>, <code>assignment3/</code>, and so on. Invite the instructor and the four TFs,
+          GitHub usernames <a href="https://github.com/1a1a11a" rel="noopener" target="_blank"><code>1a1a11a</code></a>, <a href="https://github.com/LauYeeYu" rel="noopener" target="_blank"><code>LauYeeYu</code></a>, <a href="https://github.com/SeverinaZheng" rel="noopener" target="_blank"><code>SeverinaZheng</code></a>, <a href="https://github.com/G6KlayWang" rel="noopener" target="_blank"><code>G6KlayWang</code></a>, and <a href="https://github.com/AdvaithRavishankar" rel="noopener" target="_blank"><code>AdvaithRavishankar</code></a>.
+        </p>
+<ol>
+<li>Your <strong>code</strong>, in <code>assignment1/</code> of the shared repository, with a README saying
+            how to start the server.</li>
+<li>The <strong>writeup</strong>, at <code>assignment1/writeup.md</code> or
+            <code>assignment1/writeup.pdf</code> in the repository.</li>
+<li>A <strong>demo video</strong> (2–3 minutes), uploaded to Canvas, of the frontend handling a real
+            multi-turn task, with the agent's tool calls visibly streaming while it works. The video must show every
+            one of the seven features, including a failing run and a run that spawns a subagent. In addition, you may
+            sign up to present your frontend live at the sharing session on Sep 21 (the sign-up link will be released
+            on Canvas). The live presentation is optional and can earn up to four bonus percentage points under the
+            <a href="../discussion.html#presentation-feedback">presentation feedback criteria</a>.</li>
+<li>Your <strong>Claude Code session files</strong>, archived as described in
+            <a href="../computing/claude-code.html#export">What to submit with each assignment</a> and committed to
+            <code>assignment1/</code> of the repository. Check that your <code>.gitignore</code> does not exclude
+            the archive. As on every assignment, they carry no separate points; they are the record behind the
+            write-up's claims.</li>
+</ol>
+<h2 id="grading">Grading</h2>
+<div class="table-responsive">
+<table class="table table-bordered rubric-table">
+<thead>
+<tr class="table-light">
+<th scope="col">Weight</th>
+<th scope="col">Component</th>
+</tr>
+</thead>
+<tbody>
+<tr><td><strong>70%</strong></td><td>The seven required features, 10% each, graded working / partially working / absent from your demo video, with the repository as supporting evidence</td></tr>
+<tr><td><strong>20%</strong></td><td>Writeup: section 2 carries most of it, and specific, session-anchored observations earn what generic praise does not</td></tr>
+<tr><td><strong>10%</strong></td><td>Visual design: layout and readability</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="feature-rubric">Features</h2>
+<p>Judged from your demo video: 10% for the behavior below, partial credit for a partial implementation, zero if
+          never demonstrated.</p>
+<div class="table-responsive">
+<table class="table table-bordered rubric-table">
+<thead>
+<tr class="table-light">
+<th scope="col">Feature</th>
+<th scope="col">Full credit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Submit a prompt</strong></td>
+<td>Submitting from the page starts a run against a working directory you choose, and a second run can
+                  be started from the same page after the first finishes.</td>
+</tr>
+<tr>
+<td><strong>Show the trajectory live</strong></td>
+<td>Assistant text and every tool call (name and input) appear in order <em>while the run is in
+                  progress</em>, and markdown in the assistant's text renders as formatting, not raw markup.</td>
+</tr>
+<tr>
+<td><strong>Show tool results</strong></td>
+<td>Every tool call's result is visible with it, and long outputs are deliberately cut down or folded
+                  so the page stays readable.</td>
+</tr>
+<tr>
+<td><strong>Show status, per tool call and per run</strong></td>
+<td>A tool call is visibly pending until its result arrives and visibly an error when the result
+                  reports one; the run's in progress, finished, and failed states are distinguishable; and the
+                  demonstration shows one failing run (e.g. a bad working directory) producing a visible error.</td>
+</tr>
+<tr>
+<td><strong>Continue the conversation</strong></td>
+<td>A follow-up prompt resumes the same session, and the demonstration shows the carried context
+                  (e.g. a follow-up that only makes sense given the previous turn, answered correctly).</td>
+</tr>
+<tr>
+<td><strong>Show the run's numbers</strong></td>
+<td>Cost in dollars, wall-clock duration, and turn count from the result event are displayed for each
+                  finished run.</td>
+</tr>
+<tr>
+<td><strong>Show the trajectory as a tree</strong></td>
+<td>A run that spawns a subagent shows which events belong to which subagent (nested under the
+                  spawning call, or an equivalent visualization of your own design), an outline of just the call
+                  names sits beside the dialogue on a wide window, long subagent runs can be folded away, and a run
+                  with no subagents still renders correctly.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="note-nav">
+<span class="nav-spacer"></span>
+<a href="assignment2.html">Assignment 2 — Build an agent harness →</a>
+</div>
+</div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="container">
+<p><a href="https://madsys.seas.harvard.edu/" rel="noopener" target="_blank">MadSys Research Group</a> · <a href="https://seas.harvard.edu/" rel="noopener" target="_blank">Harvard John A. Paulson School of Engineering and Applied Sciences</a></p>
+<p class="footer-policies"><a href="https://trademark.harvard.edu/pages/trademark-notice" rel="noopener" target="_blank">Trademark Notice</a> · <a href="https://accessibility.harvard.edu/" rel="noopener" target="_blank">Accessibility</a> · <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" rel="noopener" target="_blank">Digital Accessibility</a> · <a href="https://privsec.harvard.edu/harvard-university-privacy-statement" rel="noopener" target="_blank">Privacy Statement</a></p>
+<p class="footer-copyright">© 2026 Juncheng Yang</p>
+</div>
+</footer>
+</body>
+</html>

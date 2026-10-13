@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="../vendor/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="../vendor/bootstrap.bundle.min.js"></script>
+<meta content="Optional CS2680 readings on transformers, tokenization, model architecture, scaling, data, post-training, reasoning, evaluation, and model reports." name="description"/>
+<meta content="Juncheng Yang" name="author"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="CS2680 Modern AI Systems — Transformers and LLM Foundations" property="og:title"/>
+<meta content="A dedicated reading guide to transformers and the foundations of large language models." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="CS2680 Modern AI Systems" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<link href="../css/main-66d6a6d800.css" rel="stylesheet"/>
+<title>CS2680 Modern AI Systems — Transformers and LLM Foundations</title>
+</head>
+<body>
+<div id="site-header"></div>
+<script src="../header.js"></script>
+<main class="container page benchmark-reference" id="top">
+<div class="row">
+<div class="col-12">
+<div class="title">CS2680 Modern AI Systems</div>
+<h1 class="title2">Transformers and LLM foundations</h1>
+<p class="text-center">Optional background readings · <a href="../readings.html">Course readings</a></p>
+<p class="reference-intro">This optional reading guide brings together the material from the former October 19 LLM lecture. The architecture groups explain what one forward pass costs. The remaining groups cover how large to make the model and how long to train it, what it is trained on, and what is done to it after pretraining. Those choices shape the workload Part II serves. Read the scaling group for where the compute goes, the data group for what open corpora and open checkpoints let you inspect, and the post-training and reasoning groups for why a request today emits many more decode tokens than a request in 2020 did.</p>
+<p>The last two groups have to be read together. The evaluation group is about whether a reported number means anything, which is the same skill class discussions and the final project are graded on. The model reports are where the architecture, data, and post-training decisions above appear as shipped systems, and reading several of them side by side is the fastest way to see how much a report discloses and how much it withholds. The DeepSeek and Qwen3 reports sit with the mechanisms they introduced rather than being repeated there.</p>
+</div>
+<nav aria-labelledby="contents-heading" class="col-12 section reference-contents" id="contents">
+<h2 id="contents-heading">Contents</h2>
+<ul class="reference-guide-links">
+<li><a href="#foundations">Foundations</a></li>
+<li><a href="#tokenization">Tokenization</a></li>
+<li><a href="#architecture">Architecture</a></li>
+<li><a href="#sparse-and-alternative-architectures">Sparse and alternative architectures</a></li>
+<li><a href="#the-scaling-law-argument">The scaling-law argument</a></li>
+<li><a href="#data">Data</a></li>
+<li><a href="#post-training">Post-training</a></li>
+<li><a href="#reasoning">Reasoning</a></li>
+<li><a href="#evaluation">Evaluation</a></li>
+<li><a href="#representative-model-reports">Representative model reports</a></li>
+</ul>
+</nav>
+<div class="col-12 section" id="foundations">
+<h2>Foundations</h2>
+<div class="subsection" id="transformer">
+<h3><a href="https://arxiv.org/abs/1706.03762">Transformer</a> (2017)</h3>
+<p><em>Attention Is All You Need</em></p>
+<p><strong>Background.</strong> Sequence models before this paper were recurrent or convolutional, with attention bolted on top as a way for a decoder to look back at the encoder's states.</p>
+<p><strong>Problem.</strong> Recurrence forces computation to proceed one position at a time, so training cannot fill a parallel machine, and a dependency between distant tokens has to survive every intermediate step to reach the other end.</p>
+<p><strong>Key idea.</strong> Drop recurrence and convolution and build the model from self-attention plus position-wise feed-forward layers, with position supplied explicitly. Every position attends to every other inside one matmul-heavy block, and identical blocks stack.</p>
+<p><strong>Findings.</strong> On WMT 2014 English-to-German translation, the Transformer reaches 28.4 BLEU, more than 2 BLEU above the previous best result, including ensembles. On English-to-French, one model reaches 41.8 BLEU after 3.5 days of training on eight GPUs.</p>
+<p><strong>Why it matters.</strong> This is the architecture the whole course optimizes. Read it for shapes, not for BLEU scores: which operations are matmuls, which are attention, and what has to be kept around from one token to the next. Attention's quadratic cost and that per-token state are the two facts everything downstream reacts to.</p>
+<p><strong>Adoption.</strong> PyTorch's nn.TransformerEncoderLayer, Hugging Face Transformers, and vLLM implement the block layout directly.</p>
+</div>
+<div class="subsection" id="illustrated-transformer">
+<h3><a href="https://jalammar.github.io/illustrated-transformer/">Illustrated Transformer</a> (2018)</h3>
+<p><em>The Illustrated Transformer</em></p>
+<p><strong>Background.</strong> The Transformer paper states its architecture as equations over tensors, assuming you can already hold shapes, batching, and multi-head projections in your head while you read.</p>
+<p><strong>Problem.</strong> Read that way, the hard part is not the mathematics but the bookkeeping: which axis carries the head, where the sequence dimension goes, and how the query, key, and value projections line up. Equations hide exactly the part a systems reader needs.</p>
+<p><strong>Key idea.</strong> Walk the same computation as pictures, one tensor at a time, from tokens and embeddings through self-attention and multiple heads to the decoder stack. Each step shows the array being reshaped rather than the formula that produces it.</p>
+<p><strong>Why it matters.</strong> It is the fastest visual route to the shapes, and shapes are what the rest of this page reasons about. Read it before the papers if tensor shapes are not yet automatic; it is standard onboarding material for courses and for industry reading groups.</p>
+</div>
+<div class="subsection" id="annotated-transformer">
+<h3><a href="https://nlp.seas.harvard.edu/annotated-transformer/">Annotated Transformer</a> (2018)</h3>
+<p><em>The Annotated Transformer</em></p>
+<p><strong>Background.</strong> Harvard NLP's annotated implementation sets the text of <em>Attention Is All You Need</em> beside the code that implements each part, in the order the paper presents it.</p>
+<p><strong>Problem.</strong> An architecture description leaves the mechanical details unstated: masking, initialization, the label-smoothed loss, and the learning-rate warmup. Those details decide whether an implementation trains at all, and none of them are visible in the equations.</p>
+<p><strong>Key idea.</strong> Implement the original architecture line by line and annotate each choice in place. The code connects the equations in <em>Attention Is All You Need</em> to executable modules and tensor operations while making implicit details explicit.</p>
+<p><strong>Why it matters.</strong> It is the shortest path from the paper to something you can run and instrument, which is where every measurement in this course begins. Harvard NLP still maintains it as a teaching reference, and reading the code is how minGPT and nanoGPT get used too.</p>
+</div>
+<div class="subsection" id="gpt-1">
+<h3><a href="https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf">GPT-1</a> (2018)</h3>
+<p><em>Improving Language Understanding by Generative Pre-Training</em></p>
+<p><strong>Background.</strong> Before this paper, natural language processing built a separate model per task, trained on that task's labeled data, usually with a task-specific architecture stacked on pretrained word vectors. Unlabeled text was abundant; labels for any one task were not.</p>
+<p><strong>Problem.</strong> Supervised task models need labels, and labels are the scarce resource. Pretrained word vectors transfer only the lowest layer, so every new task still pays for its own architecture and its own annotated corpus.</p>
+<p><strong>Key idea.</strong> The decoder-only recipe in its first form. Pretrain one Transformer decoder as a language model on unlabeled text, then fine-tune the whole model with a small head per task, feeding structured inputs as ordered token sequences rather than changing the architecture.</p>
+<p><strong>Why it matters.</strong> Read it for the point at which the task-specific architecture starts to disappear. Once the same weights serve every task and only the input format changes, capability becomes a property of one pretrained model, which is the assumption every serving system on this page is built on.</p>
+</div>
+<div class="subsection" id="gpt-2">
+<h3><a href="https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf">GPT-2</a> (2019)</h3>
+<p><em>Language Models are Unsupervised Multitask Learners</em></p>
+<p><strong>Background.</strong> The GPT-1 recipe was to pretrain on unlabeled text and then fine-tune a small task-specific head, so every task a system offered shipped its own training run and its own set of weights.</p>
+<p><strong>Problem.</strong> That makes deployment scale with the number of tasks. Each new task needs labeled data, a fine-tuning run, and a separate checkpoint to serve, and nothing generalizes to a task nobody trained for.</p>
+<p><strong>Key idea.</strong> Drop the fine-tuning step. Train one large decoder-only language model on a broad web corpus and ask that single set of weights to do many tasks from the prompt alone, with no gradient update at inference.</p>
+<p><strong>Why it matters.</strong> That claim is what lets a serving system run a single model for every workload, which is the assumption underneath every optimization in Part II. Without it, serving is a fleet of task-specific models rather than one engine to optimize.</p>
+<p><strong>Adoption.</strong> GPT-2 is still the smoke-test model in Hugging Face Transformers and vLLM test suites, and it is the architecture nanoGPT and llm.c train from scratch.</p>
+</div>
+<div class="subsection" id="gpt-3">
+<h3><a href="https://arxiv.org/abs/2005.14165">GPT-3</a> (2020)</h3>
+<p><em>Language Models are Few-Shot Learners</em></p>
+<p><strong>Background.</strong> GPT-2 had shown that one set of weights could attempt many tasks from the prompt, at modest scale and with uneven results across tasks.</p>
+<p><strong>Problem.</strong> Adapting a model to a new task still meant a gradient update, which puts a training pipeline between a user and any task the model has not already been fine-tuned for.</p>
+<p><strong>Key idea.</strong> Scale the model and supply the task in the prompt instead. A handful of worked examples placed in the context specifies the task, and the weights never change.</p>
+<p><strong>Why it matters.</strong> This is where in-context learning came from, and therefore why prompts got long enough that caching them pays. The context becomes the interface, so prefill becomes a cost you have to budget rather than a fixed startup fee.</p>
+<p><strong>Adoption.</strong> Few-shot prompting is a standard interface across LLM APIs and is implemented directly by prompt-template libraries including LangChain.</p>
+</div>
+<div class="subsection" id="bert">
+<h3><a href="https://arxiv.org/abs/1810.04805">BERT</a> (2018)</h3>
+<p><em>Pre-training of Deep Bidirectional Transformers for Language Understanding</em></p>
+<p><strong>Background.</strong> Pretrained language models before this read text in one direction, because the training objective was to predict the next token from the tokens before it.</p>
+<p><strong>Problem.</strong> One-directional conditioning throws away half the context for tasks where you already hold the whole input. For classifying a span or answering a question about a passage, the words after a position matter as much as the words before it.</p>
+<p><strong>Key idea.</strong> Train an encoder with a masked objective: hide a fraction of the tokens and predict them from both directions at once. The output is one representation per input token rather than a continuation of the text.</p>
+<p><strong>Why it matters.</strong> It is the useful contrast to every decoder-only system on this page. There is no autoregressive decode, so no KV cache and none of the serving problems in Part II. The whole input is one forward pass with a known cost.</p>
+<p><strong>Adoption.</strong> Encoder-only models still run retrieval systems: sentence-transformers uses them for embeddings, and cross-encoder rerankers use the same bidirectional stack to score query-document pairs.</p>
+</div>
+<div class="subsection" id="t5">
+<h3><a href="https://arxiv.org/abs/1910.10683">T5</a> (2019)</h3>
+<p><em>Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer</em></p>
+<p><strong>Background.</strong> By 2019 transfer learning for text had produced a large collection of pretraining objectives, corpora, and architectures, each published with its own task-specific output layer and its own experimental setup.</p>
+<p><strong>Problem.</strong> None of those results were comparable. Two papers differed in objective, data, model size, and fine-tuning protocol at once, so a reported gain could not be attributed to any single decision.</p>
+<p><strong>Key idea.</strong> Write every task as text in and text out, over an encoder-decoder rather than a decoder-only stack. That one interface makes objectives, corpora, and architectures substitutable, so a single sweep can compare them under one budget.</p>
+<p><strong>Why it matters.</strong> The contribution is the sweep rather than any one number in it, and it is a model for how a systems claim should be argued. Fix the budget, vary one thing, and report the comparison instead of arguing about it.</p>
+<p><strong>Adoption.</strong> Stable Diffusion 3 and FLUX use T5 encoders as text towers, an external deployment of the model beyond text generation.</p>
+</div>
+</div>
+<div class="col-12 section" id="tokenization">
+<h2>Tokenization</h2>
+<div class="subsection" id="bpe">
+<h3><a href="https://arxiv.org/abs/1508.07909">BPE</a> (2015)</h3>
+<p><em>Neural Machine Translation of Rare Words with Subword Units</em></p>
+<p><strong>Background.</strong> Neural translation systems worked over a fixed word vocabulary of tens of thousands of entries, with every word outside that list collapsed into a single unknown token.</p>
+<p><strong>Problem.</strong> Rare words, names, and inflected forms fall outside any fixed word list, and a model cannot produce a word it has only ever seen as unknown. Enlarging the vocabulary moves the boundary without removing it.</p>
+<p><strong>Key idea.</strong> Build the vocabulary from characters upward. Repeatedly merge the most frequent adjacent pair until the vocabulary is full, so frequent words end up whole and rare ones decompose into pieces the model has already seen.</p>
+<p><strong>Why it matters.</strong> Tokenization is where a user's text becomes a token count, and that count is what the serving system prefills, caches, and bills for. Every sequence length in this course is denominated in units this algorithm chose.</p>
+<p><strong>Adoption.</strong> Byte-level BPE is the tokenizer for GPT-2 through GPT-4 and for Llama 3, and OpenAI's tiktoken and Hugging Face's tokenizers library both implement the merge algorithm directly.</p>
+</div>
+<div class="subsection" id="sentencepiece">
+<h3><a href="https://arxiv.org/abs/1808.06226">SentencePiece</a> (2018)</h3>
+<p><em>A simple and language independent subword tokenizer and detokenizer for Neural Text Processing</em></p>
+<p><strong>Background.</strong> Subword algorithms like BPE were published as procedures over pre-tokenized text, so each pipeline supplied its own word splitter, usually one written for English and its punctuation conventions.</p>
+<p><strong>Problem.</strong> A pre-tokenizer that sits outside the vocabulary breaks two things. First, detokenization becomes a guess about where the spaces were. Second, languages that do not delimit words with whitespace need a separate segmenter before the tokenizer can run at all.</p>
+<p><strong>Key idea.</strong> Treat the input as a raw stream and put whitespace inside the vocabulary itself. With no language-specific pre-tokenization, detokenization is exact and one vocabulary covers many languages.</p>
+<p><strong>Why it matters.</strong> It is the implementation most model families ship, so it is the tokenizer you will meet inside a serving stack. Exact reversibility is what lets a token count correspond to text you can hand back to a user unchanged.</p>
+<p><strong>Adoption.</strong> SentencePiece is the tokenizer shipped with T5, Llama 1 and 2, Mistral, and Gemma, and Hugging Face Transformers loads its model files directly for those families.</p>
+</div>
+<div class="subsection" id="dolma">
+<h3><a href="https://arxiv.org/abs/2402.00159">Dolma</a> (2024)</h3>
+<p><em>an Open Corpus of Three Trillion Tokens for Language Model Pretraining Research</em></p>
+<p><strong>Background.</strong> Trillion-token pretraining corpora existed, but the decisions behind them, what was filtered, what was deduplicated, and what was kept, were largely undocumented and the pipelines that produced them unreleased.</p>
+<p><strong>Problem.</strong> You cannot reason about a tokenizer, or about the sequence lengths a model will actually be served, without the corpus it was fit to. Closed data makes any claim about vocabulary coverage or tokens per word unverifiable.</p>
+<p><strong>Key idea.</strong> Release three trillion tokens together with the curation decisions and processing toolkit, then measure one tokenizer against the whole corpus in §5.</p>
+<p><strong>Findings.</strong> Of 50,280 vocabulary entries, 223 never occur in the corpus, about 0.4%, and most of those are whitespace combinations. Fertility, the number of tokens produced per word, differs by source and is highest on code.</p>
+<p><strong>Why it matters.</strong> Both carry into Part II. Fertility is the conversion factor between the text a user sends and the sequence length you have to serve, so it sets prefill work and cache footprint before any optimization applies, and the unused entries are vocabulary you allocated and never use.</p>
+</div>
+<div class="subsection" id="superbpe">
+<h3><a href="https://arxiv.org/abs/2503.13423">SuperBPE</a> (2025)</h3>
+<p><em>Space Travel for Language Models</em></p>
+<p><strong>Background.</strong> Every subword tokenizer in production splits on whitespace before it merges, so a token can never span a space and the vocabulary is a list of pieces of single words.</p>
+<p><strong>Problem.</strong> That constraint puts a floor under the number of tokens a given text costs, and no merge schedule can go below it. Expressions that always occur together still pay one token each, and the sequence you prefill, cache, and bill for stays longer than the text requires.</p>
+<p><strong>Key idea.</strong> Drop the assumption that a token stays inside a word. A pretokenization curriculum learns subwords first and then superwords that bridge whitespace.</p>
+<p><strong>Findings.</strong> At a fixed 200k vocabulary it encodes text in up to 33% fewer tokens than BPE. An 8B model trained at matched size, vocabulary, and compute averages 4.0 points better across 30 downstream tasks while spending 27% less compute at inference.</p>
+<p><strong>Why it matters.</strong> Fertility is a design parameter, not a property of the language. Crossing word boundaries can improve both model quality and serving cost instead of trading one for the other.</p>
+</div>
+<div class="subsection" id="blt">
+<h3><a href="https://arxiv.org/abs/2412.09871">BLT</a> (2024)</h3>
+<p><em>Byte Latent Transformer: Patches Scale Better Than Tokens</em></p>
+<p><strong>Background.</strong> A tokenizer is a preprocessing step fit once to a corpus, and every cost downstream is denominated in the units it chose. Working directly on bytes removes that step, at the price of a much longer sequence for the same text.</p>
+<p><strong>Problem.</strong> Bytes are not equally hard to predict, so spending the same computation on each one wastes most of it. A byte-level model needs some way to concentrate work on the difficult regions of a sequence and skim the easy ones.</p>
+<p><strong>Key idea.</strong> Bytes grouped into dynamically sized patches, segmented by the entropy of the next byte, so more compute lands where the data is harder. The paper is the first FLOP-controlled scaling study of byte-level models, to 8B parameters and 4T training bytes.</p>
+<p><strong>Why it matters.</strong> Read it for what a serving system loses and gains when there is no fixed vocabulary. The unit you prefill, cache, and bill for is chosen by the model rather than by a tokenizer, which turns sequence length into a runtime property instead of a fixed conversion.</p>
+</div>
+<div class="subsection" id="h-net">
+<h3><a href="https://arxiv.org/abs/2507.07955">H-Net</a> (2025)</h3>
+<p><em>Dynamic Chunking for End-to-End Hierarchical Sequence Modeling</em></p>
+<p><strong>Background.</strong> Tokenization sits outside the model. BPE fixes a vocabulary before training starts, and the byte-level alternatives above still hand the job to a separate component; BLT cuts patches with an entropy model that is not the main network.</p>
+<p><strong>Problem.</strong> A segmentation the training objective cannot see is a segmentation nobody can tune. Whitespace-then-merge is weakest on writing systems without spaces, on code, and on DNA, and a hand-built patcher inherits the fault, since its boundaries are fixed before training.</p>
+<p><strong>Key idea.</strong> Learn the segmentation jointly with everything else, which removes the tokenizer from the pipeline rather than replacing it. A dynamic chunking mechanism decides where to cut, trained through the same objective as the rest of the network.</p>
+<p><strong>Findings.</strong> Compute- and data-matched, one byte-level stage beats a strong BPE Transformer, and iterating the hierarchy matches a token-based Transformer of twice the size. On DNA, data efficiency is nearly 4× the baselines.</p>
+<p><strong>Why it matters.</strong> The gains are largest exactly where the whitespace heuristic is weakest, Chinese, code, and DNA, which is also where the Dolma fertility numbers above are worst. Segmentation is therefore learnable, and the unit you prefill, cache, and bill for is no longer fixed upstream.</p>
+</div>
+</div>
+<div class="col-12 section" id="architecture">
+<h2>Architecture</h2>
+<div class="subsection" id="rope">
+<h3><a href="https://arxiv.org/abs/2104.09864">RoPE</a> (2021)</h3>
+<p><em>RoFormer: Enhanced Transformer with Rotary Position Embedding</em></p>
+<p><strong>Background.</strong> Attention is permutation invariant, so position has to be injected by hand. The original Transformer added a sinusoidal or learned position vector to the token embedding before the first layer.</p>
+<p><strong>Problem.</strong> An added vector encodes an absolute index, while an attention score wants the relative distance between two tokens. Position therefore arrives as a term in the input rather than in the score it is supposed to shape.</p>
+<p><strong>Key idea.</strong> Rotate each query and key vector by an angle proportional to its position, so the dot product between them depends only on the offset between the two. Position enters the score as a rotation instead of an added term, and keys are rotated before they are written to the cache.</p>
+<p><strong>Why it matters.</strong> This is why KV entries are position-encoded rather than position-free, which constrains how cached prefixes can be reused. A cached block carries the offsets it was written at, so sharing it across a different position in another prompt is not a matter of copying bytes, a constraint every prefix-reuse scheme later in the course has to work around.</p>
+<p><strong>Adoption.</strong> RoPE is the position encoding in Llama, Qwen, Mistral, Gemma, and DeepSeek, and its long-context rescalings (NTK and YaRN) are what vLLM and Hugging Face expose as rope_scaling.</p>
+</div>
+<div class="subsection" id="alibi">
+<h3><a href="https://arxiv.org/abs/2108.12409">ALiBi</a> (2021)</h3>
+<p><em>Train Short, Test Long: Attention with Linear Biases Enables Input Length Extrapolation</em></p>
+<p><strong>Background.</strong> A model only ever sees sequences up to its training length, and both learned and sinusoidal position encodings are defined by what happened at those offsets.</p>
+<p><strong>Problem.</strong> Run past the training length and quality falls off, so the context window is effectively fixed when training ends. Extending it means retraining or reworking the position encoding after the fact.</p>
+<p><strong>Key idea.</strong> Remove position embeddings entirely and instead subtract from each attention score a penalty that grows linearly with the query-key distance, using a fixed slope per head. Nothing about position is learned and the bias is defined at any distance, so a model trained on short sequences runs on long ones.</p>
+<p><strong>Why it matters.</strong> It makes extrapolation a property of the scoring function rather than a fine-tuning step, and it shows how much of what a model needs from position is a recency prior. Read it against RoPE with rescaling as the alternative positional scheme aimed at the same target, one built in and one bought afterwards.</p>
+<p><strong>Adoption.</strong> BLOOM and MosaicML's MPT use ALiBi, and Hugging Face Transformers implements it for both model families.</p>
+</div>
+<div class="subsection" id="rmsnorm">
+<h3><a href="https://arxiv.org/abs/1910.07467">RMSNorm</a> (2019)</h3>
+<p><em>Root Mean Square Layer Normalization</em></p>
+<p><strong>Background.</strong> Every Transformer block is wrapped in LayerNorm, which subtracts the mean of an activation, divides by its standard deviation, then applies a learned gain and bias.</p>
+<p><strong>Problem.</strong> Normalization costs almost no arithmetic and a full read and write of the activation tensor, so it is bound by memory traffic. LayerNorm also computes two statistics, and the paper argues that the re-centering one earns little: the invariance that matters is to re-scaling.</p>
+<p><strong>Key idea.</strong> Drop the mean subtraction and the bias. Divide the activation by its root mean square and apply a learned gain, which keeps the re-scaling invariance while removing one reduction and several elementwise operations.</p>
+<p><strong>Why it matters.</strong> It is the standard example of a memory-bound operation worth fusing, since nearly all of its cost is the trip to memory rather than the maths; a small paper that shows up in every fusion discussion. It also sets the pattern for the rest of the block: cheap ops are judged by bytes moved, not by FLOPs.</p>
+<p><strong>Adoption.</strong> RMSNorm replaced LayerNorm in Llama, Qwen, Mistral, Gemma, and DeepSeek, and fused RMSNorm kernels ship in vLLM, FlashInfer, and NVIDIA's Transformer Engine.</p>
+</div>
+<div class="subsection" id="swiglu">
+<h3><a href="https://arxiv.org/abs/2002.05202">SwiGLU</a> (2020)</h3>
+<p><em>GLU Variants Improve Transformer</em></p>
+<p><strong>Background.</strong> The feed-forward block in the original Transformer is two weight matrices with a ReLU between them: project up to a wider hidden dimension, apply the nonlinearity, project back down.</p>
+<p><strong>Problem.</strong> That nonlinearity was inherited rather than argued for, and the block holds most of a model's parameters and most of its prefill FLOPs. Anything that buys quality per parameter there is worth having, and anything that changes its shape changes the whole cost model.</p>
+<p><strong>Key idea.</strong> Replace the single nonlinearity with a gated linear unit. Two separate projections of the input are multiplied elementwise, one of them passed through Swish first, and the product is projected back down. That is why the MLP block has three weight matrices instead of two.</p>
+<p><strong>Why it matters.</strong> It changes the FLOP and parameter accounting of the block you spend the most on, so any roofline estimate or memory budget for a current model has to count three projections rather than two. The paper offers no mechanism for why gating helps, and says so; the field adopted it on the measurement alone.</p>
+<p><strong>Adoption.</strong> SwiGLU is the MLP in PaLM, Llama, Qwen, Mistral, and Gemma, and fused gate-up-and-multiply kernels for it ship in vLLM and Unsloth.</p>
+</div>
+<div class="subsection" id="mqa">
+<h3><a href="https://arxiv.org/abs/1911.02150">MQA</a> (2019)</h3>
+<p><em>Fast Transformer Decoding: One Write-Head is All You Need</em></p>
+<p><strong>Background.</strong> Multi-head attention gives every head its own query, key, and value projections, so a decode step reads one key and one value vector per head, per layer, for every token already in the sequence.</p>
+<p><strong>Problem.</strong> Decoding produces one token at a time, so there is no batch of queries to amortize that read against; the arithmetic per byte fetched is tiny and the step is limited by memory bandwidth. The cache also grows with heads times layers times context, so it, not the weights, decides how many sequences fit.</p>
+<p><strong>Key idea.</strong> Multi-query attention gives every query head a single shared key/value head. Queries stay multi-head and the keys and values collapse to one, which divides the per-token KV cache by the number of query heads and divides the bytes a decode step must read by the same factor.</p>
+<p><strong>Why it matters.</strong> It is the first entry on this list to treat decode memory traffic rather than FLOPs as the quantity worth optimizing. After it, KV bytes are a term you design against, not a consequence of the model you happened to train.</p>
+<p><strong>Adoption.</strong> MQA shipped as the key/value layout in PaLM, Falcon-7B, and StarCoder.</p>
+</div>
+<div class="subsection" id="gqa">
+<h3><a href="https://arxiv.org/abs/2305.13245">GQA</a> (2023)</h3>
+<p><em>Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints</em></p>
+<p><strong>Background.</strong> Multi-head attention pays a key/value pair per query head and is bandwidth-bound at decode. Multi-query attention collapses them to one and cuts the cache by the head count.</p>
+<p><strong>Problem.</strong> Both ends of that range are unsatisfying: the full layout is too expensive to serve, and a single shared key/value head gives up quality. Neither can be had from a model already trained in the other shape without pretraining again, which nobody wants to pay for to change a cache layout.</p>
+<p><strong>Key idea.</strong> Group the query heads, give each group its own key/value head, and uptrain an existing multi-head checkpoint into that shape. The number of groups is a dial between cache size and quality, and reaching a new setting costs a short continued-training run rather than a new pretrain.</p>
+<p><strong>Findings.</strong> Converting to eight key/value groups uses 5% of the original pretraining steps, preserves the seven-task score (47.1 versus 47.2), and reduces time per sample from 1.51 seconds to 0.28.</p>
+<p><strong>Why it matters.</strong> Read it for the argument that KV-cache size is a design parameter rather than a consequence. You choose the number of key/value heads against a serving budget, and you can convert a trained model to that choice afterwards, which is why this is the shape the open-weight families settled on.</p>
+<p><strong>Adoption.</strong> Llama 2 70B, Llama 3, Qwen 2.5, and Mistral use grouped-query attention, and Hugging Face Transformers, vLLM, and llama.cpp support the layout directly.</p>
+</div>
+<div class="subsection" id="deepseek-v2-mla">
+<h3><a href="https://arxiv.org/abs/2405.04434">DeepSeek-V2 / MLA</a> (2024)</h3>
+<p><em>DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model</em></p>
+<p><strong>Background.</strong> By 2024 grouped-query attention was the standard way to shrink the KV cache, sharing one key/value head across a group of query heads. A cache entry was still a key vector and a value vector, per group, per layer, per token.</p>
+<p><strong>Problem.</strong> Sharing heads divides the cache by a constant, and long-context serving wants a much larger factor than that constant can safely reach; cutting groups further costs quality. To go beyond it, the shape of a cache entry has to change, not just how many entries there are.</p>
+<p><strong>Key idea.</strong> Multi-head latent attention caches one low-rank latent vector per token instead of full keys and values, and projects it back up inside the attention computation.</p>
+<p><strong>Findings.</strong> Against DeepSeek 67B the paper reports a 93.3% smaller KV cache and 5.76× higher maximum generation throughput.</p>
+<p><strong>Why it matters.</strong> It changes what a cache entry is, which matters for anything that wants to share, move, or evict cached prefixes. As a report, 236B total parameters with 21B activated per token, it is also the clearest case here of a lab arguing an architecture from its serving cost rather than from its benchmark scores.</p>
+<p><strong>Adoption.</strong> Kimi K2 uses MLA, and vLLM, SGLang, TensorRT-LLM, and FlashInfer carry dedicated MLA kernels for models with this cache layout.</p>
+</div>
+<div class="subsection" id="yarn">
+<h3><a href="https://arxiv.org/abs/2309.00071">YaRN</a> (2023)</h3>
+<p><em>Efficient Context Window Extension of Large Language Models</em></p>
+<p><strong>Background.</strong> RoPE encodes position as a rotation whose frequencies are set before training, so a model has only ever seen the rotations that occur inside its training length. Position interpolation had already shown that rescaling those frequencies and fine-tuning stretches the window.</p>
+<p><strong>Problem.</strong> Rescaling every frequency by the same factor squeezes the fast-rotating dimensions that carry short-range detail, so quality drops where it was previously fine, and recovering it takes a long fine-tuning run on long sequences.</p>
+<p><strong>Key idea.</strong> Extend a RoPE model's context window by interpolating the rotary frequencies unevenly, leaving the fast bands nearly untouched and stretching the slow ones, with a correction to the attention scale.</p>
+<p><strong>Findings.</strong> The paper reports reaching the target context with 10× fewer tokens and 2.5× fewer training steps than earlier extension methods.</p>
+<p><strong>Why it matters.</strong> Context length is usually bought after pretraining, which is why serving systems see windows the base model never trained on. The advertised window, the KV budget it implies, and the quality actually delivered at that depth are three separate questions, and this paper is where they come apart.</p>
+<p><strong>Adoption.</strong> Qwen 2.5 and DeepSeek-V3 ship YaRN as their long-context recipe, and it is a named rope_scaling mode in Hugging Face Transformers, vLLM, and llama.cpp.</p>
+</div>
+<div class="subsection" id="gated-deltanet">
+<h3><a href="https://arxiv.org/abs/2412.06464">Gated DeltaNet</a> (2024)</h3>
+<p><em>Gated Delta Networks: Improving Mamba2 with Delta Rule</em></p>
+<p><strong>Background.</strong> Linear attention and state-space models replace the growing KV cache with a recurrent state of fixed size. Mamba2 controls that state with a decay gate; DeltaNet updates it with the delta rule, which overwrites the entry associated with the current key.</p>
+<p><strong>Problem.</strong> A bounded state has to do two opposed things: forget what is stale and write new associations precisely. Gating decays the whole state without regard to what it holds, and the delta rule targets one key while leaving everything else in place. Neither alone holds up on in-context retrieval.</p>
+<p><strong>Key idea.</strong> Put both in a single update, so each step decays the state and then edits the entry for the current key. The hybrid variants interleave these layers with sliding-window attention rather than replacing attention outright.</p>
+<p><strong>Findings.</strong> The combination beats Mamba2 and DeltaNet on in-context retrieval and long-context tasks.</p>
+<p><strong>Why it matters.</strong> This is the primitive the current hybrid stacks are built from. It also moves the question: the choice is not attention against recurrence but how a fixed-size state is managed, and the KV-cache meeting picks up the same idea from the serving side.</p>
+<p><strong>Adoption.</strong> Qwen3-Next interleaves Gated DeltaNet layers with gated attention, and flash-linear-attention, vLLM, and SGLang implement the operator for serving this hybrid.</p>
+</div>
+</div>
+<div class="col-12 section" id="sparse-and-alternative-architectures">
+<h2>Sparse and alternative architectures</h2>
+<div class="subsection" id="gshard">
+<h3><a href="https://arxiv.org/abs/2006.16668">GShard</a> (2020)</h3>
+<p><em>Scaling Giant Models with Conditional Computation and Automatic Sharding</em></p>
+<p><strong>Background.</strong> In a dense transformer every parameter participates in every token, so the compute per token rises with the parameter count. A model too large for one accelerator also has to be split across many, and at the time that split was written by hand into the model code.</p>
+<p><strong>Problem.</strong> Two obstacles stand in the way of a much larger model: (1) dense scaling ties compute per token to total parameters, and (2) hand-partitioning a model over hundreds of accelerators is what makes giant models unbuildable in practice rather than merely expensive.</p>
+<p><strong>Key idea.</strong> Replace the feed-forward layer with a mixture of experts and route each token to two of them, so most parameters sit idle for any given token. Then annotate tensors with how they are sharded and let the compiler derive the partitioning and the communication it implies.</p>
+<p><strong>Why it matters.</strong> Read it for the idea the rest of this group depends on: total parameters and parameters used per token can be decoupled. It also names the bill that comes with the decoupling, since conditional computation turns a compute problem into a routing and communication problem.</p>
+<p><strong>Adoption.</strong> Top-2 token routing is used in Mixtral and in xAI's Grok-1.</p>
+</div>
+<div class="subsection" id="switch-transformer">
+<h3><a href="https://arxiv.org/abs/2101.03961">Switch Transformer</a> (2021)</h3>
+<p><em>Scaling to Trillion Parameter Models with Simple and Efficient Sparsity</em></p>
+<p><strong>Background.</strong> GShard established the mixture-of-experts layer with each token routed to two experts. The reasoning was that a router only learns useful gradients when it has at least two experts to compare, so top-2 was treated as the floor.</p>
+<p><strong>Problem.</strong> Sending every token to two experts doubles both the expert compute and the all-to-all traffic that carries tokens to the devices holding those experts. Sparse models of the period were also reported as unstable to train, so cutting to one expert risked losing the model outright.</p>
+<p><strong>Key idea.</strong> Route each token to exactly one expert, and show the simplification holds. A load-balancing auxiliary loss keeps the router from concentrating on a few experts, and a capacity factor caps how many tokens any expert accepts, dropping the overflow.</p>
+<p><strong>Why it matters.</strong> The routing decision is data-dependent, which is what turns expert placement and load balancing into a serving problem. Top-1 is also the cheapest point on that curve, so it sets the baseline every later routing scheme has to beat on quality per unit of communication.</p>
+<p><strong>Adoption.</strong> The load-balancing auxiliary loss and capacity-factor token dropping are standard in the MoE layers of Megatron-LM and DeepSpeed-MoE, both of which also expose top-1 routing.</p>
+</div>
+<div class="subsection" id="deepseekmoe">
+<h3><a href="https://arxiv.org/abs/2401.06066">DeepSeekMoE</a> (2024)</h3>
+<p><em>Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models</em></p>
+<p><strong>Background.</strong> A conventional mixture-of-experts layer holds a modest number of large experts and routes each token to one or two of them, on the assumption that an expert will specialize if the router is trained to send it consistent work.</p>
+<p><strong>Problem.</strong> Coarse experts limit specialization from two directions. Each expert is large enough that it must cover several unrelated things at once, and the knowledge every token needs gets learned separately inside all of them, so capacity is spent on duplicates.</p>
+<p><strong>Key idea.</strong> Split each expert into finer-grained pieces and route to more of them, which gives the router many more combinations to choose from. Then set aside a few shared experts that every token passes through, so the common knowledge lives in one place and the routed experts are free to specialize.</p>
+<p><strong>Why it matters.</strong> This is the design the DeepSeek model line is built on, so it fixes the expert shape a serving stack has to place, balance, and keep resident. Many small experts per token means more all-to-all messages, each one smaller, which is a different network problem from top-1 routing.</p>
+</div>
+<div class="subsection" id="deepseek-v3">
+<h3><a href="https://arxiv.org/abs/2412.19437">DeepSeek-V3</a> (2024)</h3>
+<p><em>Technical Report</em></p>
+<p><strong>Background.</strong> An open-weight mixture-of-experts model at frontier scale, 671B total parameters with 37B activated per token, pretrained on 14.8T tokens for 2.788M H800 GPU hours. By 2024 the frontier labs had stopped publishing numbers of this kind.</p>
+<p><strong>Problem.</strong> Training a sparse model this large is where the failures live. Routing collapses onto a few experts, the auxiliary loss that prevents the collapse pulls against the language-modeling objective, and expert-parallel all-to-all traffic contends with compute for the same devices.</p>
+<p><strong>Key idea.</strong> Read the systems half. Auxiliary-loss-free load balancing steers the router with a per-expert bias instead of a gradient penalty, a multi-token prediction objective trains heads that predict further ahead than the next token, and FP8 carries most of the arithmetic. The report states what the run cost and how stable it was.</p>
+<p><strong>Why it matters.</strong> As a report it is the open counterexample to GPT-4, since training hours, precision decisions, and communication kernels are all stated. Its mechanisms also left the paper: the multi-token prediction heads became a speculative decoding path in vLLM and SGLang, and the kernels behind the run were released as DeepGEMM and DeepEP.</p>
+</div>
+<div class="subsection" id="mamba">
+<h3><a href="https://arxiv.org/abs/2312.00752">Mamba</a> (2023)</h3>
+<p><em>Linear-Time Sequence Modeling with Selective State Spaces</em></p>
+<p><strong>Background.</strong> Attention costs time quadratic in sequence length, and at decode time it costs a KV cache that grows with every token generated. Structured state-space models run in linear time with a state of fixed size, but their transitions did not depend on the input, so they could not do content-based recall.</p>
+<p><strong>Problem.</strong> A recurrence that ignores its input cannot decide what to keep, which is why state-space models lost to attention on language. Making the transitions input-dependent removes the convolutional form that the fast state-space algorithms relied on, so the fix destroys the speed.</p>
+<p><strong>Key idea.</strong> Make the state-space parameters functions of the input, then recover throughput with a hardware-aware parallel scan that keeps the recurrent state in SRAM instead of writing it to HBM. What the model carries forward is constant state per sequence rather than a growing KV cache.</p>
+<p><strong>Why it matters.</strong> Read it for what a serving stack would look like with no KV cache at all. There is nothing to page, nothing to evict, and no prefix to share across requests, so most of the memory machinery this course studies has no object to act on.</p>
+<p><strong>Adoption.</strong> Mamba blocks ship in Hugging Face Transformers and vLLM, and hybrid Mamba-attention stacks are the architecture of Jamba, Codestral Mamba, Falcon-Mamba, and NVIDIA's Nemotron-H.</p>
+</div>
+<div class="subsection" id="minimax-01">
+<h3><a href="https://arxiv.org/abs/2501.08313">MiniMax-01</a> (2025)</h3>
+<p><em>Scaling Foundation Models with Lightning Attention</em></p>
+<p><strong>Background.</strong> Sub-quadratic attention variants are usually demonstrated at a scale where the quadratic term was never the binding cost, which leaves open whether they survive a frontier-scale pretraining run.</p>
+<p><strong>Problem.</strong> A linear attention layer and a sparse mixture each change how work spreads across devices. The attention operator no longer carries a large dense matrix multiplication for communication to hide behind, and 32 experts add all-to-all traffic on top. Reaching a 1M-token context is a parallelism problem before it is a modeling one.</p>
+<p><strong>Key idea.</strong> Lightning attention, a linear attention computed in tiles so the recurrent state stays on chip, with full softmax attention kept in a fraction of the layers, combined with a 32-expert mixture. The result is 456B total parameters and 45.9B activated per token, trained at a 1M-token context and extrapolating to 4M at inference.</p>
+<p><strong>Why it matters.</strong> Read it for the parallelism and the computation-communication overlap the combination needs, which is what separates a sub-quadratic architecture demonstrated at 1B parameters from one shipped at frontier scale. The weights were released openly and MiniMax-M1 reuses the same lightning-attention hybrid; the team then reverted to full attention for M2.</p>
+</div>
+<div class="subsection" id="deepseek-v4">
+<h3><a href="https://arxiv.org/abs/2606.19348">DeepSeek-V4</a> (2026)</h3>
+<p><em>Towards Highly Efficient Million-Token Context Intelligence</em></p>
+<p><strong>Background.</strong> DeepSeek-V3.2 already served a long context with sparse attention, and vLLM and SGLang both added support for that attention when V3.2-Exp introduced it. The other parts assembled here exist elsewhere already: the Muon optimizer trained Kimi K2, and hyper-connections come from ByteDance's work.</p>
+<p><strong>Problem.</strong> At a one-million-token context the per-token cost of a forward pass and the size of the KV cache both grow past what a serving system can absorb, so reading a million tokens is priced out of ordinary use rather than unsupported.</p>
+<p><strong>Key idea.</strong> Release two preview models, one with 1.6T total parameters and 49B activated and one with 284B and 13B activated, both at a one-million-token context and pretrained on more than 32T tokens. Three changes carry the efficiency claim: compressed hybrid attention, manifold-constrained hyper-connections, and the Muon optimizer.</p>
+<p><strong>Findings.</strong> At a one-million-token context, the larger preview reports 27% of DeepSeek-V3.2's per-token inference FLOPs and 10% of its KV-cache footprint.</p>
+<p><strong>Why it matters.</strong> The headline comparison is a serving-cost ratio against the previous generation rather than a benchmark score. The report therefore connects its architecture choices directly to the cost of supporting the advertised context.</p>
+</div>
+</div>
+<div class="col-12 section" id="the-scaling-law-argument">
+<h2>The scaling-law argument</h2>
+<div class="subsection" id="scaling-laws">
+<h3><a href="https://arxiv.org/abs/2001.08361">scaling laws</a> (2020)</h3>
+<p><em>for Neural Language Models</em></p>
+<p><strong>Background.</strong> By 2020 language models were plainly getting better as they got larger, but nobody could say in advance how much better a given increase in size, data, or compute would make them. Model sizes were justified after the run finished.</p>
+<p><strong>Problem.</strong> A pretraining run costs too much to treat as an experiment. Without a predictive relationship between resources and loss you cannot tell whether a larger model is worth its budget until you have already spent the budget.</p>
+<p><strong>Key idea.</strong> Test loss falls as a smooth power law in three quantities: parameters, dataset size, and training compute. The curves stay regular across several orders of magnitude, so a ladder of small runs extrapolates to a large one you have not trained.</p>
+<p><strong>Why it matters.</strong> This is the reason anyone believed making models bigger would keep working. It turns an open research question into a budgeting exercise, and every later argument about where to spend a fixed number of FLOPs inherits that framing.</p>
+</div>
+<div class="subsection" id="chinchilla">
+<h3><a href="https://arxiv.org/abs/2203.15556">Chinchilla</a> (2022)</h3>
+<p><em>Training Compute-Optimal Large Language Models</em></p>
+<p><strong>Background.</strong> The first scaling laws told labs to spend most of a growing compute budget on parameters, and the largest models that followed grew far faster than the token counts they were trained on.</p>
+<p><strong>Problem.</strong> If the split between model size and data is set wrong, a run buys less capability than its compute allows. The earlier fits were never checked against a sweep that varied both terms together at fixed compute.</p>
+<p><strong>Key idea.</strong> Refit the tradeoff with model size and token count both free instead of varying one term at a time.</p>
+<p><strong>Findings.</strong> The optimum moves: for a given compute budget the model should be much smaller and see far more data. Parameters and tokens scale together, roughly in step.</p>
+<p><strong>Why it matters.</strong> The correction is why 7B-class models are worth serving at all. A training-side result about where to spend FLOPs is what put a cheap-to-run model class within reach, since every request pays for parameters and not for training tokens.</p>
+</div>
+<div class="subsection" id="chinchilla-replication">
+<h3><a href="https://arxiv.org/abs/2404.10102">Chinchilla replication</a> (2024)</h3>
+<p><em>Chinchilla Scaling: A replication attempt</em></p>
+<p><strong>Background.</strong> Chinchilla's sizing rule became the default for pretraining runs on the strength of a parametric fit, and its three estimation methods were reported as agreeing closely with one another.</p>
+<p><strong>Problem.</strong> A fit that every lab plans budgets from should survive being checked, but a headline exponent published without honest uncertainty gives a reader no way to see how much of the claim the underlying data actually supports.</p>
+<p><strong>Key idea.</strong> Refit Chinchilla's own reported data and reconstruct uncertainty for each of its three estimation methods.</p>
+<p><strong>Findings.</strong> The headline parametric estimate is inconsistent with the reported data, its confidence intervals are far too tight to be credible, and the three estimation methods do not agree as well as claimed.</p>
+<p><strong>Why it matters.</strong> The roughly-20-tokens-per-parameter ratio broadly survives; the stated precision does not. Read it straight after Chinchilla, as an exercise in how much of a scaling claim is left once someone checks it.</p>
+</div>
+<div class="subsection" id="over-training">
+<h3><a href="https://arxiv.org/abs/2403.08540">over-training</a> (2024)</h3>
+<p><em>Language models scale reliably with over-training and on downstream tasks</em></p>
+<p><strong>Background.</strong> Chinchilla's optimum minimizes loss for a fixed training budget and says nothing about what happens after the run ends. Its fits also predict pretraining loss rather than error on the downstream tasks anyone deploys a model for.</p>
+<p><strong>Problem.</strong> A model you intend to serve for a long time should be small, because every request pays for its parameters. That argues for training well past the compute-optimal token budget, and nobody had shown the scaling relationships still hold out there.</p>
+<p><strong>Key idea.</strong> Deliberately push models far past the Chinchilla token budget and fit the curves again.</p>
+<p><strong>Findings.</strong> Loss stays predictable in the over-trained regime, and downstream task error stays predictable as a function of loss.</p>
+<p><strong>Why it matters.</strong> This is why nobody actually trains compute-optimal. It connects the training-side scaling argument to the inference bill this course is about: you spend more once, at training time, precisely to lower the cost of every request afterwards.</p>
+</div>
+<div class="subsection" id="data-limits">
+<h3><a href="https://arxiv.org/abs/2211.04325">data limits</a> (2022)</h3>
+<p><em>Will we run out of data? Limits of LLM scaling based on human-generated data</em></p>
+<p><strong>Background.</strong> The scaling laws treat data as one of three terms you buy, and Chinchilla's correction told labs to buy much more of it. Compute and parameters can be bought with money; text has to already exist.</p>
+<p><strong>Problem.</strong> The stock of public human-written text is finite and does not grow with a training budget. If that term runs dry, the recipe that made models better stops being executable at the same time as compute keeps getting cheaper.</p>
+<p><strong>Key idea.</strong> Estimate the stock of public human-written text and project it against the token appetite of successive pretraining runs, which yields a date range at which scaling the data term stops being an option.</p>
+<p><strong>Why it matters.</strong> One of the three terms has a floor and the other two do not. That asymmetry is part of why the argument moved to post-training and to compute per forward pass, which is where this course picks it up.</p>
+</div>
+<div class="subsection" id="scaling-laws-for-precision">
+<h3><a href="https://arxiv.org/abs/2411.04330">scaling laws for precision</a> (2024)</h3>
+<p><em>Scaling Laws for Precision</em></p>
+<p><strong>Background.</strong> Scaling laws count parameters, tokens, and compute, and treat numeric precision as a fixed implementation detail. Quantization was studied separately, as something you do to a model after training has finished.</p>
+<p><strong>Problem.</strong> Precision is not independent of the rest of the recipe, so treating it as a detail leaves two coupled questions unanswerable: what precision to train at, and how much accuracy a given model will lose when you quantize it later.</p>
+<p><strong>Key idea.</strong> Add bits per weight to the scaling law and fit the interaction between the terms. They do not separate: the more tokens a model saw, the more post-training quantization costs it, so the compute-optimal training precision is not 16 bits.</p>
+<p><strong>Why it matters.</strong> It makes precision a budget variable rather than a deployment afterthought, and it says a heavily trained model is harder to compress. Read it now for the shape of the claim and again before the quantization meeting, which is the systems half of the same question.</p>
+</div>
+<div class="subsection" id="test-time-compute">
+<h3><a href="https://arxiv.org/abs/2408.03314">test-time compute</a> (2024)</h3>
+<p><em>Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters</em></p>
+<p><strong>Background.</strong> Every scaling result up to this point spends compute at training time and treats generation as a fixed cost per token. For a harder problem, the only lever was a larger model.</p>
+<p><strong>Problem.</strong> A bigger model is expensive once and then expensive forever, because every request pays for the extra parameters. It is also the wrong lever when difficulty is concentrated in a few hard queries rather than spread evenly across the workload.</p>
+<p><strong>Key idea.</strong> Spend the compute at generation time instead, searching against a verifier or revising an answer in sequence, and allocate it per prompt according to how hard that prompt is. On some problem distributions that beats spending the same compute on a bigger model.</p>
+<p><strong>Why it matters.</strong> The axis moves to inference, and that trade is the premise of the whole course. It converts a training-budget question into a serving-system question, and every optimization in Part II is about making the inference side of it cheap.</p>
+</div>
+<div class="subsection" id="observational-scaling-laws">
+<h3><a href="https://arxiv.org/abs/2405.10938">observational scaling laws</a> (2024)</h3>
+<p><em>Observational Scaling Laws and the Predictability of Language Model Performance</em></p>
+<p><strong>Background.</strong> A scaling law is normally fitted by training a ladder of models yourself: one family, one recipe, one set of hyperparameters held fixed while size or data varies.</p>
+<p><strong>Problem.</strong> That ladder costs a pretraining budget most groups do not have, and the fit describes only the family you trained. Public checkpoints cannot simply be pooled instead, because they differ in architecture, data, and recipe, so their compute numbers are not comparable.</p>
+<p><strong>Key idea.</strong> Place existing public models in a low-dimensional capability space recovered from their benchmark scores, then fit the scaling relationship in that space. Heterogeneous released checkpoints stand in for a ladder you would otherwise have to train.</p>
+<p><strong>Why it matters.</strong> It puts a scaling claim within reach on a budget, which is the situation you will be in for the final project. It also separates the question of what scales from the question of who can afford to measure it.</p>
+</div>
+<div class="subsection" id="scalerl">
+<h3><a href="https://arxiv.org/abs/2510.13786">ScaleRL</a> (2025)</h3>
+<p><em>The Art of Scaling Reinforcement Learning Compute for LLMs</em></p>
+<p><strong>Background.</strong> Pretraining has predictive scaling: fit a curve on small runs and you know roughly what a large one buys. Reinforcement learning had no such curve, and RL is now where a large share of the compute goes.</p>
+<p><strong>Problem.</strong> Without a curve, a recipe can only be judged at the scale it was run at, so you cannot tell whether one recipe beats another or is merely further along the same trajectory.</p>
+<p><strong>Key idea.</strong> More than 400,000 GPU-hours of controlled runs show that compute-performance curves for RL are sigmoidal rather than power laws, and that recipes differ in their asymptote. Loss aggregation, normalization, curriculum, and the off-policy algorithm mostly move compute efficiency without shifting that asymptote. The best-practice recipe extrapolates from small runs to a single 100,000 GPU-hour run.</p>
+<p><strong>Why it matters.</strong> If the recipe sets the ceiling and the other choices only set how fast you reach it, a small-scale win means less than it appears. Read it against the post below, which argues post-training is the dial with slack left in it; this is the first serious attempt to make that dial predictable.</p>
+</div>
+<div class="subsection" id="scaling-laws-carefully">
+<h3><a href="https://lilianweng.github.io/posts/2026-06-24-scaling-laws/">Scaling laws carefully</a> (2026)</h3>
+<p><em>Scaling Laws, Carefully (Lilian Weng)</em></p>
+<p><strong>Background.</strong> Kaplan and Chinchilla are the two fits a pretraining budget gets planned from, and they disagree about how to split a compute budget between parameters and tokens, 5.5× the model for 10× the compute against doubling both together.</p>
+<p><strong>Problem.</strong> The disagreement is not about the phenomenon but about the fit. It rests partly on whether embedding parameters are counted and partly on a fitting procedure that stopped early and was reported to two decimal places. A law fit that way can be wrong in the direction you plan by.</p>
+<p><strong>Key idea.</strong> The methodological rules are the part to keep. Hold architecture, optimizer, learning-rate schedule, and data mix fixed across every rung of the ladder, fit with more than one method rather than trusting a single parametric fit, and treat extrapolation with suspicion, because a small error at the small end compounds in log-log space. When unique data runs short, the value of a token decays with each epoch it is reused, so the repeated-data case needs its own term.</p>
+<p><strong>Why it matters.</strong> The corrections it collects, the Chinchilla replication of Besiroglu et al. and the data-constrained laws of Muennighoff et al., are where a pretraining ladder gets its fitting recipe today. Read it before you fit a scaling law of your own for the final project.</p>
+</div>
+<div class="subsection" id="thoughts-about-scaling-law">
+<h3><a href="https://x.com/jietang/status/2089941544581403107">thoughts about scaling law</a> (2026)</h3>
+<p><em>Jie Tang (Z.ai), on X</em></p>
+<p><strong>Background.</strong> A model is announced with a parameter count, and the fits above turn a compute budget into parameters and tokens. This post is the argument as practitioners are having it now, and the hypothesis the papers above are worth checking against.</p>
+<p><strong>Problem.</strong> A parameter count means nothing on its own. It has to be read alongside how much data there was, where the compute goes per forward pass, and who will run the model under what conditions.</p>
+<p><strong>Key idea.</strong> Total parameters matter up to roughly “enough to hold the world,” and the dial with slack left in it is post-training. GLM-5.3 is offered as the controlled test, same base and same activated and total parameters as 5.2, one extra month of long-horizon RL.</p>
+<p><strong>Why it matters.</strong> Note where that lands the bill. If capability now comes from post-training and from compute spent per forward pass, it lands on the serving system. The same post-training-first bet drives the DeepSeek-R1 and Qwen3 releases, where the gains come from added RL stages rather than a larger base model.</p>
+</div>
+</div>
+<div class="col-12 section" id="data">
+<h2>Data</h2>
+<div class="subsection" id="the-pile">
+<h3><a href="https://arxiv.org/abs/2101.00027">The Pile</a> (2020)</h3>
+<p><em>An 800GB Dataset of Diverse Text for Language Modeling</em></p>
+<p><strong>Background.</strong> Training a language model at GPT-3 scale needs hundreds of gigabytes of text, and in 2020 the corpora that supplied it sat inside a few labs. What was public was a bulk web crawl.</p>
+<p><strong>Problem.</strong> A bulk crawl gives you one distribution and no control over what is in it. Nothing public let you say what a model had read, and nothing let a claim about a data mix be compared against a stated alternative.</p>
+<p><strong>Key idea.</strong> Assemble 825 GiB from 22 sources chosen for diversity rather than scraped in bulk, and document each component separately, so the composition of the corpus is part of the release.</p>
+<p><strong>Why it matters.</strong> It made composition a design variable you can state rather than a property of whatever the crawler returned. It is also the first widely used open pretraining corpus and the baseline the later ones are argued against, so a data-mix claim has something concrete to be a claim about.</p>
+<p><strong>Adoption.</strong> Cerebras-GPT used The Pile as its training corpus, demonstrating uptake outside the team that assembled the dataset.</p>
+</div>
+<div class="subsection" id="c4-analysis">
+<h3><a href="https://arxiv.org/abs/2104.08758">C4 analysis</a> (2021)</h3>
+<p><em>Documenting Large Webtext Corpora: A Case Study on the Colossal Clean Crawled Corpus</em></p>
+<p><strong>Background.</strong> C4 is the filtered Common Crawl snapshot released with T5, and it became a default pretraining corpus. Like most corpora of its size, it shipped with its filters described and its contents unexamined.</p>
+<p><strong>Problem.</strong> Describing a filter does not tell you what survived it. One snapshot turns out to hold machine-generated text and evaluation examples from other benchmarks, and its blocklist filtering removes text about minority groups at a disproportionate rate.</p>
+<p><strong>Key idea.</strong> Audit the artifact rather than the pipeline: where the documents came from, what the filters let through, and who the exclusion lists exclude. The argument is for documenting a corpus rather than describing the filters that produced it.</p>
+<p><strong>Why it matters.</strong> Two things you carry into every evaluation afterwards. Benchmark contamination is a property of the training set rather than of the benchmark, and a filter written to remove offensive text also removes speakers. Neither is visible from the filter list.</p>
+</div>
+<div class="subsection" id="datacomp-lm">
+<h3><a href="https://arxiv.org/abs/2406.11794">DataComp-LM</a> (2024)</h3>
+<p><em>In search of the next generation of training sets for language models</em></p>
+<p><strong>Background.</strong> Curation decisions, which sources, which filters, which deduplication, are reported as choices a lab made, each one bundled with a different model, tokenizer, and compute budget.</p>
+<p><strong>Problem.</strong> Corpora compared that way cannot be compared. If the recipe moves with the data, a better score can come from either of them, so curation stays a matter of taste rather than a measurable result.</p>
+<p><strong>Key idea.</strong> Hold the training recipe fixed and vary only the data, which turns curation into a controlled experiment. Fixed model scales and a fixed evaluation suite make a data mix something you submit and others can rerun.</p>
+<p><strong>Why it matters.</strong> It gives the data half of the scaling argument the experimental discipline the model half already had. Afterwards you can ask which filtering step earned its place, instead of taking a corpus as an indivisible artifact.</p>
+<p><strong>Adoption.</strong> OLMo 2 and SmolLM2 use DCLM-Baseline in their pretraining data mixtures.</p>
+</div>
+<div class="subsection" id="olmo">
+<h3><a href="https://arxiv.org/abs/2402.00838">OLMo</a> (2024)</h3>
+<p><em>Accelerating the Science of Language Models</em></p>
+<p><strong>Background.</strong> By 2024 open weights were normal and the rest of the pipeline was not. A released model usually arrived without its training data, without the order that data was seen in, and without the code that produced it.</p>
+<p><strong>Problem.</strong> Weights let you study the model that exists, not the process that made it. Questions about a training decision, what a data mix contributed or when a capability appeared, cannot be answered from a final checkpoint.</p>
+<p><strong>Key idea.</strong> Release weights, training data, training code, and evaluation code together as one artifact. The whole pipeline becomes inspectable and re-runnable rather than only its endpoint.</p>
+<p><strong>Why it matters.</strong> It reframes openness as a property of the pipeline rather than of the weights. This is the family to pick when a project needs to see inside training rather than around it, because reproduction becomes a question of compute rather than of access.</p>
+</div>
+<div class="subsection" id="pythia">
+<h3><a href="https://arxiv.org/abs/2304.01373">Pythia</a> (2023)</h3>
+<p><em>A Suite for Analyzing Large Language Models Across Training and Scaling</em></p>
+<p><strong>Background.</strong> Claims about training dynamics, when a capability appears and what a model memorizes, are made about models whose intermediate states were never released and whose data order differed from one size to the next.</p>
+<p><strong>Problem.</strong> Comparing two released models confounds scale with data, order, and recipe, and comparing a final checkpoint with itself says nothing about the trajectory that produced it. There is no controlled setting to measure in.</p>
+<p><strong>Key idea.</strong> 16 models from 70M to 12B parameters, trained on the same data in the same order, with 154 checkpoints kept per model. Scale and training time become the only two variables that move.</p>
+<p><strong>Why it matters.</strong> It is the one public setup where a claim about training dynamics can be checked rather than asserted. With the data order fixed and published, you can ask when a behavior appeared and what the model had seen by then, which is a question about the run rather than about the endpoint.</p>
+</div>
+<div class="subsection" id="fineweb">
+<h3><a href="https://arxiv.org/abs/2406.17557">FineWeb</a> (2024)</h3>
+<p><em>Decanting the Web for the Finest Text Data at Scale</em></p>
+<p><strong>Background.</strong> Every open pretraining corpus by 2024 was a Common Crawl derivative, and each one described its filtering as a list of heuristics whose effect on downstream accuracy was asserted rather than measured.</p>
+<p><strong>Problem.</strong> You cannot tell which filtering step earned its place. Deduplication, quality classifiers, and URL blocklists interact, so a corpus that scores well gives you no guidance about which decision to keep when you build the next one.</p>
+<p><strong>Key idea.</strong> 15T tokens from 96 Common Crawl snapshots, with every deduplication and filtering decision ablated rather than asserted. The same method applied to an educational-quality classifier produces FineWeb-Edu, a 1.3T-token subset that moves knowledge and reasoning benchmarks noticeably.</p>
+<p><strong>Why it matters.</strong> Curation becomes an experiment with a measured effect size instead of folklore. It also gives you the open corpus most models after 2024 are either trained on or compared against, which is what makes their reported numbers comparable at all.</p>
+</div>
+<div class="subsection" id="nemotron-cc">
+<h3><a href="https://arxiv.org/abs/2412.02595">Nemotron-CC</a> (2024)</h3>
+<p><em>Transforming Common Crawl into a Refined Long-Horizon Pretraining Dataset</em></p>
+<p><strong>Background.</strong> Model-based quality classifiers became the standard way to filter web text, and the aggressive settings that produce the best benchmark results discard most of what a crawl contains.</p>
+<p><strong>Problem.</strong> Aggressive model-based filtering removes about 90% of the data, which becomes a problem once the plan is to train for 15T tokens. The unique tokens that survive run out, and the run repeats epochs instead of seeing new text.</p>
+<p><strong>Key idea.</strong> Ensemble several classifiers rather than trusting one, rephrase low-quality documents synthetically instead of dropping them, and use fewer heuristic filters.</p>
+<p><strong>Findings.</strong> The full 6.3T-token set matches DCLM on MMLU with four times more unique real tokens. An 8B model trained for 15T tokens beats Llama 3.1 8B by 5 points on MMLU.</p>
+<p><strong>Why it matters.</strong> This is the data-side statement of the over-training argument above. A long token budget changes what filtering should optimize for, from quality per document to unique tokens retained.</p>
+</div>
+<div class="subsection" id="common-pile">
+<h3><a href="https://arxiv.org/abs/2506.05209">Common Pile</a> (2025)</h3>
+<p><em>The Common Pile v0.1: An 8TB Dataset of Public Domain and Openly Licensed Text</em></p>
+<p><strong>Background.</strong> The Pile and the web-scale corpora after it made open pretraining possible by collecting text whose licensing was never settled, and the models trained on them inherit that exposure.</p>
+<p><strong>Problem.</strong> A corpus you cannot license is a corpus you cannot ship. The standard objection to license-clean text is that there is not enough of it to train a model anyone would use.</p>
+<p><strong>Key idea.</strong> Assemble eight terabytes from 30 openly licensed sources, then train two 7B models on the corpus to test whether the licensing constraint still permits competitive pretraining.</p>
+<p><strong>Findings.</strong> Models trained for 1T and 2T tokens perform near Llama 1 and Llama 2 7B at comparable training compute.</p>
+<p><strong>Why it matters.</strong> Licensing is not a systems question, and the answer to it still decides what a course project is permitted to train on. The paired training runs also bound what the constraint costs you against named baselines at matched compute, instead of leaving it as an argument.</p>
+</div>
+<div class="subsection" id="olmo-3">
+<h3><a href="https://arxiv.org/abs/2512.13961">Olmo 3</a> (2025)</h3>
+<p><em>Olmo 3</em></p>
+<p><strong>Background.</strong> Fully open releases, OLMo and Pythia among them, publish weights alongside pretraining data and code so you can look inside the pretraining run. Post-training stayed opaque even in those releases.</p>
+<p><strong>Problem.</strong> A checkpoint tells you where a model ended up, not how it got there. Without the intermediate stages and the data behind each one, you cannot attribute a behavior to pretraining, to supervised fine-tuning, or to reinforcement learning.</p>
+<p><strong>Key idea.</strong> 7B and 32B models released as a flow rather than a checkpoint: every stage, checkpoint, data point, and dependency in the lifecycle, including the strongest fully open thinking model at release.</p>
+<p><strong>Why it matters.</strong> Where OLMo and Pythia above let you look inside pretraining, this extends the same access to the post-training stages described in the next group. It is what you reach for when a project needs to intervene at one stage rather than fine-tune the finished model.</p>
+</div>
+</div>
+<div class="col-12 section" id="post-training">
+<h2>Post-training</h2>
+<div class="subsection" id="flan">
+<h3><a href="https://arxiv.org/abs/2109.01652">FLAN</a> (2021)</h3>
+<p><em>Finetuned Language Models Are Zero-Shot Learners</em></p>
+<p><strong>Background.</strong> GPT-3 showed that a large pretrained model can be steered by a prompt, and getting a useful answer meant hunting for a phrasing and a set of in-context examples that happened to work.</p>
+<p><strong>Problem.</strong> Zero-shot accuracy trailed few-shot badly, which suggests the model was pattern-matching the examples rather than reading the task description. Nothing in next-token pretraining teaches a model that an instruction is a request to be carried out.</p>
+<p><strong>Key idea.</strong> Instruction tuning in its first clear form: fine-tune a 137B model on over 60 tasks phrased as instructions, then evaluate on held-out task types.</p>
+<p><strong>Findings.</strong> Zero-shot accuracy improves, beating zero-shot 175B GPT-3 on 20 of the 25 tasks evaluated.</p>
+<p><strong>Why it matters.</strong> This is where the prompt stops being a trick and becomes the interface. Following instructions turns into a training objective you can budget for, which is what makes an API that accepts plain requests something you can build a system against.</p>
+</div>
+<div class="subsection" id="t0">
+<h3><a href="https://arxiv.org/abs/2110.08207">T0</a> (2021)</h3>
+<p><em>Multitask Prompted Training Enables Zero-Shot Task Generalization</em></p>
+<p><strong>Background.</strong> FLAN established that fine-tuning on many tasks phrased as instructions improves zero-shot generalization, using a 137B decoder-only model and a small number of phrasings per task.</p>
+<p><strong>Problem.</strong> A model tuned on one wording per task can learn the wording instead of the task, and it stays unclear how much of the reported gain comes from parameter count as opposed to the training format.</p>
+<p><strong>Key idea.</strong> Express each training task through several prompt templates and fine-tune an encoder-decoder model across the resulting task-prompt combinations. The variation is intended to teach the task rather than one favored wording.</p>
+<p><strong>Findings.</strong> T0 often beats zero-shot systems up to 16× its size on held-out tasks while using no examples from those task types during training.</p>
+<p><strong>Why it matters.</strong> Read it with FLAN for how much of what looks like capability is training format rather than parameters. Sensitivity to wording becomes a property you can measure and reduce, which sets an expectation for how far a rephrased prompt should move a result.</p>
+</div>
+<div class="subsection" id="instructgpt">
+<h3><a href="https://arxiv.org/abs/2203.02155">InstructGPT</a> (2022)</h3>
+<p><em>Training language models to follow instructions with human feedback</em></p>
+<p><strong>Background.</strong> Instruction tuning on curated task collections makes a model follow instructions, and the tasks people actually type are open-ended requests that no existing dataset supplies answers for.</p>
+<p><strong>Problem.</strong> Most requests have no single correct output to supervise, and the property people care about, whether the answer is helpful and harmless, is far easier to judge by comparing two completions than to write down as a loss.</p>
+<p><strong>Key idea.</strong> The RLHF pipeline, stated plainly. Supervised fine-tuning, a reward model trained on human comparisons, then policy optimization against it, with a penalty that keeps the policy near the supervised model.</p>
+<p><strong>Why it matters.</strong> It converts a preference into an objective you can optimize, and it puts three distinct training jobs and a sampler into one pipeline. Much of the systems difficulty in later alignment work follows from that structure rather than from the algorithm.</p>
+<p><strong>Adoption.</strong> Hugging Face TRL, DeepSpeed-Chat, OpenRLHF, and verl implement the supervised, reward-model, and policy-optimization stages as reusable training pipelines.</p>
+</div>
+<div class="subsection" id="constitutional-ai">
+<h3><a href="https://arxiv.org/abs/2212.08073">Constitutional AI</a> (2022)</h3>
+<p><em>Harmlessness from AI Feedback</em></p>
+<p><strong>Background.</strong> RLHF learns harmlessness from human comparison labels, which means people read and rank model outputs, including the outputs the model should have refused to produce.</p>
+<p><strong>Problem.</strong> That labeling scales badly and cannot be audited. The standard the annotators applied lives in their heads and in a guideline document, so the policy the model absorbed is neither inspectable nor revisable after the fact.</p>
+<p><strong>Key idea.</strong> Replaces human harmlessness labels with a written list of principles and a model that critiques and revises its own outputs. The revisions become supervised training data, and a preference model trained on the model's own comparisons stands in for the human labelers.</p>
+<p><strong>Why it matters.</strong> The policy becomes a document you can read and edit. Therefore the training job now consumes generated tokens in bulk, which puts a sampler inside the training loop and makes alignment compete with serving for inference capacity.</p>
+<p><strong>Adoption.</strong> Hugging Face publishes an external constitutional-AI training recipe that implements critique, revision, and preference generation from a written constitution.</p>
+</div>
+<div class="subsection" id="dpo">
+<h3><a href="https://arxiv.org/abs/2305.18290">DPO</a> (2023)</h3>
+<p><em>Direct Preference Optimization: Your Language Model is Secretly a Reward Model</em></p>
+<p><strong>Background.</strong> Preference alignment at the time ran in two stages. A reward model is fit to human preference pairs, then PPO optimizes the policy against that reward while a KL penalty holds it near a frozen reference model.</p>
+<p><strong>Problem.</strong> The second stage is the expensive one. It keeps a reward model and a value network resident alongside the policy and the reference, and it generates samples inside every update step, which makes the run both memory-hungry and sensitive to hyperparameters.</p>
+<p><strong>Key idea.</strong> The KL-constrained objective has a closed-form optimal policy, so the reward can be rewritten in terms of the policy and reference log probabilities. Preference training collapses into a classification loss over pairs, removing the reward model and the RL loop entirely.</p>
+<p><strong>Why it matters.</strong> It is a large systems simplification. Alignment becomes an ordinary supervised training job with a frozen second copy of the model, no sampler and no critic. It also sets up the question later work reopens, which is what the RL loop was buying.</p>
+<p><strong>Adoption.</strong> Hugging Face TRL ships a DPOTrainer, and Axolotl and Unsloth wrap it. Llama 3 and Zephyr both used DPO for preference alignment in place of PPO.</p>
+</div>
+<div class="subsection" id="grpo">
+<h3><a href="https://arxiv.org/abs/2402.03300">GRPO</a> (2024)</h3>
+<p><em>DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models</em></p>
+<p><strong>Background.</strong> PPO-style RLHF trains a value network beside the policy to turn one end-of-sequence reward into per-token advantages. The critic is a second trained network, updated online with the policy.</p>
+<p><strong>Problem.</strong> On tasks where the reward arrives once, at the end, that critic is expensive machinery for a small amount of information, and it occupies memory and optimizer state the policy could use.</p>
+<p><strong>Key idea.</strong> Read it for §4 rather than for the math scores. Group relative policy optimization samples a group of answers to the same prompt and normalizes their rewards against each other, which removes the value network that PPO needs.</p>
+<p><strong>Why it matters.</strong> Nearly every RL pipeline since is a sampler feeding an update, and dropping the critic is as much a memory decision as an algorithmic one. What the loop spends is generation rather than extra trained parameters.</p>
+<p><strong>Adoption.</strong> Hugging Face TRL ships a GRPOTrainer, and verl and Unsloth provide independent implementations of the update.</p>
+</div>
+<div class="subsection" id="tulu-3">
+<h3><a href="https://arxiv.org/abs/2411.15124">Tulu 3</a> (2024)</h3>
+<p><em>Pushing Frontiers in Open Language Model Post-Training</em></p>
+<p><strong>Background.</strong> Frontier post-training is described in model reports at the level of stage names. You learn that a model was fine-tuned, preference-tuned, and reinforcement-learned, without the mixtures, the filtering, or the order.</p>
+<p><strong>Problem.</strong> A recipe you cannot see is a recipe you cannot debug. When a stage helps, you cannot tell whether the gain came from the objective, from the data mixture, or from contamination between training and evaluation.</p>
+<p><strong>Key idea.</strong> The whole post-training pipeline written out: supervised fine-tuning, direct preference optimization, reinforcement learning with verifiable rewards, the data, the decontamination work, and a section on the methods that did not reliably help.</p>
+<p><strong>Why it matters.</strong> It is the counterpart to a closed report that summarizes all of this in one paragraph. Reading the negative results tells you which stages are worth the compute, which is the decision a post-training budget actually turns on.</p>
+</div>
+</div>
+<div class="col-12 section" id="reasoning">
+<h2>Reasoning</h2>
+<div class="subsection" id="chain-of-thought">
+<h3><a href="https://arxiv.org/abs/2201.11903">chain-of-thought</a> (2022)</h3>
+<p><em>Prompting Elicits Reasoning in Large Language Models</em></p>
+<p><strong>Background.</strong> Few-shot prompting gave the model input-output pairs and read the answer off the next token. Growing the model raised accuracy on many tasks and left multi-step arithmetic and symbolic problems close to flat.</p>
+<p><strong>Problem.</strong> A prompt whose examples jump straight to the answer gives the model nowhere to put intermediate work, so a question that needs several dependent steps has to be settled inside one forward pass.</p>
+<p><strong>Key idea.</strong> Write the worked steps into the few-shot examples. Ask for the intermediate steps and accuracy on multi-step problems rises, with no change to the model or to the training.</p>
+<p><strong>Why it matters.</strong> The cost is paid in decode tokens, which is the first time a prompting technique visibly moves the serving bill. Accuracy becomes something you buy with generation length, and later test-time scaling work is that trade made explicit.</p>
+<p><strong>Adoption.</strong> LangChain and LangGraph expose step-by-step prompting patterns directly in their agent and reasoning workflows.</p>
+</div>
+<div class="subsection" id="self-consistency">
+<h3><a href="https://arxiv.org/abs/2203.11171">self-consistency</a> (2022)</h3>
+<p><em>Improves Chain of Thought Reasoning in Language Models</em></p>
+<p><strong>Background.</strong> Chain-of-thought prompting decodes one path and takes the answer at its end, so the trace and the answer are a single draw from the model.</p>
+<p><strong>Problem.</strong> One wrong step ends the chain at a wrong answer, and nothing in the trace tells you it happened. Greedy decoding also discards the other derivations the model would have produced.</p>
+<p><strong>Key idea.</strong> Sample several reasoning paths and take the majority answer. Different derivations that agree on a final answer are evidence for it, so the vote turns the diversity of temperature sampling into accuracy.</p>
+<p><strong>Findings.</strong> With PaLM-540B, self-consistency improves chain-of-thought accuracy by 17.9 percentage points on GSM8K, 11.0 on SVAMP, 12.2 on AQuA, 6.4 on StrategyQA, and 3.9 on ARC-Challenge.</p>
+<p><strong>Why it matters.</strong> One request becomes many independent decodes over a shared prompt, which is the workload shape that makes prefix reuse and batching worth the engineering. It also prices accuracy directly in samples.</p>
+</div>
+<div class="subsection" id="star">
+<h3><a href="https://arxiv.org/abs/2203.14465">STaR</a> (2022)</h3>
+<p><em>Bootstrapping Reasoning With Reasoning</em></p>
+<p><strong>Background.</strong> Prompting elicits reasoning traces at inference time, and fine-tuning on written-out rationales produces a model that reasons by default. The second path needs a rationale dataset to fine-tune on.</p>
+<p><strong>Problem.</strong> Rationales are the scarce supervision. Final answers are cheap and plentiful, and hand-writing a step-by-step derivation for every training example is not something you can scale.</p>
+<p><strong>Key idea.</strong> Generate rationales, keep those that reach the correct answer, fine-tune on them, and repeat. The answer key filters generated supervision without requiring people to write each derivation.</p>
+<p><strong>Findings.</strong> On CommonsenseQA, the iterative procedure performs comparably to fine-tuning a model 30× larger on the same task.</p>
+<p><strong>Why it matters.</strong> Reasoning becomes something you train for rather than something you prompt for, and the answer key becomes the filter that replaces human labels. The training job now contains a generation phase, so it needs an inference server inside it.</p>
+</div>
+<div class="subsection" id="deepseek-r1">
+<h3><a href="https://arxiv.org/abs/2501.12948">DeepSeek-R1</a> (2025)</h3>
+<p><em>Incentivizing Reasoning Capability in LLMs via Reinforcement Learning</em></p>
+<p><strong>Background.</strong> Long reasoning traces had been obtained by prompting for them or by fine-tuning on a curated set of rationales. Both routes require someone to produce the rationales first.</p>
+<p><strong>Problem.</strong> That supervision does not scale, and it fixes the shape of the reasoning. The model learns the traces you managed to collect rather than whatever chain would actually solve the problem.</p>
+<p><strong>Key idea.</strong> Reinforcement learning against checkable answers elicits long reasoning traces without a supervised rationale dataset. The report also gives the distillation path, training smaller dense models on the traces the large model produces.</p>
+<p><strong>Why it matters.</strong> Read it for the recipe and for the workload it produces. A reasoning model emits far more decode tokens per request, which shifts every tradeoff in Part II toward the decode side.</p>
+</div>
+<div class="subsection" id="qwen3">
+<h3><a href="https://arxiv.org/abs/2505.09388">Qwen3</a> (2025)</h3>
+<p><em>Qwen3 Technical Report</em></p>
+<p><strong>Background.</strong> By 2025 a reasoning model and a fast conversational model were usually separate weights, and the length of a reasoning trace was a property of the checkpoint you loaded rather than something the caller could ask for.</p>
+<p><strong>Problem.</strong> Two deployments cost twice as much to serve, and neither lets a caller who has an easy question say so. The reasoning length is fixed by the model, so accuracy and latency cannot be traded per request.</p>
+<p><strong>Key idea.</strong> One model carries both thinking and non-thinking modes, and the caller sets the thinking budget per request. The report also lays out a dense and mixture-of-experts ladder from 0.6B to 235B parameters under one recipe, which is what makes the family convenient when a project needs to sweep model size.</p>
+<p><strong>Why it matters.</strong> Read it as an interface question: the client is now allowed to buy accuracy with latency, and the serving system has to admit and schedule requests whose length is chosen at call time. Caller-set thinking budgets now appear in the Anthropic and Gemini APIs.</p>
+</div>
+<div class="subsection" id="s1">
+<h3><a href="https://arxiv.org/abs/2501.19393">s1</a> (2025)</h3>
+<p><em>Simple test-time scaling</em></p>
+<p><strong>Background.</strong> Reasoning models answer better when they think longer, and the recipes that produced that behavior arrived through large reinforcement-learning runs over large datasets.</p>
+<p><strong>Problem.</strong> Those recipes leave the thinking length to the model. Nothing in them separates what more training bought from what more thinking bought, and a deployment has no handle to spend on thinking directly.</p>
+<p><strong>Key idea.</strong> Fine-tune on 1,000 curated questions, then control length at decode time with budget forcing, which cuts the thinking process off or extends it by appending "Wait" when the model tries to stop.</p>
+<p><strong>Findings.</strong> Budget forcing alone takes AIME24 from 50% to 57% on the same weights.</p>
+<p><strong>Why it matters.</strong> It is the cheapest demonstration that the thinking budget is a knob, and that the serving system is what holds it. Accuracy becomes something a scheduler can trade against latency without touching the weights.</p>
+</div>
+<div class="subsection" id="test-time-scaling-in-the-wild">
+<h3><a href="https://arxiv.org/abs/2608.18931">test-time scaling in the wild</a> (2026)</h3>
+<p><em>Why Exploitation, Not Exploration, Is the Bottleneck</em></p>
+<p><strong>Background.</strong> Test-time scaling spends more compute per request by drawing more candidates. The results that justify it come mostly from math and code, where a verifier can check whether a candidate answer is right.</p>
+<p><strong>Problem.</strong> Open-ended tasks have no verifier, so a reward model has to pick the winner out of the pool. If that selection step is weak, extra samples buy nothing no matter how much the pool improves.</p>
+<p><strong>Key idea.</strong> Compare five test-time-scaling families across five open-ended domains while normalizing the compute budget.</p>
+<p><strong>Findings.</strong> Exploration scales and exploitation does not: the best candidate in the pool keeps improving with compute, while reward models correlate at about 0.12 with true quality, so selection is close to random at any budget. Only synthesis across candidates beats a single sample, recovering about 40% of the quality available in the pool.</p>
+<p><strong>Why it matters.</strong> Read it with the entry above before spending a serving budget on extra samples. Additional decoding is useful only when the system can exploit the candidates it produces.</p>
+</div>
+</div>
+<div class="col-12 section" id="evaluation">
+<h2>Evaluation</h2>
+<div class="subsection" id="mmlu">
+<h3><a href="https://arxiv.org/abs/2009.03300">MMLU</a> (2020)</h3>
+<p><em>Measuring Massive Multitask Language Understanding</em></p>
+<p><strong>Background.</strong> Language model evaluation in 2020 ran on suites built around one skill at a time, such as entailment between two sentences or question answering over a supplied passage.</p>
+<p><strong>Problem.</strong> None of those suites measures breadth of knowledge, so a high score leaves open whether the model learned a task format or learned a subject. A model that cannot be asked about law or medicine cannot be compared on them either.</p>
+<p><strong>Key idea.</strong> Build one multiple-choice test spanning 57 subjects, from elementary mathematics to professional law, and report one aggregate accuracy.</p>
+<p><strong>Why it matters.</strong> It became the benchmark most scaling claims are still plotted against, which makes it the case to study for what a single aggregate number over 57 unequal tasks can and cannot support. The average hides which subjects moved.</p>
+</div>
+<div class="subsection" id="helm">
+<h3><a href="https://arxiv.org/abs/2211.09110">HELM</a> (2022)</h3>
+<p><em>Holistic Evaluation of Language Models</em></p>
+<p><strong>Background.</strong> By 2022 a model's reported numbers came from whichever benchmarks its authors picked, run under whichever prompt format and decoding settings they picked.</p>
+<p><strong>Problem.</strong> Nothing made two models comparable. A gap between two reported scores could come from the models or from the harness, and a reader had no way to tell which tasks a model had quietly skipped.</p>
+<p><strong>Key idea.</strong> Treat evaluation as a design space. HELM fixes seven metrics over 16 core scenarios and applies them to 30 models under standardized conditions.</p>
+<p><strong>Findings.</strong> The standardized matrix makes coverage explicit: models had previously been evaluated on 17.9% of those core scenarios on average, versus 96.0% under HELM.</p>
+<p><strong>Why it matters.</strong> Efficiency is one of the seven metrics, which is unusual and worth noticing, because it puts cost and latency on the same scorecard as accuracy instead of in a separate paper. Missing coverage becomes visible rather than something the reader has to detect.</p>
+</div>
+<div class="subsection" id="emergent-abilities">
+<h3><a href="https://arxiv.org/abs/2206.07682">emergent abilities</a> (2022)</h3>
+<p><em>of Large Language Models</em></p>
+<p><strong>Background.</strong> Scaling laws describe loss falling smoothly as parameters, data, and compute grow, and that smooth curve is what training budgets are planned against.</p>
+<p><strong>Problem.</strong> Loss is not the quantity anyone deploys. A smooth loss curve says nothing about when a model will be able to do a particular task, and accuracy on some tasks sits at chance across several orders of magnitude of scale before it moves.</p>
+<p><strong>Key idea.</strong> The paper collects those cases and names them emergent abilities: capabilities absent in smaller models and present in larger ones, appearing discontinuously with scale rather than improving gradually.</p>
+<p><strong>Why it matters.</strong> It is a good exercise in asking whether an effect is real or an artifact of the metric. If abilities do arrive as steps, then no amount of small-scale measurement tells you what the next training run will be able to do.</p>
+</div>
+<div class="subsection" id="emergence-a-mirage">
+<h3><a href="https://arxiv.org/abs/2304.15004">emergence, a mirage?</a> (2023)</h3>
+<p><em>Are Emergent Abilities of Large Language Models a Mirage?</em></p>
+<p><strong>Background.</strong> The emergent-abilities claim, listed above, reads sharp jumps in downstream accuracy as capabilities that appear only past a scale threshold, and those jumps are usually plotted with exact-match accuracy on multi-step answers.</p>
+<p><strong>Problem.</strong> Exact-match scoring on a multi-step answer is discontinuous by construction. A model that is steadily getting closer scores zero until every step is right, so the metric can produce the jump without the model doing anything abrupt.</p>
+<p><strong>Key idea.</strong> Swap the discontinuous metric for a continuous one and several famous jumps disappear, leaving a smooth underlying curve. The same measurements support both pictures, depending only on how they are scored.</p>
+<p><strong>Why it matters.</strong> The transferable lesson is about measurement, not about emergence. The same mistake is available to anyone plotting a latency threshold: a pass or fail cutoff applied to a continuously improving quantity will show you a cliff the system does not have.</p>
+</div>
+<div class="subsection" id="chatbot-arena">
+<h3><a href="https://arxiv.org/abs/2403.04132">Chatbot Arena</a> (2024)</h3>
+<p><em>An Open Platform for Evaluating LLMs by Human Preference</em></p>
+<p><strong>Background.</strong> A static benchmark scores a fixed set of questions against a fixed answer key. That works for multiple choice and not for open-ended chat, where the thing being judged is whether a person prefers one response to another.</p>
+<p><strong>Problem.</strong> Preference has no answer key. Paid annotators are expensive and the prompts they write are not the prompts real users send, and a ranking assembled from sparse pairwise votes has to say how much of the ordering the votes actually support.</p>
+<p><strong>Key idea.</strong> Serve two anonymous models side by side to real users, take the pairwise vote, and fit a preference model that turns those comparisons into one ranking. The paper reports over 240K votes at the time of writing.</p>
+<p><strong>Why it matters.</strong> It is the leaderboard everyone cites, and the one whose statistics you should understand before citing it. Votes arrive on prompts the voters chose, so the ranking measures preference on that traffic rather than capability in general.</p>
+</div>
+<div class="subsection" id="benchmark-contamination">
+<h3><a href="https://arxiv.org/abs/2406.04244">benchmark contamination</a> (2024)</h3>
+<p><em>Benchmark Data Contamination of Large Language Models: A Survey</em></p>
+<p><strong>Background.</strong> Benchmarks are published on the web, and pretraining corpora are scraped from the web. The C4 analysis listed above already found benchmark examples sitting inside a pretraining corpus, so the overlap is documented rather than hypothetical.</p>
+<p><strong>Problem.</strong> When the test set is in the training corpus, a score stops measuring generalization and starts measuring recall, and the number alone will not tell you which. No closed model publishes its training corpus, so the overlap cannot simply be looked up.</p>
+<p><strong>Key idea.</strong> The survey collects what contamination is, how it enters a corpus, and the detection methods that have been proposed for it, both the ones that inspect the corpus directly and the ones that probe the model when the corpus is unavailable.</p>
+<p><strong>Why it matters.</strong> Every capability claim in this course rests on a benchmark number, and contamination is the failure mode that voids one silently. Decontamination is now a routine pretraining step, the Llama 3 and Qwen reports both publish contamination analyses, and refreshed benchmarks such as LiveBench and LiveCodeBench exist to sidestep it.</p>
+</div>
+<div class="subsection" id="longbench">
+<h3><a href="https://arxiv.org/abs/2308.14508">LongBench</a> (2023)</h3>
+<p><em>A Bilingual, Multitask Benchmark for Long Context Understanding</em></p>
+<p><strong>Background.</strong> By 2023 model releases advertised context windows in the tens of thousands of tokens, and the evidence offered was usually a single retrieval probe planted in a long filler document.</p>
+<p><strong>Problem.</strong> A long window is a claim about capacity, not about use. Nothing in the advertised number tells you whether the model can answer a question that requires reading the whole input, and a retrieval probe can be passed without using any of the rest of it.</p>
+<p><strong>Key idea.</strong> Combine 21 datasets across 6 task categories in English and Chinese, averaging 6,711 words for the English tasks. Real documents make the evaluation exercise the long context window rather than merely advertise one.</p>
+<p><strong>Why it matters.</strong> It is the measurement half of every long-context and KV-cache argument in Part II. A compression scheme that drops most of the cache and holds accuracy on LongBench is making a claim you can check; SnapKV and KIVI both report on it, which is what makes those numbers comparable.</p>
+</div>
+<div class="subsection" id="mmlu-pro">
+<h3><a href="https://arxiv.org/abs/2406.01574">MMLU-Pro</a> (2024)</h3>
+<p><em>A More Robust and Challenging Multi-Task Language Understanding Benchmark</em></p>
+<p><strong>Background.</strong> MMLU, listed above, is the 57-subject multiple-choice test most scaling claims are still plotted against. By 2024 strong models scored high enough on it that the remaining headroom was small and the ranking between them turned on a few points.</p>
+<p><strong>Problem.</strong> Part of what MMLU measures is the harness rather than the model. Four options leave a large share of the score reachable by guessing, some questions are noisy or trivial, and a score that moves with prompt wording is not a property of the model at all.</p>
+<p><strong>Key idea.</strong> Take MMLU, remove the trivial and noisy questions, and raise the number of answer options from four to ten.</p>
+<p><strong>Findings.</strong> Accuracy falls 16-33% against MMLU, and sensitivity to prompt wording drops from 4-5% to 2% across 24 prompt styles.</p>
+<p><strong>Why it matters.</strong> Read it next to MMLU for how much of a benchmark number belongs to the harness rather than to the model; the Open LLM Leaderboard v2 answered by running MMLU-Pro in place of MMLU. The same question applies to every throughput figure later in the course.</p>
+</div>
+<div class="subsection" id="ruler">
+<h3><a href="https://arxiv.org/abs/2404.06654">RULER</a> (2024)</h3>
+<p><em>What's the Real Context Size of Your Long-Context Language Models?</em></p>
+<p><strong>Background.</strong> The standard long-context test was needle-in-a-haystack: hide one sentence in a long filler document and ask the model to retrieve it. Models pass it at the full advertised window, and that pass is what gets quoted as the context size.</p>
+<p><strong>Problem.</strong> Retrieving one distinctive sentence is the easiest thing a long input can ask for. It says nothing about holding several facts at once, following a chain of references through the document, or aggregating over all of it, so the advertised window and the usable one come apart.</p>
+<p><strong>Key idea.</strong> Generalize the needle test into multiple needles, multi-hop tracing, and aggregation, at configurable lengths, so the same task can be rerun as the input grows. All 17 models evaluated claim a context of 32K tokens or more, and only about half still perform acceptably at that length.</p>
+<p><strong>Why it matters.</strong> It turns the distance between an advertised context window and a usable one into a number, which is the quantity every long-context design in Part II should be measured against. Long-context model reports now quote RULER where a single needle test would once have been enough.</p>
+</div>
+<div class="subsection" id="helmet">
+<h3><a href="https://arxiv.org/abs/2410.02694">HELMET</a> (2024)</h3>
+<p><em>How to Evaluate Long-Context Language Models Effectively and Thoroughly</em></p>
+<p><strong>Background.</strong> Long-context evaluation had two kinds of test. Synthetic probes such as needle retrieval are cheap to generate at any length and easy to score, so they are what model reports quote. Real application tasks are neither cheap nor uniform in length.</p>
+<p><strong>Problem.</strong> A benchmark is only useful if it predicts the thing you care about, and synthetic needle tests do not. Near-perfect needle scores sit alongside large gaps on tasks that need the whole context at once, so passing the probe buys you nothing about downstream behavior.</p>
+<p><strong>Key idea.</strong> Seven application-centric categories, controllable lengths to 128K, and model-based metrics in place of string matching, run over 59 models so the categories can be compared against each other instead of reported one at a time.</p>
+<p><strong>Why it matters.</strong> It gives you the habit of asking what a long-context evaluation predicts before quoting it, and it is the evaluation suite behind Princeton's ProLong long-context training recipe. A training recipe tuned against a needle score is tuning for the wrong thing.</p>
+</div>
+<div class="subsection" id="judges-saturate-first">
+<h3><a href="https://arxiv.org/abs/2601.19532">judges saturate first</a> (2026)</h3>
+<p><em>Benchmarks Saturate When The Model Gets Smarter Than The Judge</em></p>
+<p><strong>Background.</strong> Open-ended benchmarks are scored by a model. A judge reads a candidate answer against a reference, decides whether it is correct, and the aggregate of those decisions becomes the number everyone reports.</p>
+<p><strong>Problem.</strong> That number carries two error sources which are usually collapsed into one, noise in the dataset and noise in the judge. When a benchmark stops separating strong models, you cannot tell whether the models have run out of headroom or the judge has run out of competence.</p>
+<p><strong>Key idea.</strong> Hand-audit Omni-MATH to separate benchmark error from judge error, then measure the latter.</p>
+<p><strong>Findings.</strong> Where two judges disagree, expert annotation finds the original automatic judge wrong in 96.4% of cases, and that happens well before the benchmark itself saturates.</p>
+<p><strong>Why it matters.</strong> The judge, not the task, is what saturates first, so a flat leaderboard is evidence about your grader before it is evidence about the models. Whenever a number comes from one model grading another, which now includes most agent evaluations, this is the failure mode to rule out first.</p>
+</div>
+</div>
+<div class="col-12 section" id="representative-model-reports">
+<h2>Representative model reports</h2>
+<div class="subsection" id="gpt-4">
+<h3><a href="https://arxiv.org/abs/2303.08774">GPT-4</a> (2023)</h3>
+<p><em>Technical Report</em></p>
+<p><strong>Background.</strong> A frontier model release used to come with a paper describing the architecture, the data, and the training setup, because the point of publishing was that other people could reproduce the result or build on it.</p>
+<p><strong>Problem.</strong> Competitive and safety pressure pull the other way. The report states outright that it withholds architecture, model size, hardware, training compute, dataset construction, and training method, so a systems reader is handed capability numbers with nothing that explains them.</p>
+<p><strong>Key idea.</strong> What remains is evaluation and safety. Benchmark and professional-exam results, a demonstration that loss and some capabilities can be predicted from much smaller runs, and an account of the red-teaming and mitigation work behind the deployed system.</p>
+<p><strong>Why it matters.</strong> Read it next to Llama 3 and DeepSeek-V3 to see how much a closed report withholds, and what that costs a reader who wants to build. Its split of capability and safety detail from architecture is now the template for closed releases.</p>
+</div>
+<div class="subsection" id="llama">
+<h3><a href="https://arxiv.org/abs/2302.13971">LLaMA</a> (2023)</h3>
+<p><em>Open and Efficient Foundation Language Models</em></p>
+<p><strong>Background.</strong> The scaling work of the time optimized training compute, so the recommended model for a given budget was as large as the token budget allowed. Frontier weights were closed, and the open alternatives were well behind them.</p>
+<p><strong>Problem.</strong> A serving budget is not a training budget. Once weights are deployed, the cost that dominates is inference on whatever model you ended up with, and the compute-optimal recipe hands you a model larger than you want to serve.</p>
+<p><strong>Key idea.</strong> Train smaller models on far more tokens than compute-optimal scaling calls for, using only publicly available data, and release the weights. The architecture stays plain, with pre-normalization and RMSNorm, SwiGLU activations, and rotary position embeddings.</p>
+<p><strong>Why it matters.</strong> This is the open-weight line the assignments run on, and the reason the course can hand you a real model to profile rather than an API. That RMSNorm, SwiGLU, and rotary stack is the template Mistral, Qwen, and Gemma still follow, so a kernel you read here transfers to most open models.</p>
+</div>
+<div class="subsection" id="llama-2">
+<h3><a href="https://arxiv.org/abs/2307.09288">Llama 2</a> (2023)</h3>
+<p><em>Open Foundation and Fine-Tuned Chat Models</em></p>
+<p><strong>Background.</strong> The first LLaMA release gave you a base model, weights that predict the next token and nothing more. Turning one into an assistant that follows instructions and declines harmful requests was a separate recipe, and the labs that had one kept it private.</p>
+<p><strong>Problem.</strong> Base weights are not a product. Alignment needs preference data, reward models, and a policy-optimization loop, and the license on the earlier weights barred commercial use, so nobody could ship what they built on them.</p>
+<p><strong>Key idea.</strong> Publish the aligned half. Supervised fine-tuning followed by reinforcement learning from human feedback, with separate reward models for helpfulness and safety, documented at the level of a recipe, and released under a license that permits commercial use.</p>
+<p><strong>Why it matters.</strong> It is the release that made open-weight serving mainstream, so the deployment questions in this course have real systems behind them. Hugging Face's chat templates and TRL's preference-tuning pipelines were built around this recipe, and the 70B model's grouped-query attention is now the default attention layout in open models.</p>
+</div>
+<div class="subsection" id="llama-3">
+<h3><a href="https://arxiv.org/abs/2407.21783">Llama 3</a> (2024)</h3>
+<p><em>The Llama 3 Herd of Models</em></p>
+<p><strong>Background.</strong> Frontier model reports before this one published architecture, data description, and evaluation scores, and said almost nothing about the infrastructure a run of that size actually required. The GPT-4 report above is the reference point.</p>
+<p><strong>Problem.</strong> Without failure data from a real run, you cannot reason about what a training cluster has to survive. How often components fail, which ones fail, and what a job does when they do are the numbers that decide whether a run finishes at all.</p>
+<p><strong>Key idea.</strong> Publish the infrastructure. Section 3 describes a 16K-GPU training run, the failure rates observed during it, and the parts of the stack that break at that scale, sitting next to the usual architecture and data sections.</p>
+<p><strong>Why it matters.</strong> It is the most detailed open account of a frontier training run, so it is where reliability at scale stops being an assumption and becomes arithmetic. It also fixes a baseline for the course, since Llama 3 8B and 70B are the open models most serving results are quoted against.</p>
+</div>
+<div class="subsection" id="mistral-7b">
+<h3><a href="https://arxiv.org/abs/2310.06825">Mistral 7B</a> (2023)</h3>
+<p><em>Mistral 7B</em></p>
+<p><strong>Background.</strong> Attention over a full sequence costs both compute and a KV cache that every layer keeps for every token. In a small model that cache, rather than the weights, is what fills the GPU as prompts get longer.</p>
+<p><strong>Problem.</strong> A 7B model fits on one GPU, but full attention over a long prompt lets the KV cache grow with the prompt, which caps both the context length you can offer and the number of concurrent requests a server can hold.</p>
+<p><strong>Key idea.</strong> Restrict each layer's attention to a sliding window of recent tokens and hold the cache in a fixed-size rolling buffer. Information still travels further than one window, because it advances one window per layer, while per-layer memory stays constant in prompt length.</p>
+<p><strong>Why it matters.</strong> It is a 7B-class model in exactly the size range Assignment 4 targets, and the cheapest place to see a bounded-cache decision made inside a shipped model. Sliding-window attention is now a standard option in Hugging Face Transformers, vLLM, and FlashAttention kernels, so the choice returns later as a flag you set.</p>
+</div>
+<div class="subsection" id="gemma-3">
+<h3><a href="https://arxiv.org/abs/2503.19786">Gemma 3</a> (2025)</h3>
+<p><em>Gemma 3 Technical Report</em></p>
+<p><strong>Background.</strong> A long-context model pays for context twice, once in attention work and once in a KV cache that every global attention layer must keep for every token it has seen.</p>
+<p><strong>Problem.</strong> At a 128K-token context the cache, not the parameters, decides how many requests a server can hold. A 1B model carrying a full 128K cache per layer is no longer a small model in the sense that matters for deployment.</p>
+<p><strong>Key idea.</strong> Interleave the attention layers, raising the ratio of local layers to global ones and keeping the local span short. Only the few global layers retain a cache proportional to the whole context. The family runs from 1B to 27B parameters, is multimodal, and supports at least 128K tokens.</p>
+<p><strong>Why it matters.</strong> This is a model report whose headline architecture change is a serving decision. Per-layer cache footprint, rather than parameter count, is what you size a deployment against, and here you can see a family shaped around that fact.</p>
+</div>
+<div class="subsection" id="gpt-oss">
+<h3><a href="https://arxiv.org/abs/2508.10925">gpt-oss</a> (2025)</h3>
+<p><em>gpt-oss-120b &amp; gpt-oss-20b Model Card</em></p>
+<p><strong>Background.</strong> An agent-serving stack does more than generate tokens. It parses what the model emits into tool calls, feeds tool results back into the conversation, and has to do both in the exact format the model was trained on.</p>
+<p><strong>Problem.</strong> Open weights alone do not specify that format. Without the chat template, the tokenizer, and the tool-call grammar, a server either guesses the conventions or reimplements them per model, and interleaved reasoning traces make the boundaries harder to find.</p>
+<p><strong>Key idea.</strong> Release the mixture-of-experts reasoning weights together with inference implementations, tool environments, and tokenizers under Apache 2.0, and write down the harmony chat format explicitly. The tool-use and chat-format sections are the ones to read.</p>
+<p><strong>Why it matters.</strong> Those sections are the part of a model report that most directly constrains an agent-serving system. A chat format is an interface, and this is where you can see that a model's interface, not only its quality, sets what a serving stack must implement.</p>
+</div>
+<div class="subsection" id="kimi-k2">
+<h3><a href="https://arxiv.org/abs/2507.20534">Kimi K2</a> (2025)</h3>
+<p><em>Open Agentic Intelligence</em></p>
+<p><strong>Background.</strong> Training at trillion-parameter scale runs into loss spikes, which are divergences that force a rollback to an earlier checkpoint and re-spend every GPU-hour since. Optimizer choice is one of the levers on how often they happen.</p>
+<p><strong>Problem.</strong> Muon is more compute-efficient than AdamW at scale, but attention logits can grow until the run destabilizes. One spike late in a 15.5T-token pretraining run is expensive enough that stability becomes a systems constraint rather than a detail.</p>
+<p><strong>Key idea.</strong> MuonClip adds a QK-clip technique to Muon, rescaling the query and key projections so attention logits stay bounded. The 1T-parameter model activates 32B parameters per token and is followed by agentic data synthesis and joint reinforcement learning stages.</p>
+<p><strong>Findings.</strong> The 15.5T-token pretraining run completed with zero loss spikes.</p>
+<p><strong>Why it matters.</strong> The report is unusually direct about the instability it engineered around and about the post-training stages that follow, which is what makes it worth reading next to a report that lists only scores. Stability, routing, and rollout infrastructure are systems problems, and this report treats them as such.</p>
+</div>
+<div class="subsection" id="glm-4-5">
+<h3><a href="https://arxiv.org/abs/2508.06471">GLM-4.5</a> (2025)</h3>
+<p><em>Agentic, Reasoning, and Coding (ARC) Foundation Models</em></p>
+<p><strong>Background.</strong> Model reports have been organized around suites of language understanding and generation benchmarks, with tool use and agentic behavior reported, when reported at all, as one more column in the table.</p>
+<p><strong>Problem.</strong> An agentic workload is a different systems problem from single-turn generation. Long trajectories, tool calls, and the question of whether to spend tokens on reasoning at all change what a server schedules, and a model evaluated as a text generator tells you nothing about that.</p>
+<p><strong>Key idea.</strong> Train one set of weights for agentic, reasoning, and coding work together, with a thinking mode and a direct-response mode in the same model. The main model has 355B total parameters with 32B activated and was trained over 23T tokens; a 106B Air variant provides a smaller point on the same ladder.</p>
+<p><strong>Findings.</strong> The main model reports 70.1% on TAU-Bench, 91.0% on AIME 24, and 64.2% on SWE-bench Verified.</p>
+<p><strong>Why it matters.</strong> It is the clearest statement of the claim that agentic capability is now what a model report is organized around. Two modes in one set of weights also pushes a routing decision into the serving stack. The reinforcement learning infrastructure behind the run shipped as slime, which pairs Megatron-LM with SGLang rollouts.</p>
+</div>
+<div class="subsection" id="glm-5">
+<h3><a href="https://arxiv.org/abs/2602.15763">GLM-5</a> (2026)</h3>
+<p><em>from Vibe Coding to Agentic Engineering</em></p>
+<p><strong>Background.</strong> Reinforcement learning on agentic tasks generates its own training data. Each rollout is a full serving workload, and in a synchronous loop the trainer waits for the slowest trajectory in the batch before it can take a step.</p>
+<p><strong>Problem.</strong> Long-horizon interactions make that wait the dominant cost, and long contexts make every rollout expensive to generate and to train on. The two costs compound, so a fast trainer paired with a synchronous rollout loop is mostly idle.</p>
+<p><strong>Key idea.</strong> Decouple generation from training in an asynchronous reinforcement learning stack, add asynchronous agent RL algorithms for long-horizon interactions, and adopt sparse attention to cut training and inference cost while holding long-context fidelity.</p>
+<p><strong>Why it matters.</strong> Read it with the agent-serving meetings, because an asynchronous rollout system is a serving system with a training job attached. The asynchronous rollout design is what verl, slime, and AReaL implement for open RL training, and the sparse attention descends from DeepSeek's NSA.</p>
+</div>
+<div class="subsection" id="kimi-k3">
+<h3><a href="https://arxiv.org/abs/2607.24653">Kimi K3</a> (2026)</h3>
+<p><em>Open Frontier Intelligence</em></p>
+<p><strong>Background.</strong> A sparse mixture-of-experts model at this scale spreads its experts across devices, so throughput depends on how evenly tokens route and how much activation memory each stage holds. Attention over a million-token context is a separate cost on top of that.</p>
+<p><strong>Problem.</strong> Three costs have to be solved at once. Routing 16 of 896 experts per token unbalances the expert-parallel schedule, a one-million-token context will not fit as full attention, and agentic reinforcement learning has to keep rollout and sandbox state alive across very long episodes.</p>
+<p><strong>Key idea.</strong> Co-design the algorithm with the system. Kimi Delta Attention is built together with its kernels, expert-parallel training is balanced through explicit memory management, and million-token agentic reinforcement learning retains persistent rollout and sandbox state. The multimodal model has 2.8T total parameters with 104B activated per token.</p>
+<p><strong>Findings.</strong> The report attributes roughly 2.5× greater scaling efficiency than Kimi K2 to the combined architecture and systems design.</p>
+<p><strong>Why it matters.</strong> The systems content is the reason to read it. Attention mechanism, parallelism plan, and RL infrastructure are one design rather than three, which is the case for co-design made at frontier scale. Kimi Delta Attention arrived earlier in the Kimi Linear models, and the same gated delta-rule layer is what Qwen3-Next uses and vLLM serves.</p>
+</div>
+<div class="subsection" id="gemma-4">
+<h3><a href="https://arxiv.org/abs/2607.02770">Gemma 4</a> (2026)</h3>
+<p><em>Gemma 4 Technical Report</em></p>
+<p><strong>Background.</strong> Multimodal models normally put a separate encoder in front of the language model for each modality, a vision tower and an audio tower, each with its own weights and its own preprocessing stage.</p>
+<p><strong>Problem.</strong> Every extra encoder is another model to load, schedule, and hold in memory, and it fixes the input representation before the language model sees anything. On a device with one accelerator and a fixed memory budget, that cost is charged against the model you wanted to run.</p>
+<p><strong>Key idea.</strong> Feed raw audio and image patches into the model directly. The family spans 2.3B to 31B parameters in dense and mixture-of-experts form, is natively multimodal, has a thinking mode, and includes an encoder-free 12B variant built on that direct path.</p>
+<p><strong>Why it matters.</strong> It supersedes the Gemma 3 entry above as the size ladder to reach for when a project needs models that fit on one GPU across a wide range. The encoder-free path continues Gemma 3n, the line Google ships on-device, so this is where a deployment constraint visibly changes an architecture.</p>
+</div>
+<div class="subsection" id="qwen3-5">
+<h3><a href="https://qwen.ai/blog?id=qwen3.5">Qwen3.5</a> (2026)</h3>
+<p><em>Model Release Report</em></p>
+<p><strong>Background.</strong> Qwen3 and Qwen3-Next appear earlier in this group, and the Qwen3-Next report documents its architecture more completely than a release post normally does.</p>
+<p><strong>Problem.</strong> A release report is written for adopters rather than for systems readers. It states capabilities and discloses the architecture only partly, so the details a serving stack needs are not the ones it foregrounds.</p>
+<p><strong>Key idea.</strong> The report is organized around reasoning, native multimodality, and agentic tool use rather than text benchmarks alone, and its deployment and prompting sections state the operational contract the model exposes to an agent runtime.</p>
+<p><strong>Why it matters.</strong> Read the deployment and prompting sections as the interface a serving stack has to honour, then compare the disclosed architecture against the fuller Qwen3-Next report to see what a release report leaves out.</p>
+</div>
+<div class="subsection" id="minimax-m2-5">
+<h3><a href="https://www.minimax.io/news/minimax-m25">MiniMax-M2.5</a> (2026)</h3>
+<p><em>Model Release Report</em></p>
+<p><strong>Background.</strong> M2 established MiniMax's agentic line, and this release updates it around coding and long-horizon tool use.</p>
+<p><strong>Problem.</strong> An agentic workload does not look like the one throughput benchmarks assume. Long decode phases alternate with tool execution while the history grows, so tokens per second stops describing what the user waits for.</p>
+<p><strong>Key idea.</strong> The useful systems content is the workload rather than a new attention mechanism. The report describes end-to-end coding and tool-use tasks with long interaction histories, which makes completion time and cost per solved task the units that matter.</p>
+<p><strong>Why it matters.</strong> It gives you the shape of the request stream the agent-serving meetings later have to schedule, and it is a concrete argument for measuring per solved task rather than per token under production conditions.</p>
+</div>
+<div class="subsection" id="claude-opus-4-6">
+<h3><a href="https://www.anthropic.com/news/claude-opus-4-6">Claude Opus 4.6</a> (2026)</h3>
+<p><em>System Card and Model Report</em></p>
+<p><strong>Background.</strong> GPT-4, near the start of this group, set the pattern for a closed model report: capabilities and safety evaluation, with architecture and training cost withheld.</p>
+<p><strong>Problem.</strong> A report that withholds the system tells you nothing directly about serving it. What it can still reveal is the demand, and only then if the workload it describes is stated concretely.</p>
+<p><strong>Key idea.</strong> The report centres on coding, computer use, long-context work, and safety evaluation, and it describes agentic tasks that unfold across substantially longer interaction histories than earlier closed reports did.</p>
+<p><strong>Why it matters.</strong> Read it beside GPT-4 for the contrast. It reveals more about the requests a serving system must sustain than about the system that serves them, and for this course that is the more useful half.</p>
+</div>
+</div>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container">
+<p><a href="https://madsys.seas.harvard.edu/" rel="noopener" target="_blank">MadSys Research Group</a> · <a href="https://seas.harvard.edu/" rel="noopener" target="_blank">Harvard John A. Paulson School of Engineering and Applied Sciences</a></p>
+<p class="footer-policies"><a href="https://trademark.harvard.edu/pages/trademark-notice" rel="noopener" target="_blank">Trademark Notice</a> · <a href="https://accessibility.harvard.edu/" rel="noopener" target="_blank">Accessibility</a> · <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" rel="noopener" target="_blank">Digital Accessibility</a> · <a href="https://privsec.harvard.edu/harvard-university-privacy-statement" rel="noopener" target="_blank">Privacy Statement</a></p>
+<p class="footer-copyright">© 2026 Juncheng Yang</p>
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="../vendor/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="../vendor/bootstrap.bundle.min.js"></script>
+<meta content="CS2680 Modern AI Systems readings for the Agents design III: agent memory and reliability meeting" name="description"/>
+<meta content="Juncheng Yang" name="author"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="CS2680 Modern AI Systems — Readings: Agents design III: agent memory and reliability" property="og:title"/>
+<meta content="CS2680 Modern AI Systems readings for the Agents design III: agent memory and reliability meeting" property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="CS2680 Modern AI Systems" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<link href="../css/main.css" rel="stylesheet"/>
+<title>CS2680 Modern AI Systems — Readings: Agents design III: agent memory and reliability</title>
+</head>
+<body>
+<div id="site-header"></div>
+<script src="../header.js"></script>
+<div class="container page">
+<div class="row">
+<div class="col-12">
+<div class="title">CS2680 Modern AI Systems: Agents and System Optimizations</div>
+</div>
+<div class="col-12 title2">
+        Readings
+      </div>
+<div class="col-12">
+<div class="section">
+<div class="subsection reading-meeting" data-schedule="https://arxiv.org/abs/2509.25370 https://arxiv.org/abs/2310.08560" id="sep-28">
+<h2><span class="reading-date">Sep 28</span> Agents design III: agent memory and reliability</h2>
+<div class="table-responsive">
+<table class="table table-hover readings-table">
+<thead>
+<tr class="table-light">
+<th scope="col">Paper</th>
+<th scope="col">Year</th>
+<th scope="col">Why read it</th>
+</tr>
+</thead>
+<tr class="reading-topic">
+<th colspan="3" scope="colgroup">State management and agent memory</th>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2005.11401" rel="noopener noreferrer" target="_blank"><strong class="reading-name">RAG</strong></a><span class="reading-subtitle">Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks</span></td>
+<td>2020</td>
+<td>
+<p><strong>Background.</strong> Before 2020, a model answered a knowledge-intensive question from whatever pretraining had written into its weights. Updating a fact meant retraining, and there was no passage to point at when the answer came out wrong.</p>
+<p><strong>Problem.</strong> Parametric knowledge is fixed at training time and cannot be inspected. Asked about something absent from its weights, the model produces a fluent answer anyway, and nothing in the output tells you which case you are in.</p>
+<p><strong>Key idea.</strong> Put a dense retriever over a Wikipedia index in front of a pretrained sequence-to-sequence generator, fetch passages for each input, and condition generation on them, training retriever and generator together while the index stays fixed. Knowledge moves out of the weights and into a store you can edit.</p>
+<p><strong>Findings.</strong> RAG set the reported state of the art on three open-domain question-answering tasks and generated more factual language than the paper's parametric-only sequence-to-sequence baseline.</p>
+<p><strong>Why it matters.</strong> It is the origin of the long, partly repeated prompts that make prefix caching worth building. It also splits serving in two: a retrieval tier with its own index and latency, and a generation tier whose input length is now set by how much you retrieved.</p>
+<p><strong>Adoption.</strong> Hugging Face Transformers implements the original RAG model and retriever classes, providing a maintained external implementation of the architecture.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2310.08560" rel="noopener noreferrer" target="_blank"><strong class="reading-name">MemGPT</strong></a><span class="reading-subtitle">Towards LLMs as Operating Systems</span></td>
+<td>2023</td>
+<td>
+<p><strong>Background.</strong> The context window is a fixed budget, and any long conversation or long task overruns it. The standard answers are truncation, summarization, and retrieval bolted on outside the model.</p>
+<p><strong>Problem.</strong> All three discard state without asking the agent what it still needs, and none of them lets the agent decide what stays resident. The window is managed for the model rather than by it.</p>
+<p><strong>Key idea.</strong> Treat the context window as the top tier of a memory hierarchy and give the model explicit paging operations into the tiers below. What stays resident, what is evicted, and what is fetched back become decisions the agent makes with function calls.</p>
+<p><strong>Why it matters.</strong> It is the most systems-flavored agent paper on the list, and it imports the virtual memory design wholesale: a small fast tier, a larger slow one, and an explicit policy for moving data between them. Once the window is a cache, compaction and retrieval stop looking like separate features.</p>
+</td>
+</tr>
+<tr class="reading-topic">
+<th colspan="3" scope="colgroup">Common failure modes and guardrails</th>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2509.25370" rel="noopener noreferrer" target="_blank"><strong class="reading-name">where agents fail</strong></a><span class="reading-subtitle">Where LLM Agents Fail and How They can Learn From Failures</span></td>
+<td>2025</td>
+<td>
+<p><strong>Background.</strong> An agent failure is observed at the end of a trajectory. What is visible is a wrong answer, and the step that made it inevitable is many turns behind it.</p>
+<p><strong>Problem.</strong> Errors cascade rather than accumulate. One wrong decision enters the transcript and every later step reasons from it as given, so the last step that looks wrong is rarely the step that was wrong. Diagnosis from the final answer therefore identifies the symptom.</p>
+<p><strong>Key idea.</strong> Annotate failures at the step level instead. Sort the errors by which module produced them, covering memory, reflection, planning, action, and system operations, then build a debugger that isolates the root-cause step and feeds a correction back into a fresh attempt.</p>
+<p><strong>Findings.</strong> Root-cause feedback is worth more than a retry: the paper reports 24% higher all-correct accuracy and 17% higher step accuracy over the strongest baseline, and up to 26% relative improvement in task success on ALFWorld, GAIA, and WebShop.</p>
+<p><strong>Why it matters.</strong> It is the diagnosis order of this meeting with a dataset behind it, and it makes the case for treating the transcript as the primary artifact. Root-cause attribution is only possible if every step was recorded, which is what the instrumentation section asks you to build before you need it.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2503.13657" rel="noopener noreferrer" target="_blank"><strong class="reading-name">why multi-agent systems fail</strong></a><span class="reading-subtitle">Why Do Multi-Agent LLM Systems Fail?</span></td>
+<td>2025</td>
+<td>
+<p><strong>Background.</strong> The preceding papers diagnose failures in one agent's trajectory. A multi-agent system adds handoffs and shared decisions, so final task success hides which interaction broke.</p>
+<p><strong>Problem.</strong> A multi-agent failure can stem from system design, agents misunderstanding one another, or weak task verification. Without a shared vocabulary, two systems failing for unrelated reasons look identical from the score, and fixes are aimed at the wrong component.</p>
+<p><strong>Key idea.</strong> Build the vocabulary from evidence rather than from a diagram. Annotate traces across popular multi-agent frameworks, derive a taxonomy from close reading of a subset, and validate it with human annotators before applying it at scale.</p>
+<p><strong>Findings.</strong> The taxonomy names 14 failure modes in three clusters: system design issues, inter-agent misalignment, and task verification. It is built from a careful analysis of 150 traces with high inter-annotator agreement (kappa = 0.88) and applied across a dataset of more than 1,600 annotated traces from seven frameworks.</p>
+<p><strong>Why it matters.</strong> It extends the step-level diagnosis above to failures between agents. The three clusters tell you whether to repair the overall design, the contract between agents, or the verifier that checks their output; the broader taxonomy below places coordination among other agent failure modes.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2607.05775" rel="noopener noreferrer" target="_blank"><strong class="reading-name">agent failure taxonomy</strong></a><span class="reading-subtitle">Beyond the Leaderboard: A Synthesis of Tool-Use, Planning, and Reasoning Failures in Large Language Model Agents</span></td>
+<td>2026</td>
+<td>
+<p><strong>Background.</strong> Agent progress is reported as pass rates, one number per harness per suite. What is known about why agents fail is scattered across benchmark papers, taxonomies, and audits that share no vocabulary.</p>
+<p><strong>Problem.</strong> A pass rate tells you how often a run failed, not what broke. Two harnesses at the same score can be failing for unrelated reasons, and a fix aimed at one failure mode is credited or blamed by a number that mixes all of them.</p>
+<p><strong>Key idea.</strong> Synthesize 27 benchmark, taxonomy, and audit papers into six failure clusters: tool invocation, planning, long-horizon context accumulation, multi-agent coordination, safety, and measurement validity.</p>
+<p><strong>Findings.</strong> Failures compound nonlinearly with task length, and additional scaffolding does not consistently improve reliability.</p>
+<p><strong>Why it matters.</strong> It gives you names for the failures that harnesses such as SWE-agent and Claude Code build guards against, so you can argue about a mechanism instead of a leaderboard position. Its measurement critique lands on those leaderboards, SWE-bench included.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2502.08235" rel="noopener noreferrer" target="_blank"><strong class="reading-name">overthinking</strong></a><span class="reading-subtitle">The Danger of Overthinking: Examining the Reasoning-Action Dilemma in Agentic Tasks</span></td>
+<td>2025</td>
+<td>
+<p><strong>Background.</strong> A reasoning model in an agent loop has two ways to make progress: think longer about the state it already has, or act on the environment and read what comes back. Longer chains of thought are widely treated as strictly better.</p>
+<p><strong>Problem.</strong> An agent that reasons instead of acting substitutes its own model of the environment for the environment, then commits to plans built on stale observations. Aggregate pass rates hide the substitution, so the failure has no name to argue about.</p>
+<p><strong>Key idea.</strong> Define an overthinking score for trajectories that favor internal reasoning over interaction, then measure what it predicts.</p>
+<p><strong>Findings.</strong> Higher scores correlate with lower SWE-bench Verified performance across 4,018 trajectories, and selecting the lower-overthinking solution improves performance by almost 30% while cutting compute cost by 43%.</p>
+<p><strong>Why it matters.</strong> More thinking is not monotonically better, which breaks the assumption behind spending test-time compute freely. It also gives you a case where the cheaper policy is the more accurate one, so reasoning budget belongs in the design, not at whatever the model defaults to.</p>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="note-nav">
+<a href="sep-23.html">← Agents design II: multi-agent architecture, coordination, and communication</a>
+<span class="nav-spacer"></span>
+</div>
+</div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="container">
+<p><a href="https://madsys.seas.harvard.edu/" rel="noopener" target="_blank">MadSys Research Group</a> · <a href="https://seas.harvard.edu/" rel="noopener" target="_blank">Harvard John A. Paulson School of Engineering and Applied Sciences</a></p>
+<p class="footer-policies"><a href="https://trademark.harvard.edu/pages/trademark-notice" rel="noopener" target="_blank">Trademark Notice</a> · <a href="https://accessibility.harvard.edu/" rel="noopener" target="_blank">Accessibility</a> · <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" rel="noopener" target="_blank">Digital Accessibility</a> · <a href="https://privsec.harvard.edu/harvard-university-privacy-statement" rel="noopener" target="_blank">Privacy Statement</a></p>
+<p class="footer-copyright">© 2026 Juncheng Yang</p>
+</div>
+</footer>
+</body>
+</html>

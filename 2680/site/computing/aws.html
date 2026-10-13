@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="../vendor/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="../vendor/bootstrap.bundle.min.js"></script>
+<meta content="CS2680 AWS setup: register an account, register it with the course, and run a small deployment safely and cheaply" name="description"/>
+<meta content="Juncheng Yang" name="author"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="CS2680 Modern AI Systems — AWS" property="og:title"/>
+<meta content="CS2680 AWS setup: register an account, register it with the course, and run a small deployment safely and cheaply" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="CS2680 Modern AI Systems" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<link href="../css/main.css" rel="stylesheet"/>
+<title>CS2680 Modern AI Systems — AWS</title>
+</head>
+<body>
+<div id="site-header"></div>
+<script src="../header.js"></script>
+<div class="container page">
+<div class="row">
+<div class="col-12">
+<div class="title">CS2680 Modern AI Systems: Agents and System Optimizations</div>
+</div>
+<div class="col-12 title2">
+        AWS: if you deploy something
+      </div>
+<div class="col-12 section" id="aws">
+<h1>AWS</h1>
+<p class="lead"><strong>Every student registers an AWS account in week one.</strong> The form closes at the end of the first week because accounts are approved in one batch, so a late registration cannot be processed. What you do with the account afterwards is up to you. No assignment forces you onto AWS, and this page is here for when you want a machine that is not your laptop: most often because the web UI you built in Assignment 1 is something you would rather have running somewhere real, or because you want a box that stays up between sessions. A small EC2 instance is the expected path.</p>
+<div class="tip">
+<strong>The bill is yours.</strong> AWS charges the card on the account you registered, and the course does not reimburse an overrun. An instance you forgot to stop keeps billing every hour it is up, and the disk behind it, along with any Elastic IP you allocated, keeps billing even after you stop it. Read <a href="#cost">what it costs</a> before you launch anything, and set a <a href="https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-create.html" rel="noopener" target="_blank">budget alarm</a> first.
+        </div>
+</div>
+<div class="col-12 section" id="account">
+<h1>Register your account, then upload your account ID</h1>
+<p>Both steps are due in <strong>week one</strong>. We are not able to process requests after the deadline.</p>
+<ol>
+<li><strong>Create an AWS account</strong> at <a href="https://aws.amazon.com/" rel="noopener" target="_blank">aws.amazon.com</a> if you do not already have one. New accounts start on the AWS free plan, which grants an expiring credit balance rather than the twelve months of free instance-hours older accounts received, and <code>t3.small</code> is not free once those credits are gone. Read <a href="#cost">what it costs</a> before you launch anything.</li>
+<li><strong>Provide your name, email, and AWS account ID to the <a href="https://forms.gle/CVPgwhgeZB8JnjF56" rel="noopener" target="_blank">Google form</a></strong>.
+          </li>
+</ol>
+<p>Your account ID is the twelve-digit number in the console's account menu, or:</p>
+<div class="formula">aws sts get-caller-identity --query Account --output text</div>
+</div>
+<div class="col-12 section" id="cost">
+<h1>What it costs, and what a forgotten instance costs</h1>
+<p>Every rate below is the on-demand Linux price in <code>us-east-1</code>, taken from the <a href="https://aws.amazon.com/ec2/pricing/on-demand/" rel="noopener" target="_blank">EC2</a>, <a href="https://aws.amazon.com/ebs/pricing/" rel="noopener" target="_blank">EBS</a>, and <a href="https://aws.amazon.com/vpc/pricing/" rel="noopener" target="_blank">VPC</a> price lists on Aug 27, 2026. Other regions cost more. AWS changes these, so treat them as the order of magnitude rather than as a quote, and read your own bill in the <a href="https://console.aws.amazon.com/costmanagement/" rel="noopener" target="_blank">Cost Explorer</a>.</p>
+<table class="table table-bordered rubric-table">
+<tr>
+<th>What is billed</th>
+<th>Rate</th>
+<th>What that comes to</th>
+</tr>
+<tr>
+<td><code>t3.small</code>, 2 vCPU and 2 GiB, while running. The size a small web UI wants.</td>
+<td>$0.0208 per hour</td>
+<td>$3.49 for one week you forgot it (168 hours), $15.18 for a 730-hour month.</td>
+</tr>
+<tr>
+<td><code>g7e.2xlarge</code>, one GPU with 96 GB, while running. The size a served model wants.</td>
+<td>$3.3631 per hour</td>
+<td>$211.88 for one weekend you forgot it (Friday 6pm to Monday 9am, 63 hours), $2,455.06 for a 730-hour month.</td>
+</tr>
+<tr>
+<td>A 30 GB gp3 root volume, running <em>or stopped</em>.</td>
+<td>$0.08 per GB-month</td>
+<td>$2.40 a month, and it does not stop when the instance does.</td>
+</tr>
+<tr>
+<td>One public IPv4 address, attached to a running instance <em>or idle</em>.</td>
+<td>$0.005 per hour</td>
+<td>$3.65 a month per address, whether anything is using it or not.</td>
+</tr>
+<tr>
+<td>Data out to the internet, past the 100 GB a month that is free across your whole account.</td>
+<td>$0.09 per GB, for the first 10 TB a month</td>
+<td>$16.20 to serve a 14 GB checkpoint 20 times (280 GB sent, 180 GB billable), $83.16 to send 1 TB in a month (924 GB billable).</td>
+</tr>
+</table>
+<p><strong>Stop the instance when you are not using it.</strong> Nothing on AWS turns itself off. A <code>g7e.2xlarge</code> left up over one weekend costs $211.88 and produces nothing, and the same instance left up for a month costs $2,455.06, which is more than the whole rest of this course will bill you several times over. Stopping is the everyday action: it ends the instance-hour charge and preserves the disk, so you pick up where you left off.</p>
+<div class="formula">aws ec2 stop-instances --instance-ids i-0123456789abcdef0</div>
+<p>Before you close the laptop, check that nothing is still up. This lists every running instance in the current region, and it should print nothing:</p>
+<div class="formula">aws ec2 describe-instances --filters Name=instance-state-name,Values=running --query "Reservations[].Instances[].InstanceId" --output text</div>
+<p><strong>Stopped is not free, and stopped is not terminated.</strong> A stopped instance keeps its EBS volume and any Elastic IP you allocated, and both bill by the hour with nothing running. A stopped <code>t3.small</code> with a 30 GB root volume and one address therefore costs about $6.05 a month to do nothing: $2.40 for the volume plus $3.65 for the address. That is the right trade while you are still working on something. When the project is over, terminate the instance, delete the volume, and release the address, which takes the charge to zero. Deleting a volume destroys what is on it, so copy your work off first.</p>
+<p><strong>Egress is the charge people do not see coming.</strong> Bytes into AWS are free and bytes out are not. Your account gets the first 100 GB a month out to the internet at no charge, aggregated across every AWS service and region rather than per instance, and everything past that is $0.09 per GB. A web UI serving pages will never reach it. Moving model weights or datasets will: a 14 GB checkpoint pulled down 20 times is 280 GB, which is 180 GB over the allowance and $16.20. The same trap runs in the background, so watch three things in particular. First, a log or metrics shipper streaming out of the region. Second, an S3 bucket you made public and then linked somewhere. Third, an agent loop that re-downloads the same artifact on every iteration, which turns one careless <code>curl</code> into a bill that scales with your retry count. Pull large files down to the instance once and keep them on its disk.</p>
+<p><strong>Set a budget alarm before you launch anything, not after.</strong> A <a href="https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-create.html" rel="noopener" target="_blank">zero-spend or low-dollar budget</a> emails you when the account crosses a threshold you pick. It does not stop the charge, so it is a smoke detector rather than a sprinkler, but it is the difference between noticing on day two and noticing on the statement. Set it in week one, at a number small enough to be annoying.</p>
+</div>
+<div class="col-12 section" id="related">
+<h1>Related</h1>
+<ul>
+<li><a href="index.html">Computing setup</a>. The other environments this course uses.</li>
+<li><a href="../to_release.html">Assignment 1</a>. The web UI this account can host.</li>
+<li><a href="claude-code.html">Claude Code</a>. Account, install, login, session files.</li>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html" rel="noopener" target="_blank">EC2 getting-started guide</a> and
+            <a href="https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-create.html" rel="noopener" target="_blank">creating a budget alarm</a>. The authoritative versions.
+          </li>
+</ul>
+</div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="container">
+<p><a href="https://madsys.seas.harvard.edu/" rel="noopener" target="_blank">MadSys Research Group</a> · <a href="https://seas.harvard.edu/" rel="noopener" target="_blank">Harvard John A. Paulson School of Engineering and Applied Sciences</a></p>
+<p class="footer-policies"><a href="https://trademark.harvard.edu/pages/trademark-notice" rel="noopener" target="_blank">Trademark Notice</a> · <a href="https://accessibility.harvard.edu/" rel="noopener" target="_blank">Accessibility</a> · <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" rel="noopener" target="_blank">Digital Accessibility</a> · <a href="https://privsec.harvard.edu/harvard-university-privacy-statement" rel="noopener" target="_blank">Privacy Statement</a></p>
+<p class="footer-copyright">© 2026 Juncheng Yang</p>
+</div>
+</footer>
+</body>
+</html>

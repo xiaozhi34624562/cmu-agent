@@ -1,0 +1,516 @@
+<!DOCTYPE html><html lang="en"><head><meta name="sentry-route-name" content="%2Fblog%2F%5Bslug%5D"/><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="canonical" href="https://tej.as/blog/what-is-an-agent-harness"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v7.0.6"><meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"><meta name="author" content="Tejas Kumar"><script>
+      (function () {
+        // Only the storage read can throw, and it throwing means there is no
+        // remembered choice, not that the visitor wants the dark theme. Guard
+        // it alone: a wider try would stamp dark on a light machine whose
+        // browser blocks storage, which is worse than shipping no script.
+        var stored = null;
+        try {
+          stored = localStorage.getItem("theme");
+        } catch (e) {
+          /* storage blocked: nothing to remember, so the system decides */
+        }
+        if (stored !== "light" && stored !== "dark") {
+          stored =
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: light)").matches
+              ? "light"
+              : "dark";
+        }
+        document.documentElement.setAttribute("data-theme", stored);
+      })();
+    </script><link rel="preload" href="/fonts/jost-var.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/switzer-400.woff2" as="font" type="font/woff2" crossorigin><link rel="alternate" type="application/rss+xml" title="Tejas's Blog" href="https://tej.as/rss.xml"><meta http-equiv="origin-trial" content="AuPCxJx6hXLeEh3RZMmdAYNX8jB+WwmjRuHVPCnN7o16G9N+ki5zKuurTvxdRP9UDgUSol6RdG5svEzzEPTbNQAAAABGeyJvcmlnaW4iOiJodHRwczovL3Rlai5hczo0NDMiLCJmZWF0dXJlIjoiV2ViTUNQIiwiZXhwaXJ5IjoxODA2MzY0ODAwfQ=="><title>What Is an Agent Harness? Harness Engineering Explained</title><meta property="og:title" content="What Is an Agent Harness? Harness Engineering Explained"><meta name="description" content="An agent harness is everything around an AI model that grounds it in reality: tools, context, guardrails, the loop and verification. How to build one."><meta property="og:site_name" content="Tejas Kumar"><meta property="og:url" content="https://tej.as/blog/what-is-an-agent-harness"><meta name="twitter:card" content="summary_large_image"><meta property="og:description" content="An agent harness is everything around an AI model that grounds it in reality: tools, context, guardrails, the loop and verification. How to build one."><meta property="og:type" content="article"><meta property="og:locale" content="en_US"><meta name="twitter:site" content="@TejasKumar_"><meta name="twitter:creator" content="@TejasKumar_"><meta property="og:image" content="https://tej.as/img/og/blog/what-is-an-agent-harness.png"><meta property="og:image:type" content="image/png"><meta name="twitter:image" content="https://tej.as/img/og/blog/what-is-an-agent-harness.png"><link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png"><link rel="manifest" href="/icons/site.webmanifest"><link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#EF3340"><link rel="shortcut icon" href="/icons/favicon.ico"><meta name="msapplication-TileColor" content="#0A0708"><meta name="msapplication-config" content="/icons/browserconfig.xml"><meta name="theme-color" content="#0A0708" media="(prefers-color-scheme: dark)"><meta name="theme-color" content="#F4F1EA" media="(prefers-color-scheme: light)"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="What Is an Agent Harness? Harness Engineering Explained. An article by Tejas Kumar."><meta name="twitter:image:alt" content="What Is an Agent Harness? Harness Engineering Explained. An article by Tejas Kumar."><meta property="article:author" content="Tejas Kumar"><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://tej.as/#person","name":"Tejas Kumar","url":"https://tej.as/"},{"@type":"WebSite","@id":"https://tej.as/#website","url":"https://tej.as/","name":"Tejas Kumar","alternateName":"tej.as","publisher":{"@id":"https://tej.as/#person"},"inLanguage":"en"},{"@type":"WebPage","@id":"https://tej.as/blog/what-is-an-agent-harness#webpage","url":"https://tej.as/blog/what-is-an-agent-harness","name":"What Is an Agent Harness? Harness Engineering Explained","description":"An agent harness is everything around an AI model that grounds it in reality: tools, context, guardrails, the loop and verification. How to build one.","isPartOf":{"@id":"https://tej.as/#website"},"breadcrumb":{"@id":"https://tej.as/blog/what-is-an-agent-harness#breadcrumb"},"inLanguage":"en"},{"@type":"BreadcrumbList","@id":"https://tej.as/blog/what-is-an-agent-harness#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Tejas Kumar","item":"https://tej.as/"},{"@type":"ListItem","position":2,"name":"Writing","item":"https://tej.as/blog"},{"@type":"ListItem","position":3,"name":"What Is an Agent Harness? Harness Engineering Explained"}]},{"@type":"BlogPosting","@id":"https://tej.as/blog/what-is-an-agent-harness#post","headline":"What Is an Agent Harness? Harness Engineering Explained","name":"What Is an Agent Harness? Harness Engineering Explained","description":"An agent harness is everything around an AI model that grounds it in reality: tools, context, guardrails, the loop and verification. How to build one.","url":"https://tej.as/blog/what-is-an-agent-harness","mainEntityOfPage":{"@id":"https://tej.as/blog/what-is-an-agent-harness#webpage"},"datePublished":"2026-09-14T09:47:55.266Z","dateModified":"2026-10-04T12:00:11.000Z","author":{"@type":"Person","@id":"https://tej.as/#person","name":"Tejas Kumar","url":"https://tej.as/"},"publisher":{"@id":"https://tej.as/#person"},"image":"https://tej.as/img/og/blog/what-is-an-agent-harness.png","inLanguage":"en","isPartOf":{"@id":"https://tej.as/blog#blog"},"wordCount":2510},{"@type":"FAQPage","@id":"https://tej.as/blog/what-is-an-agent-harness#faq","mainEntity":[{"@type":"Question","name":"What is an agent harness?","acceptedAnswer":{"@type":"Answer","text":"An agent harness is everything around the model that gives it grounding in reality. It ties a model you rent and cannot control to a stable environment you do control, through a tool registry, a model, context management, guardrails, an agent loop and a verify step."}},{"@type":"Question","name":"What is harness engineering?","acceptedAnswer":{"@type":"Answer","text":"Harness engineering is building and improving that layer on purpose: every time an agent makes a mistake, you engineer a fix in the harness, in code, so it cannot make that mistake again, instead of prompting the model harder."}},{"@type":"Question","name":"Is an agent harness the same as the agent loop?","acceptedAnswer":{"@type":"Answer","text":"No. The agent loop calls the model, runs the tool it asked for and repeats until the model says it is done. The harness is everything around the agent loop: guardrails, context management, verification and deterministic steps like logging in. It can even be a loop around your agent loop."}},{"@type":"Question","name":"Is Claude Code an agent harness?","acceptedAnswer":{"@type":"Answer","text":"Claude Code is a coding agent, but more precisely it is a harnessed coding agent. It has a tool registry to read files, write files and run bash commands, a model, context compaction, and limits on what it will do."}},{"@type":"Question","name":"What does harness mean in machine learning?","acceptedAnswer":{"@type":"Answer","text":"In machine learning, a harness usually means an evaluation harness: a test suite and test runner that gives a model inputs and measures the quality of its outputs. An agent harness in AI engineering is a different thing: the runtime layer that makes an agent reliable."}},{"@type":"Question","name":"Harness engineering vs context engineering: what is the difference?","acceptedAnswer":{"@type":"Answer","text":"Context engineering decides what goes into the model context window. Harness engineering covers the whole layer around the model, and context management is one part of it, next to tools, guardrails, the loop and verification."}},{"@type":"Question","name":"Does a better model remove the need for an agent harness?","acceptedAnswer":{"@type":"Answer","text":"No. A better model makes fewer mistakes, but it is still a black box you rent and cannot inspect, and a model saying it finished is still only a claim. The harness is where you verify that claim, keep secrets out of the prompt and stop runaway loops, whichever model is underneath."}},{"@type":"Question","name":"Do I need a framework to build an agent harness?","acceptedAnswer":{"@type":"Answer","text":"No. A working harness can be a few hundred lines of plain TypeScript: a tool registry, a loop, guardrail functions, a verify function and a retry loop. Frameworks help at scale, but the parts are simple enough to write and understand yourself first."}},{"@type":"Question","name":"Why use an agent harness?","acceptedAnswer":{"@type":"Answer","text":"Reliability. Models are nondeterministic black boxes that most teams rent. A good harness makes an agent do its job regardless of which model is underneath, which also lets you use a cheaper or older model and still get the work done."}}]},{"@type":"VideoObject","@id":"https://tej.as/blog/what-is-an-agent-harness#video","name":"Harnesses in AI: A Deep Dive","description":"An agent harness is everything around an AI model that grounds it in reality: tools, context, guardrails, the loop and verification. How to build one.","thumbnailUrl":["https://i.ytimg.com/vi/C_GG5g38vLU/maxresdefault.jpg","https://i.ytimg.com/vi/C_GG5g38vLU/hqdefault.jpg"],"uploadDate":"2026-05-17","duration":"PT20M26S","embedUrl":"https://www.youtube.com/embed/C_GG5g38vLU","contentUrl":"https://www.youtube.com/watch?v=C_GG5g38vLU","inLanguage":"en","actor":{"@id":"https://tej.as/#person"}}]}</script><link rel="stylesheet" href="/_astro/JsonLd.CPOwGnQe.css"><link rel="stylesheet" href="/_astro/_slug_.Kg-X2N3t.css"><link rel="stylesheet" href="/_astro/ShareSheet.yIQi73DR.css"><script type="module" src="/_astro/page.C8-fPmcY.js"></script><script>!(function(w,p,f,c){if(!window.crossOriginIsolated && !navigator.serviceWorker) return;c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[])})(window,'partytown','forward');/* Partytown 0.13.2 - MIT QwikDev */
+const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=t]=e;return[n,{...t,...r}]},n=Object.freeze((t=>{const e=new Set;let n=[];do{Object.getOwnPropertyNames(n).forEach((t=>{"function"==typeof n[t]&&e.add(t)}))}while((n=Object.getPrototypeOf(n))!==Object.prototype);return Array.from(e)})());!function(t,r,o,i,a,s,c,l,d,p,u=t,f){function h(){f||(f=1,"/"==(c=(s.lib||"/~partytown/")+(s.debug?"debug/":""))[0]&&(d=r.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(l=setTimeout(v,(null==s?void 0:s.fallbackTimeout)||1e4),r.addEventListener("pt0",w),a?y(1):o.serviceWorker?o.serviceWorker.register(c+(s.swPath||"partytown-sw.js"),{scope:c}).then((function(t){t.active?y():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&y()}))}),console.error):v())))}function y(e){p=r.createElement(e?"script":"iframe"),t._pttab=Date.now(),e||(p.style.display="block",p.style.width="0",p.style.height="0",p.style.border="0",p.style.visibility="hidden",p.setAttribute("aria-hidden",!0)),p.src=c+"partytown-"+(e?"atomics.js?v=0.13.2":"sandbox-sw.html?"+t._pttab),r.querySelector(s.sandboxParent||"body").appendChild(p)}function v(n,o){for(w(),i==t&&(s.forward||[]).map((function(n){const[r]=e(n);delete t[r.split(".")[0]]})),n=0;n<d.length;n++)(o=r.createElement("script")).innerHTML=d[n].innerHTML,o.nonce=s.nonce,r.head.appendChild(o);p&&p.parentNode.removeChild(p)}function w(){clearTimeout(l)}s=t.partytown||{},i==t&&(s.forward||[]).map((function(r){const[o,{preserveBehavior:i}]=e(r);u=t,o.split(".").map((function(e,r,o){var a;u=u[o[r]]=r+1<o.length?u[o[r]]||(a=o[r+1],n.includes(a)?[]:{}):(()=>{let e=null;if(i){const{methodOrProperty:n,thisObject:r}=((t,e)=>{let n=t;for(let t=0;t<e.length-1;t+=1)n=n[e[t]];return{thisObject:n,methodOrProperty:e.length>0?n[e[e.length-1]]:void 0}})(t,o);"function"==typeof n&&(e=(...t)=>n.apply(r,...t))}return function(){let n;return e&&(n=e(arguments)),(t._ptf=t._ptf||[]).push(o,arguments),n}})()}))})),"complete"==r.readyState?h():(t.addEventListener("DOMContentLoaded",h),t.addEventListener("load",h))}(window,document,navigator,top,window.crossOriginIsolated);;(e=>{e.addEventListener("astro:before-swap",e=>{let r=document.body.querySelector("iframe[src*='/~partytown/']");if(r)e.newDocument.body.append(r)})})(document);</script></head><body><div class="thread" aria-hidden="true"><div class="thread__line"></div><div class="thread__head"></div></div><header class="topbar"><a class="topbar__mark" href="/" aria-label="Tejas Kumar, home" data-track="Nav Click" data-track-label="Wordmark" data-track-href="/"><span class="topbar__mark-name">Tejas Kumar</span><span class="topbar__mark-dot" aria-hidden="true">.</span><svg class="topbar__home" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M3.6 10.4 12 3.6l8.4 6.8V20a.8.8 0 0 1-.8.8h-4.4v-6h-4.4v6H4.4a.8.8 0 0 1-.8-.8Z"></path></svg></a><nav aria-label="Primary"><ul class="topbar__nav"><li><a href="/speaking" data-track="Nav Click" data-track-label="Speaking" data-track-href="/speaking">Speaking</a></li><li><a href="/story" data-track="Nav Click" data-track-label="Story" data-track-href="/story">Story</a></li><li><a href="/podcast" data-track="Nav Click" data-track-label="Podcast" data-track-href="/podcast">Podcast</a></li><li><a href="/blog" aria-current="page" data-track="Nav Click" data-track-label="Blog" data-track-href="/blog">Blog</a></li><li class="topbar__more"><button type="button" class="topbar__more-btn" popovertarget="nav-more" aria-label="More pages"><span class="topbar__more-label">More</span><svg class="topbar__more-chevron" viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 9 7 7 7-7"></path></svg></button><div id="nav-more" popover class="navpop"><ul class="navpop__list"><li class="navpop__phone"><a href="/speaking" data-track="Nav Click" data-track-label="Speaking" data-track-href="/speaking"><span class="navpop__label">Speaking</span><span class="navpop__note">Talks, topics and fees</span></a></li><li><a href="/calendar" data-track="Nav Click" data-track-label="Calendar" data-track-href="/calendar"><span class="navpop__label">Calendar</span><span class="navpop__note">Where I&#39;ll be next</span></a></li><li><a href="/workshops" data-track="Nav Click" data-track-label="Workshops" data-track-href="/workshops"><span class="navpop__label">Workshops</span><span class="navpop__note">I teach your team</span></a></li><li class="navpop__phone"><a href="/story" data-track="Nav Click" data-track-label="Story" data-track-href="/story"><span class="navpop__label">Story</span><span class="navpop__note">My testimony, in chapters</span></a></li><li class="navpop__phone"><a href="/podcast" data-track="Nav Click" data-track-label="Podcast" data-track-href="/podcast"><span class="navpop__label">Podcast</span><span class="navpop__note">ConTejas Code</span></a></li><li><a href="/react" data-track="Nav Click" data-track-label="Book" data-track-href="/react"><span class="navpop__label">Book</span><span class="navpop__note">Fluent React</span></a></li><li class="navpop__phone"><a href="/blog" aria-current="page" data-track="Nav Click" data-track-label="Blog" data-track-href="/blog"><span class="navpop__label">Blog</span><span class="navpop__note">Everything I write</span></a></li><li><a href="/about" data-track="Nav Click" data-track-label="About" data-track-href="/about"><span class="navpop__label">About</span><span class="navpop__note">The long version</span></a></li><li><a href="/status" data-track="Nav Click" data-track-label="Status" data-track-href="/status"><span class="navpop__label">Status</span><span class="navpop__note">How I&#39;m doing today</span></a></li><li><a href="/investing" data-track="Nav Click" data-track-label="Investing" data-track-href="/investing"><span class="navpop__label">Investing</span><span class="navpop__note">Startups I back</span></a></li><li><a href="/#contact" data-track="Nav Click" data-track-label="Contact" data-track-href="/#contact"><span class="navpop__label">Contact</span><span class="navpop__note">Say hello</span></a></li></ul></div></li></ul></nav><button class="theme" type="button" data-theme-toggle aria-label="Switch theme" title="Switch theme" data-astro-cid-l6lhmie6><span class="theme__icon" aria-hidden="true" data-astro-cid-l6lhmie6><svg class="theme__moon" viewBox="0 0 24 24" width="13" height="13" data-astro-cid-l6lhmie6><path fill="currentColor" d="M21 14.2A9.2 9.2 0 0 1 9.8 3 8.6 8.6 0 1 0 21 14.2Z" data-astro-cid-l6lhmie6></path></svg><svg class="theme__sun" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" data-astro-cid-l6lhmie6><circle cx="12" cy="12" r="4.1" data-astro-cid-l6lhmie6></circle><path d="M12 2.4v2.2M12 19.4v2.2M2.4 12h2.2M19.4 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6" data-astro-cid-l6lhmie6></path></svg></span><span class="theme__label" data-theme-label data-astro-cid-l6lhmie6>Dark</span></button><script>
+  (function () {
+    const root = document.documentElement;
+
+    const paint = () => {
+      const dark = root.getAttribute("data-theme") !== "light";
+      document.querySelectorAll("[data-theme-label]").forEach((el) => {
+        el.textContent = dark ? "Dark" : "Light";
+      });
+      document.querySelectorAll("[data-theme-toggle]").forEach((el) => {
+        el.setAttribute("aria-pressed", String(dark));
+      });
+    };
+
+    document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const next =
+          root.getAttribute("data-theme") === "light" ? "dark" : "light";
+        root.setAttribute("data-theme", next);
+        try {
+          localStorage.setItem("theme", next);
+        } catch (e) {
+          /* private mode: the choice just will not persist */
+        }
+        paint();
+      });
+    });
+
+    // Follow the system while the visitor has not made an explicit choice.
+    // The read is guarded on its own: where storage throws there is no choice
+    // to honour, so the system should still be followed rather than the
+    // handler dying on the first flip.
+    const chosen = () => {
+      try {
+        return localStorage.getItem("theme");
+      } catch (e) {
+        return null;
+      }
+    };
+
+    try {
+      window
+        .matchMedia("(prefers-color-scheme: light)")
+        .addEventListener("change", (e) => {
+          if (chosen()) return;
+          root.setAttribute("data-theme", e.matches ? "light" : "dark");
+          paint();
+        });
+    } catch (e) {
+      /* older Safari: no listener, the stamped value stands */
+    }
+
+    paint();
+  })();
+</script></header><svg class="pointer-events-none absolute h-0 w-0 overflow-hidden" aria-hidden="true" focusable="false"><filter id="pill-lens" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse" x="0" y="0" width="1" height="1"><feImage x="0" y="0" width="1" height="1" preserveAspectRatio="none" result="map"></feImage><feDisplacementMap in="SourceGraphic" in2="map" scale="0" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap></filter></svg><main id="main" class="relative z-10 mx-auto w-full max-w-shell px-gutter pb-chapter pt-cathedral"><article><header class="border-b border-hairline pb-m"><nav class="post-meta font-mono text-micro uppercase text-fg-3" aria-label="Breadcrumb"><a class="text-fg-3 no-underline hover:text-fg" href="/">Tejas Kumar</a><span aria-hidden="true">/</span><a class="text-fg-3 no-underline hover:text-fg" href="/blog">Writing</a></nav><h1 class="mt-m max-w-[15ch] text-balance font-display text-major font-black text-fg">What Is an Agent Harness? Harness Engineering Explained</h1><p class="post-meta mt-m font-mono text-micro uppercase text-fg-3" data-reading-time="9"><time datetime="2026-09-14T09:47:55.266Z">Sep 14, 2026</time><span aria-hidden="true">/</span><span>9 min read</span><span aria-hidden="true">/</span><a class="text-accent" href="https://x.com/intent/tweet?url=I%20just%20read%20this%20insightful%20blog%20post%20by%20%40TejasKumar_%20at%20https%3A%2F%2Ftej.as%2Fblog%2Fwhat-is-an-agent-harness">Share on 𝕏</a></p><p class="post-meta mt-3 font-mono text-micro uppercase text-fg-3"><span>By <a class="text-fg-3 underline underline-offset-4 hover:text-fg" rel="author" href="/about">Tejas Kumar</a>, AI Engineer at IBM</span></p></header><div class="mt-l xl:grid xl:grid-cols-[minmax(0,max-content)_15rem] xl:gap-x-nave"><div class="min-w-0"><div class="prose"><p><strong>An agent harness is everything around the model that gives it grounding in reality: the tools it can call, the context it sees, the guardrails that stop it, the loop that drives it, and the checks that verify what it claims.</strong> I once told GPT-3.5 Turbo to upvote the top story on <a href="https://news.ycombinator.com/">Hacker News</a>. It landed on a login page, did nothing, and reported success anyway.</p>
+<p>In this post we’ll fix that agent together, one piece of harness at a time, until it really upvotes the story. The model stays the same. <strong>The prompt never changes.</strong></p>
+<p><strong>TL;DR</strong></p>
+<ul>
+<li>We rent our models. A rented model is a black box. A harness is how you get reliable behavior out of something you don’t control.</li>
+<li>An agent harness has 6 parts: a tool registry, a model, context management, guardrails, an agent loop and a verify step.</li>
+<li>The harness is not the agent loop. It’s everything around the loop.</li>
+<li>When an agent misbehaves, the fix is usually code in the harness, not a better prompt. That practice is called harness engineering.</li>
+<li>In the demo below, a harness takes GPT-3.5 Turbo from lying about success to succeeding in 6 iterations, with the same prompt.</li>
+<li>All the code below is on GitHub at <a href="https://github.com/TejasQ/basically-ai-harness">TejasQ/basically-ai-harness</a>, one branch per step. The snippets here are trimmed for reading.</li>
+</ul>
+<h2 id="why-agents-need-a-harness">Why agents need a harness</h2>
+<p>Most of us don’t own the models we build on. We pay rent: tokens, a subscription, a context window someone else sized. And the model we rent is a black box. If a provider quietly served you a smaller model under a bigger model’s name, you would never know.</p>
+<p>That’s a lot of variables you can’t control, sitting in the middle of software you’re responsible for. So a harness is about <strong>reliability</strong>: your agent does its job, period, whichever black box happens to be underneath it today.</p>
+<p>Think about harnesses you already know. A climber harnesses themselves to a mountain: the mountain is stable and they are not. You walk your dog on a harness so it can’t run into traffic. Neither harness makes the climber climb or the dog walk. It keeps something unpredictable anchored to something that isn’t.</p>
+<p>That’s the whole idea. Each half of it maps to parts of a real harness. The climbing harness doesn’t climb for you; it catches the fall. That’s what guardrails and verification do. The leash doesn’t walk for the dog; it chooses the direction. That’s what the loop and the tool registry do. The metaphor stops there, though: a rope can’t tell you whether the climber reached the top. A harness for agents has to check that too.</p>
+<h2 id="what-is-an-agent-harness">What is an agent harness?</h2>
+<p>The word “harness” means 2 different things depending on who you ask. And 2 neighboring terms get mixed in with it. Here they are side by side.</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>What it is</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Evaluation harness</td>
+<td>A test suite and test runner for models: inputs in, output quality measured. The machine learning meaning.</td>
+<td>A benchmark runner scoring a model on a dataset</td>
+</tr>
+<tr>
+<td><strong>Agent harness</strong></td>
+<td>The runtime layer around a model that makes an agent reliable. The AI engineering meaning, and the one this post is about.</td>
+<td><a href="https://claude.com/product/claude-code">Claude Code</a>, Cursor, Codex</td>
+</tr>
+<tr>
+<td>Agent loop</td>
+<td>Call the model, run the tool it asked for, feed the result back, repeat. One part of a harness.</td>
+<td>A <code>while (true)</code> around a chat completion</td>
+</tr>
+<tr>
+<td>Harness engineering</td>
+<td>The practice of improving the harness every time an agent fails, instead of prompting harder.</td>
+<td>Adding a verify step after an agent lies about success</td>
+</tr>
+</tbody>
+</table>
+<p>Other people define the agent harness by subtraction. <a href="https://www.langchain.com/blog/the-anatomy-of-an-agent-harness">LangChain writes</a> that “a harness is every piece of code, configuration, and execution logic that isn’t the model itself,” and <a href="https://martinfowler.com/articles/harness-engineering.html">Birgitta Böckeler on martinfowler.com</a> calls it “everything in an AI agent except the model itself.” That’s true. I find it more useful to define a harness by its job: <strong>grounding a model you don’t control in an environment you do.</strong> That job tells you what to build next.</p>
+<p><a href="https://docs.anthropic.com/en/docs/claude-code/overview">Claude Code</a> is a good example. It’s a coding agent, sure. More precisely, it’s a <em>harnessed</em> coding agent: a model wrapped in tools, context compaction and limits.</p>
+<h3 id="the-6-parts-of-an-agent-harness">The 6 parts of an agent harness</h3>
+<p>Almost every agent harness has the same 6 moving parts. The last column is where each one shows up in the demo below.</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Its job</th>
+<th>In the demo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tool registry</td>
+<td>What the agent can do: read a file, run a command, click in a browser</td>
+<td>Browser tools: navigate, read the stories, click</td>
+</tr>
+<tr>
+<td>Model</td>
+<td>The reasoning. Sometimes you choose it, sometimes the harness does</td>
+<td>GPT-3.5 Turbo, on purpose</td>
+</tr>
+<tr>
+<td>Context management</td>
+<td>What the model sees, and what happens when the conversation outgrows the window</td>
+<td>Keep the system prompt and the task, drop the middle</td>
+</tr>
+<tr>
+<td>Guardrails</td>
+<td>Hard limits enforced in code, whatever the model wants</td>
+<td>Maximum iterations, maximum messages</td>
+</tr>
+<tr>
+<td>Agent loop</td>
+<td>Call the model, run the tools it asks for, repeat until it says it’s done</td>
+<td>A <code>while (true)</code> around a chat completion</td>
+</tr>
+<tr>
+<td>Verify step</td>
+<td>Check the agent really did what it claims. In a coding agent, run the linter and the tests</td>
+<td>Read the tool history and confirm the upvote</td>
+</tr>
+</tbody>
+</table>
+<p>When I was preparing my talk on this, the most common question I got was: isn’t the harness just the agent loop? It isn’t. <strong>The harness is everything around the loop.</strong> It can even be a loop around your loop, as you’re about to see.</p>
+<h2 id="build-an-agent-harness-from-scratch">Build an agent harness from scratch</h2>
+<p>Here’s the job: open <a href="https://news.ycombinator.com">Hacker News</a> and upvote the highest-ranked story you haven’t voted on yet. The agent drives a real browser through <a href="https://playwright.dev">Playwright</a>.</p>
+<p>I picked GPT-3.5 Turbo on purpose. If a harness can make a weak, cheap model do real work, it can make a strong one boringly reliable. And I set myself one rule: <strong>the prompt never changes.</strong> When an agent misbehaves, the instinct is to prompt it harder. Let’s see how far we get without doing that.</p>
+<h3 id="step-0-a-bare-loop-lies-about-success">Step 0: a bare loop lies about success</h3>
+<p><a href="https://github.com/TejasQ/basically-ai-harness/tree/0">Branch <code>0</code></a>. The first version has no harness at all. It’s a system prompt, the task, a few browser tools and a loop:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> async</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> runLoop</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">model</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">messages</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">tools</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  while</span><span style="color:#E1E4E8"> (</span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> response</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> client.chat.completions.</span><span style="color:#B392F0">create</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">      model,</span></span>
+<span class="line"><span style="color:#E1E4E8">      messages,</span></span>
+<span class="line"><span style="color:#E1E4E8">      tools: tools.definitions,</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> choice</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> response.choices[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#E1E4E8">    messages.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(choice.message);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // The model says it's done, so we believe it.</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (choice.finish_reason </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> "stop"</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#E1E4E8"> { answer: choice.message.content };</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // Otherwise, run every tool it asked for and loop.</span></span>
+<span class="line"><span style="color:#F97583">    for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> call</span><span style="color:#F97583"> of</span><span style="color:#E1E4E8"> choice.message.tool_calls </span><span style="color:#F97583">??</span><span style="color:#E1E4E8"> []) {</span></span>
+<span class="line"><span style="color:#F97583">      const</span><span style="color:#79B8FF"> tool</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> tools.byName.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(call.function.name);</span></span>
+<span class="line"><span style="color:#F97583">      const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> tool.</span><span style="color:#B392F0">execute</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(call.function.arguments));</span></span>
+<span class="line"><span style="color:#E1E4E8">      messages.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">({ role: </span><span style="color:#9ECBFF">"tool"</span><span style="color:#E1E4E8">, tool_call_id: call.id, content: result });</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>I ran it. It opened Hacker News, found a story and clicked upvote. Hacker News doesn’t let you vote logged out, so it bounced to the login page. The agent panicked. Then it reported that the story was upvoted.</p>
+<p>It lied. Nothing in this code checks anything: the loop ends when the model says it’s done, so it’s done.</p>
+<p><strong>So after every run I check what actually happened on the page.</strong></p>
+<h3 id="step-1-guardrails-bound-the-damage">Step 1: guardrails bound the damage</h3>
+<p><a href="https://github.com/TejasQ/basically-ai-harness/tree/1">Branch <code>1</code></a>. Before we fix the lie, let’s make sure a confused agent can’t run forever or blow up its context. Guardrails are just functions that look at the state of the run and say stop:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> maxIterations</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">limit</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> ({ </span><span style="color:#FFAB70">iterations</span><span style="color:#E1E4E8"> }) </span><span style="color:#F97583">=></span></span>
+<span class="line"><span style="color:#E1E4E8">  iterations </span><span style="color:#F97583">>=</span><span style="color:#E1E4E8"> limit</span></span>
+<span class="line"><span style="color:#F97583">    ?</span><span style="color:#E1E4E8"> { ok: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">, reason: </span><span style="color:#9ECBFF">`Guardrail: reached iteration limit (${</span><span style="color:#E1E4E8">limit</span><span style="color:#9ECBFF">})`</span><span style="color:#E1E4E8"> }</span></span>
+<span class="line"><span style="color:#F97583">    :</span><span style="color:#E1E4E8"> { ok: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> maxMessages</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">limit</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> ({ </span><span style="color:#FFAB70">messages</span><span style="color:#E1E4E8"> }) </span><span style="color:#F97583">=></span></span>
+<span class="line"><span style="color:#E1E4E8">  messages.</span><span style="color:#79B8FF">length</span><span style="color:#F97583"> ></span><span style="color:#E1E4E8"> limit</span></span>
+<span class="line"><span style="color:#F97583">    ?</span><span style="color:#E1E4E8"> { ok: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">, reason: </span><span style="color:#9ECBFF">`Guardrail: context too large (${</span><span style="color:#E1E4E8">messages</span><span style="color:#9ECBFF">.</span><span style="color:#79B8FF">length</span><span style="color:#9ECBFF">} messages)`</span><span style="color:#E1E4E8"> }</span></span>
+<span class="line"><span style="color:#F97583">    :</span><span style="color:#E1E4E8"> { ok: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> defaultGuardrails</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> combineGuardrails</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">maxIterations</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">15</span><span style="color:#E1E4E8">), </span><span style="color:#B392F0">maxMessages</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">50</span><span style="color:#E1E4E8">));</span></span></code></pre>
+<p>Alongside them goes the most naive context compression you can write: keep the system prompt and the task, keep the most recent messages, drop the middle.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> trimContext</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">messages</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">maxMessages</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (messages.</span><span style="color:#79B8FF">length</span><span style="color:#F97583"> &#x3C;=</span><span style="color:#E1E4E8"> maxMessages) </span><span style="color:#F97583">return</span><span style="color:#E1E4E8"> messages;</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">system</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">user</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> messages;</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> rest</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> messages.</span><span style="color:#B392F0">slice</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> [system, user, </span><span style="color:#F97583">...</span><span style="color:#E1E4E8">rest.</span><span style="color:#B392F0">slice</span><span style="color:#E1E4E8">(rest.</span><span style="color:#79B8FF">length</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8"> (maxMessages </span><span style="color:#F97583">-</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">))];</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Don’t ship that compressor: throwing away the middle of a conversation loses things the agent needed. But the shape is right: the loop checks the guardrails and trims context at the top of every iteration. None of it is up to the model. (On stage I used a limit of 6 iterations; the repo defaults to 15.)</p>
+<p><strong>Put the limits in code, where the model can’t talk its way past them.</strong></p>
+<h3 id="step-2-the-harness-gets-a-home">Step 2: the harness gets a home</h3>
+<p><a href="https://github.com/TejasQ/basically-ai-harness/tree/2">Branch <code>2</code></a>. Next, move all of that out of the entry point and into a function called <code>runHarness</code>. Nothing about the behavior changes. Do it anyway. Now there’s a place for the next 2 steps to live. The entry point shrinks to a task and a single call.</p>
+<h3 id="step-3-deterministic-verification-ends-the-lying">Step 3: deterministic verification ends the lying</h3>
+<p><a href="https://github.com/TejasQ/basically-ai-harness/tree/3">Branch <code>3</code></a>. Now the fix for the lie. Every tool call the agent makes is already recorded in a trace. So after a run, the harness reads that trace and decides, in plain deterministic code, whether the job really happened:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> verifySuccessfulUpvote</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">result</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> events</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> result.trace.</span><span style="color:#B392F0">flatMap</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">iteration</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> iteration.toolEvents);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> upvoted</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> events.</span><span style="color:#B392F0">find</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">    (</span><span style="color:#FFAB70">event</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span></span>
+<span class="line"><span style="color:#E1E4E8">      event.tool </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> "browser_click"</span><span style="color:#F97583"> &#x26;&#x26;</span></span>
+<span class="line"><span style="color:#9ECBFF">      /</span><span style="color:#DBEDFF">up_</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">stringify</span><span style="color:#E1E4E8">(event.args)) </span><span style="color:#F97583">&#x26;&#x26;</span></span>
+<span class="line"><span style="color:#9ECBFF">      /</span><span style="color:#DBEDFF">news</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">ycombinator</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">com</span><span style="color:#85E89D;font-weight:bold">\/</span><span style="color:#DBEDFF">(news)</span><span style="color:#F97583">?$</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(event.result.</span><span style="color:#B392F0">split</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"now at "</span><span style="color:#E1E4E8">)[</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">]?.</span><span style="color:#B392F0">trim</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">??</span><span style="color:#9ECBFF"> ""</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (upvoted) </span><span style="color:#F97583">return</span><span style="color:#E1E4E8"> { passed: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">, reason: </span><span style="color:#9ECBFF">"Upvote click confirmed"</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> hitLogin</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> events.</span><span style="color:#B392F0">find</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">event</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#B392F0"> isLoginUrl</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">extractUrl</span><span style="color:#E1E4E8">(event.result)));</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (hitLogin) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> { passed: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">, reason: </span><span style="color:#9ECBFF">"Hit login screen instead of completing the upvote"</span><span style="color:#E1E4E8">, fatal: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> { passed: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">, reason: </span><span style="color:#9ECBFF">"No successful upvote click found in trace"</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>And <code>runHarness</code> becomes a loop around the agent loop: run an attempt, verify it, retry if it failed, up to 3 times.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">let</span><span style="color:#E1E4E8"> attempt </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">; attempt </span><span style="color:#F97583">&#x3C;=</span><span style="color:#E1E4E8"> maxAttempts; attempt</span><span style="color:#F97583">++</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> runHarnessAttempt</span><span style="color:#E1E4E8">(task, model);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> verification</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> options.</span><span style="color:#B392F0">verify</span><span style="color:#E1E4E8">(result);</span></span>
+<span class="line"><span style="color:#6A737D">  // A failed check replaces whatever the model claimed.</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> answer</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> verification.passed </span><span style="color:#F97583">?</span><span style="color:#E1E4E8"> result.answer </span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> verification.reason;</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (verification.passed </span><span style="color:#F97583">||</span><span style="color:#E1E4E8"> verification.fatal </span><span style="color:#F97583">||</span><span style="color:#E1E4E8"> attempt </span><span style="color:#F97583">===</span><span style="color:#E1E4E8"> maxAttempts) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> { </span><span style="color:#F97583">...</span><span style="color:#E1E4E8">result, answer, attempts: attempt, verification };</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>I ran it again. It still failed. But this time it said so: “Hit login screen instead of completing the upvote.” The model didn’t get more honest. The harness stopped taking its word for it.</p>
+<p><strong>An honest failure is progress: now I could see what to fix.</strong></p>
+<h3 id="step-4-the-harness-logs-in-so-the-model-doesnt-have-to">Step 4: the harness logs in so the model doesn’t have to</h3>
+<p><a href="https://github.com/TejasQ/basically-ai-harness/tree/4">Branch <code>4</code></a>. The agent can’t log in. It shouldn’t: I don’t want my password in a prompt. So the harness does it. Before each step of the loop is recorded, a login handler looks at the browser’s URL. If it isn’t a login page, it does nothing, which costs nothing. If it is, it fills in the credentials itself, from environment variables the model never sees:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> createLoginHandler</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">session</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#F97583"> async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> currentUrl</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> session.</span><span style="color:#B392F0">getUrl</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">currentUrl.</span><span style="color:#B392F0">includes</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"login"</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#F97583"> !</span><span style="color:#E1E4E8">currentUrl.</span><span style="color:#B392F0">includes</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"vote"</span><span style="color:#E1E4E8">)) </span><span style="color:#F97583">return</span><span style="color:#79B8FF"> null</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    await</span><span style="color:#E1E4E8"> session.</span><span style="color:#B392F0">fill</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"input[name='acct']"</span><span style="color:#E1E4E8">, process.env.</span><span style="color:#79B8FF">HN_USERNAME</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    await</span><span style="color:#E1E4E8"> session.</span><span style="color:#B392F0">fill</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"input[name='pw']"</span><span style="color:#E1E4E8">, process.env.</span><span style="color:#79B8FF">HN_PASSWORD</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    await</span><span style="color:#E1E4E8"> session.</span><span style="color:#B392F0">click</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"input[type='submit']"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      tool: </span><span style="color:#9ECBFF">"harness_auto_login"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      args: {},</span></span>
+<span class="line"><span style="color:#E1E4E8">      result: </span><span style="color:#9ECBFF">`Harness automatically handled login at ${</span><span style="color:#E1E4E8">currentUrl</span><span style="color:#9ECBFF">}.`</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    };</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>When it logs in, the harness also tells the model, in the conversation, that authentication is done and it should get back to the task.</p>
+<p>I ran it. Hacker News, upvote, login page, the harness logged in, the vote went through. It succeeded after 6 iterations. When I opened Hacker News, the story really was upvoted.</p>
+<p>Same model. Same prompt.</p>
+<p><strong>Move secrets and fragile, deterministic steps out of the model and into the harness.</strong></p>
+<h3 id="what-changed">What changed</h3>
+<table>
+<thead>
+<tr>
+<th>Branch</th>
+<th>What we added to the harness</th>
+<th>What happened</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Nothing: a bare agent loop</td>
+<td>Hit the login page, reported success anyway</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Guardrails and context trimming</td>
+<td>Could no longer run forever or overflow its context</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A <code>runHarness</code> function</td>
+<td>No behavior change, somewhere to put the next steps</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A deterministic verify step and retries</td>
+<td>Failed, and said so</td>
+</tr>
+<tr>
+<td>4</td>
+<td>A login handler holding the secrets</td>
+<td>Upvoted the story in 6 iterations</td>
+</tr>
+</tbody>
+</table>
+<p>Every fix was code. None of them was a prompt.</p>
+<h2 id="what-is-harness-engineering">What is harness engineering?</h2>
+<p><strong>Harness engineering is changing the system around the model, not the prompt, until you can trust what the agent does.</strong> Every step above was harness engineering.</p>
+<p>The habit has a name now. <a href="https://mitchellh.com/writing/my-ai-adoption-journey">Mitchell Hashimoto called it harness engineering on February 5, 2026</a>: “anytime you find an agent makes a mistake, you take the time to engineer a solution such that the agent never makes that mistake again.” 6 days later, OpenAI <a href="https://openai.com/index/harness-engineering/">wrote about harness engineering with Codex</a>. LangChain’s <a href="https://www.langchain.com/blog/the-anatomy-of-an-agent-harness">anatomy of an agent harness</a> and Birgitta Böckeler’s <a href="https://martinfowler.com/articles/harness-engineering.html">harness engineering for coding agent users</a> both sum it up as agent = model + harness.</p>
+<p>If you’ve been doing context engineering, deciding what goes into the window, you’ve been doing one part of this already. Harness engineering is the whole layer: context, plus tools, guardrails, the loop and verification.</p>
+<p>It also matters beyond demos. At IBM we build <a href="https://github.com/langflow-ai/openrag">OpenRAG</a>, an open source retrieval platform that very large companies run against private, sensitive data like calls, PDFs and invoices. What makes it safe to point at that data isn’t a cleverer model. It’s the harness.</p>
+<h2 id="where-this-goes-next">Where this goes next</h2>
+<p>2025 was the year of agents. 2026 is the year of harnesses.</p>
+<p>My hope for 2027 is dynamic harnesses, generated on the fly. You ask an agent to buy you a flight, and before it touches anything it builds a harness for that specific task: it knows where it’s likely to go wrong, it adds the checks, it does the job, and it comes back to you guardrailed. Like plan mode, but on steroids.</p>
+<p>A lot of this is still open. How much verification is enough? Which checks belong in code and which can be handed to another model? I don’t think anyone has settled those yet, me included.</p>
+<p>I gave this as a talk at <a href="/talks/ai-engineer-europe-2026">AI Engineer Europe 2026</a>. You can watch me build the harness live:</p>
+<figure class="my-16 grid gap-4 text-center w-full">
+<iframe width="100%" class="aspect-video w-full shadow-lg rounded" src="https://www.youtube-nocookie.com/embed/C_GG5g38vLU" title="Harnesses in AI: A Deep Dive, Tejas Kumar, IBM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<figcaption class="text-small text-fg-3">Harnesses in AI: A Deep Dive, at AI Engineer Europe 2026. The <a href="/talks/ai-engineer-europe-2026">full transcript</a> is on this site.</figcaption>
+</figure>
+<p>If you want to build a harness like this around your own agents, with your team, <a href="/workshops#ai-agents">I run a workshop on exactly that</a>.</p>
+<script type="module" src="/_astro/ChartGpu.astro_astro_type_script_index_0_lang.8nliKS2A.js"></script></div><section class="prose mt-l" aria-labelledby="questions"><h2 id="questions">Questions</h2><h3>What is an agent harness?</h3><p>An agent harness is everything around the model that gives it grounding in reality. It ties a model you rent and cannot control to a stable environment you do control, through a tool registry, a model, context management, guardrails, an agent loop and a verify step.</p><h3>What is harness engineering?</h3><p>Harness engineering is building and improving that layer on purpose: every time an agent makes a mistake, you engineer a fix in the harness, in code, so it cannot make that mistake again, instead of prompting the model harder.</p><h3>Is an agent harness the same as the agent loop?</h3><p>No. The agent loop calls the model, runs the tool it asked for and repeats until the model says it is done. The harness is everything around the agent loop: guardrails, context management, verification and deterministic steps like logging in. It can even be a loop around your agent loop.</p><h3>Is Claude Code an agent harness?</h3><p>Claude Code is a coding agent, but more precisely it is a harnessed coding agent. It has a tool registry to read files, write files and run bash commands, a model, context compaction, and limits on what it will do.</p><h3>What does harness mean in machine learning?</h3><p>In machine learning, a harness usually means an evaluation harness: a test suite and test runner that gives a model inputs and measures the quality of its outputs. An agent harness in AI engineering is a different thing: the runtime layer that makes an agent reliable.</p><h3>Harness engineering vs context engineering: what is the difference?</h3><p>Context engineering decides what goes into the model context window. Harness engineering covers the whole layer around the model, and context management is one part of it, next to tools, guardrails, the loop and verification.</p><h3>Does a better model remove the need for an agent harness?</h3><p>No. A better model makes fewer mistakes, but it is still a black box you rent and cannot inspect, and a model saying it finished is still only a claim. The harness is where you verify that claim, keep secrets out of the prompt and stop runaway loops, whichever model is underneath.</p><h3>Do I need a framework to build an agent harness?</h3><p>No. A working harness can be a few hundred lines of plain TypeScript: a tool registry, a loop, guardrail functions, a verify function and a retry loop. Frameworks help at scale, but the parts are simple enough to write and understand yourself first.</p><h3>Why use an agent harness?</h3><p>Reliability. Models are nondeterministic black boxes that most teams rent. A good harness makes an agent do its job regardless of which model is underneath, which also lets you use a cheaper or older model and still get the work done.</p></section></div><nav class="post-toc hidden xl:block" aria-labelledby="post-toc-label" data-post="what-is-an-agent-harness"><div class="sticky top-24 flex max-h-[calc(100svh-8rem)] flex-col"><p id="post-toc-label" class="font-mono text-micro uppercase text-fg-3">On this page</p><ol class="mt-s min-h-0 overflow-y-auto overscroll-contain border-l border-hairline pb-m"><li><a href="#why-agents-need-a-harness" class="-ml-px block border-l border-transparent py-1.5 pr-2 text-small leading-snug text-fg-3 no-underline transition-colors duration-fast ease-brand hover:text-fg aria-[current=true]:border-fg aria-[current=true]:text-fg pl-4" data-track="Blog TOC Click" data-track-post="what-is-an-agent-harness" data-track-section="why-agents-need-a-harness" data-track-position="1">Why agents need a harness</a></li><li><a href="#what-is-an-agent-harness" class="-ml-px block border-l border-transparent py-1.5 pr-2 text-small leading-snug text-fg-3 no-underline transition-colors duration-fast ease-brand hover:text-fg aria-[current=true]:border-fg aria-[current=true]:text-fg pl-4" data-track="Blog TOC Click" data-track-post="what-is-an-agent-harness" data-track-section="what-is-an-agent-harness" data-track-position="2">What is an agent harness?</a></li><li><a href="#the-6-parts-of-an-agent-harness" class="-ml-px block border-l border-transparent py-1.5 pr-2 text-small leading-snug text-fg-3 no-underline transition-colors duration-fast ease-brand hover:text-fg aria-[current=true]:border-fg aria-[current=true]:text-fg pl-8" data-track="Blog TOC Click" data-track-post="what-is-an-agent-harness" data-track-section="the-6-parts-of-an-agent-harness" data-track-position="3">The 6 parts of an agent harness</a></li><li><a href="#build-an-agent-harness-from-scratch" class="-ml-px block border-l border-transparent py-1.5 pr-2 text-small leading-snug text-fg-3 no-underline transition-colors duration-fast ease-brand hover:text-fg aria-[current=true]:border-fg aria-[current=true]:text-fg pl-4" data-track="Blog TOC Click" data-track-post="what-is-an-agent-harness" data-track-section="build-an-agent-harness-from-scratch" data-track-position="4">Build an agent harness from scratch</a></li><li><a href="#step-0-a-bare-loop-lies-about-success" class="-ml-px block border-l border-transparent py-1.5 pr-2 text-small leading-snug text-fg-3 no-underline transition-colors duration-fast ease-brand hover:text-fg aria-[current=true]:border-fg aria-[current=true]:text-fg pl-8" data-track="Blog TOC Click" data-track-post="what-is-an-agent-harness" data-track-section="step-0-a-bare-loop-lies-about-success" data-track-position="5">Step 0: a bare loop lies about success</a></li><li><a href="#step-1-guardrails-bound-the-damage" class="-ml-px block border-l border-transparent py-1.5 pr-2 text-small leading-snug text-fg-3 no-underline transition-colors duration-fast ease-brand hover:text-fg aria-[current=true]:border-fg aria-[current=true]:text-fg pl-8" data-track="Blog TOC Click" data-track-post="what-is-an-agent-harness" data-track-section="step-1-guardrails-bound-the-damage" data-track-position="6">Step 1: guardrails bound the damage</a></li><li><a href="#step-2-the-harness-gets-a-home" class="-ml-px block border-l border-transparent py-1.5 pr-2 text-small leading-snug text-fg-3 no-underline transition-colors duration-fast ease-brand hover:text-fg aria-[current=true]:border-fg aria-[current=true]:text-fg pl-8" data-track="Blog TOC Click" data-track-post="what-is-an-agent-harness" data-track-section="step-2-the-harness-gets-a-home" data-track-position="7">Step 2: the harness gets a home</a></li><li><a href="#step-3-deterministic-verification-ends-the-lying" class="-ml-px block border-l border-transparent py-1.5 pr-2 text-small leading-snug text-fg-3 no-underline transition-colors duration-fast ease-brand hover:text-fg aria-[current=true]:border-fg aria-[current=true]:text-fg pl-8" data-track="Blog TOC Click" data-track-post="what-is-an-agent-harness" data-track-section="step-3-deterministic-verification-ends-the-lying" data-track-position="8">Step 3: deterministic verification ends the lying</a></li><li><a href="#step-4-the-harness-logs-in-so-the-model-doesnt-have-to" class="-ml-px block border-l border-transparent py-1.5 pr-2 text-small leading-snug text-fg-3 no-underline transition-colors duration-fast ease-brand hover:text-fg aria-[current=true]:border-fg aria-[current=true]:text-fg pl-8" data-track="Blog TOC Click" data-track-post="what-is-an-agent-harness" data-track-section="step-4-the-harness-logs-in-so-the-model-doesnt-have-to" data-track-position="9">Step 4: the harness logs in so the model doesn’t have to</a></li><li><a href="#what-changed" class="-ml-px block border-l border-transparent py-1.5 pr-2 text-small leading-snug text-fg-3 no-underline transition-colors duration-fast ease-brand hover:text-fg aria-[current=true]:border-fg aria-[current=true]:text-fg pl-8" data-track="Blog TOC Click" data-track-post="what-is-an-agent-harness" data-track-section="what-changed" data-track-position="10">What changed</a></li><li><a href="#what-is-harness-engineering" class="-ml-px block border-l border-transparent py-1.5 pr-2 text-small leading-snug text-fg-3 no-underline transition-colors duration-fast ease-brand hover:text-fg aria-[current=true]:border-fg aria-[current=true]:text-fg pl-4" data-track="Blog TOC Click" data-track-post="what-is-an-agent-harness" data-track-section="what-is-harness-engineering" data-track-position="11">What is harness engineering?</a></li><li><a href="#where-this-goes-next" class="-ml-px block border-l border-transparent py-1.5 pr-2 text-small leading-snug text-fg-3 no-underline transition-colors duration-fast ease-brand hover:text-fg aria-[current=true]:border-fg aria-[current=true]:text-fg pl-4" data-track="Blog TOC Click" data-track-post="what-is-an-agent-harness" data-track-section="where-this-goes-next" data-track-position="12">Where this goes next</a></li><li><a href="#questions" class="-ml-px block border-l border-transparent py-1.5 pr-2 text-small leading-snug text-fg-3 no-underline transition-colors duration-fast ease-brand hover:text-fg aria-[current=true]:border-fg aria-[current=true]:text-fg pl-4" data-track="Blog TOC Click" data-track-post="what-is-an-agent-harness" data-track-section="questions" data-track-position="13">Questions</a></li></ol></div></nav><div class="dial-host xl:hidden" data-dial-root data-dial-hint data-marks="[{&quot;id&quot;:&quot;why-agents-need-a-harness&quot;,&quot;title&quot;:&quot;Why agents need a harness&quot;,&quot;when&quot;:&quot;1 of 6&quot;,&quot;spoke&quot;:true},{&quot;id&quot;:&quot;what-is-an-agent-harness&quot;,&quot;title&quot;:&quot;What is an agent harness?&quot;,&quot;when&quot;:&quot;2 of 6&quot;,&quot;spoke&quot;:true},{&quot;id&quot;:&quot;the-6-parts-of-an-agent-harness&quot;,&quot;title&quot;:&quot;The 6 parts of an agent harness&quot;,&quot;when&quot;:&quot;2 of 6&quot;,&quot;spoke&quot;:false},{&quot;id&quot;:&quot;build-an-agent-harness-from-scratch&quot;,&quot;title&quot;:&quot;Build an agent harness from scratch&quot;,&quot;when&quot;:&quot;3 of 6&quot;,&quot;spoke&quot;:true},{&quot;id&quot;:&quot;step-0-a-bare-loop-lies-about-success&quot;,&quot;title&quot;:&quot;Step 0: a bare loop lies about success&quot;,&quot;when&quot;:&quot;3 of 6&quot;,&quot;spoke&quot;:false},{&quot;id&quot;:&quot;step-1-guardrails-bound-the-damage&quot;,&quot;title&quot;:&quot;Step 1: guardrails bound the damage&quot;,&quot;when&quot;:&quot;3 of 6&quot;,&quot;spoke&quot;:false},{&quot;id&quot;:&quot;step-2-the-harness-gets-a-home&quot;,&quot;title&quot;:&quot;Step 2: the harness gets a home&quot;,&quot;when&quot;:&quot;3 of 6&quot;,&quot;spoke&quot;:false},{&quot;id&quot;:&quot;step-3-deterministic-verification-ends-the-lying&quot;,&quot;title&quot;:&quot;Step 3: deterministic verification ends the lying&quot;,&quot;when&quot;:&quot;3 of 6&quot;,&quot;spoke&quot;:false},{&quot;id&quot;:&quot;step-4-the-harness-logs-in-so-the-model-doesnt-have-to&quot;,&quot;title&quot;:&quot;Step 4: the harness logs in so the model doesn’t have to&quot;,&quot;when&quot;:&quot;3 of 6&quot;,&quot;spoke&quot;:false},{&quot;id&quot;:&quot;what-changed&quot;,&quot;title&quot;:&quot;What changed&quot;,&quot;when&quot;:&quot;3 of 6&quot;,&quot;spoke&quot;:false},{&quot;id&quot;:&quot;what-is-harness-engineering&quot;,&quot;title&quot;:&quot;What is harness engineering?&quot;,&quot;when&quot;:&quot;4 of 6&quot;,&quot;spoke&quot;:true},{&quot;id&quot;:&quot;where-this-goes-next&quot;,&quot;title&quot;:&quot;Where this goes next&quot;,&quot;when&quot;:&quot;5 of 6&quot;,&quot;spoke&quot;:true},{&quot;id&quot;:&quot;questions&quot;,&quot;title&quot;:&quot;Questions&quot;,&quot;when&quot;:&quot;6 of 6&quot;,&quot;spoke&quot;:true}]" data-astro-cid-zccmjbff><div class="dial" data-dial data-astro-cid-zccmjbff><div class="dial__face" data-astro-cid-zccmjbff><svg class="dial__track" aria-hidden="true" focusable="false" data-astro-cid-zccmjbff><defs data-astro-cid-zccmjbff><mask id="postDialLit" maskUnits="userSpaceOnUse" data-dial-mask data-astro-cid-zccmjbff><path data-dial-mask-arc fill="none" stroke="#fff" data-astro-cid-zccmjbff></path></mask></defs><g class="dial__scale" data-astro-cid-zccmjbff><path class="dial__minor" data-dial-minor data-astro-cid-zccmjbff></path><path class="dial__rim" data-dial-arc data-astro-cid-zccmjbff></path><line class="dial__spoke" data-mark="0" data-astro-cid-zccmjbff></line><line class="dial__spoke" data-mark="1" data-astro-cid-zccmjbff></line><line class="dial__spoke" data-mark="3" data-astro-cid-zccmjbff></line><line class="dial__spoke" data-mark="10" data-astro-cid-zccmjbff></line><line class="dial__spoke" data-mark="11" data-astro-cid-zccmjbff></line><line class="dial__spoke" data-mark="12" data-astro-cid-zccmjbff></line></g><g class="dial__scale dial__scale--lit" mask="url(#postDialLit)" data-astro-cid-zccmjbff><path class="dial__minor" data-dial-minor data-astro-cid-zccmjbff></path><path class="dial__rim" data-dial-arc data-astro-cid-zccmjbff></path><line class="dial__spoke" data-mark="0" data-astro-cid-zccmjbff></line><line class="dial__spoke" data-mark="1" data-astro-cid-zccmjbff></line><line class="dial__spoke" data-mark="3" data-astro-cid-zccmjbff></line><line class="dial__spoke" data-mark="10" data-astro-cid-zccmjbff></line><line class="dial__spoke" data-mark="11" data-astro-cid-zccmjbff></line><line class="dial__spoke" data-mark="12" data-astro-cid-zccmjbff></line></g><path class="dial__hub" data-dial-hub data-astro-cid-zccmjbff></path><line class="dial__hand" data-dial-hand data-astro-cid-zccmjbff></line></svg><div class="dial__knob" aria-hidden="true" data-astro-cid-zccmjbff></div></div><p class="dial__now" data-astro-cid-zccmjbff><span class="dial__when" data-dial-when data-astro-cid-zccmjbff></span><span class="dial__title" data-dial-title data-astro-cid-zccmjbff></span></p><div class="dial__grip" data-dial-grip role="slider" tabindex="0" aria-label="Scrub through this post" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-astro-cid-zccmjbff></div></div></div><script type="module" src="/_astro/Dial.astro_astro_type_script_index_0_lang.DT3O6Tln.js"></script><script type="module" src="/_astro/PostToc.astro_astro_type_script_index_0_lang.Be8RV8lV.js"></script></div><div class="max-w-prose"><aside class="share" aria-label="Share this post" data-astro-cid-rblsegky><span class="share__label" data-astro-cid-rblsegky>Share this</span><div class="share__row" data-astro-cid-rblsegky><a class="share__btn" href="https://x.com/intent/tweet?url=https%3A%2F%2Ftej.as%2Fblog%2Fwhat-is-an-agent-harness&amp;text=What%20Is%20an%20Agent%20Harness%3F%20Harness%20Engineering%20Explained%20by%20%40TejasKumar_" target="_blank" rel="noopener noreferrer" aria-label="Share on X" title="X" data-track="Share Click" data-track-platform="X" data-track-url="https://tej.as/blog/what-is-an-agent-harness" data-track-title="What Is an Agent Harness? Harness Engineering Explained" data-astro-cid-rblsegky><span class="share__icon" style="-webkit-mask-image:url(https://cdn.simpleicons.org/x);mask-image:url(https://cdn.simpleicons.org/x)" data-astro-cid-rblsegky></span></a><a class="share__btn" href="https://bsky.app/intent/compose?text=What%20Is%20an%20Agent%20Harness%3F%20Harness%20Engineering%20Explained%20by%20%40TejasKumar_%20https%3A%2F%2Ftej.as%2Fblog%2Fwhat-is-an-agent-harness" target="_blank" rel="noopener noreferrer" aria-label="Share on Bluesky" title="Bluesky" data-track="Share Click" data-track-platform="Bluesky" data-track-url="https://tej.as/blog/what-is-an-agent-harness" data-track-title="What Is an Agent Harness? Harness Engineering Explained" data-astro-cid-rblsegky><span class="share__icon" style="-webkit-mask-image:url(https://cdn.simpleicons.org/bluesky);mask-image:url(https://cdn.simpleicons.org/bluesky)" data-astro-cid-rblsegky></span></a><a class="share__btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftej.as%2Fblog%2Fwhat-is-an-agent-harness" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn" title="LinkedIn" data-track="Share Click" data-track-platform="LinkedIn" data-track-url="https://tej.as/blog/what-is-an-agent-harness" data-track-title="What Is an Agent Harness? Harness Engineering Explained" data-astro-cid-rblsegky><svg class="share__svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" data-astro-cid-rblsegky><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" data-astro-cid-rblsegky></path></svg></a><a class="share__btn" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftej.as%2Fblog%2Fwhat-is-an-agent-harness" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook" title="Facebook" data-track="Share Click" data-track-platform="Facebook" data-track-url="https://tej.as/blog/what-is-an-agent-harness" data-track-title="What Is an Agent Harness? Harness Engineering Explained" data-astro-cid-rblsegky><svg class="share__svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" data-astro-cid-rblsegky><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" data-astro-cid-rblsegky></path></svg></a><a class="share__btn" href="https://www.reddit.com/submit?url=https%3A%2F%2Ftej.as%2Fblog%2Fwhat-is-an-agent-harness&amp;title=What%20Is%20an%20Agent%20Harness%3F%20Harness%20Engineering%20Explained" target="_blank" rel="noopener noreferrer" aria-label="Share on Reddit" title="Reddit" data-track="Share Click" data-track-platform="Reddit" data-track-url="https://tej.as/blog/what-is-an-agent-harness" data-track-title="What Is an Agent Harness? Harness Engineering Explained" data-astro-cid-rblsegky><span class="share__icon" style="-webkit-mask-image:url(https://cdn.simpleicons.org/reddit);mask-image:url(https://cdn.simpleicons.org/reddit)" data-astro-cid-rblsegky></span></a><a class="share__btn" href="https://news.ycombinator.com/submitlink?u=https%3A%2F%2Ftej.as%2Fblog%2Fwhat-is-an-agent-harness&amp;t=What%20Is%20an%20Agent%20Harness%3F%20Harness%20Engineering%20Explained" target="_blank" rel="noopener noreferrer" aria-label="Share on Hacker News" title="Hacker News" data-track="Share Click" data-track-platform="Hacker News" data-track-url="https://tej.as/blog/what-is-an-agent-harness" data-track-title="What Is an Agent Harness? Harness Engineering Explained" data-astro-cid-rblsegky><span class="share__icon" style="-webkit-mask-image:url(https://cdn.simpleicons.org/ycombinator);mask-image:url(https://cdn.simpleicons.org/ycombinator)" data-astro-cid-rblsegky></span></a><a class="share__btn" href="https://wa.me/?text=What%20Is%20an%20Agent%20Harness%3F%20Harness%20Engineering%20Explained%20by%20%40TejasKumar_%20https%3A%2F%2Ftej.as%2Fblog%2Fwhat-is-an-agent-harness" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp" title="WhatsApp" data-track="Share Click" data-track-platform="WhatsApp" data-track-url="https://tej.as/blog/what-is-an-agent-harness" data-track-title="What Is an Agent Harness? Harness Engineering Explained" data-astro-cid-rblsegky><span class="share__icon" style="-webkit-mask-image:url(https://cdn.simpleicons.org/whatsapp);mask-image:url(https://cdn.simpleicons.org/whatsapp)" data-astro-cid-rblsegky></span></a><a class="share__btn" href="https://t.me/share/url?url=https%3A%2F%2Ftej.as%2Fblog%2Fwhat-is-an-agent-harness&amp;text=What%20Is%20an%20Agent%20Harness%3F%20Harness%20Engineering%20Explained%20by%20%40TejasKumar_" target="_blank" rel="noopener noreferrer" aria-label="Share on Telegram" title="Telegram" data-track="Share Click" data-track-platform="Telegram" data-track-url="https://tej.as/blog/what-is-an-agent-harness" data-track-title="What Is an Agent Harness? Harness Engineering Explained" data-astro-cid-rblsegky><span class="share__icon" style="-webkit-mask-image:url(https://cdn.simpleicons.org/telegram);mask-image:url(https://cdn.simpleicons.org/telegram)" data-astro-cid-rblsegky></span></a><a class="share__btn" href="mailto:?subject=What%20Is%20an%20Agent%20Harness%3F%20Harness%20Engineering%20Explained&amp;body=What%20Is%20an%20Agent%20Harness%3F%20Harness%20Engineering%20Explained%20by%20%40TejasKumar_%20https%3A%2F%2Ftej.as%2Fblog%2Fwhat-is-an-agent-harness" target="_blank" rel="noopener noreferrer" aria-label="Share on Email" title="Email" data-track="Share Click" data-track-platform="Email" data-track-url="https://tej.as/blog/what-is-an-agent-harness" data-track-title="What Is an Agent Harness? Harness Engineering Explained" data-astro-cid-rblsegky><span class="share__icon" style="-webkit-mask-image:url(https://cdn.simpleicons.org/maildotru);mask-image:url(https://cdn.simpleicons.org/maildotru)" data-astro-cid-rblsegky></span></a><button class="share__btn share__btn--copy" type="button" data-share-copy data-url="https://tej.as/blog/what-is-an-agent-harness" aria-label="Copy link" title="Copy link" data-astro-cid-rblsegky><span class="share__glyph" data-astro-cid-rblsegky><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-rblsegky><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" data-astro-cid-rblsegky></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" data-astro-cid-rblsegky></path></svg></span><span class="share__glyph share__glyph--done" hidden data-astro-cid-rblsegky><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-rblsegky><path d="M20 6L9 17l-5-5" data-astro-cid-rblsegky></path></svg></span></button><button class="share__btn share__btn--native" type="button" data-share-native data-url="https://tej.as/blog/what-is-an-agent-harness" data-title="What Is an Agent Harness? Harness Engineering Explained" data-text="What Is an Agent Harness? Harness Engineering Explained by @TejasKumar_" aria-label="Share via device" title="Share…" hidden data-astro-cid-rblsegky><svg class="share__glyph" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-rblsegky><circle cx="18" cy="5" r="3" data-astro-cid-rblsegky></circle><circle cx="6" cy="12" r="3" data-astro-cid-rblsegky></circle><circle cx="18" cy="19" r="3" data-astro-cid-rblsegky></circle><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4" data-astro-cid-rblsegky></path></svg></button></div></aside><script type="module" src="/_astro/ShareSheet.astro_astro_type_script_index_0_lang.D0mRiHwW.js"></script><nav class="post-nav" aria-label="More blog posts" data-astro-cid-hgp7mnje><a class="post-nav__card post-nav__card--prev" href="/blog/note-app-ai-benchmark-apple-intelligence-sucks" data-track="Post Nav Click" data-track-direction="prev" data-track-slug="note-app-ai-benchmark-apple-intelligence-sucks" data-astro-cid-hgp7mnje><span class="post-nav__dir" data-astro-cid-hgp7mnje><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-hgp7mnje><path d="M15 18l-6-6 6-6" data-astro-cid-hgp7mnje></path></svg>Previous</span><span class="post-nav__title" data-astro-cid-hgp7mnje>Frontier Models Suck Sometimes (A Benchmark)</span></a><a class="post-nav__card post-nav__card--next" href="/blog/how-long-should-a-keynote-speaker-speak" data-track="Post Nav Click" data-track-direction="next" data-track-slug="how-long-should-a-keynote-speaker-speak" data-astro-cid-hgp7mnje><span class="post-nav__dir" data-astro-cid-hgp7mnje>Next<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-hgp7mnje><path d="M9 18l6-6-6-6" data-astro-cid-hgp7mnje></path></svg></span><span class="post-nav__title" data-astro-cid-hgp7mnje>How Long Should a Keynote Speaker Speak?</span></a></nav><p class="mt-nave text-small text-fg-2">Written by me, Tejas Kumar, an AI Engineer at IBM based in Berlin. Read <a class="text-fg underline decoration-hairline underline-offset-4 transition-colors duration-fast ease-brand hover:decoration-accent" href="/blog">everything else I have written</a>, or go to <a class="text-fg underline decoration-hairline underline-offset-4 transition-colors duration-fast ease-brand hover:decoration-accent" href="/react">Fluent React, my O'Reilly book on how React works inside</a>, <a class="text-fg underline decoration-hairline underline-offset-4 transition-colors duration-fast ease-brand hover:decoration-accent" href="/speaking">the talks I give at conferences</a>, and <a class="text-fg underline decoration-hairline underline-offset-4 transition-colors duration-fast ease-brand hover:decoration-accent" href="/podcast">ConTejas Code, my podcast</a>.</p></div></article></main><script type="module">(function(){try{var e=typeof window<`u`?window:typeof global<`u`?global:typeof globalThis<`u`?globalThis:typeof self<`u`?self:{};e.SENTRY_RELEASE={id:`8b5717527de0534100abeadb2462ed3a5be47e79`};var t=new e.Error().stack;t&&(e._sentryDebugIds=e._sentryDebugIds||{},e._sentryDebugIds[t]=`7611b6da-a2e8-43f0-922e-165c99b8c228`,e._sentryDebugIdIdentifier=`sentry-dbid-7611b6da-a2e8-43f0-922e-165c99b8c228`)}catch{}})(),document.querySelectorAll(`a`).forEach(e=>{e.getAttribute(`href`)?.startsWith(`http`)&&(e.setAttribute(`target`,`_blank`),e.setAttribute(`rel`,`noopener noreferrer`))});</script><script async defer src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><footer class="border-t border-hairline px-gutter py-l max-md:pb-[calc(var(--air-l)+6rem)]"><div class="mx-auto grid w-full max-w-shell gap-l"><div class="grid gap-l lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-nave"><div class="grid max-w-[24rem] content-start gap-s"><a href="/" class="font-display text-lede text-fg no-underline" data-track="Nav Click" data-track-label="Home" data-track-href="/">Tejas Kumar</a><p class="m-0 text-small text-fg-2">I'm an AI Engineer at IBM in Berlin, a best selling author and a keynote speaker.</p></div><nav aria-label="Site map" class="grid grid-cols-2 gap-x-s gap-y-m sm:grid-cols-4"><div class="grid content-start gap-m"><h2 class="m-0 font-mono text-micro uppercase text-fg-3">Work with me</h2><ul class="m-0 grid list-none gap-3 p-0 text-small"><li><a class="text-fg-2 no-underline decoration-hairline underline-offset-4 transition-colors duration-fast ease-brand hover:text-fg hover:underline hover:decoration-accent" href="/speaking" data-track="Nav Click" data-track-label="Speaking" data-track-href="/speaking">Keynote speaking</a></li><li><a class="text-fg-2 no-underline decoration-hairline underline-offset-4 transition-colors duration-fast ease-brand hover:text-fg hover:underline hover:decoration-accent" href="/workshops" data-track="Nav Click" data-track-label="Workshops" data-track-href="/workshops">AI and React workshops</a></li><li><a class="text-fg-2 no-underline decoration-hairline underline-offset-4 transition-colors duration-fast ease-brand hover:text-fg hover:underline hover:decoration-accent" href="/calendar" data-track="Nav Click" data-track-label="Calendar" data-track-href="/calendar">Where I&#39;ll be next</a></li><li><a class="text-fg-2 no-underline decoration-hairline underline-offset-4 transition-colors duration-fast ease-brand hover:text-fg hover:underline hover:decoration-accent" href="/investing" data-track="Nav Click" data-track-label="Investing" data-track-href="/investing">Angel investing</a></li><li><a class="text-fg-2 no-underline decoration-hairline underline-offset-4 transition-colors duration-fast ease-brand hover:text-fg hover:underline hover:decoration-accent" href="/#contact" data-track="Nav Click" data-track-label="Contact" data-track-href="/#contact">Contact</a></li></ul></div><div class="grid content-start gap-m"><h2 class="m-0 font-mono text-micro uppercase text-fg-3">Read and watch</h2><ul class="m-0 grid list-none gap-3 p-0 text-small"><li><a class="text-fg-2 no-underline decoration-hairline underline-offset-4 transition-colors duration-fast ease-brand hover:text-fg hover:underline hover:decoration-accent" href="/blog" data-track="Nav Click" data-track-label="Blog" data-track-href="/blog">Blog</a></li><li><a class="text-fg-2 no-underline decoration-hairline underline-offset-4 transition-colors duration-fast ease-brand hover:text-fg hover:underline hover:decoration-accent" href="/talks" data-track="Nav Click" data-track-label="Talks" data-track-href="/talks">Talk transcripts</a></li><li><a class="text-fg-2 no-underline decoration-hairline underline-offset-4 transition-colors duration-fast ease-brand hover:text-fg hover:underline hover:decoration-accent" href="/podcast" data-track="Nav Click" data-track-label="Podcast" data-track-href="/podcast">ConTejas Code podcast</a></li><li><a class="text-fg-2 no-underline decoration-hairline underline-offset-4 transition-colors duration-fast ease-brand hover:text-fg hover:underline hover:decoration-accent" href="/react" data-track="Nav Click" data-track-label="Book" data-track-href="/react">Fluent React, my book</a></li></ul></div><div class="grid content-start gap-m"><h2 class="m-0 font-mono text-micro uppercase text-fg-3">About me</h2><ul class="m-0 grid list-none gap-3 p-0 text-small"><li><a class="text-fg-2 no-underline decoration-hairline underline-offset-4 transition-colors duration-fast ease-brand hover:text-fg hover:underline hover:decoration-accent" href="/about" data-track="Nav Click" data-track-label="About" data-track-href="/about">About</a></li><li><a class="text-fg-2 no-underline decoration-hairline underline-offset-4 transition-colors duration-fast ease-brand hover:text-fg hover:underline hover:decoration-accent" href="/story" data-track="Nav Click" data-track-label="Story" data-track-href="/story">My story</a></li><li><a class="text-fg-2 no-underline decoration-hairline underline-offset-4 transition-colors duration-fast ease-brand hover:text-fg hover:underline hover:decoration-accent" href="/status" data-track="Nav Click" data-track-label="Status" data-track-href="/status">How I&#39;m doing</a></li></ul></div><div class="grid content-start gap-m"><h2 class="m-0 font-mono text-micro uppercase text-fg-3">Elsewhere</h2><ul class="m-0 grid list-none gap-3 p-0 text-small"><li><a class="text-fg-2 no-underline decoration-hairline underline-offset-4 transition-colors duration-fast ease-brand hover:text-fg hover:underline hover:decoration-accent" href="https://x.com/TejasKumar_" rel="me">X</a></li><li><a class="text-fg-2 no-underline decoration-hairline underline-offset-4 transition-colors duration-fast ease-brand hover:text-fg hover:underline hover:decoration-accent" href="https://www.linkedin.com/in/tejasq" rel="me">LinkedIn</a></li><li><a class="text-fg-2 no-underline decoration-hairline underline-offset-4 transition-colors duration-fast ease-brand hover:text-fg hover:underline hover:decoration-accent" href="https://www.youtube.com/@tejask" rel="me">YouTube</a></li><li><a class="text-fg-2 no-underline decoration-hairline underline-offset-4 transition-colors duration-fast ease-brand hover:text-fg hover:underline hover:decoration-accent" href="https://github.com/TejasQ" rel="me">GitHub</a></li><li><a class="text-fg-2 no-underline decoration-hairline underline-offset-4 transition-colors duration-fast ease-brand hover:text-fg hover:underline hover:decoration-accent" href="/rss.xml">RSS feed</a></li></ul></div></nav></div><div class="flex flex-wrap items-baseline justify-between gap-x-l gap-y-s border-t border-hairline pt-m"><p class="m-0 font-mono text-micro uppercase text-fg-3">&copy; 2026 Tejas Kumar, Berlin</p><p class="m-0 font-mono text-micro text-fg-3 [letter-spacing:0]">Portrait by <a class="text-fg-3 underline decoration-hairline-lit underline-offset-[3px] transition-colors duration-fast ease-brand hover:decoration-accent" href="https://ca.linkedin.com/in/taz-singh-468b59109" rel="noopener">Taz Singh</a></p></div></div></footer><script type="module" src="/_astro/Layout.astro_astro_type_script_index_0_lang.B81SqfMu.js"></script><script>
+  !(function (t, e) {
+    var o, n, p, r;
+    e.__SV ||
+      ((window.posthog = e),
+      (e._i = []),
+      (e.init = function (i, s, a) {
+        function g(t, e) {
+          var o = e.split(".");
+          2 == o.length && ((t = t[o[0]]), (e = o[1])),
+            (t[e] = function () {
+              t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
+            });
+        }
+        ((p = t.createElement("script")).type = "text/javascript"),
+          (p.async = !0),
+          (p.src =
+            s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") +
+            "/static/array.js"),
+          (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(
+            p,
+            r
+          );
+        var u = e;
+        for (
+          void 0 !== a ? (u = e[a] = []) : (a = "posthog"),
+            u.people = u.people || [],
+            u.toString = function (t) {
+              var e = "posthog";
+              return (
+                "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e
+              );
+            },
+            u.people.toString = function () {
+              return u.toString(1) + ".people (stub)";
+            },
+            o =
+              "init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(
+                " "
+              ),
+            n = 0;
+          n < o.length;
+          n++
+        )
+          g(u, o[n]);
+        e._i.push([i, s, a]);
+      }),
+      (e.__SV = 1));
+  })(document, window.posthog || []);
+  posthog.init("phc_etzyfv5a2QIT4ZdJgNrovzaO9JR1iZn412ZOPelJvgh", {
+    api_host: "https://us.i.posthog.com",
+    // Anonymous visitors get a profile too, so a returning reader is one
+    // person across sessions rather than a new stranger every visit.
+    person_profiles: "always",
+
+    /* PAGE VIEWS.
+
+       The site is a multi-page app: every navigation is a real document load,
+       so the default $pageview on init is already correct and there is no
+       router to hook. $pageleave is the half that was missing, and it is the
+       one that carries time on page and scroll depth, so without it every
+       session looked like a bounce. */
+    capture_pageview: true,
+    capture_pageleave: true,
+
+    /* AUTOCAPTURE.
+
+       On by default, but left explicit because the interesting part is the
+       allowlist. Clicks, submits and changes are the three that mean intent.
+       `input` is deliberately absent: the Ask boxes are inputs and keystroke
+       level capture of a question people are still typing is both noise and
+       somebody's half-formed thought. The finished question is captured on
+       purpose, once, by the Ask island. */
+    autocapture: {
+      dom_event_allowlist: ["click", "submit", "change"],
+      // Never autocapture the value of a field. The typed events carry the
+      // text that is meant to be carried, and nothing else.
+      element_attribute_ignorelist: ["value"],
+    },
+
+    /* SESSION REPLAY.
+
+       The whole point of turning this on is seeing what the cover flow and the
+       Ask boxes actually feel like in someone else's hands. Text is recorded
+       (this is a public website; masking it all would leave 69 grey rectangles
+       and no way to tell which talk was being played) but every input is
+       masked, so a question typed into an Ask box is never in a replay even
+       though the page around it is. */
+    disable_session_recording: false,
+    session_recording: {
+      maskAllInputs: true,
+      maskTextSelector: "[data-ph-mask]",
+      // Console output is where the coverflow's player errors surface.
+      recordCrossOriginIframes: false,
+    },
+    // Recording every session on a personal site is affordable and means the
+    // one session worth watching is never the one that was sampled out.
+    session_idle_timeout_seconds: 1800,
+
+    /* WEB VITALS.
+
+       LCP, CLS, INP and FCP, captured as $web_vitals against the same person
+       as everything else, so a slow phone and a bounce are one query rather
+       than two tools. */
+    capture_performance: {
+      web_vitals: true,
+      network_timing: true,
+    },
+
+    /* FRUSTRATION.
+
+       Rage clicks and dead clicks are the two signals that find a control
+       which looks pressable and is not. The tilt cards and the cover flow
+       shields are exactly the kind of thing that generates them. */
+    rageclick: true,
+    capture_dead_clicks: true,
+
+    /* ERRORS.
+
+       Sentry owns the stack traces. This exists so that an error rate can sit
+       in the same funnel as the behaviour that produced it, and so a replay of
+       a broken session is one click from the exception. */
+    capture_exceptions: true,
+
+    // Heatmaps for the pages that are mostly one long column of prose.
+    enable_heatmaps: true,
+
+    /* WHERE EVENTS ARE ALLOWED TO COME FROM.
+
+       Only the real site. A Vercel preview URL and `astro dev` both run the
+       same code as production, so without this the funnel would be full of
+       Tejas clicking his own buttons on localhost, and every "how many people
+       played a talk" number would be wrong by however much he worked that day.
+
+       The escape hatch is deliberate, because a tracker that cannot be tested
+       is a tracker nobody trusts: set `ph_debug` in localStorage, or load any
+       page once with ?ph_debug=1, and this machine starts sending from
+       wherever it is. ?ph_debug=0 turns it back off. */
+    before_send: (event) => {
+      var host = location.hostname;
+      if (host === "tej.as" || host === "www.tej.as") return event;
+      try {
+        var flag = new URLSearchParams(location.search).get("ph_debug");
+        if (flag === "1") localStorage.setItem("ph_debug", "1");
+        if (flag === "0") localStorage.removeItem("ph_debug");
+        if (localStorage.getItem("ph_debug")) return event;
+      } catch (e) {
+        /* private mode: no hatch, which is the safe direction */
+      }
+      return null;
+    },
+
+    loaded: function (ph) {
+      /* SUPER PROPERTIES.
+
+         Registered for the session rather than attached per event, so every
+         event, autocaptured ones included, can be grouped by them. These are
+         the four things that change what the site IS for a visitor: which
+         theme they are reading in, whether they are on a phone, whether they
+         asked for less motion (the cover flow is a different product if they
+         did), and how wide the window is. */
+      try {
+        var root = document.documentElement;
+        ph.register({
+          theme: root.getAttribute("data-theme") === "light" ? "light" : "dark",
+          pointer: matchMedia("(hover: hover) and (pointer: fine)").matches
+            ? "fine"
+            : "coarse",
+          reduced_motion: matchMedia("(prefers-reduced-motion: reduce)").matches,
+          viewport_width: window.innerWidth,
+          viewport_bucket:
+            window.innerWidth < 768
+              ? "phone"
+              : window.innerWidth < 1180
+                ? "tablet"
+                : "desktop",
+        });
+      } catch (e) {
+        /* a browser without matchMedia still gets every event, just flatter */
+      }
+    },
+  });
+</script><script type="module" src="/_astro/Analytics.astro_astro_type_script_index_0_lang.DQiYcaR8.js"></script><script type="module" src="/_astro/WebMCP.astro_astro_type_script_index_0_lang.CV242CCo.js"></script></body></html>

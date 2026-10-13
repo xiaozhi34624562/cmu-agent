@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="../vendor/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="../vendor/bootstrap.bundle.min.js"></script>
+<meta content="CS2680 Assignment 3: build an agent harness that solves SWE-bench Pro tasks through the course dispatcher, and compete on the leaderboard on tasks solved, cost per solved task and time per solved task" name="description"/>
+<meta content="Yunjia Zheng" name="author"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="CS2680 Modern AI Systems — Assignment 3: Harness competition" property="og:title"/>
+<meta content="CS2680 Assignment 3: build an agent harness that solves SWE-bench Pro tasks through the course dispatcher, and compete on the leaderboard on tasks solved, cost per solved task and time per solved task" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="CS2680 Modern AI Systems" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<link href="../css/main.css" rel="stylesheet"/>
+<title>CS2680 Modern AI Systems — Assignment 3: Harness competition</title>
+</head>
+<body>
+<div id="site-header"></div>
+<script src="../header.js"></script>
+<div class="container page">
+<div class="row">
+<div class="col-12">
+<div class="title">CS2680 Modern AI Systems: Agents and System Optimizations</div>
+</div>
+<div class="col-12 title2">
+Assignment 3 — Harness competition
+      </div>
+<div class="col-12 section" id="assignment-3">
+<h1>Assignment 3 — Harness competition <span class="para-heading-inline">(20%)</span></h1>
+<p><strong>Out</strong> Mon Oct 5 · <strong>due</strong> Tue Oct 20, 11:59pm · <a href="index.html">all five assignments</a></p>
+<div class="tip"><p><strong>⚠️ THE LEADERBOARD DOES NOT ACCEPT LATE DAYS AND WILL CLOSE ON TUESDAY, OCTOBER 20, AT 11:59 P.M.</strong></p><p>If you have not submitted to the leaderboard by the time it closes, you get 0 points for the leaderboard. Late days apply only to the repo and the video.</p></div>
+<h2 id="part-0-the-framework">Part 0. The framework</h2>
+<h3 id="two-kinds-of-containers">Two kinds of containers</h3>
+<p>The main agent runs in the <strong>agent container</strong>, built from the course's <code>dispatcher/agent.Dockerfile</code>, with your <code>src/</code> mounted in. The main agent loop starts in this container at the very beginning, and memory, subagents and any other features should live in it as well. The <code>starter_code</code> folder is mounted read-only at <code>/madsOpt</code>, and your agent can write to only two places in it: <code>.tasks/</code> (its working directory) and <code>madsOpt_logs/</code> (where logs go). Anything else it needs to write (scratch files, caches) goes elsewhere inside the container, e.g. <code>/tmp</code>.</p>
+<p>Every task runs in <strong>its own task container</strong>, built from that task's own image: the repository checked out at the task's starting commit, with the toolchain and test dependencies the task needs. This container holds the code your agent reads and modifies. Some Go tasks need modules that the fix must add. Their task containers come with a pre-warmed module cache and have <code>GOPROXY=off</code> set, so <code>go get &lt;module&gt;@&lt;version&gt;</code> and <code>go mod tidy</code> work offline. To see what is available, run <code>ls $(go env GOMODCACHE)/cache/download/&lt;module&gt;/@v/</code>. <code>evaluation_scripts/prepare_images.sh</code> builds the images so that tasks can be solved offline.</p>
+<p>Your agent interacts with a facility dispatcher to start a task, generate a patch and evaluate it. Neither container can reach the internet: the agent container's only way out is an egress proxy to the course API, which <code>CS2680_BASE_URL</code> points to, and task containers have none.</p>
+<p>The figure below shows where each piece runs and how they talk to each other.</p>
+<svg aria-label="Diagram: on the host, the agent container runs your Agent and the dispatcher client; the Agent sends HTTP requests to sandbox_server.py in each task container; the dispatcher client exchanges requests and evaluation results with the facility, run_all.py on the host, which starts and removes task containers and grades each patch in a separate grading container; the Agent's model calls go through the egress proxy to the course API" class="feature-demo feature-demo-full" role="img" viewbox="0 0 724 440">
+<defs>
+<marker id="a3-arrow" markerheight="7" markerwidth="7" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10"><path d="M0,0 L10,5 L0,10 z" fill="#3B4147"></path></marker>
+</defs>
+<rect fill="#FFFFFF" height="36" rx="6" stroke="#C4CAD3" stroke-width="1.5" width="280" x="24" y="12"></rect>
+<text fill="#1E2126" font-family="Lato, Arial, sans-serif" font-size="13" text-anchor="middle" x="164" y="35"><tspan font-weight="700">Course API</tspan><tspan fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="12"> api.cs2680.com</tspan></text>
+<rect fill="#F7F8FA" height="364" rx="10" stroke="#C4CAD3" stroke-width="1.5" width="708" x="8" y="66"></rect>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="12" text-anchor="end" x="700" y="86">Host machine</text>
+<line marker-end="url(#a3-arrow)" stroke="#3B4147" stroke-dasharray="5 4" stroke-width="1.5" x1="164" x2="164" y1="100" y2="51"></line>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="12" x="174" y="84">model calls (HTTPS, through the egress proxy)</text>
+<rect fill="#FFFFFF" height="196" rx="8" stroke="#8C1515" stroke-width="1.5" width="280" x="24" y="100"></rect>
+<text fill="#8C1515" font-family="Lato, Arial, sans-serif" font-size="13" font-weight="700" x="40" y="122">Agent container</text>
+<rect fill="#F7F8FA" height="54" rx="4" stroke="#DEE2E7" width="248" x="40" y="134"></rect>
+<text fill="#1E2126" font-family="Lato, Arial, sans-serif" font-size="13" x="52" y="156"><tspan font-weight="700">Agent</tspan><tspan fill="#646A72"> (your src/)</tspan></text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" x="52" y="176">loop, prompts, tools, subagents, memory</text>
+<line marker-end="url(#a3-arrow)" marker-start="url(#a3-arrow)" stroke="#3B4147" stroke-width="1.5" x1="164" x2="164" y1="190" y2="220"></line>
+<rect fill="#F7F8FA" height="54" rx="4" stroke="#DEE2E7" width="248" x="40" y="222"></rect>
+<text fill="#1E2126" font-family="Lato, Arial, sans-serif" font-size="13" x="52" y="244"><tspan font-weight="700">Dispatcher client</tspan><tspan fill="#646A72"> (dispatcher/)</tspan></text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" x="52" y="264">next_task, extract_patch, evaluate, done</text>
+<rect fill="#FFFFFF" height="196" rx="8" stroke="#DEE2E7" width="248" x="460" y="88"></rect>
+<rect fill="#FFFFFF" height="196" rx="8" stroke="#DEE2E7" width="252" x="452" y="94"></rect>
+<rect fill="#FFFFFF" height="196" rx="8" stroke="#8C1515" stroke-width="1.5" width="256" x="444" y="100"></rect>
+<text fill="#8C1515" font-family="Lato, Arial, sans-serif" font-size="13" font-weight="700" x="460" y="122">Task container k</text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" text-anchor="end" x="684" y="122">at most 5 open</text>
+<rect fill="#F7F8FA" height="54" rx="4" stroke="#DEE2E7" width="228" x="458" y="134"></rect>
+<text fill="#1E2126" font-family="'Lucida Console', Monaco, monospace" font-size="12.5" font-weight="700" x="470" y="156">sandbox_server.py</text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" x="470" y="176">/health /exec /read /write on :8000</text>
+<line marker-end="url(#a3-arrow)" stroke="#3B4147" stroke-width="1.5" x1="572" x2="572" y1="190" y2="220"></line>
+<rect fill="#F7F8FA" height="54" rx="4" stroke="#DEE2E7" width="228" x="458" y="222"></rect>
+<text fill="#1E2126" font-family="Lato, Arial, sans-serif" font-size="13" font-weight="700" x="470" y="244">Repository at /app</text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" x="470" y="264">at the task's starting commit</text>
+<line marker-end="url(#a3-arrow)" stroke="#3B4147" stroke-width="1.5" x1="290" x2="456" y1="161" y2="161"></line>
+<text fill="#3B4147" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle" x="374" y="152">HTTP POST</text>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="10.5" text-anchor="middle" x="374" y="179">Sandbox(url, workdir)</text>
+<rect fill="#EFF1F4" height="72" rx="6" stroke="#C4CAD3" stroke-width="1.5" width="280" x="24" y="340"></rect>
+<text fill="#1E2126" font-family="Lato, Arial, sans-serif" font-size="13" x="40" y="362"><tspan font-weight="700">Facility</tspan><tspan fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="12"> run_all.py</tspan></text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" x="40" y="382">answers the dispatcher's requests,</text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" x="40" y="398">starts containers, keeps the verdicts</text>
+<line marker-end="url(#a3-arrow)" marker-start="url(#a3-arrow)" stroke="#3B4147" stroke-width="1.5" x1="110" x2="110" y1="278" y2="338"></line>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" x="118" y="314">requests and</text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" x="118" y="329">evaluation results</text>
+<path d="M280,340 V318 H572 V299" fill="none" marker-end="url(#a3-arrow)" stroke="#3B4147" stroke-width="1.5"></path>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" text-anchor="middle" x="430" y="312">starts and removes task containers</text>
+<rect fill="#FFFFFF" height="72" rx="8" stroke="#8C1515" stroke-width="1.5" width="256" x="444" y="340"></rect>
+<text fill="#8C1515" font-family="Lato, Arial, sans-serif" font-size="13" font-weight="700" x="460" y="362">Grading container</text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" x="460" y="382">a fresh copy of the task image,</text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" x="460" y="398">your patch, and the hidden tests</text>
+<line marker-end="url(#a3-arrow)" stroke="#3B4147" stroke-width="1.5" x1="306" x2="442" y1="366" y2="366"></line>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" text-anchor="middle" x="374" y="359">evaluate(k): your patch</text>
+<line marker-end="url(#a3-arrow)" stroke="#3B4147" stroke-width="1.5" x1="442" x2="306" y1="390" y2="390"></line>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" text-anchor="middle" x="374" y="406">tests failed / total</text>
+</svg>
+<h3 id="how-your-agent-reaches-a-task">How your agent reaches a task</h3>
+<p>When your agent asks for a task, the dispatcher starts the task container, waits until it is ready, and hands your agent a dict with the task spec and the details for reaching the container:</p>
+<pre><code>problem_statement, requirements, interface   # the issue and its specification
+task                                         # the task index k
+sandbox_url                                  # http://&lt;container&gt;:8000
+workdir                                      # the repository path inside it, e.g. /app</code></pre>
+<p>A tiny HTTP server (<code>src/sandbox_server.py</code>) runs inside the task container with four routes: <code>/health</code>, <code>/exec</code> (run a shell command in the repository and get stdout, stderr and the exit code), <code>/read</code> (a file), <code>/write</code> (a file). Your agent talks to it with plain HTTP POSTs. <code>src/sandbox.py</code> wraps them as <code>Sandbox(url, workdir)</code> with <code>exec</code>, <code>read_text</code> and <code>write_text</code>; everything your agent does to a repository goes through those calls. You can add routes for any features you need (a new tool, a subagent, ...). Do not touch the repo with local <code>open()</code> or <code>subprocess</code>: those act on the agent container, which has no repo.</p>
+<h3 id="getting-graded-and-deciding-what-to-do-next">Getting graded, and deciding what to do next</h3>
+<p>When your agent believes a task is solved, it produces a patch and asks the facility to grade it:</p>
+<pre><code>dispatcher.extract_patch(k)        # `git diff` of the task container -&gt; the task's patch folder
+                                   # (or dispatcher.submit_patch(k, text) to write your own)
+ev = dispatcher.evaluate(k)        # -&gt; {"tests_failed": F, "tests_total": T, "attempt": a}</code></pre>
+<p>The facility copies the patch onto a fresh copy of the task image (with the same pre-warmed Go module cache, and no network), applies the task's hidden tests, runs them, and sends the agent the total number of tests and how many failed. Your agent then chooses between:</p>
+<pre><code>dispatcher.continue_task(k)   # keep working: the task container and your edits stay exactly as
+                              # they are, the submitted patch is deleted, and you may call
+                              # evaluate(k) again when you have a new one
+dispatcher.done(k, reason, iterations)
+                              # the task is final. Its last evaluation is its result; a patch you
+                              # submitted but never evaluated is graded now; no patch counts as a
+                              # failure. The task container and the patch folder are removed.</code></pre>
+<h3 id="the-rules-the-dispatcher-enforces">The rules the dispatcher enforces</h3>
+<ul><li><strong>At most 5 tasks live at once.</strong> <code>next_task()</code> raises <code>DispatcherError</code> when 5 are open, and returns <code>None</code> when no tasks are left.</li><li><strong>One attempt at a time per task.</strong> <code>continue_task(k)</code>, <code>evaluate(k)</code> and <code>done(k)</code> are refused while a grading of k is still running.</li><li><strong>Grading has a time limit: 35 minutes.</strong> A test suite that hangs counts as all of its tests failing.</li><li><strong>The whole run has a time limit: 4 hours.</strong> The clock starts when your agent opens its first task. When 4 hours have passed, the run stops: your agent's next call to the dispatcher raises <code>DispatcherShutdown</code>, every task still open is finished as if <code>done(k)</code> had been called at that moment (its last evaluation counts; a submitted but unevaluated patch is graded; no patch is a failure), and tasks never opened count as failures. Gradings already running still finish.</li></ul>
+<h3 id="entry-point">Entry point</h3>
+<pre><code>class Agent:
+    def __init__(self, dispatcher): ...
+    def run(self): ...</code></pre>
+<p>The runner constructs <code>Agent(dispatcher)</code> and calls <code>run()</code>. After that, you decide the flow: how many tasks to keep open, whether to work on them in parallel, when to evaluate, whether to spend another attempt on a failing task or move on, and what to carry from one task to the next. The starter <code>Agent</code> in <code>src/agentic_loop.py</code> only demonstrates these calls. It takes the tasks one at a time and makes no attempt to fix them, so every task fails until you write your own.</p>
+<p>Log your model calls and tool calls through <code>dispatcher.logger(k)</code>. The leaderboard reads your turn counts from that trace.</p>
+<h2 id="part-1-starter-code">Part 1. Starter code</h2>
+<h3 id="initialize-your-repository">Initialize your repository first</h3>
+<p>The starter code is in the <a href="https://github.com/HarvardMadSys/cs2680_assignments">course assignments repository</a>, under <code>assignment3/starter_code/</code>. Copy that entire folder into the same path in your shared private course repository, including <code>init.sh</code> and <code>package_claude_sessions.py</code>.</p>
+<p><strong>Before starting work with Claude Code, run <code>init.sh</code>:</strong></p>
+<pre><code># From your shared course repository:
+bash assignment3/starter_code/init.sh</code></pre>
+<p>This copies <code>package_claude_sessions.py</code> to the repository root and creates <code>CLAUDE.local.md</code> there with a workflow for all work in the repository. Claude Code commits your changes together with the repository's session logs in <code>claude-sessions.tar.gz</code> at the repository root.</p>
+<h3 id="what-is-in-it">What is in it</h3>
+<p>After initialization, both helper files live at the repository root:</p>
+<pre><code>course-repository/
+├── CLAUDE.local.md               repository workflow instructions for Claude Code
+├── package_claude_sessions.py    session packager copied by init.sh
+└── assignment3/
+    └── starter_code/            starter files listed below</code></pre>
+<p>The shared workflow runs <code>python3 package_claude_sessions.py --path . --output claude-sessions.tar.gz</code> from the repository root to include sessions from every assignment and other repository work. For the Assignment 3 submission, run <code>python3 package_claude_sessions.py</code> from the repository root to create <code>assignment3/a3-sessions.tar.gz</code>. The remaining instructions use paths relative to <code>assignment3/starter_code/</code>.</p>
+<p>You can modify anything under <code>src/</code> and add features there. The rest (<code>dispatcher/</code>, <code>madsOpt.py</code> and <code>evaluation_scripts/</code>) is the same as what the leaderboard uses. The one exception is <code>dispatcher/student_name.json</code>, where you fill in your name (Step 2); on the leaderboard, the grader's own session id is used instead.</p>
+<pre><code>assignment3/starter_code/
+├── init.sh                      run first: copies the session packager and creates CLAUDE.local.md at the repository root
+├── package_claude_sessions.py    packager source, copied to the repository root by init.sh
+├── src/                          YOURS: everything here may change (the leaderboard takes only src/)
+│   ├── agentic_loop.py           class Agent (your entry point): a starter showing every dispatcher, sandbox, model and trace call
+│   ├── config.py                 your harness settings (the course API settings are environment variables, see Step 2)
+│   ├── sandbox.py                Sandbox(url, workdir): exec / read_text / write_text over HTTP
+│   └── sandbox_server.py         the HTTP server inside every task container (run_all.py needs its GET /health)
+├── dispatcher/                   course infrastructure
+│   ├── dispatcher.py             Dispatcher, the client your Agent calls: next_task, extract_patch / submit_patch, evaluate, continue_task, done, logger
+│   ├── egress_proxy.py           the reverse proxy to the course API: the agent container's only way out
+│   ├── session.py                the run's session id, sent with every course API request
+│   ├── student_name.json         your first and last name, filled in once (see Step 2)
+│   └── agent.Dockerfile          the agent container image (python + openai, built offline)
+├── madsOpt.py                    course infrastructure: builds the client and calls Agent(...).run()
+└── evaluation_scripts/
+    ├── prepare_images.sh         one-time setup (needs internet)
+    ├── run_all.py                runs your agent on all tasks and grades them
+    ├── evaluate_one.sh           grades one patch on a pristine task container
+    ├── make_predictions.py       collects the final patches into predictions.json
+    ├── trace_logger.py           the JSONL trace your agent writes through dispatcher.logger(k)
+    ├── agent_task_input.json     the tasks
+    └── task_test.json            the tests each task is graded with</code></pre>
+<h3 id="running-it">Running it</h3>
+<p><strong>Step 0. Prerequisites.</strong> Linux x86_64; Docker; <code>git</code>; <code>python3</code> (3.10+) with <code>pip</code>; about 15 GB of free disk for the images. If you find difficulties on your local machine, you can use a <a href="../computing/cloudlab.html">CloudLab</a> machine or an <a href="../computing/aws.html">AWS</a> machine.</p>
+<pre><code># only if Docker is not installed:
+curl -fsSL https://get.docker.com | sudo sh
+sudo usermod -aG docker $USER
+newgrp docker            # or log out and back in
+docker run hello-world   # check that it works
+
+# only if python3 has no pip ("No module named pip"):
+sudo apt update
+sudo apt install python3-pip</code></pre>
+<p><strong>Step 1. Set up the images.</strong></p>
+<pre><code># From your shared course repository:
+cd assignment3/starter_code
+bash evaluation_scripts/prepare_images.sh</code></pre>
+<p>The script fetches the task data (SWE-bench Pro, at a fixed commit), installs a portable Python for the task containers, downloads the openai wheels, pulls every task's image, builds the agent image, and builds a pre-warmed image for each Go task that requires additional packages. A successful build ends with <code>== all images present</code>.</p>
+<p><strong>Step 2. Set the env variables and test it.</strong></p>
+<pre><code>export CS2680_API_KEY=...
+export CS2680_MODEL_EXPERT=expert        # Expert: most capable model; per 1M tokens: $2.00 input, $0.10 cached input, $10.00 output
+export CS2680_MODEL_STANDARD=standard    # Standard: per 1M tokens: $0.08 input, $0.004 cached input, $0.28 output
+export CS2680_MODEL_STARTER=starter      # Starter: cheapest model; per 1M tokens: $0.01 input, $0.0005 cached input, $0.04 output
+python3 evaluation_scripts/run_all.py --limit 0</code></pre>
+<p><code>run_all.py</code> passes every <code>CS2680_*</code> variable into the agent container, and sets <code>CS2680_BASE_URL</code> to the egress proxy, the agent's only way to the course API. Your agent reads them with <code>os.environ</code>; never hard-code the API URL. It may use any of the three models in one run, and as many of them as it likes.</p>
+<p>This command starts the agent container and the proxy, checks the network rules (course API reachable, everything else blocked), starts and health-checks every task container, and then stops without running your agent. Look for <code>EGRESS OK</code>, and for <code>preflight k: ... ok</code> for every task.</p>
+<p>The first time you run <code>run_all.py</code> in a terminal, it asks for your first and last name (in Latin letters) and saves them in <code>dispatcher/student_name.json</code>. Every course API request of a run then carries the session id <code>&lt;First&gt;_&lt;Last&gt;_&lt;UTC start time&gt;</code>, e.g. <code>Jane_Doe_20261006T172408Z</code>, which the egress proxy adds; the run prints it and keeps it in <code>run_logs/session_id</code>. If you run without a terminal (e.g. with <code>nohup</code>), fill in that file first, or the run exits before it starts anything.</p>
+<p><strong>Step 3. Run it.</strong></p>
+<pre><code>python3 evaluation_scripts/run_all.py</code></pre>
+<p>Progress is written to <code>run_logs/sequence.log</code>. When the run ends, <code>starter_code</code> contains <code>run_all_results.md</code> (e.g. <code>3/5 passed</code>), <code>pro_eval/</code> (the grader's output per task), <code>model_patch_&lt;k&gt;.diff</code>, and <code>madsOpt_logs/&lt;k&gt;/run.jsonl</code> (your agent's traces). The starter agent is only a skeleton and fixes nothing, so expect <code>0/5 passed</code> from it. Before the next run, archive the previous run's outputs in another folder.</p>
+<h2 id="part-2-leaderboard-submission">Part 2. Leaderboard submission</h2>
+<p>The leaderboard grades your <code>src/</code> on the evaluation task set, using the same <code>dispatcher/</code>, <code>madsOpt.py</code> and <code>evaluation_scripts/</code> as the starter code. It takes only your <code>src/</code> from what you upload. The leaderboard is at <a href="https://leaderboard.cs2680.com/">https://leaderboard.cs2680.com/</a></p>
+<p><strong>Step 1. Log in and change your password.</strong> On the leaderboard page, log in with the Harvard email address associated with your Canvas account. Your initial password is Cs2680-&lt;your 8-digit student ID&gt;; these are the same initial login credentials as for your API account. After logging in, click your name and select <code>Change Password</code> from the drop-down menu.</p>
+<p><strong>Step 2. The leaderboard.</strong> After you log in, the <code>Leaderboard</code> page shows the top 10 students, each represented by their best submission, and below them your own best submission with its rank. The leaderboard updates as soon as a grading finishes.</p>
+<p><strong>Step 3. Submit.</strong> On the Submit page, upload a zip of your <code>src/</code> folder and choose the largest number of tasks this run may grade. The run takes the first <em>k</em> tasks of the evaluation set, or all of them if you leave the field empty.</p>
+<p><strong>Step 4. How a submission is measured.</strong> Every submission is evaluated on three metrics:</p>
+<ul><li>the number of tasks solved,</li><li>the cost per solved task (what the course API account was charged during the run, divided by the number of tasks solved),</li><li>the time per solved task (the end-to-end host-clock time, from the first task opened to the last task done, divided by the number of tasks solved).</li></ul>
+<p><strong>Step 5. Past submissions, cancelling, and your daily budget.</strong> The Past submissions page lists your ongoing and past submissions. You can have at most one submission queued or being graded at a time, and that one has a <strong>Cancel</strong> button. Every student has <strong>$30 per day</strong> for leaderboard grading, with a <strong>$10 limit</strong> per submission. If grading reaches either limit, it stops, and whatever it completed up to that point is recorded as the submission's result.</p>
+<ul><li>Cancelling a submission that is still <strong>queued</strong> removes it from the queue at no cost.</li><li>Cancelling a submission that is <strong>being graded</strong> stops the run. The cost so far is deducted from your $30 for the day, and the submission is recorded with its three metrics as of the moment you cancelled.</li></ul>
+<p><strong>Step 6. Ranking: a skyline.</strong> Each student is ranked by their best submission.</p>
+<ul><li>Best submissions that solved <strong>at least 7 tasks</strong> are ranked in skyline layers over the three metrics. One submission dominates another if it is at least as good on all three metrics and better on at least one. Rank 1 is every submission that no other submission dominates; rank 2 applies the same rule to the rest, and so on.</li><li>Best submissions that solved fewer than 7 tasks rank below all of them, ordered by tasks solved alone.</li><li>Equal ranks are ties, and the next rank counts everyone ahead of it: 1, 1, 1, 4, ...</li><li>A new submission becomes your best only if it ranks strictly better than your current best. On a tie, the current best stays.</li></ul>
+<h3 id="more-information-about-leaderboard-submission">More information about leaderboard submission</h3>
+<ul><li><strong>The leaderboard has 26 tasks</strong>, numbered 1 to 26 (only the first <em>k</em> of them if you set a number of tasks on the Submit page).</li><li><strong>A run is cut at 4 hours</strong>, counted from the moment your agent opens its first task (see the rules in Part 0).</li><li><strong>Crashed or timed-out runs still count</strong>, with the tasks they had finished by then. The Past submissions page also shows each submission's per-task results, numbered 1 to 26: the time and the number of turns for each task, and a short reason for each unsolved one:<ul><li><em>not opened</em>: your agent never asked for the task, or the run's time ran out first;</li><li><em>not finished</em>: the run crashed or timed out while the task was open;</li><li><em>no patch</em>: the task ended with an empty patch;</li><li><em>tests did not run</em>: the grading produced no test results;</li><li><em>import error</em>: the tests could not be collected (e.g. an import or syntax error);</li><li><em>broke existing tests</em>: a test that passed before your patch now fails;</li><li><em>new tests failed</em>: a test your fix should make pass still fails (a task can show both of the last two).</li></ul></li><li><strong>The dollar cost is checked during grading.</strong> Every 2 minutes the grader adds up what the run has spent so far. If that reaches what is left of your budget for the day, the grading stops and is saved as <code>Reached the budget</code>, with whatever it had done by then.</li></ul>
+<h2 id="part-3-submission-and-grading">Part 3. Submission and grading</h2>
+<h3 id="submission">Submission</h3>
+<p>The submission has three parts: the <strong>code</strong> (your <code>src/</code> on the leaderboard), a <strong>write-up</strong>, and a <strong>video</strong>.</p>
+<h4 id="code">Code</h4>
+<p>Zip <code>assignment3/starter_code/src/</code> and upload <code>src.zip</code> on the leaderboard's Submit page (Part 2, Step 3):</p>
+<pre><code># Run from assignment3/starter_code/:
+zip -r src.zip src</code></pre>
+<p>Also archive your Claude Code session files as described in <a href="../computing/claude-code.html#export">What to submit with each assignment</a> and commit them to <code>assignment3/</code> in your repository. Check that your <code>.gitignore</code> does not exclude the archive. As on every assignment, the session files carry no points of their own. They are the record behind the claims in your write-up.</p>
+<h4 id="write-up">Write-up</h4>
+<p>A PDF document that answers these questions:</p>
+<ol><li><strong>What are the main components of your harness?</strong> For example, subagents, memory carried from one task to the next, or which model tier does what.</li><li><strong>What optimizations and trade-offs did you make?</strong> For example, the policy for continuing a failing task or giving up on it, or how many tasks you keep open at once.</li><li><strong>What pitfalls did you run into, and what helped?</strong> Describe the pitfalls, and what you think helped improve accuracy (tasks solved), cost per solved task, or time per solved task.</li></ol>
+<p>The write-up must be entirely your own work, with no AI-generated text. Commit it to your repository as <code>assignment3/writeup.pdf</code>. Your repository's <code>assignment3/</code> should then contain:</p>
+<pre><code>assignment3/
+├── starter_code/         your agent code and local run outputs
+├── a3-sessions.tar.gz    your Claude Code session files
+└── writeup.pdf           the write-up</code></pre>
+<h4 id="video">Video</h4>
+<p>In the video, present the same lessons with your face visible and in your own voice. Open your code and move the cursor through it, and navigate your harness: show where each component from the write-up lives, along with the pitfalls and the helpful techniques. Submit the video on Canvas.</p>
+<h3 id="grading">Grading</h3>
+<div class="table-responsive"><table class="table table-bordered">
+<thead class="table-light">
+<tr>
+<th>Part</th>
+<th>Points</th>
+<th>What is graded</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Leaderboard</td>
+<td><strong>80</strong></td>
+<td>The rank of your best submission on the leaderboard (Part 2, Step 6), scored as below.</td>
+</tr>
+<tr>
+<td>Write-up</td>
+<td><strong>10</strong></td>
+<td>The lessons you learned from the assignment, clearly explained in one page.</td>
+</tr>
+<tr>
+<td>Video</td>
+<td><strong>10</strong></td>
+<td>A clear 3-minute presentation of the same lessons, showing the code where a lesson concerns your harness.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Leaderboard score.</strong> If <em>r</em> is the rank of your best submission:</p>
+<pre><code>score = max(81 − r, 50)    if any of your submissions achieves the baseline
+score = 81 − r             otherwise</code></pre>
+<p>The <strong>baseline</strong> solves 16 tasks in 4 hours within a limit of $10. If any of your submissions achieves the baseline, you get credit for it, even if that submission is not your best. For example, rank 1 scores 80; rank 12 scores 69 whether or not it beats the baseline; rank 40 scores 50 if it beats the baseline and 41 if it does not.</p>
+<h4 id="bonus">Bonus</h4>
+<p>If you find a security vulnerability and report it, you can earn up to 3 bonus points toward your final course score (not just this assignment). Abusing a vulnerability forfeits your submission.</p>
+<div class="note-nav">
+<a href="assignment2.html">← Assignment 2 — Build an agent harness</a>
+<a href="../to_release.html">Assignment 4 — Serve your own agent →</a>
+</div>
+</div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="container">
+<p><a href="https://madsys.seas.harvard.edu/" rel="noopener" target="_blank">MadSys Research Group</a> · <a href="https://seas.harvard.edu/" rel="noopener" target="_blank">Harvard John A. Paulson School of Engineering and Applied Sciences</a></p>
+<p class="footer-policies"><a href="https://trademark.harvard.edu/pages/trademark-notice" rel="noopener" target="_blank">Trademark Notice</a> · <a href="https://accessibility.harvard.edu/" rel="noopener" target="_blank">Accessibility</a> · <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" rel="noopener" target="_blank">Digital Accessibility</a> · <a href="https://privsec.harvard.edu/harvard-university-privacy-statement" rel="noopener" target="_blank">Privacy Statement</a></p>
+<p class="footer-copyright">© 2026 Juncheng Yang</p>
+</div>
+</footer>
+</body>
+</html>

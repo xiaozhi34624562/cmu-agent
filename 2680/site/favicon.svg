@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="MadSys">
+  <rect width="64" height="64" rx="8" fill="#ffffff"/>
+  <path d="M32.0 4.09 L56.74 17.91 L56.74 45.92 L32.0 59.91 L7.26 45.92 L7.26 17.91 Z" fill="none" stroke="#211E1B" stroke-width="3.0" stroke-linejoin="miter"/>
+  <path d="M14.79 35.3 L22.32 35.3 L22.32 25.62 L30.9 25.62 L30.9 40.59 L39.53 40.59 L39.53 29.81 L49.21 29.81" fill="none" stroke="#A51C30" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

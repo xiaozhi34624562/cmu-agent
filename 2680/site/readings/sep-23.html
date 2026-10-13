@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="../vendor/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="../vendor/bootstrap.bundle.min.js"></script>
+<meta content="CS2680 Modern AI Systems readings for the Agents design II: multi-agent architecture, coordination, and communication meeting" name="description"/>
+<meta content="Juncheng Yang" name="author"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="CS2680 Modern AI Systems — Readings: Agents design II: multi-agent architecture, coordination, and communication" property="og:title"/>
+<meta content="CS2680 Modern AI Systems readings for the Agents design II: multi-agent architecture, coordination, and communication meeting" property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="CS2680 Modern AI Systems" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<link href="../css/main.css" rel="stylesheet"/>
+<title>CS2680 Modern AI Systems — Readings: Agents design II: multi-agent architecture, coordination, and communication</title>
+</head>
+<body>
+<div id="site-header"></div>
+<script src="../header.js"></script>
+<div class="container page">
+<div class="row">
+<div class="col-12">
+<div class="title">CS2680 Modern AI Systems: Agents and System Optimizations</div>
+</div>
+<div class="col-12 title2">
+        Readings
+      </div>
+<div class="col-12">
+<div class="section">
+<div class="subsection reading-meeting" data-schedule="https://www.anthropic.com/engineering/multi-agent-research-system https://arxiv.org/pdf/2512.08296 https://cognition.com/blog/dont-build-multi-agents" id="sep-23">
+<h2><span class="reading-date">Sep 23</span> Agents design II: multi-agent architecture, coordination, and communication</h2>
+<div class="table-responsive">
+<table class="table table-hover readings-table">
+<thead>
+<tr class="table-light">
+<th scope="col">Paper</th>
+<th scope="col">Year</th>
+<th scope="col">Why read it</th>
+</tr>
+</thead>
+<tr class="reading-topic">
+<th colspan="3" scope="colgroup">Multi-agent architecture and orchestration</th>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2308.08155" rel="noopener noreferrer" target="_blank"><strong class="reading-name">AutoGen</strong></a><span class="reading-subtitle">Enabling Next-Gen LLM Applications via Multi-Agent Conversation</span></td>
+<td>2023</td>
+<td>
+<p><strong>Background.</strong> By 2023 the single-agent loop of a model plus tools plus a scratchpad was a settled pattern. Building an application out of several such agents meant writing the orchestration by hand every time, because there was no vocabulary for how one agent hands work to another.</p>
+<p><strong>Problem.</strong> Multi-agent applications had no programming model. What an agent is, how it receives a turn, who decides whose turn comes next, and where a human sits in the arrangement were all answered per application, so nothing composed and nothing was reusable.</p>
+<p><strong>Key idea.</strong> Make conversation the programming model. Agents are conversable objects with configurable roles and tools, a human can be one of the participants on equal terms, and control flow is whatever message-passing pattern you wire between them, including a group chat with a manager choosing the next speaker.</p>
+<p><strong>Findings.</strong> On the full MATH test set, an AutoGen conversation between an assistant and a code executor reaches 69.48% accuracy, compared with 55.18% for GPT-4 alone. On 134 unseen ALFWorld tasks, adding a grounding agent improves success by 15% on average over the same conversational system without that agent.</p>
+<p><strong>Why it matters.</strong> It gives you the vocabulary for deciding when a second agent earns its bill. Read against the fan-out arithmetic it also prices the arrangement, since every additional participant carries its own context and pays its own tokens on every turn it takes.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2308.00352" rel="noopener noreferrer" target="_blank"><strong class="reading-name">MetaGPT</strong></a><span class="reading-subtitle">Meta Programming for A Multi-Agent Collaborative Framework</span></td>
+<td>2023</td>
+<td>
+<p><strong>Background.</strong> Conversational multi-agent frameworks let agents talk freely and let coordination emerge from the conversation. Human software teams do not work that way. They assign roles and pass documents whose shape is agreed in advance.</p>
+<p><strong>Problem.</strong> Free-form conversation between agents drifts. Each agent restates the task in its own words, an error made early propagates as prose that later agents treat as given, and no step has a contract the next step can check before acting on it.</p>
+<p><strong>Key idea.</strong> Assign roles borrowed from a software organization, product manager, architect, engineer, and quality assurance, and require each role to emit a structured artifact that the next role consumes. The hand-off is explicit and the return contract between agents becomes the design rather than a convention.</p>
+<p><strong>Findings.</strong> With GPT-4, MetaGPT reaches 85.9% pass@1 on HumanEval and 87.7% on MBPP. Its executable-feedback loop improves MBPP by 5.4 percentage points over the otherwise identical pipeline without execution feedback, isolating part of the gain from the broader multi-agent arrangement.</p>
+<p><strong>Why it matters.</strong> It is the clearest statement of the position that structure, not more conversation, is what makes a pipeline of agents work. The structured hand-off is also what makes the pipeline debuggable, since you can read the artifacts and see which stage was already wrong.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://www.anthropic.com/engineering/multi-agent-research-system" rel="noopener noreferrer" target="_blank"><strong class="reading-name">multi-agent research system</strong></a><span class="reading-subtitle">How we built our multi-agent research system (Anthropic)</span></td>
+<td>2025</td>
+<td>
+<p><strong>Background.</strong> Some agent builders favor one compacted thread. Anthropic's research feature instead uses a lead agent to delegate parallel searches and synthesize their results.</p>
+<p><strong>Problem.</strong> A multi-agent design must specify each worker's task, its return format, and the lead's stopping rule. Every worker also pays for a fresh context.</p>
+<p><strong>Key idea.</strong> The lead delegates explicit tasks, workers explore in parallel, and each returns a summary rather than its transcript. Prompting concentrates on teaching the lead to scope work.</p>
+<p><strong>Findings.</strong> Agents use about 4× the tokens of a chat interaction, and multi-agent systems use about 15×. On BrowseComp, token use alone explains 80% of performance variance.</p>
+<p><strong>Why it matters.</strong> Compare it with Cognition's single-thread position. Parallelism pays when subtasks are genuinely independent and read-only, and the 15× token cost determines whether the fan-out is affordable.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/pdf/2512.08296" rel="noopener noreferrer" target="_blank"><strong class="reading-name">scaling agent systems</strong></a><span class="reading-subtitle">Towards a Science of Scaling Agent Systems</span></td>
+<td>2025</td>
+<td>
+<p><strong>Background.</strong> The frameworks above show how to wire multiple agents, and Anthropic shows one task where parallel workers pay off. Neither establishes which arrangement to choose for a different task.</p>
+<p><strong>Problem.</strong> Comparisons of agent teams often change the model, prompts, tools, or compute budget along with the coordination design. A higher score then cannot show whether the architecture helped, and adding agents remains a guess.</p>
+<p><strong>Key idea.</strong> Hold prompts, tools, and compute fixed while comparing a single agent with independent, centralized, decentralized, and hybrid multi-agent arrangements. Vary model capability and task structure across 260 configurations on six agentic benchmarks.</p>
+<p><strong>Findings.</strong> Relative to a single agent, multi-agent performance ranged from an 80.8% gain on decomposable financial reasoning to a 70.0% loss on sequential planning. Independent agents amplified trace-level errors 17.2×, compared with 4.4× under centralized coordination.</p>
+<p><strong>Why it matters.</strong> It gives the architecture choices above an empirical test. Parallel work can pay when a task decomposes, while sequential work can lose accuracy to coordination; a central verifier also changes how far errors propagate. Choose the topology from the task and its failure modes rather than the number of agents alone.</p>
+</td>
+</tr>
+<tr class="reading-topic">
+<th colspan="3" scope="colgroup">Coordination and communication</th>
+</tr>
+<tr>
+<td><a href="https://cognition.com/blog/dont-build-multi-agents" rel="noopener noreferrer" target="_blank"><strong class="reading-name">don’t build multi-agents</strong></a><span class="reading-subtitle">Principles of Context Engineering (Cognition)</span></td>
+<td>2025</td>
+<td>
+<p><strong>Background.</strong> The frameworks above assume decomposition helps: split the task, give each part its own agent, run the parts in parallel, and merge. Cognition builds Devin, a long-running coding agent, and reached the opposite conclusion from running one in production.</p>
+<p><strong>Problem.</strong> Most of what an agent decides rests on context that was never written down. Split the work across parallel agents and each one makes those implicit decisions independently, so the pieces disagree and the disagreement surfaces only at the merge. Decomposition can multiply inconsistency faster than useful work.</p>
+<p><strong>Key idea.</strong> Keep a single thread. Carry the whole trajectory forward and compact it when it grows too long, and where a subagent is unavoidable, give it read-only work and take back a summary instead of letting it act. Context engineering, not orchestration, becomes the primary design activity.</p>
+<p><strong>Why it matters.</strong> It is the counterargument to AutoGen and MetaGPT, written by a team shipping a product rather than a paper. Read it as an engineering position paper and ask which of its claims the evaluation papers still need to test.</p>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="note-nav">
+<a href="sep-16.html">← Agents design I: context management and tool design</a>
+<a href="sep-28.html">Agents design III: agent memory and reliability →</a>
+</div>
+</div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="container">
+<p><a href="https://madsys.seas.harvard.edu/" rel="noopener" target="_blank">MadSys Research Group</a> · <a href="https://seas.harvard.edu/" rel="noopener" target="_blank">Harvard John A. Paulson School of Engineering and Applied Sciences</a></p>
+<p class="footer-policies"><a href="https://trademark.harvard.edu/pages/trademark-notice" rel="noopener" target="_blank">Trademark Notice</a> · <a href="https://accessibility.harvard.edu/" rel="noopener" target="_blank">Accessibility</a> · <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" rel="noopener" target="_blank">Digital Accessibility</a> · <a href="https://privsec.harvard.edu/harvard-university-privacy-statement" rel="noopener" target="_blank">Privacy Statement</a></p>
+<p class="footer-copyright">© 2026 Juncheng Yang</p>
+</div>
+</footer>
+</body>
+</html>

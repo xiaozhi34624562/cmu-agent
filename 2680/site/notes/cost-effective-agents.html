@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="../vendor/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="../vendor/bootstrap.bundle.min.js"></script>
+<meta content="CS2680 reference on cost-effective LLM agents: measuring full-episode cost and choosing techniques for models, reasoning, tools, context, reuse, collaboration, and serving." name="description"/>
+<meta content="Juncheng Yang" name="author"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="CS2680 Modern AI Systems — Cost-effective Agents" property="og:title"/>
+<meta content="Techniques for reducing the cost of LLM agents while measuring task success and latency." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="CS2680 Modern AI Systems" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<link href="../css/main-66d6a6d800.css" rel="stylesheet"/>
+<title>CS2680 Modern AI Systems — Cost-effective Agents</title>
+</head>
+<body>
+<div id="site-header"></div>
+<script src="../header.js"></script>
+<main class="container page benchmark-reference" id="top">
+<div class="row">
+<div class="col-12">
+<div class="title">CS2680 Modern AI Systems</div>
+<h1 class="title2">Cost-effective agents</h1>
+<p class="text-center">Course notes · <a href="agent-evaluation.html">Agent evaluation</a> · <a href="../readings.html">Course readings</a></p>
+<p class="reference-intro">An efficient agent spends computation where it changes the chance or value of a successful outcome. The relevant unit is the complete task, including planning, tool use, retries, verification, and human correction. This page organizes the available techniques by the cost they remove and the new costs they introduce.</p>
+</div>
+<nav aria-labelledby="contents-heading" class="col-12 section reference-contents" id="contents">
+<h2 id="contents-heading">Contents</h2>
+<ul class="reference-guide-links">
+<li><a href="#objective">Measure the whole episode</a></li>
+<li><a href="#diagnose">Find the expensive path</a></li>
+<li><a href="#routing">Route model calls</a></li>
+<li><a href="#specialize">Specialize small models</a></li>
+<li><a href="#reasoning">Budget reasoning and search</a></li>
+<li><a href="#control">Reduce control overhead</a></li>
+<li><a href="#context">Manage context and observations</a></li>
+<li><a href="#reuse">Reuse work across tasks</a></li>
+<li><a href="#collaboration">Limit collaboration costs</a></li>
+<li><a href="#optimize">Amortize workflow optimization</a></li>
+<li><a href="#serving">Improve serving efficiency</a></li>
+<li><a href="#latency">Reduce waiting</a></li>
+<li><a href="#rework">Prevent expensive rework</a></li>
+<li><a href="#experiment">Run a fair comparison</a></li>
+</ul>
+</nav>
+<div class="col-12 section" id="objective">
+<h2>Measure the whole episode</h2>
+<p>Start with a cost ledger for each attempted task. Add every model call from the main agent, planners, routers, compressors, workers, and verifiers. Price uncached input, cached input, and output or reasoning tokens under the actual provider rules. Add tool fees, execution, memory storage and retrieval, and human review. For a self-hosted model, use the provisioned infrastructure cost instead of an API price; do not count the same compute twice.</p>
+<div class="formula">Episode cost = all model calls + tools + memory services + execution + human review</div>
+<p>Keep offline costs in a separate project ledger: teacher trajectories, fine-tuning, workflow search, evaluation, and refresh. A deployed policy may be cheap per task but expensive to discover or maintain. Its lifetime cost depends on how many tasks will use it.</p>
+<p><strong>Report together:</strong> verified success rate, total spend divided by verified successful task trials, cost per attempted trial, p50 and p95 time to a usable result, and the distribution of cost across tasks. The cost-per-success ratio is undefined when no tasks succeed. It does not say which tasks regressed or whether a minimum success or latency requirement was met.</p>
+<p>For example, on the same 100 tasks, a baseline that costs $120 and succeeds 80 times costs $1.50 per success. A candidate that costs $90 and succeeds 75 times costs $1.20 per success, but loses five completions. If the deployment requires at least 80% success, the candidate is ineligible despite the better ratio. Compare the full quality-cost frontier and the particular tasks gained and lost.</p>
+<p class="small">Sources: <a href="https://arxiv.org/abs/2407.01502">AI Agents That Matter</a> · <a href="https://arxiv.org/abs/2504.13359">Cost-of-Pass</a> · <a href="agent-evaluation.html#systems-metrics">Agent evaluation guide: systems cost</a>.</p>
+</div>
+<div class="col-12 section" id="diagnose">
+<h2>Find the expensive path</h2>
+<p>Record model, role, input and output tokens, cache hits, tool calls, elapsed time, retries, and outcome on each step. Group traces by successful, failed, and timed-out episodes. The longest trace, the most expensive trace, and the typical trace may have different bottlenecks.</p>
+<div class="table-responsive">
+<table class="table table-striped table-bordered">
+<thead><tr><th scope="col">Observed cost</th><th scope="col">First lever to test</th><th scope="col">What must remain true</th></tr></thead>
+<tbody>
+<tr><th scope="row">Routine steps use an expensive model</th><td><a href="#routing">Per-step routing</a> or <a href="#specialize">specialists</a></td><td>Hard steps and downstream task success remain covered.</td></tr>
+<tr><th scope="row">Many short model turns</th><td><a href="#control">Executable control, batched tools, or a simpler workflow</a></td><td>Unexpected observations can still trigger replanning.</td></tr>
+<tr><th scope="row">Long repeated prompts or tool results</th><td><a href="#context">Selective context</a> and <a href="#serving">prefix reuse</a></td><td>Important state stays available without costly reacquisition.</td></tr>
+<tr><th scope="row">The same subtask is solved repeatedly</th><td><a href="#reuse">Plans, facts, or executable skills</a></td><td>Reuse conditions and freshness can be checked.</td></tr>
+<tr><th scope="row">Several agents repeat the same reasoning</th><td><a href="#collaboration">Fewer roles or messages</a></td><td>Complementary evidence and necessary checks survive.</td></tr>
+<tr><th scope="row">Long waits between dependent steps</th><td><a href="#latency">Parallelism or safe speculation</a></td><td>Time saved is worth any extra work performed.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="col-12 section" id="routing">
+<h2>Route model calls by expected value</h2>
+<p><strong>Mechanism.</strong> Choose a cheap or capable model separately for each request, role, or agent step. A prompt-only router predicts when a stronger answer is worth its price before either model runs. A cascade tries a cheap model first, then pays for a stronger model if a usable verifier or confidence signal recommends escalation. A budget-aware controller also sees trajectory state and remaining spend.</p>
+<p>The decision should estimate the <em>incremental benefit of the intervention</em>: whether this stronger model, extra worker, or second attempt will improve the final result enough to justify its cost. Merely labeling a prompt as difficult is weaker. In a long run, one early weak action can change later observations and create retries. A policy evaluated by swapping model answers into a fixed transcript may therefore misprice the trajectory it would actually generate.</p>
+<p><strong>Best fit.</strong> Many calls are routine, a minority need stronger reasoning, and the router has a cheap signal that separates them. Start with fixed cheap, fixed strong, and simple threshold baselines. Charge the router, failed cheap attempts in a cascade, and any resulting recovery work. Validate the policy by running it in the environment through task completion.</p>
+<p class="small">Sources: <a href="https://arxiv.org/abs/2406.18665">RouteLLM</a> · <a href="https://arxiv.org/abs/2602.21227">Budget-Aware Agentic Routing</a> · <a href="https://arxiv.org/abs/2601.07206">LLMRouterBench</a> · <a href="https://arxiv.org/abs/2608.08239">The Replay Gap</a>.</p>
+</div>
+<div class="col-12 section" id="specialize">
+<h2>Turn repeated narrow work into small-model capabilities</h2>
+<p><strong>Mechanism.</strong> Collect verified trajectories and train a smaller model for a stable role: classify the next tool, extract fields, summarize an observation, plan a subgoal, or execute a familiar procedure. Training on actions and subgoals gives the specialist the behavior an agent needs, rather than only the teacher's final answer. A small orchestrator can still call stronger models for exceptional steps.</p>
+<p><strong>Best fit.</strong> High-volume tasks with repeated structure and an objective check of specialist output. Keep an escape route for unfamiliar cases and measure calibration on held-out task families. Count teacher calls, data filtering, training, evaluation, hosting, and refresh. The break-even question is whether lifetime per-call savings exceed those setup costs without shifting mistakes into later agent steps.</p>
+<p class="small">Sources: <a href="https://arxiv.org/abs/2310.05915">FireAct</a> · <a href="https://arxiv.org/abs/2505.17612">Agent Distillation</a> · <a href="https://arxiv.org/abs/2511.21689">ToolOrchestra</a>.</p>
+</div>
+<div class="col-12 section" id="reasoning">
+<h2>Budget reasoning, sampling, and search</h2>
+<p><strong>Mechanism.</strong> Set the amount of deliberation, candidate generation, and search expansion according to the task and the evidence already obtained. Stop sampling when additional candidates are unlikely to change the decision. Use concise intermediate notes where they preserve the necessary state. Give the agent a remaining budget for both tokens and tools, then let it decide whether the next useful step is to think, act, retrieve, verify, or stop.</p>
+<p>A hard token cap only ends work when the cap is reached. It does not identify low-value work earlier. For an interactive agent, repeated thought can substitute for obtaining a fresh observation; more reasoning tokens can coexist with lower task success. Search and research agents benefit from explicit value-of-information rules: expand a branch only when its expected contribution exceeds the cost of another call or tool action.</p>
+<p><strong>Measure.</strong> Track task success, reasoning tokens, model turns, useful external actions, premature stopping, and failure recovery. Many efficient-reasoning results come from static questions; rerun the policy on full tool-using trajectories before treating token savings as agent savings.</p>
+<p class="small">Sources: <a href="https://arxiv.org/abs/2502.08235">The Danger of Overthinking</a> · <a href="https://arxiv.org/abs/2305.11860">Adaptive-Consistency</a> · <a href="https://arxiv.org/abs/2511.17006">BATS</a> · <a href="https://arxiv.org/abs/2608.23848">ExTS</a>.</p>
+</div>
+<div class="col-12 section" id="control">
+<h2>Remove model turns from routine control</h2>
+<p><strong>Mechanism.</strong> Put deterministic decisions in code, not in a model call. A plan can refer to future tool outputs, and its independent branches can run together. A code action can combine several tool operations into one model turn. A fixed pipeline can handle a task whose phases are stable, while a smaller tool menu avoids presenting an entire catalog on every step.</p>
+<p>For example, a repository agent can search for candidate files, run tests, and collect diagnostics in one scripted operation. The agent still decides how to interpret the results and can replan when a test fails or the repository differs from expectations. Batching dependent actions blindly can hide intermediate failures and force a more expensive restart.</p>
+<p><strong>Measure.</strong> Model turns removed, tool calls added, time to recover from an unexpected observation, and task success. Parallel work reduces the critical path only for genuinely independent branches; it need not reduce total compute.</p>
+<p class="small">Sources: <a href="https://arxiv.org/abs/2305.18323">ReWOO</a> · <a href="https://arxiv.org/abs/2312.04511">LLMCompiler</a> · <a href="https://arxiv.org/abs/2402.01030">CodeAct</a> · <a href="https://arxiv.org/abs/2407.01489">Agentless</a>.</p>
+</div>
+<div class="col-12 section" id="context">
+<h2>Keep context small without losing actionable state</h2>
+<p><strong>Mechanism.</strong> Filter tool output to the fields needed for the next decision, retrieve relevant records instead of pasting a whole store, summarize completed branches, and keep durable facts in structured memory. Preserve constraints, stable identifiers, unresolved errors, current external state, and access to original evidence. The compressor's own calls belong in the cost ledger.</p>
+<p>Different measures answer different questions. <em>Peak active context</em> determines whether a request fits and affects prefill memory. <em>Cumulative billed input</em> sums repeated prompts over the entire run. A smaller active context can require extra retrieval or tool calls to recover discarded facts; task completion may remain unchanged while cost rises. If a provider discounts a stable cached prefix, shortening or reordering it can also remove a discount.</p>
+<p><strong>Best fit.</strong> Long histories with completed branches, verbose observations, or documents that are consulted selectively. Compare no compression, simple truncation, and task-aware compression at the same success requirement. Record reacquisition calls and failures caused by missing state, not just the prompt length after compression.</p>
+<p class="small">Sources: <a href="https://arxiv.org/abs/2510.00615">ACON</a> · <a href="https://arxiv.org/abs/2607.02911">CoACT</a> · <a href="https://arxiv.org/abs/2604.19572">TACO</a> · <a href="https://arxiv.org/abs/2608.16370">Interaction costs of compression</a>.</p>
+</div>
+<div class="col-12 section" id="reuse">
+<h2>Reuse facts, plans, and executable skills</h2>
+<p>Choose the reusable object before choosing a cache. A retrieved fact saves repeated reading; a plan template saves planning; an executable skill can eliminate several model decisions. Reuse works when the new task satisfies the stored object's preconditions and the current environment still agrees with its assumptions.</p>
+<div class="table-responsive">
+<table class="table table-striped table-bordered">
+<thead><tr><th scope="col">Store</th><th scope="col">Cost it can avoid</th><th scope="col">Check before use</th></tr></thead>
+<tbody>
+<tr><th scope="row">Facts and structured memory</th><td>Repeated document reading and long prompts</td><td>Source, freshness, permissions, and relevance</td></tr>
+<tr><th scope="row">Plan or workflow template</th><td>Repeated decomposition and tool-choice turns</td><td>Task shape, tool availability, and live data</td></tr>
+<tr><th scope="row">Executable skill</th><td>Repeated reasoning and action sequences</td><td>Inputs, side effects, environment version, and tests</td></tr>
+<tr><th scope="row">Cached answer</th><td>An entire model call</td><td>Semantic equivalence, state, identity, and time sensitivity</td></tr>
+</tbody>
+</table>
+</div>
+<p>Memory writes, indexing, retrieval, consolidation, and invalidation are real work. Loading a long skill on every turn may cost more than retrieving it on demand, while repeated short skills may benefit from a cached prefix. Measure reuse frequency and the complete payback period. A cache hit rate alone does not show whether hits were correct or whether maintenance cost was recovered.</p>
+<p class="small">Sources: <a href="https://arxiv.org/abs/2506.14852">Agentic Plan Caching</a> · <a href="https://arxiv.org/abs/2305.16291">Voyager</a> · <a href="https://arxiv.org/abs/2608.11879">Memory serving costs</a> · <a href="https://arxiv.org/abs/2608.14943">Skill Blocks</a>.</p>
+</div>
+<div class="col-12 section" id="collaboration">
+<h2>Pay only for useful collaboration</h2>
+<p><strong>Mechanism.</strong> Reduce the number of agents, messages, or edges in a collaboration graph; narrow what each role receives; choose a cheaper model for routine roles; or invoke a specialist only when its expected contribution is distinct. These choices change different terms of the bill. Fewer agents removes whole model calls, sparse communication shortens prompts, and role assignment changes per-call price.</p>
+<p>Compare against a capable single agent given the same tools and total budget. Several agents can repeat the same evidence or reinforce one mistake, while their communication adds input tokens and waiting. Prune a role only after checking whether it contributes a unique observation, a useful independent check, or an action the remaining system cannot perform.</p>
+<p><strong>Measure.</strong> Final task success, total model calls and tokens across every worker, distinct evidence contributed, and wall-clock time. Report both total cost and latency when parallel roles run at once.</p>
+<p class="small">Sources: <a href="https://arxiv.org/abs/2410.02506">AgentPrune</a> · <a href="https://arxiv.org/abs/2605.08813">AgentSlimming</a> · <a href="https://arxiv.org/abs/2601.12307">OneFlow</a> · <a href="https://arxiv.org/abs/2508.04903">RCR-Router</a>.</p>
+</div>
+<div class="col-12 section" id="optimize">
+<h2>Amortize workflow and prompt optimization</h2>
+<p><strong>Mechanism.</strong> Search over prompts, demonstrations, tool interfaces, or executable workflows on development tasks. The result may let a cheaper runtime policy solve the task, remove unnecessary steps, or improve success at the same budget. The optimizer's model calls, evaluations, human work, and later refreshes are part of the project cost.</p>
+<div class="formula">Approximate break-even tasks = setup and refresh cost / net savings per deployed task</div>
+<p>This approximation assumes stable traffic, prices, and quality. If a workflow costs $2,000 to discover and saves $0.02 per task after all runtime overhead, it needs roughly 100,000 tasks to repay the setup cost. Short experiments may never reach that volume. Reevaluate after model, tool, or task changes; a previously tuned workflow can become brittle or less economical than a simpler one.</p>
+<p>The improvement loop has its own levers: reuse verified trajectories instead of collecting each demonstration again, focus development evaluations on tasks likely to reveal a regression, and reduce the number of optimization rollouts. Keep a separate held-out final test. Savings in training or evaluation do not imply savings in deployed inference, so report the two ledgers separately.</p>
+<p><strong>Measure.</strong> Report the cost and number of optimization trials, the held-out performance of the selected workflow, and savings against the best simple policy at equal quality. Keep optimization-set gains separate from the final test result.</p>
+<p class="small">Sources: <a href="https://arxiv.org/abs/2310.03714">DSPy</a> · <a href="https://arxiv.org/abs/2410.10762">AFlow</a> · <a href="https://arxiv.org/abs/2605.17359">TopoPrior</a> · <a href="https://arxiv.org/abs/2509.12867">Tool-R1</a> · <a href="https://arxiv.org/abs/2609.01603">PTA-IRT</a>.</p>
+</div>
+<div class="col-12 section" id="serving">
+<h2>Lower serving cost without confusing it with fewer tokens</h2>
+<p><strong>API deployments.</strong> Keep reusable instructions and tool schemas in a stable prefix when the provider offers cached-input pricing. Avoid moving timestamps and per-run state into that prefix. Measure actual cached-token charges; a shorter prompt is not necessarily a cheaper prompt if it destroys a valuable cache hit.</p>
+<p><strong>Self-hosted deployments.</strong> Prefix and KV-cache reuse avoid repeated prefill; batching and scheduling improve GPU utilization; phase-aware serving can keep short decodes from waiting behind long prefills. Multi-turn agents introduce tool gaps, so retaining a cache forever wastes capacity, while evicting it too early forces recomputation. The right retention policy depends on reuse probability, memory pressure, and reload cost.</p>
+<p>Quantization and speculative token decoding can improve throughput or latency, but they do not by themselves reduce the agent's logical tool calls. Price them through provisioned hardware, goodput under the required latency target, and complete task success. Quantization may change decisions even when average language-model quality looks similar. Provider billing may not pass a self-hosted speedup on to an API customer.</p>
+<p class="small">Sources: <a href="https://arxiv.org/abs/2309.06180">vLLM</a> · <a href="https://arxiv.org/abs/2312.07104">SGLang</a> · <a href="https://arxiv.org/abs/2511.02230">Continuum</a> · <a href="https://arxiv.org/abs/2306.00978">AWQ</a>.</p>
+</div>
+<div class="col-12 section" id="latency">
+<h2>Reduce waiting with a separate money budget</h2>
+<p>Run independent tools concurrently and schedule work by dependency. Speculation goes further: launch a likely next action or observation before the current result arrives, then validate the draft before using or committing it. This can shorten the critical path while increasing total work when predictions are wrong.</p>
+<p>Speculative work needs an isolation rule. Read-only or idempotent operations are easier to cancel; writes may require snapshots, validation, and rollback. A system that is 20% faster but 30% more expensive has purchased latency rather than reduced cost. That may be the correct choice under a response-time requirement, but the two outcomes should be reported separately.</p>
+<p class="small">Sources: <a href="https://arxiv.org/abs/2312.04511">LLMCompiler</a> · <a href="https://arxiv.org/abs/2510.04371">Speculative Actions</a> · <a href="https://arxiv.org/abs/2609.03236">Speculative Macro Commit</a>.</p>
+</div>
+<div class="col-12 section" id="rework">
+<h2>Prevent expensive rework</h2>
+<p>Clear task specifications and model-facing tool interfaces can save more than a shorter prompt if they prevent wandering, malformed actions, or late failures. A targeted verifier can catch a cheap-to-fix error before the agent builds further work on it. Verification pays when the expected cost of errors it catches exceeds the cost of running the check.</p>
+<p>Choose checks by what they can observe: a syntax test, state inspection, policy check, or human review each catches a different failure. Run costly checks where a mistake is consequential or likely, and allow a handoff when the system cannot meet a reliability requirement. Count human minutes, waiting, and review errors in the same ledger as model and tool work.</p>
+<p class="small">Sources: <a href="https://arxiv.org/abs/2405.15793">SWE-agent</a> · <a href="https://arxiv.org/abs/2608.25399">Task specification study</a> · <a href="https://arxiv.org/abs/2608.28795">Verification surface study</a> · <a href="https://arxiv.org/abs/2606.29654">Budgeted Act-or-Defer</a>.</p>
+</div>
+<div class="col-12 section" id="experiment">
+<h2>Run a fair cost experiment</h2>
+<ol>
+<li><strong>Fix the outcome.</strong> Define a verified final state, unacceptable side effects, a minimum success rate, and latency or budget limits before tuning. Use the same task starting states and grader for every policy.</li>
+<li><strong>Trace the baseline.</strong> Record full-episode cost and latency, including failures, retries, auxiliary models, tools, and human work. Inspect the expensive paths to pick one change with a plausible causal mechanism.</li>
+<li><strong>Use simple comparators.</strong> Include fixed cheap and fixed strong models, a static workflow, retries or escalation, and an equal-budget single agent when evaluating teams. A sophisticated router or optimizer must beat these policies on the target workload.</li>
+<li><strong>Run the changed policy through the environment.</strong> Routing, compression, and early stopping alter later observations. Evaluate complete trajectories, not only substituted answers or successful steps from logged runs.</li>
+<li><strong>Compare several budgets.</strong> Plot success against total cost and report p95 latency, hard-task regressions, and paired per-task outcomes. Count cache misses, state reacquisition, and failed speculative work where relevant.</li>
+<li><strong>Hold out final tasks.</strong> Tune on development traces and freeze the policy before the final comparison. If claiming transfer to new repositories, customers, or task types, hold out those groups rather than random rows from familiar ones.</li>
+</ol>
+<p>Published savings are demonstrations under particular models, prices, workloads, and baselines. Token reduction, peak-context reduction, throughput, latency, and dollars are different measurements. A nonsignificant success difference does not establish equal quality. Keep the metric attached to each claim, and use the <a href="agent-evaluation.html#evaluation-design">agent evaluation guide</a> for task validity, uncertainty, and reporting details.</p>
+<p class="small">Selected sources from the supplied literature map, reviewed September 27, 2026. The linked papers provide examples and evidence for the mechanisms; the page is organized by design decisions.</p>
+</div>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container">
+<p><a href="https://madsys.seas.harvard.edu/" rel="noopener" target="_blank">MadSys Research Group</a> · <a href="https://seas.harvard.edu/" rel="noopener" target="_blank">Harvard John A. Paulson School of Engineering and Applied Sciences</a></p>
+<p class="footer-policies"><a href="https://trademark.harvard.edu/pages/trademark-notice" rel="noopener" target="_blank">Trademark Notice</a> · <a href="https://accessibility.harvard.edu/" rel="noopener" target="_blank">Accessibility</a> · <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" rel="noopener" target="_blank">Digital Accessibility</a> · <a href="https://privsec.harvard.edu/harvard-university-privacy-statement" rel="noopener" target="_blank">Privacy Statement</a></p>
+<p class="footer-copyright">© 2026 Juncheng Yang</p>
+</div>
+</footer>
+</body>
+</html>

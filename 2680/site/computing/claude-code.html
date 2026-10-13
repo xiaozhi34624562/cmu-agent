@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="../vendor/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="../vendor/bootstrap.bundle.min.js"></script>
+<meta content="How to set up Claude Code for CS2680 assignments and which session files to submit with each one" name="description"/>
+<meta content="Juncheng Yang" name="author"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="CS2680 Modern AI Systems — Claude Code" property="og:title"/>
+<meta content="How to set up Claude Code for CS2680 assignments and which session files to submit with each one" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="CS2680 Modern AI Systems" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<link href="../css/main.css" rel="stylesheet"/>
+<title>CS2680 Modern AI Systems — Claude Code</title>
+</head>
+<body>
+<div id="site-header"></div>
+<script src="../header.js"></script>
+<div class="container page">
+<div class="row">
+<div class="col-12">
+<div class="title">CS2680 Modern AI Systems: Agents and System Optimizations</div>
+</div>
+<div class="col-12 title2">
+        Claude Code: setup and what you submit
+      </div>
+<div class="col-12 section" id="claude-code">
+<h1>Claude Code</h1>
+<p class="lead"><a href="../to_release.html">Assignment 1</a> is done with <strong>Claude Code</strong>
+          (the CLI, the desktop app, or the VS Code extension, whichever you prefer), and its submission includes your
+          session files. Every later
+          <a href="../assignments/index.html">assignment</a> uses it too, and each submission includes the session
+          files for that assignment's work. This page is how you get set up and what you hand in. It is one of four environments
+          under <a href="index.html">computing setup</a>, alongside <a href="api.html">model API access</a>, the
+          <a href="cluster.html">HPC</a>, and <a href="aws.html">AWS</a>.
+        </p>
+</div>
+<div class="col-12 section" id="account">
+<h1>Getting your account</h1>
+<p><strong>Harvard FAS provides this, so do not buy a subscription.</strong> Claude Code is included in
+          the Harvard Claude license, alongside Claude chat and the desktop app, and you sign in with HarvardKey. The
+          request form for FAS, GSAS and SEAS is on
+          <a href="https://www.huit.harvard.edu/anthropic-claude" rel="noopener" target="_blank">HUIT's Claude page</a>.
+        </p>
+<div class="tip">
+<strong>Do this in week one, not the night before Assignment 1 is due.</strong> A license request is a
+          ticket that a human approves, so it does not clear instantly.
+        </div>
+<p>Two things worth knowing before you start. The <strong>free Claude plan does not include Claude Code</strong>
+          at all, so a free account will not get you through Assignment 1. Claude Code requires a Pro, Max, Team,
+          Enterprise or Console account, and the Harvard license is how you get one. If you already pay for Claude
+          personally, you can keep using that account provided you have the quota for it.</p>
+</div>
+<div class="col-12 section" id="install">
+<h1>Installing it</h1>
+<p>Three interfaces, one tool and one account behind all of them. Pick whichever you will actually use; you can
+          switch, and you can run more than one. Claude Code needs macOS 13+, Windows 10 1809+, or a current Linux, with
+          4 GB of RAM.</p>
+<div class="subsection">
+<h2>Terminal (CLI)</h2>
+<p>The reference interface, and the one this page's commands assume. On macOS, Linux or WSL:</p>
+<div class="formula">curl -fsSL https://claude.ai/install.sh | bash</div>
+<p>On Windows PowerShell:</p>
+<div class="formula">irm https://claude.ai/install.ps1 | iex</div>
+<p>Homebrew (<code>brew install --cask claude-code</code>) and npm
+            (<code>npm install -g @anthropic-ai/claude-code</code>, needs Node 22+) also work; the native installer is
+            the one that auto-updates. Then check it:</p>
+<div class="formula">claude --version<br/>claude doctor</div>
+<p><code>claude doctor</code> prints installation and settings diagnostics without starting a session, and is
+            the first thing to run when something is wrong, and the first thing to paste when you ask for help.</p>
+</div>
+<div class="subsection">
+<h2>Desktop app</h2>
+<p>A graphical interface, no terminal required. Download it for macOS, Windows or Linux from the
+            <a href="https://code.claude.com/docs/en/desktop-quickstart" rel="noopener" target="_blank">desktop quickstart</a>.
+          </p>
+</div>
+<div class="subsection">
+<h2>VS Code extension</h2>
+<p>Open the Extensions view (<code>Cmd+Shift+X</code> on Mac, <code>Ctrl+Shift+X</code> otherwise), search for “Claude Code”, and install. It needs VS Code 1.94 or later, and it also
+            installs in VS Code forks including Cursor. See the
+            <a href="https://code.claude.com/docs/en/vs-code" rel="noopener" target="_blank">extension docs</a>.
+          </p>
+<p>One thing to know if you go this route: the export commands below are CLI commands. The extension can open
+            a terminal session for you, or you can install the CLI alongside it and run them there. Both read
+            the same session history on your machine.</p>
+</div>
+</div>
+<div class="col-12 section" id="login">
+<h1>Logging in</h1>
+<p>Run <code>claude</code> in a terminal. It opens a browser for you to sign in; use your Harvard account.
+          If the browser does not open, press <code>c</code> to copy the login URL and paste it in yourself. If the
+          browser shows you a code instead of returning to the terminal (common over SSH, in WSL, and in
+          containers), paste that code back at the prompt. On success the terminal says
+          <code>Login successful</code>.
+        </p>
+<p>Check what you are actually signed in as with <code>/status</code>, which shows the login method and the
+          account. <code>/login</code> re-runs the flow and <code>/logout</code> signs you out.</p>
+</div>
+<div class="col-12 section" id="export">
+<h1>What to submit with each assignment</h1>
+<p><a href="../to_release.html">Assignment 1</a> takes <strong>three artifacts</strong>: your code, the
+          write-up, and your Claude Code session files.
+        </p>
+<p>We collect these to understand how the class works with an agent (where people get stuck,
+          which habits pay, what the tool is doing badly), so that we can provide feedback and adjust the
+          course while it is running. <strong>They may also be used in grading</strong>, as the evidence behind the
+          process claims in your write-up.
+        </p>
+<div class="subsection">
+<p>Claude Code already keeps every session on disk, so rather than exporting conversations one at a time,
+            package the directory it keeps them in. Sessions are stored per working directory, under a name that is
+            your project's path with every non-alphanumeric character replaced by a hyphen, so
+            <code>/home/you/cs2680/assignment2</code> becomes <code>-home-you-cs2680-assignment2</code>. From your project directory,
+            this prints the right path:
+          </p>
+<div class="formula">echo ~/.claude/projects/$(pwd | sed 's/[^a-zA-Z0-9]/-/g')</div>
+<p>Or just look at what is there and pick yours out with <code>ls ~/.claude/projects/</code>. Then archive
+            it, from inside <code>projects/</code> so the paths in the archive stay tidy:</p>
+<div class="formula">cd ~/.claude/projects<br/>tar -czf ~/cs2680/assignment2/a2-sessions.tar.gz ./-home-you-cs2680-assignment2</div>
+<p>Use your own project directory and repository path in place of the examples. On Windows PowerShell,
+            <code>Compress-Archive -Path $env:USERPROFILE\.claude\projects\&lt;dir&gt; -DestinationPath $env:USERPROFILE\cs2680\assignment2\a2-sessions.zip</code>
+            does the same job. Commit the archive under the corresponding <code>assignmentN/</code> directory in your shared private course repository, for example <code>assignment2/a2-sessions.tar.gz</code>.
+          </p>
+<div class="tip">
+<strong>That leading hyphen will bite you.</strong> A project directory for an absolute path starts with
+            <code>-</code>, which <code>tar</code>, <code>zip</code>, <code>grep</code> and <code>du</code> all read as
+            the start of a command-line flag, so <code>tar -czf out.tar.gz -home-you-cs2680-assignment2</code> fails with
+            an unhelpful error. Prefix the name with <code>./</code>, as above, and everything works.
+          </div>
+<p>Include a directory for each place you did assignment work; if you worked in two repositories, that is two
+            directories. Inside, you will find one <code>.jsonl</code> file per session, a folder of overflow
+            <code>tool-results</code> for the larger ones, and a <code>memory/</code> folder of notes the agent kept
+            for itself. Leave all three in. The transcripts reference the tool results, and the memory notes are
+            some of the most interesting material in the archive. Expect tens of megabytes per assignment, compressing
+            to roughly a third of that.
+          </p>
+</div>
+<div class="tip">
+<strong>Your session history expires after 30 days by default.</strong> Claude Code deletes session data
+          older than <code>cleanupPeriodDays</code> at startup, and the <a href="../project.html">final project</a> runs for over five
+          weeks, so the sessions from the week you started can be gone by the week you submit. Either export as
+          you go, or raise the retention now by putting <code>{ "cleanupPeriodDays": 180 }</code> in
+          <code>~/.claude/settings.json</code>.
+        </div>
+<div class="subsection" id="privacy">
+<h2>Keep secrets and private information out of your sessions</h2>
+<p>You are handing these sessions to us, so treat a Claude Code session as something you will publish to an
+            audience of one. And note what the archive actually contains: not just what you typed, but every file the
+            agent read, every command it ran, and everything those commands printed. If Claude ever opened your
+            <code>.env</code>, that file's contents are in the transcript. This is a wider surface than a conversation
+            you can skim, which is why the scan below matters.
+          </p>
+<p>Before you start work, and again before you submit:</p>
+<ul>
+<li><strong>No credentials.</strong> No passwords, API keys, tokens, SSH keys, HPC credentials or
+              connection strings pasted into the chat. Keep them in environment variables or a <code>.env</code> file
+              that is in your <code>.gitignore</code>, and let your code read them, which is what you should be
+              doing anyway, and is the habit Assignment 2 will test.</li>
+<li><strong>No personal information.</strong> Not yours (HUID, address, health or financial details), and in particular not anyone else's. If an Assignment 1 example task is the obvious candidate for
+              this, because it touches your own real data, use synthetic or scrubbed records instead.</li>
+<li><strong>Nothing confidential that is not yours to share.</strong> Unpublished work from a lab, another
+              course's solutions, an NDA'd dataset.</li>
+</ul>
+<p><strong>Scan before you archive.</strong> From <code>~/.claude/projects</code>, against your own project
+            directory, noting the <code>./</code> again:</p>
+<div class="formula">grep -rlE 'sk-[A-Za-z0-9_-]{20,}|ghp_[A-Za-z0-9]{36}|AKIA[0-9A-Z]{16}|BEGIN [A-Z ]*PRIVATE KEY' ./-home-you-cs2680-a2</div>
+<p>That catches the common shapes (OpenAI and Anthropic-style keys, GitHub tokens, AWS access keys,
+            PEM private keys) and prints the files containing them. It is a smoke test, not a guarantee: it knows
+            nothing about your database password or your lab's internal hostnames. Silence means the obvious things are
+            absent, not that you can skip thinking. The <code>memory/</code> folder is the one part short enough to read
+            properly, so read it.</p>
+</div>
+</div>
+<div class="col-12 section" id="telemetry">
+<h1>Turning on telemetry</h1>
+<p>Alongside the per-assignment upload, Claude Code can report usage
+          <em>metadata</em> continuously to a course collector. Please switch it on in week one and leave it on for
+          the semester. It gives me a picture of how the class is getting on while the course is still running rather
+          than three weeks after each deadline. It does <strong>not</strong> replace the session archive required with
+          each assignment.
+        </p>
+<!-- TODO: stand up the collector, then replace the endpoint and token below and drop this comment.
+             Deployment runbook: docs/telemetry.md. -->
+<p>Put this in <strong><code>~/.claude/settings.json</code></strong>, your user settings rather than a
+          project's <code>.claude/settings.json</code>, which would end up committed to a repo you push:</p>
+<div class="formula">{<br/>  "env": {<br/>    "CLAUDE_CODE_ENABLE_TELEMETRY": "1",<br/>    "OTEL_METRICS_EXPORTER": "otlp",<br/>    "OTEL_LOGS_EXPORTER": "otlp",<br/>    "OTEL_EXPORTER_OTLP_PROTOCOL": "http/protobuf",<br/>    "OTEL_EXPORTER_OTLP_ENDPOINT": "https://TBD.example.harvard.edu",<br/>    "OTEL_EXPORTER_OTLP_HEADERS": "Authorization=Bearer TBD",<br/>    "OTEL_RESOURCE_ATTRIBUTES": "course=cs2680,term=fall2026"<br/>  }<br/>}</div>
+<p>If the file already exists, merge the <code>env</code> block into it rather than overwriting the file. Do
+          this on every machine you work on, the HPC included. A node that cannot reach the endpoint simply reports
+          nothing.</p>
+<div class="subsection">
+<h2>What this sends, and what it does not</h2>
+<p>You should be able to check this rather than take my word for it, so here is the whole of it. Each
+            request and each tool call produces a record carrying a timestamp, which tool ran, whether it succeeded
+            and how long it took, token counts, cost, the model, your Harvard email, and ids that group records into
+            a session.</p>
+<p><strong>No prompt text, no code, and no command strings.</strong> Content logging is off by default and
+            the course configuration above does not turn it on: the prompt field arrives as the literal string
+            <code>&lt;REDACTED&gt;</code>, and only its length is recorded. Nothing you type, nothing Claude writes,
+            no file contents, and no Bash commands leave your machine through this channel. That makes it a
+            <em>narrower</em> disclosure than the session archive you upload with each assignment, not a wider one.
+          </p>
+<p>See it for yourself before sending anything anywhere. Set
+            <code>"OTEL_METRICS_EXPORTER": "console"</code> and <code>"OTEL_LOGS_EXPORTER": "console"</code> instead of <code>"otlp"</code>, run a session, and Claude
+            Code prints its telemetry to your own terminal, exactly the records the collector would receive. The logs exporter is the one that carries the per-event records, so switching only the metrics exporter hides the very fields this section is about.
+            Switch them both back to <code>"otlp"</code> when you are satisfied.
+          </p>
+</div>
+<div class="subsection">
+<h2>How it is used</h2>
+<p>For feedback and for steering the course: which tools the class leans on, where sessions fail, what an
+            assignment actually costs in tokens. It is <strong>not</strong> an attendance or effort record.
+            Timestamps show when people work, and I am not grading anyone on working late or on how many prompts they
+            sent. Prompt counts have no right answer, and a metric that had one would just become a target.
+            Grades come from the submitted work.</p>
+<p>If you would rather not run it, tell me and that is the end of it. It costs you nothing in the
+            grade, and the per-assignment archive already covers what the assignments are marked on. Do say so
+            though, because a machine sending nothing looks the same from here as a machine that was never set up.</p>
+</div>
+</div>
+<div class="col-12 section" id="related">
+<h1>Related</h1>
+<ul>
+<li><a href="index.html">Computing setup</a>. The model API, the HPC, and AWS, and which assignment needs
+            which.</li>
+<li><a href="cluster.html">HPC</a>. How to run the agent in an interactive job instead
+            of on a login node that will kill it.</li>
+<li><a href="../assignments/index.html">Assignments</a>. The five specs this applies to.</li>
+<li><a href="../policy.html#ai-policy">AI use policy</a>. Disclosure, ownership, and this submission
+            requirement.</li>
+<li><a href="https://code.claude.com/docs/en/setup" rel="noopener" target="_blank">Claude Code setup docs</a> and <a href="https://code.claude.com/docs/en/troubleshoot-install" rel="noopener" target="_blank">installation troubleshooting</a>. The authoritative versions, kept current.</li>
+<li><a href="https://code.claude.com/docs/en/costs" rel="noopener" target="_blank">Tracking usage and cost</a>. If you want to watch what your own sessions cost.</li>
+</ul>
+</div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="container">
+<p><a href="https://madsys.seas.harvard.edu/" rel="noopener" target="_blank">MadSys Research Group</a> · <a href="https://seas.harvard.edu/" rel="noopener" target="_blank">Harvard John A. Paulson School of Engineering and Applied Sciences</a></p>
+<p class="footer-policies"><a href="https://trademark.harvard.edu/pages/trademark-notice" rel="noopener" target="_blank">Trademark Notice</a> · <a href="https://accessibility.harvard.edu/" rel="noopener" target="_blank">Accessibility</a> · <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" rel="noopener" target="_blank">Digital Accessibility</a> · <a href="https://privsec.harvard.edu/harvard-university-privacy-statement" rel="noopener" target="_blank">Privacy Statement</a></p>
+<p class="footer-copyright">© 2026 Juncheng Yang</p>
+</div>
+</footer>
+</body>
+</html>

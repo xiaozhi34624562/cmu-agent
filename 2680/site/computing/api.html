@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="../vendor/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="../vendor/bootstrap.bundle.min.js"></script>
+<meta content="CS2680 model API access: the account the course creates for you, choosing a model, and keeping the bill small" name="description"/>
+<meta content="Juncheng Yang" name="author"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="CS2680 Modern AI Systems — Model API access" property="og:title"/>
+<meta content="CS2680 model API access: the account the course creates for you, choosing a model, and keeping the bill small" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="CS2680 Modern AI Systems" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<link href="../css/main.css" rel="stylesheet"/>
+<title>CS2680 Modern AI Systems — Model API access</title>
+</head>
+<body>
+<div id="site-header"></div>
+<script src="../header.js"></script>
+<div class="container page">
+<div class="row">
+<div class="col-12">
+<div class="title">CS2680 Modern AI Systems: Agents and System Optimizations</div>
+</div>
+<div class="col-12 title2">
+        Model API access
+      </div>
+<div class="col-12 section" id="api">
+<h1>Model API access</h1>
+<p class="lead">You will need to access LLMs through API for Assignments 2 and 3. The course gives you API access to models from OpenAI, Anthropic, and Google. Harvard FAS
+          Academic Technology Group provides the access, and we run a proxy layer, which handles key distribution, model access control, and account management. You just need one key to access all three providers.</p>
+<!-- <p>This is the path for <a href="../to_release.html">Assignment&nbsp;2</a> and
+          <a href="../to_release.html">Assignment&nbsp;3</a>, where the model runs behind a commercial API
+          and the machine you call it from does not matter. It is also available for a small number of calls in
+          <a href="../to_release.html">Assignment&nbsp;5</a>, where you otherwise serve the model
+          yourself on the <a href="cluster.html">course HPC</a>. The same access is available for
+          <a href="../project.html">final projects</a> that use hosted models. Note that this is a different thing from
+          <a href="claude-code.html">Claude Code</a>, which is a separate Harvard FAS license for the agent you
+          drive from a terminal. -->
+
+<hr/>
+</div>
+<div class="col-12 section" id="account">
+<h1>Getting your account</h1>
+<div class="tip">
+          We will create an account for every enrolled student and post the credentials on Canvas before <a href="../to_release.html">Assignment 2</a> opens.
+        </div>
+<p>Two things to do, in order.</p>
+<ul>
+<li><strong>Read the Canvas announcement.</strong> It carries your key, the base URL of the router, and the model names the router expects. </li>
+<li><strong>Keep the key out of your repository.</strong> The key identifies you and bills to the course. Put it in an environment variable, never in a committed file, and never in a prompt or a transcript you are about to submit.</li>
+</ul>
+<p>Accounts follow the enrolled roster. Therefore, if you enroll late, or you cannot find your credentials on Canvas, email the teaching staff.</p>
+<hr/>
+</div>
+<div class="col-12 section" id="cost">
+<h1>Start with the small model</h1>
+<p>The API is expensive, and an agent is the worst case for it. A model is stateless, so every step of an agent loop re-sends the whole context and pays for it again. The bill therefore grows with the number of steps multiplied by the context length, not with the number of questions you asked.</p>
+<p>Consider a 50-step agent session that carries 20,000 tokens of context into each step and generates 500 tokens per step. That is 50 × 20,000 = 1,000,000 input tokens and 50 × 500 = 25,000 output tokens for a single run. On <strong>Claude Haiku 4.5</strong> the run costs 1.0 × $1.00 + 0.025 × $5.00 = <strong>$1.13</strong>. On <strong>Claude Opus 5</strong> the same run costs 1.0 × $5.00 + 0.025 × $25.00 = <strong>$5.63</strong>, or <strong>5.0×</strong> as much. One run of either is affordable. However, a 200-run sweep on Opus 5 is $1,125, which is not, and a parameter sweep is exactly what Assignment 3 asks you to do.</p>
+<div class="tip">
+<strong>Debug on the cheapest model, then measure on the one you are reporting.</strong> Getting the plumbing right — the loop, the tool calls, the parsing — does not need a frontier model. Switch up only once the harness works, and say in your write-up which model produced which number.
+        </div>
+<p>Two other levers matter more than model choice for a fixed workload. First, <strong>prompt caching</strong> bills a repeated prefix far below the input rate (on the Anthropic models a cache hit costs 10% of the base input price, against a 25% surcharge on the write), and an agent loop that re-sends a stable system prompt and tool list is the case it was built for. Second, <strong>context length</strong> is a cost you control: trimming what you re-send each step reduces every subsequent step's bill, which is the measurement <a href="../to_release.html">Assignment 3</a> is about.</p>
+<hr/>
+</div>
+<div class="col-12 section" id="models">
+<h1>Available models and prices</h1>
+<p>Prices are US dollars per million tokens, at the standard (non-batch) rate, as published by each provider
+          on <strong>2026-08-22</strong>. Batch processing halves the rate at all three providers. Prices change, and
+          several rates below are explicitly temporary, so treat these tables as the starting point for your own
+          estimate and check the provider's page before you plan a large run.</p>
+<p>Read across the three tables before you pick. The spread is wider than it looks: <strong>Claude Fable 5
+            costs 50× as much per input token as GPT-5.6 Luna</strong>, and 42× as much per output token.
+          The cheapest option overall is GPT-5.6 Luna, and the cheapest that still gives you a 1M-token context is
+          Gemini 3.5 Flash-Lite. Note also that only Claude Haiku 4.5 and the OpenAI models are below 1M context,
+          which matters once an agent loop starts accumulating history.</p>
+<div class="subsection" id="models-openai">
+<h2>OpenAI</h2>
+<div class="table-responsive">
+<table class="table table-striped table-bordered table-hover align-middle">
+<thead>
+<tr class="table-light">
+<th scope="col">Model</th>
+<th scope="col">Context</th>
+<th scope="col">Input $/1M</th>
+<th scope="col">Output $/1M</th>
+<th scope="col">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPT-5.6 Luna</td>
+<td>272K</td>
+<td>$0.20</td>
+<td>$1.20</td>
+<td>The cheapest model the course provides. A sound default while the harness is still wrong.</td>
+</tr>
+<tr>
+<td>GPT-5.6 Terra</td>
+<td>272K</td>
+<td>$2.00</td>
+<td>$12.00</td>
+<td>Mid-tier of the GPT-5.6 family.</td>
+</tr>
+<tr>
+<td>GPT-5.6 Sol</td>
+<td>272K</td>
+<td>$4.00</td>
+<td>$20.00</td>
+<td>Promotional rate, held at least through 2026-11-21.</td>
+</tr>
+<tr>
+<td>GPT-5.5</td>
+<td>272K</td>
+<td>$5.00</td>
+<td>$30.00</td>
+<td>The previous generation.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Every OpenAI model here has a 272K context, and above a 128K prompt the rate roughly doubles.</p>
+</div>
+<div class="subsection" id="models-anthropic">
+<h2>Anthropic</h2>
+<div class="table-responsive">
+<table class="table table-striped table-bordered table-hover align-middle">
+<thead>
+<tr class="table-light">
+<th scope="col">Model</th>
+<th scope="col">Context</th>
+<th scope="col">Input $/1M</th>
+<th scope="col">Output $/1M</th>
+<th scope="col">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude Haiku 4.5</td>
+<td>200K</td>
+<td>$1.00</td>
+<td>$5.00</td>
+<td>The smallest Claude. Note the 200K context, 5× smaller than the rest of the family.</td>
+</tr>
+<tr>
+<td>Claude Sonnet 5</td>
+<td>1M</td>
+<td>$2.00</td>
+<td>$10.00</td>
+<td>The usual middle choice for agent work.</td>
+</tr>
+<tr>
+<td>Claude Opus 5</td>
+<td>1M</td>
+<td>$5.00</td>
+<td>$25.00</td>
+<td>Use for the final measurement, not for debugging.</td>
+</tr>
+<tr>
+<td>Claude Fable 5</td>
+<td>1M</td>
+<td>$10.00</td>
+<td>$50.00</td>
+<td>The most expensive model the course provides. Justify it in your write-up before using it at scale.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The Claude models are the ones where <a href="#cost">prompt caching</a> is documented most precisely: a
+            cache hit costs 10% of the base input rate, against a 25% surcharge on the write.</p>
+</div>
+<div class="subsection" id="models-google">
+<h2>Google</h2>
+<div class="table-responsive">
+<table class="table table-striped table-bordered table-hover align-middle">
+<thead>
+<tr class="table-light">
+<th scope="col">Model</th>
+<th scope="col">Context</th>
+<th scope="col">Input $/1M</th>
+<th scope="col">Output $/1M</th>
+<th scope="col">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gemini 3.5 Flash-Lite</td>
+<td>1M</td>
+<td>$0.30</td>
+<td>$2.50</td>
+<td>The cheapest model with a 1M context.</td>
+</tr>
+<tr>
+<td>Gemini 3.7 Flash</td>
+<td>1M</td>
+<td>$0.75</td>
+<td>$3.75</td>
+<td>Rate holds through 2026-12-31, then doubles. It will not change during the semester.</td>
+</tr>
+<tr>
+<td>Gemini 3.1 Pro</td>
+<td>1M</td>
+<td>$2.00</td>
+<td>$12.00</td>
+<td>Preview model. Above a 200K prompt the rate rises to $4.00 input and $18.00 output.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Every Gemini model here has a 1M context, which makes this the cheapest family to hand a long prompt.</p>
+</div>
+<p>Sources (2026-08-22): <a href="https://developers.openai.com/api/docs/pricing" rel="noopener noreferrer" target="_blank">OpenAI API pricing</a>, <a href="https://platform.claude.com/docs/en/about-claude/pricing" rel="noopener noreferrer" target="_blank">Anthropic pricing</a>, and <a href="https://ai.google.dev/gemini-api/docs/pricing" rel="noopener noreferrer" target="_blank">Gemini API pricing</a>.</p>
+<hr/>
+</div>
+<div class="col-12 section" id="rules">
+<h1>Four rules</h1>
+<ul>
+<li><strong>The key is yours.</strong> Do not share it, and do not use a classmate's. Usage is attributed per account, which is also how we notice a runaway loop before it becomes a large bill.</li>
+<li><strong>Keep the key out of your repository.</strong> The rule from <a href="#account">getting your account</a> applies for the rest of the semester, and a leaked key is billed to the course before anyone notices.</li>
+<li><strong>Cap your own spending.</strong> Put a hard request ceiling in your harness before you launch a sweep. A loop with no stopping condition is the single most common way this budget gets spent.</li>
+<li><strong>Keep budget in mind</strong>. The budget we allocate to each assignment should be sufficient. You need a good reason to request additional budget. </li>
+</ul>
+<hr/>
+</div>
+<div class="col-12 section" id="related">
+<h1>Related</h1>
+<ul>
+<li><a href="index.html">Computing setup</a>. Which environment each assignment needs.</li>
+<li><a href="claude-code.html">Claude Code</a>. The separate Harvard FAS agent license, required in Assignment 1 and optional afterwards.</li>
+<li><a href="cluster.html">Course HPC</a>. Where you serve a model yourself, instead of calling an API.</li>
+<li><a href="../project.html#resources">Final project compute</a>. When to use the model API or
+            self-serve on the course HPC.</li>
+<li><a href="../to_release.html">Assignment 3</a>. The cost and latency optimization this page's arithmetic is for.</li>
+<li><a href="../policy.html#ai-policy">AI use policy</a>. Disclosure and the session-file submission rule.</li>
+</ul>
+</div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="container">
+<p><a href="https://madsys.seas.harvard.edu/" rel="noopener" target="_blank">MadSys Research Group</a> · <a href="https://seas.harvard.edu/" rel="noopener" target="_blank">Harvard John A. Paulson School of Engineering and Applied Sciences</a></p>
+<p class="footer-policies"><a href="https://trademark.harvard.edu/pages/trademark-notice" rel="noopener" target="_blank">Trademark Notice</a> · <a href="https://accessibility.harvard.edu/" rel="noopener" target="_blank">Accessibility</a> · <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" rel="noopener" target="_blank">Digital Accessibility</a> · <a href="https://privsec.harvard.edu/harvard-university-privacy-statement" rel="noopener" target="_blank">Privacy Statement</a></p>
+<p class="footer-copyright">© 2026 Juncheng Yang</p>
+</div>
+</footer>
+</body>
+</html>

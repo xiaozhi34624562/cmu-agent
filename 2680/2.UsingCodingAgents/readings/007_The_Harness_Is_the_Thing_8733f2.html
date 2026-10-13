@@ -1,0 +1,181 @@
+<!doctype html>
+  <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="darkreader-lock">
+    <title>The Harness Is the Thing — Scott Fryxell</title>
+    <meta name="description" content="Models are commodifying. The harness - skills, extensions, a scriptable app - is where the work and the leverage now live.">
+    <link rel="canonical" href="https://scott-fryxell.github.io/blog/the-harness-is-the-thing">
+    <meta property="og:site_name" content="Scott Fryxell">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The Harness Is the Thing — Scott Fryxell">
+    <meta property="og:description" content="Models are commodifying. The harness - skills, extensions, a scriptable app - is where the work and the leverage now live.">
+    <meta property="og:url" content="https://scott-fryxell.github.io/blog/the-harness-is-the-thing">
+    <meta property="og:image" content="https://scott-fryxell.github.io/og/Scott%20Fryxell%20%40%20Sunday%20evening%2C%20April%2012%20-%201776042845045.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="The Harness Is the Thing — Scott Fryxell">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Harness Is the Thing — Scott Fryxell">
+    <meta name="twitter:description" content="Models are commodifying. The harness - skills, extensions, a scriptable app - is where the work and the leverage now live.">
+    <meta name="twitter:image" content="https://scott-fryxell.github.io/og/Scott%20Fryxell%20%40%20Sunday%20evening%2C%20April%2012%20-%201776042845045.jpg">
+    <meta name="twitter:image:alt" content="The Harness Is the Thing — Scott Fryxell">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/svg+xml" href="/icons.svg">
+    <link rel="apple-touch-icon" href="/192.png">
+    <script type="module" src="/scripts/detect.js"></script>
+    <script type="module" src="/scripts/reveal.js"></script>
+    
+    <script type="module" src="/scripts/diagrams.js"></script>
+    
+  </head>
+  <body>
+  <main>
+    <template src="/partials/header.html"></template>
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <figure style="--ratio: 0.7496">
+        <img src="/posters/Scott Fryxell @ Sunday evening, April 12 - 1776042845045.svg" width="512" height="683" alt="" loading="lazy">
+        <figcaption>
+          <h1 itemprop="headline">The Harness Is the Thing</h1>
+          <time itemprop="datePublished" datetime="2026-08-25">August 25, 2026</time>
+          <a class="back-link" href="/" aria-label="Back to blog">x</a>
+        </figcaption>
+      </figure>
+      <section itemprop="articleBody"><p>When I started out as a developer, I had a graybeard observe for me that
+Moore's law also applies to software. I didn't understand that this constant conversation about how we were solving problems was the arc of progress; that complaining about J2EE and how slow Netbeans was, and wheezing about table-based layouts and constant full-page reloads, was the day-to-day optimizing that is also an engine of progress.</p>
+<p>The last eighteen months have been a particular window of relentless
+improvement. Tab completions have given way to agentic coding which has given
+way to managing your agents with a harness. I've gone from being awed at the
+productivity gains to settling into the game and squeezing the lemon to see what
+I can get.</p>
+<h2 id="there-are-new-truths">There are new truths</h2>
+<p>Single developer projects can build to the caliber and consistency of large
+development teams. You can and should build bespoke applications and you don't
+have to sweat onboarding experienced engineers; if they know their stack
+backwards and forwards they'll quickly know how to contribute to yours. But most of all, I have learned that the harness is the thing; the fulcrum from which my expectations meet the LLM's capabilities.</p>
+<p>At the moment my rig is supported by two subscriptions (Cursor, Claude) that I can augment with Pi as needed. All three share my skills and <code>AGENTS.md</code>. Though I am using three TUIs, I have a unified experience. This has commodified the models for me; there is no magic sauce or special experience in Claude or Cursor that I need in order to be productive. I have zero anxiety about the transition from Cursor to Codex at the end of this month.</p>
+<h2 id="the-cost-advantage">The cost advantage</h2>
+<p>In the
+<a href="https://www.emergingtrajectories.com/lh/commodification-and-circularity/">commodity</a><sup class="note-mark">1</sup> era I can get great results from a host of available models, but I've been leaning on <code>deepseek-v4-flash-0731</code> since it came out. It's a rare case that I dip into my Anthropic API budget to utilize Fable.</p>
+<p>I can run Deepseek on most maintenance and simple tasks. It's when I am exploring a serious feature or large refactor with lots of moving parts that I reach for the frontier. Recently I learned about <a href="https://stencil.so/blog/prewalk">prewalk</a><sup class="note-mark">2</sup>, Can Bölük's technique that uses frontier for the planning phase and first task, then hands off once the pattern is set. I paired it with the planner/worker/critic split from <a href="https://data4sci.com/blog/building-an-advanced-agentic-harness">Building an Advanced Agentic Harness</a><sup class="note-mark">3</sup> - a single prompt that plans, executes, and critiques itself confuses its own objectives, so each role gets isolated instead. I built both into a skill, with a supporting Pi extension that can take over at any stage of work.</p>
+<p><strong>Exploration</strong> leads to a <strong>plan</strong> formalized into an explicit DAG (directed acyclic graph) task list. Then a <strong>worker</strong> takes over, focusing on implementing the DAG one node at a time. Once complete, I bring in the <strong>critic</strong> to simplify and question what was implemented. Often this phase will push back enough that the worker phase is revisited. But once satisfied, the critic gives way to a <strong>promoter</strong>, which is my reminder that a job is not complete until you've properly communicated it to others.</p>
+<p>I added the promoter step to shore up a weak spot I have for wanting to ship and move on. It's my reminder to let people know about work I'm completing. I need a little help from Fable in this phase, as promotion is subtle and easily borked, and nobody likes a critic so running it through the frontier gives it more weight.</p>
+<figure class="plate"><img src="/diagrams/frontier-zone.svg" alt="A shallow arc of five stops - explore, planner, worker, critic, promoter. A pale band runs along the inside of the whole arc, as deep as the tallest peak: that is the commodity model, and it carries most of the work. Two red peaks rise into the head of worker, and a much shallower one straddles the seam between critic and promoter." /></figure>
+<p>This has dropped my usage of Fable in even my most intense contexts by 75%. This feels sane, something akin to AI soak. I can take care of my clients and make real progress on my own projects on my two twenty-dollar plans, as I juggle in and out of Pi for Deepseek or the Fable infusion.</p>
+<h2 id="a-product-harness-connection">A product harness connection</h2>
+<p><a href="https://realness.online/about">My product</a><sup class="note-mark">4</sup> is a camera app designed to make it easy to take a picture and see it converted into a vector graphic, one at a time. It's fun because it's simple. The resolution drops, the picture is simplified into value layers, and shapes. It keeps the context and removes the detail so you can draw it back in. That's all it's designed to do. You print it out and you draw on top of it. Or import it into Procreate and draw within all the layering.</p>
+<p>This functionality is made available to the harness via <a href="https://realness.online/poster-driver">poster-driver</a><sup class="note-mark">5</sup>. Open it in headless Chrome and drive the live site to give you posters from any graphic or deconstructed video you want . This makes scripting the app as easy as loading a web page.</p>
+<p>An advanced use case which before, only had clumsy solutions is now available and fun to use; a feature with plenty of runway to explore</p>
+<pre class="shiki shiki-themes one-light one-dark-pro" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34" tabindex="0"><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># run from harness root</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">npm</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> run</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> make:animation</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> artifacts/my-movie.mp4</span></span></code></pre>
+<p>The LLM helped me figure this out and wrote a script that I keep in my harness; so it can run a billion times without burning tokens. The product got more powerful because the harness can reach it. There is support for the filesystem API. After enabling it on Brave, I am syncing my thoughts to the work directory. Harvesting my own sad boy lyrics to sing in my room by myself. It hurts so good. Another creative use I am exploring is working on a blender environment that is my neighborhood in 3d with posters overlaid on top. A scene, a storyboard a hell of a lot more than I can offer from the web.</p>
+<p>The app feels fully available now in a way that was impossible a year ago. Creative people can still use a non-AI tool in an AI way. We can keep for ourselves the funnest parts about being creative.</p>
+<h2 id="breaking-down-the-harness">Breaking down the harness</h2>
+<p>I live my workday out of <a href="https://github.com/scott-fryxell/brayness">this harness</a><sup class="note-mark">6</sup>. I have my nvim config mapped into the work directory, and now the LLM knows what file I have open and can edit it and, since I'm still a slow swimmer, help me use the right motions. Harness as jig is the way I'm trying to think of it: the LLM is there editing my config with me so I can stay focused on working while also staying disciplined about using vim commands.</p>
+<p>The harness is self-contained to support more than a home directory (sandboxing, a web interface, File System Access API, Docker, Deno executable, etc).</p>
+<p>These concepts are still forming in my mind so I've been referencing <code>npm start</code>, <code>cursor-agent</code>, <code>claude</code> as TUIs to keep the concept of a harness clear. All TUIs share the harness.</p>
+<p>Remaining auditable is important enough that the TUIs are instructed to keep things inside the artifacts/ directory. Cursor uses .gitignore to ignore files, which I think is smart, so a git-less root is required. I have a skill that syncs the harness with the repo in the work directory. Skills, extensions, and <code>AGENTS.md</code> are first-class citizens at the root, waiting to be modified and built upon. <a href="#claude-agents-wrapper" data-reveal-target="claude-agents-wrapper">TUIs have to toe the line.</a></p>
+<section id="claude-agents-wrapper" class="inline-reveal-panel" hidden>
+  <pre class="shiki shiki-themes one-light one-dark-pro" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34" tabindex="0"><code><span class="line"><span style="--shiki-light:#A0A1A7;--shiki-light-font-style:italic;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># auto-load the nearest AGENTS.md into claude code</span></span>
+<span class="line"><span style="--shiki-light:#4078F2;--shiki-dark:#61AFEF">  claude</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">() {</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    local</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75"> dir</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">$PWD</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    while</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> [[ </span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">$dir</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2"> !=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "/"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> ]]; </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">do</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">      if</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> [[ </span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">-f</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">$dir</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">/AGENTS.md"</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF"> ]]; </span><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">then</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">        command</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> claude</span><span style="--shiki-light:#986801;--shiki-dark:#D19A66"> --append-system-prompt-file</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">$dir</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">/AGENTS.md"</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">$@</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">        return</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">      fi</span></span>
+<span class="line"><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">      dir</span><span style="--shiki-light:#383A42;--shiki-dark:#56B6C2">=</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"</span><span style="--shiki-light:#E45649;--shiki-dark:#98C379">${</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">dir</span><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">:</span><span style="--shiki-light:#E45649;--shiki-dark:#E06C75">h</span><span style="--shiki-light:#E45649;--shiki-dark:#98C379">}</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"</span></span>
+<span class="line"><span style="--shiki-light:#A626A4;--shiki-dark:#C678DD">    done</span></span>
+<span class="line"><span style="--shiki-light:#0184BC;--shiki-dark:#56B6C2">    command</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> claude</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379"> "</span><span style="--shiki-light:#383A42;--shiki-light-font-style:inherit;--shiki-dark:#E06C75;--shiki-dark-font-style:italic">$@</span><span style="--shiki-light:#50A14F;--shiki-dark:#98C379">"</span></span>
+<span class="line"><span style="--shiki-light:#383A42;--shiki-dark:#ABB2BF">  }</span></span></code></pre>
+</section>
+<pre class="shiki shiki-themes one-light one-dark-pro" style="--shiki-light:#383A42;--shiki-dark:#abb2bf;--shiki-light-bg:#FAFAFA;--shiki-dark-bg:#282c34" tabindex="0"><code><span class="line"><span>brayness/</span></span>
+<span class="line"><span>├── AGENTS.md</span></span>
+<span class="line"><span>├── AGENTS.local.md</span></span>
+<span class="line"><span>├── bin/</span></span>
+<span class="line"><span>├── prompts/</span></span>
+<span class="line"><span>├── plans/</span></span>
+<span class="line"><span>├── skills/</span></span>
+<span class="line"><span>├── extensions/</span></span>
+<span class="line"><span>├── artifacts/</span></span>
+<span class="line"><span>└── work/</span></span>
+<span class="line"><span>    ├── realness/</span></span>
+<span class="line"><span>    ├── blog/</span></span>
+<span class="line"><span>    ├── brayness/</span></span>
+<span class="line"><span>    ├── nvim/</span></span>
+<span class="line"><span>    └── ...</span></span></code></pre>
+<p>Initially I was too prescriptive with my skills; I am learning to lighten the
+specificity, and that there is a line past which you are burning tokens mansplaining to clankers. As the harness settles down I'll need to adopt a more empirical approach to confirming the impact of changes.</p>
+<p>Here are some mapped to my planning arc.</p>
+<div class="plate skill-map">
+  <section>
+    <h3>explore</h3>
+    <ul>
+      <li>nvim-buffers</li>
+      <li>flexible-visual-system</li>
+      <li>vault</li>
+      <li>interview-prep</li>
+      <li>vuetify-to-semantic</li>
+    </ul>
+  </section>
+  <section class="lead">
+    <h3>planner</h3>
+    <ul>
+      <li>planning</li>
+      <li>memory</li>
+      <li>previous-work</li>
+      <li>project-tooling</li>
+      <li>brayness-sync</li>
+    </ul>
+  </section>
+  <section>
+    <h3>worker</h3>
+    <ul>
+      <li>useless</li>
+      <li>typography</li>
+      <li>user-interface</li>
+      <li>rust-best-practices</li>
+      <li>agent-browser</li>
+      <li>logo-finder</li>
+    </ul>
+  </section>
+  <section>
+    <h3>critic</h3>
+    <ul>
+      <li>critic</li>
+      <li>test-coverage</li>
+      <li>simplify</li>
+      <li>vue-inspect</li>
+    </ul>
+  </section>
+  <section>
+    <h3>promoter</h3>
+    <ul>
+      <li>hyperframes</li>
+      <li>readable</li>
+      <li>zoom-to-ableton</li>
+      <li>motion-systems</li>
+    </ul>
+  </section>
+</div>
+<p>With my feet back on the ground I no longer feel lost in cursor-agent or Claude.
+I have agency over workflow and can craft how I engineer solutions. What I learn
+using Pi often rolls back into my Claude and Cursor experience. With Pi I trust I
+can <code>bash</code> my way through any problem. Let the harness run the scripts.
+Coordinate the scripts with the LLMs.</p>
+<p>In the last three months I find myself leaving the editor for a terminal more and more. It feels like a harmony of reasons why. Trusting the code to the agents, switching to Ghostty, and fighting skill rot via nvim have happened, normally reshuffling the deck like this would cripple my output yet my personal projects and client work are at the highest level and tempo. Little things like building context around long-running agentic tasks with splits have helped settle me into the AI experience.</p>
+<hr />
+<p>This was all made urgent when the government banned Fable and started signaling
+daddy privilege over the industry. I, and I assume about a hundred thousand
+other software developers, suddenly felt the need to diversify our model access.
+So, for freedom, we collectively decided to give these Chinese models a try. Pi
+went from a tool I had gotten working and was just playing around with to the
+most important piece of my rig.</p>
+<p><a href="https://news.ycombinator.com/item?id=49452346">comments</a><sup class="note-mark">7</sup></p><ol class="notes"><li>https://www.emergingtrajectories.com/lh/commodification-and-circularity/</li><li>https://stencil.so/blog/prewalk</li><li>https://data4sci.com/blog/building-an-advanced-agentic-harness</li><li>https://realness.online/about</li><li>https://realness.online/poster-driver</li><li>https://github.com/scott-fryxell/brayness</li><li>https://news.ycombinator.com/item?id=49452346</li></ol></section>
+    </article>
+    <template src="/partials/footer.html"></template>
+  </main>
+  </body>
+  </html>

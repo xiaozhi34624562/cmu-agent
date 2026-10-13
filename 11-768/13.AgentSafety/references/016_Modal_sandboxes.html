@@ -1,0 +1,884 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+<meta name="sentry-trace" content="b679ac266b2241e69c512fa4ad6f0cdd-85075b2864dc91c8"/><meta name="baggage" content="sentry-environment=production,sentry-release=9289babd93fd4678919d52a648e45341,sentry-public_key=d75f7cb747cd4fe8ac03973ae3d39fec,sentry-trace_id=b679ac266b2241e69c512fa4ad6f0cdd,sentry-org_id=1108641"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <link rel="icon" href="/assets/favicon.ico" sizes="any" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+
+    <!-- Establish CSS layer order before Vite injects component styles.
+         Without this, Svelte component <style> tags may load before app.css
+         in dev mode, inverting the cascade (components < base) and breaking
+         layered component styles like Button borders. -->
+    <style>
+      @layer properties, base, components, utilities;
+    </style>
+
+    <meta http-equiv="content-security-policy" content="frame-src https://modal-cdn.com/sandbox/shim.html data: embed.fillout.com portal.usepylon.com modal.portal.usepylon.com player.vimeo.com www.youtube.com platform.twitter.com https://js.stripe.com; script-src 'self' www.googletagmanager.com platform.twitter.com https://www.redditstatic.com/ https://modal-cdn.com/js-bundles/ 'wasm-unsafe-eval' https://js.stripe.com https://js.workos.com 'sha256-NPUwFeSekQkUPwi94RjtQo9cIoyoEUO6zcojosvGmYQ='; style-src 'self' 'unsafe-inline' use.typekit.net p.typekit.net; form-action 'none'">
+		<link href="/_app/immutable/entry/start.CY5gPcoo.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/Bd6r8UVT.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/CmJO3Q3C.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DXhwtSFp.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/vyRFdjdb.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/BKMxRKzd.js" rel="modulepreload">
+		<link href="/_app/immutable/entry/app.CZtukqUY.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/C9heVUmN.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/BthpBTJ7.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/B-rvcorx.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/CAMjC-zD.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DFHuWbsa.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DHbALP93.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/RlaG4hEk.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/CRDMk8zG.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/1UNrk3Y2.js" rel="modulepreload">
+		<link href="/_app/immutable/nodes/0.DTZCpEPr.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/c-3JxE5I.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/BwyAaPo3.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/Dh6AHFQy.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/gLYlR8Xe.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DiII1L6W.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/z4Y9x1Jr.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DRskFLro.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/BCpFpAmY2.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DqhZyWga2.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/IbhmCfxK2.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/53WNNr1D.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/Djdmbn1w.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/B3g2GN-G.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/BH_c2cJx2.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/CWGZR2Eg2.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/CrZ-5WIZ2.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/Cowi51Yw2.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/eLCR59CC.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/pFQ6tWWJ2.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DpWcMNCh2.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DmoboEqH2.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/CH8ipErz2.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/CErY9uPr.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/BKDC2_Xe2.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/ByKdM8qR2.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/BjuyloRT2.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/CShWnZ_w2.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DGxF_ocu.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/gzQH9dGl.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DUNAB2c6.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/TNMB-Eol.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DEpPn1dW.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/BJ2PULd0.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DpXxZtaX.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/tixHRV0o.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/CWGCyoGu.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/BSHwr3lR.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/ClmRA7iL.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DLz1iiWS.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/A50FGhVV.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/7sM8MfYV.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DaN6X6RC.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DuSo4qlW.js" rel="modulepreload">
+		<link href="/_app/immutable/nodes/9.0eoIjhpb.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/7M_Kqlox2.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/BNW2ktYe2.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/9DYCeD2L.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DDTNKufo.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/C44kDnF2.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/BkY4j8DV.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/BONPAzXL.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/CBDa47Eh.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/B4yjTtlk.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/D96iecMW2.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/CgyiXEDr.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/ckyB6qPE.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/D9FXpDEh.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/Ceoblls9.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/lIdhS7om.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DbalXX-I.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/C4_DJu_M.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/CasJHkri.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/C3-hgB0I.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/ClLn30rX2.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DL8y7Uw52.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/D5WGj3-n2.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/BcnHAuiO.js" rel="modulepreload">
+		<link href="/_app/immutable/nodes/14.B8LCjS1m.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DS6yD_bl2.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/C8r8pJvl2.js" rel="modulepreload">
+		<link href="/_app/immutable/nodes/137.DfT-XGNO.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/CqKCQ7oq.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/yJ9lpOn_2.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DWRMUwFf.js" rel="modulepreload">
+		<link href="/_app/env.js" rel="modulepreload">
+		<!--12qhfyh--><!----><!--kfwfnl--><meta name="description" content="This page is a high-level guide to Sandboxes, secure containers for executing untrusted user or agent code on Modal."/> <meta property="og:type" content="website"/> <meta property="og:site_name" content="Modal"/> <meta property="og:title" content="Sandboxes"/> <meta property="og:description" content="This page is a high-level guide to Sandboxes, secure containers for executing untrusted user or agent code on Modal."/> <!--[--><meta property="og:image" content="https://modal.com/docs/social-image.png?title=Sandboxes&amp;socialType=docs"/><!--]--> <meta name="twitter:card" content="summary_large_image"/><!----><title>Sandboxes | Modal Docs</title>
+		<link href="/_app/immutable/assets/A.BZS9KXZv.css" rel="stylesheet">
+		<link href="/_app/immutable/assets/toast.CZ3vdogA.css" rel="stylesheet">
+		<link href="/_app/immutable/assets/Chip.Dx7gP-yH.css" rel="stylesheet">
+		<link href="/_app/immutable/assets/0.DRPHIOXZ.css" rel="stylesheet">
+		<link href="/_app/immutable/assets/Dropdown.BWQMF8Eu.css" rel="stylesheet">
+		<link href="/_app/immutable/assets/DropdownItem.qXuG4FYe.css" rel="stylesheet">
+		<link href="/_app/immutable/assets/Footer.KXFNdwJh.css" rel="stylesheet">
+		<link href="/_app/immutable/assets/Hamburger.CxY2FvH1.css" rel="stylesheet">
+		<link href="/_app/immutable/assets/Button.DBjKYxtt.css" rel="stylesheet">
+		<link href="/_app/immutable/assets/Search.BazK2Y-5.css" rel="stylesheet">
+		<link href="/_app/immutable/assets/9.9lRq5G_q.css" rel="stylesheet">
+		<link href="/_app/immutable/assets/ThreeColumn.CxQiPa0Z.css" rel="stylesheet">
+		<link href="/_app/immutable/assets/h6.R_AAOZGV.css" rel="stylesheet">
+		<link href="/_app/immutable/assets/CodeSample.tgX8qxRw.css" rel="stylesheet">
+		<link href="/_app/immutable/assets/SkeletonPulse.iN5xCKZK.css" rel="stylesheet">
+		<link href="/_app/immutable/assets/MinimalTable.CtKGOyWc.css" rel="stylesheet">
+		<link href="/_app/immutable/assets/table.C3yCeqUr.css" rel="stylesheet">
+		<link href="/_app/immutable/assets/DocsLayout.klxdF2xF.css" rel="stylesheet">
+		<link href="/_app/immutable/assets/Callout.EcHHRaMv.css" rel="stylesheet">
+		<link href="/_app/immutable/assets/concurrent-inputs.BWIxzzUH.css" rel="stylesheet">
+		<link href="/_app/immutable/assets/CodeTabs.CaLbJ5KG.css" rel="stylesheet">
+		<link href="/_app/immutable/assets/Asciinema.C-MN5wfI.css" rel="stylesheet">
+		<link href="/_app/immutable/assets/ContentTabs.DV74CUgo.css" rel="stylesheet">
+		<link href="/_app/immutable/assets/YoutubeEmbed.sDabJFZP.css" rel="stylesheet">
+		<link href="/_app/immutable/assets/security.DiL1m1E1.css" rel="stylesheet">
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div><!--[--><!--[--><!----><!----> <!----> <section aria-label="Notifications alt+T" tabindex="-1" aria-live="polite" aria-relevant="additions text" aria-atomic="false"><!--[!--><!--]--></section><!----> <!----><!----><!--[!--><!--]--><!----><!----><!----><!----> <!--[--><!----><div class="flex min-h-screen flex-col"><header class="sticky top-0 z-10 w-full before:absolute before:h-full before:w-full before:backdrop-blur-sm before:transition-colors before:duration-500  before:-z-1 svelte-1i0hrgm"><!--[--><div class="flex items-center gap-x-4 border-b border-divider px-4 py-3 sm:gap-x-7"><a href="/docs" class="shrink-0 lg:mr-8"><img src="/_app/immutable/assets/logotype-docs._cZdhNtZ.svg" alt="Modal logo" width="140px"/></a> <div class="hidden h-full items-center gap-7 md:flex"><!--[--><!--[!--><a class="navlink relative text-sm text-primary transition-colors hover:text-accent-hover svelte-9x48ux navlink-active" href="/docs/guide">Guide</a><!--]--><!--[!--><a class="navlink relative text-sm text-primary transition-colors hover:text-accent-hover svelte-9x48ux" href="/docs/examples">Examples</a><!--]--><!--[--><div class="navbar-dropdown flex h-full items-center svelte-9x48ux"><span class="flex svelte-15t8aqz" aria-controls="SQyKaiCQge" aria-expanded="false" data-state="closed" id="gutKWbsL_J" tabindex="0" data-melt-dropdown-menu-trigger=""><span class="navlink relative flex items-center gap-1 text-sm text-primary transition-colors hover:text-accent-hover svelte-9x48ux">Reference <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down lucide-icon" aria-hidden="true"><!--[--><!----><path d="m6 9 6 6 6-6"><!----></path><!----><!--]--><!----></svg><!----></span><!----></span> <!--[!--><!--]--><!----></div><!--]--><!--[--><div class="navbar-dropdown flex h-full items-center svelte-9x48ux"><span class="flex svelte-15t8aqz" aria-controls="Ubm-aYHSxx" aria-expanded="false" data-state="closed" id="tqtYxgRAhJ" tabindex="0" data-melt-dropdown-menu-trigger=""><span class="navlink relative flex items-center gap-1 text-sm text-primary transition-colors hover:text-accent-hover svelte-9x48ux">Releases <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down lucide-icon" aria-hidden="true"><!--[--><!----><path d="m6 9 6 6 6-6"><!----></path><!----><!--]--><!----></svg><!----></span><!----></span> <!--[!--><!--]--><!----></div><!--]--><!--[!--><a class="navlink relative text-sm text-primary transition-colors hover:text-accent-hover svelte-9x48ux" href="/playground">Playground</a><!--]--><!--]--></div> <div class="ml-auto"><div class="docsearch svelte-mvzqcc docsearch-hidden-button"><!--[--><!----><button class="btn icon-only p-2 font-normal lg:hidden svelte-16xfih" type="button" aria-label="Search documentation"><!--[--><!----><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search lucide-icon icon" aria-hidden="true"><!--[--><!----><path d="m21 21-4.34-4.34"><!----></path><!----><!----><circle cx="11" cy="11" r="8"><!----></circle><!----><!--]--><!----></svg><!----><!--]--> <!----> <!--[!--><!--]--><!----></button><!----><!----> <div class="hidden lg:block"><button type="button" class="mdli-wrapper relative flex w-64 items-center svelte-mvzqcc" aria-label="Search documentation"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search lucide-icon pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 icon-primary" aria-hidden="true"><!--[--><!----><path d="m21 21-4.34-4.34"><!----></path><!----><!----><circle cx="11" cy="11" r="8"><!----></circle><!----><!--]--><!----></svg><!----> <span class="input w-full truncate text-left text-tertiary svelte-mvzqcc">Search documentation</span> <kbd class="pointer-events-none absolute top-1/2 right-3 inline-flex h-5 w-5 -translate-y-1/2 items-center justify-center rounded bg-secondary text-xs text-secondary">/</kbd></button></div><!--]--> <div></div></div><!----></div> <div class="hidden md:block"><!--[--><div class="flex flex-row items-center justify-between gap-x-4 text-lg md:text-sm"><a href="/login?next=%2Fapps" class="flex items-center whitespace-nowrap text-light-green hover:text-raw-dark-green-90">Log In</a> <a class="group relative flex items-center gap-2.5 overflow-hidden rounded-full pl-3 text-raw-dark-green-90" href="/signup?next=%2Fapps"><span class="absolute inset-0 origin-right scale-x-0 transform rounded-full bg-accent-bold transition-transform duration-150 ease-out group-hover:scale-x-100"></span> <span class="relative z-10 whitespace-nowrap text-raw-dark-green-90 transition-colors duration-150 ease-in-out group-hover:text-accent-bold">Sign Up</span> <span class="z-10 inline-block h-7 w-7 rounded-full bg-accent-bold p-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right lucide-icon h-full w-full icon-accent-bold" aria-hidden="true"><!--[--><!----><path d="M7 7h10v10"><!----></path><!----><!----><path d="M7 17 17 7"><!----></path><!----><!--]--><!----></svg><!----></span></a></div><!--]--><!----></div> <div class="block text-primary md:hidden"><svelte-css-wrapper style="display: contents; --color: currentColor; --layer-height: 1.5px; --layer-width: 18px; --layer-spacing: 5px; --padding: 4px;"><button title="Hamburger menu" aria-label="Hamburger menu" aria-expanded="false" class="hamburger hamburger--spin svelte-1wldtup"><span class="hamburger-box svelte-1wldtup"><span class="hamburger-inner svelte-1wldtup"></span></span></button><!----></svelte-css-wrapper></div> <div class="fixed inset-0 -z-10 flex h-full flex-col overflow-y-auto bg-c-surface-base-gray-transparent opacity-0 backdrop-blur-xl md:hidden pointer-events-none" style="padding-top: 57px; transition: opacity 300ms linear;"><!--[!--><!--]--> <!--[--><!--]--></div><!----></div><!--]--></header><!----> <!--[--><!--[--><!----><main class="mx-4 -mb-24"><div class="grid md:grid-cols-[minmax(16rem,2fr)_minmax(0,8fr)] 2xl:grid-cols-[22rem_minmax(0,11fr)]"><div class="pb-8"><div class="scroller sidebar h-56 md:h-[calc(100vh-98px)] svelte-1xvo3mi"><!--[--><!--[--><!--[!--><a href="/docs/guide/intro" class="header svelte-1i864xq">Guide</a> <!--[--><a href="/docs/guide/intro" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Introduction to Modal</span> <!--[!--><!--]--></span></a><a href="/docs/guide/getting-started" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Getting started</span> <!--[!--><!--]--></span></a><!--]--><!--]--><!--[!--><a href="/docs/guide/functions" class="header svelte-1i864xq">Functions</a> <!--[--><a href="/docs/guide/functions" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Functions</span> <!--[!--><!--]--></span></a><a href="/docs/guide/function-invocation-methods" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Invocation methods</span> <!--[!--><!--]--></span></a><a href="/docs/guide/trigger-deployed-functions" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Function lookups</span> <!--[!--><!--]--></span></a><a href="/docs/guide/lifecycle-functions" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Container lifecycle management</span> <!--[!--><!--]--></span></a><a href="/docs/guide/parametrized-functions" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Parametrized Functions</span> <!--[!--><!--]--></span></a><a href="/docs/guide/dynamic-function-config" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Dynamic configuration</span> <!--[!--><!--]--></span></a><!--]--><!--]--><!--[!--><a href="/docs/guide/sandboxes" class="header svelte-1i864xq">Sandboxes</a> <!--[--><a href="/docs/guide/sandboxes" class="item svelte-1i864xq active"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Sandboxes</span> <!--[!--><!--]--></span></a><a href="/docs/guide/sandbox-spawn" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Running commands</span> <!--[!--><!--]--></span></a><a href="/docs/guide/sandbox-networking" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Networking and security</span> <!--[!--><!--]--></span></a><a href="/docs/guide/sandbox-files" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>File access</span> <!--[!--><!--]--></span></a><a href="/docs/guide/sandbox-snapshots" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Snapshots</span> <!--[!--><!--]--></span></a><a href="/docs/guide/sandbox-resources" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Pricing and resources</span> <!--[!--><!--]--></span></a><a href="/docs/guide/sandbox-sidecars" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Sidecars</span> <!--[--><!--[!--><!--[!--><!--[--><!--[!--><span class="chip inline-flex items-center whitespace-nowrap rounded-full px-2 py-0.5 text-xs font-normal shrink-0 chip-informational svelte-1n4g5tt" data-chip=""><!--[!--><!--[!--><!--]--><!--]--> <!--[!--><!---->Beta<!----><!--]--><!----></span><!--]--><!--]--><!--]--><!--]--><!--]--></span></a><a href="/docs/guide/sandbox-secret-injection" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Secret injection</span> <!--[--><!--[!--><!--[!--><!--[--><!--[!--><span class="chip inline-flex items-center whitespace-nowrap rounded-full px-2 py-0.5 text-xs font-normal shrink-0 chip-informational svelte-1n4g5tt" data-chip=""><!--[!--><!--[!--><!--]--><!--]--> <!--[!--><!---->Beta<!----><!--]--><!----></span><!--]--><!--]--><!--]--><!--]--><!--]--></span></a><!--]--><!--]--><!--[!--><a href="/docs/guide/endpoints" class="header svelte-1i864xq">Endpoints</a> <!--[--><a href="/docs/guide/endpoints" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Endpoints</span> <!--[!--><!--]--></span></a><a href="/docs/guide/shared-endpoints" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Shared Endpoints</span> <!--[!--><!--]--></span></a><a href="/docs/guide/dedicated-endpoints" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Dedicated Endpoints</span> <!--[!--><!--]--></span></a><a href="/docs/guide/endpoint-candidates" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Endpoint candidates</span> <!--[!--><!--]--></span></a><a href="/docs/guide/endpoint-integrations" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Endpoint integrations</span> <!--[!--><!--]--></span></a><!--]--><!--]--><!--[!--><a href="/docs/guide/training-quickstart" class="header svelte-1i864xq">Training</a> <!--[--><a href="/docs/guide/training-quickstart" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Quickstart</span> <!--[!--><!--]--></span></a><a href="/docs/guide/spindle" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Tinker-compatible API</span> <!--[--><!--[!--><!--[!--><!--[--><!--[!--><span class="chip inline-flex items-center whitespace-nowrap rounded-full px-2 py-0.5 text-xs font-normal shrink-0 chip-informational svelte-1n4g5tt" data-chip=""><!--[!--><!--[!--><!--]--><!--]--> <!--[!--><!---->Beta<!----><!--]--><!----></span><!--]--><!--]--><!--]--><!--]--><!--]--></span></a><a href="/docs/guide/multi-node-training" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Multi-node training</span> <!--[!--><!--]--></span></a><!--]--><!--]--><!--[!--><a href="/docs/guide/images" class="header svelte-1i864xq">Images</a> <!--[--><a href="/docs/guide/images" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Defining Images</span> <!--[!--><!--]--></span></a><a href="/docs/guide/existing-images" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Using existing container images</span> <!--[!--><!--]--></span></a><a href="/docs/guide/named-images" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Named images</span> <!--[!--><!--]--></span></a><a href="/docs/guide/fast-pull-from-registry" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Fast pull from registry</span> <!--[!--><!--]--></span></a><!--]--><!--]--><!--[!--><a href="/docs/guide/gpu" class="header svelte-1i864xq">GPUs and other resources</a> <!--[--><a href="/docs/guide/gpu" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>GPU acceleration</span> <!--[!--><!--]--></span></a><a href="/docs/guide/cuda" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Using CUDA on Modal</span> <!--[!--><!--]--></span></a><a href="/docs/guide/resources" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Configuring CPU, memory, and disk</span> <!--[!--><!--]--></span></a><!--]--><!--]--><!--[!--><a href="/docs/guide/scale" class="header svelte-1i864xq">Scaling out</a> <!--[--><a href="/docs/guide/scale" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Scaling out</span> <!--[!--><!--]--></span></a><a href="/docs/guide/concurrent-inputs" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Input concurrency</span> <!--[!--><!--]--></span></a><a href="/docs/guide/batch-processing" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Batch processing</span> <!--[!--><!--]--></span></a><a href="/docs/guide/job-queue" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Job queues</span> <!--[!--><!--]--></span></a><a href="/docs/guide/dynamic-batching" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Dynamic batching</span> <!--[!--><!--]--></span></a><a href="/docs/guide/multi-node-clusters" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Multi-node Clusters</span> <!--[!--><!--]--></span></a><!--]--><!--]--><!--[!--><a href="/docs/guide/apps" class="header svelte-1i864xq">Deployment</a> <!--[--><a href="/docs/guide/apps" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Apps, Functions, and entrypoints</span> <!--[!--><!--]--></span></a><a href="/docs/guide/managing-deployments" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Managing deployments</span> <!--[!--><!--]--></span></a><a href="/docs/guide/continuous-deployment" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Continuous deployment</span> <!--[!--><!--]--></span></a><a href="/docs/guide/cron" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Scheduled Functions</span> <!--[!--><!--]--></span></a><!--]--><!--]--><!--[!--><a href="/docs/guide/servers" class="header svelte-1i864xq">HTTP Applications</a> <!--[--><a href="/docs/guide/servers" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Servers</span> <!--[!--><!--]--></span></a><a href="/docs/guide/sticky-sessions" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Sticky Sessions</span> <!--[!--><!--]--></span></a><a href="/docs/guide/webhooks" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Web Functions</span> <!--[!--><!--]--></span></a><a href="/docs/guide/streaming-endpoints" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Streaming endpoints</span> <!--[!--><!--]--></span></a><a href="/docs/guide/webhook-urls" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Web Function URLs</span> <!--[!--><!--]--></span></a><a href="/docs/guide/webhook-timeouts" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Request timeouts</span> <!--[!--><!--]--></span></a><a href="/docs/guide/webhook-proxy-auth" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Proxy Tokens</span> <!--[!--><!--]--></span></a><!--]--><!--]--><!--[!--><a href="/docs/guide/tunnels" class="header svelte-1i864xq">Networking</a> <!--[--><a href="/docs/guide/tunnels" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Tunnels</span> <!--[!--><!--]--></span></a><a href="/docs/guide/proxy-ips" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Proxies</span> <!--[--><!--[!--><!--[!--><!--[--><!--[!--><span class="chip inline-flex items-center whitespace-nowrap rounded-full px-2 py-0.5 text-xs font-normal shrink-0 chip-informational svelte-1n4g5tt" data-chip=""><!--[!--><!--[!--><!--]--><!--]--> <!--[!--><!---->Beta<!----><!--]--><!----></span><!--]--><!--]--><!--]--><!--]--><!--]--></span></a><a href="/docs/guide/private-networking" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Cluster networking</span> <!--[!--><!--]--></span></a><!--]--><!--]--><!--[!--><a href="/docs/guide/local-data" class="header svelte-1i864xq">Data sharing and storage</a> <!--[--><a href="/docs/guide/local-data" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Passing local data</span> <!--[!--><!--]--></span></a><a href="/docs/guide/volumes" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Volumes</span> <!--[!--><!--]--></span></a><a href="/docs/guide/model-weights" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Storing model weights</span> <!--[!--><!--]--></span></a><a href="/docs/guide/cloud-bucket-mounts" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Cloud bucket mounts</span> <!--[!--><!--]--></span></a><a href="/docs/guide/dicts" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Dicts</span> <!--[!--><!--]--></span></a><a href="/docs/guide/queues" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Queues</span> <!--[!--><!--]--></span></a><a href="/docs/guide/dataset-ingestion" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Dataset ingestion</span> <!--[!--><!--]--></span></a><!--]--><!--]--><!--[!--><a href="/docs/guide/secrets" class="header svelte-1i864xq">Secrets and environment variables</a> <!--[--><a href="/docs/guide/secrets" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Secrets</span> <!--[!--><!--]--></span></a><a href="/docs/guide/environment_variables" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Environment variables</span> <!--[!--><!--]--></span></a><!--]--><!--]--><!--[!--><a href="/docs/guide/cold-start" class="header svelte-1i864xq">Performance</a> <!--[--><a href="/docs/guide/cold-start" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Cold start performance</span> <!--[!--><!--]--></span></a><a href="/docs/guide/memory-snapshots" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Memory Snapshots</span> <!--[!--><!--]--></span></a><a href="/docs/guide/high-performance-llm-inference" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>High-performance LLM inference</span> <!--[!--><!--]--></span></a><!--]--><!--]--><!--[!--><a href="/docs/guide/retries" class="header svelte-1i864xq">Reliability and robustness</a> <!--[--><a href="/docs/guide/retries" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Failures and retries</span> <!--[!--><!--]--></span></a><a href="/docs/guide/preemption" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Preemption</span> <!--[!--><!--]--></span></a><a href="/docs/guide/timeouts" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Timeouts</span> <!--[!--><!--]--></span></a><a href="/docs/guide/gpu-health" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>GPU health</span> <!--[!--><!--]--></span></a><a href="/docs/guide/troubleshooting" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Troubleshooting</span> <!--[!--><!--]--></span></a><!--]--><!--]--><!--[!--><a href="/docs/guide/security" class="header svelte-1i864xq">Security and privacy</a> <!--[--><a href="/docs/guide/security" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Security and privacy</span> <!--[!--><!--]--></span></a><a href="/docs/guide/data-residency" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Data residency</span> <!--[!--><!--]--></span></a><a href="/docs/guide/customer-supplied-encryption-keys" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Customer-supplied encryption keys</span> <!--[--><!--[!--><!--[--><!--[!--><span class="chip inline-flex items-center whitespace-nowrap rounded-full px-2 py-0.5 text-xs font-normal shrink-0 chip-running svelte-1n4g5tt" data-chip=""><!--[!--><!--[!--><!--]--><!--]--> <!--[!--><!---->Alpha<!----><!--]--><!----></span><!--]--><!--]--><!--]--><!--]--></span></a><a href="/docs/guide/audit-logs" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Audit logs</span> <!--[!--><!--]--></span></a><!--]--><!--]--><!--[!--><a href="/docs/guide/oidc-integration" class="header svelte-1i864xq">Integrations</a> <!--[--><a href="/docs/guide/oidc-integration" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Using OIDC to authenticate with external services</span> <!--[!--><!--]--></span></a><a href="/docs/guide/datadog-integration" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Connecting Modal to your Datadog account</span> <!--[!--><!--]--></span></a><a href="/docs/guide/otel-integration" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Connecting Modal to your OpenTelemetry provider</span> <!--[!--><!--]--></span></a><a href="/docs/guide/okta-sso" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Okta SSO</span> <!--[!--><!--]--></span></a><a href="/docs/guide/entra-sso" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Microsoft Entra SSO</span> <!--[!--><!--]--></span></a><a href="/docs/guide/saml-sso" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Custom SAML SSO</span> <!--[!--><!--]--></span></a><a href="/docs/guide/scim" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>SCIM Integration</span> <!--[!--><!--]--></span></a><a href="/docs/guide/slack-notifications" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Slack notifications</span> <!--[--><!--[!--><!--[!--><!--[--><!--[!--><span class="chip inline-flex items-center whitespace-nowrap rounded-full px-2 py-0.5 text-xs font-normal shrink-0 chip-informational svelte-1n4g5tt" data-chip=""><!--[!--><!--[!--><!--]--><!--]--> <!--[!--><!---->Beta<!----><!--]--><!----></span><!--]--><!--]--><!--]--><!--]--><!--]--></span></a><!--]--><!--]--><!--[!--><a href="/docs/guide/workspaces" class="header svelte-1i864xq">Workspace &amp; account settings</a> <!--[--><a href="/docs/guide/workspaces" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Workspaces</span> <!--[!--><!--]--></span></a><a href="/docs/guide/environments" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Environments</span> <!--[!--><!--]--></span></a><a href="/docs/guide/service-users" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Service users</span> <!--[!--><!--]--></span></a><a href="/docs/guide/user-groups" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>User groups</span> <!--[!--><!--]--></span></a><a href="/docs/guide/rbac" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Role-Based Access Control (RBAC)</span> <!--[!--><!--]--></span></a><a href="/docs/guide/billing" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Billing</span> <!--[!--><!--]--></span></a><a href="/docs/guide/network-egress-billing" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Network egress billing</span> <!--[!--><!--]--></span></a><a href="/docs/guide/budgets" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Budgets</span> <!--[!--><!--]--></span></a><!--]--><!--]--><!--[!--><a href="/docs/guide/feature-maturity" class="header svelte-1i864xq">Other topics</a> <!--[--><a href="/docs/guide/feature-maturity" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Feature maturity</span> <!--[!--><!--]--></span></a><a href="/docs/guide/notebooks" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Notebooks</span> <!--[!--><!--]--></span></a><a href="/docs/guide/restricted-access" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Restricted Functions</span> <!--[!--><!--]--></span></a><a href="/docs/guide/sdk-javascript-go" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>JavaScript/Go SDKs</span> <!--[--><!--[!--><!--[!--><!--[--><!--[!--><span class="chip inline-flex items-center whitespace-nowrap rounded-full px-2 py-0.5 text-xs font-normal shrink-0 chip-informational svelte-1n4g5tt" data-chip=""><!--[!--><!--[!--><!--]--><!--]--> <!--[!--><!---->Beta<!----><!--]--><!----></span><!--]--><!--]--><!--]--><!--]--><!--]--></span></a><a href="/docs/guide/modal-1-0-migration" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Modal 1.0 migration guide</span> <!--[!--><!--]--></span></a><a href="/docs/guide/project-structure" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>File and project structure</span> <!--[!--><!--]--></span></a><a href="/docs/guide/developing-debugging" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Developing and debugging</span> <!--[!--><!--]--></span></a><a href="/docs/guide/jupyter-notebooks" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Jupyter notebooks</span> <!--[!--><!--]--></span></a><a href="/docs/guide/async" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Asynchronous API usage</span> <!--[!--><!--]--></span></a><a href="/docs/guide/global-variables" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Global variables</span> <!--[!--><!--]--></span></a><a href="/docs/guide/region-selection" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>Region selection</span> <!--[!--><!--]--></span></a><a href="/docs/guide/gpu-metrics" class="item svelte-1i864xq"><span class="flex flex-wrap items-center gap-x-1.5 gap-y-1"><span>GPU Metrics</span> <!--[!--><!--]--></span></a><!--]--><!--]--><!--]--><!--]--></div></div> <div class="visible w-90 md:hidden"><hr class="h-px w-full border-none bg-(--semantic-border-divider)"/><!----></div> <div class="flex w-full justify-center border-divider md:border-l"><div class="grid w-full max-w-(--breakpoint-xl) grid-cols-1 md:pr-4 md:pl-8 lg:grid-cols-[minmax(0,8fr)_minmax(0,3fr)] lg:gap-4 lg:pr-0"><!--[--><!--[--><!--[!--><!----><!----><div class="text-primary"><!--[!--><!--[!--><!--]--> <!--[--><div class="float-left mt-6 mb-6 pl-0 md:float-right md:mt-12 md:mb-2 md:pl-2"><!--[--><span class="flex svelte-15t8aqz" aria-controls="1XxEn3bLJS" aria-expanded="false" data-state="closed" id="EgT4hTrPbC" tabindex="0" data-melt-dropdown-menu-trigger=""><!----><button class="btn btn-outlined svelte-16xfih" type="button" title="Copy page"><!--[--><!----><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy lucide-icon icon" aria-hidden="true"><!--[--><!----><rect width="14" height="14" x="8" y="8" rx="2" ry="2"><!----></rect><!----><!----><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"><!----></path><!----><!--]--><!----></svg><!----><!--]--> <!---->Copy page<!----> <!--[--><!----><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down lucide-icon icon" aria-hidden="true"><!--[--><!----><path d="m6 9 6 6 6-6"><!----></path><!----><!--]--><!----></svg><!----><!--]--><!----></button><!----><!----></span> <!--[!--><!--]--><!--]--><!----></div> <article class="svelte-184wz4l"><!--[--><h1 id="sandboxes"><!--[--><!---->Sandboxes<!--]--></h1><!----> <p>This page is a high-level guide to Sandboxes,
+secure containers for executing untrusted user or agent code on Modal.</p> <p>For reference documentation on the <code>modal.Sandbox</code> interface,
+see <a class="text-accent hover:underline" href="/docs/sdk/py/latest/Sandbox"><!--[--><!---->this page<!--]--></a><!---->.</p> <!----><h2 id="what-are-sandboxes-and-why-should-i-use-them" class="group"><span><!--[--><!--[--><!---->What are Sandboxes and why should I use them?<!--]--><!--]--></span><!--[--> <a href="#what-are-sandboxes-and-why-should-i-use-them" role="button" class="copy-link-parent relative pr-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 svelte-1ww6p0a" aria-label="Copy link to section"><!--[!--><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link lucide-icon" aria-hidden="true"><!--[--><!----><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"><!----></path><!----><!----><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"><!----></path><!----><!--]--><!----></svg><!--]--></a><!--]--><!----></h2><!----><!----> <p>In addition to the Function interface, Modal has a direct
+interface for defining containers <em>at runtime</em> and securely running arbitrary code
+inside them.</p> <p>This can be useful if, for example, you want to:</p> <ul><li>Execute code generated by a language model.</li> <li>Create isolated environments for running untrusted code.</li> <li>Check out a git repository and run a command against it, like a test suite, or <code>npm lint</code>.</li> <li>Run tests or CI pipelines against a full Docker stack.</li> <li>Run containers with arbitrary dependencies and setup scripts.</li></ul> <p>Each individual job is called a <strong>Sandbox</strong> and can be created using the <a class="text-accent hover:underline" href="/docs/sdk/py/latest/Sandbox#create"><!--[--><code>Sandbox.create</code><!--]--></a><!----> constructor:</p> <div class="code-tabs-container not-prose svelte-sdc20p"><div class="tab-buttons-bar svelte-sdc20p" role="tablist"><!--[--><button class="tab-button svelte-pl8q58 active" role="tab" aria-selected="true" type="button">Python</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Python (async)</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">JavaScript</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Go</button><!--]--></div> <div class="tabs-content svelte-sdc20p"><!--[--><div class="code-tab svelte-sdc20p" role="tabpanel"><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb_app = modal.App.lookup("my-app", create_if_missing=True)
+sb = modal.Sandbox.create(app=sb_app)
+
+p = sb.exec("python", "-c", "print('hello')", timeout=3)
+print(p.stdout.read())
+
+p = sb.exec("bash", "-c", "for i in {1..10}; do date +%T; sleep 0.5; done", timeout=5)
+for line in p.stdout:
+    # Avoid double newlines by using end="".
+    print(line, end="")
+
+sb.terminate()</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb_app = await modal.App.lookup.aio("my-app", create_if_missing=True)
+sb = await modal.Sandbox.create.aio(app=sb_app)
+
+p = await sb.exec.aio("python", "-c", "print('hello')", timeout=3)
+print(await p.stdout.read.aio())
+
+p = await sb.exec.aio("bash", "-c", "for i in {1..10}; do date +%T; sleep 0.5; done", timeout=5)
+async for line in p.stdout:
+    # Avoid double newlines by using end="".
+    print(line, end="")
+
+await sb.terminate.aio()</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>import { ModalClient } from "modal";
+
+const modal = new ModalClient();
+const app = await modal.apps.fromName("my-app", {
+  createIfMissing: true,
+});
+const image = modal.images.fromRegistry("python:3.13-slim");
+
+const sb = await modal.sandboxes.create(app, image);
+
+const p = await sb.exec(["python", "-c", "print('hello')"], {
+  timeoutMs: 3 * 1000,
+});
+console.log(await p.stdout.readText());
+
+const p2 = await sb.exec(
+  ["bash", "-c", "for i in {1..10}; do date +%T; sleep 0.5; done"],
+  { timeoutMs: 5 * 1000 },
+);
+for await (const line of p2.stdout) {
+  process.stdout.write(line);
+}
+
+await sb.terminate();</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>package main
+
+import (
+	"context"
+	"fmt"
+	"io"
+	"os"
+	"time"
+
+	modal "github.com/modal-labs/modal-client/go"
+)
+
+func main() {
+	ctx := context.Background()
+	mc, _ := modal.NewClient()
+
+	app, _ := mc.Apps.FromName(ctx, "my-app", &amp;modal.AppFromNameParams{
+		CreateIfMissing: true,
+	})
+	image := mc.Images.FromRegistry("python:3.13-slim", nil)
+
+	sb, _ := mc.Sandboxes.Create(ctx, app, image, nil)
+	defer sb.Terminate(ctx, nil)
+
+	p, _ := sb.Exec(ctx, []string{"python", "-c", "print('hello')"}, &amp;modal.SandboxExecParams{
+		Timeout: 3 * time.Second,
+	})
+	stdout, _ := io.ReadAll(p.Stdout)
+	fmt.Println(string(stdout))
+
+	p2, _ := sb.Exec(ctx, []string{"bash", "-c", "for i in {1..10}; do date +%T; sleep 0.5; done"}, &amp;modal.SandboxExecParams{
+		Timeout: 5 * time.Second,
+	})
+	io.Copy(os.Stdout, p2.Stdout)
+}</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><!--]--></div></div><!----> <p><strong>Note:</strong> you can run the above example as a script directly with <code>python my_script.py</code>. <code>modal run</code> is not needed here since there is no <a class="text-accent hover:underline" href="/docs/guide/apps#entrypoints-for-ephemeral-apps"><!--[--><!---->entrypoint<!--]--></a><!---->.</p> <p>Sandboxes require an <a class="text-accent hover:underline" href="/docs/guide/apps"><!--[--><code>App</code><!--]--></a><!----> to be passed when spawned from outside
+of a Modal container. You may pass in a regular <code>App</code> object or look one up by name with <a class="text-accent hover:underline" href="/docs/sdk/py/latest/App#lookup"><!--[--><code>App.lookup</code><!--]--></a><!---->. The <code>create_if_missing</code> flag on <code>App.lookup</code> will create an <code>App</code> with the given name if it doesn’t exist.</p> <!----><h2 id="configuration" class="group"><span><!--[--><!--[--><!---->Configuration<!--]--><!--]--></span><!--[--> <a href="#configuration" role="button" class="copy-link-parent relative pr-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 svelte-1ww6p0a" aria-label="Copy link to section"><!--[!--><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link lucide-icon" aria-hidden="true"><!--[--><!----><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"><!----></path><!----><!----><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"><!----></path><!----><!--]--><!----></svg><!--]--></a><!--]--><!----></h2><!----><!----> <p>Sandboxes support nearly all configuration options found in regular <code>modal.Function</code>s.
+Refer to <a class="text-accent hover:underline" href="/docs/sdk/py/latest/Sandbox#create"><!--[--><code>Sandbox.create</code><!--]--></a><!----> for further documentation
+on Sandbox configs.</p> <p>For example, Images and Volumes can be used just as with functions:</p> <div class="code-tabs-container not-prose svelte-sdc20p"><div class="tab-buttons-bar svelte-sdc20p" role="tablist"><!--[--><button class="tab-button svelte-pl8q58 active" role="tab" aria-selected="true" type="button">Python</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Python (async)</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">JavaScript</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Go</button><!--]--></div> <div class="tabs-content svelte-sdc20p"><!--[--><div class="code-tab svelte-sdc20p" role="tabpanel"><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb = modal.Sandbox.create(
+    image=modal.Image.debian_slim().pip_install("pandas"),
+    volumes={"/data": modal.Volume.from_name("data-volume", create_if_missing=True)},
+    app=sb_app,
+)</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb = await modal.Sandbox.create.aio(
+    image=modal.Image.debian_slim().pip_install("pandas"),
+    volumes={"/data": modal.Volume.from_name("data-volume", create_if_missing=True)},
+    app=sb_app,
+)</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>const image = modal.images.fromRegistry("python:3.13-slim");
+const volume = modal.volumes.fromName("my-volume");
+const sb = await modal.sandboxes.create(app, image, {
+  volumes: { "/data": volume },
+  workdir: "/repo",
+});</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>image := mc.Images.FromRegistry("python:3.13-slim", nil)
+volume := mc.Volumes.FromName("my-volume", nil)
+sb, err := mc.Sandboxes.Create(ctx, app, image, &amp;modal.SandboxCreateParams{
+  Volumes: map[string]*modal.Volume{"/data": volume},
+  Workdir: "/repo",
+})</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><!--]--></div></div><!----> <!----><h2 id="lifecycle" class="group"><span><!--[--><!--[--><!---->Lifecycle<!--]--><!--]--></span><!--[--> <a href="#lifecycle" role="button" class="copy-link-parent relative pr-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 svelte-1ww6p0a" aria-label="Copy link to section"><!--[!--><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link lucide-icon" aria-hidden="true"><!--[--><!----><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"><!----></path><!----><!----><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"><!----></path><!----><!--]--><!----></svg><!--]--></a><!--]--><!----></h2><!----><!----> <!----><h3 id="events" class="group"><span><!--[--><!--[--><!---->Events<!--]--><!--]--></span><!--[--> <a href="#events" role="button" class="copy-link-parent relative pr-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 svelte-1ww6p0a" aria-label="Copy link to section"><!--[!--><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link lucide-icon" aria-hidden="true"><!--[--><!----><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"><!----></path><!----><!----><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"><!----></path><!----><!--]--><!----></svg><!--]--></a><!--]--><!----></h3><!----><!----> <p>Every Sandbox moves through a series of lifecycle events as it progresses from
+creation to completion. Understanding these events is useful for monitoring,
+debugging, and building automations that react to Sandbox state changes.</p> <p>The lifecycle events, in order, are:</p> <ol><li><p><strong>Created</strong> — The Sandbox has been requested and registered with Modal. At this
+point the Sandbox object exists and has an ID, but no compute resources have been
+allocated yet. This is the initial state immediately after calling <code>Sandbox.create</code>.</p></li> <li><p><strong>Scheduled</strong> — The Sandbox has been scheduled to a specific worker. The
+worker is now provisioning the resources the Sandbox needs (CPU, memory, GPU,
+volumes, etc.) and preparing the container environment. The Sandbox will
+transition to <strong>Started</strong> once the container is fully initialized.</p></li> <li><p><strong>Started</strong> — The Sandbox’s container has been launched on a worker and the
+entrypoint process (if any) is running. At this point you can begin executing
+commands inside the Sandbox with <code>sandbox.exec(...)</code>. Network tunnels and volume
+mounts are active.</p></li> <li><p><strong>Ready</strong> — If <a class="text-accent hover:underline" href="/docs/guide/sandboxes#readiness-probes"><!--[--><!---->readiness probes<!--]--></a><!----> are
+enabled for the Sandbox, this event fires once the probe succeeds, indicating that
+the service inside the Sandbox is fully initialized and ready to accept traffic.
+This is especially useful for Sandboxes running web servers or other services
+that need warm-up time before they can handle requests. If readiness probes are
+not configured, this event is skipped.</p></li> <li><p><strong>Finished</strong> — The Sandbox has stopped running. This can happen for several
+reasons: the entrypoint process exited on its own, the Sandbox was explicitly
+terminated (via the dashboard or <code>sandbox.terminate()</code>), the timeout or idle timeout
+was reached, or an out-of-memory condition occurred. Once finished, no further
+commands can be executed inside the Sandbox. You can learn more about why a Sandbox
+stopped running in the dashboard or by examining the exit code returned from <code>sandbox.poll()</code>.</p></li></ol> <!----><h3 id="timeouts" class="group"><span><!--[--><!--[--><!---->Timeouts<!--]--><!--]--></span><!--[--> <a href="#timeouts" role="button" class="copy-link-parent relative pr-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 svelte-1ww6p0a" aria-label="Copy link to section"><!--[!--><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link lucide-icon" aria-hidden="true"><!--[--><!----><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"><!----></path><!----><!----><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"><!----></path><!----><!--]--><!----></svg><!--]--></a><!--]--><!----></h3><!----><!----> <p>Sandboxes have a default maximum lifetime of 5 minutes. You can change this by passing
+a <code>timeout</code> of up to 24 hours to the <code>Sandbox.create(...)</code> function.</p> <div class="code-tabs-container not-prose svelte-sdc20p"><div class="tab-buttons-bar svelte-sdc20p" role="tablist"><!--[--><button class="tab-button svelte-pl8q58 active" role="tab" aria-selected="true" type="button">Python</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Python (async)</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">JavaScript</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Go</button><!--]--></div> <div class="tabs-content svelte-sdc20p"><!--[--><div class="code-tab svelte-sdc20p" role="tabpanel"><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb = modal.Sandbox.create(app=sb_app, timeout=10*60)  # 10 minutes</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb = await modal.Sandbox.create.aio(app=sb_app, timeout=10*60)  # 10 minutes</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>const sb = await modal.sandboxes.create(app, image, {
+  timeoutMs: 10 * 60 * 1000, // 10 minutes
+});</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb, err := mc.Sandboxes.Create(ctx, app, image, &amp;modal.SandboxCreateParams{
+	Timeout: 10 * time.Minute,
+})</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><!--]--></div></div><!----> <p>If you need a Sandbox to run for more than 24 hours, we recommend using <a class="text-accent hover:underline" href="/docs/guide/sandbox-snapshots"><!--[--><!---->Filesystem Snapshots<!--]--></a><!----> to preserve its state,
+and then restore from that snapshot with a subsequent Sandbox.</p> <!----><h3 id="idle-timeouts" class="group"><span><!--[--><!--[--><!---->Idle Timeouts<!--]--><!--]--></span><!--[--> <a href="#idle-timeouts" role="button" class="copy-link-parent relative pr-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 svelte-1ww6p0a" aria-label="Copy link to section"><!--[!--><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link lucide-icon" aria-hidden="true"><!--[--><!----><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"><!----></path><!----><!----><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"><!----></path><!----><!--]--><!----></svg><!--]--></a><!--]--><!----></h3><!----><!----> <p>Sandboxes can also be automatically terminated after a period of inactivity - you can do this by setting the <code>idle_timeout</code> parameter. A Sandbox is considered active if any of the following are true:</p> <ol><li>It has an active <a class="text-accent hover:underline" href="/docs/guide/sandbox-spawn"><!--[--><!---->command<!--]--></a><!----> running (via <a class="text-accent hover:underline" href="/docs/sdk/py/latest/Sandbox#exec"><!--[--><code>sb.exec(...)</code><!--]--></a><!---->)</li> <li>Its stdin is being written to (via <a class="text-accent hover:underline" href="/docs/sdk/py/latest/Sandbox#stdin"><!--[--><code>sb.stdin.write()</code><!--]--></a><!---->)</li> <li>It has an open TCP connection over one of its <a class="text-accent hover:underline" href="/docs/guide/tunnels"><!--[--><!---->Tunnels<!--]--></a><!----></li></ol> <!----><h3 id="readiness-probes" class="group"><span><!--[--><!--[--><!---->Readiness Probes<!--]--><!--]--></span><!--[--> <a href="#readiness-probes" role="button" class="copy-link-parent relative pr-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 svelte-1ww6p0a" aria-label="Copy link to section"><!--[!--><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link lucide-icon" aria-hidden="true"><!--[--><!----><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"><!----></path><!----><!----><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"><!----></path><!----><!--]--><!----></svg><!--]--></a><!--]--><!----></h3><!----><!----> <p>After a Sandbox starts, you often need to run custom initialization logic before it’s
+ready for use — pulling code with <code>git pull</code>, installing dependencies, starting a server,
+writing config files, or other setup that isn’t baked into the image. Readiness probes
+give you a way to track when that initialization is complete, so you don’t have to build
+the polling or signaling yourself. Modal also uses probe results to give you
+observability into how long this startup phase typically takes.</p> <p>A readiness probe is a check that Modal runs automatically inside the Sandbox at a
+configurable interval. You can then call <code>wait_until_ready()</code> to block until the probe
+succeeds.</p> <p>There are two types of readiness probes:</p> <ul><li><strong>TCP probe</strong> — Checks whether a TCP port inside the Sandbox is accepting connections.
+This is the most common choice when your startup logic includes launching a server.</li> <li><strong>Exec probe</strong> — Runs an arbitrary command inside the Sandbox and succeeds when the
+command exits with status code 0. Use this for any other readiness condition: checking
+that a file exists, verifying a setup script has completed, confirming dependencies are
+installed, etc.</li></ul> <p>Both probe types accept an <code>interval_ms</code> parameter (default: 100ms) that controls how
+frequently the check is retried until it succeeds.</p> <!----><h4 id="tcp-readiness-probe" class="group"><span><!--[--><!--[--><!---->TCP readiness probe<!--]--><!--]--></span><!--[--> <a href="#tcp-readiness-probe" role="button" class="copy-link-parent relative pr-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 svelte-1ww6p0a" aria-label="Copy link to section"><!--[!--><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link lucide-icon" aria-hidden="true"><!--[--><!----><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"><!----></path><!----><!----><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"><!----></path><!----><!--]--><!----></svg><!--]--></a><!--]--><!----></h4><!----><!----> <p>Use a TCP probe when your Sandbox starts a server and you want to wait until
+it’s listening on a port:</p> <div class="code-tabs-container not-prose svelte-sdc20p"><div class="tab-buttons-bar svelte-sdc20p" role="tablist"><!--[--><button class="tab-button svelte-pl8q58 active" role="tab" aria-selected="true" type="button">Python</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Python (async)</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">JavaScript</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Go</button><!--]--></div> <div class="tabs-content svelte-sdc20p"><!--[--><div class="code-tab svelte-sdc20p" role="tabpanel"><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb = modal.Sandbox.create(
+    "python3", "-m", "http.server", "8080",
+    readiness_probe=modal.Probe.with_tcp(8080),
+    app=sb_app,
+)
+
+# Blocks until port 8080 is accepting connections
+sb.wait_until_ready()
+
+# The server is now ready — interact with it via tunnels, exec, etc.
+sb.terminate()</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb = await modal.Sandbox.create.aio(
+    "python3", "-m", "http.server", "8080",
+    readiness_probe=modal.Probe.with_tcp(8080),
+    app=sb_app,
+)
+
+# Blocks until port 8080 is accepting connections
+await sb.wait_until_ready.aio()
+
+# The server is now ready — interact with it via tunnels, exec, etc.
+await sb.terminate.aio()</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>import { ModalClient, Probe } from "modal";
+
+const modal = new ModalClient();
+const app = await modal.apps.fromName("my-app", { createIfMissing: true });
+const image = modal.images.fromRegistry("python:3.13-slim");
+
+const sb = await modal.sandboxes.create(app, image, {
+  command: ["python3", "-m", "http.server", "8080"],
+  readinessProbe: Probe.withTcp(8080),
+});
+
+// Blocks until port 8080 is accepting connections
+await sb.waitUntilReady();
+
+// The server is now ready — interact with it via tunnels, exec, etc.
+await sb.terminate();</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>package main
+
+import (
+	"context"
+	"time"
+
+	modal "github.com/modal-labs/modal-client/go"
+)
+
+func main() {
+	ctx := context.Background()
+	mc, _ := modal.NewClient()
+
+	app, _ := mc.Apps.FromName(ctx, "my-app", &amp;modal.AppFromNameParams{
+		CreateIfMissing: true,
+	})
+	image := mc.Images.FromRegistry("python:3.13-slim", nil)
+	probe, _ := modal.NewTCPProbe(8080, nil)
+
+	sb, _ := mc.Sandboxes.Create(ctx, app, image, &amp;modal.SandboxCreateParams{
+		Command:        []string{"python3", "-m", "http.server", "8080"},
+		ReadinessProbe: probe,
+	})
+
+	// Blocks until port 8080 is accepting connections
+	sb.WaitUntilReady(ctx, 5*time.Minute)
+
+	// The server is now ready — interact with it via tunnels, exec, etc.
+	sb.Terminate(ctx, nil)
+}</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><!--]--></div></div><!----> <!----><h4 id="exec-readiness-probe" class="group"><span><!--[--><!--[--><!---->Exec readiness probe<!--]--><!--]--></span><!--[--> <a href="#exec-readiness-probe" role="button" class="copy-link-parent relative pr-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 svelte-1ww6p0a" aria-label="Copy link to section"><!--[!--><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link lucide-icon" aria-hidden="true"><!--[--><!----><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"><!----></path><!----><!----><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"><!----></path><!----><!--]--><!----></svg><!--]--></a><!--]--><!----></h4><!----><!----> <p>Use an exec probe when readiness depends on something other than a TCP port — for
+example, waiting for a file to be created or a setup script to complete:</p> <div class="code-tabs-container not-prose svelte-sdc20p"><div class="tab-buttons-bar svelte-sdc20p" role="tablist"><!--[--><button class="tab-button svelte-pl8q58 active" role="tab" aria-selected="true" type="button">Python</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Python (async)</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">JavaScript</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Go</button><!--]--></div> <div class="tabs-content svelte-sdc20p"><!--[--><div class="code-tab svelte-sdc20p" role="tabpanel"><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb = modal.Sandbox.create(
+    "bash", "-c", "sleep 5 &amp;&amp; touch /tmp/ready &amp;&amp; sleep 3600",
+    readiness_probe=modal.Probe.with_exec(
+        "sh", "-c", "test -f /tmp/ready",
+        interval_ms=250,
+    ),
+    app=sb_app,
+)
+
+# Blocks until "test -f /tmp/ready" exits with code 0
+sb.wait_until_ready()
+
+# The sandbox is now ready
+p = sb.exec("cat", "/tmp/ready")
+sb.terminate()</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb = await modal.Sandbox.create.aio(
+    "bash", "-c", "sleep 5 &amp;&amp; touch /tmp/ready &amp;&amp; sleep 3600",
+    readiness_probe=modal.Probe.with_exec(
+        "sh", "-c", "test -f /tmp/ready",
+        interval_ms=250,
+    ),
+    app=sb_app,
+)
+
+# Blocks until "test -f /tmp/ready" exits with code 0
+await sb.wait_until_ready.aio()
+
+# The sandbox is now ready
+p = await sb.exec.aio("cat", "/tmp/ready")
+await sb.terminate.aio()</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>import { ModalClient, Probe } from "modal";
+
+const modal = new ModalClient();
+const app = await modal.apps.fromName("my-app", { createIfMissing: true });
+const image = modal.images.fromRegistry("python:3.13-slim");
+
+const sb = await modal.sandboxes.create(app, image, {
+  command: ["bash", "-c", "sleep 5 &amp;&amp; touch /tmp/ready &amp;&amp; sleep 3600"],
+  readinessProbe: Probe.withExec(["sh", "-c", "test -f /tmp/ready"], {
+    intervalMs: 250,
+  }),
+});
+
+// Blocks until "test -f /tmp/ready" exits with code 0
+await sb.waitUntilReady();
+
+// The sandbox is now ready
+await sb.terminate();</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>package main
+
+import (
+	"context"
+	"time"
+
+	modal "github.com/modal-labs/modal-client/go"
+)
+
+func main() {
+	ctx := context.Background()
+	mc, _ := modal.NewClient()
+
+	app, _ := mc.Apps.FromName(ctx, "my-app", &amp;modal.AppFromNameParams{
+		CreateIfMissing: true,
+	})
+	image := mc.Images.FromRegistry("python:3.13-slim", nil)
+	probe, _ := modal.NewExecProbe(
+		[]string{"sh", "-c", "test -f /tmp/ready"},
+		&amp;modal.ExecProbeParams{Interval: 250 * time.Millisecond},
+	)
+
+	sb, _ := mc.Sandboxes.Create(ctx, app, image, &amp;modal.SandboxCreateParams{
+		Command:        []string{"bash", "-c", "sleep 5 &amp;&amp; touch /tmp/ready &amp;&amp; sleep 3600"},
+		ReadinessProbe: probe,
+	})
+
+	// Blocks until "test -f /tmp/ready" exits with code 0
+	sb.WaitUntilReady(ctx, 5*time.Minute)
+
+	// The sandbox is now ready
+	sb.Terminate(ctx, nil)
+}</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><!--]--></div></div><!----> <p><strong>Note:</strong> Readiness probes will run for a maximum of 5 minutes. If the probe does not
+succeed within that window, <code>wait_until_ready()</code> will raise a <code>modal.exception.TimeoutError</code>. This is Modal’s own error class rather than the
+builtin <code>TimeoutError</code>, so a bare <code>except TimeoutError</code> will not catch it. The probe
+timeout does <strong>not</strong> automatically terminate the Sandbox — you may want to catch the
+error and explicitly terminate the Sandbox if readiness is never achieved:</p> <div class="code-tabs-container not-prose svelte-sdc20p"><div class="tab-buttons-bar svelte-sdc20p" role="tablist"><!--[--><button class="tab-button svelte-pl8q58 active" role="tab" aria-selected="true" type="button">Python</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Python (async)</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">JavaScript</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Go</button><!--]--></div> <div class="tabs-content svelte-sdc20p"><!--[--><div class="code-tab svelte-sdc20p" role="tabpanel"><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>try:
+    sb.wait_until_ready()
+except modal.exception.TimeoutError:
+    print("Sandbox failed to become ready")
+    sb.terminate()</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>try:
+    await sb.wait_until_ready.aio()
+except modal.exception.TimeoutError:
+    print("Sandbox failed to become ready")
+    await sb.terminate.aio()</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>try {
+  await sb.waitUntilReady();
+} catch (err) {
+  console.log("Sandbox failed to become ready");
+  await sb.terminate();
+}</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>if err := sb.WaitUntilReady(ctx, 5*time.Minute); err != nil {
+	fmt.Println("Sandbox failed to become ready")
+	sb.Terminate(ctx, nil)
+}</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><!--]--></div></div><!----> <p>If you call <code>wait_until_ready()</code> on a Sandbox that was not configured with a readiness
+probe, an error will be raised. Similarly, calling it after the Sandbox has been
+terminated will raise an error. However, calling <code>wait_until_ready()</code> after the Sandbox
+has already become ready returns immediately.</p> <!----><h2 id="return-codes" class="group"><span><!--[--><!--[--><!---->Return Codes<!--]--><!--]--></span><!--[--> <a href="#return-codes" role="button" class="copy-link-parent relative pr-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 svelte-1ww6p0a" aria-label="Copy link to section"><!--[!--><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link lucide-icon" aria-hidden="true"><!--[--><!----><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"><!----></path><!----><!----><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"><!----></path><!----><!--]--><!----></svg><!--]--></a><!--]--><!----></h2><!----><!----> <p><a rel="nofollow" class="text-accent hover:underline" href="https://tldp.org/LDP/abs/html/exitcodes.html"><!--[--><!---->Unix-style exit codes<!--]--></a><!----> are provided to help diagnose conditions such as success, manual termination, or out-of-memory.</p> <p>They are available on both:</p> <ul><li>Processes in the sandbox (via <a class="text-accent hover:underline" href="/docs/sdk/py/latest/container_process#returncode"><!--[--><code>ContainerProcess.returncode</code><!--]--></a><!----> / <a class="text-accent hover:underline" href="/docs/sdk/py/latest/container_process#poll"><!--[--><code>ContainerProcess.poll()</code><!--]--></a><!---->)</li> <li>The Sandbox itself (via <a class="text-accent hover:underline" href="/docs/sdk/py/latest/Sandbox#returncode"><!--[--><code>Sandbox.returncode</code><!--]--></a><!----> / <a class="text-accent hover:underline" href="/docs/sdk/py/latest/Sandbox#poll"><!--[--><code>Sandbox.poll()</code><!--]--></a><!---->)</li></ul> <div class="code-tabs-container not-prose svelte-sdc20p"><div class="tab-buttons-bar svelte-sdc20p" role="tablist"><!--[--><button class="tab-button svelte-pl8q58 active" role="tab" aria-selected="true" type="button">Python</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Python (async)</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">JavaScript</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Go</button><!--]--></div> <div class="tabs-content svelte-sdc20p"><!--[--><div class="code-tab svelte-sdc20p" role="tabpanel"><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb = modal.Sandbox.create(app=sb_app)
+
+# Read returncode of individual process
+p = sb.exec("sh", "-c", "exit 42")
+p.wait()
+print(p.returncode) # 42
+
+# Read returncode of finished sandbox
+# Terminate sends a SIGKILL, code 137
+sb.terminate(wait=True)
+print(sb.returncode) # 137</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb = await modal.Sandbox.create.aio(app=sb_app)
+
+# Read returncode of individual process
+p = await sb.exec.aio("sh", "-c", "exit 42")
+await p.wait.aio()
+print(p.returncode) # 42
+
+# Read returncode of finished sandbox
+# Terminate sends a SIGKILL, code 137
+await sb.terminate.aio(wait=True)
+print(sb.returncode) # 137</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>const sb = await modal.sandboxes.create(app, image);
+
+// Read returncode of individual process
+const p = await sb.exec(["sh", "-c", "exit 42"]);
+const returnCode = await p.wait();
+console.log(returnCode); // 42
+
+// Read returncode of finished sandbox
+// Terminate sends a SIGKILL, code 137
+const returnCodeSb = await sb.terminate({ wait: true });
+console.log(returnCodeSb); // 137</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb, _ := mc.Sandboxes.Create(ctx, app, image, nil)
+
+// Read returncode of individual process
+p, _ := sb.Exec(ctx, []string{"sh", "-c", "exit 42"}, nil)
+returnCode, _ := p.Wait(ctx)
+fmt.Println(returnCode) // 42
+
+// Read returncode of finished sandbox
+// Terminate sends a SIGKILL, code 137
+returnCodeSb, _ := sb.Terminate(ctx, &amp;modal.SandboxTerminateParams{Wait: true})
+fmt.Println(returnCodeSb) // 137</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><!--]--></div></div><!----> <!----><h2 id="runtimes" class="group"><span><!--[--><!--[--><!---->Runtimes<!--]--><!--]--></span><!--[--> <a href="#runtimes" role="button" class="copy-link-parent relative pr-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 svelte-1ww6p0a" aria-label="Copy link to section"><!--[!--><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link lucide-icon" aria-hidden="true"><!--[--><!----><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"><!----></path><!----><!----><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"><!----></path><!----><!--]--><!----></svg><!--]--></a><!--]--><!----></h2><!----><!----> <p>Sandboxes run on one of two runtimes:</p> <ul><li><a rel="nofollow" class="text-accent hover:underline" href="https://gvisor.dev/"><!--[--><strong>gVisor</strong><!--]--></a><!---->, a container runtime developed by Google,
+provides strong isolation and is suitable for most workloads.</li> <li><strong>VMs</strong> run the Sandbox in a virtual machine with its own Linux kernel. Use
+the VM runtime for workloads that expect a full Linux environment, such as
+running Docker inside the Sandbox, mounting <a rel="nofollow" class="text-accent hover:underline" href="https://man7.org/linux/man-pages/man4/fuse.4.html"><!--[--><!---->FUSE<!--]--></a><!----> filesystems, or
+managing resources with nested <a rel="nofollow" class="text-accent hover:underline" href="https://man7.org/linux/man-pages/man7/cgroups.7.html"><!--[--><!---->cgroups<!--]--></a><!---->. Nested
+virtualization is also available on the <a class="text-accent hover:underline" href="/pricing"><!--[--><!---->Team and Enterprise plans<!--]--></a><!---->; to request access, reach out via <a class="text-accent hover:underline" href="/slack"><!--[--><!---->Slack<!--]--></a><!----> or email us at <a class="text-accent hover:underline" href="mailto:support@modal.com"><!--[--><!---->support@modal.com<!--]--></a><!---->.</li></ul> <p>Switch runtimes via the <code>runtime</code> parameter, or leave unset to let Modal choose for you.</p> <div class="code-tabs-container not-prose svelte-sdc20p"><div class="tab-buttons-bar svelte-sdc20p" role="tablist"><!--[--><button class="tab-button svelte-pl8q58 active" role="tab" aria-selected="true" type="button">Python</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">JavaScript</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Go</button><!--]--></div> <div class="tabs-content svelte-sdc20p"><!--[--><div class="code-tab svelte-sdc20p" role="tabpanel"><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb = modal.Sandbox.create(app=sb_app, runtime="vm")  # or: runtime="gvisor"
+p = sb.exec("uname", "-srn")
+print(p.stdout.read()) # Linux modal 7.2.6
+sb.terminate()</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>const sb = await modal.sandboxes.create(app, image, { runtime: "vm" });
+
+const p = await sb.exec(["uname", "-srn"]);
+console.log(await p.stdout.readText()); // Linux modal 7.2.6</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb, err := mc.Sandboxes.Create(ctx, app, image, &amp;modal.SandboxCreateParams{
+	Runtime: modal.SandboxRuntimeVM,
+})
+p, err := sb.Exec(ctx, []string{"uname", "-srn"}, nil)
+stdout, err := io.ReadAll(p.Stdout)
+fmt.Println(string(stdout)) // Linux modal 7.2.6</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><!--]--></div></div><!----> <p><a class="text-accent hover:underline" href="/docs/guide/gpu"><!--[--><!---->GPU<!--]--></a><!----> Sandboxes are only supported with <code>runtime="gvisor"</code>.</p> <!----><h3 id="running-docker-in-a-sandbox" class="group"><span><!--[--><!--[--><!---->Running Docker in a Sandbox<!--]--><!--]--></span><!--[--> <a href="#running-docker-in-a-sandbox" role="button" class="copy-link-parent relative pr-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 svelte-1ww6p0a" aria-label="Copy link to section"><!--[!--><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link lucide-icon" aria-hidden="true"><!--[--><!----><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"><!----></path><!----><!----><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"><!----></path><!----><!--]--><!----></svg><!--]--></a><!--]--><!----></h3><!----><!----> <p>Use the VM runtime to run Docker in a Sandbox. Start <code>dockerd</code> as the Sandbox
+entrypoint and run containers with <code>sb.exec</code>. Containers on the Docker bridge
+can reach each other, and <code>/var/lib/docker</code> is included in <a class="text-accent hover:underline" href="/docs/guide/sandbox-snapshots#filesystem-snapshots"><!--[--><!---->Filesystem Snapshots<!--]--></a><!---->.</p> <div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>image = (
+    modal.Image.from_registry("ubuntu:24.04")
+    .env({"DEBIAN_FRONTEND": "noninteractive"})
+    .apt_install("docker.io")
+)
+
+sb = modal.Sandbox.create(
+    "dockerd",
+    app=sb_app,
+    image=image,
+    runtime="vm",
+    readiness_probe=modal.Probe.with_exec("docker", "info", interval_ms=500),
+)
+sb.wait_until_ready()
+
+p = sb.exec("docker", "run", "--rm", "alpine", "echo", "hello from Docker")
+p.wait()
+print(p.stdout.read())
+
+sb.terminate()</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----> <!----><h2 id="environments" class="group"><span><!--[--><!--[--><!---->Environments<!--]--><!--]--></span><!--[--> <a href="#environments" role="button" class="copy-link-parent relative pr-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 svelte-1ww6p0a" aria-label="Copy link to section"><!--[!--><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link lucide-icon" aria-hidden="true"><!--[--><!----><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"><!----></path><!----><!----><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"><!----></path><!----><!--]--><!----></svg><!--]--></a><!--]--><!----></h2><!----><!----> <!----><h3 id="environment-variables" class="group"><span><!--[--><!--[--><!---->Environment variables<!--]--><!--]--></span><!--[--> <a href="#environment-variables" role="button" class="copy-link-parent relative pr-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 svelte-1ww6p0a" aria-label="Copy link to section"><!--[!--><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link lucide-icon" aria-hidden="true"><!--[--><!----><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"><!----></path><!----><!----><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"><!----></path><!----><!--]--><!----></svg><!--]--></a><!--]--><!----></h3><!----><!----> <p>You can set environment variables using inline secrets:</p> <div class="code-tabs-container not-prose svelte-sdc20p"><div class="tab-buttons-bar svelte-sdc20p" role="tablist"><!--[--><button class="tab-button svelte-pl8q58 active" role="tab" aria-selected="true" type="button">Python</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Python (async)</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">JavaScript</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Go</button><!--]--></div> <div class="tabs-content svelte-sdc20p"><!--[--><div class="code-tab svelte-sdc20p" role="tabpanel"><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>secret = modal.Secret.from_dict({"MY_SECRET": "hello"})
+
+sb = modal.Sandbox.create(
+    secrets=[secret],
+    app=sb_app,
+)
+p = sb.exec("bash", "-c", "echo $MY_SECRET")
+print(p.stdout.read())</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>secret = modal.Secret.from_dict({"MY_SECRET": "hello"})
+
+sb = await modal.Sandbox.create.aio(
+    secrets=[secret],
+    app=sb_app,
+)
+p = await sb.exec.aio("bash", "-c", "echo $MY_SECRET")
+print(await p.stdout.read.aio())</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>const secret = modal.secrets.fromObject({ MY_SECRET: "hello" });
+const image = modal.images.fromRegistry("python:3.13-slim");
+
+const sb = await modal.sandboxes.create(app, image, {
+  secrets: [secret],
+});
+const p = await sb.exec(["bash", "-c", "echo $MY_SECRET"]);
+console.log(await p.stdout.readText());</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>secret, err := mc.Secrets.FromMap(ctx, map[string]string{"MY_SECRET": "hello"}, nil)
+image := mc.Images.FromRegistry("python:3.13-slim", nil)
+
+sb, err := mc.Sandboxes.Create(ctx, app, image, &amp;modal.SandboxCreateParams{
+  Secrets: []*modal.Secret{secret},
+})
+p, err := sb.Exec(ctx, []string{"bash", "-c", "echo $MY_SECRET"}, nil)
+stdout, err := io.ReadAll(p.Stdout)
+fmt.Println(string(stdout))</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><!--]--></div></div><!----> <!----><h3 id="oidc-identity-tokens" class="group"><span><!--[--><!--[--><!---->OIDC identity tokens<!--]--><!--]--></span><!--[--> <a href="#oidc-identity-tokens" role="button" class="copy-link-parent relative pr-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 svelte-1ww6p0a" aria-label="Copy link to section"><!--[!--><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link lucide-icon" aria-hidden="true"><!--[--><!----><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"><!----></path><!----><!----><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"><!----></path><!----><!--]--><!----></svg><!--]--></a><!--]--><!----></h3><!----><!----> <p>Pass <code>include_oidc_identity_token=True</code> to <code>modal.Sandbox.create</code> to inject a <code>MODAL_IDENTITY_TOKEN</code> environment variable containing an OIDC token into the
+Sandbox. See the <a class="text-accent hover:underline" href="/docs/guide/oidc-integration"><!--[--><!---->OIDC integration guide<!--]--></a><!----> for
+details.</p> <!----><h3 id="custom-images" class="group"><span><!--[--><!--[--><!---->Custom Images<!--]--><!--]--></span><!--[--> <a href="#custom-images" role="button" class="copy-link-parent relative pr-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 svelte-1ww6p0a" aria-label="Copy link to section"><!--[!--><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link lucide-icon" aria-hidden="true"><!--[--><!----><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"><!----></path><!----><!----><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"><!----></path><!----><!--]--><!----></svg><!--]--></a><!--]--><!----></h3><!----><!----> <p>Sandboxes support <a class="text-accent hover:underline" href="/docs/guide/images"><!--[--><!---->custom images<!--]--></a><!----> just as Functions do. These can be defined using <a class="text-accent hover:underline" href="/docs/guide/images"><!--[--><!---->method chaining<!--]--></a><!----> or by referencing an <a class="text-accent hover:underline" href="/docs/guide/existing-images"><!--[--><!---->existing Image in an external container registry<!--]--></a><!---->.</p> <!----><h4 id="separating-image-builds-from-sandbox-creation" class="group"><span><!--[--><!--[--><!---->Separating Image builds from Sandbox creation<!--]--><!--]--></span><!--[--> <a href="#separating-image-builds-from-sandbox-creation" role="button" class="copy-link-parent relative pr-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 svelte-1ww6p0a" aria-label="Copy link to section"><!--[!--><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link lucide-icon" aria-hidden="true"><!--[--><!----><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"><!----></path><!----><!----><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"><!----></path><!----><!--]--><!----></svg><!--]--></a><!--]--><!----></h4><!----><!----> <p>To avoid blocking creation of new Sandboxes on rebuilding an invalidated Image,
+it’s recommended to use Modal’s named Images with sandboxes, rather than using
+inline Image definitions.</p> <p>Use <a class="text-accent hover:underline" href="/docs/sdk/py/latest/Image#build"><!--[--><code>Image.build</code><!--]--></a><!----> to trigger
+Image builds as part of a deployment flow or at a regular interval (e.g., in a <a class="text-accent hover:underline" href="/docs/guide/cron"><!--[--><!---->scheduled job<!--]--></a><!----> or CI pipeline), then publish the result as a <a class="text-accent hover:underline" href="/docs/guide/named-images"><!--[--><!---->named image<!--]--></a><!----></p> <p>Sandboxes can then use <a class="text-accent hover:underline" href="/docs/sdk/py/latest/Image#from_name"><!--[--><code>Image.from_name</code><!--]--></a><!----> to reference the Image in a way that’s guaranteed to not block on rebuilds.</p> <div class="code-tabs-container not-prose svelte-sdc20p"><div class="tab-buttons-bar svelte-sdc20p" role="tablist"><!--[--><button class="tab-button svelte-pl8q58 active" role="tab" aria-selected="true" type="button">Python</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Python (async)</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">JavaScript</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Go</button><!--]--></div> <div class="tabs-content svelte-sdc20p"><!--[--><div class="code-tab svelte-sdc20p" role="tabpanel"><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code># build_sandbox_image.py
+app = modal.App.lookup("sandbox-app", create_if_missing=True)
+
+# Method-chained image
+image = modal.Image.debian_slim().pip_install("pandas")
+
+# Or, for an external registry image with a fixed tag:
+# image = modal.Image.from_registry("ubuntu:24.04")
+
+with modal.enable_output():
+    image.build(app=app).publish("sandbox-runtime")
+
+# sandbox_app.py
+app = modal.App.lookup("sandbox-app", create_if_missing=True)
+
+image = modal.Image.from_name("sandbox-runtime")
+modal.Sandbox.create(app=app, image=image)</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code># build_sandbox_image.py
+app = await modal.App.lookup.aio("sandbox-app", create_if_missing=True)
+
+# Method-chained image
+image = modal.Image.debian_slim().pip_install("pandas")
+
+# Or, for an external registry image with a fixed tag:
+# image = modal.Image.from_registry("ubuntu:24.04")
+
+with modal.enable_output():
+    await image.build.aio(app)
+await image.publish.aio("sandbox-runtime")
+
+# app.py
+app = await modal.App.lookup.aio("sandbox-app", create_if_missing=True)
+
+image = modal.Image.from_name("sandbox-runtime")
+await modal.Sandbox.create.aio(app=app, image=image)</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>// build_sandbox_image.ts
+const app = await modal.apps.fromName("sandbox-app", {
+  createIfMissing: true,
+});
+
+const image = modal.images
+  .fromRegistry("python:3.13-slim")
+  .dockerfileCommands(["RUN pip install pandas"]);
+
+await image.build(app);
+await image.publish("sandbox-runtime");
+
+// app.ts
+const app = await modal.apps.fromName("sandbox-app", {
+  createIfMissing: true,
+});
+
+const image = await modal.images.fromName("sandbox-runtime");
+await modal.sandboxes.create(app, image);</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>// build_sandbox_image.go
+app, err := mc.Apps.FromName(ctx, "sandbox-app", &amp;modal.AppFromNameParams{
+	CreateIfMissing: true,
+})
+
+image := mc.Images.FromRegistry("python:3.13-slim", nil).
+	DockerfileCommands([]string{"RUN pip install pandas"}, nil)
+
+builtImage, err := image.Build(ctx, app, nil)
+err = builtImage.Publish(ctx, "sandbox-runtime", nil)
+
+// app.go
+app, err = mc.Apps.FromName(ctx, "sandbox-app", &amp;modal.AppFromNameParams{
+	CreateIfMissing: true,
+})
+
+image, err = mc.Images.FromName(ctx, "sandbox-runtime", nil)
+sb, err := mc.Sandboxes.Create(ctx, app, image, nil)</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><!--]--></div></div><!----> <aside class="callout my-5 rounded-md border px-5 py-4 text-sm leading-relaxed border-l-4 border-informational bg-informational svelte-by9ljc"><!--[--><div class="mb-1 flex items-center gap-1.5"><!--[--><!----><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info lucide-icon text-informational" aria-hidden="true"><!--[--><!----><circle cx="12" cy="12" r="10"><!----></circle><!----><!----><path d="M12 16v-4"><!----></path><!----><!----><path d="M12 8h.01"><!----></path><!----><!--]--><!----></svg><!----><!--]--> <span class="text-xs font-semibold tracking-wide uppercase text-informational svelte-by9ljc">Note</span></div><!--]--> <div class="callout-body"><!--[!--><!--[--><ul><li><strong>Modal treats external Image tags as immutable once pulled.</strong> For <a class="text-accent hover:underline" href="/docs/guide/existing-images"><!--[--><!---->external registry<!--]--></a><!----> images, <code>Image.build</code> always returns the cached version — Modal does not detect upstream changes to mutable tags like <code>:latest</code>.</li> <li>To pick up a new version of an external registry image, update the tag in your deploy script (for example, <code>ubuntu:24.04</code> → <code>ubuntu:24.04-20240523</code>).</li></ul><!----><!--]--><!--]--></div></aside><!----> <!----><h4 id="image-build-logs" class="group"><span><!--[--><!--[--><!---->Image build logs<!--]--><!--]--></span><!--[--> <a href="#image-build-logs" role="button" class="copy-link-parent relative pr-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 svelte-1ww6p0a" aria-label="Copy link to section"><!--[!--><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link lucide-icon" aria-hidden="true"><!--[--><!----><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"><!----></path><!----><!----><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"><!----></path><!----><!--]--><!----></svg><!--]--></a><!--]--><!----></h4><!----><!----> <p>You may need to manually enable output streaming to see your image build logs:</p> <div class="code-tabs-container not-prose svelte-sdc20p"><div class="tab-buttons-bar svelte-sdc20p" role="tablist"><!--[--><button class="tab-button svelte-pl8q58 active" role="tab" aria-selected="true" type="button">Python</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Python (async)</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">JavaScript</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Go</button><!--]--></div> <div class="tabs-content svelte-sdc20p"><!--[--><div class="code-tab svelte-sdc20p" role="tabpanel"><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>image = modal.Image.debian_slim().pip_install("pandas", "numpy")
+
+with modal.enable_output():
+    sb = modal.Sandbox.create(image=image, app=sb_app)</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>image = modal.Image.debian_slim().pip_install("pandas", "numpy")
+
+with modal.enable_output():
+    sb = await modal.Sandbox.create.aio(image=image, app=sb_app)</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>const image = modal.images
+  .fromRegistry("python:3.13-slim")
+  .dockerfileCommands(["RUN pip install pandas numpy"]);
+
+const sb = await modal.sandboxes.create(app, image);</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>image := mc.Images.FromRegistry("python:3.13-slim", nil).
+  DockerfileCommands([]string{"RUN pip install pandas numpy"}, nil)
+
+// Note: Image build logs are automatically streamed in Go
+sb, err := mc.Sandboxes.Create(ctx, app, image, nil)</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><!--]--></div></div><!----> <!----><h2 id="running-a-sandbox-with-an-entrypoint" class="group"><span><!--[--><!--[--><!---->Running a Sandbox with an entrypoint<!--]--><!--]--></span><!--[--> <a href="#running-a-sandbox-with-an-entrypoint" role="button" class="copy-link-parent relative pr-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 svelte-1ww6p0a" aria-label="Copy link to section"><!--[!--><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link lucide-icon" aria-hidden="true"><!--[--><!----><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"><!----></path><!----><!----><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"><!----></path><!----><!--]--><!----></svg><!--]--></a><!--]--><!----></h2><!----><!----> <p>In most cases, Sandboxes are treated as a generic container that can run arbitrary
+commands. However, in some cases, you may want to run a single command or script
+as the entrypoint of the Sandbox. You can do this by passing command arguments to the
+Sandbox constructor:</p> <div class="code-tabs-container not-prose svelte-sdc20p"><div class="tab-buttons-bar svelte-sdc20p" role="tablist"><!--[--><button class="tab-button svelte-pl8q58 active" role="tab" aria-selected="true" type="button">Python</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Python (async)</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">JavaScript</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Go</button><!--]--></div> <div class="tabs-content svelte-sdc20p"><!--[--><div class="code-tab svelte-sdc20p" role="tabpanel"><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb = modal.Sandbox.create("python", "-m", "http.server", "8080", app=sb_app, timeout=10)
+for line in sb.stdout:
+    print(line, end="")</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb = await modal.Sandbox.create.aio("python", "-m", "http.server", "8080", app=sb_app, timeout=10)
+async for line in sb.stdout:
+    print(line, end="")</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>const sb = await modal.sandboxes.create(app, image, {
+  command: ["python", "-m", "http.server", "8080"],
+  timeoutMs: 10 * 1000,
+});</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb, err := mc.Sandboxes.Create(ctx, app, image, &amp;modal.SandboxCreateParams{
+  Command: []string{"python", "-m", "http.server", "8080"},
+  Timeout: 10 * time.Second,
+})</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><!--]--></div></div><!----> <p>This functionality is most useful for running long-lived services that you want
+to keep running in the background. See our <a class="text-accent hover:underline" href="/docs/examples/jupyter_sandbox"><!--[--><!---->Jupyter notebook example<!--]--></a><!----> for a more concrete example of this.</p> <!----><h2 id="referencing-sandboxes-from-other-code" class="group"><span><!--[--><!--[--><!---->Referencing Sandboxes from other code<!--]--><!--]--></span><!--[--> <a href="#referencing-sandboxes-from-other-code" role="button" class="copy-link-parent relative pr-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 svelte-1ww6p0a" aria-label="Copy link to section"><!--[!--><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link lucide-icon" aria-hidden="true"><!--[--><!----><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"><!----></path><!----><!----><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"><!----></path><!----><!--]--><!----></svg><!--]--></a><!--]--><!----></h2><!----><!----> <p>If you have a running Sandbox, you can retrieve it using the <code>from_id</code> method.</p> <div class="code-tabs-container not-prose svelte-sdc20p"><div class="tab-buttons-bar svelte-sdc20p" role="tablist"><!--[--><button class="tab-button svelte-pl8q58 active" role="tab" aria-selected="true" type="button">Python</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Python (async)</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">JavaScript</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Go</button><!--]--></div> <div class="tabs-content svelte-sdc20p"><!--[--><div class="code-tab svelte-sdc20p" role="tabpanel"><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb = modal.Sandbox.create(app=sb_app)
+sb_id = sb.object_id
+
+# ... later in the program ...
+
+sb2 = modal.Sandbox.from_id(sb_id)
+p = sb2.exec("echo", "hello")
+print(p.stdout.read())
+sb2.terminate()</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb = await modal.Sandbox.create.aio(app=sb_app)
+sb_id = sb.object_id
+
+# ... later in the program ...
+
+sb2 = await modal.Sandbox.from_id.aio(sb_id)
+p = await sb2.exec.aio("echo", "hello")
+print(await p.stdout.read.aio())
+await sb2.terminate.aio()</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>const sb = await modal.sandboxes.create(app, image);
+const sbId = sb.sandboxId;
+
+// ... later in the program ...
+
+const sb2 = await modal.sandboxes.fromId(sbId);
+const p = await sb2.exec(["echo", "hello"]);
+console.log(await p.stdout.readText());
+await sb2.terminate();</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb, err := mc.Sandboxes.Create(ctx, app, image, nil)
+sbId := sb.SandboxID
+
+// ... later in the program ...
+
+sb2, err := mc.Sandboxes.FromID(ctx, sbId, nil)
+defer sb2.Terminate(ctx, nil)
+p, err := sb2.Exec(ctx, []string{"echo", "hello"}, nil)
+stdout, err := io.ReadAll(p.Stdout)
+fmt.Println(string(stdout))</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><!--]--></div></div><!----> <p>A common use case for this is keeping a pool of Sandboxes available for executing tasks
+as they come in. You can keep a list of <code>object_id</code>s of Sandboxes that are “open” and
+reuse them, closing over the <code>object_id</code> in whatever function is using them.</p> <!----><h2 id="named-sandboxes" class="group"><span><!--[--><!--[--><!---->Named Sandboxes<!--]--><!--]--></span><!--[--> <a href="#named-sandboxes" role="button" class="copy-link-parent relative pr-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 svelte-1ww6p0a" aria-label="Copy link to section"><!--[!--><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link lucide-icon" aria-hidden="true"><!--[--><!----><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"><!----></path><!----><!----><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"><!----></path><!----><!--]--><!----></svg><!--]--></a><!--]--><!----></h2><!----><!----> <p>You can assign a name to a Sandbox when creating it. Each name must be unique within an App -
+only one <em>running</em> Sandbox can use a given name at a time. Note that the associated App must be
+a deployed App. Once a Sandbox completely stops running, its name becomes available for reuse.
+Some applications find Sandbox Names to be useful for ensuring that no more than one Sandbox is
+running per resource or project. If a Sandbox with the given name is already running, <code>create()</code> will raise an error.</p> <div class="code-tabs-container not-prose svelte-sdc20p"><div class="tab-buttons-bar svelte-sdc20p" role="tablist"><!--[--><button class="tab-button svelte-pl8q58 active" role="tab" aria-selected="true" type="button">Python</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Python (async)</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">JavaScript</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Go</button><!--]--></div> <div class="tabs-content svelte-sdc20p"><!--[--><div class="code-tab svelte-sdc20p" role="tabpanel"><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb1 = modal.Sandbox.create(app=sb_app, name="my-name")
+# This will raise a modal.exception.AlreadyExistsError.
+sb2 = modal.Sandbox.create(app=sb_app, name="my-name")</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb1 = await modal.Sandbox.create.aio(app=sb_app, name="my-name")
+# This will raise a modal.exception.AlreadyExistsError.
+sb2 = await modal.Sandbox.create.aio(app=sb_app, name="my-name")</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>const sb1 = await modal.sandboxes.create(app, image, { name: "my-name" });
+// this will raise an AlreadyExistsError
+const sb2 = await modal.sandboxes.create(app, image, { name: "my-name" });</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb1, err := mc.Sandboxes.Create(ctx, app, image, &amp;modal.SandboxCreateParams{
+  Name: "my-name",
+})
+// this will return an error
+sb2, err := mc.Sandboxes.Create(ctx, app, image, &amp;modal.SandboxCreateParams{
+  Name: "my-name",
+})</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><!--]--></div></div><!----> <p>A named Sandbox may be fetched from a deployed App using <code>from_name()</code> <em>but only
+if the Sandbox is currently running</em>. If no running Sandbox is found, <code>from_name()</code> will raise
+an error.</p> <div class="code-tabs-container not-prose svelte-sdc20p"><div class="tab-buttons-bar svelte-sdc20p" role="tablist"><!--[--><button class="tab-button svelte-pl8q58 active" role="tab" aria-selected="true" type="button">Python</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Python (async)</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">JavaScript</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Go</button><!--]--></div> <div class="tabs-content svelte-sdc20p"><!--[--><div class="code-tab svelte-sdc20p" role="tabpanel"><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb_app = modal.App.lookup("my-app", create_if_missing=True)
+sb1 = modal.Sandbox.create(app=sb_app, name="my-name")
+# Returns the currently running Sandbox with the name "my-name" from the
+# deployed App named "my-app".
+sb2 = modal.Sandbox.from_name("my-app", "my-name")
+assert sb1.object_id == sb2.object_id # sb1 and sb2 refer to the same Sandbox</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb_app = await modal.App.lookup.aio("my-app", create_if_missing=True)
+sb1 = await modal.Sandbox.create.aio(app=sb_app, name="my-name")
+# Returns the currently running Sandbox with the name "my-name" from the
+# deployed App named "my-app".
+sb2 = await modal.Sandbox.from_name.aio("my-app", "my-name")
+assert sb1.object_id == sb2.object_id # sb1 and sb2 refer to the same Sandbox</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>const app = await modal.apps.fromName("my-app", { createIfMissing: true });
+const sb1 = await modal.sandboxes.create(app, image, { name: "my-name" });
+// returns the currently running Sandbox with the name "my-name" from the
+// deployed App named "my-app".
+const sb2 = await modal.sandboxes.fromName("my-app", "my-name");
+console.assert(sb1.sandboxId === sb2.sandboxId); // sb1 and sb2 refer to the same Sandbox</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>app, err := mc.Apps.FromName(ctx, "my-app", &amp;modal.AppFromNameParams{
+  CreateIfMissing: true,
+})
+sb1, err := mc.Sandboxes.Create(ctx, app, image, &amp;modal.SandboxCreateParams{
+  Name: "my-name",
+})
+// returns the currently running Sandbox with the name "my-name" from the
+// deployed App named "my-app".
+sb2, err := mc.Sandboxes.FromName(ctx, "my-app", "my-name", nil)
+// sb1 and sb2 refer to the same Sandbox
+fmt.Println(sb1.SandboxID == sb2.SandboxID)</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><!--]--></div></div><!----> <p>Sandbox Names may contain only alphanumeric characters, dashes, periods, and underscores, and must
+be shorter than 64 characters.</p> <!----><h2 id="tagging" class="group"><span><!--[--><!--[--><!---->Tagging<!--]--><!--]--></span><!--[--> <a href="#tagging" role="button" class="copy-link-parent relative pr-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 svelte-1ww6p0a" aria-label="Copy link to section"><!--[!--><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link lucide-icon" aria-hidden="true"><!--[--><!----><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"><!----></path><!----><!----><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"><!----></path><!----><!--]--><!----></svg><!--]--></a><!--]--><!----></h2><!----><!----> <p>Sandboxes can also be tagged with arbitrary key-value pairs. These tags can be used
+to filter results in <code>Sandbox.list</code>.</p> <div class="code-tabs-container not-prose svelte-sdc20p"><div class="tab-buttons-bar svelte-sdc20p" role="tablist"><!--[--><button class="tab-button svelte-pl8q58 active" role="tab" aria-selected="true" type="button">Python</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Python (async)</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">JavaScript</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Go</button><!--]--></div> <div class="tabs-content svelte-sdc20p"><!--[--><div class="code-tab svelte-sdc20p" role="tabpanel"><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sandbox_v1_1 = modal.Sandbox.create("sleep", "10", app=sb_app)
+sandbox_v1_2 = modal.Sandbox.create("sleep", "20", app=sb_app)
+
+sandbox_v1_1.set_tags({"major_version": "1", "minor_version": "1"})
+sandbox_v1_2.set_tags({"major_version": "1", "minor_version": "2"})
+
+for sandbox in modal.Sandbox.list(app_id=sb_app.app_id):  # All sandboxes.
+    print(sandbox.object_id)
+
+for sandbox in modal.Sandbox.list(
+    app_id=sb_app.app_id,
+    tags={"major_version": "1"},
+):  # Also all sandboxes.
+    print(sandbox.object_id)
+
+for sandbox in modal.Sandbox.list(
+    app_id=sb_app.app_id,
+    tags={"major_version": "1", "minor_version": "2"},
+):  # Just the latest sandbox.
+    print(sandbox.object_id)</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sandbox_v1_1 = await modal.Sandbox.create.aio("sleep", "10", app=sb_app)
+sandbox_v1_2 = await modal.Sandbox.create.aio("sleep", "20", app=sb_app)
+
+await sandbox_v1_1.set_tags.aio({"major_version": "1", "minor_version": "1"})
+await sandbox_v1_2.set_tags.aio({"major_version": "1", "minor_version": "2"})
+
+async for sandbox in modal.Sandbox.list.aio(app_id=sb_app.app_id):  # All sandboxes.
+    print(sandbox.object_id)
+
+async for sandbox in modal.Sandbox.list.aio(
+    app_id=sb_app.app_id,
+    tags={"major_version": "1"},
+):  # Also all sandboxes.
+    print(sandbox.object_id)
+
+async for sandbox in modal.Sandbox.list.aio(
+    app_id=sb_app.app_id,
+    tags={"major_version": "1", "minor_version": "2"},
+):  # Just the latest sandbox.
+    print(sandbox.object_id)</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>const sandboxV1_1 = await modal.sandboxes.create(app, image, {
+  command: ["sleep", "10"],
+});
+const sandboxV1_2 = await modal.sandboxes.create(app, image, {
+  command: ["sleep", "20"],
+});
+
+await sandboxV1_1.setTags({ major_version: "1", minor_version: "1" });
+await sandboxV1_2.setTags({ major_version: "1", minor_version: "2" });
+
+// All sandboxes.
+for await (const sandbox of modal.sandboxes.list({ appId: app.appId })) {
+  console.log(sandbox.sandboxId);
+}
+
+// Also all sandboxes.
+for await (const sandbox of modal.sandboxes.list({
+  appId: app.appId,
+  tags: { major_version: "1" },
+})) {
+  console.log(sandbox.sandboxId);
+}
+
+// Just the latest sandbox.
+for await (const sandbox of modal.sandboxes.list({
+  appId: app.appId,
+  tags: { major_version: "1", minor_version: "2" },
+})) {
+  console.log(sandbox.sandboxId);
+}</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sandboxV1_1, err := mc.Sandboxes.Create(ctx, app, image, &amp;modal.SandboxCreateParams{
+  Command: []string{"sleep", "10"},
+})
+sandboxV1_2, err := mc.Sandboxes.Create(ctx, app, image, &amp;modal.SandboxCreateParams{
+  Command: []string{"sleep", "20"},
+})
+
+sandboxV1_1.SetTags(ctx, map[string]string{"major_version": "1", "minor_version": "1"})
+sandboxV1_2.SetTags(ctx, map[string]string{"major_version": "1", "minor_version": "2"})
+
+// All sandboxes.
+it, _ := mc.Sandboxes.List(ctx, &amp;modal.SandboxListParams{
+  AppID: app.AppID,
+})
+for sandbox := range it {
+  fmt.Println(sandbox.SandboxID)
+}
+
+// Also all sandboxes.
+it, _ = mc.Sandboxes.List(ctx, &amp;modal.SandboxListParams{
+  AppID: app.AppID,
+  Tags:  map[string]string{"major_version": "1"},
+})
+for sandbox := range it {
+  fmt.Println(sandbox.SandboxID)
+}
+
+// Just the latest sandbox.
+it, _ = mc.Sandboxes.List(ctx, &amp;modal.SandboxListParams{
+  AppID: app.AppID,
+  Tags:  map[string]string{"major_version": "1", "minor_version": "2"},
+})
+for sandbox := range it {
+  fmt.Println(sandbox.SandboxID)
+}</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><!--]--></div></div><!----> <!----><h2 id="cleaning-up-client-side-resources" class="group"><span><!--[--><!--[--><!---->Cleaning up client-side resources<!--]--><!--]--></span><!--[--> <a href="#cleaning-up-client-side-resources" role="button" class="copy-link-parent relative pr-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 svelte-1ww6p0a" aria-label="Copy link to section"><!--[!--><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link lucide-icon" aria-hidden="true"><!--[--><!----><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"><!----></path><!----><!----><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"><!----></path><!----><!--]--><!----></svg><!--]--></a><!--]--><!----></h2><!----><!----> <p>When you use a Sandbox handle in the SDK to interact with a Sandbox (e.g.,
+calling <code>exec()</code>), it opens a direct connection to the remote Sandbox and keeps
+it open for subsequent commands. This connection and related resources are
+cleaned up automatically once they have been idle for a while, so you normally
+don’t need to manage them yourself.</p> <p>However, if your client manages a large number of Sandboxes, you can release
+these resources eagerly by calling <code>detach()</code> on the Sandbox. This permanently
+closes all connections from that handle and prevents it from opening new ones.
+Detaching doesn’t terminate or otherwise affect the remote Sandbox; it only
+cleans up client-side resources.</p> <div class="code-tabs-container not-prose svelte-sdc20p"><div class="tab-buttons-bar svelte-sdc20p" role="tablist"><!--[--><button class="tab-button svelte-pl8q58 active" role="tab" aria-selected="true" type="button">Python</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Python (async)</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">JavaScript</button><button class="tab-button svelte-pl8q58" role="tab" aria-selected="false" type="button">Go</button><!--]--></div> <div class="tabs-content svelte-sdc20p"><!--[--><div class="code-tab svelte-sdc20p" role="tabpanel"><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb = modal.Sandbox.create(app=sb_app)
+sb.detach()</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb = await modal.Sandbox.create.aio(app=sb_app)
+await sb.detach.aio()</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>const sb = await modal.sandboxes.create(app, image);
+sb.detach();</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><div class="code-tab svelte-sdc20p" role="tabpanel" hidden><div class="not-prose my-6"><!--[!--><div class="relative"><div class="code scroller default svelte-1r9unse"><!--[--><div class="relative flex min-w-0"><!--[!--><!--]--> <div class="content"><pre class="px-3.5"><code>sb, err := mc.Sandboxes.Create(ctx, app, image, nil)
+defer sb.Detach()</code></pre></div></div><!--]--></div></div><!--]--><!----></div><!----></div><!--]--></div></div><!----><!--]--></article><!--]--><!--]--></div><!----> <div class="hidden pl-6 text-primary lg:block"><div class="sticky top-[98px] flex flex-col pb-10"><div class="scroller flex max-h-[calc(100vh-166px)] flex-col svelte-1gfsdny"><!--[--><!--[--><a id="toc-sandboxes" href="#sandboxes" class="shrink-0 overflow-x-hidden text-ellipsis svelte-1gfsdny" style="padding-left: 16px;">Sandboxes</a><!--]--><!--[--><a id="toc-what-are-sandboxes-and-why-should-i-use-them" href="#what-are-sandboxes-and-why-should-i-use-them" class="shrink-0 overflow-x-hidden text-ellipsis svelte-1gfsdny" style="padding-left: 32px;">What are Sandboxes and why should I use them?</a><!--]--><!--[--><a id="toc-configuration" href="#configuration" class="shrink-0 overflow-x-hidden text-ellipsis svelte-1gfsdny" style="padding-left: 32px;">Configuration</a><!--]--><!--[--><a id="toc-lifecycle" href="#lifecycle" class="shrink-0 overflow-x-hidden text-ellipsis svelte-1gfsdny" style="padding-left: 32px;">Lifecycle</a><!--]--><!--[--><a id="toc-events" href="#events" class="shrink-0 overflow-x-hidden text-ellipsis svelte-1gfsdny" style="padding-left: 48px;">Events</a><!--]--><!--[--><a id="toc-timeouts" href="#timeouts" class="shrink-0 overflow-x-hidden text-ellipsis svelte-1gfsdny" style="padding-left: 48px;">Timeouts</a><!--]--><!--[--><a id="toc-idle-timeouts" href="#idle-timeouts" class="shrink-0 overflow-x-hidden text-ellipsis svelte-1gfsdny" style="padding-left: 48px;">Idle Timeouts</a><!--]--><!--[--><a id="toc-readiness-probes" href="#readiness-probes" class="shrink-0 overflow-x-hidden text-ellipsis svelte-1gfsdny" style="padding-left: 48px;">Readiness Probes</a><!--]--><!--[--><a id="toc-tcp-readiness-probe" href="#tcp-readiness-probe" class="shrink-0 overflow-x-hidden text-ellipsis svelte-1gfsdny" style="padding-left: 64px;">TCP readiness probe</a><!--]--><!--[--><a id="toc-exec-readiness-probe" href="#exec-readiness-probe" class="shrink-0 overflow-x-hidden text-ellipsis svelte-1gfsdny" style="padding-left: 64px;">Exec readiness probe</a><!--]--><!--[--><a id="toc-return-codes" href="#return-codes" class="shrink-0 overflow-x-hidden text-ellipsis svelte-1gfsdny" style="padding-left: 32px;">Return Codes</a><!--]--><!--[--><a id="toc-runtimes" href="#runtimes" class="shrink-0 overflow-x-hidden text-ellipsis svelte-1gfsdny" style="padding-left: 32px;">Runtimes</a><!--]--><!--[--><a id="toc-running-docker-in-a-sandbox" href="#running-docker-in-a-sandbox" class="shrink-0 overflow-x-hidden text-ellipsis svelte-1gfsdny" style="padding-left: 48px;">Running Docker in a Sandbox</a><!--]--><!--[--><a id="toc-environments" href="#environments" class="shrink-0 overflow-x-hidden text-ellipsis svelte-1gfsdny" style="padding-left: 32px;">Environments</a><!--]--><!--[--><a id="toc-environment-variables" href="#environment-variables" class="shrink-0 overflow-x-hidden text-ellipsis svelte-1gfsdny" style="padding-left: 48px;">Environment variables</a><!--]--><!--[--><a id="toc-oidc-identity-tokens" href="#oidc-identity-tokens" class="shrink-0 overflow-x-hidden text-ellipsis svelte-1gfsdny" style="padding-left: 48px;">OIDC identity tokens</a><!--]--><!--[--><a id="toc-custom-images" href="#custom-images" class="shrink-0 overflow-x-hidden text-ellipsis svelte-1gfsdny" style="padding-left: 48px;">Custom Images</a><!--]--><!--[--><a id="toc-separating-image-builds-from-sandbox-creation" href="#separating-image-builds-from-sandbox-creation" class="shrink-0 overflow-x-hidden text-ellipsis svelte-1gfsdny" style="padding-left: 64px;">Separating Image builds from Sandbox creation</a><!--]--><!--[--><a id="toc-image-build-logs" href="#image-build-logs" class="shrink-0 overflow-x-hidden text-ellipsis svelte-1gfsdny" style="padding-left: 64px;">Image build logs</a><!--]--><!--[--><a id="toc-running-a-sandbox-with-an-entrypoint" href="#running-a-sandbox-with-an-entrypoint" class="shrink-0 overflow-x-hidden text-ellipsis svelte-1gfsdny" style="padding-left: 32px;">Running a Sandbox with an entrypoint</a><!--]--><!--[--><a id="toc-referencing-sandboxes-from-other-code" href="#referencing-sandboxes-from-other-code" class="shrink-0 overflow-x-hidden text-ellipsis svelte-1gfsdny" style="padding-left: 32px;">Referencing Sandboxes from other code</a><!--]--><!--[--><a id="toc-named-sandboxes" href="#named-sandboxes" class="shrink-0 overflow-x-hidden text-ellipsis svelte-1gfsdny" style="padding-left: 32px;">Named Sandboxes</a><!--]--><!--[--><a id="toc-tagging" href="#tagging" class="shrink-0 overflow-x-hidden text-ellipsis svelte-1gfsdny" style="padding-left: 32px;">Tagging</a><!--]--><!--[--><a id="toc-cleaning-up-client-side-resources" href="#cleaning-up-client-side-resources" class="shrink-0 overflow-x-hidden text-ellipsis svelte-1gfsdny" style="padding-left: 32px;">Cleaning up client-side resources</a><!--]--><!--]--></div> <!--[--><div class="mt-6"><div class="mt-10 space-y-1 rounded-lg border border-accent bg-accent p-3"><div class="mb-2 text-sm text-secondary-bold">See it in action</div> <!--[--><div class="text-sm text-primary"><a target="_blank" rel="noreferrer" href="/docs/examples/agent" class="hover:underline"><span>Building a coding agent with Sandboxes</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link lucide-icon mb-1 ml-1.5 inline-block" aria-hidden="true"><!--[--><!----><path d="M15 3h6v6"><!----></path><!----><!----><path d="M10 14 21 3"><!----></path><!----><!----><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"><!----></path><!----><!--]--><!----></svg><!----></a></div><div class="text-sm text-primary"><a target="_blank" rel="noreferrer" href="/docs/examples/simple_code_interpreter" class="hover:underline"><span>Building a code interpreter</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link lucide-icon mb-1 ml-1.5 inline-block" aria-hidden="true"><!--[--><!----><path d="M15 3h6v6"><!----></path><!----><!----><path d="M10 14 21 3"><!----></path><!----><!----><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"><!----></path><!----><!--]--><!----></svg><!----></a></div><div class="text-sm text-primary"><a target="_blank" rel="noreferrer" href="/docs/examples/jupyter_sandbox" class="hover:underline"><span>Running a Jupyter notebook</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link lucide-icon mb-1 ml-1.5 inline-block" aria-hidden="true"><!--[--><!----><path d="M15 3h6v6"><!----></path><!----><!----><path d="M10 14 21 3"><!----></path><!----><!----><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"><!----></path><!----><!--]--><!----></svg><!----></a></div><div class="text-sm text-primary"><a target="_blank" rel="noreferrer" href="/docs/examples/opencode_server" class="hover:underline"><span>Serving OpenCode for remote agents</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link lucide-icon mb-1 ml-1.5 inline-block" aria-hidden="true"><!--[--><!----><path d="M15 3h6v6"><!----></path><!----><!----><path d="M10 14 21 3"><!----></path><!----><!----><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"><!----></path><!----><!--]--><!----></svg><!----></a></div><!--]--></div><!----></div><!--]--> <!--[!--><!--]--></div></div><!----><!----><!----><!--]--><!--]--><!--]--></div></div></div></main><!----><!--]--><!--]--> <div class="pointer-events-none mt-24"></div> <footer class="mt-auto"><div class="flex flex-col gap-y-[27px] border-t border-secondary px-4 py-6 lg:flex-row lg:items-center"><div class="flex items-center gap-x-3"><img src="/_app/immutable/assets/logotype.CAx-nu9G.svg" alt="Modal logo" class="logotype logotype-default h-[18px] svelte-10ksrmf"/> <img src="/_app/immutable/assets/logotype-dark.D862MXBL.svg" alt="Modal logo" class="logotype logotype-light h-[18px] svelte-10ksrmf"/> <span class="text-xs whitespace-nowrap text-tertiary"><!--[!-->© Modal 2026<!--]--><!----></span></div> <div class="grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-4 lg:mr-14 lg:ml-auto lg:flex"><a class="link svelte-10ksrmf" href="/company">About</a> <a class="link svelte-10ksrmf" href="https://status.modal.com/" target="_blank" rel="noopener noreferrer">Status</a> <a class="link svelte-10ksrmf" href="/changelog">Changelog</a> <a class="link svelte-10ksrmf" href="/docs/sdk/py/releases">Releases</a> <a class="link svelte-10ksrmf" href="/docs/guide">Documentation</a> <a class="link svelte-10ksrmf" href="/slack" target="_blank" rel="noopener noreferrer">Slack Community</a> <a class="link svelte-10ksrmf" href="/pricing">Pricing</a> <a class="link svelte-10ksrmf" href="/docs/examples">Examples</a></div> <div class="flex space-x-4"><a href="https://www.linkedin.com/company/modal-labs/" target="_blank" rel="noreferrer" class="social-link svelte-10ksrmf"><svg fill="currentColor" width="20" height="20" class="fill-current stroke-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 310"><path d="M72.16,99.73H9.927c-2.762,0-5,2.239-5,5v199.928c0,2.762,2.238,5,5,5H72.16c2.762,0,5-2.238,5-5V104.73
+      C77.16,101.969,74.922,99.73,72.16,99.73z"></path><path d="M41.066,0.341C18.422,0.341,0,18.743,0,41.362C0,63.991,18.422,82.4,41.066,82.4
+      c22.626,0,41.033-18.41,41.033-41.038C82.1,18.743,63.692,0.341,41.066,0.341z"></path><path d="M230.454,94.761c-24.995,0-43.472,10.745-54.679,22.954V104.73c0-2.761-2.238-5-5-5h-59.599
+      c-2.762,0-5,2.239-5,5v199.928c0,2.762,2.238,5,5,5h62.097c2.762,0,5-2.238,5-5v-98.918c0-33.333,9.054-46.319,32.29-46.319
+      c25.306,0,27.317,20.818,27.317,48.034v97.204c0,2.762,2.238,5,5,5H305c2.762,0,5-2.238,5-5V194.995
+      C310,145.43,300.549,94.761,230.454,94.761z"></path></svg><!----></a> <a href="https://x.com/modal" target="_blank" rel="noreferrer" class="social-link svelte-10ksrmf"><svg fill="currentColor" width="20" height="20" class="fill-current stroke-none" viewBox="0 0 300 271" xmlns="http://www.w3.org/2000/svg"><path d="m236 0h46l-101 115 118 156h-92.6l-72.5-94.8-83 94.8h-46l107-123-113-148h94.9l65.5 86.6zm-16.1 244h25.5l-165-218h-27.4z"></path></svg><!----></a> <a href="https://github.com/modal-labs" target="_blank" rel="noreferrer" class="social-link svelte-10ksrmf"><svg fill="currentColor" width="20" height="20" class="fill-current stroke-none" viewBox="0 0.5 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21Z"></path></svg><!----></a></div> <div></div></div></footer><!----></div><!----><!--]--><!----><!----><!----><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_1xq3np2 = {
+						base: "",
+						env: null
+					};
+
+					const element = document.currentScript.parentElement;
+
+					import("/_app/env.js").then(({ env }) => {
+						__sveltekit_1xq3np2.env = env;
+
+						Promise.all([
+							import("/_app/immutable/entry/start.CY5gPcoo.js"),
+							import("/_app/immutable/entry/app.CZtukqUY.js")
+						]).then(([kit, app]) => {
+							kit.start(app, element, {
+									node_ids: [0, 9, 14, 137],
+									data: [{type:"data",data:{cloudfrontRequestId:null},uses:{}},null,null,null],
+									form: null,
+									error: null
+								});
+						});
+					});
+				}
+			</script>
+		</div>
+  </body>
+</html>

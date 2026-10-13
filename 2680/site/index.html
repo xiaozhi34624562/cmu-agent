@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="vendor/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="vendor/bootstrap.bundle.min.js"></script>
+<meta content="CS2680 Modern AI Systems: Agents and System Optimizations — Harvard SEAS, Fall 2026" name="description"/>
+<meta content="AI Systems, Machine Learning Systems, MLSys, LLM, GPU, Course" name="keywords"/>
+<meta content="Juncheng Yang" name="author"/>
+<link href="favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="CS2680 Modern AI Systems: Agents and System Optimizations" property="og:title"/>
+<meta content="CS2680 Modern AI Systems: Agents and System Optimizations — Harvard SEAS, Fall 2026" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="CS2680 Modern AI Systems" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<link href="css/main.css" rel="stylesheet"/>
+<title>CS2680 Modern AI Systems: Agents and System Optimizations</title>
+</head>
+<body>
+<div id="site-header"></div>
+<script src="header.js"></script>
+<div class="container page">
+<div class="row">
+<div class="col-12">
+<div class="title">CS2680 Modern AI Systems: Agents and System Optimizations</div>
+</div>
+<div class="col-12 title2" id="home">
+        Fall 2026
+      </div>
+<div class="col-12 section" id="announcement">
+<h1>Announcement</h1>
+<ul class="announce-list">
+<li class="announce"><span class="announce-date">Oct 8, 2026</span><span class="announce-body"><a href="https://leaderboard.cs2680.com">Assignment Leaderboard</a> is live.</span></li>
+<li class="announce"><span class="announce-date">Sept 4, 2026</span><span class="announce-body">We have
+              increased capacity to 80 students.</span></li>
+<li class="announce"><span class="announce-date">Aug 28, 2026</span><span class="announce-body">Audit policy:
+              everyone is free to audit as long as it is permitted by school policy and the classroom has space.
+              However, we do not have computing resources for auditing students.</span></li>
+<!-- <li class="announce"><span class="announce-date">Aug 28, 2026</span><span class="announce-body">The class is
+              currently full. Cross-registration is not approved until enrollment drops to 40. </span></li> -->
+<!-- <li class="announce"><span class="announce-date">Aug 20, 2026</span><span class="announce-body">Please request
+              your license for <a href="computing/claude-code.html">Claude Code</a> and register your <a href="computing/aws.html">AWS account</a> ASAP. It will be used for your first assignment.</span></li> -->
+<li class="announce"><span class="announce-date">Aug 17, 2026</span><span class="announce-body">Welcome to
+              CS2680 Modern AI Systems: Agents and System Optimizations! Class meets Monday and Wednesday in SEC
+              LL2.229.</span></li>
+</ul>
+<hr/>
+</div>
+<div class="col-12 section" id="overview">
+<h1>Overview</h1>
+<p>
+          This course follows one agentic system from the agent loop down through the serving stack. You first use a
+          modern coding
+          agent (Claude Code), then design your own agent using provided API access, measure it, and optimize it.
+          Then you serve an open-weight model yourself and take responsibility for the layers underneath: batching and
+          scheduling, KV-cache and prefix reuse, routing, quantization, and speculative decoding.
+        </p>
+<div class="facts">
+<div class="fact">
+<div class="fact-label">Class time and location</div>
+<div class="fact-value">
+<span class="fact-line"><strong>Monday and Wednesday</strong></span>
+<span class="fact-line">11:15am – 12:30pm</span>
+<span class="fact-line fact-line-label">SEC LL2.229</span>
+</div>
+</div>
+<div class="fact">
+<div class="fact-label">Prerequisites</div>
+<div class="fact-value"><strong>CS61</strong>, and at least one graduate-level course in computer systems.
+              Comfort with Python and PyTorch is assumed. See <a href="policy.html#background">the background we assume</a>.</div>
+</div>
+<div class="fact">
+<div class="fact-label">Assessment</div>
+<div class="fact-value">
+<span class="fact-line">Five <a href="assignments/index.html">assignments</a> and a <a href="project.html">final project</a>.</span>
+<span class="fact-line">Class participation throughout the semester.</span>
+<span class="fact-line fact-line-emph">There is no exam.</span>
+</div>
+</div>
+</div>
+<div class="subsection">
+<strong>Format.</strong> The course runs in two parts.
+          <ul>
+<li><strong>Part I — Introduction to LLMs and agents.</strong> You will learn about how to use coding
+              agents (Claude Code) and how to design an agent. You will also explore various agent architectures, use
+              cases and optimizations.
+            </li>
+<li><strong>Part II — Systems for LLMs and agents.</strong> We will talk about LLM serving (batching,
+              scheduling, routing, caching, quantization, and speculative decoding) and agentic systems.
+            </li>
+</ul>
+          The assignments walk down that stack in five steps. First, Mads-Lens<sup><a aria-label="Why the assignments use Mads names" href="#mads-name-footnote">1</a></sup> lets you watch the agent work (Assignment
+          1). Second, you build the loop in Mads-Loop (Assignment 2). Third, you make every token count in Mads-Opt
+          (Assignment 3). Fourth, you own the serving engine in Mads-Serve and run a model on the provided GPUs (Assignment 4).
+          Fifth, you optimize the full stack in Mads-Stack (Assignment 5).
+          <p class="small text-muted" id="mads-name-footnote"><sup>1</sup> “Mads” abbreviates Modern Agent Design and
+            Systems, the arc of this course, and nods to <a href="https://madsys.seas.harvard.edu/" rel="noopener noreferrer" target="_blank">MaDSys</a>, Harvard’s Measurement and Design of Systems research group, which
+            teaches and supports it.</p>
+</div>
+<div class="subsection">
+<strong>What this course expects.</strong> This course will not teach you every piece of knowledge you need
+          for the assignments. It focuses instead on the skills to learn with, and points you in directions worth
+          going. Expect to spend a significant amount of time learning and experimenting on your own after class. If you
+          want an A, plan on it.
+        </div>
+<div class="subsection">
+<strong>Grading.</strong>
+</div>
+<ul class="weights">
+<li class="weight"><span class="weight-name">Assignment 1 <span class="weight-note">Mads-Lens: watch the agent
+                work</span></span><span class="weight-bar" style="--w: 10"></span><span class="weight-value">10%</span>
+</li>
+<li class="weight"><span class="weight-name">Assignment 2 <span class="weight-note">Mads-Loop: build the
+                loop</span></span><span class="weight-bar" style="--w: 10"></span><span class="weight-value">10%</span>
+</li>
+<li class="weight"><span class="weight-name">Assignment 3 <span class="weight-note">Mads-Opt: make every token
+                count</span></span><span class="weight-bar" style="--w: 20"></span><span class="weight-value">20%</span>
+</li>
+<li class="weight"><span class="weight-name">Assignment 4 <span class="weight-note">Mads-Serve: own the
+                serving engine</span></span><span class="weight-bar" style="--w: 20"></span><span class="weight-value">20%</span>
+</li>
+<li class="weight"><span class="weight-name">Assignment 5 <span class="weight-note">Mads-Stack: optimize the
+                full
+                stack</span></span><span class="weight-bar" style="--w: 10"></span><span class="weight-value">10%</span>
+</li>
+<li class="weight"><span class="weight-name"><a href="project.html">Project</a></span><span class="weight-bar" style="--w: 20"></span><span class="weight-value">20%</span></li>
+<li class="weight"><span class="weight-name">Class participation</span><span class="weight-bar" style="--w: 10"></span><span class="weight-value">10%</span></li>
+<li class="weight weight-bonus"><span class="weight-name">Bonus <span class="weight-note">optional
+                presentations up to 4% each; course feedback up
+                to 6%; problems current AI cannot solve, 2% each</span></span><span class="weight-bar" style="--w: 10"></span><span class="weight-value">up to 10%</span></li>
+</ul>
+<p>See <a href="policy.html">policy page</a> for details.</p>
+<div class="subsection">
+<strong>Course website.</strong> <a href="index.html" rel="noopener noreferrer" target="_blank">https://cs2680.com</a>
+</div>
+<hr/>
+</div>
+<div class="col-12 section" id="staff">
+<h1>Staff</h1>
+<div class="staff-list">
+<div class="staff-card">
+<img alt="Juncheng Yang" class="staff-photo" src="staff/juncheng-yang.jpg"/>
+<div class="staff-info">
+<div class="staff-name"><a href="https://juncheng.seas.harvard.edu" rel="noopener noreferrer" target="_blank">Juncheng Yang</a></div>
+<div class="staff-role">Instructor</div>
+</div>
+</div>
+<div class="staff-row-break"></div>
+<div class="staff-card">
+<img alt="Yiyu Liu" class="staff-photo" src="staff/yiyu-liu.jpg"/>
+<div class="staff-info">
+<div class="staff-name"><a href="https://lau.yeeyu.org/" rel="noopener noreferrer" target="_blank">Yiyu Liu</a></div>
+<div class="staff-role">TF</div>
+</div>
+</div>
+<div class="staff-card">
+<img alt="Advaith Ravishankar" class="staff-photo" src="staff/AdvaithRavishankar.jpg"/>
+<div class="staff-info">
+<div class="staff-name">Advaith Ravishankar</div>
+<div class="staff-role">TF</div>
+</div>
+</div>
+<div class="staff-card">
+<img alt="Charles Wang" class="staff-photo" src="staff/charles.jpg"/>
+<div class="staff-info">
+<div class="staff-name">Charles Wang</div>
+<div class="staff-role">TF</div>
+</div>
+</div>
+<div class="staff-card">
+<img alt="Yunjia Zheng" class="staff-photo" src="staff/yunjia-zheng.jpg"/>
+<div class="staff-info">
+<div class="staff-name"><a href="https://scholar.google.com/citations?user=6o4Er-UAAAAJ" rel="noopener noreferrer" target="_blank">Yunjia Zheng</a>
+</div>
+<div class="staff-role">TF</div>
+</div>
+</div>
+</div>
+<div class="subsection"><b>Contact:</b> <a href="/cdn-cgi/l/email-protection#690a1a5b5f5159441a1d080f0f290e4701081b1f081b0d470c0d1c"><span class="__cf_email__" data-cfemail="016272333739312c727560676741662f696073776073652f646574">[email protected]</span></a> Please use this address for all
+          course-related questions. We only respond to emails from Harvard students. Due to the large number of emails we receive, we do not respond to external inquiries. 
+        </div>
+<div class="subsection"><b>Office hours:</b>
+<ul>
+<li>Instructor: Appointment only</li>
+<li>TFs: See Ed + by appointment</li>
+</ul>
+</div>
+<hr/>
+</div>
+<div class="col-12 section" id="schedule">
+<h1>Schedule</h1>
+<p><em>Tentative and subject to change.</em>
+<!-- Dates
+          follow the FAS Fall 2026 calendar: the semester opens Wed Sep 2 on a Monday schedule, there is no class on
+          Labor Day (Mon Sep 7) or Indigenous Peoples&rsquo; Day (Mon Oct 12), Veterans Day (Wed Nov 11) is an
+          instructional day, and the Thanksgiving recess takes Wed Nov 25. Confirm the semester boundaries against the
+          <a href="https://registrar.fas.harvard.edu/calendars" target="_blank" rel="noopener noreferrer">registrar's calendar</a>. The last meeting is <strong>Wed Dec 2</strong>. -->
+
+          Rows with
+          <strong>Students</strong> as the speaker are student-led: either a paper discussion (see the
+          <a href="discussion.html">paper discussion page</a>) or an assignment sharing session. Paper
+          presentations are optional and can earn up to four bonus percentage points each.
+        </p>
+<div class="table-responsive">
+<table class="table table-striped table-bordered table-hover">
+<thead>
+<tr class="table-light">
+<th scope="col">Week</th>
+<th scope="col">Date</th>
+<th scope="col">Speaker</th>
+<th scope="col">Topic</th>
+<th scope="col">Readings</th>
+<th scope="col">Notes</th>
+</tr>
+</thead>
+<tr class="table-light">
+<td colspan="6"><strong>Part I — Introduction to LLMs and agents</strong></td>
+</tr>
+<tr>
+<td>1</td>
+<td>2026-09-02</td>
+<td>Juncheng Yang</td>
+<td>Course overview and logistics <a href="slides/1_intro.pdf">[slide]</a></td>
+<td></td>
+<td><strong><a href="assignments/assignment1.html">Assignment 1</a> out</strong> (Mads-Lens: Watch the
+                agent work); Sign up for AWS </td>
+</tr>
+<tr class="schedule-break">
+<td>2</td>
+<td>2026-09-07</td>
+<td colspan="4"><em>No class — Labor Day</em></td>
+</tr>
+<tr>
+<td>2</td>
+<td>2026-09-09</td>
+<td>Juncheng Yang</td>
+<td>Agents use I: How Claude Code Works <a href="slides/2_agent_use_1.pdf">[slide]</a></td>
+<td>
+<a href="https://www.youtube.com/watch?v=EWvNQjAaOHw" rel="noopener noreferrer" target="_blank">How I use LLMs</a>; <a href="https://code.claude.com/docs/en/best-practices" rel="noopener noreferrer" target="_blank">Best practices for Claude Code</a>; <a href="https://simonwillison.net/guides/agentic-engineering-patterns/" rel="noopener noreferrer" target="_blank">Agentic Engineering Patterns</a>; <a href="readings/sep-09.html">more reading →</a>
+</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>2026-09-14</td>
+<td>Juncheng Yang</td>
+<td>Agents use II: 100x Engineer with Multi-agents <a href="slides/3_agent_use_2.pdf">[slide]</a></td>
+<td>
+<a href="https://code.claude.com/docs/en/agent-teams" rel="noopener noreferrer" target="_blank">Claude Code agent teams</a>; <a href="https://www.youtube.com/watch?v=LCEmiRjPEtQ" rel="noopener noreferrer" target="_blank">Software is changing (again)</a>; <a href="https://openai.com/index/research-acceleration-view-inside-openai/" rel="noopener noreferrer" target="_blank">Research acceleration: The view inside OpenAI</a>; <a href="readings/sep-14.html">more reading →</a>
+</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>2026-09-16</td>
+<td>Juncheng Yang</td>
+<td>Agents design I: context management and tool design <a href="slides/4_agent_design_1.pdf">[slide]</a>
+</td>
+<td>
+<a href="https://arxiv.org/abs/2210.03629" rel="noopener noreferrer" target="_blank">ReAct</a>; <a href="https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents" rel="noopener noreferrer" target="_blank">A practical guide to building agents</a>; <a href="https://lilianweng.github.io/posts/2023-06-23-agent" rel="noopener noreferrer" target="_blank">LLM Powered Autonomous Agents</a>; <a href="readings/sep-16.html">more reading →</a>
+</td>
+<td><strong><a href="assignments/assignment1.html">Assignment 1</a> due</strong> Sun Sep 20, 11:59pm </td>
+</tr>
+<tr>
+<td>4</td>
+<td>2026-09-21</td>
+<td>Students</td>
+<td>Student sharing I</td>
+<td>What you learned from using an agent (Assignment 1): surprises, failures, lessons, insights, new
+                tools/skills/plugins</td>
+<td><strong><a href="assignments/index.html#assignment-2">Assignment 2</a> out</strong> (Mads-Loop: Build
+                the loop)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2026-09-23</td>
+<td>Juncheng Yang</td>
+<td>Agents design II: multi-agent architecture, coordination, and communication <a href="slides/5_agent_design_2.pdf">[slide]</a></td>
+<td>
+<a href="https://www.anthropic.com/engineering/multi-agent-research-system" rel="noopener noreferrer" target="_blank">multi-agent research system</a>; <a href="https://arxiv.org/pdf/2512.08296" rel="noopener noreferrer" target="_blank">scaling agent systems</a>; <a href="https://cognition.com/blog/dont-build-multi-agents" rel="noopener noreferrer" target="_blank">don’t build multi-agents</a>; <a href="readings/sep-23.html">more reading →</a>
+</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>2026-09-28</td>
+<td>Juncheng Yang</td>
+<td>Agents design III: agent memory and reliability <a href="slides/6_agent_design_3.pdf">[slide]</a></td>
+<!-- <td>Agents from a designer&rsquo;s perspective IV: case study</td> -->
+<td>
+<a href="https://arxiv.org/abs/2509.25370" rel="noopener noreferrer" target="_blank">where agents fail</a>; <a href="https://arxiv.org/abs/2310.08560" rel="noopener noreferrer" target="_blank">MemGPT</a>; <a href="readings/sep-28.html">more reading →</a>
+</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2026-09-30</td>
+<td>Juncheng Yang</td>
+<td>Agent design IV: agent evaluation <a href="slides/7_agent_design_4.pdf">[slide]</a></td>
+<td><a href="notes/agent-evaluation.html">Agent evaluation and benchmarks</a></td>
+<td><strong><a href="assignments/index.html#assignment-2">Assignment 2</a> due</strong> Sun Oct 4, 11:59pm
+              </td>
+</tr>
+<tr>
+<td>6</td>
+<td>2026-10-05</td>
+<td>Harsh Nilesh Pathak (Snowflake)</td>
+<td>Guest lecture: Developing and Evaluating Agents in Enterprise Setting</td>
+<td></td>
+<td><strong><a href="assignments/index.html#assignment-3">Assignment 3</a> out</strong> (Mads-Opt: Make
+                every token count)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2026-10-07</td>
+<td>Juncheng Yang</td>
+<td>Advanced agent design I: Cost and performance <a href="slides/8_agent_design_5.pdf">[slide]</a> <a href="slides/8_assignment3.pdf">[Assignment3 slide]</a></td>
+<td><a href="notes/cost-effective-agents.html">Cost-effective agents</a></td>
+<td>Pre-proposal due (optional and only submit if you want to discuss your ideas)</td>
+</tr>
+<tr class="schedule-break">
+<td>7</td>
+<td>2026-10-12</td>
+<td colspan="4"><em>No class — Indigenous Peoples’ Day</em></td>
+</tr>
+<tr>
+<td>7</td>
+<td>2026-10-14</td>
+<td>Students</td>
+<td>Advanced agent design II: agent safety, self-evolving harness</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="table-light">
+<td colspan="6"><strong>Part II — Systems for LLMs and agents</strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>2026-10-19</td>
+<td>Juncheng Yang</td>
+<td>Efficient LLM serving: basics I</td>
+<td></td>
+<td><strong><a href="assignments/index.html#assignment-3">Assignment 3</a> due</strong> Tue Oct 20,
+                11:59pm</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2026-10-21</td>
+<td>Juncheng Yang</td>
+<td>Efficient LLM serving: basics II</td>
+<td>
+<!-- <a href="https://www.usenix.org/conference/osdi22/presentation/yu" target="_blank" rel="noopener noreferrer">Orca</a>; <a href="https://arxiv.org/abs/2309.06180" target="_blank" rel="noopener noreferrer">vLLM</a> -->
+</td>
+<td><strong><a href="assignments/index.html#assignment-4">Assignment 4</a> out</strong> (Mads-Serve: Own
+                the serving engine)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2026-10-26</td>
+<td>Juncheng Yang and Students</td>
+<td>Assignment Feedback and Student sharing II</td>
+<td>Common pitfalls in your submission; Assignment 3 lessons sharing.</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>2026-10-28</td>
+<td>Juncheng Yang</td>
+<td>Efficient LLM serving: speculative decoding</td>
+<td>
+<!-- <a href="https://arxiv.org/abs/2211.17192" target="_blank" rel="noopener noreferrer">speculative decoding</a>; <a href="https://arxiv.org/abs/2401.15077" target="_blank" rel="noopener noreferrer">EAGLE</a>; <a href="https://arxiv.org/abs/2401.10774" target="_blank" rel="noopener noreferrer">Medusa</a>; <a href="https://arxiv.org/abs/2607.05147" target="_blank" rel="noopener noreferrer">DSpark</a> -->
+</td>
+<td><strong><a href="project.html#proposal">Project proposal due</a></strong></td>
+</tr>
+<tr>
+<td>10</td>
+<td>2026-11-02</td>
+<td>Juncheng Yang</td>
+<td>Efficient agentic systems: scheduling and prefix caching</td>
+<td>
+<!-- <a href="https://www.usenix.org/conference/osdi24/presentation/lin-chaofan" target="_blank" rel="noopener noreferrer">Parrot</a>; <a href="https://arxiv.org/abs/2604.25899" target="_blank" rel="noopener noreferrer">Pythia</a>; <a href="https://www.usenix.org/conference/nsdi26/presentation/luo" target="_blank" rel="noopener noreferrer">Agentix</a>; <a href="https://doi.org/10.1145/3676641.3716278" target="_blank" rel="noopener noreferrer">Ayo (formerly Teola)</a>; <a href="https://arxiv.org/abs/2605.26297" target="_blank" rel="noopener noreferrer">Agentic AI Workload Characteristics</a>; <a href="https://arxiv.org/abs/2312.07104" target="_blank" rel="noopener noreferrer">SGLang / RadixAttention</a>; <a href="https://arxiv.org/abs/2411.19379" target="_blank" rel="noopener noreferrer">Marconi</a> -->
+</td>
+<td>This lecture is earlier because of Assignment 4.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2026-11-04</td>
+<td>Juncheng Yang</td>
+<td>Efficient LLM serving: pruning and quantization</td>
+<td>
+<!-- <a href="https://arxiv.org/abs/2209.05433" target="_blank" rel="noopener noreferrer">FP8 formats</a>; <a href="https://arxiv.org/abs/2510.25602" target="_blank" rel="noopener noreferrer">INT vs FP</a>; <a href="https://arxiv.org/abs/2208.07339" target="_blank" rel="noopener noreferrer">LLM.int8()</a>; <a href="https://arxiv.org/abs/2210.17323" target="_blank" rel="noopener noreferrer">GPTQ</a>; <a href="https://arxiv.org/abs/2306.00978" target="_blank" rel="noopener noreferrer">AWQ</a>; <a href="https://arxiv.org/abs/2402.02750" target="_blank" rel="noopener noreferrer">KIVI</a>; <a href="https://arxiv.org/abs/2405.04532" target="_blank" rel="noopener noreferrer">QServe</a>; <a href="https://arxiv.org/abs/2305.14314" target="_blank" rel="noopener noreferrer">QLoRA</a> -->
+</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>2026-11-09</td>
+<td>Xianzheng Kou (Meta)</td>
+<td>Guest lecture: Why Infrastructure sets the pace of AI </td>
+<td></td>
+<td><strong><a href="assignments/index.html#assignment-4">Assignment 4</a> due</strong> Tue Nov 10, 11:59pm</td>
+</tr>
+<tr>
+<td>11</td>
+<td>2026-11-11</td>
+<td>Juncheng Yang</td>
+<td>Efficient LLM serving: GPU and kernels</td>
+<!-- GPU kernel optimization -->
+<td>
+<!-- <a href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#cuda-graphs" target="_blank" rel="noopener noreferrer">CUDA graphs</a>; <a href="https://doi.org/10.1145/3620665.3640366" target="_blank" rel="noopener noreferrer">PyTorch 2</a>; <a href="https://arxiv.org/abs/2411.15100" target="_blank" rel="noopener noreferrer">XGrammar</a>; <a href="https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/" target="_blank" rel="noopener noreferrer">Defeating nondeterminism in LLM inference</a> -->
+</td>
+<td><strong><a href="assignments/index.html#assignment-5">Assignment 5</a> out</strong> (Mads-Stack:
+                Optimize the full stack)</td>
+</tr>
+<tr>
+<td>12</td>
+<td>2026-11-16</td>
+<td>Students</td>
+<td>Efficient LLM serving: KV-cache optimization and model architectures</td>
+<td>
+<!-- <a href="https://arxiv.org/abs/1911.02150" target="_blank" rel="noopener noreferrer">MQA</a>; <a href="https://arxiv.org/abs/2305.13245" target="_blank" rel="noopener noreferrer">GQA</a>; <a href="https://arxiv.org/abs/2405.04434" target="_blank" rel="noopener noreferrer">MLA</a>; <a href="https://arxiv.org/abs/2502.11089" target="_blank" rel="noopener noreferrer">NSA</a>; <a href="https://arxiv.org/abs/2312.00752" target="_blank" rel="noopener noreferrer">Mamba</a> -->
+</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>2026-11-18</td>
+<td>Students</td>
+<td>Student sharing III</td>
+<td>Demonstrate your agent-engine co-design (Assignment 4)</td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td>2026-11-23</td>
+<td>Juncheng Yang</td>
+<td>Efficient agentic system: routing and load balancing</td>
+<td>
+<!-- <a href="https://arxiv.org/abs/2407.00023" target="_blank" rel="noopener noreferrer">Preble</a>; <a href="https://arxiv.org/abs/2406.03243" target="_blank" rel="noopener noreferrer">Llumnix</a>; <a href="https://www.usenix.org/conference/osdi26/presentation/zhang-dingyan" target="_blank" rel="noopener noreferrer">LMetric</a>; <a href="https://arxiv.org/abs/2607.08565" target="_blank" rel="noopener noreferrer">SMetric</a>; <a href="https://arxiv.org/abs/2406.18665" target="_blank" rel="noopener noreferrer">RouteLLM</a> -->
+</td>
+<td><strong><a href="assignments/index.html#assignment-5">Assignment 5</a> due</strong> Sun Nov 29, 11:59pm</td>
+</tr>
+<tr class="schedule-break">
+<td>13</td>
+<td>2026-11-25</td>
+<td colspan="4"><em>No class — Thanksgiving recess</em></td>
+</tr>
+<tr>
+<td>14</td>
+<td>2026-11-30</td>
+<td>Juncheng Yang</td>
+<td>Efficient agentic systems: others</td>
+<!-- Durable execution and fault tolerance, Sandboxing, Observability and debugging -->
+<!-- making small models usable, constrained decoding -->
+<!-- talk about students claude code usage pattern change -->
+<td>
+<!-- <a href="https://arxiv.org/abs/2402.01869" target="_blank" rel="noopener noreferrer">InferCept</a>; <a href="https://arxiv.org/abs/2511.02230" target="_blank" rel="noopener noreferrer">Continuum</a>; <a href="https://arxiv.org/abs/2510.18586" target="_blank" rel="noopener noreferrer">TokenCake</a>; <a href="https://arxiv.org/abs/2601.21473" target="_blank" rel="noopener noreferrer">ScaleSim</a> -->
+</td>
+<td></td>
+</tr>
+<tr>
+<td>14</td>
+<td>2026-12-02</td>
+<td>Students</td>
+<td>Student sharing IV</td>
+<td>Showcase your full stack optimizations (Assignment 5)</td>
+<td></td>
+</tr>
+<tr data-kind="event">
+<td>14</td>
+<td>2026-12-07</td>
+<td>Students</td>
+<td>Final project poster and demo</td>
+<td>Present your final project as a poster and a live demo. <br/> <br/> <strong>Location: SEC 1.402 from
+                  9:00 AM to 1:00 PM</strong> </td>
+<td><strong>Final project due</strong> Tue Dec 8, 11:59pm
+              </td>
+</tr>
+</table>
+</div>
+<hr/>
+</div>
+<div class="col-12 section" id="reference-pages">
+<h1>Reference pages</h1>
+<ul>
+<li><a href="notes/agent-evaluation.html">Agent evaluation and benchmarks</a>. Evaluation design, metrics, reliability, cost, and benchmark selection.</li>
+<li><a href="notes/cost-effective-agents.html">Cost-effective agents</a>. Techniques for allocating models, reasoning, context, collaboration, and serving resources across complete tasks.</li>
+<!-- <li><a href="notes/transformers.html">Transformers and LLM foundations</a>. Optional readings on model architecture, tokenization, scaling, training, reasoning, and evaluation.</li> -->
+</ul>
+<hr/>
+</div>
+<!-- <div class="col-12 section" id="tools">
+        <h1>Tools</h1>
+        <ul>
+          <li><a href="https://claude-code-session-viewer.cs2680.com" target="_blank" rel="noopener noreferrer">Claude Code session viewer</a>. View and inspect Claude Code session logs.</li>
+        </ul>
+        <hr>
+      </div> -->
+<div class="col-12 section" id="resources">
+<h1>Compute resources</h1>
+<p>Setup instructions for every environment the course uses are on the
+          <a href="computing/index.html">computing setup</a> page. Compute for the assignments and the
+          <a href="project.html">final project</a> comes from:
+        </p>
+<ul>
+<li><a href="computing/claude-code.html">Claude Code</a>. Required for Assignment 1.</li>
+<li><a href="computing/api.html">Model API access</a>. Required for Assignments 2 and 3.</li>
+<li><a href="computing/cluster.html">The course HPC</a>. Required for Assignments 4 and 5.</li>
+<li><a href="computing/aws.html">AWS</a>. Register in week one; using the account is optional.</li>
+<!-- <li><a href="computing/cloudlab.html">CloudLab</a>. Bare-metal machines for project work</li> -->
+</ul>
+<hr/>
+</div>
+<div class="subsection">
+<strong>Textbook.</strong> No textbook is required. Background reading:
+          <ul>
+<li>
+              Computer systems:
+              <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems: Three Easy Pieces</a><br/>
+</li>
+<li>
+              Machine learning systems:
+              <a href="https://mlsysbook.ai">Machine Learning Systems</a>
+</li>
+<li>
+              Large language models:
+              <a href="https://arxiv.org/abs/2501.09223">Foundations of Large Language Models</a><br/>
+</li>
+<li>
+              Deep learning:
+              <a href="https://fleuret.org/francois/lbdl.html">The Little Book of Deep Learning</a>
+</li>
+</ul>
+</div>
+<div class="col-12 section" id="sponsors">
+<h1>Sponsors</h1>
+<p>We are grateful for the support of our sponsors.</p>
+<div class="sponsor-logos">
+<div class="sponsor sponsor-fas">
+<div class="sponsor-mark"><a href="https://www.fas.harvard.edu/" rel="noopener noreferrer" target="_blank"><img alt="Harvard Faculty of Arts and Sciences" height="126" src="sponsors/harvard-fas.svg" width="516"/></a></div>
+<p class="sponsor-blurb">The Claude license behind <a href="computing/claude-code.html">Claude Code</a>.</p>
+</div>
+<div class="sponsor sponsor-atg">
+<div class="sponsor-mark"><a href="https://atg.fas.harvard.edu/" rel="noopener noreferrer" target="_blank"><img alt="Harvard University Information Technology, Academic Technology for the Faculty of Arts and Sciences" height="120" src="sponsors/fas-atg.png" width="425"/></a></div>
+<p class="sponsor-blurb">The <a href="computing/cluster.html">course HPC</a>, 72 CPU servers and 120
+              dedicated RTX PRO 6000 Blackwell servers. API access for OpenAI, Anthropic and Gemini models. </p>
+</div>
+<div class="sponsor sponsor-aws">
+<div class="sponsor-mark"><a href="https://aws.amazon.com/" rel="noopener noreferrer" target="_blank"><img alt="Amazon Web Services" height="109" src="sponsors/aws.png" width="179"/></a></div>
+<!-- <p class="sponsor-blurb">$1,000 in AWS credits per student.</p> -->
+</div>
+<div class="sponsor sponsor-madsys">
+<div class="sponsor-mark"><a href="https://madsys.seas.harvard.edu/" rel="noopener noreferrer" target="_blank"><img alt="Harvard University MaDSys: Measurement and Design of Systems" height="140" src="sponsors/madsys.png" width="385"/></a></div>
+<p class="sponsor-blurb">Software system, data and hardware support. </p>
+</div>
+</div>
+<hr/>
+</div>
+</div>
+</div>
+<!-- Default Statcounter code for cs2680
+https://cs2680.com -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript">
+    var sc_project = 13351434;
+    var sc_invisible = 1;
+    var sc_security = "7a833262"; 
+  </script>
+<script async="" src="https://www.statcounter.com/counter/counter.js" type="text/javascript"></script>
+<noscript>
+<div class="statcounter"><a href="https://statcounter.com/" target="_blank" title="Web Analytics Made Easy - Statcounter"><img alt="Web Analytics Made Easy - Statcounter" class="statcounter" referrerpolicy="no-referrer-when-downgrade" src="https://c.statcounter.com/13351434/0/7a833262/1/"/></a></div>
+</noscript>
+<!-- End of Statcounter Code -->
+<footer class="site-footer">
+<div class="container">
+<p><a href="https://madsys.seas.harvard.edu/" rel="noopener" target="_blank">MadSys Research Group</a> · <a href="https://seas.harvard.edu/" rel="noopener" target="_blank">Harvard John A. Paulson School of Engineering and Applied Sciences</a></p>
+<p class="footer-policies"><a href="https://trademark.harvard.edu/pages/trademark-notice" rel="noopener" target="_blank">Trademark Notice</a> · <a href="https://accessibility.harvard.edu/" rel="noopener" target="_blank">Accessibility</a> · <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" rel="noopener" target="_blank">Digital Accessibility</a> · <a href="https://privsec.harvard.edu/harvard-university-privacy-statement" rel="noopener" target="_blank">Privacy Statement</a></p>
+<p class="footer-copyright">© 2026 Juncheng Yang</p>
+</div>
+</footer>
+</body>
+</html>

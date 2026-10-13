@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="../vendor/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="../vendor/bootstrap.bundle.min.js"></script>
+<meta content="Choose and set up the computing environment for each CS2680 assignment: Claude Code, model API access, the course HPC, AWS, and CloudLab" name="description"/>
+<meta content="Juncheng Yang" name="author"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="CS2680 Modern AI Systems — Computing Setup" property="og:title"/>
+<meta content="Choose and set up the computing environment for each CS2680 assignment: Claude Code, model API access, the course HPC, AWS, and CloudLab" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="CS2680 Modern AI Systems" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<link href="../css/main.css" rel="stylesheet"/>
+<title>CS2680 Modern AI Systems — Computing Setup</title>
+</head>
+<body>
+<div id="site-header"></div>
+<script src="../header.js"></script>
+<div class="container page">
+<div class="row">
+<div class="col-12">
+<div class="title">CS2680 Modern AI Systems: Agents and System Optimizations</div>
+</div>
+<div class="col-12 title2">
+        Computing setup
+      </div>
+<div class="col-12 section" id="computing">
+<h1>Computing resources you will use</h1>
+<p class="lead">You will use Claude Code in Assignment 1 (and potentially throughout the course).
+          You will need access to LLM inference APIs in Assignments 2 and 3. You will need access to GPUs for Assignments 4 and 5.
+          AWS provides additional computing resources, and every student registers an account in week one.
+        </p>
+<div class="tip">
+<strong>Request the necessary resources in week one</strong>: <a href="claude-code.html">Claude Code</a>, <a href="cluster.html">HPC GPU</a>, and <a href="aws.html">AWS</a> accounts.
+        </div>
+<br/>
+<div class="notes-list notes-grid notes-grid-plain">
+<a class="note-card" href="claude-code.html" id="claude-code"> <div class="note-card-label">Required · Assignment 1</div> <div class="note-card-title">Claude Code</div> <p class="note-card-summary">Start here. Harvard FAS provides a Claude Code license, please submit a request to get access.</p> </a>
+<a class="note-card" href="api.html" id="api"> <div class="note-card-label">Required · Assignments 2 and 3</div> <div class="note-card-title">Model API access</div> <p class="note-card-summary">Access the OpenAI, Anthropic, and Google models, provided by Harvard FAS ATG and routed through the MaDSys hybridInference proxy. We create an account for every enrolled student and post the credentials on Canvas, so there is nothing to register for. Please be frugal with your usage, as the cost can add up quickly.</p> </a>
+<a class="note-card" href="cluster.html" id="hpc"> <div class="note-card-label">Required · Assignments 4 and 5</div> <div class="note-card-title">Harvard ATG course HPC</div> <p class="note-card-summary">Use an interactive Slurm job when a job is too long for your laptop, and use the course GPU partition for Assignments 4 and 5. </p> </a>
+<a class="note-card" href="aws.html" id="aws"> <div class="note-card-label">Register in week one · use optional</div> <div class="note-card-title">AWS</div> <p class="note-card-summary">Registration is required of every student and the form closes after week one. Using the account is optional: run a small deployment on an EC2 instance if you want one, with no GPU needed. Protect the endpoint, set a billing alarm before launch, and stop the instance when you are finished.</p> </a>
+<!-- <a class="note-card" id="cloudlab" href="cloudlab.html"> <div class="note-card-label">Optional (request only when you know what you're doing)</div> <div class="note-card-title">CloudLab</div> <p class="note-card-summary">Choose bare metal when a project must change the kernel, network, or storage stack, or when a measurement cannot tolerate a co-tenant. Otherwise, the HPC is the simpler and faster choice.</p> </a> -->
+</div>
+<hr/>
+</div>
+<div class="col-12 section" id="which">
+<h1>Assignment by assignment</h1>
+<div class="table-responsive">
+<table class="table table-bordered align-middle">
+<thead class="table-light">
+<tr>
+<th scope="col">Work</th>
+<th scope="col">Use</th>
+<th scope="col">Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../to_release.html">Assignment 1</a></td>
+<td>Claude Code + <a href="aws.html">AWS</a></td>
+<td>Build the web UI with the course agent account, and deploy it on EC2 if you want it reachable. No GPU required.</td>
+</tr>
+<tr>
+<td><a href="../to_release.html">Assignment 2</a> and <a href="../to_release.html">Assignment 3</a></td>
+<td>Laptop/HPC + <a href="api.html">Harvard OpenAI/Gemini/Anthropic API</a></td>
+<td>The model runs behind a commercial API. Any machine is enough; use AWS or <a href="cluster.html#interactive">HPC job</a> when the experiment should run for hours.</td>
+</tr>
+<tr>
+<td><a href="../to_release.html">Assignment 4</a></td>
+<td>HPC GPU (RTX PRO 6000 Blackwell)</td>
+<td>You serve the model yourself. Use the course
+                  <a href="cluster.html#gpu"><code>gpu-cs2680</code> partition</a>.
+                </td>
+</tr>
+<tr>
+<td><a href="../to_release.html">Assignment 5</a></td>
+<td>HPC and/or <a href="api.html">API</a> + AWS/CloudLab</td>
+<td>You serve the agent using the provided GPU, you will optimize your model and serving engine, but you can also use a small number of API calls. </td>
+</tr>
+<tr>
+<td><a href="../project.html">Final project</a></td>
+<td>Laptop + <a href="api.html">model API</a>, or <a href="cluster.html">HPC</a>;
+                  <a href="cloudlab.html">CloudLab</a> when necessary</td>
+<td>Use the API for hosted models and the HPC when you need to serve or train a model. Use CloudLab
+                  only when the research question depends on bare-metal control or isolation.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>If a project needs hardware that none of these environments provides, ask the instructor while the scope can
+          still change. Compute can sometimes be arranged; last-minute capacity cannot be promised.</p>
+<hr/>
+</div>
+<div class="col-12 section" id="everywhere">
+<h1>Tips</h1>
+<ul>
+<li><strong>Keep secrets out of agent sessions.</strong> A transcript can contain files the agent read and
+            output its commands printed, not just your prompts. Follow the
+            <a href="claude-code.html#privacy">scan-before-you-archive checklist</a> every time.
+          </li>
+<li><strong>Describe your environment and experiment setup.</strong> Report the GPU, driver, serving engine and version, model, and workload. Latency or throughput without that context cannot be reproduced or compared.</li>
+<li><strong>Release idle resources.</strong> Exit the Slurm job, stop the EC2 instance, and terminate the CloudLab experiment. Shared hardware and paid instances should never sit idle by accident.</li>
+<li><strong>Escalate access problems early.</strong> An account problem in week one is fixable. The same problem on the due date is still an account problem, not an extension plan.</li>
+</ul>
+<hr/>
+</div>
+<div class="col-12 section" id="related">
+<h1>Related</h1>
+<ul>
+<li><a href="../assignments/index.html">Assignments</a>. The five specs these environments serve.</li>
+<li><a href="../project.html#resources">Final project compute</a>. Choosing among the model API,
+            the HPC, AWS, FASRC, and CloudLab for project work.</li>
+<li><a href="../policy.html#ai-policy">AI use policy</a>. The agent requirement, disclosure, and the
+            session-file submission rule.</li>
+</ul>
+</div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="container">
+<p><a href="https://madsys.seas.harvard.edu/" rel="noopener" target="_blank">MadSys Research Group</a> · <a href="https://seas.harvard.edu/" rel="noopener" target="_blank">Harvard John A. Paulson School of Engineering and Applied Sciences</a></p>
+<p class="footer-policies"><a href="https://trademark.harvard.edu/pages/trademark-notice" rel="noopener" target="_blank">Trademark Notice</a> · <a href="https://accessibility.harvard.edu/" rel="noopener" target="_blank">Accessibility</a> · <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" rel="noopener" target="_blank">Digital Accessibility</a> · <a href="https://privsec.harvard.edu/harvard-university-privacy-statement" rel="noopener" target="_blank">Privacy Statement</a></p>
+<p class="footer-copyright">© 2026 Juncheng Yang</p>
+</div>
+</footer>
+</body>
+</html>

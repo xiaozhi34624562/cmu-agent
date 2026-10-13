@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+  <meta charset="utf-8">
+  <title>How skills and MCPs actually work | Lawrence Jones</title>
+  <meta name="description"
+    content="  The AI ecosystem can be really confusing: Agents, MCPs, skills, plugins,  everything is an overloaded term and a fuzzy concept. This is an  explanation of ...">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+
+  <!-- If this is an external_url, we want to redirect -->
+  
+
+  <!-- Preload Google fonts, which is defined in sass -->
+  
+  <link rel="preload" as="font" crossorigin href="https://fonts.gstatic.com/s/sourcesanspro/v14/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7nsDc.ttf">
+  
+  <link rel="preload" as="font" crossorigin href="https://fonts.gstatic.com/s/sourcesanspro/v14/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZclSds18E.ttf">
+  
+  <link rel="preload" as="font" crossorigin href="https://fonts.gstatic.com/s/sourcesanspro/v14/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7g.ttf">
+  
+  <link rel="preload" as="font" crossorigin href="https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlxdr.ttf">
+  
+
+  <!--
+    Preload any font-awesome assets we might want to use
+
+    Identify these URLs by watching the network panel in Chrome when loading pages. Update
+    them whenever we change font-awesome version.
+  -->
+  
+  <link rel="preload" as="font" crossorigin href="https://use.fontawesome.com/releases/v5.8.2/webfonts/fa-brands-400.woff2">
+  
+  <link rel="preload" as="font" crossorigin href="https://use.fontawesome.com/releases/v5.8.2/webfonts/fa-solid-900.woff2">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/atom+xml" title="Lawrence Jones"
+    href="/feed.xml" />
+
+  <!--
+   Font Awesome
+
+   Configured to lazily load, so it doesn't block the page
+  -->
+  <link
+    rel="preload"
+    as="style"
+    onload="this.rel='stylesheet'"
+    href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+    crossorigin="anonymous">
+
+  <!-- KaTeX -->
+  
+
+  <!-- Google Analytics, fast loading version -->
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2FV47623W0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-2FV47623W0');
+    </script>
+  
+
+  
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>How skills and MCPs actually work</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="How skills and MCPs actually work" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The AI ecosystem can be really confusing: Agents, MCPs, skills, plugins, everything is an overloaded term and a fuzzy concept. This is an explanation of how these constructs work in plain terms, useful if you&#39;re an engineer wanting to go from passively consuming them to genuine understanding." />
+<meta property="og:description" content="The AI ecosystem can be really confusing: Agents, MCPs, skills, plugins, everything is an overloaded term and a fuzzy concept. This is an explanation of how these constructs work in plain terms, useful if you&#39;re an engineer wanting to go from passively consuming them to genuine understanding." />
+<link rel="canonical" href="https://blog.lawrencejones.dev/demystifying-skills-and-mcps/" />
+<meta property="og:url" content="https://blog.lawrencejones.dev/demystifying-skills-and-mcps/" />
+<meta property="og:image" content="https://blog.lawrencejones.dev/assets/images/demystifying-skills-and-mcps.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-09-01T12:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://blog.lawrencejones.dev/assets/images/demystifying-skills-and-mcps.png" />
+<meta property="twitter:title" content="How skills and MCPs actually work" />
+<meta name="twitter:site" content="@lawrjones" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-09-01T12:00:00+00:00","datePublished":"2026-09-01T12:00:00+00:00","description":"The AI ecosystem can be really confusing: Agents, MCPs, skills, plugins, everything is an overloaded term and a fuzzy concept. This is an explanation of how these constructs work in plain terms, useful if you&#39;re an engineer wanting to go from passively consuming them to genuine understanding.","headline":"How skills and MCPs actually work","image":"https://blog.lawrencejones.dev/assets/images/demystifying-skills-and-mcps.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.lawrencejones.dev/demystifying-skills-and-mcps/"},"url":"https://blog.lawrencejones.dev/demystifying-skills-and-mcps/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  
+</head>
+
+  <body>
+    <header class="site-header">
+	<div class="header-content">
+		<div class="branding">
+			
+			<a href="/">
+				<img class="avatar" src="https://secure.gravatar.com/avatar/a3d694b39e0e33fc479832b00dc128dc?s=105" alt="Gravatar picture of Lawrence">
+			</a>
+			
+			<h1 class="site-title">
+				<a href="/">Lawrence Jones</a>
+			</h1>
+		</div>
+		<nav class="site-nav">
+			<ul>
+				
+				
+				
+				
+				
+				<li>
+					<a class="page-link" href="/about/">
+						About
+					</a>
+				</li>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				<!-- Social icons from Font Awesome, if enabled  -->
+				
+<li>
+	<a href="/feed.xml" title="Follow RSS feed">
+		<i class="fas fa-fw fa-rss"></i>
+	</a>
+</li>
+
+
+
+<li>
+	<a href="/cdn-cgi/l/email-protection#dfb2ba9fb3bea8adbab1bcbab5b0b1baacf1bbbaa9" title="Email">
+		<i class="fas fa-fw fa-envelope"></i>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://github.com/lawrencejones" title="Follow on GitHub" target="_blank" rel="noopener noreferrer">
+		<i class="fab fa-fw fa-github"></i>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://twitter.com/lawrjones" title="Follow on Twitter" target="_blank" rel="noopener noreferrer">
+		<i style="color: rgba(29,161,242,1.00);" class="fab fa-fw fa-twitter"></i>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+				<!-- Search bar -->
+				
+			</ul>
+		</nav>
+	</div>
+</header>
+
+    <div class="content">
+      <article>
+  <header style="background-image: url('/')">
+    <h1 class="title">How skills and MCPs actually work</h1>
+    
+    <p class="meta">
+      September 1, 2026
+      
+    </p>
+  </header>
+  <section class="post-content">
+    <p>We’ve been working on a project called Extensions: customers can now connect
+their MCPs into our platform then load skills that tell us how to use them, with
+both skills and connectors (our word for a connected MCP or API) woven into all
+our agent surfaces. Basically, anything you can do in your Claude/Codex/etc
+should be doable in our platform, and vice versa.</p>
+
+<p>It’s been a fun project but challenging, in part because until now we
+(incident.io engineers) have been passive consumers of these technologies. We
+used them, sure, and lots of people had written a skill, but were they good? Did
+they actually work, beyond just for whichever person had written them? The
+honest answer is we didn’t know, probably not, and no one could confidently say
+they had mastered the tools.</p>
+
+<p>Extensions meant this needed to change, so we speed-run the process by:</p>
+
+<ul>
+  <li>Building skill support into our agent harnesses</li>
+  <li>Created a product with a strong conceptual model around skills</li>
+  <li>Dogfood’d the hell out of it: even hooking @incident up to an office printer</li>
+  <li>Arrived at opinions on best-practices</li>
+  <li>Encoded those opinions into product</li>
+  <li>Exposed feedback to customers on how their skills were performing</li>
+  <li>Helped those customers actually improve their skills</li>
+</ul>
+
+<p>Like much in the AI technology age you don’t need to know how this stuff works
+to use it, but you will be much more effective if you do. So after having the
+same “Skills and MCPs 101” chats with the team, I’ve taken the explanations that
+worked best and written them into this post.</p>
+
+<p>If you want to know how this stuff actually works, this post is for you.</p>
+
+<h2 id="llm-101">LLM 101</h2>
+
+<p>Before we can talk about how skills work, we need to recap some LLM
+fundamentals. Feel free to skip if you already know, but…</p>
+
+<p>All LLMs expose an API that looks much like a message thread. Each message has a
+‘role’ which tells you what provided the message, be it instructions given by
+the <code class="language-plaintext highlighter-rouge">system</code>, messages containing data for this <code class="language-plaintext highlighter-rouge">user</code>, or <code class="language-plaintext highlighter-rouge">assistant</code> messages
+which are generated by the LLM model in response to the former.</p>
+
+<p>The standard example of asking an agent for the “weather in London” ends up
+looking like this:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">system</span><span class="pi">:</span> <span class="pi">|</span>
+  <span class="s">You are a helpful assistant. Use your tools to answer questions.</span>
+
+<span class="na">tools</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">get_weather</span>
+    <span class="na">description</span><span class="pi">:</span> <span class="s">Get the current weather for a location</span>
+    <span class="na">input</span><span class="pi">:</span> <span class="pi">{</span> <span class="nv">location</span><span class="pi">:</span> <span class="nv">string</span> <span class="pi">}</span>
+
+<span class="na">messages</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">user</span><span class="pi">:</span> <span class="s">What's the weather in London?</span>
+
+  <span class="c1"># The model can't run anything itself: it responds by asking</span>
+  <span class="c1"># the harness to make a tool call on its behalf...</span>
+  <span class="pi">-</span> <span class="na">assistant</span><span class="pi">:</span>
+      <span class="na">tool_call</span><span class="pi">:</span> <span class="pi">{</span> <span class="nv">name</span><span class="pi">:</span> <span class="nv">get_weather</span><span class="pi">,</span> <span class="nv">input</span><span class="pi">:</span> <span class="pi">{</span> <span class="nv">location</span><span class="pi">:</span> <span class="nv">London</span> <span class="pi">}</span> <span class="pi">}</span>
+
+  <span class="c1"># ...the harness executes it, appends the result to the thread,</span>
+  <span class="c1"># and asks the model to continue.</span>
+  <span class="pi">-</span> <span class="na">user</span><span class="pi">:</span>
+      <span class="na">tool_result</span><span class="pi">:</span> <span class="pi">{</span> <span class="nv">temperature</span><span class="pi">:</span> <span class="nv">14C</span><span class="pi">,</span> <span class="nv">conditions</span><span class="pi">:</span> <span class="nv">light rain</span> <span class="pi">}</span>
+
+  <span class="pi">-</span> <span class="na">assistant</span><span class="pi">:</span> <span class="s">It's currently 14°C with light rain in London.</span>
+</code></pre></div></div>
+
+<p>In this example we set up the agent with a purpose via the <code class="language-plaintext highlighter-rouge">system</code> message and
+a single ‘tool’ called <code class="language-plaintext highlighter-rouge">get_weather</code>. LLMs don’t execute tools themselves.
+Asked a question like our <code class="language-plaintext highlighter-rouge">user</code> message (“What’s the weather in London?”), the
+model runs a standard flow:</p>
+
+<ol>
+  <li>Do I already know the answer, either from my training or from what’s in the
+thread? If so, respond with it.</li>
+  <li>If not, do I have a tool that could get me the answer? If so, return a
+<code class="language-plaintext highlighter-rouge">tool_call</code> describing how to call it.</li>
+</ol>
+
+<p>Tools are how the LLM can see outside of its context and communicate with the
+outside world. They can be informational like <code class="language-plaintext highlighter-rouge">get_weather</code> or take action, e.g.
+<code class="language-plaintext highlighter-rouge">send_message</code>.</p>
+
+<p>LLMs return a request to call the tool with parameters and expect the
+surrounding code that is running the agent (often called a harness) to look up
+the tool’s implementation and call it with those parameters. The result is
+then appended to the message thread and the entire thread sent back to the LLM,
+at which point it can run the same process as before but now the ‘answer’ is
+available in context, so it can immediately respond.</p>
+
+<p>There is no concept of ‘memory’ baked into the LLM models themselves, they are
+‘stateless’ in that all state is carried in the thread. The part that most
+people don’t clock is that an agent loop that executes tools repeatedly calls
+back to the model, gradually appending messages as it goes, as this is hidden
+behind a loading spinner in most LLM powered applications.</p>
+
+<p>That’s all you need to know, other than one important subtlety around <code class="language-plaintext highlighter-rouge">system</code>
+messages which is that models are trained to treat the system message as their
+highest-priority instructions, outranking anything the user says. If you’re ever
+writing prompts it’s critical you realise this is baked into the core of these
+models, they take it <em>very</em> seriously.</p>
+
+<p>A common mistake when naively writing a system prompt is saying something like:</p>
+
+<blockquote>
+  <p>Generate between 3 and 5 tags for this document.</p>
+</blockquote>
+
+<p>Sounds sensible, right? You’re tagging documents and ~3 keywords is ideal…
+until someone uploads an empty doc and your LLM spits out something like “god”
+“help” “me” because it is DUTY BOUND to follow the system prompt to the letter,
+and you didn’t anticipate this edge case. In my experience building agent
+products, when a frontier model hallucinates it’s almost always because a prompt
+trapped it like this, which is why you must be extremely careful of how you
+write them.</p>
+
+<p>More of that later, but that’s your LLM 101 done.</p>
+
+<h2 id="agents-are-a-loop">Agents are a loop</h2>
+
+<p>Now we’ve covered LLM fundamentals, we can define an agent, and it’s not
+anything crazy: an agent is the flow from the previous section run in a loop.
+Call the model, execute whatever tools it asked for, append the results to the
+thread, call the model again, and stop when it stops asking for tools.</p>
+
+<style>
+  .fig-diagram { --accent: #12876F; --accent-soft: rgba(26, 188, 156, 0.10); margin: 2em auto; }
+  .fig-diagram svg { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+  .fig-diagram svg text {
+    fill: currentColor; font-family: inherit; font-size: 12px;
+    paint-order: stroke; stroke: #fff; stroke-width: 3.5px; stroke-linejoin: round;
+  }
+  .fig-diagram svg .head { font-size: 13px; font-weight: 600; }
+  .fig-diagram svg .mono { font-family: Menlo, Consolas, monospace; font-size: 11.5px; }
+  .fig-diagram svg .muted { opacity: 0.65; }
+</style>
+
+<figure class="fig-diagram">
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 740 330" role="img" aria-label="The agent loop: the harness sends the whole message thread to the model; the model returns a tool call; the harness executes it, appends the result to the thread, and sends it all again — until the model answers.">
+    <defs>
+      <marker id="f1-arr" viewbox="0 0 10 10" refx="9" refy="5" markerwidth="7" markerheight="7" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"></path>
+      </marker>
+      <marker id="f1-arr-acc" viewbox="0 0 10 10" refx="9" refy="5" markerwidth="7" markerheight="7" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" style="fill: var(--accent)"></path>
+      </marker>
+    </defs>
+    <rect x="20" y="20" width="580" height="268" rx="14" fill="none" stroke="currentColor" stroke-dasharray="6 6" opacity="0.35"></rect>
+    <text x="310" y="312" text-anchor="middle" class="muted">the agent loop — everything the loading spinner hides</text>
+    <rect x="48" y="60" width="180" height="150" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+    <text x="138" y="88" text-anchor="middle" class="head">the thread</text>
+    <text x="138" y="110" text-anchor="middle" class="muted">system · tools · messages</text>
+    <line x1="66" y1="128" x2="210" y2="128" stroke="currentColor" opacity="0.45"></line>
+    <line x1="66" y1="146" x2="210" y2="146" stroke="currentColor" opacity="0.45"></line>
+    <line x1="66" y1="164" x2="210" y2="164" stroke="currentColor" opacity="0.45"></line>
+    <line x1="66" y1="182" x2="150" y2="182" style="stroke: var(--accent)" stroke-width="1.6"></line>
+    <text x="138" y="200" text-anchor="middle" style="fill: var(--accent)">grows every turn</text>
+    <line x1="228" y1="95" x2="420" y2="95" stroke="currentColor" stroke-width="1.5" marker-end="url(#f1-arr)"></line>
+    <text x="324" y="83" text-anchor="middle">the whole thread, every time</text>
+    <rect x="425" y="60" width="140" height="70" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+    <text x="495" y="90" text-anchor="middle" class="head">LLM</text>
+    <text x="495" y="110" text-anchor="middle" class="muted">stateless</text>
+    <line x1="495" y1="130" x2="495" y2="196" stroke="currentColor" stroke-width="1.5" marker-end="url(#f1-arr)"></line>
+    <text x="506" y="168" class="mono">tool_call</text>
+    <rect x="392" y="202" width="205" height="56" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+    <text x="495" y="225" text-anchor="middle" class="head">harness runs the tool</text>
+    <text x="495" y="245" text-anchor="middle" class="mono muted">get_weather(London)</text>
+    <line x1="392" y1="230" x2="234" y2="230" stroke="currentColor" stroke-width="1.5" marker-end="url(#f1-arr)"></line>
+    <text x="313" y="220" text-anchor="middle">tool_result appended</text>
+    <line x1="565" y1="80" x2="668" y2="80" style="stroke: var(--accent)" stroke-width="1.8" marker-end="url(#f1-arr-acc)"></line>
+    <text x="616" y="66" text-anchor="middle" style="fill: var(--accent)">nothing left to ask</text>
+    <text x="702" y="84" text-anchor="middle" class="head" style="fill: var(--accent)">answer</text>
+  </svg>
+
+  <figcaption>An agent is this loop and nothing more: send the thread, run
+    whatever the model asked for, append the result, send it all again. The
+    green arrow is the only part you ever see.</figcaption>
+</figure>
+
+<p>Claude Code, Codex, Cursor: underneath the branding, they are all this loop,
+provided with a set of tools that make up what people call the ‘harness’.</p>
+
+<p>Given everything these agents can achieve, what tends to surprise people is how
+mundane the tools are. Here’s an abridged version of what Claude Code hands the
+model:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">tools</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">Bash</span>     <span class="c1"># run a shell command</span>
+  <span class="pi">-</span> <span class="s">Read</span>     <span class="c1"># read a file</span>
+  <span class="pi">-</span> <span class="s">Write</span>    <span class="c1"># create a file</span>
+  <span class="pi">-</span> <span class="s">Edit</span>     <span class="c1"># find-and-replace within a file</span>
+  <span class="pi">-</span> <span class="s">Grep</span>     <span class="c1"># search file contents</span>
+  <span class="pi">-</span> <span class="s">WebFetch</span> <span class="c1"># fetch a URL</span>
+</code></pre></div></div>
+
+<p>Every impressive thing a coding agent has done for you boils down to a model
+with access to a shell and a text editor. That might seem odd until you realise
+that’s all programmers need to build any of the systems you depend on daily, so
+really this is about giving LLMs access to the magic programmers have already
+been using for the last half a century.</p>
+
+<p>Ok, so this makes sense, but I want to stress-test your understanding with a
+question: the <code class="language-plaintext highlighter-rouge">bash</code> tool, do you think it actually needs to run <code class="language-plaintext highlighter-rouge">bash</code>?</p>
+
+<p>The answer is no! An LLM’s entire reality starts and stops at the messages
+that are provided to it, which means it never needs you to actually use bash to
+execute this command, it only needs you to return a tool result that looks like
+what bash would have returned.</p>
+
+<p>This turns out to be quite important as it means even agents running in limited
+environments without bash can act like coding agents, provided they implement
+tools that can emulate how bash would behave.</p>
+
+<p>At incident we’ve built a <code class="language-plaintext highlighter-rouge">shell</code> package into our Go app that implements a
+virtual filesystem and can interpret bash commands, calling ‘binaries’ that are
+actually just Go functions. It doesn’t matter that we’re not really running
+commands, as soon as we give a <code class="language-plaintext highlighter-rouge">bash</code> tool to our harness, the model can use it
+as if it were real.</p>
+
+<p>Pretty neat, but the lesson is important for what we’ll cover next: these models
+are trained on patterns, and if you can provide a pattern they recognise (like a
+shell) then the rest of their training kicks in, and you can start leveraging
+the model to do smart things.</p>
+
+<p>We’ll return to that later, but now…</p>
+
+<h2 id="mcps-are-just-apis-in-tools">MCPs are just APIs in tools</h2>
+
+<p>Everyone and their dog are talking about MCPs. It’s tiring and a bit off-putting,
+especially as the technology is barely two years old and has a loud contingent
+of people already declaring it dead (MCPs are dead! long-live CLIs!). AI, huh.</p>
+
+<p>Let me start, then, by saying that MCPs are dead boring. It stands for Model
+Context Protocol, which won’t tell you much. Mechanically, an ‘MCP’ is just a
+server that lists a set of tools which an agent can connect to and make use
+of.</p>
+
+<p>Take an example like our incident.io MCP. We host this MCP at an endpoint
+(mcp.incident.io/mcp) that serves the MCP protocol over (mostly) normal HTTP,
+where the protocol allows us to configure a list of ‘tools’ that other agents
+can connect to and make use of.</p>
+
+<p>When someone connects Claude Code to the incident.io MCP, what happens when you
+boot the agent is:</p>
+
+<ol>
+  <li>Claude contacts our MCP server, asks “what tools do you have?”</li>
+  <li>Those tools are added to the existing tools in the prompt sent to the LLM</li>
+  <li>Claude’s harness adds some hints about the MCPs into the agent thread so it’s
+aware of what is loaded</li>
+</ol>
+
+<p>There is some magic I won’t touch on (such as
+<a href="https://www.anthropic.com/engineering/advanced-tool-use" target="_blank" rel="noopener noreferrer">tool search</a>, where
+tool schemas are left out of the prompt until the model searches for them) but
+that’s almost all there is to know. MCP servers are as vanilla as your standard
+HTTP API, just in a protocol that an agent can load and make use of.</p>
+
+<p>They are so similar to HTTP APIs that we have implemented support for any
+OpenAPI specified HTTP API in Extensions, and expose the endpoints of those APIs
+to our agents just like MCPs. Genuinely nothing new here.</p>
+
+<p>So now we have the tools, but what tells us how to use them?</p>
+
+<h2 id="skills-are-just-instructions">Skills are just instructions</h2>
+
+<p>Have you ever tried building an integration with an HTTP API just from the
+reference docs? Where all you have is a page per endpoint and the OpenAPI
+specification?</p>
+
+<p>I have, many a time. It works and you can gradually piece together what you want
+to achieve, but it’s a bit slow and error-prone. With the MCP tools added to our
+agent we are now in this world of “all the ~gear~ tools and no idea”.</p>
+
+<p>The best API docs go beyond reference pages and offer guides and tutorials that
+teach best-practices and how to use the endpoints together. We need some way to
+give this to our agent, not just for using MCPs (though this is a key use-case)
+but for any work where the agent could use some explanation and context to help
+it achieve a thing.</p>
+
+<p>That’s where skills come in.</p>
+
+<p>Skills are a collection of files containing instructions that agents can read
+and use. They are stored in a directory that doubles as their name, with a core
+<code class="language-plaintext highlighter-rouge">SKILL.md</code> entrypoint.</p>
+
+<p>As part of dogfooding Extensions we built an MCP server that exposes a bunch of
+tools to check health of our system queues: for example tools to view all queue
+topics (<code class="language-plaintext highlighter-rouge">queue_topic_list</code>) and purge a subscription
+(<code class="language-plaintext highlighter-rouge">queue_subscription_purge</code>) if we’re having issues.</p>
+
+<p>With this MCP server connected we get those tools, but it would be naive to
+expect an agent like Claude to know how to use them without proper explanation.
+Our queues run on <a href="https://incident.io/blog/we-turned-off-pub-sub-and-nobody-noticed" target="_blank" rel="noopener noreferrer">both NATS and Google Pub/Sub</a> for
+redundancy, which is important to know if you want to interpret “how many
+messages are in X subscription” as you’ll get results back for both
+technologies. You probably want to caution the model on when to actually purge a
+subscription to avoid any over-eager calls, too.</p>
+
+<p>We can and do put all of this into a <code class="language-plaintext highlighter-rouge">queue</code> skill, which looks like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ops/skills/queue
+└── SKILL.md
+</code></pre></div></div>
+
+<p>Skill markdown supports ‘frontmatter’ which is a small YAML snippet at the top
+of the file. Skills are expected to provide their name and a description, and
+the harness places a listing of these into the agent’s context — much like the
+tool list from our LLM 101 example — which is how the agent knows a skill exists
+and can decide when to ‘load’ it.</p>
+
+<p>Our queue skill looks like this:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">name</span><span class="pi">:</span> <span class="s">queue</span>
+<span class="na">description</span><span class="pi">:</span> <span class="pi">&gt;</span>
+  <span class="s">Inspect and purge event queue backlogs across Pub/Sub and NATS with</span>
+  <span class="s">the Toolbox connector's queue tools. Use when events are delayed, a</span>
+  <span class="s">subscriber has a backlog, someone asks to purge a queue, or an</span>
+  <span class="s">incident involves event processing lag.</span>
+<span class="s">---</span>
+
+<span class="gh"># Event queues</span>
+
+Every event publishes through a load balancer across two brokers: Google
+Cloud Pub/Sub and NATS JetStream. Each message lands on exactly one of
+them, so a subscriber's backlog lives on <span class="gs">**both brokers**</span>, and neither
+alone is the whole picture.
+
+<span class="gu">## The tools</span>
+<span class="p">
+-</span> <span class="sb">`queue_topic_list`</span> — what exists, merged across brokers.
+<span class="p">-</span> <span class="sb">`queue_topic_show`</span> — one topic's stored messages plus every
+subscription with its backlog, per broker. Start here for "is X backed
+up".
+<span class="p">-</span> <span class="sb">`queue_subscription_purge`</span> — the write tool. Preview with <span class="sb">`dry_run:
+true`</span>, execute with <span class="sb">`confirm: true`</span>; a call with neither is rejected.
+
+<span class="gu">## Reading results</span>
+<span class="p">
+-</span> <span class="sb">`null`</span> counts mean the broker can't say, never zero. Pub/Sub's admin
+API carries no sizes, so get real numbers from telemetry instead.
+<span class="p">-</span> Read <span class="sb">`warnings`</span> before acting on any purge result.
+
+Before purging, check the backlog isn't already draining: watch
+<span class="sb">`core_event_subscription_oldest_unacked_seconds`</span> — falling means riding
+it out costs nothing. Most backlogs don't need a purge.
+
+...
+</code></pre></div></div>
+
+<p>Note that only the name and description sit permanently in the agent’s context:
+the body of the SKILL.md is only read when the model decides the skill is
+relevant. Even frontier models degrade as their context grows which is why it’s
+important to use it sparingly: every token costs money and competes for the
+model’s attention, so you want each conversation to pay only for the skills it
+actually uses.</p>
+
+<p>Skills can contain files beyond the SKILL.md and should if they grow large,
+extending the same trick another level. This practice is called ‘progressive
+disclosure’ where the SKILL.md acts more like an index of what is available so
+the model can choose what it loads next.</p>
+
+<p>An example of a more complex skill is <code class="language-plaintext highlighter-rouge">ai-providers</code> which helps debug AI
+provider incidents and understand how we load balance between providers:</p>
+
+<figure class="fig-diagram">
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 740 380" role="img" aria-label="Progressive disclosure: every skill's name and description sit permanently in the agent's context as small entries; one skill's SKILL.md body is loaded only when relevant; its reference files are read only if the task needs them.">
+    <defs>
+      <marker id="f2-arr" viewbox="0 0 10 10" refx="9" refy="5" markerwidth="7" markerheight="7" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"></path>
+      </marker>
+      <marker id="f2-arr-acc" viewbox="0 0 10 10" refx="9" refy="5" markerwidth="7" markerheight="7" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" style="fill: var(--accent)"></path>
+      </marker>
+    </defs>
+    <text x="170" y="34" text-anchor="middle" class="head">the thread</text>
+    <rect x="45" y="46" width="250" height="322" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+    <rect x="63" y="62" width="214" height="22" rx="3" fill="none" stroke="currentColor" opacity="0.5"></rect>
+    <text x="72" y="78" class="mono">queue — inspect backlogs…</text>
+    <rect x="63" y="90" width="214" height="22" rx="3" fill="none" stroke="currentColor" opacity="0.5"></rect>
+    <text x="72" y="106" class="mono">postgres — live internals…</text>
+    <rect x="63" y="118" width="214" height="22" rx="3" fill="none" style="stroke: var(--accent)" stroke-width="1.5"></rect>
+    <text x="72" y="134" class="mono">ai-providers — debug…</text>
+    <text x="170" y="162" text-anchor="middle" class="muted">always resident · ~100 tokens each</text>
+    <rect x="63" y="180" width="214" height="120" rx="5" style="fill: var(--accent-soft); stroke: var(--accent)" stroke-width="1.5"></rect>
+    <text x="170" y="206" text-anchor="middle" class="head" style="fill: var(--accent)">ai-providers SKILL.md</text>
+    <text x="170" y="228" text-anchor="middle" class="muted">the whole body, a few</text>
+    <text x="170" y="246" text-anchor="middle" class="muted">thousand tokens, loaded now —</text>
+    <text x="170" y="264" text-anchor="middle" class="muted">the question is about providers</text>
+    <rect x="63" y="314" width="214" height="36" rx="5" fill="none" stroke="currentColor" stroke-dasharray="4 4" opacity="0.6"></rect>
+    <text x="170" y="336" text-anchor="middle" class="muted">references, read as needed</text>
+    <text x="590" y="34" text-anchor="middle" class="head">on disk, or in the plugin</text>
+    <rect x="470" y="46" width="245" height="240" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+    <text x="486" y="72" class="mono">skills/ai-providers/</text>
+    <rect x="490" y="86" width="150" height="26" rx="3" fill="none" style="stroke: var(--accent)" stroke-width="1.5"></rect>
+    <text x="500" y="103" class="mono">SKILL.md</text>
+    <text x="490" y="140" class="mono muted">references/</text>
+    <rect x="502" y="150" width="170" height="22" rx="3" fill="none" stroke="currentColor" opacity="0.5"></rect>
+    <text x="510" y="166" class="mono">how-we-use.md</text>
+    <rect x="502" y="178" width="170" height="22" rx="3" fill="none" stroke="currentColor" opacity="0.5"></rect>
+    <text x="510" y="194" class="mono">live-health.md</text>
+    <rect x="502" y="206" width="170" height="22" rx="3" fill="none" stroke="currentColor" opacity="0.5"></rect>
+    <text x="510" y="222" class="mono">usage-spend.md</text>
+    <line x1="490" y1="92" x2="285" y2="129" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 4" marker-end="url(#f2-arr)"></line>
+    <text x="385" y="94" text-anchor="middle">1 · name + description, every request</text>
+    <line x1="490" y1="108" x2="285" y2="235" style="stroke: var(--accent)" stroke-width="1.8" marker-end="url(#f2-arr-acc)"></line>
+    <text x="404" y="178" text-anchor="middle" style="fill: var(--accent)">2 · body, when relevant</text>
+    <line x1="502" y1="218" x2="285" y2="330" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 4" marker-end="url(#f2-arr)"></line>
+    <text x="375" y="308" text-anchor="middle" class="muted">3 · only if the task needs them</text>
+  </svg>
+
+  <figcaption>Descriptions are cheap and always present; bodies are expensive
+    and load on demand; reference files extend the same trick another level.
+    Each conversation pays only for the skills it uses.</figcaption>
+</figure>
+
+<p>Recalling how agents are given a <code class="language-plaintext highlighter-rouge">bash</code> tool that can run shell commands just
+like a normal terminal user, it’s totally valid for an agent to ‘load’ a skill
+by just <code class="language-plaintext highlighter-rouge">cat SKILL.md</code>ing the file. That brings the skill content into the
+session and the agent is free to use the instructions as it chooses.</p>
+
+<p>In practice, agents often wrap skill loading in a <code class="language-plaintext highlighter-rouge">skill</code> tool. Naming it that
+helps — the tool’s description can explain what a skill is and how to treat
+one, and skills are a pattern models have seen plenty of by now - but mostly the
+wrapper exists for practical reasons, like tracking skill usage, or so the
+harness can inject useful data alongside the skill load that saves the model
+work.</p>
+
+<p>The incident harness, as an example, when calling our <code class="language-plaintext highlighter-rouge">skill</code> tool will:</p>
+
+<ol>
+  <li>Handle resolution of the skill by name so you don’t need to know the exact
+path</li>
+  <li>Track that a skill has been loaded so we can provide observability and grade
+how it performs</li>
+  <li>Returns to the model:
+    <ol>
+      <li>The full SKILL.md content</li>
+      <li>A small directory index of files so the model can avoid a subsequent <code class="language-plaintext highlighter-rouge">ls
+-R</code>
+</li>
+    </ol>
+  </li>
+</ol>
+
+<p>This works really well across OpenAI, Anthropic and Gemini models. It’s all
+very simple, easily explainable, and needs nothing provider-specific, which is
+exactly why the same skill can run on all of them.</p>
+
+<h2 id="plugins-bundle-skills">Plugins bundle skills</h2>
+
+<p>You now understand how LLMs work, how MCPs are loaded into them, and how skills
+can bundle behaviour that an agent can load when appropriate to extend its base
+instructions.</p>
+
+<p>That’s almost the entire story, with just one thing missing which is about how
+to distribute skills so you can install them in your agents.</p>
+
+<p>Anthropic have solved this with their <a href="https://code.claude.com/docs/en/plugins" target="_blank" rel="noopener noreferrer">plugin format</a> which bundles together
+skills and other files into a distributable format. If you’re used to npm
+packages
+it looks much like this, where you turn a directory of skills into a plugin by
+adding a <code class="language-plaintext highlighter-rouge">.claude-plugin/plugin.json</code>.</p>
+
+<p>Our <code class="language-plaintext highlighter-rouge">ops</code> plugin with production operation skills looks like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># ops
+.claude-plugin
+└── plugin.json
+skills
+├── ai-providers
+│   ├── references
+│   │   ├── how-we-use.md
+│   │   ├── live-health.md
+│   │   ├── output.md
+│   │   └── usage-spend.md
+│   └── SKILL.md
+├── ...
+...
+</code></pre></div></div>
+
+<p>Lots of products implement MCP and skill support by consuming these plugins:
+Anthropic’s <a href="https://claude.com/blog/cowork-plugins" target="_blank" rel="noopener noreferrer">Claude Cowork</a> is one, and
+incident.io Extensions is another.</p>
+
+<p>This isn’t rocket science but it is exciting, mostly because arriving at a
+consistent format for sharing these skills is finally meeting the promises made
+by AI tools since they first arrived.</p>
+
+<p>We have an internal AI team at incident who have built a ‘data brain’, which
+gives natural language querying into all our data systems, enhanced by docs for
+each data model and guidance on how to use and interpret queries against those
+models in the context of our business. Everyone at the company uses it daily
+now, and I was one of those users, but admit I didn’t clock how it was built
+until planning how we’d build Extensions.</p>
+
+<p>It turns out that ‘data brain’ is just a ‘data’ plugin containing skills and
+reference documentation, paired with an internal MCP that gives query access
+into our data warehouse and other data sources. Once we had a prototype of
+Extensions ready, I could in three clicks load the plugin and connect the MCP,
+and suddenly the ‘data brain’ was running in all our agents.</p>
+
+<p>You might think it was janky with sharp edge cases but… it worked almost
+entirely out the box. This was a use case no one in the internal AI team had
+ever planned around, but by leveraging these standards I could plug their work
+into our product and suddenly we’re Data Ready™.</p>
+
+<p>There are complexities to this, such as being careful to write ‘portable’
+skills, which I’ll cover in a follow-up post. But this was the first time in my
+career that I’ve been able to integrate with such ease against a complex system
+and have it work out the box with zero tweaking. AI can be magic, if you know
+how to use it.</p>
+
+<h2 id="skills-replace-system-prompts">Skills replace system prompts</h2>
+
+<p>Finally, for those who build agents, it’s worth noting how skills offer a new
+way of building than you might have used before.</p>
+
+<p>Until now, we’d created specific agents for each part of our system. We had a
+scheduling agent that knew how to work with our On-call product, and a telemetry
+agent that could execute natural language queries against telemetry providers
+and interpret the results.</p>
+
+<p>Those agents had system prompts that taught them how to behave, and you could
+access another agent via a tool (e.g. <code class="language-plaintext highlighter-rouge">scheduler_query</code>) that would send
+messages to that agent and receive them back, segmenting context and control so
+we could scalably build complex agents without overwhelming any single model’s
+context.</p>
+
+<p>With skills, we are now killing those agents in favour of a single agent with a
+collection of skills built from those specialised agent system prompts. Each
+conversation loads only the skills it needs (progressive disclosure again), and
+the change comes with some real advantages.</p>
+
+<figure class="fig-diagram">
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 740 400" role="img" aria-label="Before: a chat agent calls a scheduling agent and a telemetry agent through tools; each has its own system prompt treated as law and sees only the message passed to it. After: one agent with a thin system prompt whose single thread holds the full conversation and loads skills as guidance.">
+    <defs>
+      <marker id="f3-arr" viewbox="0 0 10 10" refx="9" refy="5" markerwidth="7" markerheight="7" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"></path>
+      </marker>
+    </defs>
+    <line x1="372" y1="16" x2="372" y2="384" stroke="currentColor" stroke-dasharray="5 6" opacity="0.3"></line>
+    <text x="186" y="30" text-anchor="middle" class="head">before — an agent per purpose</text>
+    <rect x="56" y="46" width="260" height="92" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+    <text x="186" y="68" text-anchor="middle" class="head">chat agent</text>
+    <rect x="70" y="78" width="232" height="22" rx="3" fill="none" stroke="currentColor" opacity="0.55"></rect>
+    <text x="186" y="94" text-anchor="middle">its system prompt — law</text>
+    <rect x="70" y="106" width="232" height="22" rx="3" fill="none" stroke="currentColor" opacity="0.55"></rect>
+    <text x="186" y="122" text-anchor="middle" class="muted">the user's conversation</text>
+    <line x1="120" y1="138" x2="120" y2="196" stroke="currentColor" stroke-width="1.3" marker-end="url(#f3-arr)"></line>
+    <text x="112" y="172" text-anchor="end" class="mono">scheduler_query</text>
+    <line x1="252" y1="138" x2="252" y2="196" stroke="currentColor" stroke-width="1.3" marker-end="url(#f3-arr)"></line>
+    <text x="260" y="172" class="mono">telemetry_query</text>
+    <rect x="36" y="202" width="152" height="150" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+    <text x="112" y="224" text-anchor="middle" class="head">scheduling agent</text>
+    <rect x="48" y="236" width="128" height="34" rx="3" fill="none" stroke="currentColor" opacity="0.55"></rect>
+    <text x="112" y="250" text-anchor="middle">own system</text>
+    <text x="112" y="264" text-anchor="middle">prompt — law</text>
+    <rect x="48" y="278" width="128" height="60" rx="3" fill="none" stroke="currentColor" opacity="0.55"></rect>
+    <text x="112" y="302" text-anchor="middle" class="muted">sees only the</text>
+    <text x="112" y="318" text-anchor="middle" class="muted">message passed in</text>
+    <rect x="200" y="202" width="152" height="150" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+    <text x="276" y="224" text-anchor="middle" class="head">telemetry agent</text>
+    <rect x="212" y="236" width="128" height="34" rx="3" fill="none" stroke="currentColor" opacity="0.55"></rect>
+    <text x="276" y="250" text-anchor="middle">own system</text>
+    <text x="276" y="264" text-anchor="middle">prompt — law</text>
+    <rect x="212" y="278" width="128" height="60" rx="3" fill="none" stroke="currentColor" opacity="0.55"></rect>
+    <text x="276" y="302" text-anchor="middle" class="muted">sees only the</text>
+    <text x="276" y="318" text-anchor="middle" class="muted">message passed in</text>
+    <text x="556" y="30" text-anchor="middle" class="head">after — one agent, many skills</text>
+    <rect x="420" y="46" width="272" height="306" rx="8" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+    <text x="556" y="68" text-anchor="middle" class="head">one agent</text>
+    <rect x="434" y="78" width="244" height="22" rx="3" fill="none" stroke="currentColor" opacity="0.55"></rect>
+    <text x="556" y="94" text-anchor="middle">thin system prompt — law</text>
+    <rect x="434" y="110" width="244" height="228" rx="4" fill="none" stroke="currentColor" opacity="0.4"></rect>
+    <text x="556" y="130" text-anchor="middle" class="muted">one thread, the full conversation</text>
+    <rect x="448" y="142" width="216" height="26" rx="3" style="fill: var(--accent-soft); stroke: var(--accent)" stroke-width="1.3"></rect>
+    <text x="556" y="160" text-anchor="middle" style="fill: var(--accent)">scheduling skill — guidance</text>
+    <rect x="448" y="176" width="216" height="26" rx="3" style="fill: var(--accent-soft); stroke: var(--accent)" stroke-width="1.3"></rect>
+    <text x="556" y="194" text-anchor="middle" style="fill: var(--accent)">telemetry skill — guidance</text>
+    <text x="556" y="220" text-anchor="middle" class="muted">each loaded only when needed</text>
+    <rect x="448" y="236" width="216" height="24" rx="3" fill="none" stroke="currentColor" opacity="0.55"></rect>
+    <text x="556" y="253" text-anchor="middle" class="muted">user and assistant messages</text>
+    <rect x="448" y="268" width="216" height="24" rx="3" fill="none" stroke="currentColor" opacity="0.55"></rect>
+    <text x="556" y="285" text-anchor="middle" class="muted">tool results</text>
+    <text x="556" y="316" text-anchor="middle" class="muted">…</text>
+  </svg>
+
+  <figcaption>Left: context fragments across agents and every instruction is
+    law somewhere. Right: the same instructions become skills in one shared
+    thread — below the system prompt, so the model weighs them against the
+    user instead of obeying.</figcaption>
+</figure>
+
+<p>The first is flexibility. Recall from LLM 101 that models treat the system
+message as their highest-priority instructions: exactly what you want for
+safety and identity, and exactly what you don’t want for behavioural advice,
+because every set of instructions has edge cases you didn’t anticipate, and
+when they live in the system prompt the model can’t route around them.</p>
+
+<p>Our telemetry agent is a good example. It powers all types of observability
+query (“what is the error rate of web requests in production in the last 15
+minutes”) across the ~20 observability platforms we integrate with (Datadog,
+Grafana, Honeycomb, etc), and we have to be careful planning our queries so as
+not to overload the provider, with an example being advice to split long-range
+queries into many queries over smaller time ranges.</p>
+
+<p>With that advice loaded via system prompt, users of our chatbot would sometimes
+request a specific “get all error logs in the last week” that they know can be
+queried safely, and our agent would stubbornly refuse to query the entire range.
+This was frustrating, with users telling us to “just do the f***ing query” and
+the agent holding fast to its system instructions.</p>
+
+<p>Now that advice loads as a skill, and remember loading a skill is just bringing
+the instructions into the thread as ordinary messages, below the system prompt
+in the hierarchy. The model treats them as strong guidance to weigh against what
+the user is actually asking for, rather than law it must obey, and this chat
+interaction now succeeds. Smarter models do better when given guidance rather
+than strict rules, and skills are how you hand them guidance.</p>
+
+<p>One caveat: some rules should stay non-negotiable, and those don’t move into
+skills. The guarantees that must hold no matter what belong in the tools
+themselves — like our purge tool refusing to run without an explicit <code class="language-plaintext highlighter-rouge">confirm</code> —
+where nobody can talk the model past them. Constraints you must enforce belong
+where the model can’t negotiate, such as in the tool layer.</p>
+
+<p>Flattening these agents into a single session also removes the downside of
+context segmentation, which is where agents would have incomplete information as
+you called into their sessions. Now one agent sees everything, understands the
+nature of the task beyond a single instruction, and can be much smarter about
+how it plans tool calls and interleaves intermediate results for a better
+outcome.</p>
+
+<h2 id="thats-it-really">That’s it, really</h2>
+
+<p>That wasn’t that bad, right?</p>
+
+<p>Models only ever see a simple message thread per request. Agents assemble that
+request in a loop, MCPs add tools to it, skills add instructions when they’re
+relevant, and plugins ship the two together.</p>
+
+<p>AI is moving so fast it can feel really overwhelming. Most best-practices have a
+half-life of ~six months before they’re replaced, and keeping up with the latest
+trend can be exhausting. Thankfully, I feel we’re arriving at a more stable
+place where tools like MCPs and skills are going to stay for the longer term,
+and it’s worth building an understanding that is deeper than surface level if
+you want to use them well. Hopefully this post gives you that, along with some
+insights that come from implementing these features in a harness used by real
+people in production.</p>
+
+<p>I have a follow-up post planned on treating skills like the software they’ve
+become: writing them so they run on any platform, and what you should expect
+from products that run them for you — starting with telling you when a skill
+misled an agent, and helping you fix it.</p>
+
+<p>For now though, you have the mental model, and my previous post on
+<a href="/building-ai-skills-like-checklists/">building AI skills like checklists</a>
+covers writing a good one.</p>
+
+
+    <p>
+      <em>
+        
+If you liked this post and want to see more, follow me on <a target="_blank" href="https://www.linkedin.com/in/lawrence2jones/" rel="noopener noreferrer">LinkedIn</a>.
+      </em>
+    </p>
+  </section>
+</article>
+
+<!-- Disqus -->
+
+
+<!-- Post navigation -->
+
+  
+
+
+
+
+
+  
+  
+
+  
+    
+    
+<div id="post-nav">
+  
+  <div id="previous-post" class="post-nav-post">
+      <p>Previous post</p>
+      <a href="/building-ai-skills-like-checklists/">
+        Building AI skills like checklists
+      </a>
+  </div>
+  
+  
+</div>
+
+
+
+    </div>
+    
+
+
+<footer class="site-footer">
+  <a href="https://www.linkedin.com/in/lawrence2jones/" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-linkedin" style="color: #0077b5;"></i> LinkedIn
+  </a>
+</footer>
+
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="../vendor/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="../vendor/bootstrap.bundle.min.js"></script>
+<meta content="CS2680 Modern AI Systems readings for the Agents design I: context management and tool design meeting" name="description"/>
+<meta content="Juncheng Yang" name="author"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="CS2680 Modern AI Systems — Readings: Agents design I: context management and tool design" property="og:title"/>
+<meta content="CS2680 Modern AI Systems readings for the Agents design I: context management and tool design meeting" property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="CS2680 Modern AI Systems" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<link href="../css/main.css" rel="stylesheet"/>
+<title>CS2680 Modern AI Systems — Readings: Agents design I: context management and tool design</title>
+</head>
+<body>
+<div id="site-header"></div>
+<script src="../header.js"></script>
+<div class="container page">
+<div class="row">
+<div class="col-12">
+<div class="title">CS2680 Modern AI Systems: Agents and System Optimizations</div>
+</div>
+<div class="col-12 title2">
+        Readings
+      </div>
+<div class="col-12">
+<div class="section">
+<div class="subsection reading-meeting" data-schedule="https://arxiv.org/abs/2210.03629 https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents https://lilianweng.github.io/posts/2023-06-23-agent" id="sep-16">
+<h2><span class="reading-date">Sep 16</span> Agents design I: context management and tool design</h2>
+<div class="table-responsive">
+<table class="table table-hover readings-table">
+<thead>
+<tr class="table-light">
+<th scope="col">Paper</th>
+<th scope="col">Year</th>
+<th scope="col">Why read it</th>
+</tr>
+</thead>
+<tr class="reading-topic">
+<th colspan="3" scope="colgroup">Agent</th>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2210.03629" rel="noopener noreferrer" target="_blank"><strong class="reading-name">ReAct</strong></a><span class="reading-subtitle">Synergizing Reasoning and Acting in Language Models</span></td>
+<td>2022</td>
+<td>
+<p><strong>Background.</strong> By 2022 two lines of work sat next to each other without touching. Chain-of-thought prompting had models reason in text, and other work had models emit actions against an environment or a search API.</p>
+<p><strong>Problem.</strong> Reasoning alone has nothing to check itself against, so an early wrong fact propagates confidently to the end. Acting alone has no plan, so a model cannot decide what to do next when an observation contradicts what it expected.</p>
+<p><strong>Key idea.</strong> Interleave the two in a single trace. The model writes a thought, then an action, then reads the resulting observation, then thinks again, all from one prompt. This interleaved reason/act loop is the mechanism, and nearly every agent framework is a variation on it.</p>
+<p><strong>Findings.</strong> On ALFWorld and WebShop, ReAct improved absolute task success over the paper's imitation- and reinforcement-learning baselines by 34 and 10 percentage points, respectively, using one or two in-context examples.</p>
+<p><strong>Why it matters.</strong> It fixes the shape of the object this course keeps taking apart: thought, action, observation, repeat. Planning, tool schemas, context management, and permission gates are all modifications to one position in that cycle, which is why the loop is worth reading in its original form.</p>
+<p><strong>Adoption.</strong> LangGraph ships and documents create_react_agent as a direct implementation of ReAct.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://www.anthropic.com/engineering/building-effective-agents" rel="noopener noreferrer" target="_blank"><strong class="reading-name">building effective agents</strong></a><span class="reading-subtitle">Building Effective Agents</span></td>
+<td>2024</td>
+<td>
+<p><strong>Background.</strong> By 2024 the default advice for building on an LLM was to adopt an agent framework, which hands you a planner, a memory abstraction, and a graph of steps before you have established that you need any of them.</p>
+<p><strong>Problem.</strong> Those abstractions hide the prompt and the tool definitions, which are the two things you actually have to debug. Complexity gets added because a pattern is available, not because a measurement showed the simpler version failing.</p>
+<p><strong>Key idea.</strong> Separate workflows, whose steps are fixed in code, from agents, which let the model choose the steps, then name the composable patterns worth reaching for: prompt chaining, routing, parallelization, orchestrator-workers, and evaluator-optimizer. Add complexity only when it measurably improves outcomes.</p>
+<p><strong>Why it matters.</strong> It gives you a default that is hard to argue with, measure first and complicate second, and it supplies the names for the thing you built. A design review can then say which pattern is in use instead of calling every system an agent.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://tej.as/blog/what-is-an-agent-harness" rel="noopener noreferrer" target="_blank"><strong class="reading-name">What Is an Agent Harness? Harness Engineering Explained</strong></a><span class="reading-subtitle">Tejas Kumar</span></td>
+<td>2026</td>
+<td>
+<p><strong>Background.</strong> An agent is often described as a model inside a tool-calling loop, but a deployed system also has to manage context, keep secrets away from the model, stop runaway executions, and decide whether the requested work actually happened.</p>
+<p><strong>Problem.</strong> Treating the loop as the whole agent leaves the model in charge of declaring success. In the post's example, GPT-3.5 Turbo reaches a Hacker News login page, performs no upvote, and reports that the task succeeded because nothing outside the model checks its claim.</p>
+<p><strong>Key idea.</strong> Define the harness as the runtime layer around the model, made of six parts: the tool registry, model, context management, guardrails, agent loop, and verification. Put deterministic limits, authentication, trace inspection, and retries in that layer, so failures become code changes to the harness rather than stronger wording in the prompt.</p>
+<p><strong>Why it matters.</strong> It separates the mechanism that proposes actions from the system that makes those actions reliable. The walkthrough holds the model and prompt fixed while adding guardrails, verification, and a login handler until the task completes and the trace confirms it, which gives a concrete design test: a model's completion message is a claim, and the harness must supply the evidence.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://agentpatterns.ai/" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Agent Patterns</strong></a><span class="reading-subtitle">Patterns, Anti-Patterns, and Primitives for Coding Agents</span></td>
+<td>—</td>
+<td>
+<p><strong>Background.</strong> The entry above names five composable patterns and argues for reaching for the simplest one that works. Coding agents have since become the dominant application, and the working knowledge about building them accumulates in blog posts, changelogs, and team lore rather than in papers.</p>
+<p><strong>Problem.</strong> That knowledge is hard to consult at the moment it is needed. Someone deciding how to shape a tool definition, a review step, or a split across several agents has no reference that separates what works from what merely circulates, and the failure modes are the part nobody writes up.</p>
+<p><strong>Key idea.</strong> Build a reference corpus rather than one long argument. Short Markdown pages each cover one concept, group related practices, and place anti-patterns beside patterns so known failures are documented instead of rediscovered. Agents can load the same pages into their own context.</p>
+<p><strong>Why it matters.</strong> Read it as the practitioner's counterpart to the paper above, and read the anti-patterns first, since that is where the cost of a pattern shows up. That it is written to be consumed by an agent is the lesson in miniature: a document an agent can load is a different artifact from one written only for a human reader.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://lilianweng.github.io/posts/2023-06-23-agent" rel="noopener noreferrer" target="_blank"><strong class="reading-name">LLM powered autonomous agents</strong></a><span class="reading-subtitle">LLM Powered Autonomous Agents (Lilian Weng)</span></td>
+<td>2023</td>
+<td>
+<p><strong>Background.</strong> By 2023 the agent literature was a scatter of prompting patterns, tool wrappers, and retrieval add-ons. There was no shared account of what an agent is made of.</p>
+<p><strong>Problem.</strong> Without a decomposition, two agent systems cannot be compared. Each paper described its own loop end to end, so it was hard to tell which part of a design carried the result and which part was incidental.</p>
+<p><strong>Key idea.</strong> Put the model call at the center and name three components around it: planning, memory, and tool use. The post is a survey rather than a new system, and the vocabulary is the contribution.</p>
+<p><strong>Why it matters.</strong> That split is the structure LangChain, LlamaIndex, and the AutoGPT-era frameworks expose to users, and it is still how most agent papers organize their related work.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents" rel="noopener noreferrer" target="_blank"><strong class="reading-name">practical guide to building agents</strong></a><span class="reading-subtitle">A practical guide to building agents (OpenAI)</span></td>
+<td>2025</td>
+<td>
+<p><strong>Background.</strong> Research papers explain agent components, but a team first needs to decide which workflows justify an agent at all. This guide draws on OpenAI's customer deployments.</p>
+<p><strong>Problem.</strong> Teams may choose an agent where a deterministic pipeline would suffice, then discover the reliability cost late. Research papers rarely define the boundary clearly enough to make that decision early.</p>
+<p><strong>Key idea.</strong> Define an agent as a system in which the model controls workflow execution. Use one when nuanced judgment, unmaintainable rules, or unstructured data defeat a deterministic design. Start with one model, tools, and instructions; add multiple agents only when necessary, with guardrails, explicit exit conditions, and human escalation.</p>
+<p><strong>Why it matters.</strong> Its strongest contribution is a negative criterion: it identifies systems that are not agents and workflows that should remain deterministic. Compare its decomposition advice with the Anthropic and Cognition positions.</p>
+</td>
+</tr>
+<tr class="reading-topic">
+<th colspan="3" scope="colgroup">Structuring context for cache reuse</th>
+</tr>
+<tr>
+<td><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" rel="noopener noreferrer" target="_blank"><strong class="reading-name">context engineering</strong></a><span class="reading-subtitle">Effective context engineering for AI agents (Anthropic)</span></td>
+<td>2025</td>
+<td>
+<p><strong>Background.</strong> Prompt engineering treats the window as somewhere to word one instruction well. An agent instead fills that window itself over many turns, with tool results, file contents, and its own earlier output.</p>
+<p><strong>Problem.</strong> Context is a finite resource whose value degrades as it fills, so a long agent run is not fixed by phrasing. The question is which tokens deserve the window on this turn and what happens to everything else.</p>
+<p><strong>Key idea.</strong> Curate the context rather than write the prompt. The four techniques it names are mechanisms: compaction, structured note-taking into external memory, subagents that each get a clean window, and just-in-time retrieval that holds identifiers and loads the data only when a step needs it.</p>
+<p><strong>Why it matters.</strong> Each of the four changes what the serving system underneath actually sees. The agent-memory readings later in this sequence show what happens when context allocation goes wrong. Treating the window as an allocation decision is what makes prompt work measurable.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://sourcegraph.com/blog/context-engineering" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Sourcegraph context engineering</strong></a><span class="reading-subtitle">Context Engineering: A Practical Guide for AI Agents</span></td>
+<td>2026</td>
+<td>
+<p><strong>Background.</strong> An agent’s context window holds the system prompt, the tool definitions, the retrieved code, and every tool result so far. On a long coding task that window, not the model, is the binding constraint.</p>
+<p><strong>Problem.</strong> Contexts fill with material that has stopped helping: stale file reads, superseded diffs, search output the agent already consumed. A full window forces truncation at the worst moment, and text that no longer matters competes for attention with text that does.</p>
+<p><strong>Key idea.</strong> Treat context as a resource with a lifecycle rather than a prompt to be worded well. The guide organizes that work into four pillars, separates it from prompt engineering, and reports which practices hold up in production coding agents.</p>
+<p><strong>Why it matters.</strong> It names the discipline that decides whether a long agent run stays coherent. Once you see the window as a budget with an allocation policy, retrieval scoping, compaction, and subagent isolation stop being separate tricks and become one decision made three times.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2606.10209" rel="noopener noreferrer" target="_blank"><strong class="reading-name">context pruning</strong></a><span class="reading-subtitle">Less Context, Better Agents: Efficient Context Engineering for Long-Horizon Tool-Using LLM Agents</span></td>
+<td>2026</td>
+<td>
+<p><strong>Background.</strong> A long-horizon tool-using agent writes its own transcript. Every tool result, intermediate step, and retry stays in the window and is re-read on every following turn.</p>
+<p><strong>Problem.</strong> Trimming that history is normally treated as a cost measure paid for in accuracy, so pruning gets tuned only once a run stops fitting or stops being affordable, and never as something that could help the task itself.</p>
+<p><strong>Key idea.</strong> Prune tool output and history aggressively, then score task success rather than tokens alone.</p>
+<p><strong>Findings.</strong> On a 50-task hotel-expense benchmark, full history completed 71.0% of tasks using 1.48 million tokens. Keeping five tool exchanges completed 79.0% using 535,274 tokens, while adding summaries completed 91.6% using 553,374 tokens.</p>
+<p><strong>Why it matters.</strong> Context management becomes a joint accuracy and cost knob rather than pure compression. If cutting context can improve both at once, the right setting is not the largest window your budget allows, and it has to be measured per workload.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2307.03172" rel="noopener noreferrer" target="_blank"><strong class="reading-name">lost in the middle</strong></a><span class="reading-subtitle">How Language Models Use Long Contexts</span></td>
+<td>2023</td>
+<td>
+<p><strong>Background.</strong> Context windows grew from a few thousand tokens to tens of thousands, and the working assumption was that anything you place inside the window is equally available to the model.</p>
+<p><strong>Problem.</strong> It is not. On multi-document question answering, accuracy depends on where in the input the one relevant passage sits, so a retrieval pipeline can hand the model exactly the right document and still get the wrong answer.</p>
+<p><strong>Key idea.</strong> Hold the task fixed and move the relevant document through the context, measuring accuracy at each position.</p>
+<p><strong>Findings.</strong> The curve is U-shaped: accuracy is highest when the evidence sits near the beginning or the end and lowest when it sits in the middle.</p>
+<p><strong>Why it matters.</strong> Long context is not free accuracy. This is the paper to reach for when a project’s answer to a problem is “put more in the prompt”, because it turns the ordering of retrieved chunks into a design decision with a measured cost.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2606.29718" rel="noopener noreferrer" target="_blank"><strong class="reading-name">context rot</strong></a><span class="reading-subtitle">Diagnosing and Mitigating Context Rot in Long-horizon Search</span></td>
+<td>2026</td>
+<td>
+<p><strong>Background.</strong> A long-horizon search agent appends every tool result to its context and rarely removes anything, so the prompt fills with search output the model has already finished using.</p>
+<p><strong>Problem.</strong> That accumulation costs accuracy, not just space. The agent starts answering worse while the context window is still far from full, so watching capacity never sees the failure coming.</p>
+<p><strong>Key idea.</strong> Grow accumulated search context while controlling task difficulty, classify the resulting failures, and compare seven context-management methods with a behavior-aware filter for parallel samples.</p>
+<p><strong>Findings.</strong> Across four models and three benchmarks, premature termination increased with context length even before the window filled. Behavior-aware filtering improved reported accuracy by 2.6-4.9% over unfiltered aggregation across three aggregation methods.</p>
+<p><strong>Why it matters.</strong> It changes the argument for context management. Eviction and compaction are normally justified by memory pressure; the same operations justified by answer quality have to trigger much earlier, and on different evidence.</p>
+</td>
+</tr>
+<tr class="reading-topic">
+<th colspan="3" scope="colgroup">Tool design</th>
+</tr>
+<tr>
+<td><a href="https://www.anthropic.com/engineering/writing-tools-for-agents" rel="noopener noreferrer" target="_blank"><strong class="reading-name">writing effective tools</strong></a><span class="reading-subtitle">Writing effective tools for agents — with agents (Anthropic)</span></td>
+<td>2025</td>
+<td>
+<p><strong>Background.</strong> An agent reaches the outside world only through tools, and each tool a harness mounts arrives at the model as a name, a schema, and a description it has to read. Anthropic wrote this guide out of building Claude Code and the Model Context Protocol.</p>
+<p><strong>Problem.</strong> A tool the model misuses is usually a documentation failure rather than a capability failure. The description has to teach the schema and the semantics at once, and the output has to be legible to a model instead of to a person reading a log.</p>
+<p><strong>Key idea.</strong> Treat the description as part of the interface, not as documentation beside it, since it is what teaches the model how and when to call the tool. Shape the return value the same way, giving the next decision what it needs rather than everything the underlying API produces.</p>
+<p><strong>Why it matters.</strong> Tool definitions and their outputs occupy the same context budget as the task, so a badly shaped tool costs tokens on every turn it is mounted, not only on the turns it is called. It is the practical guide MCP server authors follow when naming tools and shaping their outputs.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://www.philschmid.de/superhuman-bash" rel="noopener noreferrer" target="_blank"><strong class="reading-name">superhuman bash</strong></a><span class="reading-subtitle">How Foundational Models Became Superhuman in Bash (Philipp Schmid)</span></td>
+<td>2026</td>
+<td>
+<p><strong>Background.</strong> A harness gives the model one tool per operation, so reading a file, writing a file, editing a range, and searching a tree each arrive as a separate schema. Every one of those schemas is resident context, and the set of them fixes what the agent can do.</p>
+<p><strong>Problem.</strong> The designer has to anticipate each operation in advance, and an operation nobody anticipated is unreachable however capable the model is. Composing several of those tools also costs a round trip per step, and each hand-off is a place the trace can go wrong.</p>
+<p><strong>Key idea.</strong> Expose a shell instead of a catalog. A single command tool routes to the programs already installed, so Python, git, SQLite, a compiler, and the project's own command-line tools become the action space without any of them being mounted as a tool. The safeguards the atomic tools used to provide move into the harness: truncate long output and say how to request a narrower slice, return exit status and duration alongside the text, gate paths and network and destructive commands by policy, and manage long-running processes asynchronously. The author pairs this with two habits, keeping bulk data in the environment and returning only summaries to the model, and delegating messy debugging to a subagent that reports a clean result.</p>
+<p><strong>Findings.</strong> The author reports that a shell-centered harness performed on par with or better than one exposing separate read, write, edit, and search tools on the same task set, with no numbers given, so read it as one practitioner's observation rather than a measurement. He also names the exception: text cannot carry pixels, so a screenshot still needs its own channel, and a tool is still justified wherever it genuinely offers a better interface than a command would.</p>
+<p><strong>Why it matters.</strong> It states the tool-count question as a design trade-off rather than a preference. A large catalog spends resident context and bounds the action space by what the designer foresaw, while a shell spends almost none and bounds it by what the environment has installed, at the cost of moving truncation, sandboxing, and process management into the harness. The three papers that follow read differently in this light, since retrieving from a catalog of thousands of APIs presumes the catalog is where capability lives.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2302.04761" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Toolformer</strong></a><span class="reading-subtitle">Language Models Can Teach Themselves to Use Tools</span></td>
+<td>2023</td>
+<td>
+<p><strong>Background.</strong> A model that cannot call out answers arithmetic, current facts, and translation from its weights. The fix at the time was prompting: describe the available tools in the context and hope the model emits a well-formed call at the right moment.</p>
+<p><strong>Problem.</strong> Prompted tool use puts the decision in the wrong place. Whether an API call helps at this point in the text is a property of the model's own uncertainty, and instruction text cannot teach it when calling is worth the extra round trip and when it is not.</p>
+<p><strong>Key idea.</strong> Let the model label its own training data. Sample candidate API calls in context, execute them, keep only the calls whose results reduce the model's loss on the tokens that follow, and fine-tune on what survives. Tool use becomes learned behavior instead of instructed behavior.</p>
+<p><strong>Findings.</strong> Across the paper's downstream evaluations, Toolformer improved zero-shot performance and was often competitive with much larger models while preserving its underlying language-modeling performance.</p>
+<p><strong>Why it matters.</strong> This is where the tool-call boundary moves into the weights, which is what makes tool schemas a serving concern. The checkpoint now expects one particular call format, so the chat template, the parser, and the execution loop become part of the model's contract.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://blog.lawrencejones.dev/demystifying-skills-and-mcps" rel="noopener noreferrer" target="_blank"><strong class="reading-name">demystifying skills and MCPs</strong></a><span class="reading-subtitle">How skills and MCPs actually work (Lawrence Jones)</span><span class="reading-also">also <a href="sep-09.html">Sep 9</a></span></td>
+<td>2026</td>
+<td>
+<p><strong>Background.</strong> An agent is a loop. The harness sends the thread, runs whatever tools the model called, appends the results, and repeats. The model holds no state of its own, so everything the agent knows is whatever that assembly put in the thread, and a designer's whole leverage sits in the assembly step.</p>
+<p><strong>Problem.</strong> Two structural decisions follow from that loop and are usually made by default rather than on purpose. The first is how many agents to run, since one agent per domain keeps each prompt small but splits the thread so that no agent sees the whole task. The second is what a tool has to be, since a designer who assumes a tool must wrap a real system will build integrations the loop never required.</p>
+<p><strong>Key idea.</strong> Treat both as free choices, because the loop constrains neither. A tool need not correspond to anything real. The author's team implements a shell tool in Go over a virtual filesystem, and the model cannot tell, so the tool surface can be designed for the model instead of inherited from the backend. In place of one agent per domain, run a single agent that loads skills on demand, which returns full-thread context while keeping the resident prompt small. Wrapping that load in a skill tool, rather than letting the model open files itself, buys name resolution, usage tracking, and a returned file index that saves the model a recursive directory listing.</p>
+<p><strong>Findings.</strong> A skill description costs roughly 100 tokens of resident context, and its body of a few thousand tokens loads only once that description matches the task, which is what makes the single-agent consolidation affordable at all. Across the roughly 20 observability platforms the author's team covers, one loop and one tool surface serve every platform, with the platform-specific knowledge carried in skills rather than in code.</p>
+<p><strong>Why it matters.</strong> It separates what a designer has to build from what a designer can simply declare. The loop, the thread, and the tool schemas are engineering, while the know-how about when to use them is text loaded on demand, and moving material across that line is how a harness gains capability without growing its resident prompt. The post also notes that none of this is provider-specific, so the design carries across model vendors.</p>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="note-nav">
+<a href="sep-14.html">← Agents use II: 100x Engineer with Multi-agents</a>
+<a href="sep-23.html">Agents design II: multi-agent architecture, coordination, and communication →</a>
+</div>
+</div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="container">
+<p><a href="https://madsys.seas.harvard.edu/" rel="noopener" target="_blank">MadSys Research Group</a> · <a href="https://seas.harvard.edu/" rel="noopener" target="_blank">Harvard John A. Paulson School of Engineering and Applied Sciences</a></p>
+<p class="footer-policies"><a href="https://trademark.harvard.edu/pages/trademark-notice" rel="noopener" target="_blank">Trademark Notice</a> · <a href="https://accessibility.harvard.edu/" rel="noopener" target="_blank">Accessibility</a> · <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" rel="noopener" target="_blank">Digital Accessibility</a> · <a href="https://privsec.harvard.edu/harvard-university-privacy-statement" rel="noopener" target="_blank">Privacy Statement</a></p>
+<p class="footer-copyright">© 2026 Juncheng Yang</p>
+</div>
+</footer>
+</body>
+</html>

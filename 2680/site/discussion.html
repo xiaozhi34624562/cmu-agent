@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="vendor/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="vendor/bootstrap.bundle.min.js"></script>
+<meta content="How to read, critique, and discuss systems papers in CS2680, with guidance for optional student presentations" name="description"/>
+<meta content="Juncheng Yang" name="author"/>
+<link href="favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="CS2680 Modern AI Systems — Paper Discussion" property="og:title"/>
+<meta content="How to read, critique, and discuss systems papers in CS2680, with guidance for optional student presentations" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="CS2680 Modern AI Systems" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<link href="css/main.css" rel="stylesheet"/>
+<title>CS2680 Modern AI Systems — Paper Discussion</title>
+</head>
+<body>
+<div id="site-header"></div>
+<script src="header.js"></script>
+<div class="container page">
+<div class="row">
+<div class="col-12">
+<div class="title">CS2680 Modern AI Systems: Agents and System Optimizations</div>
+</div>
+<div class="col-12 title2">
+        Paper Discussion
+      </div>
+<div class="col-12">
+<div class="section" id="overview">
+<h2>Paper discussion preparations</h2>
+<p class="lead">The two paper discussions are on Oct 14 (agent safety and self-evolving harnesses) and Nov 16 (KV-cache optimization and model architectures). Paper presentations are optional, and each can earn up to four bonus percentage points; students who want to present may volunteer individually or as a team. Everyone reads for every discussion, and the room comes prepared to test the papers' claims.</p>
+<p>Read the assigned papers before class. You are not expected to understand every detail. You are
+            expected to have formed an opinion. Come with at least one thing you did not believe and one thing you
+            would have done differently.</p>
+<p>Which papers are assigned for which meeting is on the <a href="index.html#schedule">schedule</a>. The
+            supplementary literature on each problem is announced alongside the meeting, and it is where to look when
+            you want the surrounding work or are choosing a paper to present voluntarily.</p>
+<div class="discussion-questions">
+<h4>Questions to consider when reading each paper:</h4>
+<ul>
+<li>What problem is this solving, and who actually has that problem?</li>
+<li>What changed in the hardware, the workload, or the models that made this problem worth solving now?</li>
+<li>What is the key insight, in one sentence, without jargon?</li>
+<li>What does the design give up in exchange? Every system trades something.</li>
+<li>Is the baseline fair? What baseline would have made the result look worse?</li>
+<li>What workload is being evaluated, and how representative is it?</li>
+<li>Which numbers would change if you doubled the model size, the context length, or the request rate?</li>
+<li>What would break this system in production that the paper does not discuss?</li>
+<li>Is the result still true on today's hardware, or was it a fact about a specific GPU generation?</li>
+</ul>
+</div>
+</div>
+<div class="section" id="discussion-structure">
+<h2>Class structure</h2>
+<p class="lead">Most discussion meetings cover two papers. When students volunteer, each paper is taken by an individual or team; otherwise the instructor supplies the opening context and leads the discussion. The usual shape is:</p>
+<div aria-label="Discussion schedule" class="discussion-schedule-inline" role="table">
+<div class="schedule-row" role="row">
+<div class="schedule-cell" role="cell">
+<time class="duration" datetime="PT5M">5 min</time>
+<div class="activity">Instructor gives a brief context.</div>
+</div>
+<div class="schedule-cell" role="cell">
+<time class="duration" datetime="PT20M">20 min</time>
+<div class="activity">First presentation.</div>
+</div>
+<div class="schedule-cell" role="cell">
+<time class="duration" datetime="PT15M">15 min</time>
+<div class="activity">Open discussion.</div>
+</div>
+<div class="schedule-cell" role="cell">
+<time class="duration" datetime="PT20M">20 min</time>
+<div class="activity">Second presentation.</div>
+</div>
+<div class="schedule-cell" role="cell">
+<time class="duration" datetime="PT15M">15 min</time>
+<div class="activity">Open discussion.</div>
+</div>
+</div>
+</div>
+<p>A meeting with three assigned papers keeps the same shape with shorter slots. The instructor confirms the paper and timing with any volunteer presenters in advance.</p>
+</div>
+<div class="section" id="presenter-guide">
+<h2>For presenters</h2>
+<p class="lead">If you volunteer, you or your team has about 20 minutes in a two-paper meeting. Structure the time roughly like this.</p>
+<div class="reading-passes">
+<div class="reading-pass">
+<div class="pass-header">
+<h3>1. Background &amp; motivation <span class="pass-goal">— about 5 minutes</span></h3>
+<p class="pass-goal">Why should the room care?</p>
+</div>
+<div class="pass-content">
+<h4>Cover:</h4>
+<ul>
+<li>The problem, stated concretely, ideally with a number that shows it hurts.</li>
+<li>What people did before this paper, and why it was not good enough.</li>
+<li>What changed to make this the right moment for this idea.</li>
+</ul>
+<div class="tip">
+<strong>Tip:</strong> assume the audience read the paper. Do not spend five minutes explaining what a
+                  KV cache is. Spend them explaining why this paper's authors thought the existing approach was
+                  broken.
+                </div>
+</div>
+</div>
+<div class="reading-pass">
+<div class="pass-header">
+<h3>2. Key idea &amp; design <span class="pass-goal">— about 8 minutes</span></h3>
+<p class="pass-goal">What is the insight, and how is it realized?</p>
+</div>
+<div class="pass-content">
+<h4>Cover:</h4>
+<ul>
+<li>The central idea in one sentence, before any mechanism.</li>
+<li>The mechanism: how the system is put together, using the paper's own figures where they are good
+                    and your own where they are not.</li>
+<li>The one hard part. Every systems paper has a place where the idea meets reality and gets
+                    complicated. Find it and explain it.</li>
+</ul>
+<div class="tip">
+<strong>Tip:</strong> if you cannot explain the key idea without the paper's diagram, you probably do
+                  not have it yet. Try explaining it to someone outside the course first.
+                </div>
+</div>
+</div>
+<div class="reading-pass">
+<div class="pass-header">
+<h3>3. Evaluation <span class="pass-goal">— about 5 minutes</span></h3>
+<p class="pass-goal">Do the numbers support the claims?</p>
+</div>
+<div class="pass-content">
+<h4>Cover:</h4>
+<ul>
+<li>The setup: hardware, models, workloads. Say it out loud, because it is often where the story is.</li>
+<li>The two or three figures that actually matter. Skip the rest.</li>
+<li>The baseline. Is it the strongest available alternative, or a convenient one?</li>
+<li>What is <em>not</em> measured.</li>
+</ul>
+<div class="evaluation-lens">
+<h4>Evaluation lens</h4>
+                  For AI systems papers specifically: check whether throughput gains come at the cost of tail latency,
+                  whether the workload's request-length distribution is realistic, whether "GPU utilization" means
+                  occupancy or useful FLOPs, and whether the comparison holds the accuracy of the model fixed.
+                </div>
+</div>
+</div>
+<div class="reading-pass">
+<div class="pass-header">
+<h3>4. Discussion &amp; takeaways <span class="pass-goal">— about 2 minutes</span></h3>
+<p class="pass-goal">Hand the room something to argue about.</p>
+</div>
+<div class="pass-content">
+<h4>Cover:</h4>
+<ul>
+<li>What you would keep from this paper if you were building a system tomorrow.</li>
+<li>What has been superseded since publication.</li>
+<li><strong>Two or three prepared discussion questions</strong>, open-ended rather than factual. The
+                    goal is disagreement, not recall.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="tip">
+<strong>Tip:</strong> before you build the slides, read Patterson's <a href="https://people.eecs.berkeley.edu/~pattrsn/talks/BadTalk.pdf" rel="noopener noreferrer" target="_blank">How to Give a Bad Talk</a> (circa 1983, with annotations by Mark D. Hill). It states ten rules for ruining a talk, and each one inverts into something you can act on: write large, use color, illustrate instead of describing, keep your eyes on the room, and cut slides rather than talk faster when you run long. Patterson names the tenth as the one that matters most, and it is the one this course asks of you. Practice out loud, against a clock, at least once.
+          </div>
+</div>
+<div class="section" id="presentation-feedback">
+<h2>Presentation feedback</h2>
+<p class="lead">Each optional presentation can earn up to four bonus percentage points, one from each criterion. Two kinds of presentation qualify: a paper presentation at a discussion meeting, and the Assignment 1 frontend presentation at its sharing session. In the criteria below, the work is the paper you present or the system you built.</p>
+<ul>
+<li><strong>Content and understanding, up to 1%:</strong> explain the work's problem, approach, and contribution accurately.</li>
+<li><strong>Slides and delivery, up to 1%:</strong> use effective figures, organize the argument, and keep to the agreed time.</li>
+<li><strong>Critical analysis, up to 1%:</strong> identify important strengths, weaknesses, assumptions, and missing evidence.</li>
+<li><strong>Discussion leadership, up to 1%:</strong> bring questions that help the room test the work's claims.</li>
+</ul>
+<p>Send slides to the instructor at least <strong>24 hours before</strong> the session if you would like feedback before presenting.</p>
+</div>
+<div class="section" id="audience-guide">
+<h2>For the audience</h2>
+<p class="lead">Participation is 10% of your grade. It is earned across class discussions and
+            <a href="index.html#schedule">student sharing sessions</a>; volunteering for a paper presentation is
+            welcome but not required.</p>
+<div class="discussion-questions">
+<h4>How to participate effectively:</h4>
+<ul>
+<li>Read the paper. Not the abstract. The paper.</li>
+<li>Arrive with one question written down. Having it on paper makes it far more likely you will ask it.</li>
+<li>Ask about the thing you did not understand. You are reliably not the only one.</li>
+<li>Push on evaluation claims. "What was the baseline configured to do?" is almost always a good question.</li>
+<li>Connect papers to each other and to the lectures, because this is where the good discussions come from.</li>
+<li>Disagree with the paper, with the presenter, and with the instructor. Do it about the ideas.</li>
+</ul>
+</div>
+<p>Quality counts more than volume. One sharp question is worth more than five comments.</p>
+</div>
+<div class="section" id="paper-reading-strategy">
+<h2>Effective paper reading strategy</h2>
+<p class="lead">Adapted from Keshav's three-pass approach. Budget your attention, because not every paper
+            deserves the same depth.</p>
+<div class="reading-passes">
+<div class="reading-pass">
+<div class="pass-header">
+<h3>Pass 1 (10–30 min): triage and mental map</h3>
+<p class="pass-goal">Decide whether and how to keep reading.</p>
+</div>
+<div class="pass-content">
+<h4>Do:</h4>
+<ul>
+<li>Read the title, abstract, and introduction carefully.</li>
+<li>Read section headings; ignore the body.</li>
+<li>Look at every figure and read its caption.</li>
+<li>Read the conclusion. Skim the references for what you recognize.</li>
+</ul>
+<h4>Outcome:</h4>
+<ul>
+<li>You can state the category, the context, the core claim, and whether the evaluation looks
+                    credible.</li>
+</ul>
+<div class="tip">
+<strong>Tip:</strong> if you cannot say what problem the paper solves after pass 1, that is usually a
+                  fact about the paper's writing, not about you.
+                </div>
+</div>
+</div>
+<div class="reading-pass">
+<div class="pass-header">
+<h3>Pass 2 (1–2 hrs): understand &amp; evaluate</h3>
+<p class="pass-goal">Grasp the design and judge the evidence.</p>
+</div>
+<div class="pass-content">
+<h4>Identify:</h4>
+<ul>
+<li>The system's architecture and the one or two mechanisms doing the real work.</li>
+<li>Every assumption the design depends on, about the workload, the hardware, and the model.</li>
+<li>The experimental setup, and which claims each figure actually supports.</li>
+<li>What the authors chose not to measure.</li>
+</ul>
+<h4>Outcome:</h4>
+<ul>
+<li>You could summarize the paper to a colleague and defend or attack its central claim.</li>
+</ul>
+</div>
+</div>
+<div class="reading-pass">
+<div class="pass-header">
+<h3>Pass 3 (deep dive): re-derive &amp; stress-test</h3>
+<p class="pass-goal">Read as though you were the author, and then as the reviewer.</p>
+</div>
+<div class="pass-content">
+<h4>Do:</h4>
+<ul>
+<li>Reconstruct the design yourself before reading how they did it; compare your choices to theirs.</li>
+<li>Sanity-check the headline numbers against a back-of-the-envelope estimate: bandwidth,
+                    FLOPs, memory capacity. Do they even make sense?</li>
+<li>Look for the unstated assumption that makes the result work.</li>
+<li>Ask what the paper would look like if the result had been negative.</li>
+</ul>
+<h4>Outcome:</h4>
+<ul>
+<li>You could reimplement the system, and you know exactly where it would fall over.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="strategy-summary">
+<p>Use pass 1 on everything, pass 2 on the papers assigned for discussion, and pass 3 on the paper you are
+              presenting and on anything close to your own work. <strong>Reading fewer papers more carefully beats
+              skimming many.</strong></p>
+<div class="reference-links">
+<h4>Additional resources:</h4>
+<ul>
+<li><a href="https://web.stanford.edu/class/ee384m/Handouts/HowtoReadPaper.pdf" rel="noopener noreferrer" target="_blank">Keshav: How to Read a Paper</a></li>
+<li><a href="https://cacm.acm.org/research/always-measure-one-level-deeper/" rel="noopener noreferrer" target="_blank">Ousterhout: Always Measure One Level Deeper</a></li>
+<li><a href="https://www.usenix.org/conference/osdi22/presentation/yu" rel="noopener noreferrer" target="_blank">Orca (OSDI '22)</a> — a good model of a well-argued systems evaluation</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="container">
+<p><a href="https://madsys.seas.harvard.edu/" rel="noopener" target="_blank">MadSys Research Group</a> · <a href="https://seas.harvard.edu/" rel="noopener" target="_blank">Harvard John A. Paulson School of Engineering and Applied Sciences</a></p>
+<p class="footer-policies"><a href="https://trademark.harvard.edu/pages/trademark-notice" rel="noopener" target="_blank">Trademark Notice</a> · <a href="https://accessibility.harvard.edu/" rel="noopener" target="_blank">Accessibility</a> · <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" rel="noopener" target="_blank">Digital Accessibility</a> · <a href="https://privsec.harvard.edu/harvard-university-privacy-statement" rel="noopener" target="_blank">Privacy Statement</a></p>
+<p class="footer-copyright">© 2026 Juncheng Yang</p>
+</div>
+</footer>
+</body>
+</html>

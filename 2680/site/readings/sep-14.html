@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="../vendor/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="../vendor/bootstrap.bundle.min.js"></script>
+<meta content="CS2680 Modern AI Systems readings for the Agents use II: 100x Engineer with Multi-agents meeting" name="description"/>
+<meta content="Juncheng Yang" name="author"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="CS2680 Modern AI Systems — Readings: Agents use II: 100x Engineer with Multi-agents" property="og:title"/>
+<meta content="CS2680 Modern AI Systems readings for the Agents use II: 100x Engineer with Multi-agents meeting" property="og:description"/>
+<meta content="article" property="og:type"/>
+<meta content="CS2680 Modern AI Systems" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<link href="../css/main.css" rel="stylesheet"/>
+<title>CS2680 Modern AI Systems — Readings: Agents use II: 100x Engineer with Multi-agents</title>
+</head>
+<body>
+<div id="site-header"></div>
+<script src="../header.js"></script>
+<div class="container page">
+<div class="row">
+<div class="col-12">
+<div class="title">CS2680 Modern AI Systems: Agents and System Optimizations</div>
+</div>
+<div class="col-12 title2">
+        Readings
+      </div>
+<div class="col-12">
+<div class="section">
+<div class="subsection reading-meeting" data-schedule="https://code.claude.com/docs/en/agent-teams https://www.youtube.com/watch?v=LCEmiRjPEtQ https://openai.com/index/research-acceleration-view-inside-openai/" id="sep-14">
+<h2><span class="reading-date">Sep 14</span> Agents use II: 100x Engineer with Multi-agents</h2>
+<div class="table-responsive">
+<table class="table table-hover readings-table">
+<thead>
+<tr class="table-light">
+<th scope="col">Paper</th>
+<th scope="col">Year</th>
+<th scope="col">Why read it</th>
+</tr>
+</thead>
+<tr class="reading-topic">
+<th colspan="3" scope="colgroup">References</th>
+</tr>
+<tr>
+<td><a href="https://karpathy.medium.com/software-2-0-a64152b37c35" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Software 2.0</strong></a><span class="reading-subtitle">Andrej Karpathy</span></td>
+<td>2017</td>
+<td>
+<p><strong>Background.</strong> Machine learning was commonly described as another component inside conventional software. That description kept the programmer-written source code at the center and treated a trained neural network as one replaceable tool.</p>
+<p><strong>Problem.</strong> The framing misses a change in what specifies program behavior. For many perception and decision tasks, writing the desired algorithm directly is harder than collecting examples, defining an objective, and searching for a model that performs well on them.</p>
+<p><strong>Key idea.</strong> Call explicit human-written code Software 1.0 and learned neural-network weights Software 2.0. In the second stack, the dataset and model architecture act as source code, training acts as compilation, and iteration moves from editing individual instructions toward editing data, objectives, and the surrounding training system.</p>
+<p><strong>Why it matters.</strong> This is the baseline for the two Software 3.0 readings below. Ask what changes when the learned model stops being only a component trained for one task and becomes an interface that interprets instructions, writes conventional code, calls tools, and coordinates work.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://medium.com/@itamar_f/software-3-0-the-era-of-intelligent-software-development-acd3cafe6cd7" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Software 3.0 — the era of intelligent software development</strong></a><span class="reading-subtitle">Itamar Friedman</span></td>
+<td>2022</td>
+<td>
+<p><strong>Background.</strong> Code models such as Codex and Copilot made generated source code visible before autonomous coding agents became a common product interface. Software 2.0 explained programs represented by learned weights, but not a workflow in which a model produces the conventional code around those weights.</p>
+<p><strong>Problem.</strong> A programming stack driven by natural-language instructions needs a different account of authorship, iteration, and validation. Generated code may look familiar while remaining statistically produced, and greater output volume makes manual testing an increasingly narrow bottleneck.</p>
+<p><strong>Key idea.</strong> Describe Software 3.0 as a pipeline in which instructions and data enter an AI agent and the output combines programmer-readable code with neural-network components. The article treats automated testing, evaluation, monitoring, and human review as necessary infrastructure for iterating on that output.</p>
+<p><strong>Why it matters.</strong> This is an early, explicitly speculative use of the Software 3.0 label. Read it historically beside Karpathy's later talk: compare which predictions became ordinary agent features, which remained aspirations, and why executable verification becomes more important when software generation becomes cheaper.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/watch?v=LCEmiRjPEtQ" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Software is changing (again)</strong></a><span class="reading-subtitle">Andrej Karpathy</span></td>
+<td>2025</td>
+<td>
+<p><strong>Background.</strong> Eight years after Software 2.0, large language models can interpret natural language, generate code, use tools, and sit inside applications that combine conventional interfaces with model-driven behavior. The programmer now works across hand-written code, learned weights, and prompts.</p>
+<p><strong>Problem.</strong> Calling an LLM a chatbot hides the new software surface around it. The model is powerful but fallible, application context has to be assembled deliberately, and useful products must decide how much autonomy to grant rather than treating manual use and full delegation as the only choices.</p>
+<p><strong>Key idea.</strong> Present natural language as the programming interface of a Software 3.0 stack and place products on an autonomy slider, from suggestions through increasingly agentic execution. The surrounding application packages context, routes among models and tools, exposes a graphical interface, and keeps a person able to inspect or redirect the work.</p>
+<p><strong>Why it matters.</strong> The talk connects the earlier taxonomy to this lecture's multi-agent question. Moving the autonomy slider to the right creates more model calls, longer trajectories, and more concurrent work, so the user's job shifts toward specifying outcomes, supplying environments, and verifying evidence rather than typing every implementation step.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://code.claude.com/docs/en/sub-agents" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Claude Code subagents</strong></a><span class="reading-subtitle">Create custom subagents (Anthropic)</span></td>
+<td>—</td>
+<td>
+<p><strong>Background.</strong> A side task that fills the conversation with search results, logs, and file contents spends window the later steps still need. A subagent does that work in a context window of its own and returns only its summary, and a definition file makes the same worker reusable across sessions.</p>
+<p><strong>Problem.</strong> Isolation is neither free nor uniform. A subagent that starts fresh sees none of the conversation, so it may re-read files the parent already read, and latency grows while it gathers that context again. A fork inherits the whole conversation instead and gives up the input isolation, keeping only its tool calls out of the parent. Every definition’s description stays resident whether or not a turn delegates, and each returned report is appended to the parent’s context in full.</p>
+<p><strong>Key idea.</strong> Declare a worker as a Markdown file whose frontmatter fixes its tool allowlist, its model, its permission mode, and optionally a temporary git worktree to work in, and whose body becomes its system prompt. The description is the string the parent matches on when it decides to delegate, so the routing policy and the worker are the same artifact.</p>
+<p><strong>Why it matters.</strong> This is the delegation primitive the two pages after it compose, and it is context admission and eviction expressed as configuration rather than as a habit. Read the constraints as the shape of the resource being managed: the combined descriptions of custom subagents raise a warning past 15,000 tokens, a subagent may spawn subagents three layers below the main conversation by default, 20 may run at once, and several tools are withheld from every subagent so a worker cannot ask you a question or approve its own plan. Note also which permission modes a parent forces on its children, since that decides whether a narrow tool list is a boundary or a suggestion.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://code.claude.com/docs/en/agent-teams" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Claude Code agent teams</strong></a><span class="reading-subtitle">Orchestrate teams of Claude Code sessions (Anthropic)</span></td>
+<td>—</td>
+<td>
+<p><strong>Background.</strong> A subagent reports to whoever spawned it and communicates through that one return value. Some work instead needs several workers that hold findings simultaneously, disagree with each other, and each own part of a repository.</p>
+<p><strong>Problem.</strong> Making the workers peers turns a delegation tree into a distributed system, and the failure modes follow. Token cost scales with the number of live teammates because each is a full session. Two teammates editing one file overwrite each other. A task marked complete by nobody blocks everything that depends on it. Moreover, a teammate is another agent rather than another user, so a request it relays must not be able to grant a permission you never granted.</p>
+<p><strong>Key idea.</strong> One lead session spawns teammates, each a separate instance with its own context window, its own mailbox as a file on disk, and a name any other teammate can address. Work is a shared task list with dependencies, claimed under file locking so two teammates cannot take the same item, and three lifecycle hooks let a check refuse a task’s creation or completion or send an idle teammate back to work.</p>
+<p><strong>Why it matters.</strong> Read it for the boundary rather than the feature list. Claude Code tells a receiving agent that a message came from another session and not from you, a teammate cannot supply consent on your behalf, and a teammate denied an action cannot route it through a peer, which is the permission boundary of the tools reference redrawn between agents. The page is also unusually candid about cost and limits: teams are experimental and off by default, use significantly more tokens than one session, are recommended at three to five teammates, cannot nest, and do not survive session resumption. Those admissions are the argument for the next entry.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://code.claude.com/docs/en/workflows" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Claude Code dynamic workflows</strong></a><span class="reading-subtitle">Orchestrate subagents at scale with dynamic workflows (Anthropic)</span></td>
+<td>—</td>
+<td>
+<p><strong>Background.</strong> With subagents, skills, and agent teams, the model is the orchestrator. It decides turn by turn what to spawn next, and every intermediate result lands in some context window.</p>
+<p><strong>Problem.</strong> An orchestration that lives in a context window cannot outgrow that window, cannot be read after the fact, and cannot be rerun the same way. A plan the model re-derives each turn is also not the thing you wanted to reuse, because the worker definition is repeatable while the coordination is not.</p>
+<p><strong>Key idea.</strong> Move the plan into code. A JavaScript script runs in a runtime outside the conversation, where one call spawns a single agent and two others fan a task out over a list, intermediate results stay in script variables, and only the final answer returns to the context. The runtime makes the clock and the random number generator throw, so relaunching a script replays the same calls and completed agents return saved results instead of running again.</p>
+<p><strong>Why it matters.</strong> This is the clearest statement available of the course’s own distinction between what the model decides and what the harness decides, written by the people who had to implement it. The caps are the honest part of the design: at most 16 agents run concurrently, a single fan-out takes at most 4,096 items, and one run spawns at most 1,000 agents, with an advisory warning once a run schedules more than 25 agents or projects more than 1.5 million tokens. Read the resume rules closely, because a failure in the middle of a fan-out reruns every agent that started after it, which is the cost of replay as a recovery mechanism.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://www.anthropic.com/engineering/building-c-compiler" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Building a C compiler with a team of parallel Claudes</strong></a><span class="reading-subtitle">Nicholas Carlini (Anthropic)</span></td>
+<td>2026</td>
+<td>
+<p><strong>Background.</strong> The three pages above describe mechanisms. This one is a field report from running sixteen coding agents in parallel, with no human in the loop, until they had written a C compiler in Rust from scratch with no network access at any point.</p>
+<p><strong>Problem.</strong> An autonomous loop needs a stopping signal it cannot fake, and parallel agents need work partitioned without an orchestrator to partition it. Both requirements break on the same task: building the Linux kernel is one indivisible goal, so every agent hits the same bug and the parallelism buys nothing.</p>
+<p><strong>Key idea.</strong> Keep the harness minimal and put the intelligence in the verifier. A shell loop reinvokes the agent with the same prompt file, each agent works in its own container against a bare repository, and a claim is a file written into a directory where the version control system’s own synchronization forces the second claimant onto different work. There is no messaging between agents and no orchestrator. The indivisible task is split by using an existing compiler as a known-good oracle, compiling most files with it and a subset with the new one, then bisecting to the file that fails.</p>
+<p><strong>Findings.</strong> Roughly 2,000 sessions over two weeks across sixteen agents consumed 2 billion input tokens and 140 million output tokens for just under $20,000, producing about 100,000 lines that pass 99% of most compiler test suites and boot Linux 6.9 on three architectures. The limits are reported with the same specificity: no dependable assembler or linker of its own, one code path that calls an existing compiler instead, and output less efficient than that compiler produces with every optimization disabled.</p>
+<p><strong>Why it matters.</strong> It is the strongest available demonstration that verifier quality, not model quality, is the binding constraint on autonomous work, because an agent optimizes against the check it is given and an imperfect check selects for the wrong solution. Read the two harness details that generalize past compilers: logs written to files and marked so they can be searched rather than printed into the context, and a sampling flag added because the agent cannot perceive elapsed time and will not shorten a slow loop on its own. The author, whose background is in breaking software, ends uneasy rather than triumphant, on the ground that passing tests is easy to mistake for being finished.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://openai.com/index/research-acceleration-view-inside-openai/" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Research acceleration: The view inside OpenAI</strong></a><span class="reading-subtitle">OpenAI</span></td>
+<td>2026</td>
+<td>
+<p><strong>Background.</strong> A frontier laboratory published measurements of how much of its own research work now passes through coding agents, framed as a transparency commitment and as evidence on a milestone it had announced in advance.</p>
+<p><strong>Problem.</strong> Adoption anecdotes cannot answer how much of the work agents actually do, and a rise in experiments per researcher is not evidence that agents caused it, because available computation grew over the same period. A measurement therefore needs a common unit for agent and human effort and a classification of what the agents were used for.</p>
+<p><strong>Key idea.</strong> Convert total agent runtime across the research organization into eight-hour workdays and compare that against human labor over the same interval, then classify agent activity into the six phases of a research process: decide, design, build, run, analyze, and communicate.</p>
+<p><strong>Findings.</strong> The reported ratio reaches 3.1 agent-workdays per human workday by the middle of August 2026, and inference spending for the median researcher rises from near zero in February to more than $600 a day. Success rates improve on longer tasks, yet more than half of the successful tasks in the four-to-eight-hour range still required human intervention, and high-level planning stays a small share of what the agents produce.</p>
+<p><strong>Why it matters.</strong> It supplies the denominator the compiler report leaves out, which is how a whole organization’s work divides between agents and people rather than how one ambitious project went. Read the ratio as a utilization measure rather than a productivity one: runtime is not output, the post concedes that growing computation confounds the throughput trend, and the intervention rate says the remaining human work concentrates in whatever is least automatable. Every figure comes from the organization measuring itself, which is the same caution the practitioner report above deserves.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2606.26959" rel="noopener noreferrer" target="_blank"><strong class="reading-name">The Shift to Agentic AI</strong></a><span class="reading-subtitle">Evidence from Codex</span></td>
+<td>2026</td>
+<td>
+<p><strong>Background.</strong> Claims about agentic engineering mostly come from inside one organization or from users describing their own practice. This paper measures a coding agent’s usage across three populations at once: individuals on personal accounts, external organizations, and the vendor’s own staff.</p>
+<p><strong>Problem.</strong> Usage counts alone cannot distinguish more people trying a tool from people restructuring their work around it. Separating the two requires measures of sophistication, such as how many agents someone runs at a time and how large a task they are willing to hand over, and it requires a pipeline that produces those measures without exposing what anyone wrote.</p>
+<p><strong>Key idea.</strong> Build an automated privacy-preserving pipeline over usage data, then report volume and sophistication separately and compare the three populations, so internal adoption becomes a leading indicator against which external adoption can be read.</p>
+<p><strong>Findings.</strong> Active users grow more than fivefold across the first half of 2026, with the fastest growth outside the original developer audience. More than 10% of users run three or more agents at once in a given week and 26.6% use shared instruction files. The share of individual users submitting at least one task estimated at more than eight hours of experienced human work grows nearly tenfold from the start of the year. Inside the vendor, the median employee in a legal role produced 13× the monthly output tokens of November 2025 and the median researcher more than 50×.</p>
+<p><strong>Why it matters.</strong> It is the outside counterpart to the post above, and the two together are the best available answer to how quickly the practices in this lecture spread. However, every quantity is a measure of what people ran rather than of what the runs produced, so treat the sophistication measures as evidence of changed behavior and not of changed output. The concurrency and task-length numbers also give the workload behind Part II a shape: one user is increasingly several simultaneous long-running sessions rather than one interactive conversation.</p>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="note-nav">
+<a href="sep-09.html">← Agents use I: How Claude Code Works</a>
+<a href="sep-16.html">Agents design I: context management and tool design →</a>
+</div>
+</div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="container">
+<p><a href="https://madsys.seas.harvard.edu/" rel="noopener" target="_blank">MadSys Research Group</a> · <a href="https://seas.harvard.edu/" rel="noopener" target="_blank">Harvard John A. Paulson School of Engineering and Applied Sciences</a></p>
+<p class="footer-policies"><a href="https://trademark.harvard.edu/pages/trademark-notice" rel="noopener" target="_blank">Trademark Notice</a> · <a href="https://accessibility.harvard.edu/" rel="noopener" target="_blank">Accessibility</a> · <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" rel="noopener" target="_blank">Digital Accessibility</a> · <a href="https://privsec.harvard.edu/harvard-university-privacy-statement" rel="noopener" target="_blank">Privacy Statement</a></p>
+<p class="footer-copyright">© 2026 Juncheng Yang</p>
+</div>
+</footer>
+</body>
+</html>
