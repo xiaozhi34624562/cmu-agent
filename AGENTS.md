@@ -40,6 +40,7 @@
 - `RAG-KDD-Cup/`：多个 KDD Cup RAG 挑战赛的论文、说明、笔记和参赛代码快照。目录中部分上游项目曾有独立 Git 历史；本仓库只管理其中收录的文件。
 - `DSec/`：DeepSeek DSec 论文和中文解读。
 - `BuildReasoningLLM/`：推理模型构建相关资料。
+- `eval/`：AI 评测与评测工程相关资料。
 - `engineering/`：面向具体工程问题的专题研究，例如 Knowledge Agents、金融投研智能体、OCR、文档上下文层和 CCA 工作流。该目录不是课程新增讲次；有些专题使用独立 `SOURCES.md`，有些把来源索引合并在主文末尾。
 - `infra/`：AI 基础设施与 Agent 工程相关 PDF；`infra/1.DocumentContextLayer/` 存放文档上下文层、OCR、LlamaParse 与券商研报解析研究资料。
 - `memoryForLLM/`：LLM 记忆机制综述及配套笔记。
