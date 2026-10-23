@@ -7,8 +7,8 @@
 
 ## Starter code
 
-- [Local course code snapshot](code/)
-  - Source: https://github.com/HarvardMadSys/cs2680_assignments (fixed commit in the root SOURCES.md)
+- [Official archive contents](code/)
+  - Source: https://cs2680.com/assignments/assignment2.tar.gz
 
 ## Original archive
 

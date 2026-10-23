@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="../vendor/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="../vendor/bootstrap.bundle.min.js"></script>
+<meta content="CS2680 Assignment 4: serve the model on one 32 GB RTX PRO 4500, run your Assignment 3 agent against it, and make it faster by changing the serving engine or the agent" name="description"/>
+<meta content="Juncheng Yang" name="author"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="CS2680 Modern AI Systems — Assignment 4: Mads-Serve" property="og:title"/>
+<meta content="CS2680 Assignment 4: serve the model on one 32 GB RTX PRO 4500, run your Assignment 3 agent against it, and make it faster by changing the serving engine or the agent" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="CS2680 Modern AI Systems" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<link href="../css/main.css" rel="stylesheet"/>
+<title>CS2680 Modern AI Systems — Assignment 4: Mads-Serve</title>
+</head>
+<body>
+<div id="site-header"></div>
+<script src="../header.js"></script>
+<div class="container page">
+<div class="row">
+<div class="col-12">
+<div class="title">CS2680 Modern AI Systems: Agents and System Optimizations</div>
+</div>
+<div class="col-12 title2">
+Assignment 4 — Mads-Serve: own the model
+      </div>
+<div class="col-12 section" id="assignment-4">
+<h1>Assignment 4 — Mads-Serve: own the model <span class="para-heading-inline">(20%)</span></h1>
+<p><strong>Out</strong> Wed Oct 21 · <strong>due</strong> Tue Nov 10, 11:59pm · individual · <a href="../slides/assignment4.pdf">slides</a> · <a href="index.html">all five assignments</a></p>
+<p>In Assignment 3 your agent called models through the course API. In this assignment you serve the model yourself on one <strong>RTX PRO 4500 (32 GB)</strong>, point your Assignment 3 agent at it, and then make it faster by changing the serving engine or the agent.</p>
+<div class="tip"><p><strong>⚠️ ONE RTX PRO 4500 AT A TIME.</strong></p><p>The course has limited GPU resources, shared by the whole class, so please leave enough for your classmates. You should run on at most one GPU at a time. You will get a warning if you are found using more than one GPU, and each further violation will cost 10% of your score on this assignment. Leaderboard gradings run on separate GPUs and do not count.</p></div>
+<div class="tip"><p><strong>⚠️ THE LEADERBOARD DOES NOT ACCEPT LATE DAYS AND STOPS TAKING SUBMISSIONS ON TUESDAY, NOVEMBER 10, AT 11:59 P.M. ET.</strong></p><p>Submissions made before then are still graded and count, even if their grading finishes later. With no leaderboard submission by then, you get 0 of the 60 leaderboard points. Late days apply only to the write-up and the video.</p></div>
+<h2 id="initialize-your-repository">Initialize your repository first</h2>
+<p>Download the <a download="" href="assignment4.tar.gz">Assignment 4 starter archive</a> into the root of your shared private course repository, on the machine you used for Assignment 3, and extract it there. It creates <code>assignment4/</code>, with the starter code in <code>assignment4/starter_code/</code>.</p>
+<pre><code># From your shared course repository:
+tar -xzf assignment4.tar.gz
+rm assignment4.tar.gz</code></pre>
+<p><strong>Before you start work with Claude Code, run <code>init.sh</code>:</strong></p>
+<pre><code># From your shared course repository:
+bash assignment4/starter_code/init.sh</code></pre>
+<p>This copies <code>package_agent_sessions.py</code> to the repository root and writes <code>CLAUDE.local.md</code> there in place of Assignment 3's, so that Claude Code commits your changes together with the repository's session logs (Claude Code, Cursor and Codex) in <code>agent-sessions.tar.gz</code> at the repository root. For the submission you run the packager once more (<a href="#part-4-submission-and-grading">Part 4</a>).</p>
+<h2 id="part-1-run-the-basic-sglang-setup">Part 1. Run the basic SGLang setup</h2>
+<p>If you have not used the course cluster before, do the <a href="../computing/cluster.html#first-time">first-time setup</a> on the HPC page first. Some steps below run once on the login node, as marked. Run the rest in the screen session on your GPU node.</p>
+<h3 id="start-a-job-on-a-gpu-node">Start a job on a GPU node</h3>
+<p>From the login node (<code>ssh cs2680</code>), start a job on an RTX PRO 4500 node that holds a <code>screen</code> session, and attach to it:</p>
+<pre><code>sbatch -p gpu-g7-reserved --gres=gpu:rtxpro4500:1 -c 8 --mem=28G -t 4:00:00 -J work -o /dev/null --wrap 'screen -dmS work; while screen -ls work | grep -q "\.work"; do sleep 30; done'
+squeue -u $USER --name=work                 # wait for state R, and note the JOBID
+srun --jobid=&lt;JOBID&gt; --overlap --pty screen -r work</code></pre>
+<p>A node that was powered down takes about 4 minutes to boot (state <code>CF</code>). The screen session keeps running if your connection drops. Press <code>Ctrl-a d</code> to detach, and run the <code>srun</code> line again to reattach. The job ends after 4 hours, or when you run <code>scancel &lt;JOBID&gt;</code> on the login node. End it when you are done, since you may hold only one GPU at a time. The HPC page explains these commands in <a href="../computing/cluster.html#serving">Serving a model on a GPU node</a>.</p>
+<h3 id="set-up-the-environment-variables">Set up the environment variables</h3>
+<p>Once, on the login node, create a password for your server. Your agent sends it with every request, and nobody without it can use your GPU:</p>
+<pre><code>mkdir -p ~/a4/engine &amp;&amp; (umask 077 &amp;&amp; openssl rand -hex 16 &gt; ~/a4/serve.key)</code></pre>
+<p>Then set these two variables in every new shell you use for this assignment, on the login node and in every GPU job (a new screen window is a new shell too). The commands below use them:</p>
+<pre><code>export A4=/shared/courseSharedFolders/176914outer/176914/a4   # the course environment
+export SERVE_KEY=$(cat ~/a4/serve.key)                       # your server's password</code></pre>
+<h3 id="set-up-sglang">Set up SGLang</h3>
+<p>The course environment in <code>$A4</code> holds SGLang's dependencies, a CUDA toolchain for kernels compiled at run time, and the weights of the course's model (Qwen3.6-35B-A3B NVFP4). The basic SGLang setup runs that checkpoint's FP4 experts with FlashInfer's native FP4 kernels, which the course environment ships prebuilt. SGLang itself is your own clone, so you can modify it. Once, on the login node:</p>
+<pre><code>git clone --depth 1 --branch v0.5.20 https://github.com/sgl-project/sglang.git ~/a4/sglang
+git -C ~/a4/sglang switch -c a4                  # a branch for your commits
+cp $A4/basic-sglang-flags.txt ~/a4/engine/flags.txt
+git config --global user.name "Your Name"        # once, if you have not set these on the cluster
+git config --global user.email "your Harvard email"</code></pre>
+<p>Then, in every job on a GPU node:</p>
+<pre><code>bash $A4/bin/setup.sh</code></pre>
+<p><code>setup.sh</code> builds the environment on the node's local disk and ends with <code>setup finished</code>. It takes about <strong>8 minutes</strong> on a node that has just booted and about 30 seconds on a node where you already ran it.</p>
+<details class="aside">
+<summary>Environment details</summary>
+<p>The environment is Python 3.12 with PyTorch 2.13, FlashInfer 0.6.18 and sgl-kernel 0.4.7, and a CUDA 13.4 toolchain. <code>setup.sh</code> copies the weights to the node and compiles a test kernel through each compiler SGLang uses. Each node has its own disk, so a job on another node runs it again. The clone may print <code>warning: refs/tags/v0.5.20 ... is not a commit!</code>, which is harmless.</p>
+</details>
+<h3 id="start-the-server">Start the server</h3>
+<pre><code>bash $A4/bin/serve.sh &gt; ~/a4/server.log 2&gt;&amp;1 &amp; tail -f ~/a4/server.log   # Ctrl-c stops watching; the server keeps running</code></pre>
+<p>Wait until the log prints this line. The first start on a node takes about <strong>8 minutes</strong>, and a restart on the same node about 2 minutes.</p>
+<pre><code>[2026-10-15 19:17:00] The server is fired up and ready to roll!</code></pre>
+<p>Then press <code>Ctrl-c</code> to stop watching, and check the server. <code>smoke.py</code> checks seven things your agent relies on and ends with <code>7/7 passed</code>:</p>
+<pre><code>python3 $A4/bin/smoke.py http://127.0.0.1:30000 $SERVE_KEY</code></pre>
+<p>To try a change, edit <code>flags.txt</code> or your clone, stop the server with <code>kill %1</code> in the shell that started it, and run the <code>serve.sh</code> line again. The leaderboard does not run <code>serve.sh</code> but your <code>engine/launch.sh</code> (<a href="#part-4-submission-and-grading">Part 4</a>), which in the starter's template starts SGLang with the same <code>flags.txt</code>.</p>
+<p><strong>Before you exit the job</strong>, stop the server and run <code>bash $A4/bin/cleanup.sh</code>, which deletes your copy of the environment from the node. Your copy takes about 42 GB of the 66 GB a node has free, and the next student on that node cannot run <code>setup.sh</code> until it is gone.</p>
+<details class="aside">
+<summary>Server configuration</summary>
+<p><code>serve.sh</code> starts SGLang from <code>~/a4/sglang</code> with the flags in <code>~/a4/engine/flags.txt</code>, followed by the flags the course sets: <code>--model-path nvidia/Qwen3.6-35B-A3B-NVFP4 --served-model-name qwen3.6-35b-a3b-fp4 --host 0.0.0.0 --port 30000 --api-key $SERVE_KEY</code>. Of the first start's 8 minutes, about 3 load the weights and about 3 are FlashInfer tuning its kernels for this card.</p>
+<p>You may change any of the basic SGLang setup's flags in <code>flags.txt</code>. Your flags may not set the model path, the served model name, the address, the key or the number of GPUs, since <code>serve.sh</code> and the leaderboard set them, and may not use <code>--config</code>, which could set them too. Three of the setup's flags need care:</p>
+<ul><li><code>--moe-runner-backend</code> is required to serve Qwen3.6-35B-A3B NVFP4 with SGLang. Without it, startup fails with <code>NotImplementedError</code>.</li><li><code>--mamba-ssm-dtype bfloat16</code> stores the linear-attention layers' state at lower precision than the checkpoint specifies. It is part of the model's numerics, so changing it can change how many tasks the model solves.</li><li><code>--reasoning-parser</code> and <code>--tool-call-parser</code> fill the <code>reasoning_content</code> and <code>tool_calls</code> fields your agent reads, and <code>--enable-metrics</code> and <code>--enable-cache-report</code> make the server report more about its work.</li></ul>
+</details>
+<details class="aside">
+<summary>Running your own scripts</summary>
+<p>The cluster has none of SGLang's packages or the CUDA toolchain installed, so the course provides them as an environment. The course environment is a Nix environment that <code>setup.sh</code> unpacks on the node's local disk, and a program sees it only when it is started through <code>nix-portable</code>, which <code>serve.sh</code> does for the server. A plain shell on the node does not, so <code>python</code> there finds no <code>torch</code> or <code>sglang</code>. To run a script of your own (e.g., <code>python -m sglang.bench_serving</code>), first open a shell inside the environment:</p>
+<pre><code>source $A4/bin/np.sh &amp;&amp; a4sh bash --norc
+export PYTHONPATH=~/a4/sglang/python HF_HOME=/var/tmp/$USER-a4/hf HF_HUB_OFFLINE=1 OPENAI_API_KEY=$SERVE_KEY</code></pre>
+<p>Clients such as <code>sglang.bench_serving</code> send the key in <code>OPENAI_API_KEY</code>; without it, they get <code>401</code> and report that the server is not ready. <code>HF_HUB_OFFLINE=1</code> makes scripts load the model's files from the local copy, and it also stops downloads from the Hugging Face Hub, so leave it out in a shell that must download a dataset.</p>
+</details>
+<details class="aside">
+<summary>Common problems</summary>
+<div class="table-responsive"><table class="table table-bordered">
+<thead class="table-light">
+<tr>
+<th>The log says</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NotImplementedError ... Use --moe-runner-backend flashinfer_cutlass instead</code></td>
+<td>Add <code>--moe-runner-backend flashinfer_cutlass</code>, as the basic flags do.</td>
+</tr>
+<tr>
+<td><code>setup.sh</code> prints <code>only NG free on &lt;node&gt;</code></td>
+<td>Another student's copy fills this node's disk. End the job (<code>scancel &lt;JOBID&gt;</code> on the login node) and run the <code>sbatch</code> line again with <code>--exclude=&lt;node&gt;</code> added.</td>
+</tr>
+<tr>
+<td><code>np.sh: run this inside a Slurm job on a GPU node</code></td>
+<td>You are on the login node. Start a job on <code>gpu-g7-reserved</code> first.</td>
+</tr>
+<tr>
+<td><code>No module named 'sglang'</code> (or <code>'torch'</code>) in your own script</td>
+<td>That shell does not have the environment. Open one with <code>source $A4/bin/np.sh &amp;&amp; a4sh bash --norc</code>, as above.</td>
+</tr>
+<tr>
+<td><code>CUDA out of memory</code> during startup or CUDA graph capture</td>
+<td>Your flags use more GPU memory than the card has. Undo the change that used the memory.</td>
+</tr>
+</tbody>
+</table></div>
+</details>
+<h3 id="connect-your-agent">Connect your agent</h3>
+<p>Your agent and its task containers need Docker, which the cluster does not have, so they run on the machine you used for Assignment 3. That machine must be on the Harvard network or the Harvard University VPN to reach the cluster. The starter code in <code>assignment4/starter_code/</code> (<a href="#initialize-your-repository">extracted and initialized first</a>) is the Assignment 3 framework with 25 new tasks and with your server in place of the course API, and its dispatcher no longer limits how many tasks are live. Copy your Assignment 3 <code>src/</code> over its <code>src/</code>. The egress proxy runs in a container, which cannot reach your machine's <code>localhost</code>, so open the <a href="../computing/cluster.html#tunnel">SSH tunnel</a> to the GPU node on the Docker bridge address (usually <code>172.17.0.1</code>) and point the harness at it (from a CloudLab or AWS machine, open the tunnel as the HPC page describes in <a href="../computing/cluster.html#cloudlab-aws">reaching the cluster from CloudLab or AWS</a>):</p>
+<pre><code>cd assignment4/starter_code                           # from your course repository; the rest runs here
+ssh -f -N -o ExitOnForwardFailure=yes -L 172.17.0.1:30000:&lt;node&gt;:30000 cs2680
+export A3_API_UPSTREAM=http://172.17.0.1:30000
+export CS2680_API_KEY=$(ssh cs2680 cat a4/serve.key)   # the same key as your server
+export CS2680_MODEL_EXPERT=qwen3.6-35b-a3b-fp4 CS2680_MODEL_STANDARD=qwen3.6-35b-a3b-fp4 CS2680_MODEL_STARTER=qwen3.6-35b-a3b-fp4
+bash evaluation_scripts/prepare_images.sh             # once: about 40 GB to download
+python3 evaluation_scripts/run_all.py --limit 0       # preflight: look for EGRESS OK</code></pre>
+<p>The course API and its three models (starter, standard and expert) are not available in this assignment. Every model call goes to the model you serve, so all three model variables above name it. The preflight checks that your server accepts your key and serves that model. The starter's <code>README.md</code> lists the disk, CPU and memory your machine needs, and what a failed preflight means.</p>
+<h2 id="part-2-measure">Part 2. Measure your starting run</h2>
+<p>Run your Assignment 3 agent on the 25 tasks with the basic SGLang setup, keeping all 25 open from the start. The server's log and your agent's logs are written as the run goes, but the server's <code>/metrics</code> endpoint shows its counters and gauges only at the moment you read it, so while the run lasts, read it at regular intervals (for example, every 10 seconds with <code>curl</code>) and keep every reading.</p>
+<p>Record the two numbers the leaderboard scores: tasks solved, and the end-to-end time from the start of the run (with your server already up) to the last task done. Your agent works on all the tasks at the same time, so this is the time to finish the whole set.</p>
+<p>Then find out where the time goes. From the server's log, your <code>/metrics</code> readings and your agent's logs, measure whatever you need to explain your starting run's end-to-end time, and plot it over the whole run.</p>
+<p>Also run SGLang's serving benchmark, <code>python -m sglang.bench_serving</code>, against the same server. Choose its settings to describe your agent's workload as well as you can, compare what it reports with what you measured in your starting run, and keep both.</p>
+<h2 id="part-3-improve">Part 3. Make serving efficient</h2>
+<p><strong>Make the server serve your agent faster</strong>, so that the agent solves the task set in less time. Work in three steps:</p>
+<ol><li><strong>Find the cause.</strong> Use your Part 2 measurements to find what limits the speed.</li><li><strong>List fixes.</strong> Name the changes to the engine or the agent that could remove the cause, and predict what each would do.</li><li><strong>Try them.</strong> Implement the most promising ones and measure how much each helps.</li></ol>
+<div class="tip">Change one thing at a time, measure it on the same tasks as your starting run, and keep the logs of every run you report.</div>
+<p><strong>Record each change as you go.</strong> Each time you try a change, add it to the <a href="#write-up">table or list of optimizations</a> in your write-up, even if it did not help.</p>
+<h3 id="what-you-may-change">Allowed changes</h3>
+<ul><li><strong>The engine.</strong> SGLang or vLLM, the two frameworks the course environment provides, with any change to their source code and any settings. To use vLLM 0.31.0, follow <a href="https://leaderboard.cs2680.com/a4/engines.html#vllm">Using vLLM</a> on the leaderboard's engine conventions page, which clones vLLM, installs it on the node with <code>bash $A4/bin/setup.sh --vllm</code>, and puts <code>$A4/basic-vllm-flags.txt</code> in place of your <code>flags.txt</code>; <code>serve.sh</code> then starts vLLM when <code>~/a4/engine/engine.json</code> names <code>vllm</code>. Kernels compiled ahead of time (SGLang's <code>sgl-kernel</code>, vLLM's C++ and CUDA extensions) cannot be rebuilt on the course nodes, so a patch may change only files under <code>python/sglang/</code> for SGLang (not <code>python/sglang/kernels/aot/</code>) or under <code>vllm/</code> for vLLM; kernels compiled at run time may change. You may also use another serving framework at your own risk. Build it into an environment folder of your own and name the engine <code>other</code>, as <a href="https://leaderboard.cs2680.com/a4/engines.html#own-engine">Your own engine</a> on the engine conventions page describes. The course does not fix problems with other frameworks. That page lists the conventions for every engine.</li><li><strong>The agent.</strong> How it uses the server.</li></ul>
+<p><strong>You may not change the model.</strong> Keep the model in <code>engine.json</code> as the starter has it, and do not convert its weights when the engine loads them (e.g., with <code>--quantization</code> or <code>--dtype</code>). Engine settings such as the KV cache's data type are allowed, and speculative decoding may use the model's own multi-token-prediction head but not a separate draft model.</p>
+<p>Your server runs on one GPU. You may not change the task set, the dispatcher or the evaluation scripts, or send model calls anywhere but your server.</p>
+<h3 id="what-counts-as-cheating">Cheating</h3>
+<p>The rules of Assignment 3 apply: no gold patches or hidden tests, nothing written for particular tasks or repositories, and nothing learned from running the evaluation tasks offline. They apply to the engine too: it may not recognize a task or a prompt, ship responses or any other state precomputed from the tasks, or keep state from one graded run to the next. Tuning a general setting, such as a server flag, by measuring it on the tasks is allowed. A violation invalidates the submission. If you are not sure whether a change is allowed, email us before you submit it.</p>
+<h2 id="part-4-submission-and-grading">Part 4. Submission and grading</h2>
+<p>The submission has three parts, as in Assignment 3.</p>
+<ul><li><strong>Code.</strong> Your agent goes in <code>src/</code>, and your server goes in <code>engine/</code>. The starter's <code>engine/</code> is the basic SGLang setup:<ul><li><code>engine.json</code>: the framework (<code>sglang</code>, <code>vllm</code>, or <code>other</code> with your environment folder in <code>"env"</code>) and the model (do not change it);</li><li><code>flags.txt</code>: a copy of <code>$A4/basic-sglang-flags.txt</code>;</li><li><code>launch.sh</code>: the script that starts your server, whose one working line is <code>exec a4-serve --flags-file "$A4_ENGINE_DIR/flags.txt"</code>;</li><li><code>sglang.patch</code>, only if you changed SGLang: your clone's changes against v0.5.20, committed or not, which <code>git -C ~/a4/sglang add -A python/sglang &amp;&amp; git -C ~/a4/sglang diff --no-renames v0.5.20 -- python/sglang &gt; ~/a4/engine/sglang.patch</code> writes (for vLLM, <code>vllm.patch</code>, as the engine conventions page shows).</li></ul>Zip <code>engine/</code> with <code>src/</code> into <code>submission.zip</code> and upload it on the leaderboard's Submit page. Also run <code>python3 package_agent_sessions.py</code> from the repository root, which writes your Claude Code, Cursor and Codex sessions to <code>assignment4/a4-sessions.tar.gz</code>.</li><li id="write-up"><strong>Write-up.</strong> <code>writeup.md</code>, in your own words with no AI-generated text. Cover these four things, in this order:<ol><li>what limited your starting run, and how you found it;</li><li>what you found when you compared SGLang's serving benchmark with your agent's runs;</li><li>a table or a list of your optimizations, with one entry for each change you tried, including the ones that did not help, and for each entry:<ul><li><em>Change</em>: what you changed;</li><li><em>Observation</em>: the measurement that led you to the change, with its number;</li><li><em>Reasoning</em>: why you expected the change to help, and what you predicted it would do;</li><li><em>Result</em>: what you measured, compared with the run before it, with numbers from your logs;</li></ul></li><li>the lessons you learned.</li></ol></li><li><strong>Video.</strong> The same material in <strong>3 minutes</strong>, with your face visible and in your own voice, showing the log or <code>/metrics</code> for any claim that depends on it. Upload it to Canvas.</li></ul>
+<pre><code>assignment4/
+├── starter_code/
+│   ├── src/              your agent
+│   └── engine/           engine.json, flags.txt, launch.sh, and your patch if you made one
+├── a4-sessions.tar.gz    your agent session files
+└── writeup.md            the write-up</code></pre>
+<p>The leaderboard runs <code>launch.sh</code> with bash in place of <code>serve.sh</code> or your own batch script, so <code>#SBATCH</code> lines in it have no effect. It runs inside the course's sandbox, which has no network and hides <code>/shared</code>, <code>/scratch</code> and every home folder, so a <code>launch.sh</code> that calls <code>$A4/bin/serve.sh</code> or reads <code>~/a4</code> fails there. The sandbox puts the course's <code>a4-serve</code> on <code>PATH</code> and gives <code>launch.sh</code> the variables its comments list. Your server must listen on <code>127.0.0.1:$A4_PORT</code>, require the key in <code>$A4_KEY_FILE</code> on every request (only <code>/health</code> and <code>/metrics</code> may answer without it), serve one model named <code>$A4_SERVED_MODEL_NAME</code>, and answer within 45 minutes of the start of the grading job.</p>
+<p><strong>Before you submit</strong>, test your <code>engine/</code> as the leaderboard runs it. Put it in <code>~/a4/engine</code> on the cluster (the starter's <code>README.md</code> shows how), stop your own server, and run this in a job on a GPU node after <code>setup.sh</code> (<code>setup.sh --vllm</code> for vLLM, <code>setup.sh --weights-only</code> for <code>other</code>):</p>
+<pre><code>bash $A4/bin/check-submission.sh --launch</code></pre>
+<p>It checks <code>engine/</code> against the leaderboard's rules, starts your server from it in the course's sandbox as a grading does, and prints <code>PASS</code> or <code>FAIL</code> with the end of the server's log. With the starter's template it takes about 8 minutes. A server that fails to start on the leaderboard still counts as one of your 3 gradings that day.</p>
+<h3 id="leaderboard">Leaderboard</h3>
+<p>The leaderboard starts your server from <code>engine/</code> on a fresh RTX PRO 4500 node, waits until it is ready, and then runs your agent from <code>src/</code> on the evaluation set, with the same <code>dispatcher/</code>, <code>madsServe.py</code> and evaluation scripts as the starter code and the evaluation set's 26 tasks in place of the starter's 25. The leaderboard is at <a href="https://leaderboard.cs2680.com/">https://leaderboard.cs2680.com/</a>, and you log in with your Assignment 3 account. Its <code>Leaderboard</code> page shows the top 10 students by their best submission, and your own best submission with its rank.</p>
+<p>The figure below follows one submission from your upload to the end of its run. Your server runs in the course's sandbox with no network, your agent's model calls reach only your server, and the end-to-end time runs from the moment your server is ready to the last task done.</p>
+<div class="overflow-x-auto" tabindex="0">
+<svg aria-label="Diagram: you upload submission.zip, with your agent in src/ and your server in engine/, on the Submit page; it waits in the queue, where you have at most one submission queued or being graded at a time and 3 gradings a day; when a GPU is free, engine/launch.sh starts your server on a fresh RTX PRO 4500 node, inside the course sandbox with no network, and your server has a startup limit of 45 minutes; the waiting and the startup are not counted; when your server is ready the clock starts, and your agent, from src/, runs in the agent container with the starter code's dispatcher/ and madsServe.py, and this one agent opens all 26 tasks, each in its own task container, with no limit on how many are open; your agent's model calls reach only your server; each patch is graded in a separate grading container with a fresh copy of the task image and the hidden tests, with a time limit of 35 minutes for the tests; the clock stops when the last task is done, at most 4 hours after it started" class="feature-demo feature-demo-full" role="img" style="min-width: 600px" viewbox="0 0 724 456">
+<defs>
+<marker id="a4-arrow" markerheight="7" markerwidth="7" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10"><path d="M0,0 L10,5 L0,10 z" fill="#3B4147"></path></marker>
+</defs>
+<rect fill="#FFFFFF" height="80" rx="6" stroke="#C4CAD3" stroke-width="1.5" width="180" x="24" y="12"></rect>
+<text fill="#1E2126" font-family="'Lucida Console', Monaco, monospace" font-size="12.5" font-weight="700" x="40" y="36">submission.zip</text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" x="40" y="58"><tspan fill="#3B4147" font-family="'Lucida Console', Monaco, monospace">src/</tspan> your agent</text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" x="40" y="77"><tspan fill="#3B4147" font-family="'Lucida Console', Monaco, monospace">engine/</tspan> your server</text>
+<line marker-end="url(#a4-arrow)" stroke="#3B4147" stroke-width="1.5" x1="206" x2="280" y1="52" y2="52"></line>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" text-anchor="middle" x="243" y="44">Submit page</text>
+<rect fill="#EFF1F4" height="80" rx="6" stroke="#C4CAD3" stroke-width="1.5" width="120" x="282" y="12"></rect>
+<text fill="#1E2126" font-family="Lato, Arial, sans-serif" font-size="13" font-weight="700" x="298" y="36">Queue</text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" x="298" y="58">one per student,</text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" x="298" y="77">3 gradings a day</text>
+<line marker-end="url(#a4-arrow)" stroke="#3B4147" stroke-width="1.5" x1="404" x2="492" y1="52" y2="52"></line>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" text-anchor="middle" x="448" y="44">a GPU is free</text>
+<rect fill="#FFFFFF" height="238" rx="8" stroke="#8C1515" stroke-width="1.5" width="206" x="494" y="12"></rect>
+<text fill="#8C1515" font-family="Lato, Arial, sans-serif" font-size="13" font-weight="700" x="510" y="36">RTX PRO 4500 node</text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" x="510" y="55">fresh for each grading</text>
+<rect fill="none" height="170" rx="6" stroke="#C4CAD3" stroke-dasharray="5 4" stroke-width="1.5" width="182" x="506" y="68"></rect>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" x="518" y="88">course sandbox, no network</text>
+<rect fill="#F7F8FA" height="48" rx="4" stroke="#DEE2E7" width="158" x="518" y="96"></rect>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="11.5" x="530" y="116">engine/launch.sh</text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" x="530" y="135">starts your server</text>
+<line marker-end="url(#a4-arrow)" stroke="#3B4147" stroke-width="1.5" x1="597" x2="597" y1="146" y2="158"></line>
+<rect fill="#F7F8FA" height="66" rx="4" stroke="#DEE2E7" width="158" x="518" y="160"></rect>
+<text fill="#1E2126" font-family="Lato, Arial, sans-serif" font-size="13" font-weight="700" x="530" y="187">Your server</text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" x="530" y="208">startup limit: 45 min</text>
+<rect fill="#FFFFFF" height="134" rx="8" stroke="#8C1515" stroke-width="1.5" width="220" x="24" y="116"></rect>
+<line marker-end="url(#a4-arrow)" stroke="#3B4147" stroke-dasharray="4 3" stroke-width="1.5" x1="184" x2="184" y1="94" y2="146"></line>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="11.5" x="192" y="109">src/</text>
+<text fill="#8C1515" font-family="Lato, Arial, sans-serif" font-size="13" font-weight="700" x="40" y="138">Agent container</text>
+<rect fill="#F7F8FA" height="40" rx="4" stroke="#DEE2E7" width="188" x="40" y="148"></rect>
+<text fill="#1E2126" font-family="Lato, Arial, sans-serif" font-size="13" x="52" y="173"><tspan font-weight="700">Your agent</tspan><tspan fill="#646A72"> (src/)</tspan></text>
+<rect fill="#F7F8FA" height="44" rx="4" stroke="#DEE2E7" width="188" x="40" y="196"></rect>
+<text fill="#3B4147" font-family="'Lucida Console', Monaco, monospace" font-size="11" x="52" y="214">dispatcher/, madsServe.py</text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" x="52" y="233">as in the starter code</text>
+<line marker-end="url(#a4-arrow)" stroke="#3B4147" stroke-width="1.5" x1="230" x2="516" y1="168" y2="168"></line>
+<text fill="#3B4147" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle" x="369" y="160">model calls</text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" text-anchor="middle" x="369" y="184">only to your server</text>
+<line marker-end="url(#a4-arrow)" stroke="#3B4147" stroke-width="1.5" x1="120" x2="120" y1="242" y2="274"></line>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" x="130" y="267">one agent opens all 26 tasks</text>
+<rect fill="#FFFFFF" height="80" rx="8" stroke="#DEE2E7" width="204" x="40" y="276"></rect>
+<rect fill="#FFFFFF" height="80" rx="8" stroke="#DEE2E7" width="208" x="32" y="282"></rect>
+<rect fill="#FFFFFF" height="80" rx="8" stroke="#8C1515" stroke-width="1.5" width="212" x="24" y="288"></rect>
+<text fill="#8C1515" font-family="Lato, Arial, sans-serif" font-size="13" font-weight="700" x="40" y="310">Task container k</text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" text-anchor="end" x="220" y="310">k = 1 to 26</text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" x="40" y="332">the task's repository,</text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" x="40" y="350">no limit on how many are open</text>
+<line marker-end="url(#a4-arrow)" stroke="#3B4147" stroke-width="1.5" x1="246" x2="280" y1="328" y2="328"></line>
+<rect fill="#FFFFFF" height="80" rx="8" stroke="#8C1515" stroke-width="1.5" width="418" x="282" y="288"></rect>
+<text fill="#8C1515" font-family="Lato, Arial, sans-serif" font-size="13" font-weight="700" x="298" y="310">Grading container</text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" text-anchor="end" x="684" y="310">test time limit: 35 min</text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" x="298" y="332">a fresh copy of the task image,</text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" x="298" y="350">your patch, and the hidden tests</text>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" text-anchor="middle" x="153" y="402">waiting, then server startup</text>
+<rect fill="#DEE2E7" height="10" rx="3" width="258" x="24" y="410"></rect>
+<rect fill="#8C1515" height="10" rx="3" width="418" x="282" y="410"></rect>
+<circle cx="282" cy="415" fill="#FFFFFF" r="6" stroke="#8C1515" stroke-width="2"></circle>
+<circle cx="700" cy="415" fill="#FFFFFF" r="6" stroke="#8C1515" stroke-width="2"></circle>
+<text fill="#646A72" font-family="Lato, Arial, sans-serif" font-size="11.5" font-weight="700" text-anchor="middle" x="153" y="440">not counted</text>
+<text fill="#8C1515" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle" x="491" y="402">end-to-end time, at most 4 h</text>
+<text fill="#3B4147" font-family="Lato, Arial, sans-serif" font-size="12" text-anchor="middle" x="282" y="440">clock starts: server ready</text>
+<text fill="#3B4147" font-family="Lato, Arial, sans-serif" font-size="12" text-anchor="end" x="700" y="440">clock stops: last task done</text>
+</svg>
+</div>
+<p><strong>Limits.</strong></p>
+<ul><li><strong>Waiting for a GPU: no limit.</strong> A grading waits until an RTX PRO 4500 node is free for it. The wait counts toward no limit and not toward your score.</li><li><strong>Server startup: 45 minutes</strong>, from the start of the grading job to the moment your server answers, including any installation. A server that is not ready by then fails the grading, and the Past submissions page shows the end of its log. This time does not count toward your score.</li><li><strong>Run: 4 hours</strong>, counted from the moment your server is ready, when the end-to-end time also starts. After 4 hours the run stops: every task still open is finished as if your agent had called <code>done</code>, tasks never opened count as failures, and the time after the cut does not count.</li><li><strong>Tasks live at once: no limit.</strong> Your agent may open every task at the start.</li><li><strong>Grading of a patch: 35 minutes.</strong> A test suite that hangs counts as all of its tests failing.</li><li><strong>Submissions: one queued or being graded at a time, and 3 gradings a day</strong> (Step 3). A grading that fails because of a problem on the course's side does not count.</li></ul>
+<p><strong>Step 1. Submit.</strong> On the Submit page, upload <code>submission.zip</code>. Every grading runs all 26 tasks of the evaluation set.</p>
+<p><strong>Step 2. Metrics.</strong> Every submission is evaluated on two metrics:</p>
+<ul><li>the number of tasks solved,</li><li>the end-to-end time, from the moment your server is ready to the last task done, at most 4 hours.</li></ul>
+<p><strong>Step 3. Past submissions and cancelling.</strong> The Past submissions page lists your ongoing and past submissions. You can have at most one submission queued or being graded at a time, and at most <strong>3 gradings a day</strong> (midnight to midnight, Eastern time). The submission queued or being graded has a <strong>Cancel</strong> button. A grading counts toward your 3 once its job has a GPU. Cancelling a submission that is still <strong>queued</strong> or <strong>waiting for a GPU</strong> removes it from the queue, and it does not count toward your 3. Cancelling a submission that is <strong>being graded</strong> stops the run, records the submission with its two metrics as of the moment you cancelled, and counts as one of your 3.</p>
+<p><strong>Step 4. Skyline ranking.</strong> The ranking uses every valid submission from all students, not only each student's best. A valid submission is one graded with its two metrics, including one you cancelled while it ran, that is not marked as a violation or invalidated by the course staff.</p>
+<ul><li>Submissions that solved <strong>at least 7 tasks</strong> are ranked in rounds over the two metrics. One submission dominates another if it is at least as good on both metrics and better on at least one. In each round, the front is every remaining submission that no other remaining submission dominates. Every student with a submission on the front is ranked in that round, and then all of that student's submissions are removed before the next round.</li><li>Your <strong>best submission</strong> is one of your submissions on the front of your round. If several of yours are on it, your best is the one that solved the most tasks, then the one with the shortest end-to-end time, then the earliest.</li><li>Students with no submission that solved 7 tasks rank below all of them, by the most tasks one of their submissions solved.</li><li>Equal ranks are ties, and the next rank counts everyone ahead of it: 1, 1, 1, 4, ... The leaderboard shows the top 10, or everyone at rank 1 when more than 10 share it.</li><li>The rounds are computed again after every grading, so another student's new submission can move you to a later round.</li></ul>
+<p><strong>More about the leaderboard.</strong></p>
+<ul><li><strong>The leaderboard has 26 tasks</strong>, numbered 1 to 26. They are not the 25 tasks of the starter code.</li><li><strong>Your server's log.</strong> When your server fails to start, is not ready within 45 minutes, or stops during the run, the Past submissions page shows the end of its log: at most its last 50 lines and 5,000 characters, without the lines that look like a credential or a logged request. The log is for debugging your server: using it to read the leaderboard's tasks breaks the rule against anything written for particular tasks.</li><li><strong>Crashed or timed-out runs still count</strong>, with the tasks they had finished by then. The Past submissions page also shows each submission's per-task results (numbered 1 to 26), with each task's time and number of turns and, for each unsolved task, one of these reasons:<ul><li><em>not opened</em>: your agent never asked for the task, or the run's time ran out first;</li><li><em>not finished</em>: the run crashed or timed out while the task was open;</li><li><em>no patch</em>: the task ended with an empty patch;</li><li><em>tests did not run</em>: the grading produced no test results;</li><li><em>import error</em>: the tests could not be collected (e.g., an import or syntax error);</li><li><em>broke existing tests</em>: a test that passed before your patch now fails;</li><li><em>new tests failed</em>: a test your fix should make pass still fails (a task can show both of the last two).</li></ul></li></ul>
+<h3 id="grading">Grading</h3>
+<div class="table-responsive"><table class="table table-bordered">
+<thead class="table-light">
+<tr>
+<th>Part</th>
+<th>Points</th>
+<th>Criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Leaderboard</td>
+<td><strong>60</strong></td>
+<td>The rank of your best submission on the leaderboard, scored as below.</td>
+</tr>
+<tr>
+<td>Write-up</td>
+<td><strong>30</strong></td>
+<td>The four parts of the <a href="#write-up">write-up</a> in Part 4.</td>
+</tr>
+<tr>
+<td>Video</td>
+<td><strong>10</strong></td>
+<td>A clear 3-minute presentation of the same material, with the evidence on screen.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Leaderboard score.</strong> If <em>r</em> is the rank of your best submission:</p>
+<pre><code>score = max(61 − r, 40)    if any of your submissions achieves the baseline
+score = max(61 − r, 0)     otherwise</code></pre>
+<p>The <strong>baseline</strong> is at least 7 tasks solved with an end-to-end time of at most 100 minutes, both in one submission. If any of your submissions achieves it, your score is at least 40, even if that submission is not your best. The leaderboard measures both on its 26 tasks, which are harder than the starter's 25, so your times on the starter's tasks do not show whether you achieve it.</p>
+<p>For example, rank 1 scores 60, rank 12 scores 49 whether or not you achieve the baseline, and rank 30 scores 40 if you achieve the baseline and 31 if you do not.</p>
+<div class="note-nav">
+<a href="assignment3.html">← Assignment 3 — Harness competition</a>
+<a href="../to_release.html">Assignment 5 — Optimize the full stack →</a>
+</div>
+</div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="container">
+<p><a href="https://madsys.seas.harvard.edu/" rel="noopener" target="_blank">MadSys Research Group</a> · <a href="https://seas.harvard.edu/" rel="noopener" target="_blank">Harvard John A. Paulson School of Engineering and Applied Sciences</a></p>
+<p class="footer-policies"><a href="https://trademark.harvard.edu/pages/trademark-notice" rel="noopener" target="_blank">Trademark Notice</a> · <a href="https://accessibility.harvard.edu/" rel="noopener" target="_blank">Accessibility</a> · <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" rel="noopener" target="_blank">Digital Accessibility</a> · <a href="https://privsec.harvard.edu/harvard-university-privacy-statement" rel="noopener" target="_blank">Privacy Statement</a></p>
+<p class="footer-copyright">© 2026 Juncheng Yang</p>
+</div>
+</footer>
+</body>
+</html>

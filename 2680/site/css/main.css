@@ -826,6 +826,13 @@ li > ol {
     width: 168px;
 }
 
+/* Readings gets a fixed share so Topic, the only column without a width,
+   takes the remaining space and stays wider than a long reading list. */
+#schedule table th:nth-child(5),
+#schedule table td:nth-child(5) {
+    width: 19%;
+}
+
 #schedule table th:nth-child(6),
 #schedule table td:nth-child(6) {
     max-width: 200px;
@@ -1098,6 +1105,23 @@ li > ol {
     margin: 12px 0;
     border-left: 3px solid var(--amber);
     font-size: 15px;
+}
+
+/* A collapsed aside: background a reader can open, not a step. It is smaller and muted, so that
+   a closed one does not read as a heading next to the h3 steps around it. */
+details.aside {
+    margin: var(--s2) 0 var(--s3);
+    font-size: 15px;
+}
+
+details.aside > summary {
+    cursor: pointer;
+    color: var(--ink-3);
+    font-weight: 400;
+}
+
+details.aside[open] > summary {
+    margin-bottom: var(--s2);
 }
 
 .tip strong {
@@ -2163,7 +2187,7 @@ li > ol {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    flex: 0 1 240px;
+    flex: 0 1 200px;
     max-width: 280px;
 }
 
@@ -2202,6 +2226,10 @@ li > ol {
 
 .sponsor-aws .sponsor-mark img {
     max-height: 46px;
+}
+
+.sponsor-nvidia .sponsor-mark img {
+    max-height: 34px;
 }
 
 .sponsor-madsys .sponsor-mark img {

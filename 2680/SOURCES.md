@@ -1,7 +1,7 @@
 # CS2680 来源索引
 
 - 课程：[CS2680 Modern AI Systems](https://cs2680.com/)（2026 Fall）
-- 本地同步日期：2026-10-13
+- 本地同步日期：2026-10-23
 - `site/` 保存课程网站公开页面和站内文件；网页中的站内链接已改为本地路径。
 - `readings/` 保存可获取的外部论文 PDF 和网页快照；视频保留原始链接。
 - 原始网页内容、PDF 和作业代码均未翻译或修改；网页仅调整了站内链接。
@@ -14,6 +14,9 @@
 | [site/assignments/assignment2.html](site/assignments/assignment2.html) | https://cs2680.com/assignments/assignment2.html |
 | [site/assignments/assignment2.tar.gz](site/assignments/assignment2.tar.gz) | https://cs2680.com/assignments/assignment2.tar.gz |
 | [site/assignments/assignment3.html](site/assignments/assignment3.html) | https://cs2680.com/assignments/assignment3.html |
+| [site/assignments/assignment3.tar.gz](site/assignments/assignment3.tar.gz) | https://cs2680.com/assignments/assignment3.tar.gz |
+| [site/assignments/assignment4.html](site/assignments/assignment4.html) | https://cs2680.com/assignments/assignment4.html |
+| [site/assignments/assignment4.tar.gz](site/assignments/assignment4.tar.gz) | https://cs2680.com/assignments/assignment4.tar.gz |
 | [site/assignments/index.html](site/assignments/index.html) | https://cs2680.com/assignments/ |
 | [site/computing/api.html](site/computing/api.html) | https://cs2680.com/computing/api.html |
 | [site/computing/aws.html](site/computing/aws.html) | https://cs2680.com/computing/aws.html |
@@ -21,7 +24,7 @@
 | [site/computing/cloudlab.html](site/computing/cloudlab.html) | https://cs2680.com/computing/cloudlab.html |
 | [site/computing/cluster.html](site/computing/cluster.html) | https://cs2680.com/computing/cluster.html |
 | [site/computing/index.html](site/computing/index.html) | https://cs2680.com/computing/ |
-| [site/css/main-66d6a6d800.css](site/css/main-66d6a6d800.css) | https://cs2680.com/css/main.css?v=e5556deacc94 |
+| [site/css/main-2aee50d2d6.css](site/css/main-2aee50d2d6.css) | https://cs2680.com/css/main.css?v=a9616d75175b |
 | [site/css/main.css](site/css/main.css) | https://cs2680.com/css/main.css |
 | [site/discussion.html](site/discussion.html) | https://cs2680.com/discussion.html |
 | [site/favicon.svg](site/favicon.svg) | https://cs2680.com/favicon.svg |
@@ -35,12 +38,17 @@
 | [site/project.html](site/project.html) | https://cs2680.com/project.html |
 | [site/readings.html](site/readings.html) | https://cs2680.com/readings.html |
 | [site/readings/index.html](site/readings/index.html) | https://cs2680.com/readings/ |
+| [site/readings/nov-16.html](site/readings/nov-16.html) | https://cs2680.com/readings/nov-16.html |
+| [site/readings/oct-14.html](site/readings/oct-14.html) | https://cs2680.com/readings/oct-14.html |
+| [site/readings/oct-19.html](site/readings/oct-19.html) | https://cs2680.com/readings/oct-19.html |
+| [site/readings/oct-21.html](site/readings/oct-21.html) | https://cs2680.com/readings/oct-21.html |
 | [site/readings/sep-09.html](site/readings/sep-09.html) | https://cs2680.com/readings/sep-09.html |
 | [site/readings/sep-14.html](site/readings/sep-14.html) | https://cs2680.com/readings/sep-14.html |
 | [site/readings/sep-16.html](site/readings/sep-16.html) | https://cs2680.com/readings/sep-16.html |
 | [site/readings/sep-23.html](site/readings/sep-23.html) | https://cs2680.com/readings/sep-23.html |
 | [site/readings/sep-28.html](site/readings/sep-28.html) | https://cs2680.com/readings/sep-28.html |
 | [site/seas-logo.png](site/seas-logo.png) | https://cs2680.com/seas-logo.png |
+| [site/slides/10_llm_serving_basics_2a.pdf](site/slides/10_llm_serving_basics_2a.pdf) | https://cs2680.com/slides/10_llm_serving_basics_2a.pdf |
 | [site/slides/1_intro.pdf](site/slides/1_intro.pdf) | https://cs2680.com/slides/1_intro.pdf |
 | [site/slides/2_agent_use_1.pdf](site/slides/2_agent_use_1.pdf) | https://cs2680.com/slides/2_agent_use_1.pdf |
 | [site/slides/3_agent_use_2.pdf](site/slides/3_agent_use_2.pdf) | https://cs2680.com/slides/3_agent_use_2.pdf |
@@ -50,10 +58,13 @@
 | [site/slides/7_agent_design_4.pdf](site/slides/7_agent_design_4.pdf) | https://cs2680.com/slides/7_agent_design_4.pdf |
 | [site/slides/8_agent_design_5.pdf](site/slides/8_agent_design_5.pdf) | https://cs2680.com/slides/8_agent_design_5.pdf |
 | [site/slides/8_assignment3.pdf](site/slides/8_assignment3.pdf) | https://cs2680.com/slides/8_assignment3.pdf |
+| [site/slides/9_llm_serving_basics_1.pdf](site/slides/9_llm_serving_basics_1.pdf) | https://cs2680.com/slides/9_llm_serving_basics_1.pdf |
+| [site/slides/assignment4.pdf](site/slides/assignment4.pdf) | https://cs2680.com/slides/assignment4.pdf |
 | [site/sponsors/aws.png](site/sponsors/aws.png) | https://cs2680.com/sponsors/aws.png |
-| [site/sponsors/fas-atg.png](site/sponsors/fas-atg.png) | https://cs2680.com/sponsors/fas-atg.png |
 | [site/sponsors/harvard-fas.svg](site/sponsors/harvard-fas.svg) | https://cs2680.com/sponsors/harvard-fas.svg |
+| [site/sponsors/harvard-seas.svg](site/sponsors/harvard-seas.svg) | https://cs2680.com/sponsors/harvard-seas.svg |
 | [site/sponsors/madsys.png](site/sponsors/madsys.png) | https://cs2680.com/sponsors/madsys.png |
+| [site/sponsors/nvidia.svg](site/sponsors/nvidia.svg) | https://cs2680.com/sponsors/nvidia.svg |
 | [site/staff/AdvaithRavishankar.jpg](site/staff/AdvaithRavishankar.jpg) | https://cs2680.com/staff/AdvaithRavishankar.jpg |
 | [site/staff/charles.jpg](site/staff/charles.jpg) | https://cs2680.com/staff/charles.jpg |
 | [site/staff/juncheng-yang.jpg](site/staff/juncheng-yang.jpg) | https://cs2680.com/staff/juncheng-yang.jpg |
@@ -81,6 +92,11 @@
 | don’t build multi-agents | [readings/web/cognition-com-blog-dont-build-multi-agents-3cde7325.html](readings/web/cognition-com-blog-dont-build-multi-agents-3cde7325.html) | https://cognition.com/blog/dont-build-multi-agents |
 | where agents fail | [readings/papers/2509.25370.pdf](readings/papers/2509.25370.pdf) | https://arxiv.org/abs/2509.25370 |
 | MemGPT | [readings/papers/2310.08560.pdf](readings/papers/2310.08560.pdf) | https://arxiv.org/abs/2310.08560 |
+| OWASP agentic top 10 | [readings/papers/genai-owasp-org-download-52117-d0e80bc1.pdf](readings/papers/genai-owasp-org-download-52117-d0e80bc1.pdf) | https://genai.owasp.org/download/52117/?tmstv=1765059207 |
+| Transformer | [readings/papers/1706.03762.pdf](readings/papers/1706.03762.pdf) | https://arxiv.org/abs/1706.03762 |
+| Llama 3 | [readings/papers/2407.21783.pdf](readings/papers/2407.21783.pdf) | https://arxiv.org/abs/2407.21783 |
+| Mixtral | [readings/papers/2401.04088.pdf](readings/papers/2401.04088.pdf) | https://arxiv.org/abs/2401.04088 |
+| CUDA programming guide, CUDA graphs | [readings/papers/CUDA_C_Programming_Guide.pdf](readings/papers/CUDA_C_Programming_Guide.pdf)（[官方替代地址](https://docs.nvidia.com/cuda/pdf/CUDA_C_Programming_Guide.pdf)） | https://docs.nvidia.com/cuda/cuda-c-programming-guide/ |
 | Equipping agents for the real world with Agent Skills | [readings/web/anthropic-com-engineering-equipping-agents-for-the-real-world-with-agent-skills-2e50ab69.html](readings/web/anthropic-com-engineering-equipping-agents-for-the-real-world-with-agent-skills-2e50ab69.html) | https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills |
 | Code execution with MCP | [readings/web/anthropic-com-engineering-code-execution-with-mcp-9b88bfec.html](readings/web/anthropic-com-engineering-code-execution-with-mcp-9b88bfec.html) | https://www.anthropic.com/engineering/code-execution-with-mcp |
 | demystifying skills and MCPs | [readings/web/blog-lawrencejones-dev-demystifying-skills-and-mcps-c840b96d.html](readings/web/blog-lawrencejones-dev-demystifying-skills-and-mcps-c840b96d.html) | https://blog.lawrencejones.dev/demystifying-skills-and-mcps |
@@ -130,11 +146,49 @@
 | tool-use inefficiency | [readings/papers/2604.05404.pdf](readings/papers/2604.05404.pdf) | https://arxiv.org/abs/2604.05404 |
 | software factory at Uber scale | 仅链接 | https://www.uber.com/us/en/blog/efficient-software-factory |
 | indirect prompt injection | [readings/papers/2302.12173.pdf](readings/papers/2302.12173.pdf) | https://arxiv.org/abs/2302.12173 |
-| AgentDojo | [readings/papers/2406.13352.pdf](readings/papers/2406.13352.pdf) | https://arxiv.org/abs/2406.13352 |
-| securing agents against prompt injection | [readings/papers/2506.08837.pdf](readings/papers/2506.08837.pdf) | https://arxiv.org/abs/2506.08837 |
+| AgentPoison | [readings/papers/2407.12784.pdf](readings/papers/2407.12784.pdf) | https://arxiv.org/abs/2407.12784 |
+| multi-agent code execution | [readings/papers/2503.12188.pdf](readings/papers/2503.12188.pdf) | https://arxiv.org/abs/2503.12188 |
+| adaptive attacks | [readings/papers/2510.09023.pdf](readings/papers/2510.09023.pdf) | https://arxiv.org/abs/2510.09023 |
+| instruction hierarchy | [readings/papers/2404.13208.pdf](readings/papers/2404.13208.pdf) | https://arxiv.org/abs/2404.13208 |
 | CaMeL | [readings/papers/2503.18813.pdf](readings/papers/2503.18813.pdf) | https://arxiv.org/abs/2503.18813 |
+| securing agents against prompt injection | [readings/papers/2506.08837.pdf](readings/papers/2506.08837.pdf) | https://arxiv.org/abs/2506.08837 |
+| AI control | [readings/papers/2312.06942.pdf](readings/papers/2312.06942.pdf) | https://arxiv.org/abs/2312.06942 |
+| AgentDojo | [readings/papers/2406.13352.pdf](readings/papers/2406.13352.pdf) | https://arxiv.org/abs/2406.13352 |
 | Reflexion | [readings/papers/2303.11366.pdf](readings/papers/2303.11366.pdf) | https://arxiv.org/abs/2303.11366 |
 | Self-Refine | [readings/papers/2303.17651.pdf](readings/papers/2303.17651.pdf) | https://arxiv.org/abs/2303.17651 |
+| ADAS | [readings/papers/2408.08435.pdf](readings/papers/2408.08435.pdf) | https://arxiv.org/abs/2408.08435 |
+| Darwin Gödel Machine | [readings/papers/2505.22954.pdf](readings/papers/2505.22954.pdf) | https://arxiv.org/abs/2505.22954 |
+| ACE | [readings/papers/2510.04618.pdf](readings/papers/2510.04618.pdf) | https://arxiv.org/abs/2510.04618 |
+| Meta-Harness | [readings/papers/2603.28052.pdf](readings/papers/2603.28052.pdf) | https://arxiv.org/abs/2603.28052 |
+| agentic harness engineering | [readings/papers/2604.25850.pdf](readings/papers/2604.25850.pdf) | https://arxiv.org/abs/2604.25850 |
+| Live-SWE-agent | [readings/papers/2511.13646.pdf](readings/papers/2511.13646.pdf) | https://arxiv.org/abs/2511.13646 |
+| BPE | [readings/papers/1508.07909.pdf](readings/papers/1508.07909.pdf) | https://arxiv.org/abs/1508.07909 |
+| Illustrated Transformer | [readings/web/jalammar-github-io-illustrated-transformer-4ecc1474.html](readings/web/jalammar-github-io-illustrated-transformer-4ecc1474.html) | https://jalammar.github.io/illustrated-transformer/ |
+| Annotated Transformer | [readings/web/nlp-seas-harvard-edu-annotated-transformer-eb40d338.html](readings/web/nlp-seas-harvard-edu-annotated-transformer-eb40d338.html) | https://nlp.seas.harvard.edu/annotated-transformer/ |
+| RMSNorm | [readings/papers/1910.07467.pdf](readings/papers/1910.07467.pdf) | https://arxiv.org/abs/1910.07467 |
+| SwiGLU | [readings/papers/2002.05202.pdf](readings/papers/2002.05202.pdf) | https://arxiv.org/abs/2002.05202 |
+| inference arithmetic | [readings/web/kipp-ly-transformer-inference-arithmetic-7b7b45ba.html](readings/web/kipp-ly-transformer-inference-arithmetic-7b7b45ba.html) | https://kipp.ly/transformer-inference-arithmetic/ |
+| Switch Transformer | [readings/papers/2101.03961.pdf](readings/papers/2101.03961.pdf) | https://arxiv.org/abs/2101.03961 |
+| DeepSeekMoE | [readings/papers/2401.06066.pdf](readings/papers/2401.06066.pdf) | https://arxiv.org/abs/2401.06066 |
+| DeepSeek-V3 | [readings/papers/2412.19437.pdf](readings/papers/2412.19437.pdf) | https://arxiv.org/abs/2412.19437 |
+| recurrent depth | [readings/papers/2502.05171.pdf](readings/papers/2502.05171.pdf) | https://arxiv.org/abs/2502.05171 |
+| LLaDA | [readings/papers/2502.09992.pdf](readings/papers/2502.09992.pdf) | https://arxiv.org/abs/2502.09992 |
+| Dream 7B | [readings/papers/2508.15487.pdf](readings/papers/2508.15487.pdf) | https://arxiv.org/abs/2508.15487 |
+| roofline | 仅链接 | https://doi.org/10.1145/1498765.1498785 |
+| making DL go brrr | [readings/web/horace-io-brrr-intro-html-48f2c0ca.html](readings/web/horace-io-brrr-intro-html-48f2c0ca.html) | https://horace.io/brrr_intro.html |
+| FlashAttention | [readings/papers/2205.14135.pdf](readings/papers/2205.14135.pdf) | https://arxiv.org/abs/2205.14135 |
+| FlashAttention-2 | [readings/papers/2307.08691.pdf](readings/papers/2307.08691.pdf) | https://arxiv.org/abs/2307.08691 |
+| FlashAttention-3 | [readings/papers/2407.08608.pdf](readings/papers/2407.08608.pdf) | https://arxiv.org/abs/2407.08608 |
+| FlashAttention-4 | [readings/papers/2603.05451.pdf](readings/papers/2603.05451.pdf) | https://arxiv.org/abs/2603.05451 |
+| B200 attention kernel | [readings/web/iaroslavelistratov-github-io-b200-attention-3b07060c.html](readings/web/iaroslavelistratov-github-io-b200-attention-3b07060c.html) | https://iaroslavelistratov.github.io/b200-attention |
+| FlashInfer | [readings/papers/2501.01005.pdf](readings/papers/2501.01005.pdf) | https://arxiv.org/abs/2501.01005 |
+| ragged paged attention | [readings/papers/2604.15464.pdf](readings/papers/2604.15464.pdf) | https://arxiv.org/abs/2604.15464 |
+| FLUX | [readings/papers/2406.06858.pdf](readings/papers/2406.06858.pdf) | https://arxiv.org/abs/2406.06858 |
+| TVM | [readings/papers/1802.04799.pdf](readings/papers/1802.04799.pdf) | https://arxiv.org/abs/1802.04799 |
+| Mirage | [readings/papers/2405.05751.pdf](readings/papers/2405.05751.pdf) | https://arxiv.org/abs/2405.05751 |
+| MPK | [readings/papers/2512.22219.pdf](readings/papers/2512.22219.pdf) | https://arxiv.org/abs/2512.22219 |
+| PyTorch 2 | 仅链接 | https://doi.org/10.1145/3620665.3640366 |
+| LLM inference characterization | [readings/papers/2512.01644.pdf](readings/papers/2512.01644.pdf) | https://arxiv.org/abs/2512.01644 |
 | Orca | [readings/web/usenix-org-conference-osdi22-presentation-yu-76210079.html](readings/web/usenix-org-conference-osdi22-presentation-yu-76210079.html) | https://www.usenix.org/conference/osdi22/presentation/yu |
 | vLLM / PagedAttention | [readings/papers/2309.06180.pdf](readings/papers/2309.06180.pdf) | https://arxiv.org/abs/2309.06180 |
 | Jenga | [readings/papers/2503.18292.pdf](readings/papers/2503.18292.pdf) | https://arxiv.org/abs/2503.18292 |
@@ -144,7 +198,6 @@
 | GPipe | [readings/papers/1811.06965.pdf](readings/papers/1811.06965.pdf) | https://arxiv.org/abs/1811.06965 |
 | LoongServe | [readings/papers/2404.09526.pdf](readings/papers/2404.09526.pdf) | https://arxiv.org/abs/2404.09526 |
 | NanoFlow | [readings/papers/2408.12757.pdf](readings/papers/2408.12757.pdf) | https://arxiv.org/abs/2408.12757 |
-| LLM inference characterization | [readings/papers/2512.01644.pdf](readings/papers/2512.01644.pdf) | https://arxiv.org/abs/2512.01644 |
 | speculative decoding | [readings/papers/2211.17192.pdf](readings/papers/2211.17192.pdf) | https://arxiv.org/abs/2211.17192 |
 | speculative sampling | [readings/papers/2302.01318.pdf](readings/papers/2302.01318.pdf) | https://arxiv.org/abs/2302.01318 |
 | blockwise parallel decoding | [readings/papers/1811.03115.pdf](readings/papers/1811.03115.pdf) | https://arxiv.org/abs/1811.03115 |
@@ -199,7 +252,7 @@
 | SGLang / RadixAttention | [readings/papers/2312.07104.pdf](readings/papers/2312.07104.pdf) | https://arxiv.org/abs/2312.07104 |
 | CachedAttention | [readings/papers/2403.19708.pdf](readings/papers/2403.19708.pdf) | https://arxiv.org/abs/2403.19708 |
 | Marconi | [readings/papers/2411.19379.pdf](readings/papers/2411.19379.pdf) | https://arxiv.org/abs/2411.19379 |
-| LPC | [readings/web/openreview-net-forum-f049e95e.html](readings/web/openreview-net-forum-f049e95e.html) | https://openreview.net/forum?id=Vj48eXaQDM |
+| LPC | [验证网页（无阅读正文）](readings/web/openreview-net-forum-f049e95e.html) | https://openreview.net/forum?id=Vj48eXaQDM |
 | Mooncake | [readings/papers/2407.00079.pdf](readings/papers/2407.00079.pdf) | https://arxiv.org/abs/2407.00079 |
 | MemServe | [readings/papers/2406.17565.pdf](readings/papers/2406.17565.pdf) | https://arxiv.org/abs/2406.17565 |
 | LMCache | [readings/papers/2510.09665.pdf](readings/papers/2510.09665.pdf) | https://arxiv.org/abs/2510.09665 |
@@ -251,32 +304,6 @@
 | LLM-Pruner | [readings/papers/2305.11627.pdf](readings/papers/2305.11627.pdf) | https://arxiv.org/abs/2305.11627 |
 | ProxSparse | [readings/papers/2502.00258.pdf](readings/papers/2502.00258.pdf) | https://arxiv.org/abs/2502.00258 |
 | beyond FLOPs | [readings/papers/2606.09080.pdf](readings/papers/2606.09080.pdf) | https://arxiv.org/abs/2606.09080 |
-| roofline | 仅链接 | https://doi.org/10.1145/1498765.1498785 |
-| making DL go brrr | [readings/web/horace-io-brrr-intro-html-48f2c0ca.html](readings/web/horace-io-brrr-intro-html-48f2c0ca.html) | https://horace.io/brrr_intro.html |
-| FlashAttention | [readings/papers/2205.14135.pdf](readings/papers/2205.14135.pdf) | https://arxiv.org/abs/2205.14135 |
-| FlashAttention-2 | [readings/papers/2307.08691.pdf](readings/papers/2307.08691.pdf) | https://arxiv.org/abs/2307.08691 |
-| FlashAttention-3 | [readings/papers/2407.08608.pdf](readings/papers/2407.08608.pdf) | https://arxiv.org/abs/2407.08608 |
-| FlashAttention-4 | [readings/papers/2603.05451.pdf](readings/papers/2603.05451.pdf) | https://arxiv.org/abs/2603.05451 |
-| B200 attention kernel | [readings/web/iaroslavelistratov-github-io-b200-attention-3b07060c.html](readings/web/iaroslavelistratov-github-io-b200-attention-3b07060c.html) | https://iaroslavelistratov.github.io/b200-attention |
-| FlashInfer | [readings/papers/2501.01005.pdf](readings/papers/2501.01005.pdf) | https://arxiv.org/abs/2501.01005 |
-| ragged paged attention | [readings/papers/2604.15464.pdf](readings/papers/2604.15464.pdf) | https://arxiv.org/abs/2604.15464 |
-| FLUX | [readings/papers/2406.06858.pdf](readings/papers/2406.06858.pdf) | https://arxiv.org/abs/2406.06858 |
-| TVM | [readings/papers/1802.04799.pdf](readings/papers/1802.04799.pdf) | https://arxiv.org/abs/1802.04799 |
-| Mirage | [readings/papers/2405.05751.pdf](readings/papers/2405.05751.pdf) | https://arxiv.org/abs/2405.05751 |
-| MPK | [readings/papers/2512.22219.pdf](readings/papers/2512.22219.pdf) | https://arxiv.org/abs/2512.22219 |
-| CUDA graphs | [readings/papers/CUDA_C_Programming_Guide.pdf](readings/papers/CUDA_C_Programming_Guide.pdf)（[官方替代地址](https://docs.nvidia.com/cuda/pdf/CUDA_C_Programming_Guide.pdf)） | https://docs.nvidia.com/cuda/cuda-c-programming-guide/ |
-| PyTorch 2 | 仅链接 | https://doi.org/10.1145/3620665.3640366 |
-| ServerlessLLM | [readings/papers/2401.14351.pdf](readings/papers/2401.14351.pdf) | https://arxiv.org/abs/2401.14351 |
-| SpotServe | [readings/papers/2311.15566.pdf](readings/papers/2311.15566.pdf) | https://arxiv.org/abs/2311.15566 |
-| From Words to Watts | [readings/papers/2310.03003.pdf](readings/papers/2310.03003.pdf) | https://arxiv.org/abs/2310.03003 |
-| POLCA | [readings/papers/2308.12908.pdf](readings/papers/2308.12908.pdf) | https://arxiv.org/abs/2308.12908 |
-| DynamoLLM | [readings/papers/2408.00741.pdf](readings/papers/2408.00741.pdf) | https://arxiv.org/abs/2408.00741 |
-| AI at Google scale | [readings/papers/2508.15734.pdf](readings/papers/2508.15734.pdf) | https://arxiv.org/abs/2508.15734 |
-| intelligence per watt | [readings/papers/2511.07885.pdf](readings/papers/2511.07885.pdf) | https://arxiv.org/abs/2511.07885 |
-| Defeating nondeterminism in LLM inference | [readings/web/thinkingmachines-ai-blog-defeating-nondeterminism-in-llm-inference-5f6c2fbe.html](readings/web/thinkingmachines-ai-blog-defeating-nondeterminism-in-llm-inference-5f6c2fbe.html) | https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/ |
-| CoRun | [readings/papers/2608.14376.pdf](readings/papers/2608.14376.pdf) | https://arxiv.org/abs/2608.14376 |
-| ElasticMM | [readings/papers/2507.10069.pdf](readings/papers/2507.10069.pdf) | https://arxiv.org/abs/2507.10069 |
-| efficient inference for large vision-language models | [readings/papers/2604.05546.pdf](readings/papers/2604.05546.pdf) | https://arxiv.org/abs/2604.05546 |
 | MQA | [readings/papers/1911.02150.pdf](readings/papers/1911.02150.pdf) | https://arxiv.org/abs/1911.02150 |
 | GQA | [readings/papers/2305.13245.pdf](readings/papers/2305.13245.pdf) | https://arxiv.org/abs/2305.13245 |
 | MLA | [readings/papers/2405.04434.pdf](readings/papers/2405.04434.pdf) | https://arxiv.org/abs/2405.04434 |
@@ -324,21 +351,26 @@
 
 ## 作业代码
 
-- 公开代码仓库：[HarvardMadSys/cs2680_assignments](https://github.com/HarvardMadSys/cs2680_assignments/tree/7562690a4ad9de0d827b0f73e6ca69ea92c09cfd)
-- 固定提交：`7562690a4ad9de0d827b0f73e6ca69ea92c09cfd`
-- 本地快照：[`assignments/course-repo/`](assignments/course-repo/)；保留上游 `assignment2/` 和 `assignment3/` 结构。
+- 公开代码仓库：https://github.com/HarvardMadSys/cs2680_assignments.git（本次未能获取快照）。
+- 保留已有快照：[`assignments/course-repo/`](assignments/course-repo/)，获取日期 2026-10-13。
+- 固定提交：`7562690a4ad9de0d827b0f73e6ca69ea92c09cfd`（本次未更新）。
+- 快照状态与版本：[`assignments/SNAPSHOT.json`](assignments/SNAPSHOT.json)。
 - 网站提供的原始压缩包：[`site/assignments/assignment2.tar.gz`](site/assignments/assignment2.tar.gz)。
 - 原站文件名后缀是 `.tar.gz`，实际文件内容为普通 POSIX tar；可用 `tar -xf` 解包。公开仓库快照中的 `assignment2/` 与该归档内容一致。
+- 网站提供的原始作业归档：[`site/assignments/assignment3.tar.gz`](site/assignments/assignment3.tar.gz)；Source: https://cs2680.com/assignments/assignment3.tar.gz
+- 网站提供的原始作业归档：[`site/assignments/assignment4.tar.gz`](site/assignments/assignment4.tar.gz)；Source: https://cs2680.com/assignments/assignment4.tar.gz
 
 ## 未获取的文件
 
+- https://medium.com/@itamar_f/software-3-0-the-era-of-intelligent-software-development-acd3cafe6cd7 — 403 Client Error: Forbidden for url: https://medium.com/@itamar_f/software-3-0-the-era-of-intelligent-software-development-acd3cafe6cd7
 - https://openai.com/index/research-acceleration-view-inside-openai/ — 403 Client Error: Forbidden for url: https://openai.com/index/research-acceleration-view-inside-openai/
 - https://karpathy.medium.com/software-2-0-a64152b37c35 — 403 Client Error: Forbidden for url: https://karpathy.medium.com/software-2-0-a64152b37c35
-- https://medium.com/@itamar_f/software-3-0-the-era-of-intelligent-software-development-acd3cafe6cd7 — 403 Client Error: Forbidden for url: https://medium.com/@itamar_f/software-3-0-the-era-of-intelligent-software-development-acd3cafe6cd7
-- https://doi.org/10.1145/3676641.3716278 — 403 Client Error: Forbidden for url: https://dl.acm.org/doi/10.1145/3676641.3716278
 - https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified — 403 Client Error: Forbidden for url: https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified
-- https://doi.org/10.1145/1498765.1498785 — 403 Client Error: Forbidden for url: https://dl.acm.org/doi/10.1145/1498765.1498785
-- https://doi.org/10.1145/3600006.3613147 — 403 Client Error: Forbidden for url: https://dl.acm.org/doi/10.1145/3600006.3613147
-- https://doi.org/10.1145/3620665.3640366 — 403 Client Error: Forbidden for url: https://dl.acm.org/doi/10.1145/3620665.3640366
 - https://www.uber.com/us/en/blog/efficient-software-factory — 406 Client Error: Not Acceptable for url: https://www.uber.com/us/en/blog/efficient-software-factory
+- https://doi.org/10.1145/1498765.1498785 — 403 Client Error: Forbidden for url: https://dl.acm.org/doi/10.1145/1498765.1498785
+- https://doi.org/10.1145/3620665.3640366 — 403 Client Error: Forbidden for url: https://dl.acm.org/doi/10.1145/3620665.3640366
+- https://doi.org/10.1145/3600006.3613147 — 403 Client Error: Forbidden for url: https://dl.acm.org/doi/10.1145/3600006.3613147
 - https://doi.org/10.1145/3745756.3809203 — 403 Client Error: Forbidden for url: https://dl.acm.org/doi/10.1145/3745756.3809203
+- https://doi.org/10.1145/3676641.3716278 — 403 Client Error: Forbidden for url: https://dl.acm.org/doi/10.1145/3676641.3716278
+
+- https://openreview.net/forum?id=Vj48eXaQDM — 返回浏览器验证页面；已保留原始网页快照，尚未取得 LPC 正文。

@@ -13,14 +13,16 @@ import hashlib
 import os
 import re
 import shutil
+import tarfile
+import tempfile
 import unicodedata
 from dataclasses import dataclass
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from urllib.parse import urljoin, urlparse
 
 from bs4 import BeautifulSoup
 
-from sync import BASE, ROOT, TODAY, normalized_url, reading_destination
+from sync import BASE, ROOT, TODAY, normalized_url, reading_destination, reading_snapshot_issue
 
 
 @dataclass(frozen=True)
@@ -32,38 +34,73 @@ class Lesson:
     meeting_id: str | None
     slides: tuple[tuple[str, str], ...] = ()
     references: tuple[tuple[str, str], ...] = ()
+    paper_discussion: bool = False
 
 
 LESSONS = (
-    Lesson(1, "1.CourseOverview", "2026-09-02", "Course overview and logistics", None,
+    Lesson(1, "1.CourseOverviewAndLogistics", "2026-09-02", "Course overview and logistics", None,
            (("Lecture slides", "slides/1_intro.pdf"),),
            (("Assignment 1", "assignments/assignment1.html"),)),
-    Lesson(2, "2.UsingCodingAgents", "2026-09-09", "Agents use I: How Claude Code Works", "sep-09",
+    Lesson(2, "2.AgentsUseI.HowClaudeCodeWorks", "2026-09-09", "Agents use I: How Claude Code Works", "sep-09",
            (("Lecture slides", "slides/2_agent_use_1.pdf"),)),
-    Lesson(3, "3.MultiAgentEngineering", "2026-09-14", "Agents use II: 100x Engineer with Multi-agents", "sep-14",
+    Lesson(3, "3.AgentsUseII.100xEngineerWithMultiAgents", "2026-09-14", "Agents use II: 100x Engineer with Multi-agents", "sep-14",
            (("Lecture slides", "slides/3_agent_use_2.pdf"),)),
-    Lesson(4, "4.ContextAndToolDesign", "2026-09-16", "Agents design I: context management and tool design", "sep-16",
+    Lesson(4, "4.AgentsDesignI.ContextManagementAndToolDesign", "2026-09-16", "Agents design I: context management and tool design", "sep-16",
            (("Lecture slides", "slides/4_agent_design_1.pdf"),)),
-    Lesson(5, "5.MultiAgentCoordination", "2026-09-23", "Agents design II: multi-agent architecture, coordination, and communication", "sep-23",
+    Lesson(5, "5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication", "2026-09-23", "Agents design II: multi-agent architecture, coordination, and communication", "sep-23",
            (("Lecture slides", "slides/5_agent_design_2.pdf"),)),
-    Lesson(6, "6.AgentMemoryAndReliability", "2026-09-28", "Agents design III: agent memory and reliability", "sep-28",
+    Lesson(6, "6.AgentsDesignIII.AgentMemoryAndReliability", "2026-09-28", "Agents design III: agent memory and reliability", "sep-28",
            (("Lecture slides", "slides/6_agent_design_3.pdf"),)),
-    Lesson(7, "7.AgentEvaluation", "2026-09-30", "Agent design IV: agent evaluation", "sep-30",
+    Lesson(7, "7.AgentDesignIV.AgentEvaluation", "2026-09-30", "Agent design IV: agent evaluation", "sep-30",
            (("Lecture slides", "slides/7_agent_design_4.pdf"),),
            (("Agent evaluation and benchmarks", "notes/agent-evaluation.html"),)),
-    Lesson(8, "8.CostAndPerformance", "2026-10-07", "Advanced agent design I: Cost and performance", "oct-07",
+    Lesson(8, "8.AdvancedAgentDesignI.CostAndPerformance", "2026-10-07", "Advanced agent design I: Cost and performance", "oct-07",
            (("Lecture slides", "slides/8_agent_design_5.pdf"), ("Assignment 3 slides", "slides/8_assignment3.pdf")),
            (("Cost-effective agents", "notes/cost-effective-agents.html"),)),
-    Lesson(9, "9.AgentSafetyAndHarness", "2026-10-14", "Advanced agent design II: agent safety, self-evolving harness", "oct-14"),
-    Lesson(10, "10.LLMServingBasics", "2026-10-21", "Efficient LLM serving: basics II", "oct-21"),
-    Lesson(11, "11.SpeculativeDecoding", "2026-10-28", "Efficient LLM serving: speculative decoding", "oct-28"),
-    Lesson(12, "12.SchedulingAndPrefixCaching", "2026-11-02", "Efficient agentic systems: scheduling and prefix caching", "nov-02"),
-    Lesson(13, "13.PruningAndQuantization", "2026-11-04", "Efficient LLM serving: pruning and quantization", "nov-04"),
-    Lesson(14, "14.GPUAndKernels", "2026-11-11", "Efficient LLM serving: GPU and kernels", "nov-11"),
-    Lesson(15, "15.KVCacheAndModelArchitecture", "2026-11-16", "Efficient LLM serving: KV-cache optimization and model architectures", "nov-16"),
-    Lesson(16, "16.RoutingAndLoadBalancing", "2026-11-23", "Efficient agentic system: routing and load balancing", "nov-23"),
-    Lesson(17, "17.EfficientAgentSystems", "2026-11-30", "Efficient agentic systems: others", "nov-30"),
+    Lesson(9, "9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness", "2026-10-14", "Advanced agent design II: agent safety, self-evolving harness", "oct-14",
+           references=(("Paper discussion format", "discussion.html"),), paper_discussion=True),
+    Lesson(10, "10.EfficientLLMServingBasicsI.IntroToLLMs", "2026-10-19", "Efficient LLM serving basics I: intro to LLMs", "oct-19",
+           references=(("Transformers and LLM foundations", "notes/transformers.html"),)),
+    Lesson(11, "11.EfficientLLMServingBasicsII.IntroToGPUs", "2026-10-21", "Efficient LLM serving basics II: intro to GPUs", "oct-21"),
+    Lesson(12, "12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism", "2026-10-28", "Efficient LLM serving basics III: Batching, paging, and parallelism", "oct-28"),
+    Lesson(13, "13.EfficientLLMServing.SpeculativeDecoding", "2026-11-02", "Efficient LLM serving: speculative decoding", "nov-02"),
+    Lesson(14, "14.EfficientAgenticSystems.SchedulingAndPrefixCaching", "2026-11-04", "Efficient agentic systems: scheduling and prefix caching", "nov-04"),
+    Lesson(15, "15.EfficientLLMServing.PruningAndQuantization", "2026-11-11", "Efficient LLM serving: pruning and quantization", "nov-11"),
+    Lesson(16, "16.EfficientLLMServing.KVCacheOptimizationAndModelArchitectures", "2026-11-16", "Efficient LLM serving: KV-cache optimization and model architectures", "nov-16",
+           references=(("Paper discussion format", "discussion.html"),), paper_discussion=True),
+    Lesson(17, "17.EfficientAgenticSystem.RoutingAndLoadBalancing", "2026-11-23", "Efficient agentic system: routing and load balancing", "nov-23"),
+    Lesson(18, "18.EfficientAgenticSystems.Others", "2026-11-30", "Efficient agentic systems: others", "nov-30"),
 )
+
+
+def course_title_folder(number: int, title: str) -> str:
+    """Keep the official title words and Roman numerals in a filesystem name."""
+    parts = title.split(":")
+    slug = ".".join("".join(word[0].upper() + word[1:]
+                            for word in re.findall(r"[A-Za-z0-9]+", part))
+                    for part in parts)
+    return f"{number}.{slug}"
+
+
+def validate_course_layout() -> None:
+    soup = BeautifulSoup((ROOT / "site/index.html").read_text(encoding="utf-8"), "html.parser")
+    titles = {}
+    for row in soup.select("table tr"):
+        cells = row.find_all(["td", "th"], recursive=False)
+        if len(cells) < 4:
+            continue
+        date = cells[1].get_text(" ", strip=True)
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date):
+            continue
+        for anchor in cells[3].select("a"):
+            anchor.decompose()
+        titles[date] = cells[3].get_text(" ", strip=True)
+    for number, lesson in enumerate(sorted(LESSONS, key=lambda item: item.date), 1):
+        official_title = titles.get(lesson.date)
+        if official_title != lesson.title:
+            raise ValueError(f"Course title changed on {lesson.date}: {official_title!r}; update LESSONS before organizing.")
+        if lesson.number != number or lesson.folder != course_title_folder(number, official_title):
+            raise ValueError(f"Course folder does not match its date and title: {lesson.folder}")
 
 
 def markdown_link(label: str, target: Path, from_dir: Path) -> str:
@@ -78,11 +115,21 @@ def copy_if_changed(source: Path, target: Path) -> None:
 
 
 def filename_for(title: str, url: str, number: int, extension: str) -> str:
+    # Keep symbols that identify a different paper: tau-bench and QuIP#.
+    title = title.replace("τ", "tau").replace("#", "Sharp")
     normalized = unicodedata.normalize("NFKD", title)
     ascii_title = normalized.encode("ascii", "ignore").decode("ascii")
     slug = re.sub(r"[^A-Za-z0-9]+", "_", ascii_title).strip("_")[:64] or "Reading"
     digest = hashlib.sha256(url.encode()).hexdigest()[:6]
     return f"{number:03d}_{slug}_{digest}{extension}"
+
+
+def slide_destination(site_path: str, lesson_folder: Path) -> Path:
+    name = Path(site_path).name
+    assignment = re.search(r"assignment(\d+)", name, re.I)
+    if assignment:
+        return ROOT / "assignment" / f"assignment-{assignment.group(1)}" / name
+    return lesson_folder / name
 
 
 def meeting_readings(soup: BeautifulSoup, meeting_id: str) -> list[tuple[str, str]]:
@@ -133,19 +180,41 @@ def organize_lessons() -> None:
     for lesson in LESSONS:
         folder = ROOT / lesson.folder
         folder.mkdir(exist_ok=True)
-        lines = [f"# {lesson.number}. {lesson.title}", "", f"- Date: {lesson.date}", "", "## Slides", ""]
-        slides = slides_by_date.get(lesson.date, lesson.slides)
-        if slides:
-            for label, site_path in slides:
+        lines = [f"# {lesson.number}. {lesson.title}", "", f"- Date: {lesson.date}"]
+        if lesson.paper_discussion:
+            lines.append("- Format: Paper discussion（论文讨论课）")
+        lines += ["", "## Slides", ""]
+        slides = tuple({path: (label, path) for label, path in
+                        (*lesson.slides, *slides_by_date.get(lesson.date, ())) }.values())
+        lecture_slides = [(label, path) for label, path in slides
+                          if slide_destination(path, folder).parent == folder]
+        assignment_slides = [(label, path) for label, path in slides
+                             if slide_destination(path, folder).parent != folder]
+        if lecture_slides:
+            for label, site_path in lecture_slides:
                 source = ROOT / "site" / site_path
-                target = folder / f"lecture-{lesson.number:02d}-{source.name}"
+                target = folder / source.name
                 if source.exists():
                     copy_if_changed(source, target)
                     lines += [f"- {markdown_link(label, target, folder)}", f"  - Source: {BASE}{site_path}"]
+                    source_number = re.match(r"(\d+)_", source.name)
+                    if source_number and int(source_number.group(1)) != lesson.number:
+                        lines.append(f"  - 编号说明：目录 {lesson.number} 按课表日期排序；文件名前缀 {source_number.group(1)} 是官网原始讲义编号。内容按本课日期与主题核对，保留原文件名。")
                 else:
                     lines += [f"- {label}: source file unavailable", f"  - Source: {BASE}{site_path}"]
+        elif lesson.paper_discussion:
+            lines.append(f"- 本节为论文讨论课；截至 {TODAY}，课程主页未提供该课的公开讲义 PDF 下载链接。阅读论文列在下方，不能当作教师讲义。")
         else:
             lines.append(f"- No slides linked on the course website as of {TODAY}.")
+        if assignment_slides:
+            lines += ["", "## Assignment materials", ""]
+            for label, site_path in assignment_slides:
+                source = ROOT / "site" / site_path
+                target = slide_destination(site_path, folder)
+                if source.exists():
+                    copy_if_changed(source, target)
+                    lines += [f"- {markdown_link(label, target, folder)}（作业说明，单独归入作业目录）",
+                              f"  - Source: {BASE}{site_path}"]
         lines += ["", "## Readings", ""]
         items = meeting_readings(soup, lesson.meeting_id) if lesson.meeting_id else []
         expected_readings: set[Path] = set()
@@ -155,11 +224,14 @@ def organize_lessons() -> None:
                 source = reading_destination(url)
                 if source is not None and source.exists():
                     file_index += 1
-                    target = folder / "readings" / filename_for(title, url, file_index, source.suffix)
+                    issue = reading_snapshot_issue(source)
+                    filename_title = f"{title} browser verification" if issue else title
+                    target = folder / "readings" / filename_for(filename_title, url, file_index, source.suffix)
                     copy_if_changed(source, target)
                     expected_readings.add(target)
                     total_copies += 1
-                    lines += [f"- {markdown_link(title, target, folder)}", f"  - Source: {url}"]
+                    label = f"{title} — 浏览器验证页（未获取正文）" if issue else title
+                    lines += [f"- {markdown_link(label, target, folder)}", f"  - Source: {url}"]
                 else:
                     lines += [f"- {title} — [online source]({url})", f"  - Source: {url}"]
         else:
@@ -167,6 +239,11 @@ def organize_lessons() -> None:
         for stale in (folder / "readings").glob("*"):
             if stale.is_file() and stale not in expected_readings and re.match(r"^\d{3}_.+_[0-9a-f]{6}\.(?:pdf|html)$", stale.name):
                 stale.unlink()
+        notes = sorted(path for path in folder.glob("*.md") if path.name not in {"README.md", "SOURCES.md"})
+        if notes:
+            lines += ["", "## Local study notes", "", "以下为本地中文学习笔记，文件名保留现有名称；教师原始讲义见上方 Slides。", ""]
+            for path in notes:
+                lines.append(f"- {markdown_link(path.name, path, folder)}")
         lines += ["", "## References", ""]
         if lesson.meeting_id:
             detailed = ROOT / "site/readings" / f"{lesson.meeting_id}.html"
@@ -184,8 +261,35 @@ def organize_lessons() -> None:
     print("ORGANIZED", len(LESSONS), "lesson folders,", total_copies, "reading copies")
 
 
+def copy_archive_code(archive: Path, folder: Path, number: int) -> None:
+    """Copy regular source files from an official archive without executing them."""
+    with tempfile.TemporaryDirectory(prefix="cs2680-starter-") as staging:
+        with tarfile.open(archive, "r:*") as source:
+            for member in source.getmembers():
+                parts = PurePosixPath(member.name).parts
+                if not parts or parts[0] != f"assignment{number}" or ".." in parts or member.name.startswith("/"):
+                    raise ValueError(f"Unsafe assignment archive path: {member.name}")
+                if not member.isfile():
+                    if member.isdir():
+                        continue
+                    raise ValueError(f"Unsupported assignment archive entry: {member.name}")
+                if Path(member.name).name == ".DS_Store":
+                    continue
+                relative = Path(*parts[1:])
+                temporary = Path(staging) / relative
+                temporary.parent.mkdir(parents=True, exist_ok=True)
+                with source.extractfile(member) as data, temporary.open("wb") as output:
+                    shutil.copyfileobj(data, output)
+                os.chmod(temporary, member.mode & 0o777)
+                os.utime(temporary, (member.mtime, member.mtime))
+                copy_if_changed(temporary, folder / "code" / relative)
+
+
 def organize_assignments() -> None:
-    for number in (1, 2, 3):
+    numbers = sorted(int(re.fullmatch(r"assignment(\d+)\.html", p.name).group(1))
+                     for p in (ROOT / "site/assignments").glob("assignment*.html")
+                     if re.fullmatch(r"assignment\d+\.html", p.name))
+    for number in numbers:
         folder = ROOT / "assignment" / f"assignment-{number}"
         folder.mkdir(parents=True, exist_ok=True)
         site_path = f"assignments/assignment{number}.html"
@@ -194,27 +298,40 @@ def organize_assignments() -> None:
                  f"- {markdown_link('Official assignment page', source, folder)}",
                  f"  - Source: {BASE}{site_path}"]
         code = ROOT / "assignments/course-repo" / f"assignment{number}"
-        if code.is_dir():
+        archive = ROOT / "site/assignments" / f"assignment{number}.tar.gz"
+        if archive.exists():
+            copy_archive_code(archive, folder, number)
+            lines += ["", "## Starter code", "",
+                      "- [Official archive contents](code/)",
+                      f"  - Source: {BASE}assignments/{archive.name}"]
+        elif code.is_dir():
             for file in code.rglob("*"):
                 if file.is_file():
                     copy_if_changed(file, folder / "code" / file.relative_to(code))
             lines += ["", "## Starter code", "",
                       "- [Local course code snapshot](code/)",
                       "  - Source: https://github.com/HarvardMadSys/cs2680_assignments (fixed commit in the root SOURCES.md)"]
-        if number == 2:
-            archive = ROOT / "site/assignments/assignment2.tar.gz"
+        if archive.exists():
             lines += ["", "## Original archive", "",
-                      f"- {markdown_link('assignment2.tar.gz', archive, folder)}",
-                      f"  - Source: {BASE}assignments/assignment2.tar.gz",
-                      "  - The server names this file `.tar.gz`, but its content is a plain POSIX tar archive; use `tar -xf`."]
+                      f"- {markdown_link(archive.name, archive, folder)}",
+                      f"  - Source: {BASE}assignments/{archive.name}"]
+            if number == 2:
+                lines.append("  - The server names this file `.tar.gz`, but its content is a plain POSIX tar archive; use `tar -xf`.")
         if number == 3:
             slide_source = ROOT / "site/slides/8_assignment3.pdf"
-            slide_target = folder / "assignment3-slides.pdf"
+            slide_target = folder / slide_source.name
             if slide_source.exists():
                 copy_if_changed(slide_source, slide_target)
                 lines += ["", "## Slides", "",
                           f"- {markdown_link('Assignment 3 slides', slide_target, folder)}",
                           f"  - Source: {BASE}slides/8_assignment3.pdf"]
+        slide_source = ROOT / "site/slides" / f"assignment{number}.pdf"
+        if slide_source.exists():
+            slide_target = folder / slide_source.name
+            copy_if_changed(slide_source, slide_target)
+            lines += ["", "## Slides", "",
+                      f"- {markdown_link(f'Assignment {number} slides', slide_target, folder)}",
+                      f"  - Source: {BASE}slides/{slide_source.name}"]
         (folder / "SOURCES.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
@@ -253,10 +370,57 @@ def organize_course_info() -> None:
     (project / "SOURCES.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+def update_course_index() -> None:
+    """Keep the root navigation in the same order and wording as the folders."""
+    slides_by_date = schedule_slides()
+    sections = []
+    for heading, lessons in (
+        ("Part I：Introduction to LLMs and agents", [l for l in LESSONS if l.date < "2026-10-19"]),
+        ("Part II：Systems for LLMs and agents", [l for l in LESSONS if l.date >= "2026-10-19"]),
+    ):
+        sections += [f"## {heading}", "", "| 日期 | 课程原题与资料入口 | 官方讲义 PDF |", "|---|---|---|"]
+        for lesson in lessons:
+            folder = ROOT / lesson.folder
+            entry = folder / ("README.md" if (folder / "README.md").exists() else "SOURCES.md")
+            slide_links = [markdown_link(Path(path).name, folder / Path(path).name, ROOT)
+                           for _, path in slides_by_date.get(lesson.date, ())
+                           if slide_destination(path, folder).parent == folder
+                           and (folder / Path(path).name).is_file()]
+            status = " · ".join(slide_links) if slide_links else (
+                "论文讨论课；官网未提供讲义 PDF" if lesson.paper_discussion else "官网尚未提供"
+            )
+            sections.append(f"| {lesson.date[5:]} | {markdown_link(f'{lesson.number}. {lesson.title}', entry, ROOT)} | {status} |")
+        sections.append("")
+    sections += ["完整课表以[本地课程主页](site/index.html)为准。上表收录已有讲义或阅读资料的课次；原始 PDF 文件名保留官网编号。", ""]
+    sections += ["### 文件名与归档位置核对（2026-10-23）", "",
+                 "本次按课表日期、讲义封面、阅读链接和原始归档的校验值核对全部 18 个课次。264 份阅读副本均与对应原始下载文件一致；其中 LPC 的 HTML 是浏览器验证页，未取得阅读正文，已在第 14 课索引中明确标注。", "",
+                 "| 容易混淆的文件 | 核对结论与处理 |", "|---|---|",
+                 "| 第 10 课的 `9_llm_serving_basics_1.pdf` | 封面为 Introduction to LLM，对应 10 月 19 日；位置正确，保留官网文件名。 |",
+                 "| 第 11 课的 `10_llm_serving_basics_2a.pdf` | 封面为 Intro to GPUs，对应 10 月 21 日；位置正确，保留官网文件名。 |",
+                 "| 第 8 课的 `8_agent_design_5.pdf` | 封面用 Agent design V，课表用 Advanced agent design I；内容都是成本与性能，位置正确。 |",
+                 "| `8_assignment3.pdf` | 是 Assignment 3: MadsOpt 的作业说明；归入 [作业 3](assignment/assignment-3/SOURCES.md)，第 8 课保留交叉链接。 |",
+                 "| `008_bench_9e1bf2.pdf`、`028_QuIP_0bdf3d.pdf` | 命名时丢失 τ 和 #；学习副本改为 `008_tau_bench_9e1bf2.pdf`、`028_QuIPSharp_0bdf3d.pdf`，原始下载不变。 |",
+                 "| 笔记中的 `SOURCES(数字).md` | 上传时产生的旧别名，引用统一指向本课 `SOURCES.md`。 |", "",
+                 "阅读副本文件名格式为 `序号_课程阅读标签_URL摘要.pdf/html`；例如 MLA 对应 DeepSeek-V2、SWA 对应 Mistral 7B，属于官网用方法简称指代论文，已核对来源，无须移动。各课的 SOURCES.md 另列本地学习笔记，便于区分笔记与教师讲义。", ""]
+    begin, end = "<!-- BEGIN COURSE INDEX -->", "<!-- END COURSE INDEX -->"
+    replacement = begin + "\n\n" + "\n".join(sections) + "\n" + end + "\n\n"
+    path = ROOT / "README.md"
+    content = path.read_text(encoding="utf-8")
+    if begin in content and end in content:
+        content = re.sub(re.escape(begin) + r".*?" + re.escape(end) + r"\s*", lambda _: replacement, content, count=1, flags=re.S)
+    else:
+        content, count = re.subn(r"## Part I[^\n]*\n.*?(?=## 作业与项目)", lambda _: replacement, content, count=1, flags=re.S)
+        if count != 1:
+            raise ValueError("Cannot find the course index section in README.md")
+    path.write_text(content, encoding="utf-8")
+
+
 def main() -> None:
+    validate_course_layout()
     organize_course_info()
     organize_lessons()
     organize_assignments()
+    update_course_index()
 
 
 if __name__ == "__main__":

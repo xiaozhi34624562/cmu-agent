@@ -1,0 +1,6 @@
+# The basic SGLang setup's launch flags for Assignment 4. Flags may span lines, and # starts a comment.
+# The course sets --model-path, --served-model-name, --host, --port and --api-key itself.
+--moe-runner-backend flashinfer_cutlass --attention-backend flashinfer --sampling-backend pytorch
+--mamba-ssm-dtype bfloat16 --reasoning-parser qwen3 --tool-call-parser qwen3_coder
+--enable-metrics --enable-cache-report
+--context-length 262144 --mem-fraction-static 0.90 --mamba-radix-cache-strategy extra_buffer

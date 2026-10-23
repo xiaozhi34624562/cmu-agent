@@ -9,11 +9,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
 <link crossorigin="anonymous" href="../vendor/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
 <script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="../vendor/bootstrap.bundle.min.js"></script>
-<meta content="CS2680 HPC setup: allocate an interactive Slurm job from an Open OnDemand terminal and run your coding agent on a compute node, not the login node" name="description"/>
+<meta content="CS2680 course cluster: first-time setup, CPU and GPU jobs with Slurm, keeping a session alive, serving a model on a GPU node and reaching it through an SSH tunnel" name="description"/>
 <meta content="Juncheng Yang" name="author"/>
 <link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="CS2680 Modern AI Systems — HPC" property="og:title"/>
-<meta content="CS2680 HPC setup: allocate an interactive Slurm job from an Open OnDemand terminal and run your coding agent on a compute node, not the login node" property="og:description"/>
+<meta content="CS2680 course cluster: first-time setup, CPU and GPU jobs with Slurm, keeping a session alive, serving a model on a GPU node and reaching it through an SSH tunnel" property="og:description"/>
 <meta content="website" property="og:type"/>
 <meta content="CS2680 Modern AI Systems" property="og:site_name"/>
 <meta content="summary" name="twitter:card"/>
@@ -29,482 +29,345 @@
 <div class="title">CS2680 Modern AI Systems: Agents and System Optimizations</div>
 </div>
 <div class="col-12 title2">
-        HPC: running an agent in an interactive job
+        HPC: CPU and GPU jobs on the course cluster
       </div>
 <div class="col-12 section" id="hpc">
-<h1>The HPC cluster</h1>
-<p>
-          Harvard FAS ATG provides a high-performance computing (HPC) cluster for this course. It has 72 CPU nodes and 50 GPU nodes. The cluster is managed by <a href="https://slurm.schedmd.com/" rel="noopener noreferrer" target="_blank">Slurm</a>.
-          The cluster is accessible via the <a href="https://ood.huit.harvard.edu" rel="noopener" target="_blank">Open OnDemand portal</a>. ATG publishes the <a href="https://harvard-atg.github.io/huit-ondemand-user-docs" rel="noopener" target="_blank">OnDemand user documentation</a> for it.
-        </p>
-<p><strong>We will figure out how to add you to the cluster.</strong>
-
-
-          The login host is
-          <code>academ-acade-iL73aitWT6xF-c83014867702e61e.elb.us-east-1.amazonaws.com</code>. The
-          <a href="#ssh-config">SSH config below</a> gives it a short name. Still to be announced: how you get an account and get added to the CS2680 group. Those will be posted
-          here and on the <a href="../index.html">home page</a>. Registering an SSH key is not announced, because you
-          do it yourself: connect through the OnDemand portal once, and append your public key to
-          <code>~/.ssh/authorized_keys</code> from the browser terminal, as
-          <a href="#ssh-key">step 3 of first-time setup</a> describes.
-        </p>
-<hr/>
-</div>
-<div class="col-12 section" id="quickstart">
-<h1>Quick start</h1>
-<p>Once, ever, from an OnDemand terminal on the login node:</p>
-<div class="formula">curl -fsSL https://claude.ai/install.sh | bash # installs to ~/.local/bin
-echo 'export PATH="$HOME/.local/bin:$PATH"' &gt;&gt; ~/.bashrc
-source ~/.bashrc
-claude # sign in, then /exit</div>
-<p>Then every time you sit down to work:</p>
-<div class="formula">srun -p general -c 4 --mem=16G -t 2:00:00 --pty bash # get a compute node
-claude # work here</div>
-<p>And when you need a GPU instead (<a href="../assignments/index.html#assignment-4">Assignment 4</a> onward):</p>
-<div class="formula">srun -p gpu-cs2680 --gres=gpu:rtxproserver6000:1 -c 8 --mem=60G -t 2:00:00 --pty bash</div>
-<p><code>exit</code> ends the job and releases the node. That is the whole workflow; the rest of this page is what to do when it does not go like that.</p>
+<h1>The course cluster</h1>
+<p>Harvard FAS ATG runs a <a href="https://slurm.schedmd.com/" rel="noopener noreferrer" target="_blank">Slurm</a> cluster for this course, with the GPU nodes Assignments 4 and 5 use. Students enrolled on Canvas already have an account. There are two ways in:</p>
+<ul>
+<li><strong>The <a href="https://ood.huit.harvard.edu" rel="noopener" target="_blank">Open OnDemand portal</a></strong>, from anywhere. Its <em>Clusters</em> menu opens a terminal on the login node in a browser tab, and its file browser moves single files. ATG's <a href="https://harvard-atg.github.io/huit-ondemand-user-docs" rel="noopener" target="_blank">OnDemand documentation</a> covers the portal.</li>
+<li><strong>SSH</strong>, from the Harvard network or the <a href="https://www.huit.harvard.edu/vpn" rel="noopener" target="_blank">Harvard University VPN</a> only, because the login host's address is private to Harvard. SSH also carries <code>rsync</code>, VS Code and port tunnels.</li>
+</ul>
+<p>If the portal does not let you in, email the course staff. <strong>For Assignment 4:</strong> do the <a href="#first-time">first-time setup</a>, start a session on a <a href="#gpu">GPU node</a> as in <a href="#serving">serving a model</a>, and reach the server with a <a href="#tunnel">tunnel</a>, or through your laptop if your agent runs on <a href="#cloudlab-aws">CloudLab or AWS</a>.</p>
 <hr/>
 </div>
 <div class="col-12 section" id="model">
-<h1>How Slurm works</h1>
-<p>There are three machines in this story. <strong>Your laptop</strong>, where you type. The
-          <strong>login node</strong>, which is what you reach when you open an OnDemand terminal or SSH in, one small shared machine that everyone in the course lands on at once. And the <strong>compute nodes</strong>, which are the actual hardware: many CPUs, lots of memory, and in one partition, a GPU.
-        </p>
-<p>You are not allowed to just run things on a compute node. <strong>Slurm</strong>, the scheduler, owns them, and you ask it for a lease: <em>give me 4 CPUs and 16 GB for 2 hours</em>. When hardware is free it hands you a node and starts your shell on it. That lease is a <strong>job</strong>, and everything you run inside it is charged against it. When the time runs out, or you type <code>exit</code>, the lease ends.</p>
+<h1>How the cluster works</h1>
+<p>A terminal on the cluster first lands on the <strong>login node</strong>, which the whole course shares. The hardware you compute on is the <strong>compute nodes</strong>, and Slurm decides who uses them. You ask Slurm for a <strong>job</strong> (for example, 4 cores and 16 GB for 2 hours); when the hardware is free, it starts your job on a compute node, and the job ends when its time runs out or you exit it. <code>hostname</code> tells you which machine a prompt belongs to.</p>
+<p>Your home directory is <strong>shared</strong>: the login node and every compute node see the same files, so anything you install once, such as <code>claude</code>, is there in every job.</p>
 <div class="tip">
-<strong>Do not run an agent on the login node.</strong> The login node is capped at
-          <strong>15 minutes of CPU time</strong> and roughly <strong>2 GB of memory</strong>. An agent session will be killed there, usually in the middle of something, and often without a clear message. The login node is for submitting jobs, editing files, and moving data. Everything with real work in it belongs in a job.
+<strong>Do not run an agent or a model on the login node.</strong> Every process there is killed after 15 minutes of CPU time, with the message <code>CPU time limit exceeded</code>. Use the login node to edit files, install tools, move data and start jobs.
         </div>
-<p>The one thing that makes this pleasant is that <strong><code>/home</code> is shared</strong>. The login node and every compute node see the same home directory, so anything you installed once is already there when a job starts — <code>claude</code> in <code>~/.local/bin</code>. Nothing to re-install per job, nothing to copy onto the node, and the login you did in week one still applies, because the credentials Claude Code writes live in your home directory too.
-        </p>
-<p>There are two types of job. An <strong>interactive</strong> job (<code>srun --pty</code>) gives you a shell and you work in it, which is what an agent session is. A <strong>batch</strong> job (<code>sbatch</code>) runs a script without you and writes its output to a file, which is what you want for <a href="#batch">an overnight sweep</a>.
-        </p>
 <hr/>
 </div>
 <div class="col-12 section" id="first-time">
 <h1>First-time setup</h1>
-<p>Seven steps, once. Do them on the login node, because they are all small and installing software is exactly what the login node is for.</p>
 <ol>
-<li><strong>Get an account, and get into the CS2680 group.</strong> Access instructions are TBD and will be announced; the group membership is what lets you submit to the <a href="#gpu"><code>gpu-cs2680</code> partition</a>.
-          </li>
-<li><strong>Open a terminal.</strong> In the OnDemand portal, the shell is under the <em>Clusters</em> menu; it opens a terminal on the login node in a browser tab. Plain SSH to the login host works the same way and is nicer if you already live in a terminal — <a href="#ssh-config">the SSH config below</a> reduces it to <code>ssh cs2680</code>.
-          </li>
-<li id="ssh-key"><strong>Register your SSH key.</strong> There is no upload form for this, so you install
-            the key yourself through the OnDemand terminal you just opened, which is the one way onto the cluster that
-            does not need a key already. On your laptop, generate a key if you do not have one, then print the public
-            half:
-            <div class="formula">ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 # skip if that file already exists
+<li><strong>Open a terminal on the login node:</strong> in the OnDemand portal, the shell under the <em>Clusters</em> menu. Run <code>whoami</code> and note your cluster username.</li>
+<li id="ssh-key"><strong>Register an SSH key</strong>, to connect from your laptop's terminal (Terminal on macOS, PowerShell on Windows). On your laptop, create a key if you do not have one, and print its public half:
+            <div class="formula">ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 # skip if the file exists; a passphrase is optional
 cat ~/.ssh/id_ed25519.pub</div>
-            Copy the single line that prints. Note that the file to copy is <code>id_ed25519.pub</code>; the one
-            without <code>.pub</code> is the private key, and it never leaves your laptop. Back in the OnDemand
-            terminal, append that line to <code>~/.ssh/authorized_keys</code>:
+            Copy the one line it prints. (The file without <code>.pub</code> is your private key, which never leaves your laptop.) In the OnDemand terminal, add the line to <code>~/.ssh/authorized_keys</code>, replacing the example with your own line:
             <div class="formula">mkdir -p ~/.ssh &amp;&amp; chmod 700 ~/.ssh
 echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAA... you@laptop' &gt;&gt; ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/authorized_keys</div>
-            Paste your own key between the quotes, in place of the example, and keep it on one line. Pasting into the
-            browser terminal is <code>Ctrl+Shift+V</code> rather than <code>Ctrl+V</code> on Linux and Windows, and
-            <code>Cmd+V</code> on a Mac. The two <code>chmod</code> lines are not optional: sshd ignores a key file
-            that the group or the world can write, which is the usual reason a newly added key is refused without
-            explanation. While you are in that terminal, run <code>whoami</code> and write the username down, because
-            <a href="#ssh-config">the SSH config below</a> needs it. Then check the key from your laptop:
-            <div class="formula">ssh YOUR_USERNAME@academ-acade-iL73aitWT6xF-c83014867702e61e.elb.us-east-1.amazonaws.com</div>
-            A shell prompt on the login node means the key is registered. If you are asked for a password instead, or
-            told <code>Permission denied (publickey)</code>, re-open the OnDemand terminal and compare
-            <code>cat ~/.ssh/authorized_keys</code> against <code>cat ~/.ssh/id_ed25519.pub</code> on your laptop,
-            character for character. A key broken across two lines by the paste is the most common failure.
+            In the browser terminal, paste with <code>Ctrl+Shift+V</code> (<code>Cmd+V</code> on a Mac), and keep the key on one line.
           </li>
-<li><strong>Install Claude Code into your home directory:</strong>
-<div class="formula">curl -fsSL https://claude.ai/install.sh | bash</div>
-            This is the native installer, it puts the binary in <code>~/.local/bin</code>, and it keeps itself updated. Because <code>/home</code> is shared, you are also installing it on every compute node at the same time.
+<li id="ssh-config"><strong>Add the SSH config.</strong> On your laptop, add this to <code>~/.ssh/config</code> (<code>C:\Users\you\.ssh\config</code> on Windows), with your username:
+            <div class="formula">Host cs2680
+    Hostname academ-acade-iL73aitWT6xF-c83014867702e61e.elb.us-east-1.amazonaws.com
+    User YOUR_USERNAME
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
+    ServerAliveInterval 30</div>
+            Then, from the Harvard network or VPN, run <code>ssh cs2680</code>. The first time, answer <code>yes</code> to the host-key question. A prompt on the login node means the key works; if not, see <a href="#troubleshooting">troubleshooting</a>.
           </li>
-<li><strong>Put it on your <code>PATH</code>:</strong>
-<div class="formula">echo 'export PATH="$HOME/.local/bin:$PATH"' &gt;&gt; ~/.bashrc
-source ~/.bashrc
-claude --version</div>
-</li>
-<li><strong>Log in.</strong> Run <code>claude</code> and follow the prompts. In a browser-based terminal or
-            over SSH you will get a <em>code</em> to paste back rather than a browser that returns to the terminal.
-            That is expected, and the <a href="claude-code.html#login">Claude Code page</a> walks through it.
-            Confirm with <code>/status</code>, then <code>/exit</code>.</li>
-<li><strong>Add the course telemetry block</strong> to <code>~/.claude/settings.json</code> on this machine,
-            per the <a href="claude-code.html#telemetry">Claude Code page</a>. That file is per-machine, and your HPC home is a different machine from your laptop as far as it is concerned.</li>
+<li><strong>Install Claude Code</strong>, if you will run it on the cluster:
+            <div class="formula">curl -fsSL https://claude.ai/install.sh | bash
+echo 'export PATH="$HOME/.local/bin:$PATH"' &gt;&gt; ~/.bashrc &amp;&amp; source ~/.bashrc
+claude # sign in, then /exit</div>
+            Over SSH or in the browser terminal, the login gives you a code to paste back; the <a href="claude-code.html#login">Claude Code page</a> walks through it. Then add the course telemetry block to <code>~/.claude/settings.json</code> on the cluster, as the <a href="claude-code.html#telemetry">Claude Code page</a> describes. When you <a href="claude-code.html#export">archive your session files</a>, include the cluster's <code>~/.claude/projects/</code>.
+          </li>
 </ol>
-<div class="tip">
-<strong>Sessions you run here are sessions you submit.</strong> Claude Code keeps its transcripts under
-          <code>~/.claude/projects/</code> on whichever machine ran it, so the HPC has its own set. When you
-          <a href="claude-code.html#export">archive your session files</a>, include the HPC's.
-        </div>
 <hr/>
 </div>
 <div class="col-12 section" id="interactive">
-<h1>Interactive jobs: the everyday workflow</h1>
-<p>From an OnDemand terminal (or over SSH):</p>
+<h1>Interactive jobs</h1>
+<p>From a terminal on the login node:</p>
 <div class="formula">srun -p general -c 4 --mem=16G -t 2:00:00 --pty bash</div>
-<p>Wait for the node to come up. The first job of the day can take a few minutes, because idle nodes are powered down. <code>sinfo</code> shows them as <code>idle~</code>, and Slurm has to boot one before your shell appears. Nothing is wrong; you can type <code>squeue -u $USER</code> in another terminal to see the job pending reason.</p>
-<p>When the prompt comes back you are on the compute node. Then:</p>
-<div class="formula">claude</div>
-<p>That is the whole student workflow: <strong>allocate a shell on a compute node, run the agent there.</strong>
-          Work normally, and <code>exit</code> when you are done, which ends the job and returns the node.</p>
-<div class="subsection">
-<h2>What the flags mean</h2>
-<table class="table table-bordered rubric-table">
+<p>When the prompt comes back, you are on a compute node: work there (for example, run <code>claude</code>), and <code>exit</code> when you are done. Slurm powers down a node after 10 idle minutes, so a job can wait about 4 minutes while one boots; <code>squeue -u $USER</code> shows it as <code>CF</code> meanwhile. If your connection drops, the job ends; start a new one, and <code>claude --continue</code> picks up the conversation. To keep work running while you are away, use a <a href="#tmux">session that survives a disconnect</a>.</p>
+<div class="table-responsive"><table class="table table-bordered rubric-table">
 <tr>
 <th>Flag</th>
-<th>What it does</th>
-<th>How to choose it</th>
+<th>Meaning</th>
 </tr>
 <tr>
 <td><code>-p general</code></td>
-<td>Partition — which pool of nodes to run on.</td>
-<td><code>general</code> for anything that is not GPU work. See <a href="#gpu">GPUs</a> for the other
-                one.</td>
+<td>The partition, the pool of nodes: <code>general</code> for CPU work, or a <a href="#gpu">GPU partition</a>.</td>
 </tr>
 <tr>
 <td><code>-c 4</code></td>
-<td>CPU cores.</td>
-<td>4 is plenty for an agent. More cores means a longer wait for a node with that many free.</td>
+<td>CPU cores. 4 is plenty for an agent; ask for 8 on a GPU node.</td>
 </tr>
 <tr>
 <td><code>--mem=16G</code></td>
-<td>Memory for the whole job. Exceed it and the job is killed.</td>
-<td>16 GB is comfortable for agent work. Raise it if you are loading data or model weights.</td>
+<td>Memory Slurm sets aside for the job. Slurm does not enforce it here, so stay below it: going over can get your process, or a neighbor's, killed when the node runs out.</td>
 </tr>
 <tr>
 <td><code>-t 2:00:00</code></td>
-<td>Wall-clock limit, <code>HH:MM:SS</code>. At the limit the job ends, mid-command if need be.</td>
-<td>Ask for a working session, not a week. Check the partition's ceiling with
-                <code>sinfo -p general -o "%P %l"</code>.
-              </td>
+<td>Time limit, <code>HH:MM:SS</code>. The job ends when it is reached. Always set it.</td>
+</tr>
+<tr>
+<td><code>--gres=gpu:&lt;type&gt;:1</code></td>
+<td>One GPU, on a GPU partition. The <a href="#gpu">table below</a> gives each partition's type.</td>
 </tr>
 <tr>
 <td><code>--pty bash</code></td>
-<td>Attaches a terminal and runs a shell in it — this is what makes the job interactive.</td>
-<td>Always, for this workflow. Swap <code>bash</code> for <code>tmux new -s agent</code> to make it
-                <a href="#tmux">survive a closed tab</a>.
-              </td>
+<td>Gives you a shell in the job.</td>
 </tr>
-</table>
-</div>
+</table></div>
 <hr/>
 </div>
 <div class="col-12 section" id="gpu">
-<h1>GPUs (Assignment 4, 5 and project) </h1>
-<p>The course has its own GPU partition:</p>
-<div class="formula">srun -p gpu-cs2680 --gres=gpu:rtxproserver6000:1 -c 8 --mem=60G -t 2:00:00 --pty bash</div>
-<p>Each node in it holds <strong>one RTX PRO 6000 Blackwell</strong>.</p>
-<p><strong>Use <code>gpu-cs2680</code> and nothing else.</strong> The cluster carries other GPU
-          partitions, and because only <code>gpu-cs2680</code> is group-restricted, some of them will accept a
-          job from you. However, using one for course work requires pre-approval from a TF. Ask first, and use
-          <code>gpu-cs2680</code> in the meantime.</p>
-<p>Check the GPU is really yours, first thing inside the job:</p>
-<div class="formula">nvidia-smi &amp;&amp; echo $CUDA_VISIBLE_DEVICES</div>
-<p><code>nvidia-smi</code> should list one card with almost no memory in use, and
-          <code>CUDA_VISIBLE_DEVICES</code> should name the one device Slurm gave you. If <code>nvidia-smi</code>
-          reports no devices, you are not using the correct partition.
-        </p>
-<div class="subsection">
-<h2>Serving a model here (Assignments 4 and 5)</h2>
-<p>Two things will bite you, and both are about disk rather than the GPU.</p>
+<h1>GPUs (Assignments 4 and 5, and the project)</h1>
+<p>Students may use these partitions. Each GPU node has one GPU.</p>
+<div class="table-responsive"><table class="table table-bordered rubric-table">
+<tr>
+<th>Partition</th>
+<th>GPU</th>
+<th>Node</th>
+<th>Longest job</th>
+<th>Request</th>
+</tr>
+<tr>
+<td><code>gpu-g7-reserved</code></td>
+<td>RTX PRO 4500 Blackwell, 32 GB</td>
+<td>8 cores, about 30 GB</td>
+<td>14 days</td>
+<td><code>srun -p gpu-g7-reserved --gres=gpu:rtxpro4500:1 -c 8 --mem=28G -t 4:00:00 --pty bash</code></td>
+</tr>
+<tr>
+<td><code>gpu-cs2680-long</code></td>
+<td>RTX PRO 6000 Blackwell, 96 GB</td>
+<td>8 cores, about 60 GB</td>
+<td>2 days</td>
+<td><code>srun -p gpu-cs2680-long --gres=gpu:rtxproserver6000:1 -c 8 --mem=56G -t 4:00:00 --pty bash</code></td>
+</tr>
+<tr>
+<td><code>general</code></td>
+<td>none</td>
+<td>48 cores, about 90 GB</td>
+<td>3 days</td>
+<td><code>srun -p general -c 4 --mem=16G -t 2:00:00 --pty bash</code></td>
+</tr>
+</table></div>
+<p>Use the card your assignment names, because numbers measured on one card do not carry over to the other. <a href="../assignments/index.html#assignment-4">Assignment 4</a> uses the RTX PRO 4500. Other GPU partitions on the cluster need a TF's approval before you use them for course work.</p>
+<p>In a GPU job, <code>echo $CUDA_VISIBLE_DEVICES</code> should print a device number. If it prints nothing, the job has no GPU: you left out <code>--gres</code>. (<code>nvidia-smi</code> lists the card either way, so it does not tell you.)</p>
+<div class="subsection" id="serving">
+<h2>Serving a model on a GPU node</h2>
+<p>A model server takes minutes to start and runs until you stop it, so run it in a <a href="#tmux">session that survives a disconnect</a>, in the background, with its output in a log file. From the login node:</p>
+<div class="formula">sbatch -p gpu-g7-reserved --gres=gpu:rtxpro4500:1 -c 8 --mem=28G -t 4:00:00 -J work -o /dev/null --wrap 'screen -dmS work; while screen -ls work | grep -q "\.work"; do sleep 30; done'
+squeue -u $USER --name=work # wait for state R, and note the JOBID and the NODELIST
+srun --jobid=&lt;JOBID&gt; --overlap --pty screen -r work</div>
+<p>Then, in the screen session on the GPU node, start the server (your assignment gives the command) with an API key, for example:</p>
+<div class="formula">(umask 077; [ -f ~/serve.key ] || openssl rand -hex 16 &gt; ~/serve.key) # a password for your server, once
+python -m sglang.launch_server ... --host 0.0.0.0 --port 30000 --api-key $(cat ~/serve.key) &gt; server.log 2&gt;&amp;1 &amp;
+tail -f server.log # Ctrl-c stops watching; the server keeps running</div>
 <ul>
-<li><strong>Model weights are large and your home directory is not.</strong> A 7–8B model in bf16 is
-              roughly 15 GB, and Hugging Face downloads into <code>~/.cache/huggingface</code> by default, so the
-              third model you try is where the quota error appears. Point the cache somewhere with room before you
-              start (<code>export HF_HOME=/path/with/space/$USER/hf</code> in your <code>~/.bashrc</code>), and delete
-              the models you were only curious about. The scratch filesystem to use for this is still to be announced.
-              <!-- TODO: name the scratch filesystem here once HPC access is finalized. --></li>
-<li><strong>Install the engine into an environment, not the system.</strong> A virtualenv or a conda
-              environment under your home works on every node, for the same shared-<code>/home</code> reason. Create
-              it once, activate it in the job.</li>
+<li><strong>Always set an API key.</strong> <code>--host 0.0.0.0</code> lets everyone on the cluster reach your server, and the key keeps them off your GPU.</li>
+<li><strong>Keep model weights out of your home directory.</strong> Use the copy your assignment provides, or keep weights in <code>/scratch/$USER</code> (<code>export HF_HOME=/scratch/$USER/hf</code>) and copy them to the node's local disk before loading, which is much faster than loading them from <code>/scratch</code>.</li>
+<li><strong>Use the environment your assignment provides.</strong> Otherwise, install the engine in a virtualenv in your home directory, which every node sees.</li>
 </ul>
-<p>Ask for more of the node when you are serving rather than chatting. The <code>-c 8 --mem=60G</code> above
-            leaves the weights room to load, and a whole-node request only starts when a whole node is free. Kill the
-            server when you stop measuring: an engine holding the card in a job you have wandered away from is
-            invisible to you and obvious to everyone waiting.</p>
 </div>
-<div class="tip">
-<strong>A GPU you are not using is a GPU nobody is using.</strong> There is one card per node and a whole
-          class sharing them, so bound the job with <code>-t</code>, and <code>exit</code> when you stop working rather
-          than holding a four-hour allocation to read a paper. This bites hardest in the last week of the semester, which is
-          exactly when you will want a node at short notice.
-        </div>
-<hr/>
+<div class="subsection" id="tunnel">
+<h2>Reaching the server from another machine</h2>
+<p>Compute nodes cannot be reached from outside the cluster, so you forward a local port through the login node with an <strong>SSH tunnel</strong>. On the machine that needs the server (it must be on the Harvard network or VPN, and have the <a href="#ssh-config"><code>cs2680</code> config</a>; for a CloudLab or AWS machine, see <a href="#cloudlab-aws">below</a>), with the node name from <code>squeue</code>, run this and leave the terminal open:</p>
+<div class="formula">ssh -N -L 30000:&lt;node-name&gt;:30000 cs2680</div>
+<p>In a second terminal, <code>curl -s -H "Authorization: Bearer $(ssh cs2680 cat serve.key)" localhost:30000/v1/models</code> should list the model. The tunnel stops working when the job ends, so open a new one for each job.</p>
 </div>
-<div class="col-12 section" id="ssh-config">
-<h1>One command from your laptop: <code>ssh cs2680</code></h1>
-<p>Once the workflow above is familiar, you can collapse it into a single command. SSH will run <code>srun</code> for you on connect, so <code>ssh cs2680</code> takes you from your laptop to a shell on a compute node with nothing typed in between. Put this in <code>~/.ssh/config</code> on your own machine (<code>C:\Users\you\.ssh\config</code> on Windows), with <strong>your</strong> username and key path:
-        </p>
-<div class="formula">Host cs2680 cs2680-cpu cs2680-gpu
-    Hostname academ-acade-iL73aitWT6xF-c83014867702e61e.elb.us-east-1.amazonaws.com
-    User YOUR_USERNAME
-    IdentityFile ~/.ssh/YOUR_KEY
-    ForwardAgent yes
-    ServerAliveInterval 30
-    ServerAliveCountMax 20
-    IdentitiesOnly yes
-    UserKnownHostsFile=/dev/null
-    StrictHostKeyChecking no
-
-Host cs2680-cpu
-    ProxyCommand ssh -q cs2680 exec /shared/courseSharedFolders/176914outer/176914/cpu-tunnel.sh cpu
-
-Host cs2680-gpu
-    ProxyCommand ssh -q cs2680 exec /shared/courseSharedFolders/176914outer/176914/cpu-tunnel.sh gpu
-
+<div class="subsection" id="cloudlab-aws">
+<h2>Reaching the cluster from CloudLab or AWS</h2>
+<p>The login node answers only on the Harvard network and the <a href="https://www.huit.harvard.edu/vpn" rel="noopener" target="_blank">Harvard University VPN</a>, so a CloudLab or AWS machine cannot run <code>ssh cs2680</code> or open the tunnel above by itself. If your agent runs on such a machine, as it may in Assignment 4, it can reach your server in one of two ways:</p>
+<ol>
+<li><strong>The machine joins the VPN.</strong> Install the VPN client that HUIT's VPN page names (Cisco AnyConnect) on that machine and connect it as HUIT describes. Then create an SSH key there, register it as in <a href="#ssh-key">the key step</a>, and add the <a href="#ssh-config"><code>cs2680</code> config</a>. The commands on this page and on the assignment page then work there as written. However, if the VPN client sends all of the machine's traffic through Harvard, your own SSH connection to the machine can stop working when the VPN connects; the second way avoids this.</li>
+<li><strong>A machine on the VPN keeps the tunnel</strong>, usually your laptop. The laptop forwards a port to the GPU node through the login node, as above, and a second SSH connection from the laptop carries that port to the CloudLab or AWS machine. Nothing is installed on that machine, but every model call passes through the laptop, so the laptop must stay awake and on the VPN for the whole run.</li>
+</ol>
+<p>The second way takes three steps. First, once on the CloudLab or AWS machine, let its SSH server bind a forwarded port to the Docker bridge address. By default it binds every port a client forwards to it to <code>127.0.0.1</code>, which containers cannot reach:</p>
+<div class="formula">echo 'GatewayPorts clientspecified' | sudo tee /etc/ssh/sshd_config.d/cs2680-tunnel.conf
+sudo systemctl reload ssh || sudo systemctl reload sshd
+sudo sshd -T | grep -i gatewayports # should print: gatewayports clientspecified
+docker network inspect bridge -f '{{(index .IPAM.Config 0).Gateway}}' # the bridge address, usually 172.17.0.1; use yours in place of it below</div>
+<p><code>clientspecified</code> binds a forwarded port only to the address the client names. (<code>yes</code> would bind it to every address, which puts your server's port on the public internet.)</p>
+<p>Second, on the laptop, with the node name from <code>squeue</code> and your SSH config's name for the CloudLab or AWS machine in place of <code>agentbox</code>, run each line in its own terminal and leave both open:</p>
+<div class="formula">ssh -N -o ExitOnForwardFailure=yes -L 30000:&lt;node-name&gt;:30000 cs2680
+ssh -N -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -R 172.17.0.1:30000:127.0.0.1:30000 agentbox</div>
+<p>The first line is the tunnel above. The second makes port 30000 at the machine's Docker bridge address lead to port 30000 on the laptop, and so to your server. When your server's job ends, open the first one again to the next job's node; the second can stay open.</p>
+<p>Third, on the CloudLab or AWS machine, your server is now at <code>http://172.17.0.1:30000</code>, the address the Assignment 4 page points the harness at, so skip that page's own <code>ssh -L</code> line. That machine cannot read your server's key with <code>ssh cs2680</code> either, so copy the key there from the laptop (<code>scp -3</code> copies between two remote machines through the laptop), and use the file in place of that page's <code>ssh cs2680 cat a4/serve.key</code>:</p>
+<div class="formula">scp -3 cs2680:a4/serve.key agentbox:a4-serve.key # on the laptop
+export CS2680_API_KEY=$(cat ~/a4-serve.key) # on the CloudLab or AWS machine
+curl -s -H "Authorization: Bearer $CS2680_API_KEY" 172.17.0.1:30000/v1/models # should list the model</div>
+<p>The same holds for every other copy between the two machines. The starter's <code>README.md</code> copies your submission's <code>engine/</code> files to <code>~/a4/engine</code> on the cluster, and back before you zip the submission; run those copies on the laptop too, with the path of your course repository on the CloudLab or AWS machine in place of <code>&lt;repo&gt;</code>:</p>
+<div class="formula">scp -3 agentbox:&lt;repo&gt;/assignment4/starter_code/engine/engine.json agentbox:&lt;repo&gt;/assignment4/starter_code/engine/launch.sh cs2680:a4/engine/ # to the cluster
+scp -3 -r 'cs2680:a4/engine/*' agentbox:&lt;repo&gt;/assignment4/starter_code/engine/ # back to the repository</div>
 </div>
-<p>That gives you three names for the same machine:</p>
-<ul>
-<li><code>ssh cs2680</code>. A plain shell on the <strong>login node</strong>. This is where you install things, move files, and check the queue.</li>
-<li><code>ssh cs2680-cpu</code>. A <strong>CPU compute node</strong>: 4 cores, 16 GB, 2 hours. Agent work goes here.</li>
-<li><code>ssh cs2680-gpu</code>. A <strong>GPU compute node</strong>: the same, plus one RTX PRO 6000 Blackwell.</li>
-</ul>
-<p>All three names authenticate with the key you installed in
-          <a href="#ssh-key">step 3 of first-time setup</a>. If you skipped that step, do it now, because none of these
-          aliases will connect until the public key is in <code>~/.ssh/authorized_keys</code> on the cluster.
-          VS Code’s Remote-SSH accepts the same three names and behaves the same way a terminal does. Remember to
-          <code>scancel JOB_ID</code> once you are finished with a job, because otherwise it holds its node for the
-          whole allocation.
-        </p>
-<div class="tip">
-<strong>Why host-key checking is off here.</strong> The login address is a load balancer, so the host key you
-          reach can differ between connections and a pinned key would fail for reasons that have nothing to do with
-          your account. The two lines that disable the check are a deliberate trade for that, and they are scoped to
-          these three aliases: do not copy them into the rest of your <code>~/.ssh/config</code>, where they would
-          switch off the protection everywhere.
-        </div>
-<!-- <div class="tip">
-          <strong>Every <code>ssh cs2680-cpu</code> is a new job.</strong> Two terminals means two allocations, and a reconnect after your wifi drops does not put you back in the old one &mdash; it queues for another node while the first job sits there holding hardware. You can use <a href="#tmux">tmux</a> inside the job if you want something to survive a lost connection. To get back into a job that is still running, <code>ssh cs2680</code> and then <code>srun --jobid=&lt;jobid&gt; --pty bash</code>.
-        </div> -->
 <hr/>
 </div>
 <div class="col-12 section" id="tmux">
-<h1>Surviving a closed tab: wrap it in tmux</h1>
-<p>Recommended for this class. An <code>srun --pty</code> shell belongs to the terminal that started it, so a
-          closed browser tab, a laptop lid, or hotel wifi takes your agent with it, mid-edit, and the job dies
-          too. Start the job inside <code>tmux</code> instead:</p>
-<div class="formula">srun -p general -c 4 --mem=16G -t 2:00:00 --pty tmux new -s agent
-# inside tmux:
-claude</div>
-<p>Now the agent is a process inside a tmux session <em>on the compute node</em>, and losing your terminal only detaches it. To get back:</p>
-<div class="formula">squeue -u $USER # find the node your job is on
-srun --jobid=&lt;jobid&gt; --overlap --pty bash
-tmux attach -t agent # if you are already on that node</div>
-<p>Three things to keep straight:</p>
+<h1>Keeping a session alive when you disconnect</h1>
+<p>A shell from <code>srun --pty</code> ends, with its job, when your connection drops. To keep work running, start a job that holds a <code>screen</code> session, and attach to it. (The compute nodes have <code>screen</code> but not <code>tmux</code>.) From the login node:</p>
+<div class="formula">sbatch -p general -c 4 --mem=16G -t 4:00:00 -J work -o /dev/null --wrap 'screen -dmS work; while screen -ls work | grep -q "\.work"; do sleep 30; done'
+squeue -u $USER --name=work # wait for state R, and note the JOBID
+srun --jobid=&lt;JOBID&gt; --overlap --pty screen -r work</div>
+<p>For a GPU, use the partition and <code>--gres</code> from the <a href="#gpu">GPU table</a> in the first line. In the session:</p>
 <ul>
-<li><strong>Tmux session lives on one specific node.</strong> You have to be on that node to attach, which is what <code>squeue -u $USER</code> tells you.</li>
-<li><strong>tmux does not extend the allocation.</strong> When the walltime in <code>-t</code> runs out, Slurm ends the job and the tmux session with it. Nothing survives the lease.</li>
-<li><strong>Detach on purpose with <code>Ctrl-b d</code>.</strong> That leaves everything running. <code>Ctrl-b c</code> opens another window in the same session, which is how you watch a log while the agent works. Those three bindings cover this workflow; any tmux cheat sheet covers the rest.
-          </li>
+<li><code>Ctrl-a d</code> detaches. Everything you started keeps running, and the third line above attaches again, from any login shell.</li>
+<li><code>Ctrl-a c</code> opens another window in the session, for example to watch a log; <code>Ctrl-a n</code> switches between windows.</li>
+<li><code>exit</code> in the last window ends the session, and with it the job. The job also ends at its time limit, whatever is running.</li>
 </ul>
 <hr/>
 </div>
+<div class="col-12 section" id="compute-ssh">
+<h1>Optional: SSH straight to a compute node</h1>
+<p>To land in a CPU job directly from your laptop, for example to run VS Code's Remote-SSH there instead of on the login node, add this to <code>~/.ssh/config</code> below the <code>cs2680</code> entry:</p>
+<div class="formula">Host cs2680-cpu
+    Hostname academ-acade-iL73aitWT6xF-c83014867702e61e.elb.us-east-1.amazonaws.com
+    User YOUR_USERNAME
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
+    HostKeyAlias cs2680-cpu
+    ProxyCommand ssh -q cs2680 exec /shared/courseSharedFolders/176914outer/176914/cpu-tunnel.sh cpu</div>
+<p><code>ssh cs2680-cpu</code> then starts a job on <code>general</code> (4 cores, 16 GB, 4 hours) and connects to it. For VS Code, set <code>"remote.SSH.connectTimeout": 600</code> in its settings, since a node can take minutes to boot. Every connection is a new job, so check <code>squeue -u $USER</code> and <code>scancel</code> the ones you no longer use.</p>
+<!-- TODO: a cs2680-gpu alias once cpu-tunnel.sh's gpu mode asks for a partition students can use (it names gpu-cs2680, which admits only admins since 2026-10) -->
+<hr/>
+</div>
 <div class="col-12 section" id="batch">
-<h1>Long and unattended runs</h1>
-<p>Interactive jobs are for working. For an evaluation sweep (the same agent over fifty tasks, the kind
-          of thing <a href="../to_release.html">Assignment 3</a> onward asks for), you do not want to be present at
-          all. Write a script:</p>
+<h1>Unattended runs</h1>
+<p>For work you do not need to watch, write a batch script, for example <code>run.sh</code>:</p>
 <div class="formula">#!/bin/bash
 #SBATCH -p general
 #SBATCH -c 4
 #SBATCH --mem=16G
 #SBATCH -t 2:00:00
-#SBATCH -J agent-eval
-#SBATCH -o logs/eval-%j.out
+#SBATCH -J analysis
+#SBATCH -o logs/%x-%j.out
 
-cd "$HOME/cs2680/a3"
-python run_eval.py --tasks tasks.jsonl --out results/</div>
-<p>Submit it with <code>sbatch run_eval.sh</code>, which prints a job id and returns immediately.
-          <code>squeue -u $USER</code> tracks it, <code>%j</code> in the output path expands to the job id so
-          concurrent runs do not overwrite each other, and everything the script prints lands in that file. Create the
-          <code>logs/</code> directory first, in the directory you run <code>sbatch</code> from rather than the one the
-          script <code>cd</code>s to, because Slurm resolves <code>-o</code> against the submit directory and opens the
-          file before the script runs. Slurm will not create it for you, and a job whose output file cannot be opened
-          fails instantly for a reason that is hard to see.
-        </p>
+source ~/venv/bin/activate
+python3 analyze.py --in /scratch/$USER/data --out /scratch/$USER/results</div>
+<p>Then <code>mkdir -p logs</code> and <code>sbatch run.sh</code>, from the same directory. <code>sbatch</code> prints the job id and returns; the output goes to <code>logs/analysis-&lt;jobid&gt;.out</code>. Slurm does not create <code>logs/</code>, and a job whose log it cannot open fails at once. Anything that needs Docker, such as the Assignment 3 and 4 harness, cannot run on the cluster.</p>
 <hr/>
 </div>
 <div class="col-12 section" id="files">
-<h1>Getting your code and data there</h1>
-<ul>
-<li><strong>Use git for code.</strong> Clone on the login node, commit and push from wherever you worked. </li>
-<li><strong>Use <code>rsync</code> for everything else.</strong> From your laptop:
-            <div class="formula">rsync -avz ./data/ cs2680:~/cs2680/data/ # up
-rsync -avz cs2680:~/cs2680/results/ ./results/ # down</div>
-</li>
-<li><strong>OnDemand has a file browser</strong> for the one-off case (dragging a CSV in, pulling a plot out), without a terminal at all.</li>
-<li><strong>Keep results out of the node's local disk.</strong> Write into your home directory or a shared filesystem. Anything a job leaves in <code>/tmp</code> on a compute node will not be available.
-          </li>
-</ul>
+<h1>Files and storage</h1>
+<div class="table-responsive"><table class="table table-bordered rubric-table">
+<tr>
+<th>Where</th>
+<th>What to keep there</th>
+</tr>
+<tr>
+<td><code>~</code> (your home directory)</td>
+<td>Code, configs and installed tools. Every node sees it.</td>
+</tr>
+<tr>
+<td><code>/scratch/$USER</code></td>
+<td>Large files: model weights, datasets, results. Private to you, and every node sees it.</td>
+</tr>
+<tr>
+<td><code>~/176914</code></td>
+<td>The course folder, with what the course provides. Read-only.</td>
+</tr>
+<tr>
+<td><code>/tmp</code> and <code>/var/tmp</code> on a compute node</td>
+<td>Only scratch space for a running job; you cannot reach it afterwards.</td>
+</tr>
+</table></div>
+<p>Move code with git. Move other files from your laptop with <code>rsync</code> (create the target directory first), or with <code>scp</code> on Windows, which has no <code>rsync</code>:</p>
+<div class="formula">ssh cs2680 mkdir -p /scratch/YOUR_USERNAME/data
+rsync -av ./data/ cs2680:/scratch/YOUR_USERNAME/data/ # upload
+rsync -av cs2680:/scratch/YOUR_USERNAME/results/ ./results/ # download</div>
 <hr/>
 </div>
 <div class="col-12 section" id="etiquette">
-<h1>Sharing the HPC</h1>
-<p>The cluster is small enough that one person’s habits are visible to everyone else, so please be mindful of
-          the rules below. We may cancel a job that is holding far more than its share, particularly in the days before a
-          deadline, so that everyone keeps access to at least one server.</p>
+<h1>Sharing the cluster</h1>
+<p>The whole class shares these nodes, the course pays for every GPU-hour, and there is no per-student limit. We may cancel a job that holds far more than its share, especially before a deadline.</p>
 <ul>
-<li><strong>Ask for what you need.</strong> The course pays for the hardware at roughly $3.20 per GPU-hour, so
-            an over-sized request costs money rather than merely lengthening a queue.</li>
-<li><strong>Use the resources responsibly.</strong> There is no per-student limit, and you may hold several
-            GPUs when nobody else wants them. However, 50 GPU nodes divided across the enrolled class comes to fewer
-            than two each, so treat that as the share you are borrowing against.</li>
-<li><strong>Bound every job with <code>-t</code></strong>, and prefer a batch job over an interactive one you will not be watching.</li>
-<li><strong><code>exit</code> when you stop working.</strong> An idle allocation is invisible to you and expensive for everyone else, and the queue is longest in the week you most need it.</li>
-<li><strong>Nothing heavy on the login node.</strong> It is shared by everyone at once, and the caps are there because someone always tries.</li>
+<li>Ask for what you need, and give every job a time limit with <code>-t</code>.</li>
+<li>End a job when you stop working (<code>exit</code>, or <code>scancel &lt;jobid&gt;</code>). An idle job still holds its node.</li>
+<li>Keep the login node for light work.</li>
 </ul>
 <hr/>
 </div>
 <div class="col-12 section" id="commands">
 <h1>Command reference</h1>
-<table class="table table-bordered rubric-table">
+<div class="table-responsive"><table class="table table-bordered rubric-table">
 <tr>
 <th>Command</th>
-<th>What it tells you</th>
+<th>What it does</th>
 </tr>
 <tr>
 <td><code>squeue -u $USER</code></td>
-<td>Your jobs: id, partition, state (<code>PD</code> pending, <code>R</code> running), time used, and the
-              node. The reason column explains a pending job.</td>
+<td>Your jobs, with id, state (<code>PD</code> waiting, <code>CF</code> node booting, <code>R</code> running), time used, node, and why a job waits.</td>
 </tr>
 <tr>
-<td><code>sinfo -p general</code></td>
-<td>Node states in a partition. <code>idle</code> free, <code>idle~</code> free but powered down,
-              <code>alloc</code> taken, <code>mix</code> partly taken, <code>down</code>/<code>drain</code>
-              unavailable.
-            </td>
-</tr>
-<tr>
-<td><code>sinfo -p gpu-cs2680 -o "%P %l %D %c %m %G"</code></td>
-<td>What you are allowed to ask for: time limit, node count, cores, memory, GPUs. Run this before
-              inventing flags.</td>
+<td><code>sinfo -p &lt;partition&gt;</code></td>
+<td>The partition's nodes: <code>idle</code> free, <code>idle~</code> powered down, <code>alloc</code> or <code>mix</code> in use, <code>#</code> booting, <code>down</code> or <code>drain</code> unavailable.</td>
 </tr>
 <tr>
 <td><code>scancel &lt;jobid&gt;</code></td>
-<td>Ends a job. <code>scancel -u $USER</code> ends all of yours — useful after a lost terminal.</td>
+<td>Ends one job.</td>
 </tr>
 <tr>
-<td><code>sacct -j &lt;jobid&gt; --format=JobID,State,Elapsed,MaxRSS,ReqMem,ExitCode</code></td>
-<td>The post-mortem for a finished job. <code>TIMEOUT</code> means it hit <code>-t</code>;
-              <code>OUT_OF_MEMORY</code>, or a <code>MaxRSS</code> at your <code>ReqMem</code>, means
-              <code>--mem</code>.
-            </td>
-</tr>
-<tr>
-<td><code>scontrol show job &lt;jobid&gt;</code></td>
-<td>Everything Slurm knows about a job that is still queued or running, including why it is waiting.</td>
+<td><code>sacct -j &lt;jobid&gt; --format=JobID,State,Elapsed,ExitCode</code></td>
+<td>What happened to a finished job; <code>TIMEOUT</code> means it reached its time limit.</td>
 </tr>
 <tr>
 <td><code>hostname</code></td>
-<td>Whether you are on the login node or a compute node. Worth checking when something gets killed.</td>
+<td>Whether you are on the login node or a compute node.</td>
 </tr>
-<tr>
-<td><code>nvidia-smi</code></td>
-<td>Inside a GPU job: the card, its memory, and what is using it.</td>
-</tr>
-</table>
+</table></div>
 <hr/>
 </div>
 <div class="col-12 section" id="troubleshooting">
 <h1>Troubleshooting</h1>
-<table class="table table-bordered rubric-table">
+<div class="table-responsive"><table class="table table-bordered rubric-table">
 <tr>
 <th>Symptom</th>
-<th>What it is, and what to do</th>
+<th>Cause and fix</th>
+</tr>
+<tr>
+<td><code>ssh cs2680</code> hangs or times out.</td>
+<td>You are not on the Harvard network. Connect to the Harvard University VPN, or use the OnDemand portal. From a CloudLab or AWS machine, see <a href="#cloudlab-aws">reaching the cluster from CloudLab or AWS</a>.</td>
 </tr>
 <tr>
 <td><code>Permission denied (publickey)</code>, or SSH asks for a password.</td>
-<td>Your public key is not in <code>~/.ssh/authorized_keys</code> on the cluster, or the permissions on it
-              are too loose. Get in through the <a href="https://ood.huit.harvard.edu" rel="noopener" target="_blank">OnDemand portal</a>, which does not need a key, and redo
-              <a href="#ssh-key">step 3 of first-time setup</a>.
-            </td>
+<td>The cluster does not have your public key, or has it split across lines. In the OnDemand terminal, compare <code>cat ~/.ssh/authorized_keys</code> with your laptop's <code>~/.ssh/id_ed25519.pub</code>, and redo <a href="#ssh-key">the key step</a>, including both <code>chmod</code> lines.</td>
 </tr>
 <tr>
-<td>Nothing happens for minutes after <code>srun</code>.</td>
-<td>Normal for the first job — a powered-down node is booting.
-              <code>squeue -u $USER</code> from another terminal shows it pending with a reason.
-            </td>
+<td>The job waits for minutes, or never starts.</td>
+<td>A few minutes (state <code>CF</code>) is a node booting. Longer, <code>squeue -u $USER</code> gives the reason: usually you asked for more than a node has. Compare your flags with the <a href="#gpu">partition table</a>.</td>
 </tr>
 <tr>
-<td>The job never starts.</td>
-<td>You asked for more than a node has, or the partition is full. Compare your flags against
-              <code>sinfo -p &lt;partition&gt; -o "%P %l %D %c %m %G"</code> and bring <code>-c</code>,
-              <code>--mem</code>, <code>-t</code> and <code>--gres</code> inside it.
-            </td>
+<td><code>Invalid partition</code>, or <code>not permitted to use this partition</code>.</td>
+<td>A typo, or a partition students cannot use. Use one from the <a href="#gpu">partition table</a>.</td>
 </tr>
 <tr>
-<td>Your session was killed with no message.</td>
-<td>Almost always the login node's 15-minute CPU cap — check <code>hostname</code>. Otherwise the
-              job hit its <code>-t</code> walltime or its <code>--mem</code>;
-              <code>sacct -j &lt;jobid&gt;</code> distinguishes them.
-            </td>
+<td><code>CPU time limit exceeded</code>, or a program killed on the login node.</td>
+<td>The login node's 15-minute CPU limit. Run it in a job.</td>
 </tr>
 <tr>
-<td><code>claude: command not found</code> inside a job.</td>
-<td><code>PATH</code> is set in <code>~/.bash_profile</code>, which a non-login job shell never reads. Move
-              the <code>export PATH</code> line into <code>~/.bashrc</code>, or run it as
-              <code>~/.local/bin/claude</code>.
-            </td>
+<td>A job's program was killed without a message.</td>
+<td><code>sacct -j &lt;jobid&gt;</code>: <code>TIMEOUT</code> is the time limit. Otherwise the node probably ran out of memory; ask for more <code>--mem</code> and use less.</td>
 </tr>
 <tr>
-<td>Claude Code asks you to log in again on the HPC.</td>
-<td>Expected the first time: the credentials live in your home directory, not your laptop. Over SSH or a
-              browser terminal you get a code to paste back rather than a browser redirect. See
-              <a href="claude-code.html#login">logging in</a>.
-            </td>
+<td><code>claude: command not found</code>.</td>
+<td>The <code>export PATH</code> line from <a href="#first-time">first-time setup</a> is missing from <code>~/.bashrc</code>.</td>
 </tr>
 <tr>
-<td>Invalid partition, or an account/association error.</td>
-<td>You are not in the CS2680 group yet, or you typed the partition name wrong. Only
-              <code>gpu-cs2680</code> is group-restricted, and it is <a href="#gpu">the only GPU partition to use</a> without pre-approval from a TF.
-            </td>
+<td>VS Code Remote-SSH keeps disconnecting.</td>
+<td>It is running on the login node and hits the CPU limit. Connect to <a href="#compute-ssh"><code>cs2680-cpu</code></a> instead.</td>
 </tr>
 <tr>
-<td><code>nvidia-smi</code> reports no devices in a GPU job.</td>
-<td>You are on the login node, or the job was allocated without <code>--gres</code>. Check
-              <code>hostname</code> and re-submit with the <code>--gres</code> flag exactly as written
-              <a href="#gpu">above</a>.
-            </td>
+<td><code>ssh cs2680-cpu</code> hangs.</td>
+<td>Check that <code>ssh cs2680</code> works, then run <code>ssh cs2680 /shared/courseSharedFolders/176914outer/176914/cpu-tunnel.sh cpu</code> to see the errors the <code>ProxyCommand</code> hides. A few minutes is normal while a node boots.</td>
 </tr>
 <tr>
-<td>A VS Code Remote-SSH window dies, reconnects, and dies again.</td>
-<td>You connected to <code>cs2680</code>, so VS Code installed its server on the login node, where it hits
-              the 15-minute CPU cap, usually because a language server is indexing. Connect to
-              <code>cs2680-cpu</code> instead, which puts the editor server inside a job. See
-              <a href="#ssh-config">the SSH config</a>.
-            </td>
-</tr>
-<tr>
-<td><code>cs2680-cpu</code> or <code>cs2680-gpu</code> will not connect, or hangs.</td>
-<td>Test the two halves separately. <code>ssh cs2680</code> proves the login hop and your key; then
-              <code>ssh cs2680 exec /shared/courseSharedFolders/176914outer/176914/cpu-tunnel.sh cpu</code> shows you
-              what the tunnel script says, which a <code>ProxyCommand</code> otherwise swallows. A wait of a few
-              minutes is normal when a node has to boot.
-            </td>
-</tr>
-<tr>
-<td>You have three jobs and you only wanted one.</td>
-<td>Every <code>ssh cs2680-cpu</code> allocates a fresh job, and a reconnect does not reuse the old one.
-              <code>squeue -u $USER</code>, then <code>scancel</code> the strays; use
-              <code>srun --jobid=&lt;jobid&gt; --overlap --pty bash</code> from the login node to re-enter one that is still
-              alive.
-            </td>
-</tr>
-<tr>
-<td>A job you forgot about is still running.</td>
-<td><code>squeue -u $USER</code> to find it, <code>scancel &lt;jobid&gt;</code> to release it. Do this
-              before asking why nothing will start.</td>
-</tr>
-<tr>
-<td>Out of disk, or a quota error while downloading a model.</td>
-<td>Your home directory filled up, usually with <code>~/.cache/huggingface</code>. See
-              <a href="#gpu">serving a model here</a>.
-            </td>
+<td>Out of disk while downloading a model.</td>
+<td>Your home directory is full, usually with <code>~/.cache/huggingface</code>. Keep weights in <code>/scratch/$USER</code>.</td>
 </tr>
 <tr>
 <td>Something else.</td>
-<td>Bring the exact command, the job id, and the error text to office hours or the course forum. A job id
-              is enough for anyone to look up what actually happened.</td>
+<td>Bring the command, the job id and the error message to office hours or the course forum.</td>
 </tr>
-</table>
+</table></div>
 <hr/>
 </div>
 </div>

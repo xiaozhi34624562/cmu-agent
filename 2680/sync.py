@@ -9,6 +9,7 @@ with PDFs and accessible HTML snapshots stored under readings/.
 from __future__ import annotations
 
 import hashlib
+import json
 import os
 import re
 import shutil
@@ -190,7 +191,22 @@ def reading_destination(url: str) -> Path | None:
     host = parsed.netloc.replace("www.", "").replace(".", "-")
     name = re.sub(r"[^a-z0-9]+", "-", parsed.path.lower()).strip("-")[-70:] or "index"
     digest = hashlib.sha256(url.encode()).hexdigest()[:8]
-    return ROOT / "readings" / "web" / f"{host}-{name}-{digest}.html"
+    stem = f"{host}-{name}-{digest}"
+    detected_pdf = ROOT / "readings" / "papers" / f"{stem}.pdf"
+    if detected_pdf.exists():
+        return detected_pdf
+    return ROOT / "readings" / "web" / f"{stem}.html"
+
+
+def reading_snapshot_issue(path: Path) -> str | None:
+    """An HTTP 200 verification page is not the requested reading."""
+    if path.suffix != ".html" or not path.exists():
+        return None
+    soup = BeautifulSoup(path.read_text(encoding="utf-8", errors="replace"), "html.parser")
+    title = soup.title.get_text(" ", strip=True).lower() if soup.title else ""
+    if title in {"verifying your browser | openreview", "just a moment...", "access denied", "403 forbidden"}:
+        return "Archived browser verification/access page; reading body not downloaded"
+    return None
 
 
 def download_readings(readings: dict[str, list[str]]) -> tuple[dict[str, Path], list[tuple[str, str]]]:
@@ -201,6 +217,8 @@ def download_readings(readings: dict[str, list[str]]) -> tuple[dict[str, Path], 
         if dest is None:
             return url, None, None
         if dest.exists():
+            if issue := reading_snapshot_issue(dest):
+                return url, None, issue
             return url, dest, None
         download_url = ALTERNATE_READINGS.get(url, url)
         if urlparse(url).netloc == "arxiv.org":
@@ -209,10 +227,19 @@ def download_readings(readings: dict[str, list[str]]) -> tuple[dict[str, Path], 
                 download_url = f"https://arxiv.org/pdf/{match.group(1)}"
         try:
             content_type, size = write_response(download_url, dest)
+            with dest.open("rb") as content:
+                is_pdf = content.read(5) == b"%PDF-"
+            if dest.suffix == ".html" and content_type == "application/pdf" and is_pdf:
+                pdf_dest = ROOT / "readings" / "papers" / f"{dest.stem}.pdf"
+                pdf_dest.parent.mkdir(parents=True, exist_ok=True)
+                os.replace(dest, pdf_dest)
+                dest = pdf_dest
             expected = "application/pdf" if dest.suffix == ".pdf" else "text/html"
-            if content_type != expected or (dest.suffix == ".pdf" and not dest.read_bytes()[:5] == b"%PDF-"):
+            if content_type != expected or (dest.suffix == ".pdf" and not is_pdf):
                 dest.unlink()
                 raise ValueError(f"Expected {expected}, received {content_type}")
+            if issue := reading_snapshot_issue(dest):
+                return url, None, issue
             print("READING", size, dest.relative_to(ROOT))
             return url, dest, None
         except (requests.RequestException, OSError, ValueError) as exc:
@@ -241,17 +268,25 @@ def download_readings(readings: dict[str, list[str]]) -> tuple[dict[str, Path], 
 
 def archive_code() -> str | None:
     target = ROOT / "assignments" / "course-repo"
+    metadata_path = ROOT / "assignments" / "SNAPSHOT.json"
+    metadata = json.loads(metadata_path.read_text()) if metadata_path.exists() else {"repository": REPO}
+    metadata["last_attempt"] = TODAY
     with tempfile.TemporaryDirectory(prefix="cs2680-") as temp:
         try:
             subprocess.run(["git", "clone", "--depth", "1", "--quiet", REPO, temp + "/repo"], check=True, timeout=90)
             sha = subprocess.check_output(["git", "-C", temp + "/repo", "rev-parse", "HEAD"], text=True).strip()
-            for assignment in ("assignment2", "assignment3"):
-                source = Path(temp) / "repo" / assignment
-                if source.is_dir():
-                    shutil.copytree(source, target / assignment, dirs_exist_ok=True)
+            for source in (Path(temp) / "repo").iterdir():
+                if source.is_dir() and re.fullmatch(r"assignment\d+", source.name):
+                    shutil.copytree(source, target / source.name, dirs_exist_ok=True)
+            metadata.update(commit=sha, snapshot_date=TODAY, status="updated")
+            metadata_path.parent.mkdir(parents=True, exist_ok=True)
+            metadata_path.write_text(json.dumps(metadata, indent=2) + "\n")
             print("CODE", sha)
             return sha
         except (subprocess.CalledProcessError, subprocess.TimeoutExpired, OSError) as exc:
+            metadata["status"] = "upstream_unavailable"
+            metadata_path.parent.mkdir(parents=True, exist_ok=True)
+            metadata_path.write_text(json.dumps(metadata, indent=2) + "\n")
             print("FAILED CODE", exc)
             return None
 
@@ -278,6 +313,11 @@ def write_sources(mirrored: dict[str, Path], readings: dict[str, list[str]], sav
         title = ", ".join(titles).replace("|", "\\|")
         path = saved.get(url)
         local = f"[{path.relative_to(ROOT)}]({path.relative_to(ROOT)})" if path else "仅链接"
+        if path is None:
+            snapshot = reading_destination(url)
+            if snapshot is not None and reading_snapshot_issue(snapshot):
+                relative = snapshot.relative_to(ROOT)
+                local = f"[验证网页（无阅读正文）]({relative})"
         if path and url in ALTERNATE_READINGS:
             local += f"（[官方替代地址]({ALTERNATE_READINGS[url]})）"
         lines.append(f"| {title} | {local} | {url} |")
@@ -290,10 +330,22 @@ def write_sources(mirrored: dict[str, Path], readings: dict[str, list[str]], sav
         ]
     else:
         lines.append(f"- 公开代码仓库：{REPO}（本次未能获取快照）。")
+        metadata_path = ROOT / "assignments" / "SNAPSHOT.json"
+        metadata = json.loads(metadata_path.read_text()) if metadata_path.exists() else {}
+        if metadata.get("commit"):
+            lines += [
+                f"- 保留已有快照：[`assignments/course-repo/`](assignments/course-repo/)，获取日期 {metadata.get('snapshot_date', '未记录')}。",
+                f"- 固定提交：`{metadata['commit']}`（本次未更新）。",
+                "- 快照状态与版本：[`assignments/SNAPSHOT.json`](assignments/SNAPSHOT.json)。",
+            ]
     archive = ROOT / "site" / "assignments" / "assignment2.tar.gz"
     if archive.exists():
         lines.append("- 网站提供的原始压缩包：[`site/assignments/assignment2.tar.gz`](site/assignments/assignment2.tar.gz)。")
         lines.append("- 原站文件名后缀是 `.tar.gz`，实际文件内容为普通 POSIX tar；可用 `tar -xf` 解包。公开仓库快照中的 `assignment2/` 与该归档内容一致。")
+    for archive in sorted((ROOT / "site" / "assignments").glob("assignment*.tar.gz")):
+        if archive.name != "assignment2.tar.gz":
+            relative = archive.relative_to(ROOT)
+            lines.append(f"- 网站提供的原始作业归档：[`{relative}`]({relative})；Source: {BASE}assignments/{archive.name}")
     lines += ["", "## 未获取的文件", ""]
     if not site_failures and not reading_failures:
         lines.append("- 无。")
@@ -305,9 +357,9 @@ def write_sources(mirrored: dict[str, Path], readings: dict[str, list[str]], sav
 
 def write_checksums() -> None:
     lines = []
-    for directory in ("site", "readings", "assignments/course-repo"):
+    for directory in ("site", "readings", "assignments"):
         for path in sorted((ROOT / directory).rglob("*")):
-            if not path.is_file():
+            if not path.is_file() or path.name == ".DS_Store" or "__pycache__" in path.parts:
                 continue
             digest = hashlib.sha256()
             with path.open("rb") as source:

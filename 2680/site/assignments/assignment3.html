@@ -33,7 +33,7 @@ Assignment 3 — Harness competition
       </div>
 <div class="col-12 section" id="assignment-3">
 <h1>Assignment 3 — Harness competition <span class="para-heading-inline">(20%)</span></h1>
-<p><strong>Out</strong> Mon Oct 5 · <strong>due</strong> Tue Oct 20, 11:59pm · <a href="index.html">all five assignments</a></p>
+<p><strong>Out</strong> Mon Oct 5 · <strong>due</strong> Tue Oct 20, 11:59pm · <a href="../slides/8_assignment3.pdf">slides</a> · <a href="index.html">all five assignments</a></p>
 <div class="tip"><p><strong>⚠️ THE LEADERBOARD DOES NOT ACCEPT LATE DAYS AND WILL CLOSE ON TUESDAY, OCTOBER 20, AT 11:59 P.M.</strong></p><p>If you have not submitted to the leaderboard by the time it closes, you get 0 points for the leaderboard. Late days apply only to the repo and the video.</p></div>
 <h2 id="part-0-the-framework">Part 0. The framework</h2>
 <h3 id="two-kinds-of-containers">Two kinds of containers</h3>
@@ -123,7 +123,10 @@ dispatcher.done(k, reason, iterations)
 <p>Log your model calls and tool calls through <code>dispatcher.logger(k)</code>. The leaderboard reads your turn counts from that trace.</p>
 <h2 id="part-1-starter-code">Part 1. Starter code</h2>
 <h3 id="initialize-your-repository">Initialize your repository first</h3>
-<p>The starter code is in the <a href="https://github.com/HarvardMadSys/cs2680_assignments">course assignments repository</a>, under <code>assignment3/starter_code/</code>. Copy that entire folder into the same path in your shared private course repository, including <code>init.sh</code> and <code>package_claude_sessions.py</code>.</p>
+<p>Download the <a download="" href="assignment3.tar.gz">Assignment 3 starter archive</a> into the root of your shared private course repository and extract it there. It creates <code>assignment3/</code>, with the starter code in <code>assignment3/starter_code/</code>, including <code>init.sh</code> and <code>package_claude_sessions.py</code>. If you already copied the starter from the course assignments repository, skip this step: extracting the archive over your <code>assignment3/</code> replaces the files you have changed.</p>
+<pre><code># From your shared course repository:
+tar -xzf assignment3.tar.gz
+rm assignment3.tar.gz</code></pre>
 <p><strong>Before starting work with Claude Code, run <code>init.sh</code>:</strong></p>
 <pre><code># From your shared course repository:
 bash assignment3/starter_code/init.sh</code></pre>
@@ -254,7 +257,7 @@ score = 81 − r             otherwise</code></pre>
 <p>If you find a security vulnerability and report it, you can earn up to 3 bonus points toward your final course score (not just this assignment). Abusing a vulnerability forfeits your submission.</p>
 <div class="note-nav">
 <a href="assignment2.html">← Assignment 2 — Build an agent harness</a>
-<a href="../to_release.html">Assignment 4 — Serve your own agent →</a>
+<a href="assignment4.html">Assignment 4 — Mads-Serve: own the model →</a>
 </div>
 </div>
 </div>
