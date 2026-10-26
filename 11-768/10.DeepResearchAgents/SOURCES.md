@@ -90,3 +90,18 @@
   - 结合法国教育制度研究复盘、Lecture 10 综合笔记与一手来源，整理任务规格、证据状态、动态规划、核验及落地顺序；工程建议与论文结论分别标记。
 - [通用设计的一手来源核查](Deep_Research_Agent_Design_Source_Checks.md)
   - 补充 OpenScholar、AgentIR 与 Anthropic 官方研究系统文章的机制、访问状态及适用边界。
+
+<!-- BEGIN LOCAL LEARNING -->
+## 中文学习讲解
+
+- [完整课程讲解](Deep_Research_Lecture10_Integrated_Notes.md)
+- [专题补充：Deep_Research_Agent_General_Design.md](Deep_Research_Agent_General_Design.md)
+- [专题补充：Deep_Research_Agent_Design_Source_Checks.md](Deep_Research_Agent_Design_Source_Checks.md)
+- [专题补充：Finance_Agent_Research_2026_Three_Papers.md](Finance_Agent_Research_2026_Three_Papers.md)
+- [FutureX-Pro: Extending Future Prediction to High-Value Vertical Domains](references/019_FutureX-Pro_2601.12259v1.pdf) — [原始来源](https://arxiv.org/pdf/2601.12259v1)
+- [MBABench: Evaluating LLM Agents on End-to-End Spreadsheet Tasks in Finance](references/020_MBABench_2605.22664v5.pdf) — [原始来源](https://arxiv.org/pdf/2605.22664v5)
+- [Can Language Models Learn to Forecast Stock Prices](references/021_AURA_2609.36914v1.pdf) — [原始来源](https://arxiv.org/pdf/2609.36914v1)
+- [Futurex-Eval README](references/futurex-eval-README.md) — [原始来源](https://raw.githubusercontent.com/Futurex-ai/Futurex-Eval/2626f7a297cd87c73a45408e23af8d838f5b60e5/README.md)
+- [Futurex-Eval numeric judge](references/futurex-llm_judge_level_34.py) — [原始来源](https://raw.githubusercontent.com/Futurex-ai/Futurex-Eval/2626f7a297cd87c73a45408e23af8d838f5b60e5/llm_judge_level_34.py)
+- [Futurex-Eval task evaluator](references/futurex-eval.py) — [原始来源](https://raw.githubusercontent.com/Futurex-ai/Futurex-Eval/2626f7a297cd87c73a45408e23af8d838f5b60e5/eval.py)
+<!-- END LOCAL LEARNING -->

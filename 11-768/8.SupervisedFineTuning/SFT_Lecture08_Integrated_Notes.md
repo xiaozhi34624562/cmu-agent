@@ -3,10 +3,10 @@
 > **核心问题：一段运行经验经过筛选、表示、监督与优化之后，究竟把什么行为写进了模型？这些行为能否在模型自己的运行轨迹上继续有效？**
 
 **面向读者：** LLM 开发工程师。
-**主要材料：** Yueqi Song 的 *Supervised Fine-Tuning for Agents*（`lecture-08-sft.pdf`），以及本次提供的 19 份参考资料。
+**主要材料：** Yueqi Song 的 *Supervised Fine-Tuning for Agents*（[lecture-08-sft.pdf](lecture-08-sft.pdf)），以及本课归档的 19 份参考资料。
 **整理方式：** 以讲义的七条主线组织，整合概念、论文实验、公式、工程方法和边界条件。
 
-**阅读约定：** 页码均指所提供 PDF 的文件页序；HTML 以章节名定位。文中的模型成绩和训练配方是这些文件版本报告的结果，不代表最新排行榜或通用推荐配置。标为“推导”“工程建议”“教学示例”的内容，是对材料的解释与应用，不冒充论文已经验证的结论。公式使用 Markdown 数学语法，需要阅读器支持数学渲染。
+**阅读约定：** 页码均指归档 PDF 的文件页序；HTML 以章节名定位。文中的模型成绩和训练配方是这些文件版本报告的结果，不代表最新排行榜或通用推荐配置。标为“推导”“工程建议”“教学示例”的内容，是对材料的解释与应用，不冒充论文已经验证的结论。公式使用 Markdown 数学语法，需要阅读器支持数学渲染。
 
 ---
 
@@ -95,7 +95,7 @@ LLaMA-Factory 也将 SFT、偏好训练等目标，与 full-tuning、freeze-tuni
 
 把 DeepSeek-R1 与 SWE-Gym 并排看，会发现“轨迹”这个词包含两类不同对象。
 
-R1 所提供版本的 Table 5 统计了约 **804,745 条样本，平均约 1.0 轮、5,355.3 个 token**。作者明确指出，大多数样本是单轮交互，这可能限制多轮对话能力。[S02，附录 B.3.3，第 27 页](#src-s02)
+R1 归档版本的 Table 5 统计了约 **804,745 条样本，平均约 1.0 轮、5,355.3 个 token**。作者明确指出，大多数样本是单轮交互，这可能限制多轮对话能力。[S02，附录 B.3.3，第 27 页](#src-s02)
 
 SWE-Gym 用于 OpenHands 训练的 **491 条成功轨迹，平均约 19 轮、19,000 个 token**，其中有真实命令、文件编辑和环境观察。[S08，§4.2，第 5 页](#src-s08)
 
@@ -542,6 +542,8 @@ BalanceSFT 首先通过基础质量检查与答案检查，将数据划分为合
                          新合格数据 → 下一轮训练
 ```
 
+**判定阈值的原文歧义。** 论文 §3.3 的文字称多评审过程为 majority voting，但 Eq. (6) 将 `Score` 定义为通过评审的比例，Eq. (7) 只接纳 `Score = 1` 的候选，Eq. (9) 将 `Score < 1` 的任务保留在困难池。按这些公式，门控要求所有评审通过，严格于简单多数票。复现时应明确采用哪一种规则、评审数与单评审阈值 $\tau$；不能把两种筛选强度当成同一配方。[S10，第 4 页，Eq. (6)–(9)](#src-s10)
+
 每任务上限防止容易任务过度代表；HDR 尝试让欠缺的困难任务产生合格示范。两者是互补的数据分布控制方式。
 
 ### 6.5 长轨迹与短轨迹，为什么不同论文结论不同？
@@ -556,7 +558,7 @@ BalanceSFT 首先通过基础质量检查与答案检查，将数据划分为合
 
 这些实验不能被简单归并为同一条普遍规律。轮数只是代理指标：太短可能缺少多轮决策，太长也可能是低效重复；只选择短路径还可能损失探索多样性。
 
-**工程建议。** 除了长度，记录有意义的动作、验证、恢复和重复次数。对你的任务，先抽查“短而好”“长而好”“长而差”的实例，再设计过滤规则。
+**工程建议。** 除了长度，记录有意义的动作、验证、恢复和重复次数。对目标任务，先抽查“短而好”“长而好”“长而差”的实例，再设计过滤规则。
 
 ### 6.6 多样性至少有四种，不能都用数据行数表示
 
@@ -677,7 +679,7 @@ Kimi K2 附录 B 将工具协议拆成工具声明、assistant 调用段、工�
 
 ### 8.2 一个模板处理可能抹掉整段蒸馏目标
 
-上传的 TRL 模板文档记录了 DeepSeek-R1-Distill 的训练修补：移除对 assistant 内容按 `</think>` 切分的处理，避免推理部分被静默丢掉，并增加 assistant 监督标记。[S17，DeepSeek-R1-Distill training template](#src-s17)
+归档的 TRL 模板文档记录了 DeepSeek-R1-Distill 的训练修补：移除对 assistant 内容按 `</think>` 切分的处理，避免推理部分被静默丢掉，并增加 assistant 监督标记。[S17，DeepSeek-R1-Distill training template](#src-s17)
 
 你以为自己在训练：
 
@@ -715,7 +717,7 @@ Transformers 文档提醒：chat template 通常已包含所需特殊 token。�
 
 ### 8.5 框架开关对照：相似名字不代表相同语义
 
-| 位置 | 控制项 | 所提供材料中的含义 |
+| 位置 | 控制项 | 归档材料中的含义 |
 |---|---|---|
 | Transformers | `return_assistant_tokens_mask=True` | 请求 assistant 生成 token 的 mask，需要模板支持 generation 标记 |
 | TRL | `assistant_only_loss=True` | 对 conversational 数据选择 assistant 输出 |
@@ -724,7 +726,7 @@ Transformers 文档提醒：chat template 通常已包含所需特殊 token。�
 | Axolotl | `train_on_eos`、逐消息/片段 train 控制 | 控制结束标记与特定内容的监督 |
 | LLaMA-Factory | `train_on_prompt`、`mask_history` | 控制 prompt 与历史回合的监督；讲义列出 `mask_history: true` 为最后一轮 |
 
-对应 [S15，apply_chat_template](#src-s15)、[S16，SFTTrainer](#src-s16)、[S18，Conversation](#src-s18)、[S00，第 49 页](#src-s00)。以上是所提供文档的接口语义，安装版本是否一致需要在本地核对。
+对应 [S15，apply_chat_template](#src-s15)、[S16，SFTTrainer](#src-s16)、[S18，Conversation](#src-s18)、[S00，第 49 页](#src-s00)。以上是归档文档的接口语义，安装版本是否一致需要在本地核对。
 
 Boolean mask 只回答“是否训练这个位置”，不自动实现 WIT 或 SSB 的连续加权。即使框架有 `weight` 字段，也要核对其取值与语义，不能从名称推断它支持任意实数权重。
 
@@ -937,7 +939,7 @@ $$
 
 DAgger 迭代运行当前策略，收集其访问状态，请专家提供这些状态下的动作，聚合数据后训练下一版策略；采集时也可以混合专家与学生策略。[S13-PDF，Algorithm 3.1](#src-s13-pdf)
 
-上传的摘要页强调，策略影响未来观察，打破普通独立同分布监督学习的假设；其理论依赖相应的在线学习与归约条件。[S13，Abstract](#src-s13)
+归档的摘要页强调，策略影响未来观察，打破普通独立同分布监督学习的假设；其理论依赖相应的在线学习与归约条件。[S13，Abstract](#src-s13)
 
 **迁移到 LLM Agent 的工程建议：**
 
@@ -1131,7 +1133,7 @@ MAI 最终将 STEM/coding、Agent、帮助性与安全三个教师整合为一�
 
 ### 12.5 K2 Horizon：SFT 也可以出现在 RL 专家合并之后
 
-这里的 K2 Horizon 是 **IFM/K2-Horizon-375B-A23B**，不是 Kimi K2。上传模型卡的时间线是：从 mid-training checkpoint 训练五个 RL 专家，合并后再进行三阶段 SFT。[S05，Training Overview](#src-s05)
+这里的 K2 Horizon 是 **IFM/K2-Horizon-375B-A23B**，不是 Kimi K2。归档模型卡的时间线是：从 mid-training checkpoint 训练五个 RL 专家，合并后再进行三阶段 SFT。[S05，Training Overview](#src-s05)
 
 | 阶段 | 训练步数 | 阶段训练 token | 序列长度 | 目的 |
 |---|---:|---:|---:|---|
@@ -1252,7 +1254,7 @@ WIT 的 DPO 实验也观察到监督权重的最优配置会随后续训练改�
 
 ### 13.6 发布制品不能只有权重
 
-建议将一次训练制品组织为以下可追踪集合。目录仅表示建议的结构，不假装已经为你的项目创建这些文件：
+建议将一次训练制品组织为以下可追踪集合。目录表示建议的结构，实际训练需按项目生成并核验这些文件：
 
 ```text
 experiment/
@@ -1334,7 +1336,7 @@ experiment/
 
 ### A.1 使用范围
 
-下面代码将前面讨论的监督约定落实为一条纯文本样本的编码与检查。接口依据所提供的 Transformers `apply_chat_template` 文档。它不是完整训练脚本，也没有自动实现 WIT、SSB 或多模态处理。[S15，apply_chat_template](#src-s15)
+下面代码将前面讨论的监督约定落实为一条纯文本样本的编码与检查。接口依据归档的 Transformers `apply_chat_template` 文档。它不是完整训练脚本，也没有自动实现 WIT、SSB 或多模态处理。[S15，apply_chat_template](#src-s15)
 
 使用前需要将 tokenizer 配置成与模型匹配、支持 generation mask 的**训练模板**。直接调用 tokenizer，并不意味着训练器初始化时的模板修补已经发生。过长样本会显式报错，不静默截断；具体压缩或切窗策略应在上游确定。
 
@@ -1462,6 +1464,12 @@ def supervised_spans(
 
 模拟测试只能检查程序分支。真实 tokenizer 的字符—token 边界、特殊 token、工具序列化和 generation mask，仍需使用目标模型的真实模板测试。本文代码未执行模型微调，也没有声称已经验证某个模型的训练效果。
 
+### A.5 预处理代码的实际运行记录
+
+2026-10-26，原样提取本附录的 `encode_sft_example` 与 `supervised_spans`，在 Python 3.13.9、Transformers 4.57.6、Tokenizers 0.22.2 环境运行，13 项检查通过。使用实际 ByteLevel BPE 后端与 `PreTrainedTokenizerFast`，配合明确标记 assistant generation 区间的教学模板，验证中英混合多轮对话、工具观察、推理及调用文本、结束标记与监督区间；另外覆盖缺失／错误 mask、仅首 token 被监督、全忽略样本、错误批维、空输入和超长输入的拒绝分支。
+
+解码出的两个监督片段分别为 `<think>check</think> call(0)</s>` 与 `done</s>`；system、user 与 tool 内容不计算直接 loss。该检查验证了示例函数和真实分词接口的组合，使用的是专门构造的教学分词器与模板；没有验证特定生产模型的模板、执行模型前向、训练或复现论文结果。投入训练前仍需完成 A.3–A.4 所列的目标模型与 packing 检查。
+
 <a id="appendix-b"></a>
 ## 附录 B：术语与符号速查
 
@@ -1530,7 +1538,7 @@ def supervised_spans(
 
 正文中的 `S00` 为讲义，`S01` 至 `S19` 与参考文件编号对应。正文来源链接跳到本文索引，索引中的文件名链接到本目录实际附件。PDF 页码为所收录版本的物理页码，HTML 使用章节名。
 
-文档保留可离线阅读的“来源编号 + 章节/页码”，并已清除依赖原会话的内部引用标记。索引列出可核对的 PDF 版本；未提供独立版本号的资料以本地附件及其 SHA-256 摘要标识，不推测下载日期。
+引用采用可离线核对的“来源编号 + 章节/页码”。索引列出可核对的 PDF 版本；未提供独立版本号的资料以本地附件及其 SHA-256 摘要标识，不推测下载日期。
 
 ### D.2 主讲义
 
@@ -1549,7 +1557,7 @@ PDF 版本标注：arXiv:2607.24653v2 [cs.CL] 7 Aug 2026。
 <a id="src-s02"></a>
 **S02｜[002_DeepSeek-R1.pdf](references/002_DeepSeek-R1.pdf)**
 PDF 版本标注：arXiv:2501.12948v2 [cs.CL] 4 Jan 2026。
-*DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning*。本次文件为 86 页版本。重点读 §3、附录 B.3.3（第 26–27 页）与附录 F–F.1（第 60–62 页）：冷启动、再次 SFT、推理筛选与数据统计、小模型蒸馏及其直接 RL 对照。不要把它与不同版本的页码或数据细节混用。
+*DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning*。归档文件为 86 页版本。重点读 §3、附录 B.3.3（第 26–27 页）与附录 F–F.1（第 60–62 页）：冷启动、再次 SFT、推理筛选与数据统计、小模型蒸馏及其直接 RL 对照。不要把它与不同版本的页码或数据细节混用。
 
 <a id="src-s03"></a>
 **S03｜[003_Nemotron_3_Ultra.pdf](references/003_Nemotron_3_Ultra.pdf)**
@@ -1606,10 +1614,10 @@ PDF 版本标注：arXiv:2507.07817v2 [cs.CL] 15 Jul 2025。
 <a id="src-s13"></a>
 **S13｜[013_DAgger.html](references/013_DAgger.html)**
 本地附件 SHA-256：`e515cc08883fb65a967c7cc1cd4905107d7dc31aeed4a71c254ea250a670ad75`。
-*A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning*，Ross、Gordon、Bagnell。上传文件是 PMLR 摘要与书目信息页，不是论文全文。摘要支持序列决策分布依赖策略与在线学习的核心定位；正文的具体定理与算法来自下面的补充原文。
+*A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning*，Ross、Gordon、Bagnell。本地文件是 PMLR 摘要与书目信息页，不是论文全文。摘要支持序列决策分布依赖策略与在线学习的核心定位；正文的具体定理与算法来自下面的补充原文。
 
 <a id="src-s13-pdf"></a>
-**S13-PDF｜上传摘要页所链接的 DAgger 原论文**
+**S13-PDF｜归档摘要页所链接的 DAgger 原论文**
 PMLR 15:627–635，2011，原文 §2 与 Algorithm 3.1。本文的理论补充取自该原文，明确区别于 HTML 摘要；不将定理无条件迁移到任意 LLM 训练。
 
 原文定位：[PMLR 原论文 PDF](https://proceedings.mlr.press/v15/ross11a/ross11a.pdf)，§2 位于文件第 2–3 页。

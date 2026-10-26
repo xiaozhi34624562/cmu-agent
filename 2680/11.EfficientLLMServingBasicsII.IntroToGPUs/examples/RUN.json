@@ -1,0 +1,25 @@
+{
+  "scope": "analytical H200 ideal bounds and CPU FP64 online-softmax equivalence only",
+  "ridge_FLOP_per_byte": 206.04166666666666,
+  "batch1_weight_GEMV_percent_peak": 0.48533872598584427,
+  "pipeline_bytes_total_at_250ns": 1200000.0,
+  "pipeline_bytes_per_SM_132": 9090.90909090909,
+  "llama8b_KV_bytes_per_token": 131072,
+  "batch16_context32768_KV_GB": 68.719476736,
+  "batch16_context32768_step_read_lower_bound_ms": 17.67072432,
+  "gemv_weight_only_AI_BF16_by_batch": {
+    "1": 1.0,
+    "8": 8.0,
+    "32": 32.0,
+    "128": 128.0,
+    "256": 256.0
+  },
+  "online_softmax_max_abs_errors": {
+    "1": 0.0,
+    "2": 0.0,
+    "4": 1.6653345369377348e-16,
+    "8": 5.551115123125783e-17,
+    "17": 0.0
+  },
+  "amdahl_attention30percent_kernel2x_speedup": 1.1764705882352942
+}

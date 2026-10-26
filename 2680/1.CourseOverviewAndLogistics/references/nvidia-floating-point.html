@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8">
+<meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/">
+<meta content="White paper covering the most common issues related to NVIDIA GPUs." name="description">
+<meta content="CUDA Floating Point, CUDA Floating Point formats, CUDA Floating Point FMA, CUDA Floating Point accuracy, CUDA Floating Point rounding mode, CUDA Floating Point x86 differences, CUDA Floating Point compiler flags, CUDA Floating Point core counts, CUDA Floating Point x87, CUDA Floating Point recommendations" name="keywords">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1. Introduction — Floating Point and IEEE 754 13.4 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css">
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css">
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css">
+      <link rel="stylesheet" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" type="text/css">
+      <link rel="stylesheet" href="../_static/omni-style.css" type="text/css">
+      <link rel="stylesheet" href="../_static/api-styles.css" type="text/css">
+    <link rel="shortcut icon" href="../_static/favicon.ico">
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/mermaid-init.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../_static/geoip/geoip.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html">
+    <link rel="search" title="Search" href="search.html">
+    <link rel="prev" title="Contents" href="contents.html"> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="contents.html">
+            <img src="../_static/Logo_and_CUDA.png" class="logo" alt="Logo">
+          </a>
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+        </div>
+<div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Introduction</a></li>
+<li class="toctree-l1">
+<a class="reference internal" href="#floating-point">2. Floating Point</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#formats">2.1. Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#operations-and-accuracy">2.2. Operations and Accuracy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-fused-multiply-add-fma">2.3. The Fused Multiply-Add (FMA)</a></li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="#dot-product-an-accuracy-example">3. Dot Product: An Accuracy Example</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#example-algorithms">3.1. Example Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#comparison">3.2. Comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="#cuda-and-floating-point">4. CUDA and Floating Point</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#compute-capability-2-0-and-above">4.1. Compute Capability 2.0 and Above</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rounding-modes">4.2. Rounding Modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#controlling-fused-multiply-add">4.3. Controlling Fused Multiply-add</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compiler-flags">4.4. Compiler Flags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#differences-from-x86">4.5. Differences from x86</a></li>
+</ul>
+</li>
+<li class="toctree-l1">
+<a class="reference internal" href="#considerations-for-a-heterogeneous-world">5. Considerations for a Heterogeneous World</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#mathematical-function-accuracy">5.1. Mathematical Function Accuracy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#x87-and-sse">5.2. x87 and SSE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#core-counts">5.3. Core Counts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#verifying-gpu-results">5.4. Verifying GPU Results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#concrete-recommendations">6. Concrete Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#acknowledgements">7. Acknowledgements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#references">8. References</a></li>
+<li class="toctree-l1">
+<a class="reference internal" href="#notices">9. Notices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#notice">9.1. Notice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#opencl">9.2. OpenCL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#trademarks">9.3. Trademarks</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="contents.html">Floating Point and IEEE 754</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+
+
+  
+
+<li>
+<a href="../index.html" class="icon icon-home"></a> »</li>
+  
+<li>
+<span class="section-number">1. </span>Introduction</li>
+
+      <li class="wy-breadcrumbs-aside">
+      </li>
+<li class="wy-breadcrumbs-aside">
+
+
+  <span>v13.4 |</span>
+
+
+
+  <a href="../pdf/Floating_Point_on_NVIDIA_GPU.pdf" class="reference external">PDF</a>
+
+
+
+  <span>|</span>
+
+
+
+  <a href="https://developer.nvidia.com/cuda-toolkit-archive" class="reference external">Archive</a>
+
+
+  <span> </span>
+</li>
+
+  </ul>
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p class="rubric-h1 rubric">Floating Point and IEEE 754 Compliance for NVIDIA GPUs</p>
+<p>White paper covering the most common issues related to NVIDIA GPUs.</p>
+<p>A number of issues related to floating point accuracy and compliance are a frequent source of confusion on both CPUs and GPUs. The purpose of this white paper is to discuss the most common issues related to NVIDIA GPUs and to supplement the documentation in the CUDA Programming Guide.</p>
+<section id="introduction">
+<h1>
+<span class="section-number">1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a>
+</h1>
+<p>Since the widespread adoption in 1985 of the IEEE Standard for <em>Binary Floating-Point Arithmetic</em> (IEEE 754-1985 <a class="reference external" href="index.html#references__1">[1]</a>) virtually all mainstream computing systems have implemented the standard, including NVIDIA with the CUDA architecture. IEEE 754 standardizes how arithmetic results should be <em>approximated</em> in floating point. Whenever working with inexact results, programming decisions can affect accuracy. It is important to consider many aspects of floating point behavior in order to achieve the highest performance with the precision required for any specific application. This is especially true in a heterogeneous computing environment where operations will be performed on different types of hardware.</p>
+<p>Understanding some of the intricacies of floating point and the specifics of how NVIDIA hardware handles floating point is obviously important to CUDA programmers striving to implement correct numerical algorithms. In addition, users of libraries such as <em>cuBLAS</em> and <em>cuFFT</em> will also find it informative to learn how NVIDIA handles floating point under the hood.</p>
+<p>We review some of the basic properties of floating point calculations in <a class="reference external" href="index.html#floating-point">Chapter 2</a>. We also discuss the fused multiply-add operator, which was added to the IEEE 754 standard in 2008 <a class="reference external" href="index.html#references__2">[2]</a> and is built into the hardware of NVIDIA GPUs. In <a class="reference external" href="index.html#dot-product-accuracy-example">Chapter 3</a> we work through an example of computing the dot product of two short vectors to illustrate how different choices of implementation affect the accuracy of the final result. In <a class="reference external" href="index.html#cuda-and-floating-point">Chapter 4</a> we describe NVIDIA hardware versions and NVCC compiler options that affect floating point calculations. In <a class="reference external" href="index.html#considerations-for-heterogeneous-world">Chapter 5</a> we consider some issues regarding the comparison of CPU and GPU results. Finally, in <a class="reference external" href="index.html#concrete-recommendations">Chapter 6</a> we conclude with concrete recommendations to programmers that deal with numeric issues relating to floating point on the GPU.</p>
+</section>
+<section id="floating-point">
+<h1>
+<span class="section-number">2. </span>Floating Point<a class="headerlink" href="#floating-point" title="Permalink to this headline"></a>
+</h1>
+<section id="formats">
+<h2>
+<span class="section-number">2.1. </span>Formats<a class="headerlink" href="#formats" title="Permalink to this headline"></a>
+</h2>
+<p>Floating point encodings and functionality are defined in the IEEE 754 Standard <a class="reference external" href="index.html#references__2">[2]</a> last revised in 2008. Goldberg <a class="reference external" href="index.html#references__5">[5]</a> gives a good introduction to floating point and many of the issues that arise.</p>
+<p>The standard mandates binary floating point data be encoded on three fields: a one bit sign field, followed by exponent bits encoding the exponent offset by a numeric bias specific to each format, and bits encoding the significand (or fraction).</p>
+<figure class="align-center">
+<img alt="_images/sign-exponent-fraction.png" src="_images/sign-exponent-fraction.png">
+</figure>
+<p>In order to ensure consistent computations across platforms and to exchange floating point data, IEEE 754 defines basic and interchange formats. The 32 and 64 bit basic binary floating point formats correspond to the C data types <code class="docutils literal notranslate"><span class="pre">float</span></code> and <code class="docutils literal notranslate"><span class="pre">double</span></code>. Their corresponding representations have the following bit lengths:</p>
+<figure class="align-center">
+<img alt="_images/float-double.png" src="_images/float-double.png">
+</figure>
+<p>For numerical data representing finite values, the sign is either negative or positive, the exponent field encodes the exponent in base 2, and the fraction field encodes the significand without the most significant non-zero bit. For example, the value -192 equals (-1)<sup>1</sup> x 2<sup>7</sup> x 1.5, and can be represented as having a negative sign, an exponent of 7, and a fractional part .5. The exponents are biased by 127 and 1023, respectively, to allow exponents to extend from negative to positive. Hence the exponent 7 is represented by bit strings with values 134 for float and 1030 for double. The integral part of 1. is implicit in the fraction.</p>
+<figure class="align-center">
+<img alt="_images/float-1-double-1.png" src="_images/float-1-double-1.png">
+</figure>
+<p>Also, encodings to represent infinity and not-a-number (NaN) data are reserved. The IEEE 754 Standard <a class="reference external" href="index.html#references__2">[2]</a> describes floating point encodings in full.</p>
+<p>Given that the fraction field uses a limited number of bits, not all real numbers can be represented exactly. For example the mathematical value of the fraction 2/3 represented in binary is 0.10101010… which has an infinite number of bits after the binary point. The value 2/3 must be rounded first in order to be represented as a floating point number with limited precision. The rules for rounding and the rounding modes are specified in IEEE 754. The most frequently used is the round-to-nearest-or-even mode (abbreviated as round-to-nearest). The value 2/3 rounded in this mode is represented in binary as:</p>
+<figure class="align-center">
+<img alt="_images/float-0-double-0.png" src="_images/float-0-double-0.png">
+</figure>
+<p>The sign is positive and the stored exponent value represents an exponent of -1.</p>
+</section>
+<section id="operations-and-accuracy">
+<h2>
+<span class="section-number">2.2. </span>Operations and Accuracy<a class="headerlink" href="#operations-and-accuracy" title="Permalink to this headline"></a>
+</h2>
+<p>The IEEE 754 standard requires support for a handful of operations. These include the arithmetic operations add, subtract, multiply, divide, square root, fused-multiply-add, remainder, conversion operations, scaling, sign operations, and comparisons. The results of these operations are guaranteed to be the same for all implementations of the standard, for a given format and rounding mode.</p>
+<p>The rules and properties of mathematical arithmetic do not hold directly for floating point arithmetic because of floating point’s limited precision. For example, the table below shows single precision values <em>A</em>, <em>B</em>, and <em>C</em>, and the mathematical exact value of their sum computed using different associativity.</p>
+<p><span class="math notranslate nohighlight">\(\begin{matrix}
+A &amp; = &amp; {2^{1} \times 1.00000000000000000000001} \\
+B &amp; = &amp; {2^{0} \times 1.00000000000000000000001} \\
+C &amp; = &amp; {2^{3} \times 1.00000000000000000000001} \\
+{(A + B) + C} &amp; = &amp; {2^{3} \times 1.01100000000000000000001011} \\
+{A + (B + C)} &amp; = &amp; {2^{3} \times 1.01100000000000000000001011} \\
+\end{matrix}\)</span></p>
+<p>Mathematically, (<em>A</em> + <em>B</em>) + <em>C</em> does equal <em>A</em> + (<em>B</em> + <em>C</em>).</p>
+<p>Let rn(<em>x</em>) denote one rounding step on <em>x</em>. Performing these same computations in single precision floating point arithmetic in round-to-nearest mode according to IEEE 754, we obtain:</p>
+<p><span class="math notranslate nohighlight">\(\begin{matrix}
+{A + B} &amp; = &amp; {2^{1} \times 1.1000000000000000000000110000...} \\
+{\text{rn}(A + B)} &amp; = &amp; {2^{1} \times 1.10000000000000000000010} \\
+{B + C} &amp; = &amp; {2^{3} \times 1.0010000000000000000000100100...} \\
+{\text{rn}(B + C)} &amp; = &amp; {2^{3} \times 1.00100000000000000000001} \\
+{A + B + C} &amp; = &amp; {2^{3} \times 1.0110000000000000000000101100...} \\
+{\text{rn}\left( \text{rn}(A + B) + C \right)} &amp; = &amp; {2^{3} \times 1.01100000000000000000010} \\
+{\text{rn}\left( A + \text{rn}(B + C) \right)} &amp; = &amp; {2^{3} \times 1.01100000000000000000001} \\
+\end{matrix}\)</span></p>
+<p>For reference, the exact, mathematical results are computed as well in the table above. Not only are the results computed according to IEEE 754 different from the exact mathematical results, but also the results corresponding to the sum rn(rn(A + B) + C) and the sum rn(A + rn(B + C)) are different from each other. In this case, rn(A + rn(B + C)) is closer to the correct mathematical result than rn(rn(A + B) + C).</p>
+<p>This example highlights that seemingly identical computations can produce different results even if all basic operations are computed in compliance with IEEE 754.</p>
+<p>Here, the order in which operations are executed affects the accuracy of the result. The results are independent of the host system. These same results would be obtained using any microprocessor, CPU or GPU, which supports single precision floating point.</p>
+</section>
+<section id="the-fused-multiply-add-fma">
+<h2>
+<span class="section-number">2.3. </span>The Fused Multiply-Add (FMA)<a class="headerlink" href="#the-fused-multiply-add-fma" title="Permalink to this headline"></a>
+</h2>
+<p>In 2008 the IEEE 754 standard was revised to include the fused multiply-add operation (<em>FMA</em>). The FMA operation computes <span class="math notranslate nohighlight">\(\text{rn}(X \times Y + Z)\)</span> with only one rounding step. Without the FMA operation the result would have to be computed as <span class="math notranslate nohighlight">\(\text{rn}\left( \text{rn}(X \times Y) + Z \right)\)</span> with two rounding steps, one for multiply and one for add. Because the FMA uses only a single rounding step the result is computed more accurately.</p>
+<p>Let’s consider an example to illustrate how the FMA operation works using decimal arithmetic first for clarity. Let’s compute <span class="math notranslate nohighlight">\(x^{2} - 1\)</span> with four digits of precision after the decimal point, or a total of five digits of precision including the leading digit before the decimal point.</p>
+<p>For <span class="math notranslate nohighlight">\(x = 1.0008\)</span> , the correct mathematical result is <span class="math notranslate nohighlight">\(x^{2} - 1 = 1.60064 \times 10^{- 4}\)</span>. The closest number using only four digits after the decimal point is <span class="math notranslate nohighlight">\(1.6006 \times 10^{- 4}\)</span>. In this case <span class="math notranslate nohighlight">\(\text{rn}\left( x^{2} - 1 \right) = 1.6006 \times 10^{- 4}\)</span> which corresponds to the fused multiply-add operation <span class="math notranslate nohighlight">\(\text{rn}\left( x \times x + ( - 1) \right)\)</span>. The alternative is to compute separate multiply and add steps. For the multiply, <span class="math notranslate nohighlight">\(x^{2} = 1.00160064\)</span>, so <span class="math notranslate nohighlight">\(\text{rn}\left( x^{2} \right) = 1.0016\)</span>. The final result is <span class="math notranslate nohighlight">\(\text{rn}\left( \text{rn}\left( x^{2} \right) - 1 \right) = 1.6000 \times 10^{- 4}\)</span>.</p>
+<p>Rounding the multiply and add separately yields a result that is off by 0.00064. The corresponding FMA computation is wrong by only 0.00004, and its result is closest to the correct mathematical answer. The results are summarized below:</p>
+<p><span class="math notranslate nohighlight">\(\begin{matrix}
+x &amp; = &amp; 1.0008 &amp; \\
+x^{2} &amp; = &amp; 1.00160064 &amp; \\
+{x^{2} - 1} &amp; = &amp; {1.60064 \times 10^{- 4}\text{~~}} &amp; \text{true\ value} \\
+{\text{rn}\left( x^{2} - 1 \right)} &amp; = &amp; {1.6006 \times 10^{- 4}} &amp; \text{fused\ multiply-add} \\
+{\text{rn}\left( x^{2} \right)} &amp; = &amp; {1.0016 \times 10^{- 4}} &amp; \\
+{\text{rn}\left( \text{rn}\left( x^{2} \right) - 1 \right)} &amp; = &amp; {1.6000 \times 10^{- 4}} &amp; \text{multiply,\ then\ add} \\
+\end{matrix}\)</span></p>
+<p>Below is another example, using binary single precision values:</p>
+<p><span class="math notranslate nohighlight">\(\begin{matrix}
+A &amp; = &amp; &amp; 2^{0} &amp; {\times 1.00000000000000000000001} \\
+B &amp; = &amp; - &amp; 2^{0} &amp; {\times 1.00000000000000000000010} \\
+{\text{rn}(A \times A + B)} &amp; = &amp; &amp; 2^{- 46} &amp; {\times 1.00000000000000000000000} \\
+{\text{rn}\left( \text{rn}(A \times A) + B \right)} &amp; = &amp; &amp; 0 &amp; \\
+\end{matrix}\)</span></p>
+<p>In this particular case, computing <span class="math notranslate nohighlight">\(\text{rn}\left( \text{rn}(A \times A) + B \right)\)</span> as an IEEE 754 multiply followed by an IEEE 754 add loses all bits of precision, and the computed result is 0. The alternative of computing the FMA <span class="math notranslate nohighlight">\(\text{rn}(A \times A + B)\)</span> provides a result equal to the mathematical value. In general, the fused-multiply-add operation generates more accurate results than computing one multiply followed by one add. The choice of whether or not to use the fused operation depends on whether the platform provides the operation and also on how the code is compiled.</p>
+<p><a class="reference external" href="index.html#fused-multiply-add-fma__multiply-and-add-code-fragment-and-output-for-x86-and-nvidia-fermi-gpu">Figure 1</a> shows CUDA C++ code and output corresponding to inputs <em>A</em> and <em>B</em> and operations from the example above. The code is executed on two different hardware platforms: an x86-class CPU using <em>SSE</em> in single precision, and an NVIDIA GPU with compute capability 2.0. At the time this paper is written (Spring 2011) there are no commercially available x86 CPUs which offer hardware FMA. Because of this, the computed result in single precision in SSE would be 0. NVIDIA GPUs with compute capability 2.0 do offer hardware FMAs, so the result of executing this code will be the more accurate one by default. However, both results are correct according to the IEEE 754 standard. The code fragment was compiled without any special intrinsics or compiler options for either platform.</p>
+<p>The fused multiply-add helps avoid loss of precision during subtractive cancellation. Subtractive cancellation occurs during the addition of quantities of similar magnitude with opposite signs. In this case many of the leading bits cancel, leaving fewer meaningful bits of precision in the result. The fused multiply-add computes a double-width product during the multiplication. Thus even if subtractive cancellation occurs during the addition there are still enough valid bits remaining in the product to get a precise result with no loss of precision.</p>
+</section>
+</section>
+<section id="dot-product-an-accuracy-example">
+<h1>
+<span class="section-number">3. </span>Dot Product: An Accuracy Example<a class="headerlink" href="#dot-product-an-accuracy-example" title="Permalink to this headline"></a>
+</h1>
+<p>Consider the problem of finding the dot product of two short vectors <span class="math notranslate nohighlight">\(\overset{\rightarrow}{a}\)</span> and <span class="math notranslate nohighlight">\(\overset{\rightarrow}{b}\)</span>, both with four elements.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\overset{\rightharpoonup}{a} = \begin{bmatrix}
+a_{1} \\
+a_{2} \\
+a_{3} \\
+a_{4} \\
+\end{bmatrix}\mspace{2mu}\quad\overset{\rightharpoonup}{b} = \begin{bmatrix}
+b_{1} \\
+b_{2} \\
+b_{3} \\
+b_{4} \\
+\end{bmatrix}\quad\overset{\rightharpoonup}{a} \cdot \overset{\rightharpoonup}{b} = a_{1}b_{1} + a_{2}b_{2} + a_{3}b_{3} + a_{4}b_{4}\)</span></p></li>
+</ul>
+<p>This operation is easy to write mathematically, but its implementation in software involves several choices. All of the strategies we will discuss use purely IEEE 754 compliant operations.</p>
+<section id="example-algorithms">
+<h2>
+<span class="section-number">3.1. </span>Example Algorithms<a class="headerlink" href="#example-algorithms" title="Permalink to this headline"></a>
+</h2>
+<p>We present three algorithms which differ in how the multiplications, additions, and possibly fused multiply-adds are organized. These algorithms are presented in <a class="reference external" href="index.html#example-algorithms__serial-method-to-compute-vectors-dot-product">Figure 2</a>, <a class="reference external" href="index.html#example-algorithms__fma-method-to-compute-vectors-dot-product">Figure 3</a>, and <a class="reference external" href="index.html#comparison__parallel-method-to-reduce-individual-elements-products-into-final-sum">Figure 4</a>. Each of the three algorithms is represented graphically. Individual operation are shown as a circle with arrows pointing from arguments to operations.</p>
+<p>The simplest way to compute the dot product is using a short loop as shown in <a class="reference external" href="index.html#example-algorithms__serial-method-to-compute-vectors-dot-product">Figure 2</a>. The multiplications and additions are done separately.</p>
+<figure class="align-center" id="example-algorithms-serial-method-to-compute-vectors-dot-product">
+<img alt="Serial Method to Compute Vectors Dot Product. The serial method uses a simple loop with separate multiplies and adds to compute the do t product of the vectors." src="_images/serial-method.png">
+<figcaption>
+<p><span class="caption-text">Serial Method to Compute Vectors Dot Product.</span><a class="headerlink" href="#example-algorithms-serial-method-to-compute-vectors-dot-product" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The serial method uses a simple loop with separate multiplies and adds to compute the do t product of the vectors. The final result can be represented as ((((a<sub>1</sub> x b<sub>1</sub>) + (a<sub>2</sub> x b<sub>2</sub>)) + (a<sub>3</sub> x b<sub>3</sub>)) + (a<sub>4</sub> x b<sub>4</sub>)).</p>
+<figure class="align-center" id="example-algorithms-fma-method-to-compute-vectors-dot-product">
+<img alt="FMA Method to Compute Vector Dot Product. The FMA method uses a simple loop with fused multiply-adds to compute the dot product of the vectors." src="_images/fma-method.png">
+<figcaption>
+<p><span class="caption-text">FMA Method to Compute Vector Dot Product.</span><a class="headerlink" href="#example-algorithms-fma-method-to-compute-vectors-dot-product" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The FMA method uses a simple loop with fused multiply-adds to compute the dot product of the vectors. The final result can be represented as a<sub>4</sub> x b<sub>4</sub> = (a<sub>3</sub> x b<sub>3</sub> + (a<sub>2</sub> x b<sub>2</sub> + (a<sub>1</sub> x b<sub>1</sub> + 0))).</p>
+<p>A simple improvement to the algorithm is to use the fused multiply-add to do the multiply and addition in one step to improve accuracy. <a class="reference external" href="index.html#example-algorithms__fma-method-to-compute-vectors-dot-product">Figure 3</a> shows this version.</p>
+<p>Yet another way to compute the dot product is to use a divide-and-conquer strategy in which we first find the dot products of the first half and the second half of the vectors, then combine these results using addition. This is a recursive strategy; the base case is the dot product of vectors of length 1 which is a single multiply. <a class="reference external" href="index.html#comparison__parallel-method-to-reduce-individual-elements-products-into-final-sum">Figure 4</a> graphically illustrates this approach. We call this algorithm the parallel algorithm because the two sub-problems can be computed in parallel as they have no dependencies. The algorithm does not require a parallel implementation, however; it can still be implemented with a single thread.</p>
+</section>
+<section id="comparison">
+<h2>
+<span class="section-number">3.2. </span>Comparison<a class="headerlink" href="#comparison" title="Permalink to this headline"></a>
+</h2>
+<p>All three algorithms for computing a dot product use IEEE 754 arithmetic and can be implemented on any system that supports the IEEE standard. In fact, an implementation of the serial algorithm on multiple systems will give exactly the same result. So will implementations of the FMA or parallel algorithms. However, results computed by an implementation of the serial algorithm may differ from those computed by an implementation of the other two algorithms.</p>
+<figure class="align-center" id="comparison-parallel-method-to-reduce-individual-elements-products-into-final-sum">
+<img alt="The Parallel Method to Reduce Individual Elements Products into a Final Sum." src="_images/parallel-method.png">
+<figcaption>
+<p><span class="caption-text">The Parallel Method to Reduce Individual Elements Products into a Final Sum.</span><a class="headerlink" href="#comparison-parallel-method-to-reduce-individual-elements-products-into-final-sum" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The parallel method uses a tree to reduce all the products of individual elements into a final sum. The final result can be represented as ((a<sub>1</sub> x b<sub>1</sub>) + (a<sub>2</sub> x b<sub>2</sub>)) + ((a<sub>3</sub> x b<sub>3</sub>) + (a<sub>4</sub> x b<sub>4</sub>)).</p>
+</section>
+</section>
+<section id="cuda-and-floating-point">
+<h1>
+<span class="section-number">4. </span>CUDA and Floating Point<a class="headerlink" href="#cuda-and-floating-point" title="Permalink to this headline"></a>
+</h1>
+<p>NVIDIA has extended the capabilities of GPUs with each successive hardware generation. Current generations of the NVIDIA architecture such as <em>Tesla Kxx</em>, <em>GTX 8xx</em>, and <em>GTX 9xx</em>, support both single and double precision with <em>IEEE 754</em> precision and include hardware support for fused multiply-add in both single and double precision. In CUDA, the features supported by the GPU are encoded in the <em>compute capability</em> number. The runtime library supports a function call to determine the compute capability of a GPU at runtime; the CUDA Programming Guide also includes a table of compute capabilities for many different devices <a class="reference external" href="index.html#references__7">[7]</a>.</p>
+<section id="compute-capability-2-0-and-above">
+<h2>
+<span class="section-number">4.1. </span>Compute Capability 2.0 and Above<a class="headerlink" href="#compute-capability-2-0-and-above" title="Permalink to this headline"></a>
+</h2>
+<p>Devices with compute capability <em>2.0 and above</em> support both single and double precision <em>IEEE 754</em> including fused multiply-add in both single and double precision. Operations such as square root and division will result in the floating point value closest to the correct mathematical result in both single and double precision, by default.</p>
+</section>
+<section id="rounding-modes">
+<h2>
+<span class="section-number">4.2. </span>Rounding Modes<a class="headerlink" href="#rounding-modes" title="Permalink to this headline"></a>
+</h2>
+<p>The <em>IEEE 754</em> standard defines four rounding modes: round-to-nearest, round towards positive, round towards negative, and round towards zero. CUDA supports all four modes. By default, operations use round-to-nearest. Compiler intrinsics like the ones listed in the tables below can be used to select other rounding modes for individual operations.</p>
+<table class="table-no-stripes docutils align-default">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 89%">
+</colgroup>
+<thead>
+<tr class="row-odd">
+<th class="head"><p>mode</p></th>
+<th class="head"><p>interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even">
+<td><p>rn</p></td>
+<td><p>round to nearest, ties to even</p></td>
+</tr>
+<tr class="row-odd">
+<td><p>rz</p></td>
+<td><p>round towards zero</p></td>
+</tr>
+<tr class="row-even">
+<td><p>ru</p></td>
+<td><p>round towards <span class="math notranslate nohighlight">\(+ \text{∞}\)</span></p></td>
+</tr>
+<tr class="row-odd">
+<td><p>rd</p></td>
+<td><p>round towards <span class="math notranslate nohighlight">\(- \text{∞}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<table class="table-no-stripes docutils align-default">
+<colgroup>
+<col style="width: 55%">
+<col style="width: 45%">
+</colgroup>
+<tbody>
+<tr class="row-odd">
+<td>
+<p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">__fadd_[rn</span> <span class="pre">|</span> <span class="pre">rz</span> <span class="pre">|</span> <span class="pre">ru</span> <span class="pre">|</span> <span class="pre">rd]</span> <span class="pre">(x,</span> <span class="pre">y)</span></code></p>
+</td>
+<td><p>addition</p></td>
+</tr>
+<tr class="row-even">
+<td>
+<p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">y</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">__fmul_[rn</span> <span class="pre">|</span> <span class="pre">rz</span> <span class="pre">|</span> <span class="pre">ru</span> <span class="pre">|</span> <span class="pre">rd]</span> <span class="pre">(x,</span> <span class="pre">y)</span></code></p>
+</td>
+<td><p>multiplication</p></td>
+</tr>
+<tr class="row-odd">
+<td>
+<p><code class="docutils literal notranslate"><span class="pre">fmaf</span> <span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">__fmaf_[rn</span> <span class="pre">|</span> <span class="pre">rz</span> <span class="pre">|</span> <span class="pre">ru</span> <span class="pre">|</span> <span class="pre">rd]</span> <span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code></p>
+</td>
+<td><p>FMA</p></td>
+</tr>
+<tr class="row-even">
+<td>
+<p><code class="docutils literal notranslate"><span class="pre">1.0f</span> <span class="pre">/</span> <span class="pre">x</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">__frcp_[rn</span> <span class="pre">|</span> <span class="pre">rz</span> <span class="pre">|</span> <span class="pre">ru</span> <span class="pre">|</span> <span class="pre">rd]</span> <span class="pre">(x)</span></code></p>
+</td>
+<td><p>reciprocal</p></td>
+</tr>
+<tr class="row-odd">
+<td>
+<p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">/</span> <span class="pre">y</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">__fdiv_[rn</span> <span class="pre">|</span> <span class="pre">rz</span> <span class="pre">|</span> <span class="pre">ru</span> <span class="pre">|</span> <span class="pre">rd]</span> <span class="pre">(x,</span> <span class="pre">y)</span></code></p>
+</td>
+<td><p>division</p></td>
+</tr>
+<tr class="row-even">
+<td>
+<p><code class="docutils literal notranslate"><span class="pre">sqrtf(x)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">__fsqrt_[rn</span> <span class="pre">|</span> <span class="pre">rz</span> <span class="pre">|</span> <span class="pre">ru</span> <span class="pre">|</span> <span class="pre">rd]</span> <span class="pre">(x)</span></code></p>
+</td>
+<td><p>square root</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table-no-stripes docutils align-default">
+<colgroup>
+<col style="width: 54%">
+<col style="width: 46%">
+</colgroup>
+<tbody>
+<tr class="row-odd">
+<td>
+<p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">__dadd_[rn</span> <span class="pre">|</span> <span class="pre">rz</span> <span class="pre">|</span> <span class="pre">ru</span> <span class="pre">|</span> <span class="pre">rd]</span> <span class="pre">(x,</span> <span class="pre">y)</span></code></p>
+</td>
+<td><p>addition</p></td>
+</tr>
+<tr class="row-even">
+<td>
+<p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">y</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">__dmul_[rn</span> <span class="pre">|</span> <span class="pre">rz</span> <span class="pre">|</span> <span class="pre">ru</span> <span class="pre">|</span> <span class="pre">rd]</span> <span class="pre">(x,</span> <span class="pre">y)</span></code></p>
+</td>
+<td><p>multiplication</p></td>
+</tr>
+<tr class="row-odd">
+<td>
+<p><code class="docutils literal notranslate"><span class="pre">fma</span> <span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">__fma_[rn</span> <span class="pre">|</span> <span class="pre">rz</span> <span class="pre">|</span> <span class="pre">ru</span> <span class="pre">|</span> <span class="pre">rd]</span> <span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code></p>
+</td>
+<td><p>FMA</p></td>
+</tr>
+<tr class="row-even">
+<td>
+<p><code class="docutils literal notranslate"><span class="pre">1.0</span> <span class="pre">/</span> <span class="pre">x</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">__drcp_[rn</span> <span class="pre">|</span> <span class="pre">rz</span> <span class="pre">|</span> <span class="pre">ru</span> <span class="pre">|</span> <span class="pre">rd]</span> <span class="pre">(x)</span></code></p>
+</td>
+<td><p>reciprocal</p></td>
+</tr>
+<tr class="row-odd">
+<td>
+<p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">/</span> <span class="pre">y</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">__ddiv_[rn</span> <span class="pre">|</span> <span class="pre">rz</span> <span class="pre">|</span> <span class="pre">ru</span> <span class="pre">|</span> <span class="pre">rd]</span> <span class="pre">(x,</span> <span class="pre">y)</span></code></p>
+</td>
+<td><p>division</p></td>
+</tr>
+<tr class="row-even">
+<td>
+<p><code class="docutils literal notranslate"><span class="pre">sqrtf(x)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">__dsqrt_[rn</span> <span class="pre">|</span> <span class="pre">rz</span> <span class="pre">|</span> <span class="pre">ru</span> <span class="pre">|</span> <span class="pre">rd]</span> <span class="pre">(x)</span></code></p>
+</td>
+<td><p>square root</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="controlling-fused-multiply-add">
+<h2>
+<span class="section-number">4.3. </span>Controlling Fused Multiply-add<a class="headerlink" href="#controlling-fused-multiply-add" title="Permalink to this headline"></a>
+</h2>
+<p>In general, the fused multiply-add operation is faster and more accurate than performing separate multiply and add operations. However, on occasion you may wish to <em>disable</em> the merging of multiplies and adds into fused multiply-add instructions. To inhibit this optimization one can write the multiplies and additions using intrinsics with explicit rounding mode as shown in the previous tables. Operations written directly as intrinsics are guaranteed to remain independent and will not be merged into fused multiply-add instructions. It is also possible to disable FMA merging via a compiler flag.</p>
+</section>
+<section id="compiler-flags">
+<h2>
+<span class="section-number">4.4. </span>Compiler Flags<a class="headerlink" href="#compiler-flags" title="Permalink to this headline"></a>
+</h2>
+<p>Compiler flags relevant to <em>IEEE 754</em> operations are <code class="docutils literal notranslate"><span class="pre">-ftz={true|false}</span></code>, <code class="docutils literal notranslate"><span class="pre">-prec-div={true|false}</span></code>, and <code class="docutils literal notranslate"><span class="pre">-prec-sqrt={true|false}</span></code>. These flags control single precision operations on devices of compute capability of 2.0 or later.</p>
+<table class="table-no-stripes docutils align-default">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="row-odd">
+<th class="head"><p>mode</p></th>
+<th class="head"><p>flags</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even">
+<td><p>IEEE 754 mode (default)</p></td>
+<td>
+<p>-ftz=false</p>
+<p>-prec-div=true</p>
+<p>-prec-sqrt=true</p>
+</td>
+</tr>
+<tr class="row-odd">
+<td><p>fast mode</p></td>
+<td>
+<p>-ftz=true</p>
+<p>-prec-div=false</p>
+<p>-prec-sqrt=false</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The default <em>IEEE 754 mode</em> means that single precision operations are correctly rounded and support denormals, as per the IEEE 754 standard. In the <em>fast mode</em> denormal numbers are flushed to zero, and the operations division and square root are not computed to the nearest floating point value. The flags have no effect on double precision or on devices of compute capability below 2.0.</p>
+</section>
+<section id="differences-from-x86">
+<h2>
+<span class="section-number">4.5. </span>Differences from x86<a class="headerlink" href="#differences-from-x86" title="Permalink to this headline"></a>
+</h2>
+<p>NVIDIA GPUs differ from the x86 architecture in that rounding modes are encoded within each floating point instruction instead of dynamically using a floating point control word. Trap handlers for floating point exceptions are not supported. On the GPU there is no status flag to indicate when calculations have overflowed, underflowed, or have involved inexact arithmetic. Like <em>SSE</em>, the precision of each GPU operation is encoded in the instruction (for x87 the precision is controlled dynamically by the floating point control word).</p>
+</section>
+</section>
+<section id="considerations-for-a-heterogeneous-world">
+<h1>
+<span class="section-number">5. </span>Considerations for a Heterogeneous World<a class="headerlink" href="#considerations-for-a-heterogeneous-world" title="Permalink to this headline"></a>
+</h1>
+<section id="mathematical-function-accuracy">
+<h2>
+<span class="section-number">5.1. </span>Mathematical Function Accuracy<a class="headerlink" href="#mathematical-function-accuracy" title="Permalink to this headline"></a>
+</h2>
+<p>So far we have only considered simple math operations such as addition, multiplication, division, and square root. These operations are simple enough that computing the best floating point result (e.g., the closest in round-to-nearest) is reasonable. For other mathematical operations computing the best floating point result is harder.</p>
+<p>The problem is called the <em>table maker’s dilemma</em>. To guarantee the correctly rounded result, it is not generally enough to compute the function to a fixed high accuracy. There might still be rare cases where the error in the high accuracy result affects the rounding step at the lower accuracy.</p>
+<p>It is possible to solve the dilemma for particular functions by doing mathematical analysis and formal proofs <a class="reference external" href="index.html#references__4">[4]</a>, but most math libraries choose instead to give up the guarantee of correct rounding. Instead they provide implementations of math functions and document bounds on the relative error of the functions over the input range. For example, the double precision <code class="docutils literal notranslate"><span class="pre">sin</span></code> function in CUDA is guaranteed to be accurate to within 2 units in the last place (ulp) of the correctly rounded result. In other words, the difference between the computed result and the mathematical result is at most ±2 with respect to the least significant bit position of the fraction part of the floating point result.</p>
+<p>For most inputs the <code class="docutils literal notranslate"><span class="pre">sin</span></code> function produces the correctly rounded result. Take for example the C code sequence shown in <a class="reference external" href="index.html#mathematical-function-accuracy__cosine-computation-using-glibc-math-library-when-compiled-with-m32-and-m64">Figure 6</a>. We compiled the code sequence on a 64-bit x86 platform using gcc version 4.4.3 (Ubuntu 4.3.3-4ubuntu5).</p>
+<p>This shows that the result of computing cos(5992555.0) using a common library differs depending on whether the code is compiled in 32-bit mode or 64-bit mode.</p>
+<p>The consequence is that different math libraries cannot be expected to compute exactly the same result for a given input. This applies to GPU programming as well. Functions compiled for the GPU will use the NVIDIA CUDA math library implementation while functions compiled for the CPU will use the host compiler math library implementation (e.g., <em>glibc</em> on Linux). Because these implementations are independent and neither is guaranteed to be correctly rounded, the results will often differ slightly.</p>
+</section>
+<section id="x87-and-sse">
+<h2>
+<span class="section-number">5.2. </span>x87 and SSE<a class="headerlink" href="#x87-and-sse" title="Permalink to this headline"></a>
+</h2>
+<p>One of the unfortunate realities of C compilers is that they are often poor at preserving IEEE 754 semantics of floating point operations <a class="reference external" href="index.html#references__6">[6]</a>. This can be particularly confusing on platforms that support x87 and SSE operations. Just like CUDA operations, SSE operations are performed on single or double precision values, while x87 operations often use an additional internal 80-bit precision format. Sometimes the results of a computation using x87 can depend on whether an intermediate result was allocated to a register or stored to memory. Values stored to memory are rounded to the declared precision (e.g., single precision for <code class="docutils literal notranslate"><span class="pre">float</span></code> and double precision for <code class="docutils literal notranslate"><span class="pre">double</span></code>). Values kept in registers can remain in extended precision. Also, x87 instructions will often be used by default for 32-bit compiles but SSE instructions will be used by default for 64-bit compiles.</p>
+<p>Because of these issues, guaranteeing a specific precision level on the CPU can sometimes be tricky. When comparing CPU results to results computed on the GPU, it is generally best to compare using SSE instructions. SSE instructions follow IEEE 754 for single and doubleprecision.</p>
+<p>On 32-bit x86 targets without SSE it can be helpful to declare variables using <code class="docutils literal notranslate"><span class="pre">volatile</span></code> and force floating point values to be stored to memory (<code class="docutils literal notranslate"><span class="pre">/Op</span></code> in Visual Studio and <code class="docutils literal notranslate"><span class="pre">-ffloat-store</span></code> in <code class="docutils literal notranslate"><span class="pre">gcc</span></code>). This moves results from extended precision registers into memory, where the precision is precisely single or double precision. Alternately, the x87 control word can be updated to set the precision to 24 or 53 bits using the assembly instruction <code class="docutils literal notranslate"><span class="pre">fldcw</span></code> or a compiler option such as <code class="docutils literal notranslate"><span class="pre">-mpc32</span></code> or<code class="docutils literal notranslate"><span class="pre">-mpc64</span></code> in <code class="docutils literal notranslate"><span class="pre">gcc</span></code>.</p>
+</section>
+<section id="core-counts">
+<h2>
+<span class="section-number">5.3. </span>Core Counts<a class="headerlink" href="#core-counts" title="Permalink to this headline"></a>
+</h2>
+<p>As we have shown in <a class="reference external" href="index.html#dot-product-accuracy-example">Section 3</a>, the final values computed using <em>IEEE 754</em> arithmetic can depend on implementation choices such as whether to use fused multiply-add or whether additions are organized in series or parallel. These differences affect computation on the CPU and on the GPU.</p>
+<p>One way such differences can arise is from differences between the number of concurrent threads involved in a computation. On the GPU, a common design pattern is to have all threads in a block coordinate to do a parallel reduction on data within the block, followed by a serial reduction of the results from each block. Changing the number of threads per block reorganizes the reduction; if the reduction is addition, then the change rearranges parentheses in the long string of additions.</p>
+<p>Even if the same general strategy such as parallel reduction is used on the CPU and GPU, it is common to have widely different numbers of threads on the GPU compared to the CPU. For example, the GPU implementation might launch blocks with 128 threads per block, while the CPU implementation might use 4 threads in total.</p>
+</section>
+<section id="verifying-gpu-results">
+<h2>
+<span class="section-number">5.4. </span>Verifying GPU Results<a class="headerlink" href="#verifying-gpu-results" title="Permalink to this headline"></a>
+</h2>
+<p>The same inputs will give the same results for individual <em>IEEE 754</em> operations to a given precision on the CPU and GPU. As we have explained, there are many reasons why the same sequence of operations may not be performed on the CPU and GPU. The GPU has fused multiply-add while the CPU does not. Parallelizing algorithms may rearrange operations, yielding different numeric results. The CPU may be computing results in a precision higher than expected. Finally, many common mathematical functions are not required by the IEEE 754 standard to be correctly rounded so should not be expected to yield identical results between implementations.</p>
+<p>When porting numeric code from the CPU to the GPU of course it makes sense to use the x86 CPU results as a reference. But differences between the CPU result and GPU result must be interpreted carefully. Differences are not automatically evidence that the result computed by the GPU is wrong or that there is a problem on the GPU.</p>
+<p>Computing results in a high precision and then comparing to results computed in a lower precision can be helpful to see if the lower precision is adequate for a particular application. However, rounding high precision results to a lower precision is not equivalent to performing the entire computation in lower precision. This can sometimes be a problem when using x87 and comparing results against the GPU. The results of the CPU may be computed to an unexpectedly high extended precision for some or all of the operations. The GPU result will be computed using single or double precision only.</p>
+</section>
+</section>
+<section id="concrete-recommendations">
+<h1>
+<span class="section-number">6. </span>Concrete Recommendations<a class="headerlink" href="#concrete-recommendations" title="Permalink to this headline"></a>
+</h1>
+<p>The key points we have covered are the following:</p>
+<dl class="simple">
+<dt>Use the fused multiply-add operator.</dt>
+<dd>
+<p>The fused multiply-add operator on the GPU has high performance and increases the accuracy of computations. No special flags or function calls are needed to gain this benefit in CUDA programs. Understand that a hardware fused multiply-add operation is not yet available on the CPU, which can cause differences in numerical results.</p>
+</dd>
+<dt>Compare results carefully.</dt>
+<dd>
+<p>Even in the strict world of <em>IEEE 754</em> operations, minor details such as organization of parentheses or thread counts can affect the final result. Take this into account when doing comparisons between implementations.</p>
+</dd>
+<dt>Know the capabilities of your GPU.</dt>
+<dd>
+<p>The numerical capabilities are encoded in the compute capability number of your GPU. Devices of compute capability 2.0 and later are capable of single and double precision arithmetic following the IEEE 754 standard, and have hardware units for performing fused multiply-add in both single and double precision.</p>
+</dd>
+<dt>Take advantage of the CUDA math library functions.</dt>
+<dd>
+<p>These functions are documented in the CUDA Programming Guide <a class="reference external" href="index.html#references__7">[7]</a>. The math library includes all the math functions listed in the C99 standard <a class="reference external" href="index.html#references__3">[3]</a> plus some additional useful functions. These functions have been tuned for a reasonable compromise between performance and accuracy.
+We constantly strive to improve the quality of our math library functionality. Please let us know about any functions that you require that we do not provide, or if the accuracy or performance of any of our functions does not meet your needs. Leave comments in the NVIDIA CUDA forum <a class="footnote-reference brackets" href="#fn1" id="id1">1</a> or join the Registered Developer Program <a class="footnote-reference brackets" href="#fn2" id="id2">2</a> and file a bug with your feedback.</p>
+</dd>
+</dl>
+</section>
+<section id="acknowledgements">
+<h1>
+<span class="section-number">7. </span>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline"></a>
+</h1>
+<p>This paper was authored by Nathan Whitehead and Alex Fit-Florea for NVIDIA Corporation.</p>
+<p>Thanks to Ujval Kapasi, Kurt Wall, Paul Sidenblad, Massimiliano Fatica, Everett Phillips, Norbert Juffa, and Will Ramey for their helpful comments and suggestions.</p>
+<p>Permission to make digital or hard copies of all or part of this work for any use is granted without fee provided that copies bear this notice and the full citation on the first page.</p>
+</section>
+<section id="references">
+<h1>
+<span class="section-number">8. </span>References<a class="headerlink" href="#references" title="Permalink to this headline"></a>
+</h1>
+<p>[1] ANSI/IEEE 754-1985. American National Standard - IEEE Standard for Binary Floating-Point Arithmetic. American National Standards Institute, Inc., New York, 1985.</p>
+<p>[2] IEEE 754-2008. IEEE 754–2008 Standard for Floating-Point Arithmetic. August 2008.</p>
+<p>[3] ISO/IEC 9899:1999(E). Programming languages - C. American National Standards Institute, Inc., New York, 1999.</p>
+<p>[4] Catherine Daramy-Loirat, David Defour, Florent de Dinechin, Matthieu Gallet, Nicolas Gast, and Jean-Michel Muller. CR-LIBM: A library of correctly rounded elementary functions in double-precision, February 2005.</p>
+<p>[5] David Goldberg. What every computer scientist should know about floating-point arithmetic. ACM Computing Surveys, March 1991. Edited reprint available at: <a class="reference external" href="http://download.oracle.com/docs/cd/E19957-01/806-3568/ncg_goldberg.html">http://download.oracle.com/docs/cd/E19957-01/806-3568/ncg_goldberg.html</a>.</p>
+<p>[6] David Monniaux. The pitfalls of verifying floating-point computations. ACM Transactions on Programming Languages and Systems, May 2008.</p>
+<p>[7] NVIDIA. CUDA Programming Guide Version 10.2, 2019.</p>
+</section>
+<section id="notices">
+<h1>
+<span class="section-number">9. </span>Notices<a class="headerlink" href="#notices" title="Permalink to this headline"></a>
+</h1>
+<section id="notice">
+<h2>
+<span class="section-number">9.1. </span>Notice<a class="headerlink" href="#notice" title="Permalink to this headline"></a>
+</h2>
+<p>This document is provided for information purposes only and shall not be regarded as a warranty of a certain functionality, condition, or quality of a product. NVIDIA Corporation (“NVIDIA”) makes no representations or warranties, expressed or implied, as to the accuracy or completeness of the information contained in this document and assumes no responsibility for any errors contained herein. NVIDIA shall have no liability for the consequences or use of such information or for any infringement of patents or other rights of third parties that may result from its use. This document is not a commitment to develop, release, or deliver any Material (defined below), code, or functionality.</p>
+<p>NVIDIA reserves the right to make corrections, modifications, enhancements, improvements, and any other changes to this document, at any time without notice.</p>
+<p>Customer should obtain the latest relevant information before placing orders and should verify that such information is current and complete.</p>
+<p>NVIDIA products are sold subject to the NVIDIA standard terms and conditions of sale supplied at the time of order acknowledgement, unless otherwise agreed in an individual sales agreement signed by authorized representatives of NVIDIA and customer (“Terms of Sale”). NVIDIA hereby expressly objects to applying any customer general terms and conditions with regards to the purchase of the NVIDIA product referenced in this document. No contractual obligations are formed either directly or indirectly by this document.</p>
+<p>NVIDIA products are not designed, authorized, or warranted to be suitable for use in medical, military, aircraft, space, or life support equipment, nor in applications where failure or malfunction of the NVIDIA product can reasonably be expected to result in personal injury, death, or property or environmental damage. NVIDIA accepts no liability for inclusion and/or use of NVIDIA products in such equipment or applications and therefore such inclusion and/or use is at customer’s own risk.</p>
+<p>NVIDIA makes no representation or warranty that products based on this document will be suitable for any specified use. Testing of all parameters of each product is not necessarily performed by NVIDIA. It is customer’s sole responsibility to evaluate and determine the applicability of any information contained in this document, ensure the product is suitable and fit for the application planned by customer, and perform the necessary testing for the application in order to avoid a default of the application or the product. Weaknesses in customer’s product designs may affect the quality and reliability of the NVIDIA product and may result in additional or different conditions and/or requirements beyond those contained in this document. NVIDIA accepts no liability related to any default, damage, costs, or problem which may be based on or attributable to: (i) the use of the NVIDIA product in any manner that is contrary to this document or (ii) customer product designs.</p>
+<p>No license, either expressed or implied, is granted under any NVIDIA patent right, copyright, or other NVIDIA intellectual property right under this document. Information published by NVIDIA regarding third-party products or services does not constitute a license from NVIDIA to use such products or services or a warranty or endorsement thereof. Use of such information may require a license from a third party under the patents or other intellectual property rights of the third party, or a license from NVIDIA under the patents or other intellectual property rights of NVIDIA.</p>
+<p>Reproduction of information in this document is permissible only if approved in advance by NVIDIA in writing, reproduced without alteration and in full compliance with all applicable export laws and regulations, and accompanied by all associated conditions, limitations, and notices.</p>
+<p>THIS DOCUMENT AND ALL NVIDIA DESIGN SPECIFICATIONS, REFERENCE BOARDS, FILES, DRAWINGS, DIAGNOSTICS, LISTS, AND OTHER DOCUMENTS (TOGETHER AND SEPARATELY, “MATERIALS”) ARE BEING PROVIDED “AS IS.” NVIDIA MAKES NO WARRANTIES, EXPRESSED, IMPLIED, STATUTORY, OR OTHERWISE WITH RESPECT TO THE MATERIALS, AND EXPRESSLY DISCLAIMS ALL IMPLIED WARRANTIES OF NONINFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A PARTICULAR PURPOSE. TO THE EXTENT NOT PROHIBITED BY LAW, IN NO EVENT WILL NVIDIA BE LIABLE FOR ANY DAMAGES, INCLUDING WITHOUT LIMITATION ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE, OR CONSEQUENTIAL DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY OF LIABILITY, ARISING OUT OF ANY USE OF THIS DOCUMENT, EVEN IF NVIDIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. Notwithstanding any damages that customer might incur for any reason whatsoever, NVIDIA’s aggregate and cumulative liability towards customer for the products described herein shall be limited in accordance with the Terms of Sale for the product.</p>
+</section>
+<section id="opencl">
+<h2>
+<span class="section-number">9.2. </span>OpenCL<a class="headerlink" href="#opencl" title="Permalink to this headline"></a>
+</h2>
+<p>OpenCL is a trademark of Apple Inc. used under license to the Khronos Group Inc.</p>
+</section>
+<section id="trademarks">
+<h2>
+<span class="section-number">9.3. </span>Trademarks<a class="headerlink" href="#trademarks" title="Permalink to this headline"></a>
+</h2>
+<p>NVIDIA and the NVIDIA logo are trademarks or registered trademarks of NVIDIA Corporation in the U.S. and other countries. Other company and product names may be trademarks of the respective companies with which they are associated.</p>
+<dl class="footnote brackets">
+<dt class="label" id="fn1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd>
+<p><a class="reference external" href="https://forums.nvidia.com/index.php?showforum=62">https://forums.nvidia.com/index.php?showforum=62</a></p>
+</dd>
+<dt class="label" id="fn2"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd>
+<p><a class="reference external" href="http://developer.nvidia.com/join-nvidia-registered-developer-program">https://developer.nvidia.com/</a><a class="reference external" href="http://developer.nvidia.com/join-nvidia-registered-developer-program">join-nvidia-registered-developer-program</a></p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr>
+
+  <div role="contentinfo">
+<img src="../_static/NVIDIA-LogoBlack.svg" class="only-light">
+<img src="../_static/NVIDIA-LogoWhite.svg" class="only-dark">
+
+<p>
+  Copyright © 2011-2026, NVIDIA Corporation &amp; affiliates. All rights reserved.
+</p>
+
+    <p>
+      <span class="lastupdated">Last updated on Oct 12, 2026.
+      </span></p>
+
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

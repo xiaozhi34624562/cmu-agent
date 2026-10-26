@@ -136,3 +136,8 @@
 - [Code World Models](references/041_Code_World_Models.pdf)
   - Source: https://arxiv.org/abs/2405.15383
 
+<!-- BEGIN LOCAL LEARNING -->
+## 中文学习讲解
+
+- [完整课程讲解](coding_agent_lecture06_integrated_notes.md)
+<!-- END LOCAL LEARNING -->

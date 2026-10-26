@@ -1,0 +1,92 @@
+[
+  {
+    "url": "https://simonwillison.net/guides/agentic-engineering-patterns/what-is-agentic-engineering/",
+    "downloaded_at": "2026-10-26",
+    "sha256": "b7a5a9911d77ea201c7df0df48fcfdc98fce7940c5ffe77aab165081c029ca67",
+    "characters": 4823,
+    "path": "references/001_what-is-agentic-engineering.html",
+    "title": "001_what-is-agentic-engineering",
+    "status": "saved"
+  },
+  {
+    "url": "https://simonwillison.net/guides/agentic-engineering-patterns/first-run-the-tests/",
+    "downloaded_at": "2026-10-26",
+    "sha256": "aaa282fff92ee1054265670778b3167ceb835873b40317067790125e2d0d1f74",
+    "characters": 3215,
+    "path": "references/002_first-run-the-tests.html",
+    "title": "002_first-run-the-tests",
+    "status": "saved"
+  },
+  {
+    "url": "https://simonwillison.net/guides/agentic-engineering-patterns/red-green-tdd/",
+    "downloaded_at": "2026-10-26",
+    "sha256": "5cc9b0695ccafa210ae83e5fde274f83a126b1241b4047458e7d5ab0cbe8f513",
+    "characters": 2871,
+    "path": "references/003_red-green-tdd.html",
+    "title": "003_red-green-tdd",
+    "status": "saved"
+  },
+  {
+    "url": "https://simonwillison.net/guides/agentic-engineering-patterns/agentic-manual-testing/",
+    "downloaded_at": "2026-10-26",
+    "sha256": "b91e0016d18571e83634ca4835b4a94f36c7b58c4d094e590103611ba8476aa9",
+    "characters": 8388,
+    "path": "references/004_agentic-manual-testing.html",
+    "title": "004_agentic-manual-testing",
+    "status": "saved"
+  },
+  {
+    "url": "https://simonwillison.net/guides/agentic-engineering-patterns/code-is-cheap/",
+    "downloaded_at": "2026-10-26",
+    "sha256": "c639ca1a6fa81a1b6033244a124ebb0b85e209becb03f9088267379e56cf11ec",
+    "characters": 5196,
+    "path": "references/005_code-is-cheap.html",
+    "title": "005_code-is-cheap",
+    "status": "saved"
+  },
+  {
+    "url": "https://simonwillison.net/guides/agentic-engineering-patterns/anti-patterns/",
+    "downloaded_at": "2026-10-26",
+    "sha256": "e45a6d29c1f2efaa0798c8ce3c4781e9440a8ae3a25c17c4695b9debde13d6d5",
+    "characters": 3286,
+    "path": "references/006_anti-patterns.html",
+    "title": "006_anti-patterns",
+    "status": "saved"
+  },
+  {
+    "url": "https://simonwillison.net/guides/agentic-engineering-patterns/linear-walkthroughs/",
+    "downloaded_at": "2026-10-26",
+    "sha256": "20b61b147dc4f8bc814ad1f530d123eb5ac107be5c9a96ed6ed25e577bf9fa76",
+    "characters": 4259,
+    "path": "references/007_linear-walkthroughs.html",
+    "title": "007_linear-walkthroughs",
+    "status": "saved"
+  },
+  {
+    "url": "https://simonwillison.net/guides/agentic-engineering-patterns/interactive-explanations/",
+    "downloaded_at": "2026-10-26",
+    "sha256": "aba89e1b4abb29eb1d36e82791535ba4dedd8d61a462a80865706dd26e692e26",
+    "characters": 4974,
+    "path": "references/008_interactive-explanations.html",
+    "title": "008_interactive-explanations",
+    "status": "saved"
+  },
+  {
+    "url": "https://simonwillison.net/guides/agentic-engineering-patterns/hoard-things-you-know-how-to-do/",
+    "downloaded_at": "2026-10-26",
+    "sha256": "9771e7bb3c2492aae0ba240e266b8832d8897756dfa2d26d3239a93ea16af522",
+    "characters": 10962,
+    "path": "references/009_hoard-things-you-know-how-to-do.html",
+    "title": "009_hoard-things-you-know-how-to-do",
+    "status": "saved"
+  },
+  {
+    "url": "https://simonwillison.net/guides/agentic-engineering-patterns/subagents/",
+    "downloaded_at": "2026-10-26",
+    "sha256": "49f384081093a27c5a5c9761503aae59c1eeb1dafeae8522a14ff0a812b89541",
+    "characters": 6699,
+    "path": "references/010_subagents.html",
+    "title": "010_subagents",
+    "status": "saved"
+  }
+]

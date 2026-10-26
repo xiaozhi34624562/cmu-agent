@@ -3,7 +3,7 @@
 ## 以 Lecture-07 为主线的论文串讲与工程实践笔记
 
 **面向读者**：具备 LLM 应用开发经验，希望进一步理解 Computer Use Agent 的建模、训练、评测与工程实现的开发工程师。  
-**主要材料**：`lecture-07-computer-use-agents.pdf`，以及本次提供的 WebShop、ReAct、Mind2Web、WebArena、VisualWebArena、WebVoyager、OSWorld、ScreenSpot-Pro、OpenCUA、MolmoWeb、CUA-Gym、Gym-Anything、MACU 论文。  
+**主要材料**：[lecture-07-computer-use-agents.pdf](lecture-07-computer-use-agents.pdf)，以及本课归档的 WebShop、ReAct、Mind2Web、WebArena、VisualWebArena、WebVoyager、OSWorld、ScreenSpot-Pro、OpenCUA、MolmoWeb、CUA-Gym、Gym-Anything、MACU 论文。  
 **整理口径**：保留讲义“定义 → 评测 → 建模 → 训练 → 剩余挑战”的结构，将相关论文的方法、实验、局限与工程启示放到同一条问题链上。
 
 > 本文的中心问题不是“怎样让模型点击屏幕”，而是：**怎样让一个只看到部分环境信息的模型，持续理解任务、正确改变软件状态，并提供足够证据说明工作已经完成。**
@@ -16,7 +16,7 @@
 
 “**教学推导**”表示由定义或方法推演出的解释；“**工程建议**”表示前文讨论整理出的实现建议，不应当作论文已验证的生产方案。仅出现在讲义、但没有提供对应原论文的工作，只按讲义层次介绍，不补写未经材料支持的技术细节。
 
-**附件校核（2026-09-22 更新）**：`001_MiniWoB.pdf` 已替换为介绍 MiniWoB 的原论文 *World of Bits: An Open-Domain Platform for Web-Based Agents*（ICML 2017），来源清单同步修正。正文对 MiniWoB 仍以历史定位为主，不声称复现其方法与实验。见[材料校核说明](#source-mismatch)。
+**附件校核（2026-09-22 更新）**：[001_MiniWoB.pdf](references/001_MiniWoB.pdf) 已替换为介绍 MiniWoB 的原论文 *World of Bits: An Open-Domain Platform for Web-Based Agents*（ICML 2017），来源清单同步修正。正文对 MiniWoB 仍以历史定位为主，不声称复现其方法与实验。见[材料校核说明](#source-mismatch)。
 
 ---
 
@@ -399,6 +399,21 @@ Lecture-07 第41页给出一个行程规划示例：8项条件完成7项，平�
 
 讲义还介绍了 Online-Mind2Web、WindowsAgentArena、Odysseys、OSWorld 2.0，以及移动端相关评测。本文没有获得这些工作的全部对应原论文，因此只保留它们在课程中的定位：在线环境漂移、Windows 环境规模化、长链路约束与更复杂的个人工作状态，不从讲义条目扩写完整技术方案。[L07，PDF 第18–19、32、37、40–45页及附录](#s-l07)
 
+### 4.10.1 讲义附录补充的移动端、企业与个人环境
+
+讲义附录还展示几种不同的任务组织方式；这里以讲义为证据说明差别，不声称已逐篇核验它们的原论文：
+
+| 类型 | 讲义例子 | 它增加的评测维度 |
+|---|---|---|
+| 移动离线示范 | AITW、AndroidControl | 大量动作匹配；后者用高层与低层指令分开研究规划和控制 |
+| 企业参数化任务 | WorkArena、WorkArena++ | 模板生成多实例，并把原子技能组合成长工作流 |
+| 移动状态奖励 | AndroidWorld | 按任务家族改变参数，以系统状态判断结果，区别于静态动作匹配 |
+| 移动跨应用与工具 | MobileWorld | GUI、用户澄清与结构化工具共同参与任务 |
+| 个人数字环境 | MyPCBench | 同一身份的登录应用、邮件和历史互相关联，不能把各应用视为独立空世界 |
+| 混合轨迹审计 | WeaveBench | GUI 与 CLI 之间切换，并核查是否用不合法捷径完成结果 |
+
+这些维度会改变输入权限、任务实例数的含义、可重置性和验证方式；不能将“模板数”“实例数”“示范条数”直接放在同一列比较规模。[L07，PDF 第86–94页](#s-l07)
+
 ### 4.11 阅读任何分数时，都要附上实验条件
 
 最少需要一起记录：**任务集合和版本、观测接口、动作接口、基础模型与执行框架、步数和成本预算、重复次数，以及验证方式。**
@@ -572,6 +587,12 @@ Lecture-07 第47–56页逐步构造目标、截图与动作交错的历史，�
 
 OpenCUA 的价值，正在于把这些细节拆开做实验。
 
+### 6.1.1 视觉表示与动作协议不是同一种 Token
+
+讲义第56页区分：文本通过 tokenizer 变成词表 ID 与嵌入，截图通过视觉编码器与投影层产生连续视觉嵌入。把二者交错输入因果 Transformer，不表示图像必须先被翻译成文字，也不表示每个视觉 token 是某个词表 ID。视觉 token 数受分辨率、裁剪和编码器影响，不能将一张图固定折算成通用常数。[L07，PDF 第56页](#s-l07)
+
+第57页强调动作接口也不同：Python/PyAutoGUI 代码、原生计算机工具调用、函数调用与应用定义的 GUI schema 并存；有的输出坐标采用归一化尺度，有的使用像素，且一轮可含单个或多个动作。这张表是2026年9月讲义中的接口示意，不是当前 SDK 接入说明。实际接入应把**模型输出解析、坐标转换、动作执行和结果记录**做成可检查的适配层，并按目标版本核对，而不是只替换模型名称。[L07，PDF 第57页](#s-l07)
+
 ### 6.2 OpenCUA 不只是一个模型，而是一套数据与训练方法
 
 OpenCUA 包含人类操作采集工具、AgentNet 数据、轨迹处理与反思合成流程，以及训练后的模型。采集信息包括视频、鼠标键盘事件和可访问性树；执行策略则采用以截图为核心的视觉观察。[OpenCUA，Figure 2、§2，PDF 第2–4页](#s-oc)
@@ -641,7 +662,7 @@ $$
 \mathcal L_{SFT}=-\sum_t\log P_\theta(z_t,a_t\mid g,h_t),
 $$
 
-其中 $z_t$ 表示训练样本中的推理说明，$a_t$ 表示动作。这是帮助理解的教学表达，不代表所有模型和训练阶段采用完全相同的损失或格式。
+其中 $z_t$ 表示训练样本中的推理说明（L1 时为空），$a_t$ 表示动作；求和仅覆盖作为目标的助手输出，不要求模型复述环境截图或工具返回。这是帮助理解的教学表达，不代表所有模型和训练阶段采用完全相同的损失或格式。
 
 关键不是公式本身，而是条件输入和标签是否因果对齐、与任务相关、可被部署模型实际观察到。
 
@@ -875,7 +896,15 @@ $$
 \hat A_i=\frac{r_i-\mu_r}{\sigma_r}.
 $$
 
-论文采用 GSPO，并使用序列级重要性比率、裁剪与参考策略约束。该比率由新旧策略对序列概率的比值进行长度归一化，而不是简单将每条成功轨迹全部照抄。[CUA-Gym，式(1)–(2)，PDF 第6页](#s-cg)
+论文采用 GSPO，并使用序列级重要性比率、裁剪与参考策略约束。其比率为
+
+$$
+\rho_i=\left(\frac{\pi_\theta(\tau_i\mid t,s)}{\pi_{\theta_{old}}(\tau_i\mid t,s)}\right)^{1/|\tau_i|},
+$$
+
+用它乘上组内优势，并取未裁剪项与裁剪项的较小者，再加参考策略 KL 约束。这是对序列概率比进行长度归一化，不能与逐 token PPO 比率直接互换；也不是把每条成功轨迹全部照抄。[CUA-Gym，式(1)–(2)，PDF 第6页](#s-cg)
+
+**实现边界（工程说明）**：奖励、旧策略概率、参考策略与计算好的组内优势应在策略更新中作为固定量；梯度进入当前策略概率及相应 KL 项。若同组奖励完全相同，$\sigma_r=0$，上式不能直接相除；实现需明确稳定分母或跳过无差异组等规则，不能把未定义值当作有效优势。论文式(1)–(2)本身没有展开这一数值保护。
 
 这组公式的直观意义是：比较同一任务不同尝试的相对表现，在限制更新幅度的情况下改变策略。真正决定反馈是否有用的，仍然是任务可执行性、奖励可信度、初始化能力和样本难度。
 
@@ -884,6 +913,8 @@ $$
 CUA-Gym 的 trajectory slicing 为一条 rollout 构造多个训练样本。保留任务前缀与较早的助手文本，把过时截图折叠为确定性占位符，同时保留近期完整多模态内容。[CUA-Gym，Figure 4，PDF 第5–6页](#s-cg)
 
 这样既能在有限上下文预算下监督后半段动作，又能保留解释这些动作所需的历史；稳定前缀还便于计算策略概率时复用 KV cache。
+
+附录进一步说明：prompt 部分以及 user/tool 观察均不计策略损失，只有 response 部分中符合有效性条件的 assistant 消息参与；缺少缓存概率的旧策略消息和单轮超过 10 次工具调用的异常输出被屏蔽。每个切片继承完整 episode 奖励，不把奖励均分成局部回报；仍超上下文的 dummy slice 全部屏蔽损失。这些规则说明“切成多份”不等于新增独立任务，也不等于已解决动作级信用分配。[CUA-Gym，附录 C.1.2，PDF 第28–29页](#s-cg)
 
 OpenCUA研究“什么历史表示有利于决策”；CUA-Gym进一步研究“怎样在成本可控的情况下对长历史进行训练”。
 
@@ -896,7 +927,7 @@ OpenCUA研究“什么历史表示有利于决策”；CUA-Gym进一步研究“
 | Qwen3.5-35B-A3B → CUA-Gym-A3B | 54.5% → 62.1% | 40.8% → 44.5% |
 | Qwen3.5-397B-A17B → CUA-Gym-A17B | 62.2% → 72.6% | 54.0% → 56.0% |
 
-来源：[CUA-Gym，Figure 5、主结果，PDF 第6页](#s-cg)。这些是论文给定初始化与评测设置中的结果。
+来源：[CUA-Gym，Figure 5、主结果，PDF 第6页](#s-cg)。这些是论文给定初始化与评测设置中的结果。图5(a)将对照明确称为 **SFT-initialized base**；因此应把表中的箭头理解为论文所用初始化到 RL 后的比较，不能当作完全未经 warm-up 的原始 Qwen 权重到最终系统的净增益。
 
 但总体改善不代表每个应用都改善。论文的小模型分领域结果中，Chrome、Thunderbird、VLC 等出现退化。因此，不能用一个总成功率替代目标业务应用的验收。
 
@@ -1072,7 +1103,7 @@ $$
 \widehat{\mathrm{pass@}k}=1-\frac{\binom{m-c}{k}}{\binom{m}{k}}.
 $$
 
-其成功标签和结果选择使用相应评判机制，因此还会受到 judge 质量影响。[MolmoWeb，§4.3，PDF 第10页](#s-mw)
+这里要求 $1\leq k\leq m$；当 $m-c<k$ 时失败组合数按0计。其成功标签和结果选择使用相应评判机制，因此还会受到 judge 质量影响。[MolmoWeb，§4.3，PDF 第10页](#s-mw)
 
 必须区分三个问题：是否曾经生成正确结果，能否识别哪个结果正确，以及选择过程是否引入额外风险或成本。
 
@@ -1362,7 +1393,7 @@ $$
 
 建议将用户任务授权保存在独立的任务契约中，将外部内容作为带来源的材料传入。高风险动作由动作网关根据策略与实际授权决定是否允许，而不是仅依赖模型输出“低风险”。
 
-这些措施是防御设计，不构成对提示注入或其他风险的完整消除保证。本次材料没有提供针对全部安全攻击的统一已验证方案。
+这些措施是防御设计，不构成对提示注入或其他风险的完整消除保证。本课材料没有提供针对全部安全攻击的统一已验证方案。
 
 ### 11.12 并行读、受控写、证据交接
 
@@ -1590,6 +1621,17 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 
 理解这些问题，比记住某个模型在某个榜单的百分比更能检验是否掌握了这门课。
 
+### A.4 六题参考答案
+
+1. Mind2Web 在人类示范经过的固定状态上独立预测动作，并给真实历史；在线 Agent 要面对自己此前动作产生的状态和误差传播。全步骤离线匹配成功不等于实际 rollout 完成。
+2. SoM 的结果包含上游元素提取、编号与执行映射。它可减少模型直接预测坐标的负担，不能把整套系统收益全部记到纯像素 grounding。
+3. 当前 L2 提供反思与规划；历史 L1 加适量截图更紧凑，减少重复、无关描述和幻觉。这个选择有特定实验条件，不是所有模型的固定最优值。
+4. 两个端点只证明两个样本上的敏感方向。只做一半、破坏其他字段、另一种合法完成路径等状态仍可能被错判，需用反例测试验证器。
+5. 子任务存在依赖，Manager 调用、交接与重规划也耗时；并行只能覆盖可并行部分。主表的某些任务收益以更长耗时换来，不能只报告成功率。
+6. 步数上限只约束执行者的一类资源；审计模型还增加输入截图、推理 token 和调用成本。比较需要同时报告实际执行步数、审计开销和总成本。
+
+
+
 ---
 
 <a id="appendix-b"></a>
@@ -1625,12 +1667,12 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="appendix-c"></a>
 ## 附录 C：材料索引、版本与附件校核
 
-以下条目对应本次提供的文件。版本信息记录的是附件标注，用于定位本文引用，不表示已对公开发布状态进行额外验证。文中的普通链接指向本文件内部索引，不依赖原附件在本地的目录位置。
+以下条目对应本课归档文件。版本信息记录的是归档文件标注，用于定位本文引用，不表示已对公开发布状态进行额外验证。正文引用跳到内部索引，各索引条目提供真实文件名与本地链接。
 
 <a id="s-l07"></a>
 ### [L07] Lecture-07：Computer Use Agents
 
-- 文件：`lecture-07-computer-use-agents.pdf`，94页。
+- 文件：[lecture-07-computer-use-agents.pdf](lecture-07-computer-use-agents.pdf)，94页。
 - 讲义标注：JY Koh，CMU 11-768: AI Agents，2026-09-15。
 - 主线：CUA 定义与交互、评测、视觉历史建模、SFT/RL、训练环境、速度与成本、用户控制、多 Agent。
 - 本文角色：章节组织的主依据；对于未提供原论文的条目，仅使用讲义可支持的概括。
@@ -1638,7 +1680,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-ws"></a>
 ### [WS] WebShop
 
-- 文件：`002_WebShop.pdf`，28页。
+- 文件：[002_WebShop.pdf](references/002_WebShop.pdf)，28页。
 - 标题：*WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents*。
 - 版本标注：arXiv:2207.01206v4，2023-02-08；NeurIPS 2022。
 - 重点：语义动作与简化观察、组合需求奖励、IL/RL 基线、探索与选择分析。
@@ -1646,7 +1688,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-ra"></a>
 ### [RA] ReAct
 
-- 文件：`003_ReAct.pdf`，33页。
+- 文件：[003_ReAct.pdf](references/003_ReAct.pdf)，33页。
 - 标题：*ReAct: Synergizing Reasoning and Acting in Language Models*。
 - 版本标注：arXiv:2210.03629v3，2023-03-10；ICLR 2023。
 - 重点：语言推理与环境动作的协同、稀疏推理、任务分解、进度与异常处理。
@@ -1654,7 +1696,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-m2w"></a>
 ### [M2W] Mind2Web
 
-- 文件：`004_Mind2Web.pdf`，24页。
+- 文件：[004_Mind2Web.pdf](references/004_Mind2Web.pdf)，24页。
 - 标题：*Mind2Web: Towards a Generalist Agent for the Web*。
 - 版本标注：arXiv:2306.06070v3，2023-12-09；NeurIPS 2023 Datasets and Benchmarks。
 - 重点：真实网站的离线任务数据、三层泛化划分、MINDACT 候选检索与动作预测。
@@ -1662,7 +1704,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-wa"></a>
 ### [WA] WebArena
 
-- 文件：`001_WebArena.pdf`，22页。
+- 文件：[001_WebArena.pdf](readings/001_WebArena.pdf)，22页。
 - 标题：*WebArena: A Realistic Web Environment for Building Autonomous Agents*。
 - 版本标注：arXiv:2307.13854v4，2024-04-16；ICLR 2024。
 - 重点：自托管网页、功能正确性、多种验证方式、不可完成任务与停止判断。
@@ -1670,7 +1712,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-vwa"></a>
 ### [VWA] VisualWebArena
 
-- 文件：`002_VisualWebArena.pdf`，25页。
+- 文件：[002_VisualWebArena.pdf](readings/002_VisualWebArena.pdf)，25页。
 - 标题：*VisualWebArena: Evaluating Multimodal Agents on Realistic Visually Grounded Web Tasks*。
 - 版本标注：arXiv:2401.13649v2，2024-06-06。
 - 重点：视觉必需任务、图片输入、SoM、多模态与文本辅助输入的对照。
@@ -1678,7 +1720,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-wv"></a>
 ### [WV] WebVoyager
 
-- 文件：`005_WebVoyager.pdf`，27页。
+- 文件：[005_WebVoyager.pdf](references/005_WebVoyager.pdf)，27页。
 - 标题：*WebVoyager: Building an End-to-End Web Agent with Large Multimodal Models*。
 - 版本标注：arXiv:2401.13919v4，2024-06-06。
 - 重点：真实在线网页执行、截图与交互元素、轨迹裁剪、人工评价与 VLM 评价一致性。
@@ -1686,7 +1728,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-os"></a>
 ### [OS] OSWorld
 
-- 文件：`003_OSWorld.pdf`，51页。
+- 文件：[003_OSWorld.pdf](readings/003_OSWorld.pdf)，51页。
 - 标题：*OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments*。
 - 版本标注：arXiv:2404.07972v2，2024-05-30。
 - 重点：完整桌面环境、任务初始化、跨应用工作流、动作空间、应用特定结果检查。
@@ -1695,7 +1737,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-ssp"></a>
 ### [SSP] ScreenSpot-Pro
 
-- 文件：`006_ScreenSpot-Pro.pdf`，17页。
+- 文件：[006_ScreenSpot-Pro.pdf](references/006_ScreenSpot-Pro.pdf)，17页。
 - 标题：*ScreenSpot-Pro: GUI Grounding for Professional High-Resolution Computer Use*。
 - 版本标注：arXiv:2504.07981v1，2025-04-04；文内另有原始上传日期说明。
 - 重点：高分辨率专业界面、细小目标、ReGround、ScreenSeekeR 与递归区域搜索。
@@ -1704,7 +1746,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-oc"></a>
 ### [OC] OpenCUA
 
-- 文件：`004_OpenCUA.pdf`，44页。
+- 文件：[004_OpenCUA.pdf](readings/004_OpenCUA.pdf)，44页。
 - 标题：*OpenCUA: Open Foundations for Computer-Use Agents*。
 - 版本标注：arXiv:2508.09123v3，2025-10-04；NeurIPS 2025。
 - 重点：AgentNet、动作离散化、状态—动作对齐、反思轨迹、L1/L2/L3、历史表示与训练数据混合。
@@ -1713,7 +1755,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-mw"></a>
 ### [MW] MolmoWeb
 
-- 文件：`008_MolmoWeb.pdf`，26页。
+- 文件：[008_MolmoWeb.pdf](references/008_MolmoWeb.pdf)，26页。
 - 标题：*MolmoWeb: Open Visual Web Agent and Open Data for the Open Web*。
 - 版本标注：arXiv:2604.08516v1，2026-04-09。
 - 重点：AxTree 教师与视觉学生、多来源轨迹、原子技能、感知数据、人类与合成数据对照、推理计算扩展。
@@ -1722,7 +1764,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-cg"></a>
 ### [CG] CUA-Gym
 
-- 文件：`005_CUA-Gym.pdf`，82页。
+- 文件：[005_CUA-Gym.pdf](readings/005_CUA-Gym.pdf)，82页。
 - 标题：*CUA-Gym: Scaling Verifiable Training Environments and Tasks for Computer-Use Agents*。
 - 版本标注：arXiv:2605.25624v2，2026-06-08；封面日期2026-06-09。
 - 重点：状态与奖励联合生成、进程级信息隔离、可注入 mock 环境、GSPO、长轨迹切片、动作批处理。
@@ -1731,7 +1773,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-ga"></a>
 ### [GA] Gym-Anything
 
-- 文件：`007_Gym-Anything.pdf`，69页。
+- 文件：[007_Gym-Anything.pdf](references/007_Gym-Anything.pdf)，69页。
 - 标题：*Gym-Anything: Turn any Software into an Agent Environment*。
 - 版本标注：arXiv:2604.06126v1，2026-04-07。
 - 重点：真实软件环境构建、三阶段脚本、创建—审计循环、共享构建经验、任务扩增、checklist 验证与 TTA。
@@ -1740,7 +1782,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-mac"></a>
 ### [MAC] Multi-Agent Computer Use
 
-- 文件：`006_Multi-Agent_Computer_Use_MACU.pdf`，42页。
+- 文件：[006_Multi-Agent_Computer_Use_MACU.pdf](readings/006_Multi-Agent_Computer_Use_MACU.pdf)，42页。
 - 标题：*Multi-Agent Computer Use*。
 - 版本标注：arXiv:2606.01533v1，2026-06-01。
 - 作者：Jing Yu Koh、Ruslan Salakhutdinov、Daniel Fried。

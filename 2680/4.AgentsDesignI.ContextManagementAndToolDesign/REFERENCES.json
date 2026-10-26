@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Repository map",
+    "url": "https://aider.chat/docs/repomap.html",
+    "path": "references/016_Aider_Repository_Map.html",
+    "status": "saved",
+    "retrieved_at": "2026-10-26",
+    "sha256": "77708d7004b0755018668f7db831cb09b7cb5883da4e46d90bd65fe5683b07f0"
+  },
+  {
+    "title": "Building a better repository map with tree sitter",
+    "url": "https://aider.chat/2023/10/22/repomap.html",
+    "path": "references/017_Aider_Repository_Map.html",
+    "status": "saved",
+    "retrieved_at": "2026-10-26",
+    "sha256": "312c556eee765b5843e1017be7d7f568ecbe6e9bb048e5a93337f296bedb2397"
+  }
+]

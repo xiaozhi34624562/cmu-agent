@@ -2,8 +2,8 @@
 title: "Lecture 02｜Agent Use：从模型调用到可验证的工作系统"
 subtitle: "讲义、九份参考资料与工程实践的整合讲义"
 language: zh-CN
-version: "1.0"
-date: "2026-10-13"
+version: "1.1"
+date: "2026-10-26"
 ---
 
 # Lecture 02｜Agent Use：从模型调用到可验证的工作系统
@@ -12,14 +12,15 @@ date: "2026-10-13"
 
 **面向读者：**具有 Java／Python 或其他软件开发经验的 LLM 开发工程师。  
 **主线：**Agent Loop → Context 与 Memory → Tools 与 Skills → MCP 与代码执行 → Hooks 与权限 → 使用流程、评测和能力积累。  
-**主要材料：**`2_agent_use_1.pdf`，以及编号 001—009 的九份参考资料。
+**主要材料：**[2_agent_use_1.pdf](2_agent_use_1.pdf)，以及编号 001—009 的九份阅读材料；来源总入口见 [SOURCES.md](SOURCES.md)。
+
+**配套阅读：**[Coding Agent 工程案例讲解](coding_agent_integrated_guide.md)进一步展开队列未知值、重试与交付案例。
 
 ## 阅读说明与证据边界
 
-本文整合了前面的两轮讲解，保留讲义的概念体系，同时把参考文章中的实例、工程机制、实验结果和不同观点嵌入相关章节，而不是把九篇材料逐篇附在讲义之后。
+本文以课程讲义的概念体系为主线，同时把参考文章中的实例、工程机制、实验结果和不同观点嵌入相关章节，而不是把九篇材料逐篇附在讲义之后。
 
 主讲义的原名是 *Agent From a User’s Perspective I: How Claude Code Works*，属于 *Modern AI Systems: Agents and System Optimizations*，署名 Juncheng Yang，页面标识为 Harvard MaDSys。本文是学习笔记，不是该课程的官方教材，也不将其误标为 CMU 课程。[L02，p.1](#ref-l02)
-<!-- 原始文件证据：fileciteturn14file0L1-L8 -->
 
 全文采用三种表达层次：
 
@@ -27,9 +28,9 @@ date: "2026-10-13"
 - **综合解释：**把多份材料放在一起解释其关系，不把综合解释冒充任何一篇论文的原结论。
 - **工程推导／教学示例：**根据前文讨论形成的设计建议、公式、模板和场景迁移，不是这些材料已经验证的实验成果。
 
-**版本说明。**Claude Code 命令、Hook 字段、加载限制、模型窗口与协议版本按上传材料的快照理解；本文不把某个快照中的行为写成所有版本通用的保证。002 的上传文件是目录页，不包含全部章节正文；本文涉及的九个章节作为明确标注的延伸阅读，已核对原作者网页，见文末 [R02 延伸章节索引](#ref-r02-extensions)。没有把目录页当成章节正文的证据。
+**版本说明。**Claude Code 命令、Hook 字段、加载限制、模型窗口与协议版本按归档材料的快照理解；本文不把某个快照中的行为写成所有版本通用的保证。002 的归档文件是目录页，不包含全部章节正文；本文涉及的九个章节作为明确标注的延伸阅读，已核对原作者网页，见文末 [R02 延伸章节索引](#ref-r02-extensions)。没有把目录页当成章节正文的证据。
 
-**页码说明。**讲义页码均指 PDF 实际页码。例如 PDF 第 30 页右下角标为 34，第 38 页标为 42。论文使用其 PDF 实际页码和章节编号。文中的本地文件名用于对照原始材料，不表示这些原始文件随本 Markdown 一并打包。
+**页码说明。**讲义页码均指 PDF 实际页码。例如 PDF 第 30 页右下角标为 34，第 38 页标为 42。论文使用其 PDF 实际页码和章节编号。文中的本地链接指向本课归档；网页快照的图片和交互功能可能仍需联网。
 
 ---
 
@@ -68,7 +69,7 @@ date: "2026-10-13"
 | 编号 | 材料 | 本文重点使用的贡献 | 阅读时需要保留的边界 |
 |---|---|---|---|
 | R01 | Best practices for Claude Code | 验证标准、先探索再计划、规格文档、会话管理、独立审查 | 是产品使用与工程建议，不是每一条都经过独立控制实验 |
-| R02 | Agentic Engineering Patterns | 工程师责任、测试先行、实际运行、证据式讲解、经验资产积累 | 上传的是目录；章节正文单独列为延伸阅读 |
+| R02 | Agentic Engineering Patterns | 工程师责任、测试先行、实际运行、证据式讲解、经验资产积累 | 归档的是目录；章节正文单独列为延伸阅读 |
 | R03 | Equipping agents for the real world with Agent Skills | Skill 三层加载、文件与脚本组合、从评测开始建设技能 | 格式与机制不会自动保证技能内容正确 |
 | R04 | Code execution with MCP | 工具按需发现、中间数据不必经过模型、程序化控制流 | 节省数字来自特定示例；代码执行另有基础设施成本 |
 | R05 | How skills and MCPs actually work | 真实队列语义、虚拟 Shell、Skill 加载器、data brain、单 Agent 多 Skills | 是 incident.io 的实现经验，不能推广为所有 Agent 的唯一架构 |
@@ -105,7 +106,6 @@ R05 关心知识与上下文不必要地被分散；R07 关心规划、执行和
 ### 2.1 一条用户消息，为什么会触发很多次模型调用
 
 讲义第 6 页明确指出：一次用户请求通常展开为多次模型推理与工具执行，而不是一次 API 请求、一次回答。第 10 页以测试失败修复说明了 `pytest → 读取文件 → 搜索 → 编辑 → pytest` 的交替过程。[L02，p.6、p.10](#ref-l02)
-<!-- 原始文件证据：fileciteturn14file0L74-L89 fileciteturn14file0L155-L169 -->
 
 以“修复过期会话仍被接受的问题”为教学例子：
 
@@ -136,7 +136,6 @@ Harness 执行获准的修改
 ### 2.2 模型提出动作，Harness 执行动作
 
 模型输出 `Bash("pytest")`，并不等于测试已经运行。查找实现、校验输入、授权、启动进程和收集结果，发生在运行时。R05 用天气查询展示了相同机制：工具结果被追加到消息线程，再次提供给模型。[L02，p.9](#ref-l02)；[R05，LLM 101](#ref-r05)
-<!-- 原始文件证据：fileciteturn14file0L135-L150 fileciteturn14file5L298-L338 -->
 
 | 问题 | 主要责任层 |
 |---|---|
@@ -154,7 +153,6 @@ Harness 执行获准的修改
 R05 用“模型不再要求调用工具”解释一个最小循环的停止方式。这个解释有助于理解机制，但它不是生产系统的完整验收条件。[R05，Agents are a loop](#ref-r05)
 
 R09 因而在 Agent 结束后检查仓库，而不是接受“已完成”的文字：分支存在吗？补丁真的进入文件了吗？PR 存在吗？文件数报告正确吗？每轮前恢复初始仓库状态，避免上一轮的残留被算作本轮成果。[R09，§2.1—2.2，p.4](#ref-r09)
-<!-- 原始文件证据：fileciteturn14file9L171-L191 -->
 
 **工程推导：**将结束状态明确区分为“已验证完成”“等待审批”“环境阻塞”“部分完成”“验证未通过”“预算耗尽”。不要只用一个 `done=true` 混合这些情况。
 
@@ -168,7 +166,6 @@ R09 因而在 Agent 结束后检查仓库，而不是接受“已完成”的文
 ```
 
 R02 的 *What is agentic engineering?* 强调，工程师仍需选择问题、配置工具、明确需求并验证结果；它把“辅助开发软件”与放弃检查代码的工作方式区分开来。[R02a](#ref-r02a)
-<!-- 延伸阅读证据：citeturn901974view0 -->
 
 因此，Agent Use 不是单纯写出更长的 Prompt，而是管理一个能获得信息、采取行动、接受检验并积累经验的工作过程。
 
@@ -250,7 +247,6 @@ R05 说明，连续工作的状态由消息线程和外围系统承载，而不�
 ### 3.6 CLAUDE.md 与 Auto Memory 的职责
 
 讲义区分了人工维护的 `CLAUDE.md` 与 Claude 编写的 Auto Memory：前者用于标准、规则、架构与工作约定；后者用于偏好、纠正、项目经验和参考信息。[L02，p.18—19、p.23](#ref-l02)
-<!-- 原始文件证据：fileciteturn14file0L323-L337 fileciteturn14file0L409-L422 -->
 
 讲义快照还列出组织、用户、项目和本地指令的不同作用域。项目规则可以共享，本地偏好则不一定应该进入团队版本库。不要把加载顺序等同于“后写的文字可以覆盖组织权限”：文字说明和执行权限仍是不同层。[L02，p.20](#ref-l02)
 
@@ -281,7 +277,6 @@ Auto Memory 的 `MEMORY.md` 则承担索引功能，主题文件按需读取。�
 ```
 
 R01 建议避免混杂无关任务的长会话，并在反复走错后，把已经学到的事实变成更清晰的起始说明。其重点不是机械地“失败两次就清空”，而是避免把全部错误路线继续当作执行上下文。[R01，Manage your session；Avoid common failure patterns](#ref-r01)
-<!-- 原始文件证据：fileciteturn12file4L57-L57 -->
 
 摘要不是实时数据库。代码再次修改后，“测试已通过”可能过期；恢复任务时，关键环境事实需要重新确认。
 
@@ -321,7 +316,6 @@ Schema 校验主要作用于第一层；领域知识与过程判断支撑第二�
 ### 4.3 R05 的队列案例：接口接通之后，还缺什么
 
 incident.io 的示例说明：事件通过负载均衡进入 Google Pub/Sub 或 NATS JetStream 中的一个 Broker，订阅积压可能分布在两侧；任一侧都不代表完整状态。`null` 数量表示无法获知，不是零。执行清理前，应观察最老未确认消息年龄是否下降，因为积压可能正在自然消退。[R05，Skills are just instructions](#ref-r05)
-<!-- 原始文件证据：fileciteturn14file5L568-L590 -->
 
 由此，合理操作首先应辨认对象、获取两侧观察、补充未知信息、检查趋势，再判断是否需要干预，而不是看到积压就调用清理。
 
@@ -348,7 +342,6 @@ incident.io 的示例说明：事件通过负载均衡进入 Google Pub/Sub 或 
 ### 4.5 通用接口可以有受控实现
 
 R05 描述了在 Go 应用里实现虚拟文件系统和 Shell 风格的解释层，所谓“二进制”实际对应 Go 函数。模型面对的是熟悉的交互模式，不一定是一个无限制的宿主机 Bash。[R05，Agents are a loop](#ref-r05)
-<!-- 原始文件证据：fileciteturn14file5L445-L466 -->
 
 可迁移的思想是：为模型提供易用接口，同时明确其真实能力边界。它不是伪造执行结果；工具返回必须对应真实的、定义清楚的操作语义。
 
@@ -369,7 +362,6 @@ R05 描述了在 Go 应用里实现虚拟文件系统和 Shell 风格的解释�
 | Plugin | 怎样把整套能力交付给别人？ | 打包 Skill、Hook 与 MCP 配置 |
 
 这是讲义第 30—32 页的分类。分类是责任边界，不表示四者只能独立使用。[L02，p.30—32](#ref-l02)
-<!-- 原始文件证据：fileciteturn14file0L537-L550 fileciteturn14file0L576-L586 -->
 
 ### 5.2 Skill 不只是长提示词，而是一组过程资产
 
@@ -390,7 +382,6 @@ R03 把 Skill 解释为包含指令、脚本与资源的目录，以可组合的
 ### 5.3 Progressive disclosure：目录、流程、细节
 
 R03 的 PDF 案例展示三层：先加载 `name` 和 `description`，相关时读取 `SKILL.md`，需要表单处理时再读取 `forms.md` 等支持文件。其预写 Python 脚本可以执行表单字段提取，而不必把脚本和整份 PDF 先装进模型上下文。[R03，The anatomy of a skill；Skills and code execution](#ref-r03)
-<!-- 原始文件证据：fileciteturn14file3L1-L1 -->
 
 ```text
 知道有哪些能力
@@ -429,7 +420,6 @@ R03 的 PDF 案例展示三层：先加载 `name` 和 `description`，相关时�
 ### 5.6 Skill 加载器为什么值得被显式记录
 
 R05 说明，读取文件本身就可以加载 Skill。但 incident.io 使用专门工具按名称定位、记录已加载技能，并返回正文和小型目录索引，减少额外发现工作。[R05，Skills are just instructions](#ref-r05)
-<!-- 原始文件证据：fileciteturn14file5L661-L684 -->
 
 **工程推导：**这样可以分开诊断：没有发现、发现但没加载、加载但没读必要分支、流程理解错误、工具执行失败、技能本身错误。没有这些分层证据，团队容易把所有问题都归为“不遵循提示词”。
 
@@ -448,7 +438,6 @@ R03 用排序与表单提取说明代码执行的价值，R04 则进一步将已
 ### 5.9 Skill 的知识从哪里来
 
 R02 的 *Hoard things you know how to do* 鼓励保存带可运行证据的工作示例。作者通过组合 PDF 页面渲染与浏览器 OCR 两段已有代码构建工具，强调已经跑通的例子可以成为新任务的输入。[R02c](#ref-r02c)
-<!-- 延伸阅读证据：citeturn901974view2 -->
 
 与 R03、R04 结合，可以形成如下资产积累路径：
 
@@ -471,7 +460,6 @@ R02 的 *Hoard things you know how to do* 鼓励保存带可运行证据的工�
 R08 的标题包含 Rules、Skills 与 Persistent Configuration，但其实际操作是在运行前替换 `CLAUDE.md`，保持 Agent、模型、提示模板和工具不变，主要改变自然语言规则。[R08，§5，p.4](#ref-r08)
 
 **因此，论文中的 Guardrails 主要指“不要做某事”的文字约束，而不是一个关于沙箱、Hook 或服务端授权的安全实验。**它也没有全面测试动态 Skill 检索、脚本执行与技能包发布。
-<!-- 原始文件证据：fileciteturn14file8L245-L250 -->
 
 ### 6.2 语料规模、运行次数和任务数是不同概念
 
@@ -487,7 +475,6 @@ R08 的标题包含 Rules、Skills 与 Persistent Configuration，但其实际�
 | 主要变化 | 注入规则的来源、数量、类型、单条与组合 |
 
 这些都是该论文的实验设定，不是当前模型能力排名。五千多次运行不等于五千多个独立任务。[R08，§5，p.4](#ref-r08)
-<!-- 原始文件证据：fileciteturn14file8L236-L293 -->
 
 ### 6.3 PBRS 是产生假设的类比，不是对 Prompt 的理论证明
 
@@ -511,7 +498,6 @@ R08 的标题包含 Rules、Skills 与 Persistent Configuration，但其实际�
 | 原生格式 | 56.9% | 15 | 11 |
 
 “帮助／损害”表示相对于对应无规则运行的成功／失败翻转。这是同一批任务上的配对结果。[R08，附录 B，表 2，p.11](#ref-r08)
-<!-- 原始文件证据：fileciteturn16file0L16-L31 -->
 
 两个细节比标题更重要。第一，随机与精选的总体分数相同，但影响的任务组合不同。第二，单个条件与基线的 McNemar 检验没有达到常见的显著性阈值。作者对整体方向另做了符号检验，并提出 **context priming** 假设：结构化规则的存在本身，可能影响模型的工作方式。[R08，§6.1，p.5](#ref-r08)
 
@@ -552,7 +538,6 @@ $$
 | 遵循已有代码风格 | −14.3 个百分点 | .180 |
 
 来源为第 11 页表 4。作者按绝对变化超过 5 个百分点分类，得到 3 条 shaping、4 条 distorting、11 条 inert；这是一项分类阈值，不是显著性阈值。[R08，§6.4；附录 D，表 4](#ref-r08)
-<!-- 原始文件证据：fileciteturn16file0L54-L76 -->
 
 论文同时说明：最显著的单条比较也无法通过严格的多重比较校正，且正负极性模式对阈值有敏感性。[R08，§6.4，p.6](#ref-r08)
 
@@ -567,7 +552,6 @@ $$
 | 68.6% | 71.4% | 74.3% | 65.7% |
 
 A、B 单独出现时点估计都有改善，合并后反而降低。另一组中，某条规则的负面变化被另一条补偿。论文在五组配对中观察到三组近似相加、两组明显非线性。[R08，附录 E，表 5，p.12](#ref-r08)
-<!-- 原始文件证据：fileciteturn16file0L89-L99 -->
 
 **工程推导：**不要只靠逐条挑选看似有益的指令构建最终配置。最终规则组合、模型、任务分布与工具环境仍然需要一起评测。
 
@@ -617,7 +601,6 @@ MCP 的目标之一是减少不同客户端与服务之间重复的定制集成�
 | Prompts | 服务暴露的可复用提示模板 | 按组织流程分析 Issue |
 
 一个 Prompt 返回说明，不会因为名为 Prompt 就自动执行外部操作。Resources 提供信息，也不等于授权修改。讲义第 47—48 页将三者放在同一个 Issue 分析任务中说明协作。[L02，p.47—48](#ref-l02)
-<!-- 原始文件证据：fileciteturn16file3L559-L591 -->
 
 ### 7.3 “MCP 还是 CLI”混合了三个问题
 
@@ -634,7 +617,6 @@ MCP 可以按需发现；CLI 可以产生海量输出；代码执行内部仍可
 ### 7.4 R04 的例子：为什么不应让模型搬运整份会议记录
 
 任务是从 Google Drive 读取会议记录，再附到 Salesforce。直接调用中，完整文本先作为工具结果进入上下文，之后又由模型生成到下一次写操作的参数里。[R04，Intermediate tool results consume additional tokens](#ref-r04)
-<!-- 原始文件证据：fileciteturn14file4L12-L21 -->
 
 ```text
 直接逐步调用：
@@ -668,7 +650,6 @@ return {
 **用程序组织控制流。**循环、条件分支和等待可以在执行环境完成，避免每一个简单判断都触发一次模型推理。
 
 这三类是 R04 的核心工程机制。[R04，Progressive disclosure；Context efficient tool results；More powerful and context-efficient control flow](#ref-r04)
-<!-- 原始文件证据：fileciteturn5file0L10-L10 fileciteturn5file7L80-L92 -->
 
 ### 7.6 150,000 到 2,000 Token 应怎样解释
 
@@ -693,7 +674,6 @@ R04 讨论中间数据留在执行环境中，并用占位符等方式减少敏�
 讲义选读把 Gateway 描述为 Host 与多个 MCP Server 之间的控制层，承担目录聚合、路由、身份代理、策略、审计、限流与扩展。适合多个用户、Agent、服务和凭证需要一致治理的场景。[L02，p.50—51](#ref-l02)
 
 讲义同时提醒：凭证过宽、最终用户身份丢失、名称冲突、日志泄密和单点故障都是风险。Gateway 不是“接上以后自动安全”，而是需要被认真设计的新信任边界。[L02，p.51](#ref-l02)
-<!-- 原始文件证据：fileciteturn16file3L616-L655 -->
 
 **版本附记。**讲义第 52 页将无状态核心、路由请求头和扩展机制归于其所述的 2026-07-28 修订。本文仅保留这一快照的课程内容，不据此宣称所有在用 Server 都实现该版本。协议层的无状态设计，也不意味着 Agent 无须保存任务状态。[L02，p.52](#ref-l02)
 
@@ -724,8 +704,9 @@ CLI 组没有 MCP Server；MCP 组由 Server 持有凭证，同时清除 Shell �
 
 论文通过统一代理记录请求，包括输入 Token、缓存量、工具调用和每次请求的 Schema 数。这样可以避免子 Agent 的消耗被遗漏。[R09，§2.5](#ref-r09)
 
+计量有明确例外：两项订阅凭证配置不经过代理，采用框架自报；作者用另外 12 次经代理的 Claude Code 运行交叉核对，报告计数一致。因此不能把主矩阵的所有配置都说成代理直接观测。[R09，§2.5、§8.1](#ref-r09)
+
 美元数是依据统一价格表计算的建模成本，不是实际账单；本地模型也用假设价格估算。不同 Scaffolding 没有完整覆盖全部模型，横向行统计存在模型组合差异。[R09，§2.5，p.6](#ref-r09)
-<!-- 原始文件证据：fileciteturn14file9L234-L270 -->
 
 因此，不能把论文表格中的单个美元数直接当作自己的生产成本。
 
@@ -744,14 +725,12 @@ CLI 组没有 MCP Server；MCP 组由 Server 持有凭证，同时清除 Shell �
 | Claude Code | 410,797 |
 
 这些是各行成功样本的描述统计，不能忽略模型组合和样本数量不同。它们支持“外围软件的选择可能很重要”，但不能把所有差异归因于是否支持 MCP，也不能当成当前版本产品性能结论。[R09，§3.2，表 2，p.12](#ref-r09)
-<!-- 原始文件证据：fileciteturn14file9L548-L577 -->
 
 论文还给出一个小模型在不同配置下完成同一任务时，输入消耗相差约 139 倍的极端例子。它说明单一任务上同一模型的实际开销可被外围软件显著改变，不说明模型能力在所有场景都不再重要。[R09，§3、§6](#ref-r09)
 
 ### 8.5 同一 Scaffolding 内，MCP 并没有一个稳定成本倍数
 
 第 13 页图 3 与表 3 的组间中位比值方向不同：有的 MCP 组更高，有的更低。严格限制到同一模型、同一 Scaffolding、两侧都完成的 13 对观察后，比值范围为 0.43—29.06，中位数 0.93。作者报告该比较不能支持稳定方向的结论。[R09，§4.1，p.13](#ref-r09)
-<!-- 原始文件证据：fileciteturn16file1L139-L161 -->
 
 **不能推出：**MCP 天生昂贵、CLI 一定更优，或两者已被证明等价。这里是数据分散、样本有限、运行波动下的归因限制。
 
@@ -760,7 +739,6 @@ CLI 组没有 MCP Server；MCP 组由 Server 持有凭证，同时清除 Shell �
 第 14 页图 4 与第 15 页表 5 报告：按需目录组的中位输入约 70,836，全量目录组约 216,986。两组都连接相同 Server、暴露相同操作。[R09，§4.3](#ref-r09)
 
 但只有一个 Scaffolding 采用按需方式，因而目录提供方式与该系统的其他差异混在一起。作者明确说，这是一种值得继续检验的机制，不能把约 3.1 倍差异全部因果归于按需加载。[R09，§4.3，p.15](#ref-r09)
-<!-- 原始文件证据：fileciteturn16file1L218-L254 -->
 
 这正是它与 R04 的关系：R04 提供可行的优化机制，R09 限定单个比较能够证明到哪里。
 
@@ -774,7 +752,6 @@ CLI 组没有 MCP Server；MCP 组由 Server 持有凭证，同时清除 Shell �
 | MCP | 19 | 3 | 9.8% | 12.9% |
 
 两组都失败三次。12.9% 与 2.2% 反映这些失败落在哪些成本更高的配置上，不是失败概率。[R09，§4.4，p.16](#ref-r09)
-<!-- 原始文件证据：fileciteturn16file1L266-L288 -->
 
 作者的重复实验也报告两种接口各完成 25／29 次。论文后面还有按模型规模分组的分析，属于另一种范围的观察，不能替换全组口径。[R09，§8.1](#ref-r09)
 
@@ -814,7 +791,6 @@ CLI 组没有 MCP Server；MCP 组由 Server 持有凭证，同时清除 Shell �
 ### 9.2 Hook 的触发是程序化的，检查内容不一定确定
 
 Skill 需要被加载并由模型使用；Hook 则在运行时的匹配事件发生时触发。讲义列出会话开始、用户输入、工具调用前、调用后和停止前，同时标明模型内部推理不是一个 Hook 事件。[L02，p.38](#ref-l02)
-<!-- 原始文件证据：fileciteturn14file0L698-L717 -->
 
 如果 Hook 执行纯代码条件检查，其判断可以有确定语义；如果它调用模型或子 Agent 做判断，触发虽然自动，结论仍可能有不确定性。不能把“Hook 自动执行”替换成“Hook 一定正确”。
 
@@ -828,14 +804,12 @@ Skill 需要被加载并由模型使用；Hook 则在运行时的匹配事件发
 | 会话开始 | 加载必要信息、初始化记录 | 自动恢复全部外部系统状态 |
 
 R06 的 `PostToolUse` 说明特别重要：其阻止／反馈字段用于向后续模型提供反馈，不能把已经完成的操作变成没有执行。[R06，PostToolUse decision control](#ref-r06)
-<!-- 原始文件证据：fileciteturn13file4L30-L33 -->
 
 ### 9.4 退出码和故障语义，必须看具体协议
 
-按上传的 R06 快照，不能仅凭普通程序的 `exit 1` 就认为动作被拒绝。对于相应可阻止事件，需要使用该事件规定的阻止方式；有效 JSON、退出码和事件类型共同决定处理结果。文档对 `exit 2`、输出格式、超时与非阻塞错误分别作出说明。[R06，Hook input and output；Exit code output](#ref-r06)
+按归档的 R06 快照，不能仅凭普通程序的 `exit 1` 就认为动作被拒绝。对于相应可阻止事件，需要使用该事件规定的阻止方式；有效 JSON、退出码和事件类型共同决定处理结果。文档对 `exit 2`、输出格式、超时与非阻塞错误分别作出说明。[R06，Hook input and output；Exit code output](#ref-r06)
 
 快照还介绍适用命令／HTTP Hook 的 `onFailure: "block"`，并注明版本要求。没有按预期启动、超时或返回无效结果的检查器，可能无法承担原以为的阻止职责。[R06，Block the action when a hook fails](#ref-r06)
-<!-- 原始文件证据：fileciteturn7file7L122-L122 fileciteturn15file8L370-L382 -->
 
 本文保留的是快照中的实现细节，不提供脱离部署版本的通用配置承诺。
 
@@ -853,7 +827,6 @@ R06 的 `PostToolUse` 说明特别重要：其阻止／反馈字段用于向后�
 ### 9.6 Stop Hook 不是无限成功循环
 
 R06 提到 `stop_hook_active` 等状态和续跑限制，目的是避免不断阻止一个无法满足的结束条件。模型被中断、API 失败、环境不能恢复等情况，也不等于正常停止事件的同一种处理。[R06，Stop；Stop input](#ref-r06)
-<!-- 原始文件证据：fileciteturn15file4L231-L231 -->
 
 **工程推导：**停止检查应区分可继续修复、需要人工、环境阻塞与预算耗尽。不能把外部服务宕机变成“再想一遍直到成功”。外部验收状态必须独立于一次对话是否被结束。
 
@@ -868,7 +841,6 @@ R05 的队列接口要求预览或明确确认，缺少两者的调用被拒绝�
 R09 的绕行观察说明：Agent 可能通过 Shell、API 或其他通道访问同一个外部服务。[R09，§7](#ref-r09)
 
 因此，重要限制应尽可能落实到实际资源边界，例如最小权限凭证、服务端授权、网络策略和受保护的发布入口。讲义第 49 页也明确要求读写分离、最小权限、写操作审批，以及不把工具输出当成可信指令。[L02，p.49](#ref-l02)
-<!-- 原始文件证据：fileciteturn16file3L597-L613 -->
 
 **综合认识：**Skill 描述正确工作方法，Hook 把检查接到生命周期，权限和资源侧策略界定实际能力。三者协作，但不互相替代。
 
@@ -882,7 +854,6 @@ R09 的绕行观察说明：Agent 可能通过 Shell、API 或其他通道访问
 ### 10.1 从“帮我做”转为“目标、范围、证据、权限”
 
 R01 强调给 Agent 一个能运行的检查，而不是让“看起来完成”成为唯一信号。它推荐先探索，再计划与实施，并用证据展示结果。[R01，Give Claude a way to verify its work；Explore first, then plan, then code](#ref-r01)
-<!-- 原始文件证据：fileciteturn13file0L5-L8 fileciteturn1file8L261-L261 -->
 
 **工程化任务契约：**
 
@@ -900,7 +871,6 @@ R01 强调给 Agent 一个能运行的检查，而不是让“看起来完成”
 ### 10.2 复杂任务先形成可独立理解的规格
 
 R01 建议让 Agent 先追问实现、界面、边界情况和权衡，再形成 `SPEC.md`。规范应该能独立理解，包含涉及文件与接口、范围外事项和端到端验证；随后可以用干净会话执行。[R01，Let Claude interview you](#ref-r01)
-<!-- 原始文件证据：fileciteturn12file5L67-L74 -->
 
 **综合解释：**这一步既是在澄清需求，也是在把讨论历史压缩成实施契约。例如“增加导出”可能隐藏数据范围、权限、数据量、失败行为与异步执行方式。没有澄清时，生成代码其实是在同时生成需求。
 
@@ -913,13 +883,10 @@ R07 的 DAG 规划适合表达某些任务依赖，但它是作者的工作流�
 ### 10.4 把三个测试模式连成一个闭环
 
 **先运行已有测试。**R02 的 *First run the tests* 用实际运行让 Agent 找到测试入口、理解当前基线，也让测试成为后续工作的一部分。[R02e](#ref-r02e)
-<!-- 延伸阅读证据：citeturn209059view0 -->
 
 **先红后绿。**R02 的 *Red/green TDD* 强调先看到针对目标行为的失败，再修改实现，最后确认通过，避免新增一个原本就通过、根本未检测到问题的测试。[R02d](#ref-r02d)
-<!-- 延伸阅读证据：citeturn901974view3 -->
 
 **实际运行入口。**R02 的 *Agentic manual testing* 指出，测试通过仍可能漏掉服务启动、接口行为和界面问题。Agent 可以实际调用程序、启动开发服务或操作浏览器；发现的新问题再加入回归测试。[R02f](#ref-r02f)
-<!-- 延伸阅读证据：citeturn209059view1 -->
 
 ```text
 环境基线 → 目标问题复现 → 回归测试因目标问题失败
@@ -931,14 +898,12 @@ R07 的 DAG 规划适合表达某些任务依赖，但它是作者的工作流�
 ### 10.5 让精确证据由工具生成，让模型解释证据
 
 R02 的 *Linear walkthroughs* 用工具直接抽取源码片段，再由模型组织解释，避免手工重新生成代码片段造成错误。其示例还记录执行命令与输出，使文档能反映实际观察。[R02g](#ref-r02g)
-<!-- 延伸阅读证据：citeturn209059view2 -->
 
 与 R04 的会议记录例子合读，可以得到一条很实用的分工：**需要原样保留的内容由工具读取和传递；需要理解与表达的部分交给模型。**代码、原文引用、查询结果和日志都适用这个思路，但解释仍需接受核查。
 
 ### 10.6 独立审查不等于强制挑错
 
 R01 建议在新上下文中审查代码差异与验收条件，而不是让实施者继续沿用原先的解释。它也提醒，要求 Reviewer 一定找问题，可能诱发无关发现与过度工程。[R01，Add an adversarial review step](#ref-r01)
-<!-- 原始文件证据：fileciteturn12file1L20-L20 -->
 
 **工程建议：**审查应允许“未发现阻塞性问题”，重点检查需求遗漏、错误行为、真实风险和无关修改，不强制数量，也不把个人风格偏好自动升级为缺陷。
 
@@ -949,22 +914,18 @@ R01 提供中断、回退、清理上下文与恢复会话的使用方式。它�
 **快照中的常用入口：**`/clear` 用于清理当前上下文，`/compact` 用于压缩，`/rewind` 用于打开回退选择；讲义另列 `/memory`、`/context`、`/init`、`/doctor` 帮助检查记忆与项目指令。具体能力以部署版本为准。[R01](#ref-r01)；[L02，p.25](#ref-l02)
 
 注意，R01 明确限制检查点的覆盖范围：特定文件编辑工具之外的 Bash 或外部进程改动不一定被捕获，检查点不是 Git 的替代品。[R01，Rewind with checkpoints](#ref-r01)
-<!-- 原始文件证据：fileciteturn13file1L13-L14 -->
 
 ### 10.8 交付代码，不是交付待审查的生成量
 
 R02 的 *Writing code is cheap now* 区分“代码生成更便宜”与“可信软件交付仍有成本”：正确问题、验证、异常处理、可维护性和适度文档依然重要。[R02b](#ref-r02b)
-<!-- 延伸阅读证据：citeturn901974view1 -->
 
 其反模式章节提醒，不要把自己没有检查的大量生成代码转交同事，让审查者承担实际验证；变更应可审查，说明也应经过确认，并附验证证据。[R02i](#ref-r02i)
-<!-- 延伸阅读证据：citeturn209059view4 -->
 
 **综合解释：**Agent 提高产出速度后，工程师的责任更集中在范围控制、证据和可信交付，而不是行数。
 
 ### 10.9 无人值守不应等同于取消权限
 
 R01 讨论非交互运行、结构化输出和批量任务，也建议先在少量样本上调整流程，再扩大范围，并限制任务需要的工具。[R01，Automate and scale](#ref-r01)
-<!-- 原始文件证据：fileciteturn12file6L86-L86 -->
 
 **工程推导：**无人值守场景要提前定义不满足授权条件时的行为，例如拒绝并记录、暂停等待或返回明确阻塞状态，而不是为了避免弹窗给出无限权限。
 
@@ -980,7 +941,6 @@ R01 讨论非交互运行、结构化输出和批量任务，也建议先在少�
 R05 描述了把调度、遥测等专业 Agent 的知识转成 Skills，由一个 Agent 按需加载。作者强调减少上下文割裂，并避免把可调整的操作建议全部放进过于刚性的系统提示。[R05，Skills replace system prompts](#ref-r05)
 
 一个例子是长时间范围遥测查询。原来要求拆分查询的系统级建议，在用户知道整段查询可安全执行时仍可能僵硬地阻止它；迁移到 Skill 后，作者的实现更容易结合用户当前任务权衡这类建议。[R05，同上](#ref-r05)
-<!-- 原始文件证据：fileciteturn16file2L352-L366 fileciteturn16file2L428-L465 -->
 
 这是一项实现经验，不是“所有 Skill 在所有产品中都低于用户要求”的协议保证。不可协商的限制仍应由执行层落实。
 
@@ -993,7 +953,6 @@ Explore → Planner → Worker → Critic → Promoter
 ```
 
 探索形成依赖计划，执行者逐项完成，审查者检查与简化，必要时退回执行，最后处理交付沟通。作者还借鉴 prewalk，将较强模型用于计划与首个任务，模式建立后交接后续工作。[R07，The cost advantage](#ref-r07)
-<!-- 原始文件证据：fileciteturn14file7L62-L66 -->
 
 作者报告过较强模型使用量下降，但没有提供可作为普适选型依据的控制实验。可借鉴的是分工方法，而不是把个人收益比例当成保证。
 
@@ -1015,7 +974,6 @@ R05 在问“业务知识是否需要分散在多个上下文”。R07 在问“
 ### 11.4 Subagent 的核心价值之一，是保护主上下文
 
 R02 的 Subagents 章节用探索仓库和返回摘要解释子 Agent，强调把 Token 密集型工作放到独立上下文，再将必要结果交回。作者同时提醒不要过度拆分出大量专业角色。[R02h](#ref-r02h)
-<!-- 延伸阅读证据：citeturn209059view3 -->
 
 **工程补充：**独立上下文不自动意味着独立文件系统、网络凭证或数据库状态。上下文隔离、执行环境隔离和权限隔离必须分别设计。并行任务也应明确文件归属、共享资源和结果合并方式。
 
@@ -1024,14 +982,12 @@ R02 的 Subagents 章节用探索仓库和返回摘要解释子 Agent，强调�
 讲义将 Plugin 定义为包含 Skills、Hooks、Agents、MCP 配置等的安装单元，提供版本、命名空间和团队复用。[L02，p.39](#ref-l02)
 
 R05 的 data brain 案例具体说明了它的价值：数据模型文档与使用方法以 Skills／参考资料组织，内部 MCP 提供查询能力；加载 Plugin 与连接后，这组能力被用于其他 Agent 入口。[R05，Plugins bundle skills](#ref-r05)
-<!-- 原始文件证据：fileciteturn16file2L323-L345 -->
 
 **工程推导：**Plugin 应像软件发布管理版本、依赖、测试和回滚。它可能同时改变指令、外部访问和可执行代码，不能因为包含 Markdown 就把它当成没有副作用的说明文件。
 
 ### 11.6 R07 的深层价值：拥有可迁移的工作资产
 
 R07 描述多个交互入口共享指令、Skills、脚本和工作目录。产品能力还通过可脚本化入口接入 Harness，重复工作不必每次重新生成实现。[R07，A product harness connection；Breaking down the harness](#ref-r07)
-<!-- 原始文件证据：fileciteturn14file7L58-L79 -->
 
 与 R02 收藏可运行示例、R03 封装 Skills、R04 保存脚本联系起来，资产积累可以理解为：
 
@@ -1207,11 +1163,11 @@ R01 的检查点限制意味着回退对话与回退环境不同。[R01，Rewind
 <a id="ch13"></a>
 ## 13. 应用推演：投研与基金营销材料预审核 Agent
 
-> 本章是把前文方法迁移到你的工作方向的设计推演。它不是上述论文在金融任务上的实验结论，不提供具体法规解释，也不声称某项架构已经达到金融生产所需的准确率。
+> 本章是把前文方法迁移到投研与基金材料审核的设计推演。它不是上述论文在金融任务上的实验结论，不提供具体法规解释，也不声称某项架构已经达到金融生产所需的准确率。
 
 ### 13.1 从真实工作目标开始
 
-假设任务是：上传材料后识别需要修改的内容，给出依据、原文位置和可执行建议，最后由人采纳或拒绝。
+假设任务是：归档材料后识别需要修改的内容，给出依据、原文位置和可执行建议，最后由人采纳或拒绝。
 
 “输出一份专业报告”不足以成为验收目标。我会把成功分为三层：
 
@@ -1384,7 +1340,7 @@ Agent Use 的成熟度，不是取决于你能同时启动多少 Agent，而是�
 | 49—51 | 安全、Gateway、统一治理 | 第 7、9 章 | R06、R09 |
 | 52—53 | 规范修订快照与结束页 | 第 7 章版本附记 | — |
 
-讲义页码对照依据上传版本，不把右下角幻灯片编号与 PDF 实际页码混用。[L02](#ref-l02)
+讲义页码对照依据归档版本，不把右下角幻灯片编号与 PDF 实际页码混用。[L02](#ref-l02)
 
 ---
 
@@ -1678,14 +1634,13 @@ project/
 | 在多个仓库共享整套配置 | Plugin | 打包与分发 |
 
 这是讲义练习的答案；实际工程还需要结合第 9 章的失败与绕行边界理解“阻止”的有效范围。[L02，p.42](#ref-l02)
-<!-- 原始文件证据：fileciteturn16file3L490-L508 -->
 
 ---
 
 <a id="appendix-d"></a>
 ## 附录 D：参考资料索引
 
-本文正文使用可在普通 Markdown 阅读器中保留的来源编号、标题、章节与页码。部分来源段落还在 HTML 注释中保留了本次会话的证据标记；不依赖这些标记也能按本索引定位原文。本文不是原始文件集合，不附带完整论文、网页或代码仓库。
+本文正文使用可在普通 Markdown 阅读器中保留的来源编号、标题、章节与页码。来源定位使用本地附件、稳定网页地址、章节与页码。原始讲义、论文及网页快照通过本索引的相对链接访问；没有下载的视频不作为正文证据。
 
 <a id="ref-l02"></a>
 ### L02｜主讲义
@@ -1693,7 +1648,7 @@ project/
 **标题：** *Agent From a User’s Perspective I: How Claude Code Works*。  
 **课程：** *Modern AI Systems: Agents and System Optimizations*。  
 **署名：** Juncheng Yang；页面标识 Harvard MaDSys。  
-**本地文件：** `2_agent_use_1.pdf`，53 页。
+**本地文件：** [2_agent_use_1.pdf](2_agent_use_1.pdf)，53 页。
 
 主要定位：p.6—14 运行循环；p.16—26 记忆；p.28 基础工具；p.30—40 四种扩展机制；p.42 分类练习；p.45—52 MCP 选读。引用本文件时使用 PDF 实际页码。
 
@@ -1701,81 +1656,80 @@ project/
 ### R01｜Best practices for Claude Code
 
 **来源类型：** Claude Code 官方产品文档快照。  
-**本地文件：** `001_Best_practices_for_Claude_Code_9686dc.html`。  
-**原文地址：** `https://code.claude.com/docs/en/best-practices`
+**本地文件：** [001_Best_practices_for_Claude_Code_9686dc.html](readings/001_Best_practices_for_Claude_Code_9686dc.html)。  
+**原文地址：** [原文](https://code.claude.com/docs/en/best-practices)
 
 主要定位：*Give Claude a way to verify its work*；*Explore first, then plan, then code*；*Write an effective CLAUDE.md*；*Let Claude interview you*；*Manage your session*；*Rewind with checkpoints*；*Automate and scale*；*Add an adversarial review step*；*Avoid common failure patterns*。
 
-文档中的命令、权限模式、检查点与自动化行为应与安装版本核对。本文采用上传快照，不用后来网页更新覆盖其原意。
+文档中的命令、权限模式、检查点与自动化行为应与安装版本核对。本文采用归档快照，不用后来网页更新覆盖其原意。
 
 <a id="ref-r02"></a>
-### R02｜Agentic Engineering Patterns：上传目录
+### R02｜Agentic Engineering Patterns：归档目录
 
 **作者：** Simon Willison。  
 **来源类型：** 工程实践指南目录。  
-**本地文件：** `002_Agentic_Engineering_Patterns_bedbf1.html`。  
-**目录地址：** `https://simonwillison.net/guides/agentic-engineering-patterns/`
+**本地文件：** [002_Agentic_Engineering_Patterns_bedbf1.html](readings/002_Agentic_Engineering_Patterns_bedbf1.html)。  
+**目录地址：** [原文](https://simonwillison.net/guides/agentic-engineering-patterns/)
 
 目录的主要结构为 Principles、Working with coding agents、Testing and QA、Understanding code、Annotated prompts 与 Appendix。**目录本身不支持其链接章节的全部细节。**本文只将下列已核对的章节作为独立延伸来源，不声称阅读或覆盖整个指南。
-<!-- 原始文件证据：fileciteturn14file2L148-L283 -->
 
 <a id="ref-r02-extensions"></a>
 ### R02 延伸章节索引
 
-以下网页在本次整理中核对，用于保留前文已讲解的内容，不构成对整个主题的新一轮外部研究。核对日期：2026-10-13。
+以下章节按本课需要选读；本轮于 2026-10-26 核对并保存本地快照，不表示覆盖整个系列。
 
 <a id="ref-r02a"></a>
 **R02a — What is agentic engineering?**  
 用途：内层运行循环与工程师责任。  
-地址：`https://simonwillison.net/guides/agentic-engineering-patterns/what-is-agentic-engineering/`
+地址：[原文](https://simonwillison.net/guides/agentic-engineering-patterns/what-is-agentic-engineering/) · [本地快照](references/001_what-is-agentic-engineering.html)
 
 <a id="ref-r02b"></a>
 **R02b — Writing code is cheap now**  
 用途：区分生成代码与交付可信软件的成本。  
-地址：`https://simonwillison.net/guides/agentic-engineering-patterns/code-is-cheap/`
+地址：[原文](https://simonwillison.net/guides/agentic-engineering-patterns/code-is-cheap/) · [本地快照](references/005_code-is-cheap.html)
 
 <a id="ref-r02c"></a>
 **R02c — Hoard things you know how to do**  
 用途：保存可运行示例及其证据，组合成新能力。  
-地址：`https://simonwillison.net/guides/agentic-engineering-patterns/hoard-things-you-know-how-to-do/`
+地址：[原文](https://simonwillison.net/guides/agentic-engineering-patterns/hoard-things-you-know-how-to-do/) · [本地快照](references/009_hoard-things-you-know-how-to-do.html)
 
 <a id="ref-r02d"></a>
 **R02d — Red/green TDD**  
 用途：修复前观察失败，修复后确认通过。  
-地址：`https://simonwillison.net/guides/agentic-engineering-patterns/red-green-tdd/`
+地址：[原文](https://simonwillison.net/guides/agentic-engineering-patterns/red-green-tdd/) · [本地快照](references/003_red-green-tdd.html)
 
 <a id="ref-r02e"></a>
 **R02e — First run the tests**  
 用途：建立测试入口与当前行为基线。  
-地址：`https://simonwillison.net/guides/agentic-engineering-patterns/first-run-the-tests/`
+地址：[原文](https://simonwillison.net/guides/agentic-engineering-patterns/first-run-the-tests/) · [本地快照](references/002_first-run-the-tests.html)
 
 <a id="ref-r02f"></a>
 **R02f — Agentic manual testing**  
 用途：通过程序、接口与界面真实运行补充自动测试。  
-地址：`https://simonwillison.net/guides/agentic-engineering-patterns/agentic-manual-testing/`
+地址：[原文](https://simonwillison.net/guides/agentic-engineering-patterns/agentic-manual-testing/) · [本地快照](references/004_agentic-manual-testing.html)
 
 <a id="ref-r02g"></a>
 **R02g — Linear walkthroughs**  
 用途：用工具抽取源码、记录命令结果，再由模型解释。  
-地址：`https://simonwillison.net/guides/agentic-engineering-patterns/linear-walkthroughs/`
+地址：[原文](https://simonwillison.net/guides/agentic-engineering-patterns/linear-walkthroughs/) · [本地快照](references/007_linear-walkthroughs.html)
 
 <a id="ref-r02h"></a>
 **R02h — Subagents**  
 用途：保护主上下文、隔离 Token 密集型探索。  
-地址：`https://simonwillison.net/guides/agentic-engineering-patterns/subagents/`
+地址：[原文](https://simonwillison.net/guides/agentic-engineering-patterns/subagents/) · [本地快照](references/010_subagents.html)
 
 <a id="ref-r02i"></a>
 **R02i — Anti-patterns: things to avoid**  
 用途：避免把未经检查的大量生成代码交给同事承担验证。  
-地址：`https://simonwillison.net/guides/agentic-engineering-patterns/anti-patterns/`
+地址：[原文](https://simonwillison.net/guides/agentic-engineering-patterns/anti-patterns/) · [本地快照](references/006_anti-patterns.html)
 
 <a id="ref-r03"></a>
 ### R03｜Equipping agents for the real world with Agent Skills
 
 **作者：** Barry Zhang、Keith Lazuka、Mahesh Murag；Anthropic。  
 **来源类型：** 官方工程文章。  
-**本地文件：** `003_Equipping_agents_for_the_real_world_with_Agent_Skills_2e50ab.html`。  
-**原文地址：** `https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills`
+**本地文件：** [003_Equipping_agents_for_the_real_world_with_Agent_Skills_2e50ab.html](readings/003_Equipping_agents_for_the_real_world_with_Agent_Skills_2e50ab.html)。  
+**原文地址：** [原文](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)
 
 主要定位：*The anatomy of a skill*；*Skills and the context window*；*Skills and code execution*；*Developing and evaluating skills*；*Security considerations when using Skills*。本文使用其 PDF 表单示例、三层加载、脚本复用与从评测开始建设技能的思想，不把示例当成全部文档处理问题已经解决的证据。
 
@@ -1784,8 +1738,8 @@ project/
 
 **作者：** Adam Jones、Conor Kelly；Anthropic。  
 **来源类型：** 官方工程文章。  
-**本地文件：** `004_Code_execution_with_MCP_9b88bf.html`。  
-**原文地址：** `https://www.anthropic.com/engineering/code-execution-with-mcp`
+**本地文件：** [004_Code_execution_with_MCP_9b88bf.html](readings/004_Code_execution_with_MCP_9b88bf.html)。  
+**原文地址：** [原文](https://www.anthropic.com/engineering/code-execution-with-mcp)
 
 主要定位：工具定义与中间结果开销；*Code execution with MCP improves context efficiency*；*Progressive disclosure*；*Context efficient tool results*；*More powerful and context-efficient control flow*；*Privacy-preserving operations*；*State persistence and skills*。
 
@@ -1796,8 +1750,8 @@ project/
 
 **作者：** Lawrence Jones。  
 **来源类型：** incident.io 工程实践说明。  
-**本地文件：** `005_demystifying_skills_and_MCPs_c840b9.html`。  
-**原文地址：** `https://blog.lawrencejones.dev/demystifying-skills-and-mcps/`
+**本地文件：** [005_demystifying_skills_and_MCPs_c840b9.html](readings/005_demystifying_skills_and_MCPs_c840b9.html)。  
+**原文地址：** [原文](https://blog.lawrencejones.dev/demystifying-skills-and-mcps/)
 
 主要定位：*LLM 101*；*Agents are a loop*；*MCPs are just APIs in tools*；*Skills are just instructions*；*Plugins bundle skills*；*Skills replace system prompts*。
 
@@ -1807,20 +1761,20 @@ project/
 ### R06｜Claude Code Hooks reference
 
 **来源类型：** 官方产品参考文档快照。  
-**本地文件：** `006_Claude_Code_hooks_reference_20106b.html`。  
-**原文地址：** `https://code.claude.com/docs/en/hooks`
+**本地文件：** [006_Claude_Code_hooks_reference_20106b.html](readings/006_Claude_Code_hooks_reference_20106b.html)。  
+**原文地址：** [原文](https://code.claude.com/docs/en/hooks)
 
 主要定位：*Hook lifecycle*；*Hook input and output*；*Exit code output*；*Timeouts*；*Block the action when a hook fails*；*PreToolUse*；*PostToolUse decision control*；*Stop input*；*Run hooks in the background*；*Security considerations*。
 
-注意事件差异、有效 JSON 与退出码的共同影响，以及某些字段的版本前提。例如上传快照对 `onFailure: "block"` 的适用处理器与版本有限定。不要将一段 Hook 示例脱离这些条件直接当成生产安全边界。
+注意事件差异、有效 JSON 与退出码的共同影响，以及某些字段的版本前提。例如归档快照对 `onFailure: "block"` 的适用处理器与版本有限定。不要将一段 Hook 示例脱离这些条件直接当成生产安全边界。
 
 <a id="ref-r07"></a>
 ### R07｜The Harness Is the Thing
 
 **作者：** Scott Fryxell。  
 **来源类型：** 个人工程实践文章。  
-**本地文件：** `007_The_Harness_Is_the_Thing_8733f2.html`。  
-**原文地址：** `https://scott-fryxell.github.io/blog/the-harness-is-the-thing`
+**本地文件：** [007_The_Harness_Is_the_Thing_8733f2.html](readings/007_The_Harness_Is_the_Thing_8733f2.html)。  
+**原文地址：** [原文](https://scott-fryxell.github.io/blog/the-harness-is-the-thing)
 
 主要定位：*The cost advantage*；*A product harness connection*；*Breaking down the harness*。本文使用作者的角色工作流、前期模式建立、共享脚本与 Skills、可脚本化产品入口，不把个人订阅、模型使用比例或趋势观点作为普遍结论。
 
@@ -1830,8 +1784,8 @@ project/
 **全名：** *Guardrails Beat Guidance: A Large-Scale Study of Rules, Skills, and Persistent Configuration for Coding Agents*。  
 **作者：** Xing Zhang、Guanghui Wang、Yanwei Cui、Wei Qiu、Ziyuan Li、Bing Zhu、Peiyang He。  
 **来源类型：** 实验论文预印本。  
-**本地文件：** `008_Guardrails_Beat_Guidance_c68b51.pdf`，12 页。  
-**上传版本标识：** `arXiv:2604.11088v2`。
+**本地文件：** [008_Guardrails_Beat_Guidance_c68b51.pdf](readings/008_Guardrails_Beat_Guidance_c68b51.pdf)，12 页。  
+**归档版本标识：** `arXiv:2604.11088v2`。
 
 主要定位：§3 语料；§4 PBRS 类比；§5 实验设置；§6.1—6.4 四组实验；§7 局限；附录表 2—5。本文的消融符号按附录表 4 的明确定义解释，正值表示该规则在完整组合中有益，避免与“移除后的变化”措辞混用。
 
@@ -1843,11 +1797,11 @@ project/
 **副标题：** *A controlled comparison of MCP and CLI tool use across seven agent scaffoldings, five language models, and one software task*。  
 **作者：** Marc Alier Forment、María José Casañ Guerrero、Francisco José García-Peñalvo、Juanan Pereira。  
 **来源类型：** 系统对照实验论文。  
-**本地文件：** `009_The_Scaffolding_Matters_More_Than_the_Interface_8f9a1f.pdf`，27 页。
+**本地文件：** [009_The_Scaffolding_Matters_More_Than_the_Interface_8f9a1f.pdf](readings/009_The_Scaffolding_Matters_More_Than_the_Interface_8f9a1f.pdf)，27 页。
 
 主要定位：§2.1—2.6 任务、隔离、计量与装置纠错；§2.8 成本口径；§3.2 固定 CLI 比较；§4.1 接口配对；§4.3 目录方式；§4.4 失败成本；§7 实际接口使用；§8 局限与重复运行；§9 工程讨论。
 
-论文列出的关联实验仓库：`https://github.com/Lamb-Project/mcp-vs-cli-bench`。本文没有复跑该仓库，也不把仓库的存在或论文的报告视为所有结果已经独立复现。
+论文列出的关联实验仓库：[原文](https://github.com/Lamb-Project/mcp-vs-cli-bench)。本文没有复跑该仓库，也不把仓库的存在或论文的报告视为所有结果已经独立复现。
 
 引用时保留表格及其样本口径，不把成功样本成本、全组失败支出占比、局部模型分析和重复实验合成一个看似统一的产品排名。对材料内部不完全一致的概述，不自行补出缺失的实验信息。
 

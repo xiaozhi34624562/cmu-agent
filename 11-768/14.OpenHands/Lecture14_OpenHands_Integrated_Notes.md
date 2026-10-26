@@ -4,17 +4,19 @@
 
 > 核心问题：一个会写代码、会调用工具的模型，怎样才能在真实环境中持续工作、接受干预、从故障中恢复，并交付能够验证的结果？
 
+> **全文复审：**2026-10-26。讲义、论文和网页均按本课固定归档解释；SDK API示意未调用模型服务。
+
 ## 阅读说明
 
-本文合并前两轮讲解，以 `lecture-14-openhands.pdf` 为主线，将参考论文的研究问题、具体机制、实验结果、局限和工程启示放到对应章节，而不是把各篇摘要简单拼接。
+本文以本课44页 [lecture-14-openhands.pdf](lecture-14-openhands.pdf) 为主线，将参考论文的研究问题、具体机制、实验结果、局限和工程启示放到对应章节，而不是把各篇摘要简单拼接。
 
 本文保留讲义的五段结构：**历史演进 → OpenHands SDK → 单 Agent 与多 Agent → 部署与人机交互 → 自动化与经验改进**。在此基础上，用一个“内部资料下载器遗漏最后一页数据”的教学案例贯穿全文。
 
-来源标注使用 `[R编号，章节／页码]`，可跳转到文末资料索引。PDF 页码按本次上传文件中的页序计数；HTML 使用页面内的小节标题定位，避免依赖网页源码行号。
+来源标注使用 `[R编号，章节／页码]`，可跳转到文末资料索引。PDF 页码按本地PDF物理页序（从1开始）计数；HTML 使用页面内的小节标题定位，避免依赖网页源码行号。
 
-**材料结论**描述讲义、论文或上传网页实际支持的内容；标为**工程推导**、**教学抽象**或**教学示例**的内容，是前两轮讨论中的分析与实现建议，不代表论文已经实现或验证。所有实验数字都属于资料中的模型、版本、预算与数据集设置，不构成当前产品排名。
+**材料结论**描述讲义、论文或本地归档网页实际支持的内容；标为**工程推导**、**教学抽象**或**教学示例**的内容，是本文根据来源提出的分析与实现建议，不代表论文已经实现或验证。所有实验数字都属于资料中的模型、版本、预算与数据集设置，不构成当前产品排名。
 
-`020_SkillRefiner_offline_skill_refinement.html` 是论文介绍页面，不是完整论文 PDF。因此，SkillRefiner 部分以该页面和讲义第 42—43 页为依据，不补造未提供的聚类参数、完整 Prompt 或源码实现。本文也不是对当前 SDK 仓库的逐行源码审计；API 示例用于解释资料中的对象关系，不承诺与所有后续版本兼容。
+[020_SkillRefiner_offline_skill_refinement.html](references/020_SkillRefiner_offline_skill_refinement.html) 是论文介绍页面，不是完整论文 PDF。因此，SkillRefiner 部分以该页面和讲义第 42—43 页为依据，不补造未提供的聚类参数、完整 Prompt 或源码实现。本文也不是对当前 SDK 仓库的逐行源码审计；API 示例用于解释资料中的对象关系，不承诺与所有后续版本兼容。
 
 ## 目录
 
@@ -76,7 +78,7 @@
 
 > 分页接口返回的数据没有被完整保存，最后一页时有遗漏。请查明原因并修复；保持公开接口和返回格式不变，补充边界测试，提交可审查的修改说明。不要发布或部署。
 
-这是教学示例，不是上传论文中的实验任务，也不预设真实根因。后文为解释机制，会假设某次调查确认了“在累积末页数据之前就判断终止”的错误。
+这是教学示例，不是本地论文中的实验任务，也不预设真实根因。后文为解释机制，会假设某次调查确认了“在累积末页数据之前就判断终止”的错误。
 
 在一个真实仓库中，完成它可能需要理解 issue、找入口、查调用链、准备环境、构造复现、形成假设、修改代码、运行测试、回看结果和交付补丁。模型并不在一开始就知道所有步骤，更不应该把第一种猜测当事实。
 
@@ -118,6 +120,8 @@ $$
 对各题取平均得到整体指标。原论文用这种无偏估计，并提供数值稳定实现。[R02，§2.1，第 3 页](#r02)
 
 公式表达的是“多个候选中有没有正确答案”，并没有解决“实际把哪个答案交给用户”。原论文的 Codex-S 实验中，100 个样本的理想测试选择覆盖率为 77.5%，用平均 token 对数概率选一个答案则为 44.5%；这是同一研究中候选覆盖与实际排序能力的差距。[R02，第 2 页图 1、§3.3](#r02)
+
+实现该估计量前须满足整数`n≥k≥1`与`0≤c≤n`，当`n−c<k`时值为1。教学例：10个候选中2个正确，pass@3估计为`1−C(8,3)/C(10,3)=8/15≈53.33%`。它不是把经验通过率0.2代入`1−(1−0.2)^3=48.8%`；后一种插件估计在有限样本下存在偏差，原论文附录A专门解释。候选相关性、采样温度、重复候选和被使用的测试决定指标解释；部署选择器仍需独立检查。[R02，PDF p.3、附录A](#r02)
 
 因此：
 
@@ -636,7 +640,7 @@ SDK 用 `SecurityAnalyzer` 给动作评估风险，用 `ConfirmationPolicy` 决�
 
 “不要部署”是有用指令，但不是强制保证。正确做法是任务根本不具备不必要的部署能力，或必须经过单独批准。
 
-SDK 的安全插入点提供了实施这类策略的位置；GitHub coding agent 的上传材料也展示了让 Agent 的变更经过分支规则、工作流批准和人工审查的产品设计。[R01，§4.5、§4.9](#r01) [R12，“Integrated, configurable, and secure”](#r12)
+SDK 的安全插入点提供了实施这类策略的位置；GitHub coding agent 的本地归档材料也展示了让 Agent 的变更经过分支规则、工作流批准和人工审查的产品设计。[R01，§4.5、§4.9](#r01) [R12，“Integrated, configurable, and secure”](#r12)
 
 **连接下一章：**权限边界也会影响如何划分 Agent。不同权限的执行主体可能值得分开，但不能因为角色名字不同，就认为隔离已经成立。
 
@@ -955,7 +959,7 @@ IDE 围绕文件、diff、测试进行细粒度协作；任务型 GUI 围绕长�
 
 ### 10.10 VS Code 教程中的双重验证
 
-上传教程先让 Agent 在浏览器中检查用户场景，再要求用户自己测试新增、完成、刷新和删除等行为，并审查 diff。Agent 的验证报告帮助定位问题，但不取代用户审查。[R11，“Review and validate the result”“Verify the result yourself”](#r11)
+本地教程先让 Agent 在浏览器中检查用户场景，再要求用户自己测试新增、完成、刷新和删除等行为，并审查 diff。Agent 的验证报告帮助定位问题，但不取代用户审查。[R11，“Review and validate the result”“Verify the result yourself”](#r11)
 
 教程还明确区分停止、修改和恢复检查点，指出外部副作用不在文件恢复的保证范围内。[R11，“Stop, revise, or undo the work”](#r11)
 
@@ -1023,7 +1027,7 @@ $$
 
 ### 11.5 GitHub coding agent 材料展示的交付形态
 
-上传的发布材料描述了：Agent 为任务准备开发环境、获取仓库、后台工作、持续提交到草稿 PR，提供会话日志，完成后请人审查，审查评论再成为后续修改输入。[R12，“A detailed look”](#r12)
+归档的发布材料描述了：Agent 为任务准备开发环境、获取仓库、后台工作、持续提交到草稿 PR，提供会话日志，完成后请人审查，审查评论再成为后续修改输入。[R12，“A detailed look”](#r12)
 
 材料还描述只推送到自己创建的分支、网络目的地限制、工作流批准及仓库规则等控制。这是该发布资料的版本描述，不是本文对当前产品所有配置的安全担保。[R12，“Integrated, configurable, and secure”](#r12)
 
@@ -1061,7 +1065,7 @@ SDK 报告采用三层测试：[R01，§5.1，第 12 页](#r01)
 
 ### 11.8 SDK 的实验应该怎样读？
 
-报告第 13 页表 2 给出特定 SDK 与 benchmark commit 的结果，例如 Claude Sonnet 4.5 在 SWE-bench 项为 72.8%，GAIA 为 67.9%；正文将前者表述为 SWE-bench Verified，并说明 GAIA 使用验证集。[R01，§5.2，第 13 页](#r01)
+报告第 13 页表 2 给出SDK `54c5858`、benchmarks `88f1d80`的结果，例如 Claude Sonnet 4.5 在 SWE-bench 项为 72.8%，GAIA 为 67.9%；正文将前者表述为 SWE-bench Verified，并说明 GAIA 使用验证集。[R01，§5.2，第 13 页](#r01)
 
 这些数字主要说明该报告的工程框架能够承载有竞争力的任务表现。它们不是 V0 与 V1 在完全相同条件下的严格单因素消融，也不能与 Versa 的 GAIA 测试集结果直接比较。正文的 72% 与表格 72.8% 差异另见附录 D。
 
@@ -1099,9 +1103,11 @@ $$
 
 ### 12.1 材料范围与问题定义
 
-本节依据讲义第 42—43 页与上传的 alphaXiv 介绍页面。页面介绍 SkillRefiner 利用初始自然语言 Skill、历史轨迹、结果及可用反馈进行离线改进，优化期间不生成新的任务执行轨迹。[R00，第 42—43 页](#r00) [R13，“Turning traces into reusable instructions”](#r13)
+本节依据讲义第 42—43 页与归档的 alphaXiv 介绍页面。页面介绍 SkillRefiner 利用初始自然语言 Skill、历史轨迹、结果及可用反馈进行离线改进，优化期间不生成新的任务执行轨迹。[R00，第 42—43 页](#r00) [R13，“Turning traces into reusable instructions”](#r13)
 
 这里的“离线”不是说最终无需评测，而是候选改进的产生不依赖不断重新执行任务。资料没有提供的完整算法参数与源码细节，本文不作推定。
+
+**证据层级。**该归档页面混合作者摘要、作者公开介绍与标为“AI Overview”的解读。后文引用的章节标题“Turning traces into reusable instructions”等属于页面解读，尚不能视作已独立读过原论文全文。讲义pp.42—43的流程和表格可直接核查；聚类单例、逐项消融和成本范围应保留为页面转述，不能升级成源码复核或复现实验。页面BibTeX中的year=2025与链接中的2610及课程展示时点不同，本笔记不据此猜测首发年份或有效arXiv编号。正式引用应优先取得作者论文与固定版本，此处保留实际可得范围。[R13，本地页面Abstract/From the authors/AI Overview/BibTeX](#r13)
 
 ### 12.2 它与 memory、condenser 的区别
 
@@ -1193,7 +1199,7 @@ $$
 
 ### 12.8 与 Trace2Skill、GEPA 的关系
 
-按上传页面的介绍，Trace2Skill 从个别历史执行提出修改再整合；SkillRefiner 先聚类再形成每簇建议；GEPA 在相应比较中通过新增执行评估候选，并使用五次候选修订的预算。[R13，“What the comparisons establish”](#r13)
+按归档页面的介绍，Trace2Skill 从个别历史执行提出修改再整合；SkillRefiner 先聚类再形成每簇建议；GEPA 在相应比较中通过新增执行评估候选，并使用五次候选修订的预算。[R13，“What the comparisons establish”](#r13)
 
 这里是页面对该实验的描述，不是对两个基线全部版本和适用场景的完整综述。
 
@@ -1557,7 +1563,7 @@ SDK 正文 §4.10 和第 11 页图 6 描述服务器重建 Agent 并运行完整
 
 ### D.4 CodeR 主结果的计数差异
 
-上传的 CodeR 在贡献部分把 28.33% 写为 85/300；结果正文又出现“84 of 300”；第 9 页表 4 区分 reported 28.33%（85）与 ours 27.33%（82）。本笔记没有把这些不同记录合并成一个无条件结论，主要用明确条件的消融讨论机制。[R07，第 2、8—9 页](#r07)
+本地 CodeR 在贡献部分把 28.33% 写为 85/300；结果正文又出现“84 of 300”；第 9 页表 4 区分 reported 28.33%（85）与 ours 27.33%（82）。本笔记没有把这些不同记录合并成一个无条件结论，主要用明确条件的消融讨论机制。[R07，第 2、8—9 页](#r07)
 
 ### D.5 SDK 主结果的文字与表格差异
 
@@ -1575,7 +1581,7 @@ SWE-bench 原始版、Lite、Verified、Multimodal 不是同一评测；Versa �
 
 ### D.8 SkillRefiner 的材料级别与因果边界
 
-本文的五阶段机制、部分消融与 token 成本来自上传的介绍页面；结果表来自讲义第 43 页。未提供完整论文 PDF、聚类参数或完整 Prompt，不把页面摘要扩展成精确复现说明。[R13](#r13) [R00，第 42—43 页](#r00)
+本文的五阶段机制、部分消融与 token 成本来自归档的介绍页面；结果表来自讲义第 43 页。未提供完整论文 PDF、聚类参数或完整 Prompt，不把页面摘要扩展成精确复现说明。[R13](#r13) [R00，第 42—43 页](#r00)
 
 证据门控支持失败修正的合理性，不等于逐条因果验证；优化阶段不生成新 rollout，不等于部署前无需评测；refinement tokens 也不等于包含历史数据收集的全部成本。
 
@@ -1586,136 +1592,195 @@ SWE-bench 原始版、Lite、Verified、Multimodal 不是同一评测；Versa �
 <a id="appendix-e"></a>
 ## 附录 E　资料索引与回读位置
 
-以下对应本次上传文件，编号用于文内交叉引用。文件名用于在原始资料中定位，不依赖某个本地目录结构，也不将未打开的外链内容视为已读来源。
+以下对应本课本地文件，编号用于文内交叉引用。文件名与本地链接用于回查原始资料，也不将未打开的外链内容视为已读来源。
 
 <a id="r00"></a>
 ### R00 · Lecture 14: OpenHands
 
-**文件：**`lecture-14-openhands.pdf`，44 页。讲义题头为 Agentic AI，Frameworks 1，October 8, 2026。
+**文件：**[lecture-14-openhands.pdf](lecture-14-openhands.pdf)，44 页。讲义题头为 Agentic AI，Frameworks 1，October 8, 2026。
 
 回读重点：第 4—11 页历史，第 12—20 页 SDK，第 21—28 页单／多 Agent，第 29—36 页部署交互，第 37—43 页自动化与学习。第 42 页是 SkillRefiner 流程图，第 43 页是结果表。
 
-<!-- 来源定位：fileciteturn17file0L7-L8；fileciteturn18file0L90-L112；fileciteturn18file4L1184-L1218 -->
 
 <a id="r01"></a>
 ### R01 · The OpenHands Software Agent SDK: A Composable and Extensible Foundation for Production Agents
 
-**文件：**`001_OpenHands_Software_Agent_SDK_report.pdf`，22 页。上传版本标识：`arXiv:2511.03690v1`。
+**文件：**[001_OpenHands_Software_Agent_SDK_report.pdf](references/001_OpenHands_Software_Agent_SDK_report.pdf)，22 页。本地版本标识：`arXiv:2511.03690v1`。
 
 回读重点：§3 的重构动机；第 2 页图 1；§4.2 事件与状态；§4.3 模型适配；§4.4 工具；§4.5 Agent、Skills 与委派；§4.6 压缩；§4.8—4.10 凭证、安全与部署；§5 测试评测。附录比较与 API 表述须结合附录 D 的差异说明。
 
-<!-- 来源定位：fileciteturn17file1L134-L154；fileciteturn17file1L341-L380；fileciteturn18file1L229-L323；fileciteturn18file1L442-L485 -->
 
 <a id="r02"></a>
 ### R02 · Evaluating Large Language Models Trained on Code（HumanEval）
 
-**文件：**`004_HumanEval.pdf`，35 页。上传版本标识：`arXiv:2107.03374v2`。
+**文件：**[004_HumanEval.pdf](references/004_HumanEval.pdf)，35 页。本地版本标识：`arXiv:2107.03374v2`。
 
 回读重点：§2.1 功能正确性与 pass@k；§2.2 手写评测集；§2.3 不可信程序执行沙箱；§3.3 多样本与选择器。本文侧重其评测思想，不将早期 Codex 结果与当前同名工具混淆。
 
-<!-- 来源定位：fileciteturn17file2L89-L137；fileciteturn17file2L154-L176；fileciteturn17file2L206-L229 -->
 
 <a id="r03"></a>
 ### R03 · SWE-bench: Can Language Models Resolve Real-World GitHub Issues?
 
-**文件：**`005_SWE-bench.pdf`，46 页。上传版本标识：`arXiv:2310.06770v1`。
+**文件：**[005_SWE-bench.pdf](references/005_SWE-bench.pdf)，46 页。本地版本标识：`arXiv:2310.06770v1`。
 
 回读重点：§2.1 任务构建，§2.2—2.3 验收与仓库修改，§4.1 BM25 与 oracle retrieval，第 5 页表 3—4 的召回与成功率关系。本文使用其原始 2,294 题版本描述。
 
-<!-- 来源定位：fileciteturn17file3L108-L137；fileciteturn17file3L149-L189；fileciteturn17file3L239-L259；fileciteturn17file3L290-L308 -->
 
 <a id="r04"></a>
 ### R04 · SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering
 
-**文件：**`009_SWE-agent.pdf`，118 页。上传版本标识：`arXiv:2405.15793v3`。
+**文件：**[009_SWE-agent.pdf](references/009_SWE-agent.pdf)，118 页。本地版本标识：`arXiv:2405.15793v3`。
 
 回读重点：§2 的 ACI 原则；§3 的动作、查看器、编辑器与上下文；第 6 页表 3 消融；§5.2 失败轨迹；附录 A.1 第 16—20 页，尤其错误反馈与检查机制的取舍。
 
-<!-- 来源定位：fileciteturn17file4L137-L174；fileciteturn17file4L243-L276；fileciteturn17file4L380-L397；fileciteturn12file0L259-L280；fileciteturn12file0L338-L350 -->
 
 <a id="r05"></a>
 ### R05 · Introducing OpenDevin CodeAct 1.0, a new State-of-the-art in Coding Agents
 
-**文件：**`010_OpenDevin_CodeAct_1.0.html`。页面署名 Xingyao Wang、Bowen Li、Graham Neubig，日期 May 7, 2024。
+**文件：**[010_OpenDevin_CodeAct_1.0.html](references/010_OpenDevin_CodeAct_1.0.html)。页面署名 Xingyao Wang、Bowen Li、Graham Neubig，日期 May 7, 2024。
 
 回读重点：“OpenDevin CodeAct 1.0”“Containerized SWE-Bench Evaluation”“How Does OpenDevin CodeAct 1.0 Stack Up?”。标题中的领先表述属于发布时语境。
 
-<!-- 来源定位：fileciteturn17file5L1-L1 -->
 
 <a id="r06"></a>
 ### R06 · Don't Sleep on Single-agent Systems
 
-**文件：**`011_Don_t_Sleep_on_Single-agent_Systems.html`。页面作者 Graham Neubig，日期 September 26, 2024。
+**文件：**[011_Don_t_Sleep_on_Single-agent_Systems.html](references/011_Don_t_Sleep_on_Single-agent_Systems.html)。页面作者 Graham Neubig，日期 September 26, 2024。
 
 回读重点：“Some Issues with Multi-agent Systems”“How can we make Excellent Single-agent Systems”“Conclusion”。该材料是作者架构观点，不是全面控制变量的单／多 Agent 优劣实验。
 
-<!-- 来源定位：fileciteturn15file3L688-L720 -->
 
 <a id="r07"></a>
 ### R07 · CodeR: Issue Resolving with Multi-Agent and Task Graphs
 
-**文件：**`012_CodeR.pdf`，23 页。上传版本标识：`arXiv:2406.01304v3`。
+**文件：**[012_CodeR.pdf](references/012_CodeR.pdf)，23 页。本地版本标识：`arXiv:2406.01304v3`。
 
 回读重点：§2 角色与动作；§3.1 任务图；§3.2 覆盖与 BM25 的联合定位；第 9 页表 4—5。实际使用的计划和主结果计数差异，见本文第八章与附录 D。
 
-<!-- 来源定位：fileciteturn17file7L60-L115；fileciteturn17file7L247-L273；fileciteturn17file7L295-L345；fileciteturn10file2L1149-L1159 -->
 
 <a id="r08"></a>
 ### R08 · MetaGPT: Meta Programming for a Multi-Agent Collaborative Framework
 
-**文件：**`013_MetaGPT.pdf`，29 页。上传版本标识：`arXiv:2308.00352v7`，文内标注 ICLR 2024。
+**文件：**[013_MetaGPT.pdf](references/013_MetaGPT.pdf)，29 页。本地版本标识：`arXiv:2308.00352v7`，文内标注 ICLR 2024。
 
 回读重点：§3.1 SOP，§3.2 结构化通信与发布订阅，§3.3 可执行反馈；§4.1 数据集与指标，第 9 页角色和反馈消融。区分从零构建软件与现有仓库修复。
 
-<!-- 来源定位：fileciteturn17file8L244-L253；fileciteturn17file8L274-L320；fileciteturn17file8L339-L365；fileciteturn10file3L1265-L1280 -->
 
 <a id="r09"></a>
 ### R09 · Coding Agents with Multimodal Browsing are Generalist Problem Solvers（OpenHands-Versa）
 
-**文件：**`014_OpenHands-Versa.pdf`，15 页。上传版本标识：`arXiv:2506.03011v1`。
+**文件：**[014_OpenHands-Versa.pdf](references/014_OpenHands-Versa.pdf)，15 页。本地版本标识：`arXiv:2506.03011v1`。
 
 回读重点：§2.2 工具与计划改动；§3 模型和数据划分；第 7 页表 2 同模型对照；第 8 页图 2 工具分布；§5.2 错误分析；§5.3 搜索 API 对照。
 
-<!-- 来源定位：fileciteturn17file9L129-L161；fileciteturn17file9L192-L199；fileciteturn17file9L311-L325；fileciteturn18file2L621-L633；fileciteturn18file2L691-L752 -->
 
 <a id="r10"></a>
 ### R10 · Code with Me or for Me? How Increasing AI Automation Transforms Developer Workflows
 
-**文件：**`015_Code_with_Me_or_for_Me.pdf`，28 页。上传版本标识：`arXiv:2507.08149v1`。
+**文件：**[015_Code_with_Me_or_for_Me.pdf](references/015_Code_with_Me_or_for_Me.pdf)，28 页。本地版本标识：`arXiv:2507.08149v1`。
 
 回读重点：§3 样本、随机化、模型与投入测量；第 8 页图 4；第 10 页图 5；第 11 页表 3；§5.1 设计要求和 §5.3 局限。统计表述的注意事项见附录 D。
 
-<!-- 来源定位：fileciteturn17file10L223-L280；fileciteturn17file10L317-L386；fileciteturn18file3L806-L829；fileciteturn18file3L1031-L1062；fileciteturn18file3L1099-L1122 -->
 
 <a id="r11"></a>
 ### R11 · Quickstart: Complete your first task with an agent（VS Code）
 
-**文件：**`016_VS_Code_with_Copilot_agent_quickstart.html`。
+**文件：**[016_VS_Code_with_Copilot_agent_quickstart.html](references/016_VS_Code_with_Copilot_agent_quickstart.html)。
 
-回读重点：“Review and validate the result”“Verify the result yourself”“Stop, revise, or undo the work”。使用上传页面的流程说明，不保证后续界面按钮、默认行为和名称不变。
+回读重点：“Review and validate the result”“Verify the result yourself”“Stop, revise, or undo the work”。使用归档页面的流程说明，不保证后续界面按钮、默认行为和名称不变。
 
-<!-- 来源定位：fileciteturn16file0L13-L32 -->
 
 <a id="r12"></a>
 ### R12 · GitHub Copilot: Meet the new coding agent
 
-**文件：**`018_GitHub_Copilot_coding_agent.html`。页面发布于 May 19, 2025。
+**文件：**[018_GitHub_Copilot_coding_agent.html](references/018_GitHub_Copilot_coding_agent.html)。页面发布于 May 19, 2025。
 
 回读重点：“A detailed look”“Integrated, configurable, and secure”。用于说明任务、后台执行、草稿 PR、日志与人工治理的交付链路，不将发布时期的功能范围当作当前完整产品说明。
 
-<!-- 来源定位：fileciteturn17file12L11-L21；fileciteturn15file2L573-L614；fileciteturn15file2L636-L658 -->
 
 <a id="r13"></a>
 ### R13 · SkillRefiner: Offline Skill Refinement from Historical Agent Traces（alphaXiv 介绍页面）
 
-**文件：**`020_SkillRefiner_offline_skill_refinement.html`。
+**文件：**[020_SkillRefiner_offline_skill_refinement.html](references/020_SkillRefiner_offline_skill_refinement.html)。
 
 回读重点：“Turning traces into reusable instructions”“What the comparisons establish”“History as feedback”，并对照 R00 第 42—43 页。
 
-材料级别为上传介绍页面，不是本次已读取的完整论文 PDF。文中由该页面转述的论文页码只用来说明页面的引用位置，不表示本文读取了那些未提供的原论文页面。
+材料级别为归档介绍页面，不是本次已读取的完整论文 PDF。文中由该页面转述的论文页码只用来说明页面的引用位置，不表示本文读取了那些未提供的原论文页面。
 
-<!-- 来源定位：fileciteturn19file0L10-L10；fileciteturn19file1L20-L20；fileciteturn11file3L40-L40；fileciteturn18file4L1201-L1218 -->
 
 ---
 
 **全文结语：**模型提出下一步，工具连接真实世界，运行系统维护事实与边界，验证决定是否交付，人类掌握需要承担责任的决策，经验改进下一次的工作方法。OpenHands 这一讲的价值，正是把这些责任连接为同一个系统。
+
+
+## 附录 F　44页讲义覆盖、自测与离线运行
+
+本课讲义44页已逐页全文检查，核心截图/图表页3、6、27、34、38、40、42、43已渲染复核。演示页说明了用户界面与工作流形态，不具有隐藏工具链或成功率的独立验证力。
+
+| PDF页 | 主题 | 对应正文 |
+|---|---|---|
+| 1 | OpenHands课程导入 | 第1章 |
+| 2 | Simple Frontend Demo | 第1章 |
+| 3 | Agent Canvas | 第1章 |
+| 4 | History | 第1章 |
+| 5 | Code completion | 第2章 |
+| 6 | Repository-level evaluation | 第2章 |
+| 7 | Devin | 第1、3—4章 |
+| 8 | OpenDevin | 第1、3—4章 |
+| 9 | Early coding agents | 第1、3—4章 |
+| 10 | Benchmark progress | 第1、5—7章 |
+| 11 | Deployment | 第1、5—7章 |
+| 12 | The OpenHands | 第5—6章 |
+| 13 | Batteries included, but flexible | 第5—6章 |
+| 14 | Model and tools | 第5—6章 |
+| 15 | Conversation | 第5—6章 |
+| 16 | Custom tools | 第5—6章 |
+| 17 | Conversation persistence | 第5—6章 |
+| 18 | Context management | §6.1—6.4 |
+| 19 | Remote execution | 第7章 |
+| 20 | Action confirmation | 第7章 |
+| 21 | Single Agent vs. | 第8章 |
+| 22 | Specialized roles | 第8章 |
+| 23 | A single-agent baseline | 第8章 |
+| 24 | General-purpose tools | 第8章 |
+| 25 | Skills | 第8章 |
+| 26 | MCP tools | 第8章 |
+| 27 | Generalist problem solving | 第9章 |
+| 28 | Division of labor | §8.13—8.14 |
+| 29 | Agent Hosting | 第10章 |
+| 30 | Local and cloud execution | 第10章 |
+| 31 | Interface choices | 第10章 |
+| 32 | IDE | 第10章 |
+| 33 | Custom GUI | 第10章 |
+| 34 | Human effort and oversight | 第10章 |
+| 35 | CLI | 第10章 |
+| 36 | Integrations | 第10章 |
+| 37 | Automations for | 第11章 |
+| 38 | Automation dashboard | 第11章 |
+| 39 | An automation run | 第11章 |
+| 40 | Automation demo | 第11章 |
+| 41 | Software factory | 第11章 |
+| 42 | Learning from past runs | 第12章 |
+| 43 | Skill refinement results | 第12章 |
+| 44 | Questions? | §1.2课程衔接 |
+
+### F.1 自测与参考答案
+
+| 问题 | 参考答案 |
+|---|---|
+| 10个候选2个通过，pass@3是多少；为什么不等于交付率？ | 8/15≈53.33%；指标知道哪几个通过，产品还需要运行时可用的选择或验收。 |
+| Action合法、Observation成功、任务完成可以合为一个状态吗？ | 不能；格式、授权、执行和验收是独立条件。返回值须区分被拒绝、未执行、失败和结果未知。 |
+| Agent无状态，为什么还要恢复Conversation？ | 不变的是配置，可变进度在ConversationState；文件和外部系统状态仍需单独对齐。 |
+| 摘要后日志保留，是否说明信息没有损失？ | 完整日志可回查，但本轮模型只见压缩视图，决策仍可能漏细节，必须保留原始证据定位。 |
+| 远程Conversation恢复是否自动重复所有动作？ | 不应如此；事件重建状态不等于重发外部请求。结果未知先查询，副作用须幂等或人工处理。 |
+| CodeR消融22%→10%能证明多Agent独立贡献12点吗？ | 不能；同时移除任务图，成本/调用也不同，50题样本只支持该组合条件。 |
+| 为什么Versa 51.16%与SDK67.9%不能直接作版本增益？ | 使用模型与GAIA测试/验证划分不同，且系统配置变化，缺少同条件因果对照。 |
+| 用户投入12.5分钟能否说总耗时只有12.5分钟？ | 不能；该研究正确完成任务的总耗时27.9分钟，人工投入是定义过的交互时间代理。 |
+| SkillRefiner不生成新轨迹，是否可以免验收上线？ | 不能；候选修改源于历史假设，仍需未参与优化任务评测、版本管理和回滚。 |
+| 批准commit A后Agent又修改成B，何时可合并？ | 需按B重新取得相应检查与批准，A的证据不能直接绑定到B。 |
+
+### F.2 实际运行的可控示例
+
+[examples/pagination_contract.py](examples/pagination_contract.py)只使用Python标准库，以自造页数据验证“先收集本页，再判断终止”。2026-10-26运行结果：6个分页契约通过（空结果、单页、不满末页、整末页、额外空终止页、停止后不继续读取），并证明故意错误的旧顺序会遗漏末页；另通过pass@3=8/15、100token×10步累计5500输入token、总成本10/验收4=2.5的算式检查。数据和根因是教学假设，不是仓库实际下载器问题。示例未导入SDK、调用模型/网络、修改外部系统或重跑论文基准；不能证明真实模型能自主诊断，也不覆盖网络重试、游标过期或真实API语义。
+
+运行：`python3 11-768/14.OpenHands/examples/pagination_contract.py`（仓库根目录）。附录A的SDK骨架仍未在模型服务中执行；实际使用需选定依赖与隔离环境。

@@ -2,11 +2,11 @@
 
 ## 阅读说明
 
-**主讲义**：Graham Neubig，*Tool Use for Language Model Agents*，`lecture-02-tool-use.pdf`，共 60 页。
+**主讲义**：Graham Neubig，*Tool Use for Language Model Agents*，[lecture-02-tool-use.pdf](lecture-02-tool-use.pdf)，共 60 页。
 
 **适合读者**：已经接触大模型应用开发，希望进一步理解 Agent 的工具调用机制、训练方法、结构约束、执行系统与工程评测的开发者。
 
-本文沿用 lecture-02 的章节顺序，将四篇主参考论文与所给官方文档、模型模板、框架源码嵌入对应章节，并补充工具检索和现代模型工具训练的延伸资料。课件页码均指上传 PDF 的页序；主参考论文页码指各自上传版本的页序。
+本文沿用 lecture-02 的章节顺序，将四篇主参考论文与所给官方文档、模型模板、框架源码嵌入对应章节，并补充工具检索和现代模型工具训练的延伸资料。课件页码均指本地 PDF 的页序；主参考论文页码指各自本地版本的页序。
 
 正文中的来源分为三类：**讲义内容**解释课程主线；**论文／官方文档／源码补充**说明材料直接支持的机制与结果；**工程推论、设计建议和教学示例**用于解释如何落地，不冒充论文结论或已实施的生产方案。代码若依赖自定义函数、外部服务或配置，会在附近说明；它们不构成一个已经完成部署验证的项目。
 
@@ -1714,7 +1714,7 @@ async def query_weather():
 
 ## 7.9 所给 2026-07-28 协议参考：不能套用旧版握手流程
 
-用户给出的正式发布说明明确：2026-07-28 版改为无状态协议核心，取消旧版 `initialize/initialized` 交换与 `Mcp-Session-Id`，请求携带自身元数据；`server/discover` 为可选发现调用。TypeScript SDK v2 页面声明实现该版协议。[R20](#source-r20)、[R21](#source-r21)
+本地归档的正式发布说明明确：2026-07-28 版改为无状态协议核心，取消旧版 `initialize/initialized` 交换与 `Mcp-Session-Id`，请求携带自身元数据；`server/discover` 为可选发现调用。TypeScript SDK v2 页面声明实现该版协议。[R20](#source-r20)、[R21](#source-r21)
 
 这不是在修改讲义的 Host—Client—Server 结构，而是在补充所用协议版本的通信行为。
 
@@ -2113,7 +2113,7 @@ get_return(product_id, start_date, end_date)
 
 讲义第 57 页是标注为 **2026-08-27** 的 provider tool-call error rates 截图。[L02，p.57](#source-l02)
 
-用户给出的 R06 是 OpenRouter 首页；当前首页不能独立重建该历史图的请求分布、统计口径和当时数值。因此本文只把截图作为讲义中的历史运行指标示例，不据此发布当前供应商排名，也不声称已经通过首页核验同一批历史统计。[R06](#source-r06)
+资料索引 R06 是 OpenRouter 首页；当前首页不能独立重建该历史图的请求分布、统计口径和当时数值。因此本文只把截图作为讲义中的历史运行指标示例，不据此发布当前供应商排名，也不声称已经通过首页核验同一批历史统计。[R06](#source-r06)
 
 **工程推论：**比较服务路径时，应固定模型、请求集、配置、时间窗口和错误定义。不同任务分布下的错误率，不能直接解释为某个供应商永远更可靠。
 
@@ -2400,40 +2400,40 @@ B 的任务更难，不能由此推断 A 永远更可靠。就像两个人做不
 <a id="references"></a>
 # 附录 D：完整来源索引
 
-论文编号 P01–P04 与用户上传文件对应；R01–R26 沿用用户给出的参考顺序。R27 补充 `asyncio.gather` 的官方说明；R28–R40 补充工具检索、现代模型训练、API、结构解码、认证、并发源码与 BFCL 方法。以下链接用于回到来源，正文的具体论述同时标明相关页码、章节或源码对象。
+论文编号 P01–P04 对应本地归档论文；R01–R26 沿用本课参考资料的编号顺序。R27 补充 `asyncio.gather` 的官方说明；R28–R40 补充工具检索、现代模型训练、API、结构解码、认证、并发源码与 BFCL 方法。以下链接用于回到来源，正文的具体论述同时标明相关页码、章节或源码对象。
 
 ## D.1 主讲义与四篇论文
 
 <a id="source-l02"></a>
 ### L02 — Tool Use for Language Model Agents
 
-Graham Neubig，Carnegie Mellon University，Language Technologies Institute。上传文件：`lecture-02-tool-use.pdf`，60 页。本文结构以该讲义为准；尤其对应第 3–5 页的定义与收益、第 19–25 页的调用机制、第 26–35 页的约束、第 36–46 页的接口、第 47–57 页的系统与评测。
+Graham Neubig，Carnegie Mellon University，Language Technologies Institute。本地文件：[lecture-02-tool-use.pdf](lecture-02-tool-use.pdf)，60 页。本文结构以该讲义为准；尤其对应第 3–5 页的定义与收益、第 19–25 页的调用机制、第 26–35 页的约束、第 36–46 页的接口、第 47–57 页的系统与评测。
 
 <a id="source-p01"></a>
 ### P01 — What Are Tools Anyway? A Survey from the Language Model Perspective
 
-上传文件：`001_What_Are_Tools_Anyway.pdf`。上传版本：arXiv:2403.15452v1，2024-03-18。参考入口：[arXiv 版本页](https://arxiv.org/abs/2403.15452v1)。
+本地文件：[001_What_Are_Tools_Anyway.pdf](readings/001_What_Are_Tools_Anyway.pdf)。本地版本：arXiv:2403.15452v1，2024-03-18。参考入口：[arXiv 版本页](https://arxiv.org/abs/2403.15452v1)。
 
-本文主要使用 §2 的定义与分类、§4 的适用情形、§5 的工具选择／程序化／制造复用、§6 的评测和 §7 的成本权衡。讲义标注该工作为 COLM 2024；本文的具体页码与文字依据上传版本，不将其他版本内容混入。
+本文主要使用 §2 的定义与分类、§4 的适用情形、§5 的工具选择／程序化／制造复用、§6 的评测和 §7 的成本权衡。讲义标注该工作为 COLM 2024；本文的具体页码与文字依据本地版本，不将其他版本内容混入。
 
 <a id="source-p02"></a>
 ### P02 — Executable Code Actions Elicit Better LLM Agents（CodeAct）
 
-上传文件：`002_CodeAct.pdf`。上传版本：arXiv:2402.01030v4，2024-06-07，ICML 2024。参考入口：[arXiv 版本页](https://arxiv.org/abs/2402.01030v4)。
+本地文件：[002_CodeAct.pdf](readings/002_CodeAct.pdf)。本地版本：arXiv:2402.01030v4，2024-06-07，ICML 2024。参考入口：[arXiv 版本页](https://arxiv.org/abs/2402.01030v4)。
 
 本文主要使用 §2 的行动框架与两个对照实验、表 2–3 的结果、图 3 的交互示例、§3 与表 4 的训练混合，以及 Impact Statement 中的变量内容幻觉限制。
 
 <a id="source-p03"></a>
 ### P03 — Toolformer: Language Models Can Teach Themselves to Use Tools
 
-上传文件：`003_Toolformer.pdf`。上传版本：arXiv:2302.04761v1，2023-02-09。参考入口：[arXiv 版本页](https://arxiv.org/abs/2302.04761v1)。
+本地文件：[003_Toolformer.pdf](readings/003_Toolformer.pdf)。本地版本：arXiv:2302.04761v1，2023-02-09。参考入口：[arXiv 版本页](https://arxiv.org/abs/2302.04761v1)。
 
 本文主要使用 §2 的采样—执行—筛选—微调流程、前缀筛选脚注、§3 的五类工具、§4 的权重与推理设置、表 4 的训练／执行对照，以及 §7 的限制条件。
 
 <a id="source-p04"></a>
 ### P04 — XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models
 
-上传文件：`004_XGrammar.pdf`。上传版本：arXiv:2411.15100v3，2025-05-12，MLSys 2025。参考入口：[arXiv 版本页](https://arxiv.org/abs/2411.15100v3)。
+本地文件：[004_XGrammar.pdf](readings/004_XGrammar.pdf)。本地版本：arXiv:2411.15100v3，2025-05-12，MLSys 2025。参考入口：[arXiv 版本页](https://arxiv.org/abs/2411.15100v3)。
 
 本文主要使用 §2 的 CFG／PDA 与 token mask，§3.1–3.5 的缓存、上下文扩展、持久化栈、自动机优化与 CPU/GPU 重叠，以及 §4、表 2–4 的性能和结构正确性实验。
 
@@ -2441,110 +2441,136 @@ Graham Neubig，Carnegie Mellon University，Language Technologies Institute。�
 
 <a id="source-r01"></a>
 **R01 — OpenAI Chat Completions API**  
-[用户提供的官方入口](https://platform.openai.com/docs/api-reference/chat/create)。用于第 4 章：消息、函数工具调用、JSON 字符串参数、ID、结束状态与 `tool_choice`。该入口本次重定向至 OpenAI 的新版 API 参考页面；本文保持 Chat Completions 语境，不将 Responses 的对象结构混用。
+本地快照：[001_OpenAI_Chat_Completions_API.html](references/001_OpenAI_Chat_Completions_API.html)。
+[官方入口](https://platform.openai.com/docs/api-reference/chat/create)。用于第 4 章：消息、函数工具调用、JSON 字符串参数、ID、结束状态与 `tool_choice`。该入口本次重定向至 OpenAI 的新版 API 参考页面；本文保持 Chat Completions 语境，不将 Responses 的对象结构混用。
 
 <a id="source-r02"></a>
 **R02 — Hugging Face Chat Templates**  
+本地快照：[002_Hugging_Face_Chat_Templates.html](references/002_Hugging_Face_Chat_Templates.html)。
 [官方文档](https://huggingface.co/docs/transformers/chat_templating)。用于第 4 章：消息序列化、生成起点、继续最后消息、训练预处理与特殊 token 边界。
 
 <a id="source-r03"></a>
 **R03 — Qwen2.5 Chat Template**  
+本地快照：[003_Qwen2.json](references/003_Qwen2.json)。
 [Qwen2.5-7B-Instruct/tokenizer_config.json](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/blob/main/tokenizer_config.json)。用于第 4 章：工具定义、`arguments | tojson`、工具结果的 `<tool_response>` 包装。引用的是具体模板路径，不推导所有 Qwen 版本行为相同。
 
 <a id="source-r04"></a>
 **R04 — Berkeley Function-Calling Leaderboard V4**  
+本地快照：[004_Berkeley_Function-Calling_Leaderboard_V4.html](references/004_Berkeley_Function-Calling_Leaderboard_V4.html)。
 [官方页面](https://gorilla.cs.berkeley.edu/leaderboard.html)。用于第 9 章：评测入口与原始／转换调用的区别。本文不以当前动态排名替代本地任务评测。
 
 <a id="source-r05"></a>
 **R05 — BFCL V4 Methodology**  
+本地快照：[005_BFCL_V4_Methodology.html](references/005_BFCL_V4_Methodology.html)。
 [BFCL V4 Web Search 方法说明](https://gorilla.cs.berkeley.edu/blogs/15_bfcl_v4_web_search.html)。用于第 9 章：总分权重、多跳搜索、摘要对照、失败场景和规范化答案匹配。
 
 <a id="source-r06"></a>
 **R06 — OpenRouter Provider Analytics 入口**  
+本地快照：[006_OpenRouter_Provider_Analytics.html](references/006_OpenRouter_Provider_Analytics.html)。
 [OpenRouter 首页](https://openrouter.ai/)。用于界定第 9 章的证据边界：它不能单独重建讲义第 57 页的 2026-08-27 历史截图和统计口径。本文不从首页推算历史错误率。
 
 <a id="source-r07"></a>
 **R07 — OpenAI Function Calling Guide**  
+本地快照：[007_OpenAI_Function_Calling_Guide.html](references/007_OpenAI_Function_Calling_Guide.html)。
 [官方指南](https://developers.openai.com/api/docs/guides/function-calling)。用于第 4–5 章：工具回填、流式调用、strict 模式及其 schema 要求与支持范围。
 
 <a id="source-r08"></a>
 **R08 — Qwen3.8 Tool-Call Template**  
+本地快照：[008_Qwen3.json](references/008_Qwen3.json)。
 [Qwen3.8-27B/tokenizer_config.json](https://huggingface.co/Qwen/Qwen3.8-27B/blob/main/tokenizer_config.json)。用于第 4 章：function／parameter 标签，以及参数映射项的编码方式。
 
 <a id="source-r09"></a>
 **R09 — Mistral Small 4 Model Card**  
+本地快照：[009_Mistral_Small_4_Model_Card.html](references/009_Mistral_Small_4_Model_Card.html)。
 [官方模型卡](https://huggingface.co/mistralai/Mistral-Small-4-119B-2603)。用于第 4 章：服务端工具解析器配置与函数调用演示。文中对 `eval` 的安全提醒是工程判断，不是将示例当作完整生产执行器。
 
 <a id="source-r10"></a>
 **R10 — Mistral Tool-Call Tokenization Guide**  
+本地快照：[010_Mistral_Tool-Call_Tokenization_Guide.md](references/010_Mistral_Tool-Call_Tokenization_Guide.md)。
 [官方 cookbook 文档](https://github.com/mistralai/cookbook/blob/main/concept-deep-dive/tokenization/tool_calling.md)。用于第 4 章：V2、V3、Tekken 在调用 ID、结果包装和表示上的差异；不能仅凭共同控制 token 推断协议完全一致。
 
 <a id="source-r11"></a>
 **R11 — DeepSeek V3.2 Tool-Call Encoding**  
+本地快照：[011_DeepSeek_V3.py](references/011_DeepSeek_V3.py)。
 [encoding_dsv32.py](https://huggingface.co/deepseek-ai/DeepSeek-V3.2/blob/main/encoding/encoding_dsv32.py)。用于第 4 章：DSML 参数编码、字符串类型标记及 `json.loads` 输入边界。
 
 ## D.3 工具运行时、结构标准与 HTTP 接口
 
 <a id="source-r12"></a>
 **R12 — OpenHands Tool System Architecture**  
+本地快照：[012_OpenHands_Tool_System_Architecture.html](references/012_OpenHands_Tool_System_Architecture.html)。
 [Tool System & MCP](https://docs.openhands.dev/sdk/arch/tool-system)。用于第 4 章：工具注册、Action—Observation、执行器与面向模型的结果表达。
 
 <a id="source-r13"></a>
 **R13 — OpenHands Agent Dispatch Source**  
+本地快照：[013_OpenHands_Agent_Dispatch_Source.py](references/013_OpenHands_Agent_Dispatch_Source.py)。
 [agent.py](https://github.com/OpenHands/software-agent-sdk/blob/main/openhands-sdk/openhands/sdk/agent/agent.py)。用于第 4、8 章：调用批次、被阻止动作、结束截断、结果事件与状态转换。具体说明对应本次读取的 `_ActionBatch` 等实现，不假定与讲义历史版本逐行一致。
 
 <a id="source-r14"></a>
 **R14 — OpenHands ToolDefinition Source**  
+本地快照：[014_OpenHands_ToolDefinition_Source.py](references/014_OpenHands_ToolDefinition_Source.py)。
 [tool.py](https://github.com/OpenHands/software-agent-sdk/blob/main/openhands-sdk/openhands/sdk/tool/tool.py)。用于第 4 章：`action_from_arguments`、执行器调用、声明输出类型时的结果验证与 Observation 包装。
 
 <a id="source-r15"></a>
 **R15 — JSON Schema 2020-12 Core**  
+本地快照：[015_JSON_Schema_2020-12.html](references/015_JSON_Schema_2020-12.html)。
 [规范入口](https://json-schema.org/draft/2020-12/json-schema-core.html)。用于第 5 章：词汇表、schema 结构、断言与注解的区分。
 
 <a id="source-r16"></a>
 **R16 — JSON Schema 2020-12 Validation**  
+本地快照：[016_JSON_Schema_2020-12_Validation.html](references/016_JSON_Schema_2020-12_Validation.html)。
 [验证规范](https://json-schema.org/draft/2020-12/json-schema-validation.html)。用于第 5 章：字段存在、类型、值域、默认值注解及 Format-Annotation／Format-Assertion。
 
 <a id="source-r17"></a>
 **R17 — OpenAPI Specification**  
+本地快照：[017_OpenAPI_Specification.html](references/017_OpenAPI_Specification.html)。
 [规范入口](https://spec.openapis.org/oas/latest.html)。用于第 6 章：HTTP 操作、参数位置、`style` 与 `explode` 等序列化语义。本次 `latest` 页面标题为 v3.2.1；讲义未给出同样明确的规范版本，不将这个版本号追溯添加到讲义。
 
 <a id="source-r18"></a>
 **R18 — FastAPI Generated OpenAPI**  
+本地快照：[018_FastAPI_Generated_OpenAPI.html](references/018_FastAPI_Generated_OpenAPI.html)。
 [First Steps / OpenAPI](https://fastapi.tiangolo.com/tutorial/first-steps/#openapi)。用于第 6 章：路由与自动生成的 OpenAPI 文档。
 
 <a id="source-r19"></a>
 **R19 — FastAPI Security and OpenAPI**  
+本地快照：[019_FastAPI_Security_and_OpenAPI.html](references/019_FastAPI_Security_and_OpenAPI.html)。
 [Security 官方教程](https://fastapi.tiangolo.com/tutorial/security/)。用于第 6 章：安全方案与接口文档集成；实际 `verify` 与对象授权仍需由应用落实。
 
 ## D.4 MCP、FastMCP 与认证
 
 <a id="source-r20"></a>
 **R20 — MCP 2026-07-28 Specification Release**  
+本地快照：[020_MCP_2026-07-28_Specification_Release.html](references/020_MCP_2026-07-28_Specification_Release.html)。
 [官方发布说明](https://blog.modelcontextprotocol.io/posts/2026-07-28/)。用于第 7 章：无状态核心、移除旧握手与 session header、可选发现和显式业务状态句柄。
 
 <a id="source-r21"></a>
 **R21 — MCP TypeScript SDK v2 Overview**  
+本地快照：[021_MCP_TypeScript_SDK_v2_Overview.html](references/021_MCP_TypeScript_SDK_v2_Overview.html)。
 [SDK v2 官方文档](https://ts.sdk.modelcontextprotocol.io/v2/)。用于第 7 章：SDK 与 2026-07-28 协议版本的对应关系；SDK 版本不是协议版本的同义表达。
 
 <a id="source-r22"></a>
 **R22 — MCP Transports Specification**  
+本地快照：[022_MCP_Transports_Specification.html](references/022_MCP_Transports_Specification.html)。
 [传输规范](https://modelcontextprotocol.io/specification/draft/basic/transports)。用于第 7 章：stdio、Streamable HTTP、JSON-RPC 消息与传输绑定的区别。该地址为 `draft`，具体行为应结合所用协议版本阅读。
 
 <a id="source-r23"></a>
 **R23 — MCP Tools Specification**  
+本地快照：[023_MCP_Tools_Specification.html](references/023_MCP_Tools_Specification.html)。
 [工具规范](https://modelcontextprotocol.io/specification/draft/server/tools)。用于第 4、7 章：输入输出契约、`structuredContent`、`outputSchema`、`isError` 与访问控制／敏感操作保护要求。
 
 <a id="source-r24"></a>
 **R24 — FastMCP OpenAPI Integration**  
+本地快照：[024_FastMCP_OpenAPI_Integration.html](references/024_FastMCP_OpenAPI_Integration.html)。
 [OpenAPI 集成文档](https://gofastmcp.com/integrations/openapi)。用于第 7 章：`from_openapi`、上游客户端、默认路由转换、映射和排除。文中保留该资料与讲义中的 `httpx2` 示例写法，不静默替换为另一套版本接口。
 
 <a id="source-r25"></a>
 **R25 — FastMCP Token Verification**  
+本地快照：[025_FastMCP_Token_Verification.html](references/025_FastMCP_Token_Verification.html)。
 [Token Verification](https://gofastmcp.com/servers/auth/token-verification)。用于第 7 章：静态 token 的演示定位，JWT 签名、issuer、audience 等验证边界。
 
 <a id="source-r26"></a>
 **R26 — FastMCP Bearer Client Authentication**  
+本地快照：[026_FastMCP_Bearer_Client_Authentication.html](references/026_FastMCP_Bearer_Client_Authentication.html)。
 [Bearer 客户端认证](https://gofastmcp.com/clients/auth/bearer)。用于第 7 章：客户端 `auth` 参数与自动添加 Bearer 前缀。
 
 ## D.5 额外的运行时语义参考
@@ -2637,7 +2663,7 @@ CodeAct 的 API-Bank 结果是原子调用执行正确率，M³ToolEval 结果�
 
 CodeAct 表 3 的列值为 5.5、7.6、7.7 轮。本文分别与 JSON、文本对照计算轮数差，避免将正文中并列出现的改善数字错误地当成同一基线。
 
-XGrammar 的 160 MB → 0.46 MB 是论文缓存内存结果，0.018 ms 是消融实验中的 mask 生成延迟；本文不把它们解释成整个模型内存或完整推理时间。其正文 §3.1–3.2 明确采用“预计算上下文无关候选、运行时检查上下文相关候选”的机制；上传版摘要和结论中的个别相关措辞不一致，本文以这些具体方法段落和算法说明为依据。
+XGrammar 的 160 MB → 0.46 MB 是论文缓存内存结果，0.018 ms 是消融实验中的 mask 生成延迟；本文不把它们解释成整个模型内存或完整推理时间。其正文 §3.1–3.2 明确采用“预计算上下文无关候选、运行时检查上下文相关候选”的机制；本地版摘要和结论中的个别相关措辞不一致，本文以这些具体方法段落和算法说明为依据。
 
 ## E.3 教学示例不等于实测系统
 
@@ -2645,7 +2671,7 @@ XGrammar 的 160 MB → 0.46 MB 是论文缓存内存结果，0.018 ms 是消融
 
 ## E.4 可变网页与固定论文版本分开
 
-P01–P04 的解释以上传版本为准；新增 R28–R31 的论文解释以来源索引列出的在线版本为准。源码与文档的 `main`、`latest` 和 `draft` 链接可能变化，文中只对核对时可见的相关内容作说明，不假定所有资料来自同一个软件版本。
+P01–P04 的解释以本地版本为准；新增 R28–R31 的论文解释以来源索引列出的在线版本为准。源码与文档的 `main`、`latest` 和 `draft` 链接可能变化，文中只对核对时可见的相关内容作说明，不假定所有资料来自同一个软件版本。
 
 需要复现实验或投入生产时，应在自己的项目中记录模型、模板、解析器、依赖包、协议、工具 schema 和测试集的具体版本。这个版本记录本身就是定位工具调用故障的重要证据。
 

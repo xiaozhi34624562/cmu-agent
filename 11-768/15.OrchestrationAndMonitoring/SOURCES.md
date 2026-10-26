@@ -123,3 +123,18 @@ HTML 文件为来源网页快照，图片、样式和交互功能可能仍需联
 ## Schedule Check
 
 截至 2026-10-23，官网提供 Lecture 1-15 的 slides。后续课次已有安排，包括 2026-10-22 的 Safety 2: Observability and Monitoring，但该条目尚未提供 slides、readings 或 references 链接，因此本次未创建对应资料目录。
+
+<!-- BEGIN LOCAL LEARNING -->
+## 中文学习讲解
+
+- [完整课程讲解](lecture-15-orchestration-and-monitoring-complete-guide.md)
+
+## 讲解补充的一手参考
+
+与官网指定阅读分开；版本、正文获取状态与校验值见 [REFERENCES.json](REFERENCES.json)。
+
+- [024_LangSmith_Custom_instrumentation](references/024_LangSmith_Custom_instrumentation.html) — [来源](https://docs.langchain.com/langsmith/annotate-code)
+- [025_LangGraph_Graph_API_overview](references/025_LangGraph_Graph_API_overview.html) — [来源](https://docs.langchain.com/oss/python/langgraph/graph-api)
+- [026_LangGraph_Checkpointers](references/026_LangGraph_Checkpointers.html) — [来源](https://docs.langchain.com/oss/python/langgraph/checkpointers)
+- [027_LangGraph_Functional_API_overview](references/027_LangGraph_Functional_API_overview.html) — [来源](https://docs.langchain.com/oss/python/langgraph/functional-api)
+<!-- END LOCAL LEARNING -->

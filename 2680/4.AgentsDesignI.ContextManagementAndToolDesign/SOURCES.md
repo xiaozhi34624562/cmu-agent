@@ -50,3 +50,12 @@
 
 - [Course reading notes](../site/readings/sep-16.html)
   - Source: https://cs2680.com/readings/sep-16.html
+
+## Supplemental primary sources
+
+以下为中文讲解补充的一手资料；与上方官网指定 Readings 分开登记。版本、获取状态与校验值见 [REFERENCES.json](REFERENCES.json)。
+
+- [Repository map](references/016_Aider_Repository_Map.html)
+  - Source: https://aider.chat/docs/repomap.html
+- [Building a better repository map with tree sitter](references/017_Aider_Repository_Map.html)
+  - Source: https://aider.chat/2023/10/22/repomap.html

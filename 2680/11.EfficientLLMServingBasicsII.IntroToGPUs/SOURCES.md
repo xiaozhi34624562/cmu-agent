@@ -43,7 +43,22 @@
 - [LLM inference characterization](readings/014_LLM_inference_characterization_bc759f.pdf)
   - Source: https://arxiv.org/abs/2512.01644
 
+## Local study notes
+
+以下为本地中文学习笔记，文件名保留现有名称；教师原始讲义见上方 Slides。
+
+- [notes.zh-CN.md](notes.zh-CN.md)
+
 ## References
 
 - [Course reading notes](../site/readings/oct-21.html)
   - Source: https://cs2680.com/readings/oct-21.html
+
+## Supplemental primary sources
+
+以下为中文讲解补充的一手资料；与上方官网指定 Readings 分开登记。版本、获取状态与校验值见 [REFERENCES.json](REFERENCES.json)。
+
+- [Roofline: An Insightful Visual Performance Model for Floating-Point Programs and Multicore Architectures (Berkeley technical report, 2008)](references/roofline-EECS-2008-134.pdf)
+  - Source: https://www2.eecs.berkeley.edu/Pubs/TechRpts/2008/EECS-2008-134.pdf
+- [PyTorch 2: Faster Machine Learning Through Dynamic Python Bytecode Transformation and Graph Compilation (ASPLOS 2024)](references/pytorch2-asplos2024.pdf)
+  - Source: https://pytorch.org/assets/pytorch2-2.pdf

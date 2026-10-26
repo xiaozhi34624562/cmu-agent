@@ -1,13 +1,13 @@
 # Lecture 04：Context Management 与 Tool Design
 ## 从 Agent Loop、工具契约到长任务状态管理与结果验证
 
-> 面向 LLM 开发工程师的整合学习文档。以 Lecture 04 为主线，将配套论文、工程文章及本次讨论中的实现分析组织成一个完整系统。
+> 面向 LLM 开发工程师的整合学习文档。以 Lecture 04 为主线，将配套论文、工程文章与明确标注的实现分析组织成一个完整系统。
 >
 > 核心问题：**Agent 必须不断通过工具获取信息，才能完成复杂任务；但不断累积的信息，又可能让它更容易失败。怎样设计工具、上下文与运行环境，使每一步都能获得正确的依据，并最终完成真实任务？**
 
-**整理日期：**2026-10-13。  
+**整理日期：**2026-10-13；2026-10-26 完整复核。  
 **主讲义：**Juncheng Yang，*Agent Design I: context management and tool design*，Harvard MaDsys，56 页。本文是学习整理，不是课程官方讲义，也不代表课程作者对工程示例的认可。  
-**材料范围：**本次上传的 Lecture 04、15 份配套阅读材料和 [SOURCES.md](SOURCES.md)。网页内容按上传快照解读，论文数字按上传版本引用；不将它们当作当前产品能力、价格或接口的实时核验。
+**材料范围：**本地归档的 Lecture 04、15 份配套阅读材料和 [SOURCES.md](SOURCES.md)。网页内容按归档快照解读，论文数字按归档版本引用；不将它们当作当前产品能力、价格或接口的实时核验。
 
 ### 阅读与来源约定
 
@@ -36,7 +36,7 @@
 | [9. Lost in the Middle：证据在场但未被使用](#chapter-09) | [15. 两个端到端工程案例](#chapter-15) |
 | [10. Context Pruning：局部状态与全局进度](#chapter-10) | [16. 评测、排错与迭代](#chapter-16) |
 | [11. Context Rot：过早终止与推理预算](#chapter-11) | [17. 全课总结](#chapter-17) |
-| [12. 四种上下文管理操作](#chapter-12) | [附录：讲义导航、边界辨析、模板、术语与来源](#appendices) |
+| [12. 四种上下文管理操作](#chapter-12) | [自测与答案](#self-test)；[附录：讲义导航、边界辨析、模板、术语与来源](#appendices) |
 
 ---
 
@@ -78,7 +78,7 @@ Lecture 04 第 3 页列出 Agent loop、Tool designs、Context management，并�
 | R01 ReAct | 怎样结合推理、行动与反馈？ | Agent loop 的学术起点，解释工作状态如何形成与更新 |
 | R02 Building Effective Agents | 何时用工作流，何时用 Agent？ | 流程控制、可组合模式与 Agent–Computer Interface |
 | R03 Agent Harness | 谁来检查模型说的“完成”？ | 预算、认证、结果验证与运行边界 |
-| R04 Agent Patterns | 怎样组织可按需读取的工程知识？ | 上传内容是首页与目录，只支持资料组织方式的讨论 |
+| R04 Agent Patterns | 怎样组织可按需读取的工程知识？ | 归档内容是首页与目录，只支持资料组织方式的讨论 |
 | R05 Weng 的 Agent 综述 | 规划、记忆、工具与反思如何组合？ | 补充跨步骤、跨尝试的信息流 |
 | R06 Practical Guide | 怎样从简单原型逐步构建系统？ | 模型基线、工具、指令、单／多 Agent 与护栏 |
 | R07 Anthropic Context Engineering | 如何管理模型每次看到的信息？ | 高信息量上下文、按需检索、压缩、笔记与隔离 |
@@ -268,7 +268,7 @@ $$
 
 讲义第 10–15 页逐页比较 glob／grep、语义检索、外部信号与语言服务器，并在第 11 页额外给出 repo map 这一结构化入口。〔[L04，PDF pp. 10–15](#ref-l04)〕
 
-**为什么同一份材料看起来是“四种”，下表却是五种。** 讲义第 14–15 页的对比表只有四行：glob／grep、Semantic index、Extrinsic signals、Language server。repo map 没有单独成行，它被写在第 11 页“semantic search”这一页里，与 embedding 检索并列——一条 bullet 讲 semantic，一条讲 structural，然后共用第三条成本说明：查询时快，代价在构建与重新同步索引。也就是说，**讲义是按“是否依赖预先建好的索引”归类得到四类**，所以 embedding 检索与 repo map 合成一行；**本表按“定位依据究竟是什么”细分**，所以是五行。两种粒度都成立，不是两份材料互相矛盾。
+**为什么同一份材料看起来是“四种”，下表却是五种。** 讲义第 14–15 页的对比表只有四行：glob／grep、Semantic index、Extrinsic signals、Language server。repo map 没有单独成行，它被写在第 11 页“semantic search”这一页里，与 embedding 检索并列——一条 bullet 讲 semantic，一条讲 structural，然后共用第三条成本说明：查询时快，代价在构建与重新同步索引。也就是说，**讲义没有单列 repo map**，且这一页将 semantic 与 structural 并置；将它们理解为共用预建索引成本，是本文的归纳，不能当作讲义明确给出的分类依据；**本表按“定位依据究竟是什么”细分**，所以是五行。下表为帮助选工具而进一步细分，保留这一粒度差异。
 
 | 方式 | 定位依据 | 是否需要预建索引 | 适用线索 | 首要成本 |
 |---|---|---|---|---|
@@ -290,7 +290,7 @@ $$
 
 **多轮搜索的成本是乘性的。** 每一轮都是一次模型调用，上一轮的输出要带回上下文。R08 在开头举了一个反例：在百万行的 monorepo 上 grep 返回 4,000 条命中，Agent 把窗口烧在无关内容上，真正的原因从头到尾没有进过上下文。〔[R08，What Is Context Engineering?](#ref-r08)〕（这是该文的说明性举例，不是测量值。）
 
-**工程建议：**先用 `-l`、计数或路径限定判断“值不值得展开”，再决定读哪几处。把 grep 当作缩小范围的手段，而不是获取证据的手段。
+**工程建议：**先用 `-l`、计数或路径限定判断“值不值得展开”，再决定读哪几处。用 grep 缩小范围；命中行可以成为初步证据，但仍需读相邻代码、核对版本和运行路径。
 
 #### 3.1.2 语义检索：解决“知道功能，不知道命名”
 
@@ -298,7 +298,7 @@ $$
 
 它补的是这样一类缺口：命名约定不熟悉、领域词猜不到、代码用了你不认识的说法，或者刚进入一个陌生仓库需要找入口。这些都是字面匹配天然失效的场景。
 
-但它回答的是“哪些片段看起来在讲这件事”，**不是**“哪一处是定义”，也**不是**“谁在调用它”。最近邻是相似，不是相关：相似度最高的块可能只是注释写得像，或者是一个早已废弃的实现。这一点决定了语义检索的输出必须被当作候选，而不是答案。
+但它回答的是“哪些片段看起来在讲这件事”，**不是**“哪一处是定义”，也**不是**“谁在调用它”。最近邻表示向量相似，不能保证任务相关：相似度最高的块可能只是注释写得像，或者是一个早已废弃的实现。这一点决定了语义检索的输出必须被当作候选，而不是答案。
 
 成本与边界：
 
@@ -325,7 +325,7 @@ aider/commands.py: class Commands
 
 它回答的问题是“这个仓库里有什么、大致怎么组织”，而不是“这段代码怎么写的”。
 
-**它从哪里来。** 讲义把出处标注为 Aider's repo map。Aider 是一个开源的 AI 结对编程 CLI，它的 repo map 用 tree-sitter 把仓库解析成符号与引用关系，再按引用关系排序，最后把排在前面的部分装进一个受限的 token 预算。〔补充说明：tree-sitter 解析与按引用关系排序这些实现细节来自 Aider 的公开文档，**不在本次上传材料中**；讲义只写了 file tree plus ranked symbols，没有展开排序依据。〕
+**它从哪里来。** 讲义把出处标注为 Aider's repo map。Aider 是一个开源的 AI 结对编程 CLI，它的 repo map 用 tree-sitter 把仓库解析成符号与引用关系，再按引用关系排序，最后把排在前面的部分装进一个受限的 token 预算。〔补充来源：[Aider repo map 官方说明](references/016_Aider_Repository_Map.html)与[2023-10-22 tree-sitter 文章](references/017_Aider_Repository_Map.html)，2026-10-26 保存；讲义只写 file tree plus ranked symbols，未展开解析与图排序实现。这里描述文档版本，未验证当前源码实现。〕
 
 **为什么需要它。** 一个几十万行的仓库，在模型眼里是平的。没有地图时，模型只能靠一轮一轮搜索建立结构感——猜名字、看命中、读文件、修正猜测，每一轮都要付一次调用成本。repo map 把这一串试探换成一次读入：模型先看到 `class Coder` 上有 `apply_updates`，就能直接判断该读哪个文件、该改哪一层。它买的是**方向感**，而方向感在陌生仓库里恰恰是最贵的。
 
@@ -371,7 +371,7 @@ Git 历史是一类特殊的外部信号：它擅长回答“**为什么**是这
 
 #### 3.1.5 LSP：让名字变成符号，而不是字符串
 
-**先解释 LSP 是什么。** Language Server Protocol 是一套编辑器与“语言服务器”之间的标准协议（基于 JSON-RPC）。语言服务器是每种语言一个常驻进程，它理解该语言的语法与类型，并在项目范围内维护符号信息。讲义第 13 页用三句话概括：查询编译器的索引（定义、引用、符号、类型）；解析 grep 只能猜的 import、重载与重命名；代价是每种语言一个常驻服务器，冷启动慢。
+**先解释 LSP 是什么。** Language Server Protocol 是一套编辑器与“语言服务器”之间的标准协议（基于 JSON-RPC）。常见部署会为相应语言启动常驻语言服务器，在配置范围内维护语法、类型或符号信息；具体能力由服务器决定，协议本身不保证完整类型分析或所有引用都可解析。讲义第 13 页用三句话概括：查询编译器的索引（定义、引用、符号、类型）；解析 grep 只能猜的 import、重载与重命名；代价是每种语言一个常驻服务器，冷启动慢。
 
 **核心区别只有一句：grep 处理的是文本，LSP 处理的是符号。** 真实代码里，同一个字符串可以指不同东西——一个局部变量 `charge`、另一个类上的方法 `charge`、以别名导入的 `charge`、消息里的 `"charge"` 字面量；同一个东西也可以写成不同形式——别名导入、二次导出、重载、泛型、宏展开。grep 分不出来，只能把 40 处命中一并交给你；语言服务器按符号表解析，能指出哪一处是定义、哪些是真的调用点。
 
@@ -399,7 +399,7 @@ Git 历史是一类特殊的外部信号：它擅长回答“**为什么**是这
 
 **冷启动慢。** 第一次查询要等索引建立，这段时间对 Agent 来说就是纯等待，讲义把它明确列为成本。
 
-**覆盖不完整。** 动态语言（Python、JS）的结果弱于静态语言；反射、动态派发、元编程、代码生成与宏展开出来的符号可能解析不出来；有些引用只有运行时才知道。生产环境下，效果还要看索引范围、语言覆盖与权限。〔[R08，Context Engineering for AI Coding Agents](#ref-r08)〕
+**覆盖不完整。** 动态语言（Python、JS）中运行时决定的对象关系常使静态解析更困难，不能据语言名称对所有服务器作固定优劣排序；反射、动态派发、元编程、代码生成与宏展开出来的符号可能解析不出来；有些引用只有运行时才知道。生产环境下，效果还要看索引范围、语言覆盖与权限。〔[R08，Context Engineering for AI Coding Agents](#ref-r08)〕
 
 **服务器必须是最新的。** 用 grep 或脚本直接改文件之后，服务可能还没有重新解析；旧索引会报出已经不存在的位置。这与 3.4 的要求一致：把“索引给出的位置”和“当前读到的内容”分开对待。
 
@@ -413,7 +413,7 @@ Git 历史是一类特殊的外部信号：它擅长回答“**为什么**是这
 
 这也说明五种方式补的是不同的信息缺口，而不是同一件事的五种实现：字面匹配补“名字我知道”，语义补“名字我不知道”，结构补“仓库我不熟”，外部信号补“故障已经报出来了”，LSP 补“这个符号和别处是什么关系”。
 
-它们有一个共同盲点：**五种方式都只在定位文本、符号或失败点，没有一种能告诉你运行时的实际行为。** 定位完成之后仍然要读、要跑、要验证——这正是第 3 章后面几节和第 4 章之后要处理的问题。
+它们有一个共同盲点：**这些定位结果不能单独构成完整根因或修复证明。堆栈与失败测试已包含运行时观察，但仍需确认具体版本、输入与路径；文本/符号检索本身通常只提供静态线索。** 定位完成之后仍然要读、要跑、要验证——这正是第 3 章后面几节和第 4 章之后要处理的问题。
 
 在生产规模上，这个差别是可以测量的。R08 报告用同一个 Agent 在 370 个企业级任务上比较“本地 grep／file／read”与“接入代码智能 MCP”两种配置：文件召回率从 0.127 升到 0.277，Precision@5 从 0.140 升到 0.478，F1@5 从 0.099 升到 0.262；更值得注意的是有任务从基线超时变成在限额内完成。〔[R08，CodeScaleBench 结果](#ref-r08)〕**边界：**这是 R08 自家基准上的结果，且被比较的不是单一机制——MCP 一侧同时包含关键词检索、语义检索、符号解析、跨仓库导航与提交历史，因此不能把差值单独归因给语义检索或 LSP 中的任何一项。
 
@@ -499,7 +499,7 @@ R02 使用 poka-yoke，即防错设计，描述如何改接口减少误用。其
 
 **任务层：**是否解决用户描述的问题，并满足兼容性等约束？
 
-这是本次讨论的工程分层。结构化编辑可以在受支持的操作范围内保证某些语法性质，但不能由此推断业务行为正确。讲义本身在 AST 示例后仍列出 parse 与 type check。〔[L04，PDF p. 20](#ref-l04)〕
+这是本文的工程分层。结构化编辑可以在受支持的操作范围内保证某些语法性质，但不能由此推断业务行为正确。讲义本身在 AST 示例后仍列出 parse 与 type check。〔[L04，PDF p. 20](#ref-l04)〕
 
 对重复订单问题，改完函数参数、通过静态检查，还不能证明“首次提交成功但响应丢失”的场景不会生成第二笔订单。需要覆盖这个语义场景的证据，而不是只确认文件可运行。
 
@@ -566,7 +566,7 @@ R12 建议像向新同事说明操作一样写工具定义，明确专业术语�
 
 ### 5.5 一份工具描述应回答什么
 
-以下是本次讨论形成的描述模板：
+以下是本文提供的描述模板：
 
 ```text
 工具：search_order_events
@@ -800,7 +800,7 @@ start ──▶ running ──┬─▶ completed    退出码 0
 | 取消请求与最终状态 | 区分“已请求取消”和“已确认结束” |
 | 关联的任务／步骤标识 | 让证据能回到用户目标，而不是孤立的一次命令 |
 
-**`workspace_revision` 最容易被忽略。**一份全量测试在 v18 上启动，执行期间 Agent 修改了文件得到 v19，那么这份结果证明的是 v18。若记录里没有版本，后续会把旧结果当作新证据使用。这与第 4 章的编辑契约、附录 C.3 的验收表属于同一类要求：**结论必须能与它成立时的状态绑定。**
+**`workspace_revision` 最容易被忽略。**一份全量测试在 v18 上启动，执行期间 Agent 修改了文件得到 v19，只有在不可变快照、隔离 worktree 或执行期间禁止修改的条件下，结果才能归属于 v18。若测试边运行边读取同一可变目录，它可能看到新旧混合内容，启动时记一个 v18 标签不能解决这个问题。必须保存实际输入快照或检测执行期间变更，并重新验证。这与第 4 章的编辑契约、附录 C.3 的验收表属于同一类要求：**结论必须能与它成立时的状态绑定。**
 
 #### 6.7.7 输出按范围读，不要一次性灌回
 
@@ -810,7 +810,7 @@ start ──▶ running ──┬─▶ completed    退出码 0
 - harness 可以在返回前做一次聚合，例如只给失败用例名、错误计数和尾部若干行；
 - 每次读取从上次的游标继续，而不是从第一行重新开始——否则同一段输出会在上下文里反复出现，既占预算也干扰判断。
 
-否则，十分钟的任务可能把接近十分之一体积的日志送入上下文，而这个体积通常与任务是否成功无关。
+否则，同一段日志会被反复送入上下文；累计体积取决于输出速度与轮询方式，不能仅由任务持续时间推算。
 
 #### 6.7.8 取消是请求，不是已经发生的事实
 
@@ -883,7 +883,7 @@ Prompt 工程没有被上下文工程取代，而是被放进更大的系统。�
 
 ### 7.2 八种方法的适用条件与工程边界
 
-讲义第 29–38 页给出以下方法。表中“原文关注”概括讲义，“工程边界”为本次讨论中的分析。〔[L04，PDF pp. 29–38](#ref-l04)〕
+讲义第 29–38 页给出以下方法。表中“原文关注”概括讲义，“工程边界”为本文的分析。〔[L04，PDF pp. 29–38](#ref-l04)〕
 
 | 方法 | 原文关注 | 工程边界 |
 |---|---|---|
@@ -1166,7 +1166,7 @@ R09 的核心实验是在 Dynamics 365 Finance and Operations 中进行酒店费
 
 ### 11.1 这份 Context Rot 不是 Chroma 那份报告
 
-上传的 R11 是 *Diagnosing and Mitigating Context Rot in Long-horizon Search*，研究多轮搜索任务；讲义第 43 页图中还提到 Chroma Context Rot，它们不是同一来源。本文关于搜索终止行为的数字与定义来自 R11，不能移用为 Chroma 实验结果。〔[L04，PDF p. 43](#ref-l04)；[R11，PDF pp. 1–3](#ref-r11)〕
+归档的 R11 是 *Diagnosing and Mitigating Context Rot in Long-horizon Search*，研究多轮搜索任务；讲义第 43 页图中还提到 Chroma Context Rot，它们不是同一来源。本文关于搜索终止行为的数字与定义来自 R11，不能移用为 Chroma 实验结果。〔[L04，PDF p. 43](#ref-l04)；[R11，PDF pp. 1–3](#ref-r11)〕
 
 R11 关注的历史不仅包括外部资料，还包括多轮查询、浏览、失败尝试与模型产生的内容。因此它不只是单次长文档阅读问题。
 
@@ -1386,7 +1386,7 @@ R07 建议先保证相关信息召回，再逐步减少冗余。R09 说明摘要
 
 ### 12.9 一套简单而完整的处理顺序
 
-以下是本次讨论的实现建议，不是被证明最优的通用算法：
+以下是本文的实现建议，不是被证明最优的通用算法：
 
 ```text
 先检查目标、约束和当前状态是否完整；
@@ -1434,11 +1434,11 @@ R15 描述的加载方式是：名称和简短描述进入索引；任务相关�
 
 **工程推导：**入口描述负责“何时加载”，正文负责“怎样操作”，参考文件负责“更具体的细节”。三个层次不应各自重复全部内容。Skill 数量很多时，索引本身也会有成本，仍然需要发现和选择机制。
 
-### 13.4 上传的 Agent Patterns 首页支持什么
+### 13.4 归档的 Agent Patterns 首页支持什么
 
 R04 自述为参考站点而非完整教程，内容按单概念页面组织，强调 Markdown、来源和自包含文档。它与渐进式知识加载相契合。〔[R04，Agent Patterns／For AI agents](#ref-r04)〕
 
-但本次附件是首页及导航，不是它链接的全部正文。本文只依据首页讨论资料组织方式，不把未提供页面中的模式、课程内容或效果当作已读证据。
+但本地归档是首页及导航，不是它链接的全部正文。本文只依据首页讨论资料组织方式，不把未提供页面中的模式、课程内容或效果当作已读证据。
 
 这是处理任何参考资料时都需要保持的边界：**索引说明某项资料存在，不等于已经读到其中结论。**
 
@@ -1486,7 +1486,7 @@ R15 作者把部分运行经验从专门 Agent 的系统指令移到 Skill 中�
 
 **边界：**Skill 的消息位置与优先级由宿主实现决定，不是 Markdown 文件名天然具有一种全平台固定权限。本文不把作者平台的行为当作所有系统的协议规则。
 
-对强制约束，模型生成 `confirm: true` 不足以证明用户已经授权。授权应来自可信的外部状态，并绑定实际操作内容与范围。模型可以请求审批、解释审批，不应自行创造审批事实。这是本次讨论的工程安全要求。
+对强制约束，模型生成 `confirm: true` 不足以证明用户已经授权。授权应来自可信的外部状态，并绑定实际操作内容与范围。模型可以请求审批、解释审批，不应自行创造审批事实。这是本文的工程安全要求。
 
 ---
 
@@ -1521,7 +1521,7 @@ R03 的演示要求 Agent 给 Hacker News 的帖子点赞。最初它到达登�
 
 ### 14.3 四类状态，避免全部混在 messages 里
 
-以下为本次讨论的工程架构，不是某一论文提供的成品。
+以下为本文的工程架构，不是某一论文提供的成品。
 
 | 保存对象 | 内容 | 用途 |
 |---|---|---|
@@ -1710,7 +1710,7 @@ R11 的过早终止分析不意味着生产系统必须永不停止。高质量�
 
 程序可以检查引用是否可定位、对象与版本是否一致、必要字段是否齐全；专业判断不足或存在争议时，进入人工复核。人工采纳／拒绝可以作为后续案例与评测反馈，但不能不经整理就当作对所有未来任务成立的规则。
 
-这个闭环是本次讨论中的工程方案，不是对任何法律要求或真实基金数据的结论。
+这个闭环是本文的工程方案，不是对任何法律要求或真实基金数据的结论。
 
 ### 15.3 两个案例的共同结构与不同策略
 
@@ -1746,7 +1746,7 @@ R12 强调从原型和真实任务入手，运行评测、分析轨迹，再与 
 
 ### 16.3 将工具输出与上下文策略做交叉实验
 
-以下为本次讨论的实验设计建议：
+以下为本文的实验设计建议：
 
 | 工具输出 | 全历史 | 近期窗口 | 近期窗口＋摘要 |
 |---|---|---|---|
@@ -1837,6 +1837,34 @@ Harness 最后把模型声明接回真实环境：参数是否合法，权限是
 
 ---
 
+<a id="self-test"></a>
+## 自测：先判断，再展开答案
+
+1. 工具返回空列表、超时与业务对象不存在，分别能说明什么？
+2. 同时换用户模拟器和上下文策略，能否把全部提升归因给裁剪？
+3. 为什么 Context Pruning 更省成本，而 Context Rot 的压缩反而增加调用？
+4. 为什么不能机械保留最后十条消息？
+5. 测试启动时记了 v18，期间修改成 v19，结果能算哪一个版本？
+6. 五个模型回答相同，是否证明事实正确？
+7. repo map、向量检索、LSP 分别补哪种信息？
+8. 怎样证明你的上下文改动值得上线？
+
+<details>
+<summary>参考答案与回看位置</summary>
+
+1. 空列表只说明本次范围与权限下无匹配；超时表示未及时确认结果，写入可能已生效；对象不存在还需要相应可信查询契约。见5.7–5.9。
+2. 不能。R09应以用户模型固定的C2–C4对照讨论上下文效应；C1主要展示无交互回应的阻塞。见10.2。
+3. 前者删除失效表单状态并减少无效处理；后者让本来提前结束的搜索继续进行，总尝试增加。按质量、总token、工具次数和墙钟分别比较。见11.5–11.6。
+4. 会丢目标、拆开调用与返回，或遗留未完成并行调用；应保留协议完整单元，并单独维护目标、约束、进度。见12.5。
+5. 可变目录可能混合两个版本；单个启动标签不够。隔离不可变输入或防止并发修改，记录实际版本并在变化后重跑。见6.7.6。
+6. 不能，一致不等于正确，多次尝试可能共享偏差；需要外部证据和独立验证。见7.6。
+7. 地图给结构入口，向量检索找语义候选，LSP找服务器可解析的符号关系；三者都不能代替读取和运行验证。见3.1。
+8. 固定模型/任务/初始状态/权限/采样和总预算，重复对照；测任务质量、约束、丢证据、停止原因及总成本，再用未参与调优的保留集检验。见16.3–16.9。
+
+</details>
+
+---
+
 <a id="appendices"></a>
 ## 附录 A：讲义页码与本文导航
 
@@ -1892,9 +1920,9 @@ Harness 最后把模型声明接回真实环境：参数是否合法，权限是
 | 子 Agent 是安全沙箱 | 独立上下文与操作系统隔离不是一回事 | L04 p. 24；R13；本文分析 |
 | 压缩应永远最后做／永远最先做 | 两份来源强调不同起点，应保留差异再作工程选择 | L04 p. 49；R07 Compaction |
 | 工具执行成功就是任务完成 | 还需核验用户目标和真实产物 | R03；R09 §3.5 |
-| Agent Patterns 附件包含完整网站内容 | 本次提供的是首页与目录，不是全部链接正文 | R04 |
+| Agent Patterns 归档包含完整网站内容 | 本地保存的是首页与目录，不是全部链接正文 | R04 |
 
-以上边界中的原文内容在对应正文处有页码与章节引用；“本文分析”表示由本次讨论提出，不是原作者已经证明的结论。
+以上边界中的原文内容在对应正文处有页码与章节引用；“本文分析”表示由本文提出，不是原作者已经证明的结论。
 
 ---
 
@@ -2001,7 +2029,7 @@ continuation:
 | Repo map | 由代码解析出的文件、类与函数签名排序摘要，用于替代多轮盲搜 |
 | Extrinsic signal | 源码之外产生的定位证据，如堆栈、失败测试与 Git 历史 |
 | Language server（LSP） | 按语言维护符号索引的常驻进程，提供定义、引用、类型与改名 |
-| Rename（LSP） | 按符号而非按文本改名的操作，会连同别名导入一起修改 |
+| Rename（LSP） | 在服务器支持和正确索引范围内按符号改名；别名、动态引用与生成代码仍需验证 |
 
 这些解释用于本文阅读；不同平台可能采用不同术语边界，不能仅凭名称假定实现相同。
 
@@ -2010,13 +2038,13 @@ continuation:
 <a id="references"></a>
 ## 附录 E：来源索引与阅读定位
 
-原始链接转录自上传的 [SOURCES.md](SOURCES.md) 或附件中的来源信息。本文依据的是本次上传快照；链接用于定位原文，不代表已经核验网页当前状态。PDF 版本信息按文件自身标注记录。
+原始链接转录自归档的 [SOURCES.md](SOURCES.md) 或归档中的来源信息。本文依据的是本地归档快照；链接用于定位原文，不代表已经核验网页当前状态。PDF 版本信息按文件自身标注记录。
 
 <a id="ref-l04"></a>
 ### L04 — 主讲义：Agent Design I: context management and tool design
 
 **作者与课程：**Juncheng Yang；*Modern AI Systems: Agents and System Optimizations*；Harvard MaDsys。  
-**文件：**`4_agent_design_1.pdf`，56 页。清单课程日期为 2026-09-16。  
+**文件：**[4_agent_design_1.pdf](4_agent_design_1.pdf)，56 页。清单课程日期为 2026-09-16。  
 **原始入口：**[Lecture slides](https://cs2680.com/slides/4_agent_design_1.pdf)。  
 **本文使用：**pp. 4–7 的循环与职责；pp. 10–26 的工具；pp. 28–40 的 Prompt；pp. 42–50 的上下文；pp. 51–56 的 Harness 与延伸。  
 **证据类型：**课程讲义。示例预算与教学图不作为本文项目测量值；第 52 页的外部研究仅作讲义转引。
@@ -2025,7 +2053,7 @@ continuation:
 ### R01 — ReAct: Synergizing Reasoning and Acting in Language Models
 
 **作者：**Shunyu Yao 等；ICLR 2023。  
-**文件：**`001_ReAct_764730.pdf`，33 页；标注 arXiv:2210.03629v3，2023-03-10。  
+**文件：**[001_ReAct_764730.pdf](readings/001_ReAct_764730.pdf)，33 页；标注 arXiv:2210.03629v3，2023-03-10。  
 **原始入口：**[ReAct 论文](https://arxiv.org/abs/2210.03629)。  
 **重点定位：**Figure 1 p. 2；§2 pp. 3–4；Table 1 p. 5；Table 2 p. 6；§4 pp. 7–8。  
 **本文使用：**语言动作与外部动作、反馈驱动检索、密集与稀疏推理、失败类型、混合策略与训练补充。  
@@ -2035,17 +2063,17 @@ continuation:
 ### R02 — Building effective agents
 
 **来源：**Anthropic。  
-**文件：**`002_building_effective_agents_ffc229.html`。  
+**文件：**[002_building_effective_agents_ffc229.html](readings/002_building_effective_agents_ffc229.html)。  
 **原始入口：**[Building effective agents](https://www.anthropic.com/engineering/building-effective-agents)。  
 **重点定位：**What are agents?；When and when not to use agents；五类 Workflow；Appendix 2: Prompt engineering your tools。  
 **本文使用：**工作流与 Agent 区分、简单可组合模式、ACI、防错设计、格式负担、路径例子。  
-**边界：**工程经验文章，上传快照中的产品示例不作为实时接口说明。
+**边界：**工程经验文章，归档快照中的产品示例不作为实时接口说明。
 
 <a id="ref-r03"></a>
 ### R03 — What Is an Agent Harness? Harness Engineering Explained
 
 **作者：**Tejas Kumar。  
-**文件：**`003_What_Is_an_Agent_Harness_Harness_Engineering_Explained_5cd1f2.html`。  
+**文件：**[003_What_Is_an_Agent_Harness_Harness_Engineering_Explained_5cd1f2.html](readings/003_What_Is_an_Agent_Harness_Harness_Engineering_Explained_5cd1f2.html)。  
 **原始入口：**[Agent Harness 文章](https://tej.as/blog/what-is-an-agent-harness)。  
 **重点定位：**Hacker News 点赞演示、逐步增加的 Harness 功能、What changed。  
 **本文使用：**模型声明与真实结果的分离、验证、认证、预算和运行层职责。  
@@ -2055,17 +2083,17 @@ continuation:
 ### R04 — Agent Patterns
 
 **来源：**AgentPatterns.ai。  
-**文件：**`004_Agent_Patterns_ca9606.html`。  
+**文件：**[004_Agent_Patterns_ca9606.html](readings/004_Agent_Patterns_ca9606.html)。  
 **原始入口：**[Agent Patterns 首页](https://agentpatterns.ai/)。  
 **重点定位：**Agent Patterns、For AI agents、Browse by topic。  
 **本文使用：**按单概念、自包含、有来源的 Markdown 组织资料，作为知识按需加载的例子。  
-**边界：**附件只有首页与导航，不包含全部子页面；本文未用未读取页面补充结论。
+**边界：**归档只有首页与导航，不包含全部子页面；本文未用未读取页面补充结论。
 
 <a id="ref-r05"></a>
 ### R05 — LLM Powered Autonomous Agents
 
 **作者：**Lilian Weng；文章日期 2023-06-23。  
-**文件：**`005_LLM_powered_autonomous_agents_d60159.html`。  
+**文件：**[005_LLM_powered_autonomous_agents_d60159.html](readings/005_LLM_powered_autonomous_agents_d60159.html)。  
 **原始入口：**[LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent)。  
 **重点定位：**Agent System Overview；Planning／Self-Reflection；Memory；Generative Agents；Challenges。  
 **本文使用：**规划、记忆与工具的功能分解；跨尝试反思；相关性、新近程度与重要性的记忆检索视角。  
@@ -2075,17 +2103,17 @@ continuation:
 ### R06 — A practical guide to building agents
 
 **来源：**OpenAI。  
-**文件：**`006_practical_guide_to_building_agents_81cd30.pdf`，34 页。  
+**文件：**[006_practical_guide_to_building_agents_81cd30.pdf](readings/006_practical_guide_to_building_agents_81cd30.pdf)，34 页。  
 **原始入口：**[A practical guide to building AI agents](https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents)。  
 **重点定位：**模型与工具 pp. 7–9；指令 p. 11；单／多 Agent pp. 13–18；护栏 pp. 24–27。  
 **本文使用：**先建立基线、工具与指令、逐步增加复杂度、Manager 与 handoff、分层防护。  
-**边界：**依据上传指南讨论设计原则，不将其 SDK 示例作为当前 API 的可运行保证。
+**边界：**依据归档指南讨论设计原则，不将其 SDK 示例作为当前 API 的可运行保证。
 
 <a id="ref-r07"></a>
 ### R07 — Effective context engineering for AI agents
 
 **来源：**Anthropic；文章标注首次发布于 2025-09-29。  
-**文件：**`007_context_engineering_126e07.html`。  
+**文件：**[007_context_engineering_126e07.html](readings/007_context_engineering_126e07.html)。  
 **原始入口：**[Effective context engineering](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)。  
 **重点定位：**Context engineering vs. prompt engineering；The anatomy of effective context；Context retrieval and agentic search；Compaction；Structured note-taking；Sub-agent architectures。  
 **本文使用：**指令抽象高度、最少但充分的信息、按需检索、预加载取舍、压缩保真、笔记与隔离。  
@@ -2094,8 +2122,8 @@ continuation:
 <a id="ref-r08"></a>
 ### R08 — Context Engineering: A Practical Guide for AI Agents (2026)
 
-**来源：**Sourcegraph；作者 Matt Tanner；上传页面标注 2026-05-28。  
-**文件：**`008_Sourcegraph_context_engineering_dcee4c.html`。  
+**来源：**Sourcegraph；作者 Matt Tanner；归档页面标注 2026-05-28。  
+**文件：**[008_Sourcegraph_context_engineering_dcee4c.html](readings/008_Sourcegraph_context_engineering_dcee4c.html)。  
 **原始入口：**[Sourcegraph Context Engineering](https://sourcegraph.com/blog/context-engineering)。  
 **重点定位：**The Four Pillars of Context Engineering；Context Assembly；Token Budget Management；Context Engineering for AI Coding Agents。  
 **本文使用：**每轮上下文组装、检索合并与重排、确定结构与语义检索的互补。  
@@ -2105,7 +2133,7 @@ continuation:
 ### R09 — Less Context, Better Agents: Efficient Context Engineering for Long-Horizon Tool-Using LLM Agents
 
 **作者：**Abhilasha Lodha 等，Microsoft。  
-**文件：**`009_context_pruning_c395c4.pdf`，17 页；标注 arXiv:2606.10209v1，2026-06-08。  
+**文件：**[009_context_pruning_c395c4.pdf](readings/009_context_pruning_c395c4.pdf)，17 页；标注 arXiv:2606.10209v1，2026-06-08。  
 **原始入口：**[Context Pruning 论文](https://arxiv.org/abs/2606.10209)。  
 **重点定位：**§3 pp. 3–5；Figure 1 p. 6；Tables 2–3 p. 7；扩展实验 p. 8；Tables 4–5 p. 9；讨论与局限 p. 10。  
 **本文使用：**C2–C4 受控比较、近期状态与全局进度、完整交互单元、真实状态读回、成本口径。  
@@ -2115,7 +2143,7 @@ continuation:
 ### R10 — Lost in the Middle: How Language Models Use Long Contexts
 
 **作者：**Nelson F. Liu 等。  
-**文件：**`010_lost_in_the_middle_6ee832.pdf`，18 页；上传版本标注 arXiv:2307.03172v3，2023-11-20。  
+**文件：**[010_lost_in_the_middle_6ee832.pdf](readings/010_lost_in_the_middle_6ee832.pdf)，18 页；归档版本标注 arXiv:2307.03172v3，2023-11-20。  
 **原始入口：**[Lost in the Middle 论文](https://arxiv.org/abs/2307.03172)。  
 **重点定位：**多文档实验 pp. 3–5；键值检索 pp. 6–7；结构、查询位置与微调分析 pp. 7–9；Figure 11 p. 10。  
 **本文使用：**检索与阅读的分离、位置和长度敏感性、查询前置的任务相关效果、召回增长与答案饱和。  
@@ -2125,7 +2153,7 @@ continuation:
 ### R11 — Diagnosing and Mitigating Context Rot in Long-horizon Search
 
 **作者：**Shijie Xia、Yikun Wang、Zhen Huang、Pengfei Liu。  
-**文件：**`011_context_rot_75e206.pdf`，21 页；页边标注 arXiv:2606.29718v2，2026-08-04，封面日期为 2026-08-05。  
+**文件：**[011_context_rot_75e206.pdf](readings/011_context_rot_75e206.pdf)，21 页；页边标注 arXiv:2606.29718v2，2026-08-04，封面日期为 2026-08-05。  
 **原始入口：**[长程搜索 Context Rot 论文](https://arxiv.org/abs/2606.29718)。  
 **重点定位：**终止分类 p. 4；实验设置 p. 5；长度控制 pp. 6–7；七种策略 p. 7；Tables 3–4 p. 8；Figure 5、Table 5 p. 9；并行采样与局限 p. 10。  
 **本文使用：**PT 与 No Answer 区分、更多探索的成本、模型相关选择、并行采样与上下文管理比较。  
@@ -2135,7 +2163,7 @@ continuation:
 ### R12 — Writing effective tools for agents — with agents
 
 **来源：**Anthropic；文章标注首次发布于 2025-09-11。  
-**文件：**`012_writing_effective_tools_1399ae.html`。  
+**文件：**[012_writing_effective_tools_1399ae.html](readings/012_writing_effective_tools_1399ae.html)。  
 **原始入口：**[Writing tools for agents](https://www.anthropic.com/engineering/writing-tools-for-agents)。  
 **重点定位：**What is a tool?；How to write tools；Choosing the right tools；Namespacing；Returning meaningful context；Optimizing tool responses；Prompt-engineering tool descriptions。  
 **本文使用：**工具作为契约、业务步骤聚合、命名、返回模式、截断与错误提示、任务评测与独立测试集。  
@@ -2144,8 +2172,8 @@ continuation:
 <a id="ref-r13"></a>
 ### R13 — How Foundational Models Became Superhuman in Bash
 
-**作者：**Philipp Schmid；上传页面日期 2026-09-01。  
-**文件：**`013_superhuman_bash_f405d1.html`。  
+**作者：**Philipp Schmid；归档页面日期 2026-09-01。  
+**文件：**[013_superhuman_bash_f405d1.html](readings/013_superhuman_bash_f405d1.html)。  
 **原始入口：**[Superhuman Bash](https://www.philschmid.de/superhuman-bash)。  
 **重点定位：**Examples 1–3；Why atomic tools were right；What this means for harness engineering。  
 **本文使用：**多文件修改、worktree 与二分定位、流式日志与 SQLite、计算外置、Shell 保护、图像通道。  
@@ -2155,7 +2183,7 @@ continuation:
 ### R14 — Toolformer: Language Models Can Teach Themselves to Use Tools
 
 **作者：**Timo Schick 等。  
-**文件：**`014_Toolformer_200002.pdf`，17 页；标注 arXiv:2302.04761v1，2023-02-09。  
+**文件：**[014_Toolformer_200002.pdf](readings/014_Toolformer_200002.pdf)，17 页；标注 arXiv:2302.04761v1，2023-02-09。  
 **原始入口：**[Toolformer 论文](https://arxiv.org/abs/2302.04761)。  
 **重点定位：**Figure 2 p. 2；损失与筛选 p. 3；训练与推理 p. 4；解码规则 pp. 5–6；依赖组合限制 p. 8；解码与数据质量 pp. 9–10。  
 **本文使用：**自监督工具数据构造、局部损失、调用倾向、工具能力与交互组织分离。  
@@ -2164,8 +2192,8 @@ continuation:
 <a id="ref-r15"></a>
 ### R15 — How skills and MCPs actually work
 
-**作者：**Lawrence Jones；上传页面日期 2026-09-01。  
-**文件：**`015_demystifying_skills_and_MCPs_c840b9.html`。  
+**作者：**Lawrence Jones；归档页面日期 2026-09-01。  
+**文件：**[015_demystifying_skills_and_MCPs_c840b9.html](readings/015_demystifying_skills_and_MCPs_c840b9.html)。  
 **原始入口：**[Skills and MCPs](https://blog.lawrencejones.dev/demystifying-skills-and-mcps)。  
 **重点定位：**Agents are a loop；虚拟 Shell 示例；MCPs are just APIs in tools；Skills are just instructions；Plugins bundle skills；Skills replace system prompts。  
 **本文使用：**模型可见契约与实现解耦、队列口径、渐进式知识加载、单 Agent 与上下文分割、强制约束的位置。  

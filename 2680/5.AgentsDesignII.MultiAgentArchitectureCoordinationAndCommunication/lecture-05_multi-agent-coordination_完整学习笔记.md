@@ -2,12 +2,12 @@
 
 > 面向 LLM 开发工程师的完整学习笔记  
 > 主线：Architecture → Task Decomposition → Communication → Reliable Execution → Evaluation  
-> 整理日期：2026-10-13  
-> 依据：本次对话中的 Lecture 05、五份指定阅读与前两轮讲解；不作为最新框架 API 手册。
+> 整理日期：2026-10-13；复核日期：2026-10-26  
+> 依据：本课46页教师讲义与五份指定阅读的仓库归档；不作为最新框架 API 手册。
 
 ## 阅读说明与资料边界
 
-这份笔记将前两轮讲解重新组织为一条连续的学习路径，而不是把两篇回答直接拼接：先建立多智能体协调的问题模型，再讨论架构与任务边界，接着用 AutoGen、MetaGPT、Anthropic 和 Cognition 解释具体机制，最后通过 Scaling 论文、运行时设计和端到端案例检验这些机制。
+本文按一条连续的学习路径组织：先建立多智能体协调的问题模型，再讨论架构与任务边界，接着用 AutoGen、MetaGPT、Anthropic 和 Cognition 解释具体机制，最后通过 Scaling 论文、运行时设计和端到端案例检验这些机制。
 
 **原始讲义**是 Juncheng Yang 的 *Agent Design II: Multi-Agent Systems*，属于 *Modern AI systems: agents and system optimizations*，讲义标注 Harvard MaDSys。课程资料清单标注本课日期为 2026-09-23。本文是围绕该讲义整理的学习笔记，不冒充原作者讲稿，也不将其标为 CMU 课程。[^source-course]
 
@@ -15,7 +15,7 @@
 
 所有实验数字限定于原文的模型、版本、任务、预算和实现。尤其不将 2023—2025 年文章里的产品描述，当作 2026 年产品现状。PDF 页码默认使用**文件实际页序**；Lecture 05 后半部分的页脚编号与实际页序不一致，详见附录 A。
 
-本文不额外补写材料没有提供的多智能体强化学习理论、协议完整规范或最新 SDK 使用方法。前述讨论中的数学例子和工程契约，均在文中标明性质。
+本文不额外补写材料没有提供的多智能体强化学习理论、协议完整规范或最新 SDK 使用方法。文中的数学例子和工程契约，均在文中标明性质。
 
 ### 六份核心资料在本笔记中的位置
 
@@ -24,11 +24,11 @@
 | L05 | Lecture 05，46 页 | 有哪些架构？如何分解任务、设计通信和失败边界？ | 某一种拓扑适合所有任务 |
 | AG | *AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation*，arXiv:2308.08155v2，2023-10-03 | 如何把交互和反馈变成可编程的工作流？ | 多几个 Agent 就会更聪明，或论文 API 等于当前 SDK |
 | MG | *MetaGPT: Meta Programming for a Multi-Agent Collaborative Framework*，arXiv:2308.00352v7，2024-11-01；论文标注 ICLR 2024 | 如何用 SOP、结构化交付物和执行反馈减少协作失真？ | 模拟更多职位即可可靠开发任意软件 |
-| AN | Anthropic，*How we built our multi-agent research system*，发表于 2025-06-13，使用上传的网页快照 | 怎样实现动态研究、资源分配、评估和生产恢复？ | 内部评测提升可迁移到任意业务 |
+| AN | Anthropic，*How we built our multi-agent research system*，发表于 2025-06-13，使用仓库归档网页快照 | 怎样实现动态研究、资源分配、评估和生产恢复？ | 内部评测提升可迁移到任意业务 |
 | SC | *Towards a Science of Scaling Agent Systems*，arXiv:2512.08296v3，2026-04-08 | 什么条件下协调产生收益，什么条件下只是开销？ | 45% 等经验阈值是通用部署开关 |
-| CO | Cognition，*Don’t Build Multi-Agents*，发表于 2025-06-12，使用上传的网页快照 | 上下文碎片化和隐含决策为何会破坏协作？ | 任何多智能体设计都无效 |
+| CO | Cognition，*Don’t Build Multi-Agents*，发表于 2025-06-12，使用仓库归档网页快照 | 上下文碎片化和隐含决策为何会破坏协作？ | 任何多智能体设计都无效 |
 
-五份指定阅读及其原始地址来自课程的 `SOURCES` 文件；固定论文版本以本次上传文件首页为准。[^source-readings]
+五份指定阅读及其原始地址来自课程的 `SOURCES` 文件；固定论文版本以本地原文件首页为准。[^source-readings]
 
 ---
 
@@ -815,9 +815,9 @@ Scaling 论文明确批评两类混杂：不同系统使用不同提示、工具
 
 ### 10.3 实验设计：260 种配置，不是 260 个业务任务
 
-上传 v3 研究六个基准、五类架构和三个模型家族。260 指模型—基准—架构等组合形成的配置，不是评测任务数量。[^sc-introduction]
+本地 v3 研究六个基准、五类架构和三个模型家族。260 指模型—基准—架构等组合形成的配置，不是评测任务数量。[^sc-introduction]
 
-| 基准 | 本次实验的主要任务性质 | 原文披露的实例数或子集 |
+| 基准 | 该论文实验的主要任务性质 | 原文披露的实例数或子集 |
 |---|---|---:|
 | BrowseComp-Plus | 浏览与信息查找 | 100 |
 | Finance Agent | 金融分析与多源资料研究 | 50 |
@@ -948,6 +948,8 @@ $$
 
 作者进行数据集聚类的稳健误差分析和多重比较校正后，将若干结果称为方向性模式，强调能力饱和是更稳健的发现。不同修正处理不同统计问题，不能只挑未经修正的显著系数进行推广。
 
+预测输入还包含执行后得到的协调指标。Table 5将这些指标作为按架构汇总、跨基准统一使用的经验常数，且 $E_c$ 的定义直接包含成功率 $S$。所以87%的配置留出选择率不应解释为“不做试运行，只凭事前工具数和模型名称，就能对新领域获得同样精度”；迁移时需检查这些常数如何取得、是否在每个训练折内重新估计，以及新任务是否适用。这里是对预测使用条件的分析，不另行声称已经重跑或发现论文实现中的确定数据泄漏。
+
 这些结果说明架构、能力与任务特征之间存在可分析关系，也说明预测仍有大量未解释变化。它是一项有边界的经验研究，不是普遍适用的协调物理定律。
 
 ### 10.12 限制决定你能怎样迁移它
@@ -1075,7 +1077,7 @@ Anthropic 使用 rainbow deployments，让旧版本运行中的任务继续完�
 <a id="ch12"></a>
 ## 十二、A2A 与 MCP：连接协议和协调策略的边界
 
-本章按上传讲义解释抽象，不声称覆盖当前协议的全部能力。具体字段、状态、扩展和兼容行为应按项目采用的规范版本核验。
+本章按本地教师讲义解释抽象，不声称覆盖当前协议的全部能力。具体字段、状态、扩展和兼容行为应按项目采用的规范版本核验。
 
 ### 12.1 A2A：围绕一个有生命周期的工作对象交互
 
@@ -1616,25 +1618,25 @@ MetaGPT 的 SOP、消息池和执行反馈是主文机制；角色约束自改�
 <a id="references"></a>
 ## 来源与定位注释
 
-以下注释采用“材料简称 + PDF 页序／章节／图表”的方式，便于离开聊天界面后仍能追溯。网页内容以本次上传快照为准，原始地址只是出处入口；不表示本文重新核验了网站当前版本。所有未注明为原文实验的契约、状态机、流程和公司例子均为教学设计。
+以下注释采用“材料简称 + PDF 页序／章节／图表”的方式，配合下表本地链接追溯。网页内容以仓库归档快照为准，原始地址提供出处入口；不表示已核验网站当前版本。所有未注明为原文实验的契约、状态机、流程和公司例子均为教学设计。
 
 ### 原始资料入口
 
-| 简称 | 上传文件名（带 `(1)` 的副本对应相同资料） | 原始出处 |
+| 简称 | 仓库实际文件与本地入口 | 原始出处 |
 |---|---|---|
-| L05 | `5_agent_design_2.pdf` | [课程讲义](https://cs2680.com/slides/5_agent_design_2.pdf) |
-| AG | `001_AutoGen_ec7ede.pdf` | [arXiv:2308.08155v2](https://arxiv.org/abs/2308.08155v2) |
-| MG | `002_MetaGPT_a269c5.pdf` | [arXiv:2308.00352v7](https://arxiv.org/abs/2308.00352v7) |
-| AN | `003_multi_agent_research_system_a3afc1.html` | [Anthropic 工程文章](https://www.anthropic.com/engineering/multi-agent-research-system) |
-| SC | `004_scaling_agent_systems_43651d.pdf` | [arXiv:2512.08296v3](https://arxiv.org/abs/2512.08296v3) |
-| CO | `005_dont_build_multi_agents_3cde73.html` | [Cognition 工程文章](https://cognition.com/blog/dont-build-multi-agents) |
-| Sources | [SOURCES.md](SOURCES.md) | 本次上传的课程资料清单 |
+| L05 | [5_agent_design_2.pdf](5_agent_design_2.pdf) | [课程讲义](https://cs2680.com/slides/5_agent_design_2.pdf) |
+| AG | [001_AutoGen_ec7ede.pdf](readings/001_AutoGen_ec7ede.pdf) | [arXiv:2308.08155v2](https://arxiv.org/abs/2308.08155v2) |
+| MG | [002_MetaGPT_a269c5.pdf](readings/002_MetaGPT_a269c5.pdf) | [arXiv:2308.00352v7](https://arxiv.org/abs/2308.00352v7) |
+| AN | [003_multi_agent_research_system_a3afc1.html](readings/003_multi_agent_research_system_a3afc1.html) | [Anthropic 工程文章](https://www.anthropic.com/engineering/multi-agent-research-system) |
+| SC | [004_scaling_agent_systems_43651d.pdf](readings/004_scaling_agent_systems_43651d.pdf) | [arXiv:2512.08296v3](https://arxiv.org/abs/2512.08296v3) |
+| CO | [005_dont_build_multi_agents_3cde73.html](readings/005_dont_build_multi_agents_3cde73.html) | [Cognition 工程文章](https://cognition.com/blog/dont-build-multi-agents) |
+| Sources | [SOURCES.md](SOURCES.md) | 本课课程资料清单 |
 
 ### 定位注释
 
-[^source-course]: L05，第 1 页标题与作者，第 3 页本课计划；SOURCES，第 1–8 行，课次名称、日期和讲义来源。
+[^source-course]: L05，第 1 页标题与作者，第 3 页本课计划；[SOURCES.md](SOURCES.md) 的日期、Slides条目与原始链接。
 
-[^source-readings]: SOURCES，第 12–21 行，五份指定阅读。AG、MG、SC 固定 arXiv 版本分别见各自上传 PDF 第 1 页。AN、CO 发布时间来自上传网页的页面信息；本文不据网页修改时间推断其全部正文发生了何种更新。
+[^source-readings]: [SOURCES.md](SOURCES.md) 的Readings部分，五份指定阅读。AG、MG、SC 固定 arXiv 版本分别见各自本地 PDF 第 1 页。AN、CO 发布时间来自归档网页的页面信息；本文不据网页修改时间推断其全部正文发生了何种更新。
 
 [^lec-why]: L05，实际 PDF 第 6 页，“When and why split work across agents?”：specialization、isolation、parallelism、context management。
 
@@ -1688,7 +1690,7 @@ MetaGPT 的 SOP、消息池和执行反馈是主文机制；角色约束自改�
 
 [^mg-outlook]: MG，附录 A.1–A.2，PDF 第 15–16 页：角色约束提示的初步自改进、长期记忆、尚未修改结构化通信接口的限制，以及多 Agent 经济和 AgentStore 的展望。
 
-[^co-principles]: CO，上传网页的 “Principles of Context Engineering” 部分：共享上下文和完整相关轨迹；行动携带隐含决策；Flappy Bird 拆分案例。文章是作者工程观点与例子，不是与 MG 同条件的对照实验。
+[^co-principles]: CO，归档网页的 “Principles of Context Engineering” 部分：共享上下文和完整相关轨迹；行动携带隐含决策；Flappy Bird 拆分案例。文章是作者工程观点与例子，不是与 MG 同条件的对照实验。
 
 [^co-context]: CO，“Principles of Context Engineering” 中连续单线程结构、上下文溢出和压缩模型的讨论，及 “Applying the Principles” 对相关决定上下文的要求。压缩困难和专门模型是原文所述经验。
 

@@ -1,0 +1,35 @@
+{
+  "scope": "deterministic policy and promotion examples only",
+  "policy_cases": {
+    "authorized_destination": [
+      true,
+      "allowed in this toy policy"
+    ],
+    "untrusted_destination": [
+      false,
+      "destination is outside fixed task authorization"
+    ],
+    "schema_valid_but_tainted_destination": [
+      false,
+      "destination depends on untrusted source; needs separate authorization"
+    ],
+    "trusted_but_unauthorized_reader": [
+      false,
+      "destination is not a permitted reader of body"
+    ]
+  },
+  "promotion_cases": {
+    "bounded_candidate": [
+      true,
+      "eligible for staged promotion; not a proof of generalization"
+    ],
+    "faster_but_unsafe": [
+      false,
+      "security regression"
+    ],
+    "changed_evaluator": [
+      false,
+      "evaluation boundary changed"
+    ]
+  }
+}

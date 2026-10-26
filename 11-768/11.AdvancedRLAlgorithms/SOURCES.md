@@ -67,9 +67,10 @@
 - [PostTrainBench](references/018_PostTrainBench.pdf)
   - Source: https://arxiv.org/abs/2603.08640
 
-- [Curriculum Learning](references/019_Curriculum_Learning.pdf)
+- [错误归档：019_Curriculum_Learning.pdf（实际为量子物理论文）](references/019_Curriculum_Learning.pdf)
+  - Status: 标题与正文不符，不作为课程学习证据；正确 ICML 2009 原文见下方补充参考。
   - Course source: https://doi.org/10.1145/1553374.1553380
-  - PDF: https://arxiv.org/pdf/0904.4028.pdf
+  - Historical incorrect download: https://arxiv.org/pdf/0904.4028.pdf
 
 - [OpenAI: calculator hacking and production evaluations](references/020_OpenAI_calculator_hacking_and_production_evaluations.html)
   - Source: https://alignment.openai.com/prod-evals/
@@ -88,3 +89,14 @@
 
 - [Policy Invariance Under Reward Transformations](references/025_Policy_Invariance_Under_Reward_Transformations.pdf)
   - Source: https://people.eecs.berkeley.edu/~russell/papers/icml99-shaping.pdf
+
+<!-- BEGIN LOCAL LEARNING -->
+## 中文学习讲解
+
+- [完整课程讲解](lecture-11-advanced-rl-integrated.md)
+
+## 讲解补充的一手参考
+
+- [Curriculum Learning，ICML 2009 正确原文](references/026_Curriculum_Learning_ICML2009.pdf) — [官方来源](https://icml.cc/2009/papers/119.pdf)
+- 获取状态与校验值：[REFERENCES.json](REFERENCES.json)。
+<!-- END LOCAL LEARNING -->

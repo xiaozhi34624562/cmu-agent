@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-26",
+  "python": "3.11.10",
+  "pytorch": "2.14.1",
+  "device": "CPU",
+  "command": "python examples/rl11_loss_demo.py",
+  "source_sha256": "c57648f609a4b613efd037030579327fde6dfadf10784d097c39f997083c0a8c",
+  "result": "passed",
+  "output": "PPO/CISPO、组优势、停止梯度与 padding 掩码测试通过。",
+  "scope": "No model training; tensor loss, gradients, detachment, group normalization and masking only",
+  "warning": "Torch warned NumPy unavailable; this example does not use NumPy and completed successfully"
+}

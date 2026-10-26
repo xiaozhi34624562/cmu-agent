@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import filecmp
 import hashlib
+import json
 import os
 import re
 import shutil
@@ -22,7 +23,17 @@ from urllib.parse import urljoin, urlparse
 
 from bs4 import BeautifulSoup
 
-from sync import BASE, ROOT, TODAY, normalized_url, reading_destination, reading_snapshot_issue
+from sync import BASE, ROOT, normalized_url, reading_destination, reading_snapshot_issue
+
+
+def archive_snapshot_date() -> str:
+    """Use the archive's recorded sync date, not a local reorganization date."""
+    sources = ROOT / "SOURCES.md"
+    if sources.exists():
+        match = re.search(r"本地同步日期：([0-9]{4}-[0-9]{2}-[0-9]{2})", sources.read_text(encoding="utf-8"))
+        if match:
+            return match[1]
+    return "未记录"
 
 
 @dataclass(frozen=True)
@@ -203,9 +214,9 @@ def organize_lessons() -> None:
                 else:
                     lines += [f"- {label}: source file unavailable", f"  - Source: {BASE}{site_path}"]
         elif lesson.paper_discussion:
-            lines.append(f"- 本节为论文讨论课；截至 {TODAY}，课程主页未提供该课的公开讲义 PDF 下载链接。阅读论文列在下方，不能当作教师讲义。")
+            lines.append(f"- 本节为论文讨论课；截至 {archive_snapshot_date()}，课程主页未提供该课的公开讲义 PDF 下载链接。阅读论文列在下方，不能当作教师讲义。")
         else:
-            lines.append(f"- No slides linked on the course website as of {TODAY}.")
+            lines.append(f"- No slides linked on the course website as of {archive_snapshot_date()}.")
         if assignment_slides:
             lines += ["", "## Assignment materials", ""]
             for label, site_path in assignment_slides:
@@ -257,6 +268,16 @@ def organize_lessons() -> None:
             lines += [f"- {markdown_link(label, target, folder)}", f"  - Source: {BASE}{site_path}"]
         if not lesson.meeting_id and not lesson.references:
             lines.append("- None listed.")
+        supplemental = folder / "REFERENCES.json"
+        if supplemental.exists():
+            lines += ["", "## Supplemental primary sources", "",
+                      "以下为中文讲解补充的一手资料；与上方官网指定 Readings 分开登记。版本、获取状态与校验值见 [REFERENCES.json](REFERENCES.json)。", ""]
+            for item in json.loads(supplemental.read_text(encoding="utf-8")):
+                path = item.get("path")
+                target = folder / path if path else None
+                title = item.get("title", path or "Reference")
+                label = markdown_link(title, target, folder) if target and target.is_file() else title + "（未获取正文）"
+                lines += [f"- {label}", f"  - Source: {item['url']}"]
         (folder / "SOURCES.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("ORGANIZED", len(LESSONS), "lesson folders,", total_copies, "reading copies")
 
@@ -353,7 +374,7 @@ def organize_course_info() -> None:
             ("Cost-effective agents", "notes/cost-effective-agents.html"),
         ],
     }
-    lines = ["# 0. Course information", "", f"- Snapshot date: {TODAY}"]
+    lines = ["# 0. Course information", "", f"- Snapshot date: {archive_snapshot_date()}"]
     for heading, pages in sections.items():
         lines += ["", f"## {heading}", ""]
         for label, path in pages:
@@ -378,7 +399,7 @@ def update_course_index() -> None:
         ("Part I：Introduction to LLMs and agents", [l for l in LESSONS if l.date < "2026-10-19"]),
         ("Part II：Systems for LLMs and agents", [l for l in LESSONS if l.date >= "2026-10-19"]),
     ):
-        sections += [f"## {heading}", "", "| 日期 | 课程原题与资料入口 | 官方讲义 PDF |", "|---|---|---|"]
+        sections += [f"## {heading}", "", "| 日期 | 课程原题与资料入口 | 官方讲义 PDF | 中文学习讲解 |", "|---|---|---|---|"]
         for lesson in lessons:
             folder = ROOT / lesson.folder
             entry = folder / ("README.md" if (folder / "README.md").exists() else "SOURCES.md")
@@ -389,7 +410,13 @@ def update_course_index() -> None:
             status = " · ".join(slide_links) if slide_links else (
                 "论文讨论课；官网未提供讲义 PDF" if lesson.paper_discussion else "官网尚未提供"
             )
-            sections.append(f"| {lesson.date[5:]} | {markdown_link(f'{lesson.number}. {lesson.title}', entry, ROOT)} | {status} |")
+            notes = sorted(path for path in folder.glob("*.md") if path.name not in {"README.md", "SOURCES.md"})
+            preferred = folder / "notes.zh-CN.md"
+            primary = preferred if preferred in notes else next((path for path in notes if path.name.startswith("lecture_02")), notes[0] if notes else None)
+            note_status = markdown_link("中文讲解", primary, ROOT) if primary else "暂无中文讲解"
+            if len(notes) > 1:
+                note_status += " · " + markdown_link("补充学习文档", folder / "SOURCES.md", ROOT)
+            sections.append(f"| {lesson.date[5:]} | {markdown_link(f'{lesson.number}. {lesson.title}', entry, ROOT)} | {status} | {note_status} |")
         sections.append("")
     sections += ["完整课表以[本地课程主页](site/index.html)为准。上表收录已有讲义或阅读资料的课次；原始 PDF 文件名保留官网编号。", ""]
     sections += ["### 文件名与归档位置核对（2026-10-23）", "",

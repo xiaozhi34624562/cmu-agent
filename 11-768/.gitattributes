@@ -1,0 +1,7 @@
+# Preserve archived source bytes and Markdown hard line breaks.
+*.pdf binary
+*.html -text -whitespace
+*.md whitespace=-blank-at-eol
+site/** -text -whitespace
+readings/** -text -whitespace
+*/references/** -text -whitespace

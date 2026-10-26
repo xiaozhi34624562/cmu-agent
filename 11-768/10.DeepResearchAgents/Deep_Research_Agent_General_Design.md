@@ -1,17 +1,17 @@
 # Deep Research Agent 通用设计：围绕问题、论断、证据与缺口组织研究
 
-**整理日期：** 2026-10-07。  
-**主要输入：** 用户提供的法国教育制度研究复盘，以及 [Lecture 10 综合笔记](Deep_Research_Lecture10_Integrated_Notes.md)。课程原始资料入口见 [SOURCES.md](SOURCES.md)。
+**整理日期：** 2026-10-07；独立阅读与来源复核：2026-10-26。  
+**主要依据：** [Lecture 10 综合笔记](Deep_Research_Lecture10_Integrated_Notes.md)及文末一手资料。课程原始资料入口见 [SOURCES.md](SOURCES.md)。法国教育研究情境仅作方法教学示例。
 
 本文提出一套通用工程设计：让 Agent 持续判断“还有什么会改变答案的问题没解决”，选择合适的取证行动，并维护结论与证据的关系。以下对象、状态、调度规则和伪代码均为**工程建议**；引用的论文机制与实验边界另行说明，不能把它们当作这套组合架构已被验证的效果。
 
-用户案例是研究过程复盘，其中明确区分了实际操作与建议建立的数据表。本文据此提炼需求，没有独立验证其中每次工具操作。附件中的 `chatgpt-content-reference` 标记也不能在本仓库解析为原始证据，本文不据此重新确认法国政策或抗议事实。
+本文保留法国教育制度研究这一情境，用来演示前提核查、概念消歧、证据适用范围和因果边界。原始过程复盘未作为可独立访问的资料归档，因此以下情境统一视为教学构造，不据此确认法国政策、抗议或任何实际工具操作。理解本篇不需要阅读会话附件。
 
-## 1. 两份材料怎样共同决定设计
+## 1. 从研究情境到可检验的设计需求
 
 **建议把 Deep Research Agent 定义为：在给定范围和预算内，通过连续取证、检验与修订，完成一组研究问题并交付可追溯结论的系统。**
 
-法国教育案例提供了研究判断的细节：首先核实问题前提；按概念依赖拆题；为每种论断选择适用来源；发现例外后收窄结论；将证据不足作为可表达的研究结果。综合笔记补充了实现与验证这些行为的方法：任务分类、迭代检索、状态压缩、检索意图、引用核验、评测和训练。参见案例第 1—4、8—13 节，以及综合笔记第 2—4、9—11、14 章。
+法国教育教学情境提出五类研究判断：首先核实问题前提；按概念依赖拆题；为每种论断选择适用来源；发现例外后收窄结论；将证据不足作为可表达的研究结果。课程材料为这些需求提供了方法背景：任务分类、迭代检索、状态压缩、检索意图、引用核验、评测和训练。具体机制见 [Lecture 10 综合笔记](Deep_Research_Lecture10_Integrated_Notes.md)第 2—4、9—11、14 章及[一手来源核查](Deep_Research_Agent_Design_Source_Checks.md)。
 
 | 案例中的需求 | 课程材料补充的方法 | 建议落实的设计 |
 |---|---|---|
@@ -197,12 +197,15 @@ Anthropic 的官方研究系统文章支持对可独立分工的广度任务采�
 ```python
 spec = define_research_spec(request)
 state = initialize_questions_and_dependencies(spec)
+research_stop_reason = "budget_exhausted"
+audit_status = "not_run"
 
 while budget.allows_research(reserve_for_delivery=True):
     apply_pending_user_updates(state)       # 更新范围，并标记需要复核的旧状态
     gaps = assess_coverage_conflicts_and_support(state)
     action = choose_useful_action(gaps, state, budget)
     if action is None:
+        research_stop_reason = classify_stop_reason(state)
         break
     observation = execute_with_limits(action)
     save_observation_and_access_state(observation)
@@ -214,18 +217,23 @@ draft = synthesize_from_evidence_packets(state)
 while budget.allows_audit_or_repair():
     audit = audit_claims_and_task_coverage(draft, state)
     if audit.passed:
+        audit_status = "passed"
         break
+    audit_status = "failed"
     repair_state_or_draft(audit, state)      # 必要时重新取证；修复同样消耗预算
     draft = synthesize_affected_sections(state, draft)
 
-deliver(draft, status=derive_delivery_status(state), unresolved=state.open_gaps)
+status = derive_delivery_status(
+    state, research_stop_reason=research_stop_reason, audit_status=audit_status
+)
+deliver(draft, status=status, unresolved=state.open_gaps)
 ```
 
-这是流程示意，不是已经实现或测试的代码；实际实现还需分别记录研究预算结束原因和审核通过状态。
+这是流程示意，不是已经实现或测试的代码。`not_run`、`failed`和`passed`必须分别保留：审核预算为零、尚未审核不能推成通过；最后一次修复后没有复核，也仍不能记为通过。`classify_stop_reason`应区分关键问题解决、来源阻断与没有可行行动；`derive_delivery_status`要同时检查任务覆盖、未解决重大缺口和明确审核结果，不能只看循环是否结束。
 
 ## 9. 用法国教育案例走一遍状态变化
 
-下面重演的是系统设计，不是补造原对话执行日志，也不独立确认案例涉及的政策事实。
+下面是教学构造的状态变化，不是实际研究执行日志，也不独立确认情境涉及的政策事实。
 
 | 阶段 | 状态与行动 | 应防止的错误 |
 |---|---|---|
@@ -291,15 +299,15 @@ DR Tulu 的贡献之一是让开放式长报告获得随训练演化的 rubric �
 
 ## 来源与核查入口
 
-- **用户案例**：本次会话附件 `Pasted text.txt`，标题起始为“可以。我会用这次法国教育制度的调研……”。用于提炼工作流需求；内嵌引用不可解析，未当作独立政策证据。
+- **法国教育教学情境**：本文第 2、9、10 节给出问题、状态变化与证据边界；仅用于演示研究方法，不作为制度或事件事实来源。原始过程材料未归档，不列为可回查的研究证据。
 - **课程综合笔记**：[Deep_Research_Lecture10_Integrated_Notes.md](Deep_Research_Lecture10_Integrated_Notes.md)，主要使用第 2—4、9—11、14 章。其参考编号见附录 D。
-- **OpenScholar**：[本地原文 HTML](readings/001_OpenScholar.html)；[Nature 原文](https://www.nature.com/articles/s41586-025-10072-4)。本次网页抓取受 cookie 跳转影响，具体方法核查使用仓库原文；见 Inference、Data filtering 与 Citation accuracy 小节。
+- **OpenScholar**：[本地原文 HTML](readings/001_OpenScholar.html)；[Nature 原文](https://www.nature.com/articles/s41586-025-10072-4)。2026-10-07的核查记录记载在线抓取受 cookie 跳转影响；2026-10-26复核使用仓库原文；见 Inference、Data filtering 与 Citation accuracy 小节。
 - **AgentIR v3**：[本地 PDF](readings/006_AgentIR.pdf)；[原文](https://arxiv.org/html/2603.04384v3)。重点 §3.2 与 §5；全历史输入实验受上下文截断限制。
 - **Tongyi v3**：[本地 PDF](readings/004_Tongyi_DeepResearch.pdf)；[原文](https://arxiv.org/html/2510.24701v3)。重点 §3.1、§4.3；上下文压缩与并行综合不保证证据完整保留。
 - **DeepResearch Bench II v3**：[本地 PDF](references/010_DeepResearch_Bench_II.pdf)；[原文](https://arxiv.org/html/2601.08536v3)。重点 §3.1.2—3.1.3；端到端信息维度得分不等于检索器召回率。
 - **BrowseComp-Plus v1**：[本地 PDF](references/003_BrowseComp-Plus.pdf)；[原文](https://arxiv.org/html/2508.06600v1)。重点 §4.8.1；oracle 只用于诊断。
 - **DR Tulu v3**：[本地 PDF](readings/005_DR_Tulu.pdf)；[原文](https://arxiv.org/html/2511.19399v3)。重点 §2—3；训练反馈与本次运行的状态更新不同。
-- **Anthropic 官方工程文章**：[How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system)，2025-06-13；用于补充多 Agent 任务分工、引用与运行恢复经验，未使用其内部数字作效果承诺。
+- **Anthropic 官方工程文章**：[本地原文归档](../../2680/readings/web/anthropic-com-engineering-multi-agent-research-system-a3afc1e8.html)；[How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system)，2025-06-13；用于补充多 Agent 任务分工、引用与运行恢复经验，未使用其内部数字作效果承诺。
 - **补充核查记录**：[Deep_Research_Agent_Design_Source_Checks.md](Deep_Research_Agent_Design_Source_Checks.md)。
 
 本文未比较实时模型排行榜，未进行架构效果实验，也未更改课程原始资料。

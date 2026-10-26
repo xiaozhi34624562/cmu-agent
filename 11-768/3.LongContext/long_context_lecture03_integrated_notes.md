@@ -423,7 +423,7 @@ Longformer 比较了循环版、分块向量化版和自定义 CUDA 版。循环
 
 固定窗口按预先规定的相对范围读取，例如“当前位置之前的 32 个位置”。窗口会随当前位置移动，但不会因为问题需要就自动跳到很远的证据处。DSA（DeepSeek Sparse Attention）增加一个较轻的筛选步骤：先估计哪些历史位置更值得读，再把主要计算用在它们身上。Indexer 是这个打分器；Top-K 指按分数保留前 K 个，K 在这里是数量，不是 Key 矩阵。
 
-附件 `009_DeepSeek_Sparse_Attention.pdf` 的实际内容是 DeepSeek-V3.2 技术报告。其 DSA 由 lightning indexer 与细粒度 token 选择组成：先给历史位置打分，再选择 Top-K KV 条目执行主注意力。[R09，§2.1，pp.3–4](#ref-r09)
+附件 [009_DeepSeek_Sparse_Attention.pdf](references/009_DeepSeek_Sparse_Attention.pdf) 的实际内容是 DeepSeek-V3.2 技术报告。其 DSA 由 lightning indexer 与细粒度 token 选择组成：先给历史位置打分，再选择 Top-K KV 条目执行主注意力。[R09，§2.1，pp.3–4](#ref-r09)
 
 ```text
 当前隐藏表示
@@ -2648,14 +2648,14 @@ DeltaNet 纠正关联，GDN/KDA 管理遗忘，检查点保存任务状态，证
 ### [L03] 主讲义：Context Management for Long-Context Agents
 
 **作者与机构**：Graham Neubig，Language Technologies Institute，Carnegie Mellon University。
-**附件**：`lecture-03-long-context.pdf`，54 页。
+**附件**：[lecture-03-long-context.pdf](lecture-03-long-context.pdf)，54 页。
 **定位**：pp.2–5 上下文增长与双重挑战；pp.7–11 推理与有效上下文；pp.12–25 架构；pp.26–36 训练和位置；pp.37–44 缓存；pp.45–51 Compaction；p.53 系统总结。
 **在本文中的作用**：组织整份讲义的问题顺序与最终行为保真目标。模型规格与价格示例只作为讲义时点材料，不作当前产品结论。
 
 <a id="ref-r01"></a>
 ### [R01] DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving
 
-**附件**：`001_DistServe.pdf`。
+**附件**：[001_DistServe.pdf](references/001_DistServe.pdf)。
 **版本标识**：arXiv:2401.09670v3，2024；OSDI 2024。
 **重点**：§2 推理和干扰；§3 批量、并行、排队与通信取舍；§4 配置与放置。
 **贡献到本文**：把 Prefill、Decode、排队和 SLO 分开；将 KV 预算与达标吞吐联系起来。历史硬件实验不作为通用阈值。
@@ -2663,14 +2663,14 @@ DeltaNet 纠正关联，GDN/KDA 管理遗忘，检查点保存任务状态，证
 <a id="ref-r02"></a>
 ### [R02] Needle In A Haystack
 
-**附件**：`002_Needle_in_a_Haystack.md`。
+**附件**：[002_Needle_in_a_Haystack.md](references/002_Needle_in_a_Haystack.md)。
 **重点**：Built-in tasks；Result rows & reconstruction；Original story & historical results。
 **贡献到本文**：长度—位置扫描，普通事实与 UUID、多跳关系的不同要求，以及实际输入的可重建性。README 的 v2 接口与 2023 年原始实验不能混成同一个时间点。
 
 <a id="ref-r03"></a>
 ### [R03] Attention Is All You Need
 
-**附件**：`003_Attention_Is_All_You_Need.pdf`。
+**附件**：[003_Attention_Is_All_You_Need.pdf](references/003_Attention_Is_All_You_Need.pdf)。
 **版本标识**：NeurIPS 2017；附件为 arXiv:1706.03762v7。
 **重点**：§3.2，pp.3–5；§3.5、§4，pp.6–7；p.6 表 1。
 **贡献到本文**：Q/K/V、因果注意力、多头、位置编码，以及完整注意力以计算换取短信息路径的原始动机。
@@ -2678,7 +2678,7 @@ DeltaNet 纠正关联，GDN/KDA 管理遗忘，检查点保存任务状态，证
 <a id="ref-r04"></a>
 ### [R04] Longformer: The Long-Document Transformer
 
-**附件**：`004_Longformer.pdf`。
+**附件**：[004_Longformer.pdf](references/004_Longformer.pdf)。
 **版本标识**：arXiv:2004.05150v2，2020。
 **重点**：§3，pp.3–4；§5，pp.6–7；§6.5，p.9；表 5、表 10。
 **贡献到本文**：局部加全局连接、硬件实现差异、位置初始化与继续训练，以及全局信息通道的受控消融。区分双向编码任务和因果生成。
@@ -2686,7 +2686,7 @@ DeltaNet 纠正关联，GDN/KDA 管理遗忘，检查点保存任务状态，证
 <a id="ref-r05"></a>
 ### [R05] Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention
 
-**附件**：`005_Transformers_are_RNNs.pdf`。
+**附件**：[005_Transformers_are_RNNs.pdf](references/005_Transformers_are_RNNs.pdf)。
 **版本标识**：ICML 2020；arXiv:2006.16236v3。
 **重点**：§3.2–3.4，pp.3–5。
 **贡献到本文**：核特征分解、结合律、因果累计状态、归一化与训练实现。原文的历史速度倍数不用于描述现代带 KV Cache 的任意服务。
@@ -2694,7 +2694,7 @@ DeltaNet 纠正关联，GDN/KDA 管理遗忘，检查点保存任务状态，证
 <a id="ref-r06"></a>
 ### [R06] Linear Transformers Are Secretly Fast Weight Programmers
 
-**附件**：`006_Linear_Transformers_Are_Secretly_Fast_Weight_Programmers.pdf`。
+**附件**：[006_Linear_Transformers_Are_Secretly_Fast_Weight_Programmers.pdf](references/006_Linear_Transformers_Are_Secretly_Fast_Weight_Programmers.pdf)。
 **版本标识**：ICML 2021；arXiv:2102.11174v3。
 **重点**：§4.1–4.2，pp.3–5；§5，pp.5–6；§6.1，pp.6–7。
 **贡献到本文**：关联记忆的容量和串扰、Delta 更新、快慢权重、DPFP 特征扩展，以及分开测试容量与重新赋值的实验方法。
@@ -2702,7 +2702,7 @@ DeltaNet 纠正关联，GDN/KDA 管理遗忘，检查点保存任务状态，证
 <a id="ref-r07"></a>
 ### [R07] Gated Delta Networks: Improving Mamba2 with Delta Rule
 
-**附件**：`007_Gated_Delta_Networks.pdf`。
+**附件**：[007_Gated_Delta_Networks.pdf](references/007_Gated_Delta_Networks.pdf)。
 **版本标识**：ICLR 2025；arXiv:2412.06464v3。
 **重点**：§2–3，pp.2–6；p.5 表 2。
 **贡献到本文**：整体遗忘与定向修正的互补性、chunkwise 实现，以及不同 NIAH 背景下保留与过滤的矛盾。
@@ -2710,7 +2710,7 @@ DeltaNet 纠正关联，GDN/KDA 管理遗忘，检查点保存任务状态，证
 <a id="ref-r08"></a>
 ### [R08] Kimi Linear: An Expressive, Efficient Attention Architecture
 
-**附件**：`008_Kimi_Linear.pdf`。
+**附件**：[008_Kimi_Linear.pdf](references/008_Kimi_Linear.pdf)。
 **版本标识**：arXiv:2510.26692v2，2025。
 **重点**：§3–4，pp.4–7；§5.1–5.2，pp.7–9；p.12 表 5；p.13 图 7；§6，pp.13–16。
 **贡献到本文**：通道级遗忘、受约束 DPLR、块并行、KDA/MLA 混合与 NoPE。保留 1.4T 控制实验、5.7T 发布模型、单请求与大批量测量的区别；不把作者总体评价改写成每个子任务均最好。
@@ -2718,7 +2718,7 @@ DeltaNet 纠正关联，GDN/KDA 管理遗忘，检查点保存任务状态，证
 <a id="ref-r09"></a>
 ### [R09] DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models
 
-**附件名称**：`009_DeepSeek_Sparse_Attention.pdf`。
+**附件名称**：[009_DeepSeek_Sparse_Attention.pdf](references/009_DeepSeek_Sparse_Attention.pdf)。
 **实际论文与版本**：DeepSeek-V3.2 技术报告；arXiv:2512.02556v1，2025。
 **重点**：§2.1–2.3，pp.3–5；§4.4，p.17、图 6。
 **贡献到本文**：DSA indexer、Top-K、基于 MLA 的实例化、两阶段继续训练、indexer 平方项，以及搜索任务中的摘要/重置策略和计算预算边界。本文不展开报告中的全部 RL 与综合榜单内容。
@@ -2726,7 +2726,7 @@ DeltaNet 纠正关联，GDN/KDA 管理遗忘，检查点保存任务状态，证
 <a id="ref-r10"></a>
 ### [R10] GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints
 
-**附件**：`010_Grouped-Query_Attention.pdf`。
+**附件**：[010_Grouped-Query_Attention.pdf](references/010_Grouped-Query_Attention.pdf)。
 **版本标识**：arXiv:2305.13245v3，2023。
 **重点**：§2–3，pp.1–3；§4，p.4；Limitations，p.5。
 **贡献到本文**：KV 分组、已有 checkpoint 的转换与适配、带宽和质量取舍；亦提供 FlashAttention 等相关工作的分层背景。主要实验是编码器—解码器模型。
@@ -2734,7 +2734,7 @@ DeltaNet 纠正关联，GDN/KDA 管理遗忘，检查点保存任务状态，证
 <a id="ref-r11"></a>
 ### [R11] SGLang: Efficient Execution of Structured Language Model Programs
 
-**附件**：`033_SGLang_RadixAttention.pdf`。
+**附件**：[033_SGLang_RadixAttention.pdf](references/033_SGLang_RadixAttention.pdf)。
 **版本标识**：arXiv:2312.07104v2，2024。
 **重点**：§2–3，pp.3–6；p.6 定理 3.1。
 **贡献到本文**：多调用程序、前缀依赖、RadixAttention、叶子 LRU、活跃引用保护、缓存感知调度及离线最优条件。论文中的 6.4 倍总性能结果包含多种优化，不等于纯前缀缓存的普遍倍数。
@@ -2742,7 +2742,7 @@ DeltaNet 纠正关联，GDN/KDA 管理遗忘，检查点保存任务状态，证
 <a id="ref-r12"></a>
 ### [R12] SGLang v0.4: Zero-Overhead Batch Scheduler, Cache-Aware Load Balancer, Faster Structured Outputs
 
-**附件**：`034_SGLang_Cache-Aware_Load_Balancing.html`。
+**附件**：[034_SGLang_Cache-Aware_Load_Balancing.html](references/034_SGLang_Cache-Aware_Load_Balancing.html)。
 **来源与时间**：SGLang Team / LMSYS，2024-12-04。
 **重点**：Cache-Aware Load Balancer 段落与实验条件。
 **贡献到本文**：近似前缀树、跨 Worker 缓存路由、吞吐与命中率实验，以及均衡长前缀组的适用边界。
@@ -2750,7 +2750,7 @@ DeltaNet 纠正关联，GDN/KDA 管理遗忘，检查点保存任务状态，证
 <a id="ref-r13"></a>
 ### [R13] MemGPT: Towards LLMs as Operating Systems
 
-**附件**：`035_MemGPT.pdf`。
+**附件**：[035_MemGPT.pdf](references/035_MemGPT.pdf)。
 **版本标识**：arXiv:2310.08560v2，2024。
 **重点**：§2，pp.2–4；§3.2，pp.6–8；p.3 图 3。
 **贡献到本文**：主上下文、工作区、FIFO、Recall/Archival、函数控制流、分页与嵌套 KV；保留提前停止查询等失败模式。
@@ -2758,7 +2758,7 @@ DeltaNet 纠正关联，GDN/KDA 管理遗忘，检查点保存任务状态，证
 <a id="ref-r14"></a>
 ### [R14] LongLLMLingua: Accelerating and Enhancing LLMs in Long Context Scenarios via Prompt Compression
 
-**附件**：`036_LongLLMLingua.pdf`。
+**附件**：[036_LongLLMLingua.pdf](references/036_LongLLMLingua.pdf)。
 **版本标识**：ACL 2024，印刷页 1658–1677。
 **重点**：§4，文件 pp.3–5；§5，pp.6–8；表 1、表 3。
 **贡献到本文**：问题相关的粗到细选择、对比困惑度、动态预算、重排、字符串恢复，以及包含压缩成本的端到端评测。本文表格明确使用“第 10 个位置、无重排”列，不与重排条件混用。
@@ -2766,35 +2766,35 @@ DeltaNet 纠正关联，GDN/KDA 管理遗忘，检查点保存任务状态，证
 <a id="ref-r15"></a>
 ### [R15] Codex CLI 项目 README
 
-**附件**：`037_Codex.md`。
+**附件**：[037_Codex.md](references/037_Codex.md)。
 **材料支持范围**：项目介绍、安装与官方文档入口。
 **不直接支持**：具体 Compaction 算法、默认阈值与全部恢复语义；相关源码补充见 [E03](#ref-e03)。
 
 <a id="ref-r16"></a>
 ### [R16] OpenCode 项目 README
 
-**附件**：`038_OpenCode.md`。
+**附件**：[038_OpenCode.md](references/038_OpenCode.md)。
 **材料支持范围**：项目、Agent 模式与文档入口。
 **不直接支持**：完整压缩实现；配置补充见 [E01](#ref-e01)。
 
 <a id="ref-r17"></a>
 ### [R17] Pi Agent Harness 项目 README
 
-**附件**：`039_Pi.md`。
+**附件**：[039_Pi.md](references/039_Pi.md)。
 **材料支持范围**：CLI、Agent runtime、统一模型接口与 durable runtime 等包职责。
 **不直接支持**：`CompactionEntry` 和切分细节；官方文档补充见 [E02](#ref-e02)。
 
 <a id="ref-r18"></a>
 ### [R18] Hermes Agent 项目 README
 
-**附件**：`040_Hermes_Agent.md`。
+**附件**：[040_Hermes_Agent.md](references/040_Hermes_Agent.md)。
 **重点**：记忆、FTS5 历史会话检索、经验/技能与压缩命令入口。
 **使用边界**：不将 README 的营销措辞改写成独立验证的性能或唯一性结论，也不从功能概述推断完整内部算法。
 
 <a id="ref-r19"></a>
 ### [R19] OpenHands / Agent Canvas 项目 README
 
-**附件**：`041_OpenHands.md`。
+**附件**：[041_OpenHands.md](references/041_OpenHands.md)。
 **重点**：Architecture、Repository boundaries。
 **贡献到本文**：区分前端、Agent SDK 与自动化职责；具体 Condenser 示例来自 [E04](#ref-e04)，不是 README 本身。
 
@@ -2952,34 +2952,34 @@ DeltaNet 纠正关联，GDN/KDA 管理遗忘，检查点保存任务状态，证
 
 ### 外部官方补充
 
-以下仅补充前文已经涉及的工程实现主题。页面与 `main` 分支会变化；读取日期不是固定软件发布版本。地址保留为代码格式，方便复制定位。
+以下仅补充前文已经涉及的工程实现主题。页面与 `main` 分支会变化；读取日期不是固定软件发布版本。地址以官方来源链接保留，方便打开与核对。
 
 <a id="ref-e01"></a>
 #### [E01] OpenCode Config — Compaction
 
 **来源**：OpenCode 官方配置文档；初稿记录的读取日期 2026-09-20。
-**地址**：`https://opencode.ai/docs/config/`
+**地址**：[官方来源](https://opencode.ai/docs/config/)
 **定位**：Compaction；`auto`、`prune`、`reserved` 的含义。本文不提供未经本地版本核对的完整启动配置。
 
 <a id="ref-e02"></a>
 #### [E02] Pi — Compaction & Branch Summarization
 
 **来源**：Pi 官方文档；初稿记录的读取日期 2026-09-20。
-**地址**：`https://pi.dev/docs/latest/compaction`
+**地址**：[官方来源](https://pi.dev/docs/latest/compaction)
 **定位**：Overview、How It Works、Cut Point Rules、CompactionEntry Structure。用于说明视图重建、合法边界与一次性摘要缓存策略。
 
 <a id="ref-e03"></a>
 #### [E03] Codex — `codex-rs/core/src/compact.rs`
 
 **来源**：OpenAI 官方 Codex 仓库 `main` 分支源码；初稿记录的读取日期 2026-09-20。
-**地址**：`https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/compact.rs`
+**地址**：[官方来源](https://raw.githubusercontent.com/openai/codex/main/codex-rs/core/src/compact.rs)
 **定位**：`InitialContextInjection` 和 `CompactedHistoryMetadata` 附近的定义与注释。本文记录该次可见实现，不将其视作稳定公共接口。
 
 <a id="ref-e04"></a>
 #### [E04] OpenHands SDK — Context Condenser
 
 **来源**：OpenHands 官方 SDK 文档；初稿记录的读取日期 2026-09-20。
-**地址**：`https://docs.openhands.dev/sdk/guides/context-condenser`
+**地址**：[官方来源](https://docs.openhands.dev/sdk/guides/context-condenser)
 **定位**：Setting Up Condensing 与 `LLMSummarizingCondenser` 示例。事件数量触发与 token 预算的区别，是本文据此提出的工程分析。
 
 ---

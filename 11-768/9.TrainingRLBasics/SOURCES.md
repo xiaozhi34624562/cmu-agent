@@ -29,3 +29,9 @@
 - [REINFORCE](references/002_REINFORCE.pdf)
   - Source: https://doi.org/10.1007/BF00992696
   - PDF: https://gwern.net/doc/reinforcement-learning/model-free/1992-williams.pdf
+
+<!-- BEGIN LOCAL LEARNING -->
+## 中文学习讲解
+
+- [完整课程讲解](rl_lecture09_integrated_notes.md)
+<!-- END LOCAL LEARNING -->

@@ -3,8 +3,10 @@
 *讲义与参考资料融合精讲*
 
 **适用读者：** 已有 Java / Python 或其他软件开发经验，希望深入理解 Coding Agent 的 LLM 开发工程师。  
-**整理日期：** 2026-10-13。  
-**内容基础：** 本次对话中的两轮讲解、实际上传的主讲义、001—009 参考材料，以及前文已经使用的 Simon Willison 补充章节。  
+**整理日期：** 2026-10-13；全文复核：2026-10-26。
+
+**阅读顺序：**先读[课程主讲解](lecture_02_agent_use_integrated_notes.md)，本篇侧重完整开发案例、恢复与交付实践；两篇采用同一讲义和论文口径。  
+**内容基础：** 本课主讲义、001—009 阅读材料和单独归档的 Simon Willison 补充章节。  
 **核心问题：** 怎样把一个会生成代码、也会犯错的模型，组织成能够理解项目、执行修改、利用反馈、控制风险并积累工程经验的系统？
 
 > Coding Agent 的价值，不是让模型替你生成尽可能多的代码，而是让它以可控制、可验证、可复用的方式，减少软件开发中的不确定性。
@@ -16,7 +18,7 @@
 
 ### 主讲义的实际身份
 
-最初提问使用了“lecture-08”这一名称，但本次实际上传的主讲义是 [2_agent_use_1.pdf](2_agent_use_1.pdf)（上传时文件名为 `lecture-02-2_agent_use_1(1).pdf`），标题为 **Agent From a User’s Perspective I: How Claude Code Works**，作者为 Juncheng Yang。配套 `SOURCES.md` 将其列为 **2. Agents use I: How Claude Code Works**。因此，本文以实际文件为依据，不把它改称一份未提供的 Coding Agent 第 8 讲。[S0](#src-s0) [SM](#src-sm)
+主讲义为 [2_agent_use_1.pdf](2_agent_use_1.pdf)，标题为 **Agent From a User’s Perspective I: How Claude Code Works**，署名 Juncheng Yang，所属课程为 Harvard CS2680 *Modern AI Systems: Agents and System Optimizations*。本课日期和全部资料入口见 [SOURCES.md](SOURCES.md)。[S0](#src-s0) [SM](#src-sm)
 
 讲义主要解释运行循环、上下文、记忆、工具和扩展机制，并不是 Coding Agent 模型训练课程，也不是某个产品的源码审计。本文不据此推导未展示的训练方法、隐藏实现或产品内部算法。
 
@@ -36,9 +38,9 @@
 
 ### 版本与外部阅读边界
 
-Claude Code 的命令、配置字段、记忆加载规则和 Hook 行为，主要按上传文档快照解释；它们不构成对任意安装版本的兼容性保证。论文中的模型、框架版本和费用也属于其测试设置，不是当前产品排名或最新报价。
+Claude Code 的命令、配置字段、记忆加载规则和 Hook 行为，主要按归档文档快照解释；它们不构成对任意安装版本的兼容性保证。论文中的模型、框架版本和费用也属于其测试设置，不是当前产品排名或最新报价。
 
-`002_Agentic_Engineering_Patterns` 上传的是**系列目录**，不是全部章节正文。本文保留前文已经补读的相关章节，以 **W1—W9** 单独编号；它们与本地原始材料 **S0—S9** 分开列示。本次整理没有据目录标题补写其他未讨论章节，也不声称阅读了清单中的全部链接或视频。
+`002_Agentic_Engineering_Patterns` 归档的是**系列目录**，不是全部章节正文。本文使用单独归档的相关章节，以 **W1—W9** 单独编号；它们与本地原始材料 **S0—S9** 分开列示。本次整理不据目录标题补写未取得的章节，也不声称阅读了清单中的全部链接或视频。
 
 ---
 
@@ -392,7 +394,7 @@ $$
 
 ### 4.5 Auto memory 应该是可审查的经验
 
-上传讲义将自动记忆分为用户信息、反馈、项目决策与外部引用；使用 `MEMORY.md` 作为索引，主题文件按需读取。它还列出 `/memory`、`/context`、`/init`、`/doctor` 等检查入口。这些具体行为按材料快照理解，不视为所有版本的保证。[S0，第 23—25 页](#src-s0)
+本地讲义将自动记忆分为用户信息、反馈、项目决策与外部引用；使用 `MEMORY.md` 作为索引，主题文件按需读取。它还列出 `/memory`、`/context`、`/init`、`/doctor` 等检查入口。这些具体行为按材料快照理解，不视为所有版本的保证。[S0，第 23—25 页](#src-s0)
 
 讲义第 26 页的关键提醒是：过期记忆可能比没有记忆更坏，因为它会主动误导；记忆应像代码一样被检查、清理和管理。[S0，第 26 页](#src-s0)
 
@@ -416,7 +418,7 @@ $$
 
 其设置不能省略：
 
-| 项目 | 上传论文中的设置 |
+| 项目 | 归档论文中的设置 |
 |---|---|
 | Agent | Claude Code |
 | 基础模型 | Claude Opus 4.6，经 AWS Bedrock 调用 |
@@ -748,7 +750,7 @@ S3 还建议明确告诉 Agent，某个脚本是应直接执行，还是只作�
 
 ### 7.6 加载 Skill 为什么值得封装成工具
 
-S5 说明，直接读取 `SKILL.md` 已经可以使内容进入上下文；封装一个 Skill 工具，则便于按名称解析路径、记录使用、返回正文和小型目录索引，省去额外目录搜索。[S5，Skill 加载实现，第 661—684 行附近](#src-s5)
+S5 说明，直接读取 `SKILL.md` 已经可以使内容进入上下文；封装一个 Skill 工具，则便于按名称解析路径、记录使用、返回正文和小型目录索引，省去额外目录搜索。[S5，《Skills are just instructions》中的 Skill 加载实现](#src-s5)
 
 这说明有价值的 harness 扩展不一定很复杂。一次小的返回设计，就可能减少后续无效动作，也让技能使用可以被观察。
 
@@ -923,7 +925,7 @@ S4 不只讲省 token，还展示将工作状态保存到文件，以及把已�
 
 ### 9.2 实验到底比较了什么
 
-| 维度 | 上传论文中的设计 |
+| 维度 | 归档论文中的设计 |
 |---|---|
 | Scaffolding | Claude Code、Codex、qwen-code、Hermes、opencode、pi、Tau |
 | 模型 | 五个模型，覆盖并非完整的笛卡尔积 |
@@ -938,6 +940,8 @@ S4 不只讲省 token，还展示将工作状态保存到文件，以及把已�
 论文的主矩阵为 54 个配置单元，其中 46 次实际执行、40 次完成；不能把不可运行的配置单元当作成功或零成本。后续还对本地模型配置进行了重复实验。[S9，第 10 页、§2.9、附录 A](#src-s9)
 
 统一代理计量的一个目的，是把子 Agent 请求也纳入成本。否则，一个大量委派的系统可能看起来很便宜，只因为账漏记了。[S9，§2.5](#src-s9)
+
+**计量例外：**主矩阵中两项订阅凭证配置绕过代理，采用框架自报用量。作者用另外 12 次经过代理的 Claude Code 运行核对两种计数，报告一致；这属于交叉核对，不能把那两项写成代理直接观测。[S9，§2.5、§8.1](#src-s9)
 
 ### 9.3 数字口径：token 不是账单
 
@@ -1076,7 +1080,7 @@ S8 中的 guardrails 主要指负向文本约束；S6 中的 Hook 是生命周�
 
 ### 10.3 PreToolUse：动作发生前进行检查
 
-上传的 S6 使用 `hookSpecificOutput` 返回执行前决定，并给出 `allow`、`deny`、`ask`、`defer` 等结果；具体选项和行为按该快照理解。[S6，《PreToolUse decision control》](#src-s6)
+归档的 S6 使用 `hookSpecificOutput` 返回执行前决定，并给出 `allow`、`deny`、`ask`、`defer` 等结果；具体选项和行为按该快照理解。[S6，《PreToolUse decision control》](#src-s6)
 
 下面是拒绝结果的格式示例，不是一套完整安全实现：
 
@@ -1110,7 +1114,7 @@ S6 的执行后 Hook 可以补充反馈，或替换模型收到的工具输出�
 
 ### 10.5 Hook 自己坏了，策略是否还生效
 
-上传的参考说明，命令 Hook 输出纯文本或无输出并以状态码 1 退出，可能只是非阻断错误；路径错误、不可执行和部分超时也可能不阻止原动作。不能把一般 Unix 的“非零失败”直接理解成“安全检查失败所以拒绝”。[S6，《Other exit codes》《Timeouts》](#src-s6)
+归档的参考说明，命令 Hook 输出纯文本或无输出并以状态码 1 退出，可能只是非阻断错误；路径错误、不可执行和部分超时也可能不阻止原动作。不能把一般 Unix 的“非零失败”直接理解成“安全检查失败所以拒绝”。[S6，《Other exit codes》《Timeouts》](#src-s6)
 
 该快照介绍了适用 `command`、`http` Hook 的 `onFailure: "block"`，并标明版本要求为 Claude Code v2.1.295 或以后。它不是所有事件、所有处理器或异步 Hook 的通用选项。[S6，《Block the action when a hook fails》](#src-s6)
 
@@ -1160,7 +1164,7 @@ BUDGET_EXHAUSTED  达到运行预算，保留现场
 FAILED            明确失败，并记录原因
 ```
 
-上传文档提供 `stop_hook_active` 等状态辅助避免停止检查的重复循环；具体处理应按事件契约设计。[S6，Stop / SubagentStop 相关章节](#src-s6)
+归档文档提供 `stop_hook_active` 等状态辅助避免停止检查的重复循环；具体处理应按事件契约设计。[S6，Stop / SubagentStop 相关章节](#src-s6)
 
 ### 10.11 验证必须对应实际代码状态
 
@@ -1376,7 +1380,7 @@ S9 的外部状态验收、S7 的 promoter 阶段，以及 Simon 对 PR 说明�
 <a id="ch13"></a>
 ## 13. 第二个案例：重试、重复审计与状态恢复
 
-> 本章保留第一轮讲解中的“采纳建议”接口案例。它是教学场景，不是对某个真实业务系统或数据库产品的实现断言。
+> 本章使用“采纳建议”接口教学案例。它是教学场景，不是对某个真实业务系统或数据库产品的实现断言。
 
 ### 13.1 问题：客户端超时后重试，出现重复审计记录
 
@@ -1728,6 +1732,33 @@ S8 的讨论还提醒，技能库增长可能造成检索和路由退化；它�
 
 **Coding Agent 工程的核心，是把“它应该会做”改造成：它看得到必要事实，做得到正确动作，被限制在适当范围内，并且做完之后能够拿出证据。**
 
+### 16.8 自测：能否把概念用于新场景
+
+先独立回答，再对照答案；重点是条件和证据，而非复述术语。
+
+1. 当前请求只包含 46,000 token，为何累计输入可能为 540,000？这个数是否等于实际账单？
+2. 同一订阅的两侧计数为 5 和未知，应返回零、5、未知还是一种复合状态？何时才能直接求和？
+3. 一个 Skill 总是被加载，却没有提高通过率，下一步应该看哪些记录？
+4. 随机与精选规则都为 63.8%，能否因此删除项目特定知识？
+5. MCP 与 CLI 都失败 3/19 次，为什么失败支出占比可能不同？
+6. 两项订阅配置没有经过代理，会怎样限制“所有消耗均被统一观测”的说法？
+7. `PostToolUse` 把敏感字段删掉，是否证明原始输出从未进入日志？
+8. 创建 PR 的请求超时，再次执行之前应取得什么证据？
+
+<details>
+<summary>展开参考答案</summary>
+
+1. 累计输入是每轮逻辑上下文的和，$NB+dN(N-1)/2=540000$；当前窗口只是最后一轮。实际计费还取决于缓存和部署方式（第 3.5 节）。
+2. 返回“已知存在积压、总量未知”，保留各侧观察；只有对象、快照口径和不重叠集合都已确认，才可对已知计数求和（第 12.1 节）。
+3. 分开发现、加载、分支使用、工具结果、验收与成本；检查描述是否过宽、正文是否错误、验证是否漏记。调用次数不能替代任务收益（第 7.8、14 章）。
+4. 不能。该实验主要排除项目特定规则，且相近点估计不证明等价。应评测实际规则组合（第 5 章）。
+5. 失败落在不同模型和消耗水平的配置上；支出比例的分母是总支出，失败率的分母是运行数（第 9.9 节）。
+6. 需明确区分代理直接观测与框架自报。12 次交叉核对增强可信度，但不能变成那两项也经过代理的事实（第 9.2 节）。
+7. 不能。工具事件或遥测可能先记录原始值，修改输出还可能因结构无效不生效；要检查完整数据流（第 10.7 节）。
+8. 先查询对应操作、分支和 PR 的当前状态；确认请求身份、幂等键及重试契约。超时不能证明未执行（第 13 章）。
+
+</details>
+
 ---
 <a id="appendix-a"></a>
 ## 附录 A：讲义中的 MCP 架构与 Gateway
@@ -1820,40 +1851,40 @@ S8 的讨论还提醒，技能库增长可能造成检索和路由退化；它�
 
 ### C.1 引用方式
 
-正文中的 S0—S9 对应本次上传材料，SM 对应来源清单。W1—W9 是前文已经使用的外部补充章节，本次整理复查日期为 **2026-10-13**。
+正文中的 S0—S9 对应本次归档材料，SM 对应来源清单。W1—W9 是单独归档的外部补充章节；原整理日期为 **2026-10-13**，本轮于 **2026-10-26** 再次核对。
 
 PDF 使用文件页序与论文内部章节、图表编号定位；HTML 使用正文标题定位。HTML 的物理行号经常包含大量页面代码，因此本文优先提供标题与原始文件名，方便离开聊天界面后继续使用。
 
-在线链接用于找到来源。对于论文数字和产品配置，正文以注明的上传快照为准，不把在线后续变化自动合并进原材料。
+在线链接用于找到来源。对于论文数字和产品配置，正文以注明的归档快照为准，不把在线后续变化自动合并进原材料。
 
 <a id="src-s0"></a>
 #### S0｜主讲义：How Claude Code Works
 
 **完整标题：** Modern AI Systems: Agents and System Optimizations — Agent From a User’s Perspective I: How Claude Code Works。  
 **作者：** Juncheng Yang。  
-**本地文件：** [2_agent_use_1.pdf](2_agent_use_1.pdf)（上传时文件名为 `lecture-02-2_agent_use_1(1).pdf`）。  
+**本地文件：** [2_agent_use_1.pdf](2_agent_use_1.pdf)。  
 **来源清单中的原始链接：** <https://cs2680.com/slides/2_agent_use_1.pdf>。
 
 阅读定位：第 6—13 页讲运行循环、上下文和权限；第 15—26 页讲记忆；第 28 页讲核心工具；第 30—41 页讲扩展与项目结构；第 42 页为机制分类练习；第 45—52 页为 MCP 可选内容。
 
-本文用途：全篇结构主线，不将其替换成未上传的 lecture-08，也不把它当作模型训练或源码审计材料。
+本文用途：全篇结构主线，不把它当作模型训练或源码审计材料。
 
 <a id="src-s1"></a>
 #### S1｜Best practices for Claude Code
 
 **来源：** Claude Code 官方文档。  
-**上传文件：** `001_Best_practices_for_Claude_Code_9686dc(1).html`。  
+**归档文件：** [001_Best_practices_for_Claude_Code_9686dc.html](readings/001_Best_practices_for_Claude_Code_9686dc.html)。  
 **在线入口：** <https://code.claude.com/docs/en/best-practices>。
 
 重点标题：`Give Claude a way to verify its work`、`Explore first, then plan, then code`、`Manage context aggressively`、子 Agent 与并行会话、`Add an adversarial review step`、`Avoid common failure patterns`、`Develop your intuition`。
 
-本文用途：开发反馈、计划条件、上下文管理、独立审查与常见失败。官方实践建议不是对每种任务的受控实验证明；具体功能按上传快照理解。
+本文用途：开发反馈、计划条件、上下文管理、独立审查与常见失败。官方实践建议不是对每种任务的受控实验证明；具体功能按归档快照理解。
 
 <a id="src-s2"></a>
-#### S2｜Agentic Engineering Patterns：上传的是目录
+#### S2｜Agentic Engineering Patterns：归档的是目录
 
 **作者：** Simon Willison。  
-**上传文件：** `002_Agentic_Engineering_Patterns_bedbf1(1).html`。  
+**归档文件：** [002_Agentic_Engineering_Patterns_bedbf1.html](readings/002_Agentic_Engineering_Patterns_bedbf1.html)。  
 **目录入口：** <https://simonwillison.net/guides/agentic-engineering-patterns/>。
 
 文件列出 Principles、Working with coding agents、Testing and QA、Understanding code、Annotated prompts、Appendix 等部分。正文使用的具体补充章节在 W1—W9 单列；不把目录标题当作章节内容。
@@ -1862,7 +1893,7 @@ PDF 使用文件页序与论文内部章节、图表编号定位；HTML 使用�
 #### S3｜Equipping agents for the real world with Agent Skills
 
 **来源：** Anthropic 工程文章；文末署名 Barry Zhang、Keith Lazuka、Mahesh Murag。  
-**上传文件：** `003_Equipping_agents_for_the_real_world_with_Agent_Skills_2e50ab(1).html`。  
+**归档文件：** [003_Equipping_agents_for_the_real_world_with_Agent_Skills_2e50ab.html](readings/003_Equipping_agents_for_the_real_world_with_Agent_Skills_2e50ab.html)。  
 **在线入口：** <https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills>。
 
 重点标题：`The anatomy of a skill`、`Skills and the context window`、`Skills and code execution`、`Developing and evaluating skills`、`Security considerations when using Skills`。
@@ -1873,7 +1904,7 @@ PDF 使用文件页序与论文内部章节、图表编号定位；HTML 使用�
 #### S4｜Code execution with MCP: Building more efficient agents
 
 **来源：** Anthropic 工程文章。  
-**上传文件：** `004_Code_execution_with_MCP_9b88bf(1).html`。  
+**归档文件：** [004_Code_execution_with_MCP_9b88bf.html](readings/004_Code_execution_with_MCP_9b88bf.html)。  
 **在线入口：** <https://www.anthropic.com/engineering/code-execution-with-mcp>。
 
 阅读定位：工具定义与中间结果的成本；工具按需发现；结果过滤与控制流；隐私处理；状态持久化和可复用代码。
@@ -1884,7 +1915,7 @@ PDF 使用文件页序与论文内部章节、图表编号定位；HTML 使用�
 #### S5｜How skills and MCPs actually work
 
 **作者：** Lawrence Jones。  
-**上传文件：** `005_demystifying_skills_and_MCPs_c840b9(1).html`。  
+**归档文件：** [005_demystifying_skills_and_MCPs_c840b9.html](readings/005_demystifying_skills_and_MCPs_c840b9.html)。  
 **在线入口：** <https://blog.lawrencejones.dev/demystifying-skills-and-mcps/>。
 
 重点标题：`LLM 101`、`Agents are a loop`、`MCPs are just APIs in tools`、`Skills are just instructions`、`Plugins bundle skills`、`Skills replace system prompts`。
@@ -1895,18 +1926,18 @@ PDF 使用文件页序与论文内部章节、图表编号定位；HTML 使用�
 #### S6｜Claude Code Hooks reference
 
 **来源：** Claude Code 官方文档。  
-**上传文件：** `006_Claude_Code_hooks_reference_20106b(1).html`。  
+**归档文件：** [006_Claude_Code_hooks_reference_20106b.html](readings/006_Claude_Code_hooks_reference_20106b.html)。  
 **在线入口：** <https://code.claude.com/docs/en/hooks>。
 
 重点标题：`Hook lifecycle`、`PreToolUse decision control`、`PostToolUse decision control`、`Other exit codes`、`Timeouts`、`Block the action when a hook fails`、Stop / SubagentStop、`Run hooks in the background`。
 
-本文用途：执行前与执行后的边界、返回结构、错误与超时、异步限制、停止循环，以及替换输出与原始遥测的区别。配置字段和版本要求按上传快照，不保证任意旧版本支持。
+本文用途：执行前与执行后的边界、返回结构、错误与超时、异步限制、停止循环，以及替换输出与原始遥测的区别。配置字段和版本要求按归档快照，不保证任意旧版本支持。
 
 <a id="src-s7"></a>
 #### S7｜The Harness Is the Thing
 
 **作者：** Scott Fryxell。  
-**上传文件：** `007_The_Harness_Is_the_Thing_8733f2(1).html`。  
+**归档文件：** [007_The_Harness_Is_the_Thing_8733f2.html](readings/007_The_Harness_Is_the_Thing_8733f2.html)。  
 **在线入口：** <https://scott-fryxell.github.io/blog/the-harness-is-the-thing>。
 
 重点标题：`There are new truths`、`The cost advantage`、`A product harness connection`、`Breaking down the harness`。
@@ -1917,8 +1948,8 @@ PDF 使用文件页序与论文内部章节、图表编号定位；HTML 使用�
 #### S8｜Guardrails Beat Guidance
 
 **完整标题：** Guardrails Beat Guidance: A Large-Scale Study of Rules, Skills, and Persistent Configuration for Coding Agents。  
-**上传文件：** `008_Guardrails_Beat_Guidance_c68b51(1).pdf`。  
-**版本标识：** 上传 PDF 标注 `arXiv:2604.11088v2`。  
+**归档文件：** [008_Guardrails_Beat_Guidance_c68b51.pdf](readings/008_Guardrails_Beat_Guidance_c68b51.pdf)。  
+**版本标识：** 归档 PDF 标注 `arXiv:2604.11088v2`。  
 **来源清单入口：** <https://arxiv.org/abs/2604.11088>。
 
 阅读定位：第 3—4 页为语料与实验设计；第 5—7 页为四组实验；第 8—9 页为解释和局限；第 11 页表 2—4 为来源、类型与单规则消融；第 12 页表 5 为组合实验。
@@ -1930,7 +1961,7 @@ PDF 使用文件页序与论文内部章节、图表编号定位；HTML 使用�
 
 **完整副标题：** A controlled comparison of MCP and CLI tool use across seven agent scaffoldings, five language models, and one software task。  
 **作者：** Marc Alier Forment、María José Casañ Guerrero、Francisco José García-Peñalvo、Juanan Pereira。  
-**上传文件：** `009_The_Scaffolding_Matters_More_Than_the_Interface_8f9a1f(1).pdf`。  
+**归档文件：** [009_The_Scaffolding_Matters_More_Than_the_Interface_8f9a1f.pdf](readings/009_The_Scaffolding_Matters_More_Than_the_Interface_8f9a1f.pdf)。  
 **来源清单入口：** <https://arxiv.org/abs/2608.08654>。
 
 阅读定位：第 4—8 页为任务、验收、计量、配置修正与重复设计；第 10—12 页为框架比较；第 13—16 页为接口、缓存、目录交付与失败支出；第 19 页为实际接口使用；第 20—24 页为复测、局限和讨论。
@@ -1940,77 +1971,77 @@ PDF 使用文件页序与论文内部章节、图表编号定位；HTML 使用�
 <a id="src-sm"></a>
 #### SM｜课程来源清单
 
-**上传文件：** `SOURCES.md`。  
+**归档文件：** [SOURCES.md](SOURCES.md)。  
 **标题：** `2. Agents use I: How Claude Code Works`。  
 **清单中的日期：** 2026-09-09。  
 **课程阅读页：** <https://cs2680.com/readings/sep-09.html>。
 
 本文用它核对讲义身份和原始资料入口。清单中的视频没有在前文展开，本文也没有根据视频标题生成内容。
 
-### C.2 前文补充阅读：Simon Willison 的九个章节
+### C.2 补充阅读：Simon Willison 的九个章节
 
-以下均为作者原文，不是系列目录正文。本次仅复查并整理前文已使用的内容，不表示阅读了该系列全部章节。
+以下均为作者原文，不是系列目录正文。这些章节按本篇需要选读，不表示阅读了该系列全部章节。
 
 <a id="src-w1"></a>
 #### W1｜What is agentic engineering?
 
-<https://simonwillison.net/guides/agentic-engineering-patterns/what-is-agentic-engineering/>
+[原文](https://simonwillison.net/guides/agentic-engineering-patterns/what-is-agentic-engineering/) · [本地快照](references/001_what-is-agentic-engineering.html)
 
 用于解释 Coding Agent 的代码执行能力，以及工程师仍需定义问题、提供工具并验证结果的角色。
 
 <a id="src-w2"></a>
 #### W2｜First run the tests
 
-<https://simonwillison.net/guides/agentic-engineering-patterns/first-run-the-tests/>
+[原文](https://simonwillison.net/guides/agentic-engineering-patterns/first-run-the-tests/) · [本地快照](references/002_first-run-the-tests.html)
 
 用于建立测试入口、现状基线和后续验证方式。本文未把它改写成所有项目必须首先运行全部昂贵测试的规则。
 
 <a id="src-w3"></a>
 #### W3｜Red/green TDD
 
-<https://simonwillison.net/guides/agentic-engineering-patterns/red-green-tdd/>
+[原文](https://simonwillison.net/guides/agentic-engineering-patterns/red-green-tdd/) · [本地快照](references/003_red-green-tdd.html)
 
 用于解释先确认目标测试失败，再使其通过的价值，特别是避免一个本来就能通过的测试没有覆盖新行为。
 
 <a id="src-w4"></a>
 #### W4｜Agentic manual testing
 
-<https://simonwillison.net/guides/agentic-engineering-patterns/agentic-manual-testing/>
+[原文](https://simonwillison.net/guides/agentic-engineering-patterns/agentic-manual-testing/) · [本地快照](references/004_agentic-manual-testing.html)
 
 用于补充自动测试之外的真实运行、接口与浏览器检查，以及将发现的问题沉淀成永久回归测试。
 
 <a id="src-w5"></a>
 #### W5｜Writing code is cheap now
 
-<https://simonwillison.net/guides/agentic-engineering-patterns/code-is-cheap/>
+[原文](https://simonwillison.net/guides/agentic-engineering-patterns/code-is-cheap/) · [本地快照](references/005_code-is-cheap.html)
 
 用于区分生成代码与交付正确、可验证、可维护软件的成本。
 
 <a id="src-w6"></a>
 #### W6｜Anti-patterns: things to avoid
 
-<https://simonwillison.net/guides/agentic-engineering-patterns/anti-patterns/>
+[原文](https://simonwillison.net/guides/agentic-engineering-patterns/anti-patterns/) · [本地快照](references/006_anti-patterns.html)
 
 用于说明代码作者仍应审查代码和 PR 描述，不能把未经核对的 Agent 产物直接转嫁给协作者。
 
 <a id="src-w7"></a>
 #### W7｜Linear walkthroughs
 
-<https://simonwillison.net/guides/agentic-engineering-patterns/linear-walkthroughs/>
+[原文](https://simonwillison.net/guides/agentic-engineering-patterns/linear-walkthroughs/) · [本地快照](references/007_linear-walkthroughs.html)
 
 用于说明以实际代码片段和命令输出构建结构化讲解，帮助理解项目而不是仅接受模型自述。
 
 <a id="src-w8"></a>
 #### W8｜Interactive explanations
 
-<https://simonwillison.net/guides/agentic-engineering-patterns/interactive-explanations/>
+[原文](https://simonwillison.net/guides/agentic-engineering-patterns/interactive-explanations/) · [本地快照](references/008_interactive-explanations.html)
 
 用于解释认知债务和借助交互式讲解理解核心机制的方法。
 
 <a id="src-w9"></a>
 #### W9｜Hoard things you know how to do
 
-<https://simonwillison.net/guides/agentic-engineering-patterns/hoard-things-you-know-how-to-do/>
+[原文](https://simonwillison.net/guides/agentic-engineering-patterns/hoard-things-you-know-how-to-do/) · [本地快照](references/009_hoard-things-you-know-how-to-do.html)
 
 用于说明收集带运行证据的工作示例，并让 Agent 将已有实现作为后续任务的输入。
 
@@ -2018,14 +2049,14 @@ PDF 使用文件页序与论文内部章节、图表编号定位；HTML 使用�
 
 | 差异或限制 | 本文如何处理 |
 |---|---|
-| 用户称 lecture-08，上传清单为 lecture-02 | 使用实际讲义身份，不创造未提供文件 |
+| 课程编号与讲义页脚编号不同 | 使用课程第 2 课身份，引用 PDF 文件页序 |
 | S1 建议精简，S8 在 50 条范围内未见数量退化 | 保留不同任务、指标与证据类型，不宣布一方被推翻 |
 | S0 描述按需加载，S9 部分配置发送完整目录 | 分别标记来源，不猜测全部差异原因 |
 | S5 合并专业 Agent，S7 拆分工作阶段 | 保留各自问题背景，另给工程判断而非唯一答案 |
 | S8 标题涉及 Skills，实际干预主要为规则文件 | 不扩张成对技能检索、脚本或权限的完整实验结论 |
 | S9 不同表使用不同成功子集与聚合口径 | 引用具体章节和表，避免混用基线与比值 |
 | S9 正文不同位置出现不同失败中位数 | 不将它们合并成一个统一精确值；失败支出分析使用第 16 页表 6 |
-| 产品配置和命令具有版本性 | 按上传快照解释，不声称适用于任意安装版本 |
+| 产品配置和命令具有版本性 | 按归档快照解释，不声称适用于任意安装版本 |
 | 教学案例与真实来源示例不同 | 明确标成教学任务，不宣称发生了真实事故 |
 | 工程公式、模板与诊断表来自综合推导 | 明确不是论文原始指标、产品 API 或实测结论 |
 

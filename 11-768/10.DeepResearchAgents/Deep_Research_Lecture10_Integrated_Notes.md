@@ -2,6 +2,8 @@
 
 ## Lecture 10 与参考资料整合讲义
 
+**课程与版本：** CMU 11-768，2026-09-24，Akari Asai；本地讲义124页，2026-10-26完成独立阅读与来源复核。页码统一使用实际PDF页序，所有实验数字按文末本地版本理解。
+
 假设你请 AI 帮忙做一个研究：“为了提高研究助手的质量，应该先训练模型，还是先改进搜索？”它很快找到十几篇论文，列出模型名称、排行榜分数和一长串引用。你读完后，却仍然不知道自己的系统应该改哪里。
 
 问题出在哪里？论文确实找到了，但还没有完成比较：有的论文考短答案，有的考长报告；有的换了模型，有的换了检索器；有的多用了训练数据，有的只是增加了搜索次数。把这些分数放在一起，不能直接得出投资哪个方向更有效的结论。
@@ -45,6 +47,7 @@
 17. [附录 B：容易混淆的说法](#appendix-b)
 18. [附录 C：自测与练习](#appendix-c)
 19. [附录 D：资料索引与版本边界](#appendix-d)
+20. [附录 E：讲义逐页覆盖与图表核对](#appendix-e)
 
 ---
 
@@ -247,7 +250,7 @@ $$
 
 分子数“双方都有的论文”，分母数“双方合起来涉及多少篇不同论文”。例如，标准答案是 `{A,B,C}`，模型返回 `{A,B,D}`，共同部分为 `{A,B}`，合起来为 `{A,B,C,D}`，所以 IoU 是 $2/4=0.5$。模型既漏了 C，也误收了 D。
 
-同一例子的 precision（查准率）是返回三篇中有两篇正确，recall（召回率）是应找三篇中找到了两篇，都是 $2/3$。这些数字是教学示例。论文对每题 IoU 取平均，Wide Research 的参考集合非空。[R13，§2.4，PDF 第 27 页](#r13)
+同一例子的 precision（查准率）是返回三篇中有两篇正确，recall（召回率）是应找三篇中找到了两篇，都是 $2/3$。这些数字是教学示例。论文对每题 IoU 取平均，Wide Research 的参考集合非空。[R13，§2.4，PDF 第 6 页](#r13)
 
 ### 2.5 FinSearchComp：公司找对了，数字为什么还会错？
 
@@ -336,6 +339,10 @@ OpenScholar 是科学问答系统，ScholarQABench 是配套评测。它们既�
 这里的 recall 虽然也译为“召回率”，评价对象却是报告中的陈述与引用。检索器的 Recall@K 则检查前 K 个结果找到了多少相关文档。一个管“资料有没有找到”，一个管“写出的陈述有没有证据支持”。
 
 论文还有专家偏好比较。如果系统在那组问题、样本和评价协议下更受偏好，说明它在该实验中表现好；不能据此宣布它已经在所有领域具备完整专家能力。[R01，Human performance on ScholarQABench](#r01)
+
+讲义PDF pp.39—42另用一个两项清单解释加权验收：直接专家比较权重2、适用范围限定权重1；候选只做到前者，得分$(2\times1+1\times0)/3=2/3$。这仍不证明回答安全或事实全对——若遗漏的条件是关键边界，工程验收可以另设不可抵消的失败项。这里是讲义教学算例，不是OpenScholar全部评价细则。
+
+同组幻灯片p.42报告expert–LM约79%、expert–expert约80%，条件为12个问题、2个系统、每答案2位专家。这是该抽样和协议下的条目一致性，不能解释为“模型在所有领域已达到专家水平”。p.38的ROUGE 58%、BERTScore 57%、BLEURT 62%则来自109个带参考答案的专家比较，两个图的分母与比较对象不同，不能直接排成同一准确率榜。[R00，PDF pp.38—42](#r00)
 
 ### 3.5 DeepResearch Bench：给报告打分，也检查引用
 
@@ -629,7 +636,7 @@ WebSailor-V2 的 SailorFog-QA-V2 先增加实体间连接，再从中选取不�
 
 关系很多时，不能枚举所有小图。论文用随机游走采样连通子图，直观上就是沿连接走动，取出一部分相连节点；再用 Weisfeiler–Leman 方法辅助比较结构是否不同，并让目标覆盖不同位置角色。目的在于避免只换人物名字，却反复生成同一种题型。这里的结构检查不能被理解为能完美判定任意图是否相同。[R17，§3.2—3.3](#r17)
 
-最后通过隐去直接实体、日期或数值，增加需要调查的未知量。论文还提出其他不确定性方向，但附件细节有限，不能把自行想出的构题操作当成其完整算法。[R17，§3.3](#r17)
+最后通过隐去直接实体、日期或数值，增加需要调查的未知量。论文还提出其他不确定性方向，但本地论文展开有限，不能把自行想出的构题操作当成其完整算法。[R17，§3.3](#r17)
 
 ### 6.3 用关系图出题，为什么不等于上线必须用图数据库？
 
@@ -993,6 +1000,8 @@ $x$ 是问题，$y$ 是回答，$r_k$ 是第 $k$ 条标准，$w_k$ 是权重，$
 
 要单独看标准演化的作用，还需比较固定的搜索增强标准与演化标准。对应消融中，演化部分带来最多约 2 个平均点的额外收益。不能把基座到最终系统的全部改善都归给“标准会更新”。[R05，图 6，PDF 第 8 页](#r05)
 
+讲义PDF p.94的性能—成本散点图还需要与消融图分开读：纵轴为四个长报告基准的平均分，横轴为指定任务上的每查询推理成本，采用对数刻度；它不是全部任务总成本。p.95的SFT暖启动曲线在灰区使用不等间隔的训练步，不能凭线段斜率比较每步学习速度。pp.96—98的rubric消融则平均HealthBench、ScholarQABench v2和DeepResearch Bench三个基准，与前一幅四基准均值并非同一统计。曲线支持SFT起点和有效奖励的重要性，不支持把全部最终收益只归因于演化标准。[R00，PDF pp.94—98](#r00)
+
 ### 8.9 自己做系统时，先借鉴哪部分？
 
 可以先让评价者看见证据，再把经常发生的具体错误写进标准，并保留独立测试集。即使暂时不做 RL，这些做法也能帮助检查报告。
@@ -1214,9 +1223,9 @@ Tongyi 的 Heavy Mode 让多个研究 Agent 走不同路径，每个分支提交
 
 如果下一步能确认一个关键条件，继续调查就可能有价值；如果只是用近似关键词重复得到相同结果，延长时间只是在重复原来的困难。
 
-BrowseComp 报告增加推理时计算可以改善表现；AutoResearchBench 的轨迹分析则发现重复搜索、保留错误假设、缺少新证据等问题。其 thinking-mode 对照中，显式思考没有稳定改善 Deep Research，对所测 Wide Research 配置反而降低表现并增加时间。这些结果分别依赖各自模型、工具和限制，并不互相否定，也不说明思考普遍无用。[R02，§4.3—4.4](#r02) [R13，§3.4、表 4、附录 F，PDF 第 44 页](#r13)
+BrowseComp 报告增加推理时计算可以改善表现；AutoResearchBench 的轨迹分析则发现重复搜索、保留错误假设、缺少新证据等问题。其 thinking-mode 对照中，显式思考没有稳定改善 Deep Research，对所测 Wide Research 配置反而降低表现并增加时间。这些结果分别依赖各自模型、工具和限制，并不互相否定，也不说明思考普遍无用。[R02，§4.3—4.4](#r02) [R13，§3.4、表 4，PDF 第 9 页；附录 F，PDF 第 22—24 页](#r13)
 
-AutoResearchBench 还增加同题独立运行次数：定位单个目标的 Pass@k 明显改善，找完整集合的 oracle best@k IoU 收益较小。作者将后者与多次仍漏掉相似文献联系起来。重试可能帮助偶发路径失败，但持续遗漏同一类对象需要改变覆盖策略。[R13，§3.5、图 5，PDF 第 44—45 页](#r13)
+AutoResearchBench 还增加同题独立运行次数：定位单个目标的 Pass@k 明显改善，找完整集合的 oracle best@k IoU 收益较小。作者将后者与多次仍漏掉相似文献联系起来。重试可能帮助偶发路径失败，但持续遗漏同一类对象需要改变覆盖策略。[R13，§3.5、图 5，PDF 第 9—10 页](#r13)
 
 工程上可以检查每轮有没有实质变化：排除了候选，补足了条件，找到更可靠来源，解决了矛盾，或者修正了结论。查询文字变了，但证据状态没变，就值得重新考虑策略。
 
@@ -1395,7 +1404,7 @@ WebSailor-V2 和 Tongyi 都指出，不稳定工具会污染轨迹，使策略�
 
 研究费用不只有生成文字。搜索接口、下载解析、缓存存储、失败重试、裁判评分与人工复核，都可能占成本；训练还有单独支出。
 
-DR Tulu 报告完整训练约 70 天、27,000 GPU 小时，并受到 rollout API 限速约束，增加计算资源也未能继续加速。这是那次训练的情况，不是你的系统必须满足的资源要求。[R05，附录 G.2](#r05)
+DR Tulu 报告完整训练约 70 天、27,000 GPU 小时，并受到 rollout API 限速约束，增加计算资源也未能继续加速。这是那次训练的情况，不是其他部署必须满足的资源要求。[R05，附录 G.2](#r05)
 
 它的推理成本比较也采用指定 token 计价和工具费用，不等同于企业自部署总成本。[R05，附录 I.5](#r05) 做预算时应逐项记录，才能看清瓶颈到底在模型计算，还是外部交互。
 
@@ -1843,7 +1852,7 @@ rubric 分数也不统一：ResearchQA 的 0—4 分先取平均再归一化，�
 只记录“准确率 66.27%”，过几周就可能忘记它测了什么。建议至少一起保存论文版本、数据集、指标、Agent、检索器、工具、预算、对照与表格位置。
 
 ```text
-AgentIR / 所提供 v3
+AgentIR / 本地 v3
 BrowseComp-Plus / 最终答案准确率
 Tongyi-DR / 无 visit
 Qwen3-Embedding-4B 骨干
@@ -1922,6 +1931,11 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 
 这些是课程方法的工程练习，不是已经完成的复现。无改善或变差的结果同样要保留，因为它们会帮助修正最初的判断。
 
+### C.3 已运行的离线算式检查
+
+2026-10-26在本地Python检查了本篇教学数字：集合`{A,B,C}`与`{A,B,D}`的IoU为0.5；两个rubric得4、2分后的归一化覆盖为0.75；80与80的RACE示意相对分为0.5；AgentIR 66.27−48.67为17.60个百分点；虚构公司收入/净利润/扣非净利润增长分别为20%/80%/20%。检查只验证算式和单位解释，未运行任何模型、研究Agent或论文训练，不把这些算式通过当成论文效果复现。
+
+
 ---
 
 <a id="appendix-d"></a>
@@ -1953,7 +1967,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 
 **文件：** [002_BrowseComp.pdf](readings/002_BrowseComp.pdf)
 **标题：** *BrowseComp: A Simple Yet Challenging Benchmark for Browsing Agents*。
-**版本：** 所提供 arXiv:2504.12516v1。
+**版本：** 本地 arXiv:2504.12516v1。
 **重点：** §2 反向构题与边界；§4.2 置信度；§4.3—4.4 推理时计算与选择策略。
 **角色：** 解释难找但可核验的浏览任务。不是完整长报告评价；文中的 Best-of-N 按置信度选择，而不是 oracle 选择。
 
@@ -1962,7 +1976,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 
 **文件：** [003_DeepResearch_Bench.pdf](readings/003_DeepResearch_Bench.pdf)
 **标题：** *DeepResearch Bench: A Comprehensive Benchmark for Deep Research Agents*。
-**版本：** 所提供 arXiv:2506.11763v1。
+**版本：** 本地 arXiv:2506.11763v1。
 **重点：** §3.1 RACE；§3.2 FACT；§4.1 参考报告与实验协议。
 **角色：** 报告质量与陈述引用的双重评价。RACE 是相对分，不是事实正确率；FACT 不独立保证内容完整性。
 
@@ -1971,7 +1985,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 
 **文件：** [004_Tongyi_DeepResearch.pdf](readings/004_Tongyi_DeepResearch.pdf)
 **标题：** *Tongyi DeepResearch Technical Report*。
-**版本：** 所提供 arXiv:2510.24701v3。
+**版本：** 本地 arXiv:2510.24701v3。
 **重点：** §2 数据和环境原则；§3.1 ReAct / Context Management；§3.3—3.4 mid-training、SFT、RL；§4.3 Heavy Mode。
 **角色：** 端到端训练与长任务运行。压缩状态是一种设计，不能直接当作无信息损失的数学保证；成绩必须保留工具、预算和日期条件。
 
@@ -1980,7 +1994,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 
 **文件：** [005_DR_Tulu.pdf](readings/005_DR_Tulu.pdf)
 **标题：** *DR Tulu: Reinforcement Learning with Evolving Rubrics for Deep Research*。
-**版本：** 所提供 arXiv:2511.19399v3。
+**版本：** 本地 arXiv:2511.19399v3。
 **重点：** §2—3 rubric 与 RLER；§4 训练；§6.2 消融；附录 D.5 奖励；G.2 系统与训练；I.4 引用奖励；I.5 成本。
 **角色：** 将开放式研究评价转化为在线学习信号。动态标准不是全部收益来源；开放裁判配置还存在轨迹输入差异；论文成本不等于当前价格或企业总成本。
 
@@ -1989,7 +2003,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 
 **文件：** [006_AgentIR.pdf](readings/006_AgentIR.pdf)
 **标题：** *AgentIR: Reasoning-Aware Retrieval for Deep Research Agents*。
-**版本：** 所提供 arXiv:2603.04384v3。
+**版本：** 本地 arXiv:2603.04384v3。
 **重点：** §3.2 当前推理输入；§3.3 DR-Synth；表 2 / PDF 第 9 页组件消融；表 3 / PDF 第 10 页历史输入消融。
 **角色：** 让检索器服务研究过程的当前信息需求。正文无 visit 与摘要涉及的 visit 配置不能混用；全局真值只用于训练标注；历史文档实验有上下文截断。
 
@@ -1999,7 +2013,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 **文件：** [001_Natural_Questions_example.html](references/001_Natural_Questions_example.html)
 **重点：** 页面标题、加载节点和脚本引用。
 **角色：** 讲义中的传统问答背景材料。
-**限制：** 上传 HTML 仅含动态加载壳，不能从中读取未加载的问题与标签。本文关于任务的解释以讲义、DPR 和配套 Wikipedia 来源为依据，没有补造页面内容。
+**限制：** 本地归档 HTML 仅含动态加载壳，不能从中读取未加载的问题与标签。本文关于任务的解释以讲义、DPR 和配套 Wikipedia 来源为依据，没有补造页面内容。
 
 <a id="r08"></a>
 ### R08 · Wikipedia 来源快照
@@ -2014,7 +2028,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 
 **文件：** [003_BrowseComp-Plus.pdf](references/003_BrowseComp-Plus.pdf)
 **标题：** *BrowseComp-Plus: A More Fair and Transparent Evaluation Benchmark of Deep-Research Agent*。
-**版本：** 所提供 arXiv:2508.06600v1。
+**版本：** 本地 arXiv:2508.06600v1。
 **重点：** §3.2 支持文档与 gold 文档；§4.3 预览截断；§4.8.1 oracle retrieval；§4.8.3 全文工具；§4.8.4 语料与标注范围。
 **角色：** 分离检索、阅读与 Agent 贡献。正确证据注入用于诊断，不是可部署方案；新增未标注文档可能成为评价假负例；固定语料评测不能替代实时网络测试。
 
@@ -2023,7 +2037,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 
 **文件：** [004_FinSearchComp.pdf](references/004_FinSearchComp.pdf)
 **标题：** *FinSearchComp: Towards a Realistic, Expert-Level Evaluation of Financial Search and Reasoning*。
-**版本：** 所提供 arXiv:2509.13160v1。
+**版本：** 本地 arXiv:2509.13160v1。
 **重点：** §1 错误类型；§2.2 三类任务；§2.3—2.6 动态真值、质量控制与评价容差；§4.4 结构化工具需求；附录 A 消歧指南。
 **角色：** 新鲜度、历史时点、财务口径和多期综合。本文没有使用其成绩推导真实投资建议，业务数字均为教学假设。
 
@@ -2032,7 +2046,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 
 **文件：** [005_MedBrowseComp.pdf](references/005_MedBrowseComp.pdf)
 **标题：** *MedBrowseComp: Benchmarking Medical Deep Research and Computer Use*。
-**版本：** 所提供 arXiv:2505.14963v1。
+**版本：** 本地 arXiv:2505.14963v1。
 **重点：** §3 数据连接与不同评价条件；表 1、表 3 错误分析；附录 A.5 / PDF 第 19 页的起始页面对照。
 **角色：** 专业来源间的多跳事实获取。不能将该基准成绩当作临床决策能力或医疗部署资格的证明。
 
@@ -2041,7 +2055,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 
 **文件：** [006_ScholarSearch.pdf](references/006_ScholarSearch.pdf)
 **标题：** *ScholarSearch: Benchmarking Scholar Searching Ability of LLMs*。
-**版本：** 所提供 arXiv:2506.13784v2。
+**版本：** 本地 arXiv:2506.13784v2。
 **重点：** Data Collection 的难度筛选；Problem Formalization 的最终答案判定；图 3 / PDF 第 4 页的 Misra-Gries、USS、Hyper-USS 示例。
 **角色：** 展示由未满足的技术条件驱动的论文追踪。不要与 ScholarQABench 或 ResearchQA 混称。
 
@@ -2050,8 +2064,8 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 
 **文件：** [007_AutoResearchBench.pdf](references/007_AutoResearchBench.pdf)
 **标题：** *AutoResearchBench: Benchmarking AI Agents on Complex Scientific Literature Discovery*。
-**版本：** 所提供 arXiv:2604.25256v1。
-**重点：** §2.1 deep / wide 任务；§2.2 构题；§2.4 / PDF 第 27 页集合指标；§3.4—3.5 / PDF 第 44—45 页的思考与重复运行实验；附录 B、F。
+**版本：** 本地 arXiv:2604.25256v1。
+**重点：** §2.1 deep / wide 任务；§2.2 构题；§2.4 / PDF 第 6 页集合指标；§3.4—3.5 / PDF 第 9—10 页的思考与重复运行实验；附录 B、F。
 **角色：** 约束核验、未知大小集合、全文细节与搜索边界。无答案结论相对于指定语料成立；gold 集合仍有边界局限；Wide 的 oracle best@k 使用真值选择结果。
 
 <a id="r14"></a>
@@ -2059,7 +2073,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 
 **文件：** [008_A_Critical_Evaluation_of_Evaluations_for_Long-form_Question_Answering.pdf](references/008_A_Critical_Evaluation_of_Evaluations_for_Long-form_Question_Answering.pdf)
 **标题：** *A Critical Evaluation of Evaluations for Long-form Question Answering*。
-**版本：** 所提供 ACL 2023 论文。
+**版本：** 本地 ACL 2023 论文。
 **重点：** §3 专家偏好、分歧与细分属性；§4 / 表 4 的自动指标与长度基线；专家与普通标注者比较的样本边界。
 **角色：** 说明为什么不能迷信单一整体分数。结论限于论文测试的数据、指标和协议，不是对所有未来评价方法的否定。
 
@@ -2068,7 +2082,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 
 **文件：** [009_ResearchQA.pdf](references/009_ResearchQA.pdf)
 **标题：** *RESEARCHQA: Evaluating Scholarly Question Answering at Scale Across 75 Fields with Survey-Mined Questions and Rubrics*。
-**版本：** 所提供 arXiv:2509.00496v2。
+**版本：** 本地 arXiv:2509.00496v2。
 **重点：** §2.3—2.4 构题与三类 rubric；§3.2 标准质量；§3.3 Ensemble Judge；§4.1 Coverage；§5.2 长度、时效与来源泄漏。
 **角色：** 从已有专业综述中获取评价知识。Coverage 是归一化的分级覆盖分；需控制长度并检查泄漏；parametric rubric 的问题比例不能扩大解释为全部标准的错误率。
 
@@ -2077,7 +2091,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 
 **文件：** [010_DeepResearch_Bench_II.pdf](references/010_DeepResearch_Bench_II.pdf)
 **标题：** *DeepResearch Bench II: Diagnosing Deep Research Agents via Rubrics from Expert Reports*。
-**版本：** 所提供 arXiv:2601.08536v3。
+**版本：** 本地 arXiv:2601.08536v3。
 **重点：** §3.1.2—3.1.3 标准设计与构造；表 3 维度分数；§4.3 裁判与批量消融；§5.2 来源泄漏；§5.3、§7 呈现维度的局限。
 **角色：** 对信息、分析和呈现分别验收。Information Recall 是报告层面的维度；裁判 ACC / F1 是人工一致性指标；均不能与 RACE 相对分直接比较。
 
@@ -2086,16 +2100,16 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 
 **文件：** [013_WebSailor-V2.pdf](references/013_WebSailor-V2.pdf)
 **标题：** *WebSailor-V2: Bridging the Chasm to Proprietary Agents via Synthetic Data and Scalable Reinforcement Learning*。
-**版本：** 所提供 arXiv:2509.13305v1。
+**版本：** 本地 arXiv:2509.13305v1。
 **重点：** §3 稠密图、子图采样与目标角色；§4 SFT、双环境、RL；表 1 阶段成绩；§5.4 / 图 6 的 Pass@1 与 Pass@3 变化。
-**角色：** 合成复杂信息获取任务与稳定训练。超出 obfuscation 的不确定性类型在附件中展开有限，本文没有补造完整细则；图结构不等于上线必须使用图检索。
+**角色：** 合成复杂信息获取任务与稳定训练。超出 obfuscation 的不确定性类型在本地论文中展开有限，本文没有补造完整细则；图结构不等于上线必须使用图检索。
 
 <a id="r18"></a>
 ### R18 · DeepSeekMath
 
 **文件：** [017_DeepSeekMath.pdf](references/017_DeepSeekMath.pdf)
 **标题：** *DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models*。
-**版本：** 所提供 arXiv:2402.03300v3。
+**版本：** 本地 arXiv:2402.03300v3。
 **重点：** §4.1，尤其 PDF 第 13—14 页的 PPO / GRPO、结果监督与过程监督。
 **角色：** 理解后续 Agent RL 的优化基础。原始优势标准化、长度归一化和 KL 处理，不应不加区分地套到所有后续变体。
 
@@ -2104,7 +2118,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 
 **文件：** [018_Dense_Passage_Retrieval.pdf](references/018_Dense_Passage_Retrieval.pdf)
 **标题：** *Dense Passage Retrieval for Open-Domain Question Answering*。
-**版本：** 所提供 EMNLP 2020 论文。
+**版本：** 本地 EMNLP 2020 论文。
 **重点：** §3 双编码器与批内负例；§4.1 文档预处理；§5.1—5.3 / 表 2—3 的负例消融及 BM25 互补性。
 **角色：** 理解可学习的检索表示。原始预处理移除部分结构化内容，不能未经检查直接迁移到依赖表格和附录的研究任务。
 
@@ -2113,7 +2127,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 
 **文件：** [014_WebDancer.pdf](references/014_WebDancer.pdf)
 **标题：** *WebDancer: Towards Autonomous Information Seeking Agency*。
-**版本：** 所提供 arXiv:2505.22648v3。
+**版本：** 本地 arXiv:2505.22648v3。
 **重点：** §2 构题与三级轨迹筛选；§3.1 观察掩码；§3.2 DAPO 与奖励；§5 / 表 3 的长短 CoT 对照。
 **角色：** 将问题合成、轨迹筛选、SFT 和 RL 连成训练流程。复用 QA 不等于模仿失败轨迹；长 CoT 的收益必须结合无效率与基座条件解释。
 
@@ -2122,7 +2136,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 
 **文件：** [015_Scaling_Agents_via_Continual_Pre-training.pdf](references/015_Scaling_Agents_via_Continual_Pre-training.pdf)
 **标题：** *Scaling Agents via Continual Pre-training*。
-**版本：** 所提供 arXiv:2509.13310v1。
+**版本：** 本地 arXiv:2509.13310v1。
 **重点：** §2.2 FAS；§2.3 HAS；§3.3 / 表 3 的固定 SFT 对照；§3.4 / 表 4—5 的阶段与数据消融。
 **角色：** 解释 AgentFounder 如何通过 CPT 改善训练起点。合成备选未被实际执行；轨迹成败不是逐步真值；表 3 差值按百分点解释，额外训练算力并未被等量控制。
 
@@ -2131,7 +2145,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 
 **文件：** [016_Search-R1.pdf](references/016_Search-R1.pdf)
 **标题：** *Search-R1: Training LLMs to Reason and Leverage Search Engines with Reinforcement Learning*。
-**版本：** 所提供 arXiv:2503.09516v5，COLM 2025。
+**版本：** 本地 arXiv:2503.09516v5，COLM 2025。
 **重点：** §3 / 算法 1 的交互 rollout；§3.4 EM 奖励；§4.3 默认 PPO；§5.1 优化器比较；§5.4 / 表 4 的检索 token 掩码。
 **角色：** 将结果奖励与搜索交互连接。主实验使用固定语料问答，不能视作开放网络长报告训练；PPO / GRPO 的稳定性结论限于受测设置。
 
@@ -2150,6 +2164,139 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 **来源：** NobelPrize.org，1978 年经济学奖 Summary。
 **重点：** Herbert A. Simon 的获奖年份与获奖者身份。
 **角色：** 支持构题示例中的奖项与时间关系；不单独证明整道教学题的唯一性。
+
+
+<a id="appendix-e"></a>
+## 附录 E：讲义124页覆盖与图表核对
+
+以下按实际PDF页序逐页列出。连续动画页分别保留，核心图必须读到最终展开页；不能把抽取文本很少的RLER、DR-Synth和成本散点图当空白页。2026-10-26已渲染核对关键图页38、41、42、83、90—96、111、118、123。
+
+| PDF页 | 内容或本页展开 | 本文位置与边界 |
+|---|---|---|
+| 1 | 课程标题与Deep Research导入 | §1 |
+| 2 | 课程标题与Deep Research导入 | §1 |
+| 3 | 办公室号：一次搜索与证据 | §1.1、§2.1 |
+| 4 | 办公室号：一次搜索与证据 | §1.1、§2.1 |
+| 5 | 办公室号：一次搜索与证据 | §1.1、§2.1 |
+| 6 | 专家比较：规划、搜索、反思与有边界回答 | §1.1、§3.4、§4 |
+| 7 | 专家比较：规划、搜索、反思与有边界回答 | §1.1、§3.4、§4 |
+| 8 | 专家比较：规划、搜索、反思与有边界回答 | §1.1、§3.4、§4 |
+| 9 | 专家比较：规划、搜索、反思与有边界回答 | §1.1、§3.4、§4 |
+| 10 | 专家比较：规划、搜索、反思与有边界回答 | §1.1、§3.4、§4 |
+| 11 | 专家比较：规划、搜索、反思与有边界回答 | §1.1、§3.4、§4 |
+| 12 | 课程三条主线与评价分节 | 导读、§1.2 |
+| 13 | 课程三条主线与评价分节 | 导读、§1.2 |
+| 14 | Natural Questions单点问答的四类局限 | §2.1 |
+| 15 | Natural Questions单点问答的四类局限 | §2.1 |
+| 16 | Natural Questions单点问答的四类局限 | §2.1 |
+| 17 | Natural Questions单点问答的四类局限 | §2.1 |
+| 18 | Natural Questions单点问答的四类局限 | §2.1 |
+| 19 | 复杂度、领域、答案质量、证据四轴 | §2—3 |
+| 20 | 复杂度、领域、答案质量、证据四轴 | §2—3 |
+| 21 | BrowseComp反向构题及Plastic Man线索 | §2.2 |
+| 22 | BrowseComp反向构题及Plastic Man线索 | §2.2 |
+| 23 | BrowseComp反向构题及Plastic Man线索 | §2.2 |
+| 24 | BrowseComp模型与人类reference match | §2.2、§10.6；不能泛化专家能力 |
+| 25 | BrowseComp模型与人类reference match | §2.2、§10.6；不能泛化专家能力 |
+| 26 | Tongyi上下文/工具预算与准确率 | §10.3、§10.5 |
+| 27 | BrowseComp-Plus证据核验与冻结语料 | §9.2 |
+| 28 | BrowseComp-Plus证据核验与冻结语料 | §9.2 |
+| 29 | 评价地图：复杂搜索仍非完整研究 | §2.2、§3.2 |
+| 30 | 评价地图：复杂搜索仍非完整研究 | §2.2、§3.2 |
+| 31 | FinSearchComp专家历史调查构题 | §2.5、§13 |
+| 32 | 医学/金融/学术检索基准 | §2.3—2.6 |
+| 33 | 评价地图：领域专长 | §2.5—2.6 |
+| 34 | 评价地图：领域专长 | §2.5—2.6 |
+| 35 | 多种正确表述与近似文本中的错误结论 | §3.1—3.3 |
+| 36 | 多种正确表述与近似文本中的错误结论 | §3.1—3.3 |
+| 37 | 多种正确表述与近似文本中的错误结论 | §3.1—3.3 |
+| 38 | 相似度指标与专家偏好图 | §3.1、§3.4补充说明 |
+| 39 | 两项加权rubric展开 | §3.3—3.4 |
+| 40 | 两项加权rubric展开 | §3.3—3.4 |
+| 41 | 两项加权rubric展开 | §3.3—3.4 |
+| 42 | 条目级专家—模型/专家—专家一致性 | §3.4补充说明 |
+| 43 | ResearchQA综述标准及标准自身审查 | §3.6—3.8 |
+| 44 | ResearchQA综述标准及标准自身审查 | §3.6—3.8 |
+| 45 | 评价地图：长报告质量 | §3.3—3.8 |
+| 46 | 评价地图：长报告质量 | §3.3—3.8 |
+| 47 | FACT陈述—URL—支持检查 | §3.5 |
+| 48 | FACT陈述—URL—支持检查 | §3.5 |
+| 49 | FACT陈述—URL—支持检查 | §3.5 |
+| 50 | 四轴评价总结 | §3.9 |
+| 51 | Agent Modeling分节 | §5—8 |
+| 52 | 推理、调用、执行、观察、回答循环 | §5.1—5.2 |
+| 53 | 推理、调用、执行、观察、回答循环 | §5.1—5.2 |
+| 54 | 推理、调用、执行、观察、回答循环 | §5.1—5.2 |
+| 55 | 推理、调用、执行、观察、回答循环 | §5.1—5.2 |
+| 56 | 推理、调用、执行、观察、回答循环 | §5.1—5.2 |
+| 57 | 推理、调用、执行、观察、回答循环 | §5.1—5.2 |
+| 58 | Mid-training/SFT/RL三阶段 | §6.1、§6.5 |
+| 59 | Mid-training/SFT/RL三阶段 | §6.1、§6.5 |
+| 60 | Mid-training/SFT/RL三阶段 | §6.1、§6.5 |
+| 61 | Newell/Simon知识图谱 | §6.2.1 |
+| 62 | Newell/Simon知识图谱 | §6.2.1 |
+| 63 | 有来源的连通子图采样 | §6.2.3 |
+| 64 | 有来源的连通子图采样 | §6.2.3 |
+| 65 | 隐去目标与中文构题 | §6.2.1 |
+| 66 | 隐去目标与中文构题 | §6.2.1 |
+| 67 | 隐去目标与中文构题 | §6.2.1 |
+| 68 | 教师轨迹采集、过滤与SFT | §6.4.1 |
+| 69 | 教师轨迹采集、过滤与SFT | §6.4.1 |
+| 70 | 教师轨迹采集、过滤与SFT | §6.4.1 |
+| 71 | Agentic mid-training与下一token目标 | §6.5.1—6.5.3 |
+| 72 | Agentic mid-training与下一token目标 | §6.5.1—6.5.3 |
+| 73 | 相同SFT-B、不同CPT初始化对照 | §6.5.4 |
+| 74 | Search-R1可验证答案奖励 | §7.2 |
+| 75 | Search-R1可验证答案奖励 | §7.2 |
+| 76 | Search-R1可验证答案奖励 | §7.2 |
+| 77 | 同题多尝试、相对优势、裁剪与KL | §7.3—7.4 |
+| 78 | 同题多尝试、相对优势、裁剪与KL | §7.3—7.4 |
+| 79 | 同题多尝试、相对优势、裁剪与KL | §7.3—7.4 |
+| 80 | 异步工具rollout与训练批 | §11.7—11.10 |
+| 81 | 异步工具rollout与训练批 | §11.7—11.10 |
+| 82 | 异步工具rollout与训练批 | §11.7—11.10 |
+| 83 | Tongyi训练reward和entropy曲线 | §6.5、§7.5、§14.7；训练曲线非阶段归因 |
+| 84 | 短答案与开放综合的奖励需求 | §8.1—8.2 |
+| 85 | 短答案与开放综合的奖励需求 | §8.1—8.2 |
+| 86 | DR Tulu rubric评分与策略更新 | §8.3—8.6；正文用论文正权重分母 |
+| 87 | DR Tulu rubric评分与策略更新 | §8.3—8.6；正文用论文正权重分母 |
+| 88 | DR Tulu rubric评分与策略更新 | §8.3—8.6；正文用论文正权重分母 |
+| 89 | DR Tulu rubric评分与策略更新 | §8.3—8.6；正文用论文正权重分母 |
+| 90 | Persistent/evolving rubric与buffer完整展开 | §8.3—8.7 |
+| 91 | Persistent/evolving rubric与buffer完整展开 | §8.3—8.7 |
+| 92 | Persistent/evolving rubric与buffer完整展开 | §8.3—8.7 |
+| 93 | Persistent/evolving rubric与buffer完整展开 | §8.3—8.7 |
+| 94 | 四基准性能—单任务推理成本散点图 | §8.8补充、§11.10 |
+| 95 | SFT暖启动曲线，不等间距横轴 | §8.2、§8.8补充 |
+| 96 | 无RL/随机/固定/演化标准三基准均值 | §8.8 |
+| 97 | 无RL/随机/固定/演化标准三基准均值 | §8.8 |
+| 98 | 无RL/随机/固定/演化标准三基准均值 | §8.8 |
+| 99 | 检索分节、本地/黑箱/API/浏览工具 | §9.1—9.2、§11.5 |
+| 100 | 检索分节、本地/黑箱/API/浏览工具 | §9.1—9.2、§11.5 |
+| 101 | 双编码器索引与点积取top-k | §9.1 |
+| 102 | 双编码器索引与点积取top-k | §9.1 |
+| 103 | 正负样本对比学习 | §9.1 |
+| 104 | 正负样本对比学习 | §9.1 |
+| 105 | 查询接口缺意图与AgentIR两项改变 | §9.5—9.6 |
+| 106 | 查询接口缺意图与AgentIR两项改变 | §9.5—9.6 |
+| 107 | 中间查询需要局部标签 | §9.7 |
+| 108 | DR-Synth：候选、gold、重排、标签 | §9.7 |
+| 109 | DR-Synth：候选、gold、重排、标签 | §9.7 |
+| 110 | DR-Synth：候选、gold、重排、标签 | §9.7 |
+| 111 | DR-Synth：候选、gold、重排、标签 | §9.7 |
+| 112 | 准确率与搜索次数结果展开 | §9.8 |
+| 113 | 准确率与搜索次数结果展开 | §9.8 |
+| 114 | 准确率与搜索次数结果展开 | §9.8 |
+| 115 | 输入/训练/二者组件消融 | §9.8 |
+| 116 | 输入/训练/二者组件消融 | §9.8 |
+| 117 | 输入/训练/二者组件消融 | §9.8 |
+| 118 | 输入/训练/二者组件消融 | §9.8 |
+| 119 | 历史输入vs当前reasoning消融 | §9.9 |
+| 120 | 历史输入vs当前reasoning消融 | §9.9 |
+| 121 | 历史输入vs当前reasoning消融 | §9.9 |
+| 122 | 历史输入vs当前reasoning消融 | §9.9 |
+| 123 | 历史输入vs当前reasoning消融 | §9.9 |
+| 124 | 任务、评价、训练、检索总结 | §15 |
 
 ---
 

@@ -3,8 +3,8 @@
 ## Lecture-07 与参考材料整合讲义：原理、实验、边界与工程实践
 
 **适用读者：**具备 LLM、RAG 与工具调用开发经验，希望系统建立 Agent 评估能力的工程师。  
-**整理日期：**2026-10-13。  
-**主要材料：**`7_agent_design_4.pdf`、配套 13 份阅读材料、[SOURCES.md](SOURCES.md) 中列出的 SWE-bench Verified 审计，以及本次对话前面几轮讲解。  
+**整理日期：**2026-10-13；2026-10-26 完整复核。  
+**主要材料：**[7_agent_design_4.pdf](7_agent_design_4.pdf)、配套 13 份阅读材料、[SOURCES.md](SOURCES.md) 中列出的 SWE-bench Verified 审计。  
 **文档目标：**不仅理解指标与 benchmark，而且能够设计任务、验证裁判、解释实验结果，并把评估接入开发与发布流程。
 
 > Agent evaluation 的核心，不是给系统打一个分，而是建立一条可信的推断链：这个系统在什么条件下完成了什么工作，为什么认为它完成了，重复运行是否稳定，成本与后果如何，以及这些结果能支持多大范围的部署决定。
@@ -15,9 +15,9 @@
 
 正文使用三种标记区分证据层次：**原文研究**表示材料直接支持的设计、实验或论点；**跨材料综合**表示对不同研究之间关系的解释；**教学推导／工程设计**表示由前文概念推导出的公式、示例或实现建议，不冒充论文已经验证的结果。
 
-实验数字以本次上传的文件版本为准，不代表整理日的最新模型排名、API 价格或软件功能。论文之间任务、模型、预算、裁判和时间范围不同，不能直接拼接成绩。网页审计是阅读清单中的补充来源，单独标为 S14。Dapper 与 Firecracker 的上传文件是介绍网页，本文不把介绍页当成完整实现证明。源码式示例、规则 ID 和业务案例均为教学材料，不是真实法规判断或现成生产系统。
+实验数字以本地归档版本为准，不代表整理日的最新模型排名、API 价格或软件功能。论文之间任务、模型、预算、裁判和时间范围不同，不能直接拼接成绩。网页审计是阅读清单中的补充来源，单独标为 S14。Dapper 与 Firecracker 的归档文件是介绍网页，本文不把介绍页当成完整实现证明。源码式示例、规则 ID 和业务案例均为教学材料，不是真实法规判断或现成生产系统。
 
-文中页码均指上传 PDF 的文件页序，从 1 开始。讲义靠后的页脚编号与文件页序存在不一致，本文统一使用文件页序。引用采用“来源编号＋页码／章节”，文末保留原始文件名和来源地址，脱离聊天记录仍可回查。
+文中页码均指本地 PDF 的文件页序，从 1 开始。讲义靠后的页脚编号与文件页序存在不一致，本文统一使用文件页序。引用采用“来源编号＋页码／章节”，文末保留原始文件名和来源地址，脱离聊天记录仍可回查。
 
 ---
 
@@ -38,10 +38,11 @@
 13. [贯穿案例：投研／基金材料预审核 Agent](#ch13)
 14. [统计、发布门槛与人工反馈闭环](#ch14)
 15. [综合判断：读完这些材料应该形成什么能力](#ch15)
-16. [附录 A：公式与术语速查](#appendix-a)
-17. [附录 B：可运行的基础指标计算示例](#appendix-b)
-18. [附录 C：实验数字、来源边界与易误读之处](#appendix-c)
-19. [附录 D：材料地图与来源索引](#appendix-d)
+16. [自测与参考答案](#self-test)
+17. [附录 A：公式与术语速查](#appendix-a)
+18. [附录 B：可运行的基础指标计算示例](#appendix-b)
+19. [附录 C：实验数字、来源边界与易误读之处](#appendix-c)
+20. [附录 D：材料地图与来源索引](#appendix-d)
 
 ---
 
@@ -318,7 +319,7 @@ $$
 
 ### 4.2 τ-bench 的“空回答 38%”：自动状态验收为何失灵？
 
-τ-bench 尽力将多样对话映射为唯一数据库目标状态。ABC 却发现，在其检查的航空子集中，38% 的任务要求按规则拒绝执行，目标数据库因此不变。什么也不做的 Agent 也会通过这些任务。零售子集也存在较小比例的类似问题。[S03，PDF p.8](#source-s03)
+τ-bench 尽力将多样对话映射为唯一数据库目标状态。ABC 却发现，在其检查的航空子集中，38% 的任务目标数据库状态不变且不要求输出，其中包括按政策应拒绝的任务。什么也不做的 Agent 也会通过这些任务；零售子集相应比例为6%。原文p.8概括为intentionally unsolvable，附录E.2展示non-refundable拒绝案例，不能据此断言38%的每一道题都只需拒绝。[S03，PDF p.8、p.27–28 §E.2](#source-s03)
 
 问题不是“拒绝型任务不该出现”，而是：
 
@@ -608,6 +609,8 @@ $$
 ### 6.7 置信度的预测时点，决定了它能支持什么决定
 
 可靠性论文在任务完成后，让 Agent 看完整历史并自评置信度。这是 post-hoc confidence，不是执行前预测，也不是每一个危险动作之前的实时风险判断。[S02，PDF p.33–34](#source-s02)
+
+附录F.3.4还规定：自评响应无法提取数值置信度时，根据执行错误计数使用启发式回退。因此部分记录不完全来自模型自评；复现应保存解析成功率、回退比例及两类记录的切片，避免把混合信号全归因于自知能力。[S02，PDF p.34](#source-s02)
 
 因此不能据此证明：“Agent 在发送材料前就知道这次会不会错。”
 
@@ -917,7 +920,7 @@ ABC 要求任务之间清理残留，以保证独立性；持续 Agent 需要保
 
 ### 10.1 Dapper 的启示：追踪必须能低负担地长期存在
 
-Dapper 的上传文件是 Google Research 介绍网页，强调低开销、应用级透明与广泛部署，并通过公共库埋点和采样提高追踪实用性。[S10，Abstract](#source-s10)
+Dapper 的归档文件是 Google Research 介绍网页，强调低开销、应用级透明与广泛部署，并通过公共库埋点和采样提高追踪实用性。[S10，Abstract](#source-s10)
 
 它与 Agent eval 的联系是工程上的：如果关键证据只在一次临时调试时被记录，就难以用于持续的性能分析、失败定位与版本比较。
 
@@ -988,7 +991,7 @@ artifacts:
 
 ### 10.6 Firecracker：隔离是条件，不是评分器
 
-Firecracker 的上传材料是 NSDI 论文介绍网页，讨论在低开销下获得安全与性能隔离的虚拟化设计。它不是 Agent 专用评估框架，也不直接判断任务是否完成。[S12，Abstract](#source-s12)
+Firecracker 的归档材料是 NSDI 论文介绍网页，讨论在低开销下获得安全与性能隔离的虚拟化设计。它不是 Agent 专用评估框架，也不直接判断任务是否完成。[S12，Abstract](#source-s12)
 
 **工程应用推演：**独立执行环境可以减少对宿主与其他任务的影响，辅助任务重置和资源控制。但还需要额外解决答案隔离、裁判保护、网络访问和远程副作用。
 
@@ -1103,7 +1106,7 @@ $$
 <a id="ch12"></a>
 ## 12. 工程落地：一套最小但完整的评估系统
 
-本章是对前述材料与对话内容的**工程综合设计**。字段、目录和执行流程不是某篇论文的现成框架，也不是已经连接真实业务接口的生产实现。
+本章是对前述材料的**工程综合设计**。字段、目录和执行流程不是某篇论文的现成框架，也不是已经连接真实业务接口的生产实现。
 
 ### 12.1 最小架构有四个边界
 
@@ -1552,6 +1555,38 @@ AgentOps 强调部署后的追踪、反馈与运行时变化。[S11，PDF p.6–
 从 senior AI engineer 的角度，成熟的评估能力是能够回答：**改动改善了什么、为什么改善、代价是什么、结论适用于什么范围，以及还有哪些风险没有被证明可接受。**
 
 ---
+<a id="self-test"></a>
+## 自测：用机制解释指标，而不是背名字
+
+1. 裁判误接受概率非零时，增加运行次数能否消除测量偏差？
+2. 为什么不能把平均成功率0.8直接五次方当总体pass^5？
+3. pass@5接近1，为什么还不能承诺用户几乎必然收到正确答案？
+4. 稳定失败的Agent为什么结果一致性会很高？
+5. 完成后置信度校准好，能证明危险动作前知道风险吗？
+6. SWE-bench审计的59.4%能否外推全500题？
+7. METR一小时horizon是否就是Agent连续稳定工作一小时？
+8. ActPlane约74%阻止比例的分母是什么，为什么不等于全部任务安全率？
+9. 重新判分、重新运行、受控干预，哪一种能直接表示Agent版本提升？
+10. 线上用户采纳一条建议，是否可以直接作为训练或评测真值？
+
+<details>
+<summary>参考答案与回看位置</summary>
+
+1. 不能。会更精确估计有偏的观测成功率；先验证裁判的误接受/误拒绝和策略相关误差。见4.6。
+2. 每题概率p_i不同，宏平均应取平均p_i^5；不能交换非线性运算与平均，独立条件也需满足。见5.2。
+3. 覆盖指标只说候选中有正确解，实际还需要选择器识别、通过真实验收，计全部生成与筛选成本。见5.3。
+4. 它测稳定而非正确，p=0也使(2p−1)^2=1；要与成功率同时报告，有限样本也影响分数。见6.2。
+5. 不能。post-hoc可见后续结果；关键动作前预测只能使用当时可得信息，另测区分能力与coverage-risk。见6.7。
+6. 不能。138题按o3多次不能稳定解决选择，不是随机全量样本；同时要保留测试和描述缺陷的定义。见4.4。
+7. 不是，是在指定任务分布、人类参考耗时上的拟合成功概率边界；80%/95%需斜率与额外数据。见9.2–9.4。
+8. 是基线106个不安全结果中的78个被阻止，不是361任务全体；还有漏拦、误干预、恢复和覆盖边界。见11.7。
+9. 重新判分改变裁判，干预改变输入/组件条件；新版本重新运行可比较，但仍需固定协议、预算、配对任务及不确定性分析。见12.7/14.2。
+10. 不能。采纳受表达、时限和额外信息影响；要记录原因并裁定，回流开发后不再冒充保密测试。见13.8。
+
+</details>
+
+---
+
 <a id="appendix-a"></a>
 ## 附录 A：公式与术语速查
 
@@ -1608,7 +1643,7 @@ AgentOps 强调部署后的追踪、反馈与运行时变化。[S11，PDF p.6–
 
 下面的 Python 示例只计算已获得二值验收标签之后的基础指标，不运行真实 Agent、不连接模型或工具、不实现语义裁判，也不证明任务标签正确。它展示了任务级聚合、组合数估计、有限样本一致性、Brier 与零事故上界的实现。
 
-仅使用标准库，可保存为 `eval_metrics_demo.py` 后运行。工程接入时，标签必须来自受保护且已经验证的评分流程。示例不把基础设施失败、未判定和转人工强制编码为 0 或 1；这些情况应先按自己的公开协议处理。
+仅使用标准库，原样代码已保存为 [examples/eval_metrics_demo.py](examples/eval_metrics_demo.py)，可在本课目录执行 `python3 examples/eval_metrics_demo.py`；[实际运行记录](examples/RUN.json) 保存环境与结果。工程接入时，标签必须来自受保护且已经验证的评分流程。示例不把基础设施失败、未判定和转人工强制编码为 0 或 1；这些情况应先按自己的公开协议处理。
 
 ```python
 from __future__ import annotations
@@ -1811,6 +1846,20 @@ if __name__ == "__main__":
 <a id="appendix-d"></a>
 ## 附录 D：材料地图与来源索引
 
+### D.0 主讲义逐段覆盖
+
+| 实际PDF页 | 重点与本文位置 |
+|---|---|
+| 1–5 | 课程/评估目标；1节；课堂作业与学术诚信安排仅为当期课程信息 |
+| 6–11 | 组件/端到端、历史、指标、循环；1–2、5、7、12节 |
+| 12–23 | GAIA/BFCL/WebArena/OSWorld/SWE/τ/Terminal/TheAgentCompany；3节 |
+| 24–26 | 挑战、数据与全栈泄漏；4、8节 |
+| 27–31 | 单轮局限、真实互动、成本/随机/副作用；6、7、9、14节 |
+| 32–34 | 基准快速饱和、动态新任务与评价演进；8–9、14节 |
+| 35–37 | 多维Pareto、下一课、空白结束；7.2；后两页无新增方法 |
+
+第32–33页图表用于说明讲义提出的“基准饱和”动机。其模型分数、human baseline和月份均是讲义当时的转引，本文未独立核验每条外部榜单，也不把图中95%等数值当当前性能。饱和可能涉及能力提升、任务分布和泄漏，必须回到独立测量，不能仅凭曲线推断原因。
+
 ### D.1 按问题回看材料
 
 | 阅读目标 | 优先回看的位置 |
@@ -1832,116 +1881,116 @@ if __name__ == "__main__":
 <a id="source-s00"></a>
 #### S00 — Lecture-07：Agent design IV: evaluation
 
-原文件：`7_agent_design_4.pdf`。署名 Juncheng Yang，Harvard MaDSys。阅读清单日期为 2026-09-30。核心使用范围：p.6 组件与端到端，p.10–11 指标与循环，p.12–23 benchmark，p.25–34 挑战与演进，p.35 多维优化。
+原文件：[7_agent_design_4.pdf](7_agent_design_4.pdf)。署名 Juncheng Yang，Harvard MaDSys。阅读清单日期为 2026-09-30。核心使用范围：p.6 组件与端到端，p.10–11 指标与循环，p.12–23 benchmark，p.25–34 挑战与演进，p.35 多维优化。
 
-原始地址：`https://cs2680.com/slides/7_agent_design_4.pdf`
+原始地址：[原始来源](https://cs2680.com/slides/7_agent_design_4.pdf)
 
 <a id="source-s01"></a>
 #### S01 — AI Agents That Matter
 
-原文件：`001_agents_that_matter_be1cda.pdf`。Sayash Kapoor、Benedikt Stroebl 等。上传版本标识：arXiv:2407.01502v1。核心使用范围：§2 简单基线与成本控制，§3 HotPotQA 联合优化，§4 模型与下游评价，§5 泛化和人在环，§6 可复现性。
+原文件：[001_agents_that_matter_be1cda.pdf](readings/001_agents_that_matter_be1cda.pdf)。Sayash Kapoor、Benedikt Stroebl 等。归档版本标识：arXiv:2407.01502v1。核心使用范围：§2 简单基线与成本控制，§3 HotPotQA 联合优化，§4 模型与下游评价，§5 泛化和人在环，§6 可复现性。
 
-原始地址：`https://arxiv.org/abs/2407.01502`
+原始地址：[原始来源](https://arxiv.org/abs/2407.01502)
 
 <a id="source-s02"></a>
 #### S02 — Towards a Science of AI Agent Reliability
 
-原文件：`002_agent_reliability_66e60d.pdf`。Stephan Rabanser、Sayash Kapoor 等。上传版本标识：arXiv:2602.16666v3。核心使用范围：§2–3 四维十二指标，Table 2，§4 实验，§5–6 建议与限制，附录 F.3 扰动、置信度和安全判定协议。
+原文件：[002_agent_reliability_66e60d.pdf](readings/002_agent_reliability_66e60d.pdf)。Stephan Rabanser、Sayash Kapoor 等。归档版本标识：arXiv:2602.16666v3。核心使用范围：§2–3 四维十二指标，Table 2，§4 实验，§5–6 建议与限制，附录 F.3 扰动、置信度和安全判定协议。
 
-原始地址：`https://arxiv.org/abs/2602.16666`
+原始地址：[原始来源](https://arxiv.org/abs/2602.16666)
 
 <a id="source-s03"></a>
 #### S03 — Establishing Best Practices for Building Rigorous Agentic Benchmarks
 
-原文件：`003_agentic_benchmark_checklist_d662e8.pdf`。Yuxuan Zhu、Tengjun Jin 等。上传版本标识：arXiv:2507.02825v5。核心使用范围：Task validity、Outcome validity、Reporting 三部分检查，以及 τ-bench、WebArena、SWE-Lancer、KernelBench、OSWorld 等审计案例。
+原文件：[003_agentic_benchmark_checklist_d662e8.pdf](readings/003_agentic_benchmark_checklist_d662e8.pdf)。Yuxuan Zhu、Tengjun Jin 等。归档版本标识：arXiv:2507.02825v5。核心使用范围：Task validity、Outcome validity、Reporting 三部分检查，以及 τ-bench、WebArena、SWE-Lancer、KernelBench、OSWorld 等审计案例。
 
-原始地址：`https://arxiv.org/abs/2507.02825`
+原始地址：[原始来源](https://arxiv.org/abs/2507.02825)
 
 <a id="source-s04"></a>
 #### S04 — NIST CAISI：Examples of cheating on agent evaluations
 
-原文件：`004_evaluation_cheating_examples_f6f7fb.html`。核心使用范围：§2 的方法边界，§2.1 Solution contamination，§2.2 Grader gaming。它是历史轨迹分析与案例材料，不是不同模型作弊概率的严格统一对照实验。
+原文件：[004_evaluation_cheating_examples_f6f7fb.html](readings/004_evaluation_cheating_examples_f6f7fb.html)。核心使用范围：§2 的方法边界，§2.1 Solution contamination，§2.2 Grader gaming。它是历史轨迹分析与案例材料，不是不同模型作弊概率的严格统一对照实验。
 
-原始地址：`https://www.nist.gov/caisi/cheating-ai-agent-evaluations/2-examples-cheating-caisis-agent-evaluations`
+原始地址：[原始来源](https://www.nist.gov/caisi/cheating-ai-agent-evaluations/2-examples-cheating-caisis-agent-evaluations)
 
 <a id="source-s05"></a>
 #### S05 — SWE-bench: Can Language Models Resolve Real-World GitHub Issues?
 
-原文件：`005_SWE_bench_3e4a5d.pdf`。Carlos E. Jimenez、John Yang 等。上传版本标识：arXiv:2310.06770v3。核心使用范围：§2 数据构建、任务与验收，§4.1 检索设置，p.5 Tables 2–3，上下文与最终解决率分析。
+原文件：[005_SWE_bench_3e4a5d.pdf](readings/005_SWE_bench_3e4a5d.pdf)。Carlos E. Jimenez、John Yang 等。归档版本标识：arXiv:2310.06770v3。核心使用范围：§2 数据构建、任务与验收，§4.1 检索设置，p.5 Tables 2–3，上下文与最终解决率分析。
 
-原始地址：`https://arxiv.org/abs/2310.06770`
+原始地址：[原始来源](https://arxiv.org/abs/2310.06770)
 
 <a id="source-s06"></a>
 #### S06 — AgentBench: Evaluating LLMs as Agents
 
-原文件：`006_AgentBench_d234ad.pdf`。Xiao Liu、Hao Yu 等。上传版本标识：arXiv:2308.03688v3。核心使用范围：§2 交互式评估与结束原因，§3 八种环境，§4.1 上下文和总体分配置，§4.3 失败分析。
+原文件：[006_AgentBench_d234ad.pdf](readings/006_AgentBench_d234ad.pdf)。Xiao Liu、Hao Yu 等。归档版本标识：arXiv:2308.03688v3。核心使用范围：§2 交互式评估与结束原因，§3 八种环境，§4.1 上下文和总体分配置，§4.3 失败分析。
 
-原始地址：`https://arxiv.org/abs/2308.03688`
+原始地址：[原始来源](https://arxiv.org/abs/2308.03688)
 
 <a id="source-s07"></a>
 #### S07 — Measuring AI Ability to Complete Long Software Tasks
 
-原文件：`007_METR_time_horizons_ddd930.pdf`。Thomas Kwa、Ben West 等，METR。上传版本标识：arXiv:2503.14499v4。核心使用范围：§2 任务与人类基线，§3 horizon 拟合与 50%／80% 对照，§4 外部有效性，分层 bootstrap 与局限说明。
+原文件：[007_METR_time_horizons_ddd930.pdf](readings/007_METR_time_horizons_ddd930.pdf)。Thomas Kwa、Ben West 等，METR。归档版本标识：arXiv:2503.14499v4。核心使用范围：§2 任务与人类基线，§3 horizon 拟合与 50%／80% 对照，§4 外部有效性，分层 bootstrap 与局限说明。
 
-原始地址：`https://arxiv.org/abs/2503.14499`
+原始地址：[原始来源](https://arxiv.org/abs/2503.14499)
 
 <a id="source-s08"></a>
 #### S08 — τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains
 
-原文件：`008_tau_bench_9e1bf2.pdf`。Shunyu Yao、Noah Shinn、Pedram Razavi、Karthik Narasimhan。上传版本标识：arXiv:2406.12045v1。核心使用范围：§3 模块与奖励、pass 指标，§4 构建，§5 实验和失败分析，§6 模拟用户与标注局限。
+原文件：[008_tau_bench_9e1bf2.pdf](readings/008_tau_bench_9e1bf2.pdf)。Shunyu Yao、Noah Shinn、Pedram Razavi、Karthik Narasimhan。归档版本标识：arXiv:2406.12045v1。核心使用范围：§3 模块与奖励、pass 指标，§4 构建，§5 实验和失败分析，§6 模拟用户与标注局限。
 
-原始地址：`https://arxiv.org/abs/2406.12045`
+原始地址：[原始来源](https://arxiv.org/abs/2406.12045)
 
 <a id="source-s09"></a>
 #### S09 — Headlong: a microharness for persistent agents
 
-原文件：`009_Headlong_253f66.html`。Laude / MIT collaboration 的工程介绍，页面日期为 2026-08-24。核心使用范围：Microharness、Persistent agency in action、What broke、Measuring improvement。正文将其作为持续运行案例，不视为成熟长期评价方法的定量证明。
+原文件：[009_Headlong_253f66.html](readings/009_Headlong_253f66.html)。Laude / MIT collaboration 的工程介绍，页面日期为 2026-08-24。核心使用范围：Microharness、Persistent agency in action、What broke、Measuring improvement。正文将其作为持续运行案例，不视为成熟长期评价方法的定量证明。
 
-原始地址：`https://www.laude.org/updates/headlong-a-microharness-for-persistent-agents`
+原始地址：[原始来源](https://www.laude.org/updates/headlong-a-microharness-for-persistent-agents)
 
 <a id="source-s10"></a>
 #### S10 — Dapper, a Large-Scale Distributed Systems Tracing Infrastructure
 
-原文件：`010_Dapper_ae4ecd.html`。Google Research 的论文介绍页；论文署名 Benjamin H. Sigelman 等，2010。本文使用其 Abstract 中的低开销、透明性、公共库埋点与采样原则，不声称仅凭介绍页覆盖完整实现。
+原文件：[010_Dapper_ae4ecd.html](readings/010_Dapper_ae4ecd.html)。Google Research 的论文介绍页；论文署名 Benjamin H. Sigelman 等，2010。本文使用其 Abstract 中的低开销、透明性、公共库埋点与采样原则，不声称仅凭介绍页覆盖完整实现。
 
-原始地址：`https://research.google/pubs/dapper-a-large-scale-distributed-systems-tracing-infrastructure/`
+原始地址：[原始来源](https://research.google/pubs/dapper-a-large-scale-distributed-systems-tracing-infrastructure/)
 
 <a id="source-s11"></a>
 #### S11 — AgentOps: Enabling Observability of LLM Agents
 
-原文件：`011_AgentOps_da5286.pdf`。Liming Dong、Qinghua Lu、Liming Zhu。上传版本标识：arXiv:2411.05285v2。核心使用范围：§1 Agent 特性与观测缺口，§3 反馈和追踪，§4 关系模型与 taxonomy。工具市场表格属于当时的映射研究，不作为当前工具选型列表。
+原文件：[011_AgentOps_da5286.pdf](readings/011_AgentOps_da5286.pdf)。Liming Dong、Qinghua Lu、Liming Zhu。归档版本标识：arXiv:2411.05285v2。核心使用范围：§1 Agent 特性与观测缺口，§3 反馈和追踪，§4 关系模型与 taxonomy。工具市场表格属于当时的映射研究，不作为当前工具选型列表。
 
-原始地址：`https://arxiv.org/abs/2411.05285`
+原始地址：[原始来源](https://arxiv.org/abs/2411.05285)
 
 <a id="source-s12"></a>
 #### S12 — Firecracker: Lightweight Virtualization for Serverless Applications
 
-原文件：`012_Firecracker_798c9b.html`。USENIX NSDI 2020 论文介绍页，Alexandru Agache、Marc Brooker 等。本文使用介绍页中的轻量虚拟化、安全和性能隔离目标；其对 Agent 评估环境的应用为工程推演。
+原文件：[012_Firecracker_798c9b.html](readings/012_Firecracker_798c9b.html)。USENIX NSDI 2020 论文介绍页，Alexandru Agache、Marc Brooker 等。本文使用介绍页中的轻量虚拟化、安全和性能隔离目标；其对 Agent 评估环境的应用为工程推演。
 
-原始地址：`https://www.usenix.org/conference/nsdi20/presentation/agache`  
-页面提供的原论文地址：`https://www.usenix.org/system/files/nsdi20-paper-agache.pdf`
+原始地址：[原始来源](https://www.usenix.org/conference/nsdi20/presentation/agache)  
+页面提供的原论文地址：[原始来源](https://www.usenix.org/system/files/nsdi20-paper-agache.pdf)
 
 <a id="source-s13"></a>
 #### S13 — ActPlane: Programmable OS-Level Policy Enforcement for Agent Harnesses
 
-原文件：`013_ActPlane_4d160c.pdf`。Yusheng Zheng 等。上传版本标识：arXiv:2606.25189v2。核心使用范围：§2 策略类型，§3 威胁模型、DSL、信息流与权限域，§5 的 DCR、反馈消融、开销和安全实验；同时保留 p.6 与 p.12 的覆盖限制。
+原文件：[013_ActPlane_4d160c.pdf](readings/013_ActPlane_4d160c.pdf)。Yusheng Zheng 等。归档版本标识：arXiv:2606.25189v2。核心使用范围：§2 策略类型，§3 威胁模型、DSL、信息流与权限域，§5 的 DCR、反馈消融、开销和安全实验；同时保留 p.6 与 p.12 的覆盖限制。
 
-原始地址：`https://arxiv.org/abs/2606.25189`
+原始地址：[原始来源](https://arxiv.org/abs/2606.25189)
 
 <a id="source-s14"></a>
 #### S14 — SWE-bench Verified 审计补充材料
 
-标题：*Why SWE-bench Verified no longer measures frontier coding capabilities*。OpenAI，页面日期 2026-02-23。来自 [SOURCES.md](SOURCES.md) 的在线阅读项；本次整理时核对了原页面。本文只在裁判有效性部分使用其样本范围与测试设计问题，不把文章的供应商或产品判断当成普遍结论。
+标题：*Why SWE-bench Verified no longer measures frontier coding capabilities*。OpenAI，页面日期 2026-02-23。来自 [SOURCES.md](SOURCES.md) 的在线阅读项；2026-10-26 重新核对原页面正文；本地下载返回403，未保存验证页。本文只在裁判有效性部分使用其样本范围与测试设计问题，不把文章的供应商或产品判断当成普遍结论。
 
-原始地址：`https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/`
+原始地址：[原始来源](https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/)
 
 <a id="source-s15"></a>
 #### S15 — 配套来源清单
 
 原文件：[SOURCES.md](SOURCES.md)，标题为 “7. Agent design IV: agent evaluation”。记录了讲义、13 份阅读材料、在线审计及课程补充页面的来源。它用于建立资料范围，不代替各论文自身的内容证据。
 
-课程阅读清单地址：`https://cs2680.com/readings.html#sep-30`  
-课程补充笔记地址：`https://cs2680.com/notes/agent-evaluation.html`
+课程阅读清单地址：[原始来源](https://cs2680.com/readings.html#sep-30)  
+课程补充笔记地址：[原始来源](https://cs2680.com/notes/agent-evaluation.html)
 
 ---
 

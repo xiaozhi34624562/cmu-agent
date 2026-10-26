@@ -1,16 +1,16 @@
 # Coding Agent：从代码生成到可靠的软件工程智能体
 
-## Lecture 06 与 24 份参考资料整合笔记
+## Lecture 06 与 24 份主要参考资料整合笔记
 
 **面向读者：**具备编程经验，希望深入理解与使用 Coding Agent 的 LLM 开发工程师。  
-**主讲义：**Graham Neubig，*Agents for Coding and Software Development*，`lecture-06-coding-agents.pdf`。  
-**内容范围：**整合本次讨论中的课程解释、论文机制、实验分析与工程推演；不把历史论文结果当作当前产品排行榜。
+**主讲义：**Graham Neubig，*Agents for Coding and Software Development*，[lecture-06-coding-agents.pdf](lecture-06-coding-agents.pdf)。  
+**内容范围：**以课程讲义为主线，整合论文机制、实验分析与工程推演；不把历史论文结果当作当前产品排行榜。
 
 > **贯穿全文的问题：怎样让模型提出的软件变更，在真实环境中满足需求、保留原有行为，并留下可信的验证证据？**
 
 本文沿用讲义“代码模型 → Agentic Coding → 软件开发全生命周期 → 代码行为预测”的组织方式，再把参考资料放入相应环节。论文负责解释能力与机制，讲义负责把这些能力组织成系统。文中的“工程推论”“教学示例”表示从材料出发的设计分析，不代表原论文已经实证验证了该方案。
 
-引用采用可在普通 Markdown 阅读器中使用的编号与定位，例如 `[R08，§4.5，PDF p.12]`。编号可跳转至文末资料索引。**页码统一指所上传 PDF 的物理页码**，不是论文印刷页码。对来源之间的数值差异，单独说明，不静默合并。
+引用采用可在普通 Markdown 阅读器中使用的编号与定位，例如 `[R08，§4.5，PDF p.12]`。编号可跳转至文末资料索引。**页码统一指本地归档 PDF 的物理页码**，不是论文印刷页码。对来源之间的数值差异，单独说明，不静默合并。
 
 <a id="contents"></a>
 ## 阅读导航
@@ -33,6 +33,7 @@
 | [14. 面向工程实践的系统设计](#ch14) | 怎样构建、使用和改进一个可靠 Agent？ | 全课综合 |
 | [15. 可执行教学实验与工作模板](#ch15) | 如何实际复现、修复、验证与记录证据？ | 贯穿案例 |
 | [16. 统一认识与核心结论](#ch16) | 怎样把所有论文放回同一张技术地图？ | pp.80–82 |
+| [自测与参考答案](#self-check) | 检查机制、归因与交付判断 | 全课综合 |
 | [附录 A：术语表](#appendix-a) | 统一关键概念 | — |
 | [附录 B：资料索引与阅读定位](#appendix-b) | 回到每一份参考资料 | — |
 | [附录 C：数据口径与结论边界](#appendix-c) | 避免误读实验和过度推广 | — |
@@ -176,9 +177,9 @@ Qwen2.5-Coder 则使用多阶段清洗处理文本—代码混合数据。报告
 
 语言模型的 token 可能切开一个标识符，也可能把换行与多个空格组合起来。讲义第 9 页甚至给出了 StarCoder2 对缩进代码的实际切分，而不是按“关键字—变量—缩进”整齐分组。[L06，p.9](#ref-l06)
 
-你提供的 `003_Whitespace-run_tokens.pdf` 是完整的 2021 年 Codex 论文。它在原有 tokenizer 上增加不同长度的空白串 token，使同样代码大约使用少 30% 的 token 表示。这个比例属于当时的具体设置，不能套用到全部模型。[R03，§3.2，p.4](#ref-r03)
+归档文件 [003_Whitespace-run_tokens.pdf](references/003_Whitespace-run_tokens.pdf) 是完整的 2021 年 Codex 论文。它在原有 tokenizer 上增加不同长度的空白串 token，使同样代码大约使用少 30% 的 token 表示。这个比例属于当时的具体设置，不能套用到全部模型。[R03，§3.2，p.4](#ref-r03)
 
-你提供的 StarCoder2 tokenizer 配置则可以直接核对到：
+本地 StarCoder2 tokenizer 配置则可以直接核对到：
 
 ```text
 <fim_prefix>  → 1
@@ -196,7 +197,7 @@ Qwen2.5-Coder 则使用多阶段清洗处理文本—代码混合数据。报告
 
 ### 2.5 Code Llama：专业化不是只增加代码占比
 
-Code Llama 从 Llama 2 初始化，再通过代码训练、长上下文训练与指令训练逐步专业化。7B、13B、34B 的初始追加代码训练为 500B token；上传报告中的 70B 变体有不同训练规模，不能统一概括为全部 500B。[R05，§2.1，p.3](#ref-r05)
+Code Llama 从 Llama 2 初始化，再通过代码训练、长上下文训练与指令训练逐步专业化。7B、13B、34B 的初始追加代码训练为 500B token；归档报告中的 70B 变体有不同训练规模，不能统一概括为全部 500B。[R05，§2.1，p.3](#ref-r05)
 
 在论文所列 500B 配方中，采样比例为 85% 代码、8% 与代码相关的自然语言、7% 一般自然语言。[R05，§2.2，pp.3–5，表1](#ref-r05)
 
@@ -277,7 +278,7 @@ Left + <Mask:0> + Right + <Mask:0> + Span + <EOM>
 
 ### 3.3 InCoder 的同模型实验：生成前使用约束，比生成后补救更直接
 
-为了隔离右侧上下文的作用，InCoder 使用同一个 6.7B 模型比较三种推理方式：只看左侧生成一个候选；只看左侧生成十个，再利用右侧重排；直接利用左右上下文生成。[R07，§4，p.4](#ref-r07)
+为比较利用右侧上下文的不同方式，InCoder 使用同一个 6.7B 模型比较三种推理方式：只看左侧生成一个候选；只看左侧生成十个，再利用右侧重排；直接利用左右上下文生成。[R07，§4，p.4](#ref-r07)
 
 | 推理方式 | 右侧上下文的用途 | 单行填空通过率 | 多行填空通过率 |
 |---|---|---:|---:|
@@ -285,7 +286,7 @@ Left + <Mask:0> + Right + <Mask:0> + Span + <EOM>
 | 左到右，十候选重排 | 只用于选择 | 54.9% | 28.2% |
 | Causal-masked infilling | 直接参与生成 | 69.0% | 38.6% |
 
-这些是 HumanEval 衍生填空任务的结果，不是完整仓库任务成功率。[R07，p.5，表1](#ref-r07)
+这些是 HumanEval 衍生填空任务的结果，不是完整仓库任务成功率。还需注意推理条件：单候选左到右与 causal-masked 采用温度 0.2，十候选重排采用 0.8；左到右方法按真实缺失片段的行数截断，causal-masked 依靠 EOM 自行结束。因此，这不是只改变“是否可见右侧”一个变量的严格消融，不能把全部增益仅归因于右侧上下文。[R07，p.5，表1及其设置](#ref-r07)
 
 它说明，“先告诉模型约束，再生成”与“缺少约束时多猜几次，最后再挑选”并不等价。后者无法从全都偏离正确方向的候选中创造正确答案。
 
@@ -395,11 +396,11 @@ OctoPack 将 HumanEval 扩展为代码修复、代码解释和代码合成三类
 
 ### 4.5 DrRepair：诊断信息是推理证据，不只是一个失败标签
 
-上传的 DrRepair 文件是 PMLR 摘要页，不是完整 PDF。摘要明确介绍了两点：用 program-feedback graph 连接源码与诊断信息中的相关符号，再用图神经网络建模；从无标签程序构造额外修复样本进行自监督预训练。[R10，Abstract](#ref-r10)
+本地 DrRepair 文件是 PMLR 摘要页，不是完整 PDF。摘要明确介绍了两点：用 program-feedback graph 连接源码与诊断信息中的相关符号，再用图神经网络建模；从无标签程序构造额外修复样本进行自监督预训练。[R10，Abstract](#ref-r10)
 
 它所处理的核心困难是：**诊断中出现的符号与源码中的定义、使用位置需要关联起来，错误被发现的位置不一定是错误产生的位置。**
 
-可以用一个教学示意理解：某处把变量声明成字符，后面却按字符串对象调用成员方法。诊断出现在方法调用处，但合理修复可能在更早的变量声明处。这个示意用于解释定位思想，不作为上传 HTML 已包含完整模型细节的证据。
+可以用一个教学示意理解：某处把变量声明成字符，后面却按字符串对象调用成员方法。诊断出现在方法调用处，但合理修复可能在更早的变量声明处。这个示意用于解释定位思想，不作为本地 HTML 已包含完整模型细节的证据。
 
 把这件事放大到仓库级，用户看到“客户端仍在重试”，可能不是重试循环写错，而是上游配置把零覆盖了。**Localize 的目标不是定位一个报错字符串，而是定位足以解释异常的原因。**
 
@@ -1234,7 +1235,7 @@ R2E-Gym 区分两类验证器：执行式验证器利用测试结果；非执行
 
 这有助于区分“找不到”与“找到了但不会修”。但定位 F1 不等于最终修复成功率：同一位置可以产生很多错误修改，正确修改也需要执行验证。
 
-这里按上传讲义说明任务形式，不把讲义中的年份与名称当作当前外部研究状态的更新核验。
+这里按本地讲义说明任务形式，不把讲义中的年份与名称当作当前外部研究状态的更新核验。
 
 ### 12.3 Commit0 与 ProgramBench：实现同一功能，信息来源可以不同
 
@@ -1286,7 +1287,7 @@ R2E-Gym 区分两类验证器：执行式验证器利用测试结果；非执行
 
 第 71 页的 SWE-Playground 流程图包含项目与任务提案、仓库搭建、测试与实现等步骤，用于生成开发练习；第 72 页展示 Hybrid-Gym 在修复、测试生成与库构建任务上的选定结果。[L06，pp.71–72，图示](#ref-l06)
 
-本文只按讲义介绍这一研究方向，不把未附上的原论文视为已经完整复现或独立核验。应保留两个边界：不同任务的 success 定义不一定相同；中间技能改善还需要回到最终任务中验证。
+对应原文 [SWE-Playground](references/039_SWE-Playground.pdf) 与 [Hybrid-Gym](references/040_Hybrid-Gym.pdf) 已在目录归档；本节仍仅解释讲义选取的图示，不声称已完整核验两篇原文或复现训练。应保留两个边界：不同任务的 success 定义不一定相同；中间技能改善还需要回到最终任务中验证。
 
 ### 12.9 不要把整个开发过程缩成写代码时间
 
@@ -1385,7 +1386,7 @@ $$
 路线 B：模型生成可执行模拟器，由模拟器计算环境变化。
 ```
 
-这里按讲义图示区分机制，不补充未提供原文中的额外训练指标。前者的风险是预测不忠实，后者的风险是合成模拟器与真实环境不一致。
+这里按讲义图示区分机制。[Code World Models](references/041_Code_World_Models.pdf) 是路线 B 的本地原文；目录未独立归档路线 A 的 FAIR CWM 原论文。本节未展开两者的额外训练指标，引用范围以讲义为限。前者的风险是预测不忠实，后者的风险是合成模拟器与真实环境不一致。
 
 ### 13.7 世界模型要用最终决策效果评价
 
@@ -1677,12 +1678,12 @@ if __name__ == "__main__":
     sys.exit(0 if result.wasSuccessful() else 1)
 ```
 
-### 15.4 本次实际运行结果
+### 15.4 离线运行结果
 
-本次整理环境使用 Python 3.13.5，下面是实际输出。运行耗时会随环境变化；该结果只对应本教学脚本，不代表外部仓库、框架或论文已经复现。
+原整理记录使用 Python 3.13.5；本次全文审阅在 Python 3.11.10 中重新执行了相同脚本，下面展示本次复核的实际输出。运行耗时会随环境变化；该结果只对应本教学脚本，不代表外部仓库、框架或论文已经复现。
 
 ```text
-Python: 3.13.5
+Python: 3.11.10
 candidate       missing  None  zero  positive
 original              3     3     3         2
 default_only          3  None     0         2
@@ -1847,6 +1848,30 @@ delivery:
 
 ---
 
+<a id="self-check"></a>
+## 自测与参考答案
+
+先用自己的话作答，再核对答案；以下是对本章机制的练习，不是新增论文实验。
+
+1. **FIM 能看见右侧代码，为什么仍可以使用自回归模型？损失是否只计算空洞？**
+   答：训练时重排前缀、后缀和空洞，让生成空洞时右侧已在历史中。不能统一假设只对空洞计损失：InCoder 排除 mask sentinel；FIM scaling study 保留三段语言建模信号与结束标记，具体实现须核对模型配方。
+2. **一次问题采样 5 个候选，2 个通过测试，估计 pass@2 是多少？是否代表选择器交付成功率？**
+   答：$1-\binom{3}{2}/\binom{5}{2}=0.7$。它估计二候选集合中至少一个通过的概率；没有评价选择器是否能找出该候选，测试充分性也另有边界。
+3. **为什么 InCoder 表1不能单独证明“右侧上下文带来全部 20.8 个百分点增益”？**
+   答：69.0−48.2=20.8 个百分点，但对照还涉及结束规则；十候选重排还改变温度与候选预算。它支持联合推理方式的比较，需要更严格控制才能隔离单一原因。
+4. **CodeRL 的 critic token 权重等于各 token 导致成功的因果贡献吗？**
+   答：不是。它由结果标签监督学习，用局部表示预测整段程序结果；可以指导更新，但未建立逐 token 的干预式因果归因。训练更新与推理时筛选、修复也要分开。
+5. **LocAgent 的图检索消融提升，是否说明必须用图替代所有文本检索？**
+   答：不成立。原系统同时使用实体 ID、名称和 BM25 内容索引；去 BM25 也明显下降。结果支持在其 Python 定位任务中互补使用结构与文本，不是所有代码库的普适最优方案。
+6. **为什么 R2E-Gym 增加 5 个测试轨迹优于增加 5 个编辑轨迹，不能直接推出固定省钱比例？**
+   答：表中的成功率变化属于选定验证器和预算点；两类轨迹成本不同，还需统计模型、输入输出 token、执行资源及时间。49.3% 与 48.4% 本身不是货币成本比。
+7. **世界模型预测补丁通过，与真实执行通过分别能作为什么证据？**
+   答：预测可用来搜索、排序和分配真实执行预算；真实执行只证明所测环境与用例的结果。两者都不足以单独证明全部业务契约，预测结果尤其不能写成已执行结果。
+8. **零值重试修复的 10 项检查全部通过，可以直接发布吗？**
+   答：只能确认本教学脚本中约定的默认值、None、零、正数和调用链行为及错误检测关系。真实项目仍需核查配置入口、其他调用者、集成回归、资源与发布条件；脚本还故意验证原始错误会出现，并非每个候选都已正确。
+
+---
+
 <a id="appendix-a"></a>
 ## 附录 A：关键术语表
 
@@ -1886,23 +1911,23 @@ delivery:
 <a id="appendix-b"></a>
 ## 附录 B：资料索引与原文阅读定位
 
-本索引保留上传文件名，并区分真实题名。正文中的引用均指向这些资料，页码采用所上传 PDF 的物理页码。仅由讲义介绍、未独立附上原文的工作，列在 L06 下，不伪装成已经完整阅读的附加论文。
+本索引保留归档文件名，并区分真实题名。正文中的引用均指向这些资料，页码采用本地归档 PDF 的物理页码。正文尚未展开其原文机制的工作列在 L06 下；目录中是否收录原文与本文是否完整整合该原文分别说明。
 
 <a id="ref-l06"></a>
 ### L06 — 主讲义
 
 **Graham Neubig，*Agents for Coding and Software Development*.**  
-文件：`lecture-06-coding-agents.pdf`，82 页。
+文件：[lecture-06-coding-agents.pdf](lecture-06-coding-agents.pdf)，82 页。
 
 阅读定位：pp.1–6 三层能力与训练概览；pp.7–18 代码模型、FIM 和多种监督；pp.19–30 评估与执行奖励；pp.31–45 Agent 循环和工具；pp.46–54 任务评估与训练；pp.55–59 前端；pp.60–72 软件开发与维护；pp.73–79 行为预测；pp.80–82 总结。
 
-本次补充直接阅读并核对了 SWE-agent、Agentless、LocAgent、SWE-Gym、R2E-Gym、SWE-smith 的所引论文章节及 mini-SWE-agent 的本地官方概览快照，见 R18–R24。SWE-bench、Multi-SWE-bench、SWE-bench Multilingual、CodeScout、ViBench、Commit0、ProgramBench、SWE-Milestone、SWT-Bench、SWE-Playground、Hybrid-Gym、CWM 与 GIF-MCTS 等仍主要作为讲义线索保留。目录收录不等于正文已逐篇整合；原文核验不等于代码复现，本文也不提供最新排行榜结论。
+正文直接阅读并核对了 SWE-agent、Agentless、LocAgent、SWE-Gym、R2E-Gym、SWE-smith 的所引论文章节及 mini-SWE-agent 的本地官方概览快照，见 R18–R24。SWE-bench、Multi-SWE-bench、SWE-bench Multilingual、CodeScout、ViBench、Commit0、ProgramBench、SWE-Milestone、SWT-Bench、SWE-Playground、Hybrid-Gym、CWM 与 GIF-MCTS 等仍主要作为讲义线索保留。目录收录不等于正文已逐篇整合；原文核验不等于代码复现，本文也不提供最新排行榜结论。
 
 <a id="ref-r01"></a>
 ### R01 — OLMo
 
 **Groeneveld et al.，*OLMo: Accelerating the Science of Language Models*.**  
-文件：`001_OLMo.pdf`。上传版本标注 arXiv:2402.00838v4，2024。
+文件：[001_OLMo.pdf](references/001_OLMo.pdf)。归档版本标注 arXiv:2402.00838v4，2024。
 
 重点：§1 的完整开放研究条件；§2.2 的 Dolma 多源处理；§2.4 的训练中与训练后评估，PDF pp.1–4。本文主要借鉴可控实验、数据分层与可诊断性，不把它当作仓库修复性能证据。
 
@@ -1910,7 +1935,7 @@ delivery:
 ### R02 — StarCoder
 
 **Li et al.，*StarCoder: may the source be with you!***  
-文件：`002_StarCoder.pdf`。上传版本为 2023 年报告，arXiv:2305.06161v2。
+文件：[002_StarCoder.pdf](references/002_StarCoder.pdf)。归档版本为 2023 年报告，arXiv:2305.06161v2。
 
 重点：§3.1，p.5 的语言筛选与人工检查；§5.1–5.3，pp.15–16 的数据格式、去污染与 tokenizer；§1 区分 StarCoderBase 与增加 Python 训练的 StarCoder。本文不沿用论文当时的领先性表述作为当前排名。
 
@@ -1918,14 +1943,14 @@ delivery:
 ### R03 — Codex / HumanEval / Whitespace-run tokens
 
 **Chen et al.，*Evaluating Large Language Models Trained on Code*.**  
-文件：`003_Whitespace-run_tokens.pdf`。实际是完整 Codex 论文，arXiv:2107.03374v2，2021。
+文件：[003_Whitespace-run_tokens.pdf](references/003_Whitespace-run_tokens.pdf)。实际是完整 Codex 论文，arXiv:2107.03374v2，2021。
 
 重点：p.2 图1的候选选择差距；§2.1，p.3 的 pass@k 估计；§2.2–2.3，p.4 的 HumanEval 与隔离执行；§3.2，p.4 的初始化和空白串 token；p.5 的采样预算与选择问题。本文的 Codex 数字均指该历史研究模型。
 
 <a id="ref-r04"></a>
 ### R04 — StarCoder2 Tokenizer 配置
 
-文件：`004_StarCoder2_tokenizer.json`。
+文件：[004_StarCoder2_tokenizer.json](references/004_StarCoder2_tokenizer.json)。
 
 重点：`added_tokens` 中的 FIM、仓库与文件标记；`pre_tokenizer` 中的数字与 ByteLevel 预处理；`model.type` 的 BPE。该文件是实现配置，不是模型能力评测。不得仅凭特殊 token 存在推断相应任务能力。
 
@@ -1933,7 +1958,7 @@ delivery:
 ### R05 — Code Llama
 
 **Rozière et al.，*Code Llama: Open Foundation Models for Code*.**  
-文件：`005_Code_Llama.pdf`。上传版本 arXiv:2308.12950v3，2024 年更新。
+文件：[005_Code_Llama.pdf](references/005_Code_Llama.pdf)。归档版本 arXiv:2308.12950v3，2024 年更新。
 
 重点：§2.1–2.2，pp.3–5 的变体、追加训练与混合；§2.3–2.4，p.4 的 FIM 和长上下文；§2.5，p.5 的 self-instruct 与 rehearsal；§3.4.1，p.13 的初始化对照。特别注意 70B 与早期其他规模变体的配方并不完全相同。
 
@@ -1941,7 +1966,7 @@ delivery:
 ### R06 — Qwen2.5-Coder
 
 **Hui et al.，*Qwen2.5-Coder Technical Report*.**  
-文件：`006_Qwen2.pdf`。实际题名不是一般的 Qwen2 报告；上传版本 arXiv:2409.12186v3，2024。
+文件：[006_Qwen2.pdf](references/006_Qwen2.pdf)。实际题名不是一般的 Qwen2 报告；归档版本 arXiv:2409.12186v3，2024。
 
 重点：p.4 表2 tokenizer；p.5 图1清洗实验；p.6 表3混合数据；§3.2，pp.6–7 文件级与仓库级训练；§4.1–4.2，pp.8–9 数据检查、SFT、FIM 混合与 DPO。讲义第 12 页的 MMLU 数值差异见附录 C。
 
@@ -1949,7 +1974,7 @@ delivery:
 ### R07 — InCoder
 
 **Fried et al.，*InCoder: A Generative Model for Code Infilling and Synthesis*.**  
-文件：`007_InCoder.pdf`。ICLR 2023，上传版本 arXiv:2204.05999v3。
+文件：[007_InCoder.pdf](references/007_InCoder.pdf)。ICLR 2023，归档版本 arXiv:2204.05999v3。
 
 重点：§2，pp.2–3 的 causal masking；§4，pp.4–5 的同模型推理对照；p.5 表1填空通过率。学习右侧上下文、序列重排、mask 与结束标记的作用，并保留“空洞位置已知”的任务前提。
 
@@ -1957,7 +1982,7 @@ delivery:
 ### R08 — FIM scaling study
 
 **Bavarian et al.，*Efficient Training of Language Models to Fill in the Middle*.**  
-文件：`008_Scaling_study.pdf`。arXiv:2207.14255v1，2022。
+文件：[008_Scaling_study.pdf](references/008_Scaling_study.pdf)。arXiv:2207.14255v1，2022。
 
 重点：§3，pp.6–7 的 PSM、SPM、损失与打包；§4.4–4.5，p.12 的切分边界和表2；§5，p.13 的追加训练实验；§8，p.17 的结论及范围。不要把 FIM-for-free 解释为没有计算成本。
 
@@ -1965,7 +1990,7 @@ delivery:
 ### R09 — OctoPack
 
 **Muennighoff et al.，*OctoPack: Instruction Tuning Code Large Language Models*.**  
-文件：`009_OctoPack.pdf`。上传版本 arXiv:2308.07124v2，2024 年更新。
+文件：[009_OctoPack.pdf](references/009_OctoPack.pdf)。归档版本 arXiv:2308.07124v2，2024 年更新。
 
 重点：§2，pp.3–4 区分 COMMITPACK、COMMITPACKFT 与实际子集；§3，pp.4–5 的 HumanEvalPack；§4，pp.5–8 的指令数据消融与小修改难点。尤其保留单文件提交过滤和解释往返评估的边界。
 
@@ -1973,7 +1998,7 @@ delivery:
 ### R10 — DrRepair 摘要页
 
 **Yasunaga & Liang，*Graph-based, Self-Supervised Program Repair from Diagnostic Feedback*.**  
-文件：`010_DrRepair.html`。PMLR / ICML 2020 摘要与元数据页。
+文件：[010_DrRepair.html](references/010_DrRepair.html)。PMLR / ICML 2020 摘要与元数据页。
 
 重点：Abstract 中的 program-feedback graph、源码与诊断符号关联、自监督修复样本。HTML 含原论文与代码入口，但本笔记对其机制的直接文件依据是摘要。教学示例不冒充摘要中提供的完整实现细节。
 
@@ -1981,7 +2006,7 @@ delivery:
 ### R11 — CodeRL
 
 **Le et al.，*CodeRL: Mastering Code Generation through Pretrained Models and Deep Reinforcement Learning*.**  
-文件：`011_CodeRL.pdf`。上传版本 arXiv:2207.01780v3，2022。
+文件：[011_CodeRL.pdf](references/011_CodeRL.pdf)。归档版本 arXiv:2207.01780v3，2022。
 
 重点：§3.3，pp.6–9 的奖励、baseline、critic 与推理反馈；§3.4，p.10 的训练过程；§4.4，pp.12–14 的消融；p.9 图4 的 refine / repair 两条路径。注意学习到的局部权重不是因果贡献，且部分消融使用 beam search。
 
@@ -1989,7 +2014,7 @@ delivery:
 ### R12 — CodeExecutor
 
 **Liu et al.，*Code Execution with Pre-trained Language Models*.**  
-文件：`012_CodeExecutor.pdf`。Findings of ACL 2023；论文印刷页码 4984–4999，对应上传 PDF 16 页。
+文件：[012_CodeExecutor.pdf](references/012_CodeExecutor.pdf)。Findings of ACL 2023；论文印刷页码 4984–4999，对应本地 PDF 16 页。
 
 重点：p.1 自然与形式通道；§3–4，pp.3–5 的变异、执行轨迹与课程学习；§6，pp.7–8 的输出、轨迹与候选筛选；p.9 限制。特别注意 200 个候选筛选到 50 个后的评价口径。
 
@@ -1997,7 +2022,7 @@ delivery:
 ### R13 — Grammar-based code generation
 
 **Yin & Neubig，*A Syntactic Neural Model for General-Purpose Code Generation*.**  
-文件：`013_Grammar-based_code_generation.pdf`。ACL 2017，DOI:10.18653/v1/P17-1041。
+文件：[013_Grammar-based_code_generation.pdf](references/013_Grammar-based_code_generation.pdf)。ACL 2017，DOI:10.18653/v1/P17-1041。
 
 重点：§2–3，pp.2–3 的 AST、APPLYRULE 与 GENTOKEN；§4，pp.4–5 的复制与结构化信息流。其贡献是显式语法先验与结构化生成，不是对任意业务需求的正确性证明。
 
@@ -2005,7 +2030,7 @@ delivery:
 ### R14 — CodeBLEU
 
 **Ren et al.，*CodeBLEU: a Method for Automatic Evaluation of Code Synthesis*.**  
-文件：`014_CodeBLEU.pdf`。上传版本 arXiv:2009.10297v2，2020。
+文件：[014_CodeBLEU.pdf](references/014_CodeBLEU.pdf)。归档版本 arXiv:2009.10297v2，2020。
 
 重点：§3，pp.2–3 的四项公式、AST 与归一化数据流；p.3 的总和 / 均值例子。本文沿用原文的 semantic data-flow match 名称，但明确它是代理度量，不是完整语义等价证明。
 
@@ -2013,7 +2038,7 @@ delivery:
 ### R15 — CodeBERTScore
 
 **Zhou et al.，*CodeBERTScore: Evaluating Code Generation with Pretrained Models of Code*.**  
-文件：`015_CodeBERTScore.pdf`。EMNLP 2023；上传 PDF 17 页。
+文件：[015_CodeBERTScore.pdf](references/015_CodeBERTScore.pdf)。EMNLP 2023；本地 PDF 17 页。
 
 重点：§1，pp.1–2 对文本、AST 和执行评估的讨论；§2.3，pp.3–4 的上下文编码、token 过滤、相似度和 F1 / F3；p.3 图2。该指标依赖参考实现，不能直接解释成校准的正确性概率。
 
@@ -2021,7 +2046,7 @@ delivery:
 ### R16 — EvalPlus
 
 **Liu et al.，*Is Your Code Generated by ChatGPT Really Correct? Rigorous Evaluation of Large Language Models for Code Generation*.**  
-文件：`016_EvalPlus.pdf`。NeurIPS 2023，arXiv:2305.01210v3。
+文件：[016_EvalPlus.pdf](references/016_EvalPlus.pdf)。NeurIPS 2023，arXiv:2305.01210v3。
 
 重点：pp.2–3 的不足测试与总体流程；§2.1，p.4 的种子和类型感知变异；§2.2–2.3，p.5 的集合覆盖、测试约简与输入契约；p.6 的参考实现和评估。不要把大规模新增测试解释为完整正确性证明。
 
@@ -2029,7 +2054,7 @@ delivery:
 ### R17 — AlphaCode / CodeContests
 
 **Li et al.，*Competition-Level Code Generation with AlphaCode*.**  
-文件：`017_CodeContests_AlphaCode.pdf`。上传报告为 2022 年版本，arXiv:2203.07814。
+文件：[017_CodeContests_AlphaCode.pdf](references/017_CodeContests_AlphaCode.pdf)。归档报告为 2022 年版本，arXiv:2203.07814。
 
 重点：§4.3–4.6，pp.12–13 的 one-of-many、采样、过滤与聚类；p.20 图8 的选择策略；§6.5，pp.26–27 的 validation loss 与解决率。内部采样预算、提交预算、候选集合指标与最终交付指标必须分开。
 
@@ -2098,7 +2123,7 @@ delivery:
 |---|---|---|
 | Qwen 混合实验纯代码组 MMLU | 讲义 p.12 为 23.8；R06 表3 MMLU 为 42.8，23.8 对应 GSM8K | 分别说明，表格明确按原论文列名展示 |
 | Qwen 中间比例行 | 原论文正文与表格存在不一致 | 不使用该行推导或补猜“正确比例” |
-| `003_Whitespace-run_tokens.pdf` 文件名 | 名称只指向 tokenizer 主题，内容是完整 Codex 论文 | 使用真实论文题名，并保留上传文件名 |
+| `003_Whitespace-run_tokens.pdf` 文件名 | 名称只指向 tokenizer 主题，内容是完整 Codex 论文 | 使用真实论文题名，并保留归档文件名 |
 | `006_Qwen2.pdf` 文件名 | 内容实际为 Qwen2.5-Coder | 按真实题名引用 |
 | `010_DrRepair.html` | 是摘要页，不是全文 PDF | 只将摘要支持的机制作为直接文件依据 |
 
@@ -2127,9 +2152,9 @@ delivery:
 
 ### C.4 本文教学实验的验证边界
 
-完整 Python 脚本在本次整理环境实际运行，10 项检查通过。只验证了本教学示例、所列契约和明确说明的重试次数定义。
+完整 Python 脚本在原整理环境与本次审阅环境中均实际运行，10 项检查通过；本次复核使用 Python 3.11.10，输出见 §15.4。只验证了本教学示例、所列契约和明确说明的重试次数定义。
 
-本文没有声称重新训练任何论文模型、复现论文基准成绩、搭建真实企业代码库 Agent，或验证上传讲义中所有框架的当前实现。短代码片段、JSON、YAML、提示模板和工程架构用于说明与复用，不能自动视为生产验收结果。
+本文没有声称重新训练任何论文模型、复现论文基准成绩、搭建真实企业代码库 Agent，或验证本地讲义中所有框架的当前实现。短代码片段、JSON、YAML、提示模板和工程架构用于说明与复用，不能自动视为生产验收结果。
 
 ---
 

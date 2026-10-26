@@ -70,3 +70,8 @@
 - [LLaMA-Factory](references/019_LLaMA-Factory.md)
   - Source: https://github.com/hiyouga/LLaMA-Factory
 
+<!-- BEGIN LOCAL LEARNING -->
+## 中文学习讲解
+
+- [完整课程讲解](SFT_Lecture08_Integrated_Notes.md)
+<!-- END LOCAL LEARNING -->

@@ -101,3 +101,8 @@
 - [FastMCP Bearer Client Authentication](references/026_FastMCP_Bearer_Client_Authentication.html)
   - Source: https://gofastmcp.com/clients/auth/bearer
 
+<!-- BEGIN LOCAL LEARNING -->
+## 中文学习讲解
+
+- [完整课程讲解](lecture-02-tool-use-complete-notes.zh-CN.md)
+<!-- END LOCAL LEARNING -->

@@ -1,6 +1,6 @@
 # Deep Research Agent 通用设计：一手来源核查
 
-核查日期：2026-10-07。本文为通用设计提供补充来源核查；课程资料入口为 [SOURCES.md](SOURCES.md)，已有综合归纳见[课程笔记第四、九、十一、十四章](Deep_Research_Lecture10_Integrated_Notes.md)。下文分别标记原文事实、工程推导与结论边界，不把不同系统的实验数字合并比较。
+初次核查：2026-10-07；本地来源与独立阅读复核：2026-10-26。本文为通用设计提供补充来源核查；课程资料入口为 [SOURCES.md](SOURCES.md)，已有综合归纳见[课程笔记第四、九、十一、十四章](Deep_Research_Lecture10_Integrated_Notes.md)。下文分别标记原文事实、工程推导与结论边界，不把不同系统的实验数字合并比较。
 
 ## 1. OpenScholar：证据缺口驱动修订，引用单独验收
 
@@ -10,7 +10,7 @@
 
 **边界。** 这些材料支持闭环工作流，不证明反思次数越多越好，也不证明引用支持等同于来源真实。结构化反馈、版本回滚和证据账本是这里的实现建议，并非论文逐项验证过的固定架构。
 
-**访问说明。** 本次在线访问 Nature 遇到身份/cookie 跳转；上述机制通过仓库保存的[原文 HTML](readings/001_OpenScholar.html)核对，保留原文章节锚点用于复核。未把在线抓取失败表述为已成功读取当前官网全文。
+**访问说明。** 2026-10-07的核查记录记载 Nature 在线访问遇到身份/cookie 跳转；上述机制通过仓库保存的[原文 HTML](readings/001_OpenScholar.html)核对，保留原文章节锚点用于复核。2026-10-26复核仍依据本地HTML，不把历史访问失败或本地读取改写成已成功读取当前官网全文。
 
 ## 2. AgentIR：传递本轮信息需求，避免无选择地堆叠历史
 
@@ -22,7 +22,7 @@
 
 ## 3. Anthropic：并行有适用条件，长期执行需要持久状态
 
-**已核实的官方工程经验。** 2025-06-13 文章描述 lead/worker 研究系统：明确子任务目标、输出、工具来源与边界；协调者综合后决定是否继续，引用组件定位来源。文章认为可独立展开的广度任务更适合并行，而高度共享上下文、依赖密集的任务较难获益；同时指出额外 token 成本，以及持久执行、重试、checkpoint 和恢复的重要性。[How we built our multi-agent research system：Benefits / Architecture / Prompt engineering / Production reliability](https://www.anthropic.com/engineering/multi-agent-research-system)。
+**已核实的官方工程经验。** [本地归档](../../2680/readings/web/anthropic-com-engineering-multi-agent-research-system-a3afc1e8.html)中的2025-06-13文章描述 lead/worker 研究系统：明确子任务目标、输出、工具来源与边界；协调者综合后决定是否继续，引用组件定位来源。文章认为可独立展开的广度任务更适合并行，而高度共享上下文、依赖密集的任务较难获益；同时指出额外 token 成本，以及持久执行、重试、checkpoint 和恢复的重要性。[How we built our multi-agent research system：Benefits / Architecture / Prompt engineering / Production reliability](https://www.anthropic.com/engineering/multi-agent-research-system)。
 
 **工程推导。** 先实现可靠的单协调者循环，只有可独立验收的子问题才并行。子任务返回结构化证据包与原文定位，不只交付摘要；主协调者负责统一口径、合并冲突和全局停止决策。执行层记录任务、工具结果、预算及已完成阶段，故障后从检查点继续。
 
@@ -41,3 +41,12 @@
 | 怎样防止长任务失败？ | 持久化产物和检查点，记录工具失败，支持继续执行。 | Anthropic 的生产实践；恢复策略需匹配实际工具副作用。 |
 
 据此，通用架构应围绕**任务要求 → 证据需求 → 工具行动 → 证据状态更新 → 综合与核验**形成循环；多 Agent、专用检索训练与更大模型都是可按瓶颈增加的能力，而非定义 Deep Research 的前置条件。
+
+
+## 5. 复核材料版本与实现验收边界
+
+2026-10-26按仓库实际正文复核：AgentIR为arXiv:2603.04384v3（2026-03-09，22页），§3.2与§5分别提供机制及输入比较；OpenScholar使用本地Nature HTML的Inference、Data filtering与Citation accuracy小节；Anthropic文章使用仓库HTML归档。在线链接用于来源追溯，本地文件用于固定本篇实际依据。
+
+OpenScholar的生成式citation verification是提出检查与补引，不是形式证明；其训练数据过滤明确发现初稿有时优于修订稿，因而系统不能把“执行了核验/反思”当作自动通过。这里建议的实现验收应另测：无支持的主张能否被识别、引用是否只支持更窄范围、原文更新后旧结论是否失效。
+
+AgentIR当前轮输入的检索优势，也不等于长期状态可以删除：完整轨迹可供审计，相关状态可供本轮决策，两者承担不同职责。Anthropic的可恢复执行经验同样不是通用幂等保证；重试前仍须知道外部动作是否已经发生。上述验收条目是工程推导，未在本地运行模型或系统实验。

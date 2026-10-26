@@ -2,14 +2,14 @@
 
 ## Lecture 08 综合学习笔记：讲义、论文与工程实践的贯通解释
 
-**主材料：** `8_agent_design_5.pdf`  
+**主材料：** [8_agent_design_5.pdf](8_agent_design_5.pdf)  
 **辅助材料：** Anthropic 成本与性能文章、RouteLLM、Tool-use Inefficiency / PTE 论文、Assignment 3，以及 [SOURCES.md](SOURCES.md) 中列出的 Uber 工程文章。  
 **面向读者：** 有 LLM 应用开发经验，希望深入理解 Agent 成本、性能、可靠性与运行架构的工程师。  
 **整理日期：** 2026-10-13。
 
 > **核心命题：Agent 成本优化不是让模型少做事，而是减少没有推进任务的计算，把必要的能力、证据获取与验证放在最值得投入的位置。**
 
-本笔记整合前面的两轮讲解，删除重复叙述，保留公式、论文方法、关键实验、工程算例、来源边界和落地设计。主线沿用讲义的“成本有效的 Agent → 更快的 Agent → Harness 架构 → 工程实验”，参考材料则用于解释机制、提供实验证据，以及指出不同优化之间的冲突。
+本笔记贯通公式、论文方法、关键实验、工程算例、来源边界和落地设计。主线沿用讲义的“成本有效的 Agent → 更快的 Agent → Harness 架构 → 工程实验”，参考材料则用于解释机制、提供实验证据，以及指出不同优化之间的冲突。
 
 ### 阅读约定与来源边界
 
@@ -17,7 +17,7 @@
 
 本文使用四种表述：**材料结论**是附件或明确列出的外部来源报告的内容；**解释性推导**是将材料机制展开的数学分析；**工程建议**是将这些机制应用到系统设计的建议；**教学算例**使用假设数据，不代表真实生产收益。它们不会混作同一种证据。
 
-模型名称、产品特性、API 参数和价格倍率均按材料所处版本解释，不作为当前所有模型、供应商或部署环境的统一规则。本文不是最新产品功能审计，也没有运行作业基准或真实业务实验。HTML 正文、论文正文与表格有差异时，保留并说明差异，不自行猜补。全文的 `[L]`、`[A]`、`[R]`、`[T]`、`[H]`、`[U]`、`[S]` 链接指向文末来源，离开本次聊天也能定位原始材料。
+模型名称、产品特性、API 参数和价格倍率均按材料所处版本解释，不作为当前所有模型、供应商或部署环境的统一规则。本文不是最新产品功能审计，也没有运行作业基准或真实业务实验。HTML 正文、论文正文与表格有差异时，保留并说明差异，不自行猜补。全文的 `[L]`、`[A]`、`[R]`、`[T]`、`[H]`、`[U]`、`[S]` 链接指向文末来源，可定位到归档材料或稳定来源。
 
 ### 目录
 
@@ -31,7 +31,7 @@
 
 **实验与迁移：** [16. 优化实验设计](#ch16) · [17. Assignment 3](#ch17) · [18. 投研与审核案例](#ch18) · [19. 总结与诊断地图](#ch19)
 
-**附录：** [A. 讲义页码对照](#appendix-a) · [B. 术语与公式索引](#appendix-b) · [C. 证据边界与数字核对](#appendix-c) · [D. 来源](#sources)
+**附录：** [A. 讲义页码对照](#appendix-a) · [B. 术语与公式索引](#appendix-b) · [C. 证据边界与数字核对](#appendix-c) · [D. 来源](#sources) · [E. 自测与答案](#appendix-e)
 
 ---
 
@@ -321,6 +321,8 @@ $$
 
 GQA 按 KV/Query head 比例调整；MLA 使用压缩维度替代相应表示维度。这些是论文建模中的修正，不是本文重新测出的硬件结果。[T，§3.3、附录 A](#src-t)
 
+**复算限制。** 论文表中的参数与 $\gamma$ 并非全部能按上述公式自洽复现。例如 Table 3 的 Qwen2.5-32B-Instruct 给出 64 层、维度 5,120、31.0B 活跃参数、GQA 比例 $1/2$；使用附录 A.2 的 $\mathrm{HOI}=756.5$ 代入，得到 $\gamma\approx0.007996$，而表中写的是 0.00320。此处保留论文原表，不猜测哪一列有误，也不把表值视为已校准的 serving 参数；复现时需核对模型配置、精度、设备吞吐口径并用实际 trace 校准。[T，§3.3，附录 A.2，Table 3，pp. 4、12–13](#src-t)
+
 **低 $\gamma$ 不等于绝对速度快。** 它描述相对于该模型 prefill 单位的上下文扩张代价。大模型的一个 prefill token 本身可能更贵，因此不能直接用不同模型的 $\gamma$ 给 tokens/s 排名。论文附录 A.4 也明确作此区分。[T，pp. 12–13](#src-t)
 
 若为了理解量纲，将 PTE 乘回某模型的 prefill 单位时间，可写出粗略推导：
@@ -600,7 +602,7 @@ Anthropic 文章解释，prompt cache 复用相同输入前缀对应的内部状
 
 ### 8.4 一段前缀使用几次，缓存才回本？
 
-**解释性推导。** 设该前缀普通读取一次价格为 $P$，写入倍率为 $w$，读取倍率为 $r$，总共使用 $n$ 次，且只有一次写入：
+**解释性推导。** 设该前缀普通读取一次价格为 $P$，写入倍率为 $w\ge0$，读取倍率为 $0\le r<1$，其中 $P>0$；总共使用整数 $n\ge1$ 次，且只有一次写入：
 
 $$
 C_{\mathrm{plain}}=nP
@@ -761,7 +763,7 @@ $$
 
 讲义区分生成前选择、失败升级和逐步骤重选。RouteLLM 主要研究第一种：先看问题，再决定由强模型或弱模型生成回答；它不是先让两个生成模型都回答再挑选，也不是一个已经解决长轨迹联合调度的算法。[L，pp. 22、24](#src-l) [R，§2–3](#src-r)
 
-论文首发编号为 arXiv:2406.18665，上传版本为 v4，首页标注 ICLR 2025。讲义将其记为 RouteLLM（2024），是在使用首发年份，不应据此判断材料互相矛盾。[R，p. 1](#src-r)
+论文首发编号为 arXiv:2406.18665，归档版本为 v4，首页标注 ICLR 2025。讲义将其记为 RouteLLM（2024），是在使用首发年份，不应据此判断材料互相矛盾。[R，p. 1](#src-r)
 
 ### 10.2 Router 预测的是相对优势，不是绝对难度
 
@@ -866,7 +868,7 @@ $$
 
 含义是收回强弱模型差距的 80%，不是准确率为 80%，也不是达到强模型准确率的 80%。[R，§3.2，公式 6](#src-r)
 
-工程解释还应注意分母：若强弱模型差距很小，PGR 会对测量噪声敏感。质量差距和置信区间应一起看，不能只看归一化指标。
+工程解释还应注意分母：若强弱模型差距很小，PGR 会对测量噪声敏感。质量差距和置信区间应一起看，不能只看归一化指标。还需假设 $Q_{\mathrm{strong}}>Q_{\mathrm{weak}}$；两者相等时该比值未定义。PGR 也不是概率，没有天然的 $[0,1]$ 取值保证：不同模型各有擅长题目时，路由可能超过始终使用强模型的平均质量；糟糕路由也可能低于弱模型。这里的 0 和 1 是两种固定模型策略的参考点。
 
 ### 10.8 CPT 与 APGR：为什么要评价整条曲线？
 
@@ -1111,7 +1113,7 @@ PTE 帮助解释模型部分，但不能告诉你某个数据库为什么排队�
 
 它不是为了新增更多候选答案，而是为了将可能必需的工具等待移出后续关键路径。也不同于 token 级 speculative decoding：这里提前执行的是动作或工具请求，而非仅预测下一个 token。
 
-### 13.2 讲义提供了两条分类轴
+### 13.2 预测分类与结果保留条件
 
 | 分类轴 | 讲义中的类别 |
 |---|---|
@@ -1647,7 +1649,7 @@ RouteLLM 留出验证数据用于模型选择，并进行训练—评估问题�
 | 24 | 缓存、前置路由、cascade、逐步骤路由 | vLLM/PagedAttention、SGLang/RadixAttention、Prompt Cache；RouteLLM、MasRouter；FrugalGPT、AutoMix、EcoAssistant；ToolOrchestra、BAAR、MTRouter |
 | 35–36 | 投机范围与预测来源 | SPORK、PASTE、Speculative Actions、Speculative Tool Calls、B-PASTE、Speculative Macro Commit、Speculate with Memory、SPAgent |
 
-这些名称按讲义记录。除单独上传并在正文详解的阅读外，本文没有逐篇核验其全部方法、结果和当前项目状态，不能把讲义的一行摘要扩大为已复现证据。[L，pp. 12、17、20、23–24、35–36](#src-l)
+这些名称按讲义记录。除本课归档并在正文详解的阅读外，本文没有逐篇核验其全部方法、结果和当前项目状态，不能把讲义的一行摘要扩大为已复现证据。[L，pp. 12、17、20、23–24、35–36](#src-l)
 
 <a id="appendix-b"></a>
 ## 附录 B：术语与公式索引
@@ -1756,6 +1758,8 @@ assert llm_cost(Usage(0, 100_000, 0, 200), weak) == Decimal("0.0252")
 
 供应商折扣、阶梯价格、Batch、不同 TTL 写入价、失败请求收费、工具费用等，应先按实际规则转换成对应 usage/price 或独立账项，不能从这段简化代码中推断。
 
+**实际运行记录。** 2026-10-26，在 Python 3.11.10 中原样运行上述完整代码，两个 Decimal 金额断言均通过，分别为 0.011 与 0.0252 美元。未调用外部 API、运行 Agent 或测量真实业务收益。
+
 <a id="appendix-c"></a>
 ## 附录 C：证据边界、数字核对与前文易误读之处
 
@@ -1766,8 +1770,9 @@ assert llm_cost(Usage(0, 100_000, 0, 200), weak) == Decimal("0.0252")
 | PTE 的 SimpleQA Thinking 倍率 | 正文写 4.2×；表 6 为 9,306 与 3,184 | 同时保留；表值相除约 2.92×；不猜补差异原因 |
 | RouteLLM 的 3.66× | 表 6 标题写相对 GPT-4，正文按相对随机路由的强模型调用比例描述 | 指出可由 49.03/13.40 得到该值，不当作相对全强模型账单的统一节约 |
 | Anthropic 保留工单的 accuracy | 正文写 14 张工单、90.5% 对 78.6% | 不推断每工单一个二元标签，不等同端到端任务全部成功率 |
-| Anthropic 图像中的更多精确点值 | 本地 HTML 以远程 URL 引用图 3、图 6，本次未成功重新获取其图片内容 | 采用正文可复核数字；前次仅依赖图像描述的额外数值或轴标签，不作为本稿确定事实 |
+| Anthropic 图像中的更多精确点值 | 本地 HTML 以远程 URL 引用图片，未随本课归档图像正文 | 采用正文可复核数字；未核验的额外点值或轴标签不作为本稿确定事实 |
 | PTE 的 wall-clock 相关性 | 验证测量排除工具执行与网络时间 | 明确为纯模型生成延迟，而非端到端 Agent 时间 |
+| PTE 的参数复算 | Table 3 的 Qwen2.5-32B 参数按公式算约 0.007996，原表为 0.00320 | 保留来源差异；不将原表当作实测校准值 |
 | PTE 的跨硬件结论 | 更改硬件参数重算轨迹指标、比较排名 | 不改写成所有设备上的实机完整重跑 |
 | p. 30“成本技术都降延迟” | 讲义其他页同时给出更便宜可能更慢、并行可能更贵 | 作为教学概括，保留适用条件，不当普遍定律 |
 | 讲义与作业的 10 美元 | 主讲义是单任务限额示例；作业是每次 run 的硬限制 | 分别记录，不混用 |
@@ -1799,49 +1804,49 @@ PTE 与失败共同出现，不说明 PTE 导致失败；“先内部算完再�
 <a id="sources"></a>
 ## 附录 D：来源与复查位置
 
-正文使用文档内部链接和“页码/章节/图表”定位，不依赖聊天专用引用标记。网页 URL 用代码形式保留，便于复制；原始上传文件是本稿的主要版本依据。在线页面后续变化时，不应静默替换这里引用的附件版本。
+正文使用文档内部链接和“页码/章节/图表”定位；实际归档文件与稳定来源链接如下。在线页面后续变化时，不应静默替换这里引用的附件版本。
 
 <a id="src-l"></a>
 ### [L] 主讲义：Agent design V: cost-effective agents
 
-**文件：** `8_agent_design_5.pdf`，54 页。  
+**文件：** [8_agent_design_5.pdf](8_agent_design_5.pdf)，54 页。  
 **署名与机构：** Juncheng Yang；Harvard MaDSys。  
 **SOURCES 标注课程日期：** 2026-10-07。  
-**原始地址：** `https://cs2680.com/slides/8_agent_design_5.pdf`
+**原始地址：** [原始来源](https://cs2680.com/slides/8_agent_design_5.pdf)
 
 主要复查位置：p. 5 成本范围；pp. 6–7 成本模型；pp. 8–15 课堂日志；pp. 16–24 上下文、输出、缓存和路由；pp. 25–27 反向成本与停止；pp. 28–37 延迟和投机；p. 38 测量闭环；pp. 39–53 架构和案例。
 
 <a id="src-a"></a>
 ### [A] Anthropic：Reducing cost and improving performance with Claude Platform
 
-**文件：** `001_cost_and_performance_on_Claude_Platform_7a7670.html`。  
+**文件：** [001_cost_and_performance_on_Claude_Platform_7a7670.html](readings/001_cost_and_performance_on_Claude_Platform_7a7670.html)。  
 **作者：** 文件元数据署名 Lance Martin。  
-**版本信息：** 附件正文说明初始发表于 2026-09-08，之后更新了部分模型实验；本文按上传快照整理。  
-**SOURCES 地址：** `https://claude.com/blog/reducing-cost-and-improving-performance-with-claude-platform`  
-**附件 canonical 地址：** `https://claude.com/resources/articles/reducing-cost-and-improving-performance-with-claude-platform`
+**版本信息：** 附件正文说明初始发表于 2026-09-08，之后更新了部分模型实验；本文按归档快照整理。  
+**SOURCES 地址：** [原始来源](https://claude.com/blog/reducing-cost-and-improving-performance-with-claude-platform)  
+**附件 canonical 地址：** [原始来源](https://claude.com/resources/articles/reducing-cost-and-improving-performance-with-claude-platform)
 
 主要复查位置：Prompt cache / How to fix it；Instructions；Effort；Automating cost reduction；Getting started。图 1–2 为缓存诊断与布局，图 3 为提示词迁移，图 4–5 为 effort/模型曲线，图 6 为配置搜索，图 7 为多个 benchmark 的成本变化。本稿优先引用可复核正文；远程图片复核限制见附录 C。
 
 <a id="src-r"></a>
 ### [R] RouteLLM: Learning to Route LLMs with Preference Data
 
-**文件：** `002_RouteLLM_4e1932.pdf`，16 页。  
+**文件：** [002_RouteLLM_4e1932.pdf](readings/002_RouteLLM_4e1932.pdf)，16 页。  
 **作者：** Isaac Ong、Amjad Almahairi 等。  
-**上传版本：** arXiv:2406.18665v4，2025-02-23；首页标注 ICLR 2025。  
-**原始地址：** `https://arxiv.org/abs/2406.18665`  
-**版本地址：** `https://arxiv.org/abs/2406.18665v4`
+**归档版本：** arXiv:2406.18665v4，2025-02-23；首页标注 ICLR 2025。  
+**原始地址：** [原始来源](https://arxiv.org/abs/2406.18665)  
+**版本地址：** [原始来源](https://arxiv.org/abs/2406.18665v4)
 
 主要复查位置：§3 路由目标与指标；§4 偏好数据、增强与四种方法；§5 实验；表 1–4 benchmark 与模型迁移；表 5 数据相似度；表 6 经济分析；表 7 Router 开销；附录 B 数据污染、C 相似度定义、D 成本计算。本文未把这些单轮结果扩展成已经验证的长轨迹最优路由。
 
 <a id="src-t"></a>
 ### [T] Beyond Accuracy: Unveiling Inefficiency Patterns in Tool-Integrated Reasoning
 
-**文件：** `003_tool_use_inefficiency_58521d.pdf`，22 页。  
+**文件：** [003_tool_use_inefficiency_58521d.pdf](readings/003_tool_use_inefficiency_58521d.pdf)，22 页。  
 **作者：** Qisheng Su、Shiting Huang、Zhen Fang、Ziyan Chen、Zehui Chen、Feng Zhao。  
-**上传版本：** arXiv:2604.05404v2，2026-04-14。  
-**原始地址：** `https://arxiv.org/abs/2604.05404`  
-**版本地址：** `https://arxiv.org/abs/2604.05404v2`  
-**论文给出的代码地址：** `https://github.com/sqs-ustc/tool-reasoning-framework-PTE`
+**归档版本：** arXiv:2604.05404v2，2026-04-14。  
+**原始地址：** [原始来源](https://arxiv.org/abs/2604.05404)  
+**版本地址：** [原始来源](https://arxiv.org/abs/2604.05404v2)  
+**论文给出的代码地址：** [原始来源](https://github.com/sqs-ustc/tool-reasoning-framework-PTE)
 
 主要复查位置：§3 PTE；§4 验证；§5 环境；§6 行为模式；§7 与正确性的关系；§9 局限；附录 A 硬件与 gamma；B.3 延迟验证；图 9 提示词；表 5–7 详细结果；附录 D 四种轨迹；附录 F 难度控制分析；表 10 指标与延迟的比较。代码地址由论文提供，本文未进行源码审计或运行复现。
 
@@ -1849,18 +1854,18 @@ PTE 与失败共同出现，不说明 PTE 导致失败；“先内部算完再�
 ### [H] Assignment 3: MadsOpt: Harness Competition
 
 **本地文件：** [8_assignment3.pdf](../assignment/assignment-3/8_assignment3.pdf)，7 页。  
-**原始地址：** `https://cs2680.com/slides/8_assignment3.pdf`
+**原始地址：** [原始来源](https://cs2680.com/slides/8_assignment3.pdf)
 
 主要复查位置：pp. 2–3 容器与调度；p. 4 时间、模型与成本约束；p. 5 代码结构；pp. 6–7 提交、指标与评分。三档模型身份、完整 API 契约及评分实现需实际代码确认，不能从幻灯片补写。
 
 <a id="src-u"></a>
 ### [U] Uber：Running a Software Factory Efficiently at Uber Scale
 
-**来源类型：** [SOURCES.md](SOURCES.md) 列出的在线阅读，非本次上传全文文件。  
+**来源类型：** [SOURCES.md](SOURCES.md) 列出的在线阅读，本课未归档全文。  
 **作者：** Uday Kiran Medisetty。  
 **页面日期：** 2026-08-27。  
-**本次查阅：** 2026-10-13。  
-**地址：** `https://www.uber.com/us/en/blog/efficient-software-factory/`
+**查阅记录：** 2026-10-13；2026-10-26 复核 Code-Mode 与 Prompt Caching Strategy 正文。  
+**地址：** [原始来源](https://www.uber.com/us/en/blog/efficient-software-factory/)
 
 本稿只用其 Code-Mode 的 SQL 对照与按会话特征选择缓存 TTL 的小范围案例，不将它的组织规模、全局收益或全部基础设施设计扩展为本课的普遍结论。
 
@@ -1873,9 +1878,45 @@ PTE 与失败共同出现，不说明 PTE 导致失败；“先内部算完再�
 
 文件列出主讲义、Assignment 3、Anthropic、RouteLLM、tool-use inefficiency、Uber，以及全课程阅读和 notes 页面。后两者在本文仅作为索引保留，并未当成已经全文阅读的额外证据。
 
-**全课程阅读地址：** `https://cs2680.com/readings.html#oct-07`  
-**课程 notes 地址：** `https://cs2680.com/notes/cost-effective-agents.html`
+**全课程阅读地址：** [原始来源](https://cs2680.com/readings.html#oct-07)  
+**课程 notes 地址：** [原始来源](https://cs2680.com/notes/cost-effective-agents.html)
 
 ---
 
 **全文的判断底线：同样任务、清晰验收、完整成本、可定位的证据、明确的适用条件。**
+
+
+<a id="appendix-e"></a>
+## 附录 E：自测问题与参考答案
+
+### E.1 缓存读取占 97.6%，是否等于费用节约 97.6%？
+
+不等于。它是讲义特定日志中的 token 占比；普通输入、缓存写入、读取及输出的计费倍率不同，读取仍可能收费。还要明确对照轨迹与重建次数，按互斥 usage 桶核算实际账单。
+
+### E.2 输出减少一半，为什么任务仍可能更慢？
+
+累计上下文、工具等待、排队、重试或关键分支可能没有缩短。PTE 只近似模型部分，真实完成时间还要按依赖图找关键路径；减少非关键分支时间未必影响交付时刻。
+
+### E.3 为什么更低的 $\gamma$ 不等于模型更快？
+
+它将 decode 相对该模型一个 prefill token 的成本归一化。不同模型的这个基准本身不同；硬件与 serving 假设也不同。原表参数还存在复算不一致，不能直接据其排序 tokens/s 或承诺端到端延迟。
+
+### E.4 CPT(80%) 为 31.31%，能说账单只剩 31.31% 吗？
+
+不能。它是恢复强弱质量差距 80% 所需的强模型调用比例，仍有弱模型和 Router 费用，也受到输入输出长度、缓存和失败恢复影响。PGR、强模型份额和美元是不同指标。
+
+### E.5 为什么热缓存强模型可能比冷缓存弱模型便宜？
+
+切换模型会失去原模型前缀复用，长输入重写可能超过输出和单价节约。§11.3 的假设算例中强模型当轮 0.011 美元、弱模型冷启动 0.0252 美元；仅在后续足够多轮命中的条件下，切换才回本。
+
+### E.6 删除重复验证，怎样避免删掉可靠性？
+
+先明确检查对象、独立检错方法、通过标准与失败后的动作，测它能发现哪些真实错误。“原答案恰好正确”不能证明验证没价值；打印已有结论也不能证明完成了独立验证。
+
+### E.7 如何判断子 Agent 或投机执行是否值得？
+
+把隔离和关键路径收益，与重复输入、额外生成、合并、错猜丢弃和资源竞争一起算。在同任务上测质量、完整成本与延迟；投机结果还需满足授权、版本和状态一致性要求。
+
+### E.8 本课的运行记录证明了哪些收益？
+
+只证明本地 Decimal 成本函数与两个教学算例一致。论文、供应商和 Uber 的数字仍是各自版本及设置下的来源报告；本文没有复现模型基准、作业成绩或真实业务节约。

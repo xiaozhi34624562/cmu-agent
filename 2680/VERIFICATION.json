@@ -1,0 +1,24 @@
+{
+  "course": "2680",
+  "checked_at_utc": "2026-10-26T05:51:05.887908+00:00",
+  "reviewed_documents": 12,
+  "published_lessons": [
+    "1.CourseOverviewAndLogistics",
+    "10.EfficientLLMServingBasicsI.IntroToLLMs",
+    "11.EfficientLLMServingBasicsII.IntroToGPUs",
+    "2.AgentsUseI.HowClaudeCodeWorks",
+    "3.AgentsUseII.100xEngineerWithMultiAgents",
+    "4.AgentsDesignI.ContextManagementAndToolDesign",
+    "5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication",
+    "6.AgentsDesignIII.AgentMemoryAndReliability",
+    "7.AgentDesignIV.AgentEvaluation",
+    "8.AdvancedAgentDesignI.CostAndPerformance",
+    "9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness"
+  ],
+  "checked_local_links": 1375,
+  "explicit_pdf_page_links_sources": 0,
+  "supplementary_sources": 16,
+  "original_source_checksums": 604,
+  "scope": "Offline structure and integrity; not semantic proof or model benchmark replication",
+  "errors": []
+}

@@ -27,7 +27,7 @@
 - [Plan-and-Act](readings/006_Plan-and-Act.pdf)
   - Source: https://arxiv.org/abs/2503.09572
 
-- Thinking vs. Doing
+- [Thinking vs. Doing](readings/007_Thinking_vs.pdf)
   - Source: https://arxiv.org/abs/2506.07976
 
 - [Calibrate-Then-Act](readings/008_Calibrate-Then-Act.pdf)
@@ -119,3 +119,8 @@
 - [Don't Sleep on Single-Agent Systems](references/026_Don_t_Sleep_on_Single-Agent_Systems.html)
   - Source: https://www.openhands.dev/blog/dont-sleep-on-single-agent-systems
 
+<!-- BEGIN LOCAL LEARNING -->
+## 中文学习讲解
+
+- [完整课程讲解](lecture05_planning_coordination_integrated_notes.md)
+<!-- END LOCAL LEARNING -->

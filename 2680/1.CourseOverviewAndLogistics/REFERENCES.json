@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Python Tutorial: Floating-Point Arithmetic: Issues and Limitations",
+    "url": "https://docs.python.org/3/tutorial/floatingpoint.html",
+    "path": "references/python-floatingpoint.html",
+    "status": "saved",
+    "sha256": "e674c567b9f0bf832ce21f682ff83f0d89ac22f454295be1cf6fa69f8a88b09d",
+    "version": "HTML snapshot retrieved 2026-10-26; moving documentation URL"
+  },
+  {
+    "title": "NVIDIA Floating Point and IEEE 754 Compliance for NVIDIA GPUs",
+    "url": "https://docs.nvidia.com/cuda/floating-point/index.html",
+    "path": "references/nvidia-floating-point.html",
+    "status": "saved",
+    "sha256": "dfc4b4a711aba21c67cdb0e9f1cc4b017689f4a0d63a4a55d0c82fb42b5f1369",
+    "version": "HTML snapshot retrieved 2026-10-26; moving documentation URL"
+  }
+]

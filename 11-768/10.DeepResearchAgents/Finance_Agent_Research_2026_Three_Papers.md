@@ -1,6 +1,6 @@
 # 2026 年金融 Agent 研究：FutureX-Pro、MBABench 与 AURA-4B
 
-> 核查日期：2026-10-05（Asia/Shanghai）。面向读者：学习 Deep Research、工具使用与 Agent 训练的 LLM 工程师。
+> 原始研究核查：2026-10-05；本地资料与全文复审：2026-10-26（Asia/Shanghai）。面向读者：学习 Deep Research、工具使用与 Agent 训练的 LLM 工程师。
 > 研究范围：三篇论文的指定版本、作者公开项目与可访问源码。本文是文献与实现核查，未运行完整基准、训练模型或开展交易回测。
 
 **目录**
@@ -26,7 +26,7 @@
 
 **原文发现、本文分析和工程建议严格分开。**凡称“作者报告”，指论文中的任务、机制或实验；“本文分析”指对实验设计与证据边界的推导；“工程建议”指尚未在本仓库或用户系统中验证的方案。教学数字会单独标明，不当作论文实测。
 
-本次核查得到五项最重要的结论：
+固定版本材料支持以下五项结论：
 
 - **预测与检索的验收逻辑不同。**FutureX-Finance 把任务推进到尚未发生的结果，但价格相对误差得分本身不能证明方向预测或交易收益；需要简单价格延续等基线才能判断新增信息价值。原文 §2 与本文对指标的分析见后文。
 - **最终数字正确，并不足以验收专业交付物。**MBABench 同时检查结果、公式与格式，强调可审阅和可修改性。其最高综合分是加权质量分，不能读成整项工作成功率。原文 §3—6、图 2。
@@ -69,7 +69,7 @@
 
 ### 2.1 身份、版本与原团队关系
 
-- 论文完整标题为 *FutureX-Pro: Extending Future Prediction to High-Value Vertical Domains*。arXiv 当前记录仅 v1，首发 2026-01-18；不能把 2026 年发布误写成 2026 年实验，金融图 2 的数据来自 10 月 24 日至 11 月 28 日。结合 2026-01 首发及论文其余例子的 2025 年时间，研究期应理解为 **2025 年 10—11 月**；图注本身未打印年份，需要保留此边界。[元信息](https://arxiv.org/abs/2601.12259)、[PDF，p.4 Fig.2](https://arxiv.org/pdf/2601.12259v1)。
+- 论文完整标题为 *FutureX-Pro: Extending Future Prediction to High-Value Vertical Domains*。本篇固定阅读 arXiv v1，首发 2026-01-18；不能把 2026 年发布误写成 2026 年实验，金融图 2 的数据来自 10 月 24 日至 11 月 28 日。结合 2026-01 首发及论文其余例子的 2025 年时间，研究期应理解为 **2025 年 10—11 月**；图注本身未打印年份，需要保留此边界。[元信息](https://arxiv.org/abs/2601.12259)、[PDF，p.4 Fig.2](https://arxiv.org/pdf/2601.12259v1)。
 - 这是一个**评测框架报告**，包含 Finance、Retail、PublicHealth、NaturalDisaster 四个垂直预测领域，以及 FutureX-Search 检索任务；它不提出一个金融模型，也没有 SFT / RL 训练实验。[§1、§8，pp.1–2、17–18](https://arxiv.org/html/2601.12259v1#S1)。
 - §9 将 Jiashuo Liu、Siyuan Chen、Zaiyuan Wang、Zhiyuan Zeng 列为项目负责人；Finance 核心贡献者包括 Jiacheng Guo、**Liang Hu**、Lingyue Yin、Suozhi Huang、Wenxin Hao、Yang Yang、Zerui Cheng、Zixin Yao。作者来自 ByteDance Seed、Princeton、Georgia Tech、Stanford、HKUST；§9 说明未特别注明者均来自 ByteDance Seed。[§9，p.19](https://arxiv.org/html/2601.12259v1#S9)。
 - FinSearchComp 作者与此文有明显交集，包含 Liang Hu、Jiashuo Liu、Zaiyuan Wang、Zhiyuan Zeng、Wenhao Huang，以及 Tianci He、Yali Liao、Mingren Yin、Zhenwei Zhu、Ge Zhang、Xiang Gao、Kaiyuan Zhang、Zhoufutu Wen。**这是作者重叠支持的研究延续，不是原来的字节—哥伦比亚完整团队原班续作。** FutureX-Pro 的作者单位和 §9 没有 Columbia / Hongseok Namkoong。[FinSearchComp 原作者记录](https://arxiv.org/abs/2509.13160)、[FutureX-Pro §9](https://arxiv.org/html/2601.12259v1#S9)。
@@ -117,7 +117,7 @@ $$
 1. **价格级别接近不等于预测了可交易的变化。** 假设当前价为 100，下一日真实价格为 101，仅预测“仍为 100”也会得约 0.802。这是本报告的虚构计算示例；它说明 last-price 的朴素基线可能在低波动短期样本上取得较高成绩。
 2. **没有 last-price / 随机游走 / 常规时间序列基线，无法确认模型相对于“价格不变”的增量预测能力。** v1 金融部分只展示 8 个 LLM 配置，不含这些基线。[§2.3、Fig.2，pp.4–5](https://arxiv.org/pdf/2601.12259v1)。
 3. **误差被截断后的平均分不能反推出平均相对误差。** 超过 5% 的不同程度错误都得零分，尾部损失被压平。这是评分式直接推导。
-4. 如果 Type 3 的真实变化是零或很接近零，分母 \(|y|\) 会未定义或非常敏感；v1 金融章节没有说明这种情况如何处理。负值虽然以绝对值归一化，但指标口径仍需明确。[Eq.(1)](https://arxiv.org/html/2601.12259v1#S2.SS2)。
+4. 如果 Type 3 的真实变化是零或很接近零，分母 $|y|$ 会未定义或非常敏感；v1 金融章节没有说明这种情况如何处理。负值虽然以绝对值归一化，但指标口径仍需明确。[Eq.(1)](https://arxiv.org/html/2601.12259v1#S2.SS2)。
 5. 本文没有交易回测、手续费、滑点、风险调整收益或资金容量结果，因此不能从评分得出真实交易收益。这是根据报告实验范围作出的边界判断。
 
 ### 2.5 金融结果：完整范围和数值精度
@@ -202,7 +202,7 @@ L1 / L3 单题 0/1；L2 的实体子问占 0.4、数据子问占 0.6；作者同
 
 #### 2.8.1 发现公开代码，但评分协议不一致
 
-当前官方组织提供 [Futurex-Eval](https://github.com/Futurex-ai/Futurex-Eval)。2026-10-05 检查的 main commit 是 **2626f7a297cd87c73a45408e23af8d838f5b60e5（2026-08-24）**。[固定 commit](https://github.com/Futurex-ai/Futurex-Eval/tree/2626f7a297cd87c73a45408e23af8d838f5b60e5)。
+2026-10-05 核查时官方组织提供 [Futurex-Eval](https://github.com/Futurex-ai/Futurex-Eval)。2026-10-05 检查的 main commit 是 **2626f7a297cd87c73a45408e23af8d838f5b60e5（2026-08-24）**。[固定 commit](https://github.com/Futurex-ai/Futurex-Eval/tree/2626f7a297cd87c73a45408e23af8d838f5b60e5)。
 
 README 写明这是原 **FutureX** 通用评测脚本：L1/L2 用集合 F1，L3/L4 用 LLM judge 处理数字、字符串和排序；不能据此声称是 FutureX-Pro 全套复现包。[README](https://github.com/Futurex-ai/Futurex-Eval/blob/2626f7a297cd87c73a45408e23af8d838f5b60e5/README.md#L1-L9)。
 
@@ -219,7 +219,7 @@ return max(0, 1 - ((model_prediction - real_answer) / std) ** 2)
 
 #### 2.8.2 复现范围与项目页边界
 
-当前官方项目的金融页面还包含 EPS / Revenue 与分析师共识的研究，它与本报告的股票价格任务不同，不能把其中结果和基线移植到金融图 2。[官方金融项目说明](https://github.com/Futurex-ai/Futurex-ai.github.io/blob/main/src/data/newFinancePage/financeContent.md)
+2026-10-05 查阅的官方项目金融页面还包含 EPS / Revenue 与分析师共识的研究，它与本报告的股票价格任务不同，不能把其中结果和基线移植到金融图 2。[官方金融项目说明](https://github.com/Futurex-ai/Futurex-ai.github.io/blob/main/src/data/newFinancePage/financeContent.md)
 
 可读取论文、图表、实时任务平台和通用评分代码；但本次未找到足以逐项重建金融图 2 的固定题集、所有逐题预测、工具轨迹及对应评分版本。因此是**部分开放，完整复现未核实**。
 
@@ -279,6 +279,8 @@ FutureX-Pro 并非只研究股票。Retail 使用 Temu 的 240 个商品，交�
 论文图 2 列出上述权重；作者明确承认权重带有主观性，读者可以按用途重加权。[图 2、§4，PDF 第 3、6 页](https://arxiv.org/pdf/2605.22664v5#page=3)
 
 金融公式的一些具体要求：将常量输入与计算分开，适当使用 `$` 绝对引用，避免多段逻辑挤进难审计的单个巨型公式，正确处理动态范围与错误值。Format 也涉及 sheet 结构和单位、数值记号，而不是只检查是否“好看”。[附录 A，PDF 第 13–16 页](https://arxiv.org/pdf/2605.22664v5#page=13)
+
+**原图公式勘误。**v5 PDF p.4 Fig.3 的教学意图是把巨型公式拆成可审阅中间量，但图上单元格引用本身有偏移与自引用：债务实际在 B2、EBITDA 在 B3，图却写 `B1/B2`；Penalty Applied 行还出现引用自身的 `IF(B14, B6, 0)`，最后总额引用 B15 自身。不能把图中字符串直接当可执行模板。按左侧实际行号，本文修正教学式为：B9=`B2/B3`；B10=`IF(B9>4,2%,IF(B9>3,1%,0%))`；B11=`B4+B10`；B13=`B5<B6`；B14=`IF(B13,B7,0)`；B15=`B2*B11+B14`。该输入给出杠杆约4.545、利率7%、罚金50,000、总费用750,000。拆分提高可审阅性，仍须实际检查依赖和重算。此处纠正来源图的引用错误，不改原始PDF，也不把该错误推广到作者真实评测数据。[本地图3](references/020_MBABench_2605.22664v5.pdf)，PDF p.4。
 
 ### 3.4 裁判是否可靠？
 
@@ -351,7 +353,9 @@ API 与 CODE 全任务生成共约 **27,000 美元**；对所有系统的所有�
 | Judge | Gemini-2.5-pro（§4） | `google/gemini-3-flash-preview` |
 | Accuracy 子权重 | 35/25/25/15（图 2） | 40/25/25/10 |
 
-一级权重仍为 50/35/15。仓库配置变化不证明论文有错误，但说明**直接照 README 跑默认配置，不等于重现 v5 评分**。需要固定模型、prompt、rubric、权重、数据集和计算后端；才能讨论复现差异。[固定提交的 judge 配置](https://github.com/namkoong-lab/MBABench/blob/e17a27e97841820aacec073baa5235f93bec33f9/judge/project_configs.yaml) · [固定提交的 rubric 权重](https://github.com/namkoong-lab/MBABench/blob/e17a27e97841820aacec073baa5235f93bec33f9/judge/prompts/rubrics/rubric_6_weights.json)
+**2026-10-26 访问复核限制：**以上两项配置是2026-10-05研究笔记保留的固定提交观察；本轮 raw 文件和固定提交页面正文均返回404，未重新取得源码内容，因此不把历史观察写成已重新验证的当前默认值。链接保留供后续恢复核查，论文权重可直接由已归档v5图2确认。
+
+一级权重仍为 50/35/15（历史源码观察）。仓库配置变化不证明论文有错误，但说明**直接照 README 跑默认配置，不等于重现 v5 评分**。需要固定模型、prompt、rubric、权重、数据集和计算后端；才能讨论复现差异。[固定提交的 judge 配置](https://github.com/namkoong-lab/MBABench/blob/e17a27e97841820aacec073baa5235f93bec33f9/judge/project_configs.yaml) · [固定提交的 rubric 权重](https://github.com/namkoong-lab/MBABench/blob/e17a27e97841820aacec073baa5235f93bec33f9/judge/prompts/rubrics/rubric_6_weights.json)
 
 ### 3.9 与 FinSearchComp 的连接，以及工程推导
 
@@ -643,13 +647,29 @@ AURA 的优势是提供了多种量化参考；FutureX 的开放问题是缺少�
 
 | 来源 | 固定版本入口 | 本文重点定位 |
 |---|---|---|
-| FutureX-Pro | [arXiv v1](https://arxiv.org/abs/2601.12259v1) · [PDF](https://arxiv.org/pdf/2601.12259v1) · [HTML](https://arxiv.org/html/2601.12259v1) | §2 金融；§6 搜索；§9 贡献 |
-| MBABench | [arXiv v5](https://arxiv.org/abs/2605.22664v5) · [PDF](https://arxiv.org/pdf/2605.22664v5) · [HTML](https://arxiv.org/html/2605.22664v5) | §2—6；附录 A 质量准则；C/D 实验接口；E 裁判；F 任务来源 |
-| 股票预测 / AURA | [arXiv v1](https://arxiv.org/abs/2609.36914v1) · [PDF](https://arxiv.org/pdf/2609.36914v1) · [HTML](https://arxiv.org/html/2609.36914v1) | §2 沙箱；§3 训练；§4—5 结果；附录 A、C、D、E |
-| 背景：FinSearchComp | [论文](https://arxiv.org/abs/2509.13160) · [仓库内 PDF](10.DeepResearchAgents/references/004_FinSearchComp.pdf) · [课程资料入口](10.DeepResearchAgents/SOURCES.md) | 作为金融信息获取背景，不混入三篇实验分数 |
+| FutureX-Pro | [本地 PDF](references/019_FutureX-Pro_2601.12259v1.pdf) · [arXiv v1](https://arxiv.org/abs/2601.12259v1) · [PDF](https://arxiv.org/pdf/2601.12259v1) · [HTML](https://arxiv.org/html/2601.12259v1) | §2 金融；§6 搜索；§9 贡献 |
+| MBABench | [本地 PDF](references/020_MBABench_2605.22664v5.pdf) · [arXiv v5](https://arxiv.org/abs/2605.22664v5) · [PDF](https://arxiv.org/pdf/2605.22664v5) · [HTML](https://arxiv.org/html/2605.22664v5) | §2—6；附录 A 质量准则；C/D 实验接口；E 裁判；F 任务来源 |
+| 股票预测 / AURA | [本地 PDF](references/021_AURA_2609.36914v1.pdf) · [arXiv v1](https://arxiv.org/abs/2609.36914v1) · [PDF](https://arxiv.org/pdf/2609.36914v1) · [HTML](https://arxiv.org/html/2609.36914v1) | §2 沙箱；§3 训练；§4—5 结果；附录 A、C、D、E |
+| 背景：FinSearchComp | [论文](https://arxiv.org/abs/2509.13160) · [仓库内 PDF](references/004_FinSearchComp.pdf) · [课程资料入口](SOURCES.md) | 作为金融信息获取背景，不混入三篇实验分数 |
 
 ### 8.2 如何解读本次核验
 
 已核查论文正文、关键附录、版本记录、公开源码或数据说明，并用 PDF 图像复核 FutureX 的评分公式与金融图 2、MBABench 的图 2 权重和系统分数。源码检查属于静态核查，没有执行第三方代码或重新打分。各篇记录了具体公开资源、版本差异及访问局限。
 
 只声称在本次查阅范围内确认的事实。“未找到可确认的公开资源”不等于“资源不存在”；主分支与实时项目页也可能后续更新。涉及源码行为的关键结论尽量使用固定提交链接，避免把未来变动误认为论文原始设置。
+
+
+### 8.3 本地归档、检查范围与自测
+
+2026-10-26将三篇指定PDF原样保存到本课`references/`，21/41/18个物理页已核对；URL、版本、下载日期和SHA-256登记于[REFERENCES.json](REFERENCES.json)。FutureX通用评测的[README](references/futurex-eval-README.md)、[数值评分器](references/futurex-llm_judge_level_34.py)与[评估入口](references/futurex-eval.py)也按固定commit归档，只读检查，未导入执行第三方模块。论文定位覆盖：FutureX §2/pp.3—5与§6/pp.14—16对应本文§2；MBABench §2—6/pp.3—9、实现pp.25—38、裁判p.39与来源p.40对应§3；AURA正文pp.1—11、构建/评分p.15、工具/尺度pp.16—17、时间结果p.17对应§4。图形核查包括FutureX pp.4/16、MBABench pp.3—5、AURA pp.8—9/18。该专题没有新增课程讲义，Lecture10的124页覆盖见[课程主笔记附录E](Deep_Research_Lecture10_Integrated_Notes.md#appendix-e)。
+
+本轮实际执行了可控离线算式检查：FutureX价格100预测真实101得0.801980；误差1%时金融线性式0.8、通用源码二次式0.96；AURA同向幅度0.02/0.04与0.08/0.04均约2/3、反向为0；训练分数相对提升约106.83%；图3修正依赖算得750,000。检查不调用模型、市场接口、完整电子表格重算器或论文基准，不能证明Excel兼容性或投资效果。除FutureX固定源码外，旧笔记所述外部平台与MBABench代码默认值未全部重新取得，访问限制见§3.8。
+
+| 自测 | 参考答案与理由 |
+|---|---|
+| FutureX得46.37，能说方向准确率46.37%吗？ | 不能；它是截断相对误差的平均质量分，方向和交易收益没有由该数值给出。 |
+| BETA工具不看未来，为何仍需随机日期测试？ | 工具时间隔离与按已实现结果筛选任务是不同维度；398题又筛成240评分题，不能当无条件市场分布。 |
+| M从33.3到66.2是否证明相同样本幅度能力翻倍？ | M只在各模型方向正确的子集统计，子集可能不同；代数分解是描述性归因。 |
+| 把测试预测乘3.65后得52.97，可以作为部署成绩吗？ | 不能；该系数用测试标签事后拟合。须在独立验证集拟合再锁定测试。 |
+| 工作簿最终数字正确，何时仍算失败？ | 硬编码、错范围或循环引用可能让当前数字碰巧正确，修改假设后失效；要看公式依赖与变更测试。 |
+| 同模型换harness分差很大，能说所有收益都来自工具吗？ | 不能；提示、预算、文件解析、隐藏运行环境等同时变化，缺少逐项受控消融。 |

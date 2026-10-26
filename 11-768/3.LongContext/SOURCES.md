@@ -139,3 +139,8 @@
 - [ReSum](references/042_ReSum.pdf)
   - Source: https://arxiv.org/abs/2509.13313
 
+<!-- BEGIN LOCAL LEARNING -->
+## 中文学习讲解
+
+- [完整课程讲解](long_context_lecture03_integrated_notes.md)
+<!-- END LOCAL LEARNING -->

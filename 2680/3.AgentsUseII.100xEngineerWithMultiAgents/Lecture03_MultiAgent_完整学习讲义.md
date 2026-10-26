@@ -1,18 +1,18 @@
 # Lecture 03 · Multi-agent：从独立 Agent 到可靠协作系统
 
 > **面向读者：**具备 LLM 开发经验，希望同时理解多 Agent 的概念、运行机制、工程取舍与评测方法的工程师。  
-> **主要依据：**`3_agent_use_2.pdf`，并贯通 Subagents、Agent Teams、Dynamic Workflows、C 编译器实验和 Codex 使用研究五份参考资料。  
-> **整理日期：**2026-10-13。本文是前两轮讲解的整合学习版，不是逐字转录，也不是产品最新版本手册。
+> **主要依据：**[3_agent_use_2.pdf](3_agent_use_2.pdf)，并贯通 Subagents、Agent Teams、Dynamic Workflows、C 编译器实验和 Codex 使用研究五份参考资料。  
+> **复核日期：**2026-10-26。本文沿课程讲义展开，并用阅读材料补全机制、案例和证据边界；产品细节对应本地归档版本。
 
 **核心命题：Multi-agent 的价值不在于 Agent 的数量，而在于如何划分任务、上下文、权限与验证责任，使独立执行的工作能够重新汇合成可信的交付物。**
 
 ## 阅读说明与来源约定
 
-讲义的课程标题是 *Modern AI Systems: Agents and System Optimizations*，本节为 *Agent From a User’s Perspective II: Multi-agent and Best Practice*，作者为 Juncheng Yang。本文保留讲义“工作流程与上下文 → 多 Agent 与长任务 → 软件开发中的不确定性 → 真实使用证据”的顺序，再把前文讨论的数学抽象、工程方案与评测方法集中整理为后半部分。[L，PDF 第 1、4 页](#source-l)
+讲义的课程标题是 *Modern AI Systems: Agents and System Optimizations*，本节为 *Agent From a User’s Perspective II: Multi-agent and Best Practice*，作者为 Juncheng Yang。本文保留讲义“工作流程与上下文 → 多 Agent 与长任务 → 软件开发中的不确定性 → 真实使用证据”的顺序，再把帮助理解机制的数学抽象、工程方案与评测方法集中整理为后半部分。[L，PDF 第 1、4 页](#source-l)
 
 本文区分三类内容：**材料结论**指讲义、参考文档或论文实际支持的陈述；**工程推导**指由这些机制推导出的设计建议；**教学示例**指为了说明机制而构造的配置、公式、场景和数据结构。后两类不应被当作作者已经验证的研究结果，代码示例也不代表已在真实业务系统中运行。
 
-正文中的 `[L]`、`[R1]` 等链接指向文末来源索引，并附实际 PDF 页码或原文小节名。PDF 页码从文件第一页开始计算，**不是讲义页脚带跳号的编号**。网页资料以所上传的 HTML 快照为依据；重要的简化与版本差异集中列于附录 B。前文已经引入的外部研究另放附录 D，不替代本课材料。
+正文中的 `[L]`、`[R1]` 等链接指向文末来源索引，并附实际 PDF 页码或原文小节名。PDF 页码从文件第一页开始计算，**不是讲义页脚带跳号的编号**。网页资料以本课归档的 HTML 快照为依据；重要的简化与版本差异集中列于附录 B。两篇延伸研究另放附录 D，不替代本课材料。
 
 ## 目录
 
@@ -523,7 +523,7 @@ Agent 提交候选结果
 
 ### 7.9 计划批准、权限批准与人工批准不能互相代替
 
-上传的 R2 快照有一个容易忽略的说明：成员在 plan mode 形成计划后发送批准请求，运行时在 lead 会话中收到后即批准，**并非 lead 已审查计划内容**。随后动作仍走相应权限流程。[R2，Require plan approval for teammates](#source-r2)
+本地 R2 快照有一个容易忽略的说明：成员在 plan mode 形成计划后发送批准请求，运行时在 lead 会话中收到后即批准，**并非 lead 已审查计划内容**。随后动作仍走相应权限流程。[R2，Have teammates plan before implementing](#source-r2)
 
 因此，“发生了 plan approval”不等于“主 Agent 审查通过”，更不等于“用户已同意”。它也不等于 Superpowers 中等待用户确认设计的节点。
 
@@ -993,12 +993,14 @@ R5 第 17 页图 9 使用不同线程中超过 30 秒的执行重叠，统计用
 |---|---|---|
 | 第 64 页 | Agent workdays 与研究者 workdays 的比值，图中约 3.14 | 科研成果提高相同比例 |
 | 第 65 页 | 每位活跃贡献者的代码改动行数，相对基准归一化 | 功能交付周期、代码质量、商业价值都提高近八倍 |
-| 第 66 页 | 按任务复杂度区分零干预成功、需干预成功、失败等 | 大任务已经可以普遍无人监督完成 |
+| 第 66 页 | 按任务复杂度区分零干预成功、需干预成功、失败、工具错误与无明确目标 | 大任务已经可以普遍无人监督完成 |
 | 第 67 页 | 研究者使用量按 API 价格计量的变化 | 这些金额是组织实际现金支出或收益 |
+
+第 66 页还需要核对分母：讲义图例保留工具错误与无明确目标类别；R6 网页 §3 的成功率图注明排除结果不确定的分类。图表口径不同，不能直接拼接成同一条成功率趋势。
 
 尤其是第 65 页，标题写“Shipping Almost 8x Faster”，纵轴却是代码改动行数。本文保留原图的表达，同时明确其测量边界，不将标题直接升级为交付效率结论。
 
-课程列出的九月在线报告还强调：研究过程有多个瓶颈，人仍负责设定方向与判断结果；代码和实验活动增加不等于整体科研速度同比增加，算力供给增长也影响实验数。本段仅整理前文已引入的补充阅读，不扩展为对其他最新产品的分析。[R6，§1—2](#source-r6)
+课程列出的九月在线报告还强调：研究过程有多个瓶颈，人仍负责设定方向与判断结果；代码和实验活动增加不等于整体科研速度同比增加，算力供给增长也影响实验数。该网页的正文已在线核对；它不构成上述活动指标的因果生产力验证。[R6，§1—2](#source-r6)
 
 ### 12.11 委托阶梯不是架构排行榜
 
@@ -1009,7 +1011,7 @@ R5 第 17 页图 9 使用不同线程中超过 30 秒的执行重叠，统计用
 <a id="s13"></a>
 ## 13. 学术抽象：并行上限、信息结构与错误相关性
 
-> 本章整理前两轮讲解中的分析模型。这些公式是帮助解释机制的简化推导，不是 lecture-03 或五份附件报告的实测模型，不应作为未经验证的生产性能预测器。
+> 本章用分析模型解释前述机制。这些公式是帮助解释机制的简化推导，不是 lecture-03 或五份附件报告的实测模型，不应作为未经验证的生产性能预测器。
 
 ### 13.1 三种关系，不能只画成一张“Agent 连线图”
 
@@ -1370,7 +1372,7 @@ R5 附录 F 的方法提示我们：自动评估器也需要外部校验，并�
 
 这些维度可以保留为选型问题，但不能把课堂快照中的产品分类直接当作当前产品事实。例如，“权限提示”与“操作系统沙箱”并非逻辑上互斥，具体产品可能同时有多种机制。本文不在没有逐项验证的情况下扩展成最新产品比较或采购建议。
 
-### 17.3 前两轮讨论的核心结论，压缩为八个判断
+### 17.3 本课的八个核心判断
 
 **第一，先形成可以委托的工作。**目标、输入、边界和验收比角色名称更重要。
 
@@ -1427,8 +1429,8 @@ Codex 研究：人类工作转向委托、监督、复核与系统化
 #### L · 主讲义
 
 **标题：**Modern AI Systems: Agents and System Optimizations — Agent From a User’s Perspective II: Multi-agent and Best Practice。作者：Juncheng Yang。  
-**上传文件：**`3_agent_use_2.pdf`，72 页。  
-**课程来源地址：**`https://cs2680.com/slides/3_agent_use_2.pdf`
+**本地文件：**[3_agent_use_2.pdf](3_agent_use_2.pdf)，72 页。  
+**课程来源地址：**[原始来源](https://cs2680.com/slides/3_agent_use_2.pdf)
 
 | 实际 PDF 页码 | 原讲义内容 | 本文主要对应 |
 |---|---|---|
@@ -1449,8 +1451,8 @@ Codex 研究：人类工作转向委托、监督、复核与系统化
 #### R1 · Claude Code Subagents
 
 **标题：**Create custom subagents。  
-**上传文件：**`001_Claude_Code_subagents_7dc93e.html`。  
-**原始地址：**`https://code.claude.com/docs/en/sub-agents`
+**本地文件：**[001_Claude_Code_subagents_7dc93e.html](readings/001_Claude_Code_subagents_7dc93e.html)。  
+**原始地址：**[原始来源](https://code.claude.com/docs/en/sub-agents)
 
 本文主要使用的小节为：Write subagent files；Supported frontmatter fields；Available tools；Preload skills into subagents；Enable persistent memory；Fork the current conversation；Run subagents in foreground or background；Choose between subagents and main conversation；Let subagents spawn their own subagents；Concurrent subagent limit；What loads at startup；Resume subagents；Auto-compaction。
 
@@ -1460,10 +1462,10 @@ Codex 研究：人类工作转向委托、监督、复核与系统化
 #### R2 · Claude Code Agent Teams
 
 **标题：**Orchestrate teams of Claude Code sessions。  
-**上传文件：**`002_Claude_Code_agent_teams_80ee58.html`。  
-**原始地址：**`https://code.claude.com/docs/en/agent-teams`
+**本地文件：**[002_Claude_Code_agent_teams_80ee58.html](readings/002_Claude_Code_agent_teams_80ee58.html)。  
+**原始地址：**[原始来源](https://code.claude.com/docs/en/agent-teams)
 
-本文主要使用的小节为：When to use agent teams；Require plan approval for teammates；Assign and claim tasks；Shut down teammates；Enforce quality gates with hooks；Architecture；Use subagent definitions for teammates；Permissions；Context and communication；Investigate with competing hypotheses；Give teammates enough context；Choose an appropriate team size；Size tasks appropriately；Avoid file conflicts；Limitations。
+本文主要使用的小节为：When to use agent teams；Have teammates plan before implementing；Assign and claim tasks；Shut down teammates；Enforce quality gates with hooks；Architecture；Use subagent definitions for teammates；Permissions；Context and communication；Investigate with competing hypotheses；Give teammates enough context；Choose an appropriate team size；Size tasks appropriately；Avoid file conflicts；Limitations。
 
 用途：把“团队协作”具体化为任务、依赖、消息、状态和批准语义；不把命名上的 review/approval 当作已经发生的独立验证。
 
@@ -1471,8 +1473,8 @@ Codex 研究：人类工作转向委托、监督、复核与系统化
 #### R3 · Claude Code Dynamic Workflows
 
 **标题：**Orchestrate subagents at scale with dynamic workflows。  
-**上传文件：**`003_Claude_Code_dynamic_workflows_8516d9.html`。  
-**原始地址：**`https://code.claude.com/docs/en/workflows`
+**本地文件：**[003_Claude_Code_dynamic_workflows_8516d9.html](readings/003_Claude_Code_dynamic_workflows_8516d9.html)。  
+**原始地址：**[原始来源](https://code.claude.com/docs/en/workflows)
 
 本文主要使用：与 Subagents、Skills、Teams 的比较；Run a bundled workflow；Example workflow prompts；What the saved script looks like；Edit a saved script；How a workflow runs；Prompt caching in a fan-out；Resume after a pause；When an agent stalls and restarts；Set a size guideline，以及运行限制表。
 
@@ -1482,9 +1484,9 @@ Codex 研究：人类工作转向委托、监督、复核与系统化
 #### R4 · C 编译器实验
 
 **标题：**Building a C compiler with a team of parallel Claudes。作者：Nicholas Carlini。文章日期：2026-02-05。  
-**上传文件：**`004_Building_a_C_compiler_with_a_team_of_parallel_Claudes_1eba12.html`。  
-**原始地址：**`https://www.anthropic.com/engineering/building-c-compiler`  
-**文章给出的代码仓库：**`https://github.com/anthropics/claudes-c-compiler`
+**本地文件：**[004_Building_a_C_compiler_with_a_team_of_parallel_Claudes_1eba12.html](readings/004_Building_a_C_compiler_with_a_team_of_parallel_Claudes_1eba12.html)。  
+**原始地址：**[原始来源](https://www.anthropic.com/engineering/building-c-compiler)  
+**文章给出的代码仓库：**[原始来源](https://github.com/anthropics/claudes-c-compiler)
 
 本文主要使用：Enabling long-running Claudes；Running Claude in parallel；Write extremely high-quality tests；Put yourself in Claude’s shoes；Make parallelism easy；Multiple agent roles；Stress testing the limits of agent teams；Evaluation；Looking forward。
 
@@ -1495,9 +1497,9 @@ Codex 研究：人类工作转向委托、监督、复核与系统化
 
 **标题：**The Shift to Agentic AI: Evidence from Codex。  
 **作者：**Drew Johnston、David Holtz、Alex Martin Richmond、Christopher Ong、Prasanna Tambe、Aaron Chatterji。  
-**上传文件：**`005_The_Shift_to_Agentic_AI_9dc0ae.pdf`，50 页。  
-**附件版本：**arXiv:2606.26959v1，2026-06-25。  
-**原始地址：**`https://arxiv.org/abs/2606.26959v1`
+**本地文件：**[005_The_Shift_to_Agentic_AI_9dc0ae.pdf](readings/005_The_Shift_to_Agentic_AI_9dc0ae.pdf)，50 页。  
+**归档版本：**arXiv:2606.26959v1，2026-06-25。  
+**原始地址：**[原始来源](https://arxiv.org/abs/2606.26959v1)
 
 重点定位：§1—2（PDF 第 2—6 页）的研究框架与组织条件；§3（第 6—11 页）的采用口径；§4.2 与图 6（第 12—14 页）的复杂度估计；§5.1 与图 9（第 17—18 页）的并发；§5.2 与图 10（第 18—19 页）的运行时间；§5.3 与图 11（第 19—22 页）的系统化；§6（第 22—24 页）的解释；附录 F 与图 A9（第 49—50 页）的评分器验证。
 
@@ -1506,43 +1508,43 @@ Codex 研究：人类工作转向委托、监督、复核与系统化
 <a id="source-s"></a>
 #### S · 课程阅读清单
 
-**上传文件：**[SOURCES.md](SOURCES.md)。清单标注课程日期为 2026-09-14。  
-**课程阅读页：**`https://cs2680.com/readings/sep-14.html`
+**本地文件：**[SOURCES.md](SOURCES.md)。清单标注课程日期为 2026-09-14。  
+**课程阅读页：**[原始来源](https://cs2680.com/readings/sep-14.html)
 
 清单将五份附件与九月 OpenAI 在线报告放在同一节阅读中，还列出 Software 2.0、Software 3.0 相关网页和 *Software is changing (again)* 视频。本文对这部分概念以讲义为依据；**仅出现在清单中的网页或视频，不会自动成为已经核查其全文的证据**。
 
-### A.2 前文已经引入的线上补充
+### A.2 在线补充与延伸阅读
 
 <a id="source-r6"></a>
 #### R6 · Research acceleration: The view inside OpenAI
 
 **机构与日期：**OpenAI，2026-09-06。  
-**原始地址：**`https://openai.com/index/research-acceleration-view-inside-openai/`
+**原始地址：**[原始来源](https://openai.com/index/research-acceleration-view-inside-openai/)
 
-它由课程清单列出，但本会话没有对应的独立上传正文文件。本文延续前文的线上补充，仅使用关于内部执行使用、研究瓶颈和指标解释的相关内容；讲义图表则仍以讲义的实际页码引用。
+它由课程清单列出，2026-10-26 已在线核对正文；直接下载返回 HTTP 403，因此仓库没有冒充正文的本地 HTML。正文第 12.10 节使用其 §1—2 对内部使用、研究瓶颈和指标的解释，讲义图表仍按实际 PDF 页码引用。
 
 <a id="source-e1"></a>
 #### E1 · Why Do Multi-Agent LLM Systems Fail?
 
 **作者：**Mert Cemri 等。  
-**本次整理核对版本：**arXiv:2503.13657v3。  
-**地址：**`https://arxiv.org/abs/2503.13657v3`
+**本次复核版本：**arXiv:2503.13657v3。  
+**地址：**[原始来源](https://arxiv.org/abs/2503.13657v3)
 
-仅作为前文延伸阅读在附录 D 保留；不把它列为五份课程附件之一，也不以摘要之外的未核查细节支撑正文。
+仅作为延伸阅读在附录 D 保留；不把它列为五份课程附件之一，也不以摘要之外的未核查细节支撑正文。
 
 <a id="source-e2"></a>
 #### E2 · Towards a Science of Scaling Agent Systems
 
 **作者：**Yubin Kim 等。  
-**本次整理核对版本：**arXiv:2512.08296v3。  
-**地址：**`https://arxiv.org/abs/2512.08296v3`
+**本次复核版本：**arXiv:2512.08296v3。  
+**地址：**[原始来源](https://arxiv.org/abs/2512.08296v3)
 
-仅作为前文延伸阅读在附录 D 保留。它采用的架构类别与 Claude Code 的产品名称不是一一对应关系，不能直接搬用数值作为某个产品配置的预测。
+仅作为延伸阅读在附录 D 保留。它采用的架构类别与 Claude Code 的产品名称不是一一对应关系，不能直接搬用数值作为某个产品配置的预测。
 
 <a id="appendix-b"></a>
 ## 附录 B. 版本差异与易误读点
 
-这张表保留材料之间的层次差异，不用后来的产品说明静默覆盖讲义。所有产品细节均指上传快照；本文未全面核对当前安装版本。
+这张表保留材料之间的层次差异，不用后来的产品说明静默覆盖讲义。所有产品细节均指本地快照；本文未全面核对当前安装版本。
 
 | 主题 | 讲义或简化理解 | 参考资料补充与阅读边界 |
 |---|---|---|
@@ -1641,9 +1643,9 @@ Codex 研究：人类工作转向委托、监督、复核与系统化
 至少包含一个强依赖任务、一个独立批量任务和一个根因不明确的调查任务。不要在没有重复实验时，从一次成功演示推出整体优越性。
 
 <a id="appendix-d"></a>
-## 附录 D. 前文延伸阅读：失败分类与架构扩展
+## 附录 D. 延伸阅读：失败分类与架构扩展
 
-这两项不是课程上传的五份辅助材料。为保留前文的学术延伸，同时避免把外部研究混入讲义，本附录单独列出。这里仅概括本次核对到的论文 v3 摘要结论，不冒充对全文所有实验的重新分析。
+这两项不是课程上传的五份辅助材料。为补充失败诊断与扩展规律，同时避免把外部研究混入讲义，本附录单独列出。这里仅概括本次核对到的论文 v3 摘要结论，不冒充对全文所有实验的重新分析。
 
 ### D.1 MAST：把失败拆成可诊断问题
 

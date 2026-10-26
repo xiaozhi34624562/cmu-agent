@@ -73,3 +73,9 @@
 
 - [SkillRefiner: offline skill refinement](references/020_SkillRefiner_offline_skill_refinement.html)
   - Source: https://www.alphaxiv.org/abs/2610.skillrefiner-offline-skill-refinement
+
+<!-- BEGIN LOCAL LEARNING -->
+## 中文学习讲解
+
+- [完整课程讲解](Lecture14_OpenHands_Integrated_Notes.md)
+<!-- END LOCAL LEARNING -->

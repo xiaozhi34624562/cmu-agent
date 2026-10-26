@@ -50,3 +50,10 @@
   - Source: https://cs2680.com/readings.html#sep-30
 - [Agent evaluation and benchmarks](../site/notes/agent-evaluation.html)
   - Source: https://cs2680.com/notes/agent-evaluation.html
+
+## Supplemental primary sources
+
+以下为中文讲解补充的一手资料；与上方官网指定 Readings 分开登记。版本、获取状态与校验值见 [REFERENCES.json](REFERENCES.json)。
+
+- Why SWE-bench Verified no longer measures frontier coding capabilities（未获取正文）
+  - Source: https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/

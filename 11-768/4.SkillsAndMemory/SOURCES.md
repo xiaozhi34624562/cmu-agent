@@ -86,3 +86,8 @@
 - HermesAgent: skills_tool.py
   - Source: https://github.com/NousResearch/hermes-agent/blob/main/tools/skills_tool.py
 
+<!-- BEGIN LOCAL LEARNING -->
+## 中文学习讲解
+
+- [完整课程讲解](Skills_and_Memory_Integrated_Notes.md)
+<!-- END LOCAL LEARNING -->

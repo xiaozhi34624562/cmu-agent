@@ -58,3 +58,8 @@
 - [MolmoWeb](references/008_MolmoWeb.pdf)
   - Source: https://arxiv.org/abs/2604.08516
 
+<!-- BEGIN LOCAL LEARNING -->
+## 中文学习讲解
+
+- [完整课程讲解](lecture-07-computer-use-agents-notes.md)
+<!-- END LOCAL LEARNING -->

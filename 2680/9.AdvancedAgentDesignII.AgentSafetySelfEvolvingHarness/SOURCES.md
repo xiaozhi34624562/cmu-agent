@@ -46,6 +46,12 @@
 - [Live-SWE-agent](readings/018_Live_SWE_agent_76f20b.pdf)
   - Source: https://arxiv.org/abs/2511.13646
 
+## Local study notes
+
+以下为本地中文学习笔记，文件名保留现有名称；教师原始讲义见上方 Slides。
+
+- [notes.zh-CN.md](notes.zh-CN.md)
+
 ## References
 
 - [Course reading notes](../site/readings/oct-14.html)

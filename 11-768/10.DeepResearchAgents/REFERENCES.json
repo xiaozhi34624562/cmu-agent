@@ -1,0 +1,59 @@
+[
+  {
+    "title": "FutureX-Pro: Extending Future Prediction to High-Value Vertical Domains",
+    "url": "https://arxiv.org/pdf/2601.12259v1",
+    "path": "references/019_FutureX-Pro_2601.12259v1.pdf",
+    "status": "saved",
+    "version": "2601.12259v1",
+    "sha256": "585bbb56adbcb936f8e979d3bf8d16373a361921a688ea32d9c07aa080a47074",
+    "pdf_pages": 21,
+    "downloaded_on": "2026-10-26"
+  },
+  {
+    "title": "MBABench: Evaluating LLM Agents on End-to-End Spreadsheet Tasks in Finance",
+    "url": "https://arxiv.org/pdf/2605.22664v5",
+    "path": "references/020_MBABench_2605.22664v5.pdf",
+    "status": "saved",
+    "version": "2605.22664v5",
+    "sha256": "64a804a40295abb7ed2a7b56c55d89bf472841884e74ea1b68ba81703d3f5455",
+    "pdf_pages": 41,
+    "downloaded_on": "2026-10-26"
+  },
+  {
+    "title": "Can Language Models Learn to Forecast Stock Prices",
+    "url": "https://arxiv.org/pdf/2609.36914v1",
+    "path": "references/021_AURA_2609.36914v1.pdf",
+    "status": "saved",
+    "version": "2609.36914v1",
+    "sha256": "71492474e331ddd26f0f3c21e77752350cd137f995b5bafaa5ec70dbf71ae891",
+    "pdf_pages": 18,
+    "downloaded_on": "2026-10-26"
+  },
+  {
+    "title": "Futurex-Eval README",
+    "url": "https://raw.githubusercontent.com/Futurex-ai/Futurex-Eval/2626f7a297cd87c73a45408e23af8d838f5b60e5/README.md",
+    "path": "references/futurex-eval-README.md",
+    "status": "saved",
+    "version": "2626f7a297cd87c73a45408e23af8d838f5b60e5",
+    "sha256": "e7b17c5336b2076c62ff12ac175e60fcc91ba1b3299859134d2b9a424f0c299e",
+    "downloaded_on": "2026-10-26"
+  },
+  {
+    "title": "Futurex-Eval numeric judge",
+    "url": "https://raw.githubusercontent.com/Futurex-ai/Futurex-Eval/2626f7a297cd87c73a45408e23af8d838f5b60e5/llm_judge_level_34.py",
+    "path": "references/futurex-llm_judge_level_34.py",
+    "status": "saved",
+    "version": "2626f7a297cd87c73a45408e23af8d838f5b60e5",
+    "sha256": "6f8c3af51e06ca7ec2301de5b5ab49035e38a2721e9a007c24746b5e471f751b",
+    "downloaded_on": "2026-10-26"
+  },
+  {
+    "title": "Futurex-Eval task evaluator",
+    "url": "https://raw.githubusercontent.com/Futurex-ai/Futurex-Eval/2626f7a297cd87c73a45408e23af8d838f5b60e5/eval.py",
+    "path": "references/futurex-eval.py",
+    "status": "saved",
+    "version": "2626f7a297cd87c73a45408e23af8d838f5b60e5",
+    "sha256": "a6f331b6558b34d5b64e25386e0cc42c66e47c15059f7e54efdc0e909d27dc0b",
+    "downloaded_on": "2026-10-26"
+  }
+]

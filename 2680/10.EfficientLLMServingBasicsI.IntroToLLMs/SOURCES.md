@@ -41,6 +41,12 @@
 - [Dream 7B](readings/015_Dream_7B_6bea45.pdf)
   - Source: https://arxiv.org/abs/2508.15487
 
+## Local study notes
+
+以下为本地中文学习笔记，文件名保留现有名称；教师原始讲义见上方 Slides。
+
+- [notes.zh-CN.md](notes.zh-CN.md)
+
 ## References
 
 - [Course reading notes](../site/readings/oct-19.html)

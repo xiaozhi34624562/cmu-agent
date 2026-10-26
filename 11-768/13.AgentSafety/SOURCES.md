@@ -102,3 +102,9 @@
 
 - [Monitoring Monitorability](references/030_Monitoring_Monitorability.pdf)
   - Source: https://arxiv.org/abs/2512.18311
+
+<!-- BEGIN LOCAL LEARNING -->
+## 中文学习讲解
+
+- [完整课程讲解](lecture-13-agent-safety-study-guide.md)
+<!-- END LOCAL LEARNING -->

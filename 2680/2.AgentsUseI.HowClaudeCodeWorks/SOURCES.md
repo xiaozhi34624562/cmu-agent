@@ -41,3 +41,28 @@
 
 - [Course reading notes](../site/readings/sep-09.html)
   - Source: https://cs2680.com/readings/sep-09.html
+
+## Supplemental primary sources
+
+以下为中文讲解补充的一手资料；与上方官网指定 Readings 分开登记。版本、获取状态与校验值见 [REFERENCES.json](REFERENCES.json)。
+
+- [001_what-is-agentic-engineering](references/001_what-is-agentic-engineering.html)
+  - Source: https://simonwillison.net/guides/agentic-engineering-patterns/what-is-agentic-engineering/
+- [002_first-run-the-tests](references/002_first-run-the-tests.html)
+  - Source: https://simonwillison.net/guides/agentic-engineering-patterns/first-run-the-tests/
+- [003_red-green-tdd](references/003_red-green-tdd.html)
+  - Source: https://simonwillison.net/guides/agentic-engineering-patterns/red-green-tdd/
+- [004_agentic-manual-testing](references/004_agentic-manual-testing.html)
+  - Source: https://simonwillison.net/guides/agentic-engineering-patterns/agentic-manual-testing/
+- [005_code-is-cheap](references/005_code-is-cheap.html)
+  - Source: https://simonwillison.net/guides/agentic-engineering-patterns/code-is-cheap/
+- [006_anti-patterns](references/006_anti-patterns.html)
+  - Source: https://simonwillison.net/guides/agentic-engineering-patterns/anti-patterns/
+- [007_linear-walkthroughs](references/007_linear-walkthroughs.html)
+  - Source: https://simonwillison.net/guides/agentic-engineering-patterns/linear-walkthroughs/
+- [008_interactive-explanations](references/008_interactive-explanations.html)
+  - Source: https://simonwillison.net/guides/agentic-engineering-patterns/interactive-explanations/
+- [009_hoard-things-you-know-how-to-do](references/009_hoard-things-you-know-how-to-do.html)
+  - Source: https://simonwillison.net/guides/agentic-engineering-patterns/hoard-things-you-know-how-to-do/
+- [010_subagents](references/010_subagents.html)
+  - Source: https://simonwillison.net/guides/agentic-engineering-patterns/subagents/

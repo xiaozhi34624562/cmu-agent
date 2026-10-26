@@ -22,3 +22,8 @@
 
 - None
 
+<!-- BEGIN LOCAL LEARNING -->
+## 中文学习讲解
+
+- [完整课程讲解](notes.zh-CN.md)
+<!-- END LOCAL LEARNING -->

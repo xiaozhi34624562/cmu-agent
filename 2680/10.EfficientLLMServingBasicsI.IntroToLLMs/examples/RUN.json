@@ -1,0 +1,13 @@
+{
+  "scope": "CPU arithmetic and one-head cache equivalence only",
+  "params_without_norms": 70552387584,
+  "kv_bytes_per_token": 327680,
+  "kv_KiB_per_token": 320.0,
+  "weights_GB_using_70_6B": 141.2,
+  "one_80k_request_total_GB": 167.4144,
+  "sixty_four_80k_requests_total_GB": 1818.9216,
+  "ideal_80k_prefill_seconds": 9.95177350859454,
+  "all_layers_scores_GB": 687.19476736,
+  "one_layer_scores_GB": 8.589934592,
+  "cache_equivalence_max_abs_error": 0.0
+}
