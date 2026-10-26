@@ -1,0 +1,51 @@
+[
+  {
+    "title": "MemGPT",
+    "url": "https://arxiv.org/abs/2310.08560",
+    "path": "references/003_MemGPT.pdf",
+    "status": "saved",
+    "provenance": "archived_from_existing_repository_primary_source"
+  },
+  {
+    "title": "Mem0",
+    "url": "https://arxiv.org/abs/2504.19413",
+    "path": "references/001_Mem0.pdf",
+    "status": "saved",
+    "provenance": "archived_from_existing_repository_primary_source"
+  },
+  {
+    "title": "ExpeL",
+    "url": "https://arxiv.org/abs/2308.10144",
+    "path": "references/003_ExpeL.pdf",
+    "status": "saved",
+    "provenance": "archived_from_existing_repository_primary_source"
+  },
+  {
+    "title": "Agent Workflow Memory",
+    "url": "https://arxiv.org/abs/2409.07429",
+    "path": "references/004_Agent_Workflow_Memory_AWM.pdf",
+    "status": "saved",
+    "provenance": "archived_from_existing_repository_primary_source"
+  },
+  {
+    "title": "Agent Skill Induction",
+    "url": "https://arxiv.org/abs/2504.06821",
+    "path": "references/005_Agent_Skill_Induction_ASI.pdf",
+    "status": "saved",
+    "provenance": "archived_from_existing_repository_primary_source"
+  },
+  {
+    "title": "PolySkill",
+    "url": "https://arxiv.org/abs/2510.15863",
+    "path": "references/013_PolySkill.pdf",
+    "status": "saved",
+    "provenance": "archived_from_existing_repository_primary_source"
+  },
+  {
+    "title": "Executable Code Actions Elicit Better LLM Agents",
+    "url": "https://arxiv.org/abs/2402.01030",
+    "path": "references/002_CodeAct.pdf",
+    "status": "saved",
+    "provenance": "archived_from_existing_repository_primary_source"
+  }
+]

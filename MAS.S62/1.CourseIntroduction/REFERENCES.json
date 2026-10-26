@@ -1,0 +1,51 @@
+[
+  {
+    "title": "Language Models are Few-Shot Learners",
+    "url": "https://arxiv.org/abs/2005.14165",
+    "path": "references/2005.14165.pdf",
+    "status": "saved",
+    "pages": 75
+  },
+  {
+    "title": "Training Language Models to Follow Instructions with Human Feedback",
+    "url": "https://arxiv.org/abs/2203.02155",
+    "path": "references/2203.02155.pdf",
+    "status": "saved",
+    "pages": 68
+  },
+  {
+    "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+    "url": "https://arxiv.org/abs/2210.03629",
+    "path": "references/2210.03629.pdf",
+    "status": "saved",
+    "pages": 33
+  },
+  {
+    "title": "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models",
+    "url": "https://arxiv.org/abs/2402.03300",
+    "path": "references/2402.03300.pdf",
+    "status": "saved",
+    "pages": 30
+  },
+  {
+    "title": "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering",
+    "url": "https://arxiv.org/abs/2405.15793",
+    "path": "references/2405.15793.pdf",
+    "status": "saved",
+    "pages": 118
+  },
+  {
+    "title": "Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents",
+    "url": "https://arxiv.org/abs/2505.22954",
+    "path": "references/2505.22954.pdf",
+    "status": "saved",
+    "pages": 72
+  },
+  {
+    "title": "Absolute Zero: Reinforced Self-play Reasoning with Zero Data",
+    "url": "https://arxiv.org/abs/2505.03335",
+    "path": "references/2505.03335.pdf",
+    "status": "saved",
+    "pages": 52
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Self_Refine",
+    "url": "https://arxiv.org/pdf/2303.17651",
+    "path": "references/2303.17651.pdf",
+    "status": "saved",
+    "pages": 54,
+    "sha256": "81e44592314d80218ad108d3490cd0b84ba5962fefd5c84819987afd77a57087",
+    "checked_date": "2026-10-26",
+    "version": "2303.17651v2"
+  },
+  {
+    "title": "TextGrad",
+    "url": "https://arxiv.org/pdf/2406.07496",
+    "path": "references/2406.07496.pdf",
+    "status": "saved",
+    "pages": 41,
+    "sha256": "9cbfd5c78ad69e2a8363e76d6774f3e6b5e68f46b409d8b560e98276a985b428",
+    "checked_date": "2026-10-26",
+    "version": "2406.07496v1"
+  },
+  {
+    "title": "FunSearch",
+    "url": "https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/funsearch-making-new-discoveries-in-mathematical-sciences-using-large-language-models/Mathematical-discoveries-from-program-search-with-large-language-models.pdf",
+    "path": "references/Mathematical-discoveries-from-program-search-with-large-language-models.pdf",
+    "status": "saved",
+    "pages": 64,
+    "sha256": "bfb903bf99a6ad6633e2f12869ddd9fb2abcb8babfa83783b6aaa41f62b91fd0",
+    "checked_date": "2026-10-26"
+  },
+  {
+    "title": "DeepSeek-Prover-V2: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal Decomposition",
+    "url": "https://arxiv.org/pdf/2504.21801v2",
+    "path": "references/2504.21801v2.pdf",
+    "status": "saved",
+    "pages": 39,
+    "sha256": "b201eb048acc409a0331d6982da385f305660c7bd73cfb843414c22951355131",
+    "checked_date": "2026-10-26",
+    "version": "2504.21801v2",
+    "reviewed_sections": "§2.1–2.2 and Figure 2 (PDF pp.3–5); training details contextual check §2.3 (p.6)"
+  }
+]

@@ -1,0 +1,1029 @@
+{
+  "review_date": "2026-10-26",
+  "scope": [
+    "MAS.S62/",
+    "AGENTS.md"
+  ],
+  "base_commit": "34caa0064f95fe5dc35183d980e40caa5fdc9a5b",
+  "official_schedule": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
+  "layout": {
+    "live_schedule_matches_archive": true,
+    "week_folders": 14,
+    "published_course_pdfs": 11,
+    "pdf_pages_read": 492,
+    "misplaced_or_unindexed_classification_copies": 0
+  },
+  "study_guides": [
+    {
+      "week": 1,
+      "path": "MAS.S62/1.CourseIntroduction/notes.zh-CN.md",
+      "sha256": "5ab8004857d420c9c62702448fb2cbca0a51eaf16cb36b753fd4160258ab4ab1",
+      "characters": 20782,
+      "post_fix_full_reread": "passed"
+    },
+    {
+      "week": 2,
+      "path": "MAS.S62/2.ContextEvolution1/notes.zh-CN.md",
+      "sha256": "ac6028a4209209d04ff6b6363df43ca3cd9974c82b1dd8e2551df3ec3d824177",
+      "characters": 26303,
+      "post_fix_full_reread": "passed"
+    },
+    {
+      "week": 3,
+      "path": "MAS.S62/3.ContextEvolution2/notes.zh-CN.md",
+      "sha256": "2dffdf1c72c150705f4d87e1b47b7265bc8dcb3a3a6a37d0f49ef02e74f6e72f",
+      "characters": 21963,
+      "post_fix_full_reread": "passed"
+    },
+    {
+      "week": 5,
+      "path": "MAS.S62/5.HarnessEvolution1/notes.zh-CN.md",
+      "sha256": "6408803741b17ae1459892fbf8a99b5c8ec6dda3cb0d9c621a785917e78b2621",
+      "characters": 28434,
+      "post_fix_full_reread": "passed"
+    },
+    {
+      "week": 6,
+      "path": "MAS.S62/6.HarnessEvolution2/notes.zh-CN.md",
+      "sha256": "357df775711837e712c18dea3ee5f5104acc22f6a00dc616dfdbabce3df7cd9f",
+      "characters": 29556,
+      "post_fix_full_reread": "passed"
+    },
+    {
+      "week": 7,
+      "path": "MAS.S62/7.ModelEvolution1/notes.zh-CN.md",
+      "sha256": "8e06116422add4a71e2c179e438f90257ab04659e767c3247869bb4b17851cf7",
+      "characters": 30702,
+      "post_fix_full_reread": "passed"
+    }
+  ],
+  "resolved_findings_and_coverage_gaps": 41,
+  "role_reviews": [
+    {
+      "review_date": "2026-10-26",
+      "reviewer": "audit_intro_model",
+      "files_read": [
+        {
+          "path": "AGENTS.md",
+          "scope": "full"
+        },
+        {
+          "path": "MAS.S62/1.CourseIntroduction/SOURCES.md",
+          "scope": "full"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/SOURCES.md",
+          "scope": "full"
+        },
+        {
+          "path": "MAS.S62/1.CourseIntroduction/REFERENCES.json",
+          "scope": "full"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/REFERENCES.json",
+          "scope": "full"
+        },
+        {
+          "path": "MAS.S62/1.CourseIntroduction/notes.zh-CN.md",
+          "scope": "full initial and final reread"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/notes.zh-CN.md",
+          "scope": "full initial and final reread"
+        },
+        {
+          "path": "MAS.S62/1.CourseIntroduction/slides/lec1 - intro.pdf",
+          "scope": "all 86 pages; extracted full text, visually checked key diagrams pp.58,60,62,64,66,67,69,71,73,74"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/slides/lec6 - training.pdf",
+          "scope": "all 45 pages"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/tutorials/lec6 - rl in practice.pdf",
+          "scope": "all 15 pages"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/slides/model_guest.pdf",
+          "scope": "all 51 pages; visually checked figures pp.12-17,20-21,33-36,47-50"
+        },
+        {
+          "path": "MAS.S62/1.CourseIntroduction/references/2005.14165.pdf",
+          "scope": "pp.1,6-8,10; ICL settings and Fig.2.1"
+        },
+        {
+          "path": "MAS.S62/1.CourseIntroduction/references/2203.02155.pdf",
+          "scope": "pp.1-2,7-9; training and evaluation assumptions"
+        },
+        {
+          "path": "MAS.S62/1.CourseIntroduction/references/2210.03629.pdf",
+          "scope": "pp.1-4; ReAct interaction and Fig.1"
+        },
+        {
+          "path": "MAS.S62/1.CourseIntroduction/references/2405.15793.pdf",
+          "scope": "pp.2-6; ACI and ablations"
+        },
+        {
+          "path": "MAS.S62/1.CourseIntroduction/references/2505.22954.pdf",
+          "scope": "pp.1-5; frozen base, self-modification and fixed outer search"
+        },
+        {
+          "path": "MAS.S62/1.CourseIntroduction/references/2505.03335.pdf",
+          "scope": "pp.1-5; proposer/solver/executor and zero-data scope"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/references/1707.06347.pdf",
+          "scope": "pp.1-5; surrogate, clipping, GAE, value target"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/references/2402.03300.pdf",
+          "scope": "pp.13-16; GRPO objective, outcome/process supervision, reference KL; also used to audit identical Week1 copy"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/references/2305.18290.pdf",
+          "scope": "pp.3-5; implicit reward and Eq.7"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/references/ttt.pdf",
+          "scope": "pp.2-7; methods, loss masks, ARC/BBH settings, Table1"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/references/2504.16084.pdf",
+          "scope": "pp.2-4; majority-reward method"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/references/2603.10165.pdf",
+          "scope": "pp.2-8; next-state signals, hybrid reward and distillation"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/references/2601.16175.pdf",
+          "scope": "pp.3-6; discovery objective, reuse and Algorithm1"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/references/2610.06269.pdf",
+          "scope": "pp.3-5; guidance/execution separation and experiment setup"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/references/2306.13649.pdf",
+          "scope": "pp.1,3-4; divergences and sampling stop-gradient"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/references/2601.18734.pdf",
+          "scope": "pp.3-5; teacher conditioning, full-vocab and sampled-token objectives"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/references/2601.20802.pdf",
+          "scope": "pp.3-6; feedback, KL objective, top-k and stability"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/references/2509.04259.pdf",
+          "scope": "pp.1-9,20,23; empirical forgetting, on-policy/negative-example ablation, oracle SFT, Fig.11"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/references/2601.19897.pdf",
+          "scope": "pp.1-10,16-22 and p.11 limitations; rendered p.16 and generated p.4 image; theory/practice, training, evaluation, costs"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/references/verl-ddf7007/trainer_base.py",
+          "scope": "targeted source sections for batch units, advantage and actor update; hash verified"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/references/verl-ddf7007/core_algos.py",
+          "scope": "targeted source sections for batch units, advantage and actor update; hash verified"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/references/verl-ddf7007/run_qwen3_8b_fsdp.sh",
+          "scope": "targeted source sections for batch units, advantage and actor update; hash verified"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/examples/loss_contracts.py",
+          "scope": "full; run and output verified"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/examples/RESULTS.md",
+          "scope": "full; run and output verified"
+        }
+      ],
+      "issues_found": [
+        {
+          "file": "MAS.S62/1.CourseIntroduction/notes.zh-CN.md",
+          "location": "§5.2",
+          "problem": "DGM discussion did not delimit what can actually self-modify, leaving fixed outer search and frozen weights implicit.",
+          "evidence": "DGM local v3 §3, PDF pp.4-5 explicitly excludes archive maintenance/parent selection from modifiable code.",
+          "fix": "Added frozen-base and fixed-outer-loop boundaries, separating structural self-reference from proven recursive acceleration."
+        },
+        {
+          "file": "MAS.S62/1.CourseIntroduction/notes.zh-CN.md",
+          "location": "§5.4",
+          "problem": "Lecture transition between original AlphaGo and AlphaGo Zero was not explained.",
+          "evidence": "L1 p.51 describes AlphaGo expert imitation; p.53 describes Zero without human gameplay data.",
+          "fix": "Explained the two training routes and human-designed rules/search remaining in Zero."
+        },
+        {
+          "file": "MAS.S62/1.CourseIntroduction/notes.zh-CN.md",
+          "location": "§7.1",
+          "problem": "The rising V(context) figure was left without an explicit semantic boundary.",
+          "evidence": "L1 p.66 defines V as expected external reward from context; rising plot expresses an objective.",
+          "fix": "Defined expectation and clarified that adding tokens is not a monotonic value guarantee."
+        },
+        {
+          "file": "MAS.S62/1.CourseIntroduction/notes.zh-CN.md",
+          "location": "§8",
+          "problem": "Separate concept definitions omitted the containment and conditional arrows in the lecture diagram.",
+          "evidence": "L1 p.74: AI for AI Research inside Discovery; RSI enabled when improved AI performs research; continual gains must persist in improver.",
+          "fix": "Added these diagram relationships with their conceptual scope."
+        },
+        {
+          "file": "MAS.S62/7.ModelEvolution1/notes.zh-CN.md",
+          "location": "§3.1–3.4",
+          "problem": "Baseline formula introduced G_t without defining reward-to-go; Actor–Critic discussion lacked a followable bridge from rewards to advantages/value targets.",
+          "evidence": "L6 pp.17-19; P6 p.5; PPO §5 Eqs.9-12, PDF pp.4-5.",
+          "fix": "Defined fixed reward/undiscounted derivation, reward-to-go, TD residual, masked truncated GAE, stopped value target, terminal handling; supplied and checked a two-step hand calculation."
+        },
+        {
+          "file": "MAS.S62/7.ModelEvolution1/notes.zh-CN.md",
+          "location": "§7.2–7.3",
+          "problem": "LOO formula and quoted 53.0% ARC figure omitted important actual loss and model/pipeline conditions.",
+          "evidence": "TTT PDF pp.3-7, §3.2, §4.2-4.6 and Table1: demonstration losses, 1B/80-task ablations, 8B full set, 47.1% own fine-tuned model and 53.0% BARC checkpoint.",
+          "fix": "Explained output loss choices, prior synthetic fine-tuning, augmented inference/voting, 47.1 versus 53.0 setup distinction."
+        },
+        {
+          "file": "MAS.S62/7.ModelEvolution1/notes.zh-CN.md",
+          "location": "§9.1–10.3; §14; examples/loss_contracts.py",
+          "problem": "Existing caveat about sequence/local KL lacked the actual source convention and an executable example; default SDFT forward KL still lacked an explicit update contract.",
+          "evidence": "GKD §3.1 p.4 freezes sampling; SDFT v2 p.4 prefers forward KL/EMA; Appendix A.1 p.16 labels local sequence estimators biased; Algorithm1 p.20 defines EMA coefficient.",
+          "fix": "Added sampling stop-gradient, explicit local forward-KL/soft-label gradient P-Q with numeric example, EMA new-student coefficient convention, full fixed-teacher sequence return-to-go gradient, and a four-sequence finite-difference check."
+        },
+        {
+          "file": "MAS.S62/7.ModelEvolution1/notes.zh-CN.md",
+          "location": "§11.1",
+          "problem": "Near-perfect KL/forgetting claim lacked the strength and population of the actual fits.",
+          "evidence": "RAZOR §4 PDF p.6 reports toy R²≈0.96 and LLM R²≈0.71; Fig.11 on p.23.",
+          "fix": "Specified the two settings, explained R² as explained fitted variation, and rejected interpreting it as probability/correctness or a universal safe threshold."
+        },
+        {
+          "file": "MAS.S62/7.ModelEvolution1/notes.zh-CN.md",
+          "location": "§11.3",
+          "problem": "Lecture negative-example/on-policy argument was discussed as a proposed control without reporting the actual key four-condition experiment.",
+          "evidence": "G6 pp.33-34 and RAZOR §5.1 pp.7-8 compare GRPO, 1-0 REINFORCE, SFT, SimPO on Science Q&A.",
+          "fix": "Added the four conditions and observed grouping, with scope and probability-coupling caveat."
+        },
+        {
+          "file": "MAS.S62/7.ModelEvolution1/notes.zh-CN.md",
+          "location": "§12.1.1",
+          "problem": "SDFT experiment setting was too abstract to prevent mixing the paper protocol with the separate verl tutorial or interpreting reward-free as supervision-free.",
+          "evidence": "SDFT v2 Appendix A.1-A.2/B.1-B.3 pp.16-20; §5 pp.10-11.",
+          "fix": "Added full-parameter H200/TRL/single-rollout setup, selection/decoding/seeds, demonstration provenance, regex versus execution scoring, medical evaluator, article+answer ablation, 2.5x FLOPs/4x time, and teacher phrase artifacts."
+        }
+      ],
+      "modified_files": [
+        "MAS.S62/1.CourseIntroduction/notes.zh-CN.md",
+        "MAS.S62/7.ModelEvolution1/notes.zh-CN.md",
+        "MAS.S62/7.ModelEvolution1/examples/loss_contracts.py",
+        "MAS.S62/7.ModelEvolution1/examples/RESULTS.md"
+      ],
+      "coverage_check": {
+        "Week1": {
+          "lecture_pages_read": "1-86",
+          "technical_coverage": "LLM/ICL/instruction/CoT; ReAct; RL/harness; historical improvement; four evolved objects; model/agent updates; discovery/continual/RSI relationships; project questions, evaluation, cost, diagnosis and self-test all retained.",
+          "result": "No remaining substantive coverage gap identified in final reread."
+        },
+        "Week7": {
+          "lecture_pages_read": {
+            "main": "1-45",
+            "tutorial": "1-15",
+            "guest": "1-51"
+          },
+          "technical_coverage": "RL/REINFORCE/baseline/Actor-Critic/GAE/PPO/RLHF/GRPO/DPO/reward hacking; TTRL/few-shot TTT/OpenClaw/discovery; GKD/OPSD/SDPO/SDFT; forgetting/negative-example evidence; batches/sync/monitoring/serving and self-test.",
+          "result": "No remaining substantive issue identified within checked sources and scope."
+        }
+      },
+      "reread_result": {
+        "completed": true,
+        "process": "Read both complete notes initially, read every assigned lecture page; made evidence-based edits; reread both complete final notes and rechecked changed-source sections; corrected additional ARC model attribution and actual Razor ablation coverage during reread.",
+        "checks": [
+          "Local Markdown links passed for both notes",
+          "Display-math delimiter pairs passed",
+          "Saved source reference hashes passed",
+          "Week1 function examples executed against missing/None/0/2 cases",
+          "Two-step GAE hand calculation executed and matched A=(0.8,0.6), value targets=(1,1)",
+          "loss_contracts.py exited 0 and rerun output exactly matched RESULTS.md",
+          "Two-step local first-action gradient is zero, full gradient ±0.12770640594 matches enumerated causal return-to-go gradient"
+        ],
+        "final_file_sha256": {
+          "MAS.S62/1.CourseIntroduction/notes.zh-CN.md": "5ab8004857d420c9c62702448fb2cbca0a51eaf16cb36b753fd4160258ab4ab1",
+          "MAS.S62/7.ModelEvolution1/notes.zh-CN.md": "8e06116422add4a71e2c179e438f90257ab04659e767c3247869bb4b17851cf7",
+          "MAS.S62/7.ModelEvolution1/examples/loss_contracts.py": "1000fad3218bb6aa21d5c714443da5ec3e4882e831a7794743156a94b006e8f1",
+          "MAS.S62/7.ModelEvolution1/examples/RESULTS.md": "03fc5621423b1aaee352a6e11a6856ca9fd82144867a4340bfe4c045eb5ae47f"
+        }
+      },
+      "remaining_limitations": [
+        "No GPU/model training, paper benchmark reproduction, or eight-GPU verl launch was performed.",
+        "Reference papers were checked in their relevant original method/experimental sections; this does not claim every appendix or citation of every reference paper was exhaustively reviewed.",
+        "SDFT v2 contains internally simplified/inconsistent sequence-gradient notation; notes explain the distinction using its Appendix A.1 and a finite fixed-teacher teaching model, not an audited full training implementation.",
+        "No git operations, root index regeneration, or repository-wide verify was performed by this subagent; parent owns integration and push."
+      ]
+    },
+    {
+      "files_read": [
+        {
+          "path": "AGENTS.md",
+          "scope": "完整"
+        },
+        {
+          "path": "/Users/xiaozhi/.codex/skills/pdf/SKILL.md",
+          "scope": "完整"
+        },
+        {
+          "path": "MAS.S62/2.ContextEvolution1/SOURCES.md",
+          "scope": "完整；notes在修复后再次完整复读"
+        },
+        {
+          "path": "MAS.S62/2.ContextEvolution1/REFERENCES.json",
+          "scope": "完整；notes在修复后再次完整复读"
+        },
+        {
+          "path": "MAS.S62/2.ContextEvolution1/notes.zh-CN.md",
+          "scope": "完整；notes在修复后再次完整复读"
+        },
+        {
+          "path": "MAS.S62/2.ContextEvolution1/slides/context_guest.pdf",
+          "scope": "全部页面文本；关键图表渲染核读"
+        },
+        {
+          "path": "MAS.S62/2.ContextEvolution1/slides/lec2 - context.pdf",
+          "scope": "全部页面文本；关键图表渲染核读"
+        },
+        {
+          "path": "MAS.S62/2.ContextEvolution1/readings/002_TextGrad_Automatic_Differentiation_via_Text_2406.07496.pdf",
+          "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
+        },
+        {
+          "path": "MAS.S62/2.ContextEvolution1/readings/001_Large_Language_Models_Are_Human_Level_Prompt_Engineers_2211.01910.pdf",
+          "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
+        },
+        {
+          "path": "MAS.S62/2.ContextEvolution1/readings/003_DSPy_Compiling_Declarative_Language_Model_Calls_into_Self_Improving_Pipe_2310.03714.pdf",
+          "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
+        },
+        {
+          "path": "MAS.S62/2.ContextEvolution1/readings/004_Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning_2303.11366.pdf",
+          "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
+        },
+        {
+          "path": "MAS.S62/2.ContextEvolution1/readings/005_Evolving_Prompts_In_Context_An_Open_ended_Self_replicating_Perspective_2506.17930.pdf",
+          "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
+        },
+        {
+          "path": "MAS.S62/2.ContextEvolution1/readings/006_GEPA_Reflective_Prompt_Evolution_Can_Outperform_Reinforcement_Learning_2507.19457.pdf",
+          "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
+        },
+        {
+          "path": "MAS.S62/2.ContextEvolution1/readings/007_ReasoningBank_Scaling_Agent_Self_Evolving_with_Reasoning_Memory_2509.25140.pdf",
+          "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
+        },
+        {
+          "path": "MAS.S62/2.ContextEvolution1/references/2510.04618.pdf",
+          "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
+        },
+        {
+          "path": "MAS.S62/5.HarnessEvolution1/SOURCES.md",
+          "scope": "完整；notes在修复后再次完整复读"
+        },
+        {
+          "path": "MAS.S62/5.HarnessEvolution1/REFERENCES.json",
+          "scope": "完整；notes在修复后再次完整复读"
+        },
+        {
+          "path": "MAS.S62/5.HarnessEvolution1/notes.zh-CN.md",
+          "scope": "完整；notes在修复后再次完整复读"
+        },
+        {
+          "path": "MAS.S62/5.HarnessEvolution1/slides/harness_guest.pdf",
+          "scope": "全部页面文本；关键图表渲染核读"
+        },
+        {
+          "path": "MAS.S62/5.HarnessEvolution1/slides/lec4 - harness.pdf",
+          "scope": "全部页面文本；关键图表渲染核读"
+        },
+        {
+          "path": "MAS.S62/5.HarnessEvolution1/readings/002_Recursive_Language_Models_2512.24601.pdf",
+          "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
+        },
+        {
+          "path": "MAS.S62/5.HarnessEvolution1/readings/004_MEM1_Learning_to_Synergize_Memory_and_Reasoning_for_Efficient_Long_horiz_2506.15841.pdf",
+          "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
+        },
+        {
+          "path": "MAS.S62/5.HarnessEvolution1/readings/005_Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning_2303.11366.pdf",
+          "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
+        },
+        {
+          "path": "MAS.S62/5.HarnessEvolution1/readings/001_Darwin_Godel_Machine_Open_Ended_Evolution_of_Self_Improving_Agents_2505.22954.pdf",
+          "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
+        },
+        {
+          "path": "MAS.S62/5.HarnessEvolution1/readings/007_Continual_Harness_Online_Adaptation_for_Self_Improving_Foundation_Agents_2605.09998.pdf",
+          "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
+        },
+        {
+          "path": "MAS.S62/5.HarnessEvolution1/readings/003_Context_Language_Models_2609.37725.pdf",
+          "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
+        },
+        {
+          "path": "MAS.S62/5.HarnessEvolution1/readings/006_Meta_Harness_End_to_End_Optimization_of_Model_Harnesses_2603.28052.pdf",
+          "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
+        },
+        {
+          "path": "MAS.S62/5.HarnessEvolution1/readings/009_Harness_Updating_Is_Not_Harness_Benefit_Disentangling_Evolution_Capabili_2605.30621.pdf",
+          "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
+        },
+        {
+          "path": "MAS.S62/5.HarnessEvolution1/readings/008_HarnessTax_How_Much_Does_the_Harness_Matter_for_Coding_Agents_arena_ai_blog_coding_agents_harness_tax_c2dd74e6.html",
+          "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
+        },
+        {
+          "path": "MAS.S62/5.HarnessEvolution1/references/003_MemGPT.pdf",
+          "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
+        },
+        {
+          "path": "MAS.S62/5.HarnessEvolution1/references/004_Agent_Workflow_Memory_AWM.pdf",
+          "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
+        },
+        {
+          "path": "MAS.S62/5.HarnessEvolution1/references/005_Agent_Skill_Induction_ASI.pdf",
+          "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
+        },
+        {
+          "path": "MAS.S62/5.HarnessEvolution1/references/013_PolySkill.pdf",
+          "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
+        },
+        {
+          "path": "MAS.S62/5.HarnessEvolution1/references/001_Mem0.pdf",
+          "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
+        },
+        {
+          "path": "MAS.S62/5.HarnessEvolution1/references/002_CodeAct.pdf",
+          "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
+        },
+        {
+          "path": "MAS.S62/5.HarnessEvolution1/references/003_ExpeL.pdf",
+          "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
+        },
+        {
+          "path": "MAS.S62/2.ContextEvolution1/tutorials/Textgrad_tutorial.ipynb",
+          "scope": "全部34个单元源码及相关已保存输出；未重新执行外部模型"
+        },
+        {
+          "path": "MAS.S62/readings/papers/2302.04761.pdf",
+          "scope": "论文工具/技能方法相关正文pp.3–6"
+        },
+        {
+          "path": "MAS.S62/readings/papers/2307.16789.pdf",
+          "scope": "论文工具/技能方法相关正文pp.3–6"
+        },
+        {
+          "path": "MAS.S62/readings/papers/2305.16291.pdf",
+          "scope": "论文工具/技能方法相关正文pp.3–6"
+        }
+      ],
+      "issues_found": [
+        {
+          "file": "MAS.S62/2.ContextEvolution1/notes.zh-CN.md",
+          "location": {
+            "section": "### 4.2",
+            "line": 154
+          },
+          "problem": "APE流程把候选选择写成验证表现最优，未交代原算法的D_train评分协议。",
+          "evidence": "APE v2 pp.3–5，Algorithm 1。",
+          "fix": "改为评分集，并区分原论文训练集选指令、独立测试与工程另设开发集。"
+        },
+        {
+          "file": "MAS.S62/2.ContextEvolution1/notes.zh-CN.md",
+          "location": {
+            "section": "### 5.8",
+            "line": 250
+          },
+          "problem": "TextGrad正文仅展开提示，讲义p30跨代码/分子/计划的应用图缺少机制解释。",
+          "evidence": "L2 p.30；TextGrad v1 p.3、§3.1/3.4/3.5。",
+          "fix": "补充可修改变量、外部评分与反馈接口，区分论文图示准确率与Notebook输出，保留领域验证边界。"
+        },
+        {
+          "file": "MAS.S62/2.ContextEvolution1/notes.zh-CN.md",
+          "location": {
+            "section": "### 7.1",
+            "line": 294
+          },
+          "problem": "GEPA仅解释反思变异和Pareto，未解释GEPA+Merge的遗传合并与负面结果。",
+          "evidence": "GEPA v2 p.23 D.1；§4 Observation 5。",
+          "fix": "补共同祖先、不相交模块、前沿/祖先比较条件和Qwen3-8B退化，区分基础GEPA与Merge。"
+        },
+        {
+          "file": "MAS.S62/2.ContextEvolution1/notes.zh-CN.md",
+          "location": {
+            "section": "### 9.3",
+            "line": 406
+          },
+          "problem": "长上下文位置编码仅写需验证，未解释讲义p44的具体插值映射。",
+          "evidence": "L2 p.44渲染图，R(t)→R(t/s)。",
+          "fix": "补L到sL的t/s映射、相位/频率与位置分辨率边界。"
+        },
+        {
+          "file": "MAS.S62/2.ContextEvolution1/notes.zh-CN.md",
+          "location": {
+            "section": "### 11.2",
+            "line": 492
+          },
+          "problem": "ACE在线59.5漏了offline warmup，可能被误读为从零且全流程无标签。",
+          "evidence": "ACE v3 p.7 Table 1；p.9 §4.6/Table 3。全文warmup仅见p.9，未单列其标签权限。",
+          "fix": "表行注明warmup；补无warmup为56.1；明确原表GT ✗与warmup标签权限的可核实/未知边界。"
+        },
+        {
+          "file": "MAS.S62/2.ContextEvolution1/notes.zh-CN.md",
+          "location": {
+            "section": "### 11.4",
+            "line": 518
+          },
+          "problem": "嘉宾金融汇总图笼统称数字/版本差异，未还原到各自实验行。",
+          "evidence": "G2 p.31渲染图；ACE v3 p.8 Table 2。",
+          "fix": "明确FiNER78.3对应离线有标签、Formula76.5对应在线有标签；不得拼成同设置，也不无据归因为版本。"
+        },
+        {
+          "file": "MAS.S62/2.ContextEvolution1/notes.zh-CN.md",
+          "location": {
+            "section": "### 11.5",
+            "line": 524
+          },
+          "problem": "ACE缓存数字漏了独立模型/服务条件和账单分母。",
+          "evidence": "ACE v3 p.10 §4.7；G2 p.30；p.19 Appendix A.3。",
+          "fix": "标明GPT-5.1/OpenAI API/evaluation、相对全价原始输入计费；用假设缓存单价10%的算术解释82.6%，明确无价表版本且不等于总费用/FLOPs/延迟。"
+        },
+        {
+          "file": "MAS.S62/5.HarnessEvolution1/notes.zh-CN.md",
+          "location": {
+            "section": "### 3.2",
+            "line": 135
+          },
+          "problem": "Mem0基础更新与Mem0g图扩展边界不够清楚。",
+          "evidence": "Mem0 v1 pp.3–5 §2.1–2.2，L4 pp.12–13。",
+          "fix": "分开候选事实+相似记忆更新操作，与有向实体关系图。"
+        },
+        {
+          "file": "MAS.S62/5.HarnessEvolution1/notes.zh-CN.md",
+          "location": {
+            "section": "### 4.5",
+            "line": 206
+          },
+          "problem": "MEM1主要结果的PPO训练条件和EM Count粒度未解释。",
+          "evidence": "MEM1 v2 pp.6–8 §4/Table 1/Fig4；p.18 A.4.1；L4 p.18渲染图。",
+          "fix": "补Qwen2.5-7B Base/PPO与truncate对照；强调正确子问题数非整题成功率/单题率，界定2→16目标迁移。"
+        },
+        {
+          "file": "MAS.S62/5.HarnessEvolution1/notes.zh-CN.md",
+          "location": {
+            "section": "### 5.3",
+            "line": 235
+          },
+          "problem": "ExpeL引用§3错位且略过其对比抽取/更新算子/评测重试边界。",
+          "evidence": "ExpeL v3 p.4 §4.1–4.3、p.6 Algorithm 1–3。",
+          "fix": "修正文和附录节号；补成功失败对、成功组、ADD/EDIT/投票与零删除、训练重试和测试单次。"
+        },
+        {
+          "file": "MAS.S62/5.HarnessEvolution1/notes.zh-CN.md",
+          "location": {
+            "section": "### 6.2",
+            "line": 253
+          },
+          "problem": "CLM训练只写学习策略，未说明success-gated效率信号；部分引用§3错位。",
+          "evidence": "CLM v1 pp.4–6 §4.1–4.3、Eq6。",
+          "fix": "修节号；说明整轨迹任务优势、至少两条成功轨迹内比较效率、失败无效率优势。"
+        },
+        {
+          "file": "MAS.S62/5.HarnessEvolution1/notes.zh-CN.md",
+          "location": {
+            "section": "### 6.3",
+            "line": 263
+          },
+          "problem": "Suffix Cache Reuse仅提名，容易被误解为精确无损缓存加速。",
+          "evidence": "CLM v1 p.6 §4.3/Fig4，明确stale cache states及SCR单列。",
+          "fix": "用A+B+C示例解释后缀旧状态、删除文本≠删除缓存信息，区分标准prefix-reuse FLOPs与SCR。"
+        },
+        {
+          "file": "MAS.S62/5.HarnessEvolution1/notes.zh-CN.md",
+          "location": {
+            "section": "### 7.4",
+            "line": 302
+          },
+          "problem": "AWM/ASI/PolySkill表格缺具体操作链；L4成功失败来源表述比AWM原算法宽。",
+          "evidence": "AWM v1 pp.3–4 §2.3；ASI v2 pp.3–4 §2.2–2.3；PolySkill v2 pp.5–6。",
+          "fix": "补AWM代理成功门控和流程提示、ASI强制技能调用/截尾防伪成功/三项验证、多态父类与站点实现。"
+        },
+        {
+          "file": "MAS.S62/5.HarnessEvolution1/notes.zh-CN.md",
+          "location": {
+            "section": "### 9.2",
+            "line": 364
+          },
+          "problem": "DGM档案准入与固定外循环边界未明确。",
+          "evidence": "DGM v3 pp.4–6 §3/§4.2。",
+          "fix": "补可编译/可编辑门槛、分阶段评测与档案父代选择不在可修改范围。"
+        },
+        {
+          "file": "MAS.S62/5.HarnessEvolution1/notes.zh-CN.md",
+          "location": {
+            "section": "### 9.4",
+            "line": 380
+          },
+          "problem": "HB交叉配对和收益未明确各对独立演化及in-situ协议，术语表又限定为独立测试收益。",
+          "evidence": "HB v1 pp.4–5 Eq6–8/§4.1。",
+          "fix": "补H_T^(f,e)依赖执行者轨迹、先解再更新再汇总，区分最终冻结独立泛化测试；统一Benefit词条。"
+        },
+        {
+          "file": "MAS.S62/5.HarnessEvolution1/notes.zh-CN.md",
+          "location": {
+            "section": "### 14.5",
+            "line": 585
+          },
+          "problem": "HarnessTax成本动机未绑定其小样本与费用/turn定义。",
+          "evidence": "本地归档HarnessTax，Experiment Setup/Measurement details。",
+          "fix": "补7×3、每基准30题×3次、high-effort/100-turn各自定义、2026-09-01固定价格及非等计算量边界。"
+        }
+      ],
+      "coverage_check": {
+        "week2": {
+          "lecture_pages": 47,
+          "guest_pages": 36,
+          "notebook_cells": 34,
+          "result": "核心教学主题均已对应正文；补齐TextGrad跨领域图与位置插值解释，所有指定阅读机制均作区分"
+        },
+        "week5": {
+          "lecture_pages": 53,
+          "guest_pages": 23,
+          "result": "记忆分类、MemGPT/Mem0、MEM1、Reflexion/ExpeL、CLM、工具技能、RLM、Meta-Harness与额外演化阅读均已覆盖；图表按实际指标和条件解释"
+        },
+        "local_links": {
+          "week2_checked": 15,
+          "week5_checked": 78,
+          "errors": []
+        },
+        "visual_evidence": "渲染并核读纯图/关键图表；临时图在/tmp/mass62-context-harness，不纳入仓库"
+      },
+      "reread_result": {
+        "status": "passed",
+        "method": "修复后再次从头完整通读两篇最终notes，回查受影响论文与关键图表；未发现剩余实质错误或讲义核心覆盖缺口",
+        "example_run": "python3 MAS.S62/5.HarnessEvolution1/examples/versioned_memory.py",
+        "example_result": "PASS: observed scoped write, stale/scope/unobserved rejection, rollback",
+        "files_modified": [
+          "MAS.S62/2.ContextEvolution1/notes.zh-CN.md",
+          "MAS.S62/5.HarnessEvolution1/notes.zh-CN.md"
+        ],
+        "final_sha256": {
+          "MAS.S62/2.ContextEvolution1/notes.zh-CN.md": "ac6028a4209209d04ff6b6363df43ca3cd9974c82b1dd8e2551df3ec3d824177",
+          "MAS.S62/5.HarnessEvolution1/notes.zh-CN.md": "6408803741b17ae1459892fbf8a99b5c8ec6dda3cb0d9c621a785917e78b2621"
+        }
+      },
+      "remaining_limitations": [
+        "ACE论文未单列offline warmup的标签权限/具体初始化文件，已在正文明确；不代作者补设定。",
+        "ACE缓存段落未列价表版本；10%缓存单价仅为解释舍入数字的计费假设，非实时价格核验。",
+        "未调用外部模型、重训或复现论文实验；仅核查本地一手材料、保存的Notebook记录，并运行已有标准库状态样例。",
+        "本次只修改两篇notes；课程全局索引/校验值/verify与Git由父代理统一处理。"
+      ]
+    },
+    {
+      "reviewer": "discovery_multiagent",
+      "date": "2026-10-26",
+      "files_read": [
+        {
+          "path": "AGENTS.md",
+          "scope": "full"
+        },
+        {
+          "path": "/Users/xiaozhi/.codex/skills/pdf/SKILL.md",
+          "scope": "full"
+        },
+        {
+          "path": "MAS.S62/3.ContextEvolution2/SOURCES.md",
+          "scope": "full"
+        },
+        {
+          "path": "MAS.S62/6.HarnessEvolution2/SOURCES.md",
+          "scope": "full"
+        },
+        {
+          "path": "MAS.S62/3.ContextEvolution2/notes.zh-CN.md",
+          "scope": "full initial read, full post-fix reread; final changed paragraphs reread"
+        },
+        {
+          "path": "MAS.S62/6.HarnessEvolution2/notes.zh-CN.md",
+          "scope": "full initial read, full post-fix reread; final changed paragraphs reread"
+        },
+        {
+          "path": "MAS.S62/3.ContextEvolution2/REFERENCES.json",
+          "scope": "full"
+        },
+        {
+          "path": "MAS.S62/6.HarnessEvolution2/REFERENCES.json",
+          "scope": "full"
+        },
+        {
+          "path": "MAS.S62/3.ContextEvolution2/slides/lec3 - llm optimizers.pdf",
+          "scope": "all49pages text; visual review image-centric pages8,10–12,15–22,25,27,29–30,33,37,40–46"
+        },
+        {
+          "path": "MAS.S62/6.HarnessEvolution2/slides/lec5 - multi agent.pdf",
+          "scope": "all40pages text; visual review image-centric pages9–11,14,17–30,32,34–39"
+        },
+        {
+          "path": "MAS.S62/6.HarnessEvolution2/tutorials/harness engineering tutorial.pdf",
+          "scope": "all47pages text; visual review image-centric pages3–4,7–8,21–22,29,33–34,36,38,42"
+        },
+        {
+          "path": "MAS.S62/3.ContextEvolution2/references/Mathematical-discoveries-from-program-search-with-large-language-models.pdf",
+          "scope": "§1–2, Methods selection/robustness, Table1, TableE.2; affected portions reread"
+        },
+        {
+          "path": "MAS.S62/readings/papers/2309.03409.pdf",
+          "scope": "abstract/Table1, §2–4 and experiment protocol references"
+        },
+        {
+          "path": "MAS.S62/readings/papers/2409.04109.pdf",
+          "scope": "§4–5, Tables7–9 and duplicate-idea/limitations source passages"
+        },
+        {
+          "path": "MAS.S62/readings/papers/2606.15497.pdf",
+          "scope": "§2–5, template/tree-search and human evaluation/filtering/withdrawal passages"
+        },
+        {
+          "path": "MAS.S62/3.ContextEvolution2/references/2406.07496.pdf",
+          "scope": "§2/Fig1 PDFpp2–4"
+        },
+        {
+          "path": "MAS.S62/3.ContextEvolution2/references/2303.17651.pdf",
+          "scope": "§2–3 PDFpp2–4"
+        },
+        {
+          "path": "MAS.S62/readings/papers/2506.13131.pdf",
+          "scope": "§2.1–2.4/Figs1–3 PDFpp3–7"
+        },
+        {
+          "path": "MAS.S62/readings/papers/2408.06292.pdf",
+          "scope": "§3–4 PDFpp3–6; generated-paper appendices not exhaustively read"
+        },
+        {
+          "path": "MAS.S62/3.ContextEvolution2/references/2504.21801v2.pdf",
+          "scope": "new official v2 download; abstract and§2.1–2.3/Fig2 PDFpp1–6"
+        },
+        {
+          "path": "MAS.S62/readings/papers/2512.08296.pdf",
+          "scope": "abstract/intro,§3–4 predictor/metric/threshold sections and Tables3/5 references"
+        },
+        {
+          "path": "MAS.S62/readings/papers/2604.01658.pdf",
+          "scope": "§3–4,Tables1–3,AppendixC.1.2; affected result/trigger passages reread"
+        },
+        {
+          "path": "MAS.S62/readings/papers/2602.12670.pdf",
+          "scope": "abstract,§3–5,Table2/aggregation protocol"
+        },
+        {
+          "path": "MAS.S62/readings/papers/2503.13657.pdf",
+          "scope": "§3,Fig1,Tables1–2 and category definitions"
+        },
+        {
+          "path": "MAS.S62/6.HarnessEvolution2/references/2405.15793.pdf",
+          "scope": "§5.1/Table3/Fig5 PDFpp5–7"
+        },
+        {
+          "path": "MAS.S62/readings/papers/2302.04761.pdf",
+          "scope": "§2 PDFpp3–4"
+        },
+        {
+          "path": "MAS.S62/readings/papers/2307.16789.pdf",
+          "scope": "§2–3 PDFpp3–7"
+        },
+        {
+          "path": "MAS.S62/readings/papers/2305.16291.pdf",
+          "scope": "§2 PDFpp3–5"
+        },
+        {
+          "path": "MAS.S62/6.HarnessEvolution2/references/002_ReAct.pdf",
+          "scope": "§2–3 PDFpp2–4"
+        },
+        {
+          "path": "MAS.S62/3.ContextEvolution2/examples/bin_packing_lab.py",
+          "scope": "full; executed successfully"
+        },
+        {
+          "path": "MAS.S62/3.ContextEvolution2/examples/RESULTS.md",
+          "scope": "full; output matched fresh execution"
+        },
+        {
+          "path": "MAS.S62/6.HarnessEvolution2/examples/handoff_contract.py",
+          "scope": "full; executed successfully"
+        },
+        {
+          "path": "MAS.S62/6.HarnessEvolution2/references/mini-swe-agent-68d367b/src/minisweagent/agents/default.py",
+          "scope": "full pinned source"
+        },
+        {
+          "path": "MAS.S62/6.HarnessEvolution2/references/mini-swe-agent-68d367b/src/minisweagent/environments/local.py",
+          "scope": "full pinned source"
+        },
+        {
+          "path": "MAS.S62/6.HarnessEvolution2/references/mini-swe-agent-68d367b/src/minisweagent/config/default.yaml",
+          "scope": "full pinned source"
+        },
+        {
+          "path": "MAS.S62/6.HarnessEvolution2/references/mini-swe-agent-68d367b/src/minisweagent/agents/interactive.py",
+          "scope": "full pinned source"
+        }
+      ],
+      "issues_found": [
+        {
+          "file": "MAS.S62/3.ContextEvolution2/notes.zh-CN.md",
+          "location": "§3.2",
+          "problem": "OPRO scoring description did not distinguish optimizer model, task-solving scorer, and correctness evaluation; no concrete experiment supported the explanation.",
+          "evidence": "OPRO v3 §4–5 and Table 1 PDF p.1: PaLM 2-L scorer, 71.8 vs 80.2 GSM8K.",
+          "fix": "Added role distinction and the model/protocol-bound +8.4 percentage point example; expanded experiment section pointers."
+        },
+        {
+          "file": "MAS.S62/3.ContextEvolution2/notes.zh-CN.md",
+          "location": "§5.1–5.2",
+          "problem": "Core FunSearch selection machinery was reduced to generic softmax, leaving signature clusters and two-level parent sampling unexplained.",
+          "evidence": "Lecture 3 p.33; FunSearch Methods PDF pp.17–18, Table E.2 p.50.",
+          "fix": "Added per-input score signatures, clustering, uniform island choice, score-weighted cluster choice, shorter-code preference within clusters, same-island insertion, 10-island/4-hour reset and reseeding details."
+        },
+        {
+          "file": "MAS.S62/3.ContextEvolution2/notes.zh-CN.md",
+          "location": "new §5.5",
+          "problem": "FunSearch discussed discovery scope but omitted measured stability and bin-packing evaluation protocol/results.",
+          "evidence": "FunSearch Methods PDF p.18: 4/140 direct-search runs find 512; §2.2/Table 1 p.11: OR4 4.94% vs 2.47%, Weibull100k 3.79% vs 0.03% excess bins over L2 lower bound.",
+          "fix": "Added stability, human symmetry-inspection role, training/test distribution separation, lower-bound meaning and concrete results."
+        },
+        {
+          "file": "MAS.S62/3.ContextEvolution2/notes.zh-CN.md",
+          "location": "§6.4",
+          "problem": "Lecture pp.36–37 transition to long real-world feedback tasks was absent.",
+          "evidence": "Lecture 3 p.37 EdgeBench figure visually read.",
+          "fix": "Added task-family transition and explained why feedback/completion must be redefined; explicitly did not claim independent benchmark verification."
+        },
+        {
+          "file": "MAS.S62/3.ContextEvolution2/notes.zh-CN.md",
+          "location": "§7.2",
+          "problem": "Research-idea evidence was described abstractly without explaining the novelty result or unit-of-analysis changes.",
+          "evidence": "Novel Ideas v1 §4–5/Tables7–9 PDF pp.7–12; lecture3 p.40.",
+          "fix": "Added 49 writers/79 reviewers/24 overlapping participants, three 49-idea conditions, 4.84/5.64/5.81 novelty means and review/idea/reviewer analysis boundaries."
+        },
+        {
+          "file": "MAS.S62/3.ContextEvolution2/notes.zh-CN.md",
+          "location": "§7.4",
+          "problem": "AI Scientist human evaluation omitted manual selection and withdrawal, allowing an overstatement of end-to-end autonomy and publication outcome.",
+          "evidence": "AS26 §4–5 PDF pp.4–6: stagewise manual filtering, three selected manuscripts, score6.33, withdrawal protocol.",
+          "fix": "Named ICBINB/ICLR2025, manual selection criteria and withdrawal; retained workshop acceptance-rate and evidence limitations."
+        },
+        {
+          "file": "MAS.S62/3.ContextEvolution2/notes.zh-CN.md",
+          "location": "§8 and references",
+          "problem": "Formal verification section omitted the lecture’s concrete subgoal decomposition/cold-start-data workflow.",
+          "evidence": "Lecture3 pp.43–44; newly saved official DeepSeek-Prover-V2 v2 §2.1–2.3/Fig2 PDF pp.3–6.",
+          "fix": "Added sketch→Lean subgoals→7B recursive prover→assembled proof→cold-start data; distinguished sorry placeholders, proof validation and subsequent training. Registered official v2 PDF in REFERENCES.json."
+        },
+        {
+          "file": "MAS.S62/6.HarnessEvolution2/notes.zh-CN.md",
+          "location": "§2.2",
+          "problem": "Budget explanation did not state that positive limits are required and the archived YAML disables both limits.",
+          "evidence": "Pinned68d367b default.py query condition 0<limit<=used; AgentConfig cost3/step0; default.yaml both0.",
+          "fix": "Added exact zero-disables semantics and class-vs-YAML default distinction."
+        },
+        {
+          "file": "MAS.S62/6.HarnessEvolution2/notes.zh-CN.md",
+          "location": "§3.2–3.4",
+          "problem": "Search interface explanation lacked actual ACI evidence and tool-search discovery flow.",
+          "evidence": "SWE-agent v3 Table3/Fig5 PDF pp.6–7; tutorial pp.21–23.",
+          "fix": "Added18.0/12.0/15.7 resolved rates and on-demand directory-search→tool-definition expansion mechanism; kept model/task/interaction limits."
+        },
+        {
+          "file": "MAS.S62/6.HarnessEvolution2/notes.zh-CN.md",
+          "location": "§6.1 and source appendix",
+          "problem": "SkillsBench self-generated and curated conditions were insufficiently separated; result source scope omitted §5.",
+          "evidence": "SkillsBench v4 §4–5/Table2 PDF pp.5–6.",
+          "fix": "Added33.9→50.5 task-macro pass rate,4.1–25.7pp range, fixed three-trial frame, and three dedicated-harness self-generated subset; corrected section scope."
+        },
+        {
+          "file": "MAS.S62/6.HarnessEvolution2/notes.zh-CN.md",
+          "location": "§10.1",
+          "problem": "Centralized computer-use topology lacked the lecture’s concrete DAG execution/replanning flow.",
+          "evidence": "Lecture5 p.22 MACU architecture figure visually read.",
+          "fix": "Added ready-node dispatch, per-agent VM, followup loop, and manager DAG updates as lecture-figure interpretation."
+        },
+        {
+          "file": "MAS.S62/6.HarnessEvolution2/notes.zh-CN.md",
+          "location": "§11.3–11.4",
+          "problem": "Predictive scaling discussion did not explain availability of empirical predictor inputs; threshold reference range was incomplete.",
+          "evidence": "SAS v3 §3.2/§4.3 and Table3, actual PDF pp.8–9,15–19.",
+          "fix": "Explained pilot/trace measurements needed for overhead/error/message/redundancy inputs and extended exact source range."
+        },
+        {
+          "file": "MAS.S62/6.HarnessEvolution2/notes.zh-CN.md",
+          "location": "§12",
+          "problem": "MAST distinguished human versus automated work vaguely, without enough quantities to prevent misconstruing dataset size as human review size.",
+          "evidence": "MAST v3 §3/Tables1–2 PDF pp.2–6.",
+          "fix": "Added six experts/about150 traces,1642 expanded dataset, few-shot LLM annotation and held-out human agreement kappa0.77."
+        },
+        {
+          "file": "MAS.S62/6.HarnessEvolution2/notes.zh-CN.md",
+          "location": "§13.2–13.3",
+          "problem": "CORAL shared-memory objects and three heartbeat actions were underspecified.",
+          "evidence": "CORAL v3 §3.2–3.3 PDF pp.4–6; AppendixC.1.2 pp.17–18.",
+          "fix": "Added attempts/notes/skills hub, isolated local contexts/workspaces, indirect collaboration and Reflect/Consolidate/Pivot with archived trigger settings."
+        },
+        {
+          "file": "MAS.S62/6.HarnessEvolution2/notes.zh-CN.md",
+          "location": "§13.5",
+          "problem": "Polyominoes was mistranslated as polynomial puzzle; results and actual ablations were omitted while text only requested future ablations.",
+          "evidence": "Lecture5 pp.36–39; CORAL v3 §4.1/4.3/4.4.2–4.4.3 Tables2–3 PDF pp.7–10.",
+          "fix": "Corrected to 多格骨牌装填; explained no-web80.2→84.2 vs web89.4, cycles1350→1103, differing evaluation counts/budgets, actual knowledge and best-of-4 ablations, and strategy-keyword Jaccard proxy limits."
+        }
+      ],
+      "coverage_check": {
+        "Week3": {
+          "all_lecture_pages_read": 49,
+          "core_coverage": [
+            "prompt/context recap",
+            "TextGrad graph/feedback/update",
+            "Self-Refine and OPRO",
+            "multi-domain propose/evaluate/refine",
+            "CapSet validity and constructivity",
+            "FunSearch skeleton/best-shot/signature/clusters/islands/evaluation",
+            "AlphaEvolve diffs/multiple metrics/cascade",
+            "Autoresearch/EdgeBench task transition/HW1",
+            "research idea evidence",
+            "two AI Scientist versions and human evaluation",
+            "subgoal formal proof pipeline",
+            "open challenges",
+            "offline packing lab, generalization, costs, diagnostics, self-test"
+          ]
+        },
+        "Week6": {
+          "all_lecture_pages_read": 40,
+          "all_tutorial_pages_read": 47,
+          "core_coverage": [
+            "agentloop/mini pinned execution and defaults",
+            "tools/search/edit/code actions",
+            "Toolformer/ToolLLM",
+            "skills/MCP/hooks/plugins/instructions",
+            "SkillsBench/Voyager",
+            "context/cache/plan/memory",
+            "permissions/execution boundaries",
+            "planning/calibration/replanning/interaction",
+            "MACU DAG and topology choices",
+            "SAS controlled results and prediction limits",
+            "MAST evidence/classification",
+            "CORAL autonomy/shared hub/heartbeat/ablation/budget/results",
+            "Django handoff lab/cost/control experiments/diagnostics/self-test"
+          ]
+        },
+        "links": {
+          "week3_local_links_checked": 15,
+          "week6_local_links_checked": 96,
+          "missing_files": 0,
+          "invalid_pdf_page_fragments": 0,
+          "references_json_valid": true,
+          "all_registered_reference_files_exist": true
+        },
+        "examples": {
+          "packing": "exit0; deterministic output matches existing RESULTS.md",
+          "handoff": "exit0; PASS: paired handoff, stale/evidence/unresolved/incomplete rejection"
+        }
+      },
+      "reread_result": {
+        "full_notes_reread_after_fixes": true,
+        "affected_primary_sources_reread": true,
+        "further_material_errors_remaining": 0,
+        "result": "pass within audited scope",
+        "final_paragraph_followup": "Reviewed final EdgeBench/MACU additions and corrected source ranges; no remaining substantive inconsistency found."
+      },
+      "remaining_limitations": [
+        "No model training, LLM API experiment, benchmark reproduction or Lean execution was performed; all paper results remain source reports.",
+        "Product/API/CLI behavior is explained as tutorial snapshots; no current-version compatibility run performed.",
+        "EdgeBench and MACU examples are bounded lecture-figure interpretations; their original benchmark/experiment claims were not independently reproduced or numerically extended.",
+        "Long paper appendices and AI-generated example manuscripts were not exhaustively re-reviewed; cited mechanism/result sections were checked.",
+        "CORAL v3 abstract/body task-count discrepancy remains explicitly documented rather than silently reconciled.",
+        "Parent agent must rebuild MAS.S62 source indexes/manifest/checksums and run repository-wide verify before committing/pushing."
+      ]
+    }
+  ],
+  "integration": {
+    "integrity_report": "VERIFICATION.json",
+    "local_examples_run": [
+      "3.ContextEvolution2/examples/bin_packing_lab.py",
+      "5.HarnessEvolution1/examples/versioned_memory.py",
+      "6.HarnessEvolution2/examples/handoff_contract.py",
+      "7.ModelEvolution1/examples/loss_contracts.py"
+    ],
+    "model_benchmarks_or_gpu_training_reproduced": false,
+    "note": "论文实验为一手资料报告；本地运行仅验证教学例子的状态、契约与数学。",
+    "staged_source_bytes_verified": 136,
+    "git_checkout_preservation": "MAS.S62/.gitattributes disables line-ending normalization for original archives and classified copies; binary formats have explicit binary attributes."
+  }
+}

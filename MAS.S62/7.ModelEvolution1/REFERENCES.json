@@ -1,0 +1,156 @@
+[
+  {
+    "title": "GKD",
+    "url": "https://arxiv.org/abs/2306.13649",
+    "path": "references/2306.13649.pdf",
+    "status": "saved",
+    "pages": 18,
+    "sha256": "a81c71fa0cd15506642092790d854347f030c29ee1d6aa643b55aa51348e6869",
+    "checked_date": "2026-10-26",
+    "version": "2306.13649v3"
+  },
+  {
+    "title": "RLs_Razor",
+    "url": "https://arxiv.org/abs/2509.04259",
+    "path": "references/2509.04259.pdf",
+    "status": "saved",
+    "pages": 23,
+    "sha256": "bf3b6ab3b0b5db847aae235cc93a5a9475be2b7aca1e163304822d13d2dd0373",
+    "checked_date": "2026-10-26",
+    "version": "2509.04259v1"
+  },
+  {
+    "title": "SDFT",
+    "url": "https://arxiv.org/abs/2601.19897",
+    "path": "references/2601.19897.pdf",
+    "status": "saved",
+    "pages": 22,
+    "sha256": "8e79ea6fc872f599b7076ab6d05a0037ed9e7f2e504c8610aea129546e497e14",
+    "checked_date": "2026-10-26",
+    "version": "2601.19897v2"
+  },
+  {
+    "title": "TTRL",
+    "url": "https://arxiv.org/abs/2504.16084",
+    "path": "references/2504.16084.pdf",
+    "status": "saved",
+    "pages": 22,
+    "sha256": "3828cc886a0133749fe857dc12fff190f76c17dd7421dccfca01c96ec1dd5882",
+    "checked_date": "2026-10-26",
+    "version": "2504.16084v3"
+  },
+  {
+    "title": "OpenClaw_RL",
+    "url": "https://arxiv.org/abs/2603.10165",
+    "path": "references/2603.10165.pdf",
+    "status": "saved",
+    "pages": 33,
+    "sha256": "4d8c1aa05fdb439201b5edfca65208fc610eee3169b0ba0689f4378f2c4fe6ae",
+    "checked_date": "2026-10-26",
+    "version": "2603.10165v2"
+  },
+  {
+    "title": "TTT_Discover",
+    "url": "https://arxiv.org/abs/2601.16175",
+    "path": "references/2601.16175.pdf",
+    "status": "saved",
+    "pages": 72,
+    "sha256": "4656ec28d800002d9a3e3f83a71c7d9032ef5f1873cd953b8808a8391ce06ec7",
+    "checked_date": "2026-10-26",
+    "version": "2601.16175v2"
+  },
+  {
+    "title": "PPO",
+    "url": "https://arxiv.org/abs/1707.06347",
+    "path": "references/1707.06347.pdf",
+    "status": "saved",
+    "pages": 12,
+    "sha256": "e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b",
+    "checked_date": "2026-10-26",
+    "version": "1707.06347v2"
+  },
+  {
+    "title": "DeepSeekMath",
+    "url": "https://arxiv.org/abs/2402.03300",
+    "path": "references/2402.03300.pdf",
+    "status": "saved",
+    "pages": 30,
+    "sha256": "6cc20b3c5b8d25b8b53868fc4ec1792c144f07d67bdf7395138efd4422197e7b",
+    "checked_date": "2026-10-26",
+    "version": "2402.03300v3"
+  },
+  {
+    "title": "DPO",
+    "url": "https://arxiv.org/abs/2305.18290",
+    "path": "references/2305.18290.pdf",
+    "status": "saved",
+    "pages": 27,
+    "sha256": "92cb3a2b71362acda98a789b03d88688fd33cf5fcf13f81d2b1de30ee7d3b67a",
+    "checked_date": "2026-10-26",
+    "version": "2305.18290v3"
+  },
+  {
+    "title": "OPSD",
+    "url": "https://arxiv.org/abs/2601.18734",
+    "path": "references/2601.18734.pdf",
+    "status": "saved",
+    "pages": 15,
+    "sha256": "e521ed6c2939dc612daec5fe6fb47bef554a291228c02cafae07102b9729bad8",
+    "checked_date": "2026-10-26",
+    "version": "2601.18734v3"
+  },
+  {
+    "title": "TTT_FewShot",
+    "url": "https://ekinakyurek.github.io/papers/ttt.pdf",
+    "path": "references/ttt.pdf",
+    "status": "saved",
+    "pages": 22,
+    "sha256": "9da8f434864b90ec18378dfa8c920e1d128e5bb694343f8a5a524302e17a5dad",
+    "checked_date": "2026-10-26",
+    "version": "2411.07279v2"
+  },
+  {
+    "title": "SDPO",
+    "url": "https://arxiv.org/pdf/2601.20802",
+    "path": "references/2601.20802.pdf",
+    "status": "saved",
+    "pages": 50,
+    "sha256": "2714e7734c43cf849c2e7c49fc95cf57a6533c0833465a01983b87eb7f72d190",
+    "checked_date": "2026-10-26",
+    "version": "2601.20802v2"
+  },
+  {
+    "title": "Guidance_TTT",
+    "url": "https://arxiv.org/pdf/2610.06269",
+    "path": "references/2610.06269.pdf",
+    "status": "saved",
+    "pages": 35,
+    "sha256": "351bcdd2c9c5275d007f2d15a4e0fb9d016a03b4e19f66258d1c3a44e6f28997",
+    "checked_date": "2026-10-26",
+    "version": "2610.06269v2"
+  },
+  {
+    "title": "verl verl/trainer/ppo/v1/trainer_base.py @ ddf7007",
+    "url": "https://raw.githubusercontent.com/verl-project/verl/ddf7007/verl/trainer/ppo/v1/trainer_base.py",
+    "path": "references/verl-ddf7007/trainer_base.py",
+    "status": "saved",
+    "sha256": "293af89dab738cc57a67a8cc730f3337622685e29d96dfdd2e9af1e6fc2144e8",
+    "checked_date": "2026-10-26"
+  },
+  {
+    "title": "verl verl/trainer/ppo/core_algos.py @ ddf7007",
+    "url": "https://raw.githubusercontent.com/verl-project/verl/ddf7007/verl/trainer/ppo/core_algos.py",
+    "path": "references/verl-ddf7007/core_algos.py",
+    "status": "saved",
+    "sha256": "369b614f239f237a04a38a40b1877cd6fd14aa7bd5f9ff4fe4d7758b682a6948",
+    "checked_date": "2026-10-26"
+  },
+  {
+    "title": "verl examples/grpo_trainer/run_qwen3_8b_fsdp.sh @ ddf7007",
+    "url": "https://raw.githubusercontent.com/verl-project/verl/ddf7007/examples/grpo_trainer/run_qwen3_8b_fsdp.sh",
+    "path": "references/verl-ddf7007/run_qwen3_8b_fsdp.sh",
+    "status": "saved",
+    "sha256": "f0f7af00c73789caa97f40132289d7444905f0b1f35b3072f798aaf7545a62ac",
+    "checked_date": "2026-10-26"
+  }
+]

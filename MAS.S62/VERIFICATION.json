@@ -1,0 +1,53 @@
+{
+  "saved_sources": 95,
+  "classification_copies": 42,
+  "archive_checksums": 136,
+  "checked_local_links": 535,
+  "published_weeks": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    7
+  ],
+  "study_guides": [
+    {
+      "week": 1,
+      "path": "1.CourseIntroduction/notes.zh-CN.md",
+      "characters": 20782,
+      "lines": 621
+    },
+    {
+      "week": 2,
+      "path": "2.ContextEvolution1/notes.zh-CN.md",
+      "characters": 26303,
+      "lines": 747
+    },
+    {
+      "week": 3,
+      "path": "3.ContextEvolution2/notes.zh-CN.md",
+      "characters": 21963,
+      "lines": 527
+    },
+    {
+      "week": 5,
+      "path": "5.HarnessEvolution1/notes.zh-CN.md",
+      "characters": 28434,
+      "lines": 680
+    },
+    {
+      "week": 6,
+      "path": "6.HarnessEvolution2/notes.zh-CN.md",
+      "characters": 29556,
+      "lines": 682
+    },
+    {
+      "week": 7,
+      "path": "7.ModelEvolution1/notes.zh-CN.md",
+      "characters": 30702,
+      "lines": 798
+    }
+  ],
+  "errors": []
+}

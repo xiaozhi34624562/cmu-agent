@@ -1,0 +1,39 @@
+[
+  {
+    "title": "mini-swe-agent pinned src/minisweagent/agents/default.py",
+    "url": "https://raw.githubusercontent.com/SWE-agent/mini-swe-agent/68d367b/src/minisweagent/agents/default.py",
+    "path": "references/mini-swe-agent-68d367b/src/minisweagent/agents/default.py",
+    "status": "saved"
+  },
+  {
+    "title": "mini-swe-agent pinned src/minisweagent/environments/local.py",
+    "url": "https://raw.githubusercontent.com/SWE-agent/mini-swe-agent/68d367b/src/minisweagent/environments/local.py",
+    "path": "references/mini-swe-agent-68d367b/src/minisweagent/environments/local.py",
+    "status": "saved"
+  },
+  {
+    "title": "mini-swe-agent pinned src/minisweagent/config/default.yaml",
+    "url": "https://raw.githubusercontent.com/SWE-agent/mini-swe-agent/68d367b/src/minisweagent/config/default.yaml",
+    "path": "references/mini-swe-agent-68d367b/src/minisweagent/config/default.yaml",
+    "status": "saved"
+  },
+  {
+    "title": "mini-swe-agent pinned src/minisweagent/agents/interactive.py",
+    "url": "https://raw.githubusercontent.com/SWE-agent/mini-swe-agent/68d367b/src/minisweagent/agents/interactive.py",
+    "path": "references/mini-swe-agent-68d367b/src/minisweagent/agents/interactive.py",
+    "status": "saved"
+  },
+  {
+    "title": "ReAct",
+    "url": "https://arxiv.org/abs/2210.03629",
+    "path": "references/002_ReAct.pdf",
+    "status": "saved",
+    "provenance": "11-768/1.WhatIsAnAgent/readings/002_ReAct.pdf"
+  },
+  {
+    "title": "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering",
+    "url": "https://arxiv.org/abs/2405.15793",
+    "path": "references/2405.15793.pdf",
+    "status": "saved"
+  }
+]

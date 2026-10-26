@@ -1,0 +1,22 @@
+# Preserve downloaded sources and their study copies byte for byte.
+# CHECKSUMS.sha256 must remain valid after a fresh Git checkout.
+site/** -text -whitespace
+readings/** -text -whitespace
+*/slides/** -text -whitespace
+*/tutorials/** -text -whitespace
+*/readings/** -text -whitespace
+*/references/** -text -whitespace
+assignment/**/*.ipynb -text -whitespace
+
+# Some PDFs have long ASCII headers; do not rely on automatic binary detection.
+*.pdf binary
+*.png binary
+*.jpg binary
+*.ico binary
+*.eot binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+
+# Two trailing spaces are intentional Markdown hard line breaks.
+*.md whitespace=-blank-at-eol
