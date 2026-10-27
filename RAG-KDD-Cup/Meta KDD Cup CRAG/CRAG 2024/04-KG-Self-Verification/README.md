@@ -4,7 +4,7 @@
 
 系统在 KG 命中时使用结构化事实，网页路径则先判断证据是否足够，只有通过 gate 才生成答案。关键贡献是把 evidence sufficiency 独立于答案表述。
 
-[论文](./papers/Knowledge-Graph-Integration-and-Self-Verification.pdf) · [代码状态](./code/README.md) · [来源清单](./resources/source-manifest.md)
+[论文](./papers/Knowledge_Graph_Integration_and_Self-Verification_for_Comprehensive_Retrieval-Augmented_Generation.pdf) · [代码状态](./code/README.md) · [来源清单](./resources/source-manifest.md)
 
 ## 2. 论文身份与比赛背景
 

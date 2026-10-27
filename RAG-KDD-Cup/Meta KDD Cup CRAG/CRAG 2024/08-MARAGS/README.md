@@ -4,7 +4,7 @@
 
 MARAGS 用共享 Llama 3 backbone 和多个 LoRA adapter 覆盖网页 QA、API call 与不同任务，并用 hittable 重标控制幻觉，展示模型共享、能力隔离和风险感知训练。
 
-[论文](./papers/MARAGS.pdf) · [代码状态](./code/README.md) · [来源清单](./resources/source-manifest.md)
+[论文](./papers/MARAGS_A_Multi-Adapter_System_for_Multi-Task_Retrieval_Augmented_Generation_Question_Answering.pdf) · [代码状态](./code/README.md) · [来源清单](./resources/source-manifest.md)
 
 ## 2. 论文身份与比赛背景
 

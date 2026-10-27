@@ -17,7 +17,7 @@
 - Authors: Shih-Ying Yeh, Yueh-Feng Ku, Ko-Wei Huang, Buu-Khang Tu
 - arXiv: https://arxiv.org/abs/2603.07612
 - PDF: https://arxiv.org/pdf/2603.07612
-- Local file: `../papers/KohakuRAG.pdf`
+- Local file: `../papers/KohakuRAG_A_simple_RAG_framework_with_hierarchical_document_indexing.pdf`
 - Local validation: 38 pages, 12,113,563 bytes, PDF 1.7; text extraction and representative-page rendering succeeded.
 - Date clarification: WattBot was held in 2025; the detailed KohakuRAG paper was submitted to arXiv on 2026-03-08.
 

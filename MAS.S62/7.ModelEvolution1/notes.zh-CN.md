@@ -781,18 +781,18 @@ P6 pp.14–15 对照 verl 的数据集训练流程与 reef 的实时交互学习
 | L6 | [主讲义](slides/lec6%20-%20training.pdf) | pp.4–29 RL；pp.30–35 TTT；pp.36–45 蒸馏 |
 | P6 | [实践教程](tutorials/lec6%20-%20rl%20in%20practice.pdf) | pp.5–13 流水线、批次、损失与监控 |
 | G6 | [嘉宾讲义](slides/model_guest.pdf) | pp.10–36 遗忘；pp.38–50 自蒸馏 |
-| PPO | [1707.06347.pdf](references/1707.06347.pdf) | §2–3，Eq.7 与 Fig.1 |
-| DSM | [DeepSeekMath，2402.03300.pdf](references/2402.03300.pdf) | §4.1，Fig.4 的 PPO/GRPO 比较 |
-| DPO | [2305.18290.pdf](references/2305.18290.pdf) | §3–4，隐式奖励与偏好损失 |
-| TTT | [作者版 ttt.pdf](references/ttt.pdf) | §2–5，leave-one-out、Adapter、评估与消融 |
-| TTRL | [2504.16084.pdf](references/2504.16084.pdf) | 本地 v3，§2 方法与 §4 实验 |
-| OCL | [OpenClaw-RL，2603.10165.pdf](references/2603.10165.pdf) | 下一状态反馈、奖励与 OPD、异步设计 |
-| TTTD | [TTT-Discover，2601.16175.pdf](references/2601.16175.pdf) | §2–3，目标、档案重用与 Algorithm 1 |
-| GUIDE | [Guidance-TTT，2610.06269.pdf](references/2610.06269.pdf) | 本地 v2，§3–4，角色拆分与任务成本 |
-| GKD | [2306.13649.pdf](references/2306.13649.pdf) | v3，§2–3，散度与学生生成前缀 |
-| OPSD | [2601.18734.pdf](references/2601.18734.pdf) | §3，参考解条件化与完整词表蒸馏 |
-| SDPO | [2601.20802.pdf](references/2601.20802.pdf) | v2，§2、§3–5，稳定化、成本和丰富反馈 |
-| RAZOR | [RL's Razor，2509.04259.pdf](references/2509.04259.pdf) | §3–5，学习—遗忘曲线与 KL 预测 |
-| SDFT | [2601.19897.pdf](references/2601.19897.pdf) | v2，§3–4、Appendix A，理论/实践区别 |
+| PPO | [Proximal_Policy_Optimization_Algorithms.pdf](references/Proximal_Policy_Optimization_Algorithms.pdf) | §2–3，Eq.7 与 Fig.1 |
+| DSM | [DeepSeekMath，DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf](references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf) | §4.1，Fig.4 的 PPO/GRPO 比较 |
+| DPO | [Direct_Preference_Optimization_Your_Language_Model_is_Secretly_a_Reward_Model.pdf](references/Direct_Preference_Optimization_Your_Language_Model_is_Secretly_a_Reward_Model.pdf) | §3–4，隐式奖励与偏好损失 |
+| TTT | [作者版 The_Surprising_Effectiveness_of_Test-Time_Training_for_Few-Shot_Learning.pdf](references/The_Surprising_Effectiveness_of_Test-Time_Training_for_Few-Shot_Learning.pdf) | §2–5，leave-one-out、Adapter、评估与消融 |
+| TTRL | [TTRL_Test-Time_Reinforcement_Learning.pdf](references/TTRL_Test-Time_Reinforcement_Learning.pdf) | 本地 v3，§2 方法与 §4 实验 |
+| OCL | [OpenClaw-RL，OpenClaw-RL_Train_Any_Agent_Simply_by_Talking.pdf](references/OpenClaw-RL_Train_Any_Agent_Simply_by_Talking.pdf) | 下一状态反馈、奖励与 OPD、异步设计 |
+| TTTD | [TTT-Discover，Learning_to_Discover_at_Test_Time.pdf](references/Learning_to_Discover_at_Test_Time.pdf) | §2–3，目标、档案重用与 Algorithm 1 |
+| GUIDE | [Guidance-TTT，Evolving_in_Thought_Space_Training_a_Small_Model_at_Test_Time_Unlocks_Better_Discoveries.pdf](references/Evolving_in_Thought_Space_Training_a_Small_Model_at_Test_Time_Unlocks_Better_Discoveries.pdf) | 本地 v2，§3–4，角色拆分与任务成本 |
+| GKD | [On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf](references/On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf) | v3，§2–3，散度与学生生成前缀 |
+| OPSD | [Self-Distilled_Reasoner_On-Policy_Self-Distillation_for_Large_Language_Models.pdf](references/Self-Distilled_Reasoner_On-Policy_Self-Distillation_for_Large_Language_Models.pdf) | §3，参考解条件化与完整词表蒸馏 |
+| SDPO | [Reinforcement_Learning_via_Self-Distillation.pdf](references/Reinforcement_Learning_via_Self-Distillation.pdf) | v2，§2、§3–5，稳定化、成本和丰富反馈 |
+| RAZOR | [RL's Razor，RL_s_Razor_Why_Online_Reinforcement_Learning_Forgets_Less.pdf](references/RL_s_Razor_Why_Online_Reinforcement_Learning_Forgets_Less.pdf) | §3–5，学习—遗忘曲线与 KL 预测 |
+| SDFT | [Self-Distillation_Enables_Continual_Learning.pdf](references/Self-Distillation_Enables_Continual_Learning.pdf) | v2，§3–4、Appendix A，理论/实践区别 |
 
 原始出处与访问状态保存在 [REFERENCES.json](REFERENCES.json)。arXiv 资料以实际保存 PDF 为准，文件首页的版本标记与页序一起解释引用。原论文实验结果限于其模型、任务、预算和评价设置；本文的工程案例与实验计划不冒充已完成的模型训练。

@@ -16,7 +16,7 @@
 - Authors: Joohyun Lee, Minji Roh
 - arXiv: https://arxiv.org/abs/2411.16732
 - PDF: https://arxiv.org/pdf/2411.16732
-- Local file: `../papers/Multi-Reranker.pdf`
+- Local file: `../papers/Multi-Reranker_Maximizing_performance_of_retrieval-augmented_generation_in_the_FinanceRAG_challenge.pdf`
 - Local validation: 4 pages, 567,352 bytes, PDF 1.5; `pdfinfo` and `pdftotext` succeeded; representative page rendered successfully.
 
 ## Code

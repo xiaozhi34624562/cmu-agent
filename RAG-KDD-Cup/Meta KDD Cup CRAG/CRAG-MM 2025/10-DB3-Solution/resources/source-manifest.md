@@ -17,7 +17,7 @@
 ## Paper sources
 
 - Downloaded from <https://arxiv.org/pdf/2509.09681>.
-- Local file: `../papers/DB3-Team-Solution-For-Meta-KDD-Cup-25.pdf`
+- Local file: `../papers/DB3_Team_s_Solution_For_Meta_KDD_Cup_25.pdf`
 - Verification: 9 pages; 1,456,792 bytes; SHA-256 `18e946f6a3eb690646958a16f89f8d9814090346f51475169dc0c9e20d795297`.
 
 ## Code sources

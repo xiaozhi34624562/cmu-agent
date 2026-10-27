@@ -1965,7 +1965,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 <a id="r02"></a>
 ### R02 · BrowseComp
 
-**文件：** [002_BrowseComp.pdf](readings/002_BrowseComp.pdf)
+**文件：** [BrowseComp_A_Simple_Yet_Challenging_Benchmark_for_Browsing_Agents.pdf](readings/BrowseComp_A_Simple_Yet_Challenging_Benchmark_for_Browsing_Agents.pdf)
 **标题：** *BrowseComp: A Simple Yet Challenging Benchmark for Browsing Agents*。
 **版本：** 本地 arXiv:2504.12516v1。
 **重点：** §2 反向构题与边界；§4.2 置信度；§4.3—4.4 推理时计算与选择策略。
@@ -1974,7 +1974,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 <a id="r03"></a>
 ### R03 · DeepResearch Bench
 
-**文件：** [003_DeepResearch_Bench.pdf](readings/003_DeepResearch_Bench.pdf)
+**文件：** [DeepResearch_Bench_A_Comprehensive_Benchmark_for_Deep_Research_Agents.pdf](readings/DeepResearch_Bench_A_Comprehensive_Benchmark_for_Deep_Research_Agents.pdf)
 **标题：** *DeepResearch Bench: A Comprehensive Benchmark for Deep Research Agents*。
 **版本：** 本地 arXiv:2506.11763v1。
 **重点：** §3.1 RACE；§3.2 FACT；§4.1 参考报告与实验协议。
@@ -1983,7 +1983,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 <a id="r04"></a>
 ### R04 · Tongyi DeepResearch
 
-**文件：** [004_Tongyi_DeepResearch.pdf](readings/004_Tongyi_DeepResearch.pdf)
+**文件：** [Tongyi_DeepResearch_Technical_Report.pdf](readings/Tongyi_DeepResearch_Technical_Report.pdf)
 **标题：** *Tongyi DeepResearch Technical Report*。
 **版本：** 本地 arXiv:2510.24701v3。
 **重点：** §2 数据和环境原则；§3.1 ReAct / Context Management；§3.3—3.4 mid-training、SFT、RL；§4.3 Heavy Mode。
@@ -1992,7 +1992,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 <a id="r05"></a>
 ### R05 · DR Tulu
 
-**文件：** [005_DR_Tulu.pdf](readings/005_DR_Tulu.pdf)
+**文件：** [DR_Tulu_Reinforcement_Learning_with_Evolving_Rubrics_for_Deep_Research.pdf](readings/DR_Tulu_Reinforcement_Learning_with_Evolving_Rubrics_for_Deep_Research.pdf)
 **标题：** *DR Tulu: Reinforcement Learning with Evolving Rubrics for Deep Research*。
 **版本：** 本地 arXiv:2511.19399v3。
 **重点：** §2—3 rubric 与 RLER；§4 训练；§6.2 消融；附录 D.5 奖励；G.2 系统与训练；I.4 引用奖励；I.5 成本。
@@ -2001,7 +2001,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 <a id="r06"></a>
 ### R06 · AgentIR
 
-**文件：** [006_AgentIR.pdf](readings/006_AgentIR.pdf)
+**文件：** [AgentIR_Reasoning-Aware_Retrieval_for_Deep_Research_Agents.pdf](readings/AgentIR_Reasoning-Aware_Retrieval_for_Deep_Research_Agents.pdf)
 **标题：** *AgentIR: Reasoning-Aware Retrieval for Deep Research Agents*。
 **版本：** 本地 arXiv:2603.04384v3。
 **重点：** §3.2 当前推理输入；§3.3 DR-Synth；表 2 / PDF 第 9 页组件消融；表 3 / PDF 第 10 页历史输入消融。
@@ -2026,7 +2026,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 <a id="r09"></a>
 ### R09 · BrowseComp-Plus
 
-**文件：** [003_BrowseComp-Plus.pdf](references/003_BrowseComp-Plus.pdf)
+**文件：** [BrowseComp-Plus_A_More_Fair_and_Transparent_Evaluation_Benchmark_of_Deep-Research_Agent.pdf](references/BrowseComp-Plus_A_More_Fair_and_Transparent_Evaluation_Benchmark_of_Deep-Research_Agent.pdf)
 **标题：** *BrowseComp-Plus: A More Fair and Transparent Evaluation Benchmark of Deep-Research Agent*。
 **版本：** 本地 arXiv:2508.06600v1。
 **重点：** §3.2 支持文档与 gold 文档；§4.3 预览截断；§4.8.1 oracle retrieval；§4.8.3 全文工具；§4.8.4 语料与标注范围。
@@ -2035,7 +2035,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 <a id="r10"></a>
 ### R10 · FinSearchComp
 
-**文件：** [004_FinSearchComp.pdf](references/004_FinSearchComp.pdf)
+**文件：** [FinSearchComp_Towards_a_Realistic_Expert-Level_Evaluation_of_Financial_Search_and_Reasoning.pdf](references/FinSearchComp_Towards_a_Realistic_Expert-Level_Evaluation_of_Financial_Search_and_Reasoning.pdf)
 **标题：** *FinSearchComp: Towards a Realistic, Expert-Level Evaluation of Financial Search and Reasoning*。
 **版本：** 本地 arXiv:2509.13160v1。
 **重点：** §1 错误类型；§2.2 三类任务；§2.3—2.6 动态真值、质量控制与评价容差；§4.4 结构化工具需求；附录 A 消歧指南。
@@ -2044,7 +2044,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 <a id="r11"></a>
 ### R11 · MedBrowseComp
 
-**文件：** [005_MedBrowseComp.pdf](references/005_MedBrowseComp.pdf)
+**文件：** [MedBrowseComp_Benchmarking_Medical_Deep_Research_and_Computer_Use.pdf](references/MedBrowseComp_Benchmarking_Medical_Deep_Research_and_Computer_Use.pdf)
 **标题：** *MedBrowseComp: Benchmarking Medical Deep Research and Computer Use*。
 **版本：** 本地 arXiv:2505.14963v1。
 **重点：** §3 数据连接与不同评价条件；表 1、表 3 错误分析；附录 A.5 / PDF 第 19 页的起始页面对照。
@@ -2053,7 +2053,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 <a id="r12"></a>
 ### R12 · ScholarSearch
 
-**文件：** [006_ScholarSearch.pdf](references/006_ScholarSearch.pdf)
+**文件：** [ScholarSearch_Benchmarking_Scholar_Searching_Ability_of_LLMs.pdf](references/ScholarSearch_Benchmarking_Scholar_Searching_Ability_of_LLMs.pdf)
 **标题：** *ScholarSearch: Benchmarking Scholar Searching Ability of LLMs*。
 **版本：** 本地 arXiv:2506.13784v2。
 **重点：** Data Collection 的难度筛选；Problem Formalization 的最终答案判定；图 3 / PDF 第 4 页的 Misra-Gries、USS、Hyper-USS 示例。
@@ -2062,7 +2062,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 <a id="r13"></a>
 ### R13 · AutoResearchBench
 
-**文件：** [007_AutoResearchBench.pdf](references/007_AutoResearchBench.pdf)
+**文件：** [AutoResearchBench_Benchmarking_AI_Agents_on_Complex_Scientific_Literature_Discovery.pdf](references/AutoResearchBench_Benchmarking_AI_Agents_on_Complex_Scientific_Literature_Discovery.pdf)
 **标题：** *AutoResearchBench: Benchmarking AI Agents on Complex Scientific Literature Discovery*。
 **版本：** 本地 arXiv:2604.25256v1。
 **重点：** §2.1 deep / wide 任务；§2.2 构题；§2.4 / PDF 第 6 页集合指标；§3.4—3.5 / PDF 第 9—10 页的思考与重复运行实验；附录 B、F。
@@ -2071,7 +2071,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 <a id="r14"></a>
 ### R14 · 长答案评价的批判性研究
 
-**文件：** [008_A_Critical_Evaluation_of_Evaluations_for_Long-form_Question_Answering.pdf](references/008_A_Critical_Evaluation_of_Evaluations_for_Long-form_Question_Answering.pdf)
+**文件：** [A_Critical_Evaluation_of_Evaluations_for_Long-form_Question_Answering.pdf](references/A_Critical_Evaluation_of_Evaluations_for_Long-form_Question_Answering.pdf)
 **标题：** *A Critical Evaluation of Evaluations for Long-form Question Answering*。
 **版本：** 本地 ACL 2023 论文。
 **重点：** §3 专家偏好、分歧与细分属性；§4 / 表 4 的自动指标与长度基线；专家与普通标注者比较的样本边界。
@@ -2080,7 +2080,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 <a id="r15"></a>
 ### R15 · ResearchQA
 
-**文件：** [009_ResearchQA.pdf](references/009_ResearchQA.pdf)
+**文件：** [ResearchQA_Evaluating_Scholarly_Question_Answering_at_Scale_Across_75_Fields_with_Survey-Mined_Questions_and_Rubrics.pdf](references/ResearchQA_Evaluating_Scholarly_Question_Answering_at_Scale_Across_75_Fields_with_Survey-Mined_Questions_and_Rubrics.pdf)
 **标题：** *RESEARCHQA: Evaluating Scholarly Question Answering at Scale Across 75 Fields with Survey-Mined Questions and Rubrics*。
 **版本：** 本地 arXiv:2509.00496v2。
 **重点：** §2.3—2.4 构题与三类 rubric；§3.2 标准质量；§3.3 Ensemble Judge；§4.1 Coverage；§5.2 长度、时效与来源泄漏。
@@ -2089,7 +2089,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 <a id="r16"></a>
 ### R16 · DeepResearch Bench II
 
-**文件：** [010_DeepResearch_Bench_II.pdf](references/010_DeepResearch_Bench_II.pdf)
+**文件：** [DeepResearch_Bench_II_Diagnosing_Deep_Research_Agents_via_Rubrics_from_Expert_Reports.pdf](references/DeepResearch_Bench_II_Diagnosing_Deep_Research_Agents_via_Rubrics_from_Expert_Reports.pdf)
 **标题：** *DeepResearch Bench II: Diagnosing Deep Research Agents via Rubrics from Expert Reports*。
 **版本：** 本地 arXiv:2601.08536v3。
 **重点：** §3.1.2—3.1.3 标准设计与构造；表 3 维度分数；§4.3 裁判与批量消融；§5.2 来源泄漏；§5.3、§7 呈现维度的局限。
@@ -2098,7 +2098,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 <a id="r17"></a>
 ### R17 · WebSailor-V2
 
-**文件：** [013_WebSailor-V2.pdf](references/013_WebSailor-V2.pdf)
+**文件：** [WebSailor-V2_Bridging_the_Chasm_to_Proprietary_Agents_via_Synthetic_Data_and_Scalable_Reinforcement_Learning.pdf](references/WebSailor-V2_Bridging_the_Chasm_to_Proprietary_Agents_via_Synthetic_Data_and_Scalable_Reinforcement_Learning.pdf)
 **标题：** *WebSailor-V2: Bridging the Chasm to Proprietary Agents via Synthetic Data and Scalable Reinforcement Learning*。
 **版本：** 本地 arXiv:2509.13305v1。
 **重点：** §3 稠密图、子图采样与目标角色；§4 SFT、双环境、RL；表 1 阶段成绩；§5.4 / 图 6 的 Pass@1 与 Pass@3 变化。
@@ -2107,7 +2107,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 <a id="r18"></a>
 ### R18 · DeepSeekMath
 
-**文件：** [017_DeepSeekMath.pdf](references/017_DeepSeekMath.pdf)
+**文件：** [DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf](references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf)
 **标题：** *DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models*。
 **版本：** 本地 arXiv:2402.03300v3。
 **重点：** §4.1，尤其 PDF 第 13—14 页的 PPO / GRPO、结果监督与过程监督。
@@ -2116,7 +2116,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 <a id="r19"></a>
 ### R19 · Dense Passage Retrieval
 
-**文件：** [018_Dense_Passage_Retrieval.pdf](references/018_Dense_Passage_Retrieval.pdf)
+**文件：** [Dense_Passage_Retrieval_for_Open-Domain_Question_Answering.pdf](references/Dense_Passage_Retrieval_for_Open-Domain_Question_Answering.pdf)
 **标题：** *Dense Passage Retrieval for Open-Domain Question Answering*。
 **版本：** 本地 EMNLP 2020 论文。
 **重点：** §3 双编码器与批内负例；§4.1 文档预处理；§5.1—5.3 / 表 2—3 的负例消融及 BM25 互补性。
@@ -2125,7 +2125,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 <a id="r20"></a>
 ### R20 · WebDancer
 
-**文件：** [014_WebDancer.pdf](references/014_WebDancer.pdf)
+**文件：** [WebDancer_Towards_Autonomous_Information_Seeking_Agency.pdf](references/WebDancer_Towards_Autonomous_Information_Seeking_Agency.pdf)
 **标题：** *WebDancer: Towards Autonomous Information Seeking Agency*。
 **版本：** 本地 arXiv:2505.22648v3。
 **重点：** §2 构题与三级轨迹筛选；§3.1 观察掩码；§3.2 DAPO 与奖励；§5 / 表 3 的长短 CoT 对照。
@@ -2134,7 +2134,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 <a id="r21"></a>
 ### R21 · Scaling Agents via Continual Pre-training
 
-**文件：** [015_Scaling_Agents_via_Continual_Pre-training.pdf](references/015_Scaling_Agents_via_Continual_Pre-training.pdf)
+**文件：** [Scaling_Agents_via_Continual_Pre-training.pdf](references/Scaling_Agents_via_Continual_Pre-training.pdf)
 **标题：** *Scaling Agents via Continual Pre-training*。
 **版本：** 本地 arXiv:2509.13310v1。
 **重点：** §2.2 FAS；§2.3 HAS；§3.3 / 表 3 的固定 SFT 对照；§3.4 / 表 4—5 的阶段与数据消融。
@@ -2143,7 +2143,7 @@ Query-only 48.67% → 当前推理 + DR-Synth 66.27%
 <a id="r22"></a>
 ### R22 · Search-R1
 
-**文件：** [016_Search-R1.pdf](references/016_Search-R1.pdf)
+**文件：** [Search-R1_Training_LLMs_to_Reason_and_Leverage_Search_Engines_with_Reinforcement_Learning.pdf](references/Search-R1_Training_LLMs_to_Reason_and_Leverage_Search_Engines_with_Reinforcement_Learning.pdf)
 **标题：** *Search-R1: Training LLMs to Reason and Leverage Search Engines with Reinforcement Learning*。
 **版本：** 本地 arXiv:2503.09516v5，COLM 2025。
 **重点：** §3 / 算法 1 的交互 rollout；§3.4 EM 奖励；§4.3 默认 PPO；§5.1 优化器比较；§5.4 / 表 4 的检索 token 掩码。

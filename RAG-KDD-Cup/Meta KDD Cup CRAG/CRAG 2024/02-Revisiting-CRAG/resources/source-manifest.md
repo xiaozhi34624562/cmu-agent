@@ -17,7 +17,7 @@
 ## Paper sources
 
 - Downloaded from <https://arxiv.org/pdf/2409.15337>.
-- Local file: `../papers/Revisiting-the-Solution-of-Meta-KDD-Cup-2024-CRAG.pdf`
+- Local file: `../papers/Revisiting_the_Solution_of_Meta_KDD_Cup_2024_CRAG.pdf`
 - Verification: 8 pages; 1,104,873 bytes; SHA-256 `95a4d56e213661619c91e9634462e7d6219ccdc1c4323150ef24b03ad841343c`.
 
 ## Code sources

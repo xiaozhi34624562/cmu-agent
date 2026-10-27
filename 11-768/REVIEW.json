@@ -11,7 +11,7 @@
       "action": "create_and_review",
       "status": "passed",
       "original_sha256": null,
-      "final_sha256": "aa626e701fefcb4dcd201660eba7891cf5b0ebe6dc2fdaafccf3f36faba52828",
+      "final_sha256": "0c7fdec43af0bcb0c7ae02af3945cc2dc5e78aed519f8f52d23dcc131ce19d41",
       "reviews": [
         {
           "report_file": "cmu-01-cross-review.json",
@@ -38,11 +38,11 @@
               "scope": "全文"
             },
             {
-              "path": "11-768/1.WhatIsAnAgent/readings/001_Toolformer.pdf",
+              "path": "11-768/1.WhatIsAnAgent/readings/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf",
               "scope": "pp1,3,6–8,10过滤/推理控制/表值与噪声；p3目视"
             },
             {
-              "path": "11-768/1.WhatIsAnAgent/readings/002_ReAct.pdf",
+              "path": "11-768/1.WhatIsAnAgent/readings/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf",
               "scope": "pp1–3,5–8,10机制/主表/样本定义/交互与伦理；p2目视"
             }
           ],
@@ -76,8 +76,8 @@
             "MAS.S62/1.CourseIntroduction/notes.zh-CN.md",
             "11-768/1.WhatIsAnAgent/SOURCES.md",
             "11-768/1.WhatIsAnAgent/lecture-01-agents.pdf",
-            "11-768/1.WhatIsAnAgent/readings/001_Toolformer.pdf (main mechanism/results/limitations)",
-            "11-768/1.WhatIsAnAgent/readings/002_ReAct.pdf (main mechanism/results and ethics)",
+            "11-768/1.WhatIsAnAgent/readings/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf (main mechanism/results/limitations)",
+            "11-768/1.WhatIsAnAgent/readings/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf (main mechanism/results and ethics)",
             "11-768/1.WhatIsAnAgent/readings/003_Mini-SWE-Agent.md",
             "11-768/1.WhatIsAnAgent/notes.zh-CN.md"
           ],
@@ -168,6 +168,15 @@
           ],
           "final_sha256": "aa626e701fefcb4dcd201660eba7891cf5b0ebe6dc2fdaafccf3f36faba52828"
         }
+      ],
+      "maintenance": [
+        {
+          "date": "2026-10-27",
+          "scope": "Title-based source path and filename references only; existing source-label mismatch explanation retained where applicable",
+          "previous_reviewed_sha256": "aa626e701fefcb4dcd201660eba7891cf5b0ebe6dc2fdaafccf3f36faba52828",
+          "final_sha256": "0c7fdec43af0bcb0c7ae02af3945cc2dc5e78aed519f8f52d23dcc131ce19d41",
+          "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
+        }
       ]
     },
     {
@@ -176,7 +185,7 @@
       "action": "review_existing",
       "status": "passed",
       "original_sha256": "1055d4626075ca636184f10c2ce2a46969148c672916bffd51a7195d72d1fdf0",
-      "final_sha256": "1ed03b9946a85fcd8f0a55fa601ca75b4edb2b4e2f7b9d01df878bdeda929052",
+      "final_sha256": "d50a4ce191bb6610a8e8c43b5fec385dfd5c9802804591735345b6f44f31728e",
       "reviews": [
         {
           "report_file": "11-768-02-tool-use.json",
@@ -189,10 +198,10 @@
             "11-768/2.ToolUse/SOURCES.md",
             "11-768/2.ToolUse/lecture-02-tool-use-complete-notes.zh-CN.md",
             "11-768/2.ToolUse/lecture-02-tool-use.pdf",
-            "11-768/2.ToolUse/readings/001_What_Are_Tools_Anyway.pdf (used definition/cost sections)",
-            "11-768/2.ToolUse/readings/002_CodeAct.pdf (sections 2–3, tables 2–4)",
-            "11-768/2.ToolUse/readings/003_Toolformer.pdf (sections 2–4, table 4)",
-            "11-768/2.ToolUse/readings/004_XGrammar.pdf (methods 3.1–3.5 and evaluation tables 2–4)",
+            "11-768/2.ToolUse/readings/What_Are_Tools_Anyway_A_Survey_from_the_Language_Model_Perspective.pdf (used definition/cost sections)",
+            "11-768/2.ToolUse/readings/Executable_Code_Actions_Elicit_Better_LLM_Agents.pdf (sections 2–3, tables 2–4)",
+            "11-768/2.ToolUse/readings/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf (sections 2–4, table 4)",
+            "11-768/2.ToolUse/readings/XGrammar_Flexible_and_Efficient_Structured_Generation_Engine_For_Large_Language_Models.pdf (methods 3.1–3.5 and evaluation tables 2–4)",
             "11-768/2.ToolUse/references/020_MCP_2026-07-28_Specification_Release.html",
             "11-768/2.ToolUse/references/021_MCP_TypeScript_SDK_v2_Overview.html",
             "11-768/2.ToolUse/references/024_FastMCP_OpenAPI_Integration.html (httpx2/from_openapi contract snippets)",
@@ -234,6 +243,15 @@
           ],
           "final_sha256": "1ed03b9946a85fcd8f0a55fa601ca75b4edb2b4e2f7b9d01df878bdeda929052"
         }
+      ],
+      "maintenance": [
+        {
+          "date": "2026-10-27",
+          "scope": "Title-based source path and filename references only; existing source-label mismatch explanation retained where applicable",
+          "previous_reviewed_sha256": "1ed03b9946a85fcd8f0a55fa601ca75b4edb2b4e2f7b9d01df878bdeda929052",
+          "final_sha256": "d50a4ce191bb6610a8e8c43b5fec385dfd5c9802804591735345b6f44f31728e",
+          "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
+        }
       ]
     },
     {
@@ -242,7 +260,7 @@
       "action": "review_existing",
       "status": "passed",
       "original_sha256": "12229b84b0e627d4c3f05cef1cb82b8d57ceb29a65070d3de01c65fbfaa3370b",
-      "final_sha256": "2b19be2ff3a49fd0d7bece14b0f3b612c2e796f3cf5adfde173d6d00590aa475",
+      "final_sha256": "67f5041bd567f8702e121b2e43fff43a81c681e17df7dae03f68c9e6853d8947",
       "reviews": [
         {
           "report_file": "11-768-03-long-context.json",
@@ -255,19 +273,19 @@
             "11-768/3.LongContext/SOURCES.md",
             "11-768/3.LongContext/long_context_lecture03_integrated_notes.md",
             "11-768/3.LongContext/lecture-03-long-context.pdf (all 54 pages text; visual pages 4,11,16,20–23,41–42)",
-            "11-768/3.LongContext/references/004_Longformer.pdf (tables 5,10 and interpretation)",
-            "11-768/3.LongContext/references/007_Gated_Delta_Networks.pdf (online objectives and table 2)",
-            "11-768/3.LongContext/references/008_Kimi_Linear.pdf (KDA recurrence, tables 1,5, figure 7)",
-            "11-768/3.LongContext/references/011_DeepSeek-V2.pdf (decoupled RoPE and cache shape)",
-            "11-768/3.LongContext/references/013_NoPE_Length_Generalization.pdf (theorems 1–2, empirical scope)",
-            "11-768/3.LongContext/references/014_Position_Interpolation.pdf (table 3 and effective-window interpretation)",
-            "11-768/3.LongContext/references/015_YaRN.pdf (attention-temperature formula and dynamic KV cache; training lengths)",
-            "11-768/3.LongContext/references/019_Kimi_K3.pdf (hybrid layers, bounded decay and BF16 range)",
-            "11-768/3.LongContext/references/020_Nemotron_3_Ultra.pdf (long-context data/iteration mix)",
-            "11-768/3.LongContext/references/022_DeepSeek_V4.pdf (compressed KV and tail restoration)",
-            "11-768/3.LongContext/references/025_Prompt_Cache.pdf (module encoding, masking and scaffolding)",
-            "11-768/3.LongContext/references/036_LongLLMLingua.pdf (contrastive perplexity, tables 1 and 3, latency)",
-            "11-768/3.LongContext/references/042_ReSum.pdf (results and inference/RL implementation budgets)"
+            "11-768/3.LongContext/references/Longformer_The_Long-Document_Transformer.pdf (tables 5,10 and interpretation)",
+            "11-768/3.LongContext/references/Gated_Delta_Networks_Improving_Mamba2_with_Delta_Rule.pdf (online objectives and table 2)",
+            "11-768/3.LongContext/references/Kimi_Linear_An_Expressive_Efficient_Attention_Architecture.pdf (KDA recurrence, tables 1,5, figure 7)",
+            "11-768/3.LongContext/references/DeepSeek-V2_A_Strong_Economical_and_Efficient_Mixture-of-Experts_Language_Model.pdf (decoupled RoPE and cache shape)",
+            "11-768/3.LongContext/references/The_Impact_of_Positional_Encoding_on_Length_Generalization_in_Transformers.pdf (theorems 1–2, empirical scope)",
+            "11-768/3.LongContext/references/Extending_Context_Window_of_Large_Language_Models_via_Position_Interpolation.pdf (table 3 and effective-window interpretation)",
+            "11-768/3.LongContext/references/YaRN_Efficient_Context_Window_Extension_of_Large_Language_Models.pdf (attention-temperature formula and dynamic KV cache; training lengths)",
+            "11-768/3.LongContext/references/Kimi_K3_Open_Frontier_Intelligence.pdf (hybrid layers, bounded decay and BF16 range)",
+            "11-768/3.LongContext/references/Nemotron_3_Ultra_Open_Efficient_Mixture-of-Experts_Hybrid_Mamba-Transformer_Model_for_Agentic_Reasoning.pdf (long-context data/iteration mix)",
+            "11-768/3.LongContext/references/DeepSeek-V4_Towards_Highly_Efficient_Million-Token_Context_Intelligence.pdf (compressed KV and tail restoration)",
+            "11-768/3.LongContext/references/Prompt_Cache_Modular_Attention_Reuse_for_Low-Latency_Inference.pdf (module encoding, masking and scaffolding)",
+            "11-768/3.LongContext/references/LongLLMLingua_Accelerating_and_Enhancing_LLMs_in_Long_Context_Scenarios_via_Prompt_Compression.pdf (contrastive perplexity, tables 1 and 3, latency)",
+            "11-768/3.LongContext/references/ReSum_Unlocking_Long-Horizon_Search_Intelligence_via_Context_Summarization.pdf (results and inference/RL implementation budgets)"
           ],
           "issues_found": [
             {
@@ -295,6 +313,15 @@
           ],
           "final_sha256": "2b19be2ff3a49fd0d7bece14b0f3b612c2e796f3cf5adfde173d6d00590aa475"
         }
+      ],
+      "maintenance": [
+        {
+          "date": "2026-10-27",
+          "scope": "Title-based source path and filename references only; existing source-label mismatch explanation retained where applicable",
+          "previous_reviewed_sha256": "2b19be2ff3a49fd0d7bece14b0f3b612c2e796f3cf5adfde173d6d00590aa475",
+          "final_sha256": "67f5041bd567f8702e121b2e43fff43a81c681e17df7dae03f68c9e6853d8947",
+          "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
+        }
       ]
     },
     {
@@ -303,7 +330,7 @@
       "action": "review_existing",
       "status": "passed",
       "original_sha256": "6c46fe9eb9f0be63ed4dd0fbbf173cbb687aab092d03e5a06313010ed13badac",
-      "final_sha256": "b604b64770c0c3d5816549939769a22beadd73b3ee1cc3715ff8bd6119d803bb",
+      "final_sha256": "63cab3ff64df7663f5423135d332aa73eb3403d275ac0dbe0eacb275ca84f68c",
       "reviews": [
         {
           "report_file": "11-768-04-skills-memory.json",
@@ -316,14 +343,14 @@
             "11-768/4.SkillsAndMemory/SOURCES.md",
             "11-768/4.SkillsAndMemory/Skills_and_Memory_Integrated_Notes.md",
             "11-768/4.SkillsAndMemory/lecture-04-memory-and-skills.pdf (46 pages text, visual inspection 12,17,28,30,32,35,39–41,43)",
-            "11-768/4.SkillsAndMemory/readings/002_SkillsBench.pdf (metric definition and table 2)",
-            "11-768/4.SkillsAndMemory/readings/004_Agent_Workflow_Memory_AWM.pdf (tables 3–8, macro actions)",
-            "11-768/4.SkillsAndMemory/readings/005_Agent_Skill_Induction_ASI.pdf (admission pipeline, table 3, cross-site significance table 18)",
-            "11-768/4.SkillsAndMemory/readings/006_ReasoningBank.pdf (appendix A.2–A.3 and total-token accounting)",
-            "11-768/4.SkillsAndMemory/references/014_TroVE.pdf (three-mode candidate sampling, majority execution selection, trimming)",
-            "11-768/4.SkillsAndMemory/references/015_Not_All_Skills_Help.pdf (attribution formula, restructure and per-task masking)",
-            "11-768/4.SkillsAndMemory/references/016_SAGE.pdf (reward formula and reward ablation table 5)",
-            "11-768/4.SkillsAndMemory/references/017_AgeMem.pdf (three-stage curriculum, tools, terminal advantage and composite reward)",
+            "11-768/4.SkillsAndMemory/readings/SkillsBench_Benchmarking_How_Well_Agent_Skills_Work_Across_Diverse_Tasks.pdf (metric definition and table 2)",
+            "11-768/4.SkillsAndMemory/readings/Agent_Workflow_Memory.pdf (tables 3–8, macro actions)",
+            "11-768/4.SkillsAndMemory/readings/Inducing_Programmatic_Skills_for_Agentic_Tasks.pdf (admission pipeline, table 3, cross-site significance table 18)",
+            "11-768/4.SkillsAndMemory/readings/ReasoningBank_Scaling_Agent_Self-Evolving_with_Reasoning_Memory.pdf (appendix A.2–A.3 and total-token accounting)",
+            "11-768/4.SkillsAndMemory/references/TroVE_Inducing_Verifiable_and_Efficient_Toolboxes_for_Solving_Programmatic_Tasks.pdf (three-mode candidate sampling, majority execution selection, trimming)",
+            "11-768/4.SkillsAndMemory/references/Not_All_Skills_Help_Measuring_and_Repairing_Agent_Knowledge.pdf (attribution formula, restructure and per-task masking)",
+            "11-768/4.SkillsAndMemory/references/Reinforcement_Learning_for_Self-Improving_Agent_with_Skill_Library.pdf (reward formula and reward ablation table 5)",
+            "11-768/4.SkillsAndMemory/references/Agentic_Memory_Learning_Unified_Long-Term_and_Short-Term_Memory_Management_for_Large_Language_Model_Agents.pdf (three-stage curriculum, tools, terminal advantage and composite reward)",
             "11-768/4.SkillsAndMemory/references/019_HermesAgent_skills_tool.py (_skill_view_with_bump and view cache)"
           ],
           "issues_found": [
@@ -354,6 +381,15 @@
           ],
           "final_sha256": "b604b64770c0c3d5816549939769a22beadd73b3ee1cc3715ff8bd6119d803bb"
         }
+      ],
+      "maintenance": [
+        {
+          "date": "2026-10-27",
+          "scope": "Title-based source path and filename references only; existing source-label mismatch explanation retained where applicable",
+          "previous_reviewed_sha256": "b604b64770c0c3d5816549939769a22beadd73b3ee1cc3715ff8bd6119d803bb",
+          "final_sha256": "63cab3ff64df7663f5423135d332aa73eb3403d275ac0dbe0eacb275ca84f68c",
+          "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
+        }
       ]
     },
     {
@@ -362,7 +398,7 @@
       "action": "review_existing",
       "status": "passed",
       "original_sha256": "599eb1c8aeac8243c33f65336b3f37384184763b8aaba77b3e3d0430fbf459d4",
-      "final_sha256": "e48758b918027905de3b3e54760c46c4edfb884971b47eeb0ffb24e50f2ffea3",
+      "final_sha256": "c907e064ff29e972a22cc2dcfe0cab9f37538db5c43abdec194f6651838b4f0a",
       "reviews": [
         {
           "report_file": "11-768-05-planning-coordination.json",
@@ -375,21 +411,21 @@
             "11-768/5.PlanningAndCoordination/SOURCES.md",
             "11-768/5.PlanningAndCoordination/lecture05_planning_coordination_integrated_notes.md (original 2273 lines; final 2315 lines, two full passes)",
             "11-768/5.PlanningAndCoordination/lecture-05-planning.pdf (all 48 pages text; rendered key figures pp.20,28,31,38,40–44)",
-            "11-768/5.PlanningAndCoordination/readings/002_Least-to-Most_Prompting.pdf:pp.2–3,5–9",
-            "11-768/5.PlanningAndCoordination/readings/003_Decomposed_Prompting.pdf:pp.3–8",
-            "11-768/5.PlanningAndCoordination/readings/004_Code_as_Policies.pdf:pp.3–6",
-            "11-768/5.PlanningAndCoordination/readings/005_SayCan.pdf:pp.3–4,6–7,9–10",
-            "11-768/5.PlanningAndCoordination/readings/006_Plan-and-Act.pdf:pp.3–10",
-            "11-768/5.PlanningAndCoordination/readings/007_Thinking_vs.pdf:pp.4–8,10",
-            "11-768/5.PlanningAndCoordination/readings/008_Calibrate-Then-Act.pdf:pp.3–8",
-            "11-768/5.PlanningAndCoordination/readings/009_Recursive_Agent_Optimization_RAO.pdf:pp.3–12",
-            "11-768/5.PlanningAndCoordination/readings/010_Multi-Agent_Computer_Use_MACU.pdf:pp.3–10,14–16,28,30,32–35,40",
-            "11-768/5.PlanningAndCoordination/references/007_Recursive_Language_Models.pdf:pp.3–4,7–9",
-            "11-768/5.PlanningAndCoordination/references/019_Training_Proactive_and_Personalized_LLM_Agents_PPP-Agent.pdf:pp.3–5",
-            "11-768/5.PlanningAndCoordination/references/021_The_Illusion_of_Diminishing_Returns.pdf:pp.3–8",
-            "11-768/5.PlanningAndCoordination/references/022_ADaPT.pdf:pp.3–5",
-            "11-768/5.PlanningAndCoordination/references/023_Web_Agents_Should_Adopt_the_Plan-Then-Execute_Paradigm.pdf:pp.3,5–8",
-            "11-768/5.PlanningAndCoordination/references/024_TravelPlanner.pdf:pp.3–6",
+            "11-768/5.PlanningAndCoordination/readings/Least-to-Most_Prompting_Enables_Complex_Reasoning_in_Large_Language_Models.pdf:pp.2–3,5–9",
+            "11-768/5.PlanningAndCoordination/readings/Decomposed_Prompting_A_Modular_Approach_for_Solving_Complex_Tasks.pdf:pp.3–8",
+            "11-768/5.PlanningAndCoordination/readings/Code_as_Policies_Language_Model_Programs_for_Embodied_Control.pdf:pp.3–6",
+            "11-768/5.PlanningAndCoordination/readings/Do_As_I_Can_Not_As_I_Say_Grounding_Language_in_Robotic_Affordances.pdf:pp.3–4,6–7,9–10",
+            "11-768/5.PlanningAndCoordination/readings/Plan-and-Act_Improving_Planning_of_Agents_for_Long-Horizon_Tasks.pdf:pp.3–10",
+            "11-768/5.PlanningAndCoordination/readings/Thinking_vs._Doing_Agents_that_Reason_by_Scaling_Test-Time_Interaction.pdf:pp.4–8,10",
+            "11-768/5.PlanningAndCoordination/readings/Calibrate-Then-Act_Cost-Aware_Exploration_in_LLM_Agents.pdf:pp.3–8",
+            "11-768/5.PlanningAndCoordination/readings/Recursive_Agent_Optimization.pdf:pp.3–12",
+            "11-768/5.PlanningAndCoordination/readings/Multi-Agent_Computer_Use.pdf:pp.3–10,14–16,28,30,32–35,40",
+            "11-768/5.PlanningAndCoordination/references/Recursive_Language_Models.pdf:pp.3–4,7–9",
+            "11-768/5.PlanningAndCoordination/references/Training_Proactive_and_Personalized_LLM_Agents.pdf:pp.3–5",
+            "11-768/5.PlanningAndCoordination/references/The_Illusion_of_Diminishing_Returns_Measuring_Long_Horizon_Execution_in_LLMs.pdf:pp.3–8",
+            "11-768/5.PlanningAndCoordination/references/ADAPT_As-Needed_Decomposition_and_Planning_with_Language_Models.pdf:pp.3–5",
+            "11-768/5.PlanningAndCoordination/references/Web_Agents_Should_Adopt_the_Plan-Then-Execute_Paradigm.pdf:pp.3,5–8",
+            "11-768/5.PlanningAndCoordination/references/TravelPlanner_A_Benchmark_for_Real-World_Planning_with_Language_Agents.pdf:pp.3–6",
             "11-768/5.PlanningAndCoordination/readings/001_Cursor_Introducing_Plan_Mode.html:readable body",
             "11-768/5.PlanningAndCoordination/references/026_Don_t_Sleep_on_Single-Agent_Systems.html:readable body"
           ],
@@ -425,9 +461,18 @@
           "limitations": [
             "未运行模型、未复现论文实验、未改可执行教学代码。",
             "辅助原文核查集中于正文高风险机制、实验和版本；不声称完整重读所有参考论文的全部附录或核查当前产品规格。",
-            "SOURCES中Thinking vs. Doing只有上游链接，但本地readings/007_Thinking_vs.pdf确实存在；已通知父代理，未越界编辑来源索引。"
+            "SOURCES中Thinking vs. Doing只有上游链接，但本地readings/Thinking_vs._Doing_Agents_that_Reason_by_Scaling_Test-Time_Interaction.pdf确实存在；已通知父代理，未越界编辑来源索引。"
           ],
           "final_sha256": "e48758b918027905de3b3e54760c46c4edfb884971b47eeb0ffb24e50f2ffea3"
+        }
+      ],
+      "maintenance": [
+        {
+          "date": "2026-10-27",
+          "scope": "Title-based source path and filename references only; existing source-label mismatch explanation retained where applicable",
+          "previous_reviewed_sha256": "e48758b918027905de3b3e54760c46c4edfb884971b47eeb0ffb24e50f2ffea3",
+          "final_sha256": "c907e064ff29e972a22cc2dcfe0cab9f37538db5c43abdec194f6651838b4f0a",
+          "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
         }
       ]
     },
@@ -437,7 +482,7 @@
       "action": "review_existing",
       "status": "passed",
       "original_sha256": "77cfad44829cbdde8f85c7630ee587154cf8bd498d9eb79702670b46cf949f00",
-      "final_sha256": "74956600b2fb284ab80d9bbf3f7192baefaf433203a587a11b481732917c3a52",
+      "final_sha256": "d19aa6daa518a82f4d41b0493acc24eae2c8ce7ca972ae4c5354860addde2229",
       "reviews": [
         {
           "report_file": "11-768-06-coding-agents.json",
@@ -510,6 +555,15 @@
           ],
           "final_sha256": "74956600b2fb284ab80d9bbf3f7192baefaf433203a587a11b481732917c3a52"
         }
+      ],
+      "maintenance": [
+        {
+          "date": "2026-10-27",
+          "scope": "Title-based source path and filename references only; existing source-label mismatch explanation retained where applicable",
+          "previous_reviewed_sha256": "74956600b2fb284ab80d9bbf3f7192baefaf433203a587a11b481732917c3a52",
+          "final_sha256": "d19aa6daa518a82f4d41b0493acc24eae2c8ce7ca972ae4c5354860addde2229",
+          "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
+        }
       ]
     },
     {
@@ -518,7 +572,7 @@
       "action": "review_existing",
       "status": "passed",
       "original_sha256": "be29369e2479a49942e1dd2078d4bcbe373952d6da8675e7909b74b09f69cda1",
-      "final_sha256": "9cc09d66f2403a51d49d17e8d6e308a5eee613e5e6fe7f9bbf6cd823a0d42401",
+      "final_sha256": "df268f5c1b8c65ca92d3f7aa2a79f3a6c922a21fb94530a67a7215d7daa7c313",
       "reviews": [
         {
           "report_file": "11-768-07-computer-use.json",
@@ -590,6 +644,15 @@
           ],
           "final_sha256": "9cc09d66f2403a51d49d17e8d6e308a5eee613e5e6fe7f9bbf6cd823a0d42401"
         }
+      ],
+      "maintenance": [
+        {
+          "date": "2026-10-27",
+          "scope": "Title-based source path and filename references only; existing source-label mismatch explanation retained where applicable",
+          "previous_reviewed_sha256": "9cc09d66f2403a51d49d17e8d6e308a5eee613e5e6fe7f9bbf6cd823a0d42401",
+          "final_sha256": "df268f5c1b8c65ca92d3f7aa2a79f3a6c922a21fb94530a67a7215d7daa7c313",
+          "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
+        }
       ]
     },
     {
@@ -598,7 +661,7 @@
       "action": "review_existing",
       "status": "passed",
       "original_sha256": "e739f0e8c3793b3d466d815e4dc6226ef3843a7314985817560706b32d277e81",
-      "final_sha256": "b868e3ab79340de495e798ed2f7eb0263c5eb7e80e9e754806b86d35fff203f3",
+      "final_sha256": "757e2661dffe0ee2a1fbe517cd2a21ff2f650fbc190437075037280e75e3bc00",
       "reviews": [
         {
           "report_file": "11-768-08-sft.json",
@@ -624,19 +687,19 @@
               "scope": "all 49 physical pages; key figures rendered and inspected pages 12,15,17,18,25,26,28,34,37,39,42,47"
             },
             {
-              "path": "references/001_Kimi_K3.pdf",
+              "path": "references/Kimi_K3_Open_Frontier_Intelligence.pdf",
               "scope": "12–14,46–47"
             },
             {
-              "path": "references/002_DeepSeek-R1.pdf",
+              "path": "references/DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_Reinforcement_Learning.pdf",
               "scope": "26–27,60–62; original archived version retained"
             },
             {
-              "path": "references/003_Nemotron_3_Ultra.pdf",
+              "path": "references/Nemotron_3_Ultra_Open_Efficient_Mixture-of-Experts_Hybrid_Mamba-Transformer_Model_for_Agentic_Reasoning.pdf",
               "scope": "15–23,27–28"
             },
             {
-              "path": "references/004_MAI-Thinking-1.pdf",
+              "path": "references/MAI-Thinking-1_Building_a_Hill-Climbing_Machine.pdf",
               "scope": "34–37,39,41–42,49"
             },
             {
@@ -644,31 +707,31 @@
               "scope": "full readable article, Training Overview checked"
             },
             {
-              "path": "references/006_Kimi_K2.pdf",
+              "path": "references/Kimi_K2_Open_Agentic_Intelligence.pdf",
               "scope": "9–11,26–27"
             },
             {
-              "path": "references/007_OpenThoughts-Agent.pdf",
+              "path": "references/OpenThoughts-Agent_Data_Recipes_for_Agentic_Models.pdf",
               "scope": "3–8,11,25–26"
             },
             {
-              "path": "references/008_SWE-Gym.pdf",
+              "path": "references/Training_Software_Engineering_Agents_and_Verifiers_with_SWE-Gym.pdf",
               "scope": "3–8 (3–6 reused prior CMU6 reading),13,15,20"
             },
             {
-              "path": "references/009_Agent_Data_Protocol.pdf",
+              "path": "references/Agent_Data_Protocol_Unifying_Datasets_for_Diverse_Effective_Fine-tuning_of_LLM_Agents.pdf",
               "scope": "4–6,9,18–20"
             },
             {
-              "path": "references/010_BalanceSFT.pdf",
+              "path": "references/FunReason_Enhancing_Large_Language_Models_Function_Calling_via_Self-Refinement_Multiscale_Loss_and_Automated_Data_Refinement.pdf",
               "scope": "3–5,7–8"
             },
             {
-              "path": "references/011_Instruction_Modelling.pdf",
+              "path": "references/Instruction_Tuning_With_Loss_Over_Instructions.pdf",
               "scope": "4,6–9"
             },
             {
-              "path": "references/012_Weighted_Instruction_Tuning.pdf",
+              "path": "references/On_the_Effect_of_Instruction_Tuning_Loss_on_Generalization.pdf",
               "scope": "3,6–10"
             },
             {
@@ -742,6 +805,15 @@
           ],
           "final_sha256": "b868e3ab79340de495e798ed2f7eb0263c5eb7e80e9e754806b86d35fff203f3"
         }
+      ],
+      "maintenance": [
+        {
+          "date": "2026-10-27",
+          "scope": "Title-based source path and filename references only; existing source-label mismatch explanation retained where applicable",
+          "previous_reviewed_sha256": "b868e3ab79340de495e798ed2f7eb0263c5eb7e80e9e754806b86d35fff203f3",
+          "final_sha256": "757e2661dffe0ee2a1fbe517cd2a21ff2f650fbc190437075037280e75e3bc00",
+          "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
+        }
       ]
     },
     {
@@ -750,7 +822,7 @@
       "action": "review_existing",
       "status": "passed",
       "original_sha256": "ce5d270b8d64055f5395a9995e41ad9be5a3f6b2571ff3302e7a0af6f3db62da",
-      "final_sha256": "03067a560c389a6df35c6953fb2188c3986018352a7e90ccc62cb309d2672a9b",
+      "final_sha256": "3a97a0100ee0d608f5f87b3c4afaf93db0d760f74dc13bdbe82390538e2896fd",
       "reviews": [
         {
           "report_file": "11-768-09-rl-basics.json",
@@ -776,27 +848,27 @@
               "scope": "full46physicalpages;12keyfigures inspected pages2,12,19,22,27,30,31,33,37–40"
             },
             {
-              "path": "references/001_RL_Fundamentals.pdf",
+              "path": "references/CS11-711_Advanced_NLP_-_Reinforcement_Learning.pdf",
               "scope": "full50physicalpages"
             },
             {
-              "path": "references/002_REINFORCE.pdf",
+              "path": "references/Simple_statistical_gradient-following_algorithms_for_connectionist_reinforcement_learning.pdf",
               "scope": "physicalpp5–9,12–13,15–17; conditionalindependence/Theorem1–2/episodic eligibility/backprop/convergence/minvariancebaseline"
             },
             {
-              "path": "readings/001_ReST.pdf",
+              "path": "readings/Reinforced_Self-Training_ReST_for_Language_Modeling.pdf",
               "scope": "physicalpp2–5,7–11;Grow/Improve,filtering,NLL,randomenvironmentcaveat,cost,humanvsreward;figurespp7–9 rendered"
             },
             {
-              "path": "readings/002_ReST-EM.pdf",
+              "path": "readings/Beyond_Human_Data_Scaling_Self-Training_for_Problem-Solving_with_Language_Models.pdf",
               "scope": "physicalpp3–12;EM/Eq3normalization,selftraining/reset/control/transfer/PassK;figurespp4,10,11 rendered"
             },
             {
-              "path": "readings/003_DeepSeekMath.pdf",
+              "path": "readings/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf",
               "scope": "physicalpp2,10–15,18–22;fullGRPO/PS/iterativeRM/params/unifiedview/datarewardconfounds/PassK;figurespp13,14,21 rendered"
             },
             {
-              "path": "readings/004_DrGRPO.pdf",
+              "path": "readings/Understanding_R1-Zero-Like_Training_A_Critical_Perspective.pdf",
               "scope": "physicalpp2–9,13–16,19;baseline/template/ratio/normalization/RLOO/ablation/seed/budgets;figurespp6,7,15 rendered"
             }
           ],
@@ -852,6 +924,15 @@
           ],
           "final_sha256": "03067a560c389a6df35c6953fb2188c3986018352a7e90ccc62cb309d2672a9b"
         }
+      ],
+      "maintenance": [
+        {
+          "date": "2026-10-27",
+          "scope": "Title-based source path and filename references only; existing source-label mismatch explanation retained where applicable",
+          "previous_reviewed_sha256": "03067a560c389a6df35c6953fb2188c3986018352a7e90ccc62cb309d2672a9b",
+          "final_sha256": "3a97a0100ee0d608f5f87b3c4afaf93db0d760f74dc13bdbe82390538e2896fd",
+          "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
+        }
       ]
     },
     {
@@ -860,7 +941,7 @@
       "action": "review_existing",
       "status": "passed",
       "original_sha256": "2abff9b4b82a630a2a557c8520ace3ae55bc98a26947755e90b9c076620db716",
-      "final_sha256": "17cdde2462453514999ab029fb3b418dc062e1dd6643e43298408c391ee59904",
+      "final_sha256": "cb654117212e38aaa96a729251e68d4b905ff54a09340612c6e509fa6bddcce6",
       "reviews": [
         {
           "report_file": "cmu-10-source-checks.json",
@@ -872,11 +953,11 @@
             "11-768/10.DeepResearchAgents/SOURCES.md",
             "11-768/10.DeepResearchAgents/Deep_Research_Agent_Design_Source_Checks.md",
             "11-768/10.DeepResearchAgents/readings/001_OpenScholar.html",
-            "11-768/10.DeepResearchAgents/readings/006_AgentIR.pdf (Sections 3 and 5)",
-            "11-768/10.DeepResearchAgents/readings/004_Tongyi_DeepResearch.pdf (Section 3.1)",
-            "11-768/10.DeepResearchAgents/references/010_DeepResearch_Bench_II.pdf (Sections 3.1.2–3.1.3)",
-            "11-768/10.DeepResearchAgents/references/003_BrowseComp-Plus.pdf (Section 4.8.1)",
-            "2680/readings/web/anthropic-com-engineering-multi-agent-research-system-a3afc1e8.html"
+            "11-768/10.DeepResearchAgents/readings/AgentIR_Reasoning-Aware_Retrieval_for_Deep_Research_Agents.pdf (Sections 3 and 5)",
+            "11-768/10.DeepResearchAgents/readings/Tongyi_DeepResearch_Technical_Report.pdf (Section 3.1)",
+            "11-768/10.DeepResearchAgents/references/DeepResearch_Bench_II_Diagnosing_Deep_Research_Agents_via_Rubrics_from_Expert_Reports.pdf (Sections 3.1.2–3.1.3)",
+            "11-768/10.DeepResearchAgents/references/BrowseComp-Plus_A_More_Fair_and_Transparent_Evaluation_Benchmark_of_Deep-Research_Agent.pdf (Section 4.8.1)",
+            "2680/readings/web/How_we_built_our_multi-agent_research_system.html"
           ],
           "issues_found": [
             {
@@ -908,6 +989,15 @@
           ],
           "final_sha256": "17cdde2462453514999ab029fb3b418dc062e1dd6643e43298408c391ee59904"
         }
+      ],
+      "maintenance": [
+        {
+          "date": "2026-10-27",
+          "scope": "Title-based source path and filename references only; existing source-label mismatch explanation retained where applicable",
+          "previous_reviewed_sha256": "17cdde2462453514999ab029fb3b418dc062e1dd6643e43298408c391ee59904",
+          "final_sha256": "cb654117212e38aaa96a729251e68d4b905ff54a09340612c6e509fa6bddcce6",
+          "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
+        }
       ]
     },
     {
@@ -916,7 +1006,7 @@
       "action": "review_existing",
       "status": "passed",
       "original_sha256": "81bd3f333611956df6d383f623153e1ec7f3c81f0b4148e2d2835a6dde7645a0",
-      "final_sha256": "37b6320fc7c7dcc5de056ed3aa260b528dc26fd29e7191f13b7ebee7b667a9d1",
+      "final_sha256": "3b57ec0a89adf5bb53805195225f400fcfc649f54c59e3b48c7c548e96b1374c",
       "reviews": [
         {
           "report_file": "cmu-10-general-design.json",
@@ -928,11 +1018,11 @@
             "11-768/10.DeepResearchAgents/SOURCES.md",
             "11-768/10.DeepResearchAgents/Deep_Research_Agent_General_Design.md",
             "11-768/10.DeepResearchAgents/readings/001_OpenScholar.html",
-            "11-768/10.DeepResearchAgents/readings/006_AgentIR.pdf (Sections 3 and 5)",
-            "11-768/10.DeepResearchAgents/readings/004_Tongyi_DeepResearch.pdf (Section 3.1)",
-            "11-768/10.DeepResearchAgents/references/010_DeepResearch_Bench_II.pdf (Sections 3.1.2–3.1.3)",
-            "11-768/10.DeepResearchAgents/references/003_BrowseComp-Plus.pdf (Section 4.8.1)",
-            "2680/readings/web/anthropic-com-engineering-multi-agent-research-system-a3afc1e8.html"
+            "11-768/10.DeepResearchAgents/readings/AgentIR_Reasoning-Aware_Retrieval_for_Deep_Research_Agents.pdf (Sections 3 and 5)",
+            "11-768/10.DeepResearchAgents/readings/Tongyi_DeepResearch_Technical_Report.pdf (Section 3.1)",
+            "11-768/10.DeepResearchAgents/references/DeepResearch_Bench_II_Diagnosing_Deep_Research_Agents_via_Rubrics_from_Expert_Reports.pdf (Sections 3.1.2–3.1.3)",
+            "11-768/10.DeepResearchAgents/references/BrowseComp-Plus_A_More_Fair_and_Transparent_Evaluation_Benchmark_of_Deep-Research_Agent.pdf (Section 4.8.1)",
+            "2680/readings/web/How_we_built_our_multi-agent_research_system.html"
           ],
           "issues_found": [
             {
@@ -964,6 +1054,15 @@
           ],
           "final_sha256": "37b6320fc7c7dcc5de056ed3aa260b528dc26fd29e7191f13b7ebee7b667a9d1"
         }
+      ],
+      "maintenance": [
+        {
+          "date": "2026-10-27",
+          "scope": "Title-based source path and filename references only; existing source-label mismatch explanation retained where applicable",
+          "previous_reviewed_sha256": "37b6320fc7c7dcc5de056ed3aa260b528dc26fd29e7191f13b7ebee7b667a9d1",
+          "final_sha256": "3b57ec0a89adf5bb53805195225f400fcfc649f54c59e3b48c7c548e96b1374c",
+          "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
+        }
       ]
     },
     {
@@ -972,7 +1071,7 @@
       "action": "review_existing",
       "status": "passed",
       "original_sha256": "e4c98bedbd21c14ba61f2cfd63ba94ec860d4ee0292a0c82020d0592ebca7582",
-      "final_sha256": "2309274fb9980762879fab0875c8f1648415fe15cb46b589cb2b430814925795",
+      "final_sha256": "06dbf34ba88d30689a5128f2b60e59490e6f9a01598f3398098195cbfcfdff92",
       "reviews": [
         {
           "report_file": "cmu-10-integrated.json",
@@ -985,12 +1084,12 @@
             "11-768/10.DeepResearchAgents/Deep_Research_Lecture10_Integrated_Notes.md",
             "11-768/10.DeepResearchAgents/lecture-10-deep-research-agents.pdf (all 124 pages)",
             "11-768/10.DeepResearchAgents/readings/001_OpenScholar.html (inference, filtering, citation evaluation)",
-            "11-768/10.DeepResearchAgents/readings/006_AgentIR.pdf (Sections 3 and 5, Tables 2–3)",
-            "11-768/10.DeepResearchAgents/readings/004_Tongyi_DeepResearch.pdf (context management and training scope)",
-            "11-768/10.DeepResearchAgents/readings/005_DR_Tulu.pdf (abstract/results and cited system sections)",
-            "11-768/10.DeepResearchAgents/references/010_DeepResearch_Bench_II.pdf (Sections 3.1.2–3.1.3)",
-            "11-768/10.DeepResearchAgents/references/003_BrowseComp-Plus.pdf (oracle and retrieval setup)",
-            "11-768/10.DeepResearchAgents/references/007_AutoResearchBench.pdf (all page metadata; Sections 2.4, 3.4–3.5 and Appendix F)"
+            "11-768/10.DeepResearchAgents/readings/AgentIR_Reasoning-Aware_Retrieval_for_Deep_Research_Agents.pdf (Sections 3 and 5, Tables 2–3)",
+            "11-768/10.DeepResearchAgents/readings/Tongyi_DeepResearch_Technical_Report.pdf (context management and training scope)",
+            "11-768/10.DeepResearchAgents/readings/DR_Tulu_Reinforcement_Learning_with_Evolving_Rubrics_for_Deep_Research.pdf (abstract/results and cited system sections)",
+            "11-768/10.DeepResearchAgents/references/DeepResearch_Bench_II_Diagnosing_Deep_Research_Agents_via_Rubrics_from_Expert_Reports.pdf (Sections 3.1.2–3.1.3)",
+            "11-768/10.DeepResearchAgents/references/BrowseComp-Plus_A_More_Fair_and_Transparent_Evaluation_Benchmark_of_Deep-Research_Agent.pdf (oracle and retrieval setup)",
+            "11-768/10.DeepResearchAgents/references/AutoResearchBench_Benchmarking_AI_Agents_on_Complex_Scientific_Literature_Discovery.pdf (all page metadata; Sections 2.4, 3.4–3.5 and Appendix F)"
           ],
           "issues_found": [
             {
@@ -1176,6 +1275,15 @@
           ],
           "final_sha256": "2309274fb9980762879fab0875c8f1648415fe15cb46b589cb2b430814925795"
         }
+      ],
+      "maintenance": [
+        {
+          "date": "2026-10-27",
+          "scope": "Title-based source path and filename references only; existing source-label mismatch explanation retained where applicable",
+          "previous_reviewed_sha256": "2309274fb9980762879fab0875c8f1648415fe15cb46b589cb2b430814925795",
+          "final_sha256": "06dbf34ba88d30689a5128f2b60e59490e6f9a01598f3398098195cbfcfdff92",
+          "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
+        }
       ]
     },
     {
@@ -1184,7 +1292,7 @@
       "action": "review_existing",
       "status": "passed",
       "original_sha256": "fa8611f9cf8eb45e796d8315c663404714e4f096391de0e3c0ce1103c9a81bf6",
-      "final_sha256": "c31152723e0645be2381addfa8f7811ca4e8bab2f19464104665c85ea344f105",
+      "final_sha256": "9c266d1965a43b105841d99689a9287f619e0337a12a76dbef0495e2b38cfa77",
       "reviews": [
         {
           "report_file": "cmu-10-finance.json",
@@ -1195,9 +1303,9 @@
           "files_read": [
             "11-768/10.DeepResearchAgents/Finance_Agent_Research_2026_Three_Papers.md",
             "11-768/10.DeepResearchAgents/SOURCES.md",
-            "references/019_FutureX-Pro_2601.12259v1.pdf: financial/search/contributions pp3–5,14–16,19",
-            "references/020_MBABench_2605.22664v5.pdf: pp3–10,25–40",
-            "references/021_AURA_2609.36914v1.pdf: main text pp1–11 and appendices pp15–18",
+            "references/FutureX-Pro_Extending_Future_Prediction_to_High-Value_Vertical_Domains.pdf: financial/search/contributions pp3–5,14–16,19",
+            "references/MBABench_Evaluating_LLM_Agents_on_End-to-End_Spreadsheet_Tasks_in_Finance.pdf: pp3–10,25–40",
+            "references/Can_Language_Models_Learn_to_Forecast_Stock_Prices.pdf: main text pp1–11 and appendices pp15–18",
             "references/futurex-eval-README.md",
             "references/futurex-llm_judge_level_34.py",
             "references/futurex-eval.py"
@@ -1248,6 +1356,15 @@
           ],
           "final_sha256": "c31152723e0645be2381addfa8f7811ca4e8bab2f19464104665c85ea344f105"
         }
+      ],
+      "maintenance": [
+        {
+          "date": "2026-10-27",
+          "scope": "Title-based source path and filename references only; existing source-label mismatch explanation retained where applicable",
+          "previous_reviewed_sha256": "c31152723e0645be2381addfa8f7811ca4e8bab2f19464104665c85ea344f105",
+          "final_sha256": "9c266d1965a43b105841d99689a9287f619e0337a12a76dbef0495e2b38cfa77",
+          "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
+        }
       ]
     },
     {
@@ -1256,7 +1373,7 @@
       "action": "review_existing",
       "status": "passed",
       "original_sha256": "81a05b758a05c8b2653119ab5fc041ce734b42a13a62eb2a52423cd238800d5c",
-      "final_sha256": "e15f7f048a05f0ca25a52c8e81bb4828c0ade244c8d78ab58967bcda408bf831",
+      "final_sha256": "a5ec0cd5dbfe533ee95eaabfbc3c2ef3b06380c25985ded258ad1510f52d5222",
       "reviews": [
         {
           "report_file": "11-768-11-advanced-rl.json",
@@ -1289,6 +1406,15 @@
           ],
           "final_sha256": "e15f7f048a05f0ca25a52c8e81bb4828c0ade244c8d78ab58967bcda408bf831"
         }
+      ],
+      "maintenance": [
+        {
+          "date": "2026-10-27",
+          "scope": "Title-based source path and filename references only; existing source-label mismatch explanation retained where applicable",
+          "previous_reviewed_sha256": "e15f7f048a05f0ca25a52c8e81bb4828c0ade244c8d78ab58967bcda408bf831",
+          "final_sha256": "a5ec0cd5dbfe533ee95eaabfbc3c2ef3b06380c25985ded258ad1510f52d5222",
+          "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
+        }
       ]
     },
     {
@@ -1297,7 +1423,7 @@
       "action": "create_and_review",
       "status": "passed",
       "original_sha256": null,
-      "final_sha256": "10ee026947909fca4a7d653bc289193a98fd39c6feae612b4fb5c77b1f94fcf6",
+      "final_sha256": "a3d34a54ddb21bc16159d80a0baec5cc4908f0074fcc132c2590b21f34e85dc3",
       "reviews": [
         {
           "report_file": "cmu-12-cross-review.json",
@@ -1335,12 +1461,12 @@
             "11-768/12.TrainingRLSystems/lecture-12-rl-systems.pdf",
             "11-768/12.TrainingRLSystems/notes.zh-CN.md",
             "11-768/12.TrainingRLSystems/REFERENCES.json",
-            "11-768/12.TrainingRLSystems/references/2211.17192v2.pdf (mechanism/evaluation sections as cited)",
-            "11-768/12.TrainingRLSystems/references/1604.06174v2.pdf (mechanism/evaluation sections as cited)",
-            "11-768/12.TrainingRLSystems/references/2312.07104v2.pdf (mechanism/evaluation sections as cited)",
-            "11-768/12.TrainingRLSystems/references/2505.24298v5.pdf (mechanism/evaluation sections as cited)",
-            "11-768/12.TrainingRLSystems/references/2510.11370v2.pdf (mechanism/evaluation sections as cited)",
-            "11-768/12.TrainingRLSystems/references/2602.00482v2.pdf (mechanism/evaluation sections as cited)"
+            "11-768/12.TrainingRLSystems/references/Fast_Inference_from_Transformers_via_Speculative_Decoding.pdf (mechanism/evaluation sections as cited)",
+            "11-768/12.TrainingRLSystems/references/Training_Deep_Nets_with_Sublinear_Memory_Cost.pdf (mechanism/evaluation sections as cited)",
+            "11-768/12.TrainingRLSystems/references/SGLang_Efficient_Execution_of_Structured_Language_Model_Programs.pdf (mechanism/evaluation sections as cited)",
+            "11-768/12.TrainingRLSystems/references/AReaL_A_Large-Scale_Asynchronous_Reinforcement_Learning_System_for_Language_Reasoning.pdf (mechanism/evaluation sections as cited)",
+            "11-768/12.TrainingRLSystems/references/Stabilizing_MoE_Reinforcement_Learning_by_Aligning_Training_and_Inference_Routers.pdf (mechanism/evaluation sections as cited)",
+            "11-768/12.TrainingRLSystems/references/AREAL-DTA_Dynamic_Tree_Attention_for_Efficient_Reinforcement_Learning_of_Large_Language_Models.pdf (mechanism/evaluation sections as cited)"
           ],
           "issues_found": [
             {
@@ -1447,6 +1573,15 @@
           ],
           "final_sha256": "10ee026947909fca4a7d653bc289193a98fd39c6feae612b4fb5c77b1f94fcf6"
         }
+      ],
+      "maintenance": [
+        {
+          "date": "2026-10-27",
+          "scope": "Title-based source path and filename references only; existing source-label mismatch explanation retained where applicable",
+          "previous_reviewed_sha256": "10ee026947909fca4a7d653bc289193a98fd39c6feae612b4fb5c77b1f94fcf6",
+          "final_sha256": "a3d34a54ddb21bc16159d80a0baec5cc4908f0074fcc132c2590b21f34e85dc3",
+          "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
+        }
       ]
     },
     {
@@ -1455,7 +1590,7 @@
       "action": "review_existing",
       "status": "passed",
       "original_sha256": "45eddcdd2b80354d57d7de84fe8717a5562fbf6b12d8577e818ce15204d49c6e",
-      "final_sha256": "c26e4c3dbc0bd9afa1c4d4f95a616bdf2074c2f5b52d526eee5e1d5f4a40e68f",
+      "final_sha256": "59b94773614fa9884318066ffc8b8b4d6526b2de877e8a94755dfa93197bb7ef",
       "reviews": [
         {
           "report_file": "cmu-13.json",
@@ -1567,6 +1702,15 @@
           ],
           "final_sha256": "c26e4c3dbc0bd9afa1c4d4f95a616bdf2074c2f5b52d526eee5e1d5f4a40e68f"
         }
+      ],
+      "maintenance": [
+        {
+          "date": "2026-10-27",
+          "scope": "Title-based source path and filename references only; existing source-label mismatch explanation retained where applicable",
+          "previous_reviewed_sha256": "c26e4c3dbc0bd9afa1c4d4f95a616bdf2074c2f5b52d526eee5e1d5f4a40e68f",
+          "final_sha256": "59b94773614fa9884318066ffc8b8b4d6526b2de877e8a94755dfa93197bb7ef",
+          "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
+        }
       ]
     },
     {
@@ -1575,7 +1719,7 @@
       "action": "review_existing",
       "status": "passed",
       "original_sha256": "73d7ca9fb9dea14062ff8aa17cb41a35f72eda920e0696b96ed6721b4961d4aa",
-      "final_sha256": "20b86376be89539425161799e81cec539358b5cbe67f3bce435fa7eaeee17caa",
+      "final_sha256": "a8a97cbdf143c898f69b63fb666c9f1784e1ee888f9be0ef28807a431b0616d6",
       "reviews": [
         {
           "report_file": "cmu-14.json",
@@ -1690,6 +1834,15 @@
           ],
           "final_sha256": "20b86376be89539425161799e81cec539358b5cbe67f3bce435fa7eaeee17caa"
         }
+      ],
+      "maintenance": [
+        {
+          "date": "2026-10-27",
+          "scope": "Title-based source path and filename references only; existing source-label mismatch explanation retained where applicable",
+          "previous_reviewed_sha256": "20b86376be89539425161799e81cec539358b5cbe67f3bce435fa7eaeee17caa",
+          "final_sha256": "a8a97cbdf143c898f69b63fb666c9f1784e1ee888f9be0ef28807a431b0616d6",
+          "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
+        }
       ]
     },
     {
@@ -1698,7 +1851,7 @@
       "action": "review_existing",
       "status": "passed",
       "original_sha256": "4ebfa09706ff1c2476715300cccefe7de92dcb33a267694ad3decc4d895c342f",
-      "final_sha256": "6eff155053a28ad573e8f2ad9e9805d7b861ac6e30fe11db310c0be70f6ea7c8",
+      "final_sha256": "e1d34fd863db3c873166a1eff62b3301af4a0ea0d75d2397537b0b72acf62393",
       "reviews": [
         {
           "report_file": "11-768-15-orchestration.json",
@@ -1721,7 +1874,7 @@
               "scope": "39页全文；目视pp7,15,27,30,31,33,35,36,37"
             },
             {
-              "path": "11-768/15.OrchestrationAndMonitoring/readings/004_Hodoscope_Unsupervised_Monitoring_for_AI_Misbehaviors.pdf",
+              "path": "11-768/15.OrchestrationAndMonitoring/readings/Hodoscope_Unsupervised_Monitoring_for_AI_Misbehaviors.pdf",
               "scope": "主文pp1–9全文；附录B–I相关方法/数据/提示词；表1–3目视"
             },
             {
@@ -1797,196 +1950,205 @@
             "tail_reread": "Final glossary tail reread; no content changed after full reread."
           }
         }
+      ],
+      "maintenance": [
+        {
+          "date": "2026-10-27",
+          "scope": "Title-based source path and filename references only; existing source-label mismatch explanation retained where applicable",
+          "previous_reviewed_sha256": "6eff155053a28ad573e8f2ad9e9805d7b861ac6e30fe11db310c0be70f6ea7c8",
+          "final_sha256": "e1d34fd863db3c873166a1eff62b3301af4a0ea0d75d2397537b0b72acf62393",
+          "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
+        }
       ]
     }
   ],
   "original_sources": {
     "11-768/13.AgentSafety/lecture-13-agent-safety.pdf": "6a1efa5cf21ab696750710c6aa77cba640b9da548b91eba2188001a7e64e611c",
-    "11-768/13.AgentSafety/references/010_Security_Challenges_in_AI_Agent_Deployment_Insights_from_a_Large_Scale_Public_Competition.pdf": "dd47a8416b0cdb6cf2365b51f9c9042b0213f172280a215719b09b7ff60414ca",
+    "11-768/13.AgentSafety/references/Security_Challenges_in_AI_Agent_Deployment_Insights_from_a_Large_Scale_Public_Competition.pdf": "dd47a8416b0cdb6cf2365b51f9c9042b0213f172280a215719b09b7ff60414ca",
     "11-768/13.AgentSafety/references/022_RFC_8693_OAuth_2.0_Token_Exchange.html": "cad0eccfa08d8c57eb096c2750e6cc783f8697b8771558943971fa58caff0fca",
-    "11-768/13.AgentSafety/references/020_E2B_sandbox_lifecycle.html": "1176721ee9b8a80450708c97cbd0291d26a2ec2c0fca8007df4b20f817c7f16f",
-    "11-768/13.AgentSafety/references/006_AgentDojo.pdf": "349884fffbf43282591c5accffd57bb651632f38e412fe303114941bdd111b05",
+    "11-768/13.AgentSafety/references/020_E2B_sandbox_lifecycle.html": "4f7ffbd5f14d4719864997e72a773ff3b0d63a42e3c20a6c37edc6be4300d0e9",
+    "11-768/13.AgentSafety/references/AgentDojo_A_Dynamic_Environment_to_Evaluate_Prompt_Injection_Attacks_and_Defenses_for_LLM_Agents.pdf": "349884fffbf43282591c5accffd57bb651632f38e412fe303114941bdd111b05",
     "11-768/13.AgentSafety/references/021_GitHub_personal_access_tokens.html": "4796a36e963a550389e4a93a5ae9d8f77c9d41c6fa25f29fd3abf29603b82e87",
     "11-768/13.AgentSafety/references/023_GitHub_App_installation_access_tokens.html": "df7ca34d600505e6b4b801dbeefd1cb3f94a6f0f0878cb90853f60055996a666",
-    "11-768/13.AgentSafety/references/011_Jailbreaking_Black_Box_Large_Language_Models_in_Twenty_Queries_PAIR.pdf": "590bf40aa58061928f54d01b7d53f0d5141bb2ecf4f01483c6849423934f44e4",
+    "11-768/13.AgentSafety/references/Jailbreaking_Black_Box_Large_Language_Models_in_Twenty_Queries.pdf": "590bf40aa58061928f54d01b7d53f0d5141bb2ecf4f01483c6849423934f44e4",
     "11-768/13.AgentSafety/references/008_Introducing_Docent.html": "2cea0f71ae7ad6d4d5a793783d21014b67b135a020bf172ac4b0f3d2c87acd54",
     "11-768/13.AgentSafety/references/014_Modal_sandbox_networking_and_security.html": "40c84d07fb070e96aabfcad1fde5e06f1a340aed63ed4d13d6b874216206b81d",
-    "11-768/13.AgentSafety/references/007_ToolEmu.pdf": "2d746c512086bd47084e616a0848c6dd25052dfe8b6da64e42e4c5e2f0050722",
+    "11-768/13.AgentSafety/references/Identifying_the_Risks_of_LM_Agents_with_an_LM-Emulated_Sandbox.pdf": "2d746c512086bd47084e616a0848c6dd25052dfe8b6da64e42e4c5e2f0050722",
     "11-768/13.AgentSafety/references/003_Microsoft_advisory_CVE-2025-32711.html": "20af6d27a1cd2f151672ddb27a674eb77c6127f0f0bb1296d2e61c166be6736d",
-    "11-768/13.AgentSafety/references/030_Monitoring_Monitorability.pdf": "ecb8076f08298956cc535d8ae516653808ade0d1fb62a7c06ac465392b88ada8",
+    "11-768/13.AgentSafety/references/Monitoring_Monitorability.pdf": "ecb8076f08298956cc535d8ae516653808ade0d1fb62a7c06ac465392b88ada8",
     "11-768/13.AgentSafety/references/017_E2B_sandbox_persistence.html": "c4cc80a6d7ddff6365b59f701f807a3d692bbf766310769e670e818fe26f7186",
     "11-768/13.AgentSafety/references/013_Docker_Engine_security.html": "1a53b85e8d20f2f1d85a6546a3bac2de42e38eb6b1e3b43fe79cea42002e13e7",
     "11-768/13.AgentSafety/references/025_OpenTelemetry_generative_AI_attributes.html": "a20dbd51f45b6f8b8c95d4e79b7f19d2ee128b09852f87cf091472a40ba916cd",
-    "11-768/13.AgentSafety/references/024_AI_Control_Improving_Safety_Despite_Intentional_Subversion.pdf": "999f7a92bb8c085799e68f3d88f491ad8a334f862ccf5b286e5c2766677864c0",
+    "11-768/13.AgentSafety/references/AI_Control_Improving_Safety_Despite_Intentional_Subversion.pdf": "999f7a92bb8c085799e68f3d88f491ad8a334f862ccf5b286e5c2766677864c0",
     "11-768/13.AgentSafety/references/019_QEMU_system_emulation.html": "f4ad2868574cb4bf9b4f570cf97ecd52f860e5aae47f4d3e36442b2781e6dc0e",
     "11-768/13.AgentSafety/references/018_Apptainer_quick_start.html": "1c832d73666286853f4881c30065a8161559c0259f1fb8fd728e0f03cdabb8d9",
     "11-768/13.AgentSafety/references/016_Modal_sandboxes.html": "b4929d52a113fc28f70e54983dfc5ef6d64fb3295fac68d2d333c01d962b94cd",
-    "11-768/13.AgentSafety/references/027_Monitoring_Reasoning_Models_for_Misbehavior_and_the_Risks_of_Promoting_Obfuscation.pdf": "2547162c549d70e02beca2687903a8fce75fd950269a3ee479d5b8ebbb53ff38",
+    "11-768/13.AgentSafety/references/Monitoring_Reasoning_Models_for_Misbehavior_and_the_Risks_of_Promoting_Obfuscation.pdf": "2547162c549d70e02beca2687903a8fce75fd950269a3ee479d5b8ebbb53ff38",
     "11-768/13.AgentSafety/references/004_Cline_supply-chain_compromise_postmortem.html": "d2232d8931f7c694c9a8e5221a753ce0610d429f65ec01d739088a1ccf7cf61e",
     "11-768/13.AgentSafety/references/005_Gambit_Security_AI_agents_targeting_online_retailers.html": "9a311dd2cda8b94bd6c8f938c93a35155d0f74897adf5cae1d74f78639032d3f",
-    "11-768/13.AgentSafety/references/028_AgentHarm.pdf": "1f3bbfa41e9e8d0c1218fba19af5a7b9cffc04a1d9fba8b739ce57b080489560",
+    "11-768/13.AgentSafety/references/AgentHarm_A_Benchmark_for_Measuring_Harmfulness_of_LLM_Agents.pdf": "1f3bbfa41e9e8d0c1218fba19af5a7b9cffc04a1d9fba8b739ce57b080489560",
     "11-768/13.AgentSafety/references/026_Docent.html": "325042f02e7136e08c6a29a48b7ca881f104da9cdfacd0f87fb7828487109b79",
-    "11-768/13.AgentSafety/references/012_Nemotron_3_Super_technical_report.pdf": "73ea5d737b9c7c62a39ed3edefbecb82e5a23681bc2c4167e202eeee7b3d254d",
+    "11-768/13.AgentSafety/references/Nemotron_3_Super_Open_Efficient_Mixture-of-Experts_Hybrid_Mamba-Transformer_Model_for_Agentic_Reasoning.pdf": "73ea5d737b9c7c62a39ed3edefbecb82e5a23681bc2c4167e202eeee7b3d254d",
     "11-768/13.AgentSafety/references/002_PocketOS_database-deletion_incident.html": "43e96f0fa82e17ee43b791614d7871fbc4c65330e3d8b6c4ea938dfa73dbb293",
-    "11-768/13.AgentSafety/references/029_OpenAgentSafety.pdf": "8036bbdb56f8ef225d928e44c4448be5c71e8663ddb48169115a98e6056e0ee5",
+    "11-768/13.AgentSafety/references/OpenAgentSafety_A_Comprehensive_Framework_for_Evaluating_Real-World_AI_Agent_Safety.pdf": "8036bbdb56f8ef225d928e44c4448be5c71e8663ddb48169115a98e6056e0ee5",
     "11-768/12.TrainingRLSystems/lecture-12-rl-systems.pdf": "15a062df1513c0710e4e3bd8cfa247d4b131b966faadc32e5101561c322a8a13",
     "11-768/1.WhatIsAnAgent/lecture-01-agents.pdf": "16ad94b7cea06da50ff1736fba9ba3afcbb753fdea51c57b8df1ae3f9a7dd26c",
-    "11-768/1.WhatIsAnAgent/readings/001_Toolformer.pdf": "6d7483d94653008e40c2058a1c22441c92e3713dae278b6361e8efc447c99522",
-    "11-768/1.WhatIsAnAgent/readings/002_ReAct.pdf": "f285b0971ae4a790e402fb93966bed3adde2cf0a04977d08b2b40d6ab0cace69",
+    "11-768/1.WhatIsAnAgent/readings/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf": "6d7483d94653008e40c2058a1c22441c92e3713dae278b6361e8efc447c99522",
+    "11-768/1.WhatIsAnAgent/readings/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf": "f285b0971ae4a790e402fb93966bed3adde2cf0a04977d08b2b40d6ab0cace69",
     "11-768/7.ComputerUseAgents/lecture-07-computer-use-agents.pdf": "444b4f2188fc62a50675ec3ef43896905437bbd95f3429879d2dfcc14929473c",
-    "11-768/7.ComputerUseAgents/references/003_ReAct.pdf": "f285b0971ae4a790e402fb93966bed3adde2cf0a04977d08b2b40d6ab0cace69",
-    "11-768/7.ComputerUseAgents/references/006_ScreenSpot-Pro.pdf": "4eec6bbf0bba837c66a0d69551cc1567200d7aea85c6ce72650706de637c10c0",
-    "11-768/7.ComputerUseAgents/references/002_WebShop.pdf": "131e93080bc8d9ff801ff40bf69b7d12bfd9db018c223fdf03e622928f7ec032",
-    "11-768/7.ComputerUseAgents/references/004_Mind2Web.pdf": "75d8af953769a53bf75913908e2bb6185c6b338c8d89b7304e7fd8cfb79934e8",
-    "11-768/7.ComputerUseAgents/references/007_Gym-Anything.pdf": "14c933ca460112b0b50e0d4ae17b9a5555ece5db0c767dc85627fa4c670a9c0b",
-    "11-768/7.ComputerUseAgents/references/005_WebVoyager.pdf": "476ed4a064311f93414f5d5d17d90f10d07d2922bc05e09ee89cea26b617a2cb",
-    "11-768/7.ComputerUseAgents/references/001_MiniWoB.pdf": "087008efb9d056df5fd9fbc724413d6a3f20cb14c7f1597d00bacac53d8342d6",
-    "11-768/7.ComputerUseAgents/references/008_MolmoWeb.pdf": "5cec3493a000bac9e99d44bf2fccedc8c06b6b4c28fd14bdd67b0c6f6001105d",
-    "11-768/7.ComputerUseAgents/readings/005_CUA-Gym.pdf": "6e051a8f6d22ceddf68c3b875862f8602fa8e4d9409b96fb390c775fb7855171",
-    "11-768/7.ComputerUseAgents/readings/006_Multi-Agent_Computer_Use_MACU.pdf": "5a8e347bd731600d1ab92633130aa971d4fb72b10df684519793b307ddb6751e",
-    "11-768/7.ComputerUseAgents/readings/002_VisualWebArena.pdf": "8674b4ae17290bb797e5988706f765c75a3310a4e9d14cbd32497e40235ff795",
-    "11-768/7.ComputerUseAgents/readings/003_OSWorld.pdf": "d4c6e20dd59467f005561b1e97199f9842fd3b0e9fdd93e66e06ba0ec09edfdb",
-    "11-768/7.ComputerUseAgents/readings/001_WebArena.pdf": "f9731b92bc3d29a2ea7b5f9cb46b48540c76bc3f84a57e0c48fc37ea73107f95",
-    "11-768/7.ComputerUseAgents/readings/004_OpenCUA.pdf": "fd1c1e7b4d467acf63fc743c3925c7ceb015e5b1625f62c22295c0b9e2d82a70",
+    "11-768/7.ComputerUseAgents/references/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf": "f285b0971ae4a790e402fb93966bed3adde2cf0a04977d08b2b40d6ab0cace69",
+    "11-768/7.ComputerUseAgents/references/ScreenSpot-Pro_GUI_Grounding_for_Professional_High-Resolution_Computer_Use.pdf": "4eec6bbf0bba837c66a0d69551cc1567200d7aea85c6ce72650706de637c10c0",
+    "11-768/7.ComputerUseAgents/references/WebShop_Towards_Scalable_Real-World_Web_Interaction_with_Grounded_Language_Agents.pdf": "131e93080bc8d9ff801ff40bf69b7d12bfd9db018c223fdf03e622928f7ec032",
+    "11-768/7.ComputerUseAgents/references/Mind2Web_Towards_a_Generalist_Agent_for_the_Web.pdf": "75d8af953769a53bf75913908e2bb6185c6b338c8d89b7304e7fd8cfb79934e8",
+    "11-768/7.ComputerUseAgents/references/Gym-Anything_Turn_any_Software_into_an_Agent_Environment.pdf": "14c933ca460112b0b50e0d4ae17b9a5555ece5db0c767dc85627fa4c670a9c0b",
+    "11-768/7.ComputerUseAgents/references/WebVoyager_Building_an_End-to-End_Web_Agent_with_Large_Multimodal_Models.pdf": "476ed4a064311f93414f5d5d17d90f10d07d2922bc05e09ee89cea26b617a2cb",
+    "11-768/7.ComputerUseAgents/references/World_of_Bits_An_Open-Domain_Platform_for_Web-Based_Agents.pdf": "087008efb9d056df5fd9fbc724413d6a3f20cb14c7f1597d00bacac53d8342d6",
+    "11-768/7.ComputerUseAgents/references/MolmoWeb_Open_Visual_Web_Agent_and_Open_Data_for_the_Open_Web.pdf": "5cec3493a000bac9e99d44bf2fccedc8c06b6b4c28fd14bdd67b0c6f6001105d",
+    "11-768/7.ComputerUseAgents/readings/CUA-Gym_Scaling_Verifiable_Training_Environments_and_Tasks_for_Computer-Use_Agents.pdf": "6e051a8f6d22ceddf68c3b875862f8602fa8e4d9409b96fb390c775fb7855171",
+    "11-768/7.ComputerUseAgents/readings/Multi-Agent_Computer_Use.pdf": "5a8e347bd731600d1ab92633130aa971d4fb72b10df684519793b307ddb6751e",
+    "11-768/7.ComputerUseAgents/readings/VisualWebArena_Evaluating_Multimodal_Agents_on_Realistic_Visually_Grounded_Web_Tasks.pdf": "8674b4ae17290bb797e5988706f765c75a3310a4e9d14cbd32497e40235ff795",
+    "11-768/7.ComputerUseAgents/readings/OSWorld_Benchmarking_Multimodal_Agents_for_Open-Ended_Tasks_in_Real_Computer_Environments.pdf": "d4c6e20dd59467f005561b1e97199f9842fd3b0e9fdd93e66e06ba0ec09edfdb",
+    "11-768/7.ComputerUseAgents/readings/WebArena_A_Realistic_Web_Environment_for_Building_Autonomous_Agents.pdf": "f9731b92bc3d29a2ea7b5f9cb46b48540c76bc3f84a57e0c48fc37ea73107f95",
+    "11-768/7.ComputerUseAgents/readings/OpenCUA_Open_Foundations_for_Computer-Use_Agents.pdf": "fd1c1e7b4d467acf63fc743c3925c7ceb015e5b1625f62c22295c0b9e2d82a70",
     "11-768/4.SkillsAndMemory/lecture-04-memory-and-skills.pdf": "15165b0ab74f7ebe2704bbfbc341f2273d27e66041f3bfedf2c887c02e6a549d",
-    "11-768/4.SkillsAndMemory/references/014_TroVE.pdf": "53da61ab207079b41be34d251eebe7058043980b22840ef73dd62906bb1da4ac",
-    "11-768/4.SkillsAndMemory/references/005_Synapse.pdf": "24a8e95ceb3a90f6c303442f224c109f5abc92d2a9918ee0cf7d2246de781260",
-    "11-768/4.SkillsAndMemory/references/002_Reflexion.pdf": "6059b6f89fea9959bd3dab553fbb97756a3dfb1b15e3cbab2fbf3ab6664333bd",
-    "11-768/4.SkillsAndMemory/references/006_ICAL.pdf": "fe6e17dc31e0631ce8afc73e82ae53ad50a5579e15d3fb2e99bd0464a4164ad1",
-    "11-768/4.SkillsAndMemory/references/012_SkillWeaver.pdf": "aa237b4626363fa3de5479ed12bc93434ae9922f15432eca5bbf3444119d7d60",
-    "11-768/4.SkillsAndMemory/references/015_Not_All_Skills_Help.pdf": "7d2652d701fd180491d8223facab98f54b59f337275b47314d728ec4de3e990f",
-    "11-768/4.SkillsAndMemory/references/017_AgeMem.pdf": "ba41464f84dbd8e0d0aeb1e6e0d7fd83b4086b2922579b88f7947448a8e1958f",
-    "11-768/4.SkillsAndMemory/references/011_LILO.pdf": "efbbc1a0f24305e41e546b33911036cc77e75b67759c3b39cbf61c5ebed7a53b",
-    "11-768/4.SkillsAndMemory/references/013_PolySkill.pdf": "4fd727b7dcc0320a8c3c5dfcf3bd8fd9760bfd7ad69ba3af0283dfecf03f2b8d",
-    "11-768/4.SkillsAndMemory/references/001_Mem0.pdf": "bec870b657aa73405275a6d8fe27bcd4271799e028bc62986ab9c4cd27a3712d",
-    "11-768/4.SkillsAndMemory/references/009_Stitch.pdf": "60a5205585d4ea3fa8153cffcbad136fd825278dfced2dddabf6f9e3217a35f6",
-    "11-768/4.SkillsAndMemory/references/008_DreamCoder.pdf": "547027556f1220f22555c35f91d2527d78d825553a1b24201f58d56274ec0e80",
-    "11-768/4.SkillsAndMemory/references/016_SAGE.pdf": "aedb4ff03508b7f3f114133d96094dd43e2e6ceac93aea832fc6e37b40e94257",
-    "11-768/4.SkillsAndMemory/references/007_Voyager.pdf": "769a4e33ddeeb73870849232eece49afe882c2d146362e33917ccb432ba0efb8",
-    "11-768/4.SkillsAndMemory/references/010_LAPS.pdf": "61a9698eea4a15c622b8faad2403bd6ec1cb8337b0d160367d3c6de1cfdb27e5",
-    "11-768/4.SkillsAndMemory/references/004_Agent_S.pdf": "ee8c9b38e20b5f747bd78828d96beab0b266eb99baaafe44c3936ff0d89cb92b",
-    "11-768/4.SkillsAndMemory/references/003_ExpeL.pdf": "01e533d81fb4a5f91797c073a9b1929acbaa64da45a592b26563ca7d135024f3",
-    "11-768/4.SkillsAndMemory/readings/003_MemGPT.pdf": "9f674bcff69c86f11c813dcfad613d8841f5f8ed17979e3c4df06a91df7762e0",
-    "11-768/4.SkillsAndMemory/readings/004_Agent_Workflow_Memory_AWM.pdf": "ddc6f6fedec48c88ae743b43a464f7eb4aecaab05acd18c29cfb657ab445ebe4",
-    "11-768/4.SkillsAndMemory/readings/005_Agent_Skill_Induction_ASI.pdf": "209400bfd02e0213232dd8953075d64596863064a78a33398cf9d80c11122ac0",
+    "11-768/4.SkillsAndMemory/references/TroVE_Inducing_Verifiable_and_Efficient_Toolboxes_for_Solving_Programmatic_Tasks.pdf": "53da61ab207079b41be34d251eebe7058043980b22840ef73dd62906bb1da4ac",
+    "11-768/4.SkillsAndMemory/references/Synapse_Trajectory-as-Exemplar_Prompting_with_Memory_for_Computer_Control.pdf": "24a8e95ceb3a90f6c303442f224c109f5abc92d2a9918ee0cf7d2246de781260",
+    "11-768/4.SkillsAndMemory/references/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf": "6059b6f89fea9959bd3dab553fbb97756a3dfb1b15e3cbab2fbf3ab6664333bd",
+    "11-768/4.SkillsAndMemory/references/VLM_Agents_Generate_Their_Own_Memories_Distilling_Experience_into_Embodied_Programs_of_Thought.pdf": "fe6e17dc31e0631ce8afc73e82ae53ad50a5579e15d3fb2e99bd0464a4164ad1",
+    "11-768/4.SkillsAndMemory/references/SkillWeaver_Web_Agents_can_Self-Improve_by_Discovering_and_Honing_Skills.pdf": "aa237b4626363fa3de5479ed12bc93434ae9922f15432eca5bbf3444119d7d60",
+    "11-768/4.SkillsAndMemory/references/Not_All_Skills_Help_Measuring_and_Repairing_Agent_Knowledge.pdf": "7d2652d701fd180491d8223facab98f54b59f337275b47314d728ec4de3e990f",
+    "11-768/4.SkillsAndMemory/references/Agentic_Memory_Learning_Unified_Long-Term_and_Short-Term_Memory_Management_for_Large_Language_Model_Agents.pdf": "ba41464f84dbd8e0d0aeb1e6e0d7fd83b4086b2922579b88f7947448a8e1958f",
+    "11-768/4.SkillsAndMemory/references/LILO_Learning_Interpretable_Libraries_by_Compressing_and_Documenting_Code.pdf": "efbbc1a0f24305e41e546b33911036cc77e75b67759c3b39cbf61c5ebed7a53b",
+    "11-768/4.SkillsAndMemory/references/PolySkill_Learning_Generalizable_Skills_Through_Polymorphic_Abstraction.pdf": "4fd727b7dcc0320a8c3c5dfcf3bd8fd9760bfd7ad69ba3af0283dfecf03f2b8d",
+    "11-768/4.SkillsAndMemory/references/Mem0_Building_Production-Ready_AI_Agents_with_Scalable_Long-Term_Memory.pdf": "bec870b657aa73405275a6d8fe27bcd4271799e028bc62986ab9c4cd27a3712d",
+    "11-768/4.SkillsAndMemory/references/Top-Down_Synthesis_for_Library_Learning.pdf": "60a5205585d4ea3fa8153cffcbad136fd825278dfced2dddabf6f9e3217a35f6",
+    "11-768/4.SkillsAndMemory/references/DreamCoder_Growing_generalizable_interpretable_knowledge_with_wake-sleep_Bayesian_program_learning.pdf": "547027556f1220f22555c35f91d2527d78d825553a1b24201f58d56274ec0e80",
+    "11-768/4.SkillsAndMemory/references/Reinforcement_Learning_for_Self-Improving_Agent_with_Skill_Library.pdf": "aedb4ff03508b7f3f114133d96094dd43e2e6ceac93aea832fc6e37b40e94257",
+    "11-768/4.SkillsAndMemory/references/VOYAGER_An_Open-Ended_Embodied_Agent_with_Large_Language_Models.pdf": "769a4e33ddeeb73870849232eece49afe882c2d146362e33917ccb432ba0efb8",
+    "11-768/4.SkillsAndMemory/references/Leveraging_Language_to_Learn_Program_Abstractions_and_Search_Heuristics.pdf": "61a9698eea4a15c622b8faad2403bd6ec1cb8337b0d160367d3c6de1cfdb27e5",
+    "11-768/4.SkillsAndMemory/references/Agent_S_An_Open_Agentic_Framework_that_Uses_Computers_Like_a_Human.pdf": "ee8c9b38e20b5f747bd78828d96beab0b266eb99baaafe44c3936ff0d89cb92b",
+    "11-768/4.SkillsAndMemory/references/ExpeL_LLM_Agents_Are_Experiential_Learners.pdf": "01e533d81fb4a5f91797c073a9b1929acbaa64da45a592b26563ca7d135024f3",
+    "11-768/4.SkillsAndMemory/readings/MemGPT_Towards_LLMs_as_Operating_Systems.pdf": "9f674bcff69c86f11c813dcfad613d8841f5f8ed17979e3c4df06a91df7762e0",
+    "11-768/4.SkillsAndMemory/readings/Agent_Workflow_Memory.pdf": "ddc6f6fedec48c88ae743b43a464f7eb4aecaab05acd18c29cfb657ab445ebe4",
+    "11-768/4.SkillsAndMemory/readings/Inducing_Programmatic_Skills_for_Agentic_Tasks.pdf": "209400bfd02e0213232dd8953075d64596863064a78a33398cf9d80c11122ac0",
     "11-768/4.SkillsAndMemory/readings/001_OpenHands_How_to_Create_Effective_Agent_Skills.html": "78d9eba83d8e900b4a0a1a4ee0ad420933842d3b7366a1c317bec5fbf715a102",
-    "11-768/4.SkillsAndMemory/readings/006_ReasoningBank.pdf": "d9e08c61ab714304a6a88e014f552597d9ac654c4cb23dc63a5d53248715da13",
-    "11-768/4.SkillsAndMemory/readings/002_SkillsBench.pdf": "e987ebc3f0084a1ffc8acbca58259e33120b95fcef3876abfad060e169cf210b",
+    "11-768/4.SkillsAndMemory/readings/ReasoningBank_Scaling_Agent_Self-Evolving_with_Reasoning_Memory.pdf": "d9e08c61ab714304a6a88e014f552597d9ac654c4cb23dc63a5d53248715da13",
+    "11-768/4.SkillsAndMemory/readings/SkillsBench_Benchmarking_How_Well_Agent_Skills_Work_Across_Diverse_Tasks.pdf": "e987ebc3f0084a1ffc8acbca58259e33120b95fcef3876abfad060e169cf210b",
     "11-768/3.LongContext/lecture-03-long-context.pdf": "cd08b3463430b78a144a24de611ec9a58befae32c5d2109471d89934fbf2f926",
     "11-768/3.LongContext/references/034_SGLang_Cache-Aware_Load_Balancing.html": "df7b35bbc3d3a40bc7c97cef3d3720460950e02d72a006317ff69a20dc81cf6d",
-    "11-768/3.LongContext/references/014_Position_Interpolation.pdf": "890702e3170e5b8e2fb55552bd86cd99b0aa4ddbb3670ae8c351faa575cfaf09",
-    "11-768/3.LongContext/references/017_GLM-5.pdf": "e20742ff36e08dc361de6973f7f72ad38e107edf8fd92d2a777a8428fc9b8f0e",
-    "11-768/3.LongContext/references/022_DeepSeek_V4.pdf": "55b2d72f772ac00de2e470b3ee08443c648d971c7f57c52d6202895665e5978d",
+    "11-768/3.LongContext/references/Extending_Context_Window_of_Large_Language_Models_via_Position_Interpolation.pdf": "890702e3170e5b8e2fb55552bd86cd99b0aa4ddbb3670ae8c351faa575cfaf09",
+    "11-768/3.LongContext/references/GLM-5_from_Vibe_Coding_to_Agentic_Engineering.pdf": "e20742ff36e08dc361de6973f7f72ad38e107edf8fd92d2a777a8428fc9b8f0e",
+    "11-768/3.LongContext/references/DeepSeek-V4_Towards_Highly_Efficient_Million-Token_Context_Intelligence.pdf": "55b2d72f772ac00de2e470b3ee08443c648d971c7f57c52d6202895665e5978d",
     "11-768/3.LongContext/references/028_Z.html": "e6c6377769cbec12d9ee71e5504df6f8e8c8d18ee6f97850b33b82104f565b56",
-    "11-768/3.LongContext/references/033_SGLang_RadixAttention.pdf": "161e0a0123a89cd8a57d68734ae704680b0e577fee41e1e7e1029c37a9d99b57",
+    "11-768/3.LongContext/references/SGLang_Efficient_Execution_of_Structured_Language_Model_Programs.pdf": "161e0a0123a89cd8a57d68734ae704680b0e577fee41e1e7e1029c37a9d99b57",
     "11-768/3.LongContext/references/031_Anthropic_Prompt_Caching.html": "b3775b31576dd2c8809c305c4deff44511a5a1156053a9b036a97c8954d70835",
-    "11-768/3.LongContext/references/036_LongLLMLingua.pdf": "baddd67ba8fb10b68ab1251de9961cc1e4868ead89b97bf99a5838ea80fb4c1c",
+    "11-768/3.LongContext/references/LongLLMLingua_Accelerating_and_Enhancing_LLMs_in_Long_Context_Scenarios_via_Prompt_Compression.pdf": "baddd67ba8fb10b68ab1251de9961cc1e4868ead89b97bf99a5838ea80fb4c1c",
     "11-768/3.LongContext/references/018_GLM-5.html": "075f4e388265c3b6b16a87017cffb641d978415d993cb406f6263a0acb2c667a",
-    "11-768/3.LongContext/references/012_RoFormer.pdf": "e9a481fbe1c8a20b7b1fa566b13102a1896c7829fa9a8b4c80528452a5ddaf79",
+    "11-768/3.LongContext/references/RoFormer_Enhanced_Transformer_with_Rotary_Position_Embedding.pdf": "e9a481fbe1c8a20b7b1fa566b13102a1896c7829fa9a8b4c80528452a5ddaf79",
     "11-768/3.LongContext/references/021_Inkling.html": "55c2b5d39456d75adde0a18bdbef5424aedc1f12813445b0c71bbead444168a3",
     "11-768/3.LongContext/references/024_Megatron_Context_Parallelism.html": "905d68c77c9f9b6a5f71faea8ea713057034b465302e3d14b30760c09aa5df19",
-    "11-768/3.LongContext/references/020_Nemotron_3_Ultra.pdf": "b8c5e9bb8f29bdff41f876a24f5da8bc1762e16d12dbece512c443a96cbbc859",
-    "11-768/3.LongContext/references/019_Kimi_K3.pdf": "1a21e4d15de52eb0d4cf09cdbffc6248c497ba6897572cc5574af237c13da51d",
-    "11-768/3.LongContext/references/005_Transformers_are_RNNs.pdf": "2e655ef4a8d85428b576c8e0827d68f1c97950318ba03c9887c5b019a9a332fd",
-    "11-768/3.LongContext/references/042_ReSum.pdf": "ff58187f496fb96575da3639f6137a6d3a9c1e8b32c810318b703a4d3e0c6e9d",
-    "11-768/3.LongContext/references/007_Gated_Delta_Networks.pdf": "55f84f2ae9c4e52ff494bfa699499867f5e9e17514994ac71de43888363a5fb9",
-    "11-768/3.LongContext/references/003_Attention_Is_All_You_Need.pdf": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
-    "11-768/3.LongContext/references/001_DistServe.pdf": "3ef8776301629419e97d7f6dc08b9a46f3577e05e96538a17dd4a526762f42f0",
-    "11-768/3.LongContext/references/015_YaRN.pdf": "e7c0268a796138460c6ba2f67a7cba5bd922c401aea94c1fcd09c4b76b883c85",
+    "11-768/3.LongContext/references/Nemotron_3_Ultra_Open_Efficient_Mixture-of-Experts_Hybrid_Mamba-Transformer_Model_for_Agentic_Reasoning.pdf": "b8c5e9bb8f29bdff41f876a24f5da8bc1762e16d12dbece512c443a96cbbc859",
+    "11-768/3.LongContext/references/Kimi_K3_Open_Frontier_Intelligence.pdf": "1a21e4d15de52eb0d4cf09cdbffc6248c497ba6897572cc5574af237c13da51d",
+    "11-768/3.LongContext/references/Transformers_are_RNNs_Fast_Autoregressive_Transformers_with_Linear_Attention.pdf": "2e655ef4a8d85428b576c8e0827d68f1c97950318ba03c9887c5b019a9a332fd",
+    "11-768/3.LongContext/references/ReSum_Unlocking_Long-Horizon_Search_Intelligence_via_Context_Summarization.pdf": "ff58187f496fb96575da3639f6137a6d3a9c1e8b32c810318b703a4d3e0c6e9d",
+    "11-768/3.LongContext/references/Gated_Delta_Networks_Improving_Mamba2_with_Delta_Rule.pdf": "55f84f2ae9c4e52ff494bfa699499867f5e9e17514994ac71de43888363a5fb9",
+    "11-768/3.LongContext/references/Attention_Is_All_You_Need.pdf": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "11-768/3.LongContext/references/DistServe_Disaggregating_Prefill_and_Decoding_for_Goodput-optimized_Large_Language_Model_Serving.pdf": "3ef8776301629419e97d7f6dc08b9a46f3577e05e96538a17dd4a526762f42f0",
+    "11-768/3.LongContext/references/YaRN_Efficient_Context_Window_Extension_of_Large_Language_Models.pdf": "e7c0268a796138460c6ba2f67a7cba5bd922c401aea94c1fcd09c4b76b883c85",
     "11-768/3.LongContext/references/029_Kimi_K3_Pricing.html": "3c6a7398cca016d99cf9e12d28c919b000cfb5fb7a485eb9d9d90d369150ac0d",
     "11-768/3.LongContext/references/030_OpenAI_Model_Pricing.html": "22c7264d5e1be8999b0a93b95d1f2faeac83fd43a0c054d97fea6fbc9efdaef4",
-    "11-768/3.LongContext/references/023_Ring_Attention.pdf": "1e0ee1ad0aaf8c5763d060ba725887f1c6affda412c0a26dbb888cad5ad80f8c",
-    "11-768/3.LongContext/references/016_Qwen3.html": "4cf8ad18175b257dd369dda16f514b51590da297aa6a0a25a51f000dcb67da55",
-    "11-768/3.LongContext/references/026_Can_I_Buy_Your_KV_Cache.pdf": "0595a6c2dcbbf5b08b524579fa5a1b213c781933e07633f40ab25055f6ddb188",
-    "11-768/3.LongContext/references/025_Prompt_Cache.pdf": "15e198a54c37a1177c9b17cf44261b4bec50fe5c3a2377bc8d1af4eadabea20f",
-    "11-768/3.LongContext/references/035_MemGPT.pdf": "9f674bcff69c86f11c813dcfad613d8841f5f8ed17979e3c4df06a91df7762e0",
-    "11-768/3.LongContext/references/010_Grouped-Query_Attention.pdf": "ba9094fe73db9bf515d47ae8b2d502fee9d8a6c7b1327e197ddb160f4c63b94a",
+    "11-768/3.LongContext/references/Ring_Attention_with_Blockwise_Transformers_for_Near-Infinite_Context.pdf": "1e0ee1ad0aaf8c5763d060ba725887f1c6affda412c0a26dbb888cad5ad80f8c",
+    "11-768/3.LongContext/references/016_Qwen3.html": "5ec5ce4df12fa591e376146fe6dd12b8587a9d84f95c7a81802d45fcc6d5adbf",
+    "11-768/3.LongContext/references/Can_I_Buy_Your_KV_Cache.pdf": "0595a6c2dcbbf5b08b524579fa5a1b213c781933e07633f40ab25055f6ddb188",
+    "11-768/3.LongContext/references/Prompt_Cache_Modular_Attention_Reuse_for_Low-Latency_Inference.pdf": "15e198a54c37a1177c9b17cf44261b4bec50fe5c3a2377bc8d1af4eadabea20f",
+    "11-768/3.LongContext/references/MemGPT_Towards_LLMs_as_Operating_Systems.pdf": "9f674bcff69c86f11c813dcfad613d8841f5f8ed17979e3c4df06a91df7762e0",
+    "11-768/3.LongContext/references/GQA_Training_Generalized_Multi-Query_Transformer_Models_from_Multi-Head_Checkpoints.pdf": "ba9094fe73db9bf515d47ae8b2d502fee9d8a6c7b1327e197ddb160f4c63b94a",
     "11-768/3.LongContext/references/027_DeepSeek_API_Pricing.html": "2fecee48bf6ad791bce38d1d5504d8ad5c8b0fd4da93e6dc198ae88ff1a4506a",
-    "11-768/3.LongContext/references/009_DeepSeek_Sparse_Attention.pdf": "2bec0671778769c159ec389412727d1f3d4889fe1c71564b61edaa24705bd17b",
-    "11-768/3.LongContext/references/006_Linear_Transformers_Are_Secretly_Fast_Weight_Programmers.pdf": "6891c3b7f048f436cebb6f4aaee0343b3e3b2b91793f3412819383ccea5c962b",
-    "11-768/3.LongContext/references/004_Longformer.pdf": "053756b54e2d3462d4690b3aed489c962f17df7c3531865e47374c4a651f526c",
-    "11-768/3.LongContext/references/013_NoPE_Length_Generalization.pdf": "a323eefd993ecf978f007e1478cc197b463adb5147e5c029b973b4a45552d6d6",
-    "11-768/3.LongContext/references/011_DeepSeek-V2.pdf": "f149f9c09aa8b46ce6a740a255a99b7cc2317ac5b065989339919b7e6c329c9b",
-    "11-768/3.LongContext/references/032_PagedAttention_vLLM.pdf": "55b3b324d779a67c59dac2519445e3b07c14e6ff5c656fadb47a3d7b5997469e",
-    "11-768/3.LongContext/references/008_Kimi_Linear.pdf": "e2e23a449fc9bb27e34e783d20b2e6cd0f1ac67d58efdc0479c03c54db956a17",
+    "11-768/3.LongContext/references/DeepSeek-V3.2_Pushing_the_Frontier_of_Open_Large_Language_Models.pdf": "2bec0671778769c159ec389412727d1f3d4889fe1c71564b61edaa24705bd17b",
+    "11-768/3.LongContext/references/Linear_Transformers_Are_Secretly_Fast_Weight_Programmers.pdf": "6891c3b7f048f436cebb6f4aaee0343b3e3b2b91793f3412819383ccea5c962b",
+    "11-768/3.LongContext/references/Longformer_The_Long-Document_Transformer.pdf": "053756b54e2d3462d4690b3aed489c962f17df7c3531865e47374c4a651f526c",
+    "11-768/3.LongContext/references/The_Impact_of_Positional_Encoding_on_Length_Generalization_in_Transformers.pdf": "a323eefd993ecf978f007e1478cc197b463adb5147e5c029b973b4a45552d6d6",
+    "11-768/3.LongContext/references/DeepSeek-V2_A_Strong_Economical_and_Efficient_Mixture-of-Experts_Language_Model.pdf": "f149f9c09aa8b46ce6a740a255a99b7cc2317ac5b065989339919b7e6c329c9b",
+    "11-768/3.LongContext/references/Efficient_Memory_Management_for_Large_Language_Model_Serving_with_PagedAttention.pdf": "55b3b324d779a67c59dac2519445e3b07c14e6ff5c656fadb47a3d7b5997469e",
+    "11-768/3.LongContext/references/Kimi_Linear_An_Expressive_Efficient_Attention_Architecture.pdf": "e2e23a449fc9bb27e34e783d20b2e6cd0f1ac67d58efdc0479c03c54db956a17",
     "11-768/5.PlanningAndCoordination/lecture-05-planning.pdf": "32271dff69a87f555fe82a192d5cd20ac058b3266bc965e8a5411897781f8adf",
     "11-768/5.PlanningAndCoordination/references/002_OpenAI_Model_Guidance.html": "a0db437951f0ceca90d63868999faf3f2fa7d17bd3afc019bc6ed4d1fef44af2",
-    "11-768/5.PlanningAndCoordination/references/007_Recursive_Language_Models.pdf": "8567362c22768d9b50d4a4a8d63bb28dda2c2b2051be30d67f70f645170429ca",
-    "11-768/5.PlanningAndCoordination/references/012_UGround.pdf": "b166b8e09f604e64067d12ded4689e7582df106988b28f018651835843b04e68",
-    "11-768/5.PlanningAndCoordination/references/006_DeepSeek-R1.pdf": "b191b0a365a64b4ab2791d117069ed17a2933d03554a662ced58b37df52018f4",
-    "11-768/5.PlanningAndCoordination/references/016_Inner_Monologue.pdf": "ecf30268add2af672291ad65b53c9fd87801f6490b0af195b12db1dedee0f2b9",
-    "11-768/5.PlanningAndCoordination/references/023_Web_Agents_Should_Adopt_the_Plan-Then-Execute_Paradigm.pdf": "9745d489b274a377803cb6c785021377c27d55a35ecc28825dbef0426f226a24",
+    "11-768/5.PlanningAndCoordination/references/Recursive_Language_Models.pdf": "8567362c22768d9b50d4a4a8d63bb28dda2c2b2051be30d67f70f645170429ca",
+    "11-768/5.PlanningAndCoordination/references/Navigating_the_Digital_World_as_Humans_Do_Universal_Visual_Grounding_for_GUI_Agents.pdf": "b166b8e09f604e64067d12ded4689e7582df106988b28f018651835843b04e68",
+    "11-768/5.PlanningAndCoordination/references/DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_Reinforcement_Learning.pdf": "b191b0a365a64b4ab2791d117069ed17a2933d03554a662ced58b37df52018f4",
+    "11-768/5.PlanningAndCoordination/references/Inner_Monologue_Embodied_Reasoning_through_Planning_with_Language_Models.pdf": "ecf30268add2af672291ad65b53c9fd87801f6490b0af195b12db1dedee0f2b9",
+    "11-768/5.PlanningAndCoordination/references/Web_Agents_Should_Adopt_the_Plan-Then-Execute_Paradigm.pdf": "9745d489b274a377803cb6c785021377c27d55a35ecc28825dbef0426f226a24",
     "11-768/5.PlanningAndCoordination/references/026_Don_t_Sleep_on_Single-Agent_Systems.html": "1ab718baf4204a5089d2259899dca25ae7052e387e11c4a8f9d591a83d0361fc",
-    "11-768/5.PlanningAndCoordination/references/013_Agent_S.pdf": "ee8c9b38e20b5f747bd78828d96beab0b266eb99baaafe44c3936ff0d89cb92b",
-    "11-768/5.PlanningAndCoordination/references/020_Vending-Bench.pdf": "6d081d99d4f21041b4990846f675aeb6d2f46ebf034fa58ab436b1c78286e8c2",
-    "11-768/5.PlanningAndCoordination/references/015_LLM-Planner.pdf": "0c4b002fc25c6ac6815bb545e7bbe7c3dbfa696dc2af424130108f56b6fb53d5",
-    "11-768/5.PlanningAndCoordination/references/014_Language_Models_as_Zero-Shot_Planners.pdf": "9f73b5223b98af093a689191c16b5b1b700e7958b85ade4421afcbabfd1ab827",
+    "11-768/5.PlanningAndCoordination/references/Agent_S_An_Open_Agentic_Framework_that_Uses_Computers_Like_a_Human.pdf": "ee8c9b38e20b5f747bd78828d96beab0b266eb99baaafe44c3936ff0d89cb92b",
+    "11-768/5.PlanningAndCoordination/references/Vending-Bench_A_Benchmark_for_Long-Term_Coherence_of_Autonomous_Agents.pdf": "6d081d99d4f21041b4990846f675aeb6d2f46ebf034fa58ab436b1c78286e8c2",
+    "11-768/5.PlanningAndCoordination/references/LLM-Planner_Few-Shot_Grounded_Planning_for_Embodied_Agents_with_Large_Language_Models.pdf": "0c4b002fc25c6ac6815bb545e7bbe7c3dbfa696dc2af424130108f56b6fb53d5",
+    "11-768/5.PlanningAndCoordination/references/Language_Models_as_Zero-Shot_Planners_Extracting_Actionable_Knowledge_for_Embodied_Agents.pdf": "9f73b5223b98af093a689191c16b5b1b700e7958b85ade4421afcbabfd1ab827",
     "11-768/5.PlanningAndCoordination/references/011_Anthropic_Building_Effective_Agents.html": "08dc9aeb9680ff3e0435bcd191532d7d0e94283610c320d04ac91d16ecea71ad",
-    "11-768/5.PlanningAndCoordination/references/022_ADaPT.pdf": "9de7a8f3fa07efc9b35c5dac4f5d7a8b55720e3eeaa9f65788aa06a54aa05a0f",
-    "11-768/5.PlanningAndCoordination/references/009_ProgPrompt.pdf": "f9106cad86a1e73ecb93366a85cf4845989207ae21a176693a7ecdb02403692a",
-    "11-768/5.PlanningAndCoordination/references/024_TravelPlanner.pdf": "a91b967cf5227a65b7e2fb0f63c7c006aeed800a31fd5020e594acd5ba935e9a",
-    "11-768/5.PlanningAndCoordination/references/018_The_Danger_of_Overthinking.pdf": "49c65719e1756597e41ddde8677894d133691a90b7fbe1652ea6c832c45eb5b6",
-    "11-768/5.PlanningAndCoordination/references/019_Training_Proactive_and_Personalized_LLM_Agents_PPP-Agent.pdf": "8286ac58f1e734a5370ec23be907bad4b2547ca343efd12b980d2f4e2d347cb8",
-    "11-768/5.PlanningAndCoordination/references/010_Binder.pdf": "8a125d224aeeedadc4a5cb490a2516a4bdf75671c962cb66de2ac21f6d89ae23",
-    "11-768/5.PlanningAndCoordination/references/004_Plan-and-Solve_Prompting.pdf": "cc65b7ad233da4f46a673c0045ee2c0ab332948d86b3f401ba97345d650abf04",
-    "11-768/5.PlanningAndCoordination/references/008_PlanBench.pdf": "cb1a34744f5dbd1c35726928dee865d7f719cee8287e121bdd5e83bdf47db825",
-    "11-768/5.PlanningAndCoordination/references/017_SwiftSage.pdf": "193dbdfb2bcf9a155dda81eeab11a951628754bb69d3a91e0ccf89a9c005456f",
-    "11-768/5.PlanningAndCoordination/references/005_STaR.pdf": "d22a472fce2631755849988a78d78ad6d80999166eb4bac4f5315c97dfdf6d9a",
+    "11-768/5.PlanningAndCoordination/references/ADAPT_As-Needed_Decomposition_and_Planning_with_Language_Models.pdf": "9de7a8f3fa07efc9b35c5dac4f5d7a8b55720e3eeaa9f65788aa06a54aa05a0f",
+    "11-768/5.PlanningAndCoordination/references/PROGPROMPT_Generating_Situated_Robot_Task_Plans_using_Large_Language_Models.pdf": "f9106cad86a1e73ecb93366a85cf4845989207ae21a176693a7ecdb02403692a",
+    "11-768/5.PlanningAndCoordination/references/TravelPlanner_A_Benchmark_for_Real-World_Planning_with_Language_Agents.pdf": "a91b967cf5227a65b7e2fb0f63c7c006aeed800a31fd5020e594acd5ba935e9a",
+    "11-768/5.PlanningAndCoordination/references/The_Danger_of_Overthinking_Examining_the_Reasoning-Action_Dilemma_in_Agentic_Tasks.pdf": "49c65719e1756597e41ddde8677894d133691a90b7fbe1652ea6c832c45eb5b6",
+    "11-768/5.PlanningAndCoordination/references/Training_Proactive_and_Personalized_LLM_Agents.pdf": "8286ac58f1e734a5370ec23be907bad4b2547ca343efd12b980d2f4e2d347cb8",
+    "11-768/5.PlanningAndCoordination/references/Binding_Language_Models_in_Symbolic_Languages.pdf": "8a125d224aeeedadc4a5cb490a2516a4bdf75671c962cb66de2ac21f6d89ae23",
+    "11-768/5.PlanningAndCoordination/references/Plan-and-Solve_Prompting_Improving_Zero-Shot_Chain-of-Thought_Reasoning_by_Large_Language_Models.pdf": "cc65b7ad233da4f46a673c0045ee2c0ab332948d86b3f401ba97345d650abf04",
+    "11-768/5.PlanningAndCoordination/references/PlanBench_An_Extensible_Benchmark_for_Evaluating_Large_Language_Models_on_Planning_and_Reasoning_about_Change.pdf": "cb1a34744f5dbd1c35726928dee865d7f719cee8287e121bdd5e83bdf47db825",
+    "11-768/5.PlanningAndCoordination/references/SWIFTSAGE_A_Generative_Agent_with_Fast_and_Slow_Thinking_for_Complex_Interactive_Tasks.pdf": "193dbdfb2bcf9a155dda81eeab11a951628754bb69d3a91e0ccf89a9c005456f",
+    "11-768/5.PlanningAndCoordination/references/STaR_Self-Taught_Reasoner_Bootstrapping_Reasoning_With_Reasoning.pdf": "d22a472fce2631755849988a78d78ad6d80999166eb4bac4f5315c97dfdf6d9a",
     "11-768/5.PlanningAndCoordination/references/001_Claude_Code_Permission_Modes.html": "8cb53751b216283e81a18f10141d0209acb35a1a399820605191733752711e6c",
-    "11-768/5.PlanningAndCoordination/references/021_The_Illusion_of_Diminishing_Returns.pdf": "244143cdf580fd8c11c4288b4c18b031cd7f6c2aa49be874547fcdc9ae36f439",
+    "11-768/5.PlanningAndCoordination/references/The_Illusion_of_Diminishing_Returns_Measuring_Long_Horizon_Execution_in_LLMs.pdf": "244143cdf580fd8c11c4288b4c18b031cd7f6c2aa49be874547fcdc9ae36f439",
     "11-768/5.PlanningAndCoordination/references/025_Odysseys.html": "9f51e72494d1a5ceaef2814e04eca2be5a7a14695efcd5c3fe2d0fc870c302fe",
-    "11-768/5.PlanningAndCoordination/references/003_Large_Language_Models_are_Zero-Shot_Reasoners.pdf": "43a3d73c77c7f3e115bb85522a4d94aaa54cdb55a0d9e17eb6af3117f39111c7",
-    "11-768/5.PlanningAndCoordination/readings/009_Recursive_Agent_Optimization_RAO.pdf": "78d5d1fbcd5be9f4b3946310d937100d8936600af3e4bdb1b8e82b8dbe1325ce",
-    "11-768/5.PlanningAndCoordination/readings/008_Calibrate-Then-Act.pdf": "1169305b7d9d7bfc0c379103742d8e841a39d66d4418d69821636025fdf5613f",
-    "11-768/5.PlanningAndCoordination/readings/005_SayCan.pdf": "48c22d36a044bbbd34e640beb1db4fb4ba57e74d97fefa0fb121d55c31282312",
-    "11-768/5.PlanningAndCoordination/readings/003_Decomposed_Prompting.pdf": "93cb61f35249c60a9e91a5fac66673c373d30070925ba05ac9f79098dd2e7d87",
-    "11-768/5.PlanningAndCoordination/readings/010_Multi-Agent_Computer_Use_MACU.pdf": "5a8e347bd731600d1ab92633130aa971d4fb72b10df684519793b307ddb6751e",
-    "11-768/5.PlanningAndCoordination/readings/006_Plan-and-Act.pdf": "811bd0e66a13e984fdb6f4b750eb1e18e2cfb751f1a32d8be50f74bcd74e4d1d",
-    "11-768/5.PlanningAndCoordination/readings/002_Least-to-Most_Prompting.pdf": "ab71759f86119d1c368cef0ffabc5499562b605188a5dd6a00ed7ca0fa995c71",
-    "11-768/5.PlanningAndCoordination/readings/004_Code_as_Policies.pdf": "e36857fa13746da031444ec59549e61204ca92d599b1d048ac1c55aaf1f6d0a3",
+    "11-768/5.PlanningAndCoordination/references/Large_Language_Models_are_Zero-Shot_Reasoners.pdf": "43a3d73c77c7f3e115bb85522a4d94aaa54cdb55a0d9e17eb6af3117f39111c7",
+    "11-768/5.PlanningAndCoordination/readings/Recursive_Agent_Optimization.pdf": "78d5d1fbcd5be9f4b3946310d937100d8936600af3e4bdb1b8e82b8dbe1325ce",
+    "11-768/5.PlanningAndCoordination/readings/Calibrate-Then-Act_Cost-Aware_Exploration_in_LLM_Agents.pdf": "1169305b7d9d7bfc0c379103742d8e841a39d66d4418d69821636025fdf5613f",
+    "11-768/5.PlanningAndCoordination/readings/Do_As_I_Can_Not_As_I_Say_Grounding_Language_in_Robotic_Affordances.pdf": "48c22d36a044bbbd34e640beb1db4fb4ba57e74d97fefa0fb121d55c31282312",
+    "11-768/5.PlanningAndCoordination/readings/Decomposed_Prompting_A_Modular_Approach_for_Solving_Complex_Tasks.pdf": "93cb61f35249c60a9e91a5fac66673c373d30070925ba05ac9f79098dd2e7d87",
+    "11-768/5.PlanningAndCoordination/readings/Multi-Agent_Computer_Use.pdf": "5a8e347bd731600d1ab92633130aa971d4fb72b10df684519793b307ddb6751e",
+    "11-768/5.PlanningAndCoordination/readings/Plan-and-Act_Improving_Planning_of_Agents_for_Long-Horizon_Tasks.pdf": "811bd0e66a13e984fdb6f4b750eb1e18e2cfb751f1a32d8be50f74bcd74e4d1d",
+    "11-768/5.PlanningAndCoordination/readings/Least-to-Most_Prompting_Enables_Complex_Reasoning_in_Large_Language_Models.pdf": "ab71759f86119d1c368cef0ffabc5499562b605188a5dd6a00ed7ca0fa995c71",
+    "11-768/5.PlanningAndCoordination/readings/Code_as_Policies_Language_Model_Programs_for_Embodied_Control.pdf": "e36857fa13746da031444ec59549e61204ca92d599b1d048ac1c55aaf1f6d0a3",
     "11-768/5.PlanningAndCoordination/readings/001_Cursor_Introducing_Plan_Mode.html": "3137ddc8ebb9bebd04e484a598a14dbf9821e54e66c50c23947ac0b7acb4ba71",
-    "11-768/5.PlanningAndCoordination/readings/007_Thinking_vs.pdf": "be76d2989976e3d59e20189821c3dfccc7b6008e2e29f1a2741b567fd5b01c65",
+    "11-768/5.PlanningAndCoordination/readings/Thinking_vs._Doing_Agents_that_Reason_by_Scaling_Test-Time_Interaction.pdf": "be76d2989976e3d59e20189821c3dfccc7b6008e2e29f1a2741b567fd5b01c65",
     "11-768/6.CodingAgents/lecture-06-coding-agents.pdf": "9f764df75b573499d090ed71d19a7b8bbfa01ad7059a440ca1af00111b480b51",
-    "11-768/6.CodingAgents/references/009_OctoPack.pdf": "c03f04d06e000e4a251bea07c8b654721a97dbf23009ba45909439c7d814502a",
-    "11-768/6.CodingAgents/references/036_ProgramBench.pdf": "87c67873f06f48044ef3a1bcd5bed21be2c90d92090bfb3b73b6ca7b9b13781c",
-    "11-768/6.CodingAgents/references/029_SWE-smith.pdf": "6752df853569104ae2e55cc1bee09dc3f6b335f7eeae300b6e9fee911f3f2897",
-    "11-768/6.CodingAgents/references/012_CodeExecutor.pdf": "dcfb1243ebcc73c8150cebcce06466a576a42d5e5215242bc5a9e859d2e0be60",
-    "11-768/6.CodingAgents/references/017_CodeContests_AlphaCode.pdf": "4facd32698069e8eda5e3714f12be8519dbe2a184e9386e37a9939d7f4030bea",
-    "11-768/6.CodingAgents/references/030_Multi-SWE-bench.pdf": "4de921d8d88a016762ad1680ec8f5b24381c8c69442e96a4265a50f1bce31d92",
+    "11-768/6.CodingAgents/references/OctoPack_Instruction_Tuning_Code_Large_Language_Models.pdf": "c03f04d06e000e4a251bea07c8b654721a97dbf23009ba45909439c7d814502a",
+    "11-768/6.CodingAgents/references/ProgramBench_Can_Language_Models_Rebuild_Programs_From_Scratch.pdf": "87c67873f06f48044ef3a1bcd5bed21be2c90d92090bfb3b73b6ca7b9b13781c",
+    "11-768/6.CodingAgents/references/SWE-smith_Scaling_Data_for_Software_Engineering_Agents.pdf": "6752df853569104ae2e55cc1bee09dc3f6b335f7eeae300b6e9fee911f3f2897",
+    "11-768/6.CodingAgents/references/Code_Execution_with_Pre-trained_Language_Models.pdf": "dcfb1243ebcc73c8150cebcce06466a576a42d5e5215242bc5a9e859d2e0be60",
+    "11-768/6.CodingAgents/references/Competition-Level_Code_Generation_with_AlphaCode.pdf": "4facd32698069e8eda5e3714f12be8519dbe2a184e9386e37a9939d7f4030bea",
+    "11-768/6.CodingAgents/references/Multi-SWE-bench_A_Multilingual_Benchmark_for_Issue_Resolving.pdf": "4de921d8d88a016762ad1680ec8f5b24381c8c69442e96a4265a50f1bce31d92",
     "11-768/6.CodingAgents/references/031_SWE-bench_Multilingual.html": "ad1ba5d8921f8214b3084418c764f357a509e59537027d783f0de94b456b4654",
-    "11-768/6.CodingAgents/references/021_Agentless.pdf": "1675c2dcd5ecaef47e8a4356062f60be642cee82e1bbacb044c9d047dce4c856",
+    "11-768/6.CodingAgents/references/Agentless_Demystifying_LLM-based_Software_Engineering_Agents.pdf": "1675c2dcd5ecaef47e8a4356062f60be642cee82e1bbacb044c9d047dce4c856",
     "11-768/6.CodingAgents/references/022_mini-SWE-agent.html": "e15cd3a24d73978cad82c0fcc1bad0600642a512339fc892f5928f3adfdd353d",
-    "11-768/6.CodingAgents/references/018_NoFunEval.pdf": "0f78b31bb40478cacc2ff1c9c221a78c17dd600d565bc7d201d91ad1f3bf2603",
-    "11-768/6.CodingAgents/references/025_LocAgent.pdf": "61e5aba684293deb26ef2d5e18731f16e7278ce8600d806a0089bf7eda1a597c",
-    "11-768/6.CodingAgents/references/041_Code_World_Models.pdf": "64c9d0504344661f3477eebd0d92e1290da36f173805cef2d79a571152bf67f2",
-    "11-768/6.CodingAgents/references/020_SWE-agent.pdf": "d171e0693060b910ceb2cddd0fd4bc7cae302005d42d0d8059bfdbe056c3adba",
-    "11-768/6.CodingAgents/references/028_R2E-Gym.pdf": "7b4557f7b60fc2d17250fc87f01da9c102c336a0fd584f358f16b7b0d30d9c2f",
-    "11-768/6.CodingAgents/references/039_SWE-Playground.pdf": "3a37615a7bd5525570eada4ba48227a3ab7d437b052d3a34557319bccc84a856",
+    "11-768/6.CodingAgents/references/NoFunEval_Funny_How_Code_LMs_Falter_on_Requirements_Beyond_Functional_Correctness.pdf": "0f78b31bb40478cacc2ff1c9c221a78c17dd600d565bc7d201d91ad1f3bf2603",
+    "11-768/6.CodingAgents/references/LocAgent_Graph-Guided_LLM_Agents_for_Code_Localization.pdf": "61e5aba684293deb26ef2d5e18731f16e7278ce8600d806a0089bf7eda1a597c",
+    "11-768/6.CodingAgents/references/Generating_Code_World_Models_with_Large_Language_Models_Guided_by_Monte_Carlo_Tree_Search.pdf": "64c9d0504344661f3477eebd0d92e1290da36f173805cef2d79a571152bf67f2",
+    "11-768/6.CodingAgents/references/SWE-agent_Agent-Computer_Interfaces_Enable_Automated_Software_Engineering.pdf": "d171e0693060b910ceb2cddd0fd4bc7cae302005d42d0d8059bfdbe056c3adba",
+    "11-768/6.CodingAgents/references/R2E-Gym_Procedural_Environments_and_Hybrid_Verifiers_for_Scaling_Open-Weights_SWE_Agents.pdf": "7b4557f7b60fc2d17250fc87f01da9c102c336a0fd584f358f16b7b0d30d9c2f",
+    "11-768/6.CodingAgents/references/Training_Versatile_Coding_Agents_in_Synthetic_Environments.pdf": "3a37615a7bd5525570eada4ba48227a3ab7d437b052d3a34557319bccc84a856",
     "11-768/6.CodingAgents/references/019_DeepCoder.html": "c2520b073344578e91401b3b3cd4d77766b71edc27882ba9cbf2fe07d1071915",
-    "11-768/6.CodingAgents/references/038_SWT-Bench.pdf": "b2cc900757e8f87f9f3d7c42e64470aa02c98b174bfc3b5b9cbf1684fc0ff044",
-    "11-768/6.CodingAgents/references/007_InCoder.pdf": "6e926c91f6fe0d275888ffcc354467384b22615a018238dbda51494fce17def3",
-    "11-768/6.CodingAgents/references/037_SWE-Milestone.pdf": "ab1a668e7b7ba89399867479caca568faa65e3464c20cbb2fd5d2dc894f0cc8c",
+    "11-768/6.CodingAgents/references/SWT-Bench_Testing_and_Validating_Real-World_Bug-Fixes_with_Code_Agents.pdf": "b2cc900757e8f87f9f3d7c42e64470aa02c98b174bfc3b5b9cbf1684fc0ff044",
+    "11-768/6.CodingAgents/references/InCoder_A_Generative_Model_for_Code_Infilling_and_Synthesis.pdf": "6e926c91f6fe0d275888ffcc354467384b22615a018238dbda51494fce17def3",
+    "11-768/6.CodingAgents/references/SWE-Milestone_Evaluating_AI_Agents_on_Continuous_Software_Evolution.pdf": "ab1a668e7b7ba89399867479caca568faa65e3464c20cbb2fd5d2dc894f0cc8c",
     "11-768/6.CodingAgents/references/010_DrRepair.html": "04784101211a7ba42dfde8ede9b2bb1fd8b6a3d669bc1aca06728f7f5d33ead4",
-    "11-768/6.CodingAgents/references/026_SWE-bench.pdf": "f7e8e1df64129742b8199a21a042734519a823a1dafd6f48f8f3ddcfb48ee296",
-    "11-768/6.CodingAgents/references/035_Commit0.pdf": "8c25fd42b3c1dd817e39bce93c5bee072f43ecf92dead76493b9ca3c8a0e72c8",
-    "11-768/6.CodingAgents/references/013_Grammar-based_code_generation.pdf": "052de08dd0ad4eae9c6682d5e9b53473eb008e8593fc40d0ae15f02893b44169",
-    "11-768/6.CodingAgents/references/032_SWE-bench_Multimodal.pdf": "4fa09c3734547e8ba4a5288e7e8d9273d1136c70295e4f91ef3592df0ead2a71",
-    "11-768/6.CodingAgents/references/002_StarCoder.pdf": "549e079ffd6104417f8443570954b232d2ed58886cf45c60482e631cb36e1351",
-    "11-768/6.CodingAgents/references/033_VisualWebArena.pdf": "8674b4ae17290bb797e5988706f765c75a3310a4e9d14cbd32497e40235ff795",
+    "11-768/6.CodingAgents/references/SWE-bench_Can_Language_Models_Resolve_Real-World_GitHub_Issues.pdf": "f7e8e1df64129742b8199a21a042734519a823a1dafd6f48f8f3ddcfb48ee296",
+    "11-768/6.CodingAgents/references/Commit0_Library_Generation_from_Scratch.pdf": "8c25fd42b3c1dd817e39bce93c5bee072f43ecf92dead76493b9ca3c8a0e72c8",
+    "11-768/6.CodingAgents/references/A_Syntactic_Neural_Model_for_General-Purpose_Code_Generation.pdf": "052de08dd0ad4eae9c6682d5e9b53473eb008e8593fc40d0ae15f02893b44169",
+    "11-768/6.CodingAgents/references/SWE-bench_Multimodal_Do_AI_Systems_Generalize_to_Visual_Software_Domains.pdf": "4fa09c3734547e8ba4a5288e7e8d9273d1136c70295e4f91ef3592df0ead2a71",
+    "11-768/6.CodingAgents/references/StarCoder_may_the_source_be_with_you.pdf": "549e079ffd6104417f8443570954b232d2ed58886cf45c60482e631cb36e1351",
+    "11-768/6.CodingAgents/references/VisualWebArena_Evaluating_Multimodal_Agents_on_Realistic_Visually_Grounded_Web_Tasks.pdf": "8674b4ae17290bb797e5988706f765c75a3310a4e9d14cbd32497e40235ff795",
     "11-768/6.CodingAgents/references/034_Playwright_locators.html": "b91e1ecf4ceaa85005ce43c8594c819253e654fdd338cca6447d9a93b7b04bd1",
-    "11-768/6.CodingAgents/references/014_CodeBLEU.pdf": "7dae089fe44f0d668fc20b1af43bfbde8e8e6f75fad81acc4e3f4398eff5466e",
-    "11-768/6.CodingAgents/references/011_CodeRL.pdf": "baac51d227441123433533e5ce3a40b32bd3affd09af4286acc607818d15c599",
-    "11-768/6.CodingAgents/references/027_SWE-Gym.pdf": "5c35e277544323fcc4ce8929e208bb8cc32efbbd40b8069c7daa084548d79396",
-    "11-768/6.CodingAgents/references/008_Scaling_study.pdf": "cd6ab0f06dd444040bcb5089c498214d94edc4159d55f284bcefbbe6c8d2c5db",
-    "11-768/6.CodingAgents/references/001_OLMo.pdf": "121e82248da601e8e4d4da5fa9b4486660ecf0f5a0fae5292b7af3c656c2385d",
-    "11-768/6.CodingAgents/references/006_Qwen2.pdf": "8416ad8d885737ed15f757180499f5202fa93e791180a6d3fcd6f0381d79595e",
-    "11-768/6.CodingAgents/references/016_EvalPlus.pdf": "52d35d25a10c38da3db132beceb8d29bee77abd46f18aafe76c5b0c63f0a6541",
-    "11-768/6.CodingAgents/references/005_Code_Llama.pdf": "05ed05d2d76c420b6af4a1afe6e1dec99939ccf62c5a0c0a258b09cbe1889346",
+    "11-768/6.CodingAgents/references/CodeBLEU_a_Method_for_Automatic_Evaluation_of_Code_Synthesis.pdf": "7dae089fe44f0d668fc20b1af43bfbde8e8e6f75fad81acc4e3f4398eff5466e",
+    "11-768/6.CodingAgents/references/CodeRL_Mastering_Code_Generation_through_Pretrained_Models_and_Deep_Reinforcement_Learning.pdf": "baac51d227441123433533e5ce3a40b32bd3affd09af4286acc607818d15c599",
+    "11-768/6.CodingAgents/references/Training_Software_Engineering_Agents_and_Verifiers_with_SWE-Gym.pdf": "5c35e277544323fcc4ce8929e208bb8cc32efbbd40b8069c7daa084548d79396",
+    "11-768/6.CodingAgents/references/Efficient_Training_of_Language_Models_to_Fill_in_the_Middle.pdf": "cd6ab0f06dd444040bcb5089c498214d94edc4159d55f284bcefbbe6c8d2c5db",
+    "11-768/6.CodingAgents/references/OLMo_Accelerating_the_Science_of_Language_Models.pdf": "121e82248da601e8e4d4da5fa9b4486660ecf0f5a0fae5292b7af3c656c2385d",
+    "11-768/6.CodingAgents/references/Qwen2.5-Coder_Technical_Report.pdf": "8416ad8d885737ed15f757180499f5202fa93e791180a6d3fcd6f0381d79595e",
+    "11-768/6.CodingAgents/references/Is_Your_Code_Generated_by_ChatGPT_Really_Correct_Rigorous_Evaluation_of_Large_Language_Models_for_Code_Generation.pdf": "52d35d25a10c38da3db132beceb8d29bee77abd46f18aafe76c5b0c63f0a6541",
+    "11-768/6.CodingAgents/references/Code_Llama_Open_Foundation_Models_for_Code.pdf": "05ed05d2d76c420b6af4a1afe6e1dec99939ccf62c5a0c0a258b09cbe1889346",
     "11-768/6.CodingAgents/references/023_Aider_edit_formats.html": "0bc083499080922f2c1db6e63132d9d9ced66532594d4667b57dd15a1e464002",
     "11-768/6.CodingAgents/references/024_Aider_unified_diffs.html": "96c359f0d91a127021c6bfc2eeb2a7a1b3cb8d17dd8572701259238025a0d16b",
-    "11-768/6.CodingAgents/references/040_Hybrid-Gym.pdf": "d08bb65362eb4e6dd81390d05675fc245a946efe60d29f2f63517972cc1b41af",
-    "11-768/6.CodingAgents/references/003_Whitespace-run_tokens.pdf": "ebae72ea0e8a5eb2ecbccdb985aec6cc1254a7c4d29e6d4de7866db1e66c4855",
-    "11-768/6.CodingAgents/references/015_CodeBERTScore.pdf": "5f719c339072023fbe223c1f34eee07f82b3584cbd05981a9c7fc3cedf2bc05a",
+    "11-768/6.CodingAgents/references/Hybrid-Gym_Training_Coding_Agents_to_Generalize_Across_Tasks.pdf": "d08bb65362eb4e6dd81390d05675fc245a946efe60d29f2f63517972cc1b41af",
+    "11-768/6.CodingAgents/references/Evaluating_Large_Language_Models_Trained_on_Code.pdf": "ebae72ea0e8a5eb2ecbccdb985aec6cc1254a7c4d29e6d4de7866db1e66c4855",
+    "11-768/6.CodingAgents/references/CodeBERTScore_Evaluating_Code_Generation_with_Pretrained_Models_of_Code.pdf": "5f719c339072023fbe223c1f34eee07f82b3584cbd05981a9c7fc3cedf2bc05a",
     "11-768/assignment/assignment-2/artifacts/135/figure.png": "b813ece00f65c11a7074ffab9af72a93cb6beea4b58818d812c7737a247ed278",
     "11-768/assignment/assignment-2/artifacts/104/figure.png": "119b24e32c8e95d125ced65442be7746ee7affdea27dd6cb62ad3fb0c6de3615",
     "11-768/assignment/assignment-2/artifacts/150/figure.png": "391d5462c431c3af8121fcd0e992c939b2e701527ef28ac55680666f0a9224cd",
@@ -2106,54 +2268,54 @@
     "11-768/2.ToolUse/references/025_FastMCP_Token_Verification.html": "aaf39c6b4f41b425cba55f82d8c28e9e3080efc903fcdd7c6ff0b19af0b69173",
     "11-768/2.ToolUse/references/004_Berkeley_Function-Calling_Leaderboard_V4.html": "ef72a8621b6ea1b8aa1d1b7691f73cc3079fd38e86f599c9a38cb626c911fc29",
     "11-768/2.ToolUse/references/006_OpenRouter_Provider_Analytics.html": "dda23c89bead4d6f88a4a52c02df2bba1497ea518013c49272bae76f37aa2c79",
-    "11-768/2.ToolUse/readings/003_Toolformer.pdf": "6d7483d94653008e40c2058a1c22441c92e3713dae278b6361e8efc447c99522",
-    "11-768/2.ToolUse/readings/004_XGrammar.pdf": "61e94a1a28bb6307250c4f82a9ff0dcd07273fed80011d6ba7535f388a8fa5f0",
-    "11-768/2.ToolUse/readings/001_What_Are_Tools_Anyway.pdf": "b40d5e054e61f9a24d5b8bb624e676377589f27d611f52de44b0966c26f3e3ef",
-    "11-768/2.ToolUse/readings/002_CodeAct.pdf": "749a45e36cf89fc7e1b701a2a72f6609ce8d3697577ceb0fff5ce9339ce8539e",
+    "11-768/2.ToolUse/readings/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf": "6d7483d94653008e40c2058a1c22441c92e3713dae278b6361e8efc447c99522",
+    "11-768/2.ToolUse/readings/XGrammar_Flexible_and_Efficient_Structured_Generation_Engine_For_Large_Language_Models.pdf": "61e94a1a28bb6307250c4f82a9ff0dcd07273fed80011d6ba7535f388a8fa5f0",
+    "11-768/2.ToolUse/readings/What_Are_Tools_Anyway_A_Survey_from_the_Language_Model_Perspective.pdf": "b40d5e054e61f9a24d5b8bb624e676377589f27d611f52de44b0966c26f3e3ef",
+    "11-768/2.ToolUse/readings/Executable_Code_Actions_Elicit_Better_LLM_Agents.pdf": "749a45e36cf89fc7e1b701a2a72f6609ce8d3697577ceb0fff5ce9339ce8539e",
     "11-768/8.SupervisedFineTuning/lecture-08-sft.pdf": "1598a8bd9784ec044f89b8951af52bb2f80c0236b73aada0ca4cc3038049c4e3",
-    "11-768/8.SupervisedFineTuning/references/008_SWE-Gym.pdf": "5c35e277544323fcc4ce8929e208bb8cc32efbbd40b8069c7daa084548d79396",
+    "11-768/8.SupervisedFineTuning/references/Training_Software_Engineering_Agents_and_Verifiers_with_SWE-Gym.pdf": "5c35e277544323fcc4ce8929e208bb8cc32efbbd40b8069c7daa084548d79396",
     "11-768/8.SupervisedFineTuning/references/005_K2_Horizon_model_card.html": "b981a0a570d3e9155d2fc62cf29537f31b2e78164d5ce47fb2accfa2931a13d8",
-    "11-768/8.SupervisedFineTuning/references/011_Instruction_Modelling.pdf": "a94d18800efd7aaee5e84ab4fede585682eba24ca68cb561af81c8f00b026b6a",
-    "11-768/8.SupervisedFineTuning/references/006_Kimi_K2.pdf": "035062b5e1ab865ffad9f90f81d6c8332f8af805063fac54cc6f2cca1fe608b5",
+    "11-768/8.SupervisedFineTuning/references/Instruction_Tuning_With_Loss_Over_Instructions.pdf": "a94d18800efd7aaee5e84ab4fede585682eba24ca68cb561af81c8f00b026b6a",
+    "11-768/8.SupervisedFineTuning/references/Kimi_K2_Open_Agentic_Intelligence.pdf": "035062b5e1ab865ffad9f90f81d6c8332f8af805063fac54cc6f2cca1fe608b5",
     "11-768/8.SupervisedFineTuning/references/016_TRL_SFTTrainer.html": "b5bc62409885b1328e94b84c17b43f91c1de86ab58bd0c3c601510ee88a8b2be",
-    "11-768/8.SupervisedFineTuning/references/002_DeepSeek-R1.pdf": "b191b0a365a64b4ab2791d117069ed17a2933d03554a662ced58b37df52018f4",
-    "11-768/8.SupervisedFineTuning/references/007_OpenThoughts-Agent.pdf": "0ce7e6e5fe8e3d68c3cc134f97ff89e50ce0f484a9d5442279838e299433981a",
-    "11-768/8.SupervisedFineTuning/references/003_Nemotron_3_Ultra.pdf": "b8c5e9bb8f29bdff41f876a24f5da8bc1762e16d12dbece512c443a96cbbc859",
-    "11-768/8.SupervisedFineTuning/references/010_BalanceSFT.pdf": "a3b0fa3c2ef28ab136b12d8d0c7b01d6214b301bbf0c8639b7998dd6d1a818e1",
+    "11-768/8.SupervisedFineTuning/references/DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_Reinforcement_Learning.pdf": "b191b0a365a64b4ab2791d117069ed17a2933d03554a662ced58b37df52018f4",
+    "11-768/8.SupervisedFineTuning/references/OpenThoughts-Agent_Data_Recipes_for_Agentic_Models.pdf": "0ce7e6e5fe8e3d68c3cc134f97ff89e50ce0f484a9d5442279838e299433981a",
+    "11-768/8.SupervisedFineTuning/references/Nemotron_3_Ultra_Open_Efficient_Mixture-of-Experts_Hybrid_Mamba-Transformer_Model_for_Agentic_Reasoning.pdf": "b8c5e9bb8f29bdff41f876a24f5da8bc1762e16d12dbece512c443a96cbbc859",
+    "11-768/8.SupervisedFineTuning/references/FunReason_Enhancing_Large_Language_Models_Function_Calling_via_Self-Refinement_Multiscale_Loss_and_Automated_Data_Refinement.pdf": "a3b0fa3c2ef28ab136b12d8d0c7b01d6214b301bbf0c8639b7998dd6d1a818e1",
     "11-768/8.SupervisedFineTuning/references/015_Transformers_apply_chat_template.html": "3e854428dac59e936cff2eab06ed691fa414b9cf5008b08c2c1adec0dac9cc25",
     "11-768/8.SupervisedFineTuning/references/018_Axolotl_conversation_datasets.html": "728defb5e2476ae00e9f0a11b3aa223b513929c9b23d8ebafa0f91d3ebb66871",
     "11-768/8.SupervisedFineTuning/references/017_TRL_training_chat_templates.html": "5398bf1ca02b99d0bee77c3a1d5dc23b39cc5cb1e789102ff29894aca1000ebb",
-    "11-768/8.SupervisedFineTuning/references/012_Weighted_Instruction_Tuning.pdf": "78246fe7eb519d93849c2f282c76feaabb56ad572fe733cd23309ca5874c2be8",
-    "11-768/8.SupervisedFineTuning/references/001_Kimi_K3.pdf": "1a21e4d15de52eb0d4cf09cdbffc6248c497ba6897572cc5574af237c13da51d",
+    "11-768/8.SupervisedFineTuning/references/On_the_Effect_of_Instruction_Tuning_Loss_on_Generalization.pdf": "78246fe7eb519d93849c2f282c76feaabb56ad572fe733cd23309ca5874c2be8",
+    "11-768/8.SupervisedFineTuning/references/Kimi_K3_Open_Frontier_Intelligence.pdf": "1a21e4d15de52eb0d4cf09cdbffc6248c497ba6897572cc5574af237c13da51d",
     "11-768/8.SupervisedFineTuning/references/013_DAgger.html": "e515cc08883fb65a967c7cc1cd4905107d7dc31aeed4a71c254ea250a670ad75",
-    "11-768/8.SupervisedFineTuning/references/004_MAI-Thinking-1.pdf": "a267d745b1eb3792a8abf58e71e204a6f44f9c18eeb5ad8671320deae71986bd",
+    "11-768/8.SupervisedFineTuning/references/MAI-Thinking-1_Building_a_Hill-Climbing_Machine.pdf": "a267d745b1eb3792a8abf58e71e204a6f44f9c18eeb5ad8671320deae71986bd",
     "11-768/8.SupervisedFineTuning/references/014_Transformers_chat_templates.html": "c26efe5f7a0c9e3f59c3622881fe38d9d2930809b693d8e50368b2a66f4aa282",
-    "11-768/8.SupervisedFineTuning/references/009_Agent_Data_Protocol.pdf": "76543f11aa8a9e9f30ae07f8a461e89a0c16b926130647d3cfcad8f9a8eee782",
+    "11-768/8.SupervisedFineTuning/references/Agent_Data_Protocol_Unifying_Datasets_for_Diverse_Effective_Fine-tuning_of_LLM_Agents.pdf": "76543f11aa8a9e9f30ae07f8a461e89a0c16b926130647d3cfcad8f9a8eee782",
     "11-768/10.DeepResearchAgents/lecture-10-deep-research-agents.pdf": "b3f9fafe7d586394efe3880d026c653b8b079151ffc75607d6aa7fab9c9ee259",
-    "11-768/10.DeepResearchAgents/references/008_A_Critical_Evaluation_of_Evaluations_for_Long-form_Question_Answering.pdf": "e84a3c72733d2a56c33351012b7557b10e10430af6d5f5830d0743b2a3e3fe8d",
-    "11-768/10.DeepResearchAgents/references/004_FinSearchComp.pdf": "74887941b188b76c9c0eeb5294a47e8dcde43dd80e9201d881984527d828f416",
-    "11-768/10.DeepResearchAgents/references/006_ScholarSearch.pdf": "52752ccb8e3cf0c18000fbf1b5c62d7e7d5062d2aa05239fb1134fda5715fca9",
+    "11-768/10.DeepResearchAgents/references/A_Critical_Evaluation_of_Evaluations_for_Long-form_Question_Answering.pdf": "e84a3c72733d2a56c33351012b7557b10e10430af6d5f5830d0743b2a3e3fe8d",
+    "11-768/10.DeepResearchAgents/references/FinSearchComp_Towards_a_Realistic_Expert-Level_Evaluation_of_Financial_Search_and_Reasoning.pdf": "74887941b188b76c9c0eeb5294a47e8dcde43dd80e9201d881984527d828f416",
+    "11-768/10.DeepResearchAgents/references/ScholarSearch_Benchmarking_Scholar_Searching_Ability_of_LLMs.pdf": "52752ccb8e3cf0c18000fbf1b5c62d7e7d5062d2aa05239fb1134fda5715fca9",
     "11-768/10.DeepResearchAgents/references/001_Natural_Questions_example.html": "fe8be3edb96b2a45f033f2549113abadff38cc28859e9710dc87ef28379f3b5c",
-    "11-768/10.DeepResearchAgents/references/017_DeepSeekMath.pdf": "6cc20b3c5b8d25b8b53868fc4ec1792c144f07d67bdf7395138efd4422197e7b",
-    "11-768/10.DeepResearchAgents/references/014_WebDancer.pdf": "e7ea9dab41d1284d7ddcebc53022e23f14d868f4639469c7122d1f86797c9a51",
-    "11-768/10.DeepResearchAgents/references/009_ResearchQA.pdf": "5804ffd0982a7d18253cae419d3891e3fd3cd2d82c6de71635e48b800111fde1",
-    "11-768/10.DeepResearchAgents/references/013_WebSailor-V2.pdf": "2a0aa73e31f0c16f2f2fc07259ed0593f88c5f72f727bc443026490e3a47ab8c",
-    "11-768/10.DeepResearchAgents/references/018_Dense_Passage_Retrieval.pdf": "2abfc7991519be2b8ce30215905516fdb593218b7bf59e50ece0d8a088a7c4d5",
+    "11-768/10.DeepResearchAgents/references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf": "6cc20b3c5b8d25b8b53868fc4ec1792c144f07d67bdf7395138efd4422197e7b",
+    "11-768/10.DeepResearchAgents/references/WebDancer_Towards_Autonomous_Information_Seeking_Agency.pdf": "e7ea9dab41d1284d7ddcebc53022e23f14d868f4639469c7122d1f86797c9a51",
+    "11-768/10.DeepResearchAgents/references/ResearchQA_Evaluating_Scholarly_Question_Answering_at_Scale_Across_75_Fields_with_Survey-Mined_Questions_and_Rubrics.pdf": "5804ffd0982a7d18253cae419d3891e3fd3cd2d82c6de71635e48b800111fde1",
+    "11-768/10.DeepResearchAgents/references/WebSailor-V2_Bridging_the_Chasm_to_Proprietary_Agents_via_Synthetic_Data_and_Scalable_Reinforcement_Learning.pdf": "2a0aa73e31f0c16f2f2fc07259ed0593f88c5f72f727bc443026490e3a47ab8c",
+    "11-768/10.DeepResearchAgents/references/Dense_Passage_Retrieval_for_Open-Domain_Question_Answering.pdf": "2abfc7991519be2b8ce30215905516fdb593218b7bf59e50ece0d8a088a7c4d5",
     "11-768/10.DeepResearchAgents/references/012_1978_Nobel_Prize_in_Economic_Sciences.html": "227ab170fef4ff9af8a91cd0debf09e05cd1bf0ceed401209b3c4d00cd7a056e",
     "11-768/10.DeepResearchAgents/references/002_Wikipedia_source_document.html": "96e7f404972f0b8171bf8afb2b192ad14239e3ad4e9120c7db0962cf3f63af5d",
-    "11-768/10.DeepResearchAgents/references/015_Scaling_Agents_via_Continual_Pre-training.pdf": "aca7473950791937154bad8351e4d5f5001d0ba166acdd9065248bf97942064d",
-    "11-768/10.DeepResearchAgents/references/016_Search-R1.pdf": "524306de91f80d7755c43f8daad11eb463832762ba1debe0f37788bdbb3a6a0d",
-    "11-768/10.DeepResearchAgents/references/010_DeepResearch_Bench_II.pdf": "6377061d91b212bba03b2ea30fdce11dc8c0ac425b1dbc898086f885e433aa32",
-    "11-768/10.DeepResearchAgents/references/007_AutoResearchBench.pdf": "9303b8930eb3c5b6eca8e4cfda6d56506ade638200c86c32a8fa7b91f44cae60",
-    "11-768/10.DeepResearchAgents/references/005_MedBrowseComp.pdf": "35ce8e598d884e1076359ad83372676bb5a19c67809632b92e763977c3e644a4",
+    "11-768/10.DeepResearchAgents/references/Scaling_Agents_via_Continual_Pre-training.pdf": "aca7473950791937154bad8351e4d5f5001d0ba166acdd9065248bf97942064d",
+    "11-768/10.DeepResearchAgents/references/Search-R1_Training_LLMs_to_Reason_and_Leverage_Search_Engines_with_Reinforcement_Learning.pdf": "524306de91f80d7755c43f8daad11eb463832762ba1debe0f37788bdbb3a6a0d",
+    "11-768/10.DeepResearchAgents/references/DeepResearch_Bench_II_Diagnosing_Deep_Research_Agents_via_Rubrics_from_Expert_Reports.pdf": "6377061d91b212bba03b2ea30fdce11dc8c0ac425b1dbc898086f885e433aa32",
+    "11-768/10.DeepResearchAgents/references/AutoResearchBench_Benchmarking_AI_Agents_on_Complex_Scientific_Literature_Discovery.pdf": "9303b8930eb3c5b6eca8e4cfda6d56506ade638200c86c32a8fa7b91f44cae60",
+    "11-768/10.DeepResearchAgents/references/MedBrowseComp_Benchmarking_Medical_Deep_Research_and_Computer_Use.pdf": "35ce8e598d884e1076359ad83372676bb5a19c67809632b92e763977c3e644a4",
     "11-768/10.DeepResearchAgents/references/011_CMU_Archives_Herbert_Simon.html": "52197a4cbcd8a3343fd7c0c24d5e5bf5db4a92f4f17e7cf98954fb146db5339c",
-    "11-768/10.DeepResearchAgents/references/003_BrowseComp-Plus.pdf": "0aa19d874913ae5f95fc9913aaa9c0cb68f4a8cbba8d2e436ea9b41738e69d3c",
-    "11-768/10.DeepResearchAgents/readings/005_DR_Tulu.pdf": "2b8b2a83424b8f482c9710852a87e207ea99dfe0cb902a1f30cc16cd2af13824",
-    "11-768/10.DeepResearchAgents/readings/006_AgentIR.pdf": "0b31b360090ef83d8758665ba2d2e00f48d1124f9b3f299166ebb703bd59bbd8",
+    "11-768/10.DeepResearchAgents/references/BrowseComp-Plus_A_More_Fair_and_Transparent_Evaluation_Benchmark_of_Deep-Research_Agent.pdf": "0aa19d874913ae5f95fc9913aaa9c0cb68f4a8cbba8d2e436ea9b41738e69d3c",
+    "11-768/10.DeepResearchAgents/readings/DR_Tulu_Reinforcement_Learning_with_Evolving_Rubrics_for_Deep_Research.pdf": "2b8b2a83424b8f482c9710852a87e207ea99dfe0cb902a1f30cc16cd2af13824",
+    "11-768/10.DeepResearchAgents/readings/AgentIR_Reasoning-Aware_Retrieval_for_Deep_Research_Agents.pdf": "0b31b360090ef83d8758665ba2d2e00f48d1124f9b3f299166ebb703bd59bbd8",
     "11-768/10.DeepResearchAgents/readings/001_OpenScholar.html": "519c416b1670e712f60d91b32bcb02a2780c0158de5ec9fe74cb680772d47590",
-    "11-768/10.DeepResearchAgents/readings/004_Tongyi_DeepResearch.pdf": "90a2c738ed8cc00c4ad8ea910e1d2494f812e7e0130dda518477e139ecc35bca",
-    "11-768/10.DeepResearchAgents/readings/002_BrowseComp.pdf": "8de2e7a024b43ff7fbab29e0bb6dbdc131ad07206e6c186c2122502d69477760",
-    "11-768/10.DeepResearchAgents/readings/003_DeepResearch_Bench.pdf": "8fbf30398f5e62f8839f0c9c8609bbb9e3cd0b57ae27d4bf33cb5db2007d1118",
+    "11-768/10.DeepResearchAgents/readings/Tongyi_DeepResearch_Technical_Report.pdf": "90a2c738ed8cc00c4ad8ea910e1d2494f812e7e0130dda518477e139ecc35bca",
+    "11-768/10.DeepResearchAgents/readings/BrowseComp_A_Simple_Yet_Challenging_Benchmark_for_Browsing_Agents.pdf": "8de2e7a024b43ff7fbab29e0bb6dbdc131ad07206e6c186c2122502d69477760",
+    "11-768/10.DeepResearchAgents/readings/DeepResearch_Bench_A_Comprehensive_Benchmark_for_Deep_Research_Agents.pdf": "8fbf30398f5e62f8839f0c9c8609bbb9e3cd0b57ae27d4bf33cb5db2007d1118",
     "11-768/15.OrchestrationAndMonitoring/lecture-15-orchestration-and-monitoring.pdf": "93b54a49f5202d4420e40d0223cd80472ae2875323715a910f476f94812fd73c",
     "11-768/15.OrchestrationAndMonitoring/references/023_Black_Hat_USA_2026_The_OpenAI_Hugging_Face_incident.html": "96012fdad4fd708b12696e35b22eb7b8a2782d9e7a5c7d6593b6c89e9546f24c",
     "11-768/15.OrchestrationAndMonitoring/references/017_AG2_overview.html": "cfc886fdb9ca8ffdba5f2043375fb59a26cad1f04bc76536b929981b3d96cd9e",
@@ -2164,7 +2326,7 @@
     "11-768/15.OrchestrationAndMonitoring/references/007_Course_support_demo_password-reset_trace.html": "a685c594b1b45eafd8e1e93d213924d47e7e32dbfdfdd8378226d4f691856aac",
     "11-768/15.OrchestrationAndMonitoring/references/013_Embedding_Atlas.html": "c4f030386067bee92c1f6d8734cdb8311e3008a99836259d151c81b0d9f04263",
     "11-768/15.OrchestrationAndMonitoring/references/012_Hodoscope_announcement.html": "f48ef5c23ef56b1589e1e52f47ed33e77a700d4dc07589cbf9e963a7d987ab6b",
-    "11-768/15.OrchestrationAndMonitoring/references/021_Multi-Agent_Computer_Use_MACU.pdf": "5a8e347bd731600d1ab92633130aa971d4fb72b10df684519793b307ddb6751e",
+    "11-768/15.OrchestrationAndMonitoring/references/Multi-Agent_Computer_Use.pdf": "5a8e347bd731600d1ab92633130aa971d4fb72b10df684519793b307ddb6751e",
     "11-768/15.OrchestrationAndMonitoring/references/020_Agent_Skills_specification.html": "2383f899fe9f661cc34257867bf7d00fec0024f104bf4e6dbe5f922c4efd3597",
     "11-768/15.OrchestrationAndMonitoring/references/015_LangGraph_overview.html": "09ce3ec86e3eab880c9c597c03b9faa753ac6171e0468a4e1754a696bd69c572",
     "11-768/15.OrchestrationAndMonitoring/references/010_Docent_Pairwise_comparisons_and_failure-mode_synthesis.html": "b6d79e34dbeaa7df1d6e6b5c70b2499f521e61cdffb398f8f73bba1c10e40204",
@@ -2180,50 +2342,164 @@
     "11-768/15.OrchestrationAndMonitoring/readings/002_Thinking_in_LangGraph.html": "e35818019859f7b4f2245db117102dd0e9d30df428c46a89600efc89a4660294",
     "11-768/15.OrchestrationAndMonitoring/readings/001_Building_effective_agents.html": "6acbc3bc9ba7416e9b49b50ecad38439109fc493209c5c2708f2759d4e1e76b3",
     "11-768/15.OrchestrationAndMonitoring/readings/003_Diagnosing_a_performance_regression_on_Terminal-Bench_with_Docent.html": "b3d71cbc3c3c4708f9dce8f8a1d2cbb4dab47d9f40b48ab49e85a503016f0acc",
-    "11-768/15.OrchestrationAndMonitoring/readings/004_Hodoscope_Unsupervised_Monitoring_for_AI_Misbehaviors.pdf": "ba734ebcad05c877d331e33377939c48d3b2a8c3e3c603a09fd931cd7ec228c4",
+    "11-768/15.OrchestrationAndMonitoring/readings/Hodoscope_Unsupervised_Monitoring_for_AI_Misbehaviors.pdf": "ba734ebcad05c877d331e33377939c48d3b2a8c3e3c603a09fd931cd7ec228c4",
     "11-768/14.OpenHands/lecture-14-openhands.pdf": "1b4626e1b25b6eaac463e8b82360c9a7b4ffc34f6ccc4b9ab162761d5427a60a",
-    "11-768/14.OpenHands/references/004_HumanEval.pdf": "ebae72ea0e8a5eb2ecbccdb985aec6cc1254a7c4d29e6d4de7866db1e66c4855",
+    "11-768/14.OpenHands/references/Evaluating_Large_Language_Models_Trained_on_Code.pdf": "ebae72ea0e8a5eb2ecbccdb985aec6cc1254a7c4d29e6d4de7866db1e66c4855",
     "11-768/14.OpenHands/references/016_VS_Code_with_Copilot_agent_quickstart.html": "e0593237edb604c95d861f63e1d927176ac511bbb7496200bc7e7594a4930845",
-    "11-768/14.OpenHands/references/001_OpenHands_Software_Agent_SDK_report.pdf": "41bb259e4005ae52993c0348b2edfaf0bdd1634de213048618ed13431b309b15",
+    "11-768/14.OpenHands/references/The_OpenHands_Software_Agent_SDK_A_Composable_and_Extensible_Foundation_for_Production_Agents.pdf": "41bb259e4005ae52993c0348b2edfaf0bdd1634de213048618ed13431b309b15",
     "11-768/14.OpenHands/references/018_GitHub_Copilot_coding_agent.html": "a254687ad4b3aab7255e75f5107e193772b999d1be21495daddf8cbda01e0f85",
-    "11-768/14.OpenHands/references/013_MetaGPT.pdf": "17582e47647fac8eaa3681feade41c8408310c4133acc5c6823565fbe880e1ac",
-    "11-768/14.OpenHands/references/012_CodeR.pdf": "4a9950e3082d190b716f004d7e14d122e507a62cc0ad7176e8de8c8ec26ac786",
-    "11-768/14.OpenHands/references/009_SWE-agent.pdf": "d171e0693060b910ceb2cddd0fd4bc7cae302005d42d0d8059bfdbe056c3adba",
-    "11-768/14.OpenHands/references/014_OpenHands-Versa.pdf": "cc1a26856d6033ab470c634a204fe1d2e1aaf88589fe23ef18c66c271a6ae815",
+    "11-768/14.OpenHands/references/MetaGPT_Meta_Programming_for_a_Multi-Agent_Collaborative_Framework.pdf": "17582e47647fac8eaa3681feade41c8408310c4133acc5c6823565fbe880e1ac",
+    "11-768/14.OpenHands/references/CodeR_Issue_Resolving_with_Multi-Agent_and_Task_Graphs.pdf": "4a9950e3082d190b716f004d7e14d122e507a62cc0ad7176e8de8c8ec26ac786",
+    "11-768/14.OpenHands/references/SWE-agent_Agent-Computer_Interfaces_Enable_Automated_Software_Engineering.pdf": "d171e0693060b910ceb2cddd0fd4bc7cae302005d42d0d8059bfdbe056c3adba",
+    "11-768/14.OpenHands/references/Coding_Agents_with_Multimodal_Browsing_are_Generalist_Problem_Solvers.pdf": "cc1a26856d6033ab470c634a204fe1d2e1aaf88589fe23ef18c66c271a6ae815",
     "11-768/14.OpenHands/references/010_OpenDevin_CodeAct_1.0.html": "1e49ada519ca48be94a29b88741fa6a0a095fa121b733440f1e710665e2d56f4",
-    "11-768/14.OpenHands/references/015_Code_with_Me_or_for_Me.pdf": "01444cdaab637219cec52a717e7f5ef7ebe91efae29f50ff77a303eaa6b7b72c",
+    "11-768/14.OpenHands/references/Code_with_Me_or_for_Me_How_Increasing_AI_Automation_Transforms_Developer_Workflows.pdf": "01444cdaab637219cec52a717e7f5ef7ebe91efae29f50ff77a303eaa6b7b72c",
     "11-768/14.OpenHands/references/020_SkillRefiner_offline_skill_refinement.html": "198b3b7b36c0a668a806975bf8066533cf69142d66e93d44dc5aac3692943aaf",
     "11-768/14.OpenHands/references/011_Don_t_Sleep_on_Single-agent_Systems.html": "ceb4f364f3bd892133b8f986672418e0e8a6d6ad9c9a060db9c6357ac491a68f",
-    "11-768/14.OpenHands/references/005_SWE-bench.pdf": "dffbba18e814e495b103078cdc2f833ae2392a030f6beb21b07e1fa5252501ba",
+    "11-768/14.OpenHands/references/SWE-bench_Can_Language_Models_Resolve_Real-World_GitHub_Issues.pdf": "dffbba18e814e495b103078cdc2f833ae2392a030f6beb21b07e1fa5252501ba",
     "11-768/9.TrainingRLBasics/lecture-09-rl-basics.pdf": "c8724ca6fbadb2afef38d627bbab2e09f8e8077fb1bb4dc0a4a078fb8669c1ca",
-    "11-768/9.TrainingRLBasics/references/002_REINFORCE.pdf": "e1029df5459f4a83bf33a876df018ee4f7b628b210bb9d047a6d60ec13f7c838",
-    "11-768/9.TrainingRLBasics/references/001_RL_Fundamentals.pdf": "92e174a97b0aa36a0222c49bb9f303d33d73bf75360a986c725945f7e352ee48",
-    "11-768/9.TrainingRLBasics/readings/001_ReST.pdf": "b22741558628b3056ad68dc10d505064b81edb22f7f8bbb0a40c5c1634598c47",
-    "11-768/9.TrainingRLBasics/readings/003_DeepSeekMath.pdf": "6cc20b3c5b8d25b8b53868fc4ec1792c144f07d67bdf7395138efd4422197e7b",
-    "11-768/9.TrainingRLBasics/readings/002_ReST-EM.pdf": "5ca8f5dd8ba3d8368867ffbba936306f0b3c77c09f5390be00f6915bd49f4964",
-    "11-768/9.TrainingRLBasics/readings/004_DrGRPO.pdf": "98243d51297f011fb5baad8a70a972d061ffbef618f1d7cfc10deea37c5887d0",
+    "11-768/9.TrainingRLBasics/references/Simple_statistical_gradient-following_algorithms_for_connectionist_reinforcement_learning.pdf": "e1029df5459f4a83bf33a876df018ee4f7b628b210bb9d047a6d60ec13f7c838",
+    "11-768/9.TrainingRLBasics/references/CS11-711_Advanced_NLP_-_Reinforcement_Learning.pdf": "92e174a97b0aa36a0222c49bb9f303d33d73bf75360a986c725945f7e352ee48",
+    "11-768/9.TrainingRLBasics/readings/Reinforced_Self-Training_ReST_for_Language_Modeling.pdf": "b22741558628b3056ad68dc10d505064b81edb22f7f8bbb0a40c5c1634598c47",
+    "11-768/9.TrainingRLBasics/readings/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf": "6cc20b3c5b8d25b8b53868fc4ec1792c144f07d67bdf7395138efd4422197e7b",
+    "11-768/9.TrainingRLBasics/readings/Beyond_Human_Data_Scaling_Self-Training_for_Problem-Solving_with_Language_Models.pdf": "5ca8f5dd8ba3d8368867ffbba936306f0b3c77c09f5390be00f6915bd49f4964",
+    "11-768/9.TrainingRLBasics/readings/Understanding_R1-Zero-Like_Training_A_Critical_Perspective.pdf": "98243d51297f011fb5baad8a70a972d061ffbef618f1d7cfc10deea37c5887d0",
     "11-768/11.AdvancedRLAlgorithms/lecture-11-rl-advanced.pdf": "e2f23de9092424cde3a72805e3b343d261a2e219518871843e719c4dbe5cc968",
     "11-768/11.AdvancedRLAlgorithms/references/020_OpenAI_calculator_hacking_and_production_evaluations.html": "98af425f70635dae6991125ca1eab03a7e49e4b3d7ae9f7e283b460e14a1cd18",
-    "11-768/11.AdvancedRLAlgorithms/references/009_MiniMax-M1_CISPO.pdf": "d355a6a41a26b85ca145aec5154650f4d39733c92f54775ae7f5851ecbedf600",
-    "11-768/11.AdvancedRLAlgorithms/references/019_Curriculum_Learning.pdf": "1adf3705b32fdd2abe3c938ed8223f583e496e0f171ac53584f3828df90e0aa8",
-    "11-768/11.AdvancedRLAlgorithms/references/022_Distilling_the_Knowledge_in_a_Neural_Network.pdf": "74e6689115c539db499f9d6153edecb364059926fd45402454f8210442444c5a",
-    "11-768/11.AdvancedRLAlgorithms/references/005_AReaL.pdf": "5785033bdd229ee6ddf26d8fcd9f61671801f208272c921ba6884da87cc5b351",
-    "11-768/11.AdvancedRLAlgorithms/references/007_Proximal_Policy_Optimization_PPO.pdf": "e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b",
-    "11-768/11.AdvancedRLAlgorithms/references/025_Policy_Invariance_Under_Reward_Transformations.pdf": "a641bf38a15f97d0ab182cb99a8257eafb9abca0d011434fa0ce1904b322d4e3",
-    "11-768/11.AdvancedRLAlgorithms/references/011_DAPO.pdf": "f01e4fd347530cadd68e5c36b1998532a6d1adb272c817e73b927453c26e9d79",
-    "11-768/11.AdvancedRLAlgorithms/references/006_CTPO.pdf": "9f919201071f6352fdec180480ae5659725895b9869ab9dce260bb79a293d241",
-    "11-768/11.AdvancedRLAlgorithms/references/003_Generalized_Advantage_Estimation_GAE.pdf": "5aa736ccf3517a1f36d0ca8146982e69beaf9a2bdccac2ae324f780743bc045e",
+    "11-768/11.AdvancedRLAlgorithms/references/MiniMax-M1_Scaling_Test-Time_Compute_Efficiently_with_Lightning_Attention.pdf": "d355a6a41a26b85ca145aec5154650f4d39733c92f54775ae7f5851ecbedf600",
+    "11-768/11.AdvancedRLAlgorithms/references/Interaction-assisted_SU_2_adiabatic_holonomies_in_Josephson_phase_qubits.pdf": "1adf3705b32fdd2abe3c938ed8223f583e496e0f171ac53584f3828df90e0aa8",
+    "11-768/11.AdvancedRLAlgorithms/references/Distilling_the_Knowledge_in_a_Neural_Network.pdf": "74e6689115c539db499f9d6153edecb364059926fd45402454f8210442444c5a",
+    "11-768/11.AdvancedRLAlgorithms/references/AReaL_A_Large-Scale_Asynchronous_Reinforcement_Learning_System_for_Language_Reasoning.pdf": "5785033bdd229ee6ddf26d8fcd9f61671801f208272c921ba6884da87cc5b351",
+    "11-768/11.AdvancedRLAlgorithms/references/Proximal_Policy_Optimization_Algorithms.pdf": "e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b",
+    "11-768/11.AdvancedRLAlgorithms/references/Policy_Invariance_under_Reward_Transformations_Theory_and_Application_to_Reward_Shaping.pdf": "a641bf38a15f97d0ab182cb99a8257eafb9abca0d011434fa0ce1904b322d4e3",
+    "11-768/11.AdvancedRLAlgorithms/references/DAPO_An_Open-Source_LLM_Reinforcement_Learning_System_at_Scale.pdf": "f01e4fd347530cadd68e5c36b1998532a6d1adb272c817e73b927453c26e9d79",
+    "11-768/11.AdvancedRLAlgorithms/references/Rethinking_Importance_Sampling_in_LLM_Policy_Optimization_A_Cumulative_Token_Perspective.pdf": "9f919201071f6352fdec180480ae5659725895b9869ab9dce260bb79a293d241",
+    "11-768/11.AdvancedRLAlgorithms/references/High-Dimensional_Continuous_Control_Using_Generalized_Advantage_Estimation.pdf": "5aa736ccf3517a1f36d0ca8146982e69beaf9a2bdccac2ae324f780743bc045e",
     "11-768/11.AdvancedRLAlgorithms/references/016_Reward_Hacking_in_Reinforcement_Learning.html": "99da73635a1800451d546644414161325c9fcd1455e971df5bf3dce987bbdd4e",
-    "11-768/11.AdvancedRLAlgorithms/references/018_PostTrainBench.pdf": "823f11de21206c9ba5be0531bee62f1d29d97cfeb5c8e9a6c90a2256f1f948bc",
-    "11-768/11.AdvancedRLAlgorithms/references/001_MIXER.pdf": "fb8b75ce2d9418ffa40fa7187c4b42921afbfd8ea0ecf72f2f83275b6335a85e",
-    "11-768/11.AdvancedRLAlgorithms/references/004_Let_s_Verify_Step_by_Step.pdf": "fbd170e2042c32950c3fe97d3a558d89e8a8dffaadc942e774ccb4b751abc123",
-    "11-768/11.AdvancedRLAlgorithms/references/008_DeepSeekMath_GRPO.pdf": "6cc20b3c5b8d25b8b53868fc4ec1792c144f07d67bdf7395138efd4422197e7b",
-    "11-768/11.AdvancedRLAlgorithms/references/010_Group_Sequence_Policy_Optimization_GSPO.pdf": "67221ec313f42d8b3029686b604b2621a311ae0d74e38524092e7c7a94613bd0",
-    "11-768/11.AdvancedRLAlgorithms/references/002_InstructGPT.pdf": "c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98",
-    "11-768/11.AdvancedRLAlgorithms/references/024_Self-Distilled_Reasoner_OPSD.pdf": "e521ed6c2939dc612daec5fe6fb47bef554a291228c02cafae07102b9729bad8",
-    "11-768/11.AdvancedRLAlgorithms/references/023_On-Policy_Distillation_of_Language_Models_GKD.pdf": "a81c71fa0cd15506642092790d854347f030c29ee1d6aa643b55aa51348e6869",
-    "11-768/11.AdvancedRLAlgorithms/references/014_SABER_tau-bench_audit.pdf": "e6875d7dccabcfd4acaebffc96e160434bf32932180febce7429c4230d0c7c99",
+    "11-768/11.AdvancedRLAlgorithms/references/PostTrainBench_Can_LLM_Agents_Automate_LLM_Post-Training.pdf": "823f11de21206c9ba5be0531bee62f1d29d97cfeb5c8e9a6c90a2256f1f948bc",
+    "11-768/11.AdvancedRLAlgorithms/references/Sequence_Level_Training_with_Recurrent_Neural_Networks.pdf": "fb8b75ce2d9418ffa40fa7187c4b42921afbfd8ea0ecf72f2f83275b6335a85e",
+    "11-768/11.AdvancedRLAlgorithms/references/Let_s_Verify_Step_by_Step.pdf": "fbd170e2042c32950c3fe97d3a558d89e8a8dffaadc942e774ccb4b751abc123",
+    "11-768/11.AdvancedRLAlgorithms/references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf": "6cc20b3c5b8d25b8b53868fc4ec1792c144f07d67bdf7395138efd4422197e7b",
+    "11-768/11.AdvancedRLAlgorithms/references/Group_Sequence_Policy_Optimization.pdf": "67221ec313f42d8b3029686b604b2621a311ae0d74e38524092e7c7a94613bd0",
+    "11-768/11.AdvancedRLAlgorithms/references/Training_language_models_to_follow_instructions_with_human_feedback.pdf": "c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98",
+    "11-768/11.AdvancedRLAlgorithms/references/Self-Distilled_Reasoner_On-Policy_Self-Distillation_for_Large_Language_Models.pdf": "e521ed6c2939dc612daec5fe6fb47bef554a291228c02cafae07102b9729bad8",
+    "11-768/11.AdvancedRLAlgorithms/references/On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf": "a81c71fa0cd15506642092790d854347f030c29ee1d6aa643b55aa51348e6869",
+    "11-768/11.AdvancedRLAlgorithms/references/SABER_Small_Actions_Big_Errors_-_Safeguarding_Mutating_Steps_in_LLM_Agents.pdf": "e6875d7dccabcfd4acaebffc96e160434bf32932180febce7429c4230d0c7c99",
     "11-768/11.AdvancedRLAlgorithms/references/015_tau-bench_task_fixes.html": "e5200d64a34e3a11e288e9a9711a6dd1e61b0f2c86fcf0a3077fe574da93997a",
-    "11-768/11.AdvancedRLAlgorithms/references/017_MAI-Thinking-1.pdf": "a267d745b1eb3792a8abf58e71e204a6f44f9c18eeb5ad8671320deae71986bd"
-  }
+    "11-768/11.AdvancedRLAlgorithms/references/MAI-Thinking-1_Building_a_Hill-Climbing_Machine.pdf": "a267d745b1eb3792a8abf58e71e204a6f44f9c18eeb5ad8671320deae71986bd"
+  },
+  "path_maintenance": [
+    {
+      "date": "2026-10-27",
+      "catalog": "tools/MATERIAL_RENAMES.json",
+      "scope": "Full-title reading names and local references; original source bytes unchanged",
+      "updated_note_hashes": [
+        {
+          "path": "11-768/1.WhatIsAnAgent/notes.zh-CN.md",
+          "previous_reviewed_sha256": "aa626e701fefcb4dcd201660eba7891cf5b0ebe6dc2fdaafccf3f36faba52828",
+          "current_sha256": "0c7fdec43af0bcb0c7ae02af3945cc2dc5e78aed519f8f52d23dcc131ce19d41"
+        },
+        {
+          "path": "11-768/2.ToolUse/lecture-02-tool-use-complete-notes.zh-CN.md",
+          "previous_reviewed_sha256": "1ed03b9946a85fcd8f0a55fa601ca75b4edb2b4e2f7b9d01df878bdeda929052",
+          "current_sha256": "d50a4ce191bb6610a8e8c43b5fec385dfd5c9802804591735345b6f44f31728e"
+        },
+        {
+          "path": "11-768/3.LongContext/long_context_lecture03_integrated_notes.md",
+          "previous_reviewed_sha256": "2b19be2ff3a49fd0d7bece14b0f3b612c2e796f3cf5adfde173d6d00590aa475",
+          "current_sha256": "67f5041bd567f8702e121b2e43fff43a81c681e17df7dae03f68c9e6853d8947"
+        },
+        {
+          "path": "11-768/4.SkillsAndMemory/Skills_and_Memory_Integrated_Notes.md",
+          "previous_reviewed_sha256": "b604b64770c0c3d5816549939769a22beadd73b3ee1cc3715ff8bd6119d803bb",
+          "current_sha256": "63cab3ff64df7663f5423135d332aa73eb3403d275ac0dbe0eacb275ca84f68c"
+        },
+        {
+          "path": "11-768/5.PlanningAndCoordination/lecture05_planning_coordination_integrated_notes.md",
+          "previous_reviewed_sha256": "e48758b918027905de3b3e54760c46c4edfb884971b47eeb0ffb24e50f2ffea3",
+          "current_sha256": "c907e064ff29e972a22cc2dcfe0cab9f37538db5c43abdec194f6651838b4f0a"
+        },
+        {
+          "path": "11-768/6.CodingAgents/coding_agent_lecture06_integrated_notes.md",
+          "previous_reviewed_sha256": "74956600b2fb284ab80d9bbf3f7192baefaf433203a587a11b481732917c3a52",
+          "current_sha256": "d19aa6daa518a82f4d41b0493acc24eae2c8ce7ca972ae4c5354860addde2229"
+        },
+        {
+          "path": "11-768/7.ComputerUseAgents/lecture-07-computer-use-agents-notes.md",
+          "previous_reviewed_sha256": "9cc09d66f2403a51d49d17e8d6e308a5eee613e5e6fe7f9bbf6cd823a0d42401",
+          "current_sha256": "df268f5c1b8c65ca92d3f7aa2a79f3a6c922a21fb94530a67a7215d7daa7c313"
+        },
+        {
+          "path": "11-768/8.SupervisedFineTuning/SFT_Lecture08_Integrated_Notes.md",
+          "previous_reviewed_sha256": "b868e3ab79340de495e798ed2f7eb0263c5eb7e80e9e754806b86d35fff203f3",
+          "current_sha256": "757e2661dffe0ee2a1fbe517cd2a21ff2f650fbc190437075037280e75e3bc00"
+        },
+        {
+          "path": "11-768/9.TrainingRLBasics/rl_lecture09_integrated_notes.md",
+          "previous_reviewed_sha256": "03067a560c389a6df35c6953fb2188c3986018352a7e90ccc62cb309d2672a9b",
+          "current_sha256": "3a97a0100ee0d608f5f87b3c4afaf93db0d760f74dc13bdbe82390538e2896fd"
+        },
+        {
+          "path": "11-768/10.DeepResearchAgents/Deep_Research_Agent_Design_Source_Checks.md",
+          "previous_reviewed_sha256": "17cdde2462453514999ab029fb3b418dc062e1dd6643e43298408c391ee59904",
+          "current_sha256": "cb654117212e38aaa96a729251e68d4b905ff54a09340612c6e509fa6bddcce6"
+        },
+        {
+          "path": "11-768/10.DeepResearchAgents/Deep_Research_Agent_General_Design.md",
+          "previous_reviewed_sha256": "37b6320fc7c7dcc5de056ed3aa260b528dc26fd29e7191f13b7ebee7b667a9d1",
+          "current_sha256": "3b57ec0a89adf5bb53805195225f400fcfc649f54c59e3b48c7c548e96b1374c"
+        },
+        {
+          "path": "11-768/10.DeepResearchAgents/Deep_Research_Lecture10_Integrated_Notes.md",
+          "previous_reviewed_sha256": "2309274fb9980762879fab0875c8f1648415fe15cb46b589cb2b430814925795",
+          "current_sha256": "06dbf34ba88d30689a5128f2b60e59490e6f9a01598f3398098195cbfcfdff92"
+        },
+        {
+          "path": "11-768/10.DeepResearchAgents/Finance_Agent_Research_2026_Three_Papers.md",
+          "previous_reviewed_sha256": "c31152723e0645be2381addfa8f7811ca4e8bab2f19464104665c85ea344f105",
+          "current_sha256": "9c266d1965a43b105841d99689a9287f619e0337a12a76dbef0495e2b38cfa77"
+        },
+        {
+          "path": "11-768/11.AdvancedRLAlgorithms/lecture-11-advanced-rl-integrated.md",
+          "previous_reviewed_sha256": "e15f7f048a05f0ca25a52c8e81bb4828c0ade244c8d78ab58967bcda408bf831",
+          "current_sha256": "a5ec0cd5dbfe533ee95eaabfbc3c2ef3b06380c25985ded258ad1510f52d5222"
+        },
+        {
+          "path": "11-768/12.TrainingRLSystems/notes.zh-CN.md",
+          "previous_reviewed_sha256": "10ee026947909fca4a7d653bc289193a98fd39c6feae612b4fb5c77b1f94fcf6",
+          "current_sha256": "a3d34a54ddb21bc16159d80a0baec5cc4908f0074fcc132c2590b21f34e85dc3"
+        },
+        {
+          "path": "11-768/13.AgentSafety/lecture-13-agent-safety-study-guide.md",
+          "previous_reviewed_sha256": "c26e4c3dbc0bd9afa1c4d4f95a616bdf2074c2f5b52d526eee5e1d5f4a40e68f",
+          "current_sha256": "59b94773614fa9884318066ffc8b8b4d6526b2de877e8a94755dfa93197bb7ef"
+        },
+        {
+          "path": "11-768/14.OpenHands/Lecture14_OpenHands_Integrated_Notes.md",
+          "previous_reviewed_sha256": "20b86376be89539425161799e81cec539358b5cbe67f3bce435fa7eaeee17caa",
+          "current_sha256": "a8a97cbdf143c898f69b63fb666c9f1784e1ee888f9be0ef28807a431b0616d6"
+        },
+        {
+          "path": "11-768/15.OrchestrationAndMonitoring/lecture-15-orchestration-and-monitoring-complete-guide.md",
+          "previous_reviewed_sha256": "6eff155053a28ad573e8f2ad9e9805d7b861ac6e30fe11db310c0be70f6ea7c8",
+          "current_sha256": "e1d34fd863db3c873166a1eff62b3301af4a0ea0d75d2397537b0b72acf62393"
+        }
+      ],
+      "preexisting_source_checksum_discrepancies": [
+        {
+          "path": "11-768/13.AgentSafety/references/020_E2B_sandbox_lifecycle.html",
+          "previous_recorded_sha256": "1176721ee9b8a80450708c97cbd0291d26a2ec2c0fca8007df4b20f817c7f16f",
+          "unchanged_git_HEAD_sha256": "4f7ffbd5f14d4719864997e72a773ff3b0d63a42e3c20a6c37edc6be4300d0e9",
+          "resolution": "Corrected stale source checksum to the unchanged pre-migration Git snapshot; source bytes not edited or fetched, no new source-content review claimed"
+        },
+        {
+          "path": "11-768/3.LongContext/references/016_Qwen3.html",
+          "previous_recorded_sha256": "4cf8ad18175b257dd369dda16f514b51590da297aa6a0a25a51f000dcb67da55",
+          "unchanged_git_HEAD_sha256": "5ec5ce4df12fa591e376146fe6dd12b8587a9d84f95c7a81802d45fcc6d5adbf",
+          "resolution": "Corrected stale source checksum to the unchanged pre-migration Git snapshot; source bytes not edited or fetched, no new source-content review claimed"
+        }
+      ],
+      "verification": "tools/verify_material_names.py and tools/verify_course_notes.py --write-report"
+    }
+  ]
 }

@@ -13,7 +13,7 @@ CRAG-MM 面向视觉问答与可穿戴设备：Task 1 从 image-indexed KG 回�
 
 | 论文 | 核心方法 | 名次口径 | 可复现性 |
 |---|---|---|---|
-| [Winning Task 2 - Team NVIDIA](./09-Winning-Task-2/README.md) | 单一多任务 VLM；26.5k 合成 datamix；RAGAS judge；拒答阈值 | Task 2 human-eval 第一，0.233 | [PDF](./09-Winning-Task-2/papers/18_Winning_Meta_KDD_Cup_25_Tas.pdf)；[GitHub clone](./09-Winning-Task-2/code/crag-mm/)；HF 数据/模型外链 |
+| [Winning Task 2 - Team NVIDIA](./09-Winning-Task-2/README.md) | 单一多任务 VLM；26.5k 合成 datamix；RAGAS judge；拒答阈值 | Task 2 human-eval 第一，0.233 | [PDF](./09-Winning-Task-2/papers/Winning_Meta_KDD_Cup_25_Task_2.pdf)；[GitHub clone](./09-Winning-Task-2/code/crag-mm/)；HF 数据/模型外链 |
 | [DB3 Team Solution](./10-DB3-Solution/README.md) | task-specific retrieval；Grounding DINO/图像重排；SFT/DPO/GRPO；checkpoint ensemble | Task 1/2 第二、Task 3 第一、ego-centric 大奖 | PDF 已归档；官方 GitLab 当前 503 |
 
 ## 对比要点

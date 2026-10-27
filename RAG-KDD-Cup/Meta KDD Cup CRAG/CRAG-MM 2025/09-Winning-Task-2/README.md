@@ -4,7 +4,7 @@
 
 Team NVIDIA 将 query writing、reranking、grounded answering 和拒答蒸馏进单一 VLM，优势来自 26.5k 合成 datamix 与贴近人工判断的 proxy metric，而非堆叠模型。
 
-[论文](./papers/18_Winning_Meta_KDD_Cup_25_Tas.pdf) · [官方代码](./code/crag-mm/) · [来源清单](./resources/source-manifest.md)
+[论文](./papers/Winning_Meta_KDD_Cup_25_Task_2.pdf) · [官方代码](./code/crag-mm/) · [来源清单](./resources/source-manifest.md)
 
 ## 2. 论文身份与比赛背景
 

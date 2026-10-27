@@ -35,31 +35,31 @@
 ## References and local study guide
 
 - [讲义内嵌链接及其 PDF 页码](../LECTURE_LINKS.json)；JSON 按 week、pdf、page 记录，视频和通用网站入口仅作来源导航。
-- [GKD](references/2306.13649.pdf)
+- [On-Policy Distillation of Language Models: Learning from Self-Generated Mistakes](references/On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf)
   - Source: https://arxiv.org/abs/2306.13649
-- [RLs_Razor](references/2509.04259.pdf)
+- [RL's Razor: Why Online Reinforcement Learning Forgets Less](references/RL_s_Razor_Why_Online_Reinforcement_Learning_Forgets_Less.pdf)
   - Source: https://arxiv.org/abs/2509.04259
-- [SDFT](references/2601.19897.pdf)
+- [Self-Distillation Enables Continual Learning](references/Self-Distillation_Enables_Continual_Learning.pdf)
   - Source: https://arxiv.org/abs/2601.19897
-- [TTRL](references/2504.16084.pdf)
+- [TTRL: Test-Time Reinforcement Learning](references/TTRL_Test-Time_Reinforcement_Learning.pdf)
   - Source: https://arxiv.org/abs/2504.16084
-- [OpenClaw_RL](references/2603.10165.pdf)
+- [OpenClaw-RL: Train Any Agent Simply by Talking](references/OpenClaw-RL_Train_Any_Agent_Simply_by_Talking.pdf)
   - Source: https://arxiv.org/abs/2603.10165
-- [TTT_Discover](references/2601.16175.pdf)
+- [Learning to Discover at Test Time](references/Learning_to_Discover_at_Test_Time.pdf)
   - Source: https://arxiv.org/abs/2601.16175
-- [PPO](references/1707.06347.pdf)
+- [Proximal Policy Optimization Algorithms](references/Proximal_Policy_Optimization_Algorithms.pdf)
   - Source: https://arxiv.org/abs/1707.06347
-- [DeepSeekMath](references/2402.03300.pdf)
+- [DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models](references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf)
   - Source: https://arxiv.org/abs/2402.03300
-- [DPO](references/2305.18290.pdf)
+- [Direct Preference Optimization: Your Language Model is Secretly a Reward Model](references/Direct_Preference_Optimization_Your_Language_Model_is_Secretly_a_Reward_Model.pdf)
   - Source: https://arxiv.org/abs/2305.18290
-- [OPSD](references/2601.18734.pdf)
+- [Self-Distilled Reasoner: On-Policy Self-Distillation for Large Language Models](references/Self-Distilled_Reasoner_On-Policy_Self-Distillation_for_Large_Language_Models.pdf)
   - Source: https://arxiv.org/abs/2601.18734
-- [TTT_FewShot](references/ttt.pdf)
+- [The Surprising Effectiveness of Test-Time Training for Few-Shot Learning](references/The_Surprising_Effectiveness_of_Test-Time_Training_for_Few-Shot_Learning.pdf)
   - Source: https://ekinakyurek.github.io/papers/ttt.pdf
-- [SDPO](references/2601.20802.pdf)
+- [Reinforcement Learning via Self-Distillation](references/Reinforcement_Learning_via_Self-Distillation.pdf)
   - Source: https://arxiv.org/pdf/2601.20802
-- [Guidance_TTT](references/2610.06269.pdf)
+- [Evolving in Thought Space: Training a Small Model at Test Time Unlocks Better Discoveries](references/Evolving_in_Thought_Space_Training_a_Small_Model_at_Test_Time_Unlocks_Better_Discoveries.pdf)
   - Source: https://arxiv.org/pdf/2610.06269
 - [verl verl/trainer/ppo/v1/trainer_base.py @ ddf7007](references/verl-ddf7007/trainer_base.py)
   - Source: https://raw.githubusercontent.com/verl-project/verl/ddf7007/verl/trainer/ppo/v1/trainer_base.py

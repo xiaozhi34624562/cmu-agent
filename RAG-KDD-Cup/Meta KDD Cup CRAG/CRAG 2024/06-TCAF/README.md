@@ -4,7 +4,7 @@
 
 TCAF 将错误前提检测、证据推理和最终表述分给 Detector、Thought、Answer 三类串行 agent。创新点是上下文职责分离，而不只是“多 agent”标签。
 
-[论文](./papers/5_TCAF_a_Multi_Agent_Approach_.pdf) · [代码状态](./code/README.md) · [来源清单](./resources/source-manifest.md)
+[论文](./papers/TCAF_a_Multi-Agent_Approach_of_Thought_Chain_for_Retrieval_Augmented_Generation.pdf) · [代码状态](./code/README.md) · [来源清单](./resources/source-manifest.md)
 
 ## 2. 论文身份与比赛背景
 

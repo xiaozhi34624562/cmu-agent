@@ -2093,7 +2093,7 @@ Beyond the Leaderboard 明确说明自己是 narrative synthesis，没有独立�
 <a id="source-r1"></a>
 ### [R1] Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks
 
-Patrick Lewis 等。归档版本标注 `arXiv:2005.11401v4`，2021-04-12，共 19 页。本地文件：[001_RAG_02ad74.pdf](readings/001_RAG_02ad74.pdf)。
+Patrick Lewis 等。归档版本标注 `arXiv:2005.11401v4`，2021-04-12，共 19 页。本地文件：[Retrieval-Augmented_Generation_for_Knowledge-Intensive_NLP_Tasks.pdf](readings/Retrieval-Augmented_Generation_for_Knowledge-Intensive_NLP_Tasks.pdf)。
 
 来源清单地址：[arXiv:2005.11401](https://arxiv.org/abs/2005.11401)。
 
@@ -2102,7 +2102,7 @@ Patrick Lewis 等。归档版本标注 `arXiv:2005.11401v4`，2021-04-12，共 1
 <a id="source-r2"></a>
 ### [R2] MemGPT: Towards LLMs as Operating Systems
 
-Charles Packer 等。归档版本标注 `arXiv:2310.08560v2`，2024-02-12，共 13 页。本地文件：[002_MemGPT_26e7ae.pdf](readings/002_MemGPT_26e7ae.pdf)。
+Charles Packer 等。归档版本标注 `arXiv:2310.08560v2`，2024-02-12，共 13 页。本地文件：[MemGPT_Towards_LLMs_as_Operating_Systems.pdf](readings/MemGPT_Towards_LLMs_as_Operating_Systems.pdf)。
 
 来源清单地址：[arXiv:2310.08560](https://arxiv.org/abs/2310.08560)。
 
@@ -2111,7 +2111,7 @@ Charles Packer 等。归档版本标注 `arXiv:2310.08560v2`，2024-02-12，共 
 <a id="source-r3"></a>
 ### [R3] Where LLM Agents Fail and How They Can Learn From Failures
 
-Kunlun Zhu 等。归档版本标注 `arXiv:2509.25370v1`，2025-09-29，共 32 页。本地文件：[003_where_agents_fail_5b748d.pdf](readings/003_where_agents_fail_5b748d.pdf)。
+Kunlun Zhu 等。归档版本标注 `arXiv:2509.25370v1`，2025-09-29，共 32 页。本地文件：[Where_LLM_Agents_Fail_and_How_They_can_Learn_From_Failures.pdf](readings/Where_LLM_Agents_Fail_and_How_They_can_Learn_From_Failures.pdf)。
 
 来源清单地址：[arXiv:2509.25370](https://arxiv.org/abs/2509.25370)。
 
@@ -2120,7 +2120,7 @@ Kunlun Zhu 等。归档版本标注 `arXiv:2509.25370v1`，2025-09-29，共 32 �
 <a id="source-r4"></a>
 ### [R4] Why Do Multi-Agent LLM Systems Fail?
 
-Mert Cemri 等。归档版本标注 `arXiv:2503.13657v3`，2025-10-26，共 47 页。本地文件：[004_why_multi_agent_systems_fail_203f8b.pdf](readings/004_why_multi_agent_systems_fail_203f8b.pdf)。
+Mert Cemri 等。归档版本标注 `arXiv:2503.13657v3`，2025-10-26，共 47 页。本地文件：[Why_Do_Multi-Agent_LLM_Systems_Fail.pdf](readings/Why_Do_Multi-Agent_LLM_Systems_Fail.pdf)。
 
 来源清单地址：[arXiv:2503.13657](https://arxiv.org/abs/2503.13657)。
 
@@ -2129,7 +2129,7 @@ Mert Cemri 等。归档版本标注 `arXiv:2503.13657v3`，2025-10-26，共 47 �
 <a id="source-r5"></a>
 ### [R5] Beyond the Leaderboard: A Synthesis of Tool-Use, Planning, and Reasoning Failures in Large Language Model Agents
 
-Wael Albayaydh、Rui Zhao、Ivan Flechais。归档 PDF 共 16 页。本地文件：[005_agent_failure_taxonomy_3c6fd9.pdf](readings/005_agent_failure_taxonomy_3c6fd9.pdf)。
+Wael Albayaydh、Rui Zhao、Ivan Flechais。归档 PDF 共 16 页。本地文件：[Reasoning_Failures_in_Large_Language_Model_Agents.pdf](readings/Reasoning_Failures_in_Large_Language_Model_Agents.pdf)。
 
 来源清单指向：[arXiv:2607.05775](https://arxiv.org/abs/2607.05775)。本文未独立在线核验该页面的版本及当前状态，以实际归档 PDF 为依据。
 
@@ -2138,7 +2138,7 @@ Wael Albayaydh、Rui Zhao、Ivan Flechais。归档 PDF 共 16 页。本地文件
 <a id="source-r6"></a>
 ### [R6] The Danger of Overthinking: Examining the Reasoning–Action Dilemma in Agentic Tasks
 
-Alejandro Cuadron 等。归档版本标注 `arXiv:2502.08235v1`，2025-02-12，共 16 页。本地文件：[006_overthinking_d134e1.pdf](readings/006_overthinking_d134e1.pdf)。
+Alejandro Cuadron 等。归档版本标注 `arXiv:2502.08235v1`，2025-02-12，共 16 页。本地文件：[The_Danger_of_Overthinking_Examining_the_Reasoning-Action_Dilemma_in_Agentic_Tasks.pdf](readings/The_Danger_of_Overthinking_Examining_the_Reasoning-Action_Dilemma_in_Agentic_Tasks.pdf)。
 
 来源清单地址：[arXiv:2502.08235](https://arxiv.org/abs/2502.08235)。
 

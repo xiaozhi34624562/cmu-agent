@@ -2,49 +2,50 @@
   {
     "title": "Language Models are Few-Shot Learners",
     "url": "https://arxiv.org/abs/2005.14165",
-    "path": "references/2005.14165.pdf",
+    "path": "references/Language_Models_are_Few-Shot_Learners.pdf",
     "status": "saved",
     "pages": 75
   },
   {
-    "title": "Training Language Models to Follow Instructions with Human Feedback",
+    "title": "Training language models to follow instructions with human feedback",
     "url": "https://arxiv.org/abs/2203.02155",
-    "path": "references/2203.02155.pdf",
+    "path": "references/Training_language_models_to_follow_instructions_with_human_feedback.pdf",
     "status": "saved",
-    "pages": 68
+    "pages": 68,
+    "source_label": "Training Language Models to Follow Instructions with Human Feedback"
   },
   {
     "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
     "url": "https://arxiv.org/abs/2210.03629",
-    "path": "references/2210.03629.pdf",
+    "path": "references/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf",
     "status": "saved",
     "pages": 33
   },
   {
     "title": "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models",
     "url": "https://arxiv.org/abs/2402.03300",
-    "path": "references/2402.03300.pdf",
+    "path": "references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf",
     "status": "saved",
     "pages": 30
   },
   {
     "title": "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering",
     "url": "https://arxiv.org/abs/2405.15793",
-    "path": "references/2405.15793.pdf",
+    "path": "references/SWE-agent_Agent-Computer_Interfaces_Enable_Automated_Software_Engineering.pdf",
     "status": "saved",
     "pages": 118
   },
   {
     "title": "Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents",
     "url": "https://arxiv.org/abs/2505.22954",
-    "path": "references/2505.22954.pdf",
+    "path": "references/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf",
     "status": "saved",
     "pages": 72
   },
   {
     "title": "Absolute Zero: Reinforced Self-play Reasoning with Zero Data",
     "url": "https://arxiv.org/abs/2505.03335",
-    "path": "references/2505.03335.pdf",
+    "path": "references/Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data.pdf",
     "status": "saved",
     "pages": 52
   }

@@ -9,33 +9,33 @@
 
 ## Readings
 
-- [agents that matter](readings/001_agents_that_matter_be1cda.pdf)
+- [agents that matter](readings/AI_Agents_That_Matter.pdf)
   - Source: https://arxiv.org/abs/2407.01502
-- [agent reliability](readings/002_agent_reliability_66e60d.pdf)
+- [agent reliability](readings/Towards_a_Science_of_AI_Agent_Reliability.pdf)
   - Source: https://arxiv.org/abs/2602.16666
-- [agentic benchmark checklist](readings/003_agentic_benchmark_checklist_d662e8.pdf)
+- [agentic benchmark checklist](readings/Establishing_Best_Practices_for_Building_Rigorous_Agentic_Benchmarks.pdf)
   - Source: https://arxiv.org/abs/2507.02825
-- [evaluation cheating examples](readings/004_evaluation_cheating_examples_f6f7fb.html)
+- [evaluation cheating examples](readings/2._Examples_of_cheating_in_CAISI_s_agent_evaluations.html)
   - Source: https://www.nist.gov/caisi/cheating-ai-agent-evaluations/2-examples-cheating-caisis-agent-evaluations
-- [SWE-bench](readings/005_SWE_bench_3e4a5d.pdf)
+- [SWE-bench](readings/SWE-bench_Can_Language_Models_Resolve_Real-World_GitHub_Issues.pdf)
   - Source: https://arxiv.org/abs/2310.06770
 - SWE-bench Verified audit — [online source](https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified)
   - Source: https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified
-- [AgentBench](readings/006_AgentBench_d234ad.pdf)
+- [AgentBench](readings/AgentBench_Evaluating_LLMs_as_Agents.pdf)
   - Source: https://arxiv.org/abs/2308.03688
-- [METR time horizons](readings/007_METR_time_horizons_ddd930.pdf)
+- [METR time horizons](readings/Measuring_AI_Ability_to_Complete_Long_Software_Tasks.pdf)
   - Source: https://arxiv.org/abs/2503.14499
-- [τ-bench](readings/008_tau_bench_9e1bf2.pdf)
+- [τ-bench](readings/tau-bench_A_Benchmark_for_Tool-Agent-User_Interaction_in_Real-World_Domains.pdf)
   - Source: https://arxiv.org/abs/2406.12045
-- [Headlong](readings/009_Headlong_253f66.html)
+- [Headlong](readings/Headlong_a_microharness_for_persistent_agents.html)
   - Source: https://www.laude.org/updates/headlong-a-microharness-for-persistent-agents
-- [Dapper](readings/010_Dapper_ae4ecd.html)
+- [Dapper](readings/Dapper_a_Large-Scale_Distributed_Systems_Tracing_Infrastructure.html)
   - Source: https://research.google/pubs/dapper-a-large-scale-distributed-systems-tracing-infrastructure/
-- [AgentOps](readings/011_AgentOps_da5286.pdf)
+- [AgentOps](readings/AgentOps_Enabling_Observability_of_LLM_Agents.pdf)
   - Source: https://arxiv.org/abs/2411.05285
-- [Firecracker](readings/012_Firecracker_798c9b.html)
+- [Firecracker](readings/Firecracker_Lightweight_Virtualization_for_Serverless_Applications.html)
   - Source: https://www.usenix.org/conference/nsdi20/presentation/agache
-- [ActPlane](readings/013_ActPlane_4d160c.pdf)
+- [ActPlane](readings/ActPlane_Programmable_OS-Level_Policy_Enforcement_for_Agent_Harnesses.pdf)
   - Source: https://arxiv.org/abs/2606.25189
 
 ## Local study notes

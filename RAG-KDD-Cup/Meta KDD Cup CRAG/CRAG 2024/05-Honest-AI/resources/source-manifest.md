@@ -16,7 +16,7 @@
 ## Paper sources
 
 - Downloaded from <https://arxiv.org/pdf/2410.09699>.
-- Local file: `../papers/Honest-AI.pdf`
+- Local file: `../papers/Honest_AI_Fine-Tuning_Small_Language_Models_to_Say_I_Don_t_Know_and_Reducing_Hallucination_in_RAG.pdf`
 - Verification: 8 pages; 1,135,466 bytes; SHA-256 `ec121b5ed4c007f352a1a229f0c19c21ae9cc1cc15b8efa257a9df4874d708a3`.
 
 ## Code sources

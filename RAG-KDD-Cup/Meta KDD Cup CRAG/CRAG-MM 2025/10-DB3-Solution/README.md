@@ -4,7 +4,7 @@
 
 db3 为三个 CRAG-MM 任务分别设计 retrieval，同时以 SFT、DPO、GRPO 和 ensemble 控制回答/拒答。核心洞见是视觉 grounding 与风险偏好必须共同优化。
 
-[论文](./papers/DB3-Team-Solution-For-Meta-KDD-Cup-25.pdf) · [代码状态](./code/README.md) · [来源清单](./resources/source-manifest.md)
+[论文](./papers/DB3_Team_s_Solution_For_Meta_KDD_Cup_25.pdf) · [代码状态](./code/README.md) · [来源清单](./resources/source-manifest.md)
 
 ## 2. 论文身份与比赛背景
 

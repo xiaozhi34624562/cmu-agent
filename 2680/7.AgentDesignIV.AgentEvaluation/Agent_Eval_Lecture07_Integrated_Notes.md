@@ -1888,84 +1888,84 @@ if __name__ == "__main__":
 <a id="source-s01"></a>
 #### S01 — AI Agents That Matter
 
-原文件：[001_agents_that_matter_be1cda.pdf](readings/001_agents_that_matter_be1cda.pdf)。Sayash Kapoor、Benedikt Stroebl 等。归档版本标识：arXiv:2407.01502v1。核心使用范围：§2 简单基线与成本控制，§3 HotPotQA 联合优化，§4 模型与下游评价，§5 泛化和人在环，§6 可复现性。
+原文件：[AI_Agents_That_Matter.pdf](readings/AI_Agents_That_Matter.pdf)。Sayash Kapoor、Benedikt Stroebl 等。归档版本标识：arXiv:2407.01502v1。核心使用范围：§2 简单基线与成本控制，§3 HotPotQA 联合优化，§4 模型与下游评价，§5 泛化和人在环，§6 可复现性。
 
 原始地址：[原始来源](https://arxiv.org/abs/2407.01502)
 
 <a id="source-s02"></a>
 #### S02 — Towards a Science of AI Agent Reliability
 
-原文件：[002_agent_reliability_66e60d.pdf](readings/002_agent_reliability_66e60d.pdf)。Stephan Rabanser、Sayash Kapoor 等。归档版本标识：arXiv:2602.16666v3。核心使用范围：§2–3 四维十二指标，Table 2，§4 实验，§5–6 建议与限制，附录 F.3 扰动、置信度和安全判定协议。
+原文件：[Towards_a_Science_of_AI_Agent_Reliability.pdf](readings/Towards_a_Science_of_AI_Agent_Reliability.pdf)。Stephan Rabanser、Sayash Kapoor 等。归档版本标识：arXiv:2602.16666v3。核心使用范围：§2–3 四维十二指标，Table 2，§4 实验，§5–6 建议与限制，附录 F.3 扰动、置信度和安全判定协议。
 
 原始地址：[原始来源](https://arxiv.org/abs/2602.16666)
 
 <a id="source-s03"></a>
 #### S03 — Establishing Best Practices for Building Rigorous Agentic Benchmarks
 
-原文件：[003_agentic_benchmark_checklist_d662e8.pdf](readings/003_agentic_benchmark_checklist_d662e8.pdf)。Yuxuan Zhu、Tengjun Jin 等。归档版本标识：arXiv:2507.02825v5。核心使用范围：Task validity、Outcome validity、Reporting 三部分检查，以及 τ-bench、WebArena、SWE-Lancer、KernelBench、OSWorld 等审计案例。
+原文件：[Establishing_Best_Practices_for_Building_Rigorous_Agentic_Benchmarks.pdf](readings/Establishing_Best_Practices_for_Building_Rigorous_Agentic_Benchmarks.pdf)。Yuxuan Zhu、Tengjun Jin 等。归档版本标识：arXiv:2507.02825v5。核心使用范围：Task validity、Outcome validity、Reporting 三部分检查，以及 τ-bench、WebArena、SWE-Lancer、KernelBench、OSWorld 等审计案例。
 
 原始地址：[原始来源](https://arxiv.org/abs/2507.02825)
 
 <a id="source-s04"></a>
 #### S04 — NIST CAISI：Examples of cheating on agent evaluations
 
-原文件：[004_evaluation_cheating_examples_f6f7fb.html](readings/004_evaluation_cheating_examples_f6f7fb.html)。核心使用范围：§2 的方法边界，§2.1 Solution contamination，§2.2 Grader gaming。它是历史轨迹分析与案例材料，不是不同模型作弊概率的严格统一对照实验。
+原文件：[2._Examples_of_cheating_in_CAISI_s_agent_evaluations.html](readings/2._Examples_of_cheating_in_CAISI_s_agent_evaluations.html)。核心使用范围：§2 的方法边界，§2.1 Solution contamination，§2.2 Grader gaming。它是历史轨迹分析与案例材料，不是不同模型作弊概率的严格统一对照实验。
 
 原始地址：[原始来源](https://www.nist.gov/caisi/cheating-ai-agent-evaluations/2-examples-cheating-caisis-agent-evaluations)
 
 <a id="source-s05"></a>
 #### S05 — SWE-bench: Can Language Models Resolve Real-World GitHub Issues?
 
-原文件：[005_SWE_bench_3e4a5d.pdf](readings/005_SWE_bench_3e4a5d.pdf)。Carlos E. Jimenez、John Yang 等。归档版本标识：arXiv:2310.06770v3。核心使用范围：§2 数据构建、任务与验收，§4.1 检索设置，p.5 Tables 2–3，上下文与最终解决率分析。
+原文件：[SWE-bench_Can_Language_Models_Resolve_Real-World_GitHub_Issues.pdf](readings/SWE-bench_Can_Language_Models_Resolve_Real-World_GitHub_Issues.pdf)。Carlos E. Jimenez、John Yang 等。归档版本标识：arXiv:2310.06770v3。核心使用范围：§2 数据构建、任务与验收，§4.1 检索设置，p.5 Tables 2–3，上下文与最终解决率分析。
 
 原始地址：[原始来源](https://arxiv.org/abs/2310.06770)
 
 <a id="source-s06"></a>
 #### S06 — AgentBench: Evaluating LLMs as Agents
 
-原文件：[006_AgentBench_d234ad.pdf](readings/006_AgentBench_d234ad.pdf)。Xiao Liu、Hao Yu 等。归档版本标识：arXiv:2308.03688v3。核心使用范围：§2 交互式评估与结束原因，§3 八种环境，§4.1 上下文和总体分配置，§4.3 失败分析。
+原文件：[AgentBench_Evaluating_LLMs_as_Agents.pdf](readings/AgentBench_Evaluating_LLMs_as_Agents.pdf)。Xiao Liu、Hao Yu 等。归档版本标识：arXiv:2308.03688v3。核心使用范围：§2 交互式评估与结束原因，§3 八种环境，§4.1 上下文和总体分配置，§4.3 失败分析。
 
 原始地址：[原始来源](https://arxiv.org/abs/2308.03688)
 
 <a id="source-s07"></a>
 #### S07 — Measuring AI Ability to Complete Long Software Tasks
 
-原文件：[007_METR_time_horizons_ddd930.pdf](readings/007_METR_time_horizons_ddd930.pdf)。Thomas Kwa、Ben West 等，METR。归档版本标识：arXiv:2503.14499v4。核心使用范围：§2 任务与人类基线，§3 horizon 拟合与 50%／80% 对照，§4 外部有效性，分层 bootstrap 与局限说明。
+原文件：[Measuring_AI_Ability_to_Complete_Long_Software_Tasks.pdf](readings/Measuring_AI_Ability_to_Complete_Long_Software_Tasks.pdf)。Thomas Kwa、Ben West 等，METR。归档版本标识：arXiv:2503.14499v4。核心使用范围：§2 任务与人类基线，§3 horizon 拟合与 50%／80% 对照，§4 外部有效性，分层 bootstrap 与局限说明。
 
 原始地址：[原始来源](https://arxiv.org/abs/2503.14499)
 
 <a id="source-s08"></a>
 #### S08 — τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains
 
-原文件：[008_tau_bench_9e1bf2.pdf](readings/008_tau_bench_9e1bf2.pdf)。Shunyu Yao、Noah Shinn、Pedram Razavi、Karthik Narasimhan。归档版本标识：arXiv:2406.12045v1。核心使用范围：§3 模块与奖励、pass 指标，§4 构建，§5 实验和失败分析，§6 模拟用户与标注局限。
+原文件：[tau-bench_A_Benchmark_for_Tool-Agent-User_Interaction_in_Real-World_Domains.pdf](readings/tau-bench_A_Benchmark_for_Tool-Agent-User_Interaction_in_Real-World_Domains.pdf)。Shunyu Yao、Noah Shinn、Pedram Razavi、Karthik Narasimhan。归档版本标识：arXiv:2406.12045v1。核心使用范围：§3 模块与奖励、pass 指标，§4 构建，§5 实验和失败分析，§6 模拟用户与标注局限。
 
 原始地址：[原始来源](https://arxiv.org/abs/2406.12045)
 
 <a id="source-s09"></a>
 #### S09 — Headlong: a microharness for persistent agents
 
-原文件：[009_Headlong_253f66.html](readings/009_Headlong_253f66.html)。Laude / MIT collaboration 的工程介绍，页面日期为 2026-08-24。核心使用范围：Microharness、Persistent agency in action、What broke、Measuring improvement。正文将其作为持续运行案例，不视为成熟长期评价方法的定量证明。
+原文件：[Headlong_a_microharness_for_persistent_agents.html](readings/Headlong_a_microharness_for_persistent_agents.html)。Laude / MIT collaboration 的工程介绍，页面日期为 2026-08-24。核心使用范围：Microharness、Persistent agency in action、What broke、Measuring improvement。正文将其作为持续运行案例，不视为成熟长期评价方法的定量证明。
 
 原始地址：[原始来源](https://www.laude.org/updates/headlong-a-microharness-for-persistent-agents)
 
 <a id="source-s10"></a>
 #### S10 — Dapper, a Large-Scale Distributed Systems Tracing Infrastructure
 
-原文件：[010_Dapper_ae4ecd.html](readings/010_Dapper_ae4ecd.html)。Google Research 的论文介绍页；论文署名 Benjamin H. Sigelman 等，2010。本文使用其 Abstract 中的低开销、透明性、公共库埋点与采样原则，不声称仅凭介绍页覆盖完整实现。
+原文件：[Dapper_a_Large-Scale_Distributed_Systems_Tracing_Infrastructure.html](readings/Dapper_a_Large-Scale_Distributed_Systems_Tracing_Infrastructure.html)。Google Research 的论文介绍页；论文署名 Benjamin H. Sigelman 等，2010。本文使用其 Abstract 中的低开销、透明性、公共库埋点与采样原则，不声称仅凭介绍页覆盖完整实现。
 
 原始地址：[原始来源](https://research.google/pubs/dapper-a-large-scale-distributed-systems-tracing-infrastructure/)
 
 <a id="source-s11"></a>
 #### S11 — AgentOps: Enabling Observability of LLM Agents
 
-原文件：[011_AgentOps_da5286.pdf](readings/011_AgentOps_da5286.pdf)。Liming Dong、Qinghua Lu、Liming Zhu。归档版本标识：arXiv:2411.05285v2。核心使用范围：§1 Agent 特性与观测缺口，§3 反馈和追踪，§4 关系模型与 taxonomy。工具市场表格属于当时的映射研究，不作为当前工具选型列表。
+原文件：[AgentOps_Enabling_Observability_of_LLM_Agents.pdf](readings/AgentOps_Enabling_Observability_of_LLM_Agents.pdf)。Liming Dong、Qinghua Lu、Liming Zhu。归档版本标识：arXiv:2411.05285v2。核心使用范围：§1 Agent 特性与观测缺口，§3 反馈和追踪，§4 关系模型与 taxonomy。工具市场表格属于当时的映射研究，不作为当前工具选型列表。
 
 原始地址：[原始来源](https://arxiv.org/abs/2411.05285)
 
 <a id="source-s12"></a>
 #### S12 — Firecracker: Lightweight Virtualization for Serverless Applications
 
-原文件：[012_Firecracker_798c9b.html](readings/012_Firecracker_798c9b.html)。USENIX NSDI 2020 论文介绍页，Alexandru Agache、Marc Brooker 等。本文使用介绍页中的轻量虚拟化、安全和性能隔离目标；其对 Agent 评估环境的应用为工程推演。
+原文件：[Firecracker_Lightweight_Virtualization_for_Serverless_Applications.html](readings/Firecracker_Lightweight_Virtualization_for_Serverless_Applications.html)。USENIX NSDI 2020 论文介绍页，Alexandru Agache、Marc Brooker 等。本文使用介绍页中的轻量虚拟化、安全和性能隔离目标；其对 Agent 评估环境的应用为工程推演。
 
 原始地址：[原始来源](https://www.usenix.org/conference/nsdi20/presentation/agache)  
 页面提供的原论文地址：[原始来源](https://www.usenix.org/system/files/nsdi20-paper-agache.pdf)
@@ -1973,7 +1973,7 @@ if __name__ == "__main__":
 <a id="source-s13"></a>
 #### S13 — ActPlane: Programmable OS-Level Policy Enforcement for Agent Harnesses
 
-原文件：[013_ActPlane_4d160c.pdf](readings/013_ActPlane_4d160c.pdf)。Yusheng Zheng 等。归档版本标识：arXiv:2606.25189v2。核心使用范围：§2 策略类型，§3 威胁模型、DSL、信息流与权限域，§5 的 DCR、反馈消融、开销和安全实验；同时保留 p.6 与 p.12 的覆盖限制。
+原文件：[ActPlane_Programmable_OS-Level_Policy_Enforcement_for_Agent_Harnesses.pdf](readings/ActPlane_Programmable_OS-Level_Policy_Enforcement_for_Agent_Harnesses.pdf)。Yusheng Zheng 等。归档版本标识：arXiv:2606.25189v2。核心使用范围：§2 策略类型，§3 威胁模型、DSL、信息流与权限域，§5 的 DCR、反馈消融、开销和安全实验；同时保留 p.6 与 p.12 的覆盖限制。
 
 原始地址：[原始来源](https://arxiv.org/abs/2606.25189)
 

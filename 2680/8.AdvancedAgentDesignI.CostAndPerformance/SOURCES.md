@@ -14,11 +14,11 @@
 
 ## Readings
 
-- [cost and performance on Claude Platform](readings/001_cost_and_performance_on_Claude_Platform_7a7670.html)
+- [cost and performance on Claude Platform](readings/Reducing_cost_and_improving_performance_with_Claude_Platform.html)
   - Source: https://claude.com/blog/reducing-cost-and-improving-performance-with-claude-platform
-- [RouteLLM](readings/002_RouteLLM_4e1932.pdf)
+- [RouteLLM](readings/RouteLLM_Learning_to_Route_LLMs_with_Preference_Data.pdf)
   - Source: https://arxiv.org/abs/2406.18665
-- [tool-use inefficiency](readings/003_tool_use_inefficiency_58521d.pdf)
+- [tool-use inefficiency](readings/Beyond_Accuracy_Unveiling_Inefficiency_Patterns_in_Tool-Integrated_Reasoning.pdf)
   - Source: https://arxiv.org/abs/2604.05404
 - software factory at Uber scale — [online source](https://www.uber.com/us/en/blog/efficient-software-factory)
   - Source: https://www.uber.com/us/en/blog/efficient-software-factory

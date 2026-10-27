@@ -280,7 +280,7 @@ FutureX-Pro 并非只研究股票。Retail 使用 Temu 的 240 个商品，交�
 
 金融公式的一些具体要求：将常量输入与计算分开，适当使用 `$` 绝对引用，避免多段逻辑挤进难审计的单个巨型公式，正确处理动态范围与错误值。Format 也涉及 sheet 结构和单位、数值记号，而不是只检查是否“好看”。[附录 A，PDF 第 13–16 页](https://arxiv.org/pdf/2605.22664v5#page=13)
 
-**原图公式勘误。**v5 PDF p.4 Fig.3 的教学意图是把巨型公式拆成可审阅中间量，但图上单元格引用本身有偏移与自引用：债务实际在 B2、EBITDA 在 B3，图却写 `B1/B2`；Penalty Applied 行还出现引用自身的 `IF(B14, B6, 0)`，最后总额引用 B15 自身。不能把图中字符串直接当可执行模板。按左侧实际行号，本文修正教学式为：B9=`B2/B3`；B10=`IF(B9>4,2%,IF(B9>3,1%,0%))`；B11=`B4+B10`；B13=`B5<B6`；B14=`IF(B13,B7,0)`；B15=`B2*B11+B14`。该输入给出杠杆约4.545、利率7%、罚金50,000、总费用750,000。拆分提高可审阅性，仍须实际检查依赖和重算。此处纠正来源图的引用错误，不改原始PDF，也不把该错误推广到作者真实评测数据。[本地图3](references/020_MBABench_2605.22664v5.pdf)，PDF p.4。
+**原图公式勘误。**v5 PDF p.4 Fig.3 的教学意图是把巨型公式拆成可审阅中间量，但图上单元格引用本身有偏移与自引用：债务实际在 B2、EBITDA 在 B3，图却写 `B1/B2`；Penalty Applied 行还出现引用自身的 `IF(B14, B6, 0)`，最后总额引用 B15 自身。不能把图中字符串直接当可执行模板。按左侧实际行号，本文修正教学式为：B9=`B2/B3`；B10=`IF(B9>4,2%,IF(B9>3,1%,0%))`；B11=`B4+B10`；B13=`B5<B6`；B14=`IF(B13,B7,0)`；B15=`B2*B11+B14`。该输入给出杠杆约4.545、利率7%、罚金50,000、总费用750,000。拆分提高可审阅性，仍须实际检查依赖和重算。此处纠正来源图的引用错误，不改原始PDF，也不把该错误推广到作者真实评测数据。[本地图3](references/MBABench_Evaluating_LLM_Agents_on_End-to-End_Spreadsheet_Tasks_in_Finance.pdf)，PDF p.4。
 
 ### 3.4 裁判是否可靠？
 
@@ -647,10 +647,10 @@ AURA 的优势是提供了多种量化参考；FutureX 的开放问题是缺少�
 
 | 来源 | 固定版本入口 | 本文重点定位 |
 |---|---|---|
-| FutureX-Pro | [本地 PDF](references/019_FutureX-Pro_2601.12259v1.pdf) · [arXiv v1](https://arxiv.org/abs/2601.12259v1) · [PDF](https://arxiv.org/pdf/2601.12259v1) · [HTML](https://arxiv.org/html/2601.12259v1) | §2 金融；§6 搜索；§9 贡献 |
-| MBABench | [本地 PDF](references/020_MBABench_2605.22664v5.pdf) · [arXiv v5](https://arxiv.org/abs/2605.22664v5) · [PDF](https://arxiv.org/pdf/2605.22664v5) · [HTML](https://arxiv.org/html/2605.22664v5) | §2—6；附录 A 质量准则；C/D 实验接口；E 裁判；F 任务来源 |
-| 股票预测 / AURA | [本地 PDF](references/021_AURA_2609.36914v1.pdf) · [arXiv v1](https://arxiv.org/abs/2609.36914v1) · [PDF](https://arxiv.org/pdf/2609.36914v1) · [HTML](https://arxiv.org/html/2609.36914v1) | §2 沙箱；§3 训练；§4—5 结果；附录 A、C、D、E |
-| 背景：FinSearchComp | [论文](https://arxiv.org/abs/2509.13160) · [仓库内 PDF](references/004_FinSearchComp.pdf) · [课程资料入口](SOURCES.md) | 作为金融信息获取背景，不混入三篇实验分数 |
+| FutureX-Pro | [本地 PDF](references/FutureX-Pro_Extending_Future_Prediction_to_High-Value_Vertical_Domains.pdf) · [arXiv v1](https://arxiv.org/abs/2601.12259v1) · [PDF](https://arxiv.org/pdf/2601.12259v1) · [HTML](https://arxiv.org/html/2601.12259v1) | §2 金融；§6 搜索；§9 贡献 |
+| MBABench | [本地 PDF](references/MBABench_Evaluating_LLM_Agents_on_End-to-End_Spreadsheet_Tasks_in_Finance.pdf) · [arXiv v5](https://arxiv.org/abs/2605.22664v5) · [PDF](https://arxiv.org/pdf/2605.22664v5) · [HTML](https://arxiv.org/html/2605.22664v5) | §2—6；附录 A 质量准则；C/D 实验接口；E 裁判；F 任务来源 |
+| 股票预测 / AURA | [本地 PDF](references/Can_Language_Models_Learn_to_Forecast_Stock_Prices.pdf) · [arXiv v1](https://arxiv.org/abs/2609.36914v1) · [PDF](https://arxiv.org/pdf/2609.36914v1) · [HTML](https://arxiv.org/html/2609.36914v1) | §2 沙箱；§3 训练；§4—5 结果；附录 A、C、D、E |
+| 背景：FinSearchComp | [论文](https://arxiv.org/abs/2509.13160) · [仓库内 PDF](references/FinSearchComp_Towards_a_Realistic_Expert-Level_Evaluation_of_Financial_Search_and_Reasoning.pdf) · [课程资料入口](SOURCES.md) | 作为金融信息获取背景，不混入三篇实验分数 |
 
 ### 8.2 如何解读本次核验
 

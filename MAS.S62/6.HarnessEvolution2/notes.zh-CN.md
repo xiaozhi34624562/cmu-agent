@@ -50,7 +50,7 @@ Harness：执行动作，返回退出码和测试输出
 模型调用 3：判断测试结果，提出下一步或完成
 ```
 
-模型生成的是动作意图或结构化调用；工具执行、输出采集和下一次调用由运行程序负责。ReAct 把 reasoning 与 acting 交织；教程第 5–7 页借此区分模型和 Harness 的职责。[T，pp.5–7](tutorials/harness%20engineering%20tutorial.pdf#page=5)；[ReAct，§2–3](references/002_ReAct.pdf#page=2)
+模型生成的是动作意图或结构化调用；工具执行、输出采集和下一次调用由运行程序负责。ReAct 把 reasoning 与 acting 交织；教程第 5–7 页借此区分模型和 Harness 的职责。[T，pp.5–7](tutorials/harness%20engineering%20tutorial.pdf#page=5)；[ReAct，§2–3](references/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf#page=2)
 
 **一个用户 turn 可以包含多次模型调用。** 若只按用户消息计数，就会低估工具链中的模型费用和延迟。一次模型回复可以请求多个工具，但它们怎样并发、能否写同一资源，仍由具体 Harness 的执行策略决定。
 
@@ -145,9 +145,9 @@ mini-swe-agent 要求动作满足特定格式；没有或出现多个匹配动�
 
 ### 3.2 搜索结果应支持选择下一步
 
-教程引用 SWE-agent 的 ACI 实验：模仿人类编辑器逐条“下一项”的搜索方式，会消耗多次交互；汇总定位结果能让 Agent 先决定读哪一段。结果与论文中的模型、SWE-bench Lite 和动作预算相关。[T，p.23](tutorials/harness%20engineering%20tutorial.pdf#page=23)；[SWE-agent，§5.1，pp.5–7、表3](references/2405.15793.pdf#page=6)
+教程引用 SWE-agent 的 ACI 实验：模仿人类编辑器逐条“下一项”的搜索方式，会消耗多次交互；汇总定位结果能让 Agent 先决定读哪一段。结果与论文中的模型、SWE-bench Lite 和动作预算相关。[T，p.23](tutorials/harness%20engineering%20tutorial.pdf#page=23)；[SWE-agent，§5.1，pp.5–7、表3](references/SWE-agent_Agent-Computer_Interfaces_Enable_Automated_Software_Engineering.pdf#page=6)
 
-Table 3 的实际结果是：汇总搜索解决率 18.0%，逐条搜索 12.0%，不额外提供搜索工具为 15.7%。逐条搜索甚至低于无搜索，支持的解释是这一接口诱导 Agent 把预算花在遍历匹配项。它没有证明 `grep` 或专用搜索工具哪一类永远更好；应比较它们让模型获得什么信息、为此消耗多少交互。[SWE-agent，Table 3、Figure 5，实际 PDF pp.6–7](references/2405.15793.pdf#page=6)
+Table 3 的实际结果是：汇总搜索解决率 18.0%，逐条搜索 12.0%，不额外提供搜索工具为 15.7%。逐条搜索甚至低于无搜索，支持的解释是这一接口诱导 Agent 把预算花在遍历匹配项。它没有证明 `grep` 或专用搜索工具哪一类永远更好；应比较它们让模型获得什么信息、为此消耗多少交互。[SWE-agent，Table 3、Figure 5，实际 PDF pp.6–7](references/SWE-agent_Agent-Computer_Interfaces_Enable_Automated_Software_Engineering.pdf#page=6)
 
 教学工具返回：
 
@@ -187,13 +187,13 @@ Bash/代码能够访问广泛能力并组合操作；专用工具可提供更窄
 
 ### 4.2 Toolformer：模型学会何时调用，而非服务器自动变聪明
 
-Toolformer 用少量工具示范引导模型提出调用，执行后用调用结果对后续预测的帮助进行筛选，再用插入调用的文本训练。它主要改变模型参数及工具使用行为。[TF，§2，pp.3–4](../readings/papers/2302.04761.pdf#page=3)
+Toolformer 用少量工具示范引导模型提出调用，执行后用调用结果对后续预测的帮助进行筛选，再用插入调用的文本训练。它主要改变模型参数及工具使用行为。[TF，§2，pp.3–4](../readings/papers/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf#page=3)
 
 筛选目标与下游业务目标也有差别：帮助预测后续文本，不自动等价于执行复杂事务正确、满足用户约束或在多步工具链中稳健。把它迁移到新任务，需要重新考虑训练信号是否覆盖真正的成功定义。
 
 ### 4.3 ToolLLM：工具目录、检索、路径数据和执行评价
 
-ToolLLM 不只是把数万 API 放进 prompt。它包含工具/接口数据、API 检索、指令生成、多步解法路径，以及 ToolEval。DFSDT 允许探索和回退不同推理路径；真实 API 的可用性与评估本身也影响结果。[TL，§2–3，pp.3–7](../readings/papers/2307.16789.pdf#page=3)
+ToolLLM 不只是把数万 API 放进 prompt。它包含工具/接口数据、API 检索、指令生成、多步解法路径，以及 ToolEval。DFSDT 允许探索和回退不同推理路径；真实 API 的可用性与评估本身也影响结果。[TL，§2–3，pp.3–7](../readings/papers/ToolLLM_Facilitating_Large_Language_Models_to_Master_16000+_Real-world_APIs.pdf#page=3)
 
 工程启发是把链路拆开测：是否找到适合的 API、参数是否正确、服务是否可用、调用序列是否满足依赖、最终结果是否支持回答。一个全局成功率不能告诉你该换检索器、接口描述还是底座模型。
 
@@ -255,13 +255,13 @@ Plugin 可以打包技能、工具连接、Hook 等。它解决共享安装和�
 
 ### 6.1 用同一任务的匹配条件比较技能贡献
 
-SkillsBench 把技能作为独立评估对象：任务、容器、输入与 verifier 相同，比较无技能、人工整理技能，及单独报告的自生成技能条件。本文本地 PDF v4 的主聚合为 87 个任务、18 个模型/Harness 配置；任务宏平均通过率由 33.9% 到 50.5%，增益 16.6 个百分点，各配置增益为 4.1–25.7 个百分点。主聚合使用固定的每任务三次试验框架；自生成技能只在三个专用 Harness 配置中单独评价，不能当作与主聚合完全相同的 18 配置实验。具体汇总和不完整覆盖处理见 §4 与附录。[SB，§3–5、Table 2，pp.3–6](../readings/papers/2602.12670.pdf#page=3)
+SkillsBench 把技能作为独立评估对象：任务、容器、输入与 verifier 相同，比较无技能、人工整理技能，及单独报告的自生成技能条件。本文本地 PDF v4 的主聚合为 87 个任务、18 个模型/Harness 配置；任务宏平均通过率由 33.9% 到 50.5%，增益 16.6 个百分点，各配置增益为 4.1–25.7 个百分点。主聚合使用固定的每任务三次试验框架；自生成技能只在三个专用 Harness 配置中单独评价，不能当作与主聚合完全相同的 18 配置实验。具体汇总和不完整覆盖处理见 §4 与附录。[SB，§3–5、Table 2，pp.3–6](../readings/papers/SkillsBench_Benchmarking_How_Well_Agent_Skills_Work_Across_Diverse_Tasks.pdf#page=3)
 
 这些数字应绑定版本，不能与旧版本或不同子集混用。读结果时要检查：任务宏平均、试验次数、超时/缺失处理、是否使用同一 verifier，以及“部分检查通过”与“任务通过”是否采用相同口径。
 
 ### 6.2 技能里的答案泄漏会破坏比较
 
-如果技能直接包含本次任务的输出、特定文件名或参考解命令，增益可能来自答案传递而非可复用过程。SkillsBench 将任务构建、技能质量和泄漏审查作为重要部分。[SB，§3，pp.3–4](../readings/papers/2602.12670.pdf#page=3)
+如果技能直接包含本次任务的输出、特定文件名或参考解命令，增益可能来自答案传递而非可复用过程。SkillsBench 将任务构建、技能质量和泄漏审查作为重要部分。[SB，§3，pp.3–4](../readings/papers/SkillsBench_Benchmarking_How_Well_Agent_Skills_Work_Across_Diverse_Tasks.pdf#page=3)
 
 工程上建议使用两个维度的测试：相同技能在新实例上是否有效，以及无关任务是否会被错误触发。技能的触发精度和覆盖率都需要测；只测“应该用技能”的任务，会漏掉错误调用带来的退化。
 
@@ -273,7 +273,7 @@ SkillsBench 把技能作为独立评估对象：任务、容器、输入与 veri
 
 ### 6.4 Voyager 展示了积累循环，但任务分布也在变化
 
-Voyager 中自动课程产生任务，Agent 生成和修正程序，反馈与验证帮助筛选技能，再由技能库支持新任务。Minecraft 的交互与自动课程环境构成方法的重要前提。[V，§2，pp.3–5](../readings/papers/2305.16291.pdf#page=3)
+Voyager 中自动课程产生任务，Agent 生成和修正程序，反馈与验证帮助筛选技能，再由技能库支持新任务。Minecraft 的交互与自动课程环境构成方法的重要前提。[V，§2，pp.3–5](../readings/papers/VOYAGER_An_Open-Ended_Embodied_Agent_with_Large_Language_Models.pdf#page=3)
 
 移植到工程任务时，需要定义哪些练习会产生有用的可复用程序，以及自动任务是否仍覆盖真实需求。探索新技能与提高指定业务任务的成功率可以是两个不同目标，应分别报告。
 
@@ -382,7 +382,7 @@ Least-to-Most 等提示分解可以先解决子问题，再利用结果；对于
 | Decentralized | Agent 之间互相交流 | 适合并行探索与共享发现 | 交流成本、错误扩散、难以终止 |
 | Hybrid | 层级协调加局部互联 | 可适配复杂任务 | 更多状态、调度和归因复杂度 |
 
-这些结构与论文中的 canonical architectures 对应，表中的工程取舍是机制分析。[SAS，§3.1、§4.1，pp.6–7、10–12](../readings/papers/2512.08296.pdf#page=6)
+这些结构与论文中的 canonical architectures 对应，表中的工程取舍是机制分析。[SAS，§3.1、§4.1，pp.6–7、10–12](../readings/papers/Towards_a_Science_of_Scaling_Agent_Systems.pdf#page=6)
 
 ### 10.3 Debate 的分歧如何形成价值
 
@@ -400,7 +400,7 @@ Least-to-Most 等提示分解可以先解决子问题，再利用结果；对于
 
 ### 11.1 受控比较首先排除什么混杂
 
-课程指定论文用多种任务、模型家族和拓扑进行受控评价，标准化工具、提示与计算配置，分析协调和任务结构的关系。本地 v3 摘要记录 260 种配置、6 类基准。[SAS，摘要、§4.1，pp.1、10–12](../readings/papers/2512.08296.pdf#page=1)
+课程指定论文用多种任务、模型家族和拓扑进行受控评价，标准化工具、提示与计算配置，分析协调和任务结构的关系。本地 v3 摘要记录 260 种配置、6 类基准。[SAS，摘要、§4.1，pp.1、10–12](../readings/papers/Towards_a_Science_of_Scaling_Agent_Systems.pdf#page=1)
 
 这类研究的重要性在于把架构效果与实现差异尽量分开。若多 Agent 系统同时获得更强模型、更多 token 和额外工具，而基线没有相应预算，很难知道收益来自哪里。
 
@@ -408,23 +408,23 @@ Least-to-Most 等提示分解可以先解决子问题，再利用结果；对于
 
 讲义概括了可分解金融推理受益、顺序规划退化、工具复杂任务的协调开销，以及不同模型配置的成本差别。[L5，pp.25–29](slides/lec5%20-%20multi%20agent.pdf#page=25)
 
-论文 v3 给出的相对变化范围包含可分解金融任务的 `+80.8%` 和顺序规划的 `-70.0%`；它们是具体设置相对基线的变化，不是百分点，更不是你自己的任务会取得的收益。[SAS，摘要、§4](../readings/papers/2512.08296.pdf#page=1)
+论文 v3 给出的相对变化范围包含可分解金融任务的 `+80.8%` 和顺序规划的 `-70.0%`；它们是具体设置相对基线的变化，不是百分点，更不是你自己的任务会取得的收益。[SAS，摘要、§4](../readings/papers/Towards_a_Science_of_Scaling_Agent_Systems.pdf#page=1)
 
 需要问清：子任务能否独立获得正确证据？它们是否操作同一状态？输出能否无损合并？共同错误会不会在汇总中被验证？当强基线已能完成多数任务时，协作可能主要增加开销；这仍需实际测量。
 
 ### 11.3 “45% 阈值”不能变成生产规则
 
-讲义第 29 页使用单 Agent 基线超过约 45% 时多 Agent 可能退化的概括。应把它放回原研究模型、任务、预算与拟合范围理解；不同任务的难度、指标和错误类型不能直接共用该阈值。[L5，p.29](slides/lec5%20-%20multi%20agent.pdf#page=29)；[SAS，§4.2–4.3，pp.14–19](../readings/papers/2512.08296.pdf#page=14)
+讲义第 29 页使用单 Agent 基线超过约 45% 时多 Agent 可能退化的概括。应把它放回原研究模型、任务、预算与拟合范围理解；不同任务的难度、指标和错误类型不能直接共用该阈值。[L5，p.29](slides/lec5%20-%20multi%20agent.pdf#page=29)；[SAS，§4.2–4.3，pp.14–19](../readings/papers/Towards_a_Science_of_Scaling_Agent_Systems.pdf#page=14)
 
 工程上更可靠的做法是在自己的数据上画质量/成本前沿，按任务依赖分组，看哪些组能从协作中获得稳定增益。一个准确率值无法替代任务结构诊断。
 
 ### 11.4 87% 架构选择命中与性能预测精度是不同指标
 
-讲义第 30 页提到选出最佳架构的比例。论文摘要同时报告整体交叉验证 `R²=0.373`，采用任务相关能力指标时为 `0.413`，以及在 held-out configurations 中最佳架构选择达到 87%。这些指标分别衡量连续性能拟合与架构选择，不能互相替代。[L5，p.30](slides/lec5%20-%20multi%20agent.pdf#page=30)；[SAS，摘要、§4.3](../readings/papers/2512.08296.pdf#page=1)
+讲义第 30 页提到选出最佳架构的比例。论文摘要同时报告整体交叉验证 `R²=0.373`，采用任务相关能力指标时为 `0.413`，以及在 held-out configurations 中最佳架构选择达到 87%。这些指标分别衡量连续性能拟合与架构选择，不能互相替代。[L5，p.30](slides/lec5%20-%20multi%20agent.pdf#page=30)；[SAS，摘要、§4.3](../readings/papers/Towards_a_Science_of_Scaling_Agent_Systems.pdf#page=1)
 
 “预测最佳架构”不等于能精确预测任何新任务的成功率。把这个研究作为选型先验合理，把它直接当业务 SLA 则超出证据。
 
-还要检查预测器输入在部署前能否取得：论文使用单 Agent 基线、协调开销、轨迹错误、消息密度与冗余等测量值，其中一些必须先运行或抽样观察才能得到。因而它更适合作为试运行后的测量式选型依据，不能只输入“模型名字、工具数量”就承诺获得同样的预测精度。[SAS，§3.2、§4.3，实际 PDF pp.8–9、15–19](../readings/papers/2512.08296.pdf#page=8)
+还要检查预测器输入在部署前能否取得：论文使用单 Agent 基线、协调开销、轨迹错误、消息密度与冗余等测量值，其中一些必须先运行或抽样观察才能得到。因而它更适合作为试运行后的测量式选型依据，不能只输入“模型名字、工具数量”就承诺获得同样的预测精度。[SAS，§3.2、§4.3，实际 PDF pp.8–9、15–19](../readings/papers/Towards_a_Science_of_Scaling_Agent_Systems.pdf#page=8)
 
 ### 11.5 一个简单成本与延迟模型
 
@@ -440,7 +440,7 @@ $$
 
 ## 12. MAST：把失败从“模型不够聪明”拆成可定位问题
 
-MAST 从多 Agent 轨迹归纳 14 类失败，分为系统设计、Agent 间错位和任务验证三组。六位专家先细读约 150 条轨迹并迭代分类；扩展的 MAST-Data 则有 1642 条，由带少量示例的 LLM 标注器进行规模化标注。论文报告该标注器与保留的人类标注的一致性为 κ=0.77；这不能等同于 1642 条均经同规模人工专家分析，也不保证新业务轨迹具有同样标注质量。[MAST，§3、图1、表1–2，pp.2–6](../readings/papers/2503.13657.pdf#page=2)
+MAST 从多 Agent 轨迹归纳 14 类失败，分为系统设计、Agent 间错位和任务验证三组。六位专家先细读约 150 条轨迹并迭代分类；扩展的 MAST-Data 则有 1642 条，由带少量示例的 LLM 标注器进行规模化标注。论文报告该标注器与保留的人类标注的一致性为 κ=0.77；这不能等同于 1642 条均经同规模人工专家分析，也不保证新业务轨迹具有同样标注质量。[MAST，§3、图1、表1–2，pp.2–6](../readings/papers/Why_Do_Multi-Agent_LLM_Systems_Fail.pdf#page=2)
 
 | 类别 | 典型表现 | 工程上优先检查 |
 |---|---|---|
@@ -456,7 +456,7 @@ MAST 从多 Agent 轨迹归纳 14 类失败，分为系统设计、Agent 间错�
 
 ### 13.1 演化对象不止角色 prompt
 
-主讲义第 31 页把演化对象分为个体模型/上下文/Harness、团队角色与通信拓扑、共享记忆/工具/技能。CORAL 的路线是让长期运行的 Agent 在探索中通过共享记忆与异步协作积累发现。[L5，pp.31–33](slides/lec5%20-%20multi%20agent.pdf#page=31)；[CORAL，§3，pp.4–7](../readings/papers/2604.01658.pdf#page=4)
+主讲义第 31 页把演化对象分为个体模型/上下文/Harness、团队角色与通信拓扑、共享记忆/工具/技能。CORAL 的路线是让长期运行的 Agent 在探索中通过共享记忆与异步协作积累发现。[L5，pp.31–33](slides/lec5%20-%20multi%20agent.pdf#page=31)；[CORAL，§3，pp.4–7](../readings/papers/CORAL_Towards_Autonomous_Multi-Agent_Evolution_for_Open-Ended_Discovery.pdf#page=4)
 
 这比运行多份互不关联的随机搜索多了一条信息传播路径。检索历史尝试、读取别人的发现、使用共同技能，可能减少重复探索，也可能传播错误假设。因此共享库的证据、版本和评分来源都影响搜索质量。
 
@@ -468,23 +468,23 @@ $$
 E(x,y)=(s,f).
 $$
 
-Agent 可以读取历史候选及反馈，决定下一次尝试；把有用发现整理为 notes 或 skills；其他 Agent 再据此探索。论文将持续状态、异步执行和周期性干预结合，而非只用固定变异模板生成下一代。[CORAL，§3.1–3.3，pp.4–7](../readings/papers/2604.01658.pdf#page=4)
+Agent 可以读取历史候选及反馈，决定下一次尝试；把有用发现整理为 notes 或 skills；其他 Agent 再据此探索。论文将持续状态、异步执行和周期性干预结合，而非只用固定变异模板生成下一代。[CORAL，§3.1–3.3，pp.4–7](../readings/papers/CORAL_Towards_Autonomous_Multi-Agent_Evolution_for_Open-Ended_Discovery.pdf#page=4)
 
-共享文件系统有三类对象：`attempts/` 保存候选和历史评价，`notes/` 保存观察、反思与失败经验，`skills/` 保存可复用流程和脚本。Agent 的本地上下文与修改工作区相互隔离，通过链接访问共享 hub；主要协作是读取和贡献这些文件，而非必有一位中央协调者逐轮分配角色。自主性体现为 Agent 可以决定检索哪个父候选、何时局部测试、何时提交评价以及留下什么知识；固定演化系统则把其中较多决定写进搜索规则。[CORAL，§3.2–3.3，PDF pp.4–6](../readings/papers/2604.01658.pdf#page=4)
+共享文件系统有三类对象：`attempts/` 保存候选和历史评价，`notes/` 保存观察、反思与失败经验，`skills/` 保存可复用流程和脚本。Agent 的本地上下文与修改工作区相互隔离，通过链接访问共享 hub；主要协作是读取和贡献这些文件，而非必有一位中央协调者逐轮分配角色。自主性体现为 Agent 可以决定检索哪个父候选、何时局部测试、何时提交评价以及留下什么知识；固定演化系统则把其中较多决定写进搜索规则。[CORAL，§3.2–3.3，PDF pp.4–6](../readings/papers/CORAL_Towards_Autonomous_Multi-Agent_Evolution_for_Open-Ended_Discovery.pdf#page=4)
 
 工程上必须保留候选血缘、代码散列、评估环境、分数方向和失败原因。“更高分”在耗时或 cycles 指标中可能正好相反；每个任务都要声明比较函数。
 
 ### 13.3 Heartbeat 是调度触发，不是自动正确的反思
 
-Heartbeat 给长期 Agent 周期性检查进度、重复和资源的机会。它可以促使重新探索或整理发现，但不会自动证明总结正确，也不能替代任务评估器。[L5，p.33](slides/lec5%20-%20multi%20agent.pdf#page=33)；[CORAL，§3](../readings/papers/2604.01658.pdf#page=5)
+Heartbeat 给长期 Agent 周期性检查进度、重复和资源的机会。它可以促使重新探索或整理发现，但不会自动证明总结正确，也不能替代任务评估器。[L5，p.33](slides/lec5%20-%20multi%20agent.pdf#page=33)；[CORAL，§3](../readings/papers/CORAL_Towards_Autonomous_Multi-Agent_Evolution_for_Open-Ended_Discovery.pdf#page=5)
 
-CORAL 具体分为三种：每次迭代的 **Reflect** 提醒记录观察，累计若干次评价后的 **Consolidate** 提醒整理 notes 并沉淀 skills，连续无改善后的 **Pivot** 提醒重新选择搜索方向。附录示例分别采用每个 Agent 每次评价、全局每 10 次评价、连续 5 次无改善触发；它们是归档实现的设置。触发时改变的是 Agent 上下文，模型仍须自己决定后续动作，不是确定性优化器自动完成策略切换。[CORAL，§3.3、Appendix C.1.2，PDF pp.6、17–18](../readings/papers/2604.01658.pdf#page=6)
+CORAL 具体分为三种：每次迭代的 **Reflect** 提醒记录观察，累计若干次评价后的 **Consolidate** 提醒整理 notes 并沉淀 skills，连续无改善后的 **Pivot** 提醒重新选择搜索方向。附录示例分别采用每个 Agent 每次评价、全局每 10 次评价、连续 5 次无改善触发；它们是归档实现的设置。触发时改变的是 Agent 上下文，模型仍须自己决定后续动作，不是确定性优化器自动完成策略切换。[CORAL，§3.3、Appendix C.1.2，PDF pp.6、17–18](../readings/papers/CORAL_Towards_Autonomous_Multi-Agent_Evolution_for_Open-Ended_Discovery.pdf#page=6)
 
 频率过高会花费调用和打断有效工作；过低可能让 Agent 长时间重复。建议记录每次触发前后的动作变化和最终收益，而不只记录 heartbeat 次数。对运行系统来说，健康检查、资源回收和认知反思可以由不同机制承担。
 
 ### 13.4 共享候选与共享工作目录不是一回事
 
-论文包含隔离工作空间、评估分离、资源和会话管理等保障。[CORAL，§3，pp.5–7](../readings/papers/2604.01658.pdf#page=5)
+论文包含隔离工作空间、评估分离、资源和会话管理等保障。[CORAL，§3，pp.5–7](../readings/papers/CORAL_Towards_Autonomous_Multi-Agent_Evolution_for_Open-Ended_Discovery.pdf#page=5)
 
 合理的共享对象可以是不可变候选、带版本的发现和经过验证的技能。让多个 Agent 任意修改同一份候选源码，会造成血缘和评分对应关系不清。应将“提出候选”“评估候选”“发布当前最好结果”分开；一次运行评分必须绑定实际执行的代码散列。
 
@@ -492,15 +492,15 @@ CORAL 具体分为三种：每次迭代的 **Reflect** 提醒记录观察，累�
 
 讲义第 35 页写 8 个任务的新最好结果，第 36 页展示 **Polyominoes（多格骨牌）装填**；这些图片用不同任务指标，不能相互换算。[L5，pp.34–37](slides/lec5%20-%20multi%20agent.pdf#page=34)
 
-本地 CORAL v3 的摘要写 10 个任务，正文 Introduction p.3 又保留“8 of 11”的表述，讲义使用 8。本文保留这个文件内部的计数差异，不把它拼成一个确定的新统计；分析具体实验应回到对应表格、任务和版本。[CORAL，pp.2–3](../readings/papers/2604.01658.pdf#page=2)
+本地 CORAL v3 的摘要写 10 个任务，正文 Introduction p.3 又保留“8 of 11”的表述，讲义使用 8。本文保留这个文件内部的计数差异，不把它拼成一个确定的新统计；分析具体实验应回到对应表格、任务和版本。[CORAL，pp.2–3](../readings/papers/CORAL_Towards_Autonomous_Multi-Agent_Evolution_for_Open-Ended_Discovery.pdf#page=2)
 
-同样，第 39 页关于跨 Agent 父代使用、成功比例和探索差异的观察，不能单独证明信息共享的因果收益：被选择复用的父代可能本来就更优。受控消融应在相同预算下去掉共享或改变协作机制，再看结果。[L5，pp.38–39](slides/lec5%20-%20multi%20agent.pdf#page=38)；[CORAL，§4](../readings/papers/2604.01658.pdf#page=7)
+同样，第 39 页关于跨 Agent 父代使用、成功比例和探索差异的观察，不能单独证明信息共享的因果收益：被选择复用的父代可能本来就更优。受控消融应在相同预算下去掉共享或改变协作机制，再看结果。[L5，pp.38–39](slides/lec5%20-%20multi%20agent.pdf#page=38)；[CORAL，§4](../readings/papers/CORAL_Towards_Autonomous_Multi-Agent_Evolution_for_Open-Ended_Discovery.pdf#page=7)
 
-论文还提供了比轨迹相关性更强的对照：Table 3 固定 Claude Code + Opus 4.6，在三个任务上分别关闭 notes/skills 创建，以及比较四 Agent 共演化与四个独立单 Agent 的最佳结果。Kernel Engineering 中，有知识积累的单 Agent 为 1350 cycles，关闭后为 1601；四 Agent 共演化为 1103，独立 best-of-4 为 1180，越低越好。它支持这些设置中知识与共享机制有用；正文未为每项消融单独展开完全匹配 token/GPU 成本的账目，因此不应补写成“总成本完全相同的普遍因果结论”。[CORAL，§4.4.3、Table 3，PDF pp.9–10](../readings/papers/2604.01658.pdf#page=9)
+论文还提供了比轨迹相关性更强的对照：Table 3 固定 Claude Code + Opus 4.6，在三个任务上分别关闭 notes/skills 创建，以及比较四 Agent 共演化与四个独立单 Agent 的最佳结果。Kernel Engineering 中，有知识积累的单 Agent 为 1350 cycles，关闭后为 1601；四 Agent 共演化为 1103，独立 best-of-4 为 1180，越低越好。它支持这些设置中知识与共享机制有用；正文未为每项消融单独展开完全匹配 token/GPU 成本的账目，因此不应补写成“总成本完全相同的普遍因果结论”。[CORAL，§4.4.3、Table 3，PDF pp.9–10](../readings/papers/CORAL_Towards_Autonomous_Multi-Agent_Evolution_for_Open-Ended_Discovery.pdf#page=9)
 
-比较单 Agent 与四 Agent 时还要保留预算和环境：数学/系统套件按 §4.1 使用墙钟预算，stress tests 则运行到收敛，评价次数不相同。Kernel Engineering 的 1350→1103 是相对单 Agent 的约 18.3% cycles 降低；不是 18.3 个百分点的正确率增益。Polyominoes 主表中无网络的结果是 80.2→84.2；讲义 p.36 的 89.4 是开启网络搜索的额外实验，不能与主表条件混用。[CORAL，§4.1、§4.3、Table 2，PDF pp.7–8](../readings/papers/2604.01658.pdf#page=7)
+比较单 Agent 与四 Agent 时还要保留预算和环境：数学/系统套件按 §4.1 使用墙钟预算，stress tests 则运行到收敛，评价次数不相同。Kernel Engineering 的 1350→1103 是相对单 Agent 的约 18.3% cycles 降低；不是 18.3 个百分点的正确率增益。Polyominoes 主表中无网络的结果是 80.2→84.2；讲义 p.36 的 89.4 是开启网络搜索的额外实验，不能与主表条件混用。[CORAL，§4.1、§4.3、Table 2，PDF pp.7–8](../readings/papers/CORAL_Towards_Autonomous_Multi-Agent_Evolution_for_Open-Ended_Discovery.pdf#page=7)
 
-轨迹分析还有测量边界：论文的多样性用尝试标题中的策略关键词计算 Jaccard，Kernel Engineering 为 0.43，Polyominoes 为 0.31；这是策略词汇差异的代理指标，不等于严格测出了程序行为或搜索空间覆盖率。跨 Agent 父代与更高改善率、成员贡献平衡，属于解释系统运行方式的观察，应与上述消融证据分开读。[CORAL，§4.4.2，PDF p.9](../readings/papers/2604.01658.pdf#page=9)
+轨迹分析还有测量边界：论文的多样性用尝试标题中的策略关键词计算 Jaccard，Kernel Engineering 为 0.43，Polyominoes 为 0.31；这是策略词汇差异的代理指标，不等于严格测出了程序行为或搜索空间覆盖率。跨 Agent 父代与更高改善率、成员贡献平衡，属于解释系统运行方式的观察，应与上述消融证据分开读。[CORAL，§4.4.2，PDF p.9](../readings/papers/CORAL_Towards_Autonomous_Multi-Agent_Evolution_for_Open-Ended_Discovery.pdf#page=9)
 
 ### 13.6 怎样避免开放探索只优化评测漏洞
 
@@ -658,15 +658,15 @@ python3 MAS.S62/6.HarnessEvolution2/examples/handoff_contract.py
 |---|---|---|
 | L5 | [Multi-Agent Evolution，40页](slides/lec5%20-%20multi%20agent.pdf)，[原站](https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec5%20-%20multi%20agent.pdf) | 全部教学内容 pp.3–40；pp.1–2为封面/公告 |
 | T | [Harness Engineering，47页](tutorials/harness%20engineering%20tutorial.pdf)，[原站](https://mit-mi.github.io/how2ai-course/fall2026/schedule/harness%20engineering%20tutorial.pdf) | 循环、工具、扩展、上下文、协作和边界 |
-| TF | [Toolformer，17页](../readings/papers/2302.04761.pdf)，[v1](https://arxiv.org/abs/2302.04761v1) | §2，调用生成/筛选与训练 |
-| TL | [ToolLLM，24页](../readings/papers/2307.16789.pdf)，[v2](https://arxiv.org/abs/2307.16789v2) | §2–3，API数据、检索、DFSDT与评价 |
-| SB | [SkillsBench，42页](../readings/papers/2602.12670.pdf)，[v4](https://arxiv.org/abs/2602.12670v4) | §3–5、附录，匹配条件、泄漏与指标口径 |
-| V | [Voyager，42页](../readings/papers/2305.16291.pdf)，[v2](https://arxiv.org/abs/2305.16291v2) | §2，课程、技能库、反馈与验证 |
-| CORAL | [CORAL，27页](../readings/papers/2604.01658.pdf)，[v3](https://arxiv.org/abs/2604.01658v3) | §3–4，执行/共享/heartbeat与结果；摘要和正文计数差异保留 |
-| SAS | [Scaling Agent Systems，44页](../readings/papers/2512.08296.pdf)，[v3](https://arxiv.org/abs/2512.08296v3) | §3–4，控制变量、拓扑、指标与预测边界 |
-| MAST | [Why Do Multi-Agent LLM Systems Fail?，47页](../readings/papers/2503.13657.pdf)，[v3](https://arxiv.org/abs/2503.13657v3) | §3、图1、表1，失败分类与标注范围 |
-| ReAct | [ReAct](references/002_ReAct.pdf)，[arXiv](https://arxiv.org/abs/2210.03629) | §2–3，推理与环境行动交织 |
-| SWE-agent | [ACI论文，118页](references/2405.15793.pdf)，[v3](https://arxiv.org/abs/2405.15793v3) | §5.1、实际PDF pp.5–7及p.6 表3，搜索/编辑/上下文消融；附录未逐项使用 |
+| TF | [Toolformer，17页](../readings/papers/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf)，[v1](https://arxiv.org/abs/2302.04761v1) | §2，调用生成/筛选与训练 |
+| TL | [ToolLLM，24页](../readings/papers/ToolLLM_Facilitating_Large_Language_Models_to_Master_16000+_Real-world_APIs.pdf)，[v2](https://arxiv.org/abs/2307.16789v2) | §2–3，API数据、检索、DFSDT与评价 |
+| SB | [SkillsBench，42页](../readings/papers/SkillsBench_Benchmarking_How_Well_Agent_Skills_Work_Across_Diverse_Tasks.pdf)，[v4](https://arxiv.org/abs/2602.12670v4) | §3–5、附录，匹配条件、泄漏与指标口径 |
+| V | [Voyager，42页](../readings/papers/VOYAGER_An_Open-Ended_Embodied_Agent_with_Large_Language_Models.pdf)，[v2](https://arxiv.org/abs/2305.16291v2) | §2，课程、技能库、反馈与验证 |
+| CORAL | [CORAL，27页](../readings/papers/CORAL_Towards_Autonomous_Multi-Agent_Evolution_for_Open-Ended_Discovery.pdf)，[v3](https://arxiv.org/abs/2604.01658v3) | §3–4，执行/共享/heartbeat与结果；摘要和正文计数差异保留 |
+| SAS | [Scaling Agent Systems，44页](../readings/papers/Towards_a_Science_of_Scaling_Agent_Systems.pdf)，[v3](https://arxiv.org/abs/2512.08296v3) | §3–4，控制变量、拓扑、指标与预测边界 |
+| MAST | [Why Do Multi-Agent LLM Systems Fail?，47页](../readings/papers/Why_Do_Multi-Agent_LLM_Systems_Fail.pdf)，[v3](https://arxiv.org/abs/2503.13657v3) | §3、图1、表1，失败分类与标注范围 |
+| ReAct | [ReAct](references/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf)，[arXiv](https://arxiv.org/abs/2210.03629) | §2–3，推理与环境行动交织 |
+| SWE-agent | [ACI论文，118页](references/SWE-agent_Agent-Computer_Interfaces_Enable_Automated_Software_Engineering.pdf)，[v3](https://arxiv.org/abs/2405.15793v3) | §5.1、实际PDF pp.5–7及p.6 表3，搜索/编辑/上下文消融；附录未逐项使用 |
 | mini | [default.py](references/mini-swe-agent-68d367b/src/minisweagent/agents/default.py)、[local.py](references/mini-swe-agent-68d367b/src/minisweagent/environments/local.py)、[config](references/mini-swe-agent-68d367b/src/minisweagent/config/default.yaml)、[interactive.py](references/mini-swe-agent-68d367b/src/minisweagent/agents/interactive.py) | 教程固定提交 68d367b 的原始源码摘取；详细URL见 REFERENCES.json |
 
 CLI/MCP/Skill/Hook 的产品细节主要按教程快照解释；没有把当前 SDK 安装运行作为本课验证项目。原始链接和附加参考均见 [SOURCES.md](SOURCES.md)、[REFERENCES.json](REFERENCES.json)。

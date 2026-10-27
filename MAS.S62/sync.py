@@ -13,6 +13,7 @@ import json
 import os
 import re
 import shutil
+import sys
 import tempfile
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
@@ -26,6 +27,9 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 ROOT = Path(__file__).resolve().parent
+sys.path.insert(0, str(ROOT.parent / "tools"))
+from material_names import material_filename, registered_material
+
 BASE = "https://mit-mi.github.io/how2ai-course/fall2026/"
 ASSETS = "https://mit-mi.github.io/how2ai-course/assets/"
 TODAY = datetime.now(ZoneInfo("Asia/Shanghai")).date().isoformat()
@@ -166,15 +170,19 @@ def parse_schedule(html):
 
 
 def paper_resource(title, url, kind, weeks=()):
+    entry = registered_material(url)
+    if entry:
+        title = entry["title"]
     match = re.search(r"arxiv\.org/(?:abs|pdf)/(\d{4}\.\d{4,5}(?:v\d+)?)", url)
     if match:
         paper_id = match.group(1)
-        return resource(title, url, kind, weeks, f"readings/papers/{paper_id}.pdf", f"https://arxiv.org/pdf/{paper_id}")
+        name = material_filename(title, url, ".pdf")
+        return resource(title, url, kind, weeks, f"readings/papers/{name}", f"https://arxiv.org/pdf/{paper_id}")
     suffix = Path(urlparse(url).path).suffix.lower()
     if suffix == ".pdf":
-        path = f"readings/papers/{Path(unquote(urlparse(url).path)).name}"
+        path = "readings/papers/" + material_filename(title, url, ".pdf")
     else:
-        path = f"readings/web/{slug(urlparse(url).netloc+'_'+urlparse(url).path,75)}_{hashlib.sha256(url.encode()).hexdigest()[:8]}.html"
+        path = "readings/web/" + material_filename(title, url, ".html")
     return resource(title, url, kind, weeks, path)
 
 
@@ -283,7 +291,7 @@ def material_target(item, folder, index=0):
         return folder / "tutorials" / name
     if item["kind"] == "homework":
         return ROOT / "assignment/assignment-1" / name
-    return folder / "readings" / f"{index:03d}_{slug(item['title'],72)}_{name}"
+    return folder / "readings" / material_filename(item["title"], item["url"], Path(name).suffix, ROOT / item["path"])
 
 
 def copy(source, target):
@@ -410,7 +418,7 @@ def write_indexes(manifest):
         study = link("完整讲解", note, ROOT) if note.exists() else "见项目要求" if "presentations" in w["title"] else "待对应讲义公开" if not count else "编写中"
         lines.append(f"| {w['week']} / {w['date'][5:]} | {link(w['title'], folder/'SOURCES.md', ROOT)} | {status} | {study} |")
     lines += ["", "## 学习方法", "", "1. 先阅读本课 notes.zh-CN.md 的导读与材料映射，建立核心问题。", "2. 沿正文学习机制、公式、实现案例和论文证据，按页码回读原讲义。", "3. 用自测及实验设计检查理解；区分来源已经报告的实验与尚未运行的本地实验计划。", "4. 更新系统时同时检查效果、预算、泛化、退化和回滚条件。", "",
-              "## 归档与维护", "", "- site/：本学期页面、讲义、大纲导出、教程与公开作业 notebook；原始下载不翻译。", "- readings/：课程论文及往届公开项目参考的原始归档；下载状态见 manifest.json。", "- 每周 slides/、tutorials/、readings/ 是分类学习副本；原始文件名保留。", "- 周次不等于 PDF 的 Lecture 编号；例如 Week 5 对应 Lecture 4。", "- `lec6 - rl in practice.pdf` 前两页为嘉宾介绍，后续为 RL/自蒸馏实践教程；学习副本归入第 7 周 tutorials/，以全文内容说明用途。", "- 官网后续 [slides] 占位不计作讲义；未获取正文的材料保留明确状态。", "- 项目展示周按课表保留目录，项目参考注明为往届成果。", "",
+              "## 归档与维护", "", "- site/：本学期页面、讲义、大纲导出、教程与公开作业 notebook；原始下载不翻译。", "- readings/：课程论文及往届公开项目参考的原始归档；下载状态见 manifest.json。", "- 每周 slides/、tutorials/、readings/ 是分类学习副本；讲义与教程保留官方原名，论文和阅读网页使用完整标题命名。", "- 论文原文件名、现路径、来源 URL 和未改变的内容校验值见 [文件改名记录](../tools/MATERIAL_RENAMES.json)；同步与整理共用标题命名规则。", "- 周次不等于 PDF 的 Lecture 编号；例如 Week 5 对应 Lecture 4。", "- `lec6 - rl in practice.pdf` 前两页为嘉宾介绍，后续为 RL/自蒸馏实践教程；学习副本归入第 7 周 tutorials/，以全文内容说明用途。", "- 官网后续 [slides] 占位不计作讲义；未获取正文的材料保留明确状态。", "- 项目展示周按课表保留目录，项目参考注明为往届成果。", "",
               "更新：`python3 MAS.S62/sync.py`；只重建分类与索引：`python3 MAS.S62/sync.py --organize-only`。需要 requests、beautifulsoup4；pymupdf 可补充 PDF 封面和页数。更新脚本保留 notes.zh-CN.md、人工补充 references/ 和学习记录。", "",
               "校验： [CHECKSUMS.sha256](CHECKSUMS.sha256) 覆盖原始归档及逐课补充材料；[manifest.json](manifest.json) 记录 URL、下载地址、状态和版本信息。运行 `python3 MAS.S62/verify.py --require-notes` 检查归档校验值、分类副本、来源状态与讲解链接。", "",
               "[LECTURE_LINKS.json](LECTURE_LINKS.json) 另保存讲义内嵌的原始链接及实际 PDF 页码，便于追溯讲义中的参考、视频与作业入口。"]

@@ -1937,7 +1937,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-r2"></a>
 ### R2｜Least-to-Most Prompting Enables Complex Reasoning in Large Language Models
 
-**文件：** [002_Least-to-Most_Prompting.pdf](readings/002_Least-to-Most_Prompting.pdf)，61 页。\
+**文件：** [Least-to-Most_Prompting_Enables_Complex_Reasoning_in_Large_Language_Models.pdf](readings/Least-to-Most_Prompting_Enables_Complex_Reasoning_in_Large_Language_Models.pdf)，61 页。\
 **作者：** Denny Zhou 等。
 **版本：** ICLR 2023；附件为 arXiv:2205.10625v3，2023-04-16。
 
@@ -1946,7 +1946,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-r3"></a>
 ### R3｜Decomposed Prompting: A Modular Approach for Solving Complex Tasks
 
-**文件：** [003_Decomposed_Prompting.pdf](readings/003_Decomposed_Prompting.pdf)，69 页。\
+**文件：** [Decomposed_Prompting_A_Modular_Approach_for_Solving_Complex_Tasks.pdf](readings/Decomposed_Prompting_A_Modular_Approach_for_Solving_Complex_Tasks.pdf)，69 页。\
 **作者：** Tushar Khot 等。
 **版本：** ICLR 2023；附件为 arXiv:2210.02406v2，2023-04-11。
 
@@ -1955,7 +1955,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-r4"></a>
 ### R4｜Code as Policies: Language Model Programs for Embodied Control
 
-**文件：** [004_Code_as_Policies.pdf](readings/004_Code_as_Policies.pdf)，16 页。\
+**文件：** [Code_as_Policies_Language_Model_Programs_for_Embodied_Control.pdf](readings/Code_as_Policies_Language_Model_Programs_for_Embodied_Control.pdf)，16 页。\
 **作者：** Jacky Liang 等。
 **版本：** 讲义标记为 ICRA 2023；附件为 arXiv:2209.07753v4，2023-05-25。
 
@@ -1964,7 +1964,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-r5"></a>
 ### R5｜Do As I Can, Not As I Say: Grounding Language in Robotic Affordances
 
-**文件：** [005_SayCan.pdf](readings/005_SayCan.pdf)，34 页。\
+**文件：** [Do_As_I_Can_Not_As_I_Say_Grounding_Language_in_Robotic_Affordances.pdf](readings/Do_As_I_Can_Not_As_I_Say_Grounding_Language_in_Robotic_Affordances.pdf)，34 页。\
 **作者：** Michael Ahn 等。
 **版本：** 讲义标记为 CoRL 2022；附件为 arXiv:2204.01691v2，2022-08-16。
 
@@ -1973,7 +1973,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-r6"></a>
 ### R6｜PLAN-AND-ACT: Improving Planning of Agents for Long-Horizon Tasks
 
-**文件：** [006_Plan-and-Act.pdf](readings/006_Plan-and-Act.pdf)，44 页。\
+**文件：** [Plan-and-Act_Improving_Planning_of_Agents_for_Long-Horizon_Tasks.pdf](readings/Plan-and-Act_Improving_Planning_of_Agents_for_Long-Horizon_Tasks.pdf)，44 页。\
 **作者：** Lutfi Eren Erdogan、Nicholas Lee 等。
 **版本：** 讲义标记为 ICML 2025；附件为 arXiv:2503.09572v3，2025-04-22。
 
@@ -1982,7 +1982,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-r7"></a>
 ### R7｜Thinking vs. Doing: Agents that Reason by Scaling Test-Time Interaction
 
-**文件：** [007_Thinking_vs.pdf](readings/007_Thinking_vs.pdf)，41 页。\
+**文件：** [Thinking_vs._Doing_Agents_that_Reason_by_Scaling_Test-Time_Interaction.pdf](readings/Thinking_vs._Doing_Agents_that_Reason_by_Scaling_Test-Time_Interaction.pdf)，41 页。\
 **作者：** Junhong Shen、Hao Bai 等。
 **版本：** 讲义标记为 NeurIPS 2025；附件为 arXiv:2506.07976v2，2025-06-10。
 
@@ -1991,7 +1991,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-r8"></a>
 ### R8｜Calibrate-Then-Act: Cost-Aware Exploration in LLM Agents
 
-**文件：** [008_Calibrate-Then-Act.pdf](readings/008_Calibrate-Then-Act.pdf)，35 页。\
+**文件：** [Calibrate-Then-Act_Cost-Aware_Exploration_in_LLM_Agents.pdf](readings/Calibrate-Then-Act_Cost-Aware_Exploration_in_LLM_Agents.pdf)，35 页。\
 **作者：** Wenxuan Ding、Nicholas Tomlin、Greg Durrett。
 **版本：** 附件标记 Preprint；arXiv:2602.16699v3，2026-05-15。
 
@@ -2002,7 +2002,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-r9"></a>
 ### R9｜Recursive Agent Optimization
 
-**文件：** [009_Recursive_Agent_Optimization_RAO.pdf](readings/009_Recursive_Agent_Optimization_RAO.pdf)，27 页。\
+**文件：** [Recursive_Agent_Optimization.pdf](readings/Recursive_Agent_Optimization.pdf)，27 页。\
 **作者：** Apurva Gandhi、Satyaki Chakraborty、Xiangjun Wang、Aviral Kumar、Graham Neubig。
 **版本：** arXiv:2605.06639v1，2026-05-07。
 
@@ -2011,7 +2011,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-r10"></a>
 ### R10｜Multi-Agent Computer Use
 
-**文件：** [010_Multi-Agent_Computer_Use_MACU.pdf](readings/010_Multi-Agent_Computer_Use_MACU.pdf)，42 页。\
+**文件：** [Multi-Agent_Computer_Use.pdf](readings/Multi-Agent_Computer_Use.pdf)，42 页。\
 **作者：** Jing Yu Koh、Ruslan Salakhutdinov、Daniel Fried。
 **版本：** arXiv:2606.01533v1，2026-06-01。
 
@@ -2040,7 +2040,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-ref03"></a>
 #### Ref03｜Large Language Models are Zero-Shot Reasoners
 
-**文件：** [003_Large_Language_Models_are_Zero-Shot_Reasoners.pdf](references/003_Large_Language_Models_are_Zero-Shot_Reasoners.pdf)。\
+**文件：** [Large_Language_Models_are_Zero-Shot_Reasoners.pdf](references/Large_Language_Models_are_Zero-Shot_Reasoners.pdf)。\
 **版本：** 42 页；arXiv:2205.11916v4，29 Jan 2023。 [原始来源](https://arxiv.org/abs/2205.11916)。
 
 重点位置与用途：§3、p.3–4：推理生成与答案提取两个阶段。对应 §2.2，区分提示推理与运行时规划。
@@ -2048,7 +2048,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-ref04"></a>
 #### Ref04｜Plan-and-Solve Prompting
 
-**文件：** [004_Plan-and-Solve_Prompting.pdf](references/004_Plan-and-Solve_Prompting.pdf)。\
+**文件：** [Plan-and-Solve_Prompting_Improving_Zero-Shot_Chain-of-Thought_Reasoning_by_Large_Language_Models.pdf](references/Plan-and-Solve_Prompting_Improving_Zero-Shot_Chain-of-Thought_Reasoning_by_Large_Language_Models.pdf)。\
 **版本：** 24 页；arXiv:2305.04091v3，26 May 2023。 [原始来源](https://arxiv.org/abs/2305.04091)。
 
 重点位置与用途：§2、p.2–4：PS／PS+、变量提取、中间计算与答案提取。对应 §2.2；不同于第 7 章 Plan-and-Act。
@@ -2056,7 +2056,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-ref05"></a>
 #### Ref05｜STaR: Self-Taught Reasoner
 
-**文件：** [005_STaR.pdf](references/005_STaR.pdf)。\
+**文件：** [STaR_Self-Taught_Reasoner_Bootstrapping_Reasoning_With_Reasoning.pdf](references/STaR_Self-Taught_Reasoner_Bootstrapping_Reasoning_With_Reasoning.pdf)。\
 **版本：** 30 页；arXiv:2203.14465v2，20 May 2022。 [原始来源](https://arxiv.org/abs/2203.14465)。
 
 重点位置与用途：§3、p.3–4：答案筛选、rationalization 和迭代微调。对应 §12.6、§17.6，不把答案正确视为逐步推理的独立证明。
@@ -2064,7 +2064,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-ref06"></a>
 #### Ref06｜DeepSeek-R1
 
-**文件：** [006_DeepSeek-R1.pdf](references/006_DeepSeek-R1.pdf)。\
+**文件：** [DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_Reinforcement_Learning.pdf](references/DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_Reinforcement_Learning.pdf)。\
 **版本：** 86 页；arXiv:2501.12948v2，4 Jan 2026。 [原始来源](https://arxiv.org/abs/2501.12948)。
 
 重点位置与用途：§2–3、p.2–8：R1-Zero 的 RL、规则奖励，以及 R1 的多阶段训练。对应 §12.6；本地为扩展后的 v2，不能套用早期版本页码。
@@ -2072,7 +2072,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-ref07"></a>
 #### Ref07｜Recursive Language Models
 
-**文件：** [007_Recursive_Language_Models.pdf](references/007_Recursive_Language_Models.pdf)。\
+**文件：** [Recursive_Language_Models.pdf](references/Recursive_Language_Models.pdf)。\
 **版本：** 43 页；arXiv:2512.24601v3，11 May 2026。 [原始来源](https://arxiv.org/abs/2512.24601)。
 
 重点位置与用途：§2、p.3–4：外部输入变量、程序化子调用与算法对照；p.7–8、图 3：后训练；p.9：成本与复杂性限制。对应 §9.6、§10.2、§17.6。
@@ -2080,7 +2080,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-ref08"></a>
 #### Ref08｜PlanBench
 
-**文件：** [008_PlanBench.pdf](references/008_PlanBench.pdf)。\
+**文件：** [PlanBench_An_Extensible_Benchmark_for_Evaluating_Large_Language_Models_on_Planning_and_Reasoning_about_Change.pdf](references/PlanBench_An_Extensible_Benchmark_for_Evaluating_Large_Language_Models_on_Planning_and_Reasoning_about_Change.pdf)。\
 **版本：** 50 页；arXiv:2206.10498v4，26 Nov 2023。 [原始来源](https://arxiv.org/abs/2206.10498)。
 
 重点位置与用途：§3–5、p.3–7：形式域、验证架构与八类能力；§6、p.8–10：领域及名称混淆。对应 §3.1、§17.1。
@@ -2088,7 +2088,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-ref09"></a>
 #### Ref09｜ProgPrompt
 
-**文件：** [009_ProgPrompt.pdf](references/009_ProgPrompt.pdf)。\
+**文件：** [PROGPROMPT_Generating_Situated_Robot_Task_Plans_using_Large_Language_Models.pdf](references/PROGPROMPT_Generating_Situated_Robot_Task_Plans_using_Large_Language_Models.pdf)。\
 **版本：** 8 页；arXiv:2209.11302v1，22 Sep 2022。 [原始来源](https://arxiv.org/abs/2209.11302)。
 
 重点位置与用途：§III–IV、p.3–4：动作与对象、注释、断言和恢复，仿真与实机实现的差异。对应 §6.8。
@@ -2096,7 +2096,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-ref10"></a>
 #### Ref10｜Binder: Binding Language Models in Symbolic Languages
 
-**文件：** [010_Binder.pdf](references/010_Binder.pdf)。\
+**文件：** [Binding_Language_Models_in_Symbolic_Languages.pdf](references/Binding_Language_Models_in_Symbolic_Languages.pdf)。\
 **版本：** 27 页；arXiv:2210.02875v2，1 Mar 2023。 [原始来源](https://arxiv.org/abs/2210.02875)。
 
 重点位置与用途：§2、p.3–4：程序解析、嵌入 LM API、列与标量返回值、符号执行。对应 §5.7。
@@ -2112,7 +2112,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-ref12"></a>
 #### Ref12｜UGround: Universal Visual Grounding for GUI Agents
 
-**文件：** [012_UGround.pdf](references/012_UGround.pdf)。\
+**文件：** [Navigating_the_Digital_World_as_Humans_Do_Universal_Visual_Grounding_for_GUI_Agents.pdf](references/Navigating_the_Digital_World_as_Humans_Do_Universal_Visual_Grounding_for_GUI_Agents.pdf)。\
 **版本：** 34 页；arXiv:2410.05243v3，17 Jun 2025。 [原始来源](https://arxiv.org/abs/2410.05243)。
 
 重点位置与用途：§2.1、p.3、图 2：SeeAct-V 的纯视觉观察、语义动作与坐标 grounding 接口。对应 §7.1；视觉模型训练细节保留为延伸阅读。
@@ -2120,7 +2120,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-ref13"></a>
 #### Ref13｜Agent S
 
-**文件：** [013_Agent_S.pdf](references/013_Agent_S.pdf)。\
+**文件：** [Agent_S_An_Open_Agentic_Framework_that_Uses_Computers_Like_a_Human.pdf](references/Agent_S_An_Open_Agentic_Framework_that_Uses_Computers_Like_a_Human.pdf)。\
 **版本：** 23 页；arXiv:2410.08164v1，10 Oct 2024。 [原始来源](https://arxiv.org/abs/2410.08164)。
 
 重点位置与用途：§3、p.4–7：经验增强规划、Narrative／Episodic Memory、顺序执行、失败重规划与 ACI。对应 §7.9、§9.4；本地为 v1。
@@ -2128,7 +2128,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-ref14"></a>
 #### Ref14｜Language Models as Zero-Shot Planners
 
-**文件：** [014_Language_Models_as_Zero-Shot_Planners.pdf](references/014_Language_Models_as_Zero-Shot_Planners.pdf)。\
+**文件：** [Language_Models_as_Zero-Shot_Planners_Extracting_Actionable_Knowledge_for_Embodied_Agents.pdf](references/Language_Models_as_Zero-Shot_Planners_Extracting_Actionable_Knowledge_for_Embodied_Agents.pdf)。\
 **版本：** 33 页；arXiv:2201.07207v2，8 Mar 2022。 [原始来源](https://arxiv.org/abs/2201.07207)。
 
 重点位置与用途：p.1、3–5：语言动作映射到允许动作，以及可执行性与人工判断的正确性取舍。对应 §6.1。
@@ -2136,7 +2136,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-ref15"></a>
 #### Ref15｜LLM-Planner
 
-**文件：** [015_LLM-Planner.pdf](references/015_LLM-Planner.pdf)。\
+**文件：** [LLM-Planner_Few-Shot_Grounded_Planning_for_Embodied_Agents_with_Large_Language_Models.pdf](references/LLM-Planner_Few-Shot_Grounded_Planning_for_Embodied_Agents_with_Large_Language_Models.pdf)。\
 **版本：** 14 页；arXiv:2212.04088v3，30 Mar 2023。 [原始来源](https://arxiv.org/abs/2212.04088)。
 
 重点位置与用途：§4、p.4–6、算法 1：检索 few-shot 示例、已观察对象、已完成子目标、失败／停滞触发重规划。对应 §7.8、§12.3。
@@ -2144,7 +2144,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-ref16"></a>
 #### Ref16｜Inner Monologue
 
-**文件：** [016_Inner_Monologue.pdf](references/016_Inner_Monologue.pdf)。\
+**文件：** [Inner_Monologue_Embodied_Reasoning_through_Planning_with_Language_Models.pdf](references/Inner_Monologue_Embodied_Reasoning_through_Planning_with_Language_Models.pdf)。\
 **版本：** 25 页；arXiv:2207.05608v1，12 Jul 2022。 [原始来源](https://arxiv.org/abs/2207.05608)。
 
 重点位置与用途：§3、p.3–4：成功检测、被动场景描述、主动询问；主动反馈实验使用人类回答。对应 §7.8。
@@ -2152,7 +2152,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-ref17"></a>
 #### Ref17｜SwiftSage
 
-**文件：** [017_SwiftSage.pdf](references/017_SwiftSage.pdf)。\
+**文件：** [SWIFTSAGE_A_Generative_Agent_with_Fast_and_Slow_Thinking_for_Complex_Interactive_Tasks.pdf](references/SWIFTSAGE_A_Generative_Agent_with_Fast_and_Slow_Thinking_for_Complex_Interactive_Tasks.pdf)。\
 **版本：** 18 页；arXiv:2305.17390v2，6 Dec 2023。 [原始来源](https://arxiv.org/abs/2305.17390)。
 
 重点位置与用途：§3、p.5–7：SWIFT／SAGE、规划与 grounding、action buffer、四类启发式切换条件。对应 §8.8、§12.3。
@@ -2160,7 +2160,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-ref18"></a>
 #### Ref18｜The Danger of Overthinking
 
-**文件：** [018_The_Danger_of_Overthinking.pdf](references/018_The_Danger_of_Overthinking.pdf)。\
+**文件：** [The_Danger_of_Overthinking_Examining_the_Reasoning-Action_Dilemma_in_Agentic_Tasks.pdf](references/The_Danger_of_Overthinking_Examining_the_Reasoning-Action_Dilemma_in_Agentic_Tasks.pdf)。\
 **版本：** 16 页；arXiv:2502.08235v1，12 Feb 2025。 [原始来源](https://arxiv.org/abs/2502.08235)。
 
 重点位置与用途：§3–4、p.3–5：三类行为、轨迹评分与软件工程评测设置。对应 §8.2、§17.5；相关性不等于通用因果结论。
@@ -2168,7 +2168,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-ref19"></a>
 #### Ref19｜Training Proactive and Personalized LLM Agents (PPP-Agent)
 
-**文件：** [019_Training_Proactive_and_Personalized_LLM_Agents_PPP-Agent.pdf](references/019_Training_Proactive_and_Personalized_LLM_Agents_PPP-Agent.pdf)。\
+**文件：** [Training_Proactive_and_Personalized_LLM_Agents.pdf](references/Training_Proactive_and_Personalized_LLM_Agents.pdf)。\
 **版本：** 23 页；arXiv:2511.02208v2，23 Aug 2026。 [原始来源](https://arxiv.org/abs/2511.02208)。
 
 重点位置与用途：§3–5、p.3–5：UserVille、用户侧信息、问题负担、偏好和多目标 RL。对应 §13.2、§17.6；本地 v2 标注 COLM 2026。
@@ -2176,7 +2176,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-ref20"></a>
 #### Ref20｜Vending-Bench
 
-**文件：** [020_Vending-Bench.pdf](references/020_Vending-Bench.pdf)。\
+**文件：** [Vending-Bench_A_Benchmark_for_Long-Term_Coherence_of_Autonomous_Agents.pdf](references/Vending-Bench_A_Benchmark_for_Long-Term_Coherence_of_Autonomous_Agents.pdf)。\
 **版本：** 28 页；arXiv:2502.15840v1，20 Feb 2025。 [原始来源](https://arxiv.org/abs/2502.15840)。
 
 重点位置与用途：§2、p.3–5：记忆工具、模拟环境与运行设置；§3.2、p.8–9：运行间方差；§3.5–3.6、p.21–24：环境、记忆与输入长度分析。对应 §9.1、§17.1。
@@ -2184,7 +2184,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-ref21"></a>
 #### Ref21｜The Illusion of Diminishing Returns
 
-**文件：** [021_The_Illusion_of_Diminishing_Returns.pdf](references/021_The_Illusion_of_Diminishing_Returns.pdf)。\
+**文件：** [The_Illusion_of_Diminishing_Returns_Measuring_Long_Horizon_Execution_in_LLMs.pdf](references/The_Illusion_of_Diminishing_Returns_Measuring_Long_Horizon_Execution_in_LLMs.pdf)。\
 **版本：** 28 页；arXiv:2509.09677v3，13 Mar 2026。 [原始来源](https://arxiv.org/abs/2509.09677)。
 
 重点位置与用途：§2、p.3–5：执行与规划分离、跨度指标及理想化推导；§3、p.5–8：控制历史错误与 thinking；附录 C、I：补充对照。对应 §9.2。
@@ -2192,7 +2192,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-ref22"></a>
 #### Ref22｜ADaPT
 
-**文件：** [022_ADaPT.pdf](references/022_ADaPT.pdf)。\
+**文件：** [ADAPT_As-Needed_Decomposition_and_Planning_with_Language_Models.pdf](references/ADAPT_As-Needed_Decomposition_and_Planning_with_Language_Models.pdf)。\
 **版本：** 27 页；arXiv:2311.05772v2，8 Apr 2024。 [原始来源](https://arxiv.org/abs/2311.05772)。
 
 重点位置与用途：§3、p.3–5：先执行后分解、自报成功启发式、AND／OR 与递归控制器。对应 §5.6、§10.2、§12.1。
@@ -2200,7 +2200,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-ref23"></a>
 #### Ref23｜Web Agents Should Adopt the Plan-Then-Execute Paradigm
 
-**文件：** [023_Web_Agents_Should_Adopt_the_Plan-Then-Execute_Paradigm.pdf](references/023_Web_Agents_Should_Adopt_the_Plan-Then-Execute_Paradigm.pdf)。\
+**文件：** [Web_Agents_Should_Adopt_the_Plan-Then-Execute_Paradigm.pdf](references/Web_Agents_Should_Adopt_the_Plan-Then-Execute_Paradigm.pdf)。\
 **版本：** 15 页；arXiv:2605.14290v1，14 May 2026。 [原始来源](https://arxiv.org/abs/2605.14290)。
 
 重点位置与用途：§2、p.3–4：威胁模型；§4–6、p.5–8：可信 API、固定控制流、隔离子程序与 WebArena 人工分类。对应 §13.3、§14.7；分类比例不是执行成功率。
@@ -2208,7 +2208,7 @@ RLM 与 PPP-Agent 的训练依据分别为 [Ref07，p.7–8、附录 A](#src-ref
 <a id="src-ref24"></a>
 #### Ref24｜TravelPlanner
 
-**文件：** [024_TravelPlanner.pdf](references/024_TravelPlanner.pdf)。\
+**文件：** [TravelPlanner_A_Benchmark_for_Real-World_Planning_with_Language_Agents.pdf](references/TravelPlanner_A_Benchmark_for_Real-World_Planning_with_Language_Agents.pdf)。\
 **版本：** 24 页；arXiv:2402.01622v4，23 Oct 2024。 [原始来源](https://arxiv.org/abs/2402.01622)。
 
 重点位置与用途：§3、p.3–5：三类约束、静态沙箱与 micro／macro 指标；§4–5、p.6–7：两种设置、表 3–4 与错误分析。对应 §13.5、§17.1。

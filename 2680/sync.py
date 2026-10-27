@@ -14,6 +14,7 @@ import os
 import re
 import shutil
 import subprocess
+import sys
 import tempfile
 import time
 from collections import deque
@@ -30,6 +31,9 @@ from urllib3.util.retry import Retry
 
 
 ROOT = Path(__file__).resolve().parent
+sys.path.insert(0, str(ROOT.parent / "tools"))
+from material_names import material_filename, registered_material
+
 BASE = "https://cs2680.com/"
 HOST = "cs2680.com"
 REPO = "https://github.com/HarvardMadSys/cs2680_assignments.git"
@@ -176,22 +180,26 @@ def reading_links(mirrored: dict[str, Path]) -> dict[str, list[str]]:
     return readings
 
 
-def reading_destination(url: str) -> Path | None:
+def reading_destination(url: str, title: str | None = None) -> Path | None:
+    entry = registered_material(url)
+    if entry:
+        name = Path(entry["path"]).name
+        return ROOT / "readings" / ("papers" if name.endswith(".pdf") else "web") / name
     if url in ALTERNATE_READINGS:
-        return ROOT / "readings" / "papers" / Path(urlparse(ALTERNATE_READINGS[url]).path).name
+        name = material_filename(title or Path(urlparse(ALTERNATE_READINGS[url]).path).stem, url, ".pdf")
+        return ROOT / "readings" / "papers" / name
     parsed = urlparse(url)
     if parsed.netloc in {"www.youtube.com", "youtube.com", "youtu.be"}:
         return None
     arxiv = re.search(r"/(?:abs|pdf)/(\d{4}\.\d{4,5})(?:\.pdf)?$", parsed.path)
     if parsed.netloc == "arxiv.org" and arxiv:
-        return ROOT / "readings" / "papers" / f"{arxiv.group(1)}.pdf"
+        if not title:
+            raise ValueError(f"A paper title is required for a new reading: {url}")
+        return ROOT / "readings" / "papers" / material_filename(title, url, ".pdf")
     if parsed.path.lower().endswith(".pdf"):
-        name = Path(unquote(parsed.path)).name
+        name = material_filename(title or Path(unquote(parsed.path)).stem, url, ".pdf")
         return ROOT / "readings" / "papers" / name
-    host = parsed.netloc.replace("www.", "").replace(".", "-")
-    name = re.sub(r"[^a-z0-9]+", "-", parsed.path.lower()).strip("-")[-70:] or "index"
-    digest = hashlib.sha256(url.encode()).hexdigest()[:8]
-    stem = f"{host}-{name}-{digest}"
+    stem = Path(material_filename(title or parsed.netloc + parsed.path, url, ".html")).stem
     detected_pdf = ROOT / "readings" / "papers" / f"{stem}.pdf"
     if detected_pdf.exists():
         return detected_pdf
@@ -213,7 +221,7 @@ def download_readings(readings: dict[str, list[str]]) -> tuple[dict[str, Path], 
     saved: dict[str, Path] = {}
     failures: list[tuple[str, str]] = []
     def download_one(url: str) -> tuple[str, Path | None, str | None]:
-        dest = reading_destination(url)
+        dest = reading_destination(url, readings[url][0])
         if dest is None:
             return url, None, None
         if dest.exists():
@@ -250,7 +258,7 @@ def download_readings(readings: dict[str, list[str]]) -> tuple[dict[str, Path], 
     # Download each local file once to avoid concurrent writes to one path.
     grouped: dict[Path, list[str]] = {}
     for url in readings:
-        dest = reading_destination(url)
+        dest = reading_destination(url, readings[url][0])
         if dest is not None:
             grouped.setdefault(dest, []).append(url)
     with ThreadPoolExecutor(max_workers=4) as pool:
@@ -314,7 +322,7 @@ def write_sources(mirrored: dict[str, Path], readings: dict[str, list[str]], sav
         path = saved.get(url)
         local = f"[{path.relative_to(ROOT)}]({path.relative_to(ROOT)})" if path else "仅链接"
         if path is None:
-            snapshot = reading_destination(url)
+            snapshot = reading_destination(url, titles[0])
             if snapshot is not None and reading_snapshot_issue(snapshot):
                 relative = snapshot.relative_to(ROOT)
                 local = f"[验证网页（无阅读正文）]({relative})"

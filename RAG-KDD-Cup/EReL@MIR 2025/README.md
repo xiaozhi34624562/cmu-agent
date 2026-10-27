@@ -12,8 +12,8 @@ EReL@MIR 2025 的三个获奖方案给出了三条清晰的技术路线：
 
 ## 本地资料
 
-- 官方 Overview：[EReL-Multimodal-Document-Retrieval-Challenge-Overview.pdf](papers/EReL-Multimodal-Document-Retrieval-Challenge-Overview.pdf)
-- 第一名技术报告：[1st-iLearn-Technical-Report.pdf](papers/1st-iLearn-Technical-Report.pdf)
+- 官方 Overview：[Overview_of_the_EReL_MIR_2025_Multimodal_Document_Retrieval_Challenge_Track_1.pdf](papers/Overview_of_the_EReL_MIR_2025_Multimodal_Document_Retrieval_Challenge_Track_1.pdf)
+- 第一名技术报告：[Visual_Anchor_Point_for_Multimodal_Document_Retrieval.pdf](papers/Visual_Anchor_Point_for_Multimodal_Document_Retrieval.pdf)
 - 第一名代码：[01-iLearn-MDR](code/01-iLearn-MDR/)
 - 第二名代码：[02-LLMHunter-MMDocRetrievalChallenge](code/02-LLMHunter-MMDocRetrievalChallenge/)
 - 第三名代码：[03-GPU-is-all-you-need-MultiModal_InformationRetrieval](code/03-GPU-is-all-you-need-MultiModal_InformationRetrieval/)

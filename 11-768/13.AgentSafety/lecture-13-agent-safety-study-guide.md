@@ -1214,9 +1214,9 @@ PAIR 明确用反馈改进攻击输入。应用中的自动修复流程若把策
 
 ### 11.11 后续研究：怎样测量可监控性本身？
 
-讲义p.42还列出*Monitoring Monitorability*，本地为arXiv:2512.18311v1（2025-12-20，90页）。其§1—2把可监控性看成双边性质：Agent输出提供多少信息，监控器能提取多少信息，二者共同决定结果。它使用`g-mean² = TPR × TNR`，同时考虑真阳性与真阴性；随机等概率判定器两项均0.5，乘积0.25，不能把0.25误读为25%安全任务。论文提出干预、过程、结果属性三类评测，具体标签定义仍随任务而变。[本地论文](references/030_Monitoring_Monitorability.pdf)，PDF pp.1—4。
+讲义p.42还列出*Monitoring Monitorability*，本地为arXiv:2512.18311v1（2025-12-20，90页）。其§1—2把可监控性看成双边性质：Agent输出提供多少信息，监控器能提取多少信息，二者共同决定结果。它使用`g-mean² = TPR × TNR`，同时考虑真阳性与真阴性；随机等概率判定器两项均0.5，乘积0.25，不能把0.25误读为25%安全任务。论文提出干预、过程、结果属性三类评测，具体标签定义仍随任务而变。[本地论文](references/Monitoring_Monitorability.pdf)，PDF pp.1—4。
 
-该文报告的常规前沿RL扩展没有观察到可监控性明显下降，与上一节“直接针对特定CoT检查器施压”的实验条件不同。后者展示一种可能失效机制，前者测量另一组训练规模和评测条件；不能将任一结果改写成“所有RL必然隐藏”或“未来训练不可能损坏可监控性”。较长推理/更强监控有时改善检测，也增加推理、审查与阻断延迟。应用中应同时记录正常任务质量、监控误报漏报、每次审查成本和执行前等待时间，选择预算内的控制协议，而不只追求一个检测分数。[同文§1贡献与图1](references/030_Monitoring_Monitorability.pdf)，PDF pp.2—3；此处仅核查这些概念与摘要范围，未完整复现90页实验。
+该文报告的常规前沿RL扩展没有观察到可监控性明显下降，与上一节“直接针对特定CoT检查器施压”的实验条件不同。后者展示一种可能失效机制，前者测量另一组训练规模和评测条件；不能将任一结果改写成“所有RL必然隐藏”或“未来训练不可能损坏可监控性”。较长推理/更强监控有时改善检测，也增加推理、审查与阻断延迟。应用中应同时记录正常任务质量、监控误报漏报、每次审查成本和执行前等待时间，选择预算内的控制协议，而不只追求一个检测分数。[同文§1贡献与图1](references/Monitoring_Monitorability.pdf)，PDF pp.2—3；此处仅核查这些概念与摘要范围，未完整复现90页实验。
 
 ---
 
@@ -1864,42 +1864,42 @@ observe:
 <a id="source-s02"></a>
 ### S02 — ToolEmu
 
-题名：*Identifying the Risks of LM Agents with an LM-Emulated Sandbox*。Ruan 等。文件：[007_ToolEmu.pdf](references/007_ToolEmu.pdf)。本地版本为 arXiv:2309.15817v2，2024-05-17；文中标记 ICLR 2024。
+题名：*Identifying the Risks of LM Agents with an LM-Emulated Sandbox*。Ruan 等。文件：[Identifying_the_Risks_of_LM_Agents_with_an_LM-Emulated_Sandbox.pdf](references/Identifying_the_Risks_of_LM_Agents_with_an_LM-Emulated_Sandbox.pdf)。本地版本为 arXiv:2309.15817v2，2024-05-17；文中标记 ICLR 2024。
 
 重点：§2 问题与威胁模型；§3 模拟器与评审；p.10 表3、表4；p.11 表5；p.12 对安全和效用的分析。注意模拟精度、失败识别精度与任务失败率不是同一指标。
 
 <a id="source-s03"></a>
 ### S03 — AgentHarm
 
-题名：*AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents*。Andriushchenko 等。文件：[028_AgentHarm.pdf](references/028_AgentHarm.pdf)。本地版本为 arXiv:2410.09024v3，2025-04-18；文中标记 ICLR 2025。
+题名：*AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents*。Andriushchenko 等。文件：[AgentHarm_A_Benchmark_for_Measuring_Harmfulness_of_LLM_Agents.pdf](references/AgentHarm_A_Benchmark_for_Measuring_Harmfulness_of_LLM_Agents.pdf)。本地版本为 arXiv:2410.09024v3，2025-04-18；文中标记 ICLR 2025。
 
 重点：§3 的任务、合成工具、评分与正常对应任务；§4 的拒绝、攻击与能力保留。Harm score 可包含部分得分，不能直接当成现实世界攻击成功率。
 
 <a id="source-s04"></a>
 ### S04 — AgentDojo
 
-题名：*AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents*。Debenedetti 等。文件：[006_AgentDojo.pdf](references/006_AgentDojo.pdf)。本地版本为 arXiv:2406.13352v3，2024-11-24；NeurIPS 2024 Datasets and Benchmarks。
+题名：*AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents*。Debenedetti 等。文件：[AgentDojo_A_Dynamic_Environment_to_Evaluate_Prompt_Injection_Attacks_and_Defenses_for_LLM_Agents.pdf](references/AgentDojo_A_Dynamic_Environment_to_Evaluate_Prompt_Injection_Attacks_and_Defenses_for_LLM_Agents.pdf)。本地版本为 arXiv:2406.13352v3，2024-11-24；NeurIPS 2024 Datasets and Benchmarks。
 
 重点：§3 环境、状态、用户任务与攻击任务；§4.3 防御；p.9 Figure 9；p.20 表5。正文工具筛选 ASR 的 7.5% 与附录表5的 6.84% 不完全一致，本文保留原始差异，不猜测原因。
 
 <a id="source-s05"></a>
 ### S05 — ART／公开红队竞赛研究
 
-题名：*Security Challenges in AI Agent Deployment: Insights from a Large Scale Public Competition*。Zou 等。文件：[010_Security_Challenges_in_AI_Agent_Deployment_Insights_from_a_Large_Scale_Public_Competition.pdf](references/010_Security_Challenges_in_AI_Agent_Deployment_Insights_from_a_Large_Scale_Public_Competition.pdf)。本地版本为 arXiv:2507.20526v1，2025-07-28。
+题名：*Security Challenges in AI Agent Deployment: Insights from a Large Scale Public Competition*。Zou 等。文件：[Security_Challenges_in_AI_Agent_Deployment_Insights_from_a_Large_Scale_Public_Competition.pdf](references/Security_Challenges_in_AI_Agent_Deployment_Insights_from_a_Large_Scale_Public_Competition.pdf)。本地版本为 arXiv:2507.20526v1，2025-07-28。
 
 重点：§2 的竞赛与精选攻击集合；§3 的迁移、泛化与能力关系。区分全部竞赛交互、精选攻击集、会话 ASR 与行为级 ASR；不把 100% behavior ASR 写成每次攻击都成功。
 
 <a id="source-s06"></a>
 ### S06 — PAIR
 
-题名：*Jailbreaking Black Box Large Language Models in Twenty Queries*。Chao 等。文件：[011_Jailbreaking_Black_Box_Large_Language_Models_in_Twenty_Queries_PAIR.pdf](references/011_Jailbreaking_Black_Box_Large_Language_Models_in_Twenty_Queries_PAIR.pdf)。本地版本为 arXiv:2310.08419v4，2024-07-18。
+题名：*Jailbreaking Black Box Large Language Models in Twenty Queries*。Chao 等。文件：[Jailbreaking_Black_Box_Large_Language_Models_in_Twenty_Queries.pdf](references/Jailbreaking_Black_Box_Large_Language_Models_in_Twenty_Queries.pdf)。本地版本为 arXiv:2310.08419v4，2024-07-18。
 
 重点：§3.1–3.4 的攻击者历史、反馈搜索、并行预算与 Judge；p.4 表1。只介绍研究机制，不提供面向真实系统的越权攻击实施方案。
 
 <a id="source-s07"></a>
 ### S07 — Nemotron 3 Super 技术报告
 
-题名：*Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning*。NVIDIA。文件：[012_Nemotron_3_Super_technical_report.pdf](references/012_Nemotron_3_Super_technical_report.pdf)。本地文件首页日期为 2026-04-03。
+题名：*Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning*。NVIDIA。文件：[Nemotron_3_Super_Open_Efficient_Mixture-of-Experts_Hybrid_Mamba-Transformer_Model_for_Agentic_Reasoning.pdf](references/Nemotron_3_Super_Open_Efficient_Mixture-of-Experts_Hybrid_Mamba-Transformer_Model_for_Agentic_Reasoning.pdf)。本地文件首页日期为 2026-04-03。
 
 重点：p.22 Safety；p.26–28 的多环境 RL、安全环境、PAIR 困难样本与 GenRM。模型结构、规模与吞吐不作为安全性证明。本文不声称重新核验了当前公开模型版本或部署表现。
 
@@ -1934,14 +1934,14 @@ observe:
 <a id="source-s12"></a>
 ### S12 — AI Control
 
-题名：*AI Control: Improving Safety Despite Intentional Subversion*。Greenblatt、Shlegeris、Sachan、Roger。文件：[024_AI_Control_Improving_Safety_Despite_Intentional_Subversion.pdf](references/024_AI_Control_Improving_Safety_Despite_Intentional_Subversion.pdf)。本地版本为 arXiv:2312.06942v5，2024-07-23；正文说明另有缩短修改版发表于 ICML。
+题名：*AI Control: Improving Safety Despite Intentional Subversion*。Greenblatt、Shlegeris、Sachan、Roger。文件：[AI_Control_Improving_Safety_Despite_Intentional_Subversion.pdf](references/AI_Control_Improving_Safety_Despite_Intentional_Subversion.pdf)。本地版本为 arXiv:2312.06942v5，2024-07-23；正文说明另有缩短修改版发表于 ICML。
 
 重点：§2 的 U/T/H 与实验假设；§3 的 monitoring、defer、editing；p.7 表2与 p.15 表7。安全是模拟长序列指标，效用经过缩放；有限攻击搜索、强审查假设和无独立验证划分都必须保留。
 
 <a id="source-s13"></a>
 ### S13 — CoT Monitoring 与 Obfuscation
 
-题名：*Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation*。Baker 等。文件：[027_Monitoring_Reasoning_Models_for_Misbehavior_and_the_Risks_of_Promoting_Obfuscation.pdf](references/027_Monitoring_Reasoning_Models_for_Misbehavior_and_the_Risks_of_Promoting_Obfuscation.pdf)。本地版本为 arXiv:2503.11926v1，2025-03-14。
+题名：*Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation*。Baker 等。文件：[Monitoring_Reasoning_Models_for_Misbehavior_and_the_Risks_of_Promoting_Obfuscation.pdf](references/Monitoring_Reasoning_Models_for_Misbehavior_and_the_Risks_of_Promoting_Obfuscation.pdf)。本地版本为 arXiv:2503.11926v1，2025-03-14。
 
 重点：§2 的完整轨迹与 action-only 比较；§3 的 CoT-only 训练压力与拒绝采样。不能混淆两组实验的观察集合，也不能把两类已识别作弊上的召回率推广到全部风险。
 
@@ -1955,7 +1955,7 @@ observe:
 <a id="source-s15"></a>
 ### S15 — OpenAgentSafety
 
-题名：*OpenAgentSafety: A Comprehensive Framework for Evaluating Real-World AI Agent Safety*。Vijayvargiya、Soni 等。文件：[029_OpenAgentSafety.pdf](references/029_OpenAgentSafety.pdf)。本地版本为 arXiv:2507.06134v2，2026-02-16；文中标记 accepted for publication at ICLR 2026。
+题名：*OpenAgentSafety: A Comprehensive Framework for Evaluating Real-World AI Agent Safety*。Vijayvargiya、Soni 等。文件：[OpenAgentSafety_A_Comprehensive_Framework_for_Evaluating_Real-World_AI_Agent_Safety.pdf](references/OpenAgentSafety_A_Comprehensive_Framework_for_Evaluating_Real-World_AI_Agent_Safety.pdf)。本地版本为 arXiv:2507.06134v2，2026-02-16；文中标记 accepted for publication at ICLR 2026。
 
 重点：§2 基础设施与任务；§2.3 混合评价；p.6 表3、p.9 表4、p.16 表5。条件分母、Judge 对 failure 的误判与环境成本都影响结果解释。正文与附录对通信实现的细节描述并不完全相同，本文仅采用双方支持的多方消息交互能力，不替原文推断具体版本关系。
 

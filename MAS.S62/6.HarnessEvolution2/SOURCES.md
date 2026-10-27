@@ -25,25 +25,25 @@
 
 ## Assigned readings
 
-- R01: [Toolformer: Language Models Can Teach Themselves to Use Tools](readings/001_Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools_2302.04761.pdf)
+- R01: [Toolformer: Language Models Can Teach Themselves to Use Tools](readings/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf)
   - Source: https://arxiv.org/abs/2302.04761
   - PDF version: 2302.04761v1
-- R02: [ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs](readings/002_ToolLLM_Facilitating_Large_Language_Models_to_Master_16000_Real_world_AP_2307.16789.pdf)
+- R02: [ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs](readings/ToolLLM_Facilitating_Large_Language_Models_to_Master_16000%2B_Real-world_APIs.pdf)
   - Source: https://arxiv.org/abs/2307.16789
   - PDF version: 2307.16789v2
-- R03: [SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks](readings/003_SkillsBench_Benchmarking_How_Well_Agent_Skills_Work_Across_Diverse_Tasks_2602.12670.pdf)
+- R03: [SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks](readings/SkillsBench_Benchmarking_How_Well_Agent_Skills_Work_Across_Diverse_Tasks.pdf)
   - Source: https://arxiv.org/abs/2602.12670
   - PDF version: 2602.12670v4
-- R04: [Voyager: An Open-Ended Embodied Agent with Large Language Models](readings/004_Voyager_An_Open_Ended_Embodied_Agent_with_Large_Language_Models_2305.16291.pdf)
+- R04: [Voyager: An Open-Ended Embodied Agent with Large Language Models](readings/VOYAGER_An_Open-Ended_Embodied_Agent_with_Large_Language_Models.pdf)
   - Source: https://arxiv.org/abs/2305.16291
   - PDF version: 2305.16291v2
-- R05: [CORAL: Towards Autonomous Multi-Agent Evolution for Open-Ended Discovery](readings/005_CORAL_Towards_Autonomous_Multi_Agent_Evolution_for_Open_Ended_Discovery_2604.01658.pdf)
+- R05: [CORAL: Towards Autonomous Multi-Agent Evolution for Open-Ended Discovery](readings/CORAL_Towards_Autonomous_Multi-Agent_Evolution_for_Open-Ended_Discovery.pdf)
   - Source: https://arxiv.org/abs/2604.01658
   - PDF version: 2604.01658v3
-- R06: [Towards a Science of Scaling Agent Systems](readings/006_Towards_a_Science_of_Scaling_Agent_Systems_2512.08296.pdf)
+- R06: [Towards a Science of Scaling Agent Systems](readings/Towards_a_Science_of_Scaling_Agent_Systems.pdf)
   - Source: https://arxiv.org/abs/2512.08296
   - PDF version: 2512.08296v3
-- R07: [Why Do Multi-Agent LLM Systems Fail?](readings/007_Why_Do_Multi_Agent_LLM_Systems_Fail_2503.13657.pdf)
+- R07: [Why Do Multi-Agent LLM Systems Fail?](readings/Why_Do_Multi-Agent_LLM_Systems_Fail.pdf)
   - Source: https://arxiv.org/abs/2503.13657
   - PDF version: 2503.13657v3
 
@@ -58,8 +58,8 @@
   - Source: https://raw.githubusercontent.com/SWE-agent/mini-swe-agent/68d367b/src/minisweagent/config/default.yaml
 - [mini-swe-agent pinned src/minisweagent/agents/interactive.py](references/mini-swe-agent-68d367b/src/minisweagent/agents/interactive.py)
   - Source: https://raw.githubusercontent.com/SWE-agent/mini-swe-agent/68d367b/src/minisweagent/agents/interactive.py
-- [ReAct](references/002_ReAct.pdf)
+- [ReAct: Synergizing Reasoning and Acting in Language Models](references/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf)
   - Source: https://arxiv.org/abs/2210.03629
-- [SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering](references/2405.15793.pdf)
+- [SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering](references/SWE-agent_Agent-Computer_Interfaces_Enable_Automated_Software_Engineering.pdf)
   - Source: https://arxiv.org/abs/2405.15793
 - [完整中文课程讲解](notes.zh-CN.md)

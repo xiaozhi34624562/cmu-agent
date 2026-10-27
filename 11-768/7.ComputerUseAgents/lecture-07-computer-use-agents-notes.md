@@ -16,7 +16,7 @@
 
 “**教学推导**”表示由定义或方法推演出的解释；“**工程建议**”表示前文讨论整理出的实现建议，不应当作论文已验证的生产方案。仅出现在讲义、但没有提供对应原论文的工作，只按讲义层次介绍，不补写未经材料支持的技术细节。
 
-**附件校核（2026-09-22 更新）**：[001_MiniWoB.pdf](references/001_MiniWoB.pdf) 已替换为介绍 MiniWoB 的原论文 *World of Bits: An Open-Domain Platform for Web-Based Agents*（ICML 2017），来源清单同步修正。正文对 MiniWoB 仍以历史定位为主，不声称复现其方法与实验。见[材料校核说明](#source-mismatch)。
+**附件校核（2026-09-22 更新）**：[World_of_Bits_An_Open-Domain_Platform_for_Web-Based_Agents.pdf](references/World_of_Bits_An_Open-Domain_Platform_for_Web-Based_Agents.pdf) 已替换为介绍 MiniWoB 的原论文 *World of Bits: An Open-Domain Platform for Web-Based Agents*（ICML 2017），来源清单同步修正。正文对 MiniWoB 仍以历史定位为主，不声称复现其方法与实验。见[材料校核说明](#source-mismatch)。
 
 ---
 
@@ -1680,7 +1680,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-ws"></a>
 ### [WS] WebShop
 
-- 文件：[002_WebShop.pdf](references/002_WebShop.pdf)，28页。
+- 文件：[WebShop_Towards_Scalable_Real-World_Web_Interaction_with_Grounded_Language_Agents.pdf](references/WebShop_Towards_Scalable_Real-World_Web_Interaction_with_Grounded_Language_Agents.pdf)，28页。
 - 标题：*WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents*。
 - 版本标注：arXiv:2207.01206v4，2023-02-08；NeurIPS 2022。
 - 重点：语义动作与简化观察、组合需求奖励、IL/RL 基线、探索与选择分析。
@@ -1688,7 +1688,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-ra"></a>
 ### [RA] ReAct
 
-- 文件：[003_ReAct.pdf](references/003_ReAct.pdf)，33页。
+- 文件：[ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf](references/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf)，33页。
 - 标题：*ReAct: Synergizing Reasoning and Acting in Language Models*。
 - 版本标注：arXiv:2210.03629v3，2023-03-10；ICLR 2023。
 - 重点：语言推理与环境动作的协同、稀疏推理、任务分解、进度与异常处理。
@@ -1696,7 +1696,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-m2w"></a>
 ### [M2W] Mind2Web
 
-- 文件：[004_Mind2Web.pdf](references/004_Mind2Web.pdf)，24页。
+- 文件：[Mind2Web_Towards_a_Generalist_Agent_for_the_Web.pdf](references/Mind2Web_Towards_a_Generalist_Agent_for_the_Web.pdf)，24页。
 - 标题：*Mind2Web: Towards a Generalist Agent for the Web*。
 - 版本标注：arXiv:2306.06070v3，2023-12-09；NeurIPS 2023 Datasets and Benchmarks。
 - 重点：真实网站的离线任务数据、三层泛化划分、MINDACT 候选检索与动作预测。
@@ -1704,7 +1704,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-wa"></a>
 ### [WA] WebArena
 
-- 文件：[001_WebArena.pdf](readings/001_WebArena.pdf)，22页。
+- 文件：[WebArena_A_Realistic_Web_Environment_for_Building_Autonomous_Agents.pdf](readings/WebArena_A_Realistic_Web_Environment_for_Building_Autonomous_Agents.pdf)，22页。
 - 标题：*WebArena: A Realistic Web Environment for Building Autonomous Agents*。
 - 版本标注：arXiv:2307.13854v4，2024-04-16；ICLR 2024。
 - 重点：自托管网页、功能正确性、多种验证方式、不可完成任务与停止判断。
@@ -1712,7 +1712,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-vwa"></a>
 ### [VWA] VisualWebArena
 
-- 文件：[002_VisualWebArena.pdf](readings/002_VisualWebArena.pdf)，25页。
+- 文件：[VisualWebArena_Evaluating_Multimodal_Agents_on_Realistic_Visually_Grounded_Web_Tasks.pdf](readings/VisualWebArena_Evaluating_Multimodal_Agents_on_Realistic_Visually_Grounded_Web_Tasks.pdf)，25页。
 - 标题：*VisualWebArena: Evaluating Multimodal Agents on Realistic Visually Grounded Web Tasks*。
 - 版本标注：arXiv:2401.13649v2，2024-06-06。
 - 重点：视觉必需任务、图片输入、SoM、多模态与文本辅助输入的对照。
@@ -1720,7 +1720,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-wv"></a>
 ### [WV] WebVoyager
 
-- 文件：[005_WebVoyager.pdf](references/005_WebVoyager.pdf)，27页。
+- 文件：[WebVoyager_Building_an_End-to-End_Web_Agent_with_Large_Multimodal_Models.pdf](references/WebVoyager_Building_an_End-to-End_Web_Agent_with_Large_Multimodal_Models.pdf)，27页。
 - 标题：*WebVoyager: Building an End-to-End Web Agent with Large Multimodal Models*。
 - 版本标注：arXiv:2401.13919v4，2024-06-06。
 - 重点：真实在线网页执行、截图与交互元素、轨迹裁剪、人工评价与 VLM 评价一致性。
@@ -1728,7 +1728,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-os"></a>
 ### [OS] OSWorld
 
-- 文件：[003_OSWorld.pdf](readings/003_OSWorld.pdf)，51页。
+- 文件：[OSWorld_Benchmarking_Multimodal_Agents_for_Open-Ended_Tasks_in_Real_Computer_Environments.pdf](readings/OSWorld_Benchmarking_Multimodal_Agents_for_Open-Ended_Tasks_in_Real_Computer_Environments.pdf)，51页。
 - 标题：*OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments*。
 - 版本标注：arXiv:2404.07972v2，2024-05-30。
 - 重点：完整桌面环境、任务初始化、跨应用工作流、动作空间、应用特定结果检查。
@@ -1737,7 +1737,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-ssp"></a>
 ### [SSP] ScreenSpot-Pro
 
-- 文件：[006_ScreenSpot-Pro.pdf](references/006_ScreenSpot-Pro.pdf)，17页。
+- 文件：[ScreenSpot-Pro_GUI_Grounding_for_Professional_High-Resolution_Computer_Use.pdf](references/ScreenSpot-Pro_GUI_Grounding_for_Professional_High-Resolution_Computer_Use.pdf)，17页。
 - 标题：*ScreenSpot-Pro: GUI Grounding for Professional High-Resolution Computer Use*。
 - 版本标注：arXiv:2504.07981v1，2025-04-04；文内另有原始上传日期说明。
 - 重点：高分辨率专业界面、细小目标、ReGround、ScreenSeekeR 与递归区域搜索。
@@ -1746,7 +1746,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-oc"></a>
 ### [OC] OpenCUA
 
-- 文件：[004_OpenCUA.pdf](readings/004_OpenCUA.pdf)，44页。
+- 文件：[OpenCUA_Open_Foundations_for_Computer-Use_Agents.pdf](readings/OpenCUA_Open_Foundations_for_Computer-Use_Agents.pdf)，44页。
 - 标题：*OpenCUA: Open Foundations for Computer-Use Agents*。
 - 版本标注：arXiv:2508.09123v3，2025-10-04；NeurIPS 2025。
 - 重点：AgentNet、动作离散化、状态—动作对齐、反思轨迹、L1/L2/L3、历史表示与训练数据混合。
@@ -1755,7 +1755,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-mw"></a>
 ### [MW] MolmoWeb
 
-- 文件：[008_MolmoWeb.pdf](references/008_MolmoWeb.pdf)，26页。
+- 文件：[MolmoWeb_Open_Visual_Web_Agent_and_Open_Data_for_the_Open_Web.pdf](references/MolmoWeb_Open_Visual_Web_Agent_and_Open_Data_for_the_Open_Web.pdf)，26页。
 - 标题：*MolmoWeb: Open Visual Web Agent and Open Data for the Open Web*。
 - 版本标注：arXiv:2604.08516v1，2026-04-09。
 - 重点：AxTree 教师与视觉学生、多来源轨迹、原子技能、感知数据、人类与合成数据对照、推理计算扩展。
@@ -1764,7 +1764,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-cg"></a>
 ### [CG] CUA-Gym
 
-- 文件：[005_CUA-Gym.pdf](readings/005_CUA-Gym.pdf)，82页。
+- 文件：[CUA-Gym_Scaling_Verifiable_Training_Environments_and_Tasks_for_Computer-Use_Agents.pdf](readings/CUA-Gym_Scaling_Verifiable_Training_Environments_and_Tasks_for_Computer-Use_Agents.pdf)，82页。
 - 标题：*CUA-Gym: Scaling Verifiable Training Environments and Tasks for Computer-Use Agents*。
 - 版本标注：arXiv:2605.25624v2，2026-06-08；封面日期2026-06-09。
 - 重点：状态与奖励联合生成、进程级信息隔离、可注入 mock 环境、GSPO、长轨迹切片、动作批处理。
@@ -1773,7 +1773,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-ga"></a>
 ### [GA] Gym-Anything
 
-- 文件：[007_Gym-Anything.pdf](references/007_Gym-Anything.pdf)，69页。
+- 文件：[Gym-Anything_Turn_any_Software_into_an_Agent_Environment.pdf](references/Gym-Anything_Turn_any_Software_into_an_Agent_Environment.pdf)，69页。
 - 标题：*Gym-Anything: Turn any Software into an Agent Environment*。
 - 版本标注：arXiv:2604.06126v1，2026-04-07。
 - 重点：真实软件环境构建、三阶段脚本、创建—审计循环、共享构建经验、任务扩增、checklist 验证与 TTA。
@@ -1782,7 +1782,7 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 <a id="s-mac"></a>
 ### [MAC] Multi-Agent Computer Use
 
-- 文件：[006_Multi-Agent_Computer_Use_MACU.pdf](readings/006_Multi-Agent_Computer_Use_MACU.pdf)，42页。
+- 文件：[Multi-Agent_Computer_Use.pdf](readings/Multi-Agent_Computer_Use.pdf)，42页。
 - 标题：*Multi-Agent Computer Use*。
 - 版本标注：arXiv:2606.01533v1，2026-06-01。
 - 作者：Jing Yu Koh、Ruslan Salakhutdinov、Daniel Fried。
@@ -1790,9 +1790,9 @@ ScreenSpot-Pro揭示高密度专业界面的定位困难；OSWorld揭示跨应�
 - 口径提醒：36任务规划消融不是完整主结果；部分并行加速实验排除了推理开销。
 
 <a id="source-mismatch"></a>
-### 附件校核：`001_MiniWoB.pdf`
+### 附件校核：`World_of_Bits_An_Open-Domain_Platform_for_Web-Based_Agents.pdf`
 
-**当前附件。** [World of Bits: An Open-Domain Platform for Web-Based Agents](references/001_MiniWoB.pdf)，Tianlin Shi、Andrej Karpathy、Linxi Fan、Jonathan Hernandez、Percy Liang，ICML 2017，PMLR 70:3135–3144。来源为 [PMLR 官方论文页](https://proceedings.mlr.press/v70/shi17a.html)。原论文介绍 MiniWoB 这一简化网页任务环境；本笔记不将它与后续 MiniWoB++ 版本混称。
+**当前附件。** [World of Bits: An Open-Domain Platform for Web-Based Agents](references/World_of_Bits_An_Open-Domain_Platform_for_Web-Based_Agents.pdf)，Tianlin Shi、Andrej Karpathy、Linxi Fan、Jonathan Hernandez、Percy Liang，ICML 2017，PMLR 70:3135–3144。来源为 [PMLR 官方论文页](https://proceedings.mlr.press/v70/shi17a.html)。原论文介绍 MiniWoB 这一简化网页任务环境；本笔记不将它与后续 MiniWoB++ 版本混称。
 
 **校正记录（2026-09-22）。** 原路径曾误放摘要论文 *Get To The Point: Summarization with Pointer-Generator Networks*（arXiv:1704.04368v2）。该错误附件现已替换，`SOURCES.md` 同步改为 World of Bits 的官方页面与 PDF 地址。保留本记录是为了说明旧版笔记为何曾标注附件不匹配；当前文件已不再是摘要论文。
 

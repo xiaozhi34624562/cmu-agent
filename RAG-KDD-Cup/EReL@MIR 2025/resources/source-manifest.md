@@ -26,7 +26,7 @@ Important ranking distinction:
 - Author: Jingbiao Mei
 - arXiv: https://arxiv.org/abs/2606.04240
 - PDF: https://arxiv.org/pdf/2606.04240
-- Local file: `../papers/EReL-Multimodal-Document-Retrieval-Challenge-Overview.pdf`
+- Local file: `../papers/Overview_of_the_EReL_MIR_2025_Multimodal_Document_Retrieval_Challenge_Track_1.pdf`
 - Validation: 5 pages, 467,936 bytes, PDF 1.7; text extraction and representative-page rendering succeeded.
 
 ### First-place technical report
@@ -34,7 +34,7 @@ Important ranking distinction:
 - Title: Visual Anchor Point for Multimodal Document Retrieval
 - Authors: Bohan Hou, Haoqiang Lin, Xuemeng Song, Haokun Wen, Liqiang Nie
 - Original artifact: `../code/01-iLearn-MDR/report.pdf`
-- Local paper copy: `../papers/1st-iLearn-Technical-Report.pdf`
+- Local paper copy: `../papers/Visual_Anchor_Point_for_Multimodal_Document_Retrieval.pdf`
 - Validation: 3 pages, 464,454 bytes, PDF 1.5; text extraction and rendering succeeded.
 
 No separate PDF report was present in the downloaded second- and third-place repositories. Their approaches are documented by the official 2026 overview paper and repository code/README files.

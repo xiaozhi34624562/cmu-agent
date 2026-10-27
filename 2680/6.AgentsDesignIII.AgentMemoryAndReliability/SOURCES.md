@@ -9,17 +9,17 @@
 
 ## Readings
 
-- [RAG](readings/001_RAG_02ad74.pdf)
+- [RAG](readings/Retrieval-Augmented_Generation_for_Knowledge-Intensive_NLP_Tasks.pdf)
   - Source: https://arxiv.org/abs/2005.11401
-- [MemGPT](readings/002_MemGPT_26e7ae.pdf)
+- [MemGPT](readings/MemGPT_Towards_LLMs_as_Operating_Systems.pdf)
   - Source: https://arxiv.org/abs/2310.08560
-- [where agents fail](readings/003_where_agents_fail_5b748d.pdf)
+- [where agents fail](readings/Where_LLM_Agents_Fail_and_How_They_can_Learn_From_Failures.pdf)
   - Source: https://arxiv.org/abs/2509.25370
-- [why multi-agent systems fail](readings/004_why_multi_agent_systems_fail_203f8b.pdf)
+- [why multi-agent systems fail](readings/Why_Do_Multi-Agent_LLM_Systems_Fail.pdf)
   - Source: https://arxiv.org/abs/2503.13657
-- [agent failure taxonomy](readings/005_agent_failure_taxonomy_3c6fd9.pdf)
+- [agent failure taxonomy](readings/Reasoning_Failures_in_Large_Language_Model_Agents.pdf)
   - Source: https://arxiv.org/abs/2607.05775
-- [overthinking](readings/006_overthinking_d134e1.pdf)
+- [overthinking](readings/The_Danger_of_Overthinking_Examining_the_Reasoning-Action_Dilemma_in_Agentic_Tasks.pdf)
   - Source: https://arxiv.org/abs/2502.08235
 
 ## Local study notes

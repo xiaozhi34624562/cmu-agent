@@ -9,14 +9,12 @@ and writes one SOURCES.md per folder. Re-running it keeps user notes intact.
 from __future__ import annotations
 
 import filecmp
-import hashlib
 import json
 import os
 import re
 import shutil
 import tarfile
 import tempfile
-import unicodedata
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
 from urllib.parse import urljoin, urlparse
@@ -24,6 +22,7 @@ from urllib.parse import urljoin, urlparse
 from bs4 import BeautifulSoup
 
 from sync import BASE, ROOT, normalized_url, reading_destination, reading_snapshot_issue
+from material_names import material_filename
 
 
 def archive_snapshot_date() -> str:
@@ -126,13 +125,7 @@ def copy_if_changed(source: Path, target: Path) -> None:
 
 
 def filename_for(title: str, url: str, number: int, extension: str) -> str:
-    # Keep symbols that identify a different paper: tau-bench and QuIP#.
-    title = title.replace("τ", "tau").replace("#", "Sharp")
-    normalized = unicodedata.normalize("NFKD", title)
-    ascii_title = normalized.encode("ascii", "ignore").decode("ascii")
-    slug = re.sub(r"[^A-Za-z0-9]+", "_", ascii_title).strip("_")[:64] or "Reading"
-    digest = hashlib.sha256(url.encode()).hexdigest()[:6]
-    return f"{number:03d}_{slug}_{digest}{extension}"
+    return material_filename(title, url, extension)
 
 
 def slide_destination(site_path: str, lesson_folder: Path) -> Path:
@@ -232,7 +225,7 @@ def organize_lessons() -> None:
         if items:
             file_index = 0
             for title, url in items:
-                source = reading_destination(url)
+                source = reading_destination(url, title)
                 if source is not None and source.exists():
                     file_index += 1
                     issue = reading_snapshot_issue(source)
@@ -426,9 +419,9 @@ def update_course_index() -> None:
                  "| 第 11 课的 `10_llm_serving_basics_2a.pdf` | 封面为 Intro to GPUs，对应 10 月 21 日；位置正确，保留官网文件名。 |",
                  "| 第 8 课的 `8_agent_design_5.pdf` | 封面用 Agent design V，课表用 Advanced agent design I；内容都是成本与性能，位置正确。 |",
                  "| `8_assignment3.pdf` | 是 Assignment 3: MadsOpt 的作业说明；归入 [作业 3](assignment/assignment-3/SOURCES.md)，第 8 课保留交叉链接。 |",
-                 "| `008_bench_9e1bf2.pdf`、`028_QuIP_0bdf3d.pdf` | 命名时丢失 τ 和 #；学习副本改为 `008_tau_bench_9e1bf2.pdf`、`028_QuIPSharp_0bdf3d.pdf`，原始下载不变。 |",
+                 "| τ-bench、QuIP# | 文件名保留区分论文身份的符号含义，分别用 tau、Sharp 表示，并使用完整论文标题；旧名见改名记录。 |",
                  "| 笔记中的 `SOURCES(数字).md` | 上传时产生的旧别名，引用统一指向本课 `SOURCES.md`。 |", "",
-                 "阅读副本文件名格式为 `序号_课程阅读标签_URL摘要.pdf/html`；例如 MLA 对应 DeepSeek-V2、SWA 对应 Mistral 7B，属于官网用方法简称指代论文，已核对来源，无须移动。各课的 SOURCES.md 另列本地学习笔记，便于区分笔记与教师讲义。", ""]
+                 "论文归档与阅读副本统一使用完整标题命名，网页阅读材料使用页面标题；MLA、SWA 等官网简称仍保留在课表和阅读标签中，文件名分别使用对应论文 DeepSeek-V2、Mistral 7B 的完整标题。原文件名、现路径、来源 URL 和内容校验值见 [文件改名记录](../tools/MATERIAL_RENAMES.json)。同步与整理共用标题命名规则。各课的 SOURCES.md 另列本地学习笔记，便于区分笔记与教师讲义。", ""]
     begin, end = "<!-- BEGIN COURSE INDEX -->", "<!-- END COURSE INDEX -->"
     replacement = begin + "\n\n" + "\n".join(sections) + "\n" + end + "\n\n"
     path = ROOT / "README.md"

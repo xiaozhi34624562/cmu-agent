@@ -38,7 +38,8 @@
 
 - site/：本学期页面、讲义、大纲导出、教程与公开作业 notebook；原始下载不翻译。
 - readings/：课程论文及往届公开项目参考的原始归档；下载状态见 manifest.json。
-- 每周 slides/、tutorials/、readings/ 是分类学习副本；原始文件名保留。
+- 每周 slides/、tutorials/、readings/ 是分类学习副本；讲义与教程保留官方原名，论文和阅读网页使用完整标题命名。
+- 论文原文件名、现路径、来源 URL 和未改变的内容校验值见 [文件改名记录](../tools/MATERIAL_RENAMES.json)；同步与整理共用标题命名规则。
 - 周次不等于 PDF 的 Lecture 编号；例如 Week 5 对应 Lecture 4。
 - `lec6 - rl in practice.pdf` 前两页为嘉宾介绍，后续为 RL/自蒸馏实践教程；学习副本归入第 7 周 tutorials/，以全文内容说明用途。
 - 官网后续 [slides] 占位不计作讲义；未获取正文的材料保留明确状态。

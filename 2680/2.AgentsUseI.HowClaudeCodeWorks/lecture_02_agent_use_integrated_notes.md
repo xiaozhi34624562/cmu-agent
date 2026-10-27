@@ -1656,7 +1656,7 @@ project/
 ### R01｜Best practices for Claude Code
 
 **来源类型：** Claude Code 官方产品文档快照。  
-**本地文件：** [001_Best_practices_for_Claude_Code_9686dc.html](readings/001_Best_practices_for_Claude_Code_9686dc.html)。  
+**本地文件：** [Best_practices_for_Claude_Code.html](readings/Best_practices_for_Claude_Code.html)。  
 **原文地址：** [原文](https://code.claude.com/docs/en/best-practices)
 
 主要定位：*Give Claude a way to verify its work*；*Explore first, then plan, then code*；*Write an effective CLAUDE.md*；*Let Claude interview you*；*Manage your session*；*Rewind with checkpoints*；*Automate and scale*；*Add an adversarial review step*；*Avoid common failure patterns*。
@@ -1668,7 +1668,7 @@ project/
 
 **作者：** Simon Willison。  
 **来源类型：** 工程实践指南目录。  
-**本地文件：** [002_Agentic_Engineering_Patterns_bedbf1.html](readings/002_Agentic_Engineering_Patterns_bedbf1.html)。  
+**本地文件：** [Agentic_Engineering_Patterns.html](readings/Agentic_Engineering_Patterns.html)。  
 **目录地址：** [原文](https://simonwillison.net/guides/agentic-engineering-patterns/)
 
 目录的主要结构为 Principles、Working with coding agents、Testing and QA、Understanding code、Annotated prompts 与 Appendix。**目录本身不支持其链接章节的全部细节。**本文只将下列已核对的章节作为独立延伸来源，不声称阅读或覆盖整个指南。
@@ -1728,7 +1728,7 @@ project/
 
 **作者：** Barry Zhang、Keith Lazuka、Mahesh Murag；Anthropic。  
 **来源类型：** 官方工程文章。  
-**本地文件：** [003_Equipping_agents_for_the_real_world_with_Agent_Skills_2e50ab.html](readings/003_Equipping_agents_for_the_real_world_with_Agent_Skills_2e50ab.html)。  
+**本地文件：** [Equipping_agents_for_the_real_world_with_Agent_Skills.html](readings/Equipping_agents_for_the_real_world_with_Agent_Skills.html)。  
 **原文地址：** [原文](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)
 
 主要定位：*The anatomy of a skill*；*Skills and the context window*；*Skills and code execution*；*Developing and evaluating skills*；*Security considerations when using Skills*。本文使用其 PDF 表单示例、三层加载、脚本复用与从评测开始建设技能的思想，不把示例当成全部文档处理问题已经解决的证据。
@@ -1738,7 +1738,7 @@ project/
 
 **作者：** Adam Jones、Conor Kelly；Anthropic。  
 **来源类型：** 官方工程文章。  
-**本地文件：** [004_Code_execution_with_MCP_9b88bf.html](readings/004_Code_execution_with_MCP_9b88bf.html)。  
+**本地文件：** [Code_execution_with_MCP_building_more_efficient_AI_agents.html](readings/Code_execution_with_MCP_building_more_efficient_AI_agents.html)。  
 **原文地址：** [原文](https://www.anthropic.com/engineering/code-execution-with-mcp)
 
 主要定位：工具定义与中间结果开销；*Code execution with MCP improves context efficiency*；*Progressive disclosure*；*Context efficient tool results*；*More powerful and context-efficient control flow*；*Privacy-preserving operations*；*State persistence and skills*。
@@ -1750,7 +1750,7 @@ project/
 
 **作者：** Lawrence Jones。  
 **来源类型：** incident.io 工程实践说明。  
-**本地文件：** [005_demystifying_skills_and_MCPs_c840b9.html](readings/005_demystifying_skills_and_MCPs_c840b9.html)。  
+**本地文件：** [How_skills_and_MCPs_actually_work.html](readings/How_skills_and_MCPs_actually_work.html)。  
 **原文地址：** [原文](https://blog.lawrencejones.dev/demystifying-skills-and-mcps/)
 
 主要定位：*LLM 101*；*Agents are a loop*；*MCPs are just APIs in tools*；*Skills are just instructions*；*Plugins bundle skills*；*Skills replace system prompts*。
@@ -1761,7 +1761,7 @@ project/
 ### R06｜Claude Code Hooks reference
 
 **来源类型：** 官方产品参考文档快照。  
-**本地文件：** [006_Claude_Code_hooks_reference_20106b.html](readings/006_Claude_Code_hooks_reference_20106b.html)。  
+**本地文件：** [Hooks_reference.html](readings/Hooks_reference.html)。  
 **原文地址：** [原文](https://code.claude.com/docs/en/hooks)
 
 主要定位：*Hook lifecycle*；*Hook input and output*；*Exit code output*；*Timeouts*；*Block the action when a hook fails*；*PreToolUse*；*PostToolUse decision control*；*Stop input*；*Run hooks in the background*；*Security considerations*。
@@ -1773,7 +1773,7 @@ project/
 
 **作者：** Scott Fryxell。  
 **来源类型：** 个人工程实践文章。  
-**本地文件：** [007_The_Harness_Is_the_Thing_8733f2.html](readings/007_The_Harness_Is_the_Thing_8733f2.html)。  
+**本地文件：** [The_Harness_Is_the_Thing.html](readings/The_Harness_Is_the_Thing.html)。  
 **原文地址：** [原文](https://scott-fryxell.github.io/blog/the-harness-is-the-thing)
 
 主要定位：*The cost advantage*；*A product harness connection*；*Breaking down the harness*。本文使用作者的角色工作流、前期模式建立、共享脚本与 Skills、可脚本化产品入口，不把个人订阅、模型使用比例或趋势观点作为普遍结论。
@@ -1784,7 +1784,7 @@ project/
 **全名：** *Guardrails Beat Guidance: A Large-Scale Study of Rules, Skills, and Persistent Configuration for Coding Agents*。  
 **作者：** Xing Zhang、Guanghui Wang、Yanwei Cui、Wei Qiu、Ziyuan Li、Bing Zhu、Peiyang He。  
 **来源类型：** 实验论文预印本。  
-**本地文件：** [008_Guardrails_Beat_Guidance_c68b51.pdf](readings/008_Guardrails_Beat_Guidance_c68b51.pdf)，12 页。  
+**本地文件：** [Guardrails_Beat_Guidance_A_Large-Scale_Study_of_Rules_Skills_and_Persistent_Configuration_for_Coding_Agents.pdf](readings/Guardrails_Beat_Guidance_A_Large-Scale_Study_of_Rules_Skills_and_Persistent_Configuration_for_Coding_Agents.pdf)，12 页。  
 **归档版本标识：** `arXiv:2604.11088v2`。
 
 主要定位：§3 语料；§4 PBRS 类比；§5 实验设置；§6.1—6.4 四组实验；§7 局限；附录表 2—5。本文的消融符号按附录表 4 的明确定义解释，正值表示该规则在完整组合中有益，避免与“移除后的变化”措辞混用。
@@ -1797,7 +1797,7 @@ project/
 **副标题：** *A controlled comparison of MCP and CLI tool use across seven agent scaffoldings, five language models, and one software task*。  
 **作者：** Marc Alier Forment、María José Casañ Guerrero、Francisco José García-Peñalvo、Juanan Pereira。  
 **来源类型：** 系统对照实验论文。  
-**本地文件：** [009_The_Scaffolding_Matters_More_Than_the_Interface_8f9a1f.pdf](readings/009_The_Scaffolding_Matters_More_Than_the_Interface_8f9a1f.pdf)，27 页。
+**本地文件：** [The_Scaffolding_Matters_More_Than_the_Interface.pdf](readings/The_Scaffolding_Matters_More_Than_the_Interface.pdf)，27 页。
 
 主要定位：§2.1—2.6 任务、隔离、计量与装置纠错；§2.8 成本口径；§3.2 固定 CLI 比较；§4.1 接口配对；§4.3 目录方式；§4.4 失败成本；§7 实际接口使用；§8 局限与重复运行；§9 工程讨论。
 

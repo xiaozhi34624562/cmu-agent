@@ -3,7 +3,7 @@
 > **课程**：CMU 11-768 AI Agents，2026 年秋季。  
 > **课次**：2026-08-25；本地讲解整理于 2026-10-26。  
 > **主讲义**：Daniel Fried、Graham Neubig，*What Are Agents? And How Do They Work?*，39 页。  
-> **入口**：[SOURCES.md](SOURCES.md)；[讲义](lecture-01-agents.pdf)；[Toolformer](readings/001_Toolformer.pdf)；[ReAct](readings/002_ReAct.pdf)；[Mini-SWE-Agent 归档](readings/003_Mini-SWE-Agent.md)。
+> **入口**：[SOURCES.md](SOURCES.md)；[讲义](lecture-01-agents.pdf)；[Toolformer](readings/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf)；[ReAct](readings/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf)；[Mini-SWE-Agent 归档](readings/003_Mini-SWE-Agent.md)。
 
 这一讲要建立的能力，是看见一个 Agent 时能够指出：谁做决策、决策依据是什么、动作在哪里实际执行、反馈如何进入下一轮、任务成功由谁判断。能够回答这些问题，才有基础继续学习工具、长上下文、记忆、规划、训练、安全与监控。
 
@@ -587,8 +587,8 @@ p.33 的日期是 tentative，p.36 明确以作业说明和 Canvas 为权威；�
 ## 附录 B：来源版本与使用范围
 
 - **L1**：[lecture-01-agents.pdf](lecture-01-agents.pdf)，39 页；[课程原地址](https://www.cmu-agents.com/slides/lecture-01-agents.pdf)。主线为 pp.9—31，组织信息按本地版本保留。
-- **T**：Schick et al.，*Toolformer: Language Models Can Teach Themselves to Use Tools*，[本地 PDF](readings/001_Toolformer.pdf)，arXiv:2302.04761v1，2023-02-09，17 页；[论文入口](https://arxiv.org/abs/2302.04761)。本文重点使用 §2—5、§7；附录 A/B 说明工具提示、筛选和训练设置，不能把主文概述当完整复现配方。
-- **R**：Yao et al.，*ReAct: Synergizing Reasoning and Acting in Language Models*，[本地 PDF](readings/002_ReAct.pdf)，arXiv:2210.03629v3，2023-03-10，ICLR 2023，33 页；[论文入口](https://arxiv.org/abs/2210.03629)。重点使用 §2—4、图 1、表 1—4 和伦理说明；附录含提示、额外实验与轨迹。
+- **T**：Schick et al.，*Toolformer: Language Models Can Teach Themselves to Use Tools*，[本地 PDF](readings/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf)，arXiv:2302.04761v1，2023-02-09，17 页；[论文入口](https://arxiv.org/abs/2302.04761)。本文重点使用 §2—5、§7；附录 A/B 说明工具提示、筛选和训练设置，不能把主文概述当完整复现配方。
+- **R**：Yao et al.，*ReAct: Synergizing Reasoning and Acting in Language Models*，[本地 PDF](readings/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf)，arXiv:2210.03629v3，2023-03-10，ICLR 2023，33 页；[论文入口](https://arxiv.org/abs/2210.03629)。重点使用 §2—4、图 1、表 1—4 和伦理说明；附录含提示、额外实验与轨迹。
 - **M**：[Mini-SWE-Agent README 本地归档](readings/003_Mini-SWE-Agent.md)；[项目来源](https://github.com/swe-agent/mini-swe-agent)。归档自称 v2，未提供精确 commit；本篇使用其设计说明，未验证当前线上分数和所有源码。
 
 **验证范围**：全文依据本地材料编写，39 页主讲义已逐页提取核读，截图页进行了渲染核对；本地执行了 §14 的四类输入断言。没有模型调用、训练、SWE-bench/ALFWorld/WebShop 运行或当前工具版本性能复测。

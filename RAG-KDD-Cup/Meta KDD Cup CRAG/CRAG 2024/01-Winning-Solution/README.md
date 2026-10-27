@@ -4,7 +4,7 @@
 
 db3 把 CRAG 视为受负分约束的动态数据系统：Task 1 组合网页与公共结构化数据，Task 2/3 规整 KG API，再用拒答微调控制生成风险。论文报告三个任务均第一，核心价值是检索、结构化查询、数据工程和拒答的联合优化。
 
-[论文](./papers/Winning-Solution-For-Meta-KDD-Cup-24.pdf) · [代码状态](./code/README.md) · [来源清单](./resources/source-manifest.md)
+[论文](./papers/Winning_Solution_For_Meta_KDD_Cup_24.pdf) · [代码状态](./code/README.md) · [来源清单](./resources/source-manifest.md)
 
 ## 2. 论文身份与比赛背景
 

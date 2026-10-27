@@ -1938,27 +1938,27 @@ All DrGRPO policy-loss gradient checks passed.
 
 <a id="ref-fund"></a>
 **[FUND] Sean Welleck — CS11-711 Advanced NLP: Reinforcement Learning**  
-文件：[001_RL_Fundamentals.pdf](references/001_RL_Fundamentals.pdf)，50 页。补充 MDP、状态与观察、价值函数、折扣、TD、GAE 和 PPO 更新约束。
+文件：[CS11-711_Advanced_NLP_-_Reinforcement_Learning.pdf](references/CS11-711_Advanced_NLP_-_Reinforcement_Learning.pdf)，50 页。补充 MDP、状态与观察、价值函数、折扣、TD、GAE 和 PPO 更新约束。
 
 <a id="ref-rest"></a>
 **[REST] Caglar Gulcehre et al. — Reinforced Self-Training (ReST) for Language Modeling**  
-归档版本：2023 年，arXiv:2308.08998v2。文件：[001_ReST.pdf](readings/001_ReST.pdf)，23 页。重点阅读 §3 的 Grow/Improve、§4 的损失与人评比较、§6 的限制讨论。
+归档版本：2023 年，arXiv:2308.08998v2。文件：[Reinforced_Self-Training_ReST_for_Language_Modeling.pdf](readings/Reinforced_Self-Training_ReST_for_Language_Modeling.pdf)，23 页。重点阅读 §3 的 Grow/Improve、§4 的损失与人评比较、§6 的限制讨论。
 
 <a id="ref-em"></a>
 **[EM] Avi Singh et al. — Beyond Human Data: Scaling Self-Training for Problem-Solving with Language Models**  
-归档版本：TMLR 04/2024，arXiv:2312.06585v4。文件：[002_ReST-EM.pdf](readings/002_ReST-EM.pdf)，16 页。重点阅读 §3 的 EM 框架、§5 的数据、轮次、Pass@K 与迁移实验。
+归档版本：TMLR 04/2024，arXiv:2312.06585v4。文件：[Beyond_Human_Data_Scaling_Self-Training_for_Problem-Solving_with_Language_Models.pdf](readings/Beyond_Human_Data_Scaling_Self-Training_for_Problem-Solving_with_Language_Models.pdf)，16 页。重点阅读 §3 的 EM 框架、§5 的数据、轮次、Pass@K 与迁移实验。
 
 <a id="ref-w92"></a>
 **[W92] Ronald J. Williams — Simple Statistical Gradient-Following Algorithms for Connectionist Reinforcement Learning**  
-期刊：Machine Learning 8, 229–256，1992。文件：[002_REINFORCE.pdf](references/002_REINFORCE.pdf)，28 页。重点阅读 §4 的定义与定理、§5 的回合反馈、§7 的反向传播兼容性、§8 的收敛与 baseline 讨论。本文引用 PDF 页码，不使用扫描页脚中可能混杂的编号。
+期刊：Machine Learning 8, 229–256，1992。文件：[Simple_statistical_gradient-following_algorithms_for_connectionist_reinforcement_learning.pdf](references/Simple_statistical_gradient-following_algorithms_for_connectionist_reinforcement_learning.pdf)，28 页。重点阅读 §4 的定义与定理、§5 的回合反馈、§7 的反向传播兼容性、§8 的收敛与 baseline 讨论。本文引用 PDF 页码，不使用扫描页脚中可能混杂的编号。
 
 <a id="ref-dsm"></a>
 **[DSM] Zhihong Shao et al. — DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models**  
-归档版本：arXiv:2402.03300v3，2024 年。文件：[003_DeepSeekMath.pdf](readings/003_DeepSeekMath.pdf)，30 页。重点阅读 §4 的完整 GRPO、§5.2 的统一分析与实验、附录 A 的梯度形式。
+归档版本：arXiv:2402.03300v3，2024 年。文件：[DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf](readings/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf)，30 页。重点阅读 §4 的完整 GRPO、§5.2 的统一分析与实验、附录 A 的梯度形式。
 
 <a id="ref-dr"></a>
 **[DR] Zichen Liu et al. — Understanding R1-Zero-Like Training: A Critical Perspective**  
-归档版本：COLM 2025，arXiv:2503.20783v2。文件：[004_DrGRPO.pdf](readings/004_DrGRPO.pdf)，20 页。重点阅读 §2 的基础模型分析、§3 的归一化与训练动态、附录 A/C/G 的推导、消融与配置。
+归档版本：COLM 2025，arXiv:2503.20783v2。文件：[Understanding_R1-Zero-Like_Training_A_Critical_Perspective.pdf](readings/Understanding_R1-Zero-Like_Training_A_Critical_Perspective.pdf)，20 页。重点阅读 §2 的基础模型分析、§3 的归一化与训练动态、附录 A/C/G 的推导、消融与配置。
 
 ### D.2 按主讲义顺序回读参考资料
 

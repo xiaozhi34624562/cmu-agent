@@ -1451,7 +1451,7 @@ Codex 研究：人类工作转向委托、监督、复核与系统化
 #### R1 · Claude Code Subagents
 
 **标题：**Create custom subagents。  
-**本地文件：**[001_Claude_Code_subagents_7dc93e.html](readings/001_Claude_Code_subagents_7dc93e.html)。  
+**本地文件：**[Create_custom_subagents.html](readings/Create_custom_subagents.html)。  
 **原始地址：**[原始来源](https://code.claude.com/docs/en/sub-agents)
 
 本文主要使用的小节为：Write subagent files；Supported frontmatter fields；Available tools；Preload skills into subagents；Enable persistent memory；Fork the current conversation；Run subagents in foreground or background；Choose between subagents and main conversation；Let subagents spawn their own subagents；Concurrent subagent limit；What loads at startup；Resume subagents；Auto-compaction。
@@ -1462,7 +1462,7 @@ Codex 研究：人类工作转向委托、监督、复核与系统化
 #### R2 · Claude Code Agent Teams
 
 **标题：**Orchestrate teams of Claude Code sessions。  
-**本地文件：**[002_Claude_Code_agent_teams_80ee58.html](readings/002_Claude_Code_agent_teams_80ee58.html)。  
+**本地文件：**[Orchestrate_teams_of_Claude_Code_sessions.html](readings/Orchestrate_teams_of_Claude_Code_sessions.html)。  
 **原始地址：**[原始来源](https://code.claude.com/docs/en/agent-teams)
 
 本文主要使用的小节为：When to use agent teams；Have teammates plan before implementing；Assign and claim tasks；Shut down teammates；Enforce quality gates with hooks；Architecture；Use subagent definitions for teammates；Permissions；Context and communication；Investigate with competing hypotheses；Give teammates enough context；Choose an appropriate team size；Size tasks appropriately；Avoid file conflicts；Limitations。
@@ -1473,7 +1473,7 @@ Codex 研究：人类工作转向委托、监督、复核与系统化
 #### R3 · Claude Code Dynamic Workflows
 
 **标题：**Orchestrate subagents at scale with dynamic workflows。  
-**本地文件：**[003_Claude_Code_dynamic_workflows_8516d9.html](readings/003_Claude_Code_dynamic_workflows_8516d9.html)。  
+**本地文件：**[Orchestrate_subagents_at_scale_with_dynamic_workflows.html](readings/Orchestrate_subagents_at_scale_with_dynamic_workflows.html)。  
 **原始地址：**[原始来源](https://code.claude.com/docs/en/workflows)
 
 本文主要使用：与 Subagents、Skills、Teams 的比较；Run a bundled workflow；Example workflow prompts；What the saved script looks like；Edit a saved script；How a workflow runs；Prompt caching in a fan-out；Resume after a pause；When an agent stalls and restarts；Set a size guideline，以及运行限制表。
@@ -1484,7 +1484,7 @@ Codex 研究：人类工作转向委托、监督、复核与系统化
 #### R4 · C 编译器实验
 
 **标题：**Building a C compiler with a team of parallel Claudes。作者：Nicholas Carlini。文章日期：2026-02-05。  
-**本地文件：**[004_Building_a_C_compiler_with_a_team_of_parallel_Claudes_1eba12.html](readings/004_Building_a_C_compiler_with_a_team_of_parallel_Claudes_1eba12.html)。  
+**本地文件：**[Building_a_C_compiler_with_a_team_of_parallel_Claudes.html](readings/Building_a_C_compiler_with_a_team_of_parallel_Claudes.html)。  
 **原始地址：**[原始来源](https://www.anthropic.com/engineering/building-c-compiler)  
 **文章给出的代码仓库：**[原始来源](https://github.com/anthropics/claudes-c-compiler)
 
@@ -1497,7 +1497,7 @@ Codex 研究：人类工作转向委托、监督、复核与系统化
 
 **标题：**The Shift to Agentic AI: Evidence from Codex。  
 **作者：**Drew Johnston、David Holtz、Alex Martin Richmond、Christopher Ong、Prasanna Tambe、Aaron Chatterji。  
-**本地文件：**[005_The_Shift_to_Agentic_AI_9dc0ae.pdf](readings/005_The_Shift_to_Agentic_AI_9dc0ae.pdf)，50 页。  
+**本地文件：**[The_Shift_to_Agentic_AI_Evidence_from_Codex.pdf](readings/The_Shift_to_Agentic_AI_Evidence_from_Codex.pdf)，50 页。  
 **归档版本：**arXiv:2606.26959v1，2026-06-25。  
 **原始地址：**[原始来源](https://arxiv.org/abs/2606.26959v1)
 

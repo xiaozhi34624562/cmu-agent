@@ -1,50 +1,55 @@
 [
   {
-    "title": "MemGPT",
+    "title": "MemGPT: Towards LLMs as Operating Systems",
     "url": "https://arxiv.org/abs/2310.08560",
-    "path": "references/003_MemGPT.pdf",
+    "path": "references/MemGPT_Towards_LLMs_as_Operating_Systems.pdf",
     "status": "saved",
-    "provenance": "archived_from_existing_repository_primary_source"
+    "provenance": "archived_from_existing_repository_primary_source",
+    "source_label": "MemGPT"
   },
   {
-    "title": "Mem0",
+    "title": "Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory",
     "url": "https://arxiv.org/abs/2504.19413",
-    "path": "references/001_Mem0.pdf",
+    "path": "references/Mem0_Building_Production-Ready_AI_Agents_with_Scalable_Long-Term_Memory.pdf",
     "status": "saved",
-    "provenance": "archived_from_existing_repository_primary_source"
+    "provenance": "archived_from_existing_repository_primary_source",
+    "source_label": "Mem0"
   },
   {
-    "title": "ExpeL",
+    "title": "ExpeL: LLM Agents Are Experiential Learners",
     "url": "https://arxiv.org/abs/2308.10144",
-    "path": "references/003_ExpeL.pdf",
+    "path": "references/ExpeL_LLM_Agents_Are_Experiential_Learners.pdf",
     "status": "saved",
-    "provenance": "archived_from_existing_repository_primary_source"
+    "provenance": "archived_from_existing_repository_primary_source",
+    "source_label": "ExpeL"
   },
   {
     "title": "Agent Workflow Memory",
     "url": "https://arxiv.org/abs/2409.07429",
-    "path": "references/004_Agent_Workflow_Memory_AWM.pdf",
+    "path": "references/Agent_Workflow_Memory.pdf",
     "status": "saved",
     "provenance": "archived_from_existing_repository_primary_source"
   },
   {
-    "title": "Agent Skill Induction",
+    "title": "Inducing Programmatic Skills for Agentic Tasks",
     "url": "https://arxiv.org/abs/2504.06821",
-    "path": "references/005_Agent_Skill_Induction_ASI.pdf",
+    "path": "references/Inducing_Programmatic_Skills_for_Agentic_Tasks.pdf",
     "status": "saved",
-    "provenance": "archived_from_existing_repository_primary_source"
+    "provenance": "archived_from_existing_repository_primary_source",
+    "source_label": "Agent Skill Induction"
   },
   {
-    "title": "PolySkill",
+    "title": "PolySkill: Learning Generalizable Skills Through Polymorphic Abstraction",
     "url": "https://arxiv.org/abs/2510.15863",
-    "path": "references/013_PolySkill.pdf",
+    "path": "references/PolySkill_Learning_Generalizable_Skills_Through_Polymorphic_Abstraction.pdf",
     "status": "saved",
-    "provenance": "archived_from_existing_repository_primary_source"
+    "provenance": "archived_from_existing_repository_primary_source",
+    "source_label": "PolySkill"
   },
   {
     "title": "Executable Code Actions Elicit Better LLM Agents",
     "url": "https://arxiv.org/abs/2402.01030",
-    "path": "references/002_CodeAct.pdf",
+    "path": "references/Executable_Code_Actions_Elicit_Better_LLM_Agents.pdf",
     "status": "saved",
     "provenance": "archived_from_existing_repository_primary_source"
   }

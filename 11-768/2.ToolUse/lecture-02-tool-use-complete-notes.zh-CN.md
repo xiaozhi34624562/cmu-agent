@@ -2412,28 +2412,28 @@ Graham Neubig，Carnegie Mellon University，Language Technologies Institute。�
 <a id="source-p01"></a>
 ### P01 — What Are Tools Anyway? A Survey from the Language Model Perspective
 
-本地文件：[001_What_Are_Tools_Anyway.pdf](readings/001_What_Are_Tools_Anyway.pdf)。本地版本：arXiv:2403.15452v1，2024-03-18。参考入口：[arXiv 版本页](https://arxiv.org/abs/2403.15452v1)。
+本地文件：[What_Are_Tools_Anyway_A_Survey_from_the_Language_Model_Perspective.pdf](readings/What_Are_Tools_Anyway_A_Survey_from_the_Language_Model_Perspective.pdf)。本地版本：arXiv:2403.15452v1，2024-03-18。参考入口：[arXiv 版本页](https://arxiv.org/abs/2403.15452v1)。
 
 本文主要使用 §2 的定义与分类、§4 的适用情形、§5 的工具选择／程序化／制造复用、§6 的评测和 §7 的成本权衡。讲义标注该工作为 COLM 2024；本文的具体页码与文字依据本地版本，不将其他版本内容混入。
 
 <a id="source-p02"></a>
 ### P02 — Executable Code Actions Elicit Better LLM Agents（CodeAct）
 
-本地文件：[002_CodeAct.pdf](readings/002_CodeAct.pdf)。本地版本：arXiv:2402.01030v4，2024-06-07，ICML 2024。参考入口：[arXiv 版本页](https://arxiv.org/abs/2402.01030v4)。
+本地文件：[Executable_Code_Actions_Elicit_Better_LLM_Agents.pdf](readings/Executable_Code_Actions_Elicit_Better_LLM_Agents.pdf)。本地版本：arXiv:2402.01030v4，2024-06-07，ICML 2024。参考入口：[arXiv 版本页](https://arxiv.org/abs/2402.01030v4)。
 
 本文主要使用 §2 的行动框架与两个对照实验、表 2–3 的结果、图 3 的交互示例、§3 与表 4 的训练混合，以及 Impact Statement 中的变量内容幻觉限制。
 
 <a id="source-p03"></a>
 ### P03 — Toolformer: Language Models Can Teach Themselves to Use Tools
 
-本地文件：[003_Toolformer.pdf](readings/003_Toolformer.pdf)。本地版本：arXiv:2302.04761v1，2023-02-09。参考入口：[arXiv 版本页](https://arxiv.org/abs/2302.04761v1)。
+本地文件：[Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf](readings/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf)。本地版本：arXiv:2302.04761v1，2023-02-09。参考入口：[arXiv 版本页](https://arxiv.org/abs/2302.04761v1)。
 
 本文主要使用 §2 的采样—执行—筛选—微调流程、前缀筛选脚注、§3 的五类工具、§4 的权重与推理设置、表 4 的训练／执行对照，以及 §7 的限制条件。
 
 <a id="source-p04"></a>
 ### P04 — XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models
 
-本地文件：[004_XGrammar.pdf](readings/004_XGrammar.pdf)。本地版本：arXiv:2411.15100v3，2025-05-12，MLSys 2025。参考入口：[arXiv 版本页](https://arxiv.org/abs/2411.15100v3)。
+本地文件：[XGrammar_Flexible_and_Efficient_Structured_Generation_Engine_For_Large_Language_Models.pdf](readings/XGrammar_Flexible_and_Efficient_Structured_Generation_Engine_For_Large_Language_Models.pdf)。本地版本：arXiv:2411.15100v3，2025-05-12，MLSys 2025。参考入口：[arXiv 版本页](https://arxiv.org/abs/2411.15100v3)。
 
 本文主要使用 §2 的 CFG／PDA 与 token mask，§3.1–3.5 的缓存、上下文扩展、持久化栈、自动机优化与 CPU/GPU 重叠，以及 §4、表 2–4 的性能和结构正确性实验。
 

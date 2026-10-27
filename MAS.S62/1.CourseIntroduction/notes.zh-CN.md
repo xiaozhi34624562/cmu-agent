@@ -610,12 +610,12 @@ def retry_count(config):
 以下参考来自讲义提及的一手工作。本周官网没有列出单独的必读论文；它们是为了展开导论机制而补充的 references，不冒充本周指定 readings。版本以本地 PDF 第一页标记为准。
 
 - **L1**：Paul Liang，*Lecture 1 - Introduction*，[本地 PDF](slides/lec1%20-%20intro.pdf)，86 页；[课程原地址](https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec1%20-%20intro.pdf)。全文主线及分类图 pp.58—74。
-- **R1**：Brown et al.，*Language Models are Few-Shot Learners*，arXiv:2005.14165v4，[本地 PDF](references/2005.14165.pdf)，[原文](https://arxiv.org/abs/2005.14165)。主要使用 §2 开头与图 2.1（PDF pp.6—7）的学习设置对照，§2.4 解释评测；不复述全部任务分数。
-- **R2**：Ouyang et al.，*Training Language Models to Follow Instructions with Human Feedback*，arXiv:2203.02155v1，[本地 PDF](references/2203.02155.pdf)，[原文](https://arxiv.org/abs/2203.02155)。使用 §3 的训练流程、§4 的评价限定。
-- **R3**：Yao et al.，*ReAct: Synergizing Reasoning and Acting in Language Models*，[本地 PDF](references/2210.03629.pdf)，[原文](https://arxiv.org/abs/2210.03629)。使用 §2、图 1 的交互定义与机制。
-- **R4**：Shao et al.，*DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models*，arXiv:2402.03300v3，[本地 PDF](references/2402.03300.pdf)，[原文](https://arxiv.org/abs/2402.03300)。使用 §4.1 及图 4（PDF p.13），区分组相对优势与完整训练目标；图 2 是数学语料收集流程，不用于 GRPO 机制定位。
-- **R5**：Yang et al.，*SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering*，[本地 PDF](references/2405.15793.pdf)，[原文](https://arxiv.org/abs/2405.15793)。使用 §2—3 关于 ACI、工具反馈和执行上下文的设计。
-- **R6**：Zhang et al.，*Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents*，本地为 ICLR 2026 版本，[本地 PDF](references/2505.22954.pdf)，[原文](https://arxiv.org/abs/2505.22954)。使用 §2—3 的经验自修改与档案探索；不将有限实验推广为全局保证。
-- **R7**：Zhao et al.，*Absolute Zero: Reinforced Self-play Reasoning with Zero Data*，本地首页日期 2025-10-17，[本地 PDF](references/2505.03335.pdf)，[原文](https://arxiv.org/abs/2505.03335)。使用任务提出、执行验证、求解与课程共同变化的机制。
+- **R1**：Brown et al.，*Language Models are Few-Shot Learners*，arXiv:2005.14165v4，[本地 PDF](references/Language_Models_are_Few-Shot_Learners.pdf)，[原文](https://arxiv.org/abs/2005.14165)。主要使用 §2 开头与图 2.1（PDF pp.6—7）的学习设置对照，§2.4 解释评测；不复述全部任务分数。
+- **R2**：Ouyang et al.，*Training Language Models to Follow Instructions with Human Feedback*，arXiv:2203.02155v1，[本地 PDF](references/Training_language_models_to_follow_instructions_with_human_feedback.pdf)，[原文](https://arxiv.org/abs/2203.02155)。使用 §3 的训练流程、§4 的评价限定。
+- **R3**：Yao et al.，*ReAct: Synergizing Reasoning and Acting in Language Models*，[本地 PDF](references/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf)，[原文](https://arxiv.org/abs/2210.03629)。使用 §2、图 1 的交互定义与机制。
+- **R4**：Shao et al.，*DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models*，arXiv:2402.03300v3，[本地 PDF](references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf)，[原文](https://arxiv.org/abs/2402.03300)。使用 §4.1 及图 4（PDF p.13），区分组相对优势与完整训练目标；图 2 是数学语料收集流程，不用于 GRPO 机制定位。
+- **R5**：Yang et al.，*SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering*，[本地 PDF](references/SWE-agent_Agent-Computer_Interfaces_Enable_Automated_Software_Engineering.pdf)，[原文](https://arxiv.org/abs/2405.15793)。使用 §2—3 关于 ACI、工具反馈和执行上下文的设计。
+- **R6**：Zhang et al.，*Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents*，本地为 ICLR 2026 版本，[本地 PDF](references/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf)，[原文](https://arxiv.org/abs/2505.22954)。使用 §2—3 的经验自修改与档案探索；不将有限实验推广为全局保证。
+- **R7**：Zhao et al.，*Absolute Zero: Reinforced Self-play Reasoning with Zero Data*，本地首页日期 2025-10-17，[本地 PDF](references/Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data.pdf)，[原文](https://arxiv.org/abs/2505.03335)。使用任务提出、执行验证、求解与课程共同变化的机制。
 
 **本课结论**：先明确演化对象和反馈来源，再设计更新循环；先区分任务内搜索、跨任务记忆与参数学习，再评价收益。工程成熟度最终体现在能否说明一次改变为什么有效、在哪些任务无效，以及能否恢复和检验它。

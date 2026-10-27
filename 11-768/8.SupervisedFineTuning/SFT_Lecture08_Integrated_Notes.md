@@ -1550,22 +1550,22 @@ def supervised_spans(
 ### D.3 模型报告：理解 SFT 在完整训练中的位置
 
 <a id="src-s01"></a>
-**S01｜[001_Kimi_K3.pdf](references/001_Kimi_K3.pdf)**
+**S01｜[Kimi_K3_Open_Frontier_Intelligence.pdf](references/Kimi_K3_Open_Frontier_Intelligence.pdf)**
 PDF 版本标注：arXiv:2607.24653v2 [cs.CL] 7 Aug 2026。
 *Kimi K3: Open Frontier Intelligence*。重点读 §4.1（第 12–14 页）与附录 F（第 46–47 页）：冷启动、领域/努力级别专家、MOPD、部署相关量化和 XTML。本文不展开其预训练架构与排行榜，因为那不是本节 SFT 的中心。
 
 <a id="src-s02"></a>
-**S02｜[002_DeepSeek-R1.pdf](references/002_DeepSeek-R1.pdf)**
+**S02｜[DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_Reinforcement_Learning.pdf](references/DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_Reinforcement_Learning.pdf)**
 PDF 版本标注：arXiv:2501.12948v2 [cs.CL] 4 Jan 2026。
 *DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning*。归档文件为 86 页版本。重点读 §3、附录 B.3.3（第 26–27 页）与附录 F–F.1（第 60–62 页）：冷启动、再次 SFT、推理筛选与数据统计、小模型蒸馏及其直接 RL 对照。不要把它与不同版本的页码或数据细节混用。
 
 <a id="src-s03"></a>
-**S03｜[003_Nemotron_3_Ultra.pdf](references/003_Nemotron_3_Ultra.pdf)**
+**S03｜[Nemotron_3_Ultra_Open_Efficient_Mixture-of-Experts_Hybrid_Mamba-Transformer_Model_for_Agentic_Reasoning.pdf](references/Nemotron_3_Ultra_Open_Efficient_Mixture-of-Experts_Hybrid_Mamba-Transformer_Model_for_Agentic_Reasoning.pdf)**
 本地附件 SHA-256：`b8c5e9bb8f29bdff41f876a24f5da8bc1762e16d12dbece512c443a96cbbc859`。
 *Nemotron 3 Ultra: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning*。重点读 §3.1（第 15–20 页）、§3.3.1–3.3.2（第 20–23 页）与 §3.3.3–3.3.4（第 27–28 页）：两阶段 SFT、推理截断、聊天历史 mask、过程筛选、CUDA 修复、packing、搜索上下文管理、MOPD 与轻量 SFT warmup。注意学生、领域教师的不同配方不要混成一个。
 
 <a id="src-s04"></a>
-**S04｜[004_MAI-Thinking-1.pdf](references/004_MAI-Thinking-1.pdf)**
+**S04｜[MAI-Thinking-1_Building_a_Hill-Climbing_Machine.pdf](references/MAI-Thinking-1_Building_a_Hill-Climbing_Machine.pdf)**
 本地附件 SHA-256：`a267d745b1eb3792a8abf58e71e204a6f44f9c18eeb5ad8671320deae71986bd`。
 *MAI-Thinking-1: Building a Hill-Climbing Machine*。重点读 §3.1.4–3.1.5（第 34–37 页）与 §3.5（第 49 页）：自蒸馏的用途、checkpoint 多样性、长上下文保持、MoE 均衡、最终整合配方与样本/token 比例。§3.2.3、§3.3.1（第 39、41–42 页）的去污染与环境验收原用于 RL，本文明确标为对 SFT 数据工厂的工程借鉴。
 
@@ -1575,39 +1575,39 @@ PDF 版本标注：arXiv:2501.12948v2 [cs.CL] 4 Jan 2026。
 IFM/K2-Horizon-375B-A23B 模型卡，重点是 Training Overview。它提供 RL 专家合并后的三阶段 SFT 时序、步数、阶段 token 和序列长度。不是 Kimi K2；未报告的 RL 总预算不能由 SFT 表推断。
 
 <a id="src-s06"></a>
-**S06｜[006_Kimi_K2.pdf](references/006_Kimi_K2.pdf)**
+**S06｜[Kimi_K2_Open_Agentic_Intelligence.pdf](references/Kimi_K2_Open_Agentic_Intelligence.pdf)**
 PDF 版本标注：arXiv:2507.20534v2 [cs.LG] 3 Feb 2026。
 *Kimi K2: Open Agentic Intelligence*。重点读 §3.1–3.1.1（第 9–11 页），尤其 Figure 8：工具库、Agent 配置、带 rubric 的任务、用户与工具模拟、真实沙箱补充。附录 B（第 26–27 页）补充工具声明、调用参数、结果关联与约束解码。适合用来理解训练数据生产系统与协议设计，而不是只借用一句“使用合成数据”。
 
 ### D.4 数据、监督目标与模仿学习
 
 <a id="src-s07"></a>
-**S07｜[007_OpenThoughts-Agent.pdf](references/007_OpenThoughts-Agent.pdf)**
+**S07｜[OpenThoughts-Agent_Data_Recipes_for_Agentic_Models.pdf](references/OpenThoughts-Agent_Data_Recipes_for_Agentic_Models.pdf)**
 PDF 版本标注：arXiv:2606.24855v1 [cs.AI] 23 Jun 2026。
 实际论文题名为 *Data Recipes for Agentic Models*。重点读 §3–4（第 4–8 页）、Table 1（第 3 页）、Table 11（第 11 页）：任务来源与混合、生成前任务筛选、教师与轨迹消融、扩展数据、评测口径和 SFT→RL。附录 C（第 25–26 页）区分模型规模、模板与数据规模对应的训练设置。其 RL 研究限制在 8B，最大 SFT 数据为 100K，不能默认外推到任意底座或百万级数据。
 
 <a id="src-s08"></a>
-**S08｜[008_SWE-Gym.pdf](references/008_SWE-Gym.pdf)**
+**S08｜[Training_Software_Engineering_Agents_and_Verifiers_with_SWE-Gym.pdf](references/Training_Software_Engineering_Agents_and_Verifiers_with_SWE-Gym.pdf)**
 PDF 版本标注：arXiv:2412.21139v2 [cs.SE] 6 Jun 2025。
 *Training Software Engineering Agents and Verifiers with SWE-Gym*。重点读 §3–5（第 3–8 页）：训练环境、491 条示范、OpenHands 与 MoatlessTools、自训练负面结果、每任务上限、验证器与两种 scaling。附录 B（第 13–16 页）提供训练配置，Figure 8（第 20 页）补充 verifier 数据消融。非常适合连接工程设施与学习算法。
 
 <a id="src-s09"></a>
-**S09｜[009_Agent_Data_Protocol.pdf](references/009_Agent_Data_Protocol.pdf)**
+**S09｜[Agent_Data_Protocol_Unifying_Datasets_for_Diverse_Effective_Fine-tuning_of_LLM_Agents.pdf](references/Agent_Data_Protocol_Unifying_Datasets_for_Diverse_Effective_Fine-tuning_of_LLM_Agents.pdf)**
 PDF 版本标注：arXiv:2510.24702v2 [cs.CL] 4 Mar 2026。
 *Agent Data Protocol: Unifying Datasets for Diverse, Effective Fine-Tuning of LLM Agents*。重点读 §3（第 4–6 页）、§6.2（第 9 页）与附录 C–E（第 18–20 页）：语义表示、转换责任、数据混合、分域采样及等样本数对照。协议允许什么，与某个实验如何筛选数据，是两层问题。
 
 <a id="src-s10"></a>
-**S10｜[010_BalanceSFT.pdf](references/010_BalanceSFT.pdf)**
+**S10｜[FunReason_Enhancing_Large_Language_Models_Function_Calling_via_Self-Refinement_Multiscale_Loss_and_Automated_Data_Refinement.pdf](references/FunReason_Enhancing_Large_Language_Models_Function_Calling_via_Self-Refinement_Multiscale_Loss_and_Automated_Data_Refinement.pdf)**
 PDF 版本标注：arXiv:2505.20192v3 [cs.LG] 25 Nov 2025。
 *BalanceSFT: Improving LLM Function Calling with Balanced Training Signals and Data Hardness*。重点读 §3（第 3–4 页）、§4.2 与 Table 5（第 5、7 页）：SSB、HDR、CoT 数据选择和组件消融。§4.5、Figure 4b（第 8 页）还比较了非目标代码能力的保持。阅读结果时务必把损失改进与数据改进分开。
 
 <a id="src-s11"></a>
-**S11｜[011_Instruction_Modelling.pdf](references/011_Instruction_Modelling.pdf)**
+**S11｜[Instruction_Tuning_With_Loss_Over_Instructions.pdf](references/Instruction_Tuning_With_Loss_Over_Instructions.pdf)**
 PDF 版本标注：arXiv:2405.14394v2 [cs.CL] 2 Oct 2024。
 实际论文题名为 *Instruction Tuning With Loss Over Instructions*。重点读 §3（第 4 页）与 §4.2–4.4（第 5–9 页）：联合输入输出建模、低资源条件、相同回答 loss 口径、instruction-tuning tax、KL 对照及输出长度检查。
 
 <a id="src-s12"></a>
-**S12｜[012_Weighted_Instruction_Tuning.pdf](references/012_Weighted_Instruction_Tuning.pdf)**
+**S12｜[On_the_Effect_of_Instruction_Tuning_Loss_on_Generalization.pdf](references/On_the_Effect_of_Instruction_Tuning_Loss_on_Generalization.pdf)**
 PDF 版本标注：arXiv:2507.07817v2 [cs.CL] 15 Jul 2025。
 实际论文题名为 *On the Effect of Instruction Tuning Loss on Generalization*。重点读 §2（第 3 页）、§4.1（第 6 页）与 §4.2（第 7 页起）：两个权重、非零权重 token 计数归一化、下游指标差异与 DPO 交接。§4.3–5.1（第 8–10 页）补充提示敏感性与权重相关因素。不要将本文举例的平均最佳值当作固定配方。
 

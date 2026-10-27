@@ -1836,7 +1836,7 @@ SkillsBench 附录 D.6.1 的轨迹审查选取了条件差异明显的案例，�
 <a id="src-sb"></a>
 ## SB：SkillsBench
 
-**文件：** [002_SkillsBench.pdf](readings/002_SkillsBench.pdf)
+**文件：** [SkillsBench_Benchmarking_How_Well_Agent_Skills_Work_Across_Diverse_Tasks.pdf](readings/SkillsBench_Benchmarking_How_Well_Agent_Skills_Work_Across_Diverse_Tasks.pdf)
 **题名：** SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks
 **本地版本标识：** arXiv:2602.12670v4，2026-06-14
 **页数：** 42 页。
@@ -1846,7 +1846,7 @@ SkillsBench 附录 D.6.1 的轨迹审查选取了条件差异明显的案例，�
 <a id="src-mg"></a>
 ## MG：MemGPT
 
-**文件：** [003_MemGPT.pdf](readings/003_MemGPT.pdf)
+**文件：** [MemGPT_Towards_LLMs_as_Operating_Systems.pdf](readings/MemGPT_Towards_LLMs_as_Operating_Systems.pdf)
 **题名：** MemGPT: Towards LLMs as Operating Systems
 **本地版本标识：** arXiv:2310.08560v2，2024-02-12
 **页数：** 13 页。
@@ -1856,7 +1856,7 @@ SkillsBench 附录 D.6.1 的轨迹审查选取了条件差异明显的案例，�
 <a id="src-awm"></a>
 ## AWM：Agent Workflow Memory
 
-**文件：** [004_Agent_Workflow_Memory_AWM.pdf](readings/004_Agent_Workflow_Memory_AWM.pdf)
+**文件：** [Agent_Workflow_Memory.pdf](readings/Agent_Workflow_Memory.pdf)
 **题名：** Agent Workflow Memory
 **作者：** Zora Zhiruo Wang、Jiayuan Mao、Daniel Fried、Graham Neubig
 **本地版本标识：** arXiv:2409.07429v1，2024-09-11
@@ -1867,7 +1867,7 @@ SkillsBench 附录 D.6.1 的轨迹审查选取了条件差异明显的案例，�
 <a id="src-asi"></a>
 ## ASI：程序技能诱导
 
-**文件：** [005_Agent_Skill_Induction_ASI.pdf](readings/005_Agent_Skill_Induction_ASI.pdf)
+**文件：** [Inducing_Programmatic_Skills_for_Agentic_Tasks.pdf](readings/Inducing_Programmatic_Skills_for_Agentic_Tasks.pdf)
 **题名：** Inducing Programmatic Skills for Agentic Tasks
 **作者：** Zora Zhiruo Wang、Apurva Gandhi、Graham Neubig、Daniel Fried
 **本地版本标识：** arXiv:2504.06821v2，2025-08-29；文件标注 COLM 2025
@@ -1878,7 +1878,7 @@ SkillsBench 附录 D.6.1 的轨迹审查选取了条件差异明显的案例，�
 <a id="src-rb"></a>
 ## RB：ReasoningBank
 
-**文件：** [006_ReasoningBank.pdf](readings/006_ReasoningBank.pdf)
+**文件：** [ReasoningBank_Scaling_Agent_Self-Evolving_with_Reasoning_Memory.pdf](readings/ReasoningBank_Scaling_Agent_Self-Evolving_with_Reasoning_Memory.pdf)
 **题名：** ReasoningBank: Scaling Agent Self-Evolving with Reasoning Memory
 **本地版本标识：** arXiv:2509.25140v2，2026-03-16
 **页数：** 30 页。
@@ -1888,7 +1888,7 @@ SkillsBench 附录 D.6.1 的轨迹审查选取了条件差异明显的案例，�
 <a id="src-mem0"></a>
 ## Mem0：事实提取、更新与图记忆
 
-**文件：** [001_Mem0.pdf](references/001_Mem0.pdf)
+**文件：** [Mem0_Building_Production-Ready_AI_Agents_with_Scalable_Long-Term_Memory.pdf](references/Mem0_Building_Production-Ready_AI_Agents_with_Scalable_Long-Term_Memory.pdf)
 **题名：** Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory
 **本地版本：** arXiv:2504.19413v1，2025-04-28；23 页。
 
@@ -1897,7 +1897,7 @@ SkillsBench 附录 D.6.1 的轨迹审查选取了条件差异明显的案例，�
 <a id="src-ref"></a>
 ## REF：Reflexion
 
-**文件：** [002_Reflexion.pdf](references/002_Reflexion.pdf)
+**文件：** [Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf](references/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf)
 **题名：** Reflexion: Language Agents with Verbal Reinforcement Learning
 **本地版本：** arXiv:2303.11366v4，2023-10-10；19 页。
 
@@ -1906,7 +1906,7 @@ SkillsBench 附录 D.6.1 的轨迹审查选取了条件差异明显的案例，�
 <a id="src-exp"></a>
 ## EXP：ExpeL
 
-**文件：** [003_ExpeL.pdf](references/003_ExpeL.pdf)
+**文件：** [ExpeL_LLM_Agents_Are_Experiential_Learners.pdf](references/ExpeL_LLM_Agents_Are_Experiential_Learners.pdf)
 **题名：** ExpeL: LLM Agents Are Experiential Learners
 **本地版本：** arXiv:2308.10144v3，2024-12-20；38 页。
 
@@ -1915,7 +1915,7 @@ SkillsBench 附录 D.6.1 的轨迹审查选取了条件差异明显的案例，�
 <a id="src-ags"></a>
 ## AGS：Agent S
 
-**文件：** [004_Agent_S.pdf](references/004_Agent_S.pdf)
+**文件：** [Agent_S_An_Open_Agentic_Framework_that_Uses_Computers_Like_a_Human.pdf](references/Agent_S_An_Open_Agentic_Framework_that_Uses_Computers_Like_a_Human.pdf)
 **题名：** Agent S: An Open Agentic Framework that Uses Computers Like a Human
 **本地版本：** arXiv:2410.08164v1，2024-10-10；23 页。
 
@@ -1924,7 +1924,7 @@ SkillsBench 附录 D.6.1 的轨迹审查选取了条件差异明显的案例，�
 <a id="src-syn"></a>
 ## SYN：Synapse
 
-**文件：** [005_Synapse.pdf](references/005_Synapse.pdf)
+**文件：** [Synapse_Trajectory-as-Exemplar_Prompting_with_Memory_for_Computer_Control.pdf](references/Synapse_Trajectory-as-Exemplar_Prompting_with_Memory_for_Computer_Control.pdf)
 **题名：** Synapse: Trajectory-as-Exemplar Prompting with Memory for Computer Control
 **本地版本：** arXiv:2306.07863v3，2024-01-19；31 页，文件标注 ICLR 2024。
 
@@ -1933,7 +1933,7 @@ SkillsBench 附录 D.6.1 的轨迹审查选取了条件差异明显的案例，�
 <a id="src-ical"></a>
 ## ICAL：通过抽象与交互反馈改进示范
 
-**文件：** [006_ICAL.pdf](references/006_ICAL.pdf)
+**文件：** [VLM_Agents_Generate_Their_Own_Memories_Distilling_Experience_into_Embodied_Programs_of_Thought.pdf](references/VLM_Agents_Generate_Their_Own_Memories_Distilling_Experience_into_Embodied_Programs_of_Thought.pdf)
 **题名：** VLM Agents Generate Their Own Memories: Distilling Experience into Embodied Programs of Thought
 **本地版本：** arXiv:2406.14596v6，2025-09-18；46 页，文件标注 NeurIPS 2024。
 
@@ -1942,7 +1942,7 @@ SkillsBench 附录 D.6.1 的轨迹审查选取了条件差异明显的案例，�
 <a id="src-voy"></a>
 ## VOY：Voyager
 
-**文件：** [007_Voyager.pdf](references/007_Voyager.pdf)
+**文件：** [VOYAGER_An_Open-Ended_Embodied_Agent_with_Large_Language_Models.pdf](references/VOYAGER_An_Open-Ended_Embodied_Agent_with_Large_Language_Models.pdf)
 **题名：** Voyager: An Open-Ended Embodied Agent with Large Language Models
 **本地版本：** arXiv:2305.16291v2，2023-10-19；42 页。
 
@@ -1951,7 +1951,7 @@ SkillsBench 附录 D.6.1 的轨迹审查选取了条件差异明显的案例，�
 <a id="src-dc"></a>
 ## DC：DreamCoder
 
-**文件：** [008_DreamCoder.pdf](references/008_DreamCoder.pdf)
+**文件：** [DreamCoder_Growing_generalizable_interpretable_knowledge_with_wake-sleep_Bayesian_program_learning.pdf](references/DreamCoder_Growing_generalizable_interpretable_knowledge_with_wake-sleep_Bayesian_program_learning.pdf)
 **题名：** DreamCoder: Growing Generalizable, Interpretable Knowledge with Wake-Sleep Bayesian Program Learning
 **本地版本：** arXiv:2006.08381v1，2020-06-15；22 页。
 
@@ -1960,7 +1960,7 @@ SkillsBench 附录 D.6.1 的轨迹审查选取了条件差异明显的案例，�
 <a id="src-sti"></a>
 ## STI：Stitch
 
-**文件：** [009_Stitch.pdf](references/009_Stitch.pdf)
+**文件：** [Top-Down_Synthesis_for_Library_Learning.pdf](references/Top-Down_Synthesis_for_Library_Learning.pdf)
 **题名：** Top-Down Synthesis for Library Learning
 **本地版本：** arXiv:2211.16605v2，2023-01-15；42 页，POPL 2023。
 
@@ -1969,7 +1969,7 @@ SkillsBench 附录 D.6.1 的轨迹审查选取了条件差异明显的案例，�
 <a id="src-laps"></a>
 ## LAPS：语言指导抽象与搜索
 
-**文件：** [010_LAPS.pdf](references/010_LAPS.pdf)
+**文件：** [Leveraging_Language_to_Learn_Program_Abstractions_and_Search_Heuristics.pdf](references/Leveraging_Language_to_Learn_Program_Abstractions_and_Search_Heuristics.pdf)
 **题名：** Leveraging Language to Learn Program Abstractions and Search Heuristics
 **本地版本：** arXiv:2106.11053v3，2022-05-03；24 页，文件标注 ICML 2021。
 
@@ -1978,7 +1978,7 @@ SkillsBench 附录 D.6.1 的轨迹审查选取了条件差异明显的案例，�
 <a id="src-lilo"></a>
 ## LILO：程序生成、压缩与自动文档
 
-**文件：** [011_LILO.pdf](references/011_LILO.pdf)
+**文件：** [LILO_Learning_Interpretable_Libraries_by_Compressing_and_Documenting_Code.pdf](references/LILO_Learning_Interpretable_Libraries_by_Compressing_and_Documenting_Code.pdf)
 **题名：** LILO: Learning Interpretable Libraries by Compressing and Documenting Code
 **本地版本：** arXiv:2310.19791v4，2024-03-15；48 页，ICLR 2024。
 
@@ -1987,7 +1987,7 @@ SkillsBench 附录 D.6.1 的轨迹审查选取了条件差异明显的案例，�
 <a id="src-sw"></a>
 ## SW：SkillWeaver
 
-**文件：** [012_SkillWeaver.pdf](references/012_SkillWeaver.pdf)
+**文件：** [SkillWeaver_Web_Agents_can_Self-Improve_by_Discovering_and_Honing_Skills.pdf](references/SkillWeaver_Web_Agents_can_Self-Improve_by_Discovering_and_Honing_Skills.pdf)
 **题名：** SkillWeaver: Web Agents can Self-Improve by Discovering and Honing Skills
 **本地版本：** arXiv:2504.07079v1，2025-04-09；41 页。
 
@@ -1996,7 +1996,7 @@ SkillsBench 附录 D.6.1 的轨迹审查选取了条件差异明显的案例，�
 <a id="src-poly"></a>
 ## POLY：PolySkill
 
-**文件：** [013_PolySkill.pdf](references/013_PolySkill.pdf)
+**文件：** [PolySkill_Learning_Generalizable_Skills_Through_Polymorphic_Abstraction.pdf](references/PolySkill_Learning_Generalizable_Skills_Through_Polymorphic_Abstraction.pdf)
 **题名：** PolySkill: Learning Generalizable Skills through Polymorphic Abstraction for Continual Learning
 **本地版本：** arXiv:2510.15863v2，2026-03-02；29 页，ICLR 2026。
 
@@ -2005,7 +2005,7 @@ SkillsBench 附录 D.6.1 的轨迹审查选取了条件差异明显的案例，�
 <a id="src-tro"></a>
 ## TRO：TroVE
 
-**文件：** [014_TroVE.pdf](references/014_TroVE.pdf)
+**文件：** [TroVE_Inducing_Verifiable_and_Efficient_Toolboxes_for_Solving_Programmatic_Tasks.pdf](references/TroVE_Inducing_Verifiable_and_Efficient_Toolboxes_for_Solving_Programmatic_Tasks.pdf)
 **题名：** TroVE: Inducing Verifiable and Efficient Toolboxes for Solving Programmatic Tasks
 **本地版本：** arXiv:2401.12869v1，2024-01-23；13 页。
 
@@ -2014,7 +2014,7 @@ SkillsBench 附录 D.6.1 的轨迹审查选取了条件差异明显的案例，�
 <a id="src-assay"></a>
 ## ASSAY：按任务测量与修复技能库
 
-**文件：** [015_Not_All_Skills_Help.pdf](references/015_Not_All_Skills_Help.pdf)
+**文件：** [Not_All_Skills_Help_Measuring_and_Repairing_Agent_Knowledge.pdf](references/Not_All_Skills_Help_Measuring_and_Repairing_Agent_Knowledge.pdf)
 **题名：** Not All Skills Help: Measuring and Repairing Agent Knowledge
 **本地版本：** arXiv:2606.15390v1，2026-06-13；20 页。
 
@@ -2023,7 +2023,7 @@ SkillsBench 附录 D.6.1 的轨迹审查选取了条件差异明显的案例，�
 <a id="src-sage"></a>
 ## SAGE：用后续技能复用训练 Agent
 
-**文件：** [016_SAGE.pdf](references/016_SAGE.pdf)
+**文件：** [Reinforcement_Learning_for_Self-Improving_Agent_with_Skill_Library.pdf](references/Reinforcement_Learning_for_Self-Improving_Agent_with_Skill_Library.pdf)
 **题名：** Reinforcement Learning for Self-Improving Agent with Skill Library
 **本地版本：** ACL 2026 Long Papers，论文标识 `2026.acl-long.69`；22 页，印刷页码 1529–1550。
 
@@ -2032,7 +2032,7 @@ SkillsBench 附录 D.6.1 的轨迹审查选取了条件差异明显的案例，�
 <a id="src-agemem"></a>
 ## AgeMem：联合训练长期与短期记忆管理
 
-**文件：** [017_AgeMem.pdf](references/017_AgeMem.pdf)
+**文件：** [Agentic_Memory_Learning_Unified_Long-Term_and_Short-Term_Memory_Management_for_Large_Language_Model_Agents.pdf](references/Agentic_Memory_Learning_Unified_Long-Term_and_Short-Term_Memory_Management_for_Large_Language_Model_Agents.pdf)
 **题名：** Agentic Memory: Learning Unified Long-Term and Short-Term Memory Management for Large Language Model Agents
 **本地版本：** ACL 2026 Long Papers，论文标识 `2026.acl-long.981`；本地 PDF 实际 39 页。首页出版信息列出印刷页码 21457–21483，本文引用仍按实际 PDF 页序定位。
 

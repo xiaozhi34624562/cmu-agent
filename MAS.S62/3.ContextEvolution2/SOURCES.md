@@ -23,33 +23,33 @@
 
 ## Assigned readings
 
-- R01: [FunSearch: Mathematical discoveries from program search with large language models](readings/001_FunSearch_Mathematical_discoveries_from_program_search_with_large_langua_www_nature_com_articles_s41586_023_06924_6_5d0733c5.html)
+- R01: [FunSearch: Mathematical discoveries from program search with large language models](readings/Mathematical_discoveries_from_program_search_with_large_language_models.html)
   - Source: https://www.nature.com/articles/s41586-023-06924-6
-- R02: [Large Language Models as Optimizers](readings/002_Large_Language_Models_as_Optimizers_2309.03409.pdf)
+- R02: [Large Language Models as Optimizers](readings/Large_Language_Models_as_Optimizers.pdf)
   - Source: https://arxiv.org/abs/2309.03409
   - PDF version: 2309.03409v3
-- R03: [AlphaEvolve: A coding agent for scientific and algorithmic discovery](readings/003_AlphaEvolve_A_coding_agent_for_scientific_and_algorithmic_discovery_2506.13131.pdf)
+- R03: [AlphaEvolve: A coding agent for scientific and algorithmic discovery](readings/AlphaEvolve_A_coding_agent_for_scientific_and_algorithmic_discovery.pdf)
   - Source: https://arxiv.org/abs/2506.13131
   - PDF version: 2506.13131v1
-- R04: [The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery](readings/004_The_AI_Scientist_Towards_Fully_Automated_Open_Ended_Scientific_Discovery_2408.06292.pdf)
+- R04: [The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery](readings/The_AI_Scientist_Towards_Fully_Automated_Open-Ended_Scientific_Discovery.pdf)
   - Source: https://arxiv.org/abs/2408.06292
   - PDF version: 2408.06292v3
-- R05: [Can LLMs Generate Novel Research Ideas? A Large-Scale Human Study with 100+ NLP Researchers](readings/005_Can_LLMs_Generate_Novel_Research_Ideas_A_Large_Scale_Human_Study_with_10_2409.04109.pdf)
+- R05: [Can LLMs Generate Novel Research Ideas? A Large-Scale Human Study with 100+ NLP Researchers](readings/Can_LLMs_Generate_Novel_Research_Ideas_A_Large-Scale_Human_Study_with_100%2B_NLP_Researchers.pdf)
   - Source: https://arxiv.org/abs/2409.04109
   - PDF version: 2409.04109v1
-- R06: [Towards End-to-End Automation of AI Research](readings/006_Towards_End_to_End_Automation_of_AI_Research_2606.15497.pdf)
+- R06: [Towards End-to-End Automation of AI Research](readings/Towards_End-to-End_Automation_of_AI_Research.pdf)
   - Source: https://arxiv.org/abs/2606.15497
   - PDF version: 2606.15497v1
 
 ## References and local study guide
 
 - [讲义内嵌链接及其 PDF 页码](../LECTURE_LINKS.json)；JSON 按 week、pdf、page 记录，视频和通用网站入口仅作来源导航。
-- [Self_Refine](references/2303.17651.pdf)
+- [Self-Refine: Iterative Refinement with Self-Feedback](references/Self-Refine_Iterative_Refinement_with_Self-Feedback.pdf)
   - Source: https://arxiv.org/pdf/2303.17651
-- [TextGrad](references/2406.07496.pdf)
+- [TextGrad: Automatic Differentiation via Text](references/TextGrad_Automatic_Differentiation_via_Text.pdf)
   - Source: https://arxiv.org/pdf/2406.07496
-- [FunSearch](references/Mathematical-discoveries-from-program-search-with-large-language-models.pdf)
+- [Mathematical discoveries from program search with large language models](references/Mathematical_discoveries_from_program_search_with_large_language_models.pdf)
   - Source: https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/funsearch-making-new-discoveries-in-mathematical-sciences-using-large-language-models/Mathematical-discoveries-from-program-search-with-large-language-models.pdf
-- [DeepSeek-Prover-V2: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal Decomposition](references/2504.21801v2.pdf)
+- [DeepSeek-Prover-V2: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal Decomposition](references/DeepSeek-Prover-V2_Advancing_Formal_Mathematical_Reasoning_via_Reinforcement_Learning_for_Subgoal_Decomposition.pdf)
   - Source: https://arxiv.org/pdf/2504.21801v2
 - [完整中文课程讲解](notes.zh-CN.md)

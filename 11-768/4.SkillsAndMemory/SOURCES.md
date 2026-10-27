@@ -12,72 +12,72 @@
 - [OpenHands: How to Create Effective Agent Skills](readings/001_OpenHands_How_to_Create_Effective_Agent_Skills.html)
   - Source: https://www.openhands.dev/blog/20260227-creating-effective-agent-skills
 
-- [SkillsBench](readings/002_SkillsBench.pdf)
+- [SkillsBench](readings/SkillsBench_Benchmarking_How_Well_Agent_Skills_Work_Across_Diverse_Tasks.pdf)
   - Source: https://arxiv.org/abs/2602.12670
 
-- [MemGPT](readings/003_MemGPT.pdf)
+- [MemGPT](readings/MemGPT_Towards_LLMs_as_Operating_Systems.pdf)
   - Source: https://arxiv.org/abs/2310.08560
 
-- [Agent Workflow Memory (AWM)](readings/004_Agent_Workflow_Memory_AWM.pdf)
+- [Agent Workflow Memory (AWM)](readings/Agent_Workflow_Memory.pdf)
   - Source: https://arxiv.org/abs/2409.07429
 
-- [Agent Skill Induction (ASI)](readings/005_Agent_Skill_Induction_ASI.pdf)
+- [Agent Skill Induction (ASI)](readings/Inducing_Programmatic_Skills_for_Agentic_Tasks.pdf)
   - Source: https://arxiv.org/abs/2504.06821
 
-- [ReasoningBank](readings/006_ReasoningBank.pdf)
+- [ReasoningBank](readings/ReasoningBank_Scaling_Agent_Self-Evolving_with_Reasoning_Memory.pdf)
   - Source: https://arxiv.org/abs/2509.25140
 
 ## References
 
-- [Mem0](references/001_Mem0.pdf)
+- [Mem0](references/Mem0_Building_Production-Ready_AI_Agents_with_Scalable_Long-Term_Memory.pdf)
   - Source: https://arxiv.org/abs/2504.19413
 
-- [Reflexion](references/002_Reflexion.pdf)
+- [Reflexion](references/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf)
   - Source: https://arxiv.org/abs/2303.11366
 
-- [ExpeL](references/003_ExpeL.pdf)
+- [ExpeL](references/ExpeL_LLM_Agents_Are_Experiential_Learners.pdf)
   - Source: https://arxiv.org/abs/2308.10144
 
-- [Agent S](references/004_Agent_S.pdf)
+- [Agent S](references/Agent_S_An_Open_Agentic_Framework_that_Uses_Computers_Like_a_Human.pdf)
   - Source: https://arxiv.org/abs/2410.08164
 
-- [Synapse](references/005_Synapse.pdf)
+- [Synapse](references/Synapse_Trajectory-as-Exemplar_Prompting_with_Memory_for_Computer_Control.pdf)
   - Source: https://arxiv.org/abs/2306.07863
 
-- [ICAL](references/006_ICAL.pdf)
+- [ICAL](references/VLM_Agents_Generate_Their_Own_Memories_Distilling_Experience_into_Embodied_Programs_of_Thought.pdf)
   - Source: https://arxiv.org/abs/2406.14596
 
-- [Voyager](references/007_Voyager.pdf)
+- [Voyager](references/VOYAGER_An_Open-Ended_Embodied_Agent_with_Large_Language_Models.pdf)
   - Source: https://arxiv.org/abs/2305.16291
 
-- [DreamCoder](references/008_DreamCoder.pdf)
+- [DreamCoder](references/DreamCoder_Growing_generalizable_interpretable_knowledge_with_wake-sleep_Bayesian_program_learning.pdf)
   - Source: https://arxiv.org/abs/2006.08381
 
-- [Stitch](references/009_Stitch.pdf)
+- [Stitch](references/Top-Down_Synthesis_for_Library_Learning.pdf)
   - Source: https://arxiv.org/abs/2211.16605
 
-- [LAPS](references/010_LAPS.pdf)
+- [LAPS](references/Leveraging_Language_to_Learn_Program_Abstractions_and_Search_Heuristics.pdf)
   - Source: https://arxiv.org/abs/2106.11053
 
-- [LILO](references/011_LILO.pdf)
+- [LILO](references/LILO_Learning_Interpretable_Libraries_by_Compressing_and_Documenting_Code.pdf)
   - Source: https://arxiv.org/abs/2310.19791
 
-- [SkillWeaver](references/012_SkillWeaver.pdf)
+- [SkillWeaver](references/SkillWeaver_Web_Agents_can_Self-Improve_by_Discovering_and_Honing_Skills.pdf)
   - Source: https://arxiv.org/abs/2504.07079
 
-- [PolySkill](references/013_PolySkill.pdf)
+- [PolySkill](references/PolySkill_Learning_Generalizable_Skills_Through_Polymorphic_Abstraction.pdf)
   - Source: https://arxiv.org/abs/2510.15863
 
-- [TroVE](references/014_TroVE.pdf)
+- [TroVE](references/TroVE_Inducing_Verifiable_and_Efficient_Toolboxes_for_Solving_Programmatic_Tasks.pdf)
   - Source: https://arxiv.org/abs/2401.12869
 
-- [Not All Skills Help](references/015_Not_All_Skills_Help.pdf)
+- [Not All Skills Help](references/Not_All_Skills_Help_Measuring_and_Repairing_Agent_Knowledge.pdf)
   - Source: https://arxiv.org/abs/2606.15390
 
-- [SAGE](references/016_SAGE.pdf)
+- [SAGE](references/Reinforcement_Learning_for_Self-Improving_Agent_with_Skill_Library.pdf)
   - Source: https://aclanthology.org/2026.acl-long.69/
 
-- [AgeMem](references/017_AgeMem.pdf)
+- [AgeMem](references/Agentic_Memory_Learning_Unified_Long-Term_and_Short-Term_Memory_Management_for_Large_Language_Model_Agents.pdf)
   - Source: https://aclanthology.org/2026.acl-long.981/
 
 - HermesAgent: prompt_builder.py

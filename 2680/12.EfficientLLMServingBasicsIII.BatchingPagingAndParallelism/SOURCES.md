@@ -8,23 +8,23 @@
 
 ## Readings
 
-- [Orca](readings/001_Orca_762100.html)
+- [Orca](readings/Orca_A_Distributed_Serving_System_for_Transformer-Based_Generative_Models.html)
   - Source: https://www.usenix.org/conference/osdi22/presentation/yu
-- [vLLM / PagedAttention](readings/002_vLLM_PagedAttention_ef8b5f.pdf)
+- [vLLM / PagedAttention](readings/Efficient_Memory_Management_for_Large_Language_Model_Serving_with_PagedAttention.pdf)
   - Source: https://arxiv.org/abs/2309.06180
-- [Jenga](readings/003_Jenga_103109.pdf)
+- [Jenga](readings/JENGA_Effective_Memory_Management_for_Serving_LLM_with_Heterogeneity.pdf)
   - Source: https://arxiv.org/abs/2503.18292
-- [vAttention](readings/004_vAttention_99c4e6.pdf)
+- [vAttention](readings/vAttention_Dynamic_Memory_Management_for_Serving_LLMs_without_PagedAttention.pdf)
   - Source: https://arxiv.org/abs/2405.04437
-- [Efficiently Scaling Transformer Inference](readings/005_Efficiently_Scaling_Transformer_Inference_688904.pdf)
+- [Efficiently Scaling Transformer Inference](readings/Efficiently_Scaling_Transformer_Inference.pdf)
   - Source: https://arxiv.org/abs/2211.05102
-- [Megatron-LM](readings/006_Megatron_LM_09b3a2.pdf)
+- [Megatron-LM](readings/Megatron-LM_Training_Multi-Billion_Parameter_Language_Models_Using_Model_Parallelism.pdf)
   - Source: https://arxiv.org/abs/1909.08053
-- [GPipe](readings/007_GPipe_c00b8d.pdf)
+- [GPipe](readings/GPipe_Easy_Scaling_with_Micro-Batch_Pipeline_Parallelism.pdf)
   - Source: https://arxiv.org/abs/1811.06965
-- [LoongServe](readings/008_LoongServe_13c659.pdf)
+- [LoongServe](readings/LoongServe_Efficiently_Serving_Long-Context_Large_Language_Models_with_Elastic_Sequence_Parallelism.pdf)
   - Source: https://arxiv.org/abs/2404.09526
-- [NanoFlow](readings/009_NanoFlow_373ed5.pdf)
+- [NanoFlow](readings/NanoFlow_Towards_Optimal_Large_Language_Model_Serving_Throughput.pdf)
   - Source: https://arxiv.org/abs/2408.12757
 
 ## References

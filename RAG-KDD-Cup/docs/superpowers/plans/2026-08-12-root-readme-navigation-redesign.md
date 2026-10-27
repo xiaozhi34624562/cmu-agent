@@ -73,7 +73,7 @@ worktree_repos = [
 ]
 
 original = authority_root / 'EReL@MIR 2025/code/01-iLearn-MDR/report.pdf'
-archived = authority_root / 'EReL@MIR 2025/papers/1st-iLearn-Technical-Report.pdf'
+archived = authority_root / 'EReL@MIR 2025/papers/Visual_Anchor_Point_for_Multimodal_Document_Retrieval.pdf'
 original_hash = hashlib.sha256(original.read_bytes()).hexdigest()
 archived_hash = hashlib.sha256(archived.read_bytes()).hexdigest()
 
@@ -190,7 +190,7 @@ PY
 | 本地官方代码仓库 | 7 | 当前主工作区中保留各自 `.git`、且被根 `.gitignore` 排除的上游仓库 |
 | Meta CRAG 研究单元 | 10 | CRAG 2024 八篇、CRAG-MM 2025 两篇 |
 
-EReL 第一名技术报告保留了两个内容相同的文件：上游代码仓库中的 `report.pdf` 与根 Git 追踪的 `papers/1st-iLearn-Technical-Report.pdf` 在权威主工作区核验得到相同 SHA-256。
+EReL 第一名技术报告保留了两个内容相同的文件：上游代码仓库中的 `report.pdf` 与根 Git 追踪的 `papers/Visual_Anchor_Point_for_Multimodal_Document_Retrieval.pdf` 在权威主工作区核验得到相同 SHA-256。
 
 ### 根 Git 可移植归档
 
@@ -223,14 +223,14 @@ EReL 第一名技术报告保留了两个内容相同的文件：上游代码仓
 ### FinanceRAG Challenge 2024
 
 - [中文技术分析](./FinanceRAG%20Challenge%202024/README.md)
-- [Multi-Reranker PDF](./FinanceRAG%20Challenge%202024/papers/Multi-Reranker.pdf)
+- [Multi-Reranker PDF](./FinanceRAG%20Challenge%202024/papers/Multi-Reranker_Maximizing_performance_of_retrieval-augmented_generation_in_the_FinanceRAG_challenge.pdf)
 - [FinanceRAG 官方代码](./FinanceRAG%20Challenge%202024/code/FinanceRAG/)
 - [来源清单](./FinanceRAG%20Challenge%202024/resources/source-manifest.md)
 
 ### WattBot Challenge 2025
 
 - [中文技术分析](./WattBot%20Challenge%202025/README.md)
-- [KohakuRAG PDF](./WattBot%20Challenge%202025/papers/KohakuRAG.pdf)
+- [KohakuRAG PDF](./WattBot%20Challenge%202025/papers/KohakuRAG_A_simple_RAG_framework_with_hierarchical_document_indexing.pdf)
 - [KohakuRAG 官方代码](./WattBot%20Challenge%202025/code/KohakuRAG/)
 - [来源清单](./WattBot%20Challenge%202025/resources/source-manifest.md)
 ```
@@ -425,7 +425,7 @@ worktree_pdfs = [p for p in worktree_root.rglob('*.pdf') if included_under(workt
 worktree_repos = [p.parent for p in worktree_root.rglob('.git') if included_under(worktree_root, p)]
 
 original = authority_root / 'EReL@MIR 2025/code/01-iLearn-MDR/report.pdf'
-archived = authority_root / 'EReL@MIR 2025/papers/1st-iLearn-Technical-Report.pdf'
+archived = authority_root / 'EReL@MIR 2025/papers/Visual_Anchor_Point_for_Multimodal_Document_Retrieval.pdf'
 original_hash = hashlib.sha256(original.read_bytes()).hexdigest()
 archived_hash = hashlib.sha256(archived.read_bytes()).hexdigest()
 

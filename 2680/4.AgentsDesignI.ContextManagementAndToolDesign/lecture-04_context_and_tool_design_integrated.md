@@ -2053,7 +2053,7 @@ continuation:
 ### R01 — ReAct: Synergizing Reasoning and Acting in Language Models
 
 **作者：**Shunyu Yao 等；ICLR 2023。  
-**文件：**[001_ReAct_764730.pdf](readings/001_ReAct_764730.pdf)，33 页；标注 arXiv:2210.03629v3，2023-03-10。  
+**文件：**[ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf](readings/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf)，33 页；标注 arXiv:2210.03629v3，2023-03-10。  
 **原始入口：**[ReAct 论文](https://arxiv.org/abs/2210.03629)。  
 **重点定位：**Figure 1 p. 2；§2 pp. 3–4；Table 1 p. 5；Table 2 p. 6；§4 pp. 7–8。  
 **本文使用：**语言动作与外部动作、反馈驱动检索、密集与稀疏推理、失败类型、混合策略与训练补充。  
@@ -2063,7 +2063,7 @@ continuation:
 ### R02 — Building effective agents
 
 **来源：**Anthropic。  
-**文件：**[002_building_effective_agents_ffc229.html](readings/002_building_effective_agents_ffc229.html)。  
+**文件：**[Building_Effective_AI_Agents.html](readings/Building_Effective_AI_Agents.html)。  
 **原始入口：**[Building effective agents](https://www.anthropic.com/engineering/building-effective-agents)。  
 **重点定位：**What are agents?；When and when not to use agents；五类 Workflow；Appendix 2: Prompt engineering your tools。  
 **本文使用：**工作流与 Agent 区分、简单可组合模式、ACI、防错设计、格式负担、路径例子。  
@@ -2073,7 +2073,7 @@ continuation:
 ### R03 — What Is an Agent Harness? Harness Engineering Explained
 
 **作者：**Tejas Kumar。  
-**文件：**[003_What_Is_an_Agent_Harness_Harness_Engineering_Explained_5cd1f2.html](readings/003_What_Is_an_Agent_Harness_Harness_Engineering_Explained_5cd1f2.html)。  
+**文件：**[What_Is_an_Agent_Harness_Harness_Engineering_Explained.html](readings/What_Is_an_Agent_Harness_Harness_Engineering_Explained.html)。  
 **原始入口：**[Agent Harness 文章](https://tej.as/blog/what-is-an-agent-harness)。  
 **重点定位：**Hacker News 点赞演示、逐步增加的 Harness 功能、What changed。  
 **本文使用：**模型声明与真实结果的分离、验证、认证、预算和运行层职责。  
@@ -2083,7 +2083,7 @@ continuation:
 ### R04 — Agent Patterns
 
 **来源：**AgentPatterns.ai。  
-**文件：**[004_Agent_Patterns_ca9606.html](readings/004_Agent_Patterns_ca9606.html)。  
+**文件：**[Agent_Patterns_for_AI_Agent_Development_-_AgentPatterns.ai.html](readings/Agent_Patterns_for_AI_Agent_Development_-_AgentPatterns.ai.html)。  
 **原始入口：**[Agent Patterns 首页](https://agentpatterns.ai/)。  
 **重点定位：**Agent Patterns、For AI agents、Browse by topic。  
 **本文使用：**按单概念、自包含、有来源的 Markdown 组织资料，作为知识按需加载的例子。  
@@ -2093,7 +2093,7 @@ continuation:
 ### R05 — LLM Powered Autonomous Agents
 
 **作者：**Lilian Weng；文章日期 2023-06-23。  
-**文件：**[005_LLM_powered_autonomous_agents_d60159.html](readings/005_LLM_powered_autonomous_agents_d60159.html)。  
+**文件：**[LLM_Powered_Autonomous_Agents.html](readings/LLM_Powered_Autonomous_Agents.html)。  
 **原始入口：**[LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent)。  
 **重点定位：**Agent System Overview；Planning／Self-Reflection；Memory；Generative Agents；Challenges。  
 **本文使用：**规划、记忆与工具的功能分解；跨尝试反思；相关性、新近程度与重要性的记忆检索视角。  
@@ -2103,7 +2103,7 @@ continuation:
 ### R06 — A practical guide to building agents
 
 **来源：**OpenAI。  
-**文件：**[006_practical_guide_to_building_agents_81cd30.pdf](readings/006_practical_guide_to_building_agents_81cd30.pdf)，34 页。  
+**文件：**[A_practical_guide_to_building_agents.pdf](readings/A_practical_guide_to_building_agents.pdf)，34 页。  
 **原始入口：**[A practical guide to building AI agents](https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents)。  
 **重点定位：**模型与工具 pp. 7–9；指令 p. 11；单／多 Agent pp. 13–18；护栏 pp. 24–27。  
 **本文使用：**先建立基线、工具与指令、逐步增加复杂度、Manager 与 handoff、分层防护。  
@@ -2113,7 +2113,7 @@ continuation:
 ### R07 — Effective context engineering for AI agents
 
 **来源：**Anthropic；文章标注首次发布于 2025-09-29。  
-**文件：**[007_context_engineering_126e07.html](readings/007_context_engineering_126e07.html)。  
+**文件：**[Effective_context_engineering_for_AI_agents.html](readings/Effective_context_engineering_for_AI_agents.html)。  
 **原始入口：**[Effective context engineering](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)。  
 **重点定位：**Context engineering vs. prompt engineering；The anatomy of effective context；Context retrieval and agentic search；Compaction；Structured note-taking；Sub-agent architectures。  
 **本文使用：**指令抽象高度、最少但充分的信息、按需检索、预加载取舍、压缩保真、笔记与隔离。  
@@ -2123,7 +2123,7 @@ continuation:
 ### R08 — Context Engineering: A Practical Guide for AI Agents (2026)
 
 **来源：**Sourcegraph；作者 Matt Tanner；归档页面标注 2026-05-28。  
-**文件：**[008_Sourcegraph_context_engineering_dcee4c.html](readings/008_Sourcegraph_context_engineering_dcee4c.html)。  
+**文件：**[Context_Engineering_A_Practical_Guide_for_AI_Agents_2026.html](readings/Context_Engineering_A_Practical_Guide_for_AI_Agents_2026.html)。  
 **原始入口：**[Sourcegraph Context Engineering](https://sourcegraph.com/blog/context-engineering)。  
 **重点定位：**The Four Pillars of Context Engineering；Context Assembly；Token Budget Management；Context Engineering for AI Coding Agents。  
 **本文使用：**每轮上下文组装、检索合并与重排、确定结构与语义检索的互补。  
@@ -2133,7 +2133,7 @@ continuation:
 ### R09 — Less Context, Better Agents: Efficient Context Engineering for Long-Horizon Tool-Using LLM Agents
 
 **作者：**Abhilasha Lodha 等，Microsoft。  
-**文件：**[009_context_pruning_c395c4.pdf](readings/009_context_pruning_c395c4.pdf)，17 页；标注 arXiv:2606.10209v1，2026-06-08。  
+**文件：**[Less_Context_Better_Agents_Efficient_Context_Engineering_for_Long-Horizon_Tool-Using_LLM_Agents.pdf](readings/Less_Context_Better_Agents_Efficient_Context_Engineering_for_Long-Horizon_Tool-Using_LLM_Agents.pdf)，17 页；标注 arXiv:2606.10209v1，2026-06-08。  
 **原始入口：**[Context Pruning 论文](https://arxiv.org/abs/2606.10209)。  
 **重点定位：**§3 pp. 3–5；Figure 1 p. 6；Tables 2–3 p. 7；扩展实验 p. 8；Tables 4–5 p. 9；讨论与局限 p. 10。  
 **本文使用：**C2–C4 受控比较、近期状态与全局进度、完整交互单元、真实状态读回、成本口径。  
@@ -2143,7 +2143,7 @@ continuation:
 ### R10 — Lost in the Middle: How Language Models Use Long Contexts
 
 **作者：**Nelson F. Liu 等。  
-**文件：**[010_lost_in_the_middle_6ee832.pdf](readings/010_lost_in_the_middle_6ee832.pdf)，18 页；归档版本标注 arXiv:2307.03172v3，2023-11-20。  
+**文件：**[Lost_in_the_Middle_How_Language_Models_Use_Long_Contexts.pdf](readings/Lost_in_the_Middle_How_Language_Models_Use_Long_Contexts.pdf)，18 页；归档版本标注 arXiv:2307.03172v3，2023-11-20。  
 **原始入口：**[Lost in the Middle 论文](https://arxiv.org/abs/2307.03172)。  
 **重点定位：**多文档实验 pp. 3–5；键值检索 pp. 6–7；结构、查询位置与微调分析 pp. 7–9；Figure 11 p. 10。  
 **本文使用：**检索与阅读的分离、位置和长度敏感性、查询前置的任务相关效果、召回增长与答案饱和。  
@@ -2153,7 +2153,7 @@ continuation:
 ### R11 — Diagnosing and Mitigating Context Rot in Long-horizon Search
 
 **作者：**Shijie Xia、Yikun Wang、Zhen Huang、Pengfei Liu。  
-**文件：**[011_context_rot_75e206.pdf](readings/011_context_rot_75e206.pdf)，21 页；页边标注 arXiv:2606.29718v2，2026-08-04，封面日期为 2026-08-05。  
+**文件：**[Diagnosing_and_Mitigating_Context_Rot_in_Long-horizon_Search.pdf](readings/Diagnosing_and_Mitigating_Context_Rot_in_Long-horizon_Search.pdf)，21 页；页边标注 arXiv:2606.29718v2，2026-08-04，封面日期为 2026-08-05。  
 **原始入口：**[长程搜索 Context Rot 论文](https://arxiv.org/abs/2606.29718)。  
 **重点定位：**终止分类 p. 4；实验设置 p. 5；长度控制 pp. 6–7；七种策略 p. 7；Tables 3–4 p. 8；Figure 5、Table 5 p. 9；并行采样与局限 p. 10。  
 **本文使用：**PT 与 No Answer 区分、更多探索的成本、模型相关选择、并行采样与上下文管理比较。  
@@ -2163,7 +2163,7 @@ continuation:
 ### R12 — Writing effective tools for agents — with agents
 
 **来源：**Anthropic；文章标注首次发布于 2025-09-11。  
-**文件：**[012_writing_effective_tools_1399ae.html](readings/012_writing_effective_tools_1399ae.html)。  
+**文件：**[Writing_effective_tools_for_AI_agents_using_AI_agents.html](readings/Writing_effective_tools_for_AI_agents_using_AI_agents.html)。  
 **原始入口：**[Writing tools for agents](https://www.anthropic.com/engineering/writing-tools-for-agents)。  
 **重点定位：**What is a tool?；How to write tools；Choosing the right tools；Namespacing；Returning meaningful context；Optimizing tool responses；Prompt-engineering tool descriptions。  
 **本文使用：**工具作为契约、业务步骤聚合、命名、返回模式、截断与错误提示、任务评测与独立测试集。  
@@ -2173,7 +2173,7 @@ continuation:
 ### R13 — How Foundational Models Became Superhuman in Bash
 
 **作者：**Philipp Schmid；归档页面日期 2026-09-01。  
-**文件：**[013_superhuman_bash_f405d1.html](readings/013_superhuman_bash_f405d1.html)。  
+**文件：**[How_Foundational_Models_Became_Superhuman_in_Bash.html](readings/How_Foundational_Models_Became_Superhuman_in_Bash.html)。  
 **原始入口：**[Superhuman Bash](https://www.philschmid.de/superhuman-bash)。  
 **重点定位：**Examples 1–3；Why atomic tools were right；What this means for harness engineering。  
 **本文使用：**多文件修改、worktree 与二分定位、流式日志与 SQLite、计算外置、Shell 保护、图像通道。  
@@ -2183,7 +2183,7 @@ continuation:
 ### R14 — Toolformer: Language Models Can Teach Themselves to Use Tools
 
 **作者：**Timo Schick 等。  
-**文件：**[014_Toolformer_200002.pdf](readings/014_Toolformer_200002.pdf)，17 页；标注 arXiv:2302.04761v1，2023-02-09。  
+**文件：**[Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf](readings/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf)，17 页；标注 arXiv:2302.04761v1，2023-02-09。  
 **原始入口：**[Toolformer 论文](https://arxiv.org/abs/2302.04761)。  
 **重点定位：**Figure 2 p. 2；损失与筛选 p. 3；训练与推理 p. 4；解码规则 pp. 5–6；依赖组合限制 p. 8；解码与数据质量 pp. 9–10。  
 **本文使用：**自监督工具数据构造、局部损失、调用倾向、工具能力与交互组织分离。  
@@ -2193,7 +2193,7 @@ continuation:
 ### R15 — How skills and MCPs actually work
 
 **作者：**Lawrence Jones；归档页面日期 2026-09-01。  
-**文件：**[015_demystifying_skills_and_MCPs_c840b9.html](readings/015_demystifying_skills_and_MCPs_c840b9.html)。  
+**文件：**[How_skills_and_MCPs_actually_work.html](readings/How_skills_and_MCPs_actually_work.html)。  
 **原始入口：**[Skills and MCPs](https://blog.lawrencejones.dev/demystifying-skills-and-mcps)。  
 **重点定位：**Agents are a loop；虚拟 Shell 示例；MCPs are just APIs in tools；Skills are just instructions；Plugins bundle skills；Skills replace system prompts。  
 **本文使用：**模型可见契约与实现解耦、队列口径、渐进式知识加载、单 Agent 与上下文分割、强制约束的位置。  

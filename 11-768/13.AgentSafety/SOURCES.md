@@ -28,10 +28,10 @@
 - [Gambit Security: AI agents targeting online retailers](references/005_Gambit_Security_AI_agents_targeting_online_retailers.html)
   - Source: https://gambit.security/blog-posts/autonomous-ai-agents-online-retailers-25-a-company
 
-- [AgentDojo](references/006_AgentDojo.pdf)
+- [AgentDojo](references/AgentDojo_A_Dynamic_Environment_to_Evaluate_Prompt_Injection_Attacks_and_Defenses_for_LLM_Agents.pdf)
   - Source: https://arxiv.org/abs/2406.13352v3
 
-- [ToolEmu](references/007_ToolEmu.pdf)
+- [ToolEmu](references/Identifying_the_Risks_of_LM_Agents_with_an_LM-Emulated_Sandbox.pdf)
   - Source: https://arxiv.org/abs/2309.15817v2
 
 - [Introducing Docent](references/008_Introducing_Docent.html)
@@ -40,13 +40,13 @@
 - Gray Swan Arena: Agent Red-Teaming Challenge (not downloaded; server returned HTTP 429)
   - Source: https://app.grayswan.ai/arena/challenge/agent-red-teaming/leaderboard
 
-- [Security Challenges in AI Agent Deployment: Insights from a Large Scale Public Competition](references/010_Security_Challenges_in_AI_Agent_Deployment_Insights_from_a_Large_Scale_Public_Competition.pdf)
+- [Security Challenges in AI Agent Deployment: Insights from a Large Scale Public Competition](references/Security_Challenges_in_AI_Agent_Deployment_Insights_from_a_Large_Scale_Public_Competition.pdf)
   - Source: https://arxiv.org/abs/2507.20526
 
-- [Jailbreaking Black Box Large Language Models in Twenty Queries (PAIR)](references/011_Jailbreaking_Black_Box_Large_Language_Models_in_Twenty_Queries_PAIR.pdf)
+- [Jailbreaking Black Box Large Language Models in Twenty Queries (PAIR)](references/Jailbreaking_Black_Box_Large_Language_Models_in_Twenty_Queries.pdf)
   - Source: https://arxiv.org/abs/2310.08419
 
-- [Nemotron 3 Super technical report](references/012_Nemotron_3_Super_technical_report.pdf)
+- [Nemotron 3 Super technical report](references/Nemotron_3_Super_Open_Efficient_Mixture-of-Experts_Hybrid_Mamba-Transformer_Model_for_Agentic_Reasoning.pdf)
   - Source: https://research.nvidia.com/labs/nemotron/files/NVIDIA-Nemotron-3-Super-Technical-Report.pdf
 
 - [Docker Engine security](references/013_Docker_Engine_security.html)
@@ -82,7 +82,7 @@
 - [GitHub App installation access tokens](references/023_GitHub_App_installation_access_tokens.html)
   - Source: https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app
 
-- [AI Control: Improving Safety Despite Intentional Subversion](references/024_AI_Control_Improving_Safety_Despite_Intentional_Subversion.pdf)
+- [AI Control: Improving Safety Despite Intentional Subversion](references/AI_Control_Improving_Safety_Despite_Intentional_Subversion.pdf)
   - Source: https://arxiv.org/abs/2312.06942v5
 
 - [OpenTelemetry generative AI attributes](references/025_OpenTelemetry_generative_AI_attributes.html)
@@ -91,16 +91,16 @@
 - [Docent](references/026_Docent.html)
   - Source: https://transluce.org/docent
 
-- [Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation](references/027_Monitoring_Reasoning_Models_for_Misbehavior_and_the_Risks_of_Promoting_Obfuscation.pdf)
+- [Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation](references/Monitoring_Reasoning_Models_for_Misbehavior_and_the_Risks_of_Promoting_Obfuscation.pdf)
   - Source: https://arxiv.org/abs/2503.11926
 
-- [AgentHarm](references/028_AgentHarm.pdf)
+- [AgentHarm](references/AgentHarm_A_Benchmark_for_Measuring_Harmfulness_of_LLM_Agents.pdf)
   - Source: https://arxiv.org/abs/2410.09024
 
-- [OpenAgentSafety](references/029_OpenAgentSafety.pdf)
+- [OpenAgentSafety](references/OpenAgentSafety_A_Comprehensive_Framework_for_Evaluating_Real-World_AI_Agent_Safety.pdf)
   - Source: https://arxiv.org/abs/2507.06134v2
 
-- [Monitoring Monitorability](references/030_Monitoring_Monitorability.pdf)
+- [Monitoring Monitorability](references/Monitoring_Monitorability.pdf)
   - Source: https://arxiv.org/abs/2512.18311
 
 <!-- BEGIN LOCAL LEARNING -->

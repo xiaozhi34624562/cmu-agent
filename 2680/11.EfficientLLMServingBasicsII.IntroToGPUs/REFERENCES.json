@@ -1,20 +1,22 @@
 [
   {
-    "title": "Roofline: An Insightful Visual Performance Model for Floating-Point Programs and Multicore Architectures (Berkeley technical report, 2008)",
+    "title": "Roofline: An Insightful Visual Performance Model for Floating-Point Programs and Multicore Architectures",
     "url": "https://www2.eecs.berkeley.edu/Pubs/TechRpts/2008/EECS-2008-134.pdf",
-    "path": "references/roofline-EECS-2008-134.pdf",
+    "path": "references/Roofline_An_Insightful_Visual_Performance_Model_for_Floating-Point_Programs_and_Multicore_Architectures.pdf",
     "status": "saved",
     "retrieved": "2026-10-26",
     "sha256": "c92f852eed1070b140302114339271dc1a4d6d665814ac9000be6ce06a7d6bcb",
-    "pages": 16
+    "pages": 16,
+    "source_label": "Roofline: An Insightful Visual Performance Model for Floating-Point Programs and Multicore Architectures (Berkeley technical report, 2008)"
   },
   {
-    "title": "PyTorch 2: Faster Machine Learning Through Dynamic Python Bytecode Transformation and Graph Compilation (ASPLOS 2024)",
+    "title": "PyTorch 2: Faster Machine Learning Through Dynamic Python Bytecode Transformation and Graph Compilation",
     "url": "https://pytorch.org/assets/pytorch2-2.pdf",
-    "path": "references/pytorch2-asplos2024.pdf",
+    "path": "references/PyTorch_2_Faster_Machine_Learning_Through_Dynamic_Python_Bytecode_Transformation_and_Graph_Compilation.pdf",
     "status": "saved",
     "retrieved": "2026-10-26",
     "sha256": "9fba949b34051ae1b0936c91ddb23e43638912b180dba490616256e5446f4e6e",
-    "pages": 18
+    "pages": 18,
+    "source_label": "PyTorch 2: Faster Machine Learning Through Dynamic Python Bytecode Transformation and Graph Compilation (ASPLOS 2024)"
   }
 ]

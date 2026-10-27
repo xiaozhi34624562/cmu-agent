@@ -1,12 +1,13 @@
 [
   {
-    "title": "Curriculum Learning — correct ICML 2009 paper",
+    "title": "Curriculum Learning",
     "url": "https://icml.cc/2009/papers/119.pdf",
-    "path": "references/026_Curriculum_Learning_ICML2009.pdf",
+    "path": "references/Curriculum_Learning.pdf",
     "status": "saved",
     "downloaded_at": "2026-10-26",
     "sha256": "be4bd220a1fd82d979cf08fa90520787eaa2ec24745ab9a35e90054a8feb9e7b",
     "pages": 8,
-    "replaces_as_evidence": "019_Curriculum_Learning.pdf is an unrelated quantum physics paper; retained unchanged for archive provenance"
+    "replaces_as_evidence": "Interaction-assisted_SU_2_adiabatic_holonomies_in_Josephson_phase_qubits.pdf is an unrelated quantum physics paper; retained unchanged for archive provenance",
+    "source_label": "Curriculum Learning — correct ICML 2009 paper"
   }
 ]

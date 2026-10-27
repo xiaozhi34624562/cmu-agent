@@ -28,31 +28,31 @@
 
 ## Assigned readings
 
-- R01: [Large Language Models Are Human-Level Prompt Engineers](readings/001_Large_Language_Models_Are_Human_Level_Prompt_Engineers_2211.01910.pdf)
+- R01: [Large Language Models Are Human-Level Prompt Engineers](readings/Large_Language_Models_Are_Human-Level_Prompt_Engineers.pdf)
   - Source: https://arxiv.org/abs/2211.01910
   - PDF version: 2211.01910v2
-- R02: [TextGrad: Automatic "Differentiation" via Text](readings/002_TextGrad_Automatic_Differentiation_via_Text_2406.07496.pdf)
+- R02: [TextGrad: Automatic "Differentiation" via Text](readings/TextGrad_Automatic_Differentiation_via_Text.pdf)
   - Source: https://arxiv.org/abs/2406.07496
   - PDF version: 2406.07496v1
-- R03: [DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines](readings/003_DSPy_Compiling_Declarative_Language_Model_Calls_into_Self_Improving_Pipe_2310.03714.pdf)
+- R03: [DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines](readings/DSPy_Compiling_Declarative_Language_Model_Calls_into_Self-Improving_Pipelines.pdf)
   - Source: https://arxiv.org/abs/2310.03714
   - PDF version: 2310.03714v1
-- R04: [Reflexion: Language Agents with Verbal Reinforcement Learning](readings/004_Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning_2303.11366.pdf)
+- R04: [Reflexion: Language Agents with Verbal Reinforcement Learning](readings/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf)
   - Source: https://arxiv.org/abs/2303.11366
   - PDF version: 2303.11366v4
-- R05: [Evolving Prompts In-Context: An Open-ended, Self-replicating Perspective](readings/005_Evolving_Prompts_In_Context_An_Open_ended_Self_replicating_Perspective_2506.17930.pdf)
+- R05: [Evolving Prompts In-Context: An Open-ended, Self-replicating Perspective](readings/Evolving_Prompts_In-Context_An_Open-ended_Self-replicating_Perspective.pdf)
   - Source: https://arxiv.org/abs/2506.17930
   - PDF version: 2506.17930v1
-- R06: [GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning](readings/006_GEPA_Reflective_Prompt_Evolution_Can_Outperform_Reinforcement_Learning_2507.19457.pdf)
+- R06: [GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning](readings/GEPA_Reflective_Prompt_Evolution_Can_Outperform_Reinforcement_Learning.pdf)
   - Source: https://arxiv.org/abs/2507.19457
   - PDF version: 2507.19457v2
-- R07: [ReasoningBank: Scaling Agent Self-Evolving with Reasoning Memory](readings/007_ReasoningBank_Scaling_Agent_Self_Evolving_with_Reasoning_Memory_2509.25140.pdf)
+- R07: [ReasoningBank: Scaling Agent Self-Evolving with Reasoning Memory](readings/ReasoningBank_Scaling_Agent_Self-Evolving_with_Reasoning_Memory.pdf)
   - Source: https://arxiv.org/abs/2509.25140
   - PDF version: 2509.25140v2
 
 ## References and local study guide
 
 - [讲义内嵌链接及其 PDF 页码](../LECTURE_LINKS.json)；JSON 按 week、pdf、page 记录，视频和通用网站入口仅作来源导航。
-- [Agentic Context Engineering: Evolving Contexts for Self-Improving Language Models](references/2510.04618.pdf)
+- [Agentic Context Engineering: Evolving Contexts for Self-Improving Language Models](references/Agentic_Context_Engineering_Evolving_Contexts_for_Self-Improving_Language_Models.pdf)
   - Source: https://arxiv.org/abs/2510.04618
 - [完整中文课程讲解](notes.zh-CN.md)

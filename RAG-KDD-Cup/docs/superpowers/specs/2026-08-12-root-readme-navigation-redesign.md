@@ -19,7 +19,7 @@ README 必须同时陈述两种不能互相替代的资产口径：
 
 七个嵌套上游仓库被根 `.gitignore` 明确排除，因此只属于当前用户主工作区的物理状态，不属于根 Git 的自包含归档。README 不得笼统承诺新的 checkout、worktree 或 `git archive` 会包含 15 个 PDF 和 7 个本地仓库。
 
-EReL 第一名报告的重复哈希证据只从权威主工作区核验：`EReL@MIR 2025/code/01-iLearn-MDR/report.pdf` 位于被忽略的嵌套仓库，`EReL@MIR 2025/papers/1st-iLearn-Technical-Report.pdf` 由根 Git 追踪；两者 SHA-256 均为 `06c4b8ca4751dd502b9e49132570242ea101e0cf562dece329ac78274428474c`。
+EReL 第一名报告的重复哈希证据只从权威主工作区核验：`EReL@MIR 2025/code/01-iLearn-MDR/report.pdf` 位于被忽略的嵌套仓库，`EReL@MIR 2025/papers/Visual_Anchor_Point_for_Multimodal_Document_Retrieval.pdf` 由根 Git 追踪；两者 SHA-256 均为 `06c4b8ca4751dd502b9e49132570242ea101e0cf562dece329ac78274428474c`。
 
 ## 信息架构
 

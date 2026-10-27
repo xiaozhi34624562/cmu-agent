@@ -9,16 +9,16 @@
 
 ## Readings
 
-- [What Are Tools Anyway?](readings/001_What_Are_Tools_Anyway.pdf)
+- [What Are Tools Anyway?](readings/What_Are_Tools_Anyway_A_Survey_from_the_Language_Model_Perspective.pdf)
   - Source: https://arxiv.org/abs/2403.15452
 
-- [CodeAct](readings/002_CodeAct.pdf)
+- [CodeAct](readings/Executable_Code_Actions_Elicit_Better_LLM_Agents.pdf)
   - Source: https://arxiv.org/abs/2402.01030
 
-- [Toolformer](readings/003_Toolformer.pdf)
+- [Toolformer](readings/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf)
   - Source: https://arxiv.org/abs/2302.04761
 
-- [XGrammar](readings/004_XGrammar.pdf)
+- [XGrammar](readings/XGrammar_Flexible_and_Efficient_Structured_Generation_Engine_For_Large_Language_Models.pdf)
   - Source: https://arxiv.org/abs/2411.15100
 
 ## References

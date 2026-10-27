@@ -402,8 +402,15 @@
       "final_url": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
       "content_disposition": "",
       "html_title": "MAS.S62 AI4AI | Schedule",
-      "sha256": "da4bc8be3d70c9cc1bcdcb348df4dbaf81b06f1f8dd2aa1155b3717a57737265",
-      "bytes": 19705
+      "sha256": "403663761314958eec3bdb74b068f1b61102e0552e39e1c77ea747f4199b51bf",
+      "bytes": 19705,
+      "local_navigation_maintenance": [
+        {
+          "date": "2026-10-27",
+          "previous_sha256": "da4bc8be3d70c9cc1bcdcb348df4dbaf81b06f1f8dd2aa1155b3717a57737265",
+          "scope": "Local links updated for title-based reading filenames; original external URLs retained"
+        }
+      ]
     },
     {
       "id": "acd294bbf7a2",
@@ -419,8 +426,15 @@
       "final_url": "https://mit-mi.github.io/how2ai-course/fall2026/projects/",
       "content_disposition": "",
       "html_title": "MAS.S62 AI4AI | Examples of Previous Project Reports",
-      "sha256": "d54ca63b2151537dd79d912e864a79ad5ecc31594d3df1b4124749ef00eb57a6",
-      "bytes": 10464
+      "sha256": "9dc60cde22a03ef96634a57c9117af3b61102828d0b8a8afa4117dab8d6fa338",
+      "bytes": 10464,
+      "local_navigation_maintenance": [
+        {
+          "date": "2026-10-27",
+          "previous_sha256": "d54ca63b2151537dd79d912e864a79ad5ecc31594d3df1b4124749ef00eb57a6",
+          "scope": "Local links updated for title-based reading filenames; original external URLs retained"
+        }
+      ]
     },
     {
       "id": "8a0bc033281b",
@@ -650,7 +664,7 @@
       "weeks": [
         2
       ],
-      "path": "readings/papers/2211.01910.pdf",
+      "path": "readings/papers/Large_Language_Models_Are_Human-Level_Prompt_Engineers.pdf",
       "download_url": "https://arxiv.org/pdf/2211.01910",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -665,13 +679,13 @@
     },
     {
       "id": "0887ba3b7bb4",
-      "title": "TextGrad: Automatic \"Differentiation\" via Text",
+      "title": "TextGrad: Automatic Differentiation via Text",
       "url": "https://arxiv.org/abs/2406.07496",
       "kind": "reading",
       "weeks": [
         2
       ],
-      "path": "readings/papers/2406.07496.pdf",
+      "path": "readings/papers/TextGrad_Automatic_Differentiation_via_Text.pdf",
       "download_url": "https://arxiv.org/pdf/2406.07496",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -682,7 +696,8 @@
       "cover": ": Automatic “Differentiation” via Text Mert Yuksekgonul1* MERTY@STANFORD.EDU Federico Bianchi1* FEDE@STANFORD.EDU Joseph Boen2* TBOEN@STANFORD.EDU Sheng Liu2* SHENGL@STANFORD.EDU Zhi Huang2* ZHIHUANG@STANFORD.EDU Carlos Guestrin1,3 GUESTRIN@STANFORD.EDU James Zou1,2,3 JAMESZ@STANFORD.EDU 1DEPARTMENT OF COMPUTER SCIENCE, STANFORD UNIVERSITY 2DEPARTMENT OF BIOMEDICAL DATA SCIENCE, STANFORD UNIVERSITY 3CHAN ZUCKERBERG BIOHUB CORRESPONDENCE: MERTY@STANFORD.EDU AND JAMESZ@STANFORD.EDU REPOSITORY AND TUTORIALS Abstract AI is undergoing a paradigm shift, with breakthroughs achieved by systems orchestrating multiple large language models (LLMs) and other complex components. As a result, develop- ing principled and automated optimization methods for compound AI systems is one of the most important new challenges. Neural networks faced a similar challenge in its early days until backpropagation and automatic differentiation transformed the field by making optimiza- tion turn-key. Inspired by this, we introduce TEXTGRAD, a powerful framework performing automatic “differentiation” via text. TEXTGRAD backpropagates textual feedback provided by LLMs to improve individual components of a compound AI system. In our framework, LLMs provide rich, general, natural language suggestions to optimize variables in computation graphs, ranging from code snippets to molecular structures. TEXTGRAD follows PyTorch’s syn- tax and abstraction and is flexible and easy-to-use. It works out-of-the-box for a variety of tasks, where the users only provide the objective function without tuning components or prompts of the framework. We showcase TEXTGRAD’s effectiveness and generality across a diverse range of applications, from question answering and molecule optimization to radiotherapy treatment planning. Without modifying the framework, TEXTGRAD improves the zero-shot accuracy of GPT-4o in Google-Proof Question Answering from 51% to 55%, yields 20% relative performance gain in optimizing LeetCode-Hard coding problem solutions, improves prompts for reasoning, designs new druglike small molecules with desirable in silico binding, and designs radiation oncology treatment plans with high specificity. TEXTGRAD lays a foundation to accelerate the development of the next-generation of AI systems. 1 Introduction There is an emerging paradigm shift in how AI systems are built, owing to the breakthroughs of Large Language Models (LLMs) [1–6]. The new generation of AI applications are increasingly compound systems involving multiple sophisticated components, where each component could be an LLM-based agent, a tool such as a simulator, or web search. For instance, a system of LLMs communicating with symbolic solvers can solve olympiad-level math problems [7]; a system of LLMs using search engines and code interpreter tools performs comparably to human competitive programmers [8] and are solving real-world *Co-first authors. 1 arXiv:2406.07496v1 [cs.CL] 11 Jun 2024",
       "pdf_version": "2406.07496v1",
       "sha256": "9cbfd5c78ad69e2a8363e76d6774f3e6b5e68f46b409d8b560e98276a985b428",
-      "bytes": 1336878
+      "bytes": 1336878,
+      "source_label": "TextGrad: Automatic \"Differentiation\" via Text"
     },
     {
       "id": "68647c35a3cc",
@@ -692,7 +707,7 @@
       "weeks": [
         2
       ],
-      "path": "readings/papers/2310.03714.pdf",
+      "path": "readings/papers/DSPy_Compiling_Declarative_Language_Model_Calls_into_Self-Improving_Pipelines.pdf",
       "download_url": "https://arxiv.org/pdf/2310.03714",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -714,7 +729,7 @@
         2,
         5
       ],
-      "path": "readings/papers/2303.11366.pdf",
+      "path": "readings/papers/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf",
       "download_url": "https://arxiv.org/pdf/2303.11366",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -735,7 +750,7 @@
       "weeks": [
         2
       ],
-      "path": "readings/papers/2506.17930.pdf",
+      "path": "readings/papers/Evolving_Prompts_In-Context_An_Open-ended_Self-replicating_Perspective.pdf",
       "download_url": "https://arxiv.org/pdf/2506.17930",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -756,7 +771,7 @@
       "weeks": [
         2
       ],
-      "path": "readings/papers/2507.19457.pdf",
+      "path": "readings/papers/GEPA_Reflective_Prompt_Evolution_Can_Outperform_Reinforcement_Learning.pdf",
       "download_url": "https://arxiv.org/pdf/2507.19457",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -777,7 +792,7 @@
       "weeks": [
         2
       ],
-      "path": "readings/papers/2509.25140.pdf",
+      "path": "readings/papers/ReasoningBank_Scaling_Agent_Self-Evolving_with_Reasoning_Memory.pdf",
       "download_url": "https://arxiv.org/pdf/2509.25140",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -812,13 +827,13 @@
     },
     {
       "id": "5d0733c554b9",
-      "title": "FunSearch: Mathematical discoveries from program search with large language models",
+      "title": "Mathematical discoveries from program search with large language models",
       "url": "https://www.nature.com/articles/s41586-023-06924-6",
       "kind": "reading",
       "weeks": [
         3
       ],
-      "path": "readings/web/www_nature_com_articles_s41586_023_06924_6_5d0733c5.html",
+      "path": "readings/web/Mathematical_discoveries_from_program_search_with_large_language_models.html",
       "download_url": "https://www.nature.com/articles/s41586-023-06924-6",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -827,7 +842,8 @@
       "content_disposition": "",
       "html_title": "Mathematical discoveries from program search with large language models | Nature",
       "sha256": "39c499ddf075edf00c9af7bff5dcf95614f2401db7fa6370e9f6af432becb023",
-      "bytes": 488998
+      "bytes": 488998,
+      "source_label": "FunSearch: Mathematical discoveries from program search with large language models"
     },
     {
       "id": "1e87fd4e4316",
@@ -837,7 +853,7 @@
       "weeks": [
         3
       ],
-      "path": "readings/papers/2309.03409.pdf",
+      "path": "readings/papers/Large_Language_Models_as_Optimizers.pdf",
       "download_url": "https://arxiv.org/pdf/2309.03409",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -858,7 +874,7 @@
       "weeks": [
         3
       ],
-      "path": "readings/papers/2506.13131.pdf",
+      "path": "readings/papers/AlphaEvolve_A_coding_agent_for_scientific_and_algorithmic_discovery.pdf",
       "download_url": "https://arxiv.org/pdf/2506.13131",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -879,7 +895,7 @@
       "weeks": [
         3
       ],
-      "path": "readings/papers/2408.06292.pdf",
+      "path": "readings/papers/The_AI_Scientist_Towards_Fully_Automated_Open-Ended_Scientific_Discovery.pdf",
       "download_url": "https://arxiv.org/pdf/2408.06292",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -900,7 +916,7 @@
       "weeks": [
         3
       ],
-      "path": "readings/papers/2409.04109.pdf",
+      "path": "readings/papers/Can_LLMs_Generate_Novel_Research_Ideas_A_Large-Scale_Human_Study_with_100+_NLP_Researchers.pdf",
       "download_url": "https://arxiv.org/pdf/2409.04109",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -921,7 +937,7 @@
       "weeks": [
         3
       ],
-      "path": "readings/papers/2606.15497.pdf",
+      "path": "readings/papers/Towards_End-to-End_Automation_of_AI_Research.pdf",
       "download_url": "https://arxiv.org/pdf/2606.15497",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -976,13 +992,13 @@
     },
     {
       "id": "f9ee97bf60c7",
-      "title": "Darwin Godel Machine: Open-Ended Evolution of Self-Improving Agents",
+      "title": "Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents",
       "url": "https://arxiv.org/abs/2505.22954",
       "kind": "reading",
       "weeks": [
         5
       ],
-      "path": "readings/papers/2505.22954.pdf",
+      "path": "readings/papers/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf",
       "download_url": "https://arxiv.org/pdf/2505.22954",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -993,7 +1009,8 @@
       "cover": "Published as a conference paper at ICLR 2026 DARWIN GÖDEL MACHINE: OPEN-ENDED EVOLUTION OF SELF-IMPROVING AGENTS Jenny Zhang*,1,2 Shengran Hu*,1,2,3 Cong Lu1,2,3 Robert Lange†,3 Jeff Clune†,1,2,4 1University of British Columbia 2Vector Institute 3Sakana AI 4Canada CIFAR AI Chair {jennyzzt,srhu,conglu}@cs.ubc.ca, robert@sakana.ai, jeff.clune@ubc.ca ABSTRACT Most of today’s AI systems are constrained by human-designed, fixed architectures and cannot autonomously and continuously improve themselves. The scientific method, on the other hand, is a cumulative and open-ended system, where each innovation builds upon previous artifacts, enabling future discoveries. There is growing hope that the current manual process of advancing AI could itself be automated. If done safely, such automation would accelerate AI development and allow us to reap its benefits much sooner. This prospect raises the question of how AI systems can endlessly improve themselves while getting better at solving relevant problems. Meta-learning can automate the discovery of novel algorithms, but is limited by first-order improvements and the human design of a suitable search space. The Gödel machine (Schmidhuber, 2007) proposed a theoretical alternative: a self-improving AI that repeatedly modifies itself in a provably beneficial manner. Unfortunately, proving that most changes are net beneficial is impossible in practice. We introduce the Darwin Gödel Machine (DGM), a novel self-improving system that iteratively modifies its own code (thereby also improving its ability to modify its own codebase) and empirically validates each change using coding benchmarks. Inspired by Darwinian evolution and open-endedness research, the DGM grows an archive of generated coding agents. It samples agents from this archive, which self-modify to create new, interesting versions of themselves. This open-ended exploration forms a growing tree of diverse, high-quality agents and allows the parallel exploration of many different paths through the search space. Empirically, the DGM automatically improves its coding capabilities (e.g., better code editing tools, long-context window management, peer-review mechanisms), increasing performance on SWE-bench from 20.0% to 50.0%, and on Polyglot from 14.2% to 30.7%. Furthermore, the DGM significantly outperforms baselines without self- improvement or open-ended exploration. All experiments were done with safety precautions (e.g., sandboxing, human oversight). Overall, the DGM represents a significant step toward self-improving AI, capable of gathering its own stepping stones along a path that unfolds into endless innovation. All code is open-sourced at https://github.com/jennyzzt/dgm. 1 INTRODUCTION Scientific progress is cumulative and open-ended, with each breakthrough standing on the shoulders of countless prior insights. In the same way, our most advanced AI systems are built upon a long lineage of innovations. For instance, transformers (Vaswani et al., 2017), the backbone of current large language models (LLMs) (Brown et al., 2020), did not emerge in isolation but were built upon years of past innovations, such as recurrent neural networks (Linnainmaa, 1970; Amari, 1972; Hopfield, 1982; Rumelhart et al., 1985) and attention mechanisms (Schmidhuber & Huber, 1990; Bahdanau et al., 2015; Kim et al., 2017; Parikh et al., 2016). However, most of today’s AI systems remain bound by fixed, human-designed architectures that learn within predefined boundaries, without the capacity to autonomously rewrite their own source code to self-improve. As a result, each advancement in AI development still leans heavily on human interventions, tethering the pace of progress. This paper *co-first authors † co-senior authors 1 arXiv:2505.22954v3 [cs.AI] 12 Mar 2026",
       "pdf_version": "2505.22954v3",
       "sha256": "13ff4abe0c7ad4a7dd3b4876d19a8bf940e39e70dabbf06065aa774a6c3457de",
-      "bytes": 3825399
+      "bytes": 3825399,
+      "source_label": "Darwin Godel Machine: Open-Ended Evolution of Self-Improving Agents"
     },
     {
       "id": "f7ccb39fbcb0",
@@ -1003,7 +1020,7 @@
       "weeks": [
         5
       ],
-      "path": "readings/papers/2512.24601.pdf",
+      "path": "readings/papers/Recursive_Language_Models.pdf",
       "download_url": "https://arxiv.org/pdf/2512.24601",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1024,7 +1041,7 @@
       "weeks": [
         5
       ],
-      "path": "readings/papers/2609.37725.pdf",
+      "path": "readings/papers/Context_Language_Models.pdf",
       "download_url": "https://arxiv.org/pdf/2609.37725",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1039,13 +1056,13 @@
     },
     {
       "id": "42e3db46c7e8",
-      "title": "MEM1: Learning to Synergize Memory and Reasoning for Efficient Long-horizon Agents",
+      "title": "MEM1: Learning to Synergize Memory and Reasoning for Efficient Long-Horizon Agents",
       "url": "https://arxiv.org/abs/2506.15841",
       "kind": "reading",
       "weeks": [
         5
       ],
-      "path": "readings/papers/2506.15841.pdf",
+      "path": "readings/papers/MEM1_Learning_to_Synergize_Memory_and_Reasoning_for_Efficient_Long-Horizon_Agents.pdf",
       "download_url": "https://arxiv.org/pdf/2506.15841",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1056,7 +1073,8 @@
       "cover": "MEM1: Learning to Synergize Memory and Reasoning for Efficient Long-Horizon Agents Zijian Zhou*12 Ao Qu*13 Zhaoxuan Wu1 Sunghwan Kim4 Alok Prakash1 Daniela Rus13 Jinhua Zhao13 Bryan Kian Hsiang Low13 Paul Pu Liang3 1Singapore-MIT Alliance for Research and Technology Centre 2National University of Singapore 3MIT 4Yonsei University Abstract Modern language agents must operate over long-horizon, multi-turn interactions, where they retrieve external information, adapt to observations, and answer in- terdependent queries. Yet, most LLM systems rely on full-context prompting, appending all past turns regardless of their relevance. This leads to unbounded memory growth, increased computational costs, and degraded reasoning perfor- mance on out-of-distribution input lengths. We introduce MEM1, an end-to-end reinforcement learning framework that enables agents to operate with constant memory across long multi-turn tasks. At each turn, MEM1 updates a compact shared internal state that jointly supports memory consolidation and reasoning. This state integrates prior memory with new observations from the environment while strategically discarding irrelevant or redundant information. To support training in more realistic and compositional settings, we propose a simple yet effective and scalable approach to constructing multi-turn environments by com- posing existing datasets into arbitrarily complex task sequences. Experiments across three domains, including internal retrieval QA, open-domain web QA, and multi-turn web shopping, show that MEM1-7B improves performance by 3.5× while reducing memory usage by 3.7× compared to Qwen2.5-14B-Instruct on a 16-objective multi-hop QA task, and generalizes beyond the training horizon. Our results demonstrate the promise of reasoning-driven memory consolidation as a scalable alternative to existing solutions for training long-horizon interactive agents, where both efficiency and performance are optimized. Code can be found at https://github.com/MIT-MI/MEM1. 1 Introduction Large language models (LLMs) have shown remarkable performance in single-turn tasks such as question answering, summarization, and code generation [7, 51, 3]. However, emerging real- world applications increasingly operate over multiple turns—searching documents, interacting with environments [70], and making decisions based on evolving external information [53]. Examples include research agents such as OpenAI and Gemini Deep Research [37, 18] that automate complex tasks by iteratively gathering information, and web-navigation agents such as OpenManus [50] and BrowserUse [34], which must complete goals across dozens of interactive turns. Unlike traditional tasks where the input is static or self-contained, long-horizon settings often involve answering a sequence of related questions, requiring the agent to continuously retrieve new * Equal contribution. Correspondence: zhou_zijian@u.nus.edu, qua@mit.edu arXiv:2506.15841v2 [cs.CL] 17 Jul 2025",
       "pdf_version": "2506.15841v2",
       "sha256": "9fd4873473d5721d3e3622021188ceca4021f614a60bfc38351ad4a05929168f",
-      "bytes": 4492356
+      "bytes": 4492356,
+      "source_label": "MEM1: Learning to Synergize Memory and Reasoning for Efficient Long-horizon Agents"
     },
     {
       "id": "9b9bdcb8a179",
@@ -1066,7 +1084,7 @@
       "weeks": [
         5
       ],
-      "path": "readings/papers/2603.28052.pdf",
+      "path": "readings/papers/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf",
       "download_url": "https://arxiv.org/pdf/2603.28052",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1087,7 +1105,7 @@
       "weeks": [
         5
       ],
-      "path": "readings/papers/2605.09998.pdf",
+      "path": "readings/papers/Continual_Harness_Online_Adaptation_for_Self-Improving_Foundation_Agents.pdf",
       "download_url": "https://arxiv.org/pdf/2605.09998",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1108,7 +1126,7 @@
       "weeks": [
         5
       ],
-      "path": "readings/web/arena_ai_blog_coding_agents_harness_tax_c2dd74e6.html",
+      "path": "readings/web/HarnessTax_How_Much_Does_the_Harness_Matter_for_Coding_Agents.html",
       "download_url": "https://arena.ai/blog/coding-agents-harness-tax",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1127,7 +1145,7 @@
       "weeks": [
         5
       ],
-      "path": "readings/papers/2605.30621.pdf",
+      "path": "readings/papers/Harness_Updating_Is_Not_Harness_Benefit_Disentangling_Evolution_Capabilities_in_Self-Evolving_LLM_Agents.pdf",
       "download_url": "https://arxiv.org/pdf/2605.30621",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1188,7 +1206,7 @@
       "weeks": [
         6
       ],
-      "path": "readings/papers/2302.04761.pdf",
+      "path": "readings/papers/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf",
       "download_url": "https://arxiv.org/pdf/2302.04761",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1209,7 +1227,7 @@
       "weeks": [
         6
       ],
-      "path": "readings/papers/2307.16789.pdf",
+      "path": "readings/papers/ToolLLM_Facilitating_Large_Language_Models_to_Master_16000+_Real-world_APIs.pdf",
       "download_url": "https://arxiv.org/pdf/2307.16789",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1230,7 +1248,7 @@
       "weeks": [
         6
       ],
-      "path": "readings/papers/2602.12670.pdf",
+      "path": "readings/papers/SkillsBench_Benchmarking_How_Well_Agent_Skills_Work_Across_Diverse_Tasks.pdf",
       "download_url": "https://arxiv.org/pdf/2602.12670",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1245,13 +1263,13 @@
     },
     {
       "id": "8136d37a5eaa",
-      "title": "Voyager: An Open-Ended Embodied Agent with Large Language Models",
+      "title": "VOYAGER: An Open-Ended Embodied Agent with Large Language Models",
       "url": "https://arxiv.org/abs/2305.16291",
       "kind": "reading",
       "weeks": [
         6
       ],
-      "path": "readings/papers/2305.16291.pdf",
+      "path": "readings/papers/VOYAGER_An_Open-Ended_Embodied_Agent_with_Large_Language_Models.pdf",
       "download_url": "https://arxiv.org/pdf/2305.16291",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1262,7 +1280,8 @@
       "cover": "VOYAGER: An Open-Ended Embodied Agent with Large Language Models Guanzhi Wang1 2 #, Yuqi Xie3, Yunfan Jiang4∗, Ajay Mandlekar1∗, Chaowei Xiao1 5, Yuke Zhu1 3, Linxi “Jim” Fan1† #, Anima Anandkumar1 2† 1NVIDIA, 2Caltech, 3UT Austin, 4Stanford, 5UW Madison ∗Equal contribution †Equal advising # Corresponding authors https://voyager.minedojo.org Abstract We introduce VOYAGER, the first LLM-powered embodied lifelong learning agent in Minecraft that continuously explores the world, acquires diverse skills, and makes novel discoveries without human intervention. VOYAGER consists of three key components: 1) an automatic curriculum that maximizes exploration, 2) an ever-growing skill library of executable code for storing and retrieving complex behaviors, and 3) a new iterative prompting mechanism that incorporates environ- ment feedback, execution errors, and self-verification for program improvement. VOYAGER interacts with GPT-4 via blackbox queries, which bypasses the need for model parameter fine-tuning. The skills developed by VOYAGER are temporally extended, interpretable, and compositional, which compounds the agent’s abilities rapidly and alleviates catastrophic forgetting. Empirically, VOYAGER shows strong in-context lifelong learning capability and exhibits exceptional proficiency in playing Minecraft. It obtains 3.3× more unique items, travels 2.3× longer distances, and unlocks key tech tree milestones up to 15.3× faster than prior SOTA. VOYAGER is able to utilize the learned skill library in a new Minecraft world to solve novel tasks from scratch, while other techniques struggle to generalize. Figure 1: VOYAGER discovers new Minecraft items and skills continually by self-driven exploration, significantly outperforming the baselines. X-axis denotes the number of prompting iterations. 1 arXiv:2305.16291v2 [cs.AI] 19 Oct 2023",
       "pdf_version": "2305.16291v2",
       "sha256": "769a4e33ddeeb73870849232eece49afe882c2d146362e33917ccb432ba0efb8",
-      "bytes": 18830859
+      "bytes": 18830859,
+      "source_label": "Voyager: An Open-Ended Embodied Agent with Large Language Models"
     },
     {
       "id": "538e882ad947",
@@ -1272,7 +1291,7 @@
       "weeks": [
         6
       ],
-      "path": "readings/papers/2604.01658.pdf",
+      "path": "readings/papers/CORAL_Towards_Autonomous_Multi-Agent_Evolution_for_Open-Ended_Discovery.pdf",
       "download_url": "https://arxiv.org/pdf/2604.01658",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1293,7 +1312,7 @@
       "weeks": [
         6
       ],
-      "path": "readings/papers/2512.08296.pdf",
+      "path": "readings/papers/Towards_a_Science_of_Scaling_Agent_Systems.pdf",
       "download_url": "https://arxiv.org/pdf/2512.08296",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1314,7 +1333,7 @@
       "weeks": [
         6
       ],
-      "path": "readings/papers/2503.13657.pdf",
+      "path": "readings/papers/Why_Do_Multi-Agent_LLM_Systems_Fail.pdf",
       "download_url": "https://arxiv.org/pdf/2503.13657",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1465,7 +1484,7 @@
       "url": "https://arxiv.org/abs/2505.17090",
       "kind": "previous_project",
       "weeks": [],
-      "path": "readings/papers/2505.17090.pdf",
+      "path": "readings/papers/EmoSign_A_Multimodal_Dataset_for_Understanding_Emotions_in_American_Sign_Language.pdf",
       "download_url": "https://arxiv.org/pdf/2505.17090",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1484,7 +1503,7 @@
       "url": "https://arxiv.org/abs/2511.02794",
       "kind": "previous_project",
       "weeks": [],
-      "path": "readings/papers/2511.02794.pdf",
+      "path": "readings/papers/When_One_Modality_Sabotages_the_Others_A_Diagnostic_Lens_on_Multimodal_Reasoning.pdf",
       "download_url": "https://arxiv.org/pdf/2511.02794",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1515,7 +1534,7 @@
       "url": "https://aclanthology.org/2024.emnlp-main.558/",
       "kind": "previous_project",
       "weeks": [],
-      "path": "readings/web/aclanthology_org_2024_emnlp_main_558_0e2af941.html",
+      "path": "readings/web/MMoE_Enhancing_Multimodal_Models_with_Mixtures_of_Multimodal_Interaction_Experts.html",
       "download_url": "https://aclanthology.org/2024.emnlp-main.558/",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1528,11 +1547,11 @@
     },
     {
       "id": "930c23778a6b",
-      "title": "Social-iq 2.0 Challenge: Benchmarking Multimodal Social Understanding",
+      "title": "Social-IQ 2.0 Challenge @ ICCV 2023",
       "url": "https://cmu-multicomp-lab.github.io/social-iq-2.0/",
       "kind": "previous_project",
       "weeks": [],
-      "path": "readings/web/cmu_multicomp_lab_github_io_social_iq_2_0_930c2377.html",
+      "path": "readings/web/Social-IQ_2.0_Challenge_ICCV_2023.html",
       "download_url": "https://cmu-multicomp-lab.github.io/social-iq-2.0/",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1541,7 +1560,8 @@
       "content_disposition": "",
       "html_title": "Social-IQ 2.0 Challenge @ ICCV 2023",
       "sha256": "dbec2d928aef4801bb368b223196bfb8842c46d8eb9ce9b3dcf3c67cb637aa5a",
-      "bytes": 27702
+      "bytes": 27702,
+      "source_label": "Social-iq 2.0 Challenge: Benchmarking Multimodal Social Understanding"
     },
     {
       "id": "6c1c72bb3a81",
@@ -1549,7 +1569,7 @@
       "url": "https://openaccess.thecvf.com/content/ICCV2023W/CLVL/html/Palit_Towards_Vision-Language_Mechanistic_Interpretability_A_Causal_Tracing_Tool_for_BLIP_ICCVW_2023_paper.html",
       "kind": "previous_project",
       "weeks": [],
-      "path": "readings/web/openaccess_thecvf_com_content_ICCV2023W_CLVL_html_Palit_Towards_Vision_Lang_6c1c72bb.html",
+      "path": "readings/web/Towards_Vision-Language_Mechanistic_Interpretability_A_Causal_Tracing_Tool_for_BLIP.html",
       "download_url": "https://openaccess.thecvf.com/content/ICCV2023W/CLVL/html/Palit_Towards_Vision-Language_Mechanistic_Interpretability_A_Causal_Tracing_Tool_for_BLIP_ICCVW_2023_paper.html",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1566,7 +1586,7 @@
       "url": "https://arxiv.org/abs/2208.08080",
       "kind": "previous_project",
       "weeks": [],
-      "path": "readings/papers/2208.08080.pdf",
+      "path": "readings/papers/Multimodal_Lecture_Presentations_Dataset_Understanding_Multimodality_in_Educational_Slides.pdf",
       "download_url": "https://arxiv.org/pdf/2208.08080",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1585,7 +1605,7 @@
       "url": "https://arxiv.org/abs/2306.04597",
       "kind": "previous_project",
       "weeks": [],
-      "path": "readings/papers/2306.04597.pdf",
+      "path": "readings/papers/Language_Models_Get_a_Gender_Makeover_Mitigating_Gender_Bias_with_Few-Shot_Data_Interventions.pdf",
       "download_url": "https://arxiv.org/pdf/2306.04597",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1600,11 +1620,11 @@
     },
     {
       "id": "b4783403a8c2",
-      "title": "Cross-modal Attention Congruence Regularization for Vision-language Relation Alignment",
+      "title": "Cross-modal Attention Congruence Regularization for Vision-Language Relation Alignment",
       "url": "https://aclanthology.org/2023.acl-long.298/",
       "kind": "previous_project",
       "weeks": [],
-      "path": "readings/web/aclanthology_org_2023_acl_long_298_b4783403.html",
+      "path": "readings/web/Cross-modal_Attention_Congruence_Regularization_for_Vision-Language_Relation_Alignment.html",
       "download_url": "https://aclanthology.org/2023.acl-long.298/",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1613,15 +1633,16 @@
       "content_disposition": "",
       "html_title": "Cross-modal Attention Congruence Regularization for Vision-Language Relation Alignment - ACL Anthology",
       "sha256": "f83709fe60d8abfd21766ba6f3ac6ae09796dbf2a57bf4492fe8dc8f86753bca",
-      "bytes": 44904
+      "bytes": 44904,
+      "source_label": "Cross-modal Attention Congruence Regularization for Vision-language Relation Alignment"
     },
     {
       "id": "d714ddae1217",
-      "title": "Diverse and Admissible Trajectory Prediction through Multimodal Context Understanding",
+      "title": "Diverse and Admissible Trajectory Forecasting through Multimodal Context Understanding",
       "url": "https://arxiv.org/abs/2003.03212",
       "kind": "previous_project",
       "weeks": [],
-      "path": "readings/papers/2003.03212.pdf",
+      "path": "readings/papers/Diverse_and_Admissible_Trajectory_Forecasting_through_Multimodal_Context_Understanding.pdf",
       "download_url": "https://arxiv.org/pdf/2003.03212",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1632,7 +1653,8 @@
       "cover": "Diverse and Admissible Trajectory Forecasting through Multimodal Context Understanding Seong Hyeon Park1, Gyubok Lee2, Manoj Bhat3⋆, Jimin Seo4⋆, Minseok Kang5, Jonathan Francis3,6, Ashwin Jadhav3, Paul Pu Liang3, and Louis-Philippe Morency3 1 Hanyang University, Seoul, Korea shpark@spa.hanyang.ac.kr 2 Yonsei University, Seoul, Korea glee48@yonsei.ac.kr 3 Carnegie Mellon University, Pittsburgh, PA, USA {mbhat,jmf1,arjadhav,pliang,morency}@cs.cmu.edu 4 Korea University, Seoul, Korea jmseo0607@korea.ac.kr 5 Sogang University, Seoul, Korea ahstarwab@sogang.ac.kr 6 Bosch Research Pittsburgh, Pittsburgh, PA, USA Abstract. Multi-agent trajectory forecasting in autonomous driving requires an agent to accurately anticipate the behaviors of the surrounding vehicles and pedes- trians, for safe and reliable decision-making. Due to partial observability in these dynamical scenes, directly obtaining the posterior distribution over future agent trajectories remains a challenging problem. In realistic embodied environments, each agent’s future trajectories should be both diverse since multiple plausi- ble sequences of actions can be used to reach its intended goals, and admis- sible since they must obey physical constraints and stay in drivable areas. In this paper, we propose a model that synthesizes multiple input signals from the multimodal world—the environment’s scene context and interactions between multiple surrounding agents—to best model all diverse and admissible trajec- tories. We compare our model with strong baselines and ablations across two public datasets and show a signiﬁcant performance improvement over previous state-of-the-art methods. Lastly, we offer new metrics incorporating admissibility criteria to further study and evaluate the diversity of predictions. Codes are at: https://github.com/kami93/CMU-DATF. Keywords: Trajectory Forecasting · Diversity · Admissibility · Generative Mod- eling · Autonomous Driving 1 Introduction Trajectory forecasting is an important problem in autonomous driving scenarios, where an autonomous vehicle must anticipate the behavior of other surrounding agents (e.g., vehicles and pedestrians), within a dynamically-changing environment, in order to plan its own actions accordingly. However, since the contexts of agents’ behavior such as ⋆Authors contributed equally arXiv:2003.03212v4 [cs.CV] 31 Aug 2020",
       "pdf_version": "2003.03212v4",
       "sha256": "079eda0c7835e76ac3b95f673714777cf4ff6e16e7f78ad54a3cacfd0996af30",
-      "bytes": 3386694
+      "bytes": 3386694,
+      "source_label": "Diverse and Admissible Trajectory Prediction through Multimodal Context Understanding"
     },
     {
       "id": "a7787df5072a",
@@ -1652,7 +1674,7 @@
       "url": "https://nips2018vigil.github.io/static/papers/accepted/33.pdf",
       "kind": "previous_project",
       "weeks": [],
-      "path": "readings/papers/33.pdf",
+      "path": "readings/papers/Attend_and_Attack_Attention_Guided_Adversarial_Attacks_on_Visual_Question_Answering_Models.pdf",
       "download_url": "https://nips2018vigil.github.io/static/papers/accepted/33.pdf",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1670,7 +1692,7 @@
       "url": "https://arxiv.org/abs/1902.00378",
       "kind": "previous_project",
       "weeks": [],
-      "path": "readings/papers/1902.00378.pdf",
+      "path": "readings/papers/Self-Supervised_Visual_Representations_for_Cross-Modal_Retrieval.pdf",
       "download_url": "https://arxiv.org/pdf/1902.00378",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1689,7 +1711,7 @@
       "url": "https://arxiv.org/abs/1812.07809",
       "kind": "previous_project",
       "weeks": [],
-      "path": "readings/papers/1812.07809.pdf",
+      "path": "readings/papers/Found_in_Translation_Learning_Robust_Joint_Representations_by_Cyclic_Translations_Between_Modalities.pdf",
       "download_url": "https://arxiv.org/pdf/1812.07809",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1707,7 +1729,7 @@
       "url": "https://arxiv.org/abs/1806.00064",
       "kind": "previous_project",
       "weeks": [],
-      "path": "readings/papers/1806.00064.pdf",
+      "path": "readings/papers/Efficient_Low-rank_Multimodal_Fusion_with_Modality-Specific_Factors.pdf",
       "download_url": "https://arxiv.org/pdf/1806.00064",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1726,7 +1748,7 @@
       "url": "https://arxiv.org/abs/1706.07230",
       "kind": "previous_project",
       "weeks": [],
-      "path": "readings/papers/1706.07230.pdf",
+      "path": "readings/papers/Gated-Attention_Architectures_for_Task-Oriented_Language_Grounding.pdf",
       "download_url": "https://arxiv.org/pdf/1706.07230",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1745,7 +1767,7 @@
       "url": "https://arxiv.org/abs/1802.00924",
       "kind": "previous_project",
       "weeks": [],
-      "path": "readings/papers/1802.00924.pdf",
+      "path": "readings/papers/Multimodal_Sentiment_Analysis_with_Word-Level_Fusion_and_Reinforcement_Learning.pdf",
       "download_url": "https://arxiv.org/pdf/1802.00924",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1764,7 +1786,7 @@
       "url": "https://www.ttic.edu/nchrc/papers/27.pdf",
       "kind": "previous_project",
       "weeks": [],
-      "path": "readings/papers/27.pdf",
+      "path": "readings/papers/Answer-Aware_Attention_on_Grounded_Question_Answering_in_Images.pdf",
       "download_url": "https://www.ttic.edu/nchrc/papers/27.pdf",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1782,7 +1804,7 @@
       "url": "https://arxiv.org/abs/1609.05244",
       "kind": "previous_project",
       "weeks": [],
-      "path": "readings/papers/1609.05244.pdf",
+      "path": "readings/papers/Select-Additive_Learning_Improving_Generalization_in_Multimodal_Sentiment_Analysis.pdf",
       "download_url": "https://arxiv.org/pdf/1609.05244",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1797,11 +1819,11 @@
     },
     {
       "id": "3ac3cd3a2eb7",
-      "title": "MMoE: Enhancing Multimodal Models with Mixtures of Multimodal Interaction Experts (PDF)",
+      "title": "MMOE: Enhancing Multimodal Models with Mixtures of Multimodal Interaction Experts",
       "url": "https://aclanthology.org/2024.emnlp-main.558.pdf",
       "kind": "project_attachment",
       "weeks": [],
-      "path": "readings/papers/2024.emnlp-main.558.pdf",
+      "path": "readings/papers/MMOE_Enhancing_Multimodal_Models_with_Mixtures_of_Multimodal_Interaction_Experts.pdf",
       "download_url": "https://aclanthology.org/2024.emnlp-main.558.pdf",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1811,15 +1833,16 @@
       "pages": 25,
       "cover": "Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing, pages 10006–10030 November 12-16, 2024 ©2024 Association for Computational Linguistics MMOE: Enhancing Multimodal Models with Mixtures of Multimodal Interaction Experts Haofei Yu1*, Zhengyang Qi1*, Lawrence Jang1*, Ruslan Salakhutdinov1, Louis-Philippe Morency1, Paul Pu Liang2 1Carnegie Mellon University, 2Massachusetts Institute of Technology {haofeiy,zqi2,ljang}@cs.cmu.edu ppliang@mit.edu Abstract Advances in multimodal models have greatly improved how interactions relevant to various tasks are modeled. Today’s multimodal models mainly focus on the correspondence between images and text, using this for tasks like image- text matching. However, this covers only a subset of real-world interactions. Novel inter- actions, such as sarcasm expressed through op- posing spoken words and gestures or humor expressed through utterances and tone of voice, remain challenging. In this paper, we intro- duce an approach to enhance multimodal mod- els, which we call Multimodal Mixtures of Experts (MMOE). The key idea in MMOE is to train separate expert models for each type of multimodal interaction, such as redundancy present in both modalities, uniqueness in one modality, or synergy that emerges when both modalities are fused. On a sarcasm detection task (MUStARD) and a humor detection task (URFunny), we obtain new state-of-the-art re- sults. MMOE is also able to be applied to vari- ous types of models to gain improvement. 1 Introduction Recent advances in the design and pretraining of vision-language models have enabled significant progress in capturing the correspondences between images and text (Zhu et al., 2023; Li et al., 2023; Liu et al., 2023). These models have seen suc- cesses in image captioning (Xu et al., 2015), text- to-image generation (Saharia et al., 2022), multi- modal retrieval (Mithun et al., 2018), multimodal classification (Li et al., 2021), and more. At its core, these methods aim to capture overlaps in se- mantic content between images and text, making a strong multi-view redundancy assumption (Tian et al., 2020; Liang et al., 2023b; Zbontar et al., 2021). However, redundancy is only one type of interaction seen between two modalities (Williams *Equal Contribution. 2 modalities provide redundant information 2 modalities interact to provide new information because lunch is more interesting than job and even tasty .. sarcastic text not sarcastic text happy spring ! loving all the blossoming flowers happening here ! so beautiful ! ALBEF ALBEF not sarcastic sarcastic Figure 1: A single model cannot handle all types of multimodal interactions well for hard multimodal prediction tasks. For example, to predict sarcasm, AL- BEF can have ∼89% F1 when modalities contain redun- dant information (e.g., both the text and the image are sarcastic), but drops to ∼24% F1 when there is synergy between modalities (e.g., the image shows a cold winter scene and the text says it is a happy spring, indicating the user’s sarcastic intent about the weather). and Beer, 2010; Liang et al., 2023a; Marsh and Domas White, 2003). Instead, it might hinge on unique details from either modality (e.g. detecting laughter from someone not observed) or the result of synergistic fusion of both modalities, producing insights absent when either modality is considered in isolation (e.g., sarcasm and humor discerned from incongruent speech and gestures). Synergy is particularly interesting because it often arises when the predictions from different modalities are contra- dicting, or incongruent with one another (Bateman, 2014; Kruk et al., 2019; Zhang et al., 2018). The diversity of possible real-world multimodal interactions poses a challenge to today’s multi- modal models. Empirically, we find that one single model may not be the most suitable in capturing all 10006",
       "sha256": "c6b351d78ff40264d48de1202cb5ab78b3778f114822786d5e878c8525da1cd1",
-      "bytes": 1070348
+      "bytes": 1070348,
+      "source_label": "MMoE: Enhancing Multimodal Models with Mixtures of Multimodal Interaction Experts (PDF)"
     },
     {
       "id": "d89cd31171a3",
-      "title": "Towards Vision-Language Mechanistic Interpretability: A Causal Tracing Tool for BLIP (PDF)",
+      "title": "Towards Vision-Language Mechanistic Interpretability: A Causal Tracing Tool for BLIP",
       "url": "https://openaccess.thecvf.com/content/ICCV2023W/CLVL/papers/Palit_Towards_Vision-Language_Mechanistic_Interpretability_A_Causal_Tracing_Tool_for_BLIP_ICCVW_2023_paper.pdf",
       "kind": "project_attachment",
       "weeks": [],
-      "path": "readings/papers/Palit_Towards_Vision-Language_Mechanistic_Interpretability_A_Causal_Tracing_Tool_for_BLIP_ICCVW_2023_paper.pdf",
+      "path": "readings/papers/Towards_Vision-Language_Mechanistic_Interpretability_A_Causal_Tracing_Tool_for_BLIP.pdf",
       "download_url": "https://openaccess.thecvf.com/content/ICCV2023W/CLVL/papers/Palit_Towards_Vision-Language_Mechanistic_Interpretability_A_Causal_Tracing_Tool_for_BLIP_ICCVW_2023_paper.pdf",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1829,15 +1852,16 @@
       "pages": 6,
       "cover": "Towards Vision-Language Mechanistic Interpretability: A Causal Tracing Tool for BLIP Vedant Palit* IIT Kharagpur Rohan Pandey∗ Reworkd.ai Aryaman Arora Georgetown University Paul Pu Liang Carnegie Mellon University Abstract Mechanistic interpretability seeks to understand the neu- ral mechanisms that enable specific behaviors in Large Lan- guage Models (LLMs) by leveraging causality-based meth- ods. While these approaches have identified neural cir- cuits that copy spans of text, capture factual knowledge, and more, they remain unusable for multimodal models since adapting these tools to the vision-language domain requires considerable architectural changes. In this work, we adapt a unimodal causal tracing tool to BLIP to en- able the study of the neural mechanisms underlying image- conditioned text generation. We demonstrate our approach on a visual question answering dataset, highlighting the causal relevance of later layer representations for all to- kens. Furthermore, we release our BLIP causal tracing tool as open source to enable further experimentation in vision-language mechanistic interpretability by the commu- nity. Our code is available at this URL. 1. Introduction Mechanistic interpretability [30] analyzes neural net- works with the goal of reverse engineering the algorithms a network implicitly learns in their parameters. This al- lows for finer-grained control over a model’s knowledge [27, 28, 17] and behavior [23]. In particular, causal me- diation analysis (CMA) [34] is a popular mechanistic inter- pretability method that studies the effect of introducing a mediator on the outcome of a system. However, CMA has so far been implemented only for the unimodal language do- main [27], limiting our understanding to this narrow class of models [5]. In recent years, multimodal models have rapidly grown in relevance as vision-language transformers have enabled strong performance on image-text retrieval, image caption- ing, and visual question answering (VQA) tasks [25]. Con- sidering the powerful effects of visual stimulus on seman- *Corresponding authors: vedantpalit@kgpian.iitkgp.ac.in, rohan@reworkd.ai [Encode] what is the colour of the animal Clean Image Embeddings Brown Correct Output Question Encoder Visual Information Injection Image Encoder Image Patching of States [Encode] what is the colour of the animal Corrupted Image Embeddings ? Incorrect Output * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * Corrupt Visual Information Injection Noise Figure 1: Causal intervention to measure state’s relevance: Above, an image of a cow is encoded, cross-attends with the question encoding, and results in the correct answer “brown”. Below, the same image encoding is corrupted, cross-attends with the question encoding, and results in an incorrect answer. An intermediate state is patched from the clean to the corrupted run to observe the state’s effect on the answer probabilities. tic representations in humans [21], it is important to un- derstand how similar processes occur in vision-language models. Take as an example the vision-language trans- former BLIP [22], which consists of an image encoder cross-attending with a text encoder, jointly conditioning a text decoder (Fig. 2). In this work, we seek a deeper under- standing of how BLIP performs VQA by adapting CMA to the vision-language setting. This ICCV workshop paper is the Open Access version, provided by the Computer Vision Foundation. Except for this watermark, it is identical to the accepted version; the final published version of the proceedings is available on IEEE Xplore. 2856",
       "sha256": "f08d82b04819117cde5600dcb9ec392be1204ab1fbe1928dae98e708d70654a6",
-      "bytes": 1053310
+      "bytes": 1053310,
+      "source_label": "Towards Vision-Language Mechanistic Interpretability: A Causal Tracing Tool for BLIP (PDF)"
     },
     {
       "id": "6c00d3a5a07f",
-      "title": "Cross-modal Attention Congruence Regularization for Vision-language Relation Alignment (PDF)",
+      "title": "Cross-modal Attention Congruence Regularization for Vision-Language Relation Alignment",
       "url": "https://aclanthology.org/2023.acl-long.298.pdf",
       "kind": "project_attachment",
       "weeks": [],
-      "path": "readings/papers/2023.acl-long.298.pdf",
+      "path": "readings/papers/Cross-modal_Attention_Congruence_Regularization_for_Vision-Language_Relation_Alignment.pdf",
       "download_url": "https://aclanthology.org/2023.acl-long.298.pdf",
       "status": "saved",
       "retrieved_at": "2026-10-26",
@@ -1847,7 +1871,8 @@
       "pages": 12,
       "cover": "Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics Volume 1: Long Papers, pages 5444–5455 July 9-14, 2023 ©2023 Association for Computational Linguistics Cross-modal Attention Congruence Regularization for Vision-Language Relation Alignment Rohan Pandey Rulin Shao Paul Pu Liang Ruslan Salakhutdinov Louis-Philippe Morency Language Technologies Institute and Machine Learning Department Carnegie Mellon University {rspandey,rulins}@cs.cmu.edu Abstract Despite recent progress towards scaling up mul- timodal vision-language models, these mod- els are still known to struggle on compo- sitional generalization benchmarks such as Winoground. We find that a critical component lacking from current vision-language models is relation-level alignment: the ability to match di- rectional semantic relations in text (e.g., ‘mug in grass’) with spatial relationships in the im- age (e.g., the position of the mug relative to the grass). To tackle this problem, we show that relation alignment can be enforced by en- couraging the language attention from ‘mug’ to ‘grass’ (capturing the semantic relation ‘in’) to match the visual attention from the mug to the grass (capturing the corresponding physi- cal relation). Tokens and their corresponding objects are softly identified using a weighted mean of cross-modal attention. We prove that this notion of soft cross-modal equivalence is equivalent to enforcing congruence between vi- sion and language attention matrices under a ‘change of basis’ provided by the cross-modal attention matrix. Intuitively, our approach projects visual attention into the language at- tention space to calculate its divergence from the actual language attention, and vice versa. We apply our Cross-modal Attention Congru- ence Regularization (CACR) loss to fine-tune UNITER and improve its Winoground Group score by 5.75 points. 1 Introduction Compositionality is the ability to combine mean- ings of constituents according to structured rules. Recent work shows that Vision-Language Models (VLMs) fail to construct compositional represen- tations and generally ignore syntactic & structural information [Thrush et al., 2022, Milewski et al., 2022, Liang et al., 2022]. Winoground [Thrush et al., 2022] is a vision-language compositionality task that tests a VLM’s ability to match syntactic permutations of text with their visual interpreta- mug in grass grass in mug mug grass mug grass Global Alignment Entity Alignment Relation Alignment (Ours) in mug grass in mug grass in in Figure 1: Global Alignment (GA) only aligns the entire image with the corresponding caption. Entity Align- ment (EA) extracts entities from the image and caption for finer-grained alignment. Relation Alignment (RA) cross-modally aligns the intra-modal relations between entities in both the image and the text. We show RA is vital to improve compositional performance. tions, for example correctly matching “grass in mug” and “mug in grass” to their corresponding images. Winoground finds that all recent state- of-the-art VLMs perform below chance levels on this compositionality task. Contemporaneously, Milewski et al. [2022] probe for structural knowl- edge in VLMs, finding that they encode signifi- cantly less linguistic syntax than Language Models (LMs) and virtually no visual structure. Recently, Yuksekgonul et al. [2022] built a large dataset con- firming that VLMs treat images as a ‘bag of objects’ and don’t adequately represent visuo-linguistic re- lations. Since models must determine whether the com- positional structure of an image matches that of the caption, it’s important for the model to learn to cross-modally align intra-modal relations. That 5444",
       "sha256": "8d752f58c96d5dc82e9e0b9a77726fb539bad5af68ef95447e7e689eeed1f971",
-      "bytes": 3904271
+      "bytes": 3904271,
+      "source_label": "Cross-modal Attention Congruence Regularization for Vision-language Relation Alignment (PDF)"
     },
     {
       "id": "142272f58acb",
@@ -2158,24 +2183,25 @@
     {
       "title": "Language Models are Few-Shot Learners",
       "url": "https://arxiv.org/abs/2005.14165",
-      "path": "1.CourseIntroduction/references/2005.14165.pdf",
+      "path": "1.CourseIntroduction/references/Language_Models_are_Few-Shot_Learners.pdf",
       "status": "saved",
       "pages": 75,
       "week": 1,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": "Language Models are Few-Shot Learners Tom B. Brown∗ Benjamin Mann∗ Nick Ryder∗ Melanie Subbiah∗ Jared Kaplan† Prafulla Dhariwal Arvind Neelakantan Pranav Shyam Girish Sastry Amanda Askell Sandhini Agarwal Ariel Herbert-Voss Gretchen Krueger Tom Henighan Rewon Child Aditya Ramesh Daniel M. Ziegler Jeffrey Wu Clemens Winter Christopher Hesse Mark Chen Eric Sigler Mateusz Litwin Scott Gray Benjamin Chess Jack Clark Christopher Berner Sam McCandlish Alec Radford Ilya Sutskever Dario Amodei OpenAI Abstract Recent work has demonstrated substantial gains on many NLP tasks and benchmarks by pre-training on a large corpus of text followed by ﬁne-tuning on a speciﬁc task. While typically task-agnostic in architecture, this method still requires task-speciﬁc ﬁne-tuning datasets of thousands or tens of thousands of examples. By contrast, humans can generally perform a new language task from only a few examples or from simple instructions – something which current NLP systems still largely struggle to do. Here we show that scaling up language models greatly improves task-agnostic, few-shot performance, sometimes even reaching competitiveness with prior state-of-the-art ﬁne- tuning approaches. Speciﬁcally, we train GPT-3, an autoregressive language model with 175 billion parameters, 10x more than any previous non-sparse language model, and test its performance in the few-shot setting. For all tasks, GPT-3 is applied without any gradient updates or ﬁne-tuning, with tasks and few-shot demonstrations speciﬁed purely via text interaction with the model. GPT-3 achieves strong performance on many NLP datasets, including translation, question-answering, and cloze tasks, as well as several tasks that require on-the-ﬂy reasoning or domain adaptation, such as unscrambling words, using a novel word in a sentence, or performing 3-digit arithmetic. At the same time, we also identify some datasets where GPT-3’s few-shot learning still struggles, as well as some datasets where GPT-3 faces methodological issues related to training on large web corpora. Finally, we ﬁnd that GPT-3 can generate samples of news articles which human evaluators have difﬁculty distinguishing from articles written by humans. We discuss broader societal impacts of this ﬁnding and of GPT-3 in general. ∗Equal contribution †Johns Hopkins University, OpenAI Author contributions listed at end of paper. arXiv:2005.14165v4 [cs.CL] 22 Jul 2020",
       "pdf_version": "2005.14165v4",
       "sha256": "97fd272f1fdfc18677462d0292f5fbf26ca86b4d1b485c2dba03269b643a0e83",
       "bytes": 6768044
     },
     {
-      "title": "Training Language Models to Follow Instructions with Human Feedback",
+      "title": "Training language models to follow instructions with human feedback",
       "url": "https://arxiv.org/abs/2203.02155",
-      "path": "1.CourseIntroduction/references/2203.02155.pdf",
+      "path": "1.CourseIntroduction/references/Training_language_models_to_follow_instructions_with_human_feedback.pdf",
       "status": "saved",
       "pages": 68,
+      "source_label": "Training Language Models to Follow Instructions with Human Feedback",
       "week": 1,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": "Training language models to follow instructions with human feedback Long Ouyang∗ Jeff Wu∗ Xu Jiang∗ Diogo Almeida∗ Carroll L. Wainwright∗ Pamela Mishkin∗ Chong Zhang Sandhini Agarwal Katarina Slama Alex Ray John Schulman Jacob Hilton Fraser Kelton Luke Miller Maddie Simens Amanda Askell† Peter Welinder Paul Christiano∗† Jan Leike∗ Ryan Lowe∗ OpenAI Abstract Making language models bigger does not inherently make them better at following a user’s intent. For example, large language models can generate outputs that are untruthful, toxic, or simply not helpful to the user. In other words, these models are not aligned with their users. In this paper, we show an avenue for aligning language models with user intent on a wide range of tasks by ﬁne-tuning with human feedback. Starting with a set of labeler-written prompts and prompts submitted through the OpenAI API, we collect a dataset of labeler demonstrations of the desired model behavior, which we use to ﬁne-tune GPT-3 using supervised learning. We then collect a dataset of rankings of model outputs, which we use to further ﬁne-tune this supervised model using reinforcement learning from human feedback. We call the resulting models InstructGPT. In human evaluations on our prompt distribution, outputs from the 1.3B parameter InstructGPT model are preferred to outputs from the 175B GPT-3, despite having 100x fewer parameters. Moreover, InstructGPT models show improvements in truthfulness and reductions in toxic output generation while having minimal performance regressions on public NLP datasets. Even though InstructGPT still makes simple mistakes, our results show that ﬁne-tuning with human feedback is a promising direction for aligning language models with human intent. 1 Introduction Large language models (LMs) can be “prompted” to perform a range of natural language process- ing (NLP) tasks, given some examples of the task as input. However, these models often express unintended behaviors such as making up facts, generating biased or toxic text, or simply not following user instructions (Bender et al., 2021; Bommasani et al., 2021; Kenton et al., 2021; Weidinger et al., 2021; Tamkin et al., 2021; Gehman et al., 2020). This is because the language modeling objective ∗Primary authors. This was a joint project of the OpenAI Alignment team. RL and JL are the team leads. Corresponding author: lowe@openai.com. †Work done while at OpenAI. Current afﬁliations: AA: Anthropic; PC: Alignment Research Center. arXiv:2203.02155v1 [cs.CL] 4 Mar 2022",
       "pdf_version": "2203.02155v1",
       "sha256": "c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98",
@@ -2184,11 +2210,11 @@
     {
       "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
       "url": "https://arxiv.org/abs/2210.03629",
-      "path": "1.CourseIntroduction/references/2210.03629.pdf",
+      "path": "1.CourseIntroduction/references/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf",
       "status": "saved",
       "pages": 33,
       "week": 1,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": "Published as a conference paper at ICLR 2023 REACT: SYNERGIZING REASONING AND ACTING IN LANGUAGE MODELS Shunyu Yao∗*,1, Jeffrey Zhao2, Dian Yu2, Nan Du2, Izhak Shafran2, Karthik Narasimhan1, Yuan Cao2 1Department of Computer Science, Princeton University 2Google Research, Brain team 1{shunyuy,karthikn}@princeton.edu 2{jeffreyzhao,dianyu,dunan,izhak,yuancao}@google.com ABSTRACT While large language models (LLMs) have demonstrated impressive performance across tasks in language understanding and interactive decision making, their abilities for reasoning (e.g. chain-of-thought prompting) and acting (e.g. action plan generation) have primarily been studied as separate topics. In this paper, we explore the use of LLMs to generate both reasoning traces and task-speciﬁc actions in an interleaved manner, allowing for greater synergy between the two: reasoning traces help the model induce, track, and update action plans as well as handle exceptions, while actions allow it to interface with and gather additional information from external sources such as knowledge bases or environments. We apply our approach, named ReAct, to a diverse set of language and decision making tasks and demonstrate its effectiveness over state-of-the-art baselines in addition to improved human interpretability and trustworthiness. Concretely, on question answering (HotpotQA) and fact veriﬁcation (Fever), ReAct overcomes prevalent issues of hallucination and error propagation in chain-of-thought reasoning by interacting with a simple Wikipedia API, and generating human-like task-solving trajectories that are more interpretable than baselines without reasoning traces. Furthermore, on two interactive decision making benchmarks (ALFWorld and WebShop), ReAct outperforms imitation and reinforcement learning methods by an absolute success rate of 34% and 10% respectively, while being prompted with only one or two in-context examples. 1 INTRODUCTION A unique feature of human intelligence is the ability to seamlessly combine task-oriented actions with verbal reasoning (or inner speech, Alderson-Day & Fernyhough, 2015), which has been theorized to play an important role in human cognition for enabling self-regulation or strategization (Vygotsky, 1987; Luria, 1965; Fernyhough, 2010) and maintaining a working memory (Baddeley, 1992). Con- sider the example of cooking up a dish in the kitchen. Between any two speciﬁc actions, we may reason in language in order to track progress (“now that everything is cut, I should heat up the pot of water”), to handle exceptions or adjust the plan according to the situation (“I don’t have salt, so let me use soy sauce and pepper instead”), and to realize when external information is needed (“how do I prepare dough? Let me search on the Internet”). We may also act (open a cookbook to read the recipe, open the fridge, check ingredients) to support the reasoning and to answer questions (“What dish can I make right now?”). This tight synergy between “acting” and “reasoning” allows humans to learn new tasks quickly and perform robust decision making or reasoning, even under previously unseen circumstances or facing information uncertainties. Recent results have hinted at the possibility of combining verbal reasoning with interactive decision making in autonomous systems. On one hand, properly prompted large language models (LLMs) have demonstrated emergent capabilities to carry out several steps of reasoning traces to derive ∗Work during Google internship. Projet page with code: https://react-lm.github.io/. 1 arXiv:2210.03629v3 [cs.CL] 10 Mar 2023",
       "pdf_version": "2210.03629v3",
       "sha256": "f285b0971ae4a790e402fb93966bed3adde2cf0a04977d08b2b40d6ab0cace69",
@@ -2197,11 +2223,11 @@
     {
       "title": "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models",
       "url": "https://arxiv.org/abs/2402.03300",
-      "path": "1.CourseIntroduction/references/2402.03300.pdf",
+      "path": "1.CourseIntroduction/references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf",
       "status": "saved",
       "pages": 30,
       "week": 1,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models Zhihong Shao1,2∗†, Peiyi Wang1,3∗†, Qihao Zhu1,3∗†, Runxin Xu1, Junxiao Song1 Xiao Bi1, Haowei Zhang1, Mingchuan Zhang1, Y.K. Li1, Y. Wu1, Daya Guo1∗ 1DeepSeek-AI, 2Tsinghua University, 3Peking University {zhihongshao,wangpeiyi,zhuqh,guoday}@deepseek.com https://github.com/deepseek-ai/DeepSeek-Math Abstract Mathematical reasoning poses a significant challenge for language models due to its complex and structured nature. In this paper, we introduce DeepSeekMath 7B, which continues pre- training DeepSeek-Coder-Base-v1.5 7B with 120B math-related tokens sourced from Common Crawl, together with natural language and code data. DeepSeekMath 7B has achieved an impressive score of 51.7% on the competition-level MATH benchmark without relying on external toolkits and voting techniques, approaching the performance level of Gemini-Ultra and GPT-4. Self-consistency over 64 samples from DeepSeekMath 7B achieves 60.9% on MATH. The mathematical reasoning capability of DeepSeekMath is attributed to two key factors: First, we harness the significant potential of publicly available web data through a meticulously engineered data selection pipeline. Second, we introduce Group Relative Policy Optimization (GRPO), a variant of Proximal Policy Optimization (PPO), that enhances mathematical reasoning abilities while concurrently optimizing the memory usage of PPO. Figure 1 | Top1 accuracy of open-source models on the competition-level MATH benchmark (Hendrycks et al., 2021) without the use of external toolkits and voting techniques. ∗Core contributors. † Work done during internship at DeepSeek-AI. arXiv:2402.03300v3 [cs.CL] 27 Apr 2024",
       "pdf_version": "2402.03300v3",
       "sha256": "6cc20b3c5b8d25b8b53868fc4ec1792c144f07d67bdf7395138efd4422197e7b",
@@ -2210,11 +2236,11 @@
     {
       "title": "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering",
       "url": "https://arxiv.org/abs/2405.15793",
-      "path": "1.CourseIntroduction/references/2405.15793.pdf",
+      "path": "1.CourseIntroduction/references/SWE-agent_Agent-Computer_Interfaces_Enable_Automated_Software_Engineering.pdf",
       "status": "saved",
       "pages": 118,
       "week": 1,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering John Yang∗ Carlos E. Jimenez∗ Alexander Wettig Kilian Lieret Shunyu Yao Karthik Narasimhan Ofir Press Princeton Language and Intelligence, Princeton University Abstract Language model (LM) agents are increasingly being used to automate complicated tasks in digital environments. Just as humans benefit from powerful software applications, such as integrated development environments, for complex tasks like software engineering, we posit that LM agents represent a new category of end users with their own needs and abilities, and would benefit from specially-built interfaces to the software they use. We investigate how interface design affects the performance of language model agents. As a result of this exploration, we introduce SWE-agent: a system that facilitates LM agents to autonomously use computers to solve software engineering tasks. SWE-agent’s custom agent-computer interface (ACI) significantly enhances an agent’s ability to create and edit code files, navigate entire repositories, and execute tests and other programs. We evaluate SWE-agent on SWE-bench and HumanEvalFix, achieving state-of-the-art performance on both with a pass@1 rate of 12.5% and 87.7%, respectively, far exceeding the previous state-of-the-art achieved with non-interactive LMs. Finally, we provide insight on how the design of the ACI can impact agents’ behavior and performance. 1 Introduction Recent work has demonstrated the efficacy of LM agents for code generation with execution feed- back [39]. However, applying agents to more complex code tasks like software engineering remains unexplored. To solve programming tasks, LM agents are typically designed to use existing applica- tions, such as the Linux shell or Python interpreter [53, 57, 59]. However, to perform more complex programming tasks such as software engineering [20], human engineers benefit from sophisticated ap- plications like VSCode with powerful tools and extensions. Inspired by human-computer interaction (HCI) studies on the efficacy of user interfaces for humans [7], we investigate whether LM agents could similarly benefit from better-designed interfaces for performing software engineering tasks. SWE-agent Filesystem sklearn/ examples/ README.rst Terminal Computer LM Agent Agent-Computer Interface Navigate repo View files LM-friendly commands Search files Edit lines LM-friendly environment feedback Figure 1: SWE-agent is an LM interacting with a computer through an agent-computer interface (ACI), which includes the commands the agent uses and the format of the feedback from the computer. ∗Equal contribution. Correspondence to johnby@stanford.edu, carlosej@princeton.edu. Data, code, and leaderboard at swe-agent.com 38th Conference on Neural Information Processing Systems (NeurIPS 2024). arXiv:2405.15793v3 [cs.SE] 11 Nov 2024",
       "pdf_version": "2405.15793v3",
       "sha256": "d171e0693060b910ceb2cddd0fd4bc7cae302005d42d0d8059bfdbe056c3adba",
@@ -2223,11 +2249,11 @@
     {
       "title": "Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents",
       "url": "https://arxiv.org/abs/2505.22954",
-      "path": "1.CourseIntroduction/references/2505.22954.pdf",
+      "path": "1.CourseIntroduction/references/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf",
       "status": "saved",
       "pages": 72,
       "week": 1,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": "Published as a conference paper at ICLR 2026 DARWIN GÖDEL MACHINE: OPEN-ENDED EVOLUTION OF SELF-IMPROVING AGENTS Jenny Zhang*,1,2 Shengran Hu*,1,2,3 Cong Lu1,2,3 Robert Lange†,3 Jeff Clune†,1,2,4 1University of British Columbia 2Vector Institute 3Sakana AI 4Canada CIFAR AI Chair {jennyzzt,srhu,conglu}@cs.ubc.ca, robert@sakana.ai, jeff.clune@ubc.ca ABSTRACT Most of today’s AI systems are constrained by human-designed, fixed architectures and cannot autonomously and continuously improve themselves. The scientific method, on the other hand, is a cumulative and open-ended system, where each innovation builds upon previous artifacts, enabling future discoveries. There is growing hope that the current manual process of advancing AI could itself be automated. If done safely, such automation would accelerate AI development and allow us to reap its benefits much sooner. This prospect raises the question of how AI systems can endlessly improve themselves while getting better at solving relevant problems. Meta-learning can automate the discovery of novel algorithms, but is limited by first-order improvements and the human design of a suitable search space. The Gödel machine (Schmidhuber, 2007) proposed a theoretical alternative: a self-improving AI that repeatedly modifies itself in a provably beneficial manner. Unfortunately, proving that most changes are net beneficial is impossible in practice. We introduce the Darwin Gödel Machine (DGM), a novel self-improving system that iteratively modifies its own code (thereby also improving its ability to modify its own codebase) and empirically validates each change using coding benchmarks. Inspired by Darwinian evolution and open-endedness research, the DGM grows an archive of generated coding agents. It samples agents from this archive, which self-modify to create new, interesting versions of themselves. This open-ended exploration forms a growing tree of diverse, high-quality agents and allows the parallel exploration of many different paths through the search space. Empirically, the DGM automatically improves its coding capabilities (e.g., better code editing tools, long-context window management, peer-review mechanisms), increasing performance on SWE-bench from 20.0% to 50.0%, and on Polyglot from 14.2% to 30.7%. Furthermore, the DGM significantly outperforms baselines without self- improvement or open-ended exploration. All experiments were done with safety precautions (e.g., sandboxing, human oversight). Overall, the DGM represents a significant step toward self-improving AI, capable of gathering its own stepping stones along a path that unfolds into endless innovation. All code is open-sourced at https://github.com/jennyzzt/dgm. 1 INTRODUCTION Scientific progress is cumulative and open-ended, with each breakthrough standing on the shoulders of countless prior insights. In the same way, our most advanced AI systems are built upon a long lineage of innovations. For instance, transformers (Vaswani et al., 2017), the backbone of current large language models (LLMs) (Brown et al., 2020), did not emerge in isolation but were built upon years of past innovations, such as recurrent neural networks (Linnainmaa, 1970; Amari, 1972; Hopfield, 1982; Rumelhart et al., 1985) and attention mechanisms (Schmidhuber & Huber, 1990; Bahdanau et al., 2015; Kim et al., 2017; Parikh et al., 2016). However, most of today’s AI systems remain bound by fixed, human-designed architectures that learn within predefined boundaries, without the capacity to autonomously rewrite their own source code to self-improve. As a result, each advancement in AI development still leans heavily on human interventions, tethering the pace of progress. This paper *co-first authors † co-senior authors 1 arXiv:2505.22954v3 [cs.AI] 12 Mar 2026",
       "pdf_version": "2505.22954v3",
       "sha256": "13ff4abe0c7ad4a7dd3b4876d19a8bf940e39e70dabbf06065aa774a6c3457de",
@@ -2236,11 +2262,11 @@
     {
       "title": "Absolute Zero: Reinforced Self-play Reasoning with Zero Data",
       "url": "https://arxiv.org/abs/2505.03335",
-      "path": "1.CourseIntroduction/references/2505.03335.pdf",
+      "path": "1.CourseIntroduction/references/Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data.pdf",
       "status": "saved",
       "pages": 52,
       "week": 1,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": "October 17, 2025 Absolute Zero: Reinforced Self-play Reasoning with Zero Data Andrew Zhao 1, Yiran Wu 3, Yang Yue 1, Tong Wu 2, Quentin Xu 1, Yang Yue 1, Matthieu Lin 1, Shenzhi Wang 1, Qingyun Wu 3, Zilong Zheng 2,\u0000 and Gao Huang 1,\u00001 Tsinghua University 2 Beijing Institute for General Artificial Intelligence 3 Penn State University zqc21@mails.tsinghua.edu.cn, yiran.wu@psu.edu, zlzheng@bigai.ai, gaohuang@tsinghua.edu.cn Reinforcement learning with verifiable rewards (RLVR) has shown promise in enhancing the reasoning capabilities of large language models by learning directly from rule-based outcome rewards. Recent RLVR works that operate under the zero setting avoid supervision in labeling the reasoning process, but still depend on manually curated collections of questions and answers for training. The scarcity of high- quality, human-produced examples raises concerns about the long-term scalability of relying on human supervision, a challenge already evident in the domain of language model pretraining. Furthermore, in a hypothetical future where AI surpasses human intelligence, tasks provided by humans may offer limited learning potential for a superintelligent system. To address these concerns, we propose a new RLVR paradigm called Absolute Zero, in which a single model learns to propose tasks that maximize its own learning progress and improves reasoning by solving them, without relying on any external data. Under this paradigm, we introduce the Absolute Zero Reasoner (AZR), a system that self-evolves its training curriculum and reasoning ability by using a code executor to both validate self-proposed code reasoning tasks and verify answers, serving as an unified source of verifiable feedback to guide open-ended yet grounded learning. Despite being trained entirely without external data, AZR achieves overall SOTA performance on coding and mathematical reasoning tasks, outperforming existing “zero” models that rely on tens of thousands of in-domain human-curated examples. Furthermore, we demonstrate that AZR can be effectively applied across different model scales and is compatible with various model classes. Code Project Page Logs Models Figure 1. Absolute Zero Reasoner (AZR) achieves state-of-the-art performance with ZERO DATA. Without relying on any gold labels or human-defined queries, Absolute Zero Reasoner trained using our proposed self-play approach demonstrates impressive general reasoning capabilities improvements in both math and coding, despite operating entirely out-of-distribution. Remarkably, AZR surpasses models trained on tens of thousands of expert-labeled in-domain examples in the combined average score across both domains. \u0000 Corresponding author(s) arXiv:2505.03335v3 [cs.LG] 16 Oct 2025",
       "pdf_version": "2505.03335v3",
       "sha256": "6217ccee964c70e42fba116004ae23400c11d2ecc687c37aed062c3689098e18",
@@ -2249,63 +2275,66 @@
     {
       "title": "Agentic Context Engineering: Evolving Contexts for Self-Improving Language Models",
       "url": "https://arxiv.org/abs/2510.04618",
-      "path": "2.ContextEvolution1/references/2510.04618.pdf",
+      "path": "2.ContextEvolution1/references/Agentic_Context_Engineering_Evolving_Contexts_for_Self-Improving_Language_Models.pdf",
       "status": "saved",
       "pages": 32,
       "week": 2,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": "Published as a conference paper at ICLR 2026 AGENTIC CONTEXT ENGINEERING: EVOLVING CON- TEXTS FOR SELF-IMPROVING LANGUAGE MODELS Qizheng Zhang1∗, Changran Hu2∗, Shubhangi Upasani2, Boyuan Ma2, Fenglu Hong2, Vamsidhar Kamanuru2, Jay Rainton2, Chen Wu2, Mengmeng Ji2, Hanchen Li3, Urmish Thakker2, James Zou1, Kunle Olukotun1 1Stanford University 2SambaNova Systems, Inc. 3UC Berkeley {qizhengz,kunle}@stanford.edu changran_hu@berkeley.edu § ace-agent/ace  ace-agent.github.io ∗Equal contribution. ABSTRACT Large language model (LLM) applications such as agents and domain-specific reasoning increasingly rely on context adaptation: modifying inputs with instruc- tions, strategies, or evidence, rather than weight updates. Prior approaches im- prove usability but often suffer from brevity bias, which drops domain insights for concise summaries, and from context collapse, where iterative rewriting erodes details over time. We introduce ACE (Agentic Context Engineering), a frame- work that treats contexts as evolving playbooks that accumulate, refine, and orga- nize strategies through a modular process of generation, reflection, and curation. ACE prevents collapse with structured, incremental updates that preserve detailed knowledge and scale with long-context models. Across agent and domain-specific benchmarks, ACE optimizes contexts both offline (e.g., system prompts) and on- line (e.g., agent memory), consistently outperforming strong baselines: +10.6% on agents and +8.6% on finance, while significantly reducing adaptation latency and rollout cost. Notably, ACE could adapt effectively without labeled supervision and instead by leveraging natural execution feedback. On the AppWorld leader- board, ACE matches the top-ranked production-level agent on the overall average and surpasses it on the harder test-challenge split, despite using a smaller open- source model. These results show that comprehensive, evolving contexts enable scalable, efficient, and self-improving LLM systems with low overhead. 1 INTRODUCTION Base LLM ICL GEPA DC ACE 40 45 50 55 60 Accuracy (%) 42.4% 46.0%46.4% 51.9% 59.5% Agent: AppWorld Base LLM ICL GEPA DC ACE 70.0 72.5 75.0 77.5 80.0 82.5 70.7% 72.3% 73.5%74.2% 78.3% Domain Knowledge: FiNER Base LLM ICL GEPA DC ACE 65 70 75 80 67.5%67.0% 71.5% 69.5% 76.5% Numerical Reasoning: Formula Figure 1: Overall Performance Results. Our proposed framework, ACE, consistently outperforms strong baselines across agent and domain-specific tasks. Modern AI applications based on large language models (LLMs), such as LLM agents (Yao et al., 2023; Yang et al., 2024) and compound AI systems (Zaharia et al., 2024), increasingly depend on context adaptation. Instead of modifying model weights, context adaptation improves performance after model training by incorporating clarified instructions, structured reasoning steps, or domain- 1 arXiv:2510.04618v3 [cs.LG] 29 Mar 2026",
       "pdf_version": "2510.04618v3",
       "sha256": "51050ced82df75c143b151262d5af8763916968ca50374bd8ff778f40552b0ad",
       "bytes": 2313268
     },
     {
-      "title": "Self_Refine",
+      "title": "Self-Refine: Iterative Refinement with Self-Feedback",
       "url": "https://arxiv.org/pdf/2303.17651",
-      "path": "3.ContextEvolution2/references/2303.17651.pdf",
+      "path": "3.ContextEvolution2/references/Self-Refine_Iterative_Refinement_with_Self-Feedback.pdf",
       "status": "saved",
       "pages": 54,
       "sha256": "81e44592314d80218ad108d3490cd0b84ba5962fefd5c84819987afd77a57087",
       "checked_date": "2026-10-26",
       "version": "2303.17651v2",
+      "source_label": "Self_Refine",
       "week": 3,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": "SELF-REFINE: Iterative Refinement with Self-Feedback Aman Madaan1, Niket Tandon2, Prakhar Gupta1, Skyler Hallinan3, Luyu Gao1, Sarah Wiegreffe2, Uri Alon1, Nouha Dziri2, Shrimai Prabhumoye4, Yiming Yang1, Shashank Gupta2, Bodhisattwa Prasad Majumder5, Katherine Hermann6, Sean Welleck2,3, Amir Yazdanbakhsh6, Peter Clark2 1Language Technologies Institute, Carnegie Mellon University 2Allen Institute for Artificial Intelligence 3University of Washington 4NVIDIA 5UC San Diego 6Google Research, Brain Team amadaan@cs.cmu.edu, nikett@allenai.org Abstract Like humans, large language models (LLMs) do not always generate the best output on their first try. Motivated by how humans refine their written text, we introduce SELF-REFINE, an approach for improving initial outputs from LLMs through iterative feedback and refinement. The main idea is to generate an initial output using an LLM; then, the same LLM provides feedback for its output and uses it to refine itself, iteratively. SELF-REFINE does not require any supervised training data, additional training, or reinforcement learning, and instead uses a single LLM as the generator, refiner and the feedback provider. We evaluate SELF-REFINE across 7 diverse tasks, ranging from dialog response generation to mathematical reasoning, using state-of-the-art (GPT-3.5 and GPT-4) LLMs. Across all evaluated tasks, outputs generated with SELF-REFINE are preferred by humans and automatic metrics over those generated with the same LLM using conventional one-step generation, improving by ∼20% absolute on average in task performance. Our work demonstrates that even state-of-the-art LLMs like GPT-4 can be further improved at test-time using our simple, standalone approach.1. 1 Introduction Although large language models (LLMs) can generate coherent outputs, they often fall short in addressing intricate requirements. This mostly includes tasks with multifaceted objectives, such as dialogue response generation, or tasks with hard-to-define goals, such as enhancing program readability. In these scenarios, modern LLMs may produce an intelligible initial output, yet may benefit from further iterative refinement—i.e., iteratively mapping a candidate output to an improved one—to ensure that the desired quality is achieved. Iterative refinement typically involves training a refinement model that relies on domain-specific data (e.g., Reid and Neubig (2022); Schick et al. (2022a); Welleck et al. (2022)). Other approaches that rely on external supervision or reward models require large training sets or expensive human annotations (Madaan et al., 2021; Ouyang et al., 2022), which may not always be feasible to obtain. These limitations underscore the need for an effective refinement approach that can be applied to various tasks without requiring extensive supervision. Iterative self-refinement is a fundamental characteristic of human problem-solving (Simon, 1962; Flower and Hayes, 1981; Amabile, 1983). Iterative self-refinement is a process that involves creating an initial draft and subsequently refining it based on self-provided feedback. For example, when 1Code and data at https://selfrefine.info/ Preprint. Under review. arXiv:2303.17651v2 [cs.CL] 25 May 2023",
       "pdf_version": "2303.17651v2",
       "bytes": 2014949
     },
     {
-      "title": "TextGrad",
+      "title": "TextGrad: Automatic Differentiation via Text",
       "url": "https://arxiv.org/pdf/2406.07496",
-      "path": "3.ContextEvolution2/references/2406.07496.pdf",
+      "path": "3.ContextEvolution2/references/TextGrad_Automatic_Differentiation_via_Text.pdf",
       "status": "saved",
       "pages": 41,
       "sha256": "9cbfd5c78ad69e2a8363e76d6774f3e6b5e68f46b409d8b560e98276a985b428",
       "checked_date": "2026-10-26",
       "version": "2406.07496v1",
+      "source_label": "TextGrad",
       "week": 3,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": ": Automatic “Differentiation” via Text Mert Yuksekgonul1* MERTY@STANFORD.EDU Federico Bianchi1* FEDE@STANFORD.EDU Joseph Boen2* TBOEN@STANFORD.EDU Sheng Liu2* SHENGL@STANFORD.EDU Zhi Huang2* ZHIHUANG@STANFORD.EDU Carlos Guestrin1,3 GUESTRIN@STANFORD.EDU James Zou1,2,3 JAMESZ@STANFORD.EDU 1DEPARTMENT OF COMPUTER SCIENCE, STANFORD UNIVERSITY 2DEPARTMENT OF BIOMEDICAL DATA SCIENCE, STANFORD UNIVERSITY 3CHAN ZUCKERBERG BIOHUB CORRESPONDENCE: MERTY@STANFORD.EDU AND JAMESZ@STANFORD.EDU REPOSITORY AND TUTORIALS Abstract AI is undergoing a paradigm shift, with breakthroughs achieved by systems orchestrating multiple large language models (LLMs) and other complex components. As a result, develop- ing principled and automated optimization methods for compound AI systems is one of the most important new challenges. Neural networks faced a similar challenge in its early days until backpropagation and automatic differentiation transformed the field by making optimiza- tion turn-key. Inspired by this, we introduce TEXTGRAD, a powerful framework performing automatic “differentiation” via text. TEXTGRAD backpropagates textual feedback provided by LLMs to improve individual components of a compound AI system. In our framework, LLMs provide rich, general, natural language suggestions to optimize variables in computation graphs, ranging from code snippets to molecular structures. TEXTGRAD follows PyTorch’s syn- tax and abstraction and is flexible and easy-to-use. It works out-of-the-box for a variety of tasks, where the users only provide the objective function without tuning components or prompts of the framework. We showcase TEXTGRAD’s effectiveness and generality across a diverse range of applications, from question answering and molecule optimization to radiotherapy treatment planning. Without modifying the framework, TEXTGRAD improves the zero-shot accuracy of GPT-4o in Google-Proof Question Answering from 51% to 55%, yields 20% relative performance gain in optimizing LeetCode-Hard coding problem solutions, improves prompts for reasoning, designs new druglike small molecules with desirable in silico binding, and designs radiation oncology treatment plans with high specificity. TEXTGRAD lays a foundation to accelerate the development of the next-generation of AI systems. 1 Introduction There is an emerging paradigm shift in how AI systems are built, owing to the breakthroughs of Large Language Models (LLMs) [1–6]. The new generation of AI applications are increasingly compound systems involving multiple sophisticated components, where each component could be an LLM-based agent, a tool such as a simulator, or web search. For instance, a system of LLMs communicating with symbolic solvers can solve olympiad-level math problems [7]; a system of LLMs using search engines and code interpreter tools performs comparably to human competitive programmers [8] and are solving real-world *Co-first authors. 1 arXiv:2406.07496v1 [cs.CL] 11 Jun 2024",
       "pdf_version": "2406.07496v1",
       "bytes": 1336878
     },
     {
-      "title": "FunSearch",
+      "title": "Mathematical discoveries from program search with large language models",
       "url": "https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/funsearch-making-new-discoveries-in-mathematical-sciences-using-large-language-models/Mathematical-discoveries-from-program-search-with-large-language-models.pdf",
-      "path": "3.ContextEvolution2/references/Mathematical-discoveries-from-program-search-with-large-language-models.pdf",
+      "path": "3.ContextEvolution2/references/Mathematical_discoveries_from_program_search_with_large_language_models.pdf",
       "status": "saved",
       "pages": 64,
       "sha256": "bfb903bf99a6ad6633e2f12869ddd9fb2abcb8babfa83783b6aaa41f62b91fd0",
       "checked_date": "2026-10-26",
+      "source_label": "FunSearch",
       "week": 3,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": "This is the author’s version of the work accepted in Nature. Nature doi: 10.1038/s41586-023-06924-6.",
       "bytes": 7689210
     },
     {
       "title": "DeepSeek-Prover-V2: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal Decomposition",
       "url": "https://arxiv.org/pdf/2504.21801v2",
-      "path": "3.ContextEvolution2/references/2504.21801v2.pdf",
+      "path": "3.ContextEvolution2/references/DeepSeek-Prover-V2_Advancing_Formal_Mathematical_Reasoning_via_Reinforcement_Learning_for_Subgoal_Decomposition.pdf",
       "status": "saved",
       "pages": 39,
       "sha256": "b201eb048acc409a0331d6982da385f305660c7bd73cfb843414c22951355131",
@@ -2313,19 +2342,20 @@
       "version": "2504.21801v2",
       "reviewed_sections": "§2.1–2.2 and Figure 2 (PDF pp.3–5); training details contextual check §2.3 (p.6)",
       "week": 3,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": "DeepSeek-Prover-V2: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal Decomposition Z.Z. Ren*, Zhihong Shao*, Junxiao Song*, Huajian Xin†, Haocheng Wang†, Wanjia Zhao†, Liyue Zhang, Zhe Fu Qihao Zhu, Dejian Yang, Z.F. Wu, Zhibin Gou, Shirong Ma, Hongxuan Tang, Yuxuan Liu, Wenjun Gao Daya Guo, Chong Ruan DeepSeek-AI https://github.com/deepseek-ai/DeepSeek-Prover-V2 Abstract We introduce DeepSeek-Prover-V2, an open-source large language model designed for formal theorem proving in Lean 4, with initialization data collected through a recursive theorem prov- ing pipeline powered by DeepSeek-V3. The cold-start training procedure begins by prompting DeepSeek-V3 to decompose complex problems into a series of subgoals. The proofs of resolved subgoals are synthesized into a chain-of-thought process, combined with DeepSeek-V3’s step- by-step reasoning, to create an initial cold start for reinforcement learning. This process enables us to integrate both informal and formal mathematical reasoning into a unified model. The resulting model, DeepSeek-Prover-V2-671B, achieves state-of-the-art performance in neural theorem proving, reaching 88.9% pass ratio on the MiniF2F-test and solving 47 out of 658 problems from PutnamBench. In addition to standard benchmarks, we introduce ProverBench, a collection of 325 formalized problems, to enrich our evaluation, including 15 selected prob- lems from the recent AIME competitions (years 24-25). Further evaluation on these 15 AIME problems shows that the model successfully solves 6 of them. In comparison, DeepSeek-V3 solves 8 of these problems using majority voting, highlighting that the gap between formal and informal mathematical reasoning in large language models is substantially narrowing. MiniF2F-test 60 65 70 75 80 85 90 Pass Rate (%) 88.9% 82.0% 80.7% 73.0% 67.6% 64.7% PutnamBench 0 10 20 30 40 50 Number of Problems Solved (out of 658) 47 9 8 7 ProverBench-AIME 24&25 0 2 4 6 8 10 Number of Problems Solved (out of 15) 8 6 1 DeepSeek-Prover-V2-671B DeepSeek-Prover-V2-7B Kimina-Prover-Preview 72B BFS-Prover 7B STP 7B Geodel-Prover 7B DeepSeek-V3-0324 (Informal) Figure 1 | Benchmark performance of DeepSeek-Prover-V2. On the AIME benchmark, DeepSeek- V3 is evaluated using the standard find-answer task for natural-language reasoning, while prover models generate Lean code to construct formal proofs for a given correct answer. *Core contributors †Work done during internship at DeepSeek-AI. arXiv:2504.21801v2 [cs.CL] 18 Jul 2025",
       "pdf_version": "2504.21801v2",
       "bytes": 1887186
     },
     {
-      "title": "MemGPT",
+      "title": "MemGPT: Towards LLMs as Operating Systems",
       "url": "https://arxiv.org/abs/2310.08560",
-      "path": "5.HarnessEvolution1/references/003_MemGPT.pdf",
+      "path": "5.HarnessEvolution1/references/MemGPT_Towards_LLMs_as_Operating_Systems.pdf",
       "status": "saved",
       "provenance": "archived_from_existing_repository_primary_source",
+      "source_label": "MemGPT",
       "week": 5,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "pages": 13,
       "cover": "MemGPT: Towards LLMs as Operating Systems Charles Packer 1 Sarah Wooders 1 Kevin Lin 1 Vivian Fang 1 Shishir G. Patil 1 Ion Stoica 1 Joseph E. Gonzalez 1 Abstract Large language models (LLMs) have revolution- ized AI, but are constrained by limited context windows, hindering their utility in tasks like ex- tended conversations and document analysis. To enable using context beyond limited context win- dows, we propose virtual context management, a technique drawing inspiration from hierarchical memory systems in traditional operating systems which provide the illusion of an extended vir- tual memory via paging between physical mem- ory and disk. Using this technique, we introduce MemGPT (MemoryGPT), a system that intelli- gently manages different storage tiers in order to effectively provide extended context within the LLM’s limited context window. We evalu- ate our OS-inspired design in two domains where the limited context windows of modern LLMs severely handicaps their performance: document analysis, where MemGPT is able to analyze large documents that far exceed the underly- ing LLM’s context window, and multi-session chat, where MemGPT can create conversational agents that remember, reflect, and evolve dynam- ically through long-term interactions with their users. We release MemGPT code and data for our experiments at https://research.memgpt.ai. 1. Introduction In recent years, large language models (LLMs) and their underlying transformer architecture (Vaswani et al., 2017; Devlin et al., 2018; Brown et al., 2020; Ouyang et al., 2022) have become the cornerstone of conversational AI and have led to a wide array of consumer and enterprise applications. Despite these advances, the limited fixed-length context windows used by LLMs significantly hinders their appli- cability to long conversations or reasoning about long doc- uments. For example, the most widely used open-source 1University of California, Berkeley. Correspondence to: Charles Packer <cpacker@berkeley.edu>. LLMs can only support a few dozen back-and-forth mes- sages or reason about a short document before exceeding their maximum input length (Touvron et al., 2023). Directly extending the context length of transformers in- curs a quadratic increase in computational time and mem- ory cost due to the transformer architecture’s self-attention mechanism, making the design of new long-context archi- tectures a pressing research challenge (Dai et al., 2019; Ki- taev et al., 2020; Beltagy et al., 2020). While developing longer models is an active area of research (Dong et al., 2023), even if we could overcome the computational chal- lenges of context scaling, recent research shows that long- context models struggle to utilize additional context effec- tively (Liu et al., 2023a). As consequence, given the con- siderable resources needed to train state-of-the-art LLMs and diminishing returns of context scaling, there is a criti- cal need for alternative techniques to support long context. In this paper, we study how to provide the illusion of an infinite context while continuing to use fixed-context mod- els. Our approach borrows from the idea of virtual memory paging that was developed to enable applications to work on datasets that far exceed the available memory by pag- ing data between main memory and disk. We leverage the recent progress in function calling abilities of LLM agents (Schick et al., 2023; Liu et al., 2023b) to design MemGPT, an OS-inspired LLM system for virtual context manage- ment. Using function calls, LLM agents can read and write to external data sources, modify their own context, and choose when to return responses to the user. These capabilities allow LLMs to effective “page” in and out information between context windows (analogous to “main memory” in operating systems) and external storage, similar to hierarchical memory in traditional OSes. In ad- dition, function calls can be leveraged to manage control flow between context management, response generation, and user interactions. This allows for an agent to choose to iteratively modify what is in its context for a single task, thereby more effectively utilizing its limited context. In MemGPT, we treat context windows as a constrained memory resource, and design a memory hiearchy for LLMs analogous to memory tiers used in traditional OSes (Patter- son et al., 1988). Applications in traditional OSes interact 1 arXiv:2310.08560v2 [cs.AI] 12 Feb 2024",
       "pdf_version": "2310.08560v2",
@@ -2333,13 +2363,14 @@
       "bytes": 663708
     },
     {
-      "title": "Mem0",
+      "title": "Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory",
       "url": "https://arxiv.org/abs/2504.19413",
-      "path": "5.HarnessEvolution1/references/001_Mem0.pdf",
+      "path": "5.HarnessEvolution1/references/Mem0_Building_Production-Ready_AI_Agents_with_Scalable_Long-Term_Memory.pdf",
       "status": "saved",
       "provenance": "archived_from_existing_repository_primary_source",
+      "source_label": "Mem0",
       "week": 5,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "pages": 23,
       "cover": "Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory Prateek Chhikara, Dev Khant, Saket Aryan, Taranjeet Singh, and Deshraj Yadav research@mem0.ai Large Language Models (LLMs) have demonstrated remarkable prowess in generating contextually coherent responses, yet their fixed context windows pose fundamental challenges for maintaining consistency over prolonged multi-session dialogues. We introduce Mem0, a scalable memory-centric architecture that addresses this issue by dynamically extracting, consolidating, and retrieving salient information from ongoing conver- sations. Building on this foundation, we further propose an enhanced variant that leverages graph-based memory representations to capture complex relational structures among conversational elements. Through comprehensive evaluations on the LOCOMO benchmark, we systematically compare our approaches against six baseline categories: (i) established memory-augmented systems, (ii) retrieval-augmented generation (RAG) with varying chunk sizes and k-values, (iii) a full-context approach that processes the entire conversation history, (iv) an open-source memory solution, (v) a proprietary model system, and (vi) a dedicated memory management platform. Empirical results demonstrate that our methods consistently outperform all existing memory systems across four question categories: single-hop, temporal, multi-hop, and open-domain. No- tably, Mem0 achieves 26% relative improvements in the LLM-as-a-Judge metric over OpenAI, while Mem0 with graph memory achieves around 2% higher overall score than the base Mem0 configuration. Beyond accuracy gains, we also markedly reduce computational overhead compared to the full-context approach. In particular, Mem0 attains a 91% lower p95 latency and saves more than 90% token cost, thereby offering a compelling balance between advanced reasoning capabilities and practical deployment constraints. Our findings highlight the critical role of structured, persistent memory mechanisms for long-term conversational coherence, paving the way for more reliable and efficient LLM-driven AI agents. Code can be found at: https://mem0.ai/research 1. Introduction Human memory is a foundation of intelligence—it shapes our identity, guides decision-making, and enables us to learn, adapt, and form meaningful relationships (Craik and Jennings, 1992). Among its many roles, memory is essential for communication: we recall past interactions, infer preferences, and construct evolving mental models of those we engage with (Assmann, 2011). This ability to retain and retrieve information over extended periods enables coherent, contextually rich exchanges that span days, weeks, or even months. AI agents, powered by large language models (LLMs), have made remarkable progress in generating fluent, contextually appropriate responses (Yu et al., 2024, Zhang et al., 2024). However, these systems are fundamentally limited by their reliance on fixed context windows, which severely restrict their ability to maintain coherence over extended interactions (Bulatov et al., 2022, Liu et al., 2023). This limitation stems from LLMs’ lack of persistent memory mechanisms that can extend beyond their finite context windows. While humans naturally accumulate and organize experiences over time, forming a continuous narrative arXiv:2504.19413v1 [cs.CL] 28 Apr 2025",
       "pdf_version": "2504.19413v1",
@@ -2347,13 +2378,14 @@
       "bytes": 1144031
     },
     {
-      "title": "ExpeL",
+      "title": "ExpeL: LLM Agents Are Experiential Learners",
       "url": "https://arxiv.org/abs/2308.10144",
-      "path": "5.HarnessEvolution1/references/003_ExpeL.pdf",
+      "path": "5.HarnessEvolution1/references/ExpeL_LLM_Agents_Are_Experiential_Learners.pdf",
       "status": "saved",
       "provenance": "archived_from_existing_repository_primary_source",
+      "source_label": "ExpeL",
       "week": 5,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "pages": 38,
       "cover": "ExpeL: LLM Agents Are Experiential Learners Andrew Zhao,♠Daniel Huang, ♣Quentin Xu, ♣Matthieu Lin, ♣Yong-Jin Liu, ♣Gao Huang ♠* ♠Department of Automation, BNRist, Tsinghua University ♣Department of Computer Science, BNRist, Tsinghua University {zqc21,huang-jy22,xgd22,lyh21}@mails.tsinghua.edu.cn, {liuyongjin,gaohuang}@tsinghua.edu.cn Abstract The recent surge in research interest in applying large language models (LLMs) to decision-making tasks has flourished by leveraging the extensive world knowledge embedded in LLMs. While there is a growing demand to tailor LLMs for custom decision-making tasks, finetuning them for specific tasks is resource-intensive and may diminish the model’s generalization capabilities. Moreover, state-of-the-art language models like GPT-4 and Claude are primarily accessible through API calls, with their parametric weights remaining proprietary and unavailable to the public. This scenario em- phasizes the growing need for new methodologies that allow learning from agent experiences without requiring paramet- ric updates. To address these problems, we introduce the Experiential Learning (ExpeL) agent. Our agent autonomously gathers experiences and extracts knowledge using natural language from a collection of training tasks. At inference, the agent recalls its extracted insights and past experiences to make informed decisions. Our empirical results highlight the robust learning efficacy of the ExpeL agent, indicating a consistent enhancement in its performance as it accumulates experiences. We further explore the emerging capabilities and transfer learning potential of the ExpeL agent through qualitative observations and additional experiments.1 A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E. Tom Mitchell *Corresponding author. Copyright © 2024, Association for the Advancement of Artificial Intelligence (www.aaai.org). All rights reserved. 1Visit https://andrewzh112.github.io/expel for project page, and https://github.com/LeapLabTHU/ExpeL for code. arXiv:2308.10144v3 [cs.LG] 20 Dec 2024",
       "pdf_version": "2308.10144v3",
@@ -2363,11 +2395,11 @@
     {
       "title": "Agent Workflow Memory",
       "url": "https://arxiv.org/abs/2409.07429",
-      "path": "5.HarnessEvolution1/references/004_Agent_Workflow_Memory_AWM.pdf",
+      "path": "5.HarnessEvolution1/references/Agent_Workflow_Memory.pdf",
       "status": "saved",
       "provenance": "archived_from_existing_repository_primary_source",
       "week": 5,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "pages": 16,
       "cover": "AGENT WORKFLOW MEMORY Zora Zhiruo Wang Jiayuan Mao Daniel Fried Graham Neubig Carnegie Mellon University Massachusetts Institute of Technology ABSTRACT Despite the potential of language model-based agents to solve real-world tasks such as web navigation, current methods still struggle with long-horizon tasks with complex action trajectories. In contrast, humans can flexibly solve com- plex tasks by learning reusable task workflows from past experiences and using them to guide future actions. To build agents that can similarly benefit from this process, we introduce Agent Workflow Memory (AWM), a method for inducing commonly reused routines, i.e., workflows, and selectively providing workflows to the agent to guide subsequent generations. AWM flexibly applies to both of- fline and online scenarios, where agents induce workflows from training examples beforehand or from test queries on the fly. We experiment on two major web navi- gation benchmarks — Mind2Web and WebArena — that collectively cover 1000+ tasks from 200+ domains across travel, shopping, and social media, among others. AWM substantially improves the baseline results by 24.6% and 51.1% relative success rate on Mind2Web and WebArena while reducing the number of steps taken to solve WebArena tasks successfully. Furthermore, online AWM robustly generalizes in cross-task, website, and domain evaluations, surpassing baselines from 8.9 to 14.0 absolute points as train-test task distribution gaps widen. https://github.com/zorazrw/agent-workflow-memory 1 INTRODUCTION Language model (LM) based agents are rapidly improving, and are now able to tackle digital tasks such as navigating the web (Zhou et al., 2024; Deng et al., 2023) or operating mobile apps (Rawles et al., 2023; 2024). Current agents mostly integrate a fixed set of given examples via training (Fu et al., 2024; Murty et al., 2024) or in-context learning (Zheng et al., 2024). This allows them to perform well on action sequences similar to those presented in these examples, but results in a lack of robustness to changes in task contexts or environments (Deng et al., 2023). Essentially, they fail to grasp the key to disentangling increasingly complex tasks — to extract and learn reusable task workflows shared across similar tasks and environments (Yu et al., 2023; Wang et al., 2024a). Moreover, as agents solve each task separately, they do not learn from past successes and failures, and are therefore unable to adapt over time (Yoran et al., 2024). Get the coordinates of a place Get the zip code of a place Decide if can drive from A to B in a given time Find a place by its name Find cafe near a place Get driving time from A to B Display the route from place A to B Find a Hilton hotel near this location, then show me the shortest walking path to a nearby supermarket … Gap widens to 22.5 after 40 examples ATM baseline Figure 1: AWM enables agents to continuously induce and apply workflows to improve performance, compared to stag- nant baselines. We show results by AWM on the WebArena map split as an example. Motivated by how humans abstract common task routines from past ex- periences and apply such knowledge to guide future activities (Chi et al., 1981; 2014), we propose agent work- flow memory (AWM) (§2) to real- ize a similar mechanism in agents. AWM induces workflows from agent trajectories by extracting reusable routines, and then integrates these workflows into agent memory to guide future task-solving processes. Each workflow represents a goal with a common routine extracted from available action trajectories, which allows it to effectively capture the most essential and reusable skills agents need to acquire to successfully solve increasingly com- plex tasks. As an example, Figure 1 shows workflows induced by AWM on the WebArena map 1 arXiv:2409.07429v1 [cs.CL] 11 Sep 2024",
       "pdf_version": "2409.07429v1",
@@ -2375,13 +2407,14 @@
       "bytes": 941281
     },
     {
-      "title": "Agent Skill Induction",
+      "title": "Inducing Programmatic Skills for Agentic Tasks",
       "url": "https://arxiv.org/abs/2504.06821",
-      "path": "5.HarnessEvolution1/references/005_Agent_Skill_Induction_ASI.pdf",
+      "path": "5.HarnessEvolution1/references/Inducing_Programmatic_Skills_for_Agentic_Tasks.pdf",
       "status": "saved",
       "provenance": "archived_from_existing_repository_primary_source",
+      "source_label": "Agent Skill Induction",
       "week": 5,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "pages": 21,
       "cover": "Published as a conference paper at COLM 2025 Inducing Programmatic Skills for Agentic Tasks Zora Zhiruo Wang Apurva Gandhi Graham Neubig Daniel Fried Carnegie Mellon University {zhiruow,apurvag,gneubig,dfried}@cs.cmu.edu Abstract To succeed in common digital tasks such as web navigation, agents must carry out a variety of specialized tasks such as searching for products or planning a travel route. To tackle these tasks, agents can bootstrap them- selves by learning task-specific skills online through interaction with the web environment. In this work, we demonstrate that programs are an ef- fective representation for skills. We propose agent skill induction (ASI), which allows agents to adapt themselves by inducing, verifying, and uti- lizing program-based skills on the fly. We start with an evaluation on the WebArena agent benchmark and show that ASI outperforms the static baseline agent and its text-skill counterpart by 23.5% and 11.3% in success rate, mainly thanks to the programmatic verification guarantee during the induction phase. ASI also improves efficiency by reducing 10.7–15.3% of the steps over baselines, by composing primitive actions (e.g., click) into higher-level skills (e.g., search product). We then highlight the efficacy of ASI in remaining efficient and accurate under scaled-up web activities. Finally, we examine the generalizability of induced skills when transferring between websites, and find that ASI can effectively reuse common skills, while also updating incompatible skills to versatile website changes.1 1 Introduction To achieve success in common digital tasks such as web navigation, it is essential for agents to be able to perform a variety of specialized tasks such as searching for products on a shopping website (Yao et al., 2022; Deng et al., 2024) or finding a driving route on the map (Zhou et al., 2024a; Xie et al., 2024a). While one source for agents to learn such tasks is demonstrations annotated by humans (Deng et al., 2024) or synthesized with large language models (LMs) on websites of interest (Murty et al., 2024b;a), this can be a challenging offline learning procedure given the broad range of website domains and functionalities, especially for the collected demonstrations to match or cover the distribution of tasks queried at inference time (Zhou et al., 2024b); not to mention the limitations in resources to collect abundant high-quality data at ease (Pan et al., 2024). Instead of learning from demonstrations offline, an alternative way is to learn these tasks directly online from test queries to prevent potential distribution mismatch between demon- stration and downstream tasks (Levine et al., 2020). Some works propose to have agents induce casual abstractions (Majumder et al., 2024), single-state guidelines (Fu et al., 2024), or multi-step procedural workflows (Sarch et al., 2024; Wang et al., 2024b) as a form of interme- diate knowledge to augment agent memory via non-parametric approaches (Brown et al., 2020). Nonetheless, most existing approaches represent this knowledge in text, offering limited quality and verification guarantees. In this work, we propose that executable programs are effective representations for intermediate skill acquisition, given their verifiability and composability advantages (Setlur et al., 2025). We present ASI, namely agent skill induction (§2), that induces and applies programmatic skills along the process of solving user web navigation queries. More concretely, given a natural language (NL) query, the agent first generates an action trajectory attempting to solve the task using built-in, primitive actions such as click and scroll. The agent then 1https://github.com/zorazrw/agent-skill-induction 1 arXiv:2504.06821v2 [cs.CL] 29 Aug 2025",
       "pdf_version": "2504.06821v2",
@@ -2389,13 +2422,14 @@
       "bytes": 3523312
     },
     {
-      "title": "PolySkill",
+      "title": "PolySkill: Learning Generalizable Skills Through Polymorphic Abstraction",
       "url": "https://arxiv.org/abs/2510.15863",
-      "path": "5.HarnessEvolution1/references/013_PolySkill.pdf",
+      "path": "5.HarnessEvolution1/references/PolySkill_Learning_Generalizable_Skills_Through_Polymorphic_Abstraction.pdf",
       "status": "saved",
       "provenance": "archived_from_existing_repository_primary_source",
+      "source_label": "PolySkill",
       "week": 5,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "pages": 29,
       "cover": "Published as a conference paper at ICLR 2026 POLYSKILL: LEARNING GENERALIZABLE SKILLS THROUGH POLYMORPHIC ABSTRACTION FOR CON- TINUAL LEARNING Simon Yu1 Gang Li2 Weiyan Shi†1 Peng Qi†2 1Northeastern University 2Uniphore † Co-Supervision {yu.chi, we.shi}@northeastern.edu, {gang.li, peng.qi}@uniphore.com ABSTRACT Large language models (LLMs) are moving beyond static uses and are now pow- ering agents that learn during their interaction with external environments. For example, agents can learn reusable skills while navigating web pages or tog- gling new tools. However, existing methods for skill learning often create skills that are over-specialized to a single website and fail to generalize. We introduce PolySkill, a new framework that enables agents to learn generalizable and com- positional skills. The core idea, inspired by polymorphism in software engineer- ing, is to decouple a skill’s abstract goal (what it accomplishes) and its concrete implementation (how it is executed). Experiments show that our method (1) im- proves skill reuse by 1.7x on seen websites and (2) boosts success rates by up to 9.4% on Mind2Web and 13.9% on unseen websites, while reducing steps by over 20%. (3) In self-exploration settings without specified tasks, our framework improves the quality of proposed tasks and enables agents to learn generalizable skills that work across different sites. By enabling the agent to identify and re- fine its own goals, the PolySkill enhance the agent a better curriculum, leading to the acquisition of more generalizable skills compared to baseline methods. This work provides a practical path toward building agents capable of continual learn- ing in adaptive environments. Our findings show that separating a skill’s goal from its execution is a crucial step toward developing autonomous agents that can learn and generalize across the open web continuously. Our code can be found in https://github.com/simonucl/PolySkill. 1 INTRODUCTION LLMs have enabled significant progress in agent development (Yao et al., 2023b; Yang et al., 2024; Agashe et al., 2025). Web agents represent a key class of LLM-based agents, where the agents navigates complex Graphical User Interfaces (GUIs) to achieve user-defined goals (Deng et al., 2023; Zhou et al., 2024a; Cheng et al., 2024; Wu et al., 2024b; Chen et al., 2025b; Gou et al., 2025; Xue et al., 2025). However, a primary challenge lies in developing generalizable agents that can operate robustly across different tasks within a single website, as well as transfer skills to distinct websites within the same functional domain (e.g., generalizing across different airline booking interfaces). To be generalizable, these agents must learn from their experiences, allowing them to adapt when faced with new tasks or unseen websites (Silver & Sutton, 2025; Shen et al., 2025). One promising direction is skill induction: learning reusable skills from past experiences. This ap- proach was first explored in an open-ended environment by Voyager (Wang et al., 2023). Agent Workflow Memory (Wang et al., 2024) pioneered skill induction for web agents, which used natural language skills to prove the concept’s viability. Consequently, Agent Skill Induction (Wang et al., 2025) and SkillWeaver (Zheng et al., 2025) made these skills more robust by structuring them as code. However, these methods primarily focus on same website, cross-task settings. By optimizing 1 arXiv:2510.15863v2 [cs.CL] 2 Mar 2026",
       "pdf_version": "2510.15863v2",
@@ -2405,11 +2439,11 @@
     {
       "title": "Executable Code Actions Elicit Better LLM Agents",
       "url": "https://arxiv.org/abs/2402.01030",
-      "path": "5.HarnessEvolution1/references/002_CodeAct.pdf",
+      "path": "5.HarnessEvolution1/references/Executable_Code_Actions_Elicit_Better_LLM_Agents.pdf",
       "status": "saved",
       "provenance": "archived_from_existing_repository_primary_source",
       "week": 5,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "pages": 25,
       "cover": "Executable Code Actions Elicit Better LLM Agents Xingyao Wang 1 Yangyi Chen 1 Lifan Yuan 1 Yizhe Zhang 2 Yunzhu Li 1 Hao Peng 1 Heng Ji 1 Abstract Large Language Model (LLM) agents, capable of performing a broad range of actions, such as invoking tools and controlling robots, show great potential in tackling real-world challenges. LLM agents are typically prompted to produce ac- tions by generating JSON or text in a pre-defined format, which is usually limited by constrained action space (e.g., the scope of pre-defined tools) and restricted flexibility (e.g., inability to compose multiple tools). This work proposes to use executable Python code to consolidate LLM agents’ actions into a unified action space (CodeAct). Integrated with a Python interpreter, CodeAct can execute code actions and dynam- ically revise prior actions or emit new actions upon new observations through multi-turn interac- tions. Our extensive analysis of 17 LLMs on API- Bank and a newly curated benchmark shows that CodeAct outperforms widely used alternatives (up to 20% higher success rate). The encouraging performance of CodeAct motivates us to build an open-source LLM agent that interacts with en- vironments by executing interpretable code and collaborates with users using natural language. To this end, we collect an instruction-tuning dataset CodeActInstruct that consists of 7k multi-turn in- teractions using CodeAct. We show that it can be used with existing data to improve models in agent-oriented tasks without compromising their general capability. CodeActAgent, finetuned from Llama2 and Mistral, is integrated with Python in- terpreter and uniquely tailored to perform sophis- ticated tasks (e.g., model training) using existing libraries and autonomously self-debug1. 1Department of Computer Science, University of Illinois Urbana-Champaign 2Apple. Correspondence to: Xingyao Wang <xingyao6@illinois.edu>, Heng Ji <hengji@illinois.edu>. Proceedings of the 41 st International Conference on Machine Learning, Vienna, Austria. PMLR 235, 2024. Copyright 2024 by the author(s). 1The code, data, model, and demo are available at https: //github.com/xingyaoww/code-act. 1. Introduction Large Language Models (LLMs) have emerged as a pivotal breakthrough in natural language processing (NLP). When augmented with action modules that allow access to APIs, their action space expands beyond conventional text pro- cessing, allowing LLMs to acquire capabilities such as tool invocation and memory management (Mialon et al., 2023; Schick et al., 2023) and venture into real-world tasks such as controlling robots (Ahn et al., 2022; Huang et al., 2023; Ma et al., 2023) and performing scientific experiments (Bran et al., 2023). We inquire: how to effectively expand LLM agents’ action space for solving complex real-world problems? Much existing research has examined using text (Yao et al., 2022b; Park et al., 2023, inter alia) or JSON (Qin et al., 2023b; Chase, 2022, inter alia) to produce actions (e.g., tool uses in Fig. 1 top left). However, both methods typically suffer from constrained scope of action spaces (actions are usually tailored for specific tasks) and restricted flexibility (e.g., inability to compose multiple tools in a single action). As an alternative approach, several work (Liang et al., 2022; Singh et al., 2023; Wang et al., 2023a) demonstrate the potential of using LLMs to generate code to control robots or game characters. However, they typically rely on pre-specified control primitives and hand-engineered prompts and, more importantly, struggle to dynamically adjust or emit actions based on new environmental observation and feedback. This work proposes CodeAct, a general-purpose frame- work that allows LLMs to generate executable Python code as actions (Fig. 1 top right). CodeAct is designed to handle a variety of applications and comes with unique advantages: (1) Integrated with a Python interpreter, CodeAct can ex- ecute code actions and dynamically adjust prior actions or emit new action based on observations (e.g., code execution results) it receives through multiple turns of interactions. (2) Code actions allow LLM to leverage existing software packages. CodeAct can use readily available Python packages for an expanded action space instead of hand- crafted task-specific tools (Yuan et al., 2023; Shen et al., 2023). It also allows LLM to use automated feedback (e.g., error messages) implemented in most software to improve task-solving by self-debugging its generated 1 arXiv:2402.01030v4 [cs.CL] 7 Jun 2024",
       "pdf_version": "2402.01030v4",
@@ -2422,7 +2456,7 @@
       "path": "6.HarnessEvolution2/references/mini-swe-agent-68d367b/src/minisweagent/agents/default.py",
       "status": "saved",
       "week": 6,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "sha256": "368d869ac814b96ceac54b3014a20224d562543c771928de70080ae8d3f44eee",
       "bytes": 6176
     },
@@ -2432,7 +2466,7 @@
       "path": "6.HarnessEvolution2/references/mini-swe-agent-68d367b/src/minisweagent/environments/local.py",
       "status": "saved",
       "week": 6,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "sha256": "b0e33ef0773e6e6196e8d10c79b2b3e3bbc547635bd31aaf9b50da8fa03f98f6",
       "bytes": 1278
     },
@@ -2442,7 +2476,7 @@
       "path": "6.HarnessEvolution2/references/mini-swe-agent-68d367b/src/minisweagent/config/default.yaml",
       "status": "saved",
       "week": 6,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "sha256": "cf5abdd6f16afc47846f67c0b91888c14ed969b8963fffb6f4ce0681a071a600",
       "bytes": 5108
     },
@@ -2452,18 +2486,19 @@
       "path": "6.HarnessEvolution2/references/mini-swe-agent-68d367b/src/minisweagent/agents/interactive.py",
       "status": "saved",
       "week": 6,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "sha256": "34178d6a646eab0c3d65184e835abcc4f3bdce2530da0a40555ea108f6e90715",
       "bytes": 7470
     },
     {
-      "title": "ReAct",
+      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
       "url": "https://arxiv.org/abs/2210.03629",
-      "path": "6.HarnessEvolution2/references/002_ReAct.pdf",
+      "path": "6.HarnessEvolution2/references/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf",
       "status": "saved",
-      "provenance": "11-768/1.WhatIsAnAgent/readings/002_ReAct.pdf",
+      "provenance": "11-768/1.WhatIsAnAgent/readings/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf",
+      "source_label": "ReAct",
       "week": 6,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "pages": 33,
       "cover": "Published as a conference paper at ICLR 2023 REACT: SYNERGIZING REASONING AND ACTING IN LANGUAGE MODELS Shunyu Yao∗*,1, Jeffrey Zhao2, Dian Yu2, Nan Du2, Izhak Shafran2, Karthik Narasimhan1, Yuan Cao2 1Department of Computer Science, Princeton University 2Google Research, Brain team 1{shunyuy,karthikn}@princeton.edu 2{jeffreyzhao,dianyu,dunan,izhak,yuancao}@google.com ABSTRACT While large language models (LLMs) have demonstrated impressive performance across tasks in language understanding and interactive decision making, their abilities for reasoning (e.g. chain-of-thought prompting) and acting (e.g. action plan generation) have primarily been studied as separate topics. In this paper, we explore the use of LLMs to generate both reasoning traces and task-speciﬁc actions in an interleaved manner, allowing for greater synergy between the two: reasoning traces help the model induce, track, and update action plans as well as handle exceptions, while actions allow it to interface with and gather additional information from external sources such as knowledge bases or environments. We apply our approach, named ReAct, to a diverse set of language and decision making tasks and demonstrate its effectiveness over state-of-the-art baselines in addition to improved human interpretability and trustworthiness. Concretely, on question answering (HotpotQA) and fact veriﬁcation (Fever), ReAct overcomes prevalent issues of hallucination and error propagation in chain-of-thought reasoning by interacting with a simple Wikipedia API, and generating human-like task-solving trajectories that are more interpretable than baselines without reasoning traces. Furthermore, on two interactive decision making benchmarks (ALFWorld and WebShop), ReAct outperforms imitation and reinforcement learning methods by an absolute success rate of 34% and 10% respectively, while being prompted with only one or two in-context examples. 1 INTRODUCTION A unique feature of human intelligence is the ability to seamlessly combine task-oriented actions with verbal reasoning (or inner speech, Alderson-Day & Fernyhough, 2015), which has been theorized to play an important role in human cognition for enabling self-regulation or strategization (Vygotsky, 1987; Luria, 1965; Fernyhough, 2010) and maintaining a working memory (Baddeley, 1992). Con- sider the example of cooking up a dish in the kitchen. Between any two speciﬁc actions, we may reason in language in order to track progress (“now that everything is cut, I should heat up the pot of water”), to handle exceptions or adjust the plan according to the situation (“I don’t have salt, so let me use soy sauce and pepper instead”), and to realize when external information is needed (“how do I prepare dough? Let me search on the Internet”). We may also act (open a cookbook to read the recipe, open the fridge, check ingredients) to support the reasoning and to answer questions (“What dish can I make right now?”). This tight synergy between “acting” and “reasoning” allows humans to learn new tasks quickly and perform robust decision making or reasoning, even under previously unseen circumstances or facing information uncertainties. Recent results have hinted at the possibility of combining verbal reasoning with interactive decision making in autonomous systems. On one hand, properly prompted large language models (LLMs) have demonstrated emergent capabilities to carry out several steps of reasoning traces to derive ∗Work during Google internship. Projet page with code: https://react-lm.github.io/. 1 arXiv:2210.03629v3 [cs.CL] 10 Mar 2023",
       "pdf_version": "2210.03629v3",
@@ -2473,10 +2508,10 @@
     {
       "title": "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering",
       "url": "https://arxiv.org/abs/2405.15793",
-      "path": "6.HarnessEvolution2/references/2405.15793.pdf",
+      "path": "6.HarnessEvolution2/references/SWE-agent_Agent-Computer_Interfaces_Enable_Automated_Software_Engineering.pdf",
       "status": "saved",
       "week": 6,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "pages": 118,
       "cover": "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering John Yang∗ Carlos E. Jimenez∗ Alexander Wettig Kilian Lieret Shunyu Yao Karthik Narasimhan Ofir Press Princeton Language and Intelligence, Princeton University Abstract Language model (LM) agents are increasingly being used to automate complicated tasks in digital environments. Just as humans benefit from powerful software applications, such as integrated development environments, for complex tasks like software engineering, we posit that LM agents represent a new category of end users with their own needs and abilities, and would benefit from specially-built interfaces to the software they use. We investigate how interface design affects the performance of language model agents. As a result of this exploration, we introduce SWE-agent: a system that facilitates LM agents to autonomously use computers to solve software engineering tasks. SWE-agent’s custom agent-computer interface (ACI) significantly enhances an agent’s ability to create and edit code files, navigate entire repositories, and execute tests and other programs. We evaluate SWE-agent on SWE-bench and HumanEvalFix, achieving state-of-the-art performance on both with a pass@1 rate of 12.5% and 87.7%, respectively, far exceeding the previous state-of-the-art achieved with non-interactive LMs. Finally, we provide insight on how the design of the ACI can impact agents’ behavior and performance. 1 Introduction Recent work has demonstrated the efficacy of LM agents for code generation with execution feed- back [39]. However, applying agents to more complex code tasks like software engineering remains unexplored. To solve programming tasks, LM agents are typically designed to use existing applica- tions, such as the Linux shell or Python interpreter [53, 57, 59]. However, to perform more complex programming tasks such as software engineering [20], human engineers benefit from sophisticated ap- plications like VSCode with powerful tools and extensions. Inspired by human-computer interaction (HCI) studies on the efficacy of user interfaces for humans [7], we investigate whether LM agents could similarly benefit from better-designed interfaces for performing software engineering tasks. SWE-agent Filesystem sklearn/ examples/ README.rst Terminal Computer LM Agent Agent-Computer Interface Navigate repo View files LM-friendly commands Search files Edit lines LM-friendly environment feedback Figure 1: SWE-agent is an LM interacting with a computer through an agent-computer interface (ACI), which includes the commands the agent uses and the format of the feedback from the computer. ∗Equal contribution. Correspondence to johnby@stanford.edu, carlosej@princeton.edu. Data, code, and leaderboard at swe-agent.com 38th Conference on Neural Information Processing Systems (NeurIPS 2024). arXiv:2405.15793v3 [cs.SE] 11 Nov 2024",
       "pdf_version": "2405.15793v3",
@@ -2484,196 +2519,209 @@
       "bytes": 4963538
     },
     {
-      "title": "GKD",
+      "title": "On-Policy Distillation of Language Models: Learning from Self-Generated Mistakes",
       "url": "https://arxiv.org/abs/2306.13649",
-      "path": "7.ModelEvolution1/references/2306.13649.pdf",
+      "path": "7.ModelEvolution1/references/On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf",
       "status": "saved",
       "pages": 18,
       "sha256": "a81c71fa0cd15506642092790d854347f030c29ee1d6aa643b55aa51348e6869",
       "checked_date": "2026-10-26",
       "version": "2306.13649v3",
+      "source_label": "GKD",
       "week": 7,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": "Published as a conference paper at ICLR 2024 ON-POLICY DISTILLATION OF LANGUAGE MODELS: LEARNING FROM SELF-GENERATED MISTAKES Rishabh Agarwal12∗ Nino Vieillard1∗ Yongchao Zhou13 Piotr Stanczyk1† Sabela Ramos1† Matthieu Geist1 Olivier Bachem1 1Google DeepMind 2Mila 3University of Toronto ABSTRACT Knowledge distillation (KD) is widely used for compressing a teacher model to reduce its inference cost and memory footprint, by training a smaller student model. However, current KD methods for auto-regressive sequence models suffer from distribution mismatch between output sequences seen during training and those generated by the student during inference. To address this issue, we introduce Generalized Knowledge Distillation (GKD). Instead of solely relying on a fixed set of output sequences, GKD trains the student on its self-generated output sequences by leveraging feedback from the teacher on such sequences. Unlike supervised KD approaches, GKD also offers the flexibility to employ alternative loss functions between the student and teacher, which may be useful when the student lacks the expressivity to mimic the teacher’s distribution. Furthermore, GKD facilitates the seamless integration of distillation with RL fine-tuning of language models. We demonstrate the efficacy of GKD for distilling auto-regressive T5 language models for task-specific distillation on summarization, translation, and reasoning tasks, and task-agnostic distillation for instruction tuning. 1 INTRODUCTION T5-Small (77M) T5-Base (250M) T5-Large (800M) Student (params) 14 16 18 20 22 Performance (ROUGE-2) T5-XL (Teacher) +111% XSum (Summarization) T5-Small (77M) T5-Base (250M) T5-Large (800M) Student (params) 25.5 26.0 26.5 27.0 27.5 28.0 Performance (BLEU) +70% WMT (Translation) T5-Small (77M) T5-Base (250M) T5-Large (800M) Student (params) 5 10 15 20 25 30 Accuracy (w/ Calculator) +90% GSM8K (Reasoning w/ CoT) Supervised Fine-Tuning Supervised KD SeqKD GKD (On-policy) Figure 1: Comparing GKD with KD approaches across different student model sizes. We use the T5 models (Raffel et al., 2020) trained with supervised FT as students. We use supervised FT T5-XL (∼3B params) as the teacher, whose performance is indicated by the horizontal line. Supervised KD and FT use ground-truth output sequences for training while SeqKD trains on output sequences generated by the teacher. On-policy GKD trains on output sequences sampled from the student. For GKD, we use JSD (0.1) on WMT and forward KL on other tasks. For evaluation, we use greedy sampling for XSum and GSM8K and beam search for WMT. Auto-regressive sequence models, such as language models (LMs), have shown impressive capabilities in numerous tasks, where the key to this success is often scaling the amount of training data as well as ∗denotes equal contribution. †denotes infrastructure contribution. Correspondence to Rishabh Agarwal <rishabhagarwal@google.com> and Nino Vieillard <vieillard@google.com>. 1 arXiv:2306.13649v3 [cs.LG] 17 Jan 2024",
       "pdf_version": "2306.13649v3",
       "bytes": 895556
     },
     {
-      "title": "RLs_Razor",
+      "title": "RL's Razor: Why Online Reinforcement Learning Forgets Less",
       "url": "https://arxiv.org/abs/2509.04259",
-      "path": "7.ModelEvolution1/references/2509.04259.pdf",
+      "path": "7.ModelEvolution1/references/RL_s_Razor_Why_Online_Reinforcement_Learning_Forgets_Less.pdf",
       "status": "saved",
       "pages": 23,
       "sha256": "bf3b6ab3b0b5db847aae235cc93a5a9475be2b7aca1e163304822d13d2dd0373",
       "checked_date": "2026-10-26",
       "version": "2509.04259v1",
+      "source_label": "RLs_Razor",
       "week": 7,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": "RL’S RAZOR: WHY ONLINE REINFORCEMENT LEARNING FORGETS LESS Idan Shenfeld∗ Jyothish Pari∗ Pulkit Agrawal Improbable AI Lab, MIT {idanshen, jyop, pulkitag}@mit.edu ABSTRACT Comparison of fine-tuning models with reinforcement learning (RL) and super- vised fine-tuning (SFT) reveals that, despite similar performance at a new task, RL preserves prior knowledge and capabilities significantly better. We find that the degree of forgetting is determined by the distributional shift, measured as the KL-divergence between the fine-tuned and base policy evaluated on the new task. Our analysis reveals that on-policy RL is implicitly biased towards KL-minimal solutions among the many that solve the new task, whereas SFT can converge to distributions arbitrarily far from the base model. We validate these findings through experiments with large language models and robotic foundation models and further provide theoretical justification for why on-policy RL updates lead to a smaller KL change. We term this principle RL’s Razor: among all ways to solve a new task, RL prefers those closest in KL to the original model. Our website is available at http://jyopari.github.io/posts/rl_razor. RL RL SFT 70 30 10 KL( . || . ) < KL( || ) Policies with 90% success on new task Base Policy New Task Performance Prior Task Performance RL SFT Low Low High High Pri or T ask Per for ma nc e Figure 1: Bias toward KL-minimal solutions reduces forgetting. Left: Among policies that solve the new task, RL converges to those closest in KL to the base model. Right: This KL bias yields higher prior-task retention at matched new-task performance compared to SFT. 1 INTRODUCTION Foundation models have rapidly become the backbone of modern AI, powering applications in language, vision, robotics, and beyond. Despite their remarkable capabilities, today’s models are largely static once deployed: they excel at tasks learned during pre-training or post-training, but are not designed to self-improve and continually acquire new capabilities. We imagine a future where deployed models are long-lived agents assisting humans in the long-term and continuously adapting to new needs. As such, models must improve and adapt to new data, environments, and objectives Gao et al. (2025); Dao & Le (2025); Moradi et al. (2025); Li et al. (2025b); Simonds & Yoshiyama (2025); Zweiger et al. (2025). *Equal contribution. Correspondence to: Jyothish Pari (jyop@mit.edu), Idan Shenfeld (idanshen@mit.edu). 1 arXiv:2509.04259v1 [cs.LG] 4 Sep 2025",
       "pdf_version": "2509.04259v1",
       "bytes": 2714169
     },
     {
-      "title": "SDFT",
+      "title": "Self-Distillation Enables Continual Learning",
       "url": "https://arxiv.org/abs/2601.19897",
-      "path": "7.ModelEvolution1/references/2601.19897.pdf",
+      "path": "7.ModelEvolution1/references/Self-Distillation_Enables_Continual_Learning.pdf",
       "status": "saved",
       "pages": 22,
       "sha256": "8e79ea6fc872f599b7076ab6d05a0037ed9e7f2e504c8610aea129546e497e14",
       "checked_date": "2026-10-26",
       "version": "2601.19897v2",
+      "source_label": "SDFT",
       "week": 7,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": "SELF-DISTILLATION ENABLES CONTINUAL LEARNING Idan Shenfeld1 2∗ Mehul Damani1 Jonas H¨ubotter3 Pulkit Agrawal1 2 1MIT 2Improbable AI Lab 3ETH Zurich ABSTRACT Continual learning, enabling models to acquire new skills and knowledge without de- grading existing capabilities, remains a fundamental challenge for foundation models. While on-policy reinforcement learning can reduce forgetting, it requires explicit re- ward functions that are often unavailable. Learning from expert demonstrations, the pri- mary alternative, is dominated by supervised fine-tuning (SFT), which is inherently off- policy. We introduce Self-Distillation Fine-Tuning (SDFT), a simple method that en- ables on-policy learning directly from demonstrations. SDFT leverages in-context learn- ing by using a demonstration-conditioned model as its own teacher, generating on-policy training signals that preserve prior capabilities while acquiring new skills. Across skill learning and knowledge acquisition tasks, SDFT consistently outperforms SFT, achiev- ing higher new-task accuracy while substantially reducing catastrophic forgetting. In se- quential learning experiments, SDFT enables a single model to accumulate multiple skills over time without performance regression, establishing on-policy distillation as a practi- cal path to continual learning from demonstrations. Code and Datasets are available at http://idanshenfeld.com/SDFT. 1 INTRODUCTION On-policy learning leads to be3er performance on both new and prior tasks Oﬀ-policy learning results in catastrophic forge;ng Figure 1: Supervised Fine-Tuning (SFT) is commonly used to learn from expert demonstration datasets, but its off-policy nature leads to catastrophic for- getting of general capabilities. We introduce Self- Distillation Fine-Tuning (SDFT), which turns expert demonstrations into on-policy learning signals by us- ing a demonstration-conditioned version of the model as its own teacher. In this way, SDFT enables true con- tinual learning with the model improving on new tasks as they arise without regressing existing capabilities. Foundation models have achieved remarkable suc- cess in recent years, powering AI applications across language, vision, robotics, and beyond. How- ever, despite their impressive capabilities, today’s AI systems remain static after deployment. While they can adapt their behavior at inference time through mechanisms such as retrieval or prompting, they do not update their parameters to acquire new skills, internalize new knowledge, or improve from experience. To enable the next generation of foun- dation models, we must solve the problem of con- tinual learning: enabling AI systems to keep learn- ing and improving over time, similar to how humans accumulate knowledge and refine skills throughout their lives (Hassabis et al., 2017; De Lange et al., 2021). A growing body of recent work has highlighted the importance of on-policy learning for contin- ual learning. When models learn from data gener- ated by their current policy, they exhibit substan- tially reduced catastrophic forgetting compared to off-policy alternatives (Shenfeld et al., 2025; Chen et al., 2025). To date, most successful on-policy ap- proaches have been developed in the context of re- inforcement learning (RL), where feedback is pro- vided through an explicit reward function. However, in many real-world settings such rewards are unavail- able or difficult to specify. Instead, learning typically proceeds from datasets of expert demonstrations. The dominant paradigm in this regime is supervised fine-tuning (SFT), which trains the model to imitate expert ∗Correspondence to idanshen@mit.edu. 1 arXiv:2601.19897v2 [cs.LG] 7 Aug 2026",
       "pdf_version": "2601.19897v2",
       "bytes": 1102480
     },
     {
-      "title": "TTRL",
+      "title": "TTRL: Test-Time Reinforcement Learning",
       "url": "https://arxiv.org/abs/2504.16084",
-      "path": "7.ModelEvolution1/references/2504.16084.pdf",
+      "path": "7.ModelEvolution1/references/TTRL_Test-Time_Reinforcement_Learning.pdf",
       "status": "saved",
       "pages": 22,
       "sha256": "3828cc886a0133749fe857dc12fff190f76c17dd7421dccfca01c96ec1dd5882",
       "checked_date": "2026-10-26",
       "version": "2504.16084v3",
+      "source_label": "TTRL",
       "week": 7,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": "arXiv:2504.16084v3 [cs.CL] 30 Jun 2025 TTRL: Test-Time Reinforcement Learning TTRL: Test-Time Reinforcement Learning Yuxin Zuo∗1,2 Kaiyan Zhang∗1 Li Sheng1,2 Shang Qu1,2 Ganqu Cui2 Xuekai Zhu1 Haozhan Li1,2 Yuchen Zhang2 Xinwei Long1 Ermo Hua1 Biqing Qi2 Youbang Sun1 Zhiyuan Ma1 Lifan Yuan1 Ning Ding†1,2 Bowen Zhou†1,2 1Tsinghua University 2Shanghai AI Lab https://github.com/PRIME-RL/TTRL Abstract This paper investigates Reinforcement Learning (RL) on data without ex- plicit labels for reasoning tasks in Large Language Models (LLMs). The core challenge of the problem is reward estimation during inference while not having access to ground-truth information. While this setting appears elusive, we find that common practices in Test-Time Scaling (TTS), such as majority voting, yield surprisingly effective rewards suitable for driving RL training. In this work, we introduce Test-Time Reinforcement Learn- ing (TTRL), a novel method for training LLMs using RL on unlabeled data. TTRL enables self-evolution of LLMs by utilizing the priors in the pre-trained models. Our experiments demonstrate that TTRL consistently improves performance across a variety of tasks and models. Notably, TTRL boosts the pass@1 performance of Qwen-2.5-Math-7B by approxi- mately 211% on the AIME 2024 with only unlabeled test data. Furthermore, although TTRL is only supervised by the maj@n metric, TTRL has demon- strated performance to consistently surpass the upper limit of the initial model maj@n, and approach the performance of models trained directly on test data with ground-truth labels. Our experimental findings validate the general effectiveness of TTRL across various tasks and highlight TTRL’s potential for broader tasks and domains. 16.7 43.3 Accuracy (Pass@1) AIME 2024 20 0 40 60 80 38.6 67.5 AMC 50.6 84.2 MATH-500 +159.3% +74.9% +66.4% Pre-Training +SFT/RL Pre-Training Data Unlabeled Data (e.g., Test Data) Data TTRL Labeled Data TTRL estimates rewards via majority voting on unlabeled data for RL training. 100 {\"𝒚𝟏, \"𝒚𝟐,⋯} LLM Query Test-Time Scaling (e.g., Majority Voting) \"𝒚 LLM TTRL RL Training 🔥 🧊 Role Figure 1: Performance and Position of TTRL. ∗Equal Contribution. Kaiyan Zhang (zhang-ky22@mails.tsinghua.edu.cn) and Ganqu Cui lead the project. †: Corresponding authors. 1",
       "pdf_version": "2504.16084v3",
       "bytes": 697629
     },
     {
-      "title": "OpenClaw_RL",
+      "title": "OpenClaw-RL: Train Any Agent Simply by Talking",
       "url": "https://arxiv.org/abs/2603.10165",
-      "path": "7.ModelEvolution1/references/2603.10165.pdf",
+      "path": "7.ModelEvolution1/references/OpenClaw-RL_Train_Any_Agent_Simply_by_Talking.pdf",
       "status": "saved",
       "pages": 33,
       "sha256": "4d8c1aa05fdb439201b5edfca65208fc610eee3169b0ba0689f4378f2c4fe6ae",
       "checked_date": "2026-10-26",
       "version": "2603.10165v2",
+      "source_label": "OpenClaw_RL",
       "week": 7,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": "OpenClaw-RL: Train Any Agent Simply by Talking Yinjie Wang*, Xuyang Chen*, Xiaolong Jin*, Mengdi Wang†, Ling Yang† https://github.com/Gen-Verse/OpenClaw-RL Every agent interaction generates a next-state signal, namely the user reply, tool output, terminal or GUI state change that follows each action, yet no existing agentic RL system recovers it as a live, online learning source. We present OpenClaw-RL, a framework that employs next-state signals to optimize personal agents online through infrastructure and methodology innovations. On the infrastructure side, we extend existing RL systems to a server–client architecture where the RL server hosts the policy behind an inference API and user terminals stream interaction data back over HTTP. From each observed next state, the system extracts two complementary training signals, evaluative and directive, via a separate asynchronous server so that neither signal extraction nor optimization blocks inference. On the methodology side, we introduce a hybrid RL objective that unifies both signal types in a single update: directive signals provide richer, token-level supervision but are sparser, while evaluative signals are more broadly available. To stabilize distillation under teacher–student mismatch, we propose overlap-guided hint selection, which picks the hint whose induced teacher distribution maximally overlaps with the student’s top-𝑘tokens, together with a log-probability- difference clip that bounds per-token advantages. Applied to personal agents, OpenClaw-RL enables an agent to improve simply by being used, recovering conversational signals from user re-queries, corrections, and explicit feedback. Applied to general agents, OpenClaw-RL is the first RL framework to unify real-world agent settings spanning terminal, GUI, SWE, and tool-call environments, where we additionally demonstrate the utility of next-state signals in long-horizon settings. Policy Server (SGLang) PRM Server (SGLang/API) Training Engine (Megatron) OpenClaw Terminal Agent GUI Agent SWE Agent Tool-call Agent Personal Agents General Agents Personal Devices · Confidential API Keys Cloud Services · Large Scale Environments OpenClaw-RL RL Server · Slime Async Framework · Zero Serving Interruption · Graceful Weight Update Environment Servers data Figure 1 | OpenClaw-RL infrastructure overview. Interaction streams come from two agent types: Personal Agents (conversational, personalized), hosted on personal devices, and General Agents (terminal, GUI, SWE, and tool-call agents), hosted on cloud services. The collected samples flow into our RL server built on the asynchronous slime framework, which consists of four decoupled components: (1) the environment server, (2) PRM / Judge for reward computation, (3) Megatron for policy training, and (4) SGLang for policy serving. The environment for personal agents is simply the users’ personal devices, which connect to the RL server over HTTP with confidential API keys. The environments for general agents are hosted on cloud services to enable scalable parallelization. ∗Equal contribution; †Corresponding authors; Main contact: yangling0818@163.com arXiv:2603.10165v2 [cs.CL] 11 May 2026",
       "pdf_version": "2603.10165v2",
       "bytes": 2811729
     },
     {
-      "title": "TTT_Discover",
+      "title": "Learning to Discover at Test Time",
       "url": "https://arxiv.org/abs/2601.16175",
-      "path": "7.ModelEvolution1/references/2601.16175.pdf",
+      "path": "7.ModelEvolution1/references/Learning_to_Discover_at_Test_Time.pdf",
       "status": "saved",
       "pages": 72,
       "sha256": "4656ec28d800002d9a3e3f83a71c7d9032ef5f1873cd953b8808a8391ce06ec7",
       "checked_date": "2026-10-26",
       "version": "2601.16175v2",
+      "source_label": "TTT_Discover",
       "week": 7,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": "Learning to Discover at Test Time Mert Yuksekgonul∗1, Daniel Koceja∗1, Xinhao Li∗4, Federico Bianchi∗5 Jed McCaleb3, Xiaolong Wang4, Jan Kautz2, Yejin Choi2, James Zou†1,5, Carlos Guestrin†1, Yu Sun∗1,2 1 Stanford University 2 NVIDIA 3 Astera Institute 4 UC San Diego 5 Together AI Abstract How can we use AI to discover a new state of the art for a scientific problem? Prior work in test-time scaling, such as AlphaEvolve, performs search by prompting a frozen LLM. We perform reinforcement learning at test time, so the LLM can continue to train, but now with experience specific to the test problem. This form of continual learning is quite special, because its goal is to produce one great solution rather than many good ones on average, and to solve this very problem rather than generalize to other problems. Therefore, our learning objective and search subroutine are designed to prioritize the most promising solutions. We call this method Test-Time Training to Discover (TTT-Discover). Following prior work, we focus on problems with continuous rewards. We report results for every problem we attempted, across mathematics, GPU kernel engineering, algorithm design, and biology. TTT-Discover sets the new state of the art in almost all of them: (i) Erdős’ minimum overlap problem and an autocorrelation inequality; (ii) a GPUMode kernel competition (up to 2× faster than prior art); (iii) past AtCoder algorithm competitions; and (iv) denoising problem in single-cell analysis. Our solutions are reviewed by experts or the organizers. All our results are achieved with an open model, OpenAI gpt-oss-120b, and can be reproduced with our publicly available code, in contrast to previous best results that required closed frontier models. Our test-time training runs are performed using Tinker, an API by Thinking Machines, with a cost of only a few hundred dollars per problem. Mathematics Kernel Eng. (TriMul) Algorithms (AtCoder) Biology Erdős’ Min. Overlap (↓) A100 (↓) H100 (↓) Heuristic Contest 39 (↑) Denoising (↑) Best Human 0.380927 [20] 4531 µs 1371 µs 566,997 [56] 0.64 Prev. Best AI 0.380924 [50] N/A N/A 558,026 [37] N/A TTT-Discover 0.380876 2198 µs 1161 µs 567,062 0.71 GPUMode TriMul Competition Kernel Runtime (H100) Best Human (1371 s) 5th Human (3655 s) Best-of-25600 (5352 s) Best from TTT-Discover (1161 s) ∼πθ9 ∼πθ24 ∼πθ49 ∼πθ0 mixed precision fusing all core operations deeper fusion Slowest Fastest TTT-Discover Best-of-N Figure 1. TTT-Discover continues to train an LLM on a single problem at test time. πθi denotes the policy with the updates weights at test-time training step i. We plot the reward distribution at step 0, 9, 24, and 49 (final), recorded while test-time training for the GPUMode TriMul competition. We generate 512 solutions at each step. As training progresses, the LLM generates better solutions that ultimately surpass the prior art (best human). For comparison, we plot the reward distribution of best-of-N with the same total sampling budget. ∗Core contributors. † Joint advising. Correspondence to: merty@stanford.edu, yusun@cs.stanford.edu. 1 arXiv:2601.16175v2 [cs.LG] 5 Feb 2026",
       "pdf_version": "2601.16175v2",
       "bytes": 1286088
     },
     {
-      "title": "PPO",
+      "title": "Proximal Policy Optimization Algorithms",
       "url": "https://arxiv.org/abs/1707.06347",
-      "path": "7.ModelEvolution1/references/1707.06347.pdf",
+      "path": "7.ModelEvolution1/references/Proximal_Policy_Optimization_Algorithms.pdf",
       "status": "saved",
       "pages": 12,
       "sha256": "e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b",
       "checked_date": "2026-10-26",
       "version": "1707.06347v2",
+      "source_label": "PPO",
       "week": 7,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": "Proximal Policy Optimization Algorithms John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, Oleg Klimov OpenAI {joschu, filip, prafulla, alec, oleg}@openai.com Abstract We propose a new family of policy gradient methods for reinforcement learning, which al- ternate between sampling data through interaction with the environment, and optimizing a “surrogate” objective function using stochastic gradient ascent. Whereas standard policy gra- dient methods perform one gradient update per data sample, we propose a novel objective function that enables multiple epochs of minibatch updates. The new methods, which we call proximal policy optimization (PPO), have some of the beneﬁts of trust region policy optimiza- tion (TRPO), but they are much simpler to implement, more general, and have better sample complexity (empirically). Our experiments test PPO on a collection of benchmark tasks, includ- ing simulated robotic locomotion and Atari game playing, and we show that PPO outperforms other online policy gradient methods, and overall strikes a favorable balance between sample complexity, simplicity, and wall-time. 1 Introduction In recent years, several diﬀerent approaches have been proposed for reinforcement learning with neural network function approximators. The leading contenders are deep Q-learning [Mni+15], “vanilla” policy gradient methods [Mni+16], and trust region / natural policy gradient methods [Sch+15b]. However, there is room for improvement in developing a method that is scalable (to large models and parallel implementations), data eﬃcient, and robust (i.e., successful on a variety of problems without hyperparameter tuning). Q-learning (with function approximation) fails on many simple problems1 and is poorly understood, vanilla policy gradient methods have poor data eﬃency and robustness; and trust region policy optimization (TRPO) is relatively complicated, and is not compatible with architectures that include noise (such as dropout) or parameter sharing (between the policy and value function, or with auxiliary tasks). This paper seeks to improve the current state of aﬀairs by introducing an algorithm that attains the data eﬃciency and reliable performance of TRPO, while using only ﬁrst-order optimization. We propose a novel objective with clipped probability ratios, which forms a pessimistic estimate (i.e., lower bound) of the performance of the policy. To optimize policies, we alternate between sampling data from the policy and performing several epochs of optimization on the sampled data. Our experiments compare the performance of various diﬀerent versions of the surrogate objec- tive, and ﬁnd that the version with the clipped probability ratios performs best. We also compare PPO to several previous algorithms from the literature. On continuous control tasks, it performs better than the algorithms we compare against. On Atari, it performs signiﬁcantly better (in terms of sample complexity) than A2C and similarly to ACER though it is much simpler. 1While DQN works well on game environments like the Arcade Learning Environment [Bel+15] with discrete action spaces, it has not been demonstrated to perform well on continuous control benchmarks such as those in OpenAI Gym [Bro+16] and described by Duan et al. [Dua+16]. 1 arXiv:1707.06347v2 [cs.LG] 28 Aug 2017",
       "pdf_version": "1707.06347v2",
       "bytes": 2923532
     },
     {
-      "title": "DeepSeekMath",
+      "title": "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models",
       "url": "https://arxiv.org/abs/2402.03300",
-      "path": "7.ModelEvolution1/references/2402.03300.pdf",
+      "path": "7.ModelEvolution1/references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf",
       "status": "saved",
       "pages": 30,
       "sha256": "6cc20b3c5b8d25b8b53868fc4ec1792c144f07d67bdf7395138efd4422197e7b",
       "checked_date": "2026-10-26",
       "version": "2402.03300v3",
+      "source_label": "DeepSeekMath",
       "week": 7,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models Zhihong Shao1,2∗†, Peiyi Wang1,3∗†, Qihao Zhu1,3∗†, Runxin Xu1, Junxiao Song1 Xiao Bi1, Haowei Zhang1, Mingchuan Zhang1, Y.K. Li1, Y. Wu1, Daya Guo1∗ 1DeepSeek-AI, 2Tsinghua University, 3Peking University {zhihongshao,wangpeiyi,zhuqh,guoday}@deepseek.com https://github.com/deepseek-ai/DeepSeek-Math Abstract Mathematical reasoning poses a significant challenge for language models due to its complex and structured nature. In this paper, we introduce DeepSeekMath 7B, which continues pre- training DeepSeek-Coder-Base-v1.5 7B with 120B math-related tokens sourced from Common Crawl, together with natural language and code data. DeepSeekMath 7B has achieved an impressive score of 51.7% on the competition-level MATH benchmark without relying on external toolkits and voting techniques, approaching the performance level of Gemini-Ultra and GPT-4. Self-consistency over 64 samples from DeepSeekMath 7B achieves 60.9% on MATH. The mathematical reasoning capability of DeepSeekMath is attributed to two key factors: First, we harness the significant potential of publicly available web data through a meticulously engineered data selection pipeline. Second, we introduce Group Relative Policy Optimization (GRPO), a variant of Proximal Policy Optimization (PPO), that enhances mathematical reasoning abilities while concurrently optimizing the memory usage of PPO. Figure 1 | Top1 accuracy of open-source models on the competition-level MATH benchmark (Hendrycks et al., 2021) without the use of external toolkits and voting techniques. ∗Core contributors. † Work done during internship at DeepSeek-AI. arXiv:2402.03300v3 [cs.CL] 27 Apr 2024",
       "pdf_version": "2402.03300v3",
       "bytes": 1844642
     },
     {
-      "title": "DPO",
+      "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
       "url": "https://arxiv.org/abs/2305.18290",
-      "path": "7.ModelEvolution1/references/2305.18290.pdf",
+      "path": "7.ModelEvolution1/references/Direct_Preference_Optimization_Your_Language_Model_is_Secretly_a_Reward_Model.pdf",
       "status": "saved",
       "pages": 27,
       "sha256": "92cb3a2b71362acda98a789b03d88688fd33cf5fcf13f81d2b1de30ee7d3b67a",
       "checked_date": "2026-10-26",
       "version": "2305.18290v3",
+      "source_label": "DPO",
       "week": 7,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model Rafael Rafailov∗† Archit Sharma∗† Eric Mitchell∗† Stefano Ermon†‡ Christopher D. Manning† Chelsea Finn† †Stanford University ‡CZ Biohub {rafailov,architsh,eric.mitchell}@cs.stanford.edu Abstract While large-scale unsupervised language models (LMs) learn broad world knowl- edge and some reasoning skills, achieving precise control of their behavior is difficult due to the completely unsupervised nature of their training. Existing methods for gaining such steerability collect human labels of the relative quality of model generations and fine-tune the unsupervised LM to align with these prefer- ences, often with reinforcement learning from human feedback (RLHF). However, RLHF is a complex and often unstable procedure, first fitting a reward model that reflects the human preferences, and then fine-tuning the large unsupervised LM using reinforcement learning to maximize this estimated reward without drifting too far from the original model. In this paper we introduce a new parameterization of the reward model in RLHF that enables extraction of the corresponding optimal policy in closed form, allowing us to solve the standard RLHF problem with only a simple classification loss. The resulting algorithm, which we call Direct Prefer- ence Optimization (DPO), is stable, performant, and computationally lightweight, eliminating the need for sampling from the LM during fine-tuning or performing significant hyperparameter tuning. Our experiments show that DPO can fine-tune LMs to align with human preferences as well as or better than existing methods. Notably, fine-tuning with DPO exceeds PPO-based RLHF in ability to control sen- timent of generations, and matches or improves response quality in summarization and single-turn dialogue while being substantially simpler to implement and train. 1 Introduction Large unsupervised language models (LMs) trained on very large datasets acquire surprising capabili- ties [11, 7, 42, 8]. However, these models are trained on data generated by humans with a wide variety of goals, priorities, and skillsets. Some of these goals and skillsets may not be desirable to imitate; for example, while we may want our AI coding assistant to understand common programming mistakes in order to correct them, nevertheless, when generating code, we would like to bias our model toward the (potentially rare) high-quality coding ability present in its training data. Similarly, we might want our language model to be aware of a common misconception believed by 50% of people, but we certainly do not want the model to claim this misconception to be true in 50% of queries about it! In other words, selecting the model’s desired responses and behavior from its very wide knowledge and abilities is crucial to building AI systems that are safe, performant, and controllable [28]. While existing methods typically steer LMs to match human preferences using reinforcement learning (RL), ∗Equal contribution; more junior authors listed earlier. 37th Conference on Neural Information Processing Systems (NeurIPS 2023). arXiv:2305.18290v3 [cs.LG] 29 Jul 2024",
       "pdf_version": "2305.18290v3",
       "bytes": 1299212
     },
     {
-      "title": "OPSD",
+      "title": "Self-Distilled Reasoner: On-Policy Self-Distillation for Large Language Models",
       "url": "https://arxiv.org/abs/2601.18734",
-      "path": "7.ModelEvolution1/references/2601.18734.pdf",
+      "path": "7.ModelEvolution1/references/Self-Distilled_Reasoner_On-Policy_Self-Distillation_for_Large_Language_Models.pdf",
       "status": "saved",
       "pages": 15,
       "sha256": "e521ed6c2939dc612daec5fe6fb47bef554a291228c02cafae07102b9729bad8",
       "checked_date": "2026-10-26",
       "version": "2601.18734v3",
+      "source_label": "OPSD",
       "week": 7,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": "Self-Distilled Reasoner: On-Policy Self-Distillation for Large Language Models Siyan Zhao† 1 Zhihui Xie 2 Mengchen Liu 3 Jing Huang 3 Guan Pang 3 Feiyu Chen∗,‡ 3 Aditya Grover∗1 Abstract Knowledge distillation improves large language model (LLM) reasoning by compressing the knowledge of a teacher LLM to train smaller LLMs. On-policy distillation advances this ap- proach by having the student sample its own tra- jectories while a teacher LLM provides dense token-level supervision, addressing the distribu- tion mismatch between training and inference in off-policy distillation methods. However, on- policy distillation typically requires a separate, often larger, teacher LLM and does not explic- itly leverage ground-truth solutions available in reasoning datasets. Inspired by the intuition that a sufficiently capable LLM can rationalize external privileged reasoning traces and teach its weaker self, we introduce On-Policy Self- Distillation (OPSD), a learning algorithm where a single LLM acts as both teacher and student with different contexts. The teacher policy con- ditions on privileged information (e.g., verified reasoning traces) while the student policy sees only the question; training minimizes the per- token divergence between these distributions over the student’s own rollouts. We demonstrate the efficacy of our method on multiple mathemati- cal reasoning benchmarks, achieving superior to- ken efficiency compared to reinforcement learn- ing methods and better performance over off- policy distillation methods. Code repo: https: //github.com/siyan-zhao/OPSD. 1. Introduction Recent advances in large language models (LLMs) have demonstrated impressive capabilities in reasoning and in- struction following. Achieving these capabilities during *Equal advising,† Work done at UCLA and during Siyan’s part- time internship at Meta.,‡ Work done at Meta. 1UCLA 2HKU 3Meta Superintelligence Labs. Correspondence to: Siyan Zhao <siyanz@g.ucla.edu>. Preprint. post-training typically relies on reinforcement learning methods such as Reinforcement Learning with Verifiable Rewards (RLVR) (e.g., GRPO (Shao et al., 2024; Guo et al., 2025; Team et al., 2025; Rastogi et al., 2025; Yu et al., 2025)), supervised fine-tuning (SFT) on high-quality rea- soning datasets (Guha et al., 2025; Team et al., 2025; Xi- aomi, 2026), or knowledge distillation, where recent work has shown that distillation from advanced teacher models can outperform RL in both performance and training effi- ciency (Yang et al., 2025; Xiaomi, 2026; Lu & Lab, 2025). Despite their respective successes, each approach has in- herent limitations. RLVR suffers from inefficiencies in- cluding: (1) sampling a group of responses per prompt is computationally expensive and can introduce high variance in estimating the true value function; moreover, when all samples are either correct or incorrect, the gradient sig- nal vanishes (Yu et al., 2025; Zhao et al., 2025); and (2) the reward signal is sparse and uniformly applied across all tokens in the generated output, neglecting fine-grained token-level feedback. Supervised fine-tuning suffers from exposure bias and weaker generalization (Agarwal et al., 2024; Chu et al., 2025). Traditional knowledge distillation provides dense token-level supervision from a teacher model but relies on off-policy data (Hinton et al., 2015). Recent advances in on-policy distillation—where a student model samples its own trajectories while a teacher policy provides dense token-level supervision—have demonstrated superior sample efficiency by combining the distributional realism of on-policy training with dense feedback (Agarwal et al., 2024; Lu & Lab, 2025). While on-policy distillation has shown strong performance, it relies on a distinct teacher model to supervise the student. Given that modern LLMs already exhibit strong reasoning capabilities, we ask this research question: can a model effectively serve as its own teacher through self-distillation? Our approach is inspired by human learning: after solving a problem incorrectly, a student can examine the correct solu- tion, rationalize its steps, and identify where their reasoning failed. Prior work has shown that for LLMs, evaluation is often easier than generation (Sun et al., 2024; Naor, 1996). We hypothesize that rationalization—explaining a given cor- rect answer—is similarly easier than generation. Motivated 1 arXiv:2601.18734v3 [cs.LG] 20 Mar 2026",
       "pdf_version": "2601.18734v3",
       "bytes": 681639
     },
     {
-      "title": "TTT_FewShot",
+      "title": "The Surprising Effectiveness of Test-Time Training for Few-Shot Learning",
       "url": "https://ekinakyurek.github.io/papers/ttt.pdf",
-      "path": "7.ModelEvolution1/references/ttt.pdf",
+      "path": "7.ModelEvolution1/references/The_Surprising_Effectiveness_of_Test-Time_Training_for_Few-Shot_Learning.pdf",
       "status": "saved",
       "pages": 22,
       "sha256": "9da8f434864b90ec18378dfa8c920e1d128e5bb694343f8a5a524302e17a5dad",
       "checked_date": "2026-10-26",
       "version": "2411.07279v2",
+      "source_label": "TTT_FewShot",
       "week": 7,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": "The Surprising Effectiveness of Test-Time Training for Few-Shot Learning Ekin Aky¨urek 1 Mehul Damani * 1 Adam Zweiger * 1 Linlu Qiu 1 Han Guo 1 Jyothish Pari 1 Yoon Kim 1 Jacob Andreas 1 Abstract Language models (LMs) have shown impressive performance on tasks within their training distri- bution, but often struggle with structurally novel tasks even when given a small number of in- context task examples. We investigate the effec- tiveness of test-time training (TTT)—temporarily updating model parameters during inference us- ing a loss derived from in-context examples— as a mechanism for improving LMs’ reason- ing and few-shot learning capabilities. On the Abstraction and Reasoning Corpus (ARC), per- forming TTT with in-context examples yields up to 6× higher accuracy compared to fine-tuned baselines—reaching 53.0% on the public valida- tion set with an 8B-parameter LM and 61.9% when ensembled with program-synthesis meth- ods, matching average human performance. On BIG-Bench Hard (BBH), TTT on in-context ex- amples surpasses standard few-shot prompting in the 10-shot setting by 7.3 percentage points (50.5% to 57.8%). Our findings highlight the lim- itations of in-context learning for novel tasks and demonstrate the potential of test-time training to enhance language model adaptability. 1. Introduction Large-scale neural language models (LMs) have demon- strated remarkable success on few-shot learning of tasks related to those seen during pre-training, as well as ele- mentary variations or compositions of those tasks (Brown et al., 2020; Todd et al., 2024). When given natural lan- guage specifications or a small number of examples, LMs can often infer the desired task and generate appropriate out- puts. However, an open question is whether these models can truly acquire new skills for which they have not been trained—particularly, tasks involving non-trivial reasoning, planning, and abstraction in domains that differ significantly *Equal contribution 1Massachusetts Institute of Technology. Correspondence to: Ekin Akyurek <akyurek@mit.edu>. FT FT + TTT Base Base + TTT 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 Accuracy 17.5% 45.0% 50.5% 57.8% Zero- Shot ARC BBH Figure 1. Pass@2 accuracy on a subset of 80 randomly selected ARC validation tasks and overall accuracy on BIG-Bench Hard. The zero-shot baseline is 0 for ARC and 40.9% for BBH, indicated by the dashed line. TTT boosts the performance of fine-tuned models (FT) on ARC by 27.5 percentage points and increases accuracy on BBH by 7.3 percentage points. from their pre-training distributions. This question is funda- mental to understanding how, and whether, LMs can exhibit the sort of flexible, novel-skill acquisition that has been proposed as a measure of intelligence (Chollet, 2019). Solving complex and novel tasks remains extremely chal- lenging for LMs, and simple sampling approaches often yield poor performance on such problems (Wu et al., 2024; McCoy et al., 2024). However, recent progress has shown that LMs can be substantially improved by adding extra test- time computation. Several methods fall into this category, such as chain-of-thought prompting (Wei et al., 2022), sam- pling with majority voting (self-consistency; Wang et al., 2023), code execution (Brown et al., 2024; Snell et al., 2025; Damani et al., 2025), and search (Yao et al., 2023). The idea of updating model parameters using instance- specific data at test time has roots in the literature on local learning (Bottou & Vapnik, 1992) and transductive learn- ing (Joachims, 1999). In these methods, a learner refines its parameters or hypotheses after observing test inputs, adapt- ing to individual examples or small clusters of examples. Such approaches inherently blur the line between training and inference, and can lead to robust adaptation in low-data scenarios or under distribution shift. 1 arXiv:2411.07279v2 [cs.AI] 25 Mar 2025",
       "pdf_version": "2411.07279v2",
       "bytes": 6915705
     },
     {
-      "title": "SDPO",
+      "title": "Reinforcement Learning via Self-Distillation",
       "url": "https://arxiv.org/pdf/2601.20802",
-      "path": "7.ModelEvolution1/references/2601.20802.pdf",
+      "path": "7.ModelEvolution1/references/Reinforcement_Learning_via_Self-Distillation.pdf",
       "status": "saved",
       "pages": 50,
       "sha256": "2714e7734c43cf849c2e7c49fc95cf57a6533c0833465a01983b87eb7f72d190",
       "checked_date": "2026-10-26",
       "version": "2601.20802v2",
+      "source_label": "SDPO",
       "week": 7,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": "Reinforcement Learning via Self-Distillation Reinforcement Learning via Self-Distillation Jonas Hübotter1 Frederike Lübeck∗, 1, 2 Lejs Behric∗, 1 Anton Baumann∗, 1 Marco Bagatella1, 2 Daniel Marta1 Ido Hakimi1 Idan Shenfeld3 Thomas Kleine Buening1 Carlos Guestrin4 Andreas Krause1 1ETH Zurich 2Max Planck Institute for Intelligent Systems 3MIT 4Stanford https://github.com/lasgroup/SDPO Abstract Large language models are increasingly post-trained with reinforcement learning in verifiable domains such as code and math. Yet, current methods for reinforcement learning with verifiable rewards (RLVR) learn only from a scalar outcome reward per attempt, creating a severe credit-assignment bottleneck. Many verifiable environments actually provide rich textual feedback, such as runtime errors or judge evaluations, that explain why an attempt failed. We formalize this setting as reinforcement learning with rich feedback and introduce Self-Distillation Policy Optimization (SDPO), which converts tokenized feedback into a dense learning signal without any external teacher or explicit reward model. SDPO treats the current model conditioned on feedback as a self-teacher and distills its feedback-informed next-token predictions back into the policy. In this way, SDPO leverages the model’s ability to retrospectively identify its own mistakes in-context. Across scientific reasoning, tool use, and competitive programming on LiveCodeBench v6, SDPO improves sample efficiency and final accuracy over strong RLVR baselines. Notably, SDPO also outperforms baselines in standard RLVR environments that only return scalar feedback by using successful rollouts as implicit feedback for failed attempts. Finally, applying SDPO to individual questions at test time accelerates discovery on difficult binary-reward tasks, achieving the same discovery probability as best-of-k sampling or multi-turn conversations with 3× fewer attempts. 1 Introduction 0 5000 10000 15000 20000 Number of Generations 0.30 0.35 0.40 0.45 0.50 Accuracy LiveCodeBench v6 SDPO GRPO Claude Sonnet 4 Figure 1: SDPO substantially outperforms an improved version of Group Relative Pol- icy Optimization (GRPO) on LCB v6 with Qwen3-8B. Further, SDPO achieves GRPO’s fi- nal accuracy in 4× fewer generations. Claude Sonnet 4 is the strongest instruct model on the public LCBv6 leaderboard. Shaded regions show the standard deviation across 3 seeds. Progress in deep reinforcement learning has shown that iterating on experience—acting, receiving feedback, and updating a policy— can unlock capabilities that are difficult to obtain from static supervision alone (Mnih et al., 2015; Silver et al., 2016; 2017; Berner et al., 2019). The same theme now ap- pears in large language models (LLMs): large-scale post-training with reinforcement learning (RL) has substantially improved performance on reasoning-heavy tasks, es- pecially in settings with programmatic or otherwise verifiable evaluation (Jaech et al., 2024; Guo et al., 2025; Kimi et al., 2025; Olmo et al., 2025). Nevertheless, the dominant RL recipe for LLM post-training remains bottlenecked by ∗Equal second authorship. Correspondence to jonas.huebotter@inf.ethz.ch. 1 arXiv:2601.20802v2 [cs.LG] 16 Feb 2026",
       "pdf_version": "2601.20802v2",
       "bytes": 1304168
     },
     {
-      "title": "Guidance_TTT",
+      "title": "Evolving in Thought Space: Training a Small Model at Test Time Unlocks Better Discoveries",
       "url": "https://arxiv.org/pdf/2610.06269",
-      "path": "7.ModelEvolution1/references/2610.06269.pdf",
+      "path": "7.ModelEvolution1/references/Evolving_in_Thought_Space_Training_a_Small_Model_at_Test_Time_Unlocks_Better_Discoveries.pdf",
       "status": "saved",
       "pages": 35,
       "sha256": "351bcdd2c9c5275d007f2d15a4e0fb9d016a03b4e19f66258d1c3a44e6f28997",
       "checked_date": "2026-10-26",
       "version": "2610.06269v2",
+      "source_label": "Guidance_TTT",
       "week": 7,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "cover": "Preprint. Under review. Evolving in Thought Space: Training a Small Model at Test Time Unlocks Better Discoveries Chonghe Jiang1,9,* Ao Qu1,9,* Siyuan Liu2 Ruoyun Ma3,‡ Zijian Zhou4 Dingyi Zhuang1 Bo Liu5,6 Han Zheng1 Hanfei Yu7 Baichuan Mo8 Jinhua Zhao1,9,† Paul Pu Liang1,9,† 1 Massachusetts Institute of Technology 2 Hong Kong Polytechnic University 3 ByteDance Inc. 4 National University of Singapore 5 Stanford University 6 University of Washington 7 University of California, Berkeley 8 Tsinghua University 9 Singapore-MIT Alliance for Research and Technology * Equal contribution. † Joint advising. ‡ Work done outside the authors’ employment. ABSTRACT Open-ended scientific discovery often requires repeatedly proposing and evaluating candidate solutions. LLM-based systems can support this process by generat- ing and refining executable solutions from verifier feedback. Methods such as TTT-Discover use test-time training (TTT) to update the solution-generating LLM from verifier feedback, adapting its generation policy to improve subsequent pro- posals on the target problem. However, this becomes expensive when reliable execution requires a large model, since training must maintain gradients, opti- mizer states, and policy statistics while repeatedly generating long, structured outputs. It also complicates credit assignment: outcome-level verifier feedback must jointly evaluate the high-level strategy and its low-level implementation. In this work, we introduce Guidance-TTT, which separates these roles. A compact guidance model is trained at test time to propose high-level strategic changes, while a frozen execution model implements them as complete executable solu- tions. At each step, the system selects a promising previously discovered solu- tion, proposes a change, executes and verifies it, and updates only the guidance model using an adaptive group-relative RL objective. This concentrates test-time learning on short strategic decisions while retaining the implementation capabil- ity of a substantially stronger model without adapting it. Without web access, Guidance-TTT produces strong solutions across four distinct domains: combi- natorial optimization (Polyomino Packing), heuristic programming (AHC058), machine learning (Lasso), and GPU kernel optimization (TriMul). Across these tasks, it outperforms the best solutions reported in prior work while remaining competitive with state-of-the-art results on public online leaderboards. Code is available at https://github.com/Human-Agent-Society/reef/ tree/main/recipes/tttd/examples/guidance_ttt. Table 1: Discovery results across four domains. Polyomino (Qu et al., 2026) Lasso (Ye et al., 2026) AHC058 (Ye et al., 2026) TriMul1 (Cao et al., 2026) Method Score ↑ Score ↑ AtCoder score ↑ Latency (µs) ↓ Previous SOTA2 89.40 0.1243 849,325,750 1131 Ours 91.89 0.1739 850,082,731 1129 1TriMul latencies use an H100 80GB GPU with CUDA 12.8, PyTorch 2.7.1, and Triton 3.3.1. See Section 4.1 and Appendix D.3 for evaluation details. 2“Previous SOTA” refers to the best solutions reported in prior work, rather than the current best entries on public leaderboards. 1 arXiv:2610.06269v2 [cs.AI] 12 Oct 2026",
       "pdf_version": "2610.06269v2",
       "bytes": 1817600
@@ -2686,7 +2734,7 @@
       "sha256": "293af89dab738cc57a67a8cc730f3337622685e29d96dfdd2e9af1e6fc2144e8",
       "checked_date": "2026-10-26",
       "week": 7,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "bytes": 98402
     },
     {
@@ -2697,7 +2745,7 @@
       "sha256": "369b614f239f237a04a38a40b1877cd6fd14aa7bd5f9ff4fe4d7758b682a6948",
       "checked_date": "2026-10-26",
       "week": 7,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "bytes": 105282
     },
     {
@@ -2708,7 +2756,7 @@
       "sha256": "f0f7af00c73789caa97f40132289d7444905f0b1f35b3072f798aaf7545a62ac",
       "checked_date": "2026-10-26",
       "week": 7,
-      "verified_at": "2026-10-26",
+      "verified_at": "2026-10-27",
       "bytes": 8081
     }
   ]

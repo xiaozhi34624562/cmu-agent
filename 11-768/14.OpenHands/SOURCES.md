@@ -14,7 +14,7 @@
 
 ## References
 
-- [OpenHands Software Agent SDK report](references/001_OpenHands_Software_Agent_SDK_report.pdf)
+- [OpenHands Software Agent SDK report](references/The_OpenHands_Software_Agent_SDK_A_Composable_and_Extensible_Foundation_for_Production_Agents.pdf)
   - Source: https://arxiv.org/abs/2511.03690v1
 
 - OpenHands SDK source and examples (not downloaded after repeated connection resets)
@@ -23,10 +23,10 @@
 - OpenHands repository (not downloaded after repeated connection resets)
   - Source: https://github.com/OpenHands/OpenHands
 
-- [HumanEval](references/004_HumanEval.pdf)
+- [HumanEval](references/Evaluating_Large_Language_Models_Trained_on_Code.pdf)
   - Source: https://arxiv.org/abs/2107.03374
 
-- [SWE-bench](references/005_SWE-bench.pdf)
+- [SWE-bench](references/SWE-bench_Can_Language_Models_Resolve_Real-World_GitHub_Issues.pdf)
   - Source: https://arxiv.org/abs/2310.06770v1
 
 - Devin launch demo (not downloaded; YouTube connection timed out)
@@ -38,7 +38,7 @@
 - OpenDevin: early frontend demo (not downloaded; X connection timed out)
   - Source: https://x.com/gneubig/status/1772735837479792761
 
-- [SWE-agent](references/009_SWE-agent.pdf)
+- [SWE-agent](references/SWE-agent_Agent-Computer_Interfaces_Enable_Automated_Software_Engineering.pdf)
   - Source: https://arxiv.org/abs/2405.15793
 
 - [OpenDevin CodeAct 1.0](references/010_OpenDevin_CodeAct_1.0.html)
@@ -47,16 +47,16 @@
 - [Don't Sleep on Single-agent Systems](references/011_Don_t_Sleep_on_Single-agent_Systems.html)
   - Source: https://hub.openhands.dev/blog/dont-sleep-on-single-agent-systems
 
-- [CodeR](references/012_CodeR.pdf)
+- [CodeR](references/CodeR_Issue_Resolving_with_Multi-Agent_and_Task_Graphs.pdf)
   - Source: https://arxiv.org/abs/2406.01304
 
-- [MetaGPT](references/013_MetaGPT.pdf)
+- [MetaGPT](references/MetaGPT_Meta_Programming_for_a_Multi-Agent_Collaborative_Framework.pdf)
   - Source: https://arxiv.org/abs/2308.00352
 
-- [OpenHands-Versa](references/014_OpenHands-Versa.pdf)
+- [OpenHands-Versa](references/Coding_Agents_with_Multimodal_Browsing_are_Generalist_Problem_Solvers.pdf)
   - Source: https://arxiv.org/abs/2506.03011v1
 
-- [Code with Me or for Me?](references/015_Code_with_Me_or_for_Me.pdf)
+- [Code with Me or for Me?](references/Code_with_Me_or_for_Me_How_Increasing_AI_Automation_Transforms_Developer_Workflows.pdf)
   - Source: https://arxiv.org/abs/2507.08149v1
 
 - [VS Code with Copilot: agent quickstart](references/016_VS_Code_with_Copilot_agent_quickstart.html)

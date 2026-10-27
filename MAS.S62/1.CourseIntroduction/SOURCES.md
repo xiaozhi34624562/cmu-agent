@@ -24,18 +24,18 @@
 ## References and local study guide
 
 - [讲义内嵌链接及其 PDF 页码](../LECTURE_LINKS.json)；JSON 按 week、pdf、page 记录，视频和通用网站入口仅作来源导航。
-- [Language Models are Few-Shot Learners](references/2005.14165.pdf)
+- [Language Models are Few-Shot Learners](references/Language_Models_are_Few-Shot_Learners.pdf)
   - Source: https://arxiv.org/abs/2005.14165
-- [Training Language Models to Follow Instructions with Human Feedback](references/2203.02155.pdf)
+- [Training language models to follow instructions with human feedback](references/Training_language_models_to_follow_instructions_with_human_feedback.pdf)
   - Source: https://arxiv.org/abs/2203.02155
-- [ReAct: Synergizing Reasoning and Acting in Language Models](references/2210.03629.pdf)
+- [ReAct: Synergizing Reasoning and Acting in Language Models](references/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf)
   - Source: https://arxiv.org/abs/2210.03629
-- [DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models](references/2402.03300.pdf)
+- [DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models](references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf)
   - Source: https://arxiv.org/abs/2402.03300
-- [SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering](references/2405.15793.pdf)
+- [SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering](references/SWE-agent_Agent-Computer_Interfaces_Enable_Automated_Software_Engineering.pdf)
   - Source: https://arxiv.org/abs/2405.15793
-- [Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents](references/2505.22954.pdf)
+- [Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents](references/Darwin_G%C3%B6del_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf)
   - Source: https://arxiv.org/abs/2505.22954
-- [Absolute Zero: Reinforced Self-play Reasoning with Zero Data](references/2505.03335.pdf)
+- [Absolute Zero: Reinforced Self-play Reasoning with Zero Data](references/Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data.pdf)
   - Source: https://arxiv.org/abs/2505.03335
 - [完整中文课程讲解](notes.zh-CN.md)

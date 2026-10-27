@@ -53,9 +53,9 @@ L p.5 的要点是 token 不等于词。展示的“Serving is hard”被切为�
 
 BPE 的训练不断选择频繁相邻符号对，将它们合并成新符号。以 `l o w` 和 `l o w e r` 为例，若 `l o`、`lo w` 依次很频繁，会得到 `low`，再将新词表示成已有片段。一个更大的词表可能让常见文本序列变短，同时使 embedding 与输出词表投影更大。究竟是否划算，要看实际语言分布、模型维度与训练/服务目标。
 
-这里有一个来源差异：[BPE 论文](readings/001_BPE_a2690e.pdf) §3.2 的 NMT 实现以字符与词尾符号初始化，并且不跨词合并；L p.5 讲的是现代 **byte-level BPE** 的 256-byte 起点。后者在具有完整 byte 回退等相应实现条件时能表达任意字节序列，不应把“没有未知 token”倒推成原始论文的所有字符配置也天然具有此性质。两者共享频繁对合并思想，工程边界不同。
+这里有一个来源差异：[BPE 论文](readings/Neural_Machine_Translation_of_Rare_Words_with_Subword_Units.pdf) §3.2 的 NMT 实现以字符与词尾符号初始化，并且不跨词合并；L p.5 讲的是现代 **byte-level BPE** 的 256-byte 起点。后者在具有完整 byte 回退等相应实现条件时能表达任意字节序列，不应把“没有未知 token”倒推成原始论文的所有字符配置也天然具有此性质。两者共享频繁对合并思想，工程边界不同。
 
-[Llama 3](readings/007_Llama_3_ea6afd.pdf) PDF p.7、Table 3 与邻近正文说明词表扩至约 128K，并报告样本英语压缩从 Llama 2 的 3.17 字符/token 到 3.94。这是指定样本的统计，不是所有语言的固定换算率。更好的分词能让固定上下文窗口装下更多原文，也会改变相同文本的注意力计算和缓存长度，因此跨模型“每千 token 速度”未必对应相同字数工作量。
+[Llama 3](readings/The_Llama_3_Herd_of_Models.pdf) PDF p.7、Table 3 与邻近正文说明词表扩至约 128K，并报告样本英语压缩从 Llama 2 的 3.17 字符/token 到 3.94。这是指定样本的统计，不是所有语言的固定换算率。更好的分词能让固定上下文窗口装下更多原文，也会改变相同文本的注意力计算和缓存长度，因此跨模型“每千 token 速度”未必对应相同字数工作量。
 
 ### 2.1 编码、模板与特殊 token 是正确性的一部分
 
@@ -117,7 +117,7 @@ $$
 
 它没有像 LayerNorm 那样先减均值。g 是可学习增益，ε 防止分母数值不稳定。统计在特征维度内进行，不是在 batch 或不同 token 之间混合。实现常用更高精度做平方和，以避免低精度溢出；使用什么累积精度与融合内核是工程选择。
 
-[RMSNorm 原文](readings/005_RMSNorm_d0023c.pdf) §4–6 从去掉 re-centering 的假设出发，比较翻译等任务，报告特定模型的速度改善。它不证明所有架构换成 RMSNorm 必然更好，也不授权把已训练的 LayerNorm 权重任意替换后期待输出相同。架构、训练与 checkpoint 是配套的。
+[RMSNorm 原文](readings/Root_Mean_Square_Layer_Normalization.pdf) §4–6 从去掉 re-centering 的假设出发，比较翻译等任务，报告特定模型的速度改善。它不证明所有架构换成 RMSNorm 必然更好，也不授权把已训练的 LayerNorm 权重任意替换后期待输出相同。架构、训练与 checkpoint 是配套的。
 
 ### 4.2 SwiGLU：三个矩阵与逐元素门控
 
@@ -131,7 +131,7 @@ $$
 
 Wg、Wu 形状 d×dff，Wd 是 dff×d。门控先决定哪些中间特征通过，再投回 d 维。它不是 token 路由器：所有中间通道的矩阵计算通常仍执行，只是结果逐元素相乘。MoE 则真的选择若干专家矩阵，计算图稀疏性不同。
 
-[SwiGLU 论文](readings/006_SwiGLU_7febb7.pdf) PDF pp.2–3 在 T5 风格 encoder-decoder、C4 span-filling 预训练与下游微调中比较门控变体。为保持参数与算量相等，把门控版 dff 从 3072 改成 2048。若自己只加第三个矩阵而保持 dff 不变，就同时加了容量与计算，不能用这个对照证明收益来自激活函数。论文 held-out log-perplexity 与下游指标是质量证据，不是 Llama 服务速度的直接测量。
+[SwiGLU 论文](readings/GLU_Variants_Improve_Transformer.pdf) PDF pp.2–3 在 T5 风格 encoder-decoder、C4 span-filling 预训练与下游微调中比较门控变体。为保持参数与算量相等，把门控版 dff 从 3072 改成 2048。若自己只加第三个矩阵而保持 dff 不变，就同时加了容量与计算，不能用这个对照证明收益来自激活函数。论文 held-out log-perplexity 与下游指标是质量证据，不是 Llama 服务速度的直接测量。
 
 ## 5. 注意力逐步推导：先看一个 head，再看多头
 
@@ -147,7 +147,7 @@ $$
 
 打分矩阵 S=QKᵀ/√dk，Si,j 表示位置 i 查询位置 j。Causal mask 在 j>i 时加入负无穷，softmax 后这些未来位置的概率为 0。每一行沿 key 位置归一化，再乘 Vm，得到该 query 的加权内容。L pp.15–17 的图应从一行读：例如第 4 行只能取前四个位置，行和为 1；图中的颜色不是对所有层都适用的真实解释。
 
-为什么是除 √dk，而不是 dk？在分量近似独立、零均值、方差为 1 的启发条件下，点积是 dk 项之和，方差约 dk，标准差约 √dk。缩放减少维度增大时 logits 过大、softmax 饱和的问题。真实激活不必满足这些理想假设；这是设计动机，不是对所有训练阶段的严格分布定理。[Transformer 原文](readings/002_Transformer_a7468c.pdf) §3.2 给出同样动机。
+为什么是除 √dk，而不是 dk？在分量近似独立、零均值、方差为 1 的启发条件下，点积是 dk 项之和，方差约 dk，标准差约 √dk。缩放减少维度增大时 logits 过大、softmax 饱和的问题。真实激活不必满足这些理想假设；这是设计动机，不是对所有训练阶段的严格分布定理。[Transformer 原文](readings/Attention_Is_All_You_Need.pdf) §3.2 给出同样动机。
 
 ### 5.1 一个手算例子
 
@@ -257,7 +257,7 @@ W 为本步实际需要从相应存储层读入的权重字节，P 是相应精�
 
 ### 8.1 研究者的算术文章怎样正确使用
 
-[inference arithmetic](readings/008_inference_arithmetic_7b7b45.html) 以 2022 年硬件、dense MHA 和特定 tensor parallel 假设构建直觉。文中示例里容量公式存在明显的量级排版问题，诸如 52B 参数应为 52×10^9，而不是把 B 误写成 10^12。学习时重算单位，不能因来源有公式就照抄。
+[inference arithmetic](readings/Transformer_Inference_Arithmetic.html) 以 2022 年硬件、dense MHA 和特定 tensor parallel 假设构建直觉。文中示例里容量公式存在明显的量级排版问题，诸如 52B 参数应为 52×10^9，而不是把 B 误写成 10^12。学习时重算单位，不能因来源有公式就照抄。
 
 文章提出小 batch 下可能用重算换缓存等直觉，不能直接转成现代服务的通用建议。长前缀、现有优化内核、GQA、真实 KV 访问和请求到达会改变取舍。应测量“重算整个历史”和“读取历史 K/V”的真实成本，并把峰值内存、吞吐和单请求延迟一起记录。
 
@@ -277,13 +277,13 @@ $$
 
 ### 9.1 四篇 MoE 阅读各补哪一环
 
-[Switch Transformer](readings/009_Switch_Transformer_bf9cd2.pdf) §2 使用 top-1 路由降低复杂度，讨论 capacity factor、路由负载不均和训练稳定性。它是 T5 风格、TPU 等条件下的训练研究，论文“7×+ pre-training speedup”是达到给定训练质量的特定对照，不是任意 decode 都快 7 倍。
+[Switch Transformer](readings/Switch_Transformers_Scaling_to_Trillion_Parameter_Models_with_Simple_and_Efficient_Sparsity.pdf) §2 使用 top-1 路由降低复杂度，讨论 capacity factor、路由负载不均和训练稳定性。它是 T5 风格、TPU 等条件下的训练研究，论文“7×+ pre-training speedup”是达到给定训练质量的特定对照，不是任意 decode 都快 7 倍。
 
-[Mixtral](readings/010_Mixtral_31ff4e.pdf) PDF pp.2–3 的 Figure 1、Table 1、§2.1 展示每层 8 选 2，并明确不同 token 分给不同专家导致 grouped/sparse matmul 与负载均衡问题。论文使用自己统一重跑的 Llama 对照，通用、数学、代码、多语言任务均有具体 shot 和评测设置。其“8×7B”不等于八份完整 7B Transformer，因为 attention 等部分共享。
+[Mixtral](readings/Mixtral_of_Experts.pdf) PDF pp.2–3 的 Figure 1、Table 1、§2.1 展示每层 8 选 2，并明确不同 token 分给不同专家导致 grouped/sparse matmul 与负载均衡问题。论文使用自己统一重跑的 Llama 对照，通用、数学、代码、多语言任务均有具体 shot 和评测设置。其“8×7B”不等于八份完整 7B Transformer，因为 attention 等部分共享。
 
-[DeepSeekMoE](readings/011_DeepSeekMoE_95e470.pdf) §2–4 将专家切细，并隔离始终启用的 shared experts。更细切分在保持激活计算近似不变时允许更丰富组合；共享专家承载共性，减少各 routed expert 重复学相同内容。论文关于知识混合与冗余是设计动机，实验通过小规模对照与消融支持，不能把“专家一定完全独立”当作已经证明。
+[DeepSeekMoE](readings/DeepSeekMoE_Towards_Ultimate_Expert_Specialization_in_Mixture-of-Experts_Language_Models.pdf) §2–4 将专家切细，并隔离始终启用的 shared experts。更细切分在保持激活计算近似不变时允许更丰富组合；共享专家承载共性，减少各 routed expert 重复学相同内容。论文关于知识混合与冗余是设计动机，实验通过小规模对照与消融支持，不能把“专家一定完全独立”当作已经证明。
 
-[DeepSeek-V3](readings/012_DeepSeek_V3_de5399.pdf) §2 将 MLA、DeepSeekMoE、负载平衡与多 token 预测组合。其 671B 总参数、约 37B 激活参数说明算量与存量确实分离；但这不是单独 MoE 一个因素的消融。质量还受到数据、训练、后训练和架构其他部分影响。
+[DeepSeek-V3](readings/DeepSeek-V3_Technical_Report.pdf) §2 将 MLA、DeepSeekMoE、负载平衡与多 token 预测组合。其 671B 总参数、约 37B 激活参数说明算量与存量确实分离；但这不是单独 MoE 一个因素的消融。质量还受到数据、训练、后训练和架构其他部分影响。
 
 ### 9.2 服务层必须补上的三个成本
 
@@ -341,7 +341,7 @@ L p.32 的 DeepSeek-V3.2 稀疏案例先用 indexer 打分，选择 top-k 历史
 
 L p.33 的 recurrent depth 复用块 R。令 e=P(x)，s0 为初始 latent，再反复计算 si=R(e,s(i-1))，最后用 C(sr) 输出分布。输入 e 在每轮重新注入，使状态更新持续受当前输入约束，而不只是任意自由迭代。
 
-[recurrent depth 论文](readings/013_recurrent_depth_2f2900.pdf) §3、Figure 2 的模型把 prelude、recurrent block、coda 分开；大型实验中是 2、4、2 层，r=32 时展开深度是 2+4×32+2=132，但物理独立权重只有 8 层。训练抽取不同迭代次数，并采用截断反向传播，测试时加循环不是把普通 Transformer 随便多跑几次。
+[recurrent depth 论文](readings/Scaling_up_Test-Time_Compute_with_Latent_Reasoning_A_Recurrent_Depth_Approach.pdf) §3、Figure 2 的模型把 prelude、recurrent block、coda 分开；大型实验中是 2、4、2 层，r=32 时展开深度是 2+4×32+2=132，但物理独立权重只有 8 层。训练抽取不同迭代次数，并采用截断反向传播，测试时加循环不是把普通 Transformer 随便多跑几次。
 
 论文 3.5B、800B-token 的 proof-of-concept 显示部分推理任务随着迭代数上升改善，而不同任务的收益饱和点不同。它不保证任意增加 r 都改善，也不等同“3.5B 获得任意 50B 模型能力”。Materialized parameters 是展开计算的比较标尺，不是新增驻留权重。
 
@@ -353,7 +353,7 @@ L p.33 的 recurrent depth 复用块 R。令 e=P(x)，s0 为初始 latent，再�
 
 L p.34 用被 mask 的回答序列展示逐步填充。自回归分解是 `p(x)=Πt p(xt|x<t)`；masked diffusion 从被破坏的整段文本出发，多次预测缺失位置。每次前向可同时给许多位置的分布，但这些位置对彼此的约束要靠多轮 refinement 建立。
 
-[LLaDA](readings/014_LLaDA_f56a23.pdf) PDF pp.3–5、§2 令 t∈(0,1) 是 mask 比例，独立将 token 替换成 M，并用只在 masked 位置计算的交叉熵训练：
+[LLaDA](readings/Large_Language_Diffusion_Models.pdf) PDF pp.3–5、§2 令 t∈(0,1) 是 mask 比例，独立将 token 替换成 M，并用只在 masked 位置计算的交叉熵训练：
 
 $$
 \mathcal L(\theta)=
@@ -365,7 +365,7 @@ t 大时输入信息少；t 小时仍需学会完成少量缺口。`1/t` 是该�
 
 LLaDA 8B 原文报告从零训练、2.3T token、后续 SFT 与多类 benchmark。它与 Llama 3 8B 在若干评测上竞争是可行性证据；数据、训练规模、解码步数与评测协议不同，不能读成同预算下扩散已全面替代自回归。论文也用自建 ARM、相同训练数据与不同规模进行更受控的 scaling 对照，应与公开模型横向比较区分。
 
-[Dream 7B](readings/015_Dream_7B_6bea45.pdf) §3–5 用现成 AR 模型初始化，结合 context-adaptive token-level noise rescheduling。这个路径与 LLaDA 从零训练不同：能力来源、训练成本与归因不能合并。Dream 本地文件封面日期与 arXiv 提交日期不同，引用时采用本地 PDF 的 arXiv:2508.15487v1 标识，不能只凭封面 April 日期推断归档版本。
+[Dream 7B](readings/Dream_7B_Diffusion_Large_Language_Models.pdf) §3–5 用现成 AR 模型初始化，结合 context-adaptive token-level noise rescheduling。这个路径与 LLaDA 从零训练不同：能力来源、训练成本与归因不能合并。Dream 本地文件封面日期与 arXiv 提交日期不同，引用时采用本地 PDF 的 arXiv:2508.15487v1 标识，不能只凭封面 April 日期推断归档版本。
 
 ### 12.1 为什么“少几步”不等于免费更快
 
@@ -463,20 +463,20 @@ python3 examples/inference_basics.py
 
 | 材料 | 精读定位 | 本文用途与边界 |
 |---|---|---|
-| [BPE](readings/001_BPE_a2690e.pdf) | §3.2、Algorithm 1、§4，PDF pp.3–5；本地 v5 | 原始字符 BPE 与词表/长度权衡；原实验为 WMT NMT，不是现代 LLM byte tokenizer benchmark |
-| [Transformer](readings/002_Transformer_a7468c.pdf) | §3、Figure 1–2、§4–6 | attention、mask、多头、位置、复杂度；WMT 实验不能作为 Llama serving 测量 |
-| [Illustrated Transformer](readings/003_Illustrated_Transformer_4ecc14.html) | self-attention、multi-headed attention 图解 | 辅助理解数据流；示意头模式不是因果解释证明 |
-| [Annotated Transformer](readings/004_Annotated_Transformer_eb40d3.html) | attention / MultiHeadedAttention / masks / positional encoding | 原始架构代码路径；训练教学代码不等于现代服务引擎 |
-| [RMSNorm](readings/005_RMSNorm_d0023c.pdf) | §4–6、Table 1 | 去均值与缩放差别、跨任务对照；不把速度范围外推到本课所有模型 |
-| [SwiGLU](readings/006_SwiGLU_7febb7.pdf) | PDF pp.1–3、Eq.6、Table 1 | 三矩阵 FFN、等参数/等算量对照 |
-| [Llama 3](readings/007_Llama_3_ea6afd.pdf) | §3.2、Table 3，PDF pp.6–8 | 配置、词表、RoPE、GQA；具体精确词表值结合讲义配置 |
-| [inference arithmetic](readings/008_inference_arithmetic_7b7b45.html) | KV / capacity / model parallelism / latency | 2022 年预算思维；硬件与若干排版量级须重算 |
-| [Switch Transformer](readings/009_Switch_Transformer_bf9cd2.pdf) | §2、路由与 capacity、实验 | top-1、负载平衡、训练成本；不冒充 decode 加速 |
-| [Mixtral](readings/010_Mixtral_31ff4e.pdf) | §2–3、Figure 1、Table 1 | 8 选 2、总/激活参数、同管线模型对照 |
-| [DeepSeekMoE](readings/011_DeepSeekMoE_95e470.pdf) | §2–4、细粒度与共享专家消融 | 专家组合与冗余；同语料 dense 比较优于跨来源直接归因 |
-| [DeepSeek-V3](readings/012_DeepSeek_V3_de5399.pdf) | §2.1–2.2、Figure 2、§3 | MLA/MoE/MTP 组合；训练成本不含先前研发与消融，不能当作部署成本 |
-| [recurrent depth](readings/013_recurrent_depth_2f2900.pdf) | §3–5、Figure 1–3 | recurrent 权重共享、随机深度训练与测试计算；任务收益有差异 |
-| [LLaDA](readings/014_LLaDA_f56a23.pdf) | PDF pp.3–6、§2–3；本地 v3 | masked diffusion、目标、从零训练与受控 ARM 对照 |
-| [Dream 7B](readings/015_Dream_7B_6bea45.pdf) | §3–5；本地 arXiv v1 | AR 初始化、噪声日程、质量/步数；与 LLaDA 训练路径分开 |
+| [BPE](readings/Neural_Machine_Translation_of_Rare_Words_with_Subword_Units.pdf) | §3.2、Algorithm 1、§4，PDF pp.3–5；本地 v5 | 原始字符 BPE 与词表/长度权衡；原实验为 WMT NMT，不是现代 LLM byte tokenizer benchmark |
+| [Transformer](readings/Attention_Is_All_You_Need.pdf) | §3、Figure 1–2、§4–6 | attention、mask、多头、位置、复杂度；WMT 实验不能作为 Llama serving 测量 |
+| [Illustrated Transformer](readings/The_Illustrated_Transformer.html) | self-attention、multi-headed attention 图解 | 辅助理解数据流；示意头模式不是因果解释证明 |
+| [Annotated Transformer](readings/The_Annotated_Transformer.html) | attention / MultiHeadedAttention / masks / positional encoding | 原始架构代码路径；训练教学代码不等于现代服务引擎 |
+| [RMSNorm](readings/Root_Mean_Square_Layer_Normalization.pdf) | §4–6、Table 1 | 去均值与缩放差别、跨任务对照；不把速度范围外推到本课所有模型 |
+| [SwiGLU](readings/GLU_Variants_Improve_Transformer.pdf) | PDF pp.1–3、Eq.6、Table 1 | 三矩阵 FFN、等参数/等算量对照 |
+| [Llama 3](readings/The_Llama_3_Herd_of_Models.pdf) | §3.2、Table 3，PDF pp.6–8 | 配置、词表、RoPE、GQA；具体精确词表值结合讲义配置 |
+| [inference arithmetic](readings/Transformer_Inference_Arithmetic.html) | KV / capacity / model parallelism / latency | 2022 年预算思维；硬件与若干排版量级须重算 |
+| [Switch Transformer](readings/Switch_Transformers_Scaling_to_Trillion_Parameter_Models_with_Simple_and_Efficient_Sparsity.pdf) | §2、路由与 capacity、实验 | top-1、负载平衡、训练成本；不冒充 decode 加速 |
+| [Mixtral](readings/Mixtral_of_Experts.pdf) | §2–3、Figure 1、Table 1 | 8 选 2、总/激活参数、同管线模型对照 |
+| [DeepSeekMoE](readings/DeepSeekMoE_Towards_Ultimate_Expert_Specialization_in_Mixture-of-Experts_Language_Models.pdf) | §2–4、细粒度与共享专家消融 | 专家组合与冗余；同语料 dense 比较优于跨来源直接归因 |
+| [DeepSeek-V3](readings/DeepSeek-V3_Technical_Report.pdf) | §2.1–2.2、Figure 2、§3 | MLA/MoE/MTP 组合；训练成本不含先前研发与消融，不能当作部署成本 |
+| [recurrent depth](readings/Scaling_up_Test-Time_Compute_with_Latent_Reasoning_A_Recurrent_Depth_Approach.pdf) | §3–5、Figure 1–3 | recurrent 权重共享、随机深度训练与测试计算；任务收益有差异 |
+| [LLaDA](readings/Large_Language_Diffusion_Models.pdf) | PDF pp.3–6、§2–3；本地 v3 | masked diffusion、目标、从零训练与受控 ARM 对照 |
+| [Dream 7B](readings/Dream_7B_Diffusion_Large_Language_Models.pdf) | §3–5；本地 arXiv v1 | AR 初始化、噪声日程、质量/步数；与 LLaDA 训练路径分开 |
 
 复习顺序建议是：先用第 1–8 节讲清一个普通 GQA decoder，再比较 MoE 改了哪个 FFN、MLA 改了哪个状态、稀疏/窗口改了哪个访问范围，最后理解循环和扩散为何改变测试时计算。能够把这些变化分别落到公式、状态生命周期和实验条件上，才算真正获得了服务系统设计的基础。

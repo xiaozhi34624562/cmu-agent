@@ -11,23 +11,23 @@
 
 - How I use LLMs — [online source](https://www.youtube.com/watch?v=EWvNQjAaOHw)
   - Source: https://www.youtube.com/watch?v=EWvNQjAaOHw
-- [Best practices for Claude Code](readings/001_Best_practices_for_Claude_Code_9686dc.html)
+- [Best practices for Claude Code](readings/Best_practices_for_Claude_Code.html)
   - Source: https://code.claude.com/docs/en/best-practices
-- [Agentic Engineering Patterns](readings/002_Agentic_Engineering_Patterns_bedbf1.html)
+- [Agentic Engineering Patterns](readings/Agentic_Engineering_Patterns.html)
   - Source: https://simonwillison.net/guides/agentic-engineering-patterns/
-- [Equipping agents for the real world with Agent Skills](readings/003_Equipping_agents_for_the_real_world_with_Agent_Skills_2e50ab.html)
+- [Equipping agents for the real world with Agent Skills](readings/Equipping_agents_for_the_real_world_with_Agent_Skills.html)
   - Source: https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills
-- [Code execution with MCP](readings/004_Code_execution_with_MCP_9b88bf.html)
+- [Code execution with MCP](readings/Code_execution_with_MCP_building_more_efficient_AI_agents.html)
   - Source: https://www.anthropic.com/engineering/code-execution-with-mcp
-- [demystifying skills and MCPs](readings/005_demystifying_skills_and_MCPs_c840b9.html)
+- [demystifying skills and MCPs](readings/How_skills_and_MCPs_actually_work.html)
   - Source: https://blog.lawrencejones.dev/demystifying-skills-and-mcps
-- [Claude Code hooks reference](readings/006_Claude_Code_hooks_reference_20106b.html)
+- [Claude Code hooks reference](readings/Hooks_reference.html)
   - Source: https://code.claude.com/docs/en/hooks
-- [The Harness Is the Thing](readings/007_The_Harness_Is_the_Thing_8733f2.html)
+- [The Harness Is the Thing](readings/The_Harness_Is_the_Thing.html)
   - Source: https://scott-fryxell.github.io/blog/the-harness-is-the-thing
-- [Guardrails Beat Guidance](readings/008_Guardrails_Beat_Guidance_c68b51.pdf)
+- [Guardrails Beat Guidance](readings/Guardrails_Beat_Guidance_A_Large-Scale_Study_of_Rules_Skills_and_Persistent_Configuration_for_Coding_Agents.pdf)
   - Source: https://arxiv.org/abs/2604.11088
-- [The Scaffolding Matters More Than the Interface](readings/009_The_Scaffolding_Matters_More_Than_the_Interface_8f9a1f.pdf)
+- [The Scaffolding Matters More Than the Interface](readings/The_Scaffolding_Matters_More_Than_the_Interface.pdf)
   - Source: https://arxiv.org/abs/2608.08654
 
 ## Local study notes

@@ -17,7 +17,7 @@
 ## Paper sources
 
 - Downloaded from <https://arxiv.org/pdf/2409.03171>.
-- Local file: `../papers/MARAGS.pdf`
+- Local file: `../papers/MARAGS_A_Multi-Adapter_System_for_Multi-Task_Retrieval_Augmented_Generation_Question_Answering.pdf`
 - Verification: 6 pages; 1,533,295 bytes; SHA-256 `2b53853679b763f6fafda0e924d7032eeefa632a72181392fdfb10ac5c9b1a40`.
 
 ## Code sources

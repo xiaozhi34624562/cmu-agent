@@ -17,7 +17,7 @@
 ## Paper sources
 
 - Downloaded from the official OpenReview attachment: <https://openreview.net/pdf?id=7VTwu1Qu5d>.
-- Local file: `../papers/18_Winning_Meta_KDD_Cup_25_Tas.pdf`
+- Local file: `../papers/Winning_Meta_KDD_Cup_25_Task_2.pdf`
 - Verification: 7 pages; 2,155,747 bytes; SHA-256 `b0d81e55c40b22eb7e29285231fe465f3ee491d7e08f068ee0319c3a70a3dd39`.
 
 ## Code sources

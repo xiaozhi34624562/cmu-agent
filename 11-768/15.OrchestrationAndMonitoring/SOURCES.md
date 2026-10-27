@@ -29,7 +29,7 @@ HTML 文件为来源网页快照，图片、样式和交互功能可能仍需联
 - [Diagnosing a performance regression on Terminal-Bench with Docent](readings/003_Diagnosing_a_performance_regression_on_Terminal-Bench_with_Docent.html)
   - Source: https://transluce.org/docent/blog/terminal-bench
 
-- [Hodoscope: Unsupervised Monitoring for AI Misbehaviors](readings/004_Hodoscope_Unsupervised_Monitoring_for_AI_Misbehaviors.pdf)
+- [Hodoscope: Unsupervised Monitoring for AI Misbehaviors](readings/Hodoscope_Unsupervised_Monitoring_for_AI_Misbehaviors.pdf)
   - Source: https://arxiv.org/abs/2604.11072
   - PDF: https://arxiv.org/pdf/2604.11072.pdf
   - Archived version: arXiv:2604.11072v1; title and version verified on the first page.
@@ -103,7 +103,7 @@ HTML 文件为来源网页快照，图片、样式和交互功能可能仍需联
 - [Agent Skills specification](references/020_Agent_Skills_specification.html)
   - Source: https://agentskills.io/specification
 
-- [Multi-Agent Computer Use (MACU)](references/021_Multi-Agent_Computer_Use_MACU.pdf)
+- [Multi-Agent Computer Use (MACU)](references/Multi-Agent_Computer_Use.pdf)
   - Source: https://arxiv.org/abs/2606.01533
   - PDF: https://arxiv.org/pdf/2606.01533.pdf
   - Archived version: arXiv:2606.01533v1; title and version verified on the first page.

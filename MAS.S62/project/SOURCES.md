@@ -5,47 +5,47 @@
 - [本学期 syllabus](../site/syllabus/ai4ai-syllabus.pdf)
 - [官网项目案例页](../site/projects/index.html)
 
-- [EmoSign: A Multimodal Dataset for Understanding Emotions in American Sign Language](../readings/papers/2505.17090.pdf)
+- [EmoSign: A Multimodal Dataset for Understanding Emotions in American Sign Language](../readings/papers/EmoSign_A_Multimodal_Dataset_for_Understanding_Emotions_in_American_Sign_Language.pdf)
   - Source: https://arxiv.org/abs/2505.17090
-- [When One Modality Sabotages the Others: A Diagnostic Lens on Multimodal Reasoning](../readings/papers/2511.02794.pdf)
+- [When One Modality Sabotages the Others: A Diagnostic Lens on Multimodal Reasoning](../readings/papers/When_One_Modality_Sabotages_the_Others_A_Diagnostic_Lens_on_Multimodal_Reasoning.pdf)
   - Source: https://arxiv.org/abs/2511.02794
 - Beyond Accuracy: A Diagnostic Protocol for Fairly Evaluating Multimodal Reasoning — 未取得正文
   - Source: https://openreview.net/forum?id=2S7VgHrx20
-- [MMoE: Enhancing Multimodal Models with Mixtures of Multimodal Interaction Experts](../readings/web/aclanthology_org_2024_emnlp_main_558_0e2af941.html)
+- [MMoE: Enhancing Multimodal Models with Mixtures of Multimodal Interaction Experts](../readings/web/MMoE_Enhancing_Multimodal_Models_with_Mixtures_of_Multimodal_Interaction_Experts.html)
   - Source: https://aclanthology.org/2024.emnlp-main.558/
-- [Social-iq 2.0 Challenge: Benchmarking Multimodal Social Understanding](../readings/web/cmu_multicomp_lab_github_io_social_iq_2_0_930c2377.html)
+- [Social-IQ 2.0 Challenge @ ICCV 2023](../readings/web/Social-IQ_2.0_Challenge_ICCV_2023.html)
   - Source: https://cmu-multicomp-lab.github.io/social-iq-2.0/
-- [Towards Vision-Language Mechanistic Interpretability: A Causal Tracing Tool for BLIP](../readings/web/openaccess_thecvf_com_content_ICCV2023W_CLVL_html_Palit_Towards_Vision_Lang_6c1c72bb.html)
+- [Towards Vision-Language Mechanistic Interpretability: A Causal Tracing Tool for BLIP](../readings/web/Towards_Vision-Language_Mechanistic_Interpretability_A_Causal_Tracing_Tool_for_BLIP.html)
   - Source: https://openaccess.thecvf.com/content/ICCV2023W/CLVL/html/Palit_Towards_Vision-Language_Mechanistic_Interpretability_A_Causal_Tracing_Tool_for_BLIP_ICCVW_2023_paper.html
-- [Multimodal Lecture Presentations Dataset: Understanding Multimodality in Educational Slides](../readings/papers/2208.08080.pdf)
+- [Multimodal Lecture Presentations Dataset: Understanding Multimodality in Educational Slides](../readings/papers/Multimodal_Lecture_Presentations_Dataset_Understanding_Multimodality_in_Educational_Slides.pdf)
   - Source: https://arxiv.org/abs/2208.08080
-- [Language Models Get a Gender Makeover: Mitigating Gender Bias with Few-Shot Data Interventions](../readings/papers/2306.04597.pdf)
+- [Language Models Get a Gender Makeover: Mitigating Gender Bias with Few-Shot Data Interventions](../readings/papers/Language_Models_Get_a_Gender_Makeover_Mitigating_Gender_Bias_with_Few-Shot_Data_Interventions.pdf)
   - Source: https://arxiv.org/abs/2306.04597
-- [Cross-modal Attention Congruence Regularization for Vision-language Relation Alignment](../readings/web/aclanthology_org_2023_acl_long_298_b4783403.html)
+- [Cross-modal Attention Congruence Regularization for Vision-Language Relation Alignment](../readings/web/Cross-modal_Attention_Congruence_Regularization_for_Vision-Language_Relation_Alignment.html)
   - Source: https://aclanthology.org/2023.acl-long.298/
-- [Diverse and Admissible Trajectory Prediction through Multimodal Context Understanding](../readings/papers/2003.03212.pdf)
+- [Diverse and Admissible Trajectory Forecasting through Multimodal Context Understanding](../readings/papers/Diverse_and_Admissible_Trajectory_Forecasting_through_Multimodal_Context_Understanding.pdf)
   - Source: https://arxiv.org/abs/2003.03212
 - Multimodal Behavior Markers Exploring Suicidal Intent in Social Media Videos — 未取得正文
   - Source: https://dl.acm.org/doi/10.1145/3340555.3353718
-- [Attend and Attack: Attention Guided Adversarial Attacks on Visual Question Answering Models](../readings/papers/33.pdf)
+- [Attend and Attack: Attention Guided Adversarial Attacks on Visual Question Answering Models](../readings/papers/Attend_and_Attack_Attention_Guided_Adversarial_Attacks_on_Visual_Question_Answering_Models.pdf)
   - Source: https://nips2018vigil.github.io/static/papers/accepted/33.pdf
-- [Self-Supervised Visual Representations for Cross-Modal Retrieval](../readings/papers/1902.00378.pdf)
+- [Self-Supervised Visual Representations for Cross-Modal Retrieval](../readings/papers/Self-Supervised_Visual_Representations_for_Cross-Modal_Retrieval.pdf)
   - Source: https://arxiv.org/abs/1902.00378
-- [Found in Translation: Learning Robust Joint Representations by Cyclic Translations Between Modalities](../readings/papers/1812.07809.pdf)
+- [Found in Translation: Learning Robust Joint Representations by Cyclic Translations Between Modalities](../readings/papers/Found_in_Translation_Learning_Robust_Joint_Representations_by_Cyclic_Translations_Between_Modalities.pdf)
   - Source: https://arxiv.org/abs/1812.07809
-- [Efficient Low-rank Multimodal Fusion with Modality-Specific Factors](../readings/papers/1806.00064.pdf)
+- [Efficient Low-rank Multimodal Fusion with Modality-Specific Factors](../readings/papers/Efficient_Low-rank_Multimodal_Fusion_with_Modality-Specific_Factors.pdf)
   - Source: https://arxiv.org/abs/1806.00064
-- [Gated-Attention Architectures for Task-Oriented Language Grounding](../readings/papers/1706.07230.pdf)
+- [Gated-Attention Architectures for Task-Oriented Language Grounding](../readings/papers/Gated-Attention_Architectures_for_Task-Oriented_Language_Grounding.pdf)
   - Source: https://arxiv.org/abs/1706.07230
-- [Multimodal Sentiment Analysis with Word-Level Fusion and Reinforcement Learning](../readings/papers/1802.00924.pdf)
+- [Multimodal Sentiment Analysis with Word-Level Fusion and Reinforcement Learning](../readings/papers/Multimodal_Sentiment_Analysis_with_Word-Level_Fusion_and_Reinforcement_Learning.pdf)
   - Source: https://arxiv.org/abs/1802.00924
-- [Answer-Aware Attention on Grounded Question Answering in Images](../readings/papers/27.pdf)
+- [Answer-Aware Attention on Grounded Question Answering in Images](../readings/papers/Answer-Aware_Attention_on_Grounded_Question_Answering_in_Images.pdf)
   - Source: https://www.ttic.edu/nchrc/papers/27.pdf
-- [Select-Additive Learning: Improving Generalization in Multimodal Sentiment Analysis](../readings/papers/1609.05244.pdf)
+- [Select-Additive Learning: Improving Generalization in Multimodal Sentiment Analysis](../readings/papers/Select-Additive_Learning_Improving_Generalization_in_Multimodal_Sentiment_Analysis.pdf)
   - Source: https://arxiv.org/abs/1609.05244
-- [MMoE: Enhancing Multimodal Models with Mixtures of Multimodal Interaction Experts (PDF)](../readings/papers/2024.emnlp-main.558.pdf)
+- [MMOE: Enhancing Multimodal Models with Mixtures of Multimodal Interaction Experts](../readings/papers/MMOE_Enhancing_Multimodal_Models_with_Mixtures_of_Multimodal_Interaction_Experts.pdf)
   - Source: https://aclanthology.org/2024.emnlp-main.558.pdf
-- [Towards Vision-Language Mechanistic Interpretability: A Causal Tracing Tool for BLIP (PDF)](../readings/papers/Palit_Towards_Vision-Language_Mechanistic_Interpretability_A_Causal_Tracing_Tool_for_BLIP_ICCVW_2023_paper.pdf)
+- [Towards Vision-Language Mechanistic Interpretability: A Causal Tracing Tool for BLIP](../readings/papers/Towards_Vision-Language_Mechanistic_Interpretability_A_Causal_Tracing_Tool_for_BLIP.pdf)
   - Source: https://openaccess.thecvf.com/content/ICCV2023W/CLVL/papers/Palit_Towards_Vision-Language_Mechanistic_Interpretability_A_Causal_Tracing_Tool_for_BLIP_ICCVW_2023_paper.pdf
-- [Cross-modal Attention Congruence Regularization for Vision-language Relation Alignment (PDF)](../readings/papers/2023.acl-long.298.pdf)
+- [Cross-modal Attention Congruence Regularization for Vision-Language Relation Alignment](../readings/papers/Cross-modal_Attention_Congruence_Regularization_for_Vision-Language_Relation_Alignment.pdf)
   - Source: https://aclanthology.org/2023.acl-long.298.pdf

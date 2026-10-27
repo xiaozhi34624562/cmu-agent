@@ -18,11 +18,11 @@
 
 **工程推导。** 检索接口显式传递“当前子问题、已确认约束、尚缺证据、搜索词”；已否定假设不应再次作为事实注入。保留完整轨迹用于复核，但检索与写作只加载相关状态。这是受论文启发的实现，不要求取得或暴露模型私有思维链。
 
-**边界。** 不能把有截断的历史实验说成对任意长度完整历史的普遍否定；不能将特定基准的检索收益当作开放式长报告的质量收益。普通搜索 API 是否接受意图文本、embedding 是否需要训练，都应在自己的任务上比较。[论文评测设置 §4.2](https://arxiv.org/html/2603.04384v3#S4.SS2)、[本地 PDF](readings/006_AgentIR.pdf)。
+**边界。** 不能把有截断的历史实验说成对任意长度完整历史的普遍否定；不能将特定基准的检索收益当作开放式长报告的质量收益。普通搜索 API 是否接受意图文本、embedding 是否需要训练，都应在自己的任务上比较。[论文评测设置 §4.2](https://arxiv.org/html/2603.04384v3#S4.SS2)、[本地 PDF](readings/AgentIR_Reasoning-Aware_Retrieval_for_Deep_Research_Agents.pdf)。
 
 ## 3. Anthropic：并行有适用条件，长期执行需要持久状态
 
-**已核实的官方工程经验。** [本地归档](../../2680/readings/web/anthropic-com-engineering-multi-agent-research-system-a3afc1e8.html)中的2025-06-13文章描述 lead/worker 研究系统：明确子任务目标、输出、工具来源与边界；协调者综合后决定是否继续，引用组件定位来源。文章认为可独立展开的广度任务更适合并行，而高度共享上下文、依赖密集的任务较难获益；同时指出额外 token 成本，以及持久执行、重试、checkpoint 和恢复的重要性。[How we built our multi-agent research system：Benefits / Architecture / Prompt engineering / Production reliability](https://www.anthropic.com/engineering/multi-agent-research-system)。
+**已核实的官方工程经验。** [本地归档](../../2680/readings/web/How_we_built_our_multi-agent_research_system.html)中的2025-06-13文章描述 lead/worker 研究系统：明确子任务目标、输出、工具来源与边界；协调者综合后决定是否继续，引用组件定位来源。文章认为可独立展开的广度任务更适合并行，而高度共享上下文、依赖密集的任务较难获益；同时指出额外 token 成本，以及持久执行、重试、checkpoint 和恢复的重要性。[How we built our multi-agent research system：Benefits / Architecture / Prompt engineering / Production reliability](https://www.anthropic.com/engineering/multi-agent-research-system)。
 
 **工程推导。** 先实现可靠的单协调者循环，只有可独立验收的子问题才并行。子任务返回结构化证据包与原文定位，不只交付摘要；主协调者负责统一口径、合并冲突和全局停止决策。执行层记录任务、工具结果、预算及已完成阶段，故障后从检查点继续。
 

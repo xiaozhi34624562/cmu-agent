@@ -302,12 +302,12 @@ DR Tulu 的贡献之一是让开放式长报告获得随训练演化的 rubric �
 - **法国教育教学情境**：本文第 2、9、10 节给出问题、状态变化与证据边界；仅用于演示研究方法，不作为制度或事件事实来源。原始过程材料未归档，不列为可回查的研究证据。
 - **课程综合笔记**：[Deep_Research_Lecture10_Integrated_Notes.md](Deep_Research_Lecture10_Integrated_Notes.md)，主要使用第 2—4、9—11、14 章。其参考编号见附录 D。
 - **OpenScholar**：[本地原文 HTML](readings/001_OpenScholar.html)；[Nature 原文](https://www.nature.com/articles/s41586-025-10072-4)。2026-10-07的核查记录记载在线抓取受 cookie 跳转影响；2026-10-26复核使用仓库原文；见 Inference、Data filtering 与 Citation accuracy 小节。
-- **AgentIR v3**：[本地 PDF](readings/006_AgentIR.pdf)；[原文](https://arxiv.org/html/2603.04384v3)。重点 §3.2 与 §5；全历史输入实验受上下文截断限制。
-- **Tongyi v3**：[本地 PDF](readings/004_Tongyi_DeepResearch.pdf)；[原文](https://arxiv.org/html/2510.24701v3)。重点 §3.1、§4.3；上下文压缩与并行综合不保证证据完整保留。
-- **DeepResearch Bench II v3**：[本地 PDF](references/010_DeepResearch_Bench_II.pdf)；[原文](https://arxiv.org/html/2601.08536v3)。重点 §3.1.2—3.1.3；端到端信息维度得分不等于检索器召回率。
-- **BrowseComp-Plus v1**：[本地 PDF](references/003_BrowseComp-Plus.pdf)；[原文](https://arxiv.org/html/2508.06600v1)。重点 §4.8.1；oracle 只用于诊断。
-- **DR Tulu v3**：[本地 PDF](readings/005_DR_Tulu.pdf)；[原文](https://arxiv.org/html/2511.19399v3)。重点 §2—3；训练反馈与本次运行的状态更新不同。
-- **Anthropic 官方工程文章**：[本地原文归档](../../2680/readings/web/anthropic-com-engineering-multi-agent-research-system-a3afc1e8.html)；[How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system)，2025-06-13；用于补充多 Agent 任务分工、引用与运行恢复经验，未使用其内部数字作效果承诺。
+- **AgentIR v3**：[本地 PDF](readings/AgentIR_Reasoning-Aware_Retrieval_for_Deep_Research_Agents.pdf)；[原文](https://arxiv.org/html/2603.04384v3)。重点 §3.2 与 §5；全历史输入实验受上下文截断限制。
+- **Tongyi v3**：[本地 PDF](readings/Tongyi_DeepResearch_Technical_Report.pdf)；[原文](https://arxiv.org/html/2510.24701v3)。重点 §3.1、§4.3；上下文压缩与并行综合不保证证据完整保留。
+- **DeepResearch Bench II v3**：[本地 PDF](references/DeepResearch_Bench_II_Diagnosing_Deep_Research_Agents_via_Rubrics_from_Expert_Reports.pdf)；[原文](https://arxiv.org/html/2601.08536v3)。重点 §3.1.2—3.1.3；端到端信息维度得分不等于检索器召回率。
+- **BrowseComp-Plus v1**：[本地 PDF](references/BrowseComp-Plus_A_More_Fair_and_Transparent_Evaluation_Benchmark_of_Deep-Research_Agent.pdf)；[原文](https://arxiv.org/html/2508.06600v1)。重点 §4.8.1；oracle 只用于诊断。
+- **DR Tulu v3**：[本地 PDF](readings/DR_Tulu_Reinforcement_Learning_with_Evolving_Rubrics_for_Deep_Research.pdf)；[原文](https://arxiv.org/html/2511.19399v3)。重点 §2—3；训练反馈与本次运行的状态更新不同。
+- **Anthropic 官方工程文章**：[本地原文归档](../../2680/readings/web/How_we_built_our_multi-agent_research_system.html)；[How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system)，2025-06-13；用于补充多 Agent 任务分工、引用与运行恢复经验，未使用其内部数字作效果承诺。
 - **补充核查记录**：[Deep_Research_Agent_Design_Source_Checks.md](Deep_Research_Agent_Design_Source_Checks.md)。
 
 本文未比较实时模型排行榜，未进行架构效果实验，也未更改课程原始资料。

@@ -4,7 +4,7 @@
 
 ElectricSheep 把复杂推理前移到证据结构化层：分别处理网页文本、表格、属性、三元组、数值计算和错误前提，再交给受约束生成器。
 
-[论文](./papers/A-Hybrid-RAG-System.pdf) · [代码状态](./code/README.md) · [来源清单](./resources/source-manifest.md)
+[论文](./papers/A_Hybrid_RAG_System_with_Comprehensive_Enhancement_on_Complex_Reasoning.pdf) · [代码状态](./code/README.md) · [来源清单](./resources/source-manifest.md)
 
 ## 2. 论文身份与比赛背景
 

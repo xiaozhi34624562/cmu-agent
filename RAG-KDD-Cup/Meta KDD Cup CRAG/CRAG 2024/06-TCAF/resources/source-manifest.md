@@ -16,7 +16,7 @@
 ## Paper sources
 
 - Downloaded from the official OpenReview attachment: <https://openreview.net/pdf?id=nvjfWv7uGY>.
-- Local file: `../papers/5_TCAF_a_Multi_Agent_Approach_.pdf`
+- Local file: `../papers/TCAF_a_Multi-Agent_Approach_of_Thought_Chain_for_Retrieval_Augmented_Generation.pdf`
 - Verification: 7 pages; 1,161,302 bytes; SHA-256 `ca9e1195e933447fdf4bf94c4c27b9fe88402361beff93c0dc8406ef859ac980`.
 
 ## Code sources

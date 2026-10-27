@@ -63,7 +63,7 @@ $$
 H_{t+1}=\operatorname{Update}(H_t,\tau_t,y_t,f_t).
 $$
 
-这里 `M` 是底座模型，`H_t` 是 Harness 及其可持久化状态，`x_t` 是任务，`f_t` 是反馈。内循环产出任务结果，外循环产出未来使用的 Harness 版本。这是便于贯穿本课的教学记号；与 Meta-Harness 的优化目标及 Harness-Evolution 的 solve–evolve 协议相呼应。[MH，§3，pp.4–5](../readings/papers/2603.28052.pdf#page=4)；[HB，§3，pp.3–4](../readings/papers/2605.30621.pdf#page=3)
+这里 `M` 是底座模型，`H_t` 是 Harness 及其可持久化状态，`x_t` 是任务，`f_t` 是反馈。内循环产出任务结果，外循环产出未来使用的 Harness 版本。这是便于贯穿本课的教学记号；与 Meta-Harness 的优化目标及 Harness-Evolution 的 solve–evolve 协议相呼应。[MH，§3，pp.4–5](../readings/papers/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf#page=4)；[HB，§3，pp.3–4](../readings/papers/Harness_Updating_Is_Not_Harness_Benefit_Disentangling_Evolution_Capabilities_in_Self-Evolving_LLM_Agents.pdf#page=3)
 
 一次任务失败后直接重试，未必发生持久化学习。只有变化被保留下来，并在后续任务中可被读取或执行，才形成这里讨论的能力积累。反过来，持久化也不能自动证明能力提升：它可能只是保存了一条错误结论。
 
@@ -110,7 +110,7 @@ $$
 信息被保存 → 被发现 → 被加载 → 被正确遵循或调用 → 任务收益
 ```
 
-每个箭头都可能断。相似度高但不适用的技能可能被加载；有效技能可能因描述不清而从未被选中；加载后底座模型也可能遗漏关键步骤。HB 的实验正是把更新能力与从更新中受益的能力分开，并在较弱模型中观察到激活和长程遵循方面的失败。[HB，§4.3，pp.6–8](../readings/papers/2605.30621.pdf#page=6)
+每个箭头都可能断。相似度高但不适用的技能可能被加载；有效技能可能因描述不清而从未被选中；加载后底座模型也可能遗漏关键步骤。HB 的实验正是把更新能力与从更新中受益的能力分开，并在较弱模型中观察到激活和长程遵循方面的失败。[HB，§4.3，pp.6–8](../readings/papers/Harness_Updating_Is_Not_Harness_Benefit_Disentangling_Evolution_Capabilities_in_Self-Evolving_LLM_Agents.pdf#page=6)
 
 因此，“生成了 200 条经验”只能衡量存储活动，不能替代检索质量、实际遵循和任务效果。
 
@@ -118,7 +118,7 @@ $$
 
 ### 3.1 MemGPT 为什么不等于加一个检索器
 
-讲义先用 MemGPT 说明：模型可以通过函数调用访问不同记忆层级。原论文把工作上下文、消息队列与外部存储结合，并让记忆压力事件和函数执行参与控制流。[L4，pp.10–11](slides/lec4%20-%20harness.pdf#page=10)；[MG，§2，pp.2–4](references/003_MemGPT.pdf#page=2)
+讲义先用 MemGPT 说明：模型可以通过函数调用访问不同记忆层级。原论文把工作上下文、消息队列与外部存储结合，并让记忆压力事件和函数执行参与控制流。[L4，pp.10–11](slides/lec4%20-%20harness.pdf#page=10)；[MG，§2，pp.2–4](references/MemGPT_Towards_LLMs_as_Operating_Systems.pdf#page=2)
 
 区别可以从下面的过程看出：
 
@@ -134,7 +134,7 @@ $$
 
 ### 3.2 Mem0：写入之前先比较，而非不断追加
 
-讲义用 Mem0 展示事实提取、关系表示以及 add/update/delete/noop 等操作。[L4，pp.12–13](slides/lec4%20-%20harness.pdf#page=12)；[M0，§2–3](references/001_Mem0.pdf#page=3)
+讲义用 Mem0 展示事实提取、关系表示以及 add/update/delete/noop 等操作。[L4，pp.12–13](slides/lec4%20-%20harness.pdf#page=12)；[M0，§2–3](references/Mem0_Building_Production-Ready_AI_Agents_with_Scalable_Long-Term_Memory.pdf#page=3)
 
 这里要区分论文的两个版本：基础 **Mem0** 先提取候选事实、检索语义相似旧记忆，再让 LLM 选择 ADD/UPDATE/DELETE/NOOP；**Mem0g** 才把实体与关系存为有向标记图。L4 p.12 展示的是图扩展，p.13 展示基础更新链，不能把“采用 Mem0”一概等同于“已用图数据库”。[M0，§2.1–2.2，pp.3–5]
 
@@ -161,7 +161,7 @@ $$
 
 ### 4.1 需要解决的不是单次摘要，而是长任务中的状态更新
 
-常规 Agent 不断追加思考、动作和工具返回；长任务中历史增长，成本提高，而且大量旧信息未必仍有用。MEM1 在每一轮生成新的内部状态，并让下一轮只保留当前问题、最新状态及必要的新信息。讲义用多目标问答演示状态如何分项保存、更新和承认无法回答。[L4，pp.14–21](slides/lec4%20-%20harness.pdf#page=14)；[M1，§3，pp.4–6](../readings/papers/2506.15841.pdf#page=4)
+常规 Agent 不断追加思考、动作和工具返回；长任务中历史增长，成本提高，而且大量旧信息未必仍有用。MEM1 在每一轮生成新的内部状态，并让下一轮只保留当前问题、最新状态及必要的新信息。讲义用多目标问答演示状态如何分项保存、更新和承认无法回答。[L4，pp.14–21](slides/lec4%20-%20harness.pdf#page=14)；[M1，§3，pp.4–6](../readings/papers/MEM1_Learning_to_Synergize_Memory_and_Reasoning_for_Efficient_Long-Horizon_Agents.pdf#page=4)
 
 教学记号：
 
@@ -185,7 +185,7 @@ $$
 
 ### 4.2 “近似固定状态”不等于任意任务无损压缩
 
-原论文通过状态生成方式和任务训练研究记忆管理；它不证明所有长任务都存在固定大小的充分统计量。[M1，§3–4](../readings/papers/2506.15841.pdf#page=4)
+原论文通过状态生成方式和任务训练研究记忆管理；它不证明所有长任务都存在固定大小的充分统计量。[M1，§3–4](../readings/papers/MEM1_Learning_to_Synergize_Memory_and_Reasoning_for_Efficient_Long-Horizon_Agents.pdf#page=4)
 
 若任务要比较 1000 条互不相关的原始金额，直接丢掉原始输入就可能不可恢复。工程上可以让状态保存一个文件位置或索引，而把原始记录外置；但此时系统已结合了外部存储，不能把全部效率归给内部文本压缩。
 
@@ -193,13 +193,13 @@ $$
 
 ### 4.3 训练时必须让模型看到与 rollout 一致的历史
 
-MEM1 的论文方法不只是一条“请总结”指令。它在策略训练中处理动态可见状态：计算动作概率时，需要屏蔽模型在当时推理中本来不可访问的旧内容；环境输出也不能当作模型生成动作去计算策略损失。论文图 3 与 §3.2 讨论了注意力和信息掩码。[M1，pp.5–6](../readings/papers/2506.15841.pdf#page=5)
+MEM1 的论文方法不只是一条“请总结”指令。它在策略训练中处理动态可见状态：计算动作概率时，需要屏蔽模型在当时推理中本来不可访问的旧内容；环境输出也不能当作模型生成动作去计算策略损失。论文图 3 与 §3.2 讨论了注意力和信息掩码。[M1，pp.5–6](../readings/papers/MEM1_Learning_to_Synergize_Memory_and_Reasoning_for_Efficient_Long-Horizon_Agents.pdf#page=5)
 
 若 rollout 丢掉旧历史，但训练概率计算却能看到它，优化的就是另一条条件分布。模型可能在训练时借助“额外记忆”获得虚假的低损失，部署时无法复现。读这类论文时，要同时检查执行状态、训练输入和 loss mask，而不仅是外层算法名称。
 
 ### 4.4 哪些反馈能教会模型记住正确内容
 
-MEM1 使用可验证任务结果训练，论文说明并非直接给每段摘要一个“压缩质量奖励”。模型通过任务结果间接学习保留有用信息。[M1，§3–4，pp.4–7](../readings/papers/2506.15841.pdf#page=4)
+MEM1 使用可验证任务结果训练，论文说明并非直接给每段摘要一个“压缩质量奖励”。模型通过任务结果间接学习保留有用信息。[M1，§3–4，pp.4–7](../readings/papers/MEM1_Learning_to_Synergize_Memory_and_Reasoning_for_Efficient_Long-Horizon_Agents.pdf#page=4)
 
 这意味着奖励覆盖很关键：如果评测只问最终金额，模型可以丢掉币种和来源而不受罚；到了审计任务就会失败。工程建议在代表性任务中加入对实体、来源、版本和未决状态的检查，并把“答案正确但证据链错误”单独统计。奖励可验证也不等于奖励完整。
 
@@ -213,7 +213,7 @@ L4 p.17 区分直接提示与用奖励训练；论文的主要 MEM1 结果则来
 
 ### 5.1 Reflexion 的改进发生在什么位置
 
-Reflexion 让任务执行者获得环境或评估反馈，再生成自然语言反思，并在后续尝试中读取。它以语言形式保留教训，不能因为名称中有 reinforcement learning 就直接等同于参数梯度更新。[L4，pp.22–23](slides/lec4%20-%20harness.pdf#page=22)；[REF，§3，pp.3–5](../readings/papers/2303.11366.pdf#page=3)
+Reflexion 让任务执行者获得环境或评估反馈，再生成自然语言反思，并在后续尝试中读取。它以语言形式保留教训，不能因为名称中有 reinforcement learning 就直接等同于参数梯度更新。[L4，pp.22–23](slides/lec4%20-%20harness.pdf#page=22)；[REF，§3，pp.3–5](../readings/papers/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf#page=3)
 
 教学示例：
 
@@ -234,7 +234,7 @@ Reflexion 让任务执行者获得环境或评估反馈，再生成自然语言�
 
 ### 5.3 ExpeL 在经验库中增加跨任务抽取
 
-讲义接着用 ExpeL 说明轨迹、经验与反馈可以共同为未来提供上下文。ExpeL 从训练任务的尝试中提取自然语言洞见，并检索成功经历作为示例；它比只保存某一道题的失败反思更强调跨任务积累。[L4，p.24](slides/lec4%20-%20harness.pdf#page=24)；[EXP，§4.1–4.3](references/003_ExpeL.pdf#page=4)
+讲义接着用 ExpeL 说明轨迹、经验与反馈可以共同为未来提供上下文。ExpeL 从训练任务的尝试中提取自然语言洞见，并检索成功经历作为示例；它比只保存某一道题的失败反思更强调跨任务积累。[L4，p.24](slides/lec4%20-%20harness.pdf#page=24)；[EXP，§4.1–4.3](references/ExpeL_LLM_Agents_Are_Experiential_Learners.pdf#page=4)
 
 它具体使用两种抽取材料：同一训练任务的失败/成功轨迹对，以及不同任务的成功轨迹组。洞见集可执行 ADD、EDIT、UPVOTE、DOWNVOTE；新洞见计数从 2 开始，编辑/赞同增加、反对减少，降到 0 则移除。评测时把洞见集与按任务相似度检索的成功轨迹一起交给 Agent，在未见任务上单次尝试；训练时的 Reflexion 重试与部署评测应分开计费。这些计数提供整理启发式，并不证明每条洞见的因果贡献。[EXP，§4.1–4.3，p.4、算法 1–3，p.6]
 
@@ -246,7 +246,7 @@ Reflexion 让任务执行者获得环境或评估反馈，再生成自然语言�
 
 ### 6.1 与“在 prompt 里放一个摘要”的差别
 
-CLM 把活动上下文暴露为文件，让模型使用代码或命令编辑；运行机制再把编辑结果同步为模型后续可见上下文。多个 Agent 可以拥有各自的上下文文件。讲义第 27 页展示了进度板、局部删除、上下文角色和压缩函数等行为。[L4，pp.25–27](slides/lec4%20-%20harness.pdf#page=25)；[CLM，§4.1，pp.4–5](../readings/papers/2609.37725.pdf#page=4)
+CLM 把活动上下文暴露为文件，让模型使用代码或命令编辑；运行机制再把编辑结果同步为模型后续可见上下文。多个 Agent 可以拥有各自的上下文文件。讲义第 27 页展示了进度板、局部删除、上下文角色和压缩函数等行为。[L4，pp.25–27](slides/lec4%20-%20harness.pdf#page=25)；[CLM，§4.1，pp.4–5](../readings/papers/Context_Language_Models.pdf#page=4)
 
 普通摘要机制通常由 Harness 预设何时压缩、压缩哪部分；CLM 扩大了模型可操作的上下文空间。但“模型能编辑”仍需运行程序定义同步时点、格式、不可修改区域和错误恢复。权限边界不会因编辑动作是语言模型提出的就自动消失。
 
@@ -256,13 +256,13 @@ CLM 把活动上下文暴露为文件，让模型使用代码或命令编辑；�
 2. **上下文策略优化**：用自然语言指导或技能优化改变何时压缩、怎样备份，仍可以保持权重不变。
 3. **参数学习**：训练模型更有效地使用上下文编辑动作，权重发生变化。
 
-讲义依次展示这三类实验；论文还提出与服务系统相关的缓存复用方案。零样本接口有效，不代表训练增益也来自接口本身；训练比较需与相同训练预算的其他 Harness 对照。[L4，pp.28–30](slides/lec4%20-%20harness.pdf#page=28)；[CLM，§4.2、§5](../readings/papers/2609.37725.pdf#page=6)
+讲义依次展示这三类实验；论文还提出与服务系统相关的缓存复用方案。零样本接口有效，不代表训练增益也来自接口本身；训练比较需与相同训练预算的其他 Harness 对照。[L4，pp.28–30](slides/lec4%20-%20harness.pdf#page=28)；[CLM，§4.2、§5](../readings/papers/Context_Language_Models.pdf#page=6)
 
 参数学习的具体信号也值得拆开：CLM 用 stepwise GRPO，把整条轨迹的任务结果优势分给各次模型调用，并加入 **success-gated efficiency advantage**。只有同组至少两条成功轨迹时，才在成功轨迹内部按 prefix-reuse FLOPs 比较效率；失败轨迹的效率优势为零。这不是按删掉多少 token 或编辑多少次直接奖励，因为那会鼓励删掉重要信息、破坏缓存等投机行为。失败仍由任务结果项约束。[CLM，§4.2、公式 6，p.6]
 
 ### 6.3 为什么删了 token，计算反而可能上升
 
-常规前缀缓存依赖相同前缀。若模型修改上下文中间较早的位置，后续部分可能需要重新 prefill。CLM 论文用 prefix-reuse FLOPs 讨论解码、预填充和重新预填充，并研究 Suffix Cache Reuse；这说明应用层 token 统计不能替代服务端计算分析。[CLM，§4.1、§4.3](../readings/papers/2609.37725.pdf#page=5)
+常规前缀缓存依赖相同前缀。若模型修改上下文中间较早的位置，后续部分可能需要重新 prefill。CLM 论文用 prefix-reuse FLOPs 讨论解码、预填充和重新预填充，并研究 Suffix Cache Reuse；这说明应用层 token 统计不能替代服务端计算分析。[CLM，§4.1、§4.3](../readings/papers/Context_Language_Models.pdf#page=5)
 
 教学例子：
 
@@ -289,13 +289,13 @@ CLM 把活动上下文暴露为文件，让模型使用代码或命令编辑；�
 
 ### 7.2 CodeAct 为什么能改变调用成本
 
-可执行代码能够组合控制流和数据流：循环处理一批对象、保存中间变量、组合工具、对执行错误进行修正。CodeAct 比较了代码、文本和 JSON 等行动表达；效果与其模型和工具任务设置绑定。[L4，pp.35–36](slides/lec4%20-%20harness.pdf#page=35)；[CA，§2，pp.2–5](references/002_CodeAct.pdf#page=2)
+可执行代码能够组合控制流和数据流：循环处理一批对象、保存中间变量、组合工具、对执行错误进行修正。CodeAct 比较了代码、文本和 JSON 等行动表达；效果与其模型和工具任务设置绑定。[L4，pp.35–36](slides/lec4%20-%20harness.pdf#page=35)；[CA，§2，pp.2–5](references/Executable_Code_Actions_Elicit_Better_LLM_Agents.pdf#page=2)
 
 工程推导：若 100 条记录需要相同的确定性归一化，模型生成一次程序后执行，通常比让模型逐条提出动作更易保留一致逻辑。但若程序静默吞掉错误，批量化也会把一个错误同时扩散到 100 条记录。应让输出包含处理数量、拒绝数量、错误样本和结果文件，而不只是返回“完成”。
 
 ### 7.3 Toolformer 和 ToolLLM 修改的是哪一层
 
-讲义用这两项研究说明工具使用能力可以通过数据构造和模型训练获得。Toolformer 筛选那些帮助后续文本预测的 API 调用，再进行语言模型训练；ToolLLM 包含 API 检索、指令和多步调用路径数据，并训练 ToolLLaMA。[L4，pp.37–38](slides/lec4%20-%20harness.pdf#page=37)；[TF，§2，pp.3–4](../readings/papers/2302.04761.pdf#page=3)；[TL，§2–3，pp.3–7](../readings/papers/2307.16789.pdf#page=3)
+讲义用这两项研究说明工具使用能力可以通过数据构造和模型训练获得。Toolformer 筛选那些帮助后续文本预测的 API 调用，再进行语言模型训练；ToolLLM 包含 API 检索、指令和多步调用路径数据，并训练 ToolLLaMA。[L4，pp.37–38](slides/lec4%20-%20harness.pdf#page=37)；[TF，§2，pp.3–4](../readings/papers/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf#page=3)；[TL，§2–3，pp.3–7](../readings/papers/ToolLLM_Facilitating_Large_Language_Models_to_Master_16000+_Real-world_APIs.pdf#page=3)
 
 这与给冻结模型新增一个 API 描述是不同干预。一个工具可被服务器发现，不等于模型已学会适时调用；一个模型会输出合法参数，也不代表当前服务器能执行。下周将把模型能力、接口设计和运行时职责放回同一执行链。
 
@@ -307,7 +307,7 @@ CLM 把活动上下文暴露为文件，让模型使用代码或命令编辑；�
 | ASI | 诱导并验证程序形式的技能，再纳入动作空间 | 技能的真实调用和执行证据是关键 |
 | PolySkill | 把技能的抽象目标与网站/环境具体实现分开 | 可复用接口不应隐藏环境适配条件 |
 
-讲义第 40–43 页连接这三种方向。它们不构成跨论文同环境的排行榜；训练数据、任务、模型和验证过程各不相同。[L4，pp.40–43](slides/lec4%20-%20harness.pdf#page=40)；[AWM，§2–3](references/004_Agent_Workflow_Memory_AWM.pdf#page=3)；[ASI，§2–3](references/005_Agent_Skill_Induction_ASI.pdf#page=3)；[PS，§3](references/013_PolySkill.pdf#page=4)
+讲义第 40–43 页连接这三种方向。它们不构成跨论文同环境的排行榜；训练数据、任务、模型和验证过程各不相同。[L4，pp.40–43](slides/lec4%20-%20harness.pdf#page=40)；[AWM，§2–3](references/Agent_Workflow_Memory.pdf#page=3)；[ASI，§2–3](references/Inducing_Programmatic_Skills_for_Agentic_Tasks.pdf#page=3)；[PS，§3](references/PolySkill_Learning_Generalizable_Skills_Through_Polymorphic_Abstraction.pdf#page=4)
 
 三者的操作链也不同。AWM 将轨迹中的固定实例值抽象为变量，诱导自然语言工作流，后续由 Agent 读工作流再选择底层动作；它提供过程提示，并不会自动把这些文字变成一次可执行调用。ASI 则把被判为成功的轨迹清理后诱导为 Python 函数，重写原轨迹以强制使用新技能，并截掉最后一次技能调用之后的旧原始动作，让 Agent 重新完成结尾，避免照搬旧答案导致伪成功。入库检查同时要求任务被判成功、至少调用新技能、调用确实改变环境。[AWM，§2，pp.3–4；ASI，§2.2–2.3，pp.3–4]
 
@@ -319,7 +319,7 @@ PolySkill 在这个验证链上增加领域抽象父类与网站子类：跨网�
 
 ### 7.5 Voyager 把技能库与主动探索连接起来
 
-Voyager 将自动课程、可执行技能库和交互式程序修正组合在 Minecraft 环境中。新任务推动技能生成，执行反馈和验证帮助修改程序，已验证程序以描述为检索入口加入技能库，未来任务可组合复用。[L4，pp.44–45](slides/lec4%20-%20harness.pdf#page=44)；[V，§2，pp.3–5](../readings/papers/2305.16291.pdf#page=3)
+Voyager 将自动课程、可执行技能库和交互式程序修正组合在 Minecraft 环境中。新任务推动技能生成，执行反馈和验证帮助修改程序，已验证程序以描述为检索入口加入技能库，未来任务可组合复用。[L4，pp.44–45](slides/lec4%20-%20harness.pdf#page=44)；[V，§2，pp.3–5](../readings/papers/VOYAGER_An_Open-Ended_Embodied_Agent_with_Large_Language_Models.pdf#page=3)
 
 它提示我们：当现有任务无法产生新能力的练习机会时，可以主动选择任务来积累技能。但课程生成器也会引入分布选择偏差。若 Agent 只选择容易成功的任务，技能数量增长并不意味着解决真实业务任务的能力增长。应同时报告课程探索覆盖和预先定义目标任务的迁移表现。
 
@@ -327,7 +327,7 @@ Voyager 将自动课程、可执行技能库和交互式程序修正组合在 Mi
 
 ### 8.1 输入在外部环境中，而不是全塞入一次调用
 
-RLM 将长输入存为外部环境中的变量，让模型用程序检查、切片、构造子问题，并在程序中发起递归模型调用。它的关键差异包括：原始长输入不必全进入模型窗口、子调用可由程序批量构造、中间结果和最终输出可以保存在符号状态中。[RLM，§2、算法 1–2，pp.3–4](../readings/papers/2512.24601.pdf#page=3)
+RLM 将长输入存为外部环境中的变量，让模型用程序检查、切片、构造子问题，并在程序中发起递归模型调用。它的关键差异包括：原始长输入不必全进入模型窗口、子调用可由程序批量构造、中间结果和最终输出可以保存在符号状态中。[RLM，§2、算法 1–2，pp.3–4](../readings/papers/Recursive_Language_Models.pdf#page=3)
 
 教学例子：分析大型代码库时，根调用只看到任务和索引；程序按模块读取实现，用子调用分析特定接口，把发现存成结构化记录，再汇总交叉依赖。这个过程改变了计算组织方式，没有让单次 Transformer 注意力无损扩展到无限长度。
 
@@ -355,15 +355,15 @@ RLM 也不能简单等同于“加一个 subagent 工具”。若根模型需要
 
 ### 9.1 Meta-Harness：诊断材料也是搜索空间的一部分
 
-Meta-Harness 让 proposer 读取保存于文件系统中的候选代码、执行轨迹和评分，再提出新 Harness。候选通过接口检查后执行评估，全部结果继续进入历史文件系统。它保留大量可选择访问的反馈，外循环可修改提示、检索、记忆和完整程序结构。[L4，pp.46–50](slides/lec4%20-%20harness.pdf#page=46)；[MH，§3，pp.4–5](../readings/papers/2603.28052.pdf#page=4)
+Meta-Harness 让 proposer 读取保存于文件系统中的候选代码、执行轨迹和评分，再提出新 Harness。候选通过接口检查后执行评估，全部结果继续进入历史文件系统。它保留大量可选择访问的反馈，外循环可修改提示、检索、记忆和完整程序结构。[L4，pp.46–50](slides/lec4%20-%20harness.pdf#page=46)；[MH，§3，pp.4–5](../readings/papers/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf#page=4)
 
 第 46 页的“约 10M token 反馈”应理解为某次评估所生成的诊断材料规模，不是要求每次把 10M token 全放进 proposer 输入。文件系统的作用是保留可追溯历史并支持选择性读取。工程上仍需记录 proposer 实际读了多少、花了多少，以及这些成本是否抵得上候选收益。
 
-论文在在线文本分类、数学推理和 Coding Agent 等设置中报告结果；各设置的任务、底座模型、搜索预算和指标不同。跨任务结果说明搜索机制具有适用范围，但不能当作一个统一“Meta-Harness 提升率”。[MH，§4，pp.6–9](../readings/papers/2603.28052.pdf#page=6)
+论文在在线文本分类、数学推理和 Coding Agent 等设置中报告结果；各设置的任务、底座模型、搜索预算和指标不同。跨任务结果说明搜索机制具有适用范围，但不能当作一个统一“Meta-Harness 提升率”。[MH，§4，pp.6–9](../readings/papers/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf#page=6)
 
 ### 9.2 DGM：保留多样候选，允许跨过暂时无益的中间状态
 
-DGM 维护不断增长的 Agent 档案，从档案选择父代，让它修改自己的代码，再用任务表现作经验检验。保留多样中间产物有助于探索不同改进路线；这与每次只接受当前最优版本的贪心更新不同。[DGM，§3，pp.4–6](../readings/papers/2505.22954.pdf#page=4)
+DGM 维护不断增长的 Agent 档案，从档案选择父代，让它修改自己的代码，再用任务表现作经验检验。保留多样中间产物有助于探索不同改进路线；这与每次只接受当前最优版本的贪心更新不同。[DGM，§3，pp.4–6](../readings/papers/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf#page=4)
 
 档案也有准入门槛：新 Agent 必须能编译并保留修改代码库的基本能力，才能继续作为父代；论文还使用分阶段任务评测控制搜索成本。它不是把所有损坏候选都加入库。外部的档案维护与父代选择循环在本工作中固定，不属于 Agent 可改写的自身代码；因此“自修改”并非所有层级都无限开放。[DGM，§3、§4.2，pp.4–6]
 
@@ -373,13 +373,13 @@ DGM 维护不断增长的 Agent 档案，从档案选择父代，让它修改自
 
 ### 9.3 Continual Harness：环境不重置时，怎样在线演化
 
-Continual Harness 在持续执行过程中周期性读取近期轨迹，更新系统提示、子 Agent、技能和记忆。其基本适配循环可以冻结模型；扩展的共同学习流程再对模型进行训练。论文图 2 和 §3 明确区分了两层更新。[CH，§2–3，pp.3–5](../readings/papers/2605.09998.pdf#page=3)
+Continual Harness 在持续执行过程中周期性读取近期轨迹，更新系统提示、子 Agent、技能和记忆。其基本适配循环可以冻结模型；扩展的共同学习流程再对模型进行训练。论文图 2 和 §3 明确区分了两层更新。[CH，§2–3，pp.3–5](../readings/papers/Continual_Harness_Online_Adaptation_for_Self-Improving_Foundation_Agents.pdf#page=3)
 
 不重置环境更接近真实长任务，但评估变难：后半程进步可能来自环境推进、已解决的前置任务或状态更容易，而不全是新 Harness 的贡献。应保留检查点，在可恢复的相同环境状态比较版本；无法恢复时，至少使用多个运行、里程碑和更新前后轨迹诊断，并承认归因范围。
 
 ### 9.4 Harness 更新能力与 Harness 受益能力是两件事
 
-HB 交叉变化 task-solving agent 与 evolver，并定义更新者对锚定 Agent 集合的平均增益，以及执行者从锚定更新者集合中获得的最大增益。论文中的模式是：更新质量不随基础解题能力简单单调增长，受益程度也依赖执行者的激活和遵循能力。[HB，§3–4，pp.3–8](../readings/papers/2605.30621.pdf#page=3)
+HB 交叉变化 task-solving agent 与 evolver，并定义更新者对锚定 Agent 集合的平均增益，以及执行者从锚定更新者集合中获得的最大增益。论文中的模式是：更新质量不随基础解题能力简单单调增长，受益程度也依赖执行者的激活和遵循能力。[HB，§3–4，pp.3–8](../readings/papers/Harness_Updating_Is_Not_Harness_Benefit_Disentangling_Evolution_Capabilities_in_Self-Evolving_LLM_Agents.pdf#page=3)
 
 这里的交叉配对不等于把一份固定技能无条件移植给所有模型：最终 Harness 记为 $H_T^{(f,e)}$，由执行者 $f$ 的轨迹和更新者 $e$ 共同产生。论文实测采用 **in-situ** 协议：先用当前 Harness 解当前批次并评分，再用其证据更新，最后汇总任务流分数。这与另留独立任务、冻结最终 Harness 后再测的工程泛化实验不同；后者仍需另做，不能把其收益直接归给论文已验证。[HB，§3.3、§4.1，pp.4–5]
 
@@ -414,7 +414,7 @@ HB 交叉变化 task-solving agent 与 evolver，并定义更新者对锚定 Age
 
 ### 11.1 Harness 优化目标不应只有开发集成功率
 
-Meta-Harness 论文明确讨论期望奖励和多目标 Pareto 前沿。工程中可以把候选目标写成约束优化：[MH，§3，p.4](../readings/papers/2603.28052.pdf#page=4)
+Meta-Harness 论文明确讨论期望奖励和多目标 Pareto 前沿。工程中可以把候选目标写成约束优化：[MH，§3，p.4](../readings/papers/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf#page=4)
 
 $$
 \max_H\ \mathbb E_{x\sim D_{\rm target}}[Q(M,H,x)]
@@ -442,7 +442,7 @@ $$
 - **结构变化：**新仓库、新 API、新任务长度或不同错误组合。
 - **执行者变化：**同一技能换到另一模型或 Harness。
 
-这三类迁移应分别测。一个经验在原仓库中有效，并不说明它能跨网站工作；跨模型可加载，也不证明跨模型同等受益。HB 和 PolySkill 从不同方面展示了为何“可保存、可移植、可有效复用”必须分开判断。[HB，§4](../readings/papers/2605.30621.pdf#page=5)；[PS，§3–4](references/013_PolySkill.pdf#page=4)
+这三类迁移应分别测。一个经验在原仓库中有效，并不说明它能跨网站工作；跨模型可加载，也不证明跨模型同等受益。HB 和 PolySkill 从不同方面展示了为何“可保存、可移植、可有效复用”必须分开判断。[HB，§4](../readings/papers/Harness_Updating_Is_Not_Harness_Benefit_Disentangling_Evolution_Capabilities_in_Self-Evolving_LLM_Agents.pdf#page=5)；[PS，§3–4](references/PolySkill_Learning_Generalizable_Skills_Through_Polymorphic_Abstraction.pdf#page=4)
 
 ## 12. 最小实现：把记忆更新当成可审查的状态变更
 
@@ -533,7 +533,7 @@ python3 MAS.S62/5.HarnessEvolution1/examples/versioned_memory.py
 
 一个很有诊断价值的对照是直接把技能放进上下文。若强制提供有效而自动检索无效，瓶颈很可能在触发/选择；若两者都无效，则可能是内容不适用、表达不可执行、底座能力不足或评测错误。
 
-这与 HB 区分更新者和受益者的做法相呼应，但上述具体诊断流程是工程设计。[HB，§4.3，pp.6–8](../readings/papers/2605.30621.pdf#page=6)
+这与 HB 区分更新者和受益者的做法相呼应，但上述具体诊断流程是工程设计。[HB，§4.3，pp.6–8](../readings/papers/Harness_Updating_Is_Not_Harness_Benefit_Disentangling_Evolution_Capabilities_in_Self-Evolving_LLM_Agents.pdf#page=6)
 
 ### 13.4 用新实例判断经验是否泛化
 
@@ -586,7 +586,7 @@ python3 MAS.S62/5.HarnessEvolution1/examples/versioned_memory.py
 
 课程指定 HarnessTax，教程也用它提示：相同模型在不同 Harness 中可能质量相近而费用不同。本文把它作为成本比较的动机，不根据单一案例推导某套 Harness 永远更贵。[课表阅读入口](https://arena.ai/blog/coding-agents-harness-tax)；[下周教程 p.4](../6.HarnessEvolution2/tutorials/harness%20engineering%20tutorial.pdf#page=4)
 
-本地归档文章的具体设置是：7 个模型 × 3 个 Harness，共 21 组；每个基准抽取 30 个任务，每题运行 3 次，使用各 Harness 自己的 high-effort 配置与 100-turn 上限，按固定的 2026-09-01 直接 API 价表估算费用。文章也说明 turn 和 effort 的含义随 Harness 而异，因此这属于受控工作负载比较，不是严格相等的推理计算量，也不足以证明所有任务上的质量等价。读其成本结论时应保留任务样本、价格日期和配置条件。[HarnessTax，本地归档](readings/008_HarnessTax_How_Much_Does_the_Harness_Matter_for_Coding_Agents_arena_ai_blog_coding_agents_harness_tax_c2dd74e6.html)
+本地归档文章的具体设置是：7 个模型 × 3 个 Harness，共 21 组；每个基准抽取 30 个任务，每题运行 3 次，使用各 Harness 自己的 high-effort 配置与 100-turn 上限，按固定的 2026-09-01 直接 API 价表估算费用。文章也说明 turn 和 effort 的含义随 Harness 而异，因此这属于受控工作负载比较，不是严格相等的推理计算量，也不足以证明所有任务上的质量等价。读其成本结论时应保留任务样本、价格日期和配置条件。[HarnessTax，本地归档](readings/HarnessTax_How_Much_Does_the_Harness_Matter_for_Coding_Agents.html)
 
 工程实验至少拆分：新增输入、额外模型轮数、子 Agent、工具/测试执行、搜索候选评估、日志存储和在线适配。只有总费用，没有分项，就无法知道改进来自少走弯路还是转移了成本。
 
@@ -646,24 +646,24 @@ python3 MAS.S62/5.HarnessEvolution1/examples/versioned_memory.py
 |---|---|---|
 | L4 | [主讲义，53页](slides/lec4%20-%20harness.pdf)，[原站](https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec4%20-%20harness.pdf) | pp.4–53；章节对应表列出全部教学主题 |
 | G | [Alex Zhang 嘉宾，23页](slides/harness_guest.pdf)，[原站](https://mit-mi.github.io/how2ai-course/fall2026/schedule/harness_guest.pdf) | pp.3–23，图示与研究问题 |
-| M1 | [MEM1，23页](../readings/papers/2506.15841.pdf)，[arXiv:2506.15841v2](https://arxiv.org/abs/2506.15841v2) | §3–4，状态压缩、训练掩码和任务结果奖励 |
-| REF | [Reflexion，19页](../readings/papers/2303.11366.pdf)，[arXiv](https://arxiv.org/abs/2303.11366) | §3，执行、评价、反思与语言记忆 |
-| CLM | [Context Language Models，27页](../readings/papers/2609.37725.pdf)，[v1](https://arxiv.org/abs/2609.37725v1) | §3 的诊断任务、§4 的上下文编辑/训练/缓存、§5 的实验 |
-| RLM | [Recursive Language Models，43页](../readings/papers/2512.24601.pdf)，[v3](https://arxiv.org/abs/2512.24601v3) | §2、算法1–2；外置输入与程序化递归 |
-| MH | [Meta-Harness，26页](../readings/papers/2603.28052.pdf)，[v1](https://arxiv.org/abs/2603.28052v1) | §3–4，文件反馈、候选验证与多任务设置 |
-| DGM | [Darwin Gödel Machine，72页](../readings/papers/2505.22954.pdf)，[v3](https://arxiv.org/abs/2505.22954v3) | §3，档案、父代选择和经验检验 |
-| CH | [Continual Harness，28页](../readings/papers/2605.09998.pdf)，[v1](https://arxiv.org/abs/2605.09998v1) | §2–4，reset-free 内循环及共同训练 |
-| HB | [Harness Updating Is Not Harness Benefit，24页](../readings/papers/2605.30621.pdf)，[v1](https://arxiv.org/abs/2605.30621v1) | §3–4，交叉变化更新者/执行者、指标与失败机制 |
-| MG | [MemGPT，13页](references/003_MemGPT.pdf)，[arXiv](https://arxiv.org/abs/2310.08560) | §2，层级存储与控制流 |
-| M0 | [Mem0，23页](references/001_Mem0.pdf)，[arXiv](https://arxiv.org/abs/2504.19413) | 事实提取、更新与图记忆 |
-| EXP | [ExpeL，38页](references/003_ExpeL.pdf)，[arXiv](https://arxiv.org/abs/2308.10144) | §4.1–4.3，跨任务经验提取、更新算子与检索 |
-| CA | [CodeAct，25页](references/002_CodeAct.pdf)，[arXiv](https://arxiv.org/abs/2402.01030) | §2，代码行动的控制与数据流 |
-| TF | [Toolformer](../readings/papers/2302.04761.pdf)，[arXiv](https://arxiv.org/abs/2302.04761) | §2，调用筛选与模型训练 |
-| TL | [ToolLLM](../readings/papers/2307.16789.pdf)，[arXiv](https://arxiv.org/abs/2307.16789) | §2–3，数据、检索与工具调用路径 |
-| AWM | [Agent Workflow Memory](references/004_Agent_Workflow_Memory_AWM.pdf)，[arXiv](https://arxiv.org/abs/2409.07429) | §2–3，工作流诱导与使用 |
-| ASI | [Inducing Programmatic Skills](references/005_Agent_Skill_Induction_ASI.pdf)，[arXiv](https://arxiv.org/abs/2504.06821) | §2–3，程序技能与验证 |
-| PS | [PolySkill](references/013_PolySkill.pdf)，[arXiv](https://arxiv.org/abs/2510.15863) | §3–4，抽象接口与环境实现分离 |
-| V | [Voyager，42页](../readings/papers/2305.16291.pdf)，[v2](https://arxiv.org/abs/2305.16291v2) | §2，自动课程、技能库和执行反馈 |
+| M1 | [MEM1，23页](../readings/papers/MEM1_Learning_to_Synergize_Memory_and_Reasoning_for_Efficient_Long-Horizon_Agents.pdf)，[arXiv:2506.15841v2](https://arxiv.org/abs/2506.15841v2) | §3–4，状态压缩、训练掩码和任务结果奖励 |
+| REF | [Reflexion，19页](../readings/papers/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf)，[arXiv](https://arxiv.org/abs/2303.11366) | §3，执行、评价、反思与语言记忆 |
+| CLM | [Context Language Models，27页](../readings/papers/Context_Language_Models.pdf)，[v1](https://arxiv.org/abs/2609.37725v1) | §3 的诊断任务、§4 的上下文编辑/训练/缓存、§5 的实验 |
+| RLM | [Recursive Language Models，43页](../readings/papers/Recursive_Language_Models.pdf)，[v3](https://arxiv.org/abs/2512.24601v3) | §2、算法1–2；外置输入与程序化递归 |
+| MH | [Meta-Harness，26页](../readings/papers/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf)，[v1](https://arxiv.org/abs/2603.28052v1) | §3–4，文件反馈、候选验证与多任务设置 |
+| DGM | [Darwin Gödel Machine，72页](../readings/papers/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf)，[v3](https://arxiv.org/abs/2505.22954v3) | §3，档案、父代选择和经验检验 |
+| CH | [Continual Harness，28页](../readings/papers/Continual_Harness_Online_Adaptation_for_Self-Improving_Foundation_Agents.pdf)，[v1](https://arxiv.org/abs/2605.09998v1) | §2–4，reset-free 内循环及共同训练 |
+| HB | [Harness Updating Is Not Harness Benefit，24页](../readings/papers/Harness_Updating_Is_Not_Harness_Benefit_Disentangling_Evolution_Capabilities_in_Self-Evolving_LLM_Agents.pdf)，[v1](https://arxiv.org/abs/2605.30621v1) | §3–4，交叉变化更新者/执行者、指标与失败机制 |
+| MG | [MemGPT，13页](references/MemGPT_Towards_LLMs_as_Operating_Systems.pdf)，[arXiv](https://arxiv.org/abs/2310.08560) | §2，层级存储与控制流 |
+| M0 | [Mem0，23页](references/Mem0_Building_Production-Ready_AI_Agents_with_Scalable_Long-Term_Memory.pdf)，[arXiv](https://arxiv.org/abs/2504.19413) | 事实提取、更新与图记忆 |
+| EXP | [ExpeL，38页](references/ExpeL_LLM_Agents_Are_Experiential_Learners.pdf)，[arXiv](https://arxiv.org/abs/2308.10144) | §4.1–4.3，跨任务经验提取、更新算子与检索 |
+| CA | [CodeAct，25页](references/Executable_Code_Actions_Elicit_Better_LLM_Agents.pdf)，[arXiv](https://arxiv.org/abs/2402.01030) | §2，代码行动的控制与数据流 |
+| TF | [Toolformer](../readings/papers/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf)，[arXiv](https://arxiv.org/abs/2302.04761) | §2，调用筛选与模型训练 |
+| TL | [ToolLLM](../readings/papers/ToolLLM_Facilitating_Large_Language_Models_to_Master_16000+_Real-world_APIs.pdf)，[arXiv](https://arxiv.org/abs/2307.16789) | §2–3，数据、检索与工具调用路径 |
+| AWM | [Agent Workflow Memory](references/Agent_Workflow_Memory.pdf)，[arXiv](https://arxiv.org/abs/2409.07429) | §2–3，工作流诱导与使用 |
+| ASI | [Inducing Programmatic Skills](references/Inducing_Programmatic_Skills_for_Agentic_Tasks.pdf)，[arXiv](https://arxiv.org/abs/2504.06821) | §2–3，程序技能与验证 |
+| PS | [PolySkill](references/PolySkill_Learning_Generalizable_Skills_Through_Polymorphic_Abstraction.pdf)，[arXiv](https://arxiv.org/abs/2510.15863) | §3–4，抽象接口与环境实现分离 |
+| V | [Voyager，42页](../readings/papers/VOYAGER_An_Open-Ended_Embodied_Agent_with_Large_Language_Models.pdf)，[v2](https://arxiv.org/abs/2305.16291v2) | §2，自动课程、技能库和执行反馈 |
 
 ### 附录 B｜术语速查
 

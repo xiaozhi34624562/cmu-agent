@@ -2289,7 +2289,7 @@ Transluce／Docent。[官方文章](https://transluce.org/docent/blog/terminal-b
 <a id="ref-r10"></a>
 #### R10 · Hodoscope: Unsupervised Monitoring for AI Misbehaviors
 
-[论文入口](https://arxiv.org/abs/2604.11072)。附件：[004_Hodoscope_Unsupervised_Monitoring_for_AI_Misbehaviors.pdf](readings/004_Hodoscope_Unsupervised_Monitoring_for_AI_Misbehaviors.pdf)。归档为 **arXiv:2604.11072v1，2026-04-13**；本文表值对应这一预印本版本。
+[论文入口](https://arxiv.org/abs/2604.11072)。附件：[Hodoscope_Unsupervised_Monitoring_for_AI_Misbehaviors.pdf](readings/Hodoscope_Unsupervised_Monitoring_for_AI_Misbehaviors.pdf)。归档为 **arXiv:2604.11072v1，2026-04-13**；本文表值对应这一预印本版本。
 
 **作用**：动作摘要、embedding、共同投影、KDE、密度差、加权 FPS、三个测试环境、表 1—3 和方法局限。
 

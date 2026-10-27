@@ -46,7 +46,7 @@
 
 ## 2. OWASP提供风险索引，机制仍需回到数据与能力
 
-[OWASP Top10 for Agentic Applications2026](readings/001_OWASP_agentic_top_10_d0e80b.pdf) 是December2025、Version2026的实践风险文件，不是一次统一benchmark或概率排行。它强调least agency：除了最小权限，还只给任务所需的自主性。拥有某个工具不表示每轮都可以任意调用它，多个工具组合后的能力也可能大于单个工具表面功能。
+[OWASP Top10 for Agentic Applications2026](readings/OWASP_Top_10_For_Agentic_Applications_2026.pdf) 是December2025、Version2026的实践风险文件，不是一次统一benchmark或概率排行。它强调least agency：除了最小权限，还只给任务所需的自主性。拥有某个工具不表示每轮都可以任意调用它，多个工具组合后的能力也可能大于单个工具表面功能。
 
 | 编号 | 风险 | 在贯穿案例中看哪里 | 常见约束对象 |
 |---|---|---|---|
@@ -69,7 +69,7 @@
 
 ### 3.1 间接提示注入：攻击者不必成为用户
 
-[Indirect PI](readings/002_indirect_prompt_injection_e8cc7f.pdf) 的关键洞见是：LLM应用把检索文档、网页、邮件、代码注释和工具结果放进与任务相邻的上下文，自然语言同时承担“内容”和“控制”。攻击者可以修改未来会被读到的内容，间接影响动作，不必直接给用户对话发指令。
+[Indirect PI](readings/Not_what_you_ve_signed_up_for_Compromising_Real-World_LLM-Integrated_Applications_with_Indirect_Prompt_Injection.pdf) 的关键洞见是：LLM应用把检索文档、网页、邮件、代码注释和工具结果放进与任务相邻的上下文，自然语言同时承担“内容”和“控制”。攻击者可以修改未来会被读到的内容，间接影响动作，不必直接给用户对话发指令。
 
 原文展示Bing集成、代码补全及合成LLM应用等案例，说明跨应用边界普遍存在这种机制。这是演示性安全研究，不是从随机抽样产品得到一个全球失败率。研究中的某个成功案例证明存在可利用路径，不能推断所有配置都同概率失守。
 
@@ -79,7 +79,7 @@
 
 ### 3.2 AgentPoison：从一次读取变成长期触发
 
-[AgentPoison](readings/003_AgentPoison_e94011.pdf) §3.2假设攻击者可向RAG/记忆数据库注入少量样本，且主要攻击设定可white-box访问retriever embedder以优化trigger；论文另测向其他embedder转移。它不要求受害模型微调，但并不意味着攻击者既不能写数据库、也不用影响查询就能攻击。
+[AgentPoison](readings/AgentPoison_Red-teaming_LLM_Agents_via_Poisoning_Memory_or_Knowledge_Bases.pdf) §3.2假设攻击者可向RAG/记忆数据库注入少量样本，且主要攻击设定可white-box访问retriever embedder以优化trigger；论文另测向其他embedder转移。它不要求受害模型微调，但并不意味着攻击者既不能写数据库、也不用影响查询就能攻击。
 
 用D表示干净库，A(τ)表示含trigger τ的恶意key-value示例，污染库为D'=D∪A(τ)。查询中含τ时，优化目标让它进入与正常查询分离的embedding区域，retrieval更易取到恶意示例；正常查询仍取正常邻居。攻击同时追求触发时恶意行为高、干净性能低变化、trigger合理且检索稳定。
 
@@ -91,7 +91,7 @@
 
 ### 3.3 多Agent控制流劫持：局部安全不会自动组合
 
-[Multi-Agent Systems Execute Arbitrary Malicious Code](readings/004_multi_agent_code_execution_af3dee.pdf) 研究的不只是某一Agent读到坏话，而是一个Agent的状态/错误叙述使orchestrator指挥另一有执行能力的Agent。文件读取器报告“必须先执行某文件才能读取”之类依赖，协调器把它当作修复建议，执行器实际运行；权限跨越发生在消息传递与任务重分配时。
+[Multi-Agent Systems Execute Arbitrary Malicious Code](readings/Multi-Agent_Systems_Execute_Arbitrary_Malicious_Code.pdf) 研究的不只是某一Agent读到坏话，而是一个Agent的状态/错误叙述使orchestrator指挥另一有执行能力的Agent。文件读取器报告“必须先执行某文件才能读取”之类依赖，协调器把它当作修复建议，执行器实际运行；权限跨越发生在消息传递与任务重分配时。
 
 这属于confused deputy：有权执行动作的组件被较低权限信息诱导，代其完成攻击目标。每个子Agent分别通过某些direct/indirectpromptinjection测试，并不能证明整个组合安全，因为攻击影响的是他们之间的协议。
 
@@ -101,7 +101,7 @@
 
 ## 4. 自适应攻击：安全结果必须有预算曲线
 
-[The Attacker Moves Second](readings/005_adaptive_attacks_16ebd8.pdf) 批评防御用固定弱攻击证明稳健。攻击者知道防御后，可选择新策略、调参、搜索、利用输出反馈，成功率就可能大幅变化。论文对12种防御使用梯度、RL、搜索和人工探索，报告大部分在其强自适应预算下超过90%ASR。这里“大部分”不能写成全部，每种防御的访问假设与资源也不相同。
+[The Attacker Moves Second](readings/The_Attacker_Moves_Second_Stronger_Adaptive_Attacks_Bypass_Defenses_Against_LLM_Jailbreaks_and_Prompt_Injections.pdf) 批评防御用固定弱攻击证明稳健。攻击者知道防御后，可选择新策略、调参、搜索、利用输出反馈，成功率就可能大幅变化。论文对12种防御使用梯度、RL、搜索和人工探索，报告大部分在其强自适应预算下超过90%ASR。这里“大部分”不能写成全部，每种防御的访问假设与资源也不相同。
 
 White-box、black-boxwithlogits、generation-onlyblack-box是不同实验。把梯度攻击的最终成功率与另一方法一次generation-only尝试比较，会把预算差异误当防御强弱。防御评估至少报告：攻击者可见信息、可改动位置、是否知道system prompt、尝试次数、总tokens/计算、选择最佳攻击的验证/测试切分。
 
@@ -115,7 +115,7 @@ White-box、black-boxwithlogits、generation-onlyblack-box是不同实验。把�
 
 ## 5. Instruction Hierarchy：让模型学会权限，但不把偏好当访问控制
 
-[Instruction Hierarchy](readings/006_instruction_hierarchy_3f2d6b.pdf) 定义高低权限指令冲突时如何选择。其研究里的优先关系包括system、user、modeloutputs和tooloutputs。低权限不是永远无效：用户让销售bot用西班牙语回答，只要不冲突就应服从；网页要求改写system任务则不应服从。
+[Instruction Hierarchy](readings/The_Instruction_Hierarchy_Training_LLMs_to_Prioritize_Privileged_Instructions.pdf) 定义高低权限指令冲突时如何选择。其研究里的优先关系包括system、user、modeloutputs和tooloutputs。低权限不是永远无效：用户让销售bot用西班牙语回答，只要不冲突就应服从；网页要求改写system任务则不应服从。
 
 训练分别构造aligned和misaligned数据。前者把一个可组合任务的子要求放在不同层级，教模型利用兼容指令；后者给低权限层注入冲突，目标响应则像冲突内容不存在一样完成任务。模型经过SFT和RLHF，学习来源角色与冲突处理。
 
@@ -127,7 +127,7 @@ Figure4又展示过度拒绝：一类允许但类似jailbreak的输入compliance
 
 ## 6. CaMeL：将控制流、数据流与能力从自然语言里取出来
 
-[CaMeL](readings/007_CaMeL_24ca29.pdf) 的关键不是“两个LLM互相检查”，而是不同组件看不同信息、拿不同能力，且由解释器执行策略。Privileged LLM(P-LLM)只从可信任务生成程序，不读运行时不可信工具正文；Quarantined LLM(Q-LLM)处理这些正文并返回结构化数据，没有工具能力；解释器跟踪值的来源/读者并在每次工具调用前检查。
+[CaMeL](readings/Defeating_Prompt_Injections_by_Design.pdf) 的关键不是“两个LLM互相检查”，而是不同组件看不同信息、拿不同能力，且由解释器执行策略。Privileged LLM(P-LLM)只从可信任务生成程序，不读运行时不可信工具正文；Quarantined LLM(Q-LLM)处理这些正文并返回结构化数据，没有工具能力；解释器跟踪值的来源/读者并在每次工具调用前检查。
 
 ### 6.1 读Figure5：数据可以影响参数，不能任意变成代码
 
@@ -162,7 +162,7 @@ Q-LLM输出schema失败、信息不足、工具报错时，解释器可以要求
 
 ## 7. 六种安全设计模式：根据任务放弃哪些自由度
 
-[DesignPatterns](readings/008_securing_agents_against_prompt_injection_ce553e.pdf) 强调：不可信输入一旦进入模型，系统就要约束它无法通向不允许的consequentialactions。不同模式通过限制表达能力和反馈路径获得条件性性质，并不是每一种都保证所有意义上的promptinjection完全消失。
+[DesignPatterns](readings/Design_Patterns_for_Securing_LLM_Agents_against_Prompt_Injections.pdf) 强调：不可信输入一旦进入模型，系统就要约束它无法通向不允许的consequentialactions。不同模式通过限制表达能力和反馈路径获得条件性性质，并不是每一种都保证所有意义上的promptinjection完全消失。
 
 | 模式 | 机制 | 适合任务 | 失去或仍需检查的东西 |
 |---|---|---|---|
@@ -187,7 +187,7 @@ Schema检查类型与结构，不能判断来源权限；sandbox限制执行器�
 
 ### 8.1 AI Control换了威胁：模型本身可能有意规避
 
-[AI Control](readings/009_AI_control_187aaa.pdf) 用强但不可信模型、较弱可信模型与少量高质量可信劳动，测试协议能否在能力模型有意插入后门时保持安全。此处攻击者不是邮件里的一段文本，而是可以替换不可信模型行为策略。把它与普通外部promptinjection的ASR并列排名没有意义。
+[AI Control](readings/AI_Control_Improving_Safety_Despite_Intentional_Subversion.pdf) 用强但不可信模型、较弱可信模型与少量高质量可信劳动，测试协议能否在能力模型有意插入后门时保持安全。此处攻击者不是邮件里的一段文本，而是可以替换不可信模型行为策略。把它与普通外部promptinjection的ASR并列排名没有意义。
 
 研究设想的协议场景包含5000道APPS问题，GPT-4作为强不可信模型，GPT-3.5为可信模型，高质量劳动以GPT-4模拟，常规预算足够审计约2%问题。Safety是整个序列没有提交成功后门的概率；usefulness按普通解题正确率相对于可信/不可信基线重标。它不是“每个样本被监控器正确分类的准确率”。
 
@@ -199,7 +199,7 @@ Trustedmonitoring让可信模型打可疑分，再把高分项送审；defer/替
 
 ### 8.2 AgentDojo同时测任务完成与攻击目标
 
-[AgentDojo](readings/010_AgentDojo_c70d6a.pdf) 包含97个正常任务、629个security cases，用有状态工具环境和可执行状态检查评utility/security。每个security case定义用户目标、攻击者目标、可注入endpoint等，不能只凭模型最后一句“我没有泄密”评分。
+[AgentDojo](readings/AgentDojo_A_Dynamic_Environment_to_Evaluate_Prompt_Injection_Attacks_and_Defenses_for_LLM_Agents.pdf) 包含97个正常任务、629个security cases，用有状态工具环境和可执行状态检查评utility/security。每个security case定义用户目标、攻击者目标、可注入endpoint等，不能只凭模型最后一句“我没有泄密”评分。
 
 要区分benign utility、utility under attack、targeted ASR和untargetedfailure。防御把所有工具禁用，targeted ASR可能很低，但正常工作也无法完成。攻击没有实现指定泄密，却让代理拒绝正常摘要，仍可能构成untargeted拒绝服务。两种现象应分别记录。
 
@@ -243,7 +243,7 @@ AgentDojo是可扩展环境，不是永远够用的固定629条列表。新工�
 
 ### 10.1 Reflexion把失败转成可读的下一次提示
 
-[Reflexion](readings/011_Reflexion_1df60a.pdf) 由actor、evaluator、self-reflection组件协作。Actor产生轨迹；evaluator提供任务结果或启发式；reflector结合轨迹与反馈写出可操作反思；下一attempt读取反思后重新执行。权重保持不变，反馈影响的是上下文。
+[Reflexion](readings/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf) 由actor、evaluator、self-reflection组件协作。Actor产生轨迹；evaluator提供任务结果或启发式；reflector结合轨迹与反馈写出可操作反思；下一attempt读取反思后重新执行。权重保持不变，反馈影响的是上下文。
 
 PDFp.3Figure1的例子包括：环境动作没成功，反思应纠正地点/动作假设；代码仅检查括号总数而忽略顺序，反思指出语义缺陷；问答答案过宽，反思要求核对共同职业。图中文字提取有编码问题，本文已目视核对，不能拿损坏的提取文本当原公式。
 
@@ -253,7 +253,7 @@ PDFp.3Figure1的例子包括：环境动作没成功，反思应纠正地点/动
 
 ### 10.2 Self-Refine在没有外部奖励时修订输出
 
-[Self-Refine](readings/012_Self_Refine_5ef9bd.pdf) Algorithm1把同一模型用于generate→feedback→refine，持续迭代直到停止。它可以在对话、可读性、代码优化等目标上提供有用改进，无需额外训练一个critic。输出、feedback和历史如何进入下一轮是算法的一部分。
+[Self-Refine](readings/Self-Refine_Iterative_Refinement_with_Self-Feedback.pdf) Algorithm1把同一模型用于generate→feedback→refine，持续迭代直到停止。它可以在对话、可读性、代码优化等目标上提供有用改进，无需额外训练一个critic。输出、feedback和历史如何进入下一轮是算法的一部分。
 
 它不要求环境失败信号，这是与Reflexion常见用法的重要差别。但同一模型生成和批评有相关盲点：如果它不知道某API或事实，换一个角色提示不必然补上知识。一个语言上更漂亮的修订也可能删去正确限定或引入新错，因此不能用“有feedback段落”当改进证据。
 
@@ -269,7 +269,7 @@ PDFp.3Figure1的例子包括：环境动作没成功，反思应纠正地点/动
 
 ### 11.1 ADAS把Agent表示成可搜索代码
 
-[ADAS](readings/013_ADAS_bf0b34.pdf) 将search space、search algorithm、evaluation function分开。Meta Agent Search让meta-agent读取已有Agent档案和分数，编写新的forward程序，运行验证后加入档案，再探索新设计。搜索的是模型调用与组合的程序，而非只改一条prompt。
+[ADAS](readings/Automated_Design_of_Agentic_Systems.pdf) 将search space、search algorithm、evaluation function分开。Meta Agent Search让meta-agent读取已有Agent档案和分数，编写新的forward程序，运行验证后加入档案，再探索新设计。搜索的是模型调用与组合的程序，而非只改一条prompt。
 
 这种表示能发现self-consistency、反思、角色分工等组合，也可能生成无意义复杂度、无效API或无限循环，因此接口、超时与资源限制属于搜索空间的一部分。执行候选程序是比读取候选prompt更强的能力，必须隔离。
 
@@ -279,7 +279,7 @@ PDFp.3Figure1的例子包括：环境动作没成功，反思应纠正地点/动
 
 ### 11.2 DGM让改进者本身也可以进化
 
-[Darwin Gödel Machine](readings/014_Darwin_Godel_Machine_f9ee97.pdf) 保留多个Agent版本，从档案挑parent，让它修改自己的代码，再用codingbenchmark评价child。它不用形式证明每次修改有益，而用经验验证；名称里的Gödel不能误导成已证明全局自改进安全。
+[Darwin Gödel Machine](readings/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf) 保留多个Agent版本，从档案挑parent，让它修改自己的代码，再用codingbenchmark评价child。它不用形式证明每次修改有益，而用经验验证；名称里的Gödel不能误导成已证明全局自改进安全。
 
 与固定meta-agent的ADAS不同，DGM的改进者可以来自已有改进过的档案，工具改进也可能提升未来修改能力。保留非最优parent提供探索分支，允许中间暂时退步的结构成为后续新方向。若只保留当前最优，容易陷在局部设计。
 
@@ -295,7 +295,7 @@ DGM另一个减少工具幻觉的实验出现候选通过移除检测所依赖�
 
 ## 12. ACE：让经验累积而不是在每次改写时塌缩
 
-[ACE](readings/015_ACE_f789bc.pdf) 将context视为playbook，不是每次把所有历史重写成一段更简短的system prompt。Generator执行任务并标记有帮助/有害条目；Reflector从轨迹提取具体insights；Curator提出局部delta，由确定性合并逻辑更新条目。
+[ACE](readings/Agentic_Context_Engineering_Evolving_Contexts_for_Self-Improving_Language_Models.pdf) 将context视为playbook，不是每次把所有历史重写成一段更简短的system prompt。Generator执行任务并标记有帮助/有害条目；Reflector从轨迹提取具体insights；Curator提出局部delta，由确定性合并逻辑更新条目。
 
 每个bullet有稳定ID、内容与helpful/harmful计数等元数据。局部修改保留未受影响细节，embedding去重/整理缓解冗余。这样可避免模型“为了简洁”反复压缩整个playbook，导致领域知识被擦掉。但条目越来越多仍有检索、context长度和维护成本，增量并不等于永不删除或永不出错。
 
@@ -311,7 +311,7 @@ PDFp.3Figure2的context collapse案例：一次AppWorld运行上下文从18282to
 
 ## 13. Meta-Harness：反馈接口决定搜索能看见什么
 
-[Meta-Harness](readings/016_Meta_Harness_9b9bdc.pdf) 把candidate源码、分数、完整execution traces保存为文件系统档案，proposer codingagent按需检索与读取，再提出下一个harness。它没有要求把数百万token全部塞进一次prompt，而是把大规模原始经验变成可访问外部工作区。
+[Meta-Harness](readings/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf) 把candidate源码、分数、完整execution traces保存为文件系统档案，proposer codingagent按需检索与读取，再提出下一个harness。它没有要求把数百万token全部塞进一次prompt，而是把大规模原始经验变成可访问外部工作区。
 
 设固定模型M、任务分布X、候选H，目标近似是最大化`E_x E_τ~p_M(H,x)[r(τ,x)]`。提出者要知道为什么某个H失败；若接口只给一个标量，无法区分检索漏证据、缓存错误还是输出格式；若只给有损摘要，早期决定导致的后期故障可能被压掉。原始trace保留追溯空间，工具式读取负责控制context成本。
 
@@ -333,7 +333,7 @@ Trajectory里可能有不可信网页、恶意文件名、模型推测和工具�
 
 ## 14. AHE：每次改变要有可证伪预测，而不只有事后解释
 
-[Agentic Harness Engineering(AHE)](readings/017_agentic_harness_engineering_56d6e4.pdf) 的三个可观测面与失败一一对应：component observability使可改部件文件化；experience observability把巨大trace组织成可下钻证据；decision observability要求每次edit带预测，再用下一轮task-level变化检查。
+[Agentic Harness Engineering(AHE)](readings/Agentic_Harness_Engineering_Observability-Driven_Automatic_Evolution_of_Coding-Agent_Harnesses.pdf) 的三个可观测面与失败一一对应：component observability使可改部件文件化；experience observability把巨大trace组织成可下钻证据；decision observability要求每次edit带预测，再用下一轮task-level变化检查。
 
 PDFp.4Figure2的NexAU将system prompt、tools、middleware、skills、sub-agent、long-termmemory等显式呈现。Rawtrace约千万token，overview约万token，agentdebugger帮助下钻。它与Meta-Harness不是“一个只用摘要、一个只用原文”的二选一；关键是精简视图能否保留回到原始证据的路径。
 
@@ -353,7 +353,7 @@ AHE分析指出tools、middleware、memory等各自贡献，而system prompt单�
 
 ## 15. Live-SWE-agent：把工具创建移到任务执行过程中
 
-[Live-SWE-agent](readings/018_Live_SWE_agent_76f20b.pdf) 从mini-SWE-agent的bash入口开始，初始prompt允许创建脚本工具，并在环境反馈后加入反思提示：是否有一个工具能帮助当前任务。Agent可写脚本、运行它、再用于当前问题，没有离线搜索阶段。
+[Live-SWE-agent](readings/Live-SWE-agent_Can_Software_Engineering_Agents_Self-Evolve_on_the_Fly.pdf) 从mini-SWE-agent的bash入口开始，初始prompt允许创建脚本工具，并在环境反馈后加入反思提示：是否有一个工具能帮助当前任务。Agent可写脚本、运行它、再用于当前问题，没有离线搜索阶段。
 
 例如反复查某类符号的跨文件引用，Agent可以写一个局部索引脚本；反复验证补丁格式，可以写检查器。工具成为当前任务的一种行动。这改善接口适配，但与改权重、离线发布一个跨任务最优harness不同。
 
@@ -504,23 +504,23 @@ Memory会积累，必须测长时间后条目冲突、过期与污染；代码�
 
 | 编号与材料 | 建议核查位置 | 本文承担的论证 |
 |---|---|---|
-| 01 [OWASP](readings/001_OWASP_agentic_top_10_d0e80b.pdf) | Version2026/December2025；ASI01–10与附录 | 风险索引与least agency；不是攻击概率排行 |
-| 02 [Indirect PI](readings/002_indirect_prompt_injection_e8cc7f.pdf) | taxonomy、§Evaluation、real/syntheticdemonstrations | 不可信检索内容成为控制入口；演示不冒充随机产品统计 |
-| 03 [AgentPoison](readings/003_AgentPoison_e94011.pdf) | §3.2–4、Table1、ASR-r/a/t | 检索/记忆后门、访问假设与触发条件 |
-| 04 [Multi-agentcode execution](readings/004_multi_agent_code_execution_af3dee.pdf) | COLM2025版；攻击设计与orchestrator实验 | 跨Agent控制流与confused deputy |
-| 05 [Adaptive attacks](readings/005_adaptive_attacks_16ebd8.pdf) | 本地arXiv2510.09023v1；Figure1、威胁/预算与各防御实验 | 12防御、自适应预算与ASR边界 |
-| 06 [Instruction hierarchy](readings/006_instruction_hierarchy_3f2d6b.pdf) | 数据构造、Figures2–4，PDFpp.7–9 | 模型训练的权限偏好与过度拒绝 |
-| 07 [CaMeL](readings/007_CaMeL_24ca29.pdf) | 本地v2；§3–5、Figures3–6、评价 | 控制/数据分离、capabilities、条件性保证 |
-| 08 [Design patterns](readings/008_securing_agents_against_prompt_injection_ce553e.pdf) | 本地v3；§3–4、六模式与案例 | 各模式牺牲自由度与剩余边界 |
-| 09 [AI Control](readings/009_AI_control_187aaa.pdf) | game/protocol、trustedlabor、监控/编辑与结果 | 模型有意subversion下的协议与whole-sequence safety |
-| 10 [AgentDojo](readings/010_AgentDojo_c70d6a.pdf) | 环境/指标、PDFp.20Tables3–5 | 正常utility、攻击下utility、targeted/untargeted与动态扩展 |
-| 11 [Reflexion](readings/011_Reflexion_1df60a.pdf) | §3–4、PDFp.3Figure1、ALFWorld/HumanEval | verbalfeedback与episodic memory；trial/测试预算 |
-| 12 [Self-Refine](readings/012_Self_Refine_5ef9bd.pdf) | Algorithm1、Figure1–2、七任务实验 | 同模型generate-feedback-refine与相关盲点 |
-| 13 [ADAS](readings/013_ADAS_bf0b34.pdf) | ICLR2025版；§2–4、Table1与迁移 | code-space搜索、档案、评价与预算 |
-| 14 [DGM](readings/014_Darwin_Godel_Machine_f9ee97.pdf) | ICLR2026版；§3–5、AppendixE.1、objectivehacking案例 | 自修改与open-endedarchive、200任务边界、成本/评价隔离 |
-| 15 [ACE](readings/015_ACE_f789bc.pdf) | ICLR2026版；PDFp.3Figure2、§3、§4.1/4.6/4.7 | playbook增量、context collapse、反馈/成本/消融 |
-| 16 [Meta-Harness](readings/016_Meta_Harness_9b9bdc.pdf) | §3、Table3 PDFp.7、Table7 PDFp.9 | 证据接口与全trace消融；榜单特定对照 |
-| 17 [AHE](readings/017_agentic_harness_engineering_56d6e4.pdf) | §3、PDFp.4Figure2、experiments/analysis | 三种observability、可证伪edit、非加性与regression盲点 |
-| 18 [Live-SWE-agent](readings/018_Live_SWE_agent_76f20b.pdf) | Figure2、§2、PDFp.6Tables1–2 | 在线造工具、同模型对照与成本/任务子集 |
+| 01 [OWASP](readings/OWASP_Top_10_For_Agentic_Applications_2026.pdf) | Version2026/December2025；ASI01–10与附录 | 风险索引与least agency；不是攻击概率排行 |
+| 02 [Indirect PI](readings/Not_what_you_ve_signed_up_for_Compromising_Real-World_LLM-Integrated_Applications_with_Indirect_Prompt_Injection.pdf) | taxonomy、§Evaluation、real/syntheticdemonstrations | 不可信检索内容成为控制入口；演示不冒充随机产品统计 |
+| 03 [AgentPoison](readings/AgentPoison_Red-teaming_LLM_Agents_via_Poisoning_Memory_or_Knowledge_Bases.pdf) | §3.2–4、Table1、ASR-r/a/t | 检索/记忆后门、访问假设与触发条件 |
+| 04 [Multi-agentcode execution](readings/Multi-Agent_Systems_Execute_Arbitrary_Malicious_Code.pdf) | COLM2025版；攻击设计与orchestrator实验 | 跨Agent控制流与confused deputy |
+| 05 [Adaptive attacks](readings/The_Attacker_Moves_Second_Stronger_Adaptive_Attacks_Bypass_Defenses_Against_LLM_Jailbreaks_and_Prompt_Injections.pdf) | 本地arXiv2510.09023v1；Figure1、威胁/预算与各防御实验 | 12防御、自适应预算与ASR边界 |
+| 06 [Instruction hierarchy](readings/The_Instruction_Hierarchy_Training_LLMs_to_Prioritize_Privileged_Instructions.pdf) | 数据构造、Figures2–4，PDFpp.7–9 | 模型训练的权限偏好与过度拒绝 |
+| 07 [CaMeL](readings/Defeating_Prompt_Injections_by_Design.pdf) | 本地v2；§3–5、Figures3–6、评价 | 控制/数据分离、capabilities、条件性保证 |
+| 08 [Design patterns](readings/Design_Patterns_for_Securing_LLM_Agents_against_Prompt_Injections.pdf) | 本地v3；§3–4、六模式与案例 | 各模式牺牲自由度与剩余边界 |
+| 09 [AI Control](readings/AI_Control_Improving_Safety_Despite_Intentional_Subversion.pdf) | game/protocol、trustedlabor、监控/编辑与结果 | 模型有意subversion下的协议与whole-sequence safety |
+| 10 [AgentDojo](readings/AgentDojo_A_Dynamic_Environment_to_Evaluate_Prompt_Injection_Attacks_and_Defenses_for_LLM_Agents.pdf) | 环境/指标、PDFp.20Tables3–5 | 正常utility、攻击下utility、targeted/untargeted与动态扩展 |
+| 11 [Reflexion](readings/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf) | §3–4、PDFp.3Figure1、ALFWorld/HumanEval | verbalfeedback与episodic memory；trial/测试预算 |
+| 12 [Self-Refine](readings/Self-Refine_Iterative_Refinement_with_Self-Feedback.pdf) | Algorithm1、Figure1–2、七任务实验 | 同模型generate-feedback-refine与相关盲点 |
+| 13 [ADAS](readings/Automated_Design_of_Agentic_Systems.pdf) | ICLR2025版；§2–4、Table1与迁移 | code-space搜索、档案、评价与预算 |
+| 14 [DGM](readings/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf) | ICLR2026版；§3–5、AppendixE.1、objectivehacking案例 | 自修改与open-endedarchive、200任务边界、成本/评价隔离 |
+| 15 [ACE](readings/Agentic_Context_Engineering_Evolving_Contexts_for_Self-Improving_Language_Models.pdf) | ICLR2026版；PDFp.3Figure2、§3、§4.1/4.6/4.7 | playbook增量、context collapse、反馈/成本/消融 |
+| 16 [Meta-Harness](readings/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf) | §3、Table3 PDFp.7、Table7 PDFp.9 | 证据接口与全trace消融；榜单特定对照 |
+| 17 [AHE](readings/Agentic_Harness_Engineering_Observability-Driven_Automatic_Evolution_of_Coding-Agent_Harnesses.pdf) | §3、PDFp.4Figure2、experiments/analysis | 三种observability、可证伪edit、非加性与regression盲点 |
+| 18 [Live-SWE-agent](readings/Live-SWE-agent_Can_Software_Engineering_Agents_Self-Evolve_on_the_Fly.pdf) | Figure2、§2、PDFp.6Tables1–2 | 在线造工具、同模型对照与成本/任务子集 |
 
 复习时先给贯穿例子画“外部数据→动作/记忆/代码”的路径，再挑一种机制回答：它改变哪条边、依靠什么可信部件、拿什么反馈、花什么预算、有什么未覆盖失败。能够把安全与改进都落到同一份可追溯执行记录和不可自改的约束上，才具备继续设计自演化Agent的基础。

@@ -8,103 +8,103 @@
 
 ## Readings
 
-- [agentic AI workloads](readings/001_agentic_AI_workloads_4e4228.pdf)
+- [agentic AI workloads](readings/Agentic_AI_Workload_Characteristics.pdf)
   - Source: https://arxiv.org/abs/2605.26297
-- [agentic workload characterization](readings/002_agentic_workload_characterization_b8d415.pdf)
+- [agentic workload characterization](readings/From_LLM_Inference_to_Agentic_Workloads_Characterization_and_Implications_for_Serving_Systems.pdf)
   - Source: https://arxiv.org/abs/2608.15127
-- [TraceLab](readings/003_TraceLab_7862c7.pdf)
+- [TraceLab](readings/TraceLab_Characterizing_Coding_Agent_Workloads_for_LLM_Serving.pdf)
   - Source: https://arxiv.org/abs/2606.30560
-- [CacheWise](readings/004_CacheWise_17b9f5.pdf)
+- [CacheWise](readings/CacheWise_Understanding_Workloads_and_Optimizing_KVCache_Management_for_Efficiently_Serving_LLM_Coding_Agents.pdf)
   - Source: https://arxiv.org/abs/2606.16824
-- [architectural implications](readings/005_architectural_implications_d62900.pdf)
+- [architectural implications](readings/Architectural_Implications_of_Agentic_AI_Workflows.pdf)
   - Source: https://arxiv.org/abs/2608.04458
-- [XPerf](readings/006_XPerf_e1cebc.pdf)
+- [XPerf](readings/Benchmarking_LLM_Serving_Systems_for_Agentic_AI_Workloads_with_XPerf.pdf)
   - Source: https://arxiv.org/abs/2608.20370
-- [when does disaggregation pay](readings/007_when_does_disaggregation_pay_58520a.pdf)
+- [when does disaggregation pay](readings/When_Does_Disaggregation_Pay_Simulating_Prefill_Decode_Attention_FFN_Specialization_for_Agentic_LLM_Inference.pdf)
   - Source: https://arxiv.org/abs/2608.03741
-- [compound AI systems](readings/008_compound_AI_systems_21e41c.html)
+- [compound AI systems](readings/The_Shift_from_Models_to_Compound_AI_Systems.html)
   - Source: https://bair.berkeley.edu/blog/2024/02/18/compound-ai-systems/
-- [Parrot](readings/009_Parrot_0c450f.html)
+- [Parrot](readings/Parrot_Efficient_Serving_of_LLM-based_Applications_with_Semantic_Variable.html)
   - Source: https://www.usenix.org/conference/osdi24/presentation/lin-chaofan
-- [Pythia](readings/010_Pythia_ffed4e.pdf)
+- [Pythia](readings/Pythia_Exploiting_Workflow_Predictability_for_Efficient_Agent-Native_LLM_Serving.pdf)
   - Source: https://arxiv.org/abs/2604.25899
-- [workflow-aware serving](readings/011_workflow_aware_serving_960f08.pdf)
+- [workflow-aware serving](readings/Serving_Agentic_Workflows_with_a_Physical-Plan_Compiler_and_Adaptive_Runtime.pdf)
   - Source: https://arxiv.org/abs/2607.02942
-- [software-defined agentic serving](readings/012_software_defined_agentic_serving_47ff6c.pdf)
+- [software-defined agentic serving](readings/Software-Defined_Agentic_Serving.pdf)
   - Source: https://arxiv.org/abs/2601.03197
-- [Pie](readings/013_Pie_846b00.pdf)
+- [Pie](readings/Pie_A_Programmable_Serving_System_for_Emerging_LLM_Applications.pdf)
   - Source: https://arxiv.org/abs/2510.24051
-- [Nalar](readings/014_Nalar_df5f1e.pdf)
+- [Nalar](readings/Nalar_Workflow-Aware_Management_of_Agentic_Applications.pdf)
   - Source: https://arxiv.org/abs/2601.05109
-- [Murakkab](readings/015_Murakkab_87092a.html)
+- [Murakkab](readings/Murakkab_Resource-Efficient_Agentic_Workflow_Orchestration_in_Cloud_Platforms.html)
   - Source: https://www.usenix.org/conference/osdi26/presentation/chaudhry
-- [Agentix](readings/016_Agentix_65f9e7.html)
+- [Agentix](readings/Agentix_An_Efficient_Serving_Engine_for_LLM_Agents_as_General_Programs.html)
   - Source: https://www.usenix.org/conference/nsdi26/presentation/luo
-- [SAGA](readings/017_SAGA_4f1b7d.pdf)
+- [SAGA](readings/SAGA_Workflow-Atomic_Scheduling_for_AI_Agent_Inference_on_GPU_Clusters.pdf)
   - Source: https://arxiv.org/abs/2605.00528
-- [SMetric](readings/018_SMetric_23d964.pdf)
+- [SMetric](readings/SMetric_Rethink_LLM_Scheduling_for_Serving_Agents_with_Balanced_Session-centric_Scheduling.pdf)
   - Source: https://arxiv.org/abs/2607.08565
-- [observation not prediction](readings/019_observation_not_prediction_1d06eb.pdf)
+- [observation not prediction](readings/Observation_Not_Prediction_Conversation-Level_Disaggregated_Scheduling_for_Agentic_Serving.pdf)
   - Source: https://arxiv.org/abs/2606.01839
-- [Kairos](readings/020_Kairos_058748.pdf)
+- [Kairos](readings/Kairos_Low-latency_Multi-Agent_Serving_with_Shared_LLMs_and_Excessive_Loads_in_the_Public_Cloud.pdf)
   - Source: https://arxiv.org/abs/2508.06948
-- [Maestro](readings/021_Maestro_35d41f.pdf)
+- [Maestro](readings/Maestro_Workload-Aware_Cross-Cluster_Scheduling_for_LLM-Based_Multi-Agent_Systems.pdf)
   - Source: https://arxiv.org/abs/2606.12950
-- [agentic batch query optimization](readings/022_agentic_batch_query_optimization_1f2366.pdf)
+- [agentic batch query optimization](readings/Batch_Query_Processing_and_Optimization_for_Agentic_Workflows.pdf)
   - Source: https://arxiv.org/abs/2509.02121
 - Ayo (formerly Teola) — [online source](https://doi.org/10.1145/3676641.3716278)
   - Source: https://doi.org/10.1145/3676641.3716278
-- [Helium](readings/023_Helium_23aeab.pdf)
+- [Helium](readings/Efficient_LLM_Serving_for_Agentic_Workflows_A_Data_Systems_Perspective.pdf)
   - Source: https://arxiv.org/abs/2603.16104
-- [HexAGenT](readings/024_HexAGenT_924ac4.pdf)
+- [HexAGenT](readings/HexAGenT_Efficient_Agentic_LLM_Serving_via_Workflow-_and_Heterogeneity-Aware_Scheduling.pdf)
   - Source: https://arxiv.org/abs/2605.16637
-- [KVFlow](readings/025_KVFlow_443e20.html)
+- [KVFlow](readings/KVFlow_Efficient_Prefix_Caching_for_Accelerating_LLM-Based_Multi-Agent_Workflows.html)
   - Source: https://papers.neurips.cc/paper_files/paper/2025/hash/b7971d31a7d5eb0f1eed2f8f6f368195-Abstract-Conference.html
-- [rollout infrastructure tax](readings/026_rollout_infrastructure_tax_7ef299.pdf)
+- [rollout infrastructure tax](readings/The_Rollout_Infrastructure_Tax_in_Coding-Agent_Reinforcement_Learning.pdf)
   - Source: https://arxiv.org/abs/2607.01415
-- [TideRL](readings/027_TideRL_b9451c.pdf)
+- [TideRL](readings/TideRL_Boosting_Agentic_RL_Goodput_with_Readiness-Aware_Scheduling.pdf)
   - Source: https://arxiv.org/abs/2608.10402
-- [Libra](readings/028_Libra_8dd03e.pdf)
+- [Libra](readings/Libra_Efficient_Resource_Management_for_Agentic_RL_Post-Training.pdf)
   - Source: https://arxiv.org/abs/2606.03077
-- [MISA-T](readings/029_MISA_T_4a6863.pdf)
+- [MISA-T](readings/Scheduling_Mixed_RL_Rollouts_Beyond_Prefix_Locality.pdf)
   - Source: https://arxiv.org/abs/2608.11152
-- [SGLang / RadixAttention](readings/030_SGLang_RadixAttention_63ebb2.pdf)
+- [SGLang / RadixAttention](readings/SGLang_Efficient_Execution_of_Structured_Language_Model_Programs.pdf)
   - Source: https://arxiv.org/abs/2312.07104
-- [CachedAttention](readings/031_CachedAttention_2858cf.pdf)
+- [CachedAttention](readings/Cost-Efficient_Large_Language_Model_Serving_for_Multi-turn_Conversations_with_CachedAttention.pdf)
   - Source: https://arxiv.org/abs/2403.19708
-- [Marconi](readings/032_Marconi_dc9d77.pdf)
+- [Marconi](readings/Marconi_Prefix_Caching_for_the_Era_of_Hybrid_LLMs.pdf)
   - Source: https://arxiv.org/abs/2411.19379
-- [LPC — 浏览器验证页（未获取正文）](readings/033_LPC_browser_verification_f049e9.html)
+- [LPC — 浏览器验证页（未获取正文）](readings/LPC_-_browser_verification_-_reading_body_unavailable.html)
   - Source: https://openreview.net/forum?id=Vj48eXaQDM
-- [Mooncake](readings/034_Mooncake_18d3e5.pdf)
+- [Mooncake](readings/Mooncake_A_KVCache-centric_Disaggregated_Architecture_for_LLM_Serving.pdf)
   - Source: https://arxiv.org/abs/2407.00079
-- [MemServe](readings/035_MemServe_3780c5.pdf)
+- [MemServe](readings/MemServe_Flexible_Mem_Pool_for_Building_Disaggregated_LLM_Serving_with_Caching.pdf)
   - Source: https://arxiv.org/abs/2406.17565
-- [LMCache](readings/036_LMCache_63ff14.pdf)
+- [LMCache](readings/LMCache_An_Efficient_KV_Cache_Layer_for_Enterprise-Scale_LLM_Inference.pdf)
   - Source: https://arxiv.org/abs/2510.09665
-- [TokenLake](readings/037_TokenLake_4a441c.pdf)
+- [TokenLake](readings/TokenLake_A_Unified_Segment-level_Prefix_Cache_Pool_for_Fine-grained_Elastic_Long-Context_LLM_Serving.pdf)
   - Source: https://arxiv.org/abs/2508.17219
-- [Prompt Cache](readings/038_Prompt_Cache_595351.pdf)
+- [Prompt Cache](readings/Prompt_Cache_Modular_Attention_Reuse_for_Low-Latency_Inference.pdf)
   - Source: https://arxiv.org/abs/2311.04934
-- [CacheGen](readings/039_CacheGen_56fe08.pdf)
+- [CacheGen](readings/CacheGen_KV_Cache_Compression_and_Streaming_for_Fast_Large_Language_Model_Serving.pdf)
   - Source: https://arxiv.org/abs/2310.07240
-- [CacheBlend](readings/040_CacheBlend_9eb3c8.pdf)
+- [CacheBlend](readings/CacheBlend_Fast_Large_Language_Model_Serving_for_RAG_with_Cached_Knowledge_Fusion.pdf)
   - Source: https://arxiv.org/abs/2405.16444
-- [DroidSpeak](readings/041_DroidSpeak_2241c5.pdf)
+- [DroidSpeak](readings/DroidSpeak_KV_Cache_Sharing_for_Cross-LLM_Communication_and_Multi-LLM_Serving.pdf)
   - Source: https://arxiv.org/abs/2411.02820
-- [HYPIC](readings/042_HYPIC_3746be.pdf)
+- [HYPIC](readings/HYPIC_Accelerating_Hybrid-Attention_LLM_Serving_with_Position-Independent_Caching.pdf)
   - Source: https://arxiv.org/abs/2607.01299
 - S3-FIFO — [online source](https://doi.org/10.1145/3600006.3613147)
   - Source: https://doi.org/10.1145/3600006.3613147
-- [SIEVE](readings/043_SIEVE_163c29.html)
+- [SIEVE](readings/SIEVE_is_Simpler_than_LRU_an_Efficient_Turn-Key_Eviction_Algorithm_for_Web_Caches.html)
   - Source: https://www.usenix.org/conference/nsdi24/presentation/zhang-yazhuo
-- [LRB](readings/044_LRB_bcfc0e.html)
+- [LRB](readings/Learning_Relaxed_Belady_for_Content_Distribution_Network_Caching.html)
   - Source: https://www.usenix.org/conference/nsdi20/presentation/song
-- [TinyLFU](readings/045_TinyLFU_1fd661.pdf)
+- [TinyLFU](readings/TinyLFU_A_Highly_Efficient_Cache_Admission_Policy.pdf)
   - Source: https://arxiv.org/abs/1512.00727
-- [libCacheSim](readings/046_libCacheSim_75d694.html)
+- [libCacheSim](readings/libCacheSim_A_High_Performance_Library_for_Building_Cache_Simulators.html)
   - Source: https://libcachesim.com/
-- [CacheLib](readings/047_CacheLib_aa03e2.html)
+- [CacheLib](readings/The_CacheLib_Caching_Engine_Design_and_Experiences_at_Scale.html)
   - Source: https://www.usenix.org/conference/osdi20/presentation/berg
 
 ## References

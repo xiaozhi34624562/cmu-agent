@@ -12,7 +12,7 @@ KohakuRAG 的价值不只在“层级索引”。它把三个经常被分开优�
 
 ## 本地资料
 
-- 论文：[KohakuRAG.pdf](papers/KohakuRAG.pdf)
+- 论文：[KohakuRAG_A_simple_RAG_framework_with_hierarchical_document_indexing.pdf](papers/KohakuRAG_A_simple_RAG_framework_with_hierarchical_document_indexing.pdf)
 - 代码：[KohakuRAG](code/KohakuRAG/)
 - 来源与版本：[source-manifest.md](resources/source-manifest.md)
 

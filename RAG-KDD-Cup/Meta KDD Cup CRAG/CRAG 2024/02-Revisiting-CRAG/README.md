@@ -4,7 +4,7 @@
 
 APEX 用“领域 × 信息动态性”双路由贯穿 retrieval、augmentation、generation，证明统一 RAG pipeline 面对异构问题时会系统性失效，路由应成为一等架构组件。
 
-[论文](./papers/Revisiting-the-Solution-of-Meta-KDD-Cup-2024-CRAG.pdf) · [官方代码](./code/CRAG-in-KDD-Cup2024/) · [来源清单](./resources/source-manifest.md)
+[论文](./papers/Revisiting_the_Solution_of_Meta_KDD_Cup_2024_CRAG.pdf) · [官方代码](./code/CRAG-in-KDD-Cup2024/) · [来源清单](./resources/source-manifest.md)
 
 ## 2. 论文身份与比赛背景
 

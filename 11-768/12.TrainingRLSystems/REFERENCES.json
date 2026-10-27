@@ -2,17 +2,17 @@
   {
     "title": "Fast Inference from Transformers via Speculative Decoding",
     "url": "https://arxiv.org/abs/2211.17192v2",
-    "path": "references/2211.17192v2.pdf",
+    "path": "references/Fast_Inference_from_Transformers_via_Speculative_Decoding.pdf",
     "status": "saved",
     "sha256": "8967e2daab74178b8a73a6f0b0780c5cbb40f9f6dcbd5c456b24a89c128c52ed",
     "version": "arXiv:2211.17192v2  [cs.LG]  18 May 2023",
     "pages": 13,
-    "source": "reused local archive: 2680/readings/papers/2211.17192.pdf"
+    "source": "reused local archive: 2680/readings/papers/Fast_Inference_from_Transformers_via_Speculative_Decoding.pdf"
   },
   {
     "title": "Training Deep Nets with Sublinear Memory Cost",
     "url": "https://arxiv.org/abs/1604.06174v2",
-    "path": "references/1604.06174v2.pdf",
+    "path": "references/Training_Deep_Nets_with_Sublinear_Memory_Cost.pdf",
     "status": "saved",
     "sha256": "fa7c0d5b846152159e9ac1033c2f082fd74d4200bffae896dc7d00a8808f0ffe",
     "version": "arXiv:1604.06174v2  [cs.LG]  22 Apr 2016",
@@ -22,17 +22,17 @@
   {
     "title": "SGLang: Efficient Execution of Structured Language Model Programs",
     "url": "https://arxiv.org/abs/2312.07104v2",
-    "path": "references/2312.07104v2.pdf",
+    "path": "references/SGLang_Efficient_Execution_of_Structured_Language_Model_Programs.pdf",
     "status": "saved",
     "sha256": "161e0a0123a89cd8a57d68734ae704680b0e577fee41e1e7e1029c37a9d99b57",
     "version": "arXiv:2312.07104v2  [cs.AI]  6 Jun 2024",
     "pages": 20,
-    "source": "reused local archive: 2680/readings/papers/2312.07104.pdf"
+    "source": "reused local archive: 2680/readings/papers/SGLang_Efficient_Execution_of_Structured_Language_Model_Programs.pdf"
   },
   {
     "title": "AReaL: A Large-Scale Asynchronous Reinforcement Learning System for Language Reasoning",
     "url": "https://arxiv.org/abs/2505.24298v5",
-    "path": "references/2505.24298v5.pdf",
+    "path": "references/AReaL_A_Large-Scale_Asynchronous_Reinforcement_Learning_System_for_Language_Reasoning.pdf",
     "status": "saved",
     "sha256": "5785033bdd229ee6ddf26d8fcd9f61671801f208272c921ba6884da87cc5b351",
     "version": "arXiv:2505.24298v5  [cs.LG]  2 Mar 2026",
@@ -42,7 +42,7 @@
   {
     "title": "Stabilizing MoE Reinforcement Learning by Aligning Training and Inference Routers",
     "url": "https://arxiv.org/abs/2510.11370v2",
-    "path": "references/2510.11370v2.pdf",
+    "path": "references/Stabilizing_MoE_Reinforcement_Learning_by_Aligning_Training_and_Inference_Routers.pdf",
     "status": "saved",
     "sha256": "b9ceb059c35ab77e1e8c3043df9d060f3c2d33146cd08135faf7a46de6771b07",
     "version": "arXiv:2510.11370v2  [cs.CL]  21 Oct 2025",
@@ -52,7 +52,7 @@
   {
     "title": "AREAL-DTA: Dynamic Tree Attention for Efficient Reinforcement Learning of Large Language Models",
     "url": "https://arxiv.org/abs/2602.00482v2",
-    "path": "references/2602.00482v2.pdf",
+    "path": "references/AREAL-DTA_Dynamic_Tree_Attention_for_Efficient_Reinforcement_Learning_of_Large_Language_Models.pdf",
     "status": "saved",
     "sha256": "2a3134a59b331a0f0602b7b68d719052a300a9e3f08e00b7e0b07928dd4e5687",
     "version": "arXiv:2602.00482v2  [cs.LG]  13 Jun 2026",

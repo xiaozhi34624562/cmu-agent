@@ -15,17 +15,17 @@
   - Source: https://medium.com/@itamar_f/software-3-0-the-era-of-intelligent-software-development-acd3cafe6cd7
 - Software is changing (again) — [online source](https://www.youtube.com/watch?v=LCEmiRjPEtQ)
   - Source: https://www.youtube.com/watch?v=LCEmiRjPEtQ
-- [Claude Code subagents](readings/001_Claude_Code_subagents_7dc93e.html)
+- [Claude Code subagents](readings/Create_custom_subagents.html)
   - Source: https://code.claude.com/docs/en/sub-agents
-- [Claude Code agent teams](readings/002_Claude_Code_agent_teams_80ee58.html)
+- [Claude Code agent teams](readings/Orchestrate_teams_of_Claude_Code_sessions.html)
   - Source: https://code.claude.com/docs/en/agent-teams
-- [Claude Code dynamic workflows](readings/003_Claude_Code_dynamic_workflows_8516d9.html)
+- [Claude Code dynamic workflows](readings/Orchestrate_subagents_at_scale_with_dynamic_workflows.html)
   - Source: https://code.claude.com/docs/en/workflows
-- [Building a C compiler with a team of parallel Claudes](readings/004_Building_a_C_compiler_with_a_team_of_parallel_Claudes_1eba12.html)
+- [Building a C compiler with a team of parallel Claudes](readings/Building_a_C_compiler_with_a_team_of_parallel_Claudes.html)
   - Source: https://www.anthropic.com/engineering/building-c-compiler
 - Research acceleration: The view inside OpenAI — [online source](https://openai.com/index/research-acceleration-view-inside-openai/)
   - Source: https://openai.com/index/research-acceleration-view-inside-openai/
-- [The Shift to Agentic AI](readings/005_The_Shift_to_Agentic_AI_9dc0ae.pdf)
+- [The Shift to Agentic AI](readings/The_Shift_to_Agentic_AI_Evidence_from_Codex.pdf)
   - Source: https://arxiv.org/abs/2606.26959
 
 ## Local study notes

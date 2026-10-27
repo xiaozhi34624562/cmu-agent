@@ -741,7 +741,7 @@ S01 用于还原演讲论证；S02—S05 用于核查基准和厂商实验；S06
 ### 补充入口与容易混淆的口径
 
 - 演讲原始入口：[YouTube 视频](https://www.youtube.com/watch?v=O84lhGc1OOI)。本次读取的是 S01 完整时间戳文字稿，未直接核验视频画面或独立幻灯片。
-- 基准原件与实现：[BrowseComp-Plus 项目页](https://texttron.github.io/BrowseComp-Plus/)、[仓库已有论文 PDF](../../10.DeepResearchAgents/references/003_BrowseComp-Plus.pdf)、[MADQA 官方代码](https://github.com/OxRML/MADQA)。实现入口供进一步复现，本文没有完成复现。
+- 基准原件与实现：[BrowseComp-Plus 项目页](https://texttron.github.io/BrowseComp-Plus/)、[仓库已有论文 PDF](../../11-768/10.DeepResearchAgents/references/BrowseComp-Plus_A_More_Fair_and_Transparent_Evaluation_Benchmark_of_Deep-Research_Agent.pdf)、[MADQA 官方代码](https://github.com/OxRML/MADQA)。实现入口供进一步复现，本文没有完成复现。
 - 历史成绩与当前榜单：[Mixedbread MADQA 评测页](https://www.mixedbread.com/evals/madqa)会更新。论文 Table 3 中 Claude Sonnet 4.5 的 35.1 属于 Kuiper 列，不能读成每题调用次数；本文章节 3 以论文和具备明确配置的原始报告为依据。
 - 同名百分比：S07 的 90.2% 是内部评测的相对提升，与演讲中的准确率无关；其约 4 倍和 15 倍 token 都以普通聊天为分母。模型组合和执行组织也有变化，不能据此推算金融系统的固定成本或架构净收益。
 - 相关仓库专题：[文档上下文层与研报解析](../ocr/document-context-layer-and-financial-report-parsing.md)、[CCA Foundations](../CCA/CCA_Foundations.md)。它们提供上下游背景，不是阅读本文的前提，也不代替一手来源。

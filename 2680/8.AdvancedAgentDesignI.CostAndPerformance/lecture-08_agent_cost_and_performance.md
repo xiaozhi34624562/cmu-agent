@@ -1819,7 +1819,7 @@ PTE 与失败共同出现，不说明 PTE 导致失败；“先内部算完再�
 <a id="src-a"></a>
 ### [A] Anthropic：Reducing cost and improving performance with Claude Platform
 
-**文件：** [001_cost_and_performance_on_Claude_Platform_7a7670.html](readings/001_cost_and_performance_on_Claude_Platform_7a7670.html)。  
+**文件：** [Reducing_cost_and_improving_performance_with_Claude_Platform.html](readings/Reducing_cost_and_improving_performance_with_Claude_Platform.html)。  
 **作者：** 文件元数据署名 Lance Martin。  
 **版本信息：** 附件正文说明初始发表于 2026-09-08，之后更新了部分模型实验；本文按归档快照整理。  
 **SOURCES 地址：** [原始来源](https://claude.com/blog/reducing-cost-and-improving-performance-with-claude-platform)  
@@ -1830,7 +1830,7 @@ PTE 与失败共同出现，不说明 PTE 导致失败；“先内部算完再�
 <a id="src-r"></a>
 ### [R] RouteLLM: Learning to Route LLMs with Preference Data
 
-**文件：** [002_RouteLLM_4e1932.pdf](readings/002_RouteLLM_4e1932.pdf)，16 页。  
+**文件：** [RouteLLM_Learning_to_Route_LLMs_with_Preference_Data.pdf](readings/RouteLLM_Learning_to_Route_LLMs_with_Preference_Data.pdf)，16 页。  
 **作者：** Isaac Ong、Amjad Almahairi 等。  
 **归档版本：** arXiv:2406.18665v4，2025-02-23；首页标注 ICLR 2025。  
 **原始地址：** [原始来源](https://arxiv.org/abs/2406.18665)  
@@ -1841,7 +1841,7 @@ PTE 与失败共同出现，不说明 PTE 导致失败；“先内部算完再�
 <a id="src-t"></a>
 ### [T] Beyond Accuracy: Unveiling Inefficiency Patterns in Tool-Integrated Reasoning
 
-**文件：** [003_tool_use_inefficiency_58521d.pdf](readings/003_tool_use_inefficiency_58521d.pdf)，22 页。  
+**文件：** [Beyond_Accuracy_Unveiling_Inefficiency_Patterns_in_Tool-Integrated_Reasoning.pdf](readings/Beyond_Accuracy_Unveiling_Inefficiency_Patterns_in_Tool-Integrated_Reasoning.pdf)，22 页。  
 **作者：** Qisheng Su、Shiting Huang、Zhen Fang、Ziyan Chen、Zehui Chen、Feng Zhao。  
 **归档版本：** arXiv:2604.05404v2，2026-04-14。  
 **原始地址：** [原始来源](https://arxiv.org/abs/2604.05404)  

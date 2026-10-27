@@ -9,10 +9,10 @@
 
 ## Readings
 
-- [Toolformer](readings/001_Toolformer.pdf)
+- [Toolformer](readings/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf)
   - Source: https://arxiv.org/abs/2302.04761
 
-- [ReAct](readings/002_ReAct.pdf)
+- [ReAct](readings/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf)
   - Source: https://arxiv.org/abs/2210.03629
 
 - [Mini-SWE-Agent](readings/003_Mini-SWE-Agent.md)

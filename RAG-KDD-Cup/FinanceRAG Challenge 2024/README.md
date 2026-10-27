@@ -8,7 +8,7 @@ Multi-Reranker 的核心不是“把多个向量检索器做融合”，而是�
 
 ## 本地资料
 
-- 论文：[Multi-Reranker.pdf](papers/Multi-Reranker.pdf)
+- 论文：[Multi-Reranker_Maximizing_performance_of_retrieval-augmented_generation_in_the_FinanceRAG_challenge.pdf](papers/Multi-Reranker_Maximizing_performance_of_retrieval-augmented_generation_in_the_FinanceRAG_challenge.pdf)
 - 代码：[FinanceRAG](code/FinanceRAG/)
 - 来源与版本：[source-manifest.md](resources/source-manifest.md)
 

@@ -4,7 +4,7 @@
 
 Honest AI 把拒答从 prompt 技巧变成监督目标：重标训练答案并用 QLoRA 让 7B 模型学习何时说 `I don't know`，再以 domain hybrid 恢复部分覆盖。
 
-[论文](./papers/Honest-AI.pdf) · [代码状态](./code/README.md) · [来源清单](./resources/source-manifest.md)
+[论文](./papers/Honest_AI_Fine-Tuning_Small_Language_Models_to_Say_I_Don_t_Know_and_Reducing_Hallucination_in_RAG.pdf) · [代码状态](./code/README.md) · [来源清单](./resources/source-manifest.md)
 
 ## 2. 论文身份与比赛背景
 

@@ -8,23 +8,23 @@
 
 ## Readings
 
-- [Preble](readings/001_Preble_79087f.pdf)
+- [Preble](readings/Preble_Efficient_Distributed_Prompt_Scheduling_for_LLM_Serving.pdf)
   - Source: https://arxiv.org/abs/2407.00023
-- [Llumnix](readings/002_Llumnix_12660f.pdf)
+- [Llumnix](readings/Llumnix_Dynamic_Scheduling_for_Large_Language_Model_Serving.pdf)
   - Source: https://arxiv.org/abs/2406.03243
-- [DualMap](readings/003_DualMap_139986.pdf)
+- [DualMap](readings/DualMap_Enabling_Both_Cache_Affinity_and_Load_Balancing_for_Distributed_LLM_Serving.pdf)
   - Source: https://arxiv.org/abs/2602.06502
-- [LMetric](readings/004_LMetric_4726db.html)
+- [LMetric](readings/Simple_Is_Better_Multiplication_May_Be_All_You_Need_for_LLM_Request_Scheduling.html)
   - Source: https://www.usenix.org/conference/osdi26/presentation/zhang-dingyan
-- [SMetric](readings/005_SMetric_23d964.pdf)
+- [SMetric](readings/SMetric_Rethink_LLM_Scheduling_for_Serving_Agents_with_Balanced_Session-centric_Scheduling.pdf)
   - Source: https://arxiv.org/abs/2607.08565
-- [RouteLLM](readings/006_RouteLLM_4e1932.pdf)
+- [RouteLLM](readings/RouteLLM_Learning_to_Route_LLMs_with_Preference_Data.pdf)
   - Source: https://arxiv.org/abs/2406.18665
-- [Hybrid LLM](readings/007_Hybrid_LLM_56d3e4.pdf)
+- [Hybrid LLM](readings/Hybrid_LLM_Cost-Efficient_and_Quality-Aware_Query_Routing.pdf)
   - Source: https://arxiv.org/abs/2404.14618
-- [AutoMix](readings/008_AutoMix_fa7fd0.pdf)
+- [AutoMix](readings/AutoMix_Automatically_Mixing_Language_Models.pdf)
   - Source: https://arxiv.org/abs/2310.12963
-- [RouterBench](readings/009_RouterBench_2f21f8.pdf)
+- [RouterBench](readings/RouterBench_A_Benchmark_for_Multi-LLM_Routing_System.pdf)
   - Source: https://arxiv.org/abs/2403.12031
 
 ## References

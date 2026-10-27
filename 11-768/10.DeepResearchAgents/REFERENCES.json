@@ -2,7 +2,7 @@
   {
     "title": "FutureX-Pro: Extending Future Prediction to High-Value Vertical Domains",
     "url": "https://arxiv.org/pdf/2601.12259v1",
-    "path": "references/019_FutureX-Pro_2601.12259v1.pdf",
+    "path": "references/FutureX-Pro_Extending_Future_Prediction_to_High-Value_Vertical_Domains.pdf",
     "status": "saved",
     "version": "2601.12259v1",
     "sha256": "585bbb56adbcb936f8e979d3bf8d16373a361921a688ea32d9c07aa080a47074",
@@ -12,7 +12,7 @@
   {
     "title": "MBABench: Evaluating LLM Agents on End-to-End Spreadsheet Tasks in Finance",
     "url": "https://arxiv.org/pdf/2605.22664v5",
-    "path": "references/020_MBABench_2605.22664v5.pdf",
+    "path": "references/MBABench_Evaluating_LLM_Agents_on_End-to-End_Spreadsheet_Tasks_in_Finance.pdf",
     "status": "saved",
     "version": "2605.22664v5",
     "sha256": "64a804a40295abb7ed2a7b56c55d89bf472841884e74ea1b68ba81703d3f5455",
@@ -22,7 +22,7 @@
   {
     "title": "Can Language Models Learn to Forecast Stock Prices",
     "url": "https://arxiv.org/pdf/2609.36914v1",
-    "path": "references/021_AURA_2609.36914v1.pdf",
+    "path": "references/Can_Language_Models_Learn_to_Forecast_Stock_Prices.pdf",
     "status": "saved",
     "version": "2609.36914v1",
     "sha256": "71492474e331ddd26f0f3c21e77752350cd137f995b5bafaa5ec70dbf71ae891",

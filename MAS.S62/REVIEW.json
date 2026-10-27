@@ -17,43 +17,43 @@
     {
       "week": 1,
       "path": "MAS.S62/1.CourseIntroduction/notes.zh-CN.md",
-      "sha256": "5ab8004857d420c9c62702448fb2cbca0a51eaf16cb36b753fd4160258ab4ab1",
-      "characters": 20782,
+      "sha256": "f4ee7f71dbb1de0c7f8079cb4aa2ba61727ce071fb62ea9eee10fde1fc237c07",
+      "characters": 21152,
       "post_fix_full_reread": "passed"
     },
     {
       "week": 2,
       "path": "MAS.S62/2.ContextEvolution1/notes.zh-CN.md",
-      "sha256": "ac6028a4209209d04ff6b6363df43ca3cd9974c82b1dd8e2551df3ec3d824177",
-      "characters": 26303,
+      "sha256": "01451a9682ed92a14dcac906dad520c4f464582d44fc68987b2b79b2dcd848ac",
+      "characters": 26740,
       "post_fix_full_reread": "passed"
     },
     {
       "week": 3,
       "path": "MAS.S62/3.ContextEvolution2/notes.zh-CN.md",
-      "sha256": "2dffdf1c72c150705f4d87e1b47b7265bc8dcb3a3a6a37d0f49ef02e74f6e72f",
-      "characters": 21963,
+      "sha256": "5d390b77e034e8f932df2f732ac18b83176394319a432d96d9b61e86686623a8",
+      "characters": 22825,
       "post_fix_full_reread": "passed"
     },
     {
       "week": 5,
       "path": "MAS.S62/5.HarnessEvolution1/notes.zh-CN.md",
-      "sha256": "6408803741b17ae1459892fbf8a99b5c8ec6dda3cb0d9c621a785917e78b2621",
-      "characters": 28434,
+      "sha256": "dd979a16fbb283dbac04856564c01442db040f2c9d8d7ad4dab086432934aa2d",
+      "characters": 30797,
       "post_fix_full_reread": "passed"
     },
     {
       "week": 6,
       "path": "MAS.S62/6.HarnessEvolution2/notes.zh-CN.md",
-      "sha256": "357df775711837e712c18dea3ee5f5104acc22f6a00dc616dfdbabce3df7cd9f",
-      "characters": 29556,
+      "sha256": "03359c31b749b6fa6d48c463d8e3c02b3e1c7bb826e73df0332454916f41f0fb",
+      "characters": 31369,
       "post_fix_full_reread": "passed"
     },
     {
       "week": 7,
       "path": "MAS.S62/7.ModelEvolution1/notes.zh-CN.md",
-      "sha256": "8e06116422add4a71e2c179e438f90257ab04659e767c3247869bb4b17851cf7",
-      "characters": 30702,
+      "sha256": "865caf3a902999da7454f3391fae330ae9bc31925812a5e4baad7fafe3ffbc36",
+      "characters": 32002,
       "post_fix_full_reread": "passed"
     }
   ],
@@ -108,79 +108,79 @@
           "scope": "all 51 pages; visually checked figures pp.12-17,20-21,33-36,47-50"
         },
         {
-          "path": "MAS.S62/1.CourseIntroduction/references/2005.14165.pdf",
+          "path": "MAS.S62/1.CourseIntroduction/references/Language_Models_are_Few-Shot_Learners.pdf",
           "scope": "pp.1,6-8,10; ICL settings and Fig.2.1"
         },
         {
-          "path": "MAS.S62/1.CourseIntroduction/references/2203.02155.pdf",
+          "path": "MAS.S62/1.CourseIntroduction/references/Training_language_models_to_follow_instructions_with_human_feedback.pdf",
           "scope": "pp.1-2,7-9; training and evaluation assumptions"
         },
         {
-          "path": "MAS.S62/1.CourseIntroduction/references/2210.03629.pdf",
+          "path": "MAS.S62/1.CourseIntroduction/references/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf",
           "scope": "pp.1-4; ReAct interaction and Fig.1"
         },
         {
-          "path": "MAS.S62/1.CourseIntroduction/references/2405.15793.pdf",
+          "path": "MAS.S62/1.CourseIntroduction/references/SWE-agent_Agent-Computer_Interfaces_Enable_Automated_Software_Engineering.pdf",
           "scope": "pp.2-6; ACI and ablations"
         },
         {
-          "path": "MAS.S62/1.CourseIntroduction/references/2505.22954.pdf",
+          "path": "MAS.S62/1.CourseIntroduction/references/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf",
           "scope": "pp.1-5; frozen base, self-modification and fixed outer search"
         },
         {
-          "path": "MAS.S62/1.CourseIntroduction/references/2505.03335.pdf",
+          "path": "MAS.S62/1.CourseIntroduction/references/Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data.pdf",
           "scope": "pp.1-5; proposer/solver/executor and zero-data scope"
         },
         {
-          "path": "MAS.S62/7.ModelEvolution1/references/1707.06347.pdf",
+          "path": "MAS.S62/7.ModelEvolution1/references/Proximal_Policy_Optimization_Algorithms.pdf",
           "scope": "pp.1-5; surrogate, clipping, GAE, value target"
         },
         {
-          "path": "MAS.S62/7.ModelEvolution1/references/2402.03300.pdf",
+          "path": "MAS.S62/7.ModelEvolution1/references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf",
           "scope": "pp.13-16; GRPO objective, outcome/process supervision, reference KL; also used to audit identical Week1 copy"
         },
         {
-          "path": "MAS.S62/7.ModelEvolution1/references/2305.18290.pdf",
+          "path": "MAS.S62/7.ModelEvolution1/references/Direct_Preference_Optimization_Your_Language_Model_is_Secretly_a_Reward_Model.pdf",
           "scope": "pp.3-5; implicit reward and Eq.7"
         },
         {
-          "path": "MAS.S62/7.ModelEvolution1/references/ttt.pdf",
+          "path": "MAS.S62/7.ModelEvolution1/references/The_Surprising_Effectiveness_of_Test-Time_Training_for_Few-Shot_Learning.pdf",
           "scope": "pp.2-7; methods, loss masks, ARC/BBH settings, Table1"
         },
         {
-          "path": "MAS.S62/7.ModelEvolution1/references/2504.16084.pdf",
+          "path": "MAS.S62/7.ModelEvolution1/references/TTRL_Test-Time_Reinforcement_Learning.pdf",
           "scope": "pp.2-4; majority-reward method"
         },
         {
-          "path": "MAS.S62/7.ModelEvolution1/references/2603.10165.pdf",
+          "path": "MAS.S62/7.ModelEvolution1/references/OpenClaw-RL_Train_Any_Agent_Simply_by_Talking.pdf",
           "scope": "pp.2-8; next-state signals, hybrid reward and distillation"
         },
         {
-          "path": "MAS.S62/7.ModelEvolution1/references/2601.16175.pdf",
+          "path": "MAS.S62/7.ModelEvolution1/references/Learning_to_Discover_at_Test_Time.pdf",
           "scope": "pp.3-6; discovery objective, reuse and Algorithm1"
         },
         {
-          "path": "MAS.S62/7.ModelEvolution1/references/2610.06269.pdf",
+          "path": "MAS.S62/7.ModelEvolution1/references/Evolving_in_Thought_Space_Training_a_Small_Model_at_Test_Time_Unlocks_Better_Discoveries.pdf",
           "scope": "pp.3-5; guidance/execution separation and experiment setup"
         },
         {
-          "path": "MAS.S62/7.ModelEvolution1/references/2306.13649.pdf",
+          "path": "MAS.S62/7.ModelEvolution1/references/On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf",
           "scope": "pp.1,3-4; divergences and sampling stop-gradient"
         },
         {
-          "path": "MAS.S62/7.ModelEvolution1/references/2601.18734.pdf",
+          "path": "MAS.S62/7.ModelEvolution1/references/Self-Distilled_Reasoner_On-Policy_Self-Distillation_for_Large_Language_Models.pdf",
           "scope": "pp.3-5; teacher conditioning, full-vocab and sampled-token objectives"
         },
         {
-          "path": "MAS.S62/7.ModelEvolution1/references/2601.20802.pdf",
+          "path": "MAS.S62/7.ModelEvolution1/references/Reinforcement_Learning_via_Self-Distillation.pdf",
           "scope": "pp.3-6; feedback, KL objective, top-k and stability"
         },
         {
-          "path": "MAS.S62/7.ModelEvolution1/references/2509.04259.pdf",
+          "path": "MAS.S62/7.ModelEvolution1/references/RL_s_Razor_Why_Online_Reinforcement_Learning_Forgets_Less.pdf",
           "scope": "pp.1-9,20,23; empirical forgetting, on-policy/negative-example ablation, oracle SFT, Fig.11"
         },
         {
-          "path": "MAS.S62/7.ModelEvolution1/references/2601.19897.pdf",
+          "path": "MAS.S62/7.ModelEvolution1/references/Self-Distillation_Enables_Continual_Learning.pdf",
           "scope": "pp.1-10,16-22 and p.11 limitations; rendered p.16 and generated p.4 image; theory/practice, training, evaluation, costs"
         },
         {
@@ -355,35 +355,35 @@
           "scope": "全部页面文本；关键图表渲染核读"
         },
         {
-          "path": "MAS.S62/2.ContextEvolution1/readings/002_TextGrad_Automatic_Differentiation_via_Text_2406.07496.pdf",
+          "path": "MAS.S62/2.ContextEvolution1/readings/TextGrad_Automatic_Differentiation_via_Text.pdf",
           "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
         },
         {
-          "path": "MAS.S62/2.ContextEvolution1/readings/001_Large_Language_Models_Are_Human_Level_Prompt_Engineers_2211.01910.pdf",
+          "path": "MAS.S62/2.ContextEvolution1/readings/Large_Language_Models_Are_Human-Level_Prompt_Engineers.pdf",
           "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
         },
         {
-          "path": "MAS.S62/2.ContextEvolution1/readings/003_DSPy_Compiling_Declarative_Language_Model_Calls_into_Self_Improving_Pipe_2310.03714.pdf",
+          "path": "MAS.S62/2.ContextEvolution1/readings/DSPy_Compiling_Declarative_Language_Model_Calls_into_Self-Improving_Pipelines.pdf",
           "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
         },
         {
-          "path": "MAS.S62/2.ContextEvolution1/readings/004_Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning_2303.11366.pdf",
+          "path": "MAS.S62/2.ContextEvolution1/readings/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf",
           "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
         },
         {
-          "path": "MAS.S62/2.ContextEvolution1/readings/005_Evolving_Prompts_In_Context_An_Open_ended_Self_replicating_Perspective_2506.17930.pdf",
+          "path": "MAS.S62/2.ContextEvolution1/readings/Evolving_Prompts_In-Context_An_Open-ended_Self-replicating_Perspective.pdf",
           "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
         },
         {
-          "path": "MAS.S62/2.ContextEvolution1/readings/006_GEPA_Reflective_Prompt_Evolution_Can_Outperform_Reinforcement_Learning_2507.19457.pdf",
+          "path": "MAS.S62/2.ContextEvolution1/readings/GEPA_Reflective_Prompt_Evolution_Can_Outperform_Reinforcement_Learning.pdf",
           "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
         },
         {
-          "path": "MAS.S62/2.ContextEvolution1/readings/007_ReasoningBank_Scaling_Agent_Self_Evolving_with_Reasoning_Memory_2509.25140.pdf",
+          "path": "MAS.S62/2.ContextEvolution1/readings/ReasoningBank_Scaling_Agent_Self-Evolving_with_Reasoning_Memory.pdf",
           "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
         },
         {
-          "path": "MAS.S62/2.ContextEvolution1/references/2510.04618.pdf",
+          "path": "MAS.S62/2.ContextEvolution1/references/Agentic_Context_Engineering_Evolving_Contexts_for_Self-Improving_Language_Models.pdf",
           "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
         },
         {
@@ -407,67 +407,67 @@
           "scope": "全部页面文本；关键图表渲染核读"
         },
         {
-          "path": "MAS.S62/5.HarnessEvolution1/readings/002_Recursive_Language_Models_2512.24601.pdf",
+          "path": "MAS.S62/5.HarnessEvolution1/readings/Recursive_Language_Models.pdf",
           "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
         },
         {
-          "path": "MAS.S62/5.HarnessEvolution1/readings/004_MEM1_Learning_to_Synergize_Memory_and_Reasoning_for_Efficient_Long_horiz_2506.15841.pdf",
+          "path": "MAS.S62/5.HarnessEvolution1/readings/MEM1_Learning_to_Synergize_Memory_and_Reasoning_for_Efficient_Long-Horizon_Agents.pdf",
           "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
         },
         {
-          "path": "MAS.S62/5.HarnessEvolution1/readings/005_Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning_2303.11366.pdf",
+          "path": "MAS.S62/5.HarnessEvolution1/readings/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf",
           "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
         },
         {
-          "path": "MAS.S62/5.HarnessEvolution1/readings/001_Darwin_Godel_Machine_Open_Ended_Evolution_of_Self_Improving_Agents_2505.22954.pdf",
+          "path": "MAS.S62/5.HarnessEvolution1/readings/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf",
           "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
         },
         {
-          "path": "MAS.S62/5.HarnessEvolution1/readings/007_Continual_Harness_Online_Adaptation_for_Self_Improving_Foundation_Agents_2605.09998.pdf",
+          "path": "MAS.S62/5.HarnessEvolution1/readings/Continual_Harness_Online_Adaptation_for_Self-Improving_Foundation_Agents.pdf",
           "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
         },
         {
-          "path": "MAS.S62/5.HarnessEvolution1/readings/003_Context_Language_Models_2609.37725.pdf",
+          "path": "MAS.S62/5.HarnessEvolution1/readings/Context_Language_Models.pdf",
           "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
         },
         {
-          "path": "MAS.S62/5.HarnessEvolution1/readings/006_Meta_Harness_End_to_End_Optimization_of_Model_Harnesses_2603.28052.pdf",
+          "path": "MAS.S62/5.HarnessEvolution1/readings/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf",
           "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
         },
         {
-          "path": "MAS.S62/5.HarnessEvolution1/readings/009_Harness_Updating_Is_Not_Harness_Benefit_Disentangling_Evolution_Capabili_2605.30621.pdf",
+          "path": "MAS.S62/5.HarnessEvolution1/readings/Harness_Updating_Is_Not_Harness_Benefit_Disentangling_Evolution_Capabilities_in_Self-Evolving_LLM_Agents.pdf",
           "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
         },
         {
-          "path": "MAS.S62/5.HarnessEvolution1/readings/008_HarnessTax_How_Much_Does_the_Harness_Matter_for_Coding_Agents_arena_ai_blog_coding_agents_harness_tax_c2dd74e6.html",
+          "path": "MAS.S62/5.HarnessEvolution1/readings/HarnessTax_How_Much_Does_the_Harness_Matter_for_Coding_Agents.html",
           "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
         },
         {
-          "path": "MAS.S62/5.HarnessEvolution1/references/003_MemGPT.pdf",
+          "path": "MAS.S62/5.HarnessEvolution1/references/MemGPT_Towards_LLMs_as_Operating_Systems.pdf",
           "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
         },
         {
-          "path": "MAS.S62/5.HarnessEvolution1/references/004_Agent_Workflow_Memory_AWM.pdf",
+          "path": "MAS.S62/5.HarnessEvolution1/references/Agent_Workflow_Memory.pdf",
           "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
         },
         {
-          "path": "MAS.S62/5.HarnessEvolution1/references/005_Agent_Skill_Induction_ASI.pdf",
+          "path": "MAS.S62/5.HarnessEvolution1/references/Inducing_Programmatic_Skills_for_Agentic_Tasks.pdf",
           "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
         },
         {
-          "path": "MAS.S62/5.HarnessEvolution1/references/013_PolySkill.pdf",
+          "path": "MAS.S62/5.HarnessEvolution1/references/PolySkill_Learning_Generalizable_Skills_Through_Polymorphic_Abstraction.pdf",
           "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
         },
         {
-          "path": "MAS.S62/5.HarnessEvolution1/references/001_Mem0.pdf",
+          "path": "MAS.S62/5.HarnessEvolution1/references/Mem0_Building_Production-Ready_AI_Agents_with_Scalable_Long-Term_Memory.pdf",
           "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
         },
         {
-          "path": "MAS.S62/5.HarnessEvolution1/references/002_CodeAct.pdf",
+          "path": "MAS.S62/5.HarnessEvolution1/references/Executable_Code_Actions_Elicit_Better_LLM_Agents.pdf",
           "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
         },
         {
-          "path": "MAS.S62/5.HarnessEvolution1/references/003_ExpeL.pdf",
+          "path": "MAS.S62/5.HarnessEvolution1/references/ExpeL_LLM_Agents_Are_Experiential_Learners.pdf",
           "scope": "与本文机制、条件、数字、引用相关正文/附录；PDF首面版本标记"
         },
         {
@@ -475,15 +475,15 @@
           "scope": "全部34个单元源码及相关已保存输出；未重新执行外部模型"
         },
         {
-          "path": "MAS.S62/readings/papers/2302.04761.pdf",
+          "path": "MAS.S62/readings/papers/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf",
           "scope": "论文工具/技能方法相关正文pp.3–6"
         },
         {
-          "path": "MAS.S62/readings/papers/2307.16789.pdf",
+          "path": "MAS.S62/readings/papers/ToolLLM_Facilitating_Large_Language_Models_to_Master_16000+_Real-world_APIs.pdf",
           "scope": "论文工具/技能方法相关正文pp.3–6"
         },
         {
-          "path": "MAS.S62/readings/papers/2305.16291.pdf",
+          "path": "MAS.S62/readings/papers/VOYAGER_An_Open-Ended_Embodied_Agent_with_Large_Language_Models.pdf",
           "scope": "论文工具/技能方法相关正文pp.3–6"
         }
       ],
@@ -738,75 +738,75 @@
           "scope": "all47pages text; visual review image-centric pages3–4,7–8,21–22,29,33–34,36,38,42"
         },
         {
-          "path": "MAS.S62/3.ContextEvolution2/references/Mathematical-discoveries-from-program-search-with-large-language-models.pdf",
+          "path": "MAS.S62/3.ContextEvolution2/references/Mathematical_discoveries_from_program_search_with_large_language_models.pdf",
           "scope": "§1–2, Methods selection/robustness, Table1, TableE.2; affected portions reread"
         },
         {
-          "path": "MAS.S62/readings/papers/2309.03409.pdf",
+          "path": "MAS.S62/readings/papers/Large_Language_Models_as_Optimizers.pdf",
           "scope": "abstract/Table1, §2–4 and experiment protocol references"
         },
         {
-          "path": "MAS.S62/readings/papers/2409.04109.pdf",
+          "path": "MAS.S62/readings/papers/Can_LLMs_Generate_Novel_Research_Ideas_A_Large-Scale_Human_Study_with_100+_NLP_Researchers.pdf",
           "scope": "§4–5, Tables7–9 and duplicate-idea/limitations source passages"
         },
         {
-          "path": "MAS.S62/readings/papers/2606.15497.pdf",
+          "path": "MAS.S62/readings/papers/Towards_End-to-End_Automation_of_AI_Research.pdf",
           "scope": "§2–5, template/tree-search and human evaluation/filtering/withdrawal passages"
         },
         {
-          "path": "MAS.S62/3.ContextEvolution2/references/2406.07496.pdf",
+          "path": "MAS.S62/3.ContextEvolution2/references/TextGrad_Automatic_Differentiation_via_Text.pdf",
           "scope": "§2/Fig1 PDFpp2–4"
         },
         {
-          "path": "MAS.S62/3.ContextEvolution2/references/2303.17651.pdf",
+          "path": "MAS.S62/3.ContextEvolution2/references/Self-Refine_Iterative_Refinement_with_Self-Feedback.pdf",
           "scope": "§2–3 PDFpp2–4"
         },
         {
-          "path": "MAS.S62/readings/papers/2506.13131.pdf",
+          "path": "MAS.S62/readings/papers/AlphaEvolve_A_coding_agent_for_scientific_and_algorithmic_discovery.pdf",
           "scope": "§2.1–2.4/Figs1–3 PDFpp3–7"
         },
         {
-          "path": "MAS.S62/readings/papers/2408.06292.pdf",
+          "path": "MAS.S62/readings/papers/The_AI_Scientist_Towards_Fully_Automated_Open-Ended_Scientific_Discovery.pdf",
           "scope": "§3–4 PDFpp3–6; generated-paper appendices not exhaustively read"
         },
         {
-          "path": "MAS.S62/3.ContextEvolution2/references/2504.21801v2.pdf",
+          "path": "MAS.S62/3.ContextEvolution2/references/DeepSeek-Prover-V2_Advancing_Formal_Mathematical_Reasoning_via_Reinforcement_Learning_for_Subgoal_Decomposition.pdf",
           "scope": "new official v2 download; abstract and§2.1–2.3/Fig2 PDFpp1–6"
         },
         {
-          "path": "MAS.S62/readings/papers/2512.08296.pdf",
+          "path": "MAS.S62/readings/papers/Towards_a_Science_of_Scaling_Agent_Systems.pdf",
           "scope": "abstract/intro,§3–4 predictor/metric/threshold sections and Tables3/5 references"
         },
         {
-          "path": "MAS.S62/readings/papers/2604.01658.pdf",
+          "path": "MAS.S62/readings/papers/CORAL_Towards_Autonomous_Multi-Agent_Evolution_for_Open-Ended_Discovery.pdf",
           "scope": "§3–4,Tables1–3,AppendixC.1.2; affected result/trigger passages reread"
         },
         {
-          "path": "MAS.S62/readings/papers/2602.12670.pdf",
+          "path": "MAS.S62/readings/papers/SkillsBench_Benchmarking_How_Well_Agent_Skills_Work_Across_Diverse_Tasks.pdf",
           "scope": "abstract,§3–5,Table2/aggregation protocol"
         },
         {
-          "path": "MAS.S62/readings/papers/2503.13657.pdf",
+          "path": "MAS.S62/readings/papers/Why_Do_Multi-Agent_LLM_Systems_Fail.pdf",
           "scope": "§3,Fig1,Tables1–2 and category definitions"
         },
         {
-          "path": "MAS.S62/6.HarnessEvolution2/references/2405.15793.pdf",
+          "path": "MAS.S62/6.HarnessEvolution2/references/SWE-agent_Agent-Computer_Interfaces_Enable_Automated_Software_Engineering.pdf",
           "scope": "§5.1/Table3/Fig5 PDFpp5–7"
         },
         {
-          "path": "MAS.S62/readings/papers/2302.04761.pdf",
+          "path": "MAS.S62/readings/papers/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf",
           "scope": "§2 PDFpp3–4"
         },
         {
-          "path": "MAS.S62/readings/papers/2307.16789.pdf",
+          "path": "MAS.S62/readings/papers/ToolLLM_Facilitating_Large_Language_Models_to_Master_16000+_Real-world_APIs.pdf",
           "scope": "§2–3 PDFpp3–7"
         },
         {
-          "path": "MAS.S62/readings/papers/2305.16291.pdf",
+          "path": "MAS.S62/readings/papers/VOYAGER_An_Open-Ended_Embodied_Agent_with_Large_Language_Models.pdf",
           "scope": "§2 PDFpp3–5"
         },
         {
-          "path": "MAS.S62/6.HarnessEvolution2/references/002_ReAct.pdf",
+          "path": "MAS.S62/6.HarnessEvolution2/references/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf",
           "scope": "§2–3 PDFpp2–4"
         },
         {
@@ -1025,5 +1025,50 @@
     "note": "论文实验为一手资料报告；本地运行仅验证教学例子的状态、契约与数学。",
     "staged_source_bytes_verified": 136,
     "git_checkout_preservation": "MAS.S62/.gitattributes disables line-ending normalization for original archives and classified copies; binary formats have explicit binary attributes."
-  }
+  },
+  "path_maintenance": [
+    {
+      "date": "2026-10-27",
+      "catalog": "tools/MATERIAL_RENAMES.json",
+      "scope": "Source filenames and local path references only; prior semantic reviews remain historical records",
+      "updated_note_hashes": [
+        {
+          "path": "MAS.S62/1.CourseIntroduction/notes.zh-CN.md",
+          "previous_reviewed_sha256": "5ab8004857d420c9c62702448fb2cbca0a51eaf16cb36b753fd4160258ab4ab1",
+          "current_sha256": "f4ee7f71dbb1de0c7f8079cb4aa2ba61727ce071fb62ea9eee10fde1fc237c07"
+        },
+        {
+          "path": "MAS.S62/2.ContextEvolution1/notes.zh-CN.md",
+          "previous_reviewed_sha256": "ac6028a4209209d04ff6b6363df43ca3cd9974c82b1dd8e2551df3ec3d824177",
+          "current_sha256": "01451a9682ed92a14dcac906dad520c4f464582d44fc68987b2b79b2dcd848ac"
+        },
+        {
+          "path": "MAS.S62/3.ContextEvolution2/notes.zh-CN.md",
+          "previous_reviewed_sha256": "2dffdf1c72c150705f4d87e1b47b7265bc8dcb3a3a6a37d0f49ef02e74f6e72f",
+          "current_sha256": "5d390b77e034e8f932df2f732ac18b83176394319a432d96d9b61e86686623a8"
+        },
+        {
+          "path": "MAS.S62/5.HarnessEvolution1/notes.zh-CN.md",
+          "previous_reviewed_sha256": "6408803741b17ae1459892fbf8a99b5c8ec6dda3cb0d9c621a785917e78b2621",
+          "current_sha256": "dd979a16fbb283dbac04856564c01442db040f2c9d8d7ad4dab086432934aa2d"
+        },
+        {
+          "path": "MAS.S62/6.HarnessEvolution2/notes.zh-CN.md",
+          "previous_reviewed_sha256": "357df775711837e712c18dea3ee5f5104acc22f6a00dc616dfdbabce3df7cd9f",
+          "current_sha256": "03359c31b749b6fa6d48c463d8e3c02b3e1c7bb826e73df0332454916f41f0fb"
+        },
+        {
+          "path": "MAS.S62/7.ModelEvolution1/notes.zh-CN.md",
+          "previous_reviewed_sha256": "8e06116422add4a71e2c179e438f90257ab04659e767c3247869bb4b17851cf7",
+          "current_sha256": "865caf3a902999da7454f3391fae330ae9bc31925812a5e4baad7fafe3ffbc36"
+        }
+      ],
+      "site_changes": [
+        "site/projects/index.html",
+        "site/schedule/index.html"
+      ],
+      "site_change_scope": "Local navigation links only; external URLs and retrieval dates retained",
+      "validation": "MAS.S62/verify.py --require-notes and tools/verify_material_names.py; no new full-text or model-experiment review claimed"
+    }
+  ]
 }

@@ -62,7 +62,7 @@
 
 **工程建议／综合判断**：从多份材料得到的设计建议，没有声称已经在你的业务或硬件上验证。
 
-资料核查发现：[019_Curriculum_Learning.pdf](references/019_Curriculum_Learning.pdf) 实际是约瑟夫森相位量子比特论文，不作为课程学习依据；正确 ICML 2009 原文另存为 [026_Curriculum_Learning_ICML2009.pdf](references/026_Curriculum_Learning_ICML2009.pdf)。GKD 与 OPSD 的完整原论文已在本地，本文第 10 章回查其方法与关键实验，区分讲义示例、一般框架和具体训练配方。[^wrong-file][^lecture-teacher]
+资料核查发现：旧归档曾以 `019_Curriculum_Learning.pdf` 保存约瑟夫森相位量子比特论文，现已按实际标题改名为 [Interaction-assisted SU(2) adiabatic holonomies in Josephson phase qubits](references/Interaction-assisted_SU_2_adiabatic_holonomies_in_Josephson_phase_qubits.pdf)，仍不作为课程学习依据；正确 ICML 2009 原文另存为 [Curriculum_Learning.pdf](references/Curriculum_Learning.pdf)。GKD 与 OPSD 的完整原论文已在本地，本文第 10 章回查其方法与关键实验，区分讲义示例、一般框架和具体训练配方。[^wrong-file][^lecture-teacher]
 
 ### 0.3 全文最重要的一条线
 
@@ -1873,27 +1873,27 @@ PostTrainBench 的数据 split 误认、模型替换和 API 越界案例说明�
 | 材料 | 正文位置 | 需要从中学到的东西 |
 |---|---|---|
 | [lecture-11-rl-advanced.pdf](lecture-11-rl-advanced.pdf) | 全文骨架 | 五条主线与贯穿案例 |
-| [001_MIXER.pdf](references/001_MIXER.pdf) | 第 2、3、10 章 | 序列奖励与交叉熵梯度、暴露偏差、混合课程 |
-| [002_InstructGPT.pdf](references/002_InstructGPT.pdf) | 第 2、6、9 章 | 奖励学习、critic、参考 KL、能力保留、偏好数据相关性 |
-| [003_Generalized_Advantage_Estimation_GAE.pdf](references/003_Generalized_Advantage_Estimation_GAE.pdf) | 第 3、9 章 | 多步估计、偏差—方差、价值势函数塑形 |
-| [004_Let_s_Verify_Step_by_Step.pdf](references/004_Let_s_Verify_Step_by_Step.pdf) | 第 4、9、13 章 | 过程评分器、best-of-N、主动标注盲点 |
-| [005_AReaL.pdf](references/005_AReaL.pdf) | 第 5、8、11—13 章 | 异步、陈旧度、混合版本、解耦目标、端到端效率 |
-| [006_CTPO.pdf](references/006_CTPO.pdf) | 第 8、12 章 | 历史分布校正、前缀比率、位置裁剪与理论边界 |
-| [007_Proximal_Policy_Optimization_PPO.pdf](references/007_Proximal_Policy_Optimization_PPO.pdf) | 第 6—8 章 | 局部代理目标、裁剪、KL、共享策略与价值训练 |
-| [008_DeepSeekMath_GRPO.pdf](references/008_DeepSeekMath_GRPO.pdf) | 第 1、4、6、13 章 | 组相对优势、过程奖励、统一训练框架、能力评测 |
-| [009_MiniMax-M1_CISPO.pdf](references/009_MiniMax-M1_CISPO.pdf) | 第 7、8、11、12 章 | 固定 IS 权重、计算图、数值一致性、优化器与重复处理 |
-| [010_Group_Sequence_Policy_Optimization_GSPO.pdf](references/010_Group_Sequence_Policy_Optimization_GSPO.pdf) | 第 8、12 章 | 序列权重、GSPO-token、MoE 路由与裁剪比例 |
-| [011_DAPO.pdf](references/011_DAPO.pdf) | 第 7、9、12、13 章 | 可复现配方、动态采样、归约与超长反馈 |
-| [014_SABER_tau-bench_audit.pdf](references/014_SABER_tau-bench_audit.pdf) | 第 9、13 章 | 修改类动作风险、运行时门控与评测审计 |
+| [Sequence_Level_Training_with_Recurrent_Neural_Networks.pdf](references/Sequence_Level_Training_with_Recurrent_Neural_Networks.pdf) | 第 2、3、10 章 | 序列奖励与交叉熵梯度、暴露偏差、混合课程 |
+| [Training_language_models_to_follow_instructions_with_human_feedback.pdf](references/Training_language_models_to_follow_instructions_with_human_feedback.pdf) | 第 2、6、9 章 | 奖励学习、critic、参考 KL、能力保留、偏好数据相关性 |
+| [High-Dimensional_Continuous_Control_Using_Generalized_Advantage_Estimation.pdf](references/High-Dimensional_Continuous_Control_Using_Generalized_Advantage_Estimation.pdf) | 第 3、9 章 | 多步估计、偏差—方差、价值势函数塑形 |
+| [Let_s_Verify_Step_by_Step.pdf](references/Let_s_Verify_Step_by_Step.pdf) | 第 4、9、13 章 | 过程评分器、best-of-N、主动标注盲点 |
+| [AReaL_A_Large-Scale_Asynchronous_Reinforcement_Learning_System_for_Language_Reasoning.pdf](references/AReaL_A_Large-Scale_Asynchronous_Reinforcement_Learning_System_for_Language_Reasoning.pdf) | 第 5、8、11—13 章 | 异步、陈旧度、混合版本、解耦目标、端到端效率 |
+| [Rethinking_Importance_Sampling_in_LLM_Policy_Optimization_A_Cumulative_Token_Perspective.pdf](references/Rethinking_Importance_Sampling_in_LLM_Policy_Optimization_A_Cumulative_Token_Perspective.pdf) | 第 8、12 章 | 历史分布校正、前缀比率、位置裁剪与理论边界 |
+| [Proximal_Policy_Optimization_Algorithms.pdf](references/Proximal_Policy_Optimization_Algorithms.pdf) | 第 6—8 章 | 局部代理目标、裁剪、KL、共享策略与价值训练 |
+| [DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf](references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf) | 第 1、4、6、13 章 | 组相对优势、过程奖励、统一训练框架、能力评测 |
+| [MiniMax-M1_Scaling_Test-Time_Compute_Efficiently_with_Lightning_Attention.pdf](references/MiniMax-M1_Scaling_Test-Time_Compute_Efficiently_with_Lightning_Attention.pdf) | 第 7、8、11、12 章 | 固定 IS 权重、计算图、数值一致性、优化器与重复处理 |
+| [Group_Sequence_Policy_Optimization.pdf](references/Group_Sequence_Policy_Optimization.pdf) | 第 8、12 章 | 序列权重、GSPO-token、MoE 路由与裁剪比例 |
+| [DAPO_An_Open-Source_LLM_Reinforcement_Learning_System_at_Scale.pdf](references/DAPO_An_Open-Source_LLM_Reinforcement_Learning_System_at_Scale.pdf) | 第 7、9、12、13 章 | 可复现配方、动态采样、归约与超长反馈 |
+| [SABER_Small_Actions_Big_Errors_-_Safeguarding_Mutating_Steps_in_LLM_Agents.pdf](references/SABER_Small_Actions_Big_Errors_-_Safeguarding_Mutating_Steps_in_LLM_Agents.pdf) | 第 9、13 章 | 修改类动作风险、运行时门控与评测审计 |
 | [015_tau-bench_task_fixes.html](references/015_tau-bench_task_fixes.html) | 第 9、13 章 | 任务定义修订如何改变分数 |
 | [016_Reward_Hacking_in_Reinforcement_Learning.html](references/016_Reward_Hacking_in_Reinforcement_Learning.html) | 第 9、13 章 | 代理目标、奖励篡改、评价偏差与 in-context hacking |
-| [017_MAI-Thinking-1.pdf](references/017_MAI-Thinking-1.pdf) | 第 6、9—13 章 | 长期训练、任务环境、数值、基础设施与蒸馏闭环 |
-| [018_PostTrainBench.pdf](references/018_PostTrainBench.pdf) | 第 9、13 章 | 外层实验 Agent 的训练能力与实验完整性 |
+| [MAI-Thinking-1_Building_a_Hill-Climbing_Machine.pdf](references/MAI-Thinking-1_Building_a_Hill-Climbing_Machine.pdf) | 第 6、9—13 章 | 长期训练、任务环境、数值、基础设施与蒸馏闭环 |
+| [PostTrainBench_Can_LLM_Agents_Automate_LLM_Post-Training.pdf](references/PostTrainBench_Can_LLM_Agents_Automate_LLM_Post-Training.pdf) | 第 9、13 章 | 外层实验 Agent 的训练能力与实验完整性 |
 | [020_OpenAI_calculator_hacking_and_production_evaluations.html](references/020_OpenAI_calculator_hacking_and_production_evaluations.html) | 第 9、13 章 | 代表性与针对性评测、真实上下文、监测边界 |
-| [019_Curriculum_Learning.pdf](references/019_Curriculum_Learning.pdf) | 附录 C | 文件内容与标题不匹配，不用作课程学习证据 |
-| [023_On-Policy_Distillation_of_Language_Models_GKD.pdf](references/023_On-Policy_Distillation_of_Language_Models_GKD.pdf) | 第 10 章 | 数据混合比例、散度选择、学生历史与停止采样梯度 |
-| [024_Self-Distilled_Reasoner_OPSD.pdf](references/024_Self-Distilled_Reasoner_OPSD.pdf) | 第 10 章 | 特权条件、冻结初始教师、完整词表与采样 token 两路径、实验成本边界 |
-| [026_Curriculum_Learning_ICML2009.pdf](references/026_Curriculum_Learning_ICML2009.pdf) | 第 10 章、附录 C | 正确的课程学习背景原文，替代错误文件作为证据 |
+| [Interaction-assisted_SU_2_adiabatic_holonomies_in_Josephson_phase_qubits.pdf](references/Interaction-assisted_SU_2_adiabatic_holonomies_in_Josephson_phase_qubits.pdf) | 附录 C | 旧文件名误标为课程学习；现已按实际标题改名，仍不用作课程学习证据 |
+| [On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf](references/On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf) | 第 10 章 | 数据混合比例、散度选择、学生历史与停止采样梯度 |
+| [Self-Distilled_Reasoner_On-Policy_Self-Distillation_for_Large_Language_Models.pdf](references/Self-Distilled_Reasoner_On-Policy_Self-Distillation_for_Large_Language_Models.pdf) | 第 10 章 | 特权条件、冻结初始教师、完整词表与采样 token 两路径、实验成本边界 |
+| [Curriculum_Learning.pdf](references/Curriculum_Learning.pdf) | 第 10 章、附录 C | 正确的课程学习背景原文，替代错误文件作为证据 |
 
 以上文件链接均指本地归档；长篇原文核查集中在本文使用的方法、实验与局限，未宣称穷尽所有附录。
 
@@ -1931,7 +1931,7 @@ PostTrainBench 的数据 split 误认、模型替换和 API 越界案例说明�
 
 ### C.1 文件名正确，不代表内容正确
 
-[019_Curriculum_Learning.pdf](references/019_Curriculum_Learning.pdf) 实际题目是 *Interaction-assisted SU(2) adiabatic holonomies in Josephson phase qubits*。它不能支持 Bengio 等课程学习研究的任何结论。错误文件保持原始字节不变以保留归档来历，并在 SOURCES.md 明确标错；正确 ICML 原文已补存为 [026_Curriculum_Learning_ICML2009.pdf](references/026_Curriculum_Learning_ICML2009.pdf)，版本与校验值见 [REFERENCES.json](REFERENCES.json)。本文不根据错误文件名补写其内容。[^wrong-file]
+[Interaction-assisted_SU_2_adiabatic_holonomies_in_Josephson_phase_qubits.pdf](references/Interaction-assisted_SU_2_adiabatic_holonomies_in_Josephson_phase_qubits.pdf) 原文件名为 `019_Curriculum_Learning.pdf`，实际题目是 *Interaction-assisted SU(2) adiabatic holonomies in Josephson phase qubits*。本轮只按实际标题改名，原始字节未变。它不能支持 Bengio 等课程学习研究的任何结论。错误文件保持原始字节不变以保留归档来历，并在 SOURCES.md 明确标错；正确 ICML 原文已补存为 [Curriculum_Learning.pdf](references/Curriculum_Learning.pdf)，版本与校验值见 [REFERENCES.json](REFERENCES.json)。本文不根据错误文件名补写其内容。[^wrong-file]
 
 ### C.2 GAE 中的折扣有两层语境
 
@@ -1996,63 +1996,63 @@ DeepSeekMath 的分布改善观察，不证明 RL 永远不能学新能力；DAP
 
 [^lecture-teacher]: [lecture-11-rl-advanced.pdf](lecture-11-rl-advanced.pdf)，第 48—53 页：热启动与课程、离线蒸馏、学生历史上的 OPD、反向 KL 示例和基于验证解答的 OPSD。
 
-[^mixer]: Ranzato 等，*Sequence Level Training with Recurrent Neural Networks*，[001_MIXER.pdf](references/001_MIXER.pdf)，第 1—4 页、第 6 页 §3.2：暴露偏差、评价目标差异、序列生成的 REINFORCE。
+[^mixer]: Ranzato 等，*Sequence Level Training with Recurrent Neural Networks*，[Sequence_Level_Training_with_Recurrent_Neural_Networks.pdf](references/Sequence_Level_Training_with_Recurrent_Neural_Networks.pdf)，第 1—4 页、第 6 页 §3.2：暴露偏差、评价目标差异、序列生成的 REINFORCE。
 
-[^mixer-gradient]: [001_MIXER.pdf](references/001_MIXER.pdf)，第 6—8 页 §3.2.1—3.2.2、Figure 4、Algorithm 1：加权交叉熵式梯度、价值基线回归与停止梯度、混合交叉熵／REINFORCE 课程。
+[^mixer-gradient]: [Sequence_Level_Training_with_Recurrent_Neural_Networks.pdf](references/Sequence_Level_Training_with_Recurrent_Neural_Networks.pdf)，第 6—8 页 §3.2.1—3.2.2、Figure 4、Algorithm 1：加权交叉熵式梯度、价值基线回归与停止梯度、混合交叉熵／REINFORCE 课程。
 
-[^instruct-recipe]: Ouyang 等，*Training Language Models to Follow Instructions with Human Feedback*，[002_InstructGPT.pdf](references/002_InstructGPT.pdf)，第 7—9 页 §3.2—3.5：三类数据规模、偏好排序与组内比较相关性、奖励模型损失与归一化、PPO 与 PPO-ptx。
+[^instruct-recipe]: Ouyang 等，*Training Language Models to Follow Instructions with Human Feedback*，[Training_language_models_to_follow_instructions_with_human_feedback.pdf](references/Training_language_models_to_follow_instructions_with_human_feedback.pdf)，第 7—9 页 §3.2—3.5：三类数据规模、偏好排序与组内比较相关性、奖励模型损失与归一化、PPO 与 PPO-ptx。
 
-[^instruct-critic]: [002_InstructGPT.pdf](references/002_InstructGPT.pdf)，第 42 页附录 C.4：策略、奖励模型、价值模型、GAE 与具体训练设置。奖励模型与价值模型为不同角色，价值模型从奖励模型初始化。
+[^instruct-critic]: [Training_language_models_to_follow_instructions_with_human_feedback.pdf](references/Training_language_models_to_follow_instructions_with_human_feedback.pdf)，第 42 页附录 C.4：策略、奖励模型、价值模型、GAE 与具体训练设置。奖励模型与价值模型为不同角色，价值模型从奖励模型初始化。
 
-[^gae]: Schulman 等，*High-Dimensional Continuous Control Using Generalized Advantage Estimation*，[003_Generalized_Advantage_Estimation_GAE.pdf](references/003_Generalized_Advantage_Estimation_GAE.pdf)，第 1—5 页 §1—3：不折扣目标、γ-just 条件、TD residual、多步估计、GAE 与偏差—方差。
+[^gae]: Schulman 等，*High-Dimensional Continuous Control Using Generalized Advantage Estimation*，[High-Dimensional_Continuous_Control_Using_Generalized_Advantage_Estimation.pdf](references/High-Dimensional_Continuous_Control_Using_Generalized_Advantage_Estimation.pdf)，第 1—5 页 §1—3：不折扣目标、γ-just 条件、TD residual、多步估计、GAE 与偏差—方差。
 
 [^gae-shaping]: 同上，第 5—7 页 §4—5：势函数奖励塑形、GAE 的解释、价值函数的信任域式优化。
 
-[^ppo]: Schulman 等，*Proximal Policy Optimization Algorithms*，[007_Proximal_Policy_Optimization_PPO.pdf](references/007_Proximal_Policy_Optimization_PPO.pdf)，尤其第 2—5 页 §2—5：旧分布代理目标、clipped objective、适应性 KL、策略／价值／熵联合目标与 Algorithm 1。
+[^ppo]: Schulman 等，*Proximal Policy Optimization Algorithms*，[Proximal_Policy_Optimization_Algorithms.pdf](references/Proximal_Policy_Optimization_Algorithms.pdf)，尤其第 2—5 页 §2—5：旧分布代理目标、clipped objective、适应性 KL、策略／价值／熵联合目标与 Algorithm 1。
 
-[^deepseek-grpo]: Shao 等，*DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models*，[008_DeepSeekMath_GRPO.pdf](references/008_DeepSeekMath_GRPO.pdf)，第 13—15 页 Figure 4、§4.1—4.2：GRPO、KL、结果监督、过程监督、迭代奖励模型与训练配置。
+[^deepseek-grpo]: Shao 等，*DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models*，[DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf](references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf)，第 13—15 页 Figure 4、§4.1—4.2：GRPO、KL、结果监督、过程监督、迭代奖励模型与训练配置。
 
 [^deepseek-unified]: 同上，第 18—20 页 §5.2.1、Table 10、Figures 5—6：数据来源／奖励／梯度系数统一框架，RFT、Online RFT、GRPO+OS/PS 与迭代实验。
 
 [^deepseek-pass]: 同上，第 21—22 页 §5.2.2—5.2.3、Figure 7：Maj@K、Pass@K、输出分布改善与后续研究方向。
 
-[^prm-method]: Lightman 等，*Let’s Verify Step by Step*，[004_Let_s_Verify_Step_by_Step.pdf](references/004_Let_s_Verify_Step_by_Step.pdf)，第 3—6 页 §2.1—2.6：固定生成器、不做生成器 RL、步骤标注、PRM800K、评分聚合与首个错误监督。
+[^prm-method]: Lightman 等，*Let’s Verify Step by Step*，[Let_s_Verify_Step_by_Step.pdf](references/Let_s_Verify_Step_by_Step.pdf)，第 3—6 页 §2.1—2.6：固定生成器、不做生成器 RL、步骤标注、PRM800K、评分聚合与首个错误监督。
 
 [^prm-results]: 同上，第 5 页测试子集说明、第 7—9 页 §3—4、Figures 3—4：best-of-1860 的 72.4/78.2/69.6，以及大小规模实验的可比性与限制。
 
 [^prm-active]: 同上，第 5 页 §2.4、第 9 页 §4.2：高分错答主动标注、合成监督对照与约 2.6 倍数据效率估计。
 
-[^areal-system]: Fu 等，*AReaL: A Large-Scale Asynchronous Reinforcement Learning System for Language Reasoning*，[005_AReaL.pdf](references/005_AReaL.pdf)，第 3—5 页 §3—5.1、Figures 1—3：同步限制、四组件、可中断生成、缓存重算、单次消费与陈旧度控制。
+[^areal-system]: Fu 等，*AReaL: A Large-Scale Asynchronous Reinforcement Learning System for Language Reasoning*，[AReaL_A_Large-Scale_Asynchronous_Reinforcement_Learning_System_for_Language_Reasoning.pdf](references/AReaL_A_Large-Scale_Asynchronous_Reinforcement_Learning_System_for_Language_Reasoning.pdf)，第 3—5 页 §3—5.1、Figures 1—3：同步限制、四组件、可中断生成、缓存重算、单次消费与陈旧度控制。
 
 [^areal-objective]: 同上，第 6 页 §5.2：Decoupled PPO Objective，行为策略与近端策略的区分及近端中心更新。
 
 [^areal-results]: 同上，第 8—10 页 §7.3—7.5、Tables 1—2、Figures 4—6：端到端时间、陈旧度与解耦目标消融、系统优化和适用范围。
 
-[^cispo]: MiniMax，*MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention*，[009_MiniMax-M1_CISPO.pdf](references/009_MiniMax-M1_CISPO.pdf)，第 5—7 页 §3.1、Figure 2、Equations 3—7：CISPO、停止梯度、裁剪、动态采样与训练步数对比。
+[^cispo]: MiniMax，*MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention*，[MiniMax-M1_Scaling_Test-Time_Compute_Efficiently_with_Lightning_Attention.pdf](references/MiniMax-M1_Scaling_Test-Time_Compute_Efficiently_with_Lightning_Attention.pdf)，第 5—7 页 §3.1、Figure 2、Equations 3—7：CISPO、停止梯度、裁剪、动态采样与训练步数对比。
 
 [^cispo-numerics]: 同上，第 7—8 页 §3.2、Figure 3：推理／训练精度差异、输出头 FP32、优化器敏感性、重复循环提前截断。
 
-[^gspo]: Zheng 等，*Group Sequence Policy Optimization*，[010_Group_Sequence_Policy_Optimization_GSPO.pdf](references/010_Group_Sequence_Policy_Optimization_GSPO.pdf)，第 2—4 页 §3—5.1：动机、序列目标与梯度、长度归一化、GSPO-token 和裁剪配置。
+[^gspo]: Zheng 等，*Group Sequence Policy Optimization*，[Group_Sequence_Policy_Optimization.pdf](references/Group_Sequence_Policy_Optimization.pdf)，第 2—4 页 §3—5.1：动机、序列目标与梯度、长度归一化、GSPO-token 和裁剪配置。
 
 [^gspo-results]: 同上，第 5—6 页 §5.1—5.4、Figures 1—3：训练效率、裁剪比例、MoE 路由重放和基础设施讨论。本文保留其实验设置，不扩大为普遍保证。
 
-[^ctpo]: Zhang 等，*Rethinking Importance Sampling in LLM Policy Optimization: A Cumulative Token Perspective*，[006_CTPO.pdf](references/006_CTPO.pdf)，第 3—6 页 §2—3：比率比较、前缀校正命题、方差分析、位置裁剪与实际替代优势。
+[^ctpo]: Zhang 等，*Rethinking Importance Sampling in LLM Policy Optimization: A Cumulative Token Perspective*，[Rethinking_Importance_Sampling_in_LLM_Policy_Optimization_A_Cumulative_Token_Perspective.pdf](references/Rethinking_Importance_Sampling_in_LLM_Policy_Optimization_A_Cumulative_Token_Perspective.pdf)，第 3—6 页 §2—3：比率比较、前缀校正命题、方差分析、位置裁剪与实际替代优势。
 
 [^ctpo-results]: 同上，第 6—8 页 §4.1—4.5、Tables 2—3、Figure 1：最多 5 轮工具数学轨迹、avg@32、4B/14B 对照、位置裁剪消融。
 
-[^dapo]: Yu 等，*DAPO: An Open-Source LLM Reinforcement Learning System at Scale*，[011_DAPO.pdf](references/011_DAPO.pdf)，第 3—7 页 §2.2—3.4：移除参考 KL、Clip-Higher、动态采样、token 级损失、超长过滤与软惩罚。
+[^dapo]: Yu 等，*DAPO: An Open-Source LLM Reinforcement Learning System at Scale*，[DAPO_An_Open-Source_LLM_Reinforcement_Learning_System_at_Scale.pdf](references/DAPO_An_Open-Source_LLM_Reinforcement_Learning_System_at_Scale.pdf)，第 3—7 页 §2.2—3.4：移除参考 KL、Clip-Higher、动态采样、token 级损失、超长过滤与软惩罚。
 
 [^dapo-results]: 同上，第 9—10 页 Table 1、§4.3—4.4、Figure 7：累积配置实验、长度／奖励／熵监测及推理模式观察。
 
 [^reward-hacking]: Lilian Weng，*Reward Hacking in Reinforcement Learning*，[016_Reward_Hacking_in_Reinforcement_Learning.html](references/016_Reward_Hacking_in_Reinforcement_Learning.html)，2024-11-28。重点小节：Let’s Define Reward Hacking、Hacking RLHF of LLMs、Hacking the Training Process、Hacking the Evaluator、In-Context Reward Hacking、Peek into Mitigations。本文引用其归纳，不声称已独立复读每篇二级文献。
 
-[^saber]: Cuadron 等，*SABER: Small Actions, Big Errors — Safeguarding Mutating Steps in LLM Agents*，[014_SABER_tau-bench_audit.pdf](references/014_SABER_tau-bench_audit.pdf)，第 4—6 页 §3—4、Table 1、Figure 2：修改类动作分析、确认门控、定向反思和块级上下文管理。
+[^saber]: Cuadron 等，*SABER: Small Actions, Big Errors — Safeguarding Mutating Steps in LLM Agents*，[SABER_Small_Actions_Big_Errors_-_Safeguarding_Mutating_Steps_in_LLM_Agents.pdf](references/SABER_Small_Actions_Big_Errors_-_Safeguarding_Mutating_Steps_in_LLM_Agents.pdf)，第 4—6 页 §3—4、Table 1、Figure 2：修改类动作分析、确认门控、定向反思和块级上下文管理。
 
 [^saber-audit]: 同上，第 6—8 页 §5—6：τ-bench 的错误标注、歧义、Verified 修订及条件性效果；相关统计与来源口径须分别解释。
 
 [^tau-fixes]: Victor Barres、Ben Shi，*τ³-Bench: Fixing Airline + Retail*，[015_tau-bench_task_fixes.html](references/015_tau-bench_task_fixes.html)，页面标注 February 2026。小节 What We Fixed、Before & After Results：27/26 个任务修订、五类问题、pass¹ 与 pass⁴ 的变化。仅描述附件版本。
 
-[^mai-recipe]: Microsoft AI Team，*MAI-Thinking-1: Building a Hill-Climbing Machine*，[017_MAI-Thinking-1.pdf](references/017_MAI-Thinking-1.pdf)，第 30—36 页 §3—3.1.5：RL 起点、组相对目标、全局 token 归约、熵控制、外层裁剪、奖励分项、两阶段采样、top-p 重放、长度课程与配置。
+[^mai-recipe]: Microsoft AI Team，*MAI-Thinking-1: Building a Hill-Climbing Machine*，[MAI-Thinking-1_Building_a_Hill-Climbing_Machine.pdf](references/MAI-Thinking-1_Building_a_Hill-Climbing_Machine.pdf)，第 30—36 页 §3—3.1.5：RL 起点、组相对目标、全局 token 归约、熵控制、外层裁剪、奖励分项、两阶段采样、top-p 重放、长度课程与配置。
 
 [^mai-agent]: 同上，第 39—41 页 §3.3：多轮 policy／environment 步骤、完整轨迹评分、统一策略 token 信用、ReAct 风格执行与沙箱。
 
@@ -2064,18 +2064,18 @@ DeepSeekMath 的分布改善观察，不证明 RL 永远不能学新能力；DAP
 
 [^mai-infra]: 同上，第 49—53 页 §3.6.1—3.6.5、Figure 19：controller／problem worker／rollout worker、两阶段执行流程、推理缓存、容错、数值差异和权重传输。
 
-[^posttrain]: Rank 等，*PostTrainBench: Can LLM Agents Automate LLM Post-Training?*，[018_PostTrainBench.pdf](references/018_PostTrainBench.pdf)，第 2—4 页实验约束与方法，第 7—9 页 §5：SFT/GRPO 方法选择、评测数据误用、模型替换、API 限制与 Figure 7。
+[^posttrain]: Rank 等，*PostTrainBench: Can LLM Agents Automate LLM Post-Training?*，[PostTrainBench_Can_LLM_Agents_Automate_LLM_Post-Training.pdf](references/PostTrainBench_Can_LLM_Agents_Automate_LLM_Post-Training.pdf)，第 2—4 页实验约束与方法，第 7—9 页 §5：SFT/GRPO 方法选择、评测数据误用、模型替换、API 限制与 Figure 7。
 
 [^production]: Williams、Raymond、Carroll，*Sidestepping Evaluation Awareness and Anticipating Misalignment with Production Evaluations*，[020_OpenAI_calculator_hacking_and_production_evaluations.html](references/020_OpenAI_calculator_hacking_and_production_evaluations.html)，2025-12-18。重点：Our production evaluation pipeline、The impact of production evaluations at OpenAI、Limitations of this approach；包括隐私处理、代表性／针对性集合、calculator hacking、监测与分布限制。
 
-[^wrong-file]: 文件 [019_Curriculum_Learning.pdf](references/019_Curriculum_Learning.pdf) 第 1 页的实际题目为 Andrei Galiautdinov，*Interaction-assisted SU(2) Adiabatic Holonomies in Josephson Phase Qubits*，属于量子物理内容，未用作本课课程学习来源。
+[^wrong-file]: 文件 [Interaction-assisted_SU_2_adiabatic_holonomies_in_Josephson_phase_qubits.pdf](references/Interaction-assisted_SU_2_adiabatic_holonomies_in_Josephson_phase_qubits.pdf) 第 1 页的实际题目为 Andrei Galiautdinov，*Interaction-assisted SU(2) Adiabatic Holonomies in Josephson Phase Qubits*，属于量子物理内容，未用作本课课程学习来源。
 
 ---
 
 **阅读后的检验问题：**下一次训练停滞时，你能否分别检查任务是否可学、反馈是否可信、梯度是否正确、数据是否新鲜，以及独立效果是否真的改善？这比记住所有算法缩写更接近本课的目标。
 
-[^gkd]: Agarwal 等，*On-Policy Distillation of Language Models: Learning from Self-Generated Mistakes*，[023_On-Policy_Distillation_of_Language_Models_GKD.pdf](references/023_On-Policy_Distillation_of_Language_Models_GKD.pdf)，ICLR 2024，本地 arXiv:2306.13649v3；PDF pp.3—6、§3—4、Algorithm 1：数据混合、散度、停止采样梯度、T5 配置与质量/多样性比较。
+[^gkd]: Agarwal 等，*On-Policy Distillation of Language Models: Learning from Self-Generated Mistakes*，[On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf](references/On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf)，ICLR 2024，本地 arXiv:2306.13649v3；PDF pp.3—6、§3—4、Algorithm 1：数据混合、散度、停止采样梯度、T5 配置与质量/多样性比较。
 
-[^opsd]: Zhao 等，*Self-Distilled Reasoner: On-Policy Self-Distillation for Large Language Models*，[024_Self-Distilled_Reasoner_OPSD.pdf](references/024_Self-Distilled_Reasoner_OPSD.pdf)，本地 arXiv:2601.18734；PDF pp.2—6、§3—4.2、Figure 3：特权条件、两种目标、pointwise clipping、实验冻结教师与生成预算。
+[^opsd]: Zhao 等，*Self-Distilled Reasoner: On-Policy Self-Distillation for Large Language Models*，[Self-Distilled_Reasoner_On-Policy_Self-Distillation_for_Large_Language_Models.pdf](references/Self-Distilled_Reasoner_On-Policy_Self-Distillation_for_Large_Language_Models.pdf)，本地 arXiv:2601.18734；PDF pp.2—6、§3—4.2、Figure 3：特权条件、两种目标、pointwise clipping、实验冻结教师与生成预算。
 
-[^curriculum]: Bengio、Louradour、Collobert、Weston，*Curriculum Learning*，ICML 2009，[026_Curriculum_Learning_ICML2009.pdf](references/026_Curriculum_Learning_ICML2009.pdf)；PDF pp.1—3、7，课程/continuation 假设及适用条件；[官方原文](https://icml.cc/2009/papers/119.pdf)。
+[^curriculum]: Bengio、Louradour、Collobert、Weston，*Curriculum Learning*，ICML 2009，[Curriculum_Learning.pdf](references/Curriculum_Learning.pdf)；PDF pp.1—3、7，课程/continuation 假设及适用条件；[官方原文](https://icml.cc/2009/papers/119.pdf)。

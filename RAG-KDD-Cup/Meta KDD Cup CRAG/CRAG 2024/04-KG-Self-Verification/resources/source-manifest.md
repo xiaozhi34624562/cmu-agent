@@ -17,7 +17,7 @@
 
 - Canonical attachment: <https://openreview.net/pdf?id=457wTt0ngj>
 - Download fallback: official attachment snapshot at <https://web.archive.org/web/20241004142234id_/https://openreview.net/pdf?id=457wTt0ngj>.
-- Local file: `../papers/Knowledge-Graph-Integration-and-Self-Verification.pdf`
+- Local file: `../papers/Knowledge_Graph_Integration_and_Self-Verification_for_Comprehensive_Retrieval-Augmented_Generation.pdf`
 - Verification: 8 pages; 667,346 bytes; SHA-256 `dff57a5a4b4eab9d0dbaefdc2d7aff312c236ed080f5f70b4144e570a29f96f3`.
 
 ## Code sources

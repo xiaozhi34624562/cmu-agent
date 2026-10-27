@@ -18,7 +18,7 @@
 ## Paper sources
 
 - Downloaded from arXiv PDF: <https://arxiv.org/pdf/2410.00005>
-- Local file: `../papers/Winning-Solution-For-Meta-KDD-Cup-24.pdf`
+- Local file: `../papers/Winning_Solution_For_Meta_KDD_Cup_24.pdf`
 - Verification: 8 pages; 604,407 bytes; SHA-256 `042737fe9f0bebdb16b2907d5d9c3d8eed0c73d78035142fb9964e8b30c64035`.
 
 ## Code sources

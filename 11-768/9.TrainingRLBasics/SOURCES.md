@@ -9,24 +9,24 @@
 
 ## Readings
 
-- [ReST](readings/001_ReST.pdf)
+- [ReST](readings/Reinforced_Self-Training_ReST_for_Language_Modeling.pdf)
   - Source: https://arxiv.org/abs/2308.08998
 
-- [ReST-EM](readings/002_ReST-EM.pdf)
+- [ReST-EM](readings/Beyond_Human_Data_Scaling_Self-Training_for_Problem-Solving_with_Language_Models.pdf)
   - Source: https://arxiv.org/abs/2312.06585
 
-- [DeepSeekMath](readings/003_DeepSeekMath.pdf)
+- [DeepSeekMath](readings/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf)
   - Source: https://arxiv.org/abs/2402.03300
 
-- [DrGRPO](readings/004_DrGRPO.pdf)
+- [DrGRPO](readings/Understanding_R1-Zero-Like_Training_A_Critical_Perspective.pdf)
   - Source: https://arxiv.org/abs/2503.20783
 
 ## References
 
-- [RL Fundamentals](references/001_RL_Fundamentals.pdf)
+- [RL Fundamentals](references/CS11-711_Advanced_NLP_-_Reinforcement_Learning.pdf)
   - Source: https://cmu-l3.github.io/anlp-spring2026/static_files/anlp-s2026-16-rl.pdf
 
-- [REINFORCE](references/002_REINFORCE.pdf)
+- [REINFORCE](references/Simple_statistical_gradient-following_algorithms_for_connectionist_reinforcement_learning.pdf)
   - Source: https://doi.org/10.1007/BF00992696
   - PDF: https://gwern.net/doc/reinforcement-learning/model-free/1992-williams.pdf
 

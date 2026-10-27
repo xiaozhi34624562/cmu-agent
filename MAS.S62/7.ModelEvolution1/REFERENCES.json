@@ -1,133 +1,146 @@
 [
   {
-    "title": "GKD",
+    "title": "On-Policy Distillation of Language Models: Learning from Self-Generated Mistakes",
     "url": "https://arxiv.org/abs/2306.13649",
-    "path": "references/2306.13649.pdf",
+    "path": "references/On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf",
     "status": "saved",
     "pages": 18,
     "sha256": "a81c71fa0cd15506642092790d854347f030c29ee1d6aa643b55aa51348e6869",
     "checked_date": "2026-10-26",
-    "version": "2306.13649v3"
+    "version": "2306.13649v3",
+    "source_label": "GKD"
   },
   {
-    "title": "RLs_Razor",
+    "title": "RL's Razor: Why Online Reinforcement Learning Forgets Less",
     "url": "https://arxiv.org/abs/2509.04259",
-    "path": "references/2509.04259.pdf",
+    "path": "references/RL_s_Razor_Why_Online_Reinforcement_Learning_Forgets_Less.pdf",
     "status": "saved",
     "pages": 23,
     "sha256": "bf3b6ab3b0b5db847aae235cc93a5a9475be2b7aca1e163304822d13d2dd0373",
     "checked_date": "2026-10-26",
-    "version": "2509.04259v1"
+    "version": "2509.04259v1",
+    "source_label": "RLs_Razor"
   },
   {
-    "title": "SDFT",
+    "title": "Self-Distillation Enables Continual Learning",
     "url": "https://arxiv.org/abs/2601.19897",
-    "path": "references/2601.19897.pdf",
+    "path": "references/Self-Distillation_Enables_Continual_Learning.pdf",
     "status": "saved",
     "pages": 22,
     "sha256": "8e79ea6fc872f599b7076ab6d05a0037ed9e7f2e504c8610aea129546e497e14",
     "checked_date": "2026-10-26",
-    "version": "2601.19897v2"
+    "version": "2601.19897v2",
+    "source_label": "SDFT"
   },
   {
-    "title": "TTRL",
+    "title": "TTRL: Test-Time Reinforcement Learning",
     "url": "https://arxiv.org/abs/2504.16084",
-    "path": "references/2504.16084.pdf",
+    "path": "references/TTRL_Test-Time_Reinforcement_Learning.pdf",
     "status": "saved",
     "pages": 22,
     "sha256": "3828cc886a0133749fe857dc12fff190f76c17dd7421dccfca01c96ec1dd5882",
     "checked_date": "2026-10-26",
-    "version": "2504.16084v3"
+    "version": "2504.16084v3",
+    "source_label": "TTRL"
   },
   {
-    "title": "OpenClaw_RL",
+    "title": "OpenClaw-RL: Train Any Agent Simply by Talking",
     "url": "https://arxiv.org/abs/2603.10165",
-    "path": "references/2603.10165.pdf",
+    "path": "references/OpenClaw-RL_Train_Any_Agent_Simply_by_Talking.pdf",
     "status": "saved",
     "pages": 33,
     "sha256": "4d8c1aa05fdb439201b5edfca65208fc610eee3169b0ba0689f4378f2c4fe6ae",
     "checked_date": "2026-10-26",
-    "version": "2603.10165v2"
+    "version": "2603.10165v2",
+    "source_label": "OpenClaw_RL"
   },
   {
-    "title": "TTT_Discover",
+    "title": "Learning to Discover at Test Time",
     "url": "https://arxiv.org/abs/2601.16175",
-    "path": "references/2601.16175.pdf",
+    "path": "references/Learning_to_Discover_at_Test_Time.pdf",
     "status": "saved",
     "pages": 72,
     "sha256": "4656ec28d800002d9a3e3f83a71c7d9032ef5f1873cd953b8808a8391ce06ec7",
     "checked_date": "2026-10-26",
-    "version": "2601.16175v2"
+    "version": "2601.16175v2",
+    "source_label": "TTT_Discover"
   },
   {
-    "title": "PPO",
+    "title": "Proximal Policy Optimization Algorithms",
     "url": "https://arxiv.org/abs/1707.06347",
-    "path": "references/1707.06347.pdf",
+    "path": "references/Proximal_Policy_Optimization_Algorithms.pdf",
     "status": "saved",
     "pages": 12,
     "sha256": "e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b",
     "checked_date": "2026-10-26",
-    "version": "1707.06347v2"
+    "version": "1707.06347v2",
+    "source_label": "PPO"
   },
   {
-    "title": "DeepSeekMath",
+    "title": "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models",
     "url": "https://arxiv.org/abs/2402.03300",
-    "path": "references/2402.03300.pdf",
+    "path": "references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf",
     "status": "saved",
     "pages": 30,
     "sha256": "6cc20b3c5b8d25b8b53868fc4ec1792c144f07d67bdf7395138efd4422197e7b",
     "checked_date": "2026-10-26",
-    "version": "2402.03300v3"
+    "version": "2402.03300v3",
+    "source_label": "DeepSeekMath"
   },
   {
-    "title": "DPO",
+    "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
     "url": "https://arxiv.org/abs/2305.18290",
-    "path": "references/2305.18290.pdf",
+    "path": "references/Direct_Preference_Optimization_Your_Language_Model_is_Secretly_a_Reward_Model.pdf",
     "status": "saved",
     "pages": 27,
     "sha256": "92cb3a2b71362acda98a789b03d88688fd33cf5fcf13f81d2b1de30ee7d3b67a",
     "checked_date": "2026-10-26",
-    "version": "2305.18290v3"
+    "version": "2305.18290v3",
+    "source_label": "DPO"
   },
   {
-    "title": "OPSD",
+    "title": "Self-Distilled Reasoner: On-Policy Self-Distillation for Large Language Models",
     "url": "https://arxiv.org/abs/2601.18734",
-    "path": "references/2601.18734.pdf",
+    "path": "references/Self-Distilled_Reasoner_On-Policy_Self-Distillation_for_Large_Language_Models.pdf",
     "status": "saved",
     "pages": 15,
     "sha256": "e521ed6c2939dc612daec5fe6fb47bef554a291228c02cafae07102b9729bad8",
     "checked_date": "2026-10-26",
-    "version": "2601.18734v3"
+    "version": "2601.18734v3",
+    "source_label": "OPSD"
   },
   {
-    "title": "TTT_FewShot",
+    "title": "The Surprising Effectiveness of Test-Time Training for Few-Shot Learning",
     "url": "https://ekinakyurek.github.io/papers/ttt.pdf",
-    "path": "references/ttt.pdf",
+    "path": "references/The_Surprising_Effectiveness_of_Test-Time_Training_for_Few-Shot_Learning.pdf",
     "status": "saved",
     "pages": 22,
     "sha256": "9da8f434864b90ec18378dfa8c920e1d128e5bb694343f8a5a524302e17a5dad",
     "checked_date": "2026-10-26",
-    "version": "2411.07279v2"
+    "version": "2411.07279v2",
+    "source_label": "TTT_FewShot"
   },
   {
-    "title": "SDPO",
+    "title": "Reinforcement Learning via Self-Distillation",
     "url": "https://arxiv.org/pdf/2601.20802",
-    "path": "references/2601.20802.pdf",
+    "path": "references/Reinforcement_Learning_via_Self-Distillation.pdf",
     "status": "saved",
     "pages": 50,
     "sha256": "2714e7734c43cf849c2e7c49fc95cf57a6533c0833465a01983b87eb7f72d190",
     "checked_date": "2026-10-26",
-    "version": "2601.20802v2"
+    "version": "2601.20802v2",
+    "source_label": "SDPO"
   },
   {
-    "title": "Guidance_TTT",
+    "title": "Evolving in Thought Space: Training a Small Model at Test Time Unlocks Better Discoveries",
     "url": "https://arxiv.org/pdf/2610.06269",
-    "path": "references/2610.06269.pdf",
+    "path": "references/Evolving_in_Thought_Space_Training_a_Small_Model_at_Test_Time_Unlocks_Better_Discoveries.pdf",
     "status": "saved",
     "pages": 35,
     "sha256": "351bcdd2c9c5275d007f2d15a4e0fb9d016a03b4e19f66258d1c3a44e6f28997",
     "checked_date": "2026-10-26",
-    "version": "2610.06269v2"
+    "version": "2610.06269v2",
+    "source_label": "Guidance_TTT"
   },
   {
     "title": "verl verl/trainer/ppo/v1/trainer_base.py @ ddf7007",

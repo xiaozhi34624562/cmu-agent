@@ -1625,11 +1625,11 @@ MetaGPT 的 SOP、消息池和执行反馈是主文机制；角色约束自改�
 | 简称 | 仓库实际文件与本地入口 | 原始出处 |
 |---|---|---|
 | L05 | [5_agent_design_2.pdf](5_agent_design_2.pdf) | [课程讲义](https://cs2680.com/slides/5_agent_design_2.pdf) |
-| AG | [001_AutoGen_ec7ede.pdf](readings/001_AutoGen_ec7ede.pdf) | [arXiv:2308.08155v2](https://arxiv.org/abs/2308.08155v2) |
-| MG | [002_MetaGPT_a269c5.pdf](readings/002_MetaGPT_a269c5.pdf) | [arXiv:2308.00352v7](https://arxiv.org/abs/2308.00352v7) |
-| AN | [003_multi_agent_research_system_a3afc1.html](readings/003_multi_agent_research_system_a3afc1.html) | [Anthropic 工程文章](https://www.anthropic.com/engineering/multi-agent-research-system) |
-| SC | [004_scaling_agent_systems_43651d.pdf](readings/004_scaling_agent_systems_43651d.pdf) | [arXiv:2512.08296v3](https://arxiv.org/abs/2512.08296v3) |
-| CO | [005_dont_build_multi_agents_3cde73.html](readings/005_dont_build_multi_agents_3cde73.html) | [Cognition 工程文章](https://cognition.com/blog/dont-build-multi-agents) |
+| AG | [AutoGen_Enabling_Next-Gen_LLM_Applications_via_Multi-Agent_Conversation.pdf](readings/AutoGen_Enabling_Next-Gen_LLM_Applications_via_Multi-Agent_Conversation.pdf) | [arXiv:2308.08155v2](https://arxiv.org/abs/2308.08155v2) |
+| MG | [MetaGPT_Meta_Programming_for_a_Multi-Agent_Collaborative_Framework.pdf](readings/MetaGPT_Meta_Programming_for_a_Multi-Agent_Collaborative_Framework.pdf) | [arXiv:2308.00352v7](https://arxiv.org/abs/2308.00352v7) |
+| AN | [How_we_built_our_multi-agent_research_system.html](readings/How_we_built_our_multi-agent_research_system.html) | [Anthropic 工程文章](https://www.anthropic.com/engineering/multi-agent-research-system) |
+| SC | [Towards_a_Science_of_Scaling_Agent_Systems.pdf](readings/Towards_a_Science_of_Scaling_Agent_Systems.pdf) | [arXiv:2512.08296v3](https://arxiv.org/abs/2512.08296v3) |
+| CO | [Don_t_Build_Multi-Agents.html](readings/Don_t_Build_Multi-Agents.html) | [Cognition 工程文章](https://cognition.com/blog/dont-build-multi-agents) |
 | Sources | [SOURCES.md](SOURCES.md) | 本课课程资料清单 |
 
 ### 定位注释

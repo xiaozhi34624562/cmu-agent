@@ -4,7 +4,7 @@
 
 这篇 Task 1 报告以端到端 score 比较 RAG 组件，证明高级方法在 30 秒限制和错误负分下未必更好。团队获三个问题类别第一，而非 Task 1 总冠军。
 
-[论文](./papers/A-Simple-yet-Effective-RAG-Framework-for-Meta-KDD-Cup-2024.pdf) · [代码状态](./code/README.md) · [来源清单](./resources/source-manifest.md)
+[论文](./papers/A_Simple_yet_Effective_Retrieval-Augmented_Generation_Framework_for_the_Meta_KDD_Cup_2024.pdf) · [代码状态](./code/README.md) · [来源清单](./resources/source-manifest.md)
 
 ## 2. 论文身份与比赛背景
 

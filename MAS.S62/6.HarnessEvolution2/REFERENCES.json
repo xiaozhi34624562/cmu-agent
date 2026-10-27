@@ -24,16 +24,17 @@
     "status": "saved"
   },
   {
-    "title": "ReAct",
+    "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
     "url": "https://arxiv.org/abs/2210.03629",
-    "path": "references/002_ReAct.pdf",
+    "path": "references/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf",
     "status": "saved",
-    "provenance": "11-768/1.WhatIsAnAgent/readings/002_ReAct.pdf"
+    "provenance": "11-768/1.WhatIsAnAgent/readings/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf",
+    "source_label": "ReAct"
   },
   {
     "title": "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering",
     "url": "https://arxiv.org/abs/2405.15793",
-    "path": "references/2405.15793.pdf",
+    "path": "references/SWE-agent_Agent-Computer_Interfaces_Enable_Automated_Software_Engineering.pdf",
     "status": "saved"
   }
 ]

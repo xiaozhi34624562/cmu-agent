@@ -9,15 +9,15 @@
 
 ## Readings
 
-- [AutoGen](readings/001_AutoGen_ec7ede.pdf)
+- [AutoGen](readings/AutoGen_Enabling_Next-Gen_LLM_Applications_via_Multi-Agent_Conversation.pdf)
   - Source: https://arxiv.org/abs/2308.08155
-- [MetaGPT](readings/002_MetaGPT_a269c5.pdf)
+- [MetaGPT](readings/MetaGPT_Meta_Programming_for_a_Multi-Agent_Collaborative_Framework.pdf)
   - Source: https://arxiv.org/abs/2308.00352
-- [multi-agent research system](readings/003_multi_agent_research_system_a3afc1.html)
+- [multi-agent research system](readings/How_we_built_our_multi-agent_research_system.html)
   - Source: https://www.anthropic.com/engineering/multi-agent-research-system
-- [scaling agent systems](readings/004_scaling_agent_systems_43651d.pdf)
+- [scaling agent systems](readings/Towards_a_Science_of_Scaling_Agent_Systems.pdf)
   - Source: https://arxiv.org/pdf/2512.08296
-- [don’t build multi-agents](readings/005_dont_build_multi_agents_3cde73.html)
+- [don’t build multi-agents](readings/Don_t_Build_Multi-Agents.html)
   - Source: https://cognition.com/blog/dont-build-multi-agents
 
 ## Local study notes

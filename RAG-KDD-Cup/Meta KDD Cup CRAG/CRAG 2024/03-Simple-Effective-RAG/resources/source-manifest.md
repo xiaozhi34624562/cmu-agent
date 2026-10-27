@@ -17,7 +17,7 @@
 
 - Canonical attachment: <https://openreview.net/pdf?id=s9QAadOn6H>
 - Download fallback: official attachment snapshot at <https://web.archive.org/web/20241113133459id_/https://openreview.net/pdf?id=s9QAadOn6H>.
-- Local file: `../papers/A-Simple-yet-Effective-RAG-Framework-for-Meta-KDD-Cup-2024.pdf`
+- Local file: `../papers/A_Simple_yet_Effective_Retrieval-Augmented_Generation_Framework_for_the_Meta_KDD_Cup_2024.pdf`
 - Verification: 5 pages; 814,283 bytes; SHA-256 `ecd49734d80539b481d8fc2e9c71c5cc5269de47a82a613a213cf17e53a951e9`.
 
 ## Code sources

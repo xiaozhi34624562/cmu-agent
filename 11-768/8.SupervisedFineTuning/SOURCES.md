@@ -13,40 +13,40 @@
 
 ## References
 
-- [Kimi K3](references/001_Kimi_K3.pdf)
+- [Kimi K3](references/Kimi_K3_Open_Frontier_Intelligence.pdf)
   - Source: https://arxiv.org/abs/2607.24653
 
-- [DeepSeek-R1](references/002_DeepSeek-R1.pdf)
+- [DeepSeek-R1](references/DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_Reinforcement_Learning.pdf)
   - Source: https://arxiv.org/abs/2501.12948
 
-- [Nemotron 3 Ultra](references/003_Nemotron_3_Ultra.pdf)
+- [Nemotron 3 Ultra](references/Nemotron_3_Ultra_Open_Efficient_Mixture-of-Experts_Hybrid_Mamba-Transformer_Model_for_Agentic_Reasoning.pdf)
   - Source: https://research.nvidia.com/labs/nemotron/files/NVIDIA-Nemotron-3-Ultra-Technical-Report.pdf
 
-- [MAI-Thinking-1](references/004_MAI-Thinking-1.pdf)
+- [MAI-Thinking-1](references/MAI-Thinking-1_Building_a_Hill-Climbing_Machine.pdf)
   - Source: https://microsoft.ai/pdf/mai-thinking-1.pdf
 
 - [K2 Horizon model card](references/005_K2_Horizon_model_card.html)
   - Source: https://huggingface.co/IFM/K2-Horizon-375B-A23B
 
-- [Kimi K2](references/006_Kimi_K2.pdf)
+- [Kimi K2](references/Kimi_K2_Open_Agentic_Intelligence.pdf)
   - Source: https://arxiv.org/abs/2507.20534
 
-- [OpenThoughts-Agent](references/007_OpenThoughts-Agent.pdf)
+- [OpenThoughts-Agent](references/OpenThoughts-Agent_Data_Recipes_for_Agentic_Models.pdf)
   - Source: https://arxiv.org/abs/2606.24855
 
-- [SWE-Gym](references/008_SWE-Gym.pdf)
+- [SWE-Gym](references/Training_Software_Engineering_Agents_and_Verifiers_with_SWE-Gym.pdf)
   - Source: https://arxiv.org/abs/2412.21139
 
-- [Agent Data Protocol](references/009_Agent_Data_Protocol.pdf)
+- [Agent Data Protocol](references/Agent_Data_Protocol_Unifying_Datasets_for_Diverse_Effective_Fine-tuning_of_LLM_Agents.pdf)
   - Source: https://arxiv.org/abs/2510.24702
 
-- [BalanceSFT](references/010_BalanceSFT.pdf)
+- [BalanceSFT](references/FunReason_Enhancing_Large_Language_Models_Function_Calling_via_Self-Refinement_Multiscale_Loss_and_Automated_Data_Refinement.pdf)
   - Source: https://arxiv.org/abs/2505.20192
 
-- [Instruction Modelling](references/011_Instruction_Modelling.pdf)
+- [Instruction Modelling](references/Instruction_Tuning_With_Loss_Over_Instructions.pdf)
   - Source: https://arxiv.org/abs/2405.14394
 
-- [Weighted Instruction Tuning](references/012_Weighted_Instruction_Tuning.pdf)
+- [Weighted Instruction Tuning](references/On_the_Effect_of_Instruction_Tuning_Loss_on_Generalization.pdf)
   - Source: https://arxiv.org/abs/2507.07817
 
 - [DAgger](references/013_DAgger.html)

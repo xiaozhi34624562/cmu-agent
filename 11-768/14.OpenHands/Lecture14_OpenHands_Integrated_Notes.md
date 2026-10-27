@@ -1605,7 +1605,7 @@ SWE-bench 原始版、Lite、Verified、Multimodal 不是同一评测；Versa �
 <a id="r01"></a>
 ### R01 · The OpenHands Software Agent SDK: A Composable and Extensible Foundation for Production Agents
 
-**文件：**[001_OpenHands_Software_Agent_SDK_report.pdf](references/001_OpenHands_Software_Agent_SDK_report.pdf)，22 页。本地版本标识：`arXiv:2511.03690v1`。
+**文件：**[The_OpenHands_Software_Agent_SDK_A_Composable_and_Extensible_Foundation_for_Production_Agents.pdf](references/The_OpenHands_Software_Agent_SDK_A_Composable_and_Extensible_Foundation_for_Production_Agents.pdf)，22 页。本地版本标识：`arXiv:2511.03690v1`。
 
 回读重点：§3 的重构动机；第 2 页图 1；§4.2 事件与状态；§4.3 模型适配；§4.4 工具；§4.5 Agent、Skills 与委派；§4.6 压缩；§4.8—4.10 凭证、安全与部署；§5 测试评测。附录比较与 API 表述须结合附录 D 的差异说明。
 
@@ -1613,7 +1613,7 @@ SWE-bench 原始版、Lite、Verified、Multimodal 不是同一评测；Versa �
 <a id="r02"></a>
 ### R02 · Evaluating Large Language Models Trained on Code（HumanEval）
 
-**文件：**[004_HumanEval.pdf](references/004_HumanEval.pdf)，35 页。本地版本标识：`arXiv:2107.03374v2`。
+**文件：**[Evaluating_Large_Language_Models_Trained_on_Code.pdf](references/Evaluating_Large_Language_Models_Trained_on_Code.pdf)，35 页。本地版本标识：`arXiv:2107.03374v2`。
 
 回读重点：§2.1 功能正确性与 pass@k；§2.2 手写评测集；§2.3 不可信程序执行沙箱；§3.3 多样本与选择器。本文侧重其评测思想，不将早期 Codex 结果与当前同名工具混淆。
 
@@ -1621,7 +1621,7 @@ SWE-bench 原始版、Lite、Verified、Multimodal 不是同一评测；Versa �
 <a id="r03"></a>
 ### R03 · SWE-bench: Can Language Models Resolve Real-World GitHub Issues?
 
-**文件：**[005_SWE-bench.pdf](references/005_SWE-bench.pdf)，46 页。本地版本标识：`arXiv:2310.06770v1`。
+**文件：**[SWE-bench_Can_Language_Models_Resolve_Real-World_GitHub_Issues.pdf](references/SWE-bench_Can_Language_Models_Resolve_Real-World_GitHub_Issues.pdf)，46 页。本地版本标识：`arXiv:2310.06770v1`。
 
 回读重点：§2.1 任务构建，§2.2—2.3 验收与仓库修改，§4.1 BM25 与 oracle retrieval，第 5 页表 3—4 的召回与成功率关系。本文使用其原始 2,294 题版本描述。
 
@@ -1629,7 +1629,7 @@ SWE-bench 原始版、Lite、Verified、Multimodal 不是同一评测；Versa �
 <a id="r04"></a>
 ### R04 · SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering
 
-**文件：**[009_SWE-agent.pdf](references/009_SWE-agent.pdf)，118 页。本地版本标识：`arXiv:2405.15793v3`。
+**文件：**[SWE-agent_Agent-Computer_Interfaces_Enable_Automated_Software_Engineering.pdf](references/SWE-agent_Agent-Computer_Interfaces_Enable_Automated_Software_Engineering.pdf)，118 页。本地版本标识：`arXiv:2405.15793v3`。
 
 回读重点：§2 的 ACI 原则；§3 的动作、查看器、编辑器与上下文；第 6 页表 3 消融；§5.2 失败轨迹；附录 A.1 第 16—20 页，尤其错误反馈与检查机制的取舍。
 
@@ -1653,7 +1653,7 @@ SWE-bench 原始版、Lite、Verified、Multimodal 不是同一评测；Versa �
 <a id="r07"></a>
 ### R07 · CodeR: Issue Resolving with Multi-Agent and Task Graphs
 
-**文件：**[012_CodeR.pdf](references/012_CodeR.pdf)，23 页。本地版本标识：`arXiv:2406.01304v3`。
+**文件：**[CodeR_Issue_Resolving_with_Multi-Agent_and_Task_Graphs.pdf](references/CodeR_Issue_Resolving_with_Multi-Agent_and_Task_Graphs.pdf)，23 页。本地版本标识：`arXiv:2406.01304v3`。
 
 回读重点：§2 角色与动作；§3.1 任务图；§3.2 覆盖与 BM25 的联合定位；第 9 页表 4—5。实际使用的计划和主结果计数差异，见本文第八章与附录 D。
 
@@ -1661,7 +1661,7 @@ SWE-bench 原始版、Lite、Verified、Multimodal 不是同一评测；Versa �
 <a id="r08"></a>
 ### R08 · MetaGPT: Meta Programming for a Multi-Agent Collaborative Framework
 
-**文件：**[013_MetaGPT.pdf](references/013_MetaGPT.pdf)，29 页。本地版本标识：`arXiv:2308.00352v7`，文内标注 ICLR 2024。
+**文件：**[MetaGPT_Meta_Programming_for_a_Multi-Agent_Collaborative_Framework.pdf](references/MetaGPT_Meta_Programming_for_a_Multi-Agent_Collaborative_Framework.pdf)，29 页。本地版本标识：`arXiv:2308.00352v7`，文内标注 ICLR 2024。
 
 回读重点：§3.1 SOP，§3.2 结构化通信与发布订阅，§3.3 可执行反馈；§4.1 数据集与指标，第 9 页角色和反馈消融。区分从零构建软件与现有仓库修复。
 
@@ -1669,7 +1669,7 @@ SWE-bench 原始版、Lite、Verified、Multimodal 不是同一评测；Versa �
 <a id="r09"></a>
 ### R09 · Coding Agents with Multimodal Browsing are Generalist Problem Solvers（OpenHands-Versa）
 
-**文件：**[014_OpenHands-Versa.pdf](references/014_OpenHands-Versa.pdf)，15 页。本地版本标识：`arXiv:2506.03011v1`。
+**文件：**[Coding_Agents_with_Multimodal_Browsing_are_Generalist_Problem_Solvers.pdf](references/Coding_Agents_with_Multimodal_Browsing_are_Generalist_Problem_Solvers.pdf)，15 页。本地版本标识：`arXiv:2506.03011v1`。
 
 回读重点：§2.2 工具与计划改动；§3 模型和数据划分；第 7 页表 2 同模型对照；第 8 页图 2 工具分布；§5.2 错误分析；§5.3 搜索 API 对照。
 
@@ -1677,7 +1677,7 @@ SWE-bench 原始版、Lite、Verified、Multimodal 不是同一评测；Versa �
 <a id="r10"></a>
 ### R10 · Code with Me or for Me? How Increasing AI Automation Transforms Developer Workflows
 
-**文件：**[015_Code_with_Me_or_for_Me.pdf](references/015_Code_with_Me_or_for_Me.pdf)，28 页。本地版本标识：`arXiv:2507.08149v1`。
+**文件：**[Code_with_Me_or_for_Me_How_Increasing_AI_Automation_Transforms_Developer_Workflows.pdf](references/Code_with_Me_or_for_Me_How_Increasing_AI_Automation_Transforms_Developer_Workflows.pdf)，28 页。本地版本标识：`arXiv:2507.08149v1`。
 
 回读重点：§3 样本、随机化、模型与投入测量；第 8 页图 4；第 10 页图 5；第 11 页表 3；§5.1 设计要求和 §5.3 局限。统计表述的注意事项见附录 D。
 

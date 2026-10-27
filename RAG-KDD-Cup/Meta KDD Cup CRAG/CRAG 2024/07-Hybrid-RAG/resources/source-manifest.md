@@ -16,7 +16,7 @@
 ## Paper sources
 
 - Downloaded from <https://arxiv.org/pdf/2408.05141>.
-- Local file: `../papers/A-Hybrid-RAG-System.pdf`
+- Local file: `../papers/A_Hybrid_RAG_System_with_Comprehensive_Enhancement_on_Complex_Reasoning.pdf`
 - Verification: 13 pages; 993,487 bytes; SHA-256 `e02ffcb9f44c1020cb03b944782e5ba4604fff3178c0e5bf09d1ab17fffbf596`.
 
 ## Code sources

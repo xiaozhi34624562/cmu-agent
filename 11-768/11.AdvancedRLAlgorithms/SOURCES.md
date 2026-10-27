@@ -13,37 +13,37 @@
 
 ## References
 
-- [MIXER](references/001_MIXER.pdf)
+- [MIXER](references/Sequence_Level_Training_with_Recurrent_Neural_Networks.pdf)
   - Source: https://michaelauli.github.io/papers/iclr2016_mixer.pdf
 
-- [InstructGPT](references/002_InstructGPT.pdf)
+- [InstructGPT](references/Training_language_models_to_follow_instructions_with_human_feedback.pdf)
   - Source: https://arxiv.org/abs/2203.02155
 
-- [Generalized Advantage Estimation (GAE)](references/003_Generalized_Advantage_Estimation_GAE.pdf)
+- [Generalized Advantage Estimation (GAE)](references/High-Dimensional_Continuous_Control_Using_Generalized_Advantage_Estimation.pdf)
   - Source: https://arxiv.org/abs/1506.02438
 
-- [Let’s Verify Step by Step](references/004_Let_s_Verify_Step_by_Step.pdf)
+- [Let’s Verify Step by Step](references/Let_s_Verify_Step_by_Step.pdf)
   - Source: https://arxiv.org/abs/2305.20050
 
-- [AReaL](references/005_AReaL.pdf)
+- [AReaL](references/AReaL_A_Large-Scale_Asynchronous_Reinforcement_Learning_System_for_Language_Reasoning.pdf)
   - Source: https://arxiv.org/abs/2505.24298
 
-- [CTPO](references/006_CTPO.pdf)
+- [CTPO](references/Rethinking_Importance_Sampling_in_LLM_Policy_Optimization_A_Cumulative_Token_Perspective.pdf)
   - Source: https://arxiv.org/abs/2605.07331
 
-- [Proximal Policy Optimization (PPO)](references/007_Proximal_Policy_Optimization_PPO.pdf)
+- [Proximal Policy Optimization (PPO)](references/Proximal_Policy_Optimization_Algorithms.pdf)
   - Source: https://arxiv.org/abs/1707.06347
 
-- [DeepSeekMath (GRPO)](references/008_DeepSeekMath_GRPO.pdf)
+- [DeepSeekMath (GRPO)](references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf)
   - Source: https://arxiv.org/abs/2402.03300
 
-- [MiniMax-M1 (CISPO)](references/009_MiniMax-M1_CISPO.pdf)
+- [MiniMax-M1 (CISPO)](references/MiniMax-M1_Scaling_Test-Time_Compute_Efficiently_with_Lightning_Attention.pdf)
   - Source: https://arxiv.org/abs/2506.13585
 
-- [Group Sequence Policy Optimization (GSPO)](references/010_Group_Sequence_Policy_Optimization_GSPO.pdf)
+- [Group Sequence Policy Optimization (GSPO)](references/Group_Sequence_Policy_Optimization.pdf)
   - Source: https://arxiv.org/abs/2507.18071
 
-- [DAPO](references/011_DAPO.pdf)
+- [DAPO](references/DAPO_An_Open-Source_LLM_Reinforcement_Learning_System_at_Scale.pdf)
   - Source: https://arxiv.org/abs/2503.14476
 
 - Introducing SWE-bench Verified (not downloaded; source returned HTTP 403)
@@ -52,7 +52,7 @@
 - Why we no longer evaluate SWE-bench Verified (not downloaded; source returned HTTP 403)
   - Source: https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/
 
-- [SABER (τ-bench audit)](references/014_SABER_tau-bench_audit.pdf)
+- [SABER (τ-bench audit)](references/SABER_Small_Actions_Big_Errors_-_Safeguarding_Mutating_Steps_in_LLM_Agents.pdf)
   - Source: https://arxiv.org/abs/2512.07850
 
 - [τ-bench task fixes](references/015_tau-bench_task_fixes.html)
@@ -61,13 +61,13 @@
 - [Reward Hacking in Reinforcement Learning](references/016_Reward_Hacking_in_Reinforcement_Learning.html)
   - Source: https://lilianweng.github.io/posts/2024-11-28-reward-hacking/
 
-- [MAI-Thinking-1](references/017_MAI-Thinking-1.pdf)
+- [MAI-Thinking-1](references/MAI-Thinking-1_Building_a_Hill-Climbing_Machine.pdf)
   - Source: https://microsoft.ai/pdf/mai-thinking-1.pdf
 
-- [PostTrainBench](references/018_PostTrainBench.pdf)
+- [PostTrainBench](references/PostTrainBench_Can_LLM_Agents_Automate_LLM_Post-Training.pdf)
   - Source: https://arxiv.org/abs/2603.08640
 
-- [错误归档：019_Curriculum_Learning.pdf（实际为量子物理论文）](references/019_Curriculum_Learning.pdf)
+- [错误归档：Interaction-assisted_SU_2_adiabatic_holonomies_in_Josephson_phase_qubits.pdf（实际为量子物理论文）](references/Interaction-assisted_SU_2_adiabatic_holonomies_in_Josephson_phase_qubits.pdf)
   - Status: 标题与正文不符，不作为课程学习证据；正确 ICML 2009 原文见下方补充参考。
   - Course source: https://doi.org/10.1145/1553374.1553380
   - Historical incorrect download: https://arxiv.org/pdf/0904.4028.pdf
@@ -78,16 +78,16 @@
 - Where the goblins came from (not downloaded; source returned HTTP 403)
   - Source: https://openai.com/index/where-the-goblins-came-from/
 
-- [Distilling the Knowledge in a Neural Network](references/022_Distilling_the_Knowledge_in_a_Neural_Network.pdf)
+- [Distilling the Knowledge in a Neural Network](references/Distilling_the_Knowledge_in_a_Neural_Network.pdf)
   - Source: https://arxiv.org/abs/1503.02531
 
-- [On-Policy Distillation of Language Models (GKD)](references/023_On-Policy_Distillation_of_Language_Models_GKD.pdf)
+- [On-Policy Distillation of Language Models (GKD)](references/On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf)
   - Source: https://arxiv.org/abs/2306.13649
 
-- [Self-Distilled Reasoner (OPSD)](references/024_Self-Distilled_Reasoner_OPSD.pdf)
+- [Self-Distilled Reasoner (OPSD)](references/Self-Distilled_Reasoner_On-Policy_Self-Distillation_for_Large_Language_Models.pdf)
   - Source: https://arxiv.org/abs/2601.18734
 
-- [Policy Invariance Under Reward Transformations](references/025_Policy_Invariance_Under_Reward_Transformations.pdf)
+- [Policy Invariance Under Reward Transformations](references/Policy_Invariance_under_Reward_Transformations_Theory_and_Application_to_Reward_Shaping.pdf)
   - Source: https://people.eecs.berkeley.edu/~russell/papers/icml99-shaping.pdf
 
 <!-- BEGIN LOCAL LEARNING -->
@@ -97,6 +97,6 @@
 
 ## 讲解补充的一手参考
 
-- [Curriculum Learning，ICML 2009 正确原文](references/026_Curriculum_Learning_ICML2009.pdf) — [官方来源](https://icml.cc/2009/papers/119.pdf)
+- [Curriculum Learning，ICML 2009 正确原文](references/Curriculum_Learning.pdf) — [官方来源](https://icml.cc/2009/papers/119.pdf)
 - 获取状态与校验值：[REFERENCES.json](REFERENCES.json)。
 <!-- END LOCAL LEARNING -->
