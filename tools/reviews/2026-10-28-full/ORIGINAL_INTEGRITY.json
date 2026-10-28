@@ -1,0 +1,9 @@
+{
+  "checked_at_utc": "2026-10-28T15:31:03.397370+00:00",
+  "base_commit": "32b11714be3fbd5cbe4188abaa799ece9bb615b5",
+  "scope": "Tracked PDFs/notebooks and archived site/readings/references/assignment/project contents; generated SOURCES.md, CHECKSUMS.sha256 and SNAPSHOT.json excluded from archive-path predicate. Compared to pushed sync snapshot by Git content diff.",
+  "tracked_original_paths": 1658,
+  "changed_original_paths": [],
+  "errors": [],
+  "material_name_integrity_report": "tools/MATERIAL_NAMES_VERIFICATION.json"
+}

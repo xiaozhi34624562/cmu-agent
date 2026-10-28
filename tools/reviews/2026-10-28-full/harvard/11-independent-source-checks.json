@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-28",
+  "reviewer": "primary reviewer",
+  "note": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/notes.zh-CN.md",
+  "status": "source_check_completed",
+  "chinese_sections_read": "§9.4–15.1, original working guide lines230–365; this record is not a full-guide reread",
+  "sources_read": [
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/MPK_A_Compiler_and_Runtime_for_Mega-Kernelizing_Tensor_Programs.pdf",
+      "sha256": "0069c67600b194c4a935110889df803dd0ff8ca8caebc324ef6e13aeaa4da4cb",
+      "pdf_pages_read": [
+        2,
+        7,
+        8,
+        9,
+        10,
+        13,
+        14
+      ],
+      "visual_pdf_pages": [
+        7,
+        10
+      ],
+      "findings": "§4–7: SM-level task/event graph, JIT/AOT dispatch, shared-memory paging, 4 SM/16 scheduler warps, A100/H100/B200, prompt64/output1024 BF16 offline maxbatch1–16; current guide supported. Suggest throughput-ratio wording for 1.7× to avoid ambiguous latency-decrease times."
+    },
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/references/PyTorch_2_Faster_Machine_Learning_Through_Dynamic_Python_Bytecode_Transformation_and_Graph_Compilation.pdf",
+      "sha256": "9fba949b34051ae1b0936c91ddb23e43638912b180dba490616256e5446f4e6e",
+      "pdf_pages_read": [
+        2,
+        3,
+        4,
+        5,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "visual_pdf_pages": [
+        4,
+        14
+      ],
+      "findings": "§3/4 guard/partial graphs/side-effect preservation and GPU Triton/CPU C++ supported; §6 settings 2023-08-30 nightly/CUDA11.6, warmups excluded, training means forward+backward excluding optimizer; recommend making this boundary explicit beside summary speedups."
+    },
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/A_Systematic_Characterization_of_LLM_Inference_on_GPUs.pdf",
+      "sha256": "f3929c0b1bdf5c42730f9a57c29cc986523a78f2ff307d1e9afb9d439e7d4116",
+      "pdf_pages_read": [
+        4,
+        5,
+        6,
+        11,
+        12,
+        14,
+        15
+      ],
+      "visual_pdf_pages": [
+        5,
+        14
+      ],
+      "findings": "§3 vLLM0.9.2 BF16 eager offline batches/4A10080GB and Orin; §5.2 warp-level stall; §6.1 summary Qwen2.5-32B uses4096input16output (different from Table2), TP2 1.24→0.66s. Guide appropriately limits generalization; recommend exact workload/model beside numbers."
+    },
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/Ragged_Paged_Attention_A_High-Performance_and_Flexible_LLM_Inference_Kernel_for_TPU.pdf",
+      "sha256": "6b546d2af7bd3673cdfedc2d4efb17e3ebc149d1cfa28e893f45cae9b7aca578",
+      "pdf_pages_read": [
+        1,
+        6,
+        7,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "visual_pdf_pages": [
+        13,
+        15,
+        16
+      ],
+      "findings": "§4 decode128 uniform-length sequences; prefill1 sequence512–32K. MFU denominator hardware peak × maxMXUutilization: dk128 uses50%peak. Reported73%noncausal/63%causal are adjusted-denominator metrics; guide must clarify this. 86%MBU is controlled shape, not arbitrary ragged workload guarantee."
+    }
+  ],
+  "limitations": [
+    "Source checks only in listed ranges; no GPU/TPU/compiler benchmark execution or current software behavior verification claimed.",
+    "Use archived version-specific claims, not present-day performance recommendations."
+  ]
+}

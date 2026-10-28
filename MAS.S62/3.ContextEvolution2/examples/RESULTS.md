@@ -1,6 +1,6 @@
 # 教学实验运行记录
 
-- 运行日期：2026-10-26（Asia/Shanghai）。
+- 运行日期：2026-10-28（Asia/Shanghai；本轮全文审阅后重跑）。
 - 命令：`python3 MAS.S62/3.ContextEvolution2/examples/bin_packing_lab.py`。
 - 解释器：Python 3.11.10；依赖：标准库。
 - 返回码：0。

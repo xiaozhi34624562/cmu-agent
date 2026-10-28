@@ -1,0 +1,164 @@
+{
+  "note": "2680/2.AgentsUseI.HowClaudeCodeWorks/coding_agent_integrated_guide.md",
+  "original_sha256": "2cc9da938fd0f648426128389ca53105fbb811206be2b378f17d21d618fa0adf",
+  "final_sha256": "073d667b9e332bf7e56a419954cb12bde850c30786d6f251467d0b5de1f06de4",
+  "status": "passed_with_fixes",
+  "full_read_ranges": [
+    {
+      "round": "initial_full_read",
+      "ranges": [
+        "1-400",
+        "401-800",
+        "801-1200",
+        "1201-1630",
+        "1631-2063"
+      ],
+      "line_count": 2063,
+      "sha256": "2cc9da938fd0f648426128389ca53105fbb811206be2b378f17d21d618fa0adf",
+      "result": "本轮全部正文、案例、自测答案和索引逐段阅读完成。"
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/SOURCES.md",
+      "range": "full"
+    },
+    {
+      "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/REFERENCES.json",
+      "range": "full"
+    },
+    {
+      "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/2_agent_use_1.pdf",
+      "pages": "1-53",
+      "version": "local 53-page archived lecture; page 53 blank transition",
+      "range": "full text",
+      "visual_pages": [
+        7,
+        12,
+        18,
+        38,
+        42,
+        52
+      ]
+    },
+    {
+      "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Guardrails_Beat_Guidance_A_Large-Scale_Study_of_Rules_Skills_and_Persistent_Configuration_for_Coding_Agents.pdf",
+      "pages": "1-12",
+      "version": "arXiv:2604.11088v2, 28 May 2026",
+      "range": "full text, Tables 2-5, figures and limitations",
+      "visual_pages": [
+        6,
+        7,
+        11,
+        12
+      ]
+    },
+    {
+      "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/The_Scaffolding_Matters_More_Than_the_Interface.pdf",
+      "pages": "1-27",
+      "range": "full text, methods, Tables 1-8 and Appendix A; figure/table inspection",
+      "visual_pages": [
+        10,
+        13,
+        14,
+        15,
+        16
+      ]
+    },
+    {
+      "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Equipping_agents_for_the_real_world_with_Agent_Skills.html",
+      "range": "full article text"
+    },
+    {
+      "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Code_execution_with_MCP_building_more_efficient_AI_agents.html",
+      "range": "full article text"
+    },
+    {
+      "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/How_skills_and_MCPs_actually_work.html",
+      "range": "full article text"
+    },
+    {
+      "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/The_Harness_Is_the_Thing.html",
+      "range": "full article text"
+    },
+    {
+      "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Hooks_reference.html",
+      "range": "PreToolUse decision control; PostToolUse decision control; other exit codes; timeouts; onFailure block; Stop; background hooks; all included subheadings",
+      "version": "archived moving documentation, checks include v2.1.295 qualification"
+    },
+    {
+      "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Best_practices_for_Claude_Code.html",
+      "range": "verification; explore/plan/code; manage context; rewind checkpoints; adversarial review; failure patterns"
+    },
+    {
+      "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/references",
+      "range": "001-009 individual Simon Willison articles, full article body (navigation excluded where possible)"
+    }
+  ],
+  "coverage_assessment": {
+    "suitability": "明确为课程主讲解之后的工程案例篇；符合具备Java/Python经验的LLM工程师学习深度。",
+    "lecture_coverage": "loop、上下文、记忆、六类工具、Skills/MCP/Hooks/Plugin及可选Gateway均覆盖；非技术行政页适当略写。",
+    "mechanisms_and_practice": "区分上下文/训练、业务知识/API、未知/零、超时/未执行；两个贯穿案例覆盖计划、红绿测试、集成验证、独立审查、恢复与交付。",
+    "high_risk_checks": "S8样本58/35/17、3544+1500运行、64.9%项目规则排除、不同基线与表2-5数值一致；S9 54/46/40、13对0.43-29.06中位0.93、139倍、按需3.1倍混杂、成本与失败率区分、代理例外均核实。Hooks字段与版本和归档一致。",
+    "learning_completeness": "包含选型、成本、失效边界、泛化限制和8题有条件答案；实验与教学示意未冒充已运行结果。"
+  },
+  "issues_and_fixes": [
+    {
+      "issue": "§2.4动作分布公式未解释π/θ/~/条件线",
+      "fix": "先用上下文组织—模型选动作两步解释，再定义符号并澄清不是产品API。"
+    },
+    {
+      "issue": "§3.5累计输入公式跳过等差求和过程",
+      "fix": "展开前3轮与第N轮，解释背景重复N次和新增系数求和；保留540000与46000对照。"
+    },
+    {
+      "issue": "§5.4首次用配对检验与p值而假定统计前置",
+      "fix": "补基线、配对、McNemar翻转计数、p值条件、小样本与百分点定义，帮助理解63.8%不构成等价或稳定增益证明。"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "round": 1,
+      "sha256": "073d667b9e332bf7e56a419954cb12bde850c30786d6f251467d0b5de1f06de4",
+      "line_count": 2067,
+      "ranges": [
+        "1-330",
+        "331-660",
+        "661-990",
+        "991-1320",
+        "1321-1650",
+        "1651-1860",
+        "1861-2067"
+      ],
+      "result": "全部正文、案例、模板、自测答案、附录逐段完整复读通过。"
+    },
+    {
+      "round": 2,
+      "sha256": "073d667b9e332bf7e56a419954cb12bde850c30786d6f251467d0b5de1f06de4",
+      "line_count": 2067,
+      "ranges": [
+        "1-420",
+        "421-840",
+        "841-1260",
+        "1261-1680",
+        "1681-2067"
+      ],
+      "result": "第二轮逐段完整复读通过，未发现新增实质问题。"
+    }
+  ],
+  "limitations": [
+    "未复跑S8/S9模型实验或真实Claude Code/MCP集成；配置结论限定归档快照。",
+    "S9原文本身存在部分描述/统计不一致，正文已注明不同失败中位数并避免合并；没有将论文全部推断作为已证实因果。",
+    "未观看指定视频；文中明确不从视频标题补写内容。"
+  ],
+  "final_line_count": 2067,
+  "pedagogical_review": {
+    "reader_prerequisites": "明确面向有Java/Python等软件经验的LLM开发者，不从编程基础重讲；补足概率符号、求和和统计实验前置。",
+    "problem_chain": "运行循环—上下文—长期规则—规则干预证据—工具/Skills/MCP—接口对照证据—权限—多Agent—完整开发/恢复案例—评测与经验治理；每层解释前层不足并导向下一设计。",
+    "prerequisites_and_jumps": "新增3处桥接消除主要数学/统计跳步；工具schema与业务知识、持久记忆与权重更新、文本guardrail与运行时控制已逐一教清。",
+    "cases": "第12章由两个broker同对象/快照且不重叠假设出发，0/未知、5/未知、5+3逐案解释，沿broker—快照—汇总—API—UI追因并连接红绿测试与验收。第13章并发A/B时序与响应丢失连接幂等语义、权限及Harness恢复，可从通用后端开发经验迁移。",
+    "organization": "主讲解先读、本篇侧重开发与恢复案例的分工已明确；可选MCP/Gateway与术语索引留在附录，主线不被协议细节打断。",
+    "learning_outcomes_and_assessment": "16.8的8题覆盖累计输入推算、未知复合状态、Skill故障诊断、统计边界、失败支出、计量例外、日志数据流、PR超时恢复；答案含判断理由和回查章节，能检验应用能力。",
+    "revisions": "保持已完整案例和自测，定点补数学与统计解释，不为产生diff重写结构。"
+  }
+}

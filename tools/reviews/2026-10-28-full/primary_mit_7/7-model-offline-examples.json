@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-28",
+  "command": "MAS.S62/7.ModelEvolution1/examples/loss_contracts.py",
+  "python": "3.11.10",
+  "returncode": 0,
+  "sha256": "5b8c9a7337c29cc9051f8f55eed3536c16aec23e15c63ae21f98fd455cf20f89",
+  "output": {
+    "scope": "one-state and two-step fixed-teacher arithmetic; no model training",
+    "prerequisites": {
+      "sampled_success_probability_before": 0.25,
+      "sampled_success_probability_after": 0.26432436798156755,
+      "sampled_success_score_gradient": 0.7500000000160155,
+      "expected_gradient_with_and_without_baseline": 0.1875,
+      "target_cross_entropy_before_after": [
+        1.3862943611198906,
+        0.6931471805599453
+      ],
+      "group_population_std_advantages": [
+        1.7320508075688774,
+        -0.5773502691896258,
+        -0.5773502691896258,
+        -0.5773502691896258
+      ],
+      "group_sample_std_advantages": [
+        1.5,
+        -0.5,
+        -0.5,
+        -0.5
+      ],
+      "dpo_loss_before_after": [
+        0.6931471805599453,
+        0.2876820724517809
+      ],
+      "lora_increment_parameters": 16384
+    },
+    "student": [
+      0.7,
+      0.3
+    ],
+    "teacher": [
+      0.4,
+      0.6
+    ],
+    "KL_student_teacher": 0.18378689738681217,
+    "KL_teacher_student": 0.19204199316179815,
+    "reverse_KL_logit_gradient": [
+      0.2630802233768992,
+      -0.2630802233768992
+    ],
+    "forward_KL_logit_gradient": [
+      0.30000000000585114,
+      -0.30000000000585114
+    ],
+    "positive_advantage_upper_clip": 1.2,
+    "negative_advantage_lower_clip": -0.8,
+    "negative_advantage_wrong_direction": -1.4,
+    "zero_variance_group": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "two_step_sequence_KL": {
+      "sequence_KL": 0.25541281188299536,
+      "local_first_step_gradient": [
+        0.0,
+        0.0
+      ],
+      "full_sequence_gradient_finite_difference": [
+        0.1277064059418409,
+        -0.1277064059418409
+      ],
+      "causal_return_to_go_gradient": [
+        0.12770640594149768,
+        -0.12770640594149768
+      ]
+    },
+    "batch": {
+      "responses": 5120,
+      "optimizer_steps": 4,
+      "per_dp_worker": 160,
+      "micro_accumulation": 40
+    },
+    "assertions": "passed"
+  },
+  "limitations": "标准库概率、有限差分及训练批次算术；未运行模型、GPU或API。"
+}

@@ -1,0 +1,193 @@
+{
+  "note": "2680/3.AgentsUseII.100xEngineerWithMultiAgents/Lecture03_MultiAgent_完整学习讲义.md",
+  "original_sha256": "baf643d3f71133a5d3bbe3b2aafadf33625dd5825e256d7b89c98a2d5173253f",
+  "final_sha256": "0f40b4cd0327ca5491cb9e8efc703735857f9adf09aa2482138535cdb237d960",
+  "status": "passed_with_fixes",
+  "final_line_count": 1688,
+  "full_read_ranges": [
+    {
+      "round": "initial",
+      "sha256": "baf643d3f71133a5d3bbe3b2aafadf33625dd5825e256d7b89c98a2d5173253f",
+      "ranges": [
+        "1-290",
+        "291-590",
+        "591-890",
+        "891-1165",
+        "1166-1420",
+        "1421-1664"
+      ]
+    },
+    {
+      "round": "final_1",
+      "sha256": "0f40b4cd0327ca5491cb9e8efc703735857f9adf09aa2482138535cdb237d960",
+      "ranges": [
+        "1-420",
+        "421-840",
+        "841-1050",
+        "1051-1260",
+        "1261-1480",
+        "1481-1688"
+      ]
+    },
+    {
+      "round": "final_2",
+      "sha256": "0f40b4cd0327ca5491cb9e8efc703735857f9adf09aa2482138535cdb237d960",
+      "ranges": [
+        "1-280",
+        "281-560",
+        "561-840",
+        "841-1120",
+        "1121-1400",
+        "1401-1688"
+      ]
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "2680/3.AgentsUseII.100xEngineerWithMultiAgents/SOURCES.md",
+      "version": "本地归档快照",
+      "scope": "全文；确认日期与9项阅读，无另附README/REFERENCES",
+      "visual_pages": []
+    },
+    {
+      "path": "2680/3.AgentsUseII.100xEngineerWithMultiAgents/3_agent_use_2.pdf",
+      "version": "课程2026-09-14",
+      "scope": "PDF 1–72全文，分1–25、26–50、51–72；原生PDF页序",
+      "visual_pages": [
+        34,
+        64,
+        65,
+        66,
+        67
+      ]
+    },
+    {
+      "path": "2680/3.AgentsUseII.100xEngineerWithMultiAgents/readings/Create_custom_subagents.html",
+      "version": "本地归档快照",
+      "scope": "完整阅读所用章节：Write subagent files、Supported frontmatter fields、Available tools、Preload skills、Enable persistent memory、Run foreground/background、Let subagents spawn、Concurrent limit、What loads at startup、Resume、Auto-compaction、Fork current conversation/How forks differ；并非整站或整份93k字符全文",
+      "visual_pages": []
+    },
+    {
+      "path": "2680/3.AgentsUseII.100xEngineerWithMultiAgents/readings/Orchestrate_teams_of_Claude_Code_sessions.html",
+      "version": "本地归档快照",
+      "scope": "提取正文全文约34k字符",
+      "visual_pages": []
+    },
+    {
+      "path": "2680/3.AgentsUseII.100xEngineerWithMultiAgents/readings/Orchestrate_subagents_at_scale_with_dynamic_workflows.html",
+      "version": "本地归档快照",
+      "scope": "提取正文全文约36k字符",
+      "visual_pages": []
+    },
+    {
+      "path": "2680/3.AgentsUseII.100xEngineerWithMultiAgents/readings/Building_a_C_compiler_with_a_team_of_parallel_Claudes.html",
+      "version": "2026-02-05",
+      "scope": "正文全文约15k字符",
+      "visual_pages": []
+    },
+    {
+      "path": "2680/3.AgentsUseII.100xEngineerWithMultiAgents/readings/The_Shift_to_Agentic_AI_Evidence_from_Codex.pdf",
+      "version": "arXiv:2606.26959v1 2026-06-25",
+      "scope": "PDF 1–24正文全文；49–50附录F全文；25–48其余附录未全读",
+      "visual_pages": [
+        7,
+        14,
+        17,
+        20,
+        50
+      ]
+    },
+    {
+      "url": "https://openai.com/index/research-acceleration-view-inside-openai/",
+      "version": "2026-09-06网页，2026-10-28在线复核",
+      "scope": "引言与§1–3至成功率图说明；未声称§4–5全文"
+    },
+    {
+      "url": "https://arxiv.org/abs/2503.13657v3",
+      "version": "v3",
+      "scope": "摘要及版本元数据，支持附录D限于摘要的概括"
+    },
+    {
+      "url": "https://arxiv.org/abs/2512.08296v3",
+      "version": "v3",
+      "scope": "摘要及版本元数据，支持附录D限于摘要的概括"
+    }
+  ],
+  "coverage_assessment": {
+    "lecture": "讲义1–72的课程背景、Superpowers、Caveman、worktree、Subagents、Teams、Workflow、goal/loop、编译器案例、Software3.0、不确定性、Codex研究、可选工具选型均在主线或附录覆盖；产品版本差异独立说明。",
+    "mechanisms": "交接上下文、工具/skill权限、fork/resume/memory、任务锁/邮箱/批准、Workflow恢复和副作用皆回到具体机制；代码为未执行运行时示例，未冒充已复现。",
+    "evidence": "编译器16个Agent与2万美元等仅作案例而非对照因果；Codex观察研究分人群、时间窗与分母；lecture第65页代码行数不能解释交付8倍；相关性与验证概率公式保留假设边界。",
+    "engineering": "第14–16章覆盖状态、版本、恢复、权限、全局预算、可观测性、独立验证、成本/质量基线和故障注入；保留贯穿案例与答案。"
+  },
+  "pedagogical_review": {
+    "reader_assumptions": "按LLM Developer和Java经验定位；不重教基础编程，不预设统计学或分布式系统理论。",
+    "problem_chain": "从能委托的工作→信息压缩→执行隔离→协调状态→可重放控制→验证创造并行→成本/证据→系统设计，依赖合理。用同一服务审查逐步承接而非产品清单。",
+    "prerequisites_and_jumps": "修复动作选择公式先出现未释符号、统计模型突然使用方差/相关系数/有效样本数、条件概率缺例子；补直觉、符号、假设及逐步计算。schema、幂等/补偿首次实质使用补定义。",
+    "case": "原有检索/缓存/引用服务案例能贯穿T0契约到T1–T6调查/验证/修复/集成；保留普遍机制，不把课程改成金融或专用RAG教程。新增Java接口审查迁移题，检验脱离原案例能否运用。",
+    "organization": "长文17章加附录较重；新增两遍阅读路线与核心成果，核心任务流先读，配置/版本/数学/实证第二遍查阅；未为留下diff重排已连贯章节。",
+    "learning_outcomes": "读者应能画依赖图、写独立工单、区分returned/verified/integrated、解释重试副作用和相关证据、设计公平基线；C.4八问+新增C.5含推理答案覆盖上述目标。",
+    "fixes": [
+      "开头读者前提、术语对齐与分层阅读",
+      "2.2动作分布先直觉后定义",
+      "6.3/8.3结构契约与真实性分离",
+      "8.8幂等、补偿与回滚",
+      "13.2并行时间比例到速度倍数",
+      "13.5相关性例子与方差推导",
+      "13.6条件概率100候选例子",
+      "C.5 Java服务迁移练习及答案"
+    ]
+  },
+  "issues_and_fixes": [
+    {
+      "issue": "教学入口对LLM/统计等前置默认为熟悉，长文读法不明确",
+      "fix": "新增术语对齐、两遍阅读路线和学习成果，按LLM开发/Java经验定向"
+    },
+    {
+      "issue": "动作分布、Amdahl、方差及条件概率存在跳步",
+      "fix": "补符号、口头直觉、分步推导与小数值例子，限定简化假设"
+    },
+    {
+      "issue": "schema/恢复概念容易停留名称，原自测偏回忆",
+      "fix": "首次定义schema和幂等/补偿，增加接口审查迁移题与答案"
+    },
+    {
+      "issue": "2.5小时中位数未明示当日活跃用户分母",
+      "fix": "§12.5明确2026-06-11当日活跃内部用户，并保留99百分位71小时及统计限制"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "round": 1,
+      "sha256": "0f40b4cd0327ca5491cb9e8efc703735857f9adf09aa2482138535cdb237d960",
+      "ranges": [
+        "1-420",
+        "421-840",
+        "841-1050",
+        "1051-1260",
+        "1261-1480",
+        "1481-1688"
+      ],
+      "result": "完整复读，无需进一步修改；术语/公式/案例与来源边界衔接成立"
+    },
+    {
+      "round": 2,
+      "sha256": "0f40b4cd0327ca5491cb9e8efc703735857f9adf09aa2482138535cdb237d960",
+      "ranges": [
+        "1-280",
+        "281-560",
+        "561-840",
+        "841-1120",
+        "1121-1400",
+        "1401-1688"
+      ],
+      "result": "完整复读，无新增实质问题；阅读路线、原讲义主线、迁移题及答案对应一致"
+    }
+  ],
+  "limitations": [
+    "未运行真实Claude产品、Agent调用或编译器实验；示例明确未执行。",
+    "R1仅所用章节全文精读；R5未全读25–48页非所引附录；延伸论文只核对摘要，不冒充全文研究。",
+    "未取得Software2.0/3.0外链和视频全文；相关概念以已全读讲义为依据。",
+    "产品机制依归档版本，不宣称当前安装版已验证。",
+    "曾有一次841–1260输出完全被截断，未计为阅读；已分段841–1050/1051–1260补读。早期被修改的稿件复读未计入最终两轮。"
+  ]
+}

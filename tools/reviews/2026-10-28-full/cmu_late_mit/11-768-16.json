@@ -1,0 +1,205 @@
+{
+  "note": "11-768/16.AgentsAndTheFutureOfWork/notes.zh-CN.md",
+  "original_sha256": "25d1c39fabd5d16b4a2d2839c5943f40b660f8109dd0efd121aeb3ef5f5cd1fe",
+  "final_sha256": "7ebbb1257184eb4d2bd8521b4082a745b179d65773457c274a2661520dc9368e",
+  "status": "passed_after_revision",
+  "review_date": "2026-10-28",
+  "full_readings": [
+    {
+      "round": 1,
+      "sha256": "25d1c39fabd5d16b4a2d2839c5943f40b660f8109dd0efd121aeb3ef5f5cd1fe",
+      "line_ranges": [
+        [
+          1,
+          210
+        ],
+        [
+          211,
+          400
+        ]
+      ],
+      "result": "原始稿完整阅读，发现教学跳步与环境构建覆盖缺口"
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "11-768/16.AgentsAndTheFutureOfWork/SOURCES.md",
+      "range": "全文"
+    },
+    {
+      "path": "11-768/16.AgentsAndTheFutureOfWork/REFERENCES.json",
+      "range": "全文"
+    },
+    {
+      "path": "11-768/16.AgentsAndTheFutureOfWork/2026-10-27-zora-wang.pdf",
+      "pages": "1–62 全文",
+      "text_read_ranges": [
+        [
+          1,
+          380
+        ],
+        [
+          381,
+          521
+        ]
+      ]
+    },
+    {
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/GDPval_Evaluating_AI_Model_Performance_on_Real-World_Economically_Valuable_Tasks.pdf",
+      "version": "Official OpenAI paper, arXiv:2510.04374; 29-page publisher PDF",
+      "pages": "1–9",
+      "sha256": "37c7604bc9da68cd8d9345ad16938164fe985182ad723fcb09e9415f84dc25d4"
+    },
+    {
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/Remote_Labor_Index_Measuring_AI_Automation_of_Remote_Work.pdf",
+      "version": "arXiv:2510.26787v1",
+      "pages": "1–8",
+      "sha256": "7bc1e50585429c83a93a8045fdaa654ba074c4fa3a35671613024de69c46d2ed"
+    },
+    {
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/Future_of_Work_with_AI_Agents_Auditing_Automation_and_Augmentation_Potential_across_the_U.S._Workforce.pdf",
+      "version": "arXiv:2506.06576v3",
+      "pages": "1–10",
+      "sha256": "8cea403d86046b14a9296991b91f659192b0aedf3d86806faeeecce3a81d962a"
+    },
+    {
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/GPTs_are_GPTs_An_Early_Look_at_the_Labor_Market_Impact_Potential_of_Large_Language_Models.pdf",
+      "version": "arXiv:2303.10130v5; title page August 22, 2023",
+      "pages": "1–2、6–8",
+      "sha256": "af3edd4efc120c70f0e2e6dc7a4e314a41f1b9eb5a7e88bc25533db631f79632"
+    },
+    {
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/Canaries_in_the_Coal_Mine_Six_Facts_about_the_Recent_Employment_Effects_of_Artificial_Intelligence.pdf",
+      "version": "August 2026; 140 pages",
+      "pages": "1–5",
+      "sha256": "c8d2e5c4ccc0de7ef977c191c144726d6073e164b33f30397fcb0090165d2bdf"
+    },
+    {
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/Measuring_AI_Ability_to_Complete_Long_Software_Tasks.pdf",
+      "version": "arXiv:2503.14499v4, July 10, 2026",
+      "pages": "1–5",
+      "sha256": "29216eb3af4daa417666757a462ab7c7b5f8c18c188ee5a56e258b04116211f7"
+    },
+    {
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/How_Well_Does_Agent_Development_Reflect_Real-World_Work.pdf",
+      "version": "2603.01203v2",
+      "pages": "1–7",
+      "sha256": "3911d2d529c297fc8e00ab66a10b1f2a1084a8cade5e439849b648d56b7b6246"
+    },
+    {
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/CollabSkill_Evaluating_Human-Agent_Collaboration_On_Real-World_Tasks.pdf",
+      "version": "2606.09833v2",
+      "pages": "1–8",
+      "sha256": "ae47c83fbe88fb05e60809f061f6f7e05ed87967db3b7a079254b3f6e80703cc"
+    },
+    {
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/Efficient_Test-Time_Adaptation_through_Human-AI_Interaction.pdf",
+      "version": "2609.04141v1",
+      "pages": "1–8、15",
+      "sha256": "ad19a223bd6d9f92758c536e10d6c64821f4b38e8c11a9bba8d5613a4c229675"
+    }
+  ],
+  "coverage_assessment": "62页主讲义全部回读，补齐27–30页手工/自动部署、数据装入、文件中心环境；其余能力指标、职业任务代表性、评分/交互/工作意义/劳动市场均有对应讲解。回查GDPval与RLI分母、CollabSkill加性模型、TAHI训练数据/评分协议、HAS与WORKBank46.1%、GPTs暴露定义和不同版本时间边界。",
+  "pedagogical_review": {
+    "reader_prerequisites": "LLM Developer + Java开发经验；以集成测试、接口、初始状态、函数输入/参数为桥梁，不预设贝叶斯估计或偏好训练知识。",
+    "question_chain": "基准成绩为何不等于工作价值→任务及环境怎样定义→样本是否覆盖目标能力→怎样评价开放交付与协作→反馈改变什么→怎样计总成本/诊断失败→自动化意愿与就业如何区别。",
+    "gaps_found": [
+      "构念效度缺少明确教学解释",
+      "环境章节遗漏讲义三种构建路线和初始化数据",
+      "CollabSkill直接从公式跳到高斯先验/后验/保守评分",
+      "TAHI只列DPO/LoRA名称，未解释目标与参数范围区别，也遗漏将交互整理为一次完成轨迹的关键步骤"
+    ],
+    "examples_and_organization": "保留原有报告审阅贯穿案例与第16节算术正确但因果结论不足的闭环；新增通用接口测试、环境夹具、图形修改例，不把全课缩窄为业务教程。环境章节拆5.1/5.2便于先构建后迁移。",
+    "learning_outcomes": "能够区别测量对象、搭建可比环境、解释协作评分更新及参数适配、设计质量/成本/人类参与对照并判断推论边界。",
+    "changes": "补清潜在量、高斯噪声、先验/后验、不确定性扣分；DPO与LoRA；TAHI轨迹合并及参考策略；补2道机制自测与答案。"
+  },
+  "issues_and_fixes": [
+    {
+      "issue": "主线环境构建与统计/训练前置说明不足",
+      "fix": "新增构念效度测试类比、5.1三条环境路线及初始化/重置；扩写6.1统计更新和10.1偏好训练数据流，新增自测17–18。"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "round": 1,
+      "sha256": "7ebbb1257184eb4d2bd8521b4082a745b179d65773457c274a2661520dc9368e",
+      "line_ranges": [
+        [
+          1,
+          150
+        ],
+        [
+          151,
+          290
+        ],
+        [
+          291,
+          422
+        ]
+      ],
+      "result": "全文复读通过，无进一步修改"
+    },
+    {
+      "round": 2,
+      "sha256": "7ebbb1257184eb4d2bd8521b4082a745b179d65773457c274a2661520dc9368e",
+      "line_ranges": [
+        [
+          1,
+          150
+        ],
+        [
+          151,
+          290
+        ],
+        [
+          291,
+          422
+        ]
+      ],
+      "result": "全文复读通过，无进一步修改"
+    }
+  ],
+  "visual_checks": {
+    "lecture_pages": [
+      3,
+      7,
+      9,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      42,
+      47,
+      50,
+      53,
+      57,
+      60
+    ],
+    "CollabSkill_pages": [
+      4,
+      6,
+      8
+    ],
+    "TAHI_pages": [
+      2,
+      7
+    ],
+    "WORKBank_pages": [
+      5,
+      10
+    ],
+    "result": "22个页面渲染并看图；确认版本图、环境路线、协作模型、偏好数据流、HAS和四象限含义。"
+  },
+  "executed_checks": {
+    "command": "python3 11-768/16.AgentsAndTheFutureOfWork/examples/evaluation_math.py",
+    "result": "6项断言通过；102.5/108.125、增长20%、条件错误放行20%与误乘2.4%；无模型实验"
+  },
+  "limitations": [
+    "补充论文只按以上实际页范围核查，并未声称九篇全文通读。",
+    "未独立取得OpenCUA、BAGEL、NNetNav、Gym-Anything等原论文；正文仅据课堂介绍其机制，不引用其研究增益。",
+    "讲义后续榜单与旧论文不同版本分开解释；Canaries归档为2026年8月，未取得讲义所用2025年9月历史快照。",
+    "未运行人类实验、模型训练、API或真实业务安全测试；新增环境设计与迁移建议是工程推导。"
+  ]
+}

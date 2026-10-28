@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-28",
+  "python": "3.11.10",
+  "pytorch": "2.14.1",
+  "numpy": "2.4.6",
+  "device": "CPU",
+  "command": "python examples/rl11_loss_demo.py",
+  "source_sha256": "c57648f609a4b613efd037030579327fde6dfadf10784d097c39f997083c0a8c",
+  "result": "passed",
+  "exit_code": 0,
+  "output": "PPO/CISPO、组优势、停止梯度与 padding 掩码测试通过。",
+  "stderr": "",
+  "scope": "Tensor losses, gradients, detachment, group normalization, padding mask; no model training or benchmark replication",
+  "new_prerequisite_math_checks": {
+    "softmax_log3_zero": [
+      0.7500000000000001,
+      0.2499999999999999
+    ],
+    "negative_log_likelihood": 0.2876820724517808,
+    "reward_gradient_at_zero": {
+      "finite_difference": 0.2500000000349445,
+      "score_function_expectation": 0.25
+    },
+    "autograd_expected_reward_gradient": 0.25,
+    "sequence_probability_chain": 0.375
+  }
+}

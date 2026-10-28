@@ -1,0 +1,63 @@
+{
+  "note": "MAS.S62/1.CourseIntroduction/notes.zh-CN.md",
+  "sha256": "c46d1ea9c8333736704e7bb008ae61c79fae5dd2bf0eb93b58ef715495231337",
+  "scope": "Offline Python examples and teaching arithmetic only; no LLM, RL or self-evolution experiment",
+  "configuration_cases": [
+    {
+      "input": {},
+      "expected": 3,
+      "bad": 3,
+      "intermediate": 3,
+      "correct": 3
+    },
+    {
+      "input": {
+        "retries": null
+      },
+      "expected": 3,
+      "bad": 3,
+      "intermediate": null,
+      "correct": 3
+    },
+    {
+      "input": {
+        "retries": 0
+      },
+      "expected": 0,
+      "bad": 3,
+      "intermediate": 0,
+      "correct": 0
+    },
+    {
+      "input": {
+        "retries": 2
+      },
+      "expected": 2,
+      "bad": 2,
+      "intermediate": 2,
+      "correct": 2
+    }
+  ],
+  "group_advantage": {
+    "rewards": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "mean": 0.5,
+    "population_std": 0.5,
+    "advantages": [
+      1.0,
+      1.0,
+      -1.0,
+      -1.0
+    ]
+  },
+  "arithmetic": {
+    "sequence_probability": 0.3,
+    "sample_reward": 0.75,
+    "break_even_calls": 400
+  },
+  "result": "passed"
+}

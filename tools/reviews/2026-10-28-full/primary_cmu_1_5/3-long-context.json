@@ -1,0 +1,186 @@
+{
+  "note": "11-768/3.LongContext/long_context_lecture03_integrated_notes.md",
+  "original_sha256": "67f5041bd567f8702e121b2e43fff43a81c681e17df7dae03f68c9e6853d8947",
+  "final_sha256": "67f5041bd567f8702e121b2e43fff43a81c681e17df7dae03f68c9e6853d8947",
+  "status": "full_review_passed_unchanged",
+  "full_read_ranges": [
+    "1–350",
+    "351–700",
+    "701–1050",
+    "1051–1400",
+    "1401–1750",
+    "1751–2100",
+    "2101–2450",
+    "2451–2750",
+    "2751–2987"
+  ],
+  "sources_read": [
+    {
+      "path": "11-768/3.LongContext/lecture-03-long-context.pdf",
+      "pages": "1–54",
+      "scope": "全文及 p.3 图",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/3.LongContext/references/Longformer_The_Long-Document_Transformer.pdf",
+      "pages": "6,9",
+      "scope": "MLM 和 WikiHop 表格、消融条件",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/3.LongContext/references/Gated_Delta_Networks_Improving_Mamba2_with_Delta_Rule.pdf",
+      "pages": "4–5",
+      "scope": "状态更新公式、S-NIAH 表格",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/3.LongContext/references/Kimi_Linear_An_Expressive_Efficient_Attention_Architecture.pdf",
+      "pages": "4–5,8,12–13,16",
+      "scope": "KDA 更新、混合比、长上下文评测与 batch=1 图 7；图文提速差异",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/3.LongContext/references/GLM-5_from_Vibe_Coding_to_Agentic_Engineering.pdf",
+      "pages": "6–7,19",
+      "scope": "SWA 对照和训练预算，keep-recent / HCM",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/3.LongContext/references/DeepSeek-V3.2_Pushing_the_Frontier_of_Open_Large_Language_Models.pdf",
+      "pages": "3–5,16–17",
+      "scope": "DSA 训练、复杂度和 context management",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/3.LongContext/references/DeepSeek-V4_Towards_Highly_Efficient_Million-Token_Context_Intelligence.pdf",
+      "pages": "9–13,21–23",
+      "scope": "CSA/HCA 因果性、压缩因子与缓存布局；p.23 缓存策略段",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/3.LongContext/references/Kimi_K3_Open_Frontier_Intelligence.pdf",
+      "pages": "4–5,12",
+      "scope": "KDA 门控、额外末层与长度课程",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/3.LongContext/references/Nemotron_3_Ultra_Open_Efficient_Mixture-of-Experts_Hybrid_Mamba-Transformer_Model_for_Agentic_Reasoning.pdf",
+      "pages": "3–4,9",
+      "scope": "架构和长上下文数据/迭代比例",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/3.LongContext/references/Linear_Transformers_Are_Secretly_Fast_Weight_Programmers.pdf",
+      "pages": "3–7",
+      "scope": "线性注意力、容量边界、delta 与 DPFP、更新任务",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/3.LongContext/references/DeepSeek-V2_A_Strong_Economical_and_Efficient_Mixture-of-Experts_Language_Model.pdf",
+      "pages": "7–9",
+      "scope": "MLA 联合压缩、RoPE、缓存公式",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/3.LongContext/references/GQA_Training_Generalized_Multi-Query_Transformer_Models_from_Multi-Head_Checkpoints.pdf",
+      "pages": "1–3",
+      "scope": "转换与 uptraining、T5 评测",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/3.LongContext/references/The_Impact_of_Positional_Encoding_on_Length_Generalization_in_Transformers.pdf",
+      "pages": "3,5–6;8–9相关段",
+      "scope": "107M 设置、构造性定理、ALiBi 长度泛化边界",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/3.LongContext/references/Extending_Context_Window_of_Large_Language_Models_via_Position_Interpolation.pdf",
+      "pages": "8",
+      "scope": "PG19 PPL 表",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/3.LongContext/references/YaRN_Efficient_Context_Window_Extension_of_Large_Language_Models.pdf",
+      "pages": "4–7",
+      "scope": "频率插值、温度、动态缓存、训练长度",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/3.LongContext/references/Ring_Attention_with_Blockwise_Transformers_for_Near-Infinite_Context.pdf",
+      "pages": "3–5",
+      "scope": "分块通信与计算条件",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/3.LongContext/references/DistServe_Disaggregating_Prefill_and_Decoding_for_Goodput-optimized_Large_Language_Model_Serving.pdf",
+      "pages": "5",
+      "scope": "M/D/1 假设与公式",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/3.LongContext/references/SGLang_Efficient_Execution_of_Structured_Language_Model_Programs.pdf",
+      "pages": "4–6",
+      "scope": "RadixAttention 淘汰、引用计数与离线调度定理",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/3.LongContext/references/Prompt_Cache_Modular_Attention_Reuse_for_Low-Latency_Inference.pdf",
+      "pages": "3–6",
+      "scope": "模块独立编码、位置、scaffolding",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/3.LongContext/references/Can_I_Buy_Your_KV_Cache.pdf",
+      "pages": "3–7",
+      "scope": "精确前缀条件、成本公式、MPS 单步实验限制",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/3.LongContext/references/LongLLMLingua_Accelerating_and_Enhancing_LLMs_in_Long_Context_Scenarios_via_Prompt_Compression.pdf",
+      "pages": "7–8",
+      "scope": "NaturalQuestions 20 文档与消融表",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/3.LongContext/references/MemGPT_Towards_LLMs_as_Operating_Systems.pdf",
+      "pages": "2–3,7–8;4相关段",
+      "scope": "分层记忆与 nested KV 设置，图3",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/3.LongContext/references/ReSum_Unlocking_Long-Horizon_Search_Intelligence_via_Context_Summarization.pdf",
+      "pages": "3–8,13–15",
+      "scope": "ReSum/GRPO 机制、主要表格、训练预算与摘要 prompt",
+      "version": "本地归档版本"
+    }
+  ],
+  "additional_source_checks": [
+    "034_SGLang HTML 缓存命中/吞吐与工作负载",
+    "031_Anthropic HTML token 统计定义及 TTL 历史说明",
+    "021_Inkling HTML 5:1 与 8 KV heads",
+    "016_Qwen3 HTML 仅网页壳；018_GLM-5 模型卡和 028_Z 价格快照入口"
+  ],
+  "coverage_assessment": "讲义全部主题对应；17 章有概念、机制、算例、条件、工程实现、诊断与自测。",
+  "pedagogical_review": {
+    "reader": "有 Java 等编程和 LLM 应用经验；不预设线性代数/模型训练专门知识",
+    "problem_chain": "历史增长→输入/计算/存储成本→架构与训练→跨调用复用→状态压缩与恢复→评测",
+    "prerequisites": "开篇解释 token、向量/矩阵、参数、层/头；§3 从匹配读取引入 Q/K/V；§5 用有限关联状态逐步引出 delta，梯度推导折叠；不是直接罗列架构缩写。",
+    "examples_and_transfer": "代码修复与文档核对两类案例；§4.8 明确应用检索与内部稀疏注意力不同。§15 将状态/证据/恢复组合成通用架构，未缩成单一行业教程。",
+    "organization": "篇幅较长，但目录、每章问题/过渡、自测答案、进阶折叠和附录路线提供分层学习；保留已有通俗化版本，不为了制造改动重写。",
+    "learning_outcomes": "能区分当前输入、历史、KV 和外部记忆；判断成本属于输入量/计算/显存哪一层；解释压缩后哪些状态必须保留；能够设计续作对照实验。",
+    "remaining_limits": "读完并不等于完成模型系统实操；涉及 GPU kernel、模型训练的实验仍为计划。"
+  },
+  "issues_and_fixes": [
+    {
+      "scope": "SOURCES.md",
+      "issue": "3 个网页来源没有本地入口，Qwen 网页壳未在目录入口直接标明",
+      "fix": "补本地锚点，Qwen 明确未取得正文，价格标为历史快照；讲解正文无需修改"
+    }
+  ],
+  "post_fix_full_rereads": [],
+  "limitations": [
+    "未重新下载所有参考论文或验证全部可变产品页面；原有日期边界保留。",
+    "参考论文按机制、高风险表格和条件核查，并非全部参考全文逐字复读。",
+    "未运行 GPU/模型/API 实验；本文未修改，不虚报修改后两次复读。"
+  ]
+}

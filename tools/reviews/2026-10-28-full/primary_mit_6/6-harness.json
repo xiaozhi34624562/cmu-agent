@@ -1,0 +1,224 @@
+{
+  "review_date": "2026-10-28",
+  "note": "MAS.S62/6.HarnessEvolution2/notes.zh-CN.md",
+  "original_sha256": "03359c31b749b6fa6d48c463d8e3c02b3e1c7bb826e73df0332454916f41f0fb",
+  "final_sha256": "b2c2cb4aedbf66e57ca2df744c5a45db22335cb8cea86cff387770b8153249c9",
+  "status": "full_review_passed_after_revision",
+  "full_read_ranges": [
+    {
+      "pass": "initial",
+      "lines": "1–682",
+      "chunks": [
+        "1–270",
+        "271–540",
+        "541–682"
+      ],
+      "result": "原稿全文阅读后核对两份讲义、9篇论文引用页段和4份代码"
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "MAS.S62/6.HarnessEvolution2/slides/lec5 - multi agent.pdf",
+      "pages": "1–40",
+      "scope": "主讲义全文；13页关键图表目视"
+    },
+    {
+      "path": "MAS.S62/6.HarnessEvolution2/tutorials/harness engineering tutorial.pdf",
+      "pages": "1–47",
+      "scope": "教程全文；9页关键图表目视"
+    },
+    {
+      "path": "MAS.S62/6.HarnessEvolution2/readings/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf",
+      "pdf_pages_read": [
+        2,
+        3,
+        4
+      ],
+      "scope": "机制、公式、实验条件及本文高风险引用页段；辅助论文未宣称全文复现",
+      "sha256": "6d7483d94653008e40c2058a1c22441c92e3713dae278b6361e8efc447c99522"
+    },
+    {
+      "path": "MAS.S62/6.HarnessEvolution2/readings/ToolLLM_Facilitating_Large_Language_Models_to_Master_16000+_Real-world_APIs.pdf",
+      "pdf_pages_read": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "scope": "机制、公式、实验条件及本文高风险引用页段；辅助论文未宣称全文复现",
+      "sha256": "295299721d67b250661fb6598bee86a2e9fe766241fdc08dd7cf389e984b4d1a"
+    },
+    {
+      "path": "MAS.S62/6.HarnessEvolution2/readings/SkillsBench_Benchmarking_How_Well_Agent_Skills_Work_Across_Diverse_Tasks.pdf",
+      "pdf_pages_read": [
+        1,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scope": "机制、公式、实验条件及本文高风险引用页段；辅助论文未宣称全文复现",
+      "sha256": "e987ebc3f0084a1ffc8acbca58259e33120b95fcef3876abfad060e169cf210b"
+    },
+    {
+      "path": "MAS.S62/6.HarnessEvolution2/readings/VOYAGER_An_Open-Ended_Embodied_Agent_with_Large_Language_Models.pdf",
+      "pdf_pages_read": [
+        3,
+        4,
+        5
+      ],
+      "scope": "机制、公式、实验条件及本文高风险引用页段；辅助论文未宣称全文复现",
+      "sha256": "769a4e33ddeeb73870849232eece49afe882c2d146362e33917ccb432ba0efb8"
+    },
+    {
+      "path": "MAS.S62/6.HarnessEvolution2/readings/CORAL_Towards_Autonomous_Multi-Agent_Evolution_for_Open-Ended_Discovery.pdf",
+      "pdf_pages_read": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        17,
+        18
+      ],
+      "scope": "机制、公式、实验条件及本文高风险引用页段；辅助论文未宣称全文复现",
+      "sha256": "4462e8e60d73887223559e83e4a66850b515fe92a12aabad7ac9d810b5037894"
+    },
+    {
+      "path": "MAS.S62/6.HarnessEvolution2/readings/Towards_a_Science_of_Scaling_Agent_Systems.pdf",
+      "pdf_pages_read": [
+        1,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "scope": "机制、公式、实验条件及本文高风险引用页段；辅助论文未宣称全文复现",
+      "sha256": "028f329010d95143915db8db6ce1ad26a4e844b66e4abd6b36fdb39651aff7fd"
+    },
+    {
+      "path": "MAS.S62/6.HarnessEvolution2/readings/Why_Do_Multi-Agent_LLM_Systems_Fail.pdf",
+      "pdf_pages_read": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scope": "机制、公式、实验条件及本文高风险引用页段；辅助论文未宣称全文复现",
+      "sha256": "1b9e317a2a421e60ca2b2eda4a30844557a01e63286a790890c0ecef32d25460"
+    },
+    {
+      "path": "MAS.S62/6.HarnessEvolution2/references/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf",
+      "pdf_pages_read": [
+        2,
+        3
+      ],
+      "scope": "机制、公式、实验条件及本文高风险引用页段；辅助论文未宣称全文复现",
+      "sha256": "f285b0971ae4a790e402fb93966bed3adde2cf0a04977d08b2b40d6ab0cace69"
+    },
+    {
+      "path": "MAS.S62/6.HarnessEvolution2/references/SWE-agent_Agent-Computer_Interfaces_Enable_Automated_Software_Engineering.pdf",
+      "pdf_pages_read": [
+        5,
+        6,
+        7
+      ],
+      "scope": "机制、公式、实验条件及本文高风险引用页段；辅助论文未宣称全文复现",
+      "sha256": "d171e0693060b910ceb2cddd0fd4bc7cae302005d42d0d8059bfdbe056c3adba"
+    },
+    {
+      "path": "MAS.S62/6.HarnessEvolution2/references/mini-swe-agent-68d367b/src/minisweagent/agents/default.py",
+      "scope": "全文；预算0值、异常、完成信号、进程状态及交互语义"
+    },
+    {
+      "path": "MAS.S62/6.HarnessEvolution2/references/mini-swe-agent-68d367b/src/minisweagent/agents/interactive.py",
+      "scope": "全文；预算0值、异常、完成信号、进程状态及交互语义"
+    },
+    {
+      "path": "MAS.S62/6.HarnessEvolution2/references/mini-swe-agent-68d367b/src/minisweagent/environments/local.py",
+      "scope": "全文；预算0值、异常、完成信号、进程状态及交互语义"
+    },
+    {
+      "path": "MAS.S62/6.HarnessEvolution2/references/mini-swe-agent-68d367b/src/minisweagent/config/default.yaml",
+      "scope": "全文；预算0值、异常、完成信号、进程状态及交互语义"
+    }
+  ],
+  "coverage_assessment": "两份讲义87页全文核查；Agent Loop、工具与技能、上下文、规划、拓扑、协作测量和CORAL演化主线均覆盖。",
+  "pedagogical_review": {
+    "reader": "有Java经验的LLM Developer；不默认掌握训练损失、回归或统计一致性",
+    "problem_chain": "动作如何执行→机制如何复用→何时分工→怎样验证团队与学习收益",
+    "prerequisites": "负对数损失、宏平均、百分点和相对增益、R²、κ、Jaccard均由定义和手算引入",
+    "examples_and_transfer": "通用代码修复、工具调用、共享发布版本竞态；未将整课限定于特定业务"
+  },
+  "issues_and_fixes": [
+    {
+      "scope": "导读、§3.2",
+      "issue": "背景起点不清；版本字段被写成自动保护",
+      "fix": "明确LLM/Java起点；补实际比较版本和拒绝过期操作的执行条件"
+    },
+    {
+      "scope": "§4.2–4.3、§6.4",
+      "issue": "工具训练、DFSDT、Voyager只概括名词和流程，关键机制跳步",
+      "fix": "展开损失筛选和运行时执行、搜索回退边界、oracle API评价、技能代码索引与三类反馈"
+    },
+    {
+      "scope": "§6.1、§11.4、§12、§13.5",
+      "issue": "实验统计指标隐含基础知识，可能误读预测和相似度",
+      "fix": "补定义、公式、手算和反例；指出协调效率含成功率、输入隔离及配置级验证限制"
+    },
+    {
+      "scope": "§13.4、§14、§17",
+      "issue": "并发状态、字符串边界和自测可进一步落到可验证行为",
+      "fix": "加入丢失更新与版本发布教学建议、正则行为实例、3题自测及实际运行记录"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "pass": 1,
+      "sha256": "b2c2cb4aedbf66e57ca2df744c5a45db22335cb8cea86cff387770b8153249c9",
+      "lines": "1–730",
+      "chunks": [
+        "1–260",
+        "261–520",
+        "521–730"
+      ],
+      "result": "最终修改后全文复读，检查逻辑、前置知识、数值与来源边界，未发现需继续修改问题"
+    },
+    {
+      "pass": 2,
+      "sha256": "b2c2cb4aedbf66e57ca2df744c5a45db22335cb8cea86cff387770b8153249c9",
+      "lines": "1–730",
+      "chunks": [
+        "1–260",
+        "261–520",
+        "521–730"
+      ],
+      "result": "最终修改后全文复读，检查逻辑、前置知识、数值与来源边界，未发现需继续修改问题"
+    }
+  ],
+  "validation": {
+    "offline_example": "6-harness-offline-examples.json；交接与指标/正则两个标准库样例实际通过",
+    "visual_checks": "主讲义13页、教程9页、SWE-agent2页、ReAct1页目视",
+    "source_indexes": "为既有6份补充材料登记实际SHA-256，原文件未改写"
+  },
+  "limitations": [
+    "未执行模型/API、Django基准、mini-swe-agent CLI或论文实验；样例只验证契约、算术和Python正则。",
+    "辅助论文按列出页段核查；CORAL文件内部任务计数差异与SAS预测输入可用性保留说明。"
+  ]
+}

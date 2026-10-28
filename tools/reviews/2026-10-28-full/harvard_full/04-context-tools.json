@@ -1,0 +1,334 @@
+{
+  "note": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/lecture-04_context_and_tool_design_integrated.md",
+  "original_sha256": "52b0c4e521f1dfc6b8894c2dc78ec791adb816b3934a7da07ee39ecfd824b7af",
+  "final_sha256": "a007f58371d0270667e7e9f375fa4e631cfa14ccaefaa757d4d8b3ccf523a554",
+  "status": "passed_with_fixes",
+  "final_line_count": 2224,
+  "full_read_ranges": [
+    {
+      "round": "initial",
+      "sha256": "52b0c4e521f1dfc6b8894c2dc78ec791adb816b3934a7da07ee39ecfd824b7af",
+      "ranges": [
+        "1-350",
+        "351-700",
+        "701-1050",
+        "1051-1400",
+        "1401-1750",
+        "1751-2208"
+      ]
+    },
+    {
+      "round": "post_fix_1",
+      "sha256": "1b8d578679a22d05d136beeded5d415a38bf64a7be0d2f8ab4c61a6d6e11667c",
+      "ranges": [
+        "1-360",
+        "361-720",
+        "721-1080",
+        "1081-1440",
+        "1441-1800",
+        "1801-2224"
+      ]
+    },
+    {
+      "round": "post_fix_2",
+      "sha256": "1b8d578679a22d05d136beeded5d415a38bf64a7be0d2f8ab4c61a6d6e11667c",
+      "ranges": [
+        "1-440（中部输出截断，随后补读230-280）",
+        "230-280（完整补读）",
+        "441-800",
+        "801-1180",
+        "1181-1570",
+        "1571-1930",
+        "1931-2224"
+      ]
+    },
+    {
+      "round": "post_causal_alignment_fix_1",
+      "sha256": "a007f58371d0270667e7e9f375fa4e631cfa14ccaefaa757d4d8b3ccf523a554",
+      "ranges": [
+        "1-350",
+        "351-700",
+        "701-1050",
+        "1051-1400",
+        "1401-1750",
+        "1751-2100",
+        "2101-2224"
+      ]
+    },
+    {
+      "round": "post_causal_alignment_fix_2",
+      "sha256": "a007f58371d0270667e7e9f375fa4e631cfa14ccaefaa757d4d8b3ccf523a554",
+      "ranges": [
+        "1-350",
+        "351-700",
+        "701-1050",
+        "1051-1400",
+        "1401-1750",
+        "1751-2100",
+        "2101-2224"
+      ]
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/SOURCES.md",
+      "sha256": "cbee8d9241f48410f74a952e342cfb97acf01826eeea7dfe3b6513678b7cc382",
+      "version": "本地归档版本",
+      "range": "全文；首次正文阅读前"
+    },
+    {
+      "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/REFERENCES.json",
+      "sha256": "c0cfd24d56f2d66952cb3e83f8fb473a78a4a5284afd230b84e6b0e9c7c0ab05",
+      "version": "本地归档版本",
+      "range": "全文；首次正文阅读前"
+    },
+    {
+      "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/4_agent_design_1.pdf",
+      "sha256": "aee815f49719d38c9cee4c284a161c63081082ec20859daa9af7b6720f473304",
+      "version": "2026-09-16 课程讲义，56 页",
+      "range": "PDF 实际 pp. 1–56 全文；按文本分段 1–600、601–EOF（页 32 跨段）",
+      "visually_inspected_pdf_pages": [
+        11,
+        21,
+        26,
+        43,
+        52
+      ]
+    },
+    {
+      "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf",
+      "sha256": "f285b0971ae4a790e402fb93966bed3adde2cf0a04977d08b2b40d6ab0cace69",
+      "version": "arXiv:2210.03629v3，2023-03-10",
+      "range": "pp. 1–9 全文；p. 1 曾输出截断后单独补读完整；§2、Tables 1–2、§4、微调与混合回退设置",
+      "visually_inspected_pdf_pages": [
+        2,
+        5,
+        6
+      ]
+    },
+    {
+      "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf",
+      "sha256": "6d7483d94653008e40c2058a1c22441c92e3713dae278b6361e8efc447c99522",
+      "version": "arXiv:2302.04761v1，2023-02-09",
+      "range": "pp. 1–10 全文；三条件损失、前缀筛选/插入训练、解码规则、五工具、单调用依赖限制与 Table 10",
+      "visually_inspected_pdf_pages": [
+        2,
+        3,
+        10
+      ]
+    },
+    {
+      "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Less_Context_Better_Agents_Efficient_Context_Engineering_for_Long-Horizon_Tool-Using_LLM_Agents.pdf",
+      "sha256": "31aa21cfc78d1528d07752527b6039720bc8b31eb82906a6c55a40e41fe98a5d",
+      "version": "arXiv:2606.10209v1，2026-06-08",
+      "range": "pp. 1–12、16–17 全文；Algorithm 1、C1–C4、Tables 2–5、Appendix C 评分、D 统计、H 敏感性、I 跨模型",
+      "visually_inspected_pdf_pages": [
+        5,
+        6,
+        7,
+        9
+      ]
+    },
+    {
+      "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Lost_in_the_Middle_How_Language_Models_Use_Long_Contexts.pdf",
+      "sha256": "653b29619eae2ae4b361d7bdcdc06db4bedcb1b0eabe31814036beca8c1af0b1",
+      "version": "arXiv:2307.03172v3，2023-11-20",
+      "range": "pp. 1–10 全文；任务构造、所用模型版本、位置、query-aware、架构分析及 Figure 11",
+      "visually_inspected_pdf_pages": [
+        5,
+        8,
+        10
+      ]
+    },
+    {
+      "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Diagnosing_and_Mitigating_Context_Rot_in_Long-horizon_Search.pdf",
+      "sha256": "89f838c60ac54a940e4d70e4c2e2771cadfdfd0e477acffd43231b25221dcdbb",
+      "version": "arXiv:2606.29718v2，2026-08-04；封面 2026-08-05",
+      "range": "pp. 1–10 全文；六终态、PT、五次长度排序、七策略、Tables 3/5、采样预算和边界",
+      "visually_inspected_pdf_pages": [
+        6,
+        8,
+        9
+      ]
+    },
+    {
+      "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/A_practical_guide_to_building_agents.pdf",
+      "sha256": "1903c2b1837b206d1951d8a3d1124515aee1bebebd8f2448c630c75a6b0aad86",
+      "version": "本地归档版本",
+      "range": "pp. 1–34 全文提取阅读；SDK 示例只作为归档设计材料，未验证当前 API"
+    },
+    {
+      "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Building_Effective_AI_Agents.html",
+      "sha256": "8600702d1292a3712ca43ca5206eae781e3135fe6589e3912ee17cc68337a99d",
+      "version": "本地归档版本",
+      "range": "文章全文（去脚本/导航后 1–187 行）；工作流/Agent、五模式、附录 1–2"
+    },
+    {
+      "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Effective_context_engineering_for_AI_agents.html",
+      "sha256": "6cc1c0b5e326f229fdd683c9294dc50fc3bf94ad2cdc563943a7f1905dcd277b",
+      "version": "本地归档版本",
+      "range": "文章全文（1–150 行）；全部正文与 compaction、笔记、子 Agent"
+    },
+    {
+      "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Context_Engineering_A_Practical_Guide_for_AI_Agents_2026.html",
+      "sha256": "824ad1ff81a193333d72aadcae79f2a7550c0d3bf4d825570829cb9472681f10",
+      "version": "Matt Tanner，2026-05-28 归档",
+      "range": "文章全文（1–149 行）；四支柱、生产管线、代码智能与 370 任务指标"
+    },
+    {
+      "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Writing_effective_tools_for_AI_agents_using_AI_agents.html",
+      "sha256": "1740f094f5cb2e7a9d6ab37082f04268ca9cb3a1002488ca95d629b54307d454",
+      "version": "本地归档版本",
+      "range": "文章全文（1–258 行）；工具契约、粒度、错误、输出、评测与保留集"
+    },
+    {
+      "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/How_Foundational_Models_Became_Superhuman_in_Bash.html",
+      "sha256": "45283d9e0b53d0a4e3cf424257d1ab7f5cd9c2d56b26523f4491285e62527627",
+      "version": "2026-09-01 归档",
+      "range": "文章全文含全部三段示例代码（1–412 行）；核对多文件预检查、工作区二分、日志关联筛选口径"
+    },
+    {
+      "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/What_Is_an_Agent_Harness_Harness_Engineering_Explained.html",
+      "sha256": "be5d36e5af0d5884bc1ec3eef815aa9060836a5500f137224443fe49b56bade1",
+      "version": "本地归档版本",
+      "range": "文章全文含演示代码（1–621 行）；明确作者演示非普遍可靠性保证"
+    },
+    {
+      "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Agent_Patterns_for_AI_Agent_Development_-_AgentPatterns.ai.html",
+      "sha256": "7ad3f7de7cb66ebc781b04af50e236867910c50904156f8645da4ac733e8d612",
+      "version": "本地归档版本",
+      "range": "归档首页全文（1–81 行）；未读取所链接网站全部子页"
+    },
+    {
+      "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/LLM_Powered_Autonomous_Agents.html",
+      "sha256": "03b6ed75b1dc0dedd200a077367d1f7737f0a18e08c104e7f653115e1f52b0ef",
+      "version": "2023-06-23 归档",
+      "range": "提取文本 1–180、302–355 行；Overview、Planning/Self-Reflection、Memory 引入、Generative Agents Memory/Retrieval；不是整篇全文"
+    },
+    {
+      "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/references/016_Aider_Repository_Map.html",
+      "sha256": "77708d7004b0755018668f7db831cb09b7cb5883da4e46d90bd65fe5683b07f0",
+      "version": "本地归档版本",
+      "range": "文章全文（1–93 行）"
+    },
+    {
+      "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/references/017_Aider_Repository_Map.html",
+      "sha256": "312c556eee765b5843e1017be7d7f568ecbe6e9bb048e5a93337f296bedb2397",
+      "version": "2023-10-22 文章，2026-10-26 既有归档",
+      "range": "文章全文（1–253 行）"
+    },
+    {
+      "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/How_skills_and_MCPs_actually_work.html",
+      "sha256": "025685349889065651f42130786a3501c0ee41bf44162087c614426f8315ce61",
+      "version": "Lawrence Jones，2026-09-01 归档",
+      "range": "复用本轮第 2 课已完成的文章全文精读；本次重新核对两课副本 SHA 完全一致 025685349889065651f42130786a3501c0ee41bf44162087c614426f8315ce61"
+    }
+  ],
+  "coverage_assessment": {
+    "lecture": "56 页全文核对：Agent loop/职责 pp4–7、检索与编辑 pp8–21、Shell/工具 pp22–26、Prompt 八技巧 pp27–40、上下文组成与四操作 pp41–50、Harness/延伸 pp51–56 均有实质解释；附录 A 保留教学图与外部转引的边界。",
+    "mechanisms": "ReAct 更新工作状态、Toolformer 三条件训练筛选、检索/编辑/工具契约、长命令生命周期、局部状态与全局进度、七种搜索上下文策略均能接到实现取舍。",
+    "implementation_and_diagnosis": "双案例、完整循环伪代码、接口/任务双层评测、未知/空值/超时、版本和异步状态、摘要验收可用于设计评审；未声称案例已经执行。"
+  },
+  "pedagogical_review": {
+    "reader_prerequisites": "LLM Developer/Java 开发经验，已懂接口、调用链、状态、缓存、并发和测试；新增阅读前提明确不预设 ML 训练/数学。",
+    "question_chain": "保留用户目标→上下文组装→模型选择→工具契约→观察→状态更新→验证的主线；第3–6章将选择接口落实到订单超时，第8–12章解释历史为何需管理，第14–16章回到运行与评测。给出工程首读/训练与实验证据次读路线，避免第2章成为学习入口阻塞。",
+    "prerequisites_and_steps": "原稿直接使用策略符号、预测损失和检索指标；补 π/条件/采样/集合、token 与下一 token 概率损失、微调更新参数、三条件 min 阈值例、embedding 数组直觉、Precision/Recall/F1 的分母和手算、累计输入数列展开、encoder-decoder 数据流。 最终补正 causal mask 含当前位置，并明确当前位置表示预测下一个 token，避免把可见输入与预测目标混淆。",
+    "cases": "原有重复订单与文档核验分别展示状态可替换/历史证据不可随意删除；完整走过定位、验证、编辑、历史增长、交付，保留为假设教学设计而非用户现有系统实现。新增数字例围绕通用训练、代码检索与调用成本，未收窄成金融教程。",
+    "organization": "原有17章较长但工具/状态/证据问题分层清晰，6.7 长任务段能由服务开发经验理解；保留深度与附录导航，新增分次阅读路线而不删减知识体系。",
+    "learning_outcomes": "读者能解释为何 loss 降低不等于任务完成、计算筛选/检索/累计成本、按错误选接口与上下文策略、设计独立验收；新增自测9–10含答案，原8题覆盖超时、归因、版本、采样与上线对照。",
+    "fixes": "修复教学前提、符号、三个手算桥接与可验证自测；另补评分范围、收紧成本和完成判定措辞。 汇总复核后补正 §9.5 因果注意力的当前位置边界与预测位置；再次完整复读全文两轮。"
+  },
+  "issues_and_fixes": [
+    {
+      "issue": "模型/训练/评测术语先用后教，损失公式与成本公式缺可手算推导",
+      "fix": "新增最小概率训练背景、ReAct 记号、三对照 min/阈值数值例、embedding/检索分母与F1例、输入等差数列及1400窗口/3600累计对照、架构最小定义；新增两题答案。"
+    },
+    {
+      "issue": "每轮 grep 必然模型调用且成本乘性，repo map 编排原因写成确定事实",
+      "fix": "区分依赖反馈的自适应轮次与可批处理搜索；成本用8.4具体累计公式；课堂编排原因降为本文解释。"
+    },
+    {
+      "issue": "完成判定仅依赖退出码的措辞容易与业务验收混淆",
+      "fix": "明确进程生命周期结束与用户任务完成分开，退出码0仍需产物/测试核验。"
+    },
+    {
+      "issue": "Context Pruning 完成率未解释自动评分仅覆盖金额归零",
+      "fix": "依据Appendix C p11补独立回读指标定义，明确91.6%不是每条类别/来源映射全面正确率。"
+    },
+    {
+      "issue": "§9.5“因果注意力只能看当前位置之前的内容”可能误教标准 causal mask 排除对角线，也未明确输入位置与预测位置的错位关系。",
+      "fix": "改为“可读取当前位置及之前的输入、不能读取未来位置；当前位置的表示用于预测下一个 token”，明确注意力允许自身位置与 next-token 预测目标的对齐。"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "round": 1,
+      "sha256": "a007f58371d0270667e7e9f375fa4e631cfa14ccaefaa757d4d8b3ccf523a554",
+      "ranges": [
+        "1-350",
+        "351-700",
+        "701-1050",
+        "1051-1400",
+        "1401-1750",
+        "1751-2100",
+        "2101-2224"
+      ],
+      "result": "修正因果位置表述后完整分段复读1–2224行（无截断）；确认工具训练、检索指标、上下文实验、系统案例、自测与附录一致，无新实质问题。"
+    },
+    {
+      "round": 2,
+      "sha256": "a007f58371d0270667e7e9f375fa4e631cfa14ccaefaa757d4d8b3ccf523a554",
+      "ranges": [
+        "1-350",
+        "351-700",
+        "701-1050",
+        "1051-1400",
+        "1401-1750",
+        "1751-2100",
+        "2101-2224"
+      ],
+      "result": "同一最终SHA下再次完整分段复读1–2224行（无截断）；因果mask含当前输入与预测下一个token对齐，既有教学问题链、案例与答案保持连贯，无需继续修改。"
+    }
+  ],
+  "limitations": [
+    "论文与网页按已归档版本，未核验实时产品API；完整主讲义已读，辅助材料严格按sources_read所列范围，不冒称各PDF全部附录已读。",
+    "主讲义p52外部研究仍仅按讲义转引，未读该独立论文；Sourcegraph外链基准未复现。",
+    "无GPU/模型/API/ERP业务实验执行；第14章为伪代码，第15章为教学设计；新增数值例经逐项手算复核，不声明真实效果。",
+    "本轮未新增或改写任何原始资料；未运行整理同步或修改课程根审核文件。"
+  ],
+  "prior_revision_rereads": [
+    {
+      "sha256": "1b8d578679a22d05d136beeded5d415a38bf64a7be0d2f8ab4c61a6d6e11667c",
+      "reason_superseded": "汇总复核发现 §9.5 causal mask 位置边界可被误读为排除当前位置；完成单句实质修正后重新进行两遍最终全文复读。",
+      "post_fix_full_rereads": [
+        {
+          "round": 1,
+          "sha256": "1b8d578679a22d05d136beeded5d415a38bf64a7be0d2f8ab4c61a6d6e11667c",
+          "ranges": [
+            "1-360",
+            "361-720",
+            "721-1080",
+            "1081-1440",
+            "1441-1800",
+            "1801-2224"
+          ],
+          "result": "全文完成；机制/术语桥接、原有接口案例、实验边界衔接，无新实质问题。"
+        },
+        {
+          "round": 2,
+          "sha256": "1b8d578679a22d05d136beeded5d415a38bf64a7be0d2f8ab4c61a6d6e11667c",
+          "ranges": [
+            "1-440（中部输出截断，随后补读230-280）",
+            "230-280（完整补读）",
+            "441-800",
+            "801-1180",
+            "1181-1570",
+            "1571-1930",
+            "1931-2224"
+          ],
+          "result": "全文完成；截断部分已显式补读；复核章节依赖、三个手算、自测答案、跨章完成标准、附录与来源一致，无再修改。"
+        }
+      ]
+    }
+  ]
+}

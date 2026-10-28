@@ -1,0 +1,145 @@
+{
+  "note": "11-768/10.DeepResearchAgents/Finance_Agent_Research_2026_Three_Papers.md",
+  "original_sha256": "9c266d1965a43b105841d99689a9287f619e0337a12a76dbef0495e2b38cfa77",
+  "final_sha256": "707ee4aa8e291506617864ae22c206e81980eb22ee71dc799c98d51846459973",
+  "status": "reviewed_and_revised",
+  "full_text_reads": [
+    {
+      "round": "initial",
+      "ranges": [
+        [
+          1,
+          225
+        ],
+        [
+          226,
+          450
+        ],
+        [
+          451,
+          675
+        ]
+      ],
+      "complete": true
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "11-768/10.DeepResearchAgents/SOURCES.md",
+      "scope": "全文"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/REFERENCES.json",
+      "scope": "全文"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/FutureX-Pro_Extending_Future_Prediction_to_High-Value_Vertical_Domains.pdf",
+      "version": "arXiv v1 2026-01-18",
+      "scope": "全文，物理页1–21；图像核查4、16页"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/MBABench_Evaluating_LLM_Agents_on_End-to-End_Spreadsheet_Tasks_in_Finance.pdf",
+      "version": "arXiv v5 2026-08-19",
+      "scope": "全文，物理页1–41；图像核查3、4、5、14页"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/Can_Language_Models_Learn_to_Forecast_Stock_Prices.pdf",
+      "version": "arXiv v1 2026-09-29",
+      "scope": "全文，物理页1–18；图像核查2、8、9、18页"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/futurex-eval-README.md",
+      "version": "commit 2626f7a297cd87c73a45408e23af8d838f5b60e5",
+      "scope": "全文"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/futurex-llm_judge_level_34.py",
+      "scope": "定向核查205–244行，数值评分器234–235行"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/futurex-eval.py",
+      "scope": "定向核查215–270行，标准差247–252行"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/FinSearchComp_Towards_a_Realistic_Expert-Level_Evaluation_of_Financial_Search_and_Reasoning.pdf",
+      "scope": "背景定向核查物理页3–4，非全文复读"
+    }
+  ],
+  "coverage_assessment": "三篇独立研究的任务、输出契约、数据筛选、评分、运行环境/训练、结果与因果边界均有覆盖。FutureX价格误差与收益预测、MBABench交付物与当前数字、AURA结果筛选与时间隔离分别解释，不把分数拼成排行榜。完整论文回读确认主要机制和限制均已纳入；补充训练机制和错误状态传播后更适合从LLM应用开发进入研究评价。",
+  "pedagogical_review": {
+    "reader_prerequisites": "LLM Developer，有Java及通用工程经验；不预设强化学习、金融数学专门知识。",
+    "problem_chain": "先区分输出契约→三种评价目标→工具执行与训练更新→实验能证明什么→如何做本地诊断。",
+    "gaps_found_and_fixed": [
+      "harness/rubric首次释义和学习问题链",
+      "FutureX符号、VWAP及对数收益前置解释",
+      "SFT示范序列与观察掩码、PPO优势/裁剪/KL/信用分配桥接",
+      "MBABench图8错误状态沿依赖传播教学纠正"
+    ],
+    "case_and_organization": "保留金融专题本来范围；用一般接口/异常经验解释错误传播，用原文DOW一次真实轨迹把聚合行为统计落到具体执行；明确该例不能证明工具因果贡献。",
+    "learning_outcomes": "能够区分事实获取、预测和可维护交付；解释评分与选择条件；描述运行时状态与训练参数更新的差别；设计工具消融和工作簿变更检查。新增三道机制自测含答案。"
+  },
+  "issues_and_fixes": [
+    {
+      "issue": "训练设置表直接给SFT/PPO超参数，缺少应用开发到训练机制桥接",
+      "fix": "增加episode/rollout、assistant-only SFT、观察条件作用、PPO优势/裁剪/KL及终局信用分配说明"
+    },
+    {
+      "issue": "附录图8把除零转成Check Inputs，但下游仍显示正常财务数值",
+      "fix": "新增来源图的依赖传播缺口说明，以有效/零/缺失/文本测试讲解，未改原始PDF"
+    },
+    {
+      "issue": "目标数学术语和聚合行为缺少具体执行桥梁",
+      "fix": "前置符号、VWAP/对数收益，补原文DOW案例及因果边界；新增学习路线与自测"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "round": 1,
+      "sha256": "707ee4aa8e291506617864ae22c206e81980eb22ee71dc799c98d51846459973",
+      "ranges": [
+        [
+          1,
+          240
+        ],
+        [
+          241,
+          480
+        ],
+        [
+          481,
+          696
+        ]
+      ],
+      "result": "全文复读完成；无新增实质问题"
+    },
+    {
+      "round": 2,
+      "sha256": "707ee4aa8e291506617864ae22c206e81980eb22ee71dc799c98d51846459973",
+      "ranges": [
+        [
+          1,
+          240
+        ],
+        [
+          241,
+          480
+        ],
+        [
+          481,
+          696
+        ]
+      ],
+      "result": "全文复读完成；术语、机制、引用及自测衔接通过"
+    }
+  ],
+  "verification": {
+    "arithmetic_log": "tools/reviews/2026-10-28-full/cmu_6_11/10-finance-arithmetic.json",
+    "scope": "本地离线独立算式复算；未执行第三方源码、Excel、模型或论文实验"
+  },
+  "limitations": [
+    "无论文实验复现或GPU训练；不能将数值复算视为基准复现。",
+    "MBABench固定提交的历史源码观察保留原日期与404限制，本轮未重新取得源码。",
+    "AURA公开资源缺失表述沿用注明的历史核查范围，不宣称本轮检查了最新外部发布状态。",
+    "FinSearchComp是定向背景核查，未在本篇重读全文；三篇主体PDF均实际全文阅读。"
+  ]
+}

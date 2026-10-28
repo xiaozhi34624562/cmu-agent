@@ -1,0 +1,65 @@
+{
+  "note": "11-768/10.DeepResearchAgents/Deep_Research_Agent_Design_Source_Checks.md",
+  "original_sha256": "cb654117212e38aaa96a729251e68d4b905ff54a09340612c6e509fa6bddcce6",
+  "final_sha256": "cb654117212e38aaa96a729251e68d4b905ff54a09340612c6e509fa6bddcce6",
+  "status": "completed_no_changes",
+  "full_reads": [
+    {
+      "round": "initial",
+      "line_ranges": [
+        [
+          1,
+          52
+        ]
+      ],
+      "result": "全文逐段阅读，无须修改"
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "11-768/10.DeepResearchAgents/SOURCES.md",
+      "actual_scope": "全文"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/REFERENCES.json",
+      "actual_scope": "全文"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/readings/001_OpenScholar.html",
+      "actual_scope": "Inference: self-reflective iterative RAG 全节、Synthetic training data generation 至 Data filtering、Citation accuracy 全节",
+      "version": "本地 Nature HTML 归档"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/readings/AgentIR_Reasoning-Aware_Retrieval_for_Deep_Research_Agents.pdf",
+      "pages": "1,3–10",
+      "version": "arXiv:2603.04384v3，2026-03-09",
+      "actual_scope": "机制、DR-Synth、训练/评测设置、表1–3、历史输入与截断范围"
+    },
+    {
+      "path": "2680/readings/web/How_we_built_our_multi-agent_research_system.html",
+      "actual_scope": "正文全文与附录，含生产可靠性/同步瓶颈/状态恢复",
+      "version": "2025-06-13文章本地归档"
+    }
+  ],
+  "coverage_assessment": {
+    "suitability": "作为设计文档的补充核查而非独立课程，篇幅和技术粒度合适；逐项明确已核查事实、迁移建议、边界与访问状态。",
+    "completeness": "完整覆盖标题承诺的OpenScholar反馈/引用、AgentIR检索信号、Anthropic并行/持久执行三项，并给出可用于设计评审的对照；无需重复主讲解的自测与完整案例。",
+    "accuracy": "缺证据触发检索、初稿可能优于改稿、引用支持与真实不同、历史输入截断、并行适用性和恢复非幂等等表述均与原文一致。"
+  },
+  "issues_and_fixes": [],
+  "post_fix_full_rereads": [],
+  "limitations": [
+    "未访问当前线上全文；核查依赖本地归档并保留其版本。",
+    "未复现检索或多Agent模型实验；该专题不作通用因果性能宣称。",
+    "AgentIR只定向回读本篇依赖的机制与对照页；未声称全文论文精读。"
+  ],
+  "pedagogical_review": {
+    "reader_prerequisites": "面向已读通用设计的 LLM Developer；是简短来源陪读，不替代课程。",
+    "problem_chain": "哪些机制有原文支持→可以怎样迁移→迁移在哪些条件下失效。",
+    "derivation_gaps": "每节原文事实、工程推导与边界分层；无须补完整训练数学或案例。",
+    "examples": "表格将事实映射到下一行动、状态、并行、交付、恢复五个设计问题；详细例在配套通用设计。",
+    "organization": "三项来源各自保留适用范围，避免合并不同系统成绩。",
+    "learning_outcomes": "能说明引用支持不等于来源真实、历史比较受截断约束、恢复不自动意味着幂等；无需另设重复自测。",
+    "fixes": "无新增教学修订。"
+  }
+}

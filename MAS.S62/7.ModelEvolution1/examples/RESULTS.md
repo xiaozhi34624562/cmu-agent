@@ -1,16 +1,43 @@
 # 教学实验运行记录
 
-- 运行日期：2026-10-26（Asia/Shanghai）。
+- 运行日期：2026-10-28（Asia/Shanghai）。
 - 命令：`python3 MAS.S62/7.ModelEvolution1/examples/loss_contracts.py`。
 - 解释器：Python 3.11.10；依赖：标准库。
 - 返回码：0。
-- 验证范围：校验固定教师、单状态的 KL 数值及有限差分、两步四序列模型的局部/完整梯度、PPO 代理目标分段、零方差优势和批次算术；没有训练模型、没有使用 GPU，不检验语言模型训练实现或论文任务收益。
+- 验证范围：奖励到单参数更新、动作无关基线的期望、交叉熵与 DPO 算术、组方差分母、LoRA 参数量；固定教师的 KL 数值及有限差分、两步四序列模型的局部/完整梯度、PPO 代理目标、零方差优势和批次算术。没有训练模型、没有使用 GPU，不检验论文任务收益。
 
 ## 实际标准输出
 
 ```json
 {
   "scope": "one-state and two-step fixed-teacher arithmetic; no model training",
+  "prerequisites": {
+    "sampled_success_probability_before": 0.25,
+    "sampled_success_probability_after": 0.26432436798156755,
+    "sampled_success_score_gradient": 0.7500000000160155,
+    "expected_gradient_with_and_without_baseline": 0.1875,
+    "target_cross_entropy_before_after": [
+      1.3862943611198906,
+      0.6931471805599453
+    ],
+    "group_population_std_advantages": [
+      1.7320508075688774,
+      -0.5773502691896258,
+      -0.5773502691896258,
+      -0.5773502691896258
+    ],
+    "group_sample_std_advantages": [
+      1.5,
+      -0.5,
+      -0.5,
+      -0.5
+    ],
+    "dpo_loss_before_after": [
+      0.6931471805599453,
+      0.2876820724517809
+    ],
+    "lora_increment_parameters": 16384
+  },
   "student": [
     0.7,
     0.3

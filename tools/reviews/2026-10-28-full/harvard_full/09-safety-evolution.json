@@ -1,0 +1,320 @@
+{
+  "note": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/notes.zh-CN.md",
+  "owner": "harvard_full",
+  "review_date": "2026-10-28",
+  "original_sha256": "77bb027d7244c96155921d296dd1c8ce9330682d978c73c809522ad5b7c7925e",
+  "final_sha256": "8060719a2eb1d8d7aa31726b25afba82d0c151be37fc9167aeb0555efdafc8d1",
+  "status": "passed_with_fixes",
+  "full_read_ranges": [
+    {
+      "round": "initial",
+      "lines": [
+        [
+          1,
+          180
+        ],
+        [
+          181,
+          360
+        ],
+        [
+          361,
+          526
+        ]
+      ],
+      "sha256": "77bb027d7244c96155921d296dd1c8ce9330682d978c73c809522ad5b7c7925e"
+    },
+    {
+      "round": "final-1",
+      "lines": [
+        [
+          1,
+          200
+        ],
+        [
+          201,
+          400
+        ],
+        [
+          401,
+          581
+        ]
+      ],
+      "sha256": "8060719a2eb1d8d7aa31726b25afba82d0c151be37fc9167aeb0555efdafc8d1"
+    },
+    {
+      "round": "final-2",
+      "lines": [
+        [
+          1,
+          200
+        ],
+        [
+          201,
+          400
+        ],
+        [
+          401,
+          581
+        ]
+      ],
+      "sha256": "8060719a2eb1d8d7aa31726b25afba82d0c151be37fc9167aeb0555efdafc8d1"
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/SOURCES.md",
+      "range": "全文",
+      "purpose": "课次资料入口，明确无教师Slides"
+    },
+    {
+      "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/README.md",
+      "range": "全文"
+    },
+    {
+      "path": "2680/site/readings/oct-14.html",
+      "range": "HTML正文全文，提取文本1–170、171–259",
+      "purpose": "四组18篇与AI生成导读声明"
+    },
+    {
+      "path": "2680/site/discussion.html",
+      "range": "HTML正文全文，提取文本1–169",
+      "purpose": "讨论目标、读论文方法、20分钟结构与开放题"
+    },
+    {
+      "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/AI_Control_Improving_Safety_Despite_Intentional_Subversion.pdf",
+      "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+      "pdf_pages_read": "3–7",
+      "visual_pages": [],
+      "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+      "sha256": "999f7a92bb8c085799e68f3d88f491ad8a334f862ccf5b286e5c2766677864c0"
+    },
+    {
+      "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/AgentDojo_A_Dynamic_Environment_to_Evaluate_Prompt_Injection_Attacks_and_Defenses_for_LLM_Agents.pdf",
+      "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+      "pdf_pages_read": "3–7,20",
+      "visual_pages": [
+        20
+      ],
+      "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+      "sha256": "349884fffbf43282591c5accffd57bb651632f38e412fe303114941bdd111b05"
+    },
+    {
+      "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/AgentPoison_Red-teaming_LLM_Agents_via_Poisoning_Memory_or_Knowledge_Bases.pdf",
+      "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+      "pdf_pages_read": "3–8",
+      "visual_pages": [
+        7
+      ],
+      "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+      "sha256": "008c4b0f70150ae2e26cead8ca6bad773cb4e2cd370154a10db320a456ea5ee1"
+    },
+    {
+      "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Agentic_Context_Engineering_Evolving_Contexts_for_Self-Improving_Language_Models.pdf",
+      "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+      "pdf_pages_read": "2–10",
+      "visual_pages": [
+        3,
+        8
+      ],
+      "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+      "sha256": "51050ced82df75c143b151262d5af8763916968ca50374bd8ff778f40552b0ad"
+    },
+    {
+      "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Agentic_Harness_Engineering_Observability-Driven_Automatic_Evolution_of_Coding-Agent_Harnesses.pdf",
+      "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+      "pdf_pages_read": "3–10",
+      "visual_pages": [
+        4,
+        9
+      ],
+      "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+      "sha256": "299f2633b4c13db7bed52434b4db7c48ea621993581014d30e7bcd036d3464df"
+    },
+    {
+      "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Automated_Design_of_Agentic_Systems.pdf",
+      "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+      "pdf_pages_read": "2–7",
+      "visual_pages": [
+        7
+      ],
+      "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+      "sha256": "32eb1c1a6888e35fae0f618e33c58698b54d9c49bc063fef91ee591719fca376"
+    },
+    {
+      "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf",
+      "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+      "pdf_pages_read": "3–7,32,69–71",
+      "visual_pages": [
+        71
+      ],
+      "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+      "sha256": "13ff4abe0c7ad4a7dd3b4876d19a8bf940e39e70dabbf06065aa774a6c3457de"
+    },
+    {
+      "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Defeating_Prompt_Injections_by_Design.pdf",
+      "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+      "pdf_pages_read": "1,3–18",
+      "visual_pages": [
+        7,
+        10
+      ],
+      "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+      "sha256": "c3719f6ce73eecf45e3764debef8a3d8ff8c9233b37d128c558b694ec3790cc7"
+    },
+    {
+      "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Design_Patterns_for_Securing_LLM_Agents_against_Prompt_Injections.pdf",
+      "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+      "pdf_pages_read": "3–11",
+      "visual_pages": [],
+      "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+      "sha256": "c202a240f8f03c93cfafd157f218ec790c9e503beeaf80e229fb5e1645ab7f9c"
+    },
+    {
+      "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Live-SWE-agent_Can_Software_Engineering_Agents_Self-Evolve_on_the_Fly.pdf",
+      "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+      "pdf_pages_read": "2–7",
+      "visual_pages": [
+        6
+      ],
+      "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+      "sha256": "7bd8e1c6345c2ff8d5a93674a8a88fcfc70ab6f657f946c82a2961f449e01535"
+    },
+    {
+      "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf",
+      "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+      "pdf_pages_read": "3–10",
+      "visual_pages": [
+        7,
+        9
+      ],
+      "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+      "sha256": "7d9b90f53a9f4801a090f1a4acb843340cde81e4f865f97d53fff2a6a570eb73"
+    },
+    {
+      "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Multi-Agent_Systems_Execute_Arbitrary_Malicious_Code.pdf",
+      "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+      "pdf_pages_read": "1–8",
+      "visual_pages": [
+        7
+      ],
+      "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+      "sha256": "5fb79d30a11ef7b2e28d5eadc53af9b7ecb41d8ee60c8e04c2ec3c59e8b1fb11"
+    },
+    {
+      "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Not_what_you_ve_signed_up_for_Compromising_Real-World_LLM-Integrated_Applications_with_Indirect_Prompt_Injection.pdf",
+      "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+      "pdf_pages_read": "1–7（p.4截断后单独补读）",
+      "visual_pages": [],
+      "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+      "sha256": "428e23e8c7e4f89310e113e38d082b3f65548a8b887188ebc536099061800e81"
+    },
+    {
+      "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/OWASP_Top_10_For_Agentic_Applications_2026.pdf",
+      "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+      "pdf_pages_read": "4–9",
+      "visual_pages": [],
+      "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+      "sha256": "a2db94cd00b08e0b3a5e5b619afe024bdbcd74503111085705e4f3dd886fcb5c"
+    },
+    {
+      "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf",
+      "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+      "pdf_pages_read": "2–8",
+      "visual_pages": [
+        3,
+        8
+      ],
+      "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+      "sha256": "6059b6f89fea9959bd3dab553fbb97756a3dfb1b15e3cbab2fbf3ab6664333bd"
+    },
+    {
+      "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Self-Refine_Iterative_Refinement_with_Self-Feedback.pdf",
+      "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+      "pdf_pages_read": "1–5",
+      "visual_pages": [
+        5
+      ],
+      "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+      "sha256": "81e44592314d80218ad108d3490cd0b84ba5962fefd5c84819987afd77a57087"
+    },
+    {
+      "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/The_Attacker_Moves_Second_Stronger_Adaptive_Attacks_Bypass_Defenses_Against_LLM_Jailbreaks_and_Prompt_Injections.pdf",
+      "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+      "pdf_pages_read": "1–5",
+      "visual_pages": [
+        1
+      ],
+      "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+      "sha256": "5067f88c7c14a007c205a452e8cdc5bcbf2e87f0958efcc620aa23c81465a9c3"
+    },
+    {
+      "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/The_Instruction_Hierarchy_Training_LLMs_to_Prioritize_Privileged_Instructions.pdf",
+      "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+      "pdf_pages_read": "3–9",
+      "visual_pages": [
+        7,
+        9
+      ],
+      "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+      "sha256": "fbc2d65e913e75b8f0ae74e83e3443c36a727636d1038a071a2f10d8be63dac4"
+    },
+    {
+      "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/examples/policy_and_promotion.py",
+      "range": "全文",
+      "purpose": "检查实现并实际重跑，7个case断言通过，JSON输出与RUN.json一致"
+    }
+  ],
+  "coverage_assessment": "本课没有教师讲义，按官方四组18篇导读与讨论规范审查。原稿安全入口→信任/能力→协议评价→反馈/记忆/程序演化→安全发布主线完整；18篇各有机制与证据定位，保留攻击访问假设、分母和版本。新增讨论练习使读者能提出反例与替代设计，且不把论文误标为lecture。",
+  "pedagogical_review": {
+    "reader_assumptions": "LLM Developer、Java/通用开发经验；不预设强化学习、概率符号、信息流安全专门背景。",
+    "problem_chain": "先定义谁授权/谁持久化/谁改变评价，再解释攻击和约束，随后按更新对象比较演化，最后统一内外循环；保持普遍知识体系。",
+    "prerequisites_and_jumps": "补白盒/黑盒/logits、embedding/trigger、SFT/RLHF参数更新、轨迹和期望符号、F1与accuracy、TOCTOU/隐式依赖；将数学从代码引用改为数学排版，推导多次尝试至少一次成功。",
+    "cases": "保留原有文档例，新增通用日期API修复6阶段完整链；标签并集/读者交集可手算并对应实际脚本。",
+    "organization": "增加阅读路线并强调先比较更新对象和反馈，再读数字；按官方讨论要求追加开放题，未把整课改成金融或RAG专门教程。",
+    "learning_outcomes": "19道自测含标签传播、净增与回归、零事件上界；4道开放讨论包含参考论证路径。能区别类型正确/授权正确、反思/权重训练、搜索最高分/独立测试、平均提升/高风险回归。",
+    "revisions": "针对术语跳步、缺完整通用开发链、讨论课缺讨论练习修补；保留已有有效解释。"
+  },
+  "issues_and_fixes": [
+    {
+      "issue": "术语、公式和反馈链存在前置跳步",
+      "fix": "补定义、数学推导和通用API修复贯穿例，并新增手算/诊断自测。"
+    },
+    {
+      "issue": "Instruction Hierarchy原则与实际训练边界易混同",
+      "fix": "补实际浏览/工具指令全部忽略的当时实现范围。"
+    },
+    {
+      "issue": "CaMeL保证的持久记忆、隐式流和副作用恢复假设不完整",
+      "fix": "补未被攻陷记忆假设、strict/normal差异、无原子回滚的实现限制。"
+    },
+    {
+      "issue": "DGM日志案例过于笼统",
+      "fix": "明确是文本marker改为结构化日志造成检测遗漏，并引出观测协议也必须保护。"
+    },
+    {
+      "issue": "成功演化数字遮蔽负例/口径",
+      "fix": "补Reflexion与ACE负例，ACE百分点和时延对照，Meta-Harness中位数/最佳/测试集分数分别解释。"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "round": 1,
+      "sha256": "8060719a2eb1d8d7aa31726b25afba82d0c151be37fc9167aeb0555efdafc8d1",
+      "lines": "1–581",
+      "result": "完整分三段复读；问题链、例子、结论边界无新增阻断问题"
+    },
+    {
+      "round": 2,
+      "sha256": "8060719a2eb1d8d7aa31726b25afba82d0c151be37fc9167aeb0555efdafc8d1",
+      "lines": "1–581",
+      "result": "完整分三段复读；新定义、数学、19自测与4讨论题对应一致"
+    }
+  ],
+  "limitations": [
+    "未运行模型、攻击、GPU或论文基准；仅重跑本地确定性教学脚本。",
+    "18篇按所列机制/评价范围回查，未声称全部长附录逐页读完。",
+    "只审查本地归档版本，不把历史实验数字描述为当前产品能力；本课无教师讲义。",
+    "REFERENCES.json不存在；没有新增或改写原始材料。"
+  ]
+}

@@ -1,0 +1,479 @@
+{
+  "review_date": "2026-10-28",
+  "reviewer": "cmu_late_mit",
+  "note": "MAS.S62/5.HarnessEvolution1/notes.zh-CN.md",
+  "original_sha256": "dd979a16fbb283dbac04856564c01442db040f2c9d8d7ad4dab086432934aa2d",
+  "final_sha256": "e8e8631457282cef3626575d6618bfdebcfaaef815a3000783a474a2ba93fa55",
+  "status": "passed_after_revision",
+  "full_read_ranges": [
+    {
+      "pass": "initial",
+      "lines": "1–680",
+      "chunks": [
+        "1–220",
+        "221–450",
+        "451–680"
+      ],
+      "result": "原稿全文，结合本轮完整主讲义/嘉宾讲义审核知识覆盖与教学逻辑。"
+    },
+    {
+      "pass": "revised_draft_before_math_format_cleanup",
+      "sha256": "7e64cf7399a8205ceeb078f1d76427d37bbc452b7369098c0333209b28d54f9d",
+      "lines": "1–711",
+      "chunks": [
+        "1–240",
+        "241–480",
+        "481–711"
+      ],
+      "result": "修订稿全文，后续统一数学行内格式后重做两遍最终稿全文复读；本轮不替代最终两遍。"
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "MAS.S62/5.HarnessEvolution1/SOURCES.md",
+      "scope": "全文；先于正文审核读取，定位主讲义、嘉宾、阅读和补充索引。"
+    },
+    {
+      "path": "MAS.S62/5.HarnessEvolution1/REFERENCES.json",
+      "scope": "7条完整补充索引全文。"
+    },
+    {
+      "path": "MAS.S62/README.md",
+      "scope": "全文；Week与Lecture编号区别。"
+    },
+    {
+      "path": "MAS.S62/SOURCES.md",
+      "scope": "仅本课Week5条目与有关来源部分，未声称根索引全文阅读。"
+    },
+    {
+      "path": "MAS.S62/manifest.json",
+      "scope": "Week5条目、对应2个讲义条目和7个补充条目，未声称根manifest全文阅读。"
+    },
+    {
+      "path": "MAS.S62/5.HarnessEvolution1/slides/lec4 - harness.pdf",
+      "pages": "1–53",
+      "scope": "主讲义全文；提取文本1–400、401–529行完整读；关键图表另行渲染目视。"
+    },
+    {
+      "path": "MAS.S62/5.HarnessEvolution1/slides/harness_guest.pdf",
+      "pages": "1–23",
+      "scope": "嘉宾讲义全文；提取文本1–150行完整读，23页全部渲染目视以补图中内容。"
+    },
+    {
+      "path": "MAS.S62/5.HarnessEvolution1/readings/MEM1_Learning_to_Synergize_Memory_and_Reasoning_for_Efficient_Long-Horizon_Agents.pdf",
+      "pdf_pages_read": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        18
+      ],
+      "version": "arXiv:2506.15841v2  [cs.CL]  17 Jul 2025",
+      "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+      "sha256": "9fd4873473d5721d3e3622021188ceca4021f614a60bfc38351ad4a05929168f",
+      "scope": "动态内部状态和轨迹剪除、二维注意力/一维信息掩码、PPO与模型基座、QA奖励及2到16目标评测、EM Count图轴。列出页段全文阅读，未声称整篇论文全文。"
+    },
+    {
+      "path": "MAS.S62/5.HarnessEvolution1/readings/Context_Language_Models.pdf",
+      "pdf_pages_read": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "version": "arXiv:2609.37725v1  [cs.AI]  29 Sep 2026",
+      "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+      "sha256": "ac5c926814434d8ad2f499183cd2a81e53b4c14f327587f99980ade9157db01b",
+      "scope": "活动上下文文件接口、自然语言策略优化、stepwise GRPO和成功门控效率公式、标准前缀与旧后缀缓存语义、零样本模型/上下文/预算及实验条件。列出页段全文阅读，未声称整篇论文全文。"
+    },
+    {
+      "path": "MAS.S62/5.HarnessEvolution1/readings/Recursive_Language_Models.pdf",
+      "pdf_pages_read": [
+        3,
+        4
+      ],
+      "version": "arXiv:2512.24601v3  [cs.AI]  11 May 2026",
+      "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+      "sha256": "8567362c22768d9b50d4a4a8d63bb28dda2c2b2051be30d67f70f645170429ca",
+      "scope": "算法1–2全文，外置长输入、程序化递归、符号状态与传统委托循环对照。列出页段全文阅读，未声称整篇论文全文。"
+    },
+    {
+      "path": "MAS.S62/5.HarnessEvolution1/readings/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf",
+      "pdf_pages_read": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "version": "arXiv:2603.28052v1  [cs.AI]  30 Mar 2026",
+      "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+      "sha256": "7d9b90f53a9f4801a090f1a4acb843340cde81e4f865f97d53fff2a6a570eb73",
+      "scope": "Table1反馈规模、完整方法与分类/数学/编码三设置；重点核查§4.3同89任务搜索评估及人工/正则检查边界。列出页段全文阅读，未声称整篇论文全文。"
+    },
+    {
+      "path": "MAS.S62/5.HarnessEvolution1/readings/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf",
+      "pdf_pages_read": [
+        4,
+        5,
+        6
+      ],
+      "version": "arXiv:2505.22954v3  [cs.AI]  12 Mar 2026",
+      "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+      "sha256": "13ff4abe0c7ad4a7dd3b4876d19a8bf940e39e70dabbf06065aa774a6c3457de",
+      "scope": "档案、父代选择、准入、分阶段评测与固定外部演化循环。列出页段全文阅读，未声称整篇论文全文。"
+    },
+    {
+      "path": "MAS.S62/5.HarnessEvolution1/readings/Continual_Harness_Online_Adaptation_for_Self-Improving_Foundation_Agents.pdf",
+      "pdf_pages_read": [
+        3,
+        4,
+        5
+      ],
+      "version": "arXiv:2605.09998v1  [cs.LG]  11 May 2026",
+      "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+      "sha256": "50f60996b0d962cdbf01f5b6a262ccd68b149c8b67cc2594218453717ea0c45e",
+      "scope": "持续环境、周期性refiner、提示/技能/记忆/子代理更新与模型共学习分离。列出页段全文阅读，未声称整篇论文全文。"
+    },
+    {
+      "path": "MAS.S62/5.HarnessEvolution1/readings/Harness_Updating_Is_Not_Harness_Benefit_Disentangling_Evolution_Capabilities_in_Self-Evolving_LLM_Agents.pdf",
+      "pdf_pages_read": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "version": "arXiv:2605.30621v1  [cs.AI]  28 May 2026",
+      "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+      "sha256": "a3a09f90dc278f1c6ceee5a3f7bf807b5a92b642cbcb0123d20b824a0e880d6b",
+      "scope": "solve-evolve、配对依赖Harness、平均更新收益和最大受益、in-situ协议、激活与遵循失败及任务流成绩边界。列出页段全文阅读，未声称整篇论文全文。"
+    },
+    {
+      "path": "MAS.S62/5.HarnessEvolution1/references/MemGPT_Towards_LLMs_as_Operating_Systems.pdf",
+      "pdf_pages_read": [
+        2,
+        3,
+        4
+      ],
+      "version": "arXiv:2310.08560v2  [cs.AI]  12 Feb 2024",
+      "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+      "sha256": "9f674bcff69c86f11c813dcfad613d8841f5f8ed17979e3c4df06a91df7762e0",
+      "scope": "层级存储、工作上下文与FIFO、外部召回/归档、函数调用与记忆压力控制。列出页段全文阅读，未声称整篇论文全文。"
+    },
+    {
+      "path": "MAS.S62/5.HarnessEvolution1/references/Mem0_Building_Production-Ready_AI_Agents_with_Scalable_Long-Term_Memory.pdf",
+      "pdf_pages_read": [
+        3,
+        4,
+        5
+      ],
+      "version": "arXiv:2504.19413v1  [cs.CL]  28 Apr 2025",
+      "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+      "sha256": "bec870b657aa73405275a6d8fe27bcd4271799e028bc62986ab9c4cd27a3712d",
+      "scope": "基础Mem0提取/更新与Mem0g图记忆区分、更新四操作。列出页段全文阅读，未声称整篇论文全文。"
+    },
+    {
+      "path": "MAS.S62/5.HarnessEvolution1/references/ExpeL_LLM_Agents_Are_Experiential_Learners.pdf",
+      "pdf_pages_read": [
+        4,
+        6
+      ],
+      "version": "arXiv:2308.10144v3  [cs.LG]  20 Dec 2024",
+      "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+      "sha256": "01e533d81fb4a5f91797c073a9b1929acbaa64da45a592b26563ca7d135024f3",
+      "scope": "成功失败对与成功轨迹组抽取、计数和增删改/赞踩、未见任务评测与算法。列出页段全文阅读，未声称整篇论文全文。"
+    },
+    {
+      "path": "MAS.S62/5.HarnessEvolution1/references/Executable_Code_Actions_Elicit_Better_LLM_Agents.pdf",
+      "pdf_pages_read": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "version": "arXiv:2402.01030v4  [cs.CL]  7 Jun 2024",
+      "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+      "sha256": "749a45e36cf89fc7e1b701a2a72f6609ce8d3697577ceb0fff5ce9339ce8539e",
+      "scope": "代码动作控制/数据流、工具调用比较设置、交互错误反馈、不同模型与任务适用边界。列出页段全文阅读，未声称整篇论文全文。"
+    },
+    {
+      "path": "MAS.S62/5.HarnessEvolution1/references/Agent_Workflow_Memory.pdf",
+      "pdf_pages_read": [
+        3,
+        4
+      ],
+      "version": "arXiv:2409.07429v1  [cs.CL]  11 Sep 2024",
+      "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+      "sha256": "ddc6f6fedec48c88ae743b43a464f7eb4aecaab05acd18c29cfb657ab445ebe4",
+      "scope": "工作流描述与状态/推理/动作表示、变量抽象、offline/online及在线只从被判成功轨迹诱导。列出页段全文阅读，未声称整篇论文全文。"
+    },
+    {
+      "path": "MAS.S62/5.HarnessEvolution1/references/Inducing_Programmatic_Skills_for_Agentic_Tasks.pdf",
+      "pdf_pages_read": [
+        3,
+        4
+      ],
+      "version": "arXiv:2504.06821v2  [cs.CL]  29 Aug 2025",
+      "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+      "sha256": "209400bfd02e0213232dd8953075d64596863064a78a33398cf9d80c11122ac0",
+      "scope": "技能诱导、重写轨迹、截除最后新技能调用后的旧动作、续写与三重验证。列出页段全文阅读，未声称整篇论文全文。"
+    },
+    {
+      "path": "MAS.S62/5.HarnessEvolution1/references/PolySkill_Learning_Generalizable_Skills_Through_Polymorphic_Abstraction.pdf",
+      "pdf_pages_read": [
+        4,
+        5,
+        6
+      ],
+      "version": "arXiv:2510.15863v2  [cs.CL]  2 Mar 2026",
+      "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+      "sha256": "4fd727b7dcc0320a8c3c5dfcf3bd8fd9760bfd7ad69ba3af0283dfecf03f2b8d",
+      "scope": "父类抽象接口、网站子类与组合技能、基于ASI的验证及跨站适配。列出页段全文阅读，未声称整篇论文全文。"
+    },
+    {
+      "path": "MAS.S62/5.HarnessEvolution1/readings/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf",
+      "pdf_pages_read": [
+        3,
+        4,
+        5
+      ],
+      "version": "arXiv:2303.11366v4  [cs.AI]  10 Oct 2023",
+      "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+      "sha256": "6059b6f89fea9959bd3dab553fbb97756a3dfb1b15e3cbab2fbf3ab6664333bd",
+      "scope": "执行者/评估者/反思模型与语言记忆、同题多次尝试和后续迁移区别。列出页段全文阅读，未声称整篇论文全文。"
+    },
+    {
+      "path": "MAS.S62/5.HarnessEvolution1/readings/HarnessTax_How_Much_Does_the_Harness_Matter_for_Coding_Agents.html",
+      "version": "published 2026-09-16 / updated 2026-09-18 archival page",
+      "scope": "正文从标题、引言到Experiment Setup、三项结果、Ending Notes、Citation、Acknowledgement和Reference全文；不执行归档脚本。核查7×3、每基准30任务、3次、100turn、high effort、2026-09-01价格。"
+    },
+    {
+      "path": "MAS.S62/5.HarnessEvolution1/examples/versioned_memory.py",
+      "lines": "1–64",
+      "scope": "完整代码阅读并实际运行。"
+    }
+  ],
+  "cross_course_source_review_reuse": [
+    {
+      "path": "MAS.S62/readings/papers/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf",
+      "pdf_pages_verified_by_parent": [
+        2,
+        3,
+        4
+      ],
+      "sha256": "6d7483d94653008e40c2058a1c22441c92e3713dae278b6361e8efc447c99522",
+      "evidence_record": "tools/reviews/2026-10-28-full/primary_mit_6/6-harness.json",
+      "scope": "跨课复用根代理本轮来源精读；本代理已读该审核记录及本课讲义/正文对应用法，不冒充本人论文全文阅读。"
+    },
+    {
+      "path": "MAS.S62/readings/papers/ToolLLM_Facilitating_Large_Language_Models_to_Master_16000+_Real-world_APIs.pdf",
+      "pdf_pages_verified_by_parent": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "sha256": "295299721d67b250661fb6598bee86a2e9fe766241fdc08dd7cf389e984b4d1a",
+      "evidence_record": "tools/reviews/2026-10-28-full/primary_mit_6/6-harness.json",
+      "scope": "跨课复用根代理本轮来源精读；本代理已读该审核记录及本课讲义/正文对应用法，不冒充本人论文全文阅读。"
+    },
+    {
+      "path": "MAS.S62/readings/papers/VOYAGER_An_Open-Ended_Embodied_Agent_with_Large_Language_Models.pdf",
+      "pdf_pages_verified_by_parent": [
+        3,
+        4,
+        5
+      ],
+      "sha256": "769a4e33ddeeb73870849232eece49afe882c2d146362e33917ccb432ba0efb8",
+      "evidence_record": "tools/reviews/2026-10-28-full/primary_mit_6/6-harness.json",
+      "scope": "跨课复用根代理本轮来源精读；本代理已读该审核记录及本课讲义/正文对应用法，不冒充本人论文全文阅读。"
+    }
+  ],
+  "coverage_assessment": "两份讲义76页全部回读，保持Context/Harness分类→外部记忆→MEM1→Reflexion/ExpeL→CLM→工具和程序技能→RLM嘉宾组合观点→完整Harness搜索→评测成本及诊断主线。15篇论文按实际引用机制页段回查，3篇工具/技能来源明确复用根代理本轮MIT6审核；HarnessTax正文完整读。没有用概念列表替代机制，也没有把演示截图当作统一实验。",
+  "pedagogical_review": {
+    "reader_prerequisites": "LLM Developer并有Java等应用开发经历；可理解状态/接口/缓存依赖/调用链/测试，但不预设强化学习、注意力掩码或KV cache。",
+    "problem_chain": "哪些信息保存→如何读写及处理冲突→如何压缩仍能完成任务→反馈怎样更新状态或权重→技能如何诱导/验证/使用→长调用如何组合→怎样验证整个Harness的独立任务收益。",
+    "prerequisite_gaps_fixed": [
+      "补轨迹、最终结果与策略概率/采样记号。",
+      "用可见性/优化目标两轴说明MEM1掩码和原状态回放。",
+      "解释Base/instruct、奖励、优势与PPO，以及GRPO组内比较不是精确信用分配。",
+      "补成功门控成本手算和KV/prefill/decode/FLOPs、后缀依赖为何失效。",
+      "解释局部分布内与短训练长测试，区分机制线索与泛化保证。"
+    ],
+    "examples": "保留通用金额解析代码修复贯穿例；新增状态回放、缓存依赖、80/120/10成本例，不假设用户业务系统。",
+    "organization": "在相应机制首次展开处补前提；未重复扩展已有工程章节或机械套模板，保留主线导航及跨课衔接。",
+    "learning_outcomes": "能区分外部更新与参数学习、两类mask、成本与token长度、更新能力与受益能力，能解释同任务搜索/评测为何不能作为独立泛化；10题自测有对应答案。"
+  },
+  "issues_and_fixes": [
+    {
+      "scope": "导读、§1.2、§4.1–4.5",
+      "issue": "冻结模型主问题与训练研究之间过渡不显式；策略/轨迹/掩码/PPO依赖未充分解释。",
+      "fix": "增加读者起点与两类改进路线，补符号、rollout、可见性和优化目标表及状态回放例、奖励/优势/PPO前置。"
+    },
+    {
+      "scope": "§6.2–6.3",
+      "issue": "GRPO效率项和缓存术语直接出现，对应用开发者存在学习跳步。",
+      "fix": "解释组内优势、失败不获效率奖励并给可核算例；从KV中间结果及上下文依赖推导prefill和SCR旧状态边界。"
+    },
+    {
+      "scope": "§8.2、§11.1",
+      "issue": "局部分布内与约束优化符号默认读者懂ML/数学。",
+      "fix": "用局部函数调用组合解释训练分布，并定义任务分布/期望/质量/预算/概率及阈值。"
+    },
+    {
+      "scope": "§9.1",
+      "issue": "只列Meta-Harness跨域实验，未点明编码的同89题搜索/评估例外，可能被误读为独立测试泛化。",
+      "fix": "按§4.3明确harness discovery，同集反馈选择与硬编码检查区别，说明冻结候选后新任务评测需要；补Table1/pp2–3来源限定10M诊断规模。"
+    },
+    {
+      "scope": "§16",
+      "issue": "自测未直接检验新增关键边界。",
+      "fix": "完善mask与缓存答案，新增MH同集评测与CLM成功门控两题及答案。"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "pass": 1,
+      "sha256": "e8e8631457282cef3626575d6618bfdebcfaaef815a3000783a474a2ba93fa55",
+      "lines": "1–711",
+      "chunks": [
+        "1–240",
+        "241–480",
+        "481–711"
+      ],
+      "result": "最终格式调整后全文复读；问题链、前提、来源边界和自测答案衔接通过，未再修改。"
+    },
+    {
+      "pass": 2,
+      "sha256": "e8e8631457282cef3626575d6618bfdebcfaaef815a3000783a474a2ba93fa55",
+      "lines": "1–711",
+      "chunks": [
+        "1–180",
+        "181–360",
+        "361–540",
+        "541–711"
+      ],
+      "result": "第二次逐段最终稿全文复读；全篇含附录完成，未发现需继续修改问题，结束SHA与第一遍一致。"
+    }
+  ],
+  "visual_checks": {
+    "main_lecture_pages": [
+      10,
+      12,
+      13,
+      15,
+      17,
+      18,
+      26,
+      27,
+      28,
+      29,
+      30,
+      36,
+      40,
+      41,
+      42,
+      43,
+      46,
+      47,
+      48,
+      49,
+      50
+    ],
+    "guest_lecture_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "paper_pages": {
+      "MEM1": [
+        5,
+        8
+      ],
+      "CLM": [
+        6,
+        7
+      ],
+      "AWM": [
+        3
+      ],
+      "ASI": [
+        4
+      ],
+      "PolySkill": [
+        5
+      ],
+      "HarnessBenefit": [
+        7,
+        8
+      ],
+      "Reflexion": [
+        3
+      ]
+    },
+    "method": "54个PDF页渲染为14张四页联系图，逐图目视；主要讲义图可清楚辨识，论文正文另以文本完整读取列出页段。"
+  },
+  "validation": {
+    "offline_example": {
+      "command": "python3 MAS.S62/5.HarnessEvolution1/examples/versioned_memory.py",
+      "result": "PASS: observed scoped write, stale/scope/unobserved rejection, rollback",
+      "sha256": "3c88f3ea7a27fbf4e8c8b5fe50aa77cfdc782ac159bc984d065ac0fa8e788e92",
+      "scope": "实际运行既有标准库示例，未改代码，不构成模型学习验证。"
+    },
+    "teaching_arithmetic": {
+      "input": {
+        "success": [
+          true,
+          true,
+          false
+        ],
+        "costs": [
+          80,
+          120,
+          10
+        ]
+      },
+      "success_average_cost": 100,
+      "efficiency_advantages": [
+        0.2,
+        -0.2,
+        0
+      ],
+      "result": "Python标准库实际assert通过。"
+    }
+  },
+  "limitations": [
+    "没有运行MEM1/CLM训练、模型/API、GPU、Minecraft或论文基准实验；本文对照设计与成本数值教学例不是新实证结果。",
+    "辅助论文按列出页段而非整篇全文审核；Toolformer/ToolLLM/Voyager明确复用根代理本轮审核，非本人全文复读。",
+    "归档文章和论文按所存版本核查，未查线上最新修订，也未新增下载或改写任何原始材料。",
+    "课程根REVIEW/VERIFICATION/索引、全局链接及原始资料校验由根代理整合执行。"
+  ]
+}

@@ -1,0 +1,319 @@
+{
+  "note": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/notes.zh-CN.md",
+  "owner": "harvard_full",
+  "review_date": "2026-10-28",
+  "original_sha256": "c2873f5b07927a2da929f27d7e1fbe31cb9eb330fe39505a36f82fd2f4d06580",
+  "final_sha256": "ccae61aa430d46101675b44d4c145f6f97411a02d4cd78d5b16a7dc6a0ae7c67",
+  "status": "passed_with_fixes",
+  "full_read_ranges": [
+    {
+      "round": "initial",
+      "lines": [
+        [
+          1,
+          165
+        ],
+        [
+          166,
+          330
+        ],
+        [
+          331,
+          482
+        ]
+      ],
+      "sha256": "c2873f5b07927a2da929f27d7e1fbe31cb9eb330fe39505a36f82fd2f4d06580"
+    },
+    {
+      "round": "final-1",
+      "lines": [
+        [
+          1,
+          175
+        ],
+        [
+          176,
+          350
+        ],
+        [
+          351,
+          519
+        ]
+      ],
+      "sha256": "ccae61aa430d46101675b44d4c145f6f97411a02d4cd78d5b16a7dc6a0ae7c67"
+    },
+    {
+      "round": "final-2",
+      "lines": [
+        [
+          1,
+          175
+        ],
+        [
+          176,
+          350
+        ],
+        [
+          351,
+          519
+        ]
+      ],
+      "sha256": "ccae61aa430d46101675b44d4c145f6f97411a02d4cd78d5b16a7dc6a0ae7c67"
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/SOURCES.md",
+      "range": "全文；本课无 README.md / REFERENCES.json"
+    },
+    {
+      "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/9_llm_serving_basics_1.pdf",
+      "pdf_pages_read": "1–36全文",
+      "visual_pages": [
+        6,
+        7,
+        8,
+        12,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        23,
+        24,
+        25,
+        26,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ],
+      "range": "提取正文连续行1–260、261–560、561–末尾；不是目录扫描",
+      "sha256": "1cfe4fd6a413cdd168d711b413beff19e4967fe0ec0cb89b0cbe3c2c7fb5872a"
+    },
+    {
+      "path": "2680/site/readings/oct-19.html",
+      "range": "官网阅读分组正文全文，提取文本1–235",
+      "purpose": "15篇阅读分工与选读边界"
+    },
+    {
+      "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Attention_Is_All_You_Need.pdf",
+      "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+      "pdf_pages_read": "2–8",
+      "visual_pages": [],
+      "read_method": "所列页连续正文精读，未声称整篇附录全读",
+      "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+    },
+    {
+      "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/DeepSeek-V3_Technical_Report.pdf",
+      "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+      "pdf_pages_read": "1,5–12,22",
+      "visual_pages": [
+        7
+      ],
+      "read_method": "所列页连续正文精读，未声称整篇附录全读",
+      "sha256": "812a3fd645c80725354de9d831a6785503007a60681461407f64e97305fa9330"
+    },
+    {
+      "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/DeepSeekMoE_Towards_Ultimate_Expert_Specialization_in_Mixture-of-Experts_Language_Models.pdf",
+      "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+      "pdf_pages_read": "3–6,8–10",
+      "visual_pages": [],
+      "read_method": "所列页连续正文精读，未声称整篇附录全读",
+      "sha256": "a64b509e1410d09cf5b70570788d27790985fb9808ce436b9da8de73f2eed651"
+    },
+    {
+      "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Dream_7B_Diffusion_Large_Language_Models.pdf",
+      "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+      "pdf_pages_read": "1,3–8",
+      "visual_pages": [
+        7
+      ],
+      "read_method": "所列页连续正文精读，未声称整篇附录全读",
+      "sha256": "461f5ac618e86dd398af3662958178c3c243ee97b7e5ee9c20f5ed6399107a0d"
+    },
+    {
+      "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/GLU_Variants_Improve_Transformer.pdf",
+      "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+      "pdf_pages_read": "1–3",
+      "visual_pages": [
+        3
+      ],
+      "read_method": "所列页连续正文精读，未声称整篇附录全读",
+      "sha256": "7398ae8b163722a6b5410fb975722adbe6b5f6f9c7f1efa584f1c6b79eaa93e2"
+    },
+    {
+      "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Large_Language_Diffusion_Models.pdf",
+      "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+      "pdf_pages_read": "3–6",
+      "visual_pages": [
+        3
+      ],
+      "read_method": "所列页连续正文精读，未声称整篇附录全读",
+      "sha256": "18942f14544d696bef711acd43c84017e51b8428b15edc74130761218e66f73b"
+    },
+    {
+      "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Mixtral_of_Experts.pdf",
+      "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+      "pdf_pages_read": "2–4",
+      "visual_pages": [],
+      "read_method": "所列页连续正文精读，未声称整篇附录全读",
+      "sha256": "f8bbf0e9d979b7a8ce7be65119266545a229a85b57e077d8bd048e458bb642da"
+    },
+    {
+      "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Neural_Machine_Translation_of_Rare_Words_with_Subword_Units.pdf",
+      "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+      "pdf_pages_read": "3–5",
+      "visual_pages": [],
+      "read_method": "所列页连续正文精读，未声称整篇附录全读",
+      "sha256": "f4e5a6bbbe0d87459997fffe892f8be485e33903cc71f923c2884639fbf96401"
+    },
+    {
+      "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Root_Mean_Square_Layer_Normalization.pdf",
+      "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+      "pdf_pages_read": "2–6",
+      "visual_pages": [
+        4
+      ],
+      "read_method": "所列页连续正文精读，未声称整篇附录全读",
+      "sha256": "a38ab771022fc10525d2b6b23de40307b2ca7b2bf463f5219da6a0ba1c41225f"
+    },
+    {
+      "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Scaling_up_Test-Time_Compute_with_Latent_Reasoning_A_Recurrent_Depth_Approach.pdf",
+      "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+      "pdf_pages_read": "3–9",
+      "visual_pages": [
+        4
+      ],
+      "read_method": "所列页连续正文精读，未声称整篇附录全读",
+      "sha256": "96f4543683a06a470ccb0b6b0db27a98f283fde9467d175e838f03a629a76c7b"
+    },
+    {
+      "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Switch_Transformers_Scaling_to_Trillion_Parameter_Models_with_Simple_and_Efficient_Sparsity.pdf",
+      "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+      "pdf_pages_read": "3–6",
+      "visual_pages": [],
+      "read_method": "所列页连续正文精读，未声称整篇附录全读",
+      "sha256": "f340f6ace31abf7d0730ef461404279f40d3c890e9cc2daeb7068b3304afdbd6"
+    },
+    {
+      "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/The_Llama_3_Herd_of_Models.pdf",
+      "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+      "pdf_pages_read": "6–8",
+      "visual_pages": [
+        7
+      ],
+      "read_method": "所列页连续正文精读，未声称整篇附录全读",
+      "sha256": "481f1599468f95a07d05e97fafe55bbe786dc1624c6f881bcb4c7d14c933d083"
+    },
+    {
+      "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/The_Illustrated_Transformer.html",
+      "range": "提取正文1–317全文",
+      "version": "本地HTML快照"
+    },
+    {
+      "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Transformer_Inference_Arithmetic.html",
+      "range": "提取正文1–309全文",
+      "version": "本地HTML快照"
+    },
+    {
+      "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/The_Annotated_Transformer.html",
+      "range": "提取正文320–385（attention）、610–700（错位标签与训练循环）、798–840（label smoothing）",
+      "version": "本地HTML快照"
+    },
+    {
+      "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/examples/inference_basics.py",
+      "range": "全文阅读及实际执行；输出与RUN.json全部字段一致；临时副本遗漏当前KV的反例以AssertionError失败，原文件未改"
+    }
+  ],
+  "coverage_assessment": [
+    "主讲义36页完整覆盖：请求阶段、分词、调度、Transformer形状、GQA/KV、参数/FLOPs/容量、MoE、长上下文与循环/扩散均保持原问题链。",
+    "对15项阅读分别核实相关机制和条件；主线保持普通GQA decoder，其他架构定位为比较扩展，未把趋势图变为通用性能保证。",
+    "准确保留320KiB/字节、全层score并非推理峰值、64×80K超两H200容量、Switch训练非decode加速、Dream初始化成本、AR/diffusion缓存差异等已有正确论述。"
+  ],
+  "issues_and_fixes": [
+    {
+      "issue": "应用开发到矩阵、模型学习缺少前置桥梁",
+      "fix": "新增4.0：数组/矩阵/张量与shape、数值投影、embedding表、参数与激活、交叉熵手算、梯度与优化器、teacher forcing与因果标签对齐。补RMS数值例和sigmoid定义。"
+    },
+    {
+      "issue": "生成token与进入KV缓存的时刻易混淆",
+      "fix": "增加ABC→采样D→decodeD预测E轨迹，解释当前token可读自身缓存与历史Q不复用。"
+    },
+    {
+      "issue": "滑动窗口缓存比例漏n<w条件",
+      "fix": "改为(5min(n,w)+n)/(6n)，补短上下文不节省。"
+    },
+    {
+      "issue": "扩散损失符号未定义，t被表述成固定比例",
+      "fix": "逐一定义theta/x0/xt/i/indicator/expectation，连接交叉熵；t是独立掩码概率而非每样本精确比例。"
+    },
+    {
+      "issue": "原CPU反例要求修改RoPE，但示例没有位置编码",
+      "fix": "替换为实际可执行的遗漏当前KV代码，临时副本已运行并触发断言；说明未来泄漏应检查较早位置。"
+    },
+    {
+      "issue": "进阶公式和选型学习目标尚缺操作题",
+      "fix": "补MLA维度、MoE路由权重与1共享+8路由专家；新增4道计算/状态/容量/短窗口自测与答案，共16题。"
+    }
+  ],
+  "pedagogical_review": {
+    "reader_assumptions": "LLM Developer、Java经验；懂调用链/数组/缓存/并发，不预设线性代数、训练和GPU术语；保留通用体系，未缩成金融/RAG教程。",
+    "question_chain": "为什么同模型性能不同→输入长度→调度和状态→前向/学习/矩阵→注意力→缓存→资源账本→架构改动→验证与故障。前8节必学，后续比较降低首次认知负担。",
+    "prerequisites_and_jumps": "补先前ID→向量→矩阵→训练目标的最大断层；训练标签错位与mask用ABC具体推演，后续扩散损失能沿既有交叉熵理解。",
+    "examples": "原研报案例保留为应用示例；新通用ABC token轨迹、3×2矩阵、RMS和损失手算、1GiB容量与错误KV对照均可走通，不冒充论文实验。",
+    "organization": "原章节依赖合理，无需重排整篇；在block前置4.0补桥，初读范围明确。",
+    "learning_outcomes": "能解释参数/激活/缓存、算shape与loss、分清并行训练和串行生成、复算容量与性能下界；16道自测与CPU正负例覆盖理解和操作。"
+  },
+  "post_fix_full_rereads": [
+    {
+      "round": 1,
+      "sha256": "ccae61aa430d46101675b44d4c145f6f97411a02d4cd78d5b16a7dc6a0ae7c67",
+      "lines": [
+        [
+          1,
+          175
+        ],
+        [
+          176,
+          350
+        ],
+        [
+          351,
+          519
+        ]
+      ],
+      "result": "完整逐段复读，无新问题；符号、标签、状态、数值、来源边界与自测互相一致"
+    },
+    {
+      "round": 2,
+      "sha256": "ccae61aa430d46101675b44d4c145f6f97411a02d4cd78d5b16a7dc6a0ae7c67",
+      "lines": [
+        [
+          1,
+          175
+        ],
+        [
+          176,
+          350
+        ],
+        [
+          351,
+          519
+        ]
+      ],
+      "result": "完整逐段复读，无新问题；符号、标签、状态、数值、来源边界与自测互相一致"
+    }
+  ],
+  "limitations": [
+    "未运行GPU、真实模型、服务压测或论文训练实验；CPU检查只覆盖算术和一头注意力缓存。",
+    "高级架构部分若无对应本地原论文，仅按主讲义解释机制，未新增外推性能或宣称复现。",
+    "阅读论文仅声称所列页与图，未声称全部附录、全部模型比较均精读；官网AI导读不作论文证据。"
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "note": "2680/1.CourseOverviewAndLogistics/notes.zh-CN.md",
+  "original_sha256": "0fb2761ce03b9824be25d3720e6c11a6075eaf15e344f3a56f59186666253d4f",
+  "final_sha256": "899f863d320e4b28e397cdfa0654eb179f479505b9d8c88a64e255df459844ea",
+  "status": "passed_with_fixes",
+  "full_read_ranges": [
+    {
+      "round": "initial_full_read",
+      "ranges": [
+        "1-180",
+        "181-420",
+        "421-665"
+      ],
+      "line_count": 665,
+      "sha256": "0fb2761ce03b9824be25d3720e6c11a6075eaf15e344f3a56f59186666253d4f",
+      "result": "本轮逐段全文精读完成；未发现需要改写的实质错误。"
+    },
+    {
+      "round": "pedagogical_reassessment_before_fix",
+      "sha256": "0fb2761ce03b9824be25d3720e6c11a6075eaf15e344f3a56f59186666253d4f",
+      "ranges": [
+        "1-240",
+        "241-480",
+        "481-665"
+      ],
+      "result": "重新全文阅读发现应用开发到模型/硬件的前置缺口"
+    },
+    {
+      "round": "final_1",
+      "sha256": "899f863d320e4b28e397cdfa0654eb179f479505b9d8c88a64e255df459844ea",
+      "ranges": [
+        "1-230",
+        "231-460",
+        "461-687"
+      ],
+      "result": "最终全文复读；模型生成→资源约束→任务链→验收的衔接清楚，无需再修正"
+    },
+    {
+      "round": "final_2",
+      "sha256": "899f863d320e4b28e397cdfa0654eb179f479505b9d8c88a64e255df459844ea",
+      "ranges": [
+        "1-230",
+        "231-460",
+        "461-687"
+      ],
+      "result": "最终全文复读；模型生成→资源约束→任务链→验收的衔接清楚，无需再修正"
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "2680/1.CourseOverviewAndLogistics/SOURCES.md",
+      "range": "full"
+    },
+    {
+      "path": "2680/1.CourseOverviewAndLogistics/REFERENCES.json",
+      "range": "full"
+    },
+    {
+      "path": "2680/1.CourseOverviewAndLogistics/1_intro.pdf",
+      "pages": "1-50",
+      "version": "local archived PDF; 50 pages; page footer offset checked",
+      "visual_pages": [
+        31,
+        34,
+        36,
+        40,
+        41,
+        43,
+        49
+      ],
+      "range": "全讲义文本；关键数值/架构/指标/分类图目视"
+    },
+    {
+      "path": "2680/site/assignments/assignment1.html",
+      "range": "learning goals; Part 1; Part 2 all seven features and replay; Part 3; deliverables (not all grading tail)"
+    },
+    {
+      "path": "2680/1.CourseOverviewAndLogistics/references/python-floatingpoint.html",
+      "range": "§15 main text; representation-error appendix not required for claims",
+      "version": "snapshot in REFERENCES.json"
+    },
+    {
+      "path": "2680/1.CourseOverviewAndLogistics/references/nvidia-floating-point.html",
+      "range": "§2.1-2.3 including operation order and FMA",
+      "version": "snapshot in REFERENCES.json"
+    }
+  ],
+  "coverage_assessment": {
+    "suitability": "适合LLM Developer与有Java经验的读者：新增最小模型计算与硬件词汇桥接，系统细节分主线和可选校核；不再预设已具系统课程背景。",
+    "lecture_coverage": "50页的技术主线均有对应讲解，行政页以历史版本与课程组织概括；p.45列明不讲的课程范围没有被误当新增教学目标。",
+    "mechanisms_and_boundaries": "prefill/decode瓶颈的工作区间、KV容量单位、层次栈、关键路径、缓存路由、故障恢复与观测均明确；课堂分类、类比、构造算例与工程推导有标注。",
+    "high_risk_checks": "重新计算256GiB KV示例、3.125h集群间隔、9% AFR对应92884.5h而非50000h、16.071%反算、浮点1.0/0.0、每成功成本1.667/1.444；与正文一致。",
+    "learning_completeness": "包含符号与假设、选型、费用与能耗、故障表、实验控制与泛化、15题及答案。"
+  },
+  "issues_and_fixes": [
+    {
+      "issue": "原适用性判断预设系统背景，术语与机制之间存在学习跳步",
+      "fix": "按LLM/Java开发前提补最小模型、硬件与KV背景，分层阅读路线"
+    },
+    {
+      "issue": "多个教学公式只给结果/符号，读者难自行推回",
+      "fix": "补Roofline、KV容量、故障率、积分、策略/图定义的解释和算例"
+    },
+    {
+      "issue": "自测以概念回忆为主",
+      "fix": "新增20→17/18秒的调用链迁移题与质量约束反问、答案推理"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "round": 1,
+      "sha256": "899f863d320e4b28e397cdfa0654eb179f479505b9d8c88a64e255df459844ea",
+      "ranges": [
+        "1-230",
+        "231-460",
+        "461-687"
+      ],
+      "result": "最终全文复读；模型生成→资源约束→任务链→验收的衔接清楚，无需再修正"
+    },
+    {
+      "round": 2,
+      "sha256": "899f863d320e4b28e397cdfa0654eb179f479505b9d8c88a64e255df459844ea",
+      "ranges": [
+        "1-230",
+        "231-460",
+        "461-687"
+      ],
+      "result": "最终全文复读；模型生成→资源约束→任务链→验收的衔接清楚，无需再修正"
+    }
+  ],
+  "limitations": [
+    "未运行LLM、GPU、生产故障注入或真实Agent实验；仅重新运行正文离线数值检查。",
+    "本轮审核针对已归档课程版本，未把历史政策/CLI当作实时产品指引。",
+    "未声称补充资料每篇全文或原论文实验已复现；上面sources_read列出实际读取范围。"
+  ],
+  "pedagogical_review": {
+    "reader_assumptions": "有应用开发/Java/LLM调用经验，不预设Transformer数学和GPU体系结构；不从基础编程重讲。",
+    "problem_chain": "代码修复服务动机→模型/Serving/Agent三层→一次生成资源→多轮依赖/观测→任务成功/成本→实验与恢复，原链条成立；补齐跨层必需前置。",
+    "prerequisites_and_jumps": "原稿权重/logit/argmax、batch/kernel、KV头维度直接使用；Roofline最大值与KV乘法、能耗积分、策略符号、故障指数反算跳步。新增最小生成链、硬件容量/带宽/算力、注意力KV直觉、公式单位与数值例子；年度概率校核标为进阶。",
+    "case": "保留贯穿代码修复服务，调用链、缓存路由、trace、恢复状态可追踪到同一交付目标；新增4次模型调用+2次测试的优化迁移题。",
+    "organization": "保留讲义顺序和50页映射，新增阅读路线与暂不必掌握的缩写/数学边界；不扩写成训练教程。",
+    "learning_outcomes": "应能区分慢在排队/prefill/decode/工具，计算端到端与每成功成本，理解缓存状态、恢复和验证；15道机制题与答案加1道计算/质量取舍迁移题支持检验。",
+    "fixes": [
+      "新增token→权重→logit→生成循环与Harness前置",
+      "GPU容量/带宽/算力和batch/kernel定义",
+      "Roofline单位/最大值原因/2ms与10ms例",
+      "KV query/key/value/头及128KiB×32768×64算例",
+      "故障率与能量公式直觉/符号解释",
+      "策略符号、DAG和p95定义",
+      "调用链迁移题及答案"
+    ]
+  },
+  "numerical_check_2026_10_28": {
+    "baseline_seconds": 20.0,
+    "A_seconds": 17.0,
+    "B_seconds": 18.0,
+    "KV_GiB": 256.0,
+    "energy_J": 2000
+  }
+}

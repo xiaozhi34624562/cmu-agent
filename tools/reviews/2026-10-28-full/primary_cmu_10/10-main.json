@@ -1,0 +1,456 @@
+{
+  "review_date": "2026-10-28",
+  "note": "11-768/10.DeepResearchAgents/Deep_Research_Lecture10_Integrated_Notes.md",
+  "original_sha256": "06dbf34ba88d30689a5128f2b60e59490e6f9a01598f3398098195cbfcfdff92",
+  "final_sha256": "fda8fadc03b1a446f0fe12324ae754613fb7593737a9a3e48dd32a54934ef663",
+  "status": "completed_with_fixes",
+  "full_read_ranges": [
+    {
+      "pass": "initial",
+      "lines": "1–2307",
+      "result": "原稿全部连续阅读，核查主讲义及各方法/评测的论证链"
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "11-768/10.DeepResearchAgents/lecture-10-deep-research-agents.pdf",
+      "pdf_pages_read": "1–124 全文",
+      "scope": "包括动画展开和16页关键图表目视",
+      "sha256": "b3f9fafe7d586394efe3880d026c653b8b079151ffc75607d6aa7fab9c9ee259"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/readings/Tongyi_DeepResearch_Technical_Report.pdf",
+      "pages": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "total_pdf_pages": 23,
+      "sha256": "90a2c738ed8cc00c4ad8ea910e1d2494f812e7e0130dda518477e139ecc35bca"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/readings/DR_Tulu_Reinforcement_Learning_with_Evolving_Rubrics_for_Deep_Research.pdf",
+      "pages": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        21,
+        22,
+        30,
+        43
+      ],
+      "total_pdf_pages": 56,
+      "sha256": "2b8b2a83424b8f482c9710852a87e207ea99dfe0cb902a1f30cc16cd2af13824"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/WebSailor-V2_Bridging_the_Chasm_to_Proprietary_Agents_via_Synthetic_Data_and_Scalable_Reinforcement_Learning.pdf",
+      "pages": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "total_pdf_pages": 32,
+      "sha256": "2a0aa73e31f0c16f2f2fc07259ed0593f88c5f72f727bc443026490e3a47ab8c"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/WebDancer_Towards_Autonomous_Information_Seeking_Agency.pdf",
+      "pages": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "total_pdf_pages": 24,
+      "sha256": "e7ea9dab41d1284d7ddcebc53022e23f14d868f4639469c7122d1f86797c9a51"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/Scaling_Agents_via_Continual_Pre-training.pdf",
+      "pages": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        12,
+        13,
+        14
+      ],
+      "total_pdf_pages": 32,
+      "sha256": "aca7473950791937154bad8351e4d5f5001d0ba166acdd9065248bf97942064d"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/Search-R1_Training_LLMs_to_Reason_and_Leverage_Search_Engines_with_Reinforcement_Learning.pdf",
+      "pages": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "total_pdf_pages": 31,
+      "sha256": "524306de91f80d7755c43f8daad11eb463832762ba1debe0f37788bdbb3a6a0d"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/Dense_Passage_Retrieval_for_Open-Domain_Question_Answering.pdf",
+      "pages": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "total_pdf_pages": 13,
+      "sha256": "2abfc7991519be2b8ce30215905516fdb593218b7bf59e50ece0d8a088a7c4d5"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf",
+      "pages": [
+        13,
+        14,
+        15
+      ],
+      "total_pdf_pages": 30,
+      "sha256": "6cc20b3c5b8d25b8b53868fc4ec1792c144f07d67bdf7395138efd4422197e7b"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/readings/001_OpenScholar.html",
+      "scope": "本轮亲读 Ablations of inference components、Ablations of retrieval、OpenScholar retrieval pipeline、Scientific paper collection and data store、Initial paragraph retrieval、Top N paragraph reranking and finalization、Data mixing and training；其余直接引用机制复用同轮10-general-design记录，见shared_source_reviews",
+      "sha256": "519c416b1670e712f60d91b32bcb02a2780c0158de5ec9fe74cb680772d47590"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/001_Natural_Questions_example.html",
+      "scope": "全部可提取正文37字符；仅动态加载壳，不当已取得题目正文",
+      "sha256": "fe8be3edb96b2a45f033f2549113abadff38cc28859e9710dc87ef28379f3b5c"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/002_Wikipedia_source_document.html",
+      "scope": "正文首段，核查John Williams与配乐示例",
+      "sha256": "96e7f404972f0b8171bf8afb2b192ad14239e3ad4e9120c7db0962cf3f63af5d"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/011_CMU_Archives_Herbert_Simon.html",
+      "scope": "Biography中Human Problem Solving、1972与1975 Turing共同获奖的引用段落",
+      "sha256": "52197a4cbcd8a3343fd7c0c24d5e5bf5db4a92f4f17e7cf98954fb146db5339c"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/012_1978_Nobel_Prize_in_Economic_Sciences.html",
+      "scope": "Summary题名、获奖者与1978获奖年份",
+      "sha256": "227ab170fef4ff9af8a91cd0debf09e05cd1bf0ceed401209b3c4d00cd7a056e"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/ResearchQA_Evaluating_Scholarly_Question_Answering_at_Scale_Across_75_Fields_with_Survey-Mined_Questions_and_Rubrics.pdf",
+      "pdf_pages_read": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "sha256": "5804ffd0982a7d18253cae419d3891e3fd3cd2d82c6de71635e48b800111fde1",
+      "scope": "§2构题与三类rubric、§3专家检查与75%/84%一致性、§4分级Coverage和Ensemble Judge、§5长度/日期/泄漏边界；核对225题子集267.2→1431.0词与76.2→85.3分"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/DeepResearch_Bench_II_Diagnosing_Deep_Research_Agents_via_Rubrics_from_Expert_Reports.pdf",
+      "pdf_pages_read": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "sha256": "6377061d91b212bba03b2ea30fdce11dc8c0ac425b1dbc898086f885e433aa32",
+      "scope": "§2引用支持与真实性、§3四阶段标准构造及二元计分、§4表3/4/5维度与裁判比较、§5.2泄漏和§5.3/7读者适配局限；正文未沿用原文与表3不一致的部分排名叙述"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/ScholarSearch_Benchmarking_Scholar_Searching_Ability_of_LLMs.pdf",
+      "pdf_pages_read": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "sha256": "52752ccb8e3cf0c18000fbf1b5c62d7e7d5062d2aa05239fb1134fda5715fca9",
+      "scope": "题库定位、223题筛选、最终答案裁判、图3从Misra-Gries经USS引用追踪到Hyper-USS；多属性/子集语义纠正"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/MedBrowseComp_Benchmarking_Medical_Deep_Research_and_Computer_Use.pdf",
+      "pdf_pages_read": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        19
+      ],
+      "sha256": "35ce8e598d884e1076359ad83372676bb5a19c67809632b92e763977c3e644a4",
+      "scope": "跨库构题、605/50与CUA子集条件、表1/3错误分析、A.5表8入口消融，以及未进行临床验证的局限"
+    }
+  ],
+  "shared_source_reviews": [
+    {
+      "record": "tools/reviews/2026-10-28-full/cmu_6_11/10-general-design.json",
+      "reuse_scope": "同轮独立审阅者已实际读 AgentIR v3 PDF 1,3–10（输入、DR-Synth、表1–3、历史截断），OpenScholar Nature HTML Inference: self-reflective iterative RAG、Synthetic training data generation至Data filtering、Citation accuracy。用于本篇相同来源相同主张核查，不冒充根审阅者再次全文读过这些部分。"
+    },
+    {
+      "record": "tools/reviews/2026-10-28-full/cmu_6_11/10-benchmark-source-checks.json",
+      "reuse_scope": "六篇评测来源按记录逐篇核对；本记录 sources_read 不重复列为根审阅者阅读。独立复读覆盖本篇最终全文。"
+    }
+  ],
+  "coverage_assessment": "124页主讲义按四类任务/评测、Agent建模训练、研究时检索和系统运行组织；逐篇连接前提、方法、消融与限制，保留完整的来源/页码覆盖表。",
+  "pedagogical_review": {
+    "reader": "有Java及一般开发经验的LLM Developer；应用调用/状态作为入口，不预设梯度、概率和对比学习知识",
+    "question_chain": "什么问题需要研究→如何确认研究质量→如何生成并筛选轨迹→怎样训练搜索与开放式回答→怎样让检索匹配当前缺口→如何诊断成本与失败",
+    "prerequisites": "把期望与梯度、中心化/标准化、正负优势裁剪、向量点积与softmax/NLL在使用位置展开；不以业务领域替代课程普遍机制",
+    "learning_check": "增加三道关于优势尺度、错误方向裁剪和错标检索的自测及解释；公式可沿两动作和两候选例子独立推演"
+  },
+  "issues_and_fixes": [
+    {
+      "scope": "导读",
+      "issue": "读者背景需准确落在LLM开发与Java经验",
+      "fix": "说明调用链/运行状态与模型训练的连接；保留课程多领域例子，不把全篇特化为金融或RAG"
+    },
+    {
+      "scope": "§7.3",
+      "issue": "组标准差和优势的分母/零方差容易成为默认知识",
+      "fix": "展开0,1,1的总体方差、标准差与优势，区分样本/总体分母和只中心化变体"
+    },
+    {
+      "scope": "§7.4",
+      "issue": "min和clip的负优势分支缺少能手算的解释",
+      "fix": "补正负两类及错误方向惩罚，避免误解为所有项都被截在固定区间"
+    },
+    {
+      "scope": "§7.6",
+      "issue": "从轨迹概率直接跳策略梯度，缺少推导条件",
+      "fix": "解释log乘积转和、期望导数、环境/奖励不显式依赖参数的假设，以及两动作θ=0时0.25梯度；HTTP环境不可直接反向传播"
+    },
+    {
+      "scope": "§9.1",
+      "issue": "检索点积、指数归一化和负对数训练默认背景过多",
+      "fix": "补数组点积5、log3与0两候选的概率0.75/损失0.288/分数梯度，并说明候选条件概率不等于事实真实性"
+    },
+    {
+      "scope": "附录C",
+      "issue": "缺少上述机制的实际计算与迁移检查",
+      "fix": "运行标准库算式与有限差分，增补三个机制自测并标注未运行模型实验"
+    },
+    {
+      "scope": "§2.3 ScholarSearch",
+      "issue": "原教学例子把多属性误窄化成多个数值指标，并把属性取值子集说成商品集合，容易混淆筛选字段与聚合对象",
+      "fix": "依图3改为地区/商品类别等字段取值子集组合筛选，再对符合条件的订单汇总金额，明确该场景是机制教学例子而非算法能力证明"
+    }
+  ],
+  "validation": {
+    "offline_examples": "tools/reviews/2026-10-28-full/primary_cmu_10/10-main-offline-examples.json",
+    "visual_checks": {
+      "lecture_pdf_pages": [
+        26,
+        38,
+        41,
+        42,
+        67,
+        79,
+        83,
+        89,
+        93,
+        94,
+        95,
+        98,
+        104,
+        111,
+        118,
+        123
+      ],
+      "paper_pdf_pages": {
+        "tongyi": [
+          5,
+          10,
+          12
+        ],
+        "tulu": [
+          3,
+          8,
+          30
+        ],
+        "sailor": [
+          6,
+          8,
+          10
+        ],
+        "dancer": [
+          3,
+          6,
+          9
+        ],
+        "founder": [
+          8,
+          13,
+          14
+        ],
+        "searchr1": [
+          4,
+          5,
+          9
+        ],
+        "dpr": [
+          3,
+          5,
+          6
+        ],
+        "researchqa": [
+          5,
+          7,
+          9,
+          11
+        ],
+        "bench2": [
+          3,
+          6,
+          7,
+          8
+        ],
+        "scholarsearch": [
+          4
+        ],
+        "medbrowsecomp": [
+          7,
+          8,
+          19
+        ]
+      }
+    }
+  },
+  "limitations": [
+    "未运行模型、搜索API、GPU或研究基准；教学计算只验证算术与导数。",
+    "辅助论文只按所列页段核查，没有声称所有附录全文精读。",
+    "Natural Questions归档仅加载壳；相关介绍以主讲义、DPR及Wikipedia归档支持。"
+  ],
+  "reread_history": [
+    {
+      "invalidated_by": "随后改正§2.3多属性/任意子集教学例子",
+      "previous_final_sha256": "05bed764c28bb80c2f4b36a418b5887c2d85a5b7cce052749ad589932d8f664d",
+      "completed_passes": [
+        {
+          "pass": 1,
+          "sha256": "05bed764c28bb80c2f4b36a418b5887c2d85a5b7cce052749ad589932d8f664d",
+          "lines": "1–2345",
+          "result": "最终修改后连续全文复读；核对前置解释、各章承接、数字/公式、工程推导边界、问题与答案、来源索引和124页覆盖"
+        },
+        {
+          "pass": 2,
+          "sha256": "05bed764c28bb80c2f4b36a418b5887c2d85a5b7cce052749ad589932d8f664d",
+          "lines": "1–2345",
+          "result": "最终修改后连续全文复读；核对前置解释、各章承接、数字/公式、工程推导边界、问题与答案、来源索引和124页覆盖"
+        }
+      ]
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "pass": 1,
+      "reader": "primary reviewer",
+      "sha256": "fda8fadc03b1a446f0fe12324ae754613fb7593737a9a3e48dd32a54934ef663",
+      "lines": "1–2345",
+      "chunks": [
+        "1–350",
+        "351–700",
+        "701–1050",
+        "1051–1400",
+        "1401–1750",
+        "1751–2080",
+        "2081–2345"
+      ],
+      "result": "最后修改后再次连续全文复读，无输出截断；核对多属性解释及全文问题链/公式/数字/自测/索引，无新问题"
+    },
+    {
+      "pass": 2,
+      "status": "completed",
+      "reviewer": "cmu_6_11",
+      "date": "2026-10-28",
+      "round": "independent_round_2_after_primary_round_1_on_same_final_sha",
+      "sha256": "fda8fadc03b1a446f0fe12324ae754613fb7593737a9a3e48dd32a54934ef663",
+      "line_count": 2345,
+      "actual_full_read_line_ranges": [
+        [
+          1,
+          350
+        ],
+        [
+          351,
+          700
+        ],
+        [
+          701,
+          1050
+        ],
+        [
+          1051,
+          1400
+        ],
+        [
+          1401,
+          1750
+        ],
+        [
+          1751,
+          2100
+        ],
+        [
+          2101,
+          2345
+        ]
+      ],
+      "method": "逐段读取最终中文主文全部内容，包括附录、自测、答案、来源索引与124页讲义覆盖表；各段实际输出均未截断，不以关键词扫描或技术校验代替阅读。",
+      "result": "全文复读未发现新的实质错误或必须补讲的学习断层；本轮没有修改正文。",
+      "pedagogical_review": {
+        "reader_prerequisites": "按熟悉LLM应用与Java开发、但不能预设机器学习/数学专门知识的读者检查。通用接口、状态、缓存、并发与测试经验可作为桥梁；正文仍保留课程普遍知识体系。",
+        "problem_chain": "先区分短答案调查与开放综合的目标，再说明评测如何定义成功，进入运行轨迹、训练数据、SFT/RL、奖励和检索，最后用两个案例及诊断实验连接成可执行选择路径。",
+        "mechanism_prerequisites": "概率与参数更新、期望奖励与梯度、组内均值/标准差、正负优势裁剪、DPR正负例损失均给出符号与小例子；运行状态更新和模型参数训练明确分开。",
+        "examples_and_boundaries": "通用研究助手瓶颈诊断贯穿检索/流程/训练取舍；财务案例标为虚构并明确资料不足时的阶段交付。ScholarSearch例子已改为属性取值子集组合筛选后汇总，未将多属性限于多个数值指标。",
+        "organization_and_cognitive_load": "主文按依赖关系展开，公式在对应机制处解释，附录负责回顾和索引；算法、奖励、数据与系统成本没有混成同一层级。",
+        "learning_outcomes_and_self_tests": "读者可解释各评测对象、区分证据获取/阅读/核验/综合错误、判断训练前提、设计受控诊断，并用C.4实际计算中心化优势、负优势裁剪与错标损失。答案与正文机制吻合。"
+      },
+      "limitations": [
+        "此独立全文复读不声称重新全文阅读所有引用原文；本审读人实际来源核查仅限sources_read明确记录的六篇及其范围，其他来源由根代理负责。",
+        "没有运行模型、GPU训练、搜索API或论文实验；正文离线算式执行由根代理记录。"
+      ]
+    }
+  ]
+}

@@ -3,25 +3,29 @@
     "title": "mini-swe-agent pinned src/minisweagent/agents/default.py",
     "url": "https://raw.githubusercontent.com/SWE-agent/mini-swe-agent/68d367b/src/minisweagent/agents/default.py",
     "path": "references/mini-swe-agent-68d367b/src/minisweagent/agents/default.py",
-    "status": "saved"
+    "status": "saved",
+    "sha256": "368d869ac814b96ceac54b3014a20224d562543c771928de70080ae8d3f44eee"
   },
   {
     "title": "mini-swe-agent pinned src/minisweagent/environments/local.py",
     "url": "https://raw.githubusercontent.com/SWE-agent/mini-swe-agent/68d367b/src/minisweagent/environments/local.py",
     "path": "references/mini-swe-agent-68d367b/src/minisweagent/environments/local.py",
-    "status": "saved"
+    "status": "saved",
+    "sha256": "b0e33ef0773e6e6196e8d10c79b2b3e3bbc547635bd31aaf9b50da8fa03f98f6"
   },
   {
     "title": "mini-swe-agent pinned src/minisweagent/config/default.yaml",
     "url": "https://raw.githubusercontent.com/SWE-agent/mini-swe-agent/68d367b/src/minisweagent/config/default.yaml",
     "path": "references/mini-swe-agent-68d367b/src/minisweagent/config/default.yaml",
-    "status": "saved"
+    "status": "saved",
+    "sha256": "cf5abdd6f16afc47846f67c0b91888c14ed969b8963fffb6f4ce0681a071a600"
   },
   {
     "title": "mini-swe-agent pinned src/minisweagent/agents/interactive.py",
     "url": "https://raw.githubusercontent.com/SWE-agent/mini-swe-agent/68d367b/src/minisweagent/agents/interactive.py",
     "path": "references/mini-swe-agent-68d367b/src/minisweagent/agents/interactive.py",
-    "status": "saved"
+    "status": "saved",
+    "sha256": "34178d6a646eab0c3d65184e835abcc4f3bdce2530da0a40555ea108f6e90715"
   },
   {
     "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
@@ -29,12 +33,14 @@
     "path": "references/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf",
     "status": "saved",
     "provenance": "11-768/1.WhatIsAnAgent/readings/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf",
-    "source_label": "ReAct"
+    "source_label": "ReAct",
+    "sha256": "f285b0971ae4a790e402fb93966bed3adde2cf0a04977d08b2b40d6ab0cace69"
   },
   {
     "title": "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering",
     "url": "https://arxiv.org/abs/2405.15793",
     "path": "references/SWE-agent_Agent-Computer_Interfaces_Enable_Automated_Software_Engineering.pdf",
-    "status": "saved"
+    "status": "saved",
+    "sha256": "d171e0693060b910ceb2cddd0fd4bc7cae302005d42d0d8059bfdbe056c3adba"
   }
 ]

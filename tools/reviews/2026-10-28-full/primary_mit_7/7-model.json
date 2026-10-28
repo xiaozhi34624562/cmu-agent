@@ -1,0 +1,201 @@
+{
+  "review_date": "2026-10-28",
+  "note": "MAS.S62/7.ModelEvolution1/notes.zh-CN.md",
+  "original_sha256": "865caf3a902999da7454f3391fae330ae9bc31925812a5e4baad7fafe3ffbc36",
+  "final_sha256": "964c939511acd0c3cb930bf11c4c49d6b71a9ea93e89d47d201e152f2c3f0ff4",
+  "status": "full_review_passed_after_revision",
+  "full_read_ranges": [
+    {
+      "pass": "initial",
+      "lines": "1–798",
+      "chunks": [
+        "1–280",
+        "281–560",
+        "561–798"
+      ],
+      "result": "原稿全文阅读后逐条核对主讲义、原论文与源码"
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "MAS.S62/7.ModelEvolution1/slides/lec6 - training.pdf",
+      "pages": "1–45",
+      "scope": "主讲义全文，10页关键图表目视"
+    },
+    {
+      "path": "MAS.S62/7.ModelEvolution1/slides/model_guest.pdf",
+      "pages": "1–51",
+      "scope": "嘉宾讲义全文，19页关键图表目视"
+    },
+    {
+      "path": "MAS.S62/7.ModelEvolution1/tutorials/lec6 - rl in practice.pdf",
+      "pages": "1–15",
+      "scope": "教程全文，3页关键图表目视"
+    },
+    {
+      "path": "MAS.S62/7.ModelEvolution1/references/Proximal_Policy_Optimization_Algorithms.pdf",
+      "pages": "2–5",
+      "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+      "sha256": "e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b"
+    },
+    {
+      "path": "MAS.S62/7.ModelEvolution1/references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf",
+      "pages": "12–14",
+      "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+      "sha256": "6cc20b3c5b8d25b8b53868fc4ec1792c144f07d67bdf7395138efd4422197e7b"
+    },
+    {
+      "path": "MAS.S62/7.ModelEvolution1/references/Direct_Preference_Optimization_Your_Language_Model_is_Secretly_a_Reward_Model.pdf",
+      "pages": "3–5",
+      "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+      "sha256": "92cb3a2b71362acda98a789b03d88688fd33cf5fcf13f81d2b1de30ee7d3b67a"
+    },
+    {
+      "path": "MAS.S62/7.ModelEvolution1/references/Self-Distillation_Enables_Continual_Learning.pdf",
+      "pages": "1,3–11,16–20",
+      "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+      "sha256": "8e79ea6fc872f599b7076ab6d05a0037ed9e7f2e504c8610aea129546e497e14"
+    },
+    {
+      "path": "MAS.S62/7.ModelEvolution1/references/On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf",
+      "pages": "3–4",
+      "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+      "sha256": "a81c71fa0cd15506642092790d854347f030c29ee1d6aa643b55aa51348e6869"
+    },
+    {
+      "path": "MAS.S62/7.ModelEvolution1/references/RL_s_Razor_Why_Online_Reinforcement_Learning_Forgets_Less.pdf",
+      "pages": "3–8,23",
+      "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+      "sha256": "bf3b6ab3b0b5db847aae235cc93a5a9475be2b7aca1e163304822d13d2dd0373"
+    },
+    {
+      "path": "MAS.S62/7.ModelEvolution1/references/The_Surprising_Effectiveness_of_Test-Time_Training_for_Few-Shot_Learning.pdf",
+      "pages": "2–7",
+      "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+      "sha256": "9da8f434864b90ec18378dfa8c920e1d128e5bb694343f8a5a524302e17a5dad"
+    },
+    {
+      "path": "MAS.S62/7.ModelEvolution1/references/TTRL_Test-Time_Reinforcement_Learning.pdf",
+      "pages": "1,3–5",
+      "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+      "sha256": "3828cc886a0133749fe857dc12fff190f76c17dd7421dccfca01c96ec1dd5882"
+    },
+    {
+      "path": "MAS.S62/7.ModelEvolution1/references/OpenClaw-RL_Train_Any_Agent_Simply_by_Talking.pdf",
+      "pages": "1,5–9",
+      "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+      "sha256": "4d8c1aa05fdb439201b5edfca65208fc610eee3169b0ba0689f4378f2c4fe6ae"
+    },
+    {
+      "path": "MAS.S62/7.ModelEvolution1/references/Learning_to_Discover_at_Test_Time.pdf",
+      "pages": "3–6",
+      "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+      "sha256": "4656ec28d800002d9a3e3f83a71c7d9032ef5f1873cd953b8808a8391ce06ec7"
+    },
+    {
+      "path": "MAS.S62/7.ModelEvolution1/references/Self-Distilled_Reasoner_On-Policy_Self-Distillation_for_Large_Language_Models.pdf",
+      "pages": "3–5",
+      "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+      "sha256": "e521ed6c2939dc612daec5fe6fb47bef554a291228c02cafae07102b9729bad8"
+    },
+    {
+      "path": "MAS.S62/7.ModelEvolution1/references/Reinforcement_Learning_via_Self-Distillation.pdf",
+      "pages": "3–6,10–13",
+      "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+      "sha256": "2714e7734c43cf849c2e7c49fc95cf57a6533c0833465a01983b87eb7f72d190"
+    },
+    {
+      "path": "MAS.S62/7.ModelEvolution1/references/Evolving_in_Thought_Space_Training_a_Small_Model_at_Test_Time_Unlocks_Better_Discoveries.pdf",
+      "pages": "1–8",
+      "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+      "sha256": "351bcdd2c9c5275d007f2d15a4e0fb9d016a03b4e19f66258d1c3a44e6f28997"
+    },
+    {
+      "path": "MAS.S62/7.ModelEvolution1/references/verl-ddf7007/trainer_base.py",
+      "lines": "534–620",
+      "scope": "固定verl版本入口、GAE/GRPO、损失归约及裁剪"
+    },
+    {
+      "path": "MAS.S62/7.ModelEvolution1/references/verl-ddf7007/core_algos.py",
+      "lines": "216–334,1140–1284",
+      "scope": "固定verl版本入口、GAE/GRPO、损失归约及裁剪"
+    },
+    {
+      "path": "MAS.S62/7.ModelEvolution1/references/verl-ddf7007/run_qwen3_8b_fsdp.sh",
+      "lines": "全文",
+      "scope": "固定verl版本入口、GAE/GRPO、损失归约及裁剪"
+    }
+  ],
+  "coverage_assessment": "三份讲义111页全部覆盖；RL→稳定更新→测试时训练→在策略蒸馏→持续学习→verl实践，11道自测含推导和故障诊断。",
+  "pedagogical_review": {
+    "reader": "有Java经验的LLM Developer；不默认掌握概率微积分、KL或GPU训练",
+    "problem_chain": "一次模型调用的概率→不可微奖励如何影响参数→稳定更新→教师信号→能力积累及服务发布",
+    "prerequisites": "补logits/softmax/序列log-prob/交叉熵/期望/梯度、KL/熵、DPO符号、LoRA矩阵和方差分母",
+    "examples_and_transfer": "代码修复、新API、单参数策略更新、两步序列梯度、实际标准库程序",
+    "learning_outcomes": "能手算一次更新、辨认四种策略角色、核查梯度边界和损失归约、设计学习与遗忘对照"
+  },
+  "issues_and_fixes": [
+    {
+      "scope": "§1.3、3–5、7",
+      "issue": "公式直接进入策略梯度与KL，隐含了概率/损失/微积分前置",
+      "fix": "从模型函数输出到采样、反馈和参数更新连续讲解，加入手算与运行算例，解释LoRA形状和优势标准差"
+    },
+    {
+      "scope": "§7.4",
+      "issue": "TTRL摘要211%与同页图1的159.3%不是仅由不同PDF版本造成",
+      "fix": "核对本地v3首页并明确文件内部差异，不用不一致结果作选型依据"
+    },
+    {
+      "scope": "§8.2",
+      "issue": "TTT-Discover仅说偏向高奖励尾部，未解释目标和状态选择怎样工作",
+      "fix": "补指数权重和PUCT利用/探索的分工及教学例子"
+    },
+    {
+      "scope": "§10.3",
+      "issue": "SDFT原文p16分析式省概率权重、p4实践说明与p20伪代码方向不同",
+      "fix": "保留原PDF，按标准KL定义推导并用有限差分验证，说明严格复现仍需核对代码"
+    },
+    {
+      "scope": "§13",
+      "issue": "教程固定micro-batch算例可能被读成归档脚本真实配置",
+      "fix": "说明dynamic batch/token预算与实际step包装层，区分示意算术和调度结果"
+    },
+    {
+      "scope": "examples",
+      "issue": "新增前置算例需要可核验结果",
+      "fix": "执行单参数梯度、基线期望、DPO、方差分母与LoRA算例；更新RESULTS.md"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "pass": 1,
+      "sha256": "964c939511acd0c3cb930bf11c4c49d6b71a9ea93e89d47d201e152f2c3f0ff4",
+      "lines": "1–836",
+      "chunks": [
+        "1–280",
+        "281–560",
+        "561–836"
+      ],
+      "result": "最后两处来源修订后重新全文复读，问题链、计算方向及边界一致。"
+    },
+    {
+      "pass": 2,
+      "sha256": "964c939511acd0c3cb930bf11c4c49d6b71a9ea93e89d47d201e152f2c3f0ff4",
+      "lines": "1–836",
+      "chunks": [
+        "1–836（中段工具截断）",
+        "250–560（完整补读截断范围）"
+      ],
+      "result": "最终全文第二遍复读，全部中段补读，未发现需继续修改问题。"
+    }
+  ],
+  "validation": {
+    "offline_example": "7-model-offline-examples.json；实际执行通过",
+    "visual_checks": "32张讲义/教程页与12张论文图表页；原文件未改写"
+  },
+  "limitations": [
+    "未运行GPU、模型、API或verl训练，标准库例子只验证数学和批次算术。",
+    "辅助论文按明确页段阅读，未逐篇声称全文复现。",
+    "SDFT原文伪码和实践描述内部不一致，未取得作者训练运行证据；TTRL首页数值差异保留说明。"
+  ]
+}

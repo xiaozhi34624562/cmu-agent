@@ -1,0 +1,21 @@
+{
+  "negative_log_likelihood": [
+    1.6094379124341003,
+    0.2231435513142097
+  ],
+  "reward": [
+    1,
+    1,
+    0,
+    0
+  ],
+  "mean": 0.5,
+  "population_std": 0.5,
+  "advantage": [
+    1,
+    1,
+    -1,
+    -1
+  ],
+  "result": "passed; arithmetic only, not model training"
+}

@@ -1,0 +1,465 @@
+{
+  "note": "11-768/8.SupervisedFineTuning/SFT_Lecture08_Integrated_Notes.md",
+  "original_sha256": "757e2661dffe0ee2a1fbe517cd2a21ff2f650fbc190437075037280e75e3bc00",
+  "final_sha256": "713f8c4a3667c003a3d8df056cb317f807bbd2f1cf5f0ac52485120905a6b58e",
+  "status": "completed_with_fixes",
+  "full_reading": [
+    {
+      "round": "initial",
+      "line_ranges": [
+        [
+          1,
+          300
+        ],
+        [
+          301,
+          600
+        ],
+        [
+          601,
+          900
+        ],
+        [
+          901,
+          1200
+        ],
+        [
+          1201,
+          1500
+        ],
+        [
+          1501,
+          1724
+        ]
+      ],
+      "result": "完整阅读主文、附录、来源、自测；识别训练原理与优化前置跳步"
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "11-768/8.SupervisedFineTuning/SOURCES.md",
+      "scope": "本轮编辑前完整阅读来源索引",
+      "version": "本地固定归档，以 SHA-256 标识",
+      "pages": null,
+      "figures_visually_read": [],
+      "sha256": "8a2ee5ab55807eb5292351fe379075dc2fefdd7770d69e5724d6cad76a07b58e"
+    },
+    {
+      "path": "11-768/8.SupervisedFineTuning/lecture-08-sft.pdf",
+      "scope": "全文 49 页，提取文本 777 行全部阅读；讲义覆盖对照",
+      "version": "Yueqi Song, Supervised Fine-Tuning for Agents",
+      "pages": [
+        [
+          1,
+          49
+        ]
+      ],
+      "figures_visually_read": [
+        12,
+        15,
+        37,
+        38
+      ],
+      "sha256": "1598a8bd9784ec044f89b8951af52bb2f80c0236b73aada0ca4cc3038049c4e3"
+    },
+    {
+      "path": "11-768/8.SupervisedFineTuning/references/Kimi_K3_Open_Frontier_Intelligence.pdf",
+      "scope": "定向读取所列全部页段，不宣称整篇论文全文精读",
+      "version": "arXiv 2607.24653v2, 2026-08-07",
+      "pages": [
+        [
+          12,
+          14
+        ],
+        [
+          46,
+          47
+        ]
+      ],
+      "figures_visually_read": [
+        46
+      ],
+      "sha256": "1a21e4d15de52eb0d4cf09cdbffc6248c497ba6897572cc5574af237c13da51d"
+    },
+    {
+      "path": "11-768/8.SupervisedFineTuning/references/DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_Reinforcement_Learning.pdf",
+      "scope": "定向读取所列全部页段，不宣称整篇论文全文精读",
+      "version": "arXiv 2501.12948v2, 2026-01-04",
+      "pages": [
+        [
+          2,
+          2
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          26,
+          27
+        ],
+        [
+          60,
+          62
+        ]
+      ],
+      "figures_visually_read": [],
+      "sha256": "b191b0a365a64b4ab2791d117069ed17a2933d03554a662ced58b37df52018f4"
+    },
+    {
+      "path": "11-768/8.SupervisedFineTuning/references/Nemotron_3_Ultra_Open_Efficient_Mixture-of-Experts_Hybrid_Mamba-Transformer_Model_for_Agentic_Reasoning.pdf",
+      "scope": "定向读取所列全部页段，不宣称整篇论文全文精读",
+      "version": "本地固定归档，以 SHA-256 标识",
+      "pages": [
+        [
+          15,
+          23
+        ],
+        [
+          27,
+          28
+        ]
+      ],
+      "figures_visually_read": [],
+      "sha256": "b8c5e9bb8f29bdff41f876a24f5da8bc1762e16d12dbece512c443a96cbbc859"
+    },
+    {
+      "path": "11-768/8.SupervisedFineTuning/references/MAI-Thinking-1_Building_a_Hill-Climbing_Machine.pdf",
+      "scope": "定向读取所列全部页段，不宣称整篇论文全文精读",
+      "version": "本地固定归档，以 SHA-256 标识",
+      "pages": [
+        [
+          34,
+          37
+        ],
+        [
+          39,
+          39
+        ],
+        [
+          41,
+          42
+        ],
+        [
+          49,
+          49
+        ]
+      ],
+      "figures_visually_read": [
+        35
+      ],
+      "sha256": "a267d745b1eb3792a8abf58e71e204a6f44f9c18eeb5ad8671320deae71986bd"
+    },
+    {
+      "path": "11-768/8.SupervisedFineTuning/references/Kimi_K2_Open_Agentic_Intelligence.pdf",
+      "scope": "定向读取所列全部页段，不宣称整篇论文全文精读",
+      "version": "arXiv 2507.20534v2, 2026-02-03",
+      "pages": [
+        [
+          9,
+          11
+        ],
+        [
+          26,
+          27
+        ]
+      ],
+      "figures_visually_read": [],
+      "sha256": "035062b5e1ab865ffad9f90f81d6c8332f8af805063fac54cc6f2cca1fe608b5"
+    },
+    {
+      "path": "11-768/8.SupervisedFineTuning/references/OpenThoughts-Agent_Data_Recipes_for_Agentic_Models.pdf",
+      "scope": "定向读取所列全部页段，不宣称整篇论文全文精读",
+      "version": "arXiv 2606.24855v1, 2026-06-23",
+      "pages": [
+        [
+          3,
+          11
+        ],
+        [
+          25,
+          26
+        ]
+      ],
+      "figures_visually_read": [
+        8
+      ],
+      "sha256": "0ce7e6e5fe8e3d68c3cc134f97ff89e50ce0f484a9d5442279838e299433981a"
+    },
+    {
+      "path": "11-768/8.SupervisedFineTuning/references/Training_Software_Engineering_Agents_and_Verifiers_with_SWE-Gym.pdf",
+      "scope": "定向读取所列全部页段，不宣称整篇论文全文精读",
+      "version": "arXiv 2412.21139v2, 2025-06-06",
+      "pages": [
+        [
+          3,
+          8
+        ],
+        [
+          13,
+          16
+        ],
+        [
+          20,
+          20
+        ]
+      ],
+      "figures_visually_read": [
+        7
+      ],
+      "sha256": "5c35e277544323fcc4ce8929e208bb8cc32efbbd40b8069c7daa084548d79396"
+    },
+    {
+      "path": "11-768/8.SupervisedFineTuning/references/Agent_Data_Protocol_Unifying_Datasets_for_Diverse_Effective_Fine-tuning_of_LLM_Agents.pdf",
+      "scope": "定向读取所列全部页段，不宣称整篇论文全文精读",
+      "version": "arXiv 2510.24702v2, 2026-03-04",
+      "pages": [
+        [
+          4,
+          6
+        ],
+        [
+          9,
+          9
+        ],
+        [
+          18,
+          20
+        ]
+      ],
+      "figures_visually_read": [],
+      "sha256": "76543f11aa8a9e9f30ae07f8a461e89a0c16b926130647d3cfcad8f9a8eee782"
+    },
+    {
+      "path": "11-768/8.SupervisedFineTuning/references/FunReason_Enhancing_Large_Language_Models_Function_Calling_via_Self-Refinement_Multiscale_Loss_and_Automated_Data_Refinement.pdf",
+      "scope": "定向读取所列全部页段，不宣称整篇论文全文精读",
+      "version": "arXiv 2505.20192v3, 2025-11-25; 实际题名 BalanceSFT",
+      "pages": [
+        [
+          3,
+          8
+        ]
+      ],
+      "figures_visually_read": [
+        3,
+        8
+      ],
+      "sha256": "a3b0fa3c2ef28ab136b12d8d0c7b01d6214b301bbf0c8639b7998dd6d1a818e1"
+    },
+    {
+      "path": "11-768/8.SupervisedFineTuning/references/Instruction_Tuning_With_Loss_Over_Instructions.pdf",
+      "scope": "定向读取所列全部页段，不宣称整篇论文全文精读",
+      "version": "arXiv 2405.14394v2, 2024-10-02",
+      "pages": [
+        [
+          3,
+          9
+        ]
+      ],
+      "figures_visually_read": [
+        7
+      ],
+      "sha256": "a94d18800efd7aaee5e84ab4fede585682eba24ca68cb561af81c8f00b026b6a"
+    },
+    {
+      "path": "11-768/8.SupervisedFineTuning/references/On_the_Effect_of_Instruction_Tuning_Loss_on_Generalization.pdf",
+      "scope": "定向读取所列全部页段，不宣称整篇论文全文精读",
+      "version": "arXiv 2507.07817v2, 2025-07-15",
+      "pages": [
+        [
+          2,
+          10
+        ]
+      ],
+      "figures_visually_read": [
+        3,
+        5
+      ],
+      "sha256": "78246fe7eb519d93849c2f282c76feaabb56ad572fe733cd23309ca5874c2be8"
+    },
+    {
+      "path": "11-768/8.SupervisedFineTuning/references/005_K2_Horizon_model_card.html",
+      "scope": "正文提取 690 行全部阅读；重点 Training Overview 阶段时序、81B/201B/50B 与 RL 未披露预算",
+      "version": "本地固定归档，以 SHA-256 标识",
+      "pages": null,
+      "figures_visually_read": [],
+      "sha256": "b981a0a570d3e9155d2fc62cf29537f31b2e78164d5ce47fb2accfa2931a13d8"
+    },
+    {
+      "path": "11-768/8.SupervisedFineTuning/references/013_DAgger.html",
+      "scope": "摘要与书目信息正文 82 行全文；不是论文全文",
+      "version": "本地固定归档，以 SHA-256 标识",
+      "pages": null,
+      "figures_visually_read": [],
+      "sha256": "e515cc08883fb65a967c7cc1cd4905107d7dc31aeed4a71c254ea250a670ad75"
+    },
+    {
+      "path": "11-768/8.SupervisedFineTuning/references/014_Transformers_chat_templates.html",
+      "scope": "Chat templates 正文提取 652 行全部阅读",
+      "version": "本地固定归档，以 SHA-256 标识",
+      "pages": null,
+      "figures_visually_read": [],
+      "sha256": "c26efe5f7a0c9e3f59c3622881fe38d9d2930809b693d8e50368b2a66f4aa282"
+    },
+    {
+      "path": "11-768/8.SupervisedFineTuning/references/015_Transformers_apply_chat_template.html",
+      "scope": "定向 apply_chat_template 参数/返回值，提取 1087–1295 行",
+      "version": "本地固定归档，以 SHA-256 标识",
+      "pages": null,
+      "figures_visually_read": [],
+      "sha256": "3e854428dac59e936cff2eab06ed691fa414b9cf5008b08c2c1adec0dac9cc25"
+    },
+    {
+      "path": "11-768/8.SupervisedFineTuning/references/016_TRL_SFTTrainer.html",
+      "scope": "定向提取 300–585、1690–1895 行：NLL、metrics、assistant/completion loss、packing、max_length",
+      "version": "本地固定归档，以 SHA-256 标识",
+      "pages": null,
+      "figures_visually_read": [],
+      "sha256": "b5bc62409885b1328e94b84c17b43f91c1de86ab58bd0c3c601510ee88a8b2be"
+    },
+    {
+      "path": "11-768/8.SupervisedFineTuning/references/017_TRL_training_chat_templates.html",
+      "scope": "正文提取 550 行全部阅读",
+      "version": "本地固定归档，以 SHA-256 标识",
+      "pages": null,
+      "figures_visually_read": [],
+      "sha256": "5398bf1ca02b99d0bee77c3a1d5dc23b39cc5cb1e789102ff29894aca1000ebb"
+    },
+    {
+      "path": "11-768/8.SupervisedFineTuning/references/018_Axolotl_conversation_datasets.html",
+      "scope": "定向提取 1–300、385–440、630–890 行：EOT/EOS、工具参数类型、片段权重、BPE 空格边界",
+      "version": "本地固定归档，以 SHA-256 标识",
+      "pages": null,
+      "figures_visually_read": [],
+      "sha256": "728defb5e2476ae00e9f0a11b3aa223b513929c9b23d8ebafa0f91d3ebb66871"
+    },
+    {
+      "path": "11-768/8.SupervisedFineTuning/references/019_LLaMA-Factory.md",
+      "scope": "定向原文 103–115、200–207 行：Features 与 neat_packing changelog",
+      "version": "本地固定归档，以 SHA-256 标识",
+      "pages": null,
+      "figures_visually_read": [],
+      "sha256": "7c72bce01922b0ab829b3562b1196ed9d17d77d2543e562b871ee5e0f6f29b0a"
+    },
+    {
+      "url": "https://proceedings.mlr.press/v15/ross11a/ross11a.pdf",
+      "path": null,
+      "version": "PMLR 15:627–635, 2011",
+      "scope": "直接读取 PMLR 原 PDF；定向 §2/Theorem 2.1、2.2 与 Algorithm 3.1，文件第 2–4 页；网页输出同时显示第 1 页与第 4 页部分理论，不宣称 9 页全文已读",
+      "pages": [
+        [
+          2,
+          4
+        ]
+      ]
+    }
+  ],
+  "coverage_assessment": "49 页讲义七条主线均由正文组织覆盖：权重行为、token/mask、数据工厂、ADP/XTML、训练实施、闭环泛化、RL 交接。19 份参考材料按监督/数据/协议/生命周期发挥作用；已有成本、实验归因、负面结果、泛化切分、诊断及代码；本轮补上从开发者可理解的运行轨迹到概率、损失和参数更新的核心学习机制。",
+  "pedagogical_review": {
+    "reader_prerequisites": "LLM Developer，有 Java/通用应用开发经验；不预设梯度、低秩、MoE、训练批次的专门知识",
+    "question_chain": "运行经验存在哪里 → 如何写成条件策略 → 一个 token 如何产生学习信号 → 选哪些目标与轨迹 → 表示和框架是否保持监督 → 如何优化 → 为什么闭环仍会失败 → 怎样评测和继续训练",
+    "gaps_found": [
+      "原文 NLL 直接出现，缺少概率/导数/参数更新可手算桥接",
+      "epoch/micro-batch/累积/optimizer step 与内存组成默认读者已懂",
+      "LoRA 只给公式计数，未解释 A/B 形状和低秩限制；MoE/router/dropout/量化首次出现缺前置",
+      "自测主要概念判断，缺少能查出参数更新与 batch 误解的计算题"
+    ],
+    "changes": [
+      "新增二候选单 token 梯度下降教学推导；明确不是论文效果实验",
+      "增加 320 样本/8 micro-batch/4 累积/两副本的贯穿训练计数",
+      "补充 LoRA、MoE、KL/DPO、stop-gradient 必要定义",
+      "新增 E.15/E.16 带参考答案"
+    ],
+    "case": "代码 Agent 测试失败→读取文件→恢复的通用开发工作流；保持课程通用性",
+    "organization": "保留原课讲义决定的顺序，在公式和配方之前就地加桥接；不机械新增业务模板",
+    "learning_outcomes": "能够解释一条轨迹怎样变为有条件的参数更新，区分 mask/输入依赖、数据选择/目标、采样/更新预算，并据闭环验收判断收益。"
+  },
+  "issues_and_fixes": [
+    {
+      "type": "pedagogical",
+      "location": "§2.3–2.4",
+      "fix": "条件概率、参数/状态、softmax/负对数/梯度更新算例及共享参数边界"
+    },
+    {
+      "type": "pedagogical",
+      "location": "§4.1–4.2、§9.0–9.1、§9.8、§10.5",
+      "fix": "训练前置、低秩形状与成本、MoE/量化、偏好/蒸馏术语就地解释"
+    },
+    {
+      "type": "pedagogical",
+      "location": "附录 E.15–E.16",
+      "fix": "可手算自测与答案"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "round": 1,
+      "sha256": "713f8c4a3667c003a3d8df056cb317f807bbd2f1cf5f0ac52485120905a6b58e",
+      "line_ranges": [
+        [
+          1,
+          320
+        ],
+        [
+          321,
+          640
+        ],
+        [
+          641,
+          960
+        ],
+        [
+          961,
+          1280
+        ],
+        [
+          1281,
+          1600
+        ],
+        [
+          1601,
+          1760
+        ]
+      ],
+      "result": "完整复读，无新增实质问题；新增桥接与后续监督/优化/评测衔接一致"
+    },
+    {
+      "round": 2,
+      "sha256": "713f8c4a3667c003a3d8df056cb317f807bbd2f1cf5f0ac52485120905a6b58e",
+      "line_ranges": [
+        [
+          1,
+          320
+        ],
+        [
+          321,
+          640
+        ],
+        [
+          641,
+          960
+        ],
+        [
+          961,
+          1280
+        ],
+        [
+          1281,
+          1600
+        ],
+        [
+          1601,
+          1760
+        ]
+      ],
+      "result": "完整复读，无新增实质问题；概念前置、训练机制和自测答案衔接一致，原文事实与教学推导边界保持明确"
+    }
+  ],
+  "limitations": [
+    "辅助论文仅阅读所列页段，未将其记作全文精读。",
+    "文档 API 为本地归档语义，未声称最新安装版本相同。",
+    "标准库算例与预处理模拟 13 项检查通过；本轮 Python 环境缺少 transformers/tokenizers，未重跑历史真实 BPE 检查。",
+    "没有运行模型训练、GPU、API 或复现论文实验。"
+  ],
+  "execution_record": "tools/reviews/2026-10-28-full/cmu_6_11/8-sft-checks.json"
+}

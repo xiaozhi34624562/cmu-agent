@@ -65,13 +65,14 @@
 - [YaRN](references/YaRN_Efficient_Context_Window_Extension_of_Large_Language_Models.pdf)
   - Source: https://arxiv.org/abs/2309.00071
 
-- Qwen3.8-Flash-Next
+- [Qwen3.8-Flash-Next（网页壳归档，未取得正文）](references/016_Qwen3.html)
   - Source: https://qwen.ai/blog?id=qwen3.8-flash-next
+  - Status: 本地 HTML 只有页面壳；不能作为已获取的模型说明正文。
 
 - [GLM-5](references/GLM-5_from_Vibe_Coding_to_Agentic_Engineering.pdf)
   - Source: https://arxiv.org/abs/2602.15763
 
-- GLM-5.3-Flash
+- [GLM-5.3-Flash](references/018_GLM-5.html)
   - Source: https://huggingface.co/zai-org/GLM-5.3-Flash
 
 - [Kimi K3](references/Kimi_K3_Open_Frontier_Intelligence.pdf)
@@ -101,7 +102,7 @@
 - [DeepSeek API Pricing](references/027_DeepSeek_API_Pricing.html)
   - Source: https://api-docs.deepseek.com/quick_start/pricing/
 
-- Z.AI API Pricing
+- [Z.AI API Pricing（历史快照）](references/028_Z.html)
   - Source: https://docs.z.ai/guides/overview/pricing
 
 - [Kimi K3 Pricing](references/029_Kimi_K3_Pricing.html)

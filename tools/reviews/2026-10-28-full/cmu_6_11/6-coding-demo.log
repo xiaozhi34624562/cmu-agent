@@ -1,0 +1,21 @@
+Python: 3.11.10
+candidate       missing  None  zero  positive
+original              3     3     3         2
+default_only          3  None     0         2
+always_zero           0     0     0         0
+fixed                 3     3     0         2
+test_checks_distinguish_wrong_candidates (__main__.RetryContractTests.test_checks_distinguish_wrong_candidates) ... ok
+test_default_allows_three_extra_attempts (__main__.RetryContractTests.test_default_allows_three_extra_attempts) ... ok
+test_missing_uses_default (__main__.RetryContractTests.test_missing_uses_default) ... ok
+test_none_uses_default (__main__.RetryContractTests.test_none_uses_default) ... ok
+test_original_bug_is_visible_in_caller (__main__.RetryContractTests.test_original_bug_is_visible_in_caller) ... ok
+test_positive_allows_configured_extra_attempts (__main__.RetryContractTests.test_positive_allows_configured_extra_attempts) ... ok
+test_positive_values_are_preserved (__main__.RetryContractTests.test_positive_values_are_preserved) ... ok
+test_successful_first_attempt_is_not_repeated (__main__.RetryContractTests.test_successful_first_attempt_is_not_repeated) ... ok
+test_zero_is_preserved (__main__.RetryContractTests.test_zero_is_preserved) ... ok
+test_zero_makes_one_attempt_on_failure (__main__.RetryContractTests.test_zero_makes_one_attempt_on_failure) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.000s
+
+OK

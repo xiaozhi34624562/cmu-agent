@@ -1,0 +1,137 @@
+{
+  "note": "11-768/10.DeepResearchAgents/Deep_Research_Agent_General_Design.md",
+  "original_sha256": "3b57ec0a89adf5bb53805195225f400fcfc649f54c59e3b48c7c548e96b1374c",
+  "final_sha256": "80ca6b54b8a5437f0bc1597ee5c0dc295330af00f08828190fa9f49dc0a8c0bd",
+  "status": "completed_with_fixes",
+  "full_reads": [
+    {
+      "round": "initial",
+      "line_ranges": [
+        [
+          1,
+          170
+        ],
+        [
+          171,
+          313
+        ]
+      ]
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "11-768/10.DeepResearchAgents/SOURCES.md",
+      "actual_scope": "全文"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/REFERENCES.json",
+      "actual_scope": "全文"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/readings/001_OpenScholar.html",
+      "actual_scope": "Inference: self-reflective iterative RAG 全节、Synthetic training data generation 至 Data filtering、Citation accuracy 全节",
+      "version": "本地 Nature HTML 归档"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/readings/AgentIR_Reasoning-Aware_Retrieval_for_Deep_Research_Agents.pdf",
+      "pages": "1,3–10",
+      "version": "arXiv:2603.04384v3，2026-03-09",
+      "actual_scope": "机制、DR-Synth、训练/评测设置、表1–3、历史输入与截断范围"
+    },
+    {
+      "path": "2680/readings/web/How_we_built_our_multi-agent_research_system.html",
+      "actual_scope": "正文全文与附录，含生产可靠性/同步瓶颈/状态恢复",
+      "version": "2025-06-13文章本地归档"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/readings/Tongyi_DeepResearch_Technical_Report.pdf",
+      "pages": "4–5,12–13",
+      "version": "v3",
+      "actual_scope": "所列页完整读取，重点为本篇依赖的方法和任务边界"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/DeepResearch_Bench_II_Diagnosing_Deep_Research_Agents_via_Rubrics_from_Expert_Reports.pdf",
+      "pages": "5–6",
+      "version": "v3",
+      "actual_scope": "所列页完整读取，重点为本篇依赖的方法和任务边界"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/BrowseComp-Plus_A_More_Fair_and_Transparent_Evaluation_Benchmark_of_Deep-Research_Agent.pdf",
+      "pages": "9–10",
+      "version": "v1",
+      "actual_scope": "所列页完整读取，重点为本篇依赖的方法和任务边界"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/readings/DR_Tulu_Reinforcement_Learning_with_Evolving_Rubrics_for_Deep_Research.pdf",
+      "pages": "3–6",
+      "version": "v3",
+      "actual_scope": "所列页完整读取，重点为本篇依赖的方法和任务边界"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/AutoResearchBench_Benchmarking_AI_Agents_on_Complex_Scientific_Literature_Discovery.pdf",
+      "pages": "3–4",
+      "version": "本地归档",
+      "actual_scope": "所列页完整读取，重点为本篇依赖的方法和任务边界"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/FinSearchComp_Towards_a_Realistic_Expert-Level_Evaluation_of_Financial_Search_and_Reasoning.pdf",
+      "pages": "3–4",
+      "version": "本地归档",
+      "actual_scope": "所列页完整读取，重点为本篇依赖的方法和任务边界"
+    }
+  ],
+  "coverage_assessment": {
+    "suitability": "适合已有接口、状态、缓存与测试经验的LLM Developer；工程设计与论文机制分层，未预设专门数学训练。",
+    "completeness": "从任务规格、状态对象、动态规划、工具契约、持久化、并行、生成核验、停止状态、评测到落地顺序形成完整闭环；教学例补齐对象与实际决策之间的连接。",
+    "accuracy": "直接回查其依赖的方法段落，语料边界、动态rubric、oracle诊断与持久恢复限制均正确；未将抽象架构冒充实证。"
+  },
+  "issues_and_fixes": [
+    {
+      "location": "新增 §3.1",
+      "issue": "原对象说明较抽象，缺少应用开发读者能沿着一次具体判断看懂的证据—缺口—行动变化。",
+      "fix": "加入通用框架恢复能力的教学构造，连接程序对象/缓存与研究状态，明确断点恢复不能推出外部动作仅执行一次，并提供两问及答案。"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "round": 1,
+      "sha256": "80ca6b54b8a5437f0bc1597ee5c0dc295330af00f08828190fa9f49dc0a8c0bd",
+      "line_ranges": [
+        [
+          1,
+          180
+        ],
+        [
+          181,
+          332
+        ]
+      ],
+      "result": "全文复读，教学例与前后定义和停止条件一致，无新增问题"
+    },
+    {
+      "round": 2,
+      "sha256": "80ca6b54b8a5437f0bc1597ee5c0dc295330af00f08828190fa9f49dc0a8c0bd",
+      "line_ranges": [
+        [
+          1,
+          332
+        ]
+      ],
+      "result": "第二轮全文复读，无新增问题"
+    }
+  ],
+  "pedagogical_review": {
+    "reader_prerequisites": "LLM Developer + Java开发背景，理解状态/接口/重试，但不假定已掌握证据逻辑。",
+    "problem_chain": "什么算完成→保存哪些可判断对象→缺口如何选择行动→如何重建长任务状态→何时并行→如何使核验结果改变交付。",
+    "derivation_gaps": "补齐从有类型的程序对象到未证实的研究论断之间的认知跳跃。",
+    "examples": "保留法国教育情境的概念/范围示例；新增框架选型案例展示具体状态流转，明确均为教学构造，不虚构用户项目。",
+    "organization": "桥接放在对象定义后、动态规划前，使读者先理解状态为何存在，再学习调度。",
+    "learning_outcomes": "能设计一个最小Question/Claim/Evidence/Gap流程；用两道自测区分支持不足与反证，避免把字段存在或调用成功当任务完成。",
+    "fixes": "新增 §3.1；未机械改写其他章节或限定为金融/RAG应用。"
+  },
+  "limitations": [
+    "伪代码为流程示意，未实现或执行架构实验；新增例也不是任何真实框架测试。",
+    "辅助来源按相关机制页核查，不声称所有论文全文精读。",
+    "本篇是主课后的工程设计补充，训练数学和完整论文实验证据由主课程讲解承担。"
+  ]
+}

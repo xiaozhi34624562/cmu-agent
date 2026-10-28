@@ -1,0 +1,136 @@
+{
+  "review_date": "2026-10-28",
+  "note": "MAS.S62/2.ContextEvolution1/notes.zh-CN.md",
+  "original_sha256": "01451a9682ed92a14dcac906dad520c4f464582d44fc68987b2b79b2dcd848ac",
+  "final_sha256": "ed358c94035f8e57c98002fc1ec3228ccea509f03b9fdb4fd293c3d0fe2f2669",
+  "status": "full_review_passed_after_revision",
+  "full_read_ranges": [
+    {
+      "pass": "initial",
+      "lines": [
+        1,
+        747
+      ],
+      "chunks": [
+        "1–370",
+        "371–747"
+      ],
+      "result": "初读全文，主/嘉宾讲义全文、教程全部实质内容及八篇阅读相关原文回查；修改中另完整读过原稿。"
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "MAS.S62/2.ContextEvolution1/slides/lec2 - context.pdf",
+      "pages": "1–47",
+      "scope": "主讲义全文，12/14/26–30/36/37/40/44/46页目视"
+    },
+    {
+      "path": "MAS.S62/2.ContextEvolution1/slides/context_guest.pdf",
+      "pages": "1–36",
+      "scope": "嘉宾全文，12/19/23/29/30/31页目视"
+    },
+    {
+      "path": "MAS.S62/2.ContextEvolution1/tutorials/Textgrad_tutorial.ipynb",
+      "pages": "all 34 cells",
+      "scope": "全部代码与Markdown、已保存实质输出；重复进度条略去，未运行API"
+    },
+    {
+      "path": "MAS.S62/readings/papers/Large_Language_Models_Are_Human-Level_Prompt_Engineers.pdf",
+      "pages": "3–5",
+      "scope": "候选搜索与train/test、评分"
+    },
+    {
+      "path": "MAS.S62/readings/papers/TextGrad_Automatic_Differentiation_via_Text.pdf",
+      "pages": "1,3–8,11–14,33–34",
+      "scope": "机制、约束、示例、论文与教程数据协议、分子与放疗应用边界"
+    },
+    {
+      "path": "MAS.S62/readings/papers/DSPy_Compiling_Declarative_Language_Model_Calls_into_Self-Improving_Pipelines.pdf",
+      "pages": "3–7",
+      "scope": "签名/模块/编译、Bootstrap、评分和微调"
+    },
+    {
+      "path": "MAS.S62/readings/papers/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf",
+      "pages": "2–7",
+      "scope": "Actor/Evaluator/Reflection、预算与隐藏评测；p4图2目视"
+    },
+    {
+      "path": "MAS.S62/readings/papers/Evolving_Prompts_In-Context_An_Open-ended_Self-replicating_Perspective.pdf",
+      "pages": "3–6",
+      "scope": "固定顺序子序列、遗传搜索、验证测试"
+    },
+    {
+      "path": "MAS.S62/readings/papers/GEPA_Reflective_Prompt_Evolution_Can_Outperform_Reinforcement_Learning.pdf",
+      "pages": "1,4–8,10–11,23",
+      "scope": "模块反馈、实例前沿选择、Merge条件与负结果；p6算法目视"
+    },
+    {
+      "path": "MAS.S62/readings/papers/ReasoningBank_Scaling_Agent_Self-Evolving_with_Reasoning_Memory.pdf",
+      "pages": "4–6,8,21–24; p1 author/version",
+      "scope": "检索追加、MaTTS、粒度、同模型BoN选择器"
+    },
+    {
+      "path": "MAS.S62/2.ContextEvolution1/references/Agentic_Context_Engineering_Evolving_Contexts_for_Self-Improving_Language_Models.pdf",
+      "pages": "3–10,12–14,18–19",
+      "scope": "机制、表1/2/3目视、warmup、缓存、两组成本统计；12–14仅参考列表"
+    }
+  ],
+  "coverage_assessment": "覆盖47页主讲义、36页嘉宾与教程；以Context→搜索→反馈图→模块化→策略记忆→长上下文→增量更新组织，机制、实施、实验、成本、诊断与13道自测齐全。",
+  "pedagogical_review": {
+    "reader": "LLM Developer，有Java/后端经验；不默认机器学习数学",
+    "problem_chain": "系统输入如何变好→哪些变量可搜索→错误反馈如何到达变量→如何验证局部更新→如何积累并读取经验",
+    "prerequisites": "补条件概率、argmax/期望/约束、梯度/链式法则、矩阵形状/softmax、RoPE与KV缓存",
+    "organization": "按首次使用位置补背景，保留主讲义顺序；计算图从数据流解释，DSPy编译与javac区分",
+    "examples_and_transfer": "保留原文档计算案例作为单个应用，增加分页API的工具/策略/评价三层诊断和隔离测试",
+    "learning_outcomes": "可解释数值更新与文本候选的差别，可手算注意力与费用，可设计上下文学习对照而非只复述术语"
+  },
+  "issues_and_fixes": [
+    {
+      "scope": "§1–5",
+      "issue": "优化公式和TextGrad类比先于数学基础；教程反馈省略百分比正数前提",
+      "fix": "逐个解码符号、三候选四题评分、导数/链式法则手算；补正负零边界及反馈器也需校验"
+    },
+    {
+      "scope": "§6–9",
+      "issue": "编译、Pareto、BoN选择、QKV/softmax/RoPE的实现含义容易凭术语误读",
+      "fix": "补javac区别、支配算例、同backbone选择器、数据形状与加权数例、位置和token长度分开"
+    },
+    {
+      "scope": "§11–15",
+      "issue": "成本缺少缓存机制；两组rollout统计易混；通用迁移练习不足",
+      "fix": "解释KV中间计算缓存、保存未对齐的Table4/12计数差异、补分页API案例与三道自测"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "pass": 1,
+      "sha256": "ed358c94035f8e57c98002fc1ec3228ccea509f03b9fdb4fd293c3d0fe2f2669",
+      "lines": "1–811",
+      "chunks": [
+        "1–300",
+        "301–600",
+        "601–811"
+      ],
+      "result": "最终修改后完整复读：数学含义、机制和来源条件相容，无新增问题。"
+    },
+    {
+      "pass": 2,
+      "sha256": "ed358c94035f8e57c98002fc1ec3228ccea509f03b9fdb4fd293c3d0fe2f2669",
+      "lines": "1–811",
+      "chunks": [
+        "1–275",
+        "276–550",
+        "551–811"
+      ],
+      "result": "第二遍全文复读：章节先后与例子衔接，自测可从正文作答，领域例子不替代通用原理。"
+    }
+  ],
+  "validation": {
+    "offline_example": "2-context-offline-examples.json；11项算术实际通过",
+    "source_checks": "主/嘉宾讲义全文、教程与阅读的实际页如上；未声称八篇全文或模型实验复现"
+  },
+  "limitations": [
+    "未运行TextGrad远程API、提示搜索或ACE模型实验；练习为设计。",
+    "ACE warmup标签权限、两组rollout计数的完整对齐在本地来源未给出，正文如实保留。"
+  ]
+}

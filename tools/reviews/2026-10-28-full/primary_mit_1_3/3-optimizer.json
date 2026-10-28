@@ -1,0 +1,145 @@
+{
+  "review_date": "2026-10-28",
+  "note": "MAS.S62/3.ContextEvolution2/notes.zh-CN.md",
+  "original_sha256": "5d390b77e034e8f932df2f732ac18b83176394319a432d96d9b61e86686623a8",
+  "final_sha256": "d0497414dc5d39737fbed91dd509263bbe1c121a4cd36067b8e97026f56191ac",
+  "status": "full_review_passed_after_revision",
+  "full_read_ranges": [
+    {
+      "pass": "initial",
+      "lines": [
+        1,
+        527
+      ],
+      "chunks": [
+        "1–275",
+        "276–527"
+      ],
+      "result": "原稿全文阅读，讲义全文和高风险原文/图表回查后修订。"
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "MAS.S62/3.ContextEvolution2/slides/lec3 - llm optimizers.pdf",
+      "pages": "1–49",
+      "scope": "主讲义全文；13张关键图表页目视"
+    },
+    {
+      "path": "MAS.S62/3.ContextEvolution2/references/TextGrad_Automatic_Differentiation_via_Text.pdf",
+      "pages": "1,3–8,11–14,33–34",
+      "scope": "与第2课阅读文件哈希相同，复用本轮第2课实读范围；文本计算图/反馈/实验限制"
+    },
+    {
+      "path": "MAS.S62/3.ContextEvolution2/references/Self-Refine_Iterative_Refinement_with_Self-Feedback.pdf",
+      "pages": "2–4",
+      "scope": "反馈与更新机制、任务设置和四轮上限"
+    },
+    {
+      "path": "MAS.S62/readings/papers/Large_Language_Models_as_Optimizers.pdf",
+      "pages": "1,3–5,7–8",
+      "scope": "优化轨迹、optimizer/scorer分工、表1与候选/历史/示例配置"
+    },
+    {
+      "path": "MAS.S62/3.ContextEvolution2/references/Mathematical_discoveries_from_program_search_with_large_language_models.pdf",
+      "pages": "1–11,17–18,50",
+      "scope": "函数骨架、两级采样、岛屿重置、Cap Set与装箱实验、预算；8/11/18页目视"
+    },
+    {
+      "path": "MAS.S62/readings/papers/AlphaEvolve_A_coding_agent_for_scientific_and_algorithmic_discovery.pdf",
+      "pages": "2–8",
+      "scope": "可修改块、diff、多指标级联与档案；4/6页目视"
+    },
+    {
+      "path": "MAS.S62/readings/papers/Can_LLMs_Generate_Novel_Research_Ideas_A_Large-Scale_Human_Study_with_100+_NLP_Researchers.pdf",
+      "pages": "5–12,14",
+      "scope": "生成去重、招募重叠、三个统计单位、表7–9及盲评限制；10–12页目视"
+    },
+    {
+      "path": "MAS.S62/readings/papers/The_AI_Scientist_Towards_Fully_Automated_Open-Ended_Scientific_Discovery.pdf",
+      "pages": "3–7,10",
+      "scope": "流程、评价数据与真实数值退步被写成改善的例子"
+    },
+    {
+      "path": "MAS.S62/readings/papers/Towards_End-to-End_Automation_of_AI_Research.pdf",
+      "pages": "1–7",
+      "scope": "版本、树搜索、人工筛选、workshop三个提交与撤回；3/5页目视"
+    },
+    {
+      "path": "MAS.S62/3.ContextEvolution2/references/DeepSeek-Prover-V2_Advancing_Formal_Mathematical_Reasoning_via_Reinforcement_Learning_for_Subgoal_Decomposition.pdf",
+      "pages": "2–6",
+      "scope": "子目标/sorry/组合证明、冷启动与后续训练；3页目视"
+    },
+    {
+      "path": "MAS.S62/assignment/assignment-1/OpenEvolve_assignment.ipynb",
+      "pages": "all 40 cells",
+      "scope": "所有Markdown和代码完整阅读；未将保存输出当成实际运行，核查缺件与导入"
+    },
+    {
+      "path": "MAS.S62/3.ContextEvolution2/examples/bin_packing_lab.py",
+      "pages": "full",
+      "scope": "完整读代码并实际重跑，核对标量接口、平分策略、开发选择和独立测试"
+    }
+  ],
+  "coverage_assessment": "49页讲义主线覆盖；Prompt优化→候选表示→档案与选择→FunSearch→广义程序搜索→科学评价→形式验证→装箱实践，11道自测及答案。",
+  "pedagogical_review": {
+    "reader": "有Java等开发经验的LLM Developer；不默认组合数学或统计检验基础",
+    "problem_chain": "候选怎样产生→什么算有效改善→经验如何影响后续生成→怎样证明搜索与发现可信",
+    "prerequisites": "补条件生成符号、黑箱查询、模3向量、构造下界、softmax温度、统计单位与程序规范",
+    "organization": "用开发实验组件连接机制，在首次使用处补必要前置；保留论文机制与教学实现的表达能力差异",
+    "examples_and_transfer": "通用代码实验/测试职责、装箱可运行案例、排序规范与空输出反例",
+    "learning_outcomes": "能定义搜索接口/验证器/档案，手算父代选择，区分发现与最优证明，排查作业环境问题"
+  },
+  "issues_and_fixes": [
+    {
+      "scope": "§1–5",
+      "issue": "生成与选择公式、Cap Set、下界和黑箱优化隐含前提过多",
+      "fix": "逐个解释符号；二维合法/非法构造、3^8规模、-箱数与两档温度手算；引入熟悉的实验组件职责"
+    },
+    {
+      "scope": "§6.5",
+      "issue": "OpenEvolve原始快照缺三个配套文件，使用oe却未导入；易与学生TODO混淆",
+      "fix": "如实写出缺件和导入修复步骤，区分HW1入口与Assignment 3题头；不改写原始快照"
+    },
+    {
+      "scope": "§7–9",
+      "issue": "研究评分统计单位、验证规范和教学骨架边界需要更具体讲解",
+      "fix": "补重复评审与独立方案区别、0.090→0.093的退步例、排序元素守恒、标量评分与原论文数组接口的差异"
+    },
+    {
+      "scope": "examples/RESULTS.md",
+      "issue": "运行证据需要与本轮一致",
+      "fix": "实际重跑无模型实验并更新日期和环境；结果保留开发选择/独立测试/分布变化边界"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "pass": 1,
+      "sha256": "d0497414dc5d39737fbed91dd509263bbe1c121a4cd36067b8e97026f56191ac",
+      "lines": "1–563",
+      "chunks": [
+        "1–285",
+        "286–563"
+      ],
+      "result": "最终修改后全文复读，公式与例子条件、原论文与教学接口及缺件描述一致。"
+    },
+    {
+      "pass": 2,
+      "sha256": "d0497414dc5d39737fbed91dd509263bbe1c121a4cd36067b8e97026f56191ac",
+      "lines": "1–563",
+      "chunks": [
+        "1–280",
+        "281–563"
+      ],
+      "result": "第二遍全文复读，问题链顺序连贯，自测可从正文作答，未发现需再修改问题。"
+    }
+  ],
+  "validation": {
+    "offline_example": "3-optimizer-offline-examples.json；8项检查通过并保存装箱实验输出",
+    "visual_checks": "24张原PDF图表页实际目视，原文件未改写"
+  },
+  "limitations": [
+    "没有运行OpenEvolve/LLM/API/Lean，原始Notebook仍缺配套文件与导入，学生TODO保持。",
+    "辅助论文只读上述明确页段；AI Scientist长附录未逐篇复核，EdgeBench只按讲义解释。",
+    "装箱实验比较预写规则，没有模型生成或岛屿演化，不能视为FunSearch复现。"
+  ]
+}

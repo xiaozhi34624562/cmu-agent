@@ -1,0 +1,391 @@
+{
+  "note": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/notes.zh-CN.md",
+  "original_sha256": "c7834b817f0b0a0b062822c1cf235e382f93688fe9852d0ddf5863b139a7b5ed",
+  "final_sha256": "a4c936d78c356e9f24b080cc9a4d7c6cb77d41960de6be014a2df23bb331aea4",
+  "status": "passed_with_fixes",
+  "final_line_count": 463,
+  "full_read_ranges": [
+    {
+      "round": "initial",
+      "sha256": "c7834b817f0b0a0b062822c1cf235e382f93688fe9852d0ddf5863b139a7b5ed",
+      "ranges": [
+        "1-170",
+        "171-330",
+        "331-436"
+      ]
+    },
+    {
+      "round": "post_fix_1",
+      "sha256": "a4c936d78c356e9f24b080cc9a4d7c6cb77d41960de6be014a2df23bb331aea4",
+      "ranges": [
+        "1-160",
+        "161-315",
+        "316-463"
+      ]
+    },
+    {
+      "round": "post_fix_2",
+      "sha256": "a4c936d78c356e9f24b080cc9a4d7c6cb77d41960de6be014a2df23bb331aea4",
+      "ranges": [
+        "1-155",
+        "156-310",
+        "311-463"
+      ]
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/SOURCES.md",
+      "sha256": "ed4e64165c425f2167363f7ea14546d25305a79c781ec73e423d903d37356621",
+      "range": "全文；初读正文之前",
+      "version": "本地归档固定版本",
+      "reviewer": "harvard_full_audit"
+    },
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/REFERENCES.json",
+      "sha256": "e9602b57b733428edbdd4c8945c90e0be7b30fe9172e7b9571a9439d7708eb4c",
+      "range": "全文；初读正文之前",
+      "version": "本地归档固定版本",
+      "reviewer": "harvard_full_audit"
+    },
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/10_llm_serving_basics_2a.pdf",
+      "sha256": "b7351ed4f055e0196ebf06cf348e5042b83392f45dd30cbca379ad28be72b63b",
+      "range": "PDF实际pp1–41全文，提取文本1–420、421–840、841–EOF",
+      "version": "2026-10-21主讲义，41页",
+      "reviewer": "harvard_full_audit",
+      "visually_inspected_pdf_pages": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        38,
+        39,
+        40,
+        41
+      ]
+    },
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/CUDA_C++_Programming_Guide.pdf",
+      "sha256": "9d3c313edfa39fbd932cc1517dec8d3a3690802132f8e65530a155e6eb3339b8",
+      "range": "PDF pp1–2、27–36、73–82全文；编程层级、cluster、Graph更新和限制",
+      "version": "Release13.4 2026-09-15；正文legacy",
+      "reviewer": "harvard_full_audit"
+    },
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/references/Roofline_An_Insightful_Visual_Performance_Model_for_Floating-Point_Programs_and_Multicore_Architectures.pdf",
+      "sha256": "c92f852eed1070b140302114339271dc1a4d6d665814ac9000be6ce06a7d6bcb",
+      "range": "PDF pp3–6全文；DRAM口径、roofline与ceilings",
+      "version": "Berkeley EECS-2008-134",
+      "reviewer": "harvard_full_audit",
+      "visually_inspected_pdf_pages": [
+        4
+      ]
+    },
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashAttention_Fast_and_Memory-Efficient_Exact_Attention_with_IO-Awareness.pdf",
+      "sha256": "ca7f9fda10b90fc05dd291a3accc85e9c1a4a860b99b31928dab03ed3fcb14e4",
+      "range": "PDF pp3–6全文；online softmax、Algorithm1、IO与重算",
+      "version": "归档FlashAttention原论文",
+      "reviewer": "harvard_full_audit",
+      "visually_inspected_pdf_pages": [
+        5
+      ]
+    },
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashAttention-2_Faster_Attention_with_Better_Parallelism_and_Work_Partitioning.pdf",
+      "sha256": "4aa8935dfacaf6ae8c68f772ca92f730154a0dd0e1bceeb59c7bc56c512d5868",
+      "range": "PDF p1、pp4–9全文；工作划分与实验摘要",
+      "version": "归档FlashAttention-2",
+      "reviewer": "harvard_full_audit",
+      "visually_inspected_pdf_pages": [
+        9
+      ]
+    },
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashAttention-3_Fast_and_Accurate_Attention_with_Asynchrony_and_Low-precision.pdf",
+      "sha256": "3d05ca102802e6b8ebbae5181efe777b7d258cd75e2fe9cca209efd2f5e6c6cb",
+      "range": "PDF p1、pp3–5、9–10全文；producer/consumer、WGMMA、pipeline消融和精度条件",
+      "version": "FlashAttention-3 本地v2",
+      "reviewer": "harvard_full_audit",
+      "visually_inspected_pdf_pages": [
+        5,
+        9
+      ]
+    },
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashAttention-4_Algorithm_and_Kernel_Pipelining_Co-Design_for_Asymmetric_Hardware_Scaling.pdf",
+      "sha256": "7c053b2b45a9d7da93b21f7dbe16ff8a927a9dc7e92537a034ca58a4eb5f10eb",
+      "range": "PDF p1、pp3–9、p20全文；TMEM、2CTA、pipeline、指数近似和内部硬件/日期矛盾",
+      "version": "FlashAttention-4 本地v1",
+      "reviewer": "harvard_full_audit",
+      "visually_inspected_pdf_pages": [
+        20
+      ]
+    },
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashInfer_Efficient_and_Customizable_Attention_Engine_for_LLM_Inference_Serving.pdf",
+      "sha256": "6995874b7a43b0693ba0da805c4d99327a4cb4013edbea3e36f4c42949e63303",
+      "range": "PDF pp3–10全文；布局、运行时、CUDA Graph、服务对照和parallel generation",
+      "version": "FlashInfer 本地v2",
+      "reviewer": "harvard_full_audit",
+      "visually_inspected_pdf_pages": [
+        3,
+        8
+      ]
+    },
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FLUX_Fast_Software-based_Communication_Overlap_on_GPUs_through_Kernel_Fusion.pdf",
+      "sha256": "14256ca83b1595bcee9d1bc6cb5fcb84d8fda8d6a18c51a8e45797a47b7bf455",
+      "range": "PDF p1、pp4–6、10–17全文；ECT定义、细粒度通信、硬件/版本/shape与分层实验",
+      "version": "FLUX 2024-10-25稿",
+      "reviewer": "harvard_full_audit"
+    },
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/TVM_An_Automated_End-to-End_Optimizing_Compiler_for_Deep_Learning.pdf",
+      "sha256": "6032d5a54db0ec552168a5f5295a954edea6a24d91ae03bed1e0da0d858c9fa9",
+      "range": "PDF pp3–5、7–8全文；compute/schedule、流水线和代价模型",
+      "version": "TVM 2018",
+      "reviewer": "harvard_full_audit"
+    },
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/Mirage_A_Multi-Level_Superoptimizer_for_Tensor_Programs.pdf",
+      "sha256": "1f0b88aa3b56253ada9d85343bc5e0bdcf89790240fcce92113573b7927e2a2b",
+      "range": "PDF pp3–11全文；μGraph、生成、验证定理、实现限制及Figure7",
+      "version": "Mirage 本地v3",
+      "reviewer": "harvard_full_audit",
+      "visually_inspected_pdf_pages": [
+        11
+      ]
+    },
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/Making_Deep_Learning_go_Brrrr_From_First_Principles.html",
+      "sha256": "b035a3c38d61db25dc26c2c6cc76b1df17fd4d5a20735b857f2ffb6e248bcf90",
+      "range": "去导航提取文本1–292全文；compute/memory/overhead与全部脚注",
+      "version": "Horace He 2022归档",
+      "reviewer": "harvard_full_audit"
+    },
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashAttention-4_from_Scratch_to_Near-SOTA_in_60_Diagrams_CUDA_PTX.html",
+      "sha256": "22ff6b10fa6853e0c9ea268aa7a7958237271392ef507be8dff20b3e8095a63f",
+      "range": "去导航提取文本1–140、3540–3765全文；主线范围、最终4项小优化、逐shape结果、布局及FA4标定；不是4007行全文",
+      "version": "2026-08-28文章；2026-09-12更新",
+      "reviewer": "harvard_full_audit"
+    },
+    {
+      "path": "2680/site/readings/oct-21.html",
+      "sha256": "2db6884eb3be13a95ec274822118ec20f57b5604b568c8c172d77018b5ad3294",
+      "range": "去导航提取文本1–135、136–264全文；官方阅读分组，仅作课程范围，AI生成Why read it不作主证据",
+      "version": "本地归档固定版本",
+      "reviewer": "harvard_full_audit"
+    },
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/MPK_A_Compiler_and_Runtime_for_Mega-Kernelizing_Tensor_Programs.pdf",
+      "sha256": "0069c67600b194c4a935110889df803dd0ff8ca8caebc324ef6e13aeaa4da4cb",
+      "pdf_pages_read": [
+        2,
+        7,
+        8,
+        9,
+        10,
+        13,
+        14
+      ],
+      "visual_pdf_pages": [
+        7,
+        10
+      ],
+      "findings": "§4–7: SM-level task/event graph, JIT/AOT dispatch, shared-memory paging, 4 SM/16 scheduler warps, A100/H100/B200, prompt64/output1024 BF16 offline maxbatch1–16; current guide supported. Suggest throughput-ratio wording for 1.7× to avoid ambiguous latency-decrease times.",
+      "reviewer": "primary reviewer /root；独立核查记录已读取并整合，非本子代理冒称亲读",
+      "range": "实际PDF页 2, 7, 8, 9, 10, 13, 14",
+      "version": "本地归档版本，绑定SHA；详见独立记录"
+    },
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/references/PyTorch_2_Faster_Machine_Learning_Through_Dynamic_Python_Bytecode_Transformation_and_Graph_Compilation.pdf",
+      "sha256": "9fba949b34051ae1b0936c91ddb23e43638912b180dba490616256e5446f4e6e",
+      "pdf_pages_read": [
+        2,
+        3,
+        4,
+        5,
+        8,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "visual_pdf_pages": [
+        4,
+        14
+      ],
+      "findings": "§3/4 guard/partial graphs/side-effect preservation and GPU Triton/CPU C++ supported; §6 settings 2023-08-30 nightly/CUDA11.6, warmups excluded, training means forward+backward excluding optimizer; recommend making this boundary explicit beside summary speedups.",
+      "reviewer": "primary reviewer /root；独立核查记录已读取并整合，非本子代理冒称亲读",
+      "range": "实际PDF页 2, 3, 4, 5, 8, 9, 10, 12, 13, 14, 15",
+      "version": "本地归档版本，绑定SHA；详见独立记录"
+    },
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/A_Systematic_Characterization_of_LLM_Inference_on_GPUs.pdf",
+      "sha256": "f3929c0b1bdf5c42730f9a57c29cc986523a78f2ff307d1e9afb9d439e7d4116",
+      "pdf_pages_read": [
+        4,
+        5,
+        6,
+        11,
+        12,
+        14,
+        15
+      ],
+      "visual_pdf_pages": [
+        5,
+        14
+      ],
+      "findings": "§3 vLLM0.9.2 BF16 eager offline batches/4A10080GB and Orin; §5.2 warp-level stall; §6.1 summary Qwen2.5-32B uses4096input16output (different from Table2), TP2 1.24→0.66s. Guide appropriately limits generalization; recommend exact workload/model beside numbers.",
+      "reviewer": "primary reviewer /root；独立核查记录已读取并整合，非本子代理冒称亲读",
+      "range": "实际PDF页 4, 5, 6, 11, 12, 14, 15",
+      "version": "本地归档版本，绑定SHA；详见独立记录"
+    },
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/Ragged_Paged_Attention_A_High-Performance_and_Flexible_LLM_Inference_Kernel_for_TPU.pdf",
+      "sha256": "6b546d2af7bd3673cdfedc2d4efb17e3ebc149d1cfa28e893f45cae9b7aca578",
+      "pdf_pages_read": [
+        1,
+        6,
+        7,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "visual_pdf_pages": [
+        13,
+        15,
+        16
+      ],
+      "findings": "§4 decode128 uniform-length sequences; prefill1 sequence512–32K. MFU denominator hardware peak × maxMXUutilization: dk128 uses50%peak. Reported73%noncausal/63%causal are adjusted-denominator metrics; guide must clarify this. 86%MBU is controlled shape, not arbitrary ragged workload guarantee.",
+      "reviewer": "primary reviewer /root；独立核查记录已读取并整合，非本子代理冒称亲读",
+      "range": "实际PDF页 1, 6, 7, 11, 12, 13, 14, 15, 16",
+      "version": "本地归档版本，绑定SHA；详见独立记录"
+    },
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/examples/roofline_online_softmax.py",
+      "sha256": "c5c4dcd7572288949924cbd5646e5d27ec3d7f8f4db62485219c2bda9e60ed92",
+      "range": "代码全文；CPU执行并与RUN.json逐字段比对；另在内存临时变体删除旧状态缩放，验证6.0→5.2反例",
+      "version": "本地归档固定版本",
+      "reviewer": "harvard_full_audit"
+    },
+    {
+      "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/examples/RUN.json",
+      "sha256": "0385200ffa6c8dc9c8ce589be86e09a72fa3cdff0b7aad59aaec7238c2ea376e",
+      "range": "全文，复跑输出一致",
+      "version": "本地归档固定版本",
+      "reviewer": "harvard_full_audit"
+    }
+  ],
+  "coverage_assessment": [
+    "41页主讲义问题链完整：CPU/GPU吞吐差异→逻辑线程与物理SM→算力/容量/带宽→roofline→batch/context→内存并发→异步搬运→多卡与异构硬件；没有用阅读论文替代讲义。",
+    "全部官方阅读组在§9–14有位置；FA1–4解释瓶颈迁移，FlashInfer与RPA解释服务布局，FLUX/编译运行时解释执行边界；高级来源按核心机制与对照范围审核，未声称每篇论文全读。",
+    "保留具体计算、CPU等价实现、实验执行顺序、故障分流表、持久编译状态和18项有答案自测；补齐初学GPU所需词义与贯穿计算。"
+  ],
+  "pedagogical_review": {
+    "reader_prerequisites": "LLM Developer与Java经验，可理解数组、异步任务、缓存、并发和服务指标；不预设CUDA/高级数学/硬件知识。",
+    "problem_chain": "先解释为什么GPU峰值不等于用户速度；新增§0.2 CPU提交数组任务→grid/block/thread/warp→SM→存储路径，使之后吞吐、occupancy与流量分析有共同对象。",
+    "prerequisites_and_skipped_steps": "补kernel/launch/tile/HBM/SM/lane/barrier/spill、类型字节、GEMV/GEMM、WGMMA/CTA/SFU/MXU/JIT/DMA定义；明确Nθ权重数不同于N矩阵边长，补P=F/T到min屋顶推导。",
+    "worked_examples": "1000元素/256线程→4块/24尾线程→最多4SM；同一FP32向量加法1/12FLOP/B解释扩大工作与提高复用不同；6搬运+10计算双缓冲解释所有权和收尾；100ms Amdahl及scores[0,ln2,ln4]/values[2,4,8]完整算到6并用5.2错误反例验证。",
+    "organization": "主线在§0–8，attention机制在§9–10，跨kernel与平台扩展在§11–14，测量和诊断收束；不围绕特定金融或RAG业务收窄。",
+    "learning_outcomes": "新增自测15–18要求算block/尾界、区分规模与算术强度、计算在线softmax、识别布局转换成本；对应正文均有可追踪推导。",
+    "judgment": "修改后适合有应用开发经验读者逐步学习GPU系统；深入写高性能CUDA kernel仍需另做实机练习。"
+  },
+  "issues_and_fixes": [
+    {
+      "issue": "前半篇术语先用后解释且缺完整执行样例",
+      "fix": "新增§0.2调用/数据路径与§2.2索引实例，补类型、同步、spill及指令术语"
+    },
+    {
+      "issue": "roofline推导跳步且N在矩阵边长与权重数之间换义",
+      "fix": "由时间下界推到吞吐上界，权重元素数改Nθ；向量加法贯穿算术强度，增加Amdahl和双缓冲数值例"
+    },
+    {
+      "issue": "online softmax例只算分母，没有输出也缺标准缩放与mask回顾",
+      "fix": "补完整attention式和因果mask，value例算到6，漏旧状态缩放得到5.2；临时CPU反例实际验证"
+    },
+    {
+      "issue": "B200教程94.4%含义不完整",
+      "fix": "明确14主线+4小优化、4K/8K94.4%与16K94.1%、偏好布局BHLD/BSHD无转换计时及直接BSHD92.1–92.7%"
+    },
+    {
+      "issue": "Mirage定理保证可能被读成实现已经达到",
+      "fix": "依据v3p10明确小素数一次检验与最终理论保证仍待实现，保留浮点测试和受限程序语言边界"
+    },
+    {
+      "issue": "FLUX通信隐藏指标分母与FA4指数实现精度边界不够清晰",
+      "fix": "解释ECT/overlap efficiency基线；明确FA4部分指数近似和BF16误差验收"
+    },
+    {
+      "issue": "独立来源核查补出四项实验条件",
+      "fix": "MPK使用单batch吞吐1.7倍；PyTorch2补nightly/CUDA/warmup及不含optimizer；Characterization补具体Qwen2.5-32B/4096/16/TP2；RPA补调整MXU分母而非全芯片峰值"
+    },
+    {
+      "issue": "新增数学编辑中转义损坏，在最终完整复读之前发现",
+      "fix": "修复全部转义和控制字符，再对最终SHA重新完成两轮全文；中间片段阅读未计作最终两轮"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "round": 1,
+      "sha256": "a4c936d78c356e9f24b080cc9a4d7c6cb77d41960de6be014a2df23bb331aea4",
+      "ranges": [
+        "1-160",
+        "161-315",
+        "316-463"
+      ],
+      "result": "全文实际分段阅读，无截断；概念先后、符号、例题、数字条件、索引和自测一致，未发现需再改问题"
+    },
+    {
+      "round": 2,
+      "sha256": "a4c936d78c356e9f24b080cc9a4d7c6cb77d41960de6be014a2df23bb331aea4",
+      "ranges": [
+        "1-155",
+        "156-310",
+        "311-463"
+      ],
+      "result": "全文实际分段阅读，无截断；概念先后、符号、例题、数字条件、索引和自测一致，未发现需再改问题"
+    }
+  ],
+  "additional_evidence": {
+    "independent_source_checks": "tools/reviews/2026-10-28-full/harvard/11-independent-source-checks.json",
+    "independent_source_checks_sha256": "a88744a956d46ec5743bec2e136376ee7d1456ee90703915c0612a3cee2705c3",
+    "cpu_run": "RUN.json逐字段一致；direct与online均6.0；删除缩放临时变体5.2"
+  },
+  "limitations": [
+    "未运行GPU/CUDA/TPU/论文benchmark或验证当前API版本；CPU验证不能证明性能和并发正确性。",
+    "B200 walkthrough只读明确列出的原文范围；CUDA Guide和论文按正文相关范围精读，未冒称全部数百页全文。",
+    "FA4原文件B100/B200及日期内部冲突仍作为来源限制保留；未改原始PDF。",
+    "四篇独立核查由主代理完成并归档，本文如实标记读者身份；没有代替最终正文两轮实读。",
+    "未新增/改写原始资料或运行sync；README在本课不存在，已用SOURCES与REFERENCES作入口。"
+  ]
+}

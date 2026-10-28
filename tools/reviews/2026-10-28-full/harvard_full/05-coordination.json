@@ -1,0 +1,184 @@
+{
+  "note": "2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/lecture-05_multi-agent-coordination_完整学习笔记.md",
+  "original_sha256": "ea7db39497caf999eb9c76dd2645813f8fcb1fbb2e485554f0fb41eb49e4b97f",
+  "final_sha256": "d7357c95d3d11abe5baace48929115c950d10f1acebafaad25c52f8075bb2c09",
+  "status": "passed_with_fixes",
+  "final_line_count": 1765,
+  "full_read_ranges": [
+    {
+      "round": "initial",
+      "sha256": "ea7db39497caf999eb9c76dd2645813f8fcb1fbb2e485554f0fb41eb49e4b97f",
+      "ranges": [
+        "1-300",
+        "301-600",
+        "601-900",
+        "901-1200",
+        "1201-1500",
+        "1501-1737"
+      ]
+    },
+    {
+      "round": "intermediate_full_reread_before_final_repairs",
+      "sha256": "3e269c420548b88b678c677f0c8068b3184f73c7f6e4986799f1fc5ec27ae37d",
+      "ranges": [
+        "1-350",
+        "351-700",
+        "701-1050",
+        "1051-1400",
+        "1401-1765"
+      ],
+      "result": "发现SOP、variance、embedding首次使用仍先于解释，补定义后重新两轮"
+    },
+    {
+      "round": "post_fix_1",
+      "sha256": "d7357c95d3d11abe5baace48929115c950d10f1acebafaad25c52f8075bb2c09",
+      "ranges": [
+        "1-450",
+        "451-900",
+        "901-1350",
+        "1351-1765"
+      ]
+    },
+    {
+      "round": "post_fix_2",
+      "sha256": "d7357c95d3d11abe5baace48929115c950d10f1acebafaad25c52f8075bb2c09",
+      "ranges": [
+        "1-440",
+        "441-880",
+        "881-1320",
+        "1321-1550",
+        "1551-1765"
+      ]
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/SOURCES.md",
+      "sha256": "dcee22a2678eae9256e40ee8dfa84a4906fdd8ce0bcdf43aee81d8c436bfae5e",
+      "version": "本地归档",
+      "range": "全文；首次正文阅读前；本课无 README/REFERENCES.json",
+      "visually_inspected_pdf_pages": []
+    },
+    {
+      "path": "2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/5_agent_design_2.pdf",
+      "sha256": "4dbc20e3cdfcc7a22879672c2300058c8c41b7364a4fbe5d3378f7861501c9bd",
+      "version": "2026-09-21 课程讲义，46页",
+      "range": "实际 PDF pp.1–46 全文；第4页空白；后半页脚与实际页序不同",
+      "visually_inspected_pdf_pages": [
+        7,
+        17,
+        24,
+        25,
+        33,
+        40
+      ]
+    },
+    {
+      "path": "2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/readings/AutoGen_Enabling_Next-Gen_LLM_Applications_via_Multi-Agent_Conversation.pdf",
+      "sha256": "fcf8b1acae6b1bd6f14c92463caa9726828bf998234ba9f10c2411087897c96b",
+      "version": "arXiv:2308.08155v2，2023-10-03",
+      "range": "pp.1–10、22–23、26–28；六应用、接口、交互式检索、ALFWorld、OptiGuide、Group Chat",
+      "visually_inspected_pdf_pages": [
+        4,
+        7,
+        26,
+        28
+      ]
+    },
+    {
+      "path": "2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/readings/MetaGPT_Meta_Programming_for_a_Multi-Agent_Collaborative_Framework.pdf",
+      "sha256": "17582e47647fac8eaa3681feade41c8408310c4133acc5c6823565fbe880e1ac",
+      "version": "arXiv:2308.00352v7，2024-11-01",
+      "range": "pp.1–10、15–16；SOP、消息池、执行反馈、三组实验与附录自改进/展望",
+      "visually_inspected_pdf_pages": [
+        2,
+        4,
+        5,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "path": "2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/readings/Don_t_Build_Multi-Agents.html",
+      "sha256": "c0f8c4656ee7c278071a23518e12d05a0d42e587b0c9fdde3717a00c24b7742c",
+      "version": "Cognition，2025-06-12 归档",
+      "range": "文章全文；提取后1–71行，包括完整上下文、隐含决定、压缩、历史产品案例",
+      "visually_inspected_pdf_pages": []
+    },
+    {
+      "path": "2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/readings/How_we_built_our_multi-agent_research_system.html",
+      "sha256": "f7c4539731f0fe4794b0db96f95dbb712331338febdb11e835dedff5bb3232eb",
+      "version": "Anthropic，2025-06-13 归档",
+      "range": "文章及附录全文；提取后1–53、54–97行；完整工作流图注已读；远端图未能获取",
+      "visually_inspected_pdf_pages": []
+    },
+    {
+      "path": "2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/readings/Towards_a_Science_of_Scaling_Agent_Systems.pdf",
+      "sha256": "028f329010d95143915db8db6ce1ad26a4e844b66e4abd6b36fdb39651aff7fd",
+      "version": "arXiv:2512.08296v3，2026-04-08",
+      "range": "pp.1–21、25–27；架构/预算/实验、回归、标准化、指标、泛化/统计限制；未读22–24、28–44",
+      "visually_inspected_pdf_pages": [
+        11,
+        19,
+        20
+      ]
+    }
+  ],
+  "coverage_assessment": {
+    "lecture": "46页全文核对：拆分理由、三张图、八类架构、六分解维度/八契约字段、粒度/动态/六类失败、四通信维度与控制内容分离、分布式运行状态、A2A/MCP及四原则均有实质讲解；memory按最后页说明留给下课。",
+    "mechanisms": "五份阅读分别补对话编程/反馈、SOP/结构化产物、隐含共同决定、研究并行与生产恢复、受控架构实验。没有将工程观点拼成同条件实验或通用阈值。",
+    "implementation_and_diagnosis": "分页API共享契约、候选→验收→持久状态、条件漏检、超时副作用/幂等恢复、版本绑定、过程约束与机制消融构成从设计到故障诊断闭环。"
+  },
+  "pedagogical_review": {
+    "reader_prerequisites": "LLM Developer/Java经验；已知接口、调用链、并发、状态、缓存与测试，不预设概率统计/ML指标。新增开篇说明与通用分页接口桥接。",
+    "question_chain": "失败为何发生→控制/任务/通信三图→架构选择→分解契约→交互与SOP机制→上下文交接→实验取舍→运行状态/协议→完整案例→评估。主线正确；没有从角色清单直接跳到有效性结论。",
+    "prerequisites_and_steps": "补SOP/DAG先定义后用；全互联消息4→12、8→56对照星形；Precision/Recall/F1分母及6/8、6/10例；Pass@1候选与模型调用数区别；独立投票逐项展开；条件漏检20%×10%=2%；回归交互项、log、标准化、R²和交叉验证解释。",
+    "cases": "新增通用分页接口（0/1起点、稳定排序、共同契约、集成验收），连接开发经验；原有FlappyBird、nullable后端接口与三公司研究案例提供不同任务迁移。均为来源案例或明确教学假设，未虚构用户项目。",
+    "organization": "16章较长，但章依赖/导航/来源附录清楚；保留普遍知识体系，先接口与图再统计证据；最终复读把SOP、方差与embedding解释移至首次使用处。",
+    "learning_outcomes": "能按依赖拆分而非先增角色，解释局部成功为何不能合并，区分候选错误/条件漏检、相关投票与独立性，读懂预算和泛化限制；新增两道应用自测与完整答案。",
+    "fixes": "补开发经验到协调/概率/统计的必要桥接；没有为了改动重写原有正确的架构与证据组织。"
+  },
+  "issues_and_fixes": [
+    {
+      "issue": "讲稿预设图论、概率和统计，直接使用指标与回归结果，阻碍具备开发经验读者理解收益边界",
+      "fix": "补最小定义、手算例、条件分母、候选数与内部循环区别、统计模型解释和自测。"
+    },
+    {
+      "issue": "缺少通用接口开发起点，部分术语首次出现仍比解释早",
+      "fix": "新增分页API贯穿桥接和阅读前提；复读发现SOP/variance/embedding定义滞后后再次修复并重新完成两轮。"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "round": 1,
+      "sha256": "d7357c95d3d11abe5baace48929115c950d10f1acebafaad25c52f8075bb2c09",
+      "ranges": [
+        "1-450",
+        "451-900",
+        "901-1350",
+        "1351-1765"
+      ],
+      "result": "全文完成，章节依赖、通用开发案例与新增推导连贯，无新实质问题。"
+    },
+    {
+      "round": 2,
+      "sha256": "d7357c95d3d11abe5baace48929115c950d10f1acebafaad25c52f8075bb2c09",
+      "ranges": [
+        "1-440",
+        "441-880",
+        "881-1320",
+        "1321-1550",
+        "1551-1765"
+      ],
+      "result": "全文完成；1321–1765首次请求因上下文容量未返回正文，随后分1321–1550、1551–1765完整补读；指标分母、自测答案、来源附录一致，无再修改。"
+    }
+  ],
+  "limitations": [
+    "主讲义全文已读；辅助论文按sources_read范围读取，未声称全部附录全文。",
+    "Anthropic完整研究架构图只有远端CDN引用，本地无图；已告知主代理并尝试临时获取，HTTP403，未目视该图；文章全文及图注已读，其余所列重要图表已渲染目视。",
+    "历史AutoGen/API/A2A按归档材料解释，未核验当前SDK或协议实现。",
+    "无GPU/模型/API或论文实验复现；新增概率/指标数值为手算教学例，非真实效果。",
+    "未改原始资料、未运行整理同步、未修改课程根审核记录。"
+  ]
+}

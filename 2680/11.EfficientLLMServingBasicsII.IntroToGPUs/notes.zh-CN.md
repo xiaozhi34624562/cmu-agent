@@ -1,6 +1,6 @@
 # 第 11 课：LLM 服务基础 II——从 GPU 的吞吐机器到可验证的性能优化
 
-> 课程日期：2026-10-21。材料核查：2026-10-26。主讲 Juncheng Yang。本文以 [10_llm_serving_basics_2a.pdf](10_llm_serving_basics_2a.pdf) 全部 41 页为主线，L p.x 均是 **PDF 实际页序，从 1 开始**，不沿用跳号的页脚号。  
+> 课程日期：2026-10-21。材料核查：2026-10-28。主讲 Juncheng Yang。本文以 [10_llm_serving_basics_2a.pdf](10_llm_serving_basics_2a.pdf) 全部 41 页为主线，L p.x 均是 **PDF 实际页序，从 1 开始**，不沿用跳号的页脚号。  
 > 课程 [SOURCES.md](SOURCES.md) 中有 14 项已归档 reading 文件，另有 Roofline 与 PyTorch 2 的在线来源。本文补存 [Berkeley Roofline 技术报告](references/Roofline_An_Insightful_Visual_Performance_Model_for_Floating-Point_Programs_and_Multicore_Architectures.pdf) 与 [PyTorch 2 原论文](references/PyTorch_2_Faster_Machine_Learning_Through_Dynamic_Python_Bytecode_Transformation_and_Graph_Compilation.pdf)，版本和获取信息见 [REFERENCES.json](REFERENCES.json)。没有实际运行 GPU、CUDA 或论文性能实验；CPU 教学示例的验证范围单独说明。
 
 ## 0. 本课的中心问题：为什么算力没有变成速度
@@ -24,6 +24,14 @@
 | L pp.36–37 | 下一课与选读结束页 | 实验方法及第 13–16 节 |
 | L pp.38–41 | AMD、TPU、Trainium、片上 SRAM 加速器 | 第 14 节；Ragged Paged Attention |
 
+### 0.2 先建立一条完整调用链
+
+以应用里常见的数组运算 `C=A+B` 为入口：CPU 上的程序（host，主机端）准备 GPU 显存中的数组，提交一个 **kernel**，也就是在 GPU（device，设备端）上批量执行的函数。一次提交叫 launch；它通常是异步的，调用返回只说明工作已提交，不能据此读取尚未完成的结果。这与异步任务要等待完成通知的经验相通，但 GPU 线程不是 Java 的操作系统线程。
+
+一次 kernel launch 创建一个 **grid**（线程网格），网格由 **block**（线程块，协作和同步的基本分组）组成。block 中的逻辑线程再按 32 个编成 **warp**；warp 中一个线程的位置叫 **lane**。硬件把这些工作安排到 **SM**（Streaming Multiprocessor，流式多处理器）上，SM 内的普通运算单元或 **Tensor Core**（矩阵乘专用单元）执行指令。先记住两层关系：grid/block/thread 是程序如何划分工作，SM/执行单元是硬件如何承接工作；二者不是一对一的线程池映射。
+
+数据也有一条路径：**HBM** 是容量大的高带宽显存；L2/L1 是自动缓存；**shared memory** 是程序显式管理、供同一 block 协作的片上存储；寄存器保存线程当前正在用的值。**Tile** 只是数组或矩阵的一个小块，分块计算的目的是让搬进来的数据多用几次。后文提到 SRAM 时，指适合片上高速存储的一类电路技术，不是一种新的模型参数。第 2 节先用索引走通执行，第 4–8 节再给搬运、计算和等待记账，第 9 节把同一方法用于 attention。
+
 ## 1. GPU 为什么像车队：吞吐、并行与单任务延迟
 
 L pp.7–8 将 CPU 和 GPU 对比。CPU 花较多面积与功耗做强单线程：分支预测、乱序执行、大缓存能让一个复杂控制流尽量快地前进。GPU 则用大量执行单元、许多常驻线程和宽 HBM 接口，追求整个芯片每秒完成的总工作。这个取舍特别适合大量相似、相互独立的矩阵乘。
@@ -42,7 +50,7 @@ L p.8 的 64-core CPU 与 H200 数字也不能当作精确同精度跑分：CPU 
 
 ## 2. 从 thread 到 SM：编程模型和物理执行如何对应
 
-CUDA 程序通常按 grid → thread block → thread 组织。每个 thread 以自己的索引处理数据；一个 block 的线程可以通过 shared memory 与 barrier 协作。block 通常被安排在一个 SM 上执行，grid 中许多 block 分布到多个 SM。普通 block 间不能假设固定调度顺序，也不能随意用互相自旋等待实现全局同步，否则可能等到尚未获调度的 block 而死锁。
+CUDA 程序通常按 grid → thread block → thread 组织。每个 thread 以自己的索引处理数据；一个 block 的线程可以通过 shared memory 与 barrier（等待一组参与线程都到达的同步点）协作。block 通常被安排在一个 SM 上执行，grid 中许多 block 分布到多个 SM。普通 block 间不能假设固定调度顺序，也不能随意用互相自旋等待实现全局同步，否则可能等到尚未获调度的 block 而死锁。
 
 硬件将同一 block 中连续线程编为 32-thread warp。Warp 是主要指令调度群组，32 个 lane 使用各自寄存器、地址与谓词，执行共同指令。CUDA thread 不等于一个固定独占的“CUDA core”；多条 warp 指令会在物理执行单元与流水线中推进。SM 是调度与资源域，FP32 core 是运算通路，Tensor Core 是矩阵专用单元，它们不能用数量一一互换。
 
@@ -52,13 +60,15 @@ L pp.24–25 用 H200 例子：132 个 SM，共享 L2/HBM；一个 SM 示意为�
 
 Occupancy 常指常驻 warp 数占硬件上限的比例。高 occupancy 为隐藏延迟提供候选工作，但不保证每周期有足够 ready warp，也不保证 Tensor Cores 已经高效运行。一个大量等待 barrier 的 kernel 可以高 occupancy、低吞吐；一个寄存器较多、occupancy 较低但复用极好的 matmul，也可以更快。
 
-扩大 tile 能减少重复 HBM 读取，却需要更多寄存器和 shared memory。资源一旦跨过某个阈值，SM 可驻留 block 从 2 降到 1，或寄存器 spill 到 local memory，速度反而下降。调参不能只追求最大 tile，也不能只追求 100% occupancy；应同时看复用、并发、spill、执行时间和实际形状。
+扩大 tile 能减少重复 HBM 读取，却需要更多寄存器和 shared memory。资源一旦跨过某个阈值，SM 可驻留 block 从 2 降到 1，或寄存器 spill（寄存器放不下而溢出保存）到 local memory，速度反而下降。调参不能只追求最大 tile，也不能只追求 100% occupancy；应同时看复用、并发、spill、执行时间和实际形状。
 
 L p.12 的“满占用约每线程 240 bytes”是资源预算的量级直觉，不能拿它当语言层面每线程固定堆空间。寄存器分配以架构粒度和编译器分配为准；local memory 虽然名字有 local，通常位于 device memory，并不等于低延迟片上私有 SRAM。
 
 ### 2.2 一个最小 kernel 的思路
 
 向量加法可以让线程 `i=blockIdx.x*blockDim.x+threadIdx.x` 处理 `C[i]=A[i]+B[i]`，并在 i<N 时执行。最后不足一个 block 的尾部必须有边界检查。若 shared-memory 算法需要整个 block 的 `__syncthreads()`，不能让部分线程在 barrier 之前提前返回；应使所有需要参与的线程到达同步点，用谓词保护数据访问。
+
+具体取 $N=1000$、每 block 256 个线程，需要 $\lceil1000/256\rceil=4$ 个 block，共 1024 个逻辑线程、32 个 warp。第 3 个 block（从 0 编号）覆盖索引 768–1023，其中 1000–1023 的 24 个线程不能访问数组。4 个 block 在普通调度下至多占用 4 个 SM，即使总线程数超过一千，也远不足以铺满有 132 个 SM 的示例 GPU。大数组则能提供更多 block，硬件按资源分批执行，无需 CPU 为每个元素创建一个线程。
 
 这些约束是正确性条件。一个偶尔快但存在 race 的 kernel 不算优化成功；随机输入误差检查无法证明没有同步问题，实际 GPU 实现还应使用相应 memory/race 检测工具与不同边界形状。
 
@@ -71,6 +81,8 @@ L pp.10–11 的 SIMT 意味着一个 warp 共同执行指令，各 lane 持有�
 分支还可能来自 ragged 输入：不同请求有不同序列长，某些 lane 在末页越界而被 mask。把相似长度分组或设计更合适的 tile 可以减少空工作，但过度分组也会增加调度开销和请求等待。服务层数据布局与 kernel 执行效率在这里相遇。
 
 ### 3.1 矩阵乘为什么适合专用单元
+
+先把类型和指令名接上：FP32 通常每元素 4 bytes，FP16 与 BF16 都是 2 bytes，但表示范围与有效精度不同；FP8 是 1 byte，其具体格式也影响范围。它们像不同数值类型，不能只看字节数判断误差。FMA 是标量乘加，MMA 是矩阵乘累加；一次乘与一次加按通常 FLOP 口径计为两次运算。
 
 Tensor Core 以 tile 为单位计算 `D=A×B+C`。L p.26 的 16×16 乘 16×8 对每个输出累加 16 项，总计 16×8×16=2048 个 multiply-add；若乘与加各计一 FLOP，则是 4096 FLOPs。讲义“一次 MMA 相比 FMA 的 64×工作”对应它选定的 warp/指令与 lane 口径，不能混成“所有 MMA 指令都只有同一固定形状或同一周期数”。实际 PTX/硬件指令支持的 shape、类型和吞吐各不相同。
 
@@ -100,7 +112,7 @@ $$
 
 ## 5. Roofline：算术强度的分母必须说清
 
-定义 HBM 算术强度 I=F/Q，单位 FLOP/byte。可达到的算术吞吐上界为：
+定义 HBM 算术强度 $I=F/Q$，单位 FLOP/byte：每搬运 1 byte，完成多少次浮点运算。吞吐是 $P=F/T$，上一节的两个时间下界分别意味着 $P\le P_{\mathrm{peak}}$ 和 $P\le F/(Q/\mathrm{BW})=\mathrm{BW}I$；两者都必须满足，所以可达到的算术吞吐上界为：
 
 $$
 P_{\mathrm{attainable}}\le\min(P_{\mathrm{peak}},\mathrm{BW}_{\mathrm{HBM}}I).
@@ -114,7 +126,7 @@ $$
 
 ### 5.1 四种操作的强度推导
 
-假设每元素 b bytes，忽略缓存和额外临时量，使用相应理想流量口径：
+GEMV 是矩阵乘向量（例如一个 token 的隐藏向量经过线性层），GEMM 是矩阵乘矩阵（例如多个 token 一起经过同一线性层）。假设每元素 $b$ bytes，忽略缓存和额外临时量，使用相应理想流量口径：
 
 | 操作 | FLOPs | 传输量 | 近似 I |
 |---|---:|---:|---:|
@@ -124,6 +136,8 @@ $$
 | 单 query attention 读 n 个 K/V，head dim d | 约 4nd | 约 2ndb | 约 2/b |
 
 GEMM 行假定 tile 复用足够好，每输入仅按最低流量计，不保证实际只读一次。GEMV 行忽略重复读取 x 等，实际内存访问可更差。若 C 还需要原值以做 beta C，读写量也要修正。Attention 行只比较两个乘法主项与 K/V 流量，softmax 和 query/output 等对小 n 可能不再可忽略。
+
+回到向量加法，FP32 的 $b=4$，所以每元素 1 次加法要读 8 bytes、写 4 bytes，$I=1/12$ FLOP/B。把长度从 1000 增至一百万会增加可调度 block，却不改变这个强度；“并行工作够不够”和“每字节能做多少运算”是两个不同问题。
 
 BF16 b=2，因此单 query 的 attention 和大 GEMV 都约 1 FLOP/B。此时即便 HBM 达峰，也仅约 4.8 TFLOP/s，对 989 TFLOP/s 是约 0.485%。这个利用比例是数学上界演算，不是对真实 profiler 的 SM utilization 读数。
 
@@ -135,7 +149,7 @@ BF16 b=2，因此单 query 的 attention 和大 GEMV 都约 1 FLOP/B。此时即
 
 ## 6. Batching 与 context：为什么一个改善强度，一个常只增加流量
 
-把 B 个独立 query 组成一次权重矩阵乘，线性层约做 2BN FLOPs，权重可共享读取 Nb bytes。忽略激活后 I≈2B/b，BF16 时约 B。这是 L p.17 的权重曲线从 1 随 batch 上升到 256 的直觉。接近 H200 的 206 FLOP/B ridge 时，计算可能逐渐成为约束，但实际激活、tile 与其他操作让转折不是精确整数 206。
+令 $N_\theta$ 表示参与该计算的权重元素数（区别于上节矩阵边长 $N$）。把 $B$ 个独立 query 组成一次权重矩阵乘，线性层约做 $2BN_\theta$ FLOPs，权重可共享读取 $N_\theta b$ bytes。忽略激活后 $I\approx2B/b$，BF16 时约为 $B$。这是 L p.17 的权重曲线从 1 随 batch 上升到 256 的直觉。接近 H200 的 206 FLOP/B ridge 时，计算可能逐渐成为约束，但实际激活、tile 与其他操作让转折不是精确整数 206。
 
 不同请求的 KV 一般不共享。B 变大，每步 KV 计算和读流量同时约放大 B，因此 **跨独立序列 batching 本身** 不提升这部分强度。GQA query 组内复用、共享前缀、多 token query、speculation 会改变条件，不能把“attention 始终1 FLOP/B”当作所有 decode kernels 的定律。
 
@@ -153,7 +167,7 @@ Llama 3 8B 的 L=32、Hkv=8、dk=128、BF16，则 CKV=2×32×8×128×2=131072 by
 
 对单请求，batch 增大可能延长每步时间；对系统，总 tokens/s 可能上升。到达率低时，为凑大 batch 主动等待会恶化 TTFT；长短序列混合会造成工作不均；超出容量会抢占或重算；更大 batch 还可能改变图捕获与内核选择。
 
-因此部署目标可以定义为“满足 p99 TTFT 和 TPOT 的最大有用吞吐”，而不是只看某一最大 batch 的速度。比较两种配置时固定输入/输出长度与到达过程，报告拒绝和失败请求。GPU 更忙并不自动意味着用户更满意。
+因此部署目标可以定义为“满足 p99 TTFT 和 TPOT 的最大有用吞吐”，而不是只看某一最大 batch 的速度。比较两种配置时固定输入/输出长度与到达过程，报告拒绝和失败请求。这里 SLO 是服务希望满足的时延/可用性目标，p99 是 99% 请求不超过的分位点；TTFT 是首 token 延迟，TPOT/ITL 描述后续 token 生成间隔，实际统计口径仍要说明。GPU 更忙并不自动意味着用户更满意。
 
 ## 7. Roofline 的三个常见误读与修正
 
@@ -161,7 +175,7 @@ Llama 3 8B 的 L=32、Hkv=8、dk=128、BF16，则 CKV=2×32×8×128×2=131072 by
 
 **误读二：FLOPs 占比就是时间占比。** Tensor Cores 做矩阵很快，softmax 指数、归约与同步的 FLOPs 少，可能仍耗大量周期。针对错的运算单元计算 MFU，会掩盖问题。
 
-**误读三：kernel 更快同倍数等于服务更快。** 若 attention 仅占端到端 30%，将它加速 2 倍，Amdahl 上界为 `1/(0.7+0.3/2)≈1.176`，而不是 2 倍。若优化影响 scheduler、显存余量与 batch，还会有系统级二阶效应，需要重新测量。
+**误读三：kernel 更快同倍数等于服务更快。** 若 attention 仅占端到端 30%，将它加速 2 倍，Amdahl 上界为 $1/(0.7+0.3/2)\approx1.176$，而不是 2 倍。把原总耗时设为 100ms：70ms 不变，30ms attention 变成 15ms，最后是 85ms，故加速比为 $100/85$。若优化影响 scheduler、显存余量与 batch，还会有系统级二阶效应，需要重新测量。
 
 L p.21 的未来硬件表包含 preliminary 项。本文保留其“算力、HBM 与其他单元不同比例增长”的设计结论，不把 Rubin、不同厂商或不同 SKU 的讲义数字当作当前采购规格或实测。硬件演进趋势也不保证每两代 I* 都单调右移；必须按具体 precision、dense/sparse 和带宽重算。
 
@@ -173,7 +187,7 @@ L p.28 从寄存器、shared/L1、L2、HBM 到 host/peer 列出容量、延迟�
 
 ### 8.1 用水管模型推导 in-flight 需求
 
-稳态下 Little 定律给出平均在途数据 Qflight = BW×latency。H200 若想在约250ns的读延迟下持续达到4.8TB/s，需要全芯片约1.2MB在途，平均每132个SM约9091 bytes，即约9KB。这不是每SM额外分配9KB缓存的意思，而是尚未完成的有效内存请求所代表的数据量。
+稳态下 Little 定律给出平均在途数据 $Q_{\mathrm{flight}}=\mathrm{BW}\times\mathrm{latency}$。H200 若想在约250ns的读延迟下持续达到4.8TB/s，需要全芯片约1.2MB在途，平均每132个SM约9091 bytes，即约9KB。这不是每SM额外分配9KB缓存的意思，而是尚未完成的有效内存请求所代表的数据量。
 
 L p.29 的示例 `32 warps×32 threads×4B` 是4096B=4KiB。用它除250ns并乘132个SM，得到约2.16TB/s，解释图中约2.2TB/s。单位与并发是关键：增加“线程数”如果没有带来更多独立未完成 load，也不一定增加有效在途字节。
 
@@ -183,9 +197,11 @@ L p.29 的示例 `32 warps×32 threads×4B` 是4096B=4KiB。用它除250ns并乘
 
 Coalescing 让warp相邻lane访问相邻地址，合成较少且有效的内存事务。讲义“32×4B合成128B”是对齐连续访问的简化；现代实际sector/transaction粒度取决于架构与cache策略。跨跨度访问可能为了少量有效数据搬来许多sector，这时“逻辑bytes”小，物理流量却大。
 
-Shared memory bank conflict 则发生在片上并行访问映射到相同bank等情况下，不是HBM coalescing。改变tile布局或swizzle可以减少冲突，但必须保持计算语义。把两种问题都称“访存不连续”会导致优化错层级。
+Shared memory 分成可并行服务的 bank（存储分区）；bank conflict 指同一批访问争用同一 bank、无法按预期同时服务等情况，不是HBM coalescing。改变tile布局或swizzle可以减少冲突，但必须保持计算语义。把两种问题都称“访存不连续”会导致优化错层级。
 
 Ampere 的cp.async支持global→shared异步复制，避免先把中间数据放进普通寄存器；Hopper的TMA用描述符与硬件地址生成搬整个tile，并能配合barrier。异步不是可以随便读尚未到达的数据；producer提交、完成通知、consumer等待以及buffer复用必须遵循正确协议。双缓冲用更多shared memory换重叠空间，若因此occupancy下降，收益要实测。
+
+用两个缓冲区看清协议：假设搬一个 tile 要 6 个时间单位、算一个 tile 要 10 个，串行处理每块需 16。双缓冲时先填 A，计算 A 的同时填 B，再交换角色；理想稳态每块约需 $\max(6,10)=10$，但第一块填充和最后一块收尾仍要计时。Consumer 在“填充完成”之前不能读，producer 在“消费完成”之前不能覆盖同一缓冲区。这是带所有权交接的生产者/消费者协议，不是仅把两段代码标成 async。
 
 ### 8.3 TMA multicast 和 Blackwell TMEM
 
@@ -195,7 +211,7 @@ L p.33 展示Blackwell将矩阵累积结果移到tensor memory，并提供跨两
 
 ## 9. FlashAttention：保持数学 attention，改变 IO 顺序
 
-标准attention先物化S=QKᵀ，再softmax成P，再算PV，会反复写读n×n中间矩阵。FlashAttention把Q/K/V分块，在片上处理一块score后立刻更新归一化统计与输出，不把完整S/P写到HBM。它是精确attention的IO优化，除浮点顺序外不引入稀疏/低秩近似；其dense算术量仍随n²增长。
+回顾上一课，一种标准实现先物化 $S=QK^\top/\sqrt{d_k}+M$，再逐行算 $P=\operatorname{softmax}(S)$，最后输出 $PV$。这里 $d_k$ 是每个 key 的维度，$M$ 在允许访问的位置为 0、禁止位置为 $-\infty$；因果 mask 允许当前位置及之前的输入。若整段序列有 $n$ 个 query/key，这种实现会反复写读 $n\times n$ 中间矩阵。FlashAttention把Q/K/V分块，在片上处理一块score后立刻更新归一化统计与输出，不把完整S/P写到HBM。它是精确attention的IO优化，除浮点顺序外不引入稀疏/低秩近似；其dense算术量仍随n²增长。
 
 ### 9.1 在线softmax为什么可以跨tile精确合并
 
@@ -211,7 +227,7 @@ $$
 
 最终输出u/ℓ。旧贡献乘a，是把旧基准m转换到新基准m'；若只把新tile概率加上去而不重缩旧贡献，答案会错。初始化m=-∞、ℓ=0、u=0；对完全mask的tile或空行需要额外处理，不能直接执行∞相减。
 
-举例先看到scores `[0,ln2]`，m=ln2、ℓ=1.5；再看到score ln4，新m=ln4，a=1/2，于是总ℓ=1.75，对应原始指数和7除4。这个算法只需要逐行统计和输出累积，适合tile遍历。反向传播可以使用保存的归一化统计重算局部score，用额外计算换低HBM流量与较小保存状态。
+举例先看到scores `[0,ln2]`，m=ln2、ℓ=1.5；再看到score ln4，新m=ln4，a=1/2，于是总ℓ=1.75，对应原始指数和7除4。再让三个 value 分别为标量 2、4、8：第一块 $u=0.5\times2+1\times4=5$；第二块 $u'=0.5\times5+1\times8=10.5$，最终 $u'/\ell'=10.5/1.75=6$。整行直接算也是 $(1\times2+2\times4+4\times8)/7=6$。若忘记缩放旧的 $u$ 和 $\ell$，却会得到 $13/2.5=5.2$。向量 value 对每个分量执行相同加权即可。这个算法只需要逐行统计和输出累积，适合tile遍历。反向传播可以使用保存的归一化统计重算局部score，用额外计算换低HBM流量与较小保存状态。
 
 [FlashAttention原文](readings/FlashAttention_Fast_and_Memory-Efficient_Exact_Attention_with_IO-Awareness.pdf) Algorithm 1与IO分析给出分块/重算的机制。它还另有block-sparse扩展，那个扩展改变访问模式，与“精确dense FlashAttention”分开。论文BERT、GPT-2、LRA训练加速来自具体模型、序列与基线；不能把训练端到端3×当作现代decode服务的普适数值。
 
@@ -223,13 +239,13 @@ $$
 
 ### 9.3 FlashAttention-3：Hopper的异步不是一句“多线程”
 
-[FA3](readings/FlashAttention-3_Fast_and_Accurate_Attention_with_Asynchrony_and_Low-precision.pdf) 让producer warps负责TMA搬运，consumer warps负责WGMMA/softmax等，交错不同tile的matmul与softmax，把本来串行的不同功能单元工作重叠。Producer与consumer通过barrier和buffer阶段配合，而不是无约束同时访问同一地址。
+[FA3](readings/FlashAttention-3_Fast_and_Accurate_Attention_with_Asynchrony_and_Low-precision.pdf) 让producer warps负责TMA搬运，consumer warps负责WGMMA（由 warp group 协作发起的异步矩阵乘累加）/softmax等，交错不同tile的matmul与softmax，把本来串行的不同功能单元工作重叠。Producer与consumer通过barrier和buffer阶段配合，而不是无约束同时访问同一地址。
 
 FP8路径另用block quantization与incoherent processing减少outlier问题；性能提升和数值精度要一起验证。论文H100 FP16最高740TFLOP/s、FP8近1.2PFLOP/s是不同precision，2.6×更低误差也相对它定义的FP8 baseline，不是“比FP16更精确”。论文§4.2固定{batch=4,seqlen=8448,heads=16,dim=128}做pipeline消融；这样的受控对照才说明异步机制贡献，跨GPU最大数值不能替代它。
 
 ### 9.4 FlashAttention-4：谁没有随Tensor Core一起变快
 
-[FA4](readings/FlashAttention-4_Algorithm_and_Kernel_Pipelining_Co-Design_for_Asymmetric_Hardware_Scaling.pdf) 面向Blackwell不对称扩展：矩阵通路变快，shared-memory带宽和指数等单元没有按同比例增长。它重新安排更大tile和全异步pipeline，用软件模拟部分指数、条件性softmax rescaling等减轻非matmul瓶颈，并利用TMEM与2-CTA MMA。速度来自整体平衡，不是简单把softmax删掉。
+[FA4](readings/FlashAttention-4_Algorithm_and_Kernel_Pipelining_Co-Design_for_Asymmetric_Hardware_Scaling.pdf) 面向Blackwell不对称扩展：矩阵通路变快，shared-memory带宽和指数等单元没有按同比例增长。它重新安排更大tile和全异步pipeline，用软件模拟部分指数、条件性softmax rescaling等减轻非matmul瓶颈，并利用TMEM与2-CTA MMA（CTA 即 thread block，两个块协作矩阵乘）。这里指数单元也常称 SFU/MUFU，是处理指数等特殊函数的通路。速度来自整体平衡，不是简单把softmax删掉。其部分指数采用多项式近似，论文另测 BF16 舍入后的误差；因此“保持 attention 算法”不等于每条低精度实现指令都无限精确，仍需数值验收。
 
 有一个必须保留的版本问题：本地论文摘要/主要图写B200、BF16最高1613TFLOP/s、约71%利用率；但PDF p.20 Appendix A.1写“B100 180GB SXM6 (1000W)”，同页又写March 2025并列出CUDA13.1、PyTorch2.10等软件。已目视核对原页，确是原文件内部表述不一致。本文将峰值仅作为**论文自报且硬件设置待澄清**的结果，不把它当可精确复现的独立硬件基准，也不自行替作者改名或改日期。
 
@@ -237,7 +253,9 @@ FP8路径另用block quantization与incoherent processing减少outlier问题；�
 
 ## 10. 从统一tile到真实服务：FlashInfer与B200逐步优化
 
-[B200 walkthrough](readings/FlashAttention-4_from_Scratch_to_Near-SOTA_in_60_Diagrams_CUDA_PTX.html) 在固定dense non-causal BF16、head dim128、4K/8K/16K等shape上逐步改14版kernel，以同机FA4为参考，最终达到约94.4%的相对表现。它是作者公开的工程过程，不是同行评议论文，也不能外推到causal、decode或paged/ragged全部负载。
+[B200 walkthrough](readings/FlashAttention-4_from_Scratch_to_Near-SOTA_in_60_Diagrams_CUDA_PTX.html) 在固定dense non-causal BF16、head dim128、4K/8K/16K等shape上逐步改14版kernel，再加4项小优化（源码检查点15–18）。以同次运行的stock FA4为参考，最终4K/8K达到94.4%、16K达到94.1%的相对吞吐；这不是第14版本身的数值，也不是跨shape平均。它是作者公开的工程过程，不是同行评议论文，也不能外推到causal、decode或paged/ragged全部负载。
+
+还要读 Benchmark Calibration：FA4输入为连续BSHD，自写kernel为连续BHLD（B=batch、S/L=序列、H=head、D=每头维度），两者都不计输入布局转换。另一个直接处理BSHD的最终变体为同次FA4的92.1–92.7%。因此94.4%是各自偏好布局下的kernel比较，不能直接承诺替换服务接口后的收益。
 
 它的价值在因果顺序：先修shared-memory layout，再增加query tile复用，再做load/compute pipeline和指数通路优化。某一步单独看几乎无收益，仍可能为后续pipeline创造条件。不能把14步的单项百分比相加成总加速；最初和最终的瓶颈不同，收益互相依赖。
 
@@ -245,7 +263,7 @@ FP8路径另用block quantization与incoherent processing减少outlier问题；�
 
 服务batch里的请求长度各异，KV在页表指向的不连续block里；请求结束、新请求加入，逻辑形状持续变化。Padding到最长序列会浪费算术与带宽；每请求单独launch又增加小kernel与host开销。一个只对均匀连续KV很快的attention kernel，不一定适合服务。
 
-[FlashInfer](readings/FlashInfer_Efficient_and_Customizable_Attention_Engine_for_LLM_Inference_Serving.pdf) Figure 1与§3用统一block-sparse视角表达不同KV布局，JIT生成不同attention变体，并把动态长度信息交给load-balanced runtime。它把“做什么attention”“KV怎么存”“这些tile怎样分工作”明确分开。部分计划可放CPU侧，执行形状配合CUDA Graph，让动态工作不必每次重建整个launch路径。
+[FlashInfer](readings/FlashInfer_Efficient_and_Customizable_Attention_Engine_for_LLM_Inference_Serving.pdf) Figure 1与§3用统一block-sparse视角表达不同KV布局，JIT（运行时按所需形状即时编译）生成不同attention变体，并把动态长度信息交给load-balanced runtime。它把“做什么attention”“KV怎么存”“这些tile怎样分工作”明确分开。部分计划可放CPU侧，执行形状配合CUDA Graph，让动态工作不必每次重建整个launch路径。
 
 这不等于所有layout没有成本差异。页表读取、短页尾、split-KV合并、共享前缀复用和workspace都有开销；调度plan也要计时。对head dim、query group与序列分布的kernel选择是性能的一部分。
 
@@ -259,13 +277,13 @@ FP8路径另用block quantization与incoherent processing减少outlier问题；�
 
 L p.34 区分scale-up的NVLink/NVSwitch与scale-out的网络。讲义H200例中HBM4.8TB/s、NVLink总900GB/s、400Gb/s网卡约50GB/s是不同链路、不同口径的数量级。数据跨卡时不能继续按HBM带宽估算。Gb/s与GB/s差8倍；双向总带宽不等于单向有效payload。
 
-Tensor parallel把权重和矩阵工作分到多卡，但每层可能需要collective。延迟可粗略分为启动/同步α与消息量S除有效带宽β：`Tcomm≈α+S/β`，实际collective还取决于算法与拓扑。Decode的小消息常被α主导，卡越多并不意味着α按卡数下降。Prefill的大矩阵更容易摊薄通信，但仍要看分片与network。
+Tensor parallel把权重和矩阵工作分到多卡，但每层可能需要collective。延迟可粗略分为启动/同步α与消息量S除有效带宽β：$T_{\mathrm{comm}}\approx\alpha+S/\beta$，实际collective还取决于算法与拓扑。Decode的小消息常被α主导，卡越多并不意味着α按卡数下降。Prefill的大矩阵更容易摊薄通信，但仍要看分片与network。
 
 ### 11.1 FLUX：从整层等待变成细粒度重叠
 
 [FLUX](readings/FLUX_Fast_Software-based_Communication_Overlap_on_GPUs_through_Kernel_Fusion.pdf) 把通信和计算细分，再融合到同一kernel：已有tile可发送时不必等整个GEMM结束；接收一部分tile后也可启动对应计算。它不消除依赖，只利用不同tile之间允许重叠的空间。同步、SM分配、通信primitive和matmul效率需要一起平衡。
 
-原文区分8-GPU推理和128-GPU训练；最高96%通信隐藏是相应fused操作的指标。1.66× prefill、1.30× decode相对vLLM，以及训练相对Megatron-LM1.24×，属于不同实验。把“隐藏96%”直接读成整个模型通信成本只剩4%或总速度25×，都会错。
+原文区分8-GPU推理和128-GPU训练；最高96%是相应fused操作的 overlap efficiency。论文先用总耗时减去最快未拆分GEMM耗时，定义“有效通信时间”，再衡量相对无重叠通信基线减少了多少；因此它是扣除计算基线后的性能指标，不是直接数时间线上有多少通信指令与计算同时运行。1.66× prefill、1.30× decode相对vLLM，以及训练相对Megatron-LM1.24×，属于不同实验。把“隐藏96%”直接读成整个模型通信成本只剩4%或总速度25×，都会错。
 
 部署时先确认通信在critical path上占多少，再考虑融合。某些collective已很短，融合增加寄存器压力、占SM或调度复杂度可能不值得。更大batch、不同TP degree与跨节点拓扑也会改变最佳方案。
 
@@ -293,7 +311,7 @@ CUDA Graph记录一段操作与依赖，实例化后重复launch，主要减少�
 
 ### 12.4 Mirage：同时搜索多个层级的等价程序
 
-[Mirage](readings/Mirage_A_Multi-Level_Superoptimizer_for_Tensor_Programs.pdf) 用μGraphs统一kernel、thread-block、thread层，联合代数变换与schedule变换。它不只是对原图每个算子挑一个tile，而是搜索新的等价区域实现。等价验证有适用的tensor program/代数范围与概率保证，不应描述成任意Python或任意浮点程序的全功能证明。
+[Mirage](readings/Mirage_A_Multi-Level_Superoptimizer_for_Tensor_Programs.pdf) 用μGraphs统一kernel、thread-block、thread层，联合代数变换与schedule变换。它不只是对原图每个算子挑一个tile，而是搜索新的等价区域实现。等价验证有适用的tensor program/代数范围，不应描述成任意Python或任意浮点程序的全功能证明。尤其要区分定理与实现：§5对LAX程序（限制运算种类及路径上指数次数）给出在有限域上重复随机检验的概率保证；但本地v3的§7、PDF p.10说实际搜索仅使用小素数p=227、q=113的一次随机检验，最终最佳候选的理论保证步骤仍是后续计划。另有浮点测试过滤明显数值误差。读者可以把它理解为“在受限语言中搜索并检验候选”，不能由有定理直接推出当前实现对所有候选已有任意小误判率的证明。
 
 本地v3原文§8评估GQA、QKNorm、RMSNorm、LoRA、GatedMLP等；相对基线的最高3.3×来自相应operator/shape与GPU条件，不能直接称整个LLM服务提升3.3×。有的benchmark它也并非最优，表明搜索空间、成本与操作结构会限制收益。
 
@@ -303,13 +321,13 @@ CUDA Graph记录一段操作与依赖，实例化后重复launch，主要减少�
 
 原文§6.2用A100/H100/B200，给scheduler保留4个SM、共16个scheduler warp，其他SM当worker。这个资源不是免费；模型编译、task graph、shared-memory page与物理SM数有对应关系。kernel长驻后，公平性、抢占与和其他任务共存也成为部署问题。
 
-最高约1.7×较低端到端推理latency的评估使用**离线batched inference**，每请求prompt64、生成1024，BF16，vary maximum batch，比较vLLM/SGLang。它排除了在线到达不足的server-side stall，不能当作真实互联网到达下p99改进的直接证据。把continuous batching开启与在线load generation混为一谈，会误读这项实验。
+单 batch 吞吐最高约为基线1.7倍（PDF p.10）的评估使用**离线batched inference**，每请求prompt64、生成1024，BF16，vary maximum batch，比较vLLM/SGLang。它排除了在线到达不足的server-side stall，不能当作真实互联网到达下p99改进的直接证据。把continuous batching开启与在线load generation混为一谈，会误读这项实验。
 
 ### 12.6 PyTorch2：guard决定编译假设何时还成立
 
 [PyTorch2原文](references/PyTorch_2_Faster_Machine_Learning_Through_Dynamic_Python_Bytecode_Transformation_and_Graph_Compilation.pdf) 的TorchDynamo拦截Python bytecode提取FX图，附带guard；后续状态满足guard则复用，不满足就重新分析、编译或回落。TorchInductor进一步生成GPU Triton或CPU C++等实现。图捕获失败、graph break、动态shape和Python副作用决定实际覆盖率。
 
-原文A100、180多真实模型上的几何平均2.27× inference、1.41× training属于框架benchmark；本文未把它外推到continuous-batched LLM serving。Serving需要观测compile/recompile次数、warm-up成本、缓存命中、guard触发的shape，以及冷启动与稳态差异。一次静态batch跑得快，不证明在线多长度不会反复编译。
+原文A100、180多真实模型上的几何平均2.27× inference、1.41× training属于框架benchmark；实验使用2023-08-30 nightly与CUDA11.6，排除warm-up，training计forward+backward而不含optimizer更新。因此它既不是当前版本承诺，也不等于完整训练step或continuous-batched LLM serving的收益。Serving需要观测compile/recompile次数、warm-up成本、缓存命中、guard触发的shape，以及冷启动与稳态差异。一次静态batch跑得快，不证明在线多长度不会反复编译。
 
 ## 13. 用测量闭合推理：characterization论文提供什么证据
 
@@ -317,7 +335,7 @@ CUDA Graph记录一段操作与依赖，实例化后重复launch，主要减少�
 
 论文测到prefill/decode都可以有很高stall比例，但stall原因不同。不能从“stall70–80%”推出GPU整体70–80%时间什么都没做：统计的分母可能是warp/issue周期，多warp可在同一时间互相隐藏等待，必须读具体counter定义。
 
-§6的并行对照里，summary场景TP让prefill由1.24s降至0.66s，而decode可能因通信与同步变差；它支持“按阶段分析并行度”，不支持“TP永远只适合prefill、singleGPU永远最适合decode”的普遍结论。权重是否容纳、KV容量、batch、互连、模型规模都可能让结论改变。
+§6的并行对照里，Qwen2.5-32B的Summary场景（4096输入、16输出、TP=2）让prefill由1.24s降至0.66s，而decode可能因通信与同步变差；这组专门对照不同于Table2常规Summary的8192/256长度；它支持“按阶段分析并行度”，不支持“TP永远只适合prefill、singleGPU永远最适合decode”的普遍结论。权重是否容纳、KV容量、batch、互连、模型规模都可能让结论改变。
 
 该论文离线固定batch有利于隔离执行因素，但不覆盖在线排队。Jetson的共享资源和带宽也不同于数据中心GPU，因此同一个roofline概念可复用，具体ridge、stall结构与优化优先级必须重测。
 
@@ -333,7 +351,7 @@ CUDA Graph记录一段操作与依赖，实例化后重复launch，主要减少�
 
 ## 14. 非NVIDIA硬件：哪些算法思想可迁移，哪些必须重写
 
-L pp.38–41是选读，不需要记下所有硬件规格。AMD的wavefront、ROCm/HIP，TPU的systolic array与XLA/Pallas，Trainium的Neuron/NKI、显式SRAM与DMA，片上SRAM芯片的容量/互连约束，都说明程序员看到的执行模型会改变。
+L pp.38–41是选读，不需要记下所有硬件规格。AMD的wavefront、ROCm/HIP，TPU的systolic array与XLA/Pallas，Trainium的Neuron/NKI、显式SRAM与DMA（由专门搬运引擎传输数据），片上SRAM芯片的容量/互连约束，都说明程序员看到的执行模型会改变。
 
 TPU上没有CUDA warp，并不意味着无法做FlashAttention或paged KV。能迁移的是分块、在线softmax、逻辑页表、ragged遍历与流水线的算法需求；哪些tile形状、怎样搬运、用什么barrier、如何利用矩阵阵列，则由硬件决定。把CUDA kernel逐行翻译很难保留性能。
 
@@ -341,7 +359,7 @@ TPU上没有CUDA warp，并不意味着无法做FlashAttention或paged KV。能�
 
 [RPA](readings/Ragged_Paged_Attention_A_High-Performance_and_Flexible_LLM_Inference_Kernel_for_TPU.pdf) 使用Pallas/Mosaic，结合细粒度tile、fused KV update、软件pipeline与按分布编译不同decode/prefill/mixed变体。原文在TPU7x Ironwood、Llama3-8B配置、BF16及128/256 head dim、不同causal设置下评估，报告最高86% MBU与73% MFU。
 
-这些两个百分比属于不同资源分母和阶段，不能相加、也不能声称同一时刻“两种利用率全都满”。§4的decode吞吐设置还用128序列、同一context length，以控制实验；它不是所有生产ragged分布都达到86%。原文还通过关闭KV更新、DMA或attention部分做分解，帮助确认pipeline重叠与真正主瓶颈。
+MBU 是估计有效搬运字节率相对峰值内存带宽的比例，MFU 是模型有效计算吞吐相对所用计算上限的比例。这里还有一个关键的论文口径：§4.2（PDF pp.15–16）的 MFU 分母是“芯片峰值 FLOP/s × 最大 MXU 利用率”；MXU 是 TPU 的矩阵乘单元，$d_k=128$ 时按 50% 峰值作为上限。因此论文的 MFU 百分比不能不经换算就叫作全芯片峰值利用率。两项百分比属于不同资源分母和阶段，不能相加、也不能声称同一时刻“两种利用率全都满”。§4的decode吞吐设置还用128序列、同一context length，以控制实验；它不是所有生产ragged分布都达到86%。原文还通过关闭KV更新、DMA或attention部分做分解，帮助确认pipeline重叠与真正主瓶颈。
 
 Systolic array让数据按规律在阵列中复用，省指令与寄存器往返；但动态索引、小矩阵、ragged shape和非矩阵操作仍有成本。软件管理SRAM让搬运更显式，也把排布和pipeline责任交给编译器/内核作者。大规模scale-up或片上SRAM降低某些访问成本，同时带来容量、跨芯片和开发工具限制。
 
@@ -403,7 +421,7 @@ python3 examples/roofline_online_softmax.py
    不够。Producer/consumer分工、TMA/WGMMA异步、matmul/softmax交叠与正确barrier协议共同作用。
 10. **CUDA Graph能否替代所有fusion？**  
     不能。它减少重复提交并表达依赖，通常仍有多个kernel；fusion能减少中间访存，目标不同。
-11. **为什么MPK1.7×不能直接承诺线上p99提升1.7×？**  
+11. **为什么MPK单batch吞吐1.7×不能直接承诺线上p99延迟改善1.7×？**  
     其报告采用离线固定请求批、prompt64/output1024等条件，不包含线上到达、队列和多种服务干扰。
 12. **Attention占30%、kernel快2倍，端到端理想最多多快？**  
     约1.176倍；若其他阶段不变，这是Amdahl估算。容量与调度改变时需重新测完整系统。
@@ -411,6 +429,15 @@ python3 examples/roofline_online_softmax.py
     保留版本证据并明确硬件设置待澄清，只把峰值作为作者自报结果，不自行改原文后声称可复现。
 14. **同一个pagedattention算法迁移TPU时保留什么？**  
     页表、逻辑块、ragged访问、在线归一化等算法内容可保留；warp、tile、搬运、barrier与代码生成必须适配。
+
+15. **1000 个元素、每 block 256 个线程，要启动多少 block？为什么仍可能没用满 GPU？**  
+    4 个 block、1024 个逻辑线程；尾部 24 个不能访问数组。普通 block 调度最多占 4 个 SM，不能因线程数超过千就推断铺满 132 个 SM。
+16. **向量加法的长度扩大一千倍，算术强度也扩大一千倍吗？**  
+    不会。FP32 仍是每元素 1 FLOP、12 bytes，即 $1/12$ FLOP/B；变大的是总工作和可调度 block 数，不是每字节复用率。
+17. **在线 softmax 的三个 score 为 $[0,\ln2,\ln4]$、value 为 $[2,4,8]$，分两块后该得多少？**  
+    应得 6。第二块把旧 $u=5$ 与 $\ell=1.5$ 同乘 $1/2$ 后，再加新贡献8与1；不缩放会错误得到5.2。
+18. **某优化在不同输入布局下达到参考kernel的94.4%，就能替换现有服务并得到同样比例吗？**  
+    不能。先检查现有张量布局及转换成本，再固定shape、precision、mask和同次基线测量，最后计入服务调用链；kernel局部数字不包含这些接口成本。
 
 ## 17. 全部来源与建议精读顺序
 
@@ -423,7 +450,7 @@ python3 examples/roofline_online_softmax.py
 | [FA2](readings/FlashAttention-2_Faster_Attention_with_Better_Parallelism_and_Work_Partitioning.pdf) | §3–4、工作划分图 | non-matmul、block/warp划分、A100测量 |
 | [FA3](readings/FlashAttention-3_Fast_and_Accurate_Attention_with_Asynchrony_and_Low-precision.pdf) | §3–4、§4.2消融 | Hopper异步与FP8；精度和kernel/模型指标分开 |
 | [FA4](readings/FlashAttention-4_Algorithm_and_Kernel_Pipelining_Co-Design_for_Asymmetric_Hardware_Scaling.pdf) | 算法/pipeline章节、AppendixA.1 PDFp.20 | Blackwell不对称扩展；硬件/日期内部不一致已注明 |
-| [B200 walkthrough](readings/FlashAttention-4_from_Scratch_to_Near-SOTA_in_60_Diagrams_CUDA_PTX.html) | 14个版本，固定non-causalBF16/dim128 | 优化顺序与依赖；作者工程文章，非任意shape统一结论 |
+| [B200 walkthrough](readings/FlashAttention-4_from_Scratch_to_Near-SOTA_in_60_Diagrams_CUDA_PTX.html) | 14个主线版本及4项小优化、Benchmark Calibration；固定non-causalBF16/dim128 | 优化顺序与依赖；作者工程文章，非任意shape统一结论 |
 | [FlashInfer](readings/FlashInfer_Efficient_and_Customizable_Attention_Engine_for_LLM_Inference_Serving.pdf) | Figure1、§3–4；本地v2 | ragged/paged/变体与动态调度，SGLang指定后端对照 |
 | [RPA](readings/Ragged_Paged_Attention_A_High-Performance_and_Flexible_LLM_Inference_Kernel_for_TPU.pdf) | §3–4、PDFp.12以后评估 | TPU7x原生实现，MBU/MFU分母与阶段分开 |
 | [FLUX](readings/FLUX_Fast_Software-based_Communication_Overlap_on_GPUs_through_Kernel_Fusion.pdf) | §2–5，2024-10-25稿 | 细粒度通信融合；8卡推理/128卡训练不能混为一项 |

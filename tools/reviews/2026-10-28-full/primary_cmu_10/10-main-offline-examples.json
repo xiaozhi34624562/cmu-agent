@@ -1,0 +1,35 @@
+{
+  "executed_at": "2026-10-28T22:02:19.797481+08:00",
+  "python": "3.11.10",
+  "scope": "Standard-library arithmetic and finite-difference checks for teaching examples; no model, API, GPU or research benchmark execution.",
+  "formulas": {
+    "std": "sqrt(sum((r-mean)^2)/G)",
+    "surrogate": "min(ratio*A, clip(ratio,0.8,1.2)*A)",
+    "two_action": "J(theta)=1/(1+exp(-theta)); theta=0; rewards=(1,0)",
+    "dpr": "L(s_pos,s_neg)=log(exp(s_pos)+exp(s_neg))-s_pos; (s_pos,s_neg)=(log(3),0)",
+    "finite_difference": "(f(x+1e-6)-f(x-1e-6))/(2e-6)"
+  },
+  "results": {
+    "mean": 0.6666666666666666,
+    "population_variance": 0.22222222222222224,
+    "population_std": 0.4714045207910317,
+    "advantages": [
+      -1.414213562373095,
+      0.7071067811865476,
+      0.7071067811865476
+    ],
+    "clipped_positive_ratio_1_5": 1.2,
+    "clipped_negative_ratio_0_5": -0.8,
+    "wrong_direction_negative_ratio_1_5": -1.5,
+    "two_action_expected_gradient": 0.25,
+    "two_action_finite_difference": 0.2500000000349445,
+    "dpr_initial_loss": 0.6931471805599453,
+    "dpr_positive_probability": 0.7500000000000001,
+    "dpr_loss": 0.2876820724517808,
+    "dpr_positive_score_gradient": -0.2499999999999999,
+    "dpr_positive_score_finite_difference": -0.2499999999239222,
+    "dpr_negative_score_gradient": 0.2499999999999999,
+    "dpr_negative_score_finite_difference": 0.2499999999239222
+  },
+  "status": "passed"
+}

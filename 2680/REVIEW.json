@@ -1,9 +1,9 @@
 {
   "course": "2680",
-  "review_date": "2026-10-26",
-  "standard": "MAS.S62 Senior AI Engineer: lecture-driven mechanism, implementation, evidence, cases, selection, cost, failure diagnosis, self-test and answer boundaries",
-  "scope": "Complete reading and final rereading of 30 Chinese study documents across the two courses; existing archive sources preserved. New guides cross-reviewed separately. No claim of universal correctness or full model/benchmark reproduction.",
-  "base_commit": "9c3971bffc77ae0805a2a6130fc90369a96d4449",
+  "review_date": "2026-10-28",
+  "standard": "面向有 Java 经验的 LLM Developer：以讲义问题链组织完整中文教学；检查前置知识、机制推导、案例、自测和来源证据；修改后的最终版本完整复读两遍。",
+  "scope": "2026-10-28 full learning review: 12 Chinese learning documents fully read, primary lectures fully checked (Harvard lesson 9 follows official discussion readings), high-risk source claims checked within each record's stated scope. All changed final documents reread twice; unchanged documents retained after full review. No full model/GPU/API benchmark replication claimed.",
+  "base_commit": "32b11714be3fbd5cbe4188abaa799ece9bb615b5",
   "documents": [
     {
       "note": "2680/1.CourseOverviewAndLogistics/notes.zh-CN.md",
@@ -11,7 +11,7 @@
       "action": "create_and_review",
       "status": "passed",
       "original_sha256": null,
-      "final_sha256": "0fb2761ce03b9824be25d3720e6c11a6075eaf15e344f3a56f59186666253d4f",
+      "final_sha256": "899f863d320e4b28e397cdfa0654eb179f479505b9d8c88a64e255df459844ea",
       "reviews": [
         {
           "report_file": "harvard-01-cross-review.json",
@@ -171,8 +171,172 @@
             "未运行 GPU、付费 API 或论文基准实验"
           ],
           "final_sha256": "0fb2761ce03b9824be25d3720e6c11a6075eaf15e344f3a56f59186666253d4f"
+        },
+        {
+          "note": "2680/1.CourseOverviewAndLogistics/notes.zh-CN.md",
+          "original_sha256": "0fb2761ce03b9824be25d3720e6c11a6075eaf15e344f3a56f59186666253d4f",
+          "final_sha256": "899f863d320e4b28e397cdfa0654eb179f479505b9d8c88a64e255df459844ea",
+          "status": "passed_with_fixes",
+          "full_read_ranges": [
+            {
+              "round": "initial_full_read",
+              "ranges": [
+                "1-180",
+                "181-420",
+                "421-665"
+              ],
+              "line_count": 665,
+              "sha256": "0fb2761ce03b9824be25d3720e6c11a6075eaf15e344f3a56f59186666253d4f",
+              "result": "本轮逐段全文精读完成；未发现需要改写的实质错误。"
+            },
+            {
+              "round": "pedagogical_reassessment_before_fix",
+              "sha256": "0fb2761ce03b9824be25d3720e6c11a6075eaf15e344f3a56f59186666253d4f",
+              "ranges": [
+                "1-240",
+                "241-480",
+                "481-665"
+              ],
+              "result": "重新全文阅读发现应用开发到模型/硬件的前置缺口"
+            },
+            {
+              "round": "final_1",
+              "sha256": "899f863d320e4b28e397cdfa0654eb179f479505b9d8c88a64e255df459844ea",
+              "ranges": [
+                "1-230",
+                "231-460",
+                "461-687"
+              ],
+              "result": "最终全文复读；模型生成→资源约束→任务链→验收的衔接清楚，无需再修正"
+            },
+            {
+              "round": "final_2",
+              "sha256": "899f863d320e4b28e397cdfa0654eb179f479505b9d8c88a64e255df459844ea",
+              "ranges": [
+                "1-230",
+                "231-460",
+                "461-687"
+              ],
+              "result": "最终全文复读；模型生成→资源约束→任务链→验收的衔接清楚，无需再修正"
+            }
+          ],
+          "sources_read": [
+            {
+              "path": "2680/1.CourseOverviewAndLogistics/SOURCES.md",
+              "range": "full"
+            },
+            {
+              "path": "2680/1.CourseOverviewAndLogistics/REFERENCES.json",
+              "range": "full"
+            },
+            {
+              "path": "2680/1.CourseOverviewAndLogistics/1_intro.pdf",
+              "pages": "1-50",
+              "version": "local archived PDF; 50 pages; page footer offset checked",
+              "visual_pages": [
+                31,
+                34,
+                36,
+                40,
+                41,
+                43,
+                49
+              ],
+              "range": "全讲义文本；关键数值/架构/指标/分类图目视"
+            },
+            {
+              "path": "2680/site/assignments/assignment1.html",
+              "range": "learning goals; Part 1; Part 2 all seven features and replay; Part 3; deliverables (not all grading tail)"
+            },
+            {
+              "path": "2680/1.CourseOverviewAndLogistics/references/python-floatingpoint.html",
+              "range": "§15 main text; representation-error appendix not required for claims",
+              "version": "snapshot in REFERENCES.json"
+            },
+            {
+              "path": "2680/1.CourseOverviewAndLogistics/references/nvidia-floating-point.html",
+              "range": "§2.1-2.3 including operation order and FMA",
+              "version": "snapshot in REFERENCES.json"
+            }
+          ],
+          "coverage_assessment": {
+            "suitability": "适合LLM Developer与有Java经验的读者：新增最小模型计算与硬件词汇桥接，系统细节分主线和可选校核；不再预设已具系统课程背景。",
+            "lecture_coverage": "50页的技术主线均有对应讲解，行政页以历史版本与课程组织概括；p.45列明不讲的课程范围没有被误当新增教学目标。",
+            "mechanisms_and_boundaries": "prefill/decode瓶颈的工作区间、KV容量单位、层次栈、关键路径、缓存路由、故障恢复与观测均明确；课堂分类、类比、构造算例与工程推导有标注。",
+            "high_risk_checks": "重新计算256GiB KV示例、3.125h集群间隔、9% AFR对应92884.5h而非50000h、16.071%反算、浮点1.0/0.0、每成功成本1.667/1.444；与正文一致。",
+            "learning_completeness": "包含符号与假设、选型、费用与能耗、故障表、实验控制与泛化、15题及答案。"
+          },
+          "issues_and_fixes": [
+            {
+              "issue": "原适用性判断预设系统背景，术语与机制之间存在学习跳步",
+              "fix": "按LLM/Java开发前提补最小模型、硬件与KV背景，分层阅读路线"
+            },
+            {
+              "issue": "多个教学公式只给结果/符号，读者难自行推回",
+              "fix": "补Roofline、KV容量、故障率、积分、策略/图定义的解释和算例"
+            },
+            {
+              "issue": "自测以概念回忆为主",
+              "fix": "新增20→17/18秒的调用链迁移题与质量约束反问、答案推理"
+            }
+          ],
+          "post_fix_full_rereads": [
+            {
+              "round": 1,
+              "sha256": "899f863d320e4b28e397cdfa0654eb179f479505b9d8c88a64e255df459844ea",
+              "ranges": [
+                "1-230",
+                "231-460",
+                "461-687"
+              ],
+              "result": "最终全文复读；模型生成→资源约束→任务链→验收的衔接清楚，无需再修正"
+            },
+            {
+              "round": 2,
+              "sha256": "899f863d320e4b28e397cdfa0654eb179f479505b9d8c88a64e255df459844ea",
+              "ranges": [
+                "1-230",
+                "231-460",
+                "461-687"
+              ],
+              "result": "最终全文复读；模型生成→资源约束→任务链→验收的衔接清楚，无需再修正"
+            }
+          ],
+          "limitations": [
+            "未运行LLM、GPU、生产故障注入或真实Agent实验；仅重新运行正文离线数值检查。",
+            "本轮审核针对已归档课程版本，未把历史政策/CLI当作实时产品指引。",
+            "未声称补充资料每篇全文或原论文实验已复现；上面sources_read列出实际读取范围。"
+          ],
+          "pedagogical_review": {
+            "reader_assumptions": "有应用开发/Java/LLM调用经验，不预设Transformer数学和GPU体系结构；不从基础编程重讲。",
+            "problem_chain": "代码修复服务动机→模型/Serving/Agent三层→一次生成资源→多轮依赖/观测→任务成功/成本→实验与恢复，原链条成立；补齐跨层必需前置。",
+            "prerequisites_and_jumps": "原稿权重/logit/argmax、batch/kernel、KV头维度直接使用；Roofline最大值与KV乘法、能耗积分、策略符号、故障指数反算跳步。新增最小生成链、硬件容量/带宽/算力、注意力KV直觉、公式单位与数值例子；年度概率校核标为进阶。",
+            "case": "保留贯穿代码修复服务，调用链、缓存路由、trace、恢复状态可追踪到同一交付目标；新增4次模型调用+2次测试的优化迁移题。",
+            "organization": "保留讲义顺序和50页映射，新增阅读路线与暂不必掌握的缩写/数学边界；不扩写成训练教程。",
+            "learning_outcomes": "应能区分慢在排队/prefill/decode/工具，计算端到端与每成功成本，理解缓存状态、恢复和验证；15道机制题与答案加1道计算/质量取舍迁移题支持检验。",
+            "fixes": [
+              "新增token→权重→logit→生成循环与Harness前置",
+              "GPU容量/带宽/算力和batch/kernel定义",
+              "Roofline单位/最大值原因/2ms与10ms例",
+              "KV query/key/value/头及128KiB×32768×64算例",
+              "故障率与能量公式直觉/符号解释",
+              "策略符号、DAG和p95定义",
+              "调用链迁移题及答案"
+            ]
+          },
+          "numerical_check_2026_10_28": {
+            "baseline_seconds": 20.0,
+            "A_seconds": 17.0,
+            "B_seconds": 18.0,
+            "KV_GiB": 256.0,
+            "energy_J": 2000
+          },
+          "record_file": "tools/reviews/2026-10-28-full/harvard_full/01-overview.json",
+          "review_id": "2026-10-28-full-learning-review"
         }
-      ]
+      ],
+      "full_learning_review_record": "tools/reviews/2026-10-28-full/harvard_full/01-overview.json",
+      "latest_review_date": "2026-10-28"
     },
     {
       "note": "2680/2.AgentsUseI.HowClaudeCodeWorks/coding_agent_integrated_guide.md",
@@ -180,7 +344,7 @@
       "action": "review_existing",
       "status": "passed",
       "original_sha256": "0d6e2d98184f8ddf5aad404a5b1133177cd4f3f61764eaf403835f843d0f82fd",
-      "final_sha256": "2cc9da938fd0f648426128389ca53105fbb811206be2b378f17d21d618fa0adf",
+      "final_sha256": "073d667b9e332bf7e56a419954cb12bde850c30786d6f251467d0b5de1f06de4",
       "reviews": [
         {
           "report_file": "2680-02-coding-guide.json",
@@ -278,6 +442,172 @@
             "未运行 GPU、付费 API 或论文基准实验"
           ],
           "final_sha256": "2cc9da938fd0f648426128389ca53105fbb811206be2b378f17d21d618fa0adf"
+        },
+        {
+          "note": "2680/2.AgentsUseI.HowClaudeCodeWorks/coding_agent_integrated_guide.md",
+          "original_sha256": "2cc9da938fd0f648426128389ca53105fbb811206be2b378f17d21d618fa0adf",
+          "final_sha256": "073d667b9e332bf7e56a419954cb12bde850c30786d6f251467d0b5de1f06de4",
+          "status": "passed_with_fixes",
+          "full_read_ranges": [
+            {
+              "round": "initial_full_read",
+              "ranges": [
+                "1-400",
+                "401-800",
+                "801-1200",
+                "1201-1630",
+                "1631-2063"
+              ],
+              "line_count": 2063,
+              "sha256": "2cc9da938fd0f648426128389ca53105fbb811206be2b378f17d21d618fa0adf",
+              "result": "本轮全部正文、案例、自测答案和索引逐段阅读完成。"
+            }
+          ],
+          "sources_read": [
+            {
+              "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/SOURCES.md",
+              "range": "full"
+            },
+            {
+              "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/REFERENCES.json",
+              "range": "full"
+            },
+            {
+              "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/2_agent_use_1.pdf",
+              "pages": "1-53",
+              "version": "local 53-page archived lecture; page 53 blank transition",
+              "range": "full text",
+              "visual_pages": [
+                7,
+                12,
+                18,
+                38,
+                42,
+                52
+              ]
+            },
+            {
+              "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Guardrails_Beat_Guidance_A_Large-Scale_Study_of_Rules_Skills_and_Persistent_Configuration_for_Coding_Agents.pdf",
+              "pages": "1-12",
+              "version": "arXiv:2604.11088v2, 28 May 2026",
+              "range": "full text, Tables 2-5, figures and limitations",
+              "visual_pages": [
+                6,
+                7,
+                11,
+                12
+              ]
+            },
+            {
+              "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/The_Scaffolding_Matters_More_Than_the_Interface.pdf",
+              "pages": "1-27",
+              "range": "full text, methods, Tables 1-8 and Appendix A; figure/table inspection",
+              "visual_pages": [
+                10,
+                13,
+                14,
+                15,
+                16
+              ]
+            },
+            {
+              "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Equipping_agents_for_the_real_world_with_Agent_Skills.html",
+              "range": "full article text"
+            },
+            {
+              "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Code_execution_with_MCP_building_more_efficient_AI_agents.html",
+              "range": "full article text"
+            },
+            {
+              "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/How_skills_and_MCPs_actually_work.html",
+              "range": "full article text"
+            },
+            {
+              "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/The_Harness_Is_the_Thing.html",
+              "range": "full article text"
+            },
+            {
+              "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Hooks_reference.html",
+              "range": "PreToolUse decision control; PostToolUse decision control; other exit codes; timeouts; onFailure block; Stop; background hooks; all included subheadings",
+              "version": "archived moving documentation, checks include v2.1.295 qualification"
+            },
+            {
+              "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Best_practices_for_Claude_Code.html",
+              "range": "verification; explore/plan/code; manage context; rewind checkpoints; adversarial review; failure patterns"
+            },
+            {
+              "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/references",
+              "range": "001-009 individual Simon Willison articles, full article body (navigation excluded where possible)"
+            }
+          ],
+          "coverage_assessment": {
+            "suitability": "明确为课程主讲解之后的工程案例篇；符合具备Java/Python经验的LLM工程师学习深度。",
+            "lecture_coverage": "loop、上下文、记忆、六类工具、Skills/MCP/Hooks/Plugin及可选Gateway均覆盖；非技术行政页适当略写。",
+            "mechanisms_and_practice": "区分上下文/训练、业务知识/API、未知/零、超时/未执行；两个贯穿案例覆盖计划、红绿测试、集成验证、独立审查、恢复与交付。",
+            "high_risk_checks": "S8样本58/35/17、3544+1500运行、64.9%项目规则排除、不同基线与表2-5数值一致；S9 54/46/40、13对0.43-29.06中位0.93、139倍、按需3.1倍混杂、成本与失败率区分、代理例外均核实。Hooks字段与版本和归档一致。",
+            "learning_completeness": "包含选型、成本、失效边界、泛化限制和8题有条件答案；实验与教学示意未冒充已运行结果。"
+          },
+          "issues_and_fixes": [
+            {
+              "issue": "§2.4动作分布公式未解释π/θ/~/条件线",
+              "fix": "先用上下文组织—模型选动作两步解释，再定义符号并澄清不是产品API。"
+            },
+            {
+              "issue": "§3.5累计输入公式跳过等差求和过程",
+              "fix": "展开前3轮与第N轮，解释背景重复N次和新增系数求和；保留540000与46000对照。"
+            },
+            {
+              "issue": "§5.4首次用配对检验与p值而假定统计前置",
+              "fix": "补基线、配对、McNemar翻转计数、p值条件、小样本与百分点定义，帮助理解63.8%不构成等价或稳定增益证明。"
+            }
+          ],
+          "post_fix_full_rereads": [
+            {
+              "round": 1,
+              "sha256": "073d667b9e332bf7e56a419954cb12bde850c30786d6f251467d0b5de1f06de4",
+              "line_count": 2067,
+              "ranges": [
+                "1-330",
+                "331-660",
+                "661-990",
+                "991-1320",
+                "1321-1650",
+                "1651-1860",
+                "1861-2067"
+              ],
+              "result": "全部正文、案例、模板、自测答案、附录逐段完整复读通过。"
+            },
+            {
+              "round": 2,
+              "sha256": "073d667b9e332bf7e56a419954cb12bde850c30786d6f251467d0b5de1f06de4",
+              "line_count": 2067,
+              "ranges": [
+                "1-420",
+                "421-840",
+                "841-1260",
+                "1261-1680",
+                "1681-2067"
+              ],
+              "result": "第二轮逐段完整复读通过，未发现新增实质问题。"
+            }
+          ],
+          "limitations": [
+            "未复跑S8/S9模型实验或真实Claude Code/MCP集成；配置结论限定归档快照。",
+            "S9原文本身存在部分描述/统计不一致，正文已注明不同失败中位数并避免合并；没有将论文全部推断作为已证实因果。",
+            "未观看指定视频；文中明确不从视频标题补写内容。"
+          ],
+          "final_line_count": 2067,
+          "pedagogical_review": {
+            "reader_prerequisites": "明确面向有Java/Python等软件经验的LLM开发者，不从编程基础重讲；补足概率符号、求和和统计实验前置。",
+            "problem_chain": "运行循环—上下文—长期规则—规则干预证据—工具/Skills/MCP—接口对照证据—权限—多Agent—完整开发/恢复案例—评测与经验治理；每层解释前层不足并导向下一设计。",
+            "prerequisites_and_jumps": "新增3处桥接消除主要数学/统计跳步；工具schema与业务知识、持久记忆与权重更新、文本guardrail与运行时控制已逐一教清。",
+            "cases": "第12章由两个broker同对象/快照且不重叠假设出发，0/未知、5/未知、5+3逐案解释，沿broker—快照—汇总—API—UI追因并连接红绿测试与验收。第13章并发A/B时序与响应丢失连接幂等语义、权限及Harness恢复，可从通用后端开发经验迁移。",
+            "organization": "主讲解先读、本篇侧重开发与恢复案例的分工已明确；可选MCP/Gateway与术语索引留在附录，主线不被协议细节打断。",
+            "learning_outcomes_and_assessment": "16.8的8题覆盖累计输入推算、未知复合状态、Skill故障诊断、统计边界、失败支出、计量例外、日志数据流、PR超时恢复；答案含判断理由和回查章节，能检验应用能力。",
+            "revisions": "保持已完整案例和自测，定点补数学与统计解释，不为产生diff重写结构。"
+          },
+          "record_file": "tools/reviews/2026-10-28-full/harvard_full/02-coding-guide.json",
+          "review_id": "2026-10-28-full-learning-review"
         }
       ],
       "maintenance": [
@@ -288,7 +618,9 @@
           "final_sha256": "2cc9da938fd0f648426128389ca53105fbb811206be2b378f17d21d618fa0adf",
           "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
         }
-      ]
+      ],
+      "full_learning_review_record": "tools/reviews/2026-10-28-full/harvard_full/02-coding-guide.json",
+      "latest_review_date": "2026-10-28"
     },
     {
       "note": "2680/2.AgentsUseI.HowClaudeCodeWorks/lecture_02_agent_use_integrated_notes.md",
@@ -296,7 +628,7 @@
       "action": "review_existing",
       "status": "passed",
       "original_sha256": "b27d2f35302820cbbd096b259a268d9fc18076612e6d6088c463f9b3b161ad8f",
-      "final_sha256": "ca727e8f13fc66bdee4cec1682f9768ed76a44b7c785eb9429962552c4947824",
+      "final_sha256": "5a918dcea8b43d1f8646e1d21e1d79ad4cfa1e96fed1c2bb4a206d270ec0af81",
       "reviews": [
         {
           "report_file": "2680-02-lecture-notes.json",
@@ -390,6 +722,173 @@
             "未运行 GPU、付费 API 或论文基准实验"
           ],
           "final_sha256": "ca727e8f13fc66bdee4cec1682f9768ed76a44b7c785eb9429962552c4947824"
+        },
+        {
+          "note": "2680/2.AgentsUseI.HowClaudeCodeWorks/lecture_02_agent_use_integrated_notes.md",
+          "original_sha256": "ca727e8f13fc66bdee4cec1682f9768ed76a44b7c785eb9429962552c4947824",
+          "final_sha256": "5a918dcea8b43d1f8646e1d21e1d79ad4cfa1e96fed1c2bb4a206d270ec0af81",
+          "status": "passed_with_fixes",
+          "full_read_ranges": [
+            {
+              "round": "initial_full_read",
+              "ranges": [
+                "1-370",
+                "371-750",
+                "751-1010",
+                "1011-1290",
+                "1291-1570",
+                "1571-1814"
+              ],
+              "line_count": 1814,
+              "sha256": "ca727e8f13fc66bdee4cec1682f9768ed76a44b7c785eb9429962552c4947824",
+              "result": "本轮全部正文、模板、自测答案与来源索引逐段阅读完成。"
+            }
+          ],
+          "sources_read": [
+            {
+              "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/SOURCES.md",
+              "range": "full"
+            },
+            {
+              "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/REFERENCES.json",
+              "range": "full"
+            },
+            {
+              "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/2_agent_use_1.pdf",
+              "pages": "1-53",
+              "version": "local 53-page archived lecture; page 53 blank transition",
+              "range": "full text",
+              "visual_pages": [
+                7,
+                12,
+                18,
+                38,
+                42,
+                52
+              ]
+            },
+            {
+              "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Guardrails_Beat_Guidance_A_Large-Scale_Study_of_Rules_Skills_and_Persistent_Configuration_for_Coding_Agents.pdf",
+              "pages": "1-12",
+              "version": "arXiv:2604.11088v2, 28 May 2026",
+              "range": "full text, Tables 2-5, figures and limitations",
+              "visual_pages": [
+                6,
+                7,
+                11,
+                12
+              ]
+            },
+            {
+              "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/The_Scaffolding_Matters_More_Than_the_Interface.pdf",
+              "pages": "1-27",
+              "range": "full text, methods, Tables 1-8 and Appendix A; figure/table inspection",
+              "visual_pages": [
+                10,
+                13,
+                14,
+                15,
+                16
+              ]
+            },
+            {
+              "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Equipping_agents_for_the_real_world_with_Agent_Skills.html",
+              "range": "full article text"
+            },
+            {
+              "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Code_execution_with_MCP_building_more_efficient_AI_agents.html",
+              "range": "full article text"
+            },
+            {
+              "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/How_skills_and_MCPs_actually_work.html",
+              "range": "full article text"
+            },
+            {
+              "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/The_Harness_Is_the_Thing.html",
+              "range": "full article text"
+            },
+            {
+              "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Hooks_reference.html",
+              "range": "PreToolUse decision control; PostToolUse decision control; other exit codes; timeouts; onFailure block; Stop; background hooks; all included subheadings",
+              "version": "archived moving documentation, checks include v2.1.295 qualification"
+            },
+            {
+              "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Best_practices_for_Claude_Code.html",
+              "range": "verification; explore/plan/code; manage context; rewind checkpoints; adversarial review; failure patterns; Let Claude interview you; Automate and scale and all subheadings"
+            },
+            {
+              "path": "2680/2.AgentsUseI.HowClaudeCodeWorks/references",
+              "range": "001-010 individual Simon Willison articles, full article text; 008 is not substantively used by this guide"
+            }
+          ],
+          "coverage_assessment": {
+            "suitability": "以53页讲义为主线，清楚区分产品快照、论文证据、第一手工程经验和教学推导，适合作为本课完整中文主讲解。",
+            "lecture_coverage": "loop、上下文、记忆、六类工具、Skills/MCP/Hooks/Plugin及可选Gateway均覆盖；非技术行政页适当略写。",
+            "mechanisms_and_practice": "从loop、上下文与持久记忆展开至工具语义、Skills、MCP、Hooks、Subagents/Plugin和任务状态，提供工作流程、诊断矩阵、成本口径与金融预审核迁移案例。",
+            "high_risk_checks": "S8样本58/35/17、3544+1500运行、64.9%项目规则排除、不同基线与表2-5数值一致；S9 54/46/40、13对0.43-29.06中位0.93、139倍、按需3.1倍混杂、成本与失败率区分、代理例外均核实。Hooks字段与版本和归档一致。",
+            "learning_completeness": "讲义逐页映射完整；8题参考答案、7项分类练习与任务/指令/Skill/交接/评测模板齐全；未把模板或金融推演写成已部署实验。"
+          },
+          "issues_and_fixes": [
+            {
+              "issue": "动作分布公式预设读者知道π、θ、~和条件线",
+              "fix": "§2.5逐一解释参数、策略分布、按分布选动作和给定信息；明确不是产品API。"
+            },
+            {
+              "issue": "累计上下文输入量直接给出等差数列结果",
+              "fix": "§3.3从前三步展开至0至N−1求和，并给1000/200/3步=3600的可核算例子。"
+            },
+            {
+              "issue": "实验部分首次使用配对、McNemar和p值而未补统计前置",
+              "fix": "§6.4定义基线、同题配对、两类翻转计数、p值条件及小样本限制；§6.7补消融与集合符号。"
+            }
+          ],
+          "post_fix_full_rereads": [
+            {
+              "round": 1,
+              "sha256": "5a918dcea8b43d1f8646e1d21e1d79ad4cfa1e96fed1c2bb4a206d270ec0af81",
+              "ranges": [
+                "1-340",
+                "341-680",
+                "681-1020",
+                "1021-1360",
+                "1361-1625",
+                "1626-1820"
+              ],
+              "line_count": 1820,
+              "result": "逐段完整复读通过；定义—机制—案例—自测衔接与来源边界无新增问题。"
+            },
+            {
+              "round": 2,
+              "sha256": "5a918dcea8b43d1f8646e1d21e1d79ad4cfa1e96fed1c2bb4a206d270ec0af81",
+              "ranges": [
+                "1-340",
+                "341-680",
+                "681-1020",
+                "1021-1360",
+                "1361-1625",
+                "1626-1820"
+              ],
+              "line_count": 1820,
+              "result": "逐段完整复读通过；定义—机制—案例—自测衔接与来源边界无新增问题。"
+            }
+          ],
+          "limitations": [
+            "未复跑S8/S9模型实验或真实Claude Code/MCP集成；配置结论限定归档快照。",
+            "S9原文本身存在部分描述/统计不一致，正文已注明不同失败中位数并避免合并；没有将论文全部推断作为已证实因果。",
+            "未观看指定视频；文中明确不从视频标题补写内容。"
+          ],
+          "final_line_count": 1820,
+          "pedagogical_review": {
+            "reader_prerequisites": "一般Java/Python与LLM应用开发经验；不预设策略分布、求和与统计检验知识。",
+            "problem_chain": "先运行循环，再观察/上下文/记忆，再工具语义与扩展机制，随后工作流、权限、评测和迁移；机制依赖顺序成立。",
+            "prerequisites_and_jumps": "上述3类符号/推导/统计跳步已补。Token、Harness、Skill与Hook均在应用前说明；接口结构合规与业务语义正确分开解释。",
+            "cases": "过期session贯穿观察—工具—测试；队列案例把未知与0区分并连接技能加载；第13章金融预审核明确为设计迁移而非部署证据。既有案例可随调用链走通，无需改成单一行业教程。",
+            "organization": "主讲解先于配套Coding Agent综合指南的阅读顺序明确；章节围绕问题组织，页码映射、模板与附录分离降低首次阅读负担。",
+            "learning_outcomes_and_assessment": "8题自测要求判断未知状态、Skill路由、隔离及执行限制；第42页7项分类不仅给标签也给理由。读者能由故障定位应调整观察、过程知识、授权还是验证，而非只记名词。",
+            "revisions": "补必要数学和统计桥接，保留已完整的开发案例与应用型自测。"
+          },
+          "record_file": "tools/reviews/2026-10-28-full/harvard_full/02-lecture-main.json",
+          "review_id": "2026-10-28-full-learning-review"
         }
       ],
       "maintenance": [
@@ -400,7 +899,9 @@
           "final_sha256": "ca727e8f13fc66bdee4cec1682f9768ed76a44b7c785eb9429962552c4947824",
           "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
         }
-      ]
+      ],
+      "full_learning_review_record": "tools/reviews/2026-10-28-full/harvard_full/02-lecture-main.json",
+      "latest_review_date": "2026-10-28"
     },
     {
       "note": "2680/3.AgentsUseII.100xEngineerWithMultiAgents/Lecture03_MultiAgent_完整学习讲义.md",
@@ -408,7 +909,7 @@
       "action": "review_existing",
       "status": "passed",
       "original_sha256": "26bc07343c93b5cdc3d489e4154e357bf9fd57af49332f8311907aa6f6aa6de2",
-      "final_sha256": "baf643d3f71133a5d3bbe3b2aafadf33625dd5825e256d7b89c98a2d5173253f",
+      "final_sha256": "0f40b4cd0327ca5491cb9e8efc703735857f9adf09aa2482138535cdb237d960",
       "reviews": [
         {
           "report_file": "2680-03-multi-agent.json",
@@ -494,6 +995,201 @@
             "未运行 GPU、付费 API 或论文基准实验"
           ],
           "final_sha256": "baf643d3f71133a5d3bbe3b2aafadf33625dd5825e256d7b89c98a2d5173253f"
+        },
+        {
+          "note": "2680/3.AgentsUseII.100xEngineerWithMultiAgents/Lecture03_MultiAgent_完整学习讲义.md",
+          "original_sha256": "baf643d3f71133a5d3bbe3b2aafadf33625dd5825e256d7b89c98a2d5173253f",
+          "final_sha256": "0f40b4cd0327ca5491cb9e8efc703735857f9adf09aa2482138535cdb237d960",
+          "status": "passed_with_fixes",
+          "final_line_count": 1688,
+          "full_read_ranges": [
+            {
+              "round": "initial",
+              "sha256": "baf643d3f71133a5d3bbe3b2aafadf33625dd5825e256d7b89c98a2d5173253f",
+              "ranges": [
+                "1-290",
+                "291-590",
+                "591-890",
+                "891-1165",
+                "1166-1420",
+                "1421-1664"
+              ]
+            },
+            {
+              "round": "final_1",
+              "sha256": "0f40b4cd0327ca5491cb9e8efc703735857f9adf09aa2482138535cdb237d960",
+              "ranges": [
+                "1-420",
+                "421-840",
+                "841-1050",
+                "1051-1260",
+                "1261-1480",
+                "1481-1688"
+              ]
+            },
+            {
+              "round": "final_2",
+              "sha256": "0f40b4cd0327ca5491cb9e8efc703735857f9adf09aa2482138535cdb237d960",
+              "ranges": [
+                "1-280",
+                "281-560",
+                "561-840",
+                "841-1120",
+                "1121-1400",
+                "1401-1688"
+              ]
+            }
+          ],
+          "sources_read": [
+            {
+              "path": "2680/3.AgentsUseII.100xEngineerWithMultiAgents/SOURCES.md",
+              "version": "本地归档快照",
+              "scope": "全文；确认日期与9项阅读，无另附README/REFERENCES",
+              "visual_pages": []
+            },
+            {
+              "path": "2680/3.AgentsUseII.100xEngineerWithMultiAgents/3_agent_use_2.pdf",
+              "version": "课程2026-09-14",
+              "scope": "PDF 1–72全文，分1–25、26–50、51–72；原生PDF页序",
+              "visual_pages": [
+                34,
+                64,
+                65,
+                66,
+                67
+              ]
+            },
+            {
+              "path": "2680/3.AgentsUseII.100xEngineerWithMultiAgents/readings/Create_custom_subagents.html",
+              "version": "本地归档快照",
+              "scope": "完整阅读所用章节：Write subagent files、Supported frontmatter fields、Available tools、Preload skills、Enable persistent memory、Run foreground/background、Let subagents spawn、Concurrent limit、What loads at startup、Resume、Auto-compaction、Fork current conversation/How forks differ；并非整站或整份93k字符全文",
+              "visual_pages": []
+            },
+            {
+              "path": "2680/3.AgentsUseII.100xEngineerWithMultiAgents/readings/Orchestrate_teams_of_Claude_Code_sessions.html",
+              "version": "本地归档快照",
+              "scope": "提取正文全文约34k字符",
+              "visual_pages": []
+            },
+            {
+              "path": "2680/3.AgentsUseII.100xEngineerWithMultiAgents/readings/Orchestrate_subagents_at_scale_with_dynamic_workflows.html",
+              "version": "本地归档快照",
+              "scope": "提取正文全文约36k字符",
+              "visual_pages": []
+            },
+            {
+              "path": "2680/3.AgentsUseII.100xEngineerWithMultiAgents/readings/Building_a_C_compiler_with_a_team_of_parallel_Claudes.html",
+              "version": "2026-02-05",
+              "scope": "正文全文约15k字符",
+              "visual_pages": []
+            },
+            {
+              "path": "2680/3.AgentsUseII.100xEngineerWithMultiAgents/readings/The_Shift_to_Agentic_AI_Evidence_from_Codex.pdf",
+              "version": "arXiv:2606.26959v1 2026-06-25",
+              "scope": "PDF 1–24正文全文；49–50附录F全文；25–48其余附录未全读",
+              "visual_pages": [
+                7,
+                14,
+                17,
+                20,
+                50
+              ]
+            },
+            {
+              "url": "https://openai.com/index/research-acceleration-view-inside-openai/",
+              "version": "2026-09-06网页，2026-10-28在线复核",
+              "scope": "引言与§1–3至成功率图说明；未声称§4–5全文"
+            },
+            {
+              "url": "https://arxiv.org/abs/2503.13657v3",
+              "version": "v3",
+              "scope": "摘要及版本元数据，支持附录D限于摘要的概括"
+            },
+            {
+              "url": "https://arxiv.org/abs/2512.08296v3",
+              "version": "v3",
+              "scope": "摘要及版本元数据，支持附录D限于摘要的概括"
+            }
+          ],
+          "coverage_assessment": {
+            "lecture": "讲义1–72的课程背景、Superpowers、Caveman、worktree、Subagents、Teams、Workflow、goal/loop、编译器案例、Software3.0、不确定性、Codex研究、可选工具选型均在主线或附录覆盖；产品版本差异独立说明。",
+            "mechanisms": "交接上下文、工具/skill权限、fork/resume/memory、任务锁/邮箱/批准、Workflow恢复和副作用皆回到具体机制；代码为未执行运行时示例，未冒充已复现。",
+            "evidence": "编译器16个Agent与2万美元等仅作案例而非对照因果；Codex观察研究分人群、时间窗与分母；lecture第65页代码行数不能解释交付8倍；相关性与验证概率公式保留假设边界。",
+            "engineering": "第14–16章覆盖状态、版本、恢复、权限、全局预算、可观测性、独立验证、成本/质量基线和故障注入；保留贯穿案例与答案。"
+          },
+          "pedagogical_review": {
+            "reader_assumptions": "按LLM Developer和Java经验定位；不重教基础编程，不预设统计学或分布式系统理论。",
+            "problem_chain": "从能委托的工作→信息压缩→执行隔离→协调状态→可重放控制→验证创造并行→成本/证据→系统设计，依赖合理。用同一服务审查逐步承接而非产品清单。",
+            "prerequisites_and_jumps": "修复动作选择公式先出现未释符号、统计模型突然使用方差/相关系数/有效样本数、条件概率缺例子；补直觉、符号、假设及逐步计算。schema、幂等/补偿首次实质使用补定义。",
+            "case": "原有检索/缓存/引用服务案例能贯穿T0契约到T1–T6调查/验证/修复/集成；保留普遍机制，不把课程改成金融或专用RAG教程。新增Java接口审查迁移题，检验脱离原案例能否运用。",
+            "organization": "长文17章加附录较重；新增两遍阅读路线与核心成果，核心任务流先读，配置/版本/数学/实证第二遍查阅；未为留下diff重排已连贯章节。",
+            "learning_outcomes": "读者应能画依赖图、写独立工单、区分returned/verified/integrated、解释重试副作用和相关证据、设计公平基线；C.4八问+新增C.5含推理答案覆盖上述目标。",
+            "fixes": [
+              "开头读者前提、术语对齐与分层阅读",
+              "2.2动作分布先直觉后定义",
+              "6.3/8.3结构契约与真实性分离",
+              "8.8幂等、补偿与回滚",
+              "13.2并行时间比例到速度倍数",
+              "13.5相关性例子与方差推导",
+              "13.6条件概率100候选例子",
+              "C.5 Java服务迁移练习及答案"
+            ]
+          },
+          "issues_and_fixes": [
+            {
+              "issue": "教学入口对LLM/统计等前置默认为熟悉，长文读法不明确",
+              "fix": "新增术语对齐、两遍阅读路线和学习成果，按LLM开发/Java经验定向"
+            },
+            {
+              "issue": "动作分布、Amdahl、方差及条件概率存在跳步",
+              "fix": "补符号、口头直觉、分步推导与小数值例子，限定简化假设"
+            },
+            {
+              "issue": "schema/恢复概念容易停留名称，原自测偏回忆",
+              "fix": "首次定义schema和幂等/补偿，增加接口审查迁移题与答案"
+            },
+            {
+              "issue": "2.5小时中位数未明示当日活跃用户分母",
+              "fix": "§12.5明确2026-06-11当日活跃内部用户，并保留99百分位71小时及统计限制"
+            }
+          ],
+          "post_fix_full_rereads": [
+            {
+              "round": 1,
+              "sha256": "0f40b4cd0327ca5491cb9e8efc703735857f9adf09aa2482138535cdb237d960",
+              "ranges": [
+                "1-420",
+                "421-840",
+                "841-1050",
+                "1051-1260",
+                "1261-1480",
+                "1481-1688"
+              ],
+              "result": "完整复读，无需进一步修改；术语/公式/案例与来源边界衔接成立"
+            },
+            {
+              "round": 2,
+              "sha256": "0f40b4cd0327ca5491cb9e8efc703735857f9adf09aa2482138535cdb237d960",
+              "ranges": [
+                "1-280",
+                "281-560",
+                "561-840",
+                "841-1120",
+                "1121-1400",
+                "1401-1688"
+              ],
+              "result": "完整复读，无新增实质问题；阅读路线、原讲义主线、迁移题及答案对应一致"
+            }
+          ],
+          "limitations": [
+            "未运行真实Claude产品、Agent调用或编译器实验；示例明确未执行。",
+            "R1仅所用章节全文精读；R5未全读25–48页非所引附录；延伸论文只核对摘要，不冒充全文研究。",
+            "未取得Software2.0/3.0外链和视频全文；相关概念以已全读讲义为依据。",
+            "产品机制依归档版本，不宣称当前安装版已验证。",
+            "曾有一次841–1260输出完全被截断，未计为阅读；已分段841–1050/1051–1260补读。早期被修改的稿件复读未计入最终两轮。"
+          ],
+          "record_file": "tools/reviews/2026-10-28-full/harvard_full/03-multi-agent.json",
+          "review_id": "2026-10-28-full-learning-review"
         }
       ],
       "maintenance": [
@@ -504,7 +1200,9 @@
           "final_sha256": "baf643d3f71133a5d3bbe3b2aafadf33625dd5825e256d7b89c98a2d5173253f",
           "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
         }
-      ]
+      ],
+      "full_learning_review_record": "tools/reviews/2026-10-28-full/harvard_full/03-multi-agent.json",
+      "latest_review_date": "2026-10-28"
     },
     {
       "note": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/lecture-04_context_and_tool_design_integrated.md",
@@ -512,7 +1210,7 @@
       "action": "review_existing",
       "status": "passed",
       "original_sha256": "b9ad5aa0e11f33b709036dc8c72e5e57e9080a778d37c962844b28e922911650",
-      "final_sha256": "52b0c4e521f1dfc6b8894c2dc78ec791adb816b3934a7da07ee39ecfd824b7af",
+      "final_sha256": "a007f58371d0270667e7e9f375fa4e631cfa14ccaefaa757d4d8b3ccf523a554",
       "reviews": [
         {
           "report_file": "2680-04-context-tools.json",
@@ -556,6 +1254,342 @@
             "未运行 GPU、付费 API 或论文基准实验"
           ],
           "final_sha256": "52b0c4e521f1dfc6b8894c2dc78ec791adb816b3934a7da07ee39ecfd824b7af"
+        },
+        {
+          "note": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/lecture-04_context_and_tool_design_integrated.md",
+          "original_sha256": "52b0c4e521f1dfc6b8894c2dc78ec791adb816b3934a7da07ee39ecfd824b7af",
+          "final_sha256": "a007f58371d0270667e7e9f375fa4e631cfa14ccaefaa757d4d8b3ccf523a554",
+          "status": "passed_with_fixes",
+          "final_line_count": 2224,
+          "full_read_ranges": [
+            {
+              "round": "initial",
+              "sha256": "52b0c4e521f1dfc6b8894c2dc78ec791adb816b3934a7da07ee39ecfd824b7af",
+              "ranges": [
+                "1-350",
+                "351-700",
+                "701-1050",
+                "1051-1400",
+                "1401-1750",
+                "1751-2208"
+              ]
+            },
+            {
+              "round": "post_fix_1",
+              "sha256": "1b8d578679a22d05d136beeded5d415a38bf64a7be0d2f8ab4c61a6d6e11667c",
+              "ranges": [
+                "1-360",
+                "361-720",
+                "721-1080",
+                "1081-1440",
+                "1441-1800",
+                "1801-2224"
+              ]
+            },
+            {
+              "round": "post_fix_2",
+              "sha256": "1b8d578679a22d05d136beeded5d415a38bf64a7be0d2f8ab4c61a6d6e11667c",
+              "ranges": [
+                "1-440（中部输出截断，随后补读230-280）",
+                "230-280（完整补读）",
+                "441-800",
+                "801-1180",
+                "1181-1570",
+                "1571-1930",
+                "1931-2224"
+              ]
+            },
+            {
+              "round": "post_causal_alignment_fix_1",
+              "sha256": "a007f58371d0270667e7e9f375fa4e631cfa14ccaefaa757d4d8b3ccf523a554",
+              "ranges": [
+                "1-350",
+                "351-700",
+                "701-1050",
+                "1051-1400",
+                "1401-1750",
+                "1751-2100",
+                "2101-2224"
+              ]
+            },
+            {
+              "round": "post_causal_alignment_fix_2",
+              "sha256": "a007f58371d0270667e7e9f375fa4e631cfa14ccaefaa757d4d8b3ccf523a554",
+              "ranges": [
+                "1-350",
+                "351-700",
+                "701-1050",
+                "1051-1400",
+                "1401-1750",
+                "1751-2100",
+                "2101-2224"
+              ]
+            }
+          ],
+          "sources_read": [
+            {
+              "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/SOURCES.md",
+              "sha256": "cbee8d9241f48410f74a952e342cfb97acf01826eeea7dfe3b6513678b7cc382",
+              "version": "本地归档版本",
+              "range": "全文；首次正文阅读前"
+            },
+            {
+              "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/REFERENCES.json",
+              "sha256": "c0cfd24d56f2d66952cb3e83f8fb473a78a4a5284afd230b84e6b0e9c7c0ab05",
+              "version": "本地归档版本",
+              "range": "全文；首次正文阅读前"
+            },
+            {
+              "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/4_agent_design_1.pdf",
+              "sha256": "aee815f49719d38c9cee4c284a161c63081082ec20859daa9af7b6720f473304",
+              "version": "2026-09-16 课程讲义，56 页",
+              "range": "PDF 实际 pp. 1–56 全文；按文本分段 1–600、601–EOF（页 32 跨段）",
+              "visually_inspected_pdf_pages": [
+                11,
+                21,
+                26,
+                43,
+                52
+              ]
+            },
+            {
+              "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf",
+              "sha256": "f285b0971ae4a790e402fb93966bed3adde2cf0a04977d08b2b40d6ab0cace69",
+              "version": "arXiv:2210.03629v3，2023-03-10",
+              "range": "pp. 1–9 全文；p. 1 曾输出截断后单独补读完整；§2、Tables 1–2、§4、微调与混合回退设置",
+              "visually_inspected_pdf_pages": [
+                2,
+                5,
+                6
+              ]
+            },
+            {
+              "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf",
+              "sha256": "6d7483d94653008e40c2058a1c22441c92e3713dae278b6361e8efc447c99522",
+              "version": "arXiv:2302.04761v1，2023-02-09",
+              "range": "pp. 1–10 全文；三条件损失、前缀筛选/插入训练、解码规则、五工具、单调用依赖限制与 Table 10",
+              "visually_inspected_pdf_pages": [
+                2,
+                3,
+                10
+              ]
+            },
+            {
+              "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Less_Context_Better_Agents_Efficient_Context_Engineering_for_Long-Horizon_Tool-Using_LLM_Agents.pdf",
+              "sha256": "31aa21cfc78d1528d07752527b6039720bc8b31eb82906a6c55a40e41fe98a5d",
+              "version": "arXiv:2606.10209v1，2026-06-08",
+              "range": "pp. 1–12、16–17 全文；Algorithm 1、C1–C4、Tables 2–5、Appendix C 评分、D 统计、H 敏感性、I 跨模型",
+              "visually_inspected_pdf_pages": [
+                5,
+                6,
+                7,
+                9
+              ]
+            },
+            {
+              "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Lost_in_the_Middle_How_Language_Models_Use_Long_Contexts.pdf",
+              "sha256": "653b29619eae2ae4b361d7bdcdc06db4bedcb1b0eabe31814036beca8c1af0b1",
+              "version": "arXiv:2307.03172v3，2023-11-20",
+              "range": "pp. 1–10 全文；任务构造、所用模型版本、位置、query-aware、架构分析及 Figure 11",
+              "visually_inspected_pdf_pages": [
+                5,
+                8,
+                10
+              ]
+            },
+            {
+              "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Diagnosing_and_Mitigating_Context_Rot_in_Long-horizon_Search.pdf",
+              "sha256": "89f838c60ac54a940e4d70e4c2e2771cadfdfd0e477acffd43231b25221dcdbb",
+              "version": "arXiv:2606.29718v2，2026-08-04；封面 2026-08-05",
+              "range": "pp. 1–10 全文；六终态、PT、五次长度排序、七策略、Tables 3/5、采样预算和边界",
+              "visually_inspected_pdf_pages": [
+                6,
+                8,
+                9
+              ]
+            },
+            {
+              "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/A_practical_guide_to_building_agents.pdf",
+              "sha256": "1903c2b1837b206d1951d8a3d1124515aee1bebebd8f2448c630c75a6b0aad86",
+              "version": "本地归档版本",
+              "range": "pp. 1–34 全文提取阅读；SDK 示例只作为归档设计材料，未验证当前 API"
+            },
+            {
+              "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Building_Effective_AI_Agents.html",
+              "sha256": "8600702d1292a3712ca43ca5206eae781e3135fe6589e3912ee17cc68337a99d",
+              "version": "本地归档版本",
+              "range": "文章全文（去脚本/导航后 1–187 行）；工作流/Agent、五模式、附录 1–2"
+            },
+            {
+              "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Effective_context_engineering_for_AI_agents.html",
+              "sha256": "6cc1c0b5e326f229fdd683c9294dc50fc3bf94ad2cdc563943a7f1905dcd277b",
+              "version": "本地归档版本",
+              "range": "文章全文（1–150 行）；全部正文与 compaction、笔记、子 Agent"
+            },
+            {
+              "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Context_Engineering_A_Practical_Guide_for_AI_Agents_2026.html",
+              "sha256": "824ad1ff81a193333d72aadcae79f2a7550c0d3bf4d825570829cb9472681f10",
+              "version": "Matt Tanner，2026-05-28 归档",
+              "range": "文章全文（1–149 行）；四支柱、生产管线、代码智能与 370 任务指标"
+            },
+            {
+              "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Writing_effective_tools_for_AI_agents_using_AI_agents.html",
+              "sha256": "1740f094f5cb2e7a9d6ab37082f04268ca9cb3a1002488ca95d629b54307d454",
+              "version": "本地归档版本",
+              "range": "文章全文（1–258 行）；工具契约、粒度、错误、输出、评测与保留集"
+            },
+            {
+              "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/How_Foundational_Models_Became_Superhuman_in_Bash.html",
+              "sha256": "45283d9e0b53d0a4e3cf424257d1ab7f5cd9c2d56b26523f4491285e62527627",
+              "version": "2026-09-01 归档",
+              "range": "文章全文含全部三段示例代码（1–412 行）；核对多文件预检查、工作区二分、日志关联筛选口径"
+            },
+            {
+              "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/What_Is_an_Agent_Harness_Harness_Engineering_Explained.html",
+              "sha256": "be5d36e5af0d5884bc1ec3eef815aa9060836a5500f137224443fe49b56bade1",
+              "version": "本地归档版本",
+              "range": "文章全文含演示代码（1–621 行）；明确作者演示非普遍可靠性保证"
+            },
+            {
+              "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Agent_Patterns_for_AI_Agent_Development_-_AgentPatterns.ai.html",
+              "sha256": "7ad3f7de7cb66ebc781b04af50e236867910c50904156f8645da4ac733e8d612",
+              "version": "本地归档版本",
+              "range": "归档首页全文（1–81 行）；未读取所链接网站全部子页"
+            },
+            {
+              "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/LLM_Powered_Autonomous_Agents.html",
+              "sha256": "03b6ed75b1dc0dedd200a077367d1f7737f0a18e08c104e7f653115e1f52b0ef",
+              "version": "2023-06-23 归档",
+              "range": "提取文本 1–180、302–355 行；Overview、Planning/Self-Reflection、Memory 引入、Generative Agents Memory/Retrieval；不是整篇全文"
+            },
+            {
+              "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/references/016_Aider_Repository_Map.html",
+              "sha256": "77708d7004b0755018668f7db831cb09b7cb5883da4e46d90bd65fe5683b07f0",
+              "version": "本地归档版本",
+              "range": "文章全文（1–93 行）"
+            },
+            {
+              "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/references/017_Aider_Repository_Map.html",
+              "sha256": "312c556eee765b5843e1017be7d7f568ecbe6e9bb048e5a93337f296bedb2397",
+              "version": "2023-10-22 文章，2026-10-26 既有归档",
+              "range": "文章全文（1–253 行）"
+            },
+            {
+              "path": "2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/How_skills_and_MCPs_actually_work.html",
+              "sha256": "025685349889065651f42130786a3501c0ee41bf44162087c614426f8315ce61",
+              "version": "Lawrence Jones，2026-09-01 归档",
+              "range": "复用本轮第 2 课已完成的文章全文精读；本次重新核对两课副本 SHA 完全一致 025685349889065651f42130786a3501c0ee41bf44162087c614426f8315ce61"
+            }
+          ],
+          "coverage_assessment": {
+            "lecture": "56 页全文核对：Agent loop/职责 pp4–7、检索与编辑 pp8–21、Shell/工具 pp22–26、Prompt 八技巧 pp27–40、上下文组成与四操作 pp41–50、Harness/延伸 pp51–56 均有实质解释；附录 A 保留教学图与外部转引的边界。",
+            "mechanisms": "ReAct 更新工作状态、Toolformer 三条件训练筛选、检索/编辑/工具契约、长命令生命周期、局部状态与全局进度、七种搜索上下文策略均能接到实现取舍。",
+            "implementation_and_diagnosis": "双案例、完整循环伪代码、接口/任务双层评测、未知/空值/超时、版本和异步状态、摘要验收可用于设计评审；未声称案例已经执行。"
+          },
+          "pedagogical_review": {
+            "reader_prerequisites": "LLM Developer/Java 开发经验，已懂接口、调用链、状态、缓存、并发和测试；新增阅读前提明确不预设 ML 训练/数学。",
+            "question_chain": "保留用户目标→上下文组装→模型选择→工具契约→观察→状态更新→验证的主线；第3–6章将选择接口落实到订单超时，第8–12章解释历史为何需管理，第14–16章回到运行与评测。给出工程首读/训练与实验证据次读路线，避免第2章成为学习入口阻塞。",
+            "prerequisites_and_steps": "原稿直接使用策略符号、预测损失和检索指标；补 π/条件/采样/集合、token 与下一 token 概率损失、微调更新参数、三条件 min 阈值例、embedding 数组直觉、Precision/Recall/F1 的分母和手算、累计输入数列展开、encoder-decoder 数据流。 最终补正 causal mask 含当前位置，并明确当前位置表示预测下一个 token，避免把可见输入与预测目标混淆。",
+            "cases": "原有重复订单与文档核验分别展示状态可替换/历史证据不可随意删除；完整走过定位、验证、编辑、历史增长、交付，保留为假设教学设计而非用户现有系统实现。新增数字例围绕通用训练、代码检索与调用成本，未收窄成金融教程。",
+            "organization": "原有17章较长但工具/状态/证据问题分层清晰，6.7 长任务段能由服务开发经验理解；保留深度与附录导航，新增分次阅读路线而不删减知识体系。",
+            "learning_outcomes": "读者能解释为何 loss 降低不等于任务完成、计算筛选/检索/累计成本、按错误选接口与上下文策略、设计独立验收；新增自测9–10含答案，原8题覆盖超时、归因、版本、采样与上线对照。",
+            "fixes": "修复教学前提、符号、三个手算桥接与可验证自测；另补评分范围、收紧成本和完成判定措辞。 汇总复核后补正 §9.5 因果注意力的当前位置边界与预测位置；再次完整复读全文两轮。"
+          },
+          "issues_and_fixes": [
+            {
+              "issue": "模型/训练/评测术语先用后教，损失公式与成本公式缺可手算推导",
+              "fix": "新增最小概率训练背景、ReAct 记号、三对照 min/阈值数值例、embedding/检索分母与F1例、输入等差数列及1400窗口/3600累计对照、架构最小定义；新增两题答案。"
+            },
+            {
+              "issue": "每轮 grep 必然模型调用且成本乘性，repo map 编排原因写成确定事实",
+              "fix": "区分依赖反馈的自适应轮次与可批处理搜索；成本用8.4具体累计公式；课堂编排原因降为本文解释。"
+            },
+            {
+              "issue": "完成判定仅依赖退出码的措辞容易与业务验收混淆",
+              "fix": "明确进程生命周期结束与用户任务完成分开，退出码0仍需产物/测试核验。"
+            },
+            {
+              "issue": "Context Pruning 完成率未解释自动评分仅覆盖金额归零",
+              "fix": "依据Appendix C p11补独立回读指标定义，明确91.6%不是每条类别/来源映射全面正确率。"
+            },
+            {
+              "issue": "§9.5“因果注意力只能看当前位置之前的内容”可能误教标准 causal mask 排除对角线，也未明确输入位置与预测位置的错位关系。",
+              "fix": "改为“可读取当前位置及之前的输入、不能读取未来位置；当前位置的表示用于预测下一个 token”，明确注意力允许自身位置与 next-token 预测目标的对齐。"
+            }
+          ],
+          "post_fix_full_rereads": [
+            {
+              "round": 1,
+              "sha256": "a007f58371d0270667e7e9f375fa4e631cfa14ccaefaa757d4d8b3ccf523a554",
+              "ranges": [
+                "1-350",
+                "351-700",
+                "701-1050",
+                "1051-1400",
+                "1401-1750",
+                "1751-2100",
+                "2101-2224"
+              ],
+              "result": "修正因果位置表述后完整分段复读1–2224行（无截断）；确认工具训练、检索指标、上下文实验、系统案例、自测与附录一致，无新实质问题。"
+            },
+            {
+              "round": 2,
+              "sha256": "a007f58371d0270667e7e9f375fa4e631cfa14ccaefaa757d4d8b3ccf523a554",
+              "ranges": [
+                "1-350",
+                "351-700",
+                "701-1050",
+                "1051-1400",
+                "1401-1750",
+                "1751-2100",
+                "2101-2224"
+              ],
+              "result": "同一最终SHA下再次完整分段复读1–2224行（无截断）；因果mask含当前输入与预测下一个token对齐，既有教学问题链、案例与答案保持连贯，无需继续修改。"
+            }
+          ],
+          "limitations": [
+            "论文与网页按已归档版本，未核验实时产品API；完整主讲义已读，辅助材料严格按sources_read所列范围，不冒称各PDF全部附录已读。",
+            "主讲义p52外部研究仍仅按讲义转引，未读该独立论文；Sourcegraph外链基准未复现。",
+            "无GPU/模型/API/ERP业务实验执行；第14章为伪代码，第15章为教学设计；新增数值例经逐项手算复核，不声明真实效果。",
+            "本轮未新增或改写任何原始资料；未运行整理同步或修改课程根审核文件。"
+          ],
+          "prior_revision_rereads": [
+            {
+              "sha256": "1b8d578679a22d05d136beeded5d415a38bf64a7be0d2f8ab4c61a6d6e11667c",
+              "reason_superseded": "汇总复核发现 §9.5 causal mask 位置边界可被误读为排除当前位置；完成单句实质修正后重新进行两遍最终全文复读。",
+              "post_fix_full_rereads": [
+                {
+                  "round": 1,
+                  "sha256": "1b8d578679a22d05d136beeded5d415a38bf64a7be0d2f8ab4c61a6d6e11667c",
+                  "ranges": [
+                    "1-360",
+                    "361-720",
+                    "721-1080",
+                    "1081-1440",
+                    "1441-1800",
+                    "1801-2224"
+                  ],
+                  "result": "全文完成；机制/术语桥接、原有接口案例、实验边界衔接，无新实质问题。"
+                },
+                {
+                  "round": 2,
+                  "sha256": "1b8d578679a22d05d136beeded5d415a38bf64a7be0d2f8ab4c61a6d6e11667c",
+                  "ranges": [
+                    "1-440（中部输出截断，随后补读230-280）",
+                    "230-280（完整补读）",
+                    "441-800",
+                    "801-1180",
+                    "1181-1570",
+                    "1571-1930",
+                    "1931-2224"
+                  ],
+                  "result": "全文完成；截断部分已显式补读；复核章节依赖、三个手算、自测答案、跨章完成标准、附录与来源一致，无再修改。"
+                }
+              ]
+            }
+          ],
+          "record_file": "tools/reviews/2026-10-28-full/harvard_full/04-context-tools.json",
+          "review_id": "2026-10-28-full-learning-review"
         }
       ],
       "maintenance": [
@@ -566,7 +1600,9 @@
           "final_sha256": "52b0c4e521f1dfc6b8894c2dc78ec791adb816b3934a7da07ee39ecfd824b7af",
           "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
         }
-      ]
+      ],
+      "full_learning_review_record": "tools/reviews/2026-10-28-full/harvard_full/04-context-tools.json",
+      "latest_review_date": "2026-10-28"
     },
     {
       "note": "2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/lecture-05_multi-agent-coordination_完整学习笔记.md",
@@ -574,7 +1610,7 @@
       "action": "review_existing",
       "status": "passed",
       "original_sha256": "1a40a146d8d92618033b4e774858f4c76cc14c6bcb8bbea29e39e7db3abd6903",
-      "final_sha256": "ea7db39497caf999eb9c76dd2645813f8fcb1fbb2e485554f0fb41eb49e4b97f",
+      "final_sha256": "d7357c95d3d11abe5baace48929115c950d10f1acebafaad25c52f8075bb2c09",
       "reviews": [
         {
           "report_file": "harvard-5.json",
@@ -649,6 +1685,192 @@
             "未运行 GPU、付费 API 或论文基准实验"
           ],
           "final_sha256": "ea7db39497caf999eb9c76dd2645813f8fcb1fbb2e485554f0fb41eb49e4b97f"
+        },
+        {
+          "note": "2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/lecture-05_multi-agent-coordination_完整学习笔记.md",
+          "original_sha256": "ea7db39497caf999eb9c76dd2645813f8fcb1fbb2e485554f0fb41eb49e4b97f",
+          "final_sha256": "d7357c95d3d11abe5baace48929115c950d10f1acebafaad25c52f8075bb2c09",
+          "status": "passed_with_fixes",
+          "final_line_count": 1765,
+          "full_read_ranges": [
+            {
+              "round": "initial",
+              "sha256": "ea7db39497caf999eb9c76dd2645813f8fcb1fbb2e485554f0fb41eb49e4b97f",
+              "ranges": [
+                "1-300",
+                "301-600",
+                "601-900",
+                "901-1200",
+                "1201-1500",
+                "1501-1737"
+              ]
+            },
+            {
+              "round": "intermediate_full_reread_before_final_repairs",
+              "sha256": "3e269c420548b88b678c677f0c8068b3184f73c7f6e4986799f1fc5ec27ae37d",
+              "ranges": [
+                "1-350",
+                "351-700",
+                "701-1050",
+                "1051-1400",
+                "1401-1765"
+              ],
+              "result": "发现SOP、variance、embedding首次使用仍先于解释，补定义后重新两轮"
+            },
+            {
+              "round": "post_fix_1",
+              "sha256": "d7357c95d3d11abe5baace48929115c950d10f1acebafaad25c52f8075bb2c09",
+              "ranges": [
+                "1-450",
+                "451-900",
+                "901-1350",
+                "1351-1765"
+              ]
+            },
+            {
+              "round": "post_fix_2",
+              "sha256": "d7357c95d3d11abe5baace48929115c950d10f1acebafaad25c52f8075bb2c09",
+              "ranges": [
+                "1-440",
+                "441-880",
+                "881-1320",
+                "1321-1550",
+                "1551-1765"
+              ]
+            }
+          ],
+          "sources_read": [
+            {
+              "path": "2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/SOURCES.md",
+              "sha256": "dcee22a2678eae9256e40ee8dfa84a4906fdd8ce0bcdf43aee81d8c436bfae5e",
+              "version": "本地归档",
+              "range": "全文；首次正文阅读前；本课无 README/REFERENCES.json",
+              "visually_inspected_pdf_pages": []
+            },
+            {
+              "path": "2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/5_agent_design_2.pdf",
+              "sha256": "4dbc20e3cdfcc7a22879672c2300058c8c41b7364a4fbe5d3378f7861501c9bd",
+              "version": "2026-09-21 课程讲义，46页",
+              "range": "实际 PDF pp.1–46 全文；第4页空白；后半页脚与实际页序不同",
+              "visually_inspected_pdf_pages": [
+                7,
+                17,
+                24,
+                25,
+                33,
+                40
+              ]
+            },
+            {
+              "path": "2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/readings/AutoGen_Enabling_Next-Gen_LLM_Applications_via_Multi-Agent_Conversation.pdf",
+              "sha256": "fcf8b1acae6b1bd6f14c92463caa9726828bf998234ba9f10c2411087897c96b",
+              "version": "arXiv:2308.08155v2，2023-10-03",
+              "range": "pp.1–10、22–23、26–28；六应用、接口、交互式检索、ALFWorld、OptiGuide、Group Chat",
+              "visually_inspected_pdf_pages": [
+                4,
+                7,
+                26,
+                28
+              ]
+            },
+            {
+              "path": "2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/readings/MetaGPT_Meta_Programming_for_a_Multi-Agent_Collaborative_Framework.pdf",
+              "sha256": "17582e47647fac8eaa3681feade41c8408310c4133acc5c6823565fbe880e1ac",
+              "version": "arXiv:2308.00352v7，2024-11-01",
+              "range": "pp.1–10、15–16；SOP、消息池、执行反馈、三组实验与附录自改进/展望",
+              "visually_inspected_pdf_pages": [
+                2,
+                4,
+                5,
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "path": "2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/readings/Don_t_Build_Multi-Agents.html",
+              "sha256": "c0f8c4656ee7c278071a23518e12d05a0d42e587b0c9fdde3717a00c24b7742c",
+              "version": "Cognition，2025-06-12 归档",
+              "range": "文章全文；提取后1–71行，包括完整上下文、隐含决定、压缩、历史产品案例",
+              "visually_inspected_pdf_pages": []
+            },
+            {
+              "path": "2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/readings/How_we_built_our_multi-agent_research_system.html",
+              "sha256": "f7c4539731f0fe4794b0db96f95dbb712331338febdb11e835dedff5bb3232eb",
+              "version": "Anthropic，2025-06-13 归档",
+              "range": "文章及附录全文；提取后1–53、54–97行；完整工作流图注已读；远端图未能获取",
+              "visually_inspected_pdf_pages": []
+            },
+            {
+              "path": "2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/readings/Towards_a_Science_of_Scaling_Agent_Systems.pdf",
+              "sha256": "028f329010d95143915db8db6ce1ad26a4e844b66e4abd6b36fdb39651aff7fd",
+              "version": "arXiv:2512.08296v3，2026-04-08",
+              "range": "pp.1–21、25–27；架构/预算/实验、回归、标准化、指标、泛化/统计限制；未读22–24、28–44",
+              "visually_inspected_pdf_pages": [
+                11,
+                19,
+                20
+              ]
+            }
+          ],
+          "coverage_assessment": {
+            "lecture": "46页全文核对：拆分理由、三张图、八类架构、六分解维度/八契约字段、粒度/动态/六类失败、四通信维度与控制内容分离、分布式运行状态、A2A/MCP及四原则均有实质讲解；memory按最后页说明留给下课。",
+            "mechanisms": "五份阅读分别补对话编程/反馈、SOP/结构化产物、隐含共同决定、研究并行与生产恢复、受控架构实验。没有将工程观点拼成同条件实验或通用阈值。",
+            "implementation_and_diagnosis": "分页API共享契约、候选→验收→持久状态、条件漏检、超时副作用/幂等恢复、版本绑定、过程约束与机制消融构成从设计到故障诊断闭环。"
+          },
+          "pedagogical_review": {
+            "reader_prerequisites": "LLM Developer/Java经验；已知接口、调用链、并发、状态、缓存与测试，不预设概率统计/ML指标。新增开篇说明与通用分页接口桥接。",
+            "question_chain": "失败为何发生→控制/任务/通信三图→架构选择→分解契约→交互与SOP机制→上下文交接→实验取舍→运行状态/协议→完整案例→评估。主线正确；没有从角色清单直接跳到有效性结论。",
+            "prerequisites_and_steps": "补SOP/DAG先定义后用；全互联消息4→12、8→56对照星形；Precision/Recall/F1分母及6/8、6/10例；Pass@1候选与模型调用数区别；独立投票逐项展开；条件漏检20%×10%=2%；回归交互项、log、标准化、R²和交叉验证解释。",
+            "cases": "新增通用分页接口（0/1起点、稳定排序、共同契约、集成验收），连接开发经验；原有FlappyBird、nullable后端接口与三公司研究案例提供不同任务迁移。均为来源案例或明确教学假设，未虚构用户项目。",
+            "organization": "16章较长，但章依赖/导航/来源附录清楚；保留普遍知识体系，先接口与图再统计证据；最终复读把SOP、方差与embedding解释移至首次使用处。",
+            "learning_outcomes": "能按依赖拆分而非先增角色，解释局部成功为何不能合并，区分候选错误/条件漏检、相关投票与独立性，读懂预算和泛化限制；新增两道应用自测与完整答案。",
+            "fixes": "补开发经验到协调/概率/统计的必要桥接；没有为了改动重写原有正确的架构与证据组织。"
+          },
+          "issues_and_fixes": [
+            {
+              "issue": "讲稿预设图论、概率和统计，直接使用指标与回归结果，阻碍具备开发经验读者理解收益边界",
+              "fix": "补最小定义、手算例、条件分母、候选数与内部循环区别、统计模型解释和自测。"
+            },
+            {
+              "issue": "缺少通用接口开发起点，部分术语首次出现仍比解释早",
+              "fix": "新增分页API贯穿桥接和阅读前提；复读发现SOP/variance/embedding定义滞后后再次修复并重新完成两轮。"
+            }
+          ],
+          "post_fix_full_rereads": [
+            {
+              "round": 1,
+              "sha256": "d7357c95d3d11abe5baace48929115c950d10f1acebafaad25c52f8075bb2c09",
+              "ranges": [
+                "1-450",
+                "451-900",
+                "901-1350",
+                "1351-1765"
+              ],
+              "result": "全文完成，章节依赖、通用开发案例与新增推导连贯，无新实质问题。"
+            },
+            {
+              "round": 2,
+              "sha256": "d7357c95d3d11abe5baace48929115c950d10f1acebafaad25c52f8075bb2c09",
+              "ranges": [
+                "1-440",
+                "441-880",
+                "881-1320",
+                "1321-1550",
+                "1551-1765"
+              ],
+              "result": "全文完成；1321–1765首次请求因上下文容量未返回正文，随后分1321–1550、1551–1765完整补读；指标分母、自测答案、来源附录一致，无再修改。"
+            }
+          ],
+          "limitations": [
+            "主讲义全文已读；辅助论文按sources_read范围读取，未声称全部附录全文。",
+            "Anthropic完整研究架构图只有远端CDN引用，本地无图；已告知主代理并尝试临时获取，HTTP403，未目视该图；文章全文及图注已读，其余所列重要图表已渲染目视。",
+            "历史AutoGen/API/A2A按归档材料解释，未核验当前SDK或协议实现。",
+            "无GPU/模型/API或论文实验复现；新增概率/指标数值为手算教学例，非真实效果。",
+            "未改原始资料、未运行整理同步、未修改课程根审核记录。"
+          ],
+          "record_file": "tools/reviews/2026-10-28-full/harvard_full/05-coordination.json",
+          "review_id": "2026-10-28-full-learning-review"
         }
       ],
       "maintenance": [
@@ -659,7 +1881,9 @@
           "final_sha256": "ea7db39497caf999eb9c76dd2645813f8fcb1fbb2e485554f0fb41eb49e4b97f",
           "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
         }
-      ]
+      ],
+      "full_learning_review_record": "tools/reviews/2026-10-28-full/harvard_full/05-coordination.json",
+      "latest_review_date": "2026-10-28"
     },
     {
       "note": "2680/6.AgentsDesignIII.AgentMemoryAndReliability/lecture06_agent_memory_reliability.md",
@@ -667,7 +1891,7 @@
       "action": "review_existing",
       "status": "passed",
       "original_sha256": "2486d25ca722609ba9e83bcb98c24c16cad1de09ce1013acb53ce87c227ab969",
-      "final_sha256": "ba0b2c8125c6c884f9bd5a6aad64c481af331fbac1d7bafa332ac6d89b2433ca",
+      "final_sha256": "aa705282548f99d66a93db6adaec56db903a233cb6e478d0bde33d34465c2692",
       "reviews": [
         {
           "report_file": "harvard-6.json",
@@ -759,6 +1983,208 @@
             "未运行 GPU、付费 API 或论文基准实验"
           ],
           "final_sha256": "ba0b2c8125c6c884f9bd5a6aad64c481af331fbac1d7bafa332ac6d89b2433ca"
+        },
+        {
+          "note": "2680/6.AgentsDesignIII.AgentMemoryAndReliability/lecture06_agent_memory_reliability.md",
+          "original_sha256": "ba0b2c8125c6c884f9bd5a6aad64c481af331fbac1d7bafa332ac6d89b2433ca",
+          "final_sha256": "aa705282548f99d66a93db6adaec56db903a233cb6e478d0bde33d34465c2692",
+          "status": "passed_with_fixes",
+          "final_line_count": 2194,
+          "full_read_ranges": [
+            {
+              "round": "initial",
+              "sha256": "ba0b2c8125c6c884f9bd5a6aad64c481af331fbac1d7bafa332ac6d89b2433ca",
+              "ranges": [
+                "1-360",
+                "361-720",
+                "721-1080",
+                "1081-1440",
+                "1441-1800",
+                "1801-2156"
+              ]
+            },
+            {
+              "round": "intermediate_full_reread_before_final_repairs",
+              "sha256": "2f539ae6f6e94ed2795ebecc87b8f8c1c06a5a93a05fc41bfd3b342b8241c1a0",
+              "ranges": [
+                "1-440",
+                "441-880",
+                "881-1320",
+                "1321-1760",
+                "1761-2194"
+              ],
+              "result": "发现E_t事件、Harness/rollout、zero/few-shot、SFT和DAG仍需先定义；修复后重做两轮。"
+            },
+            {
+              "round": "post_fix_1",
+              "sha256": "aa705282548f99d66a93db6adaec56db903a233cb6e478d0bde33d34465c2692",
+              "ranges": [
+                "1-440",
+                "441-880",
+                "881-1320",
+                "1321-1760",
+                "1761-2194"
+              ]
+            },
+            {
+              "round": "post_fix_2",
+              "sha256": "aa705282548f99d66a93db6adaec56db903a233cb6e478d0bde33d34465c2692",
+              "ranges": [
+                "1-440",
+                "441-880",
+                "881-1320",
+                "1321-1760",
+                "1761-2194"
+              ]
+            }
+          ],
+          "sources_read": [
+            {
+              "path": "2680/6.AgentsDesignIII.AgentMemoryAndReliability/SOURCES.md",
+              "sha256": "e7fd0b060445b3fec6537563bc58a2fc833c1cccd5f3365e8c0ead15d424d61c",
+              "version": "本地归档",
+              "range": "全文；正文阅读前；本课无 README/REFERENCES.json",
+              "visually_inspected_pdf_pages": []
+            },
+            {
+              "path": "2680/6.AgentsDesignIII.AgentMemoryAndReliability/6_agent_design_3.pdf",
+              "sha256": "7ed1b959e40acc5a90e67057e521e0d3a47ad25829be10e4939908fabbac4728",
+              "version": "2026-09-28 课程讲义，31页",
+              "range": "实际 PDF pp.1–31 全文；p4空白；后半页脚偏移",
+              "visually_inspected_pdf_pages": [
+                6,
+                22,
+                30
+              ]
+            },
+            {
+              "path": "2680/6.AgentsDesignIII.AgentMemoryAndReliability/readings/Retrieval-Augmented_Generation_for_Knowledge-Intensive_NLP_Tasks.pdf",
+              "sha256": "23e3249e9a1e75418d82efecab0ea8c4d033b89c93742f63208d47ce01f21233",
+              "version": "arXiv:2005.11401v4，2021-04-12",
+              "range": "pp.1–8全文；机制、两种生成、联合训练、各任务/消融、时态索引和证据边界",
+              "visually_inspected_pdf_pages": [
+                2,
+                7,
+                8
+              ]
+            },
+            {
+              "path": "2680/6.AgentsDesignIII.AgentMemoryAndReliability/readings/MemGPT_Towards_LLMs_as_Operating_Systems.pdf",
+              "sha256": "9f674bcff69c86f11c813dcfad613d8841f5f8ed17979e3c4df06a91df7762e0",
+              "version": "arXiv:2310.08560v2，2024-02-12",
+              "range": "pp.1–8全文；架构权限、控制流、历史回忆/开场/文档QA/嵌套键值实验",
+              "visually_inspected_pdf_pages": [
+                3,
+                5,
+                6,
+                7
+              ]
+            },
+            {
+              "path": "2680/6.AgentsDesignIII.AgentMemoryAndReliability/readings/Where_LLM_Agents_Fail_and_How_They_can_Learn_From_Failures.pdf",
+              "sha256": "5dea81aa176cf3993123c46f2cef3e70c49a4fe5f2a5c6794c4b9fbc8f532a6b",
+              "version": "arXiv:2509.25370v1，2025-09-29",
+              "range": "pp.1–9、12–14、19–21全文；分类、方法/算法、实验、限制与提示模板",
+              "visually_inspected_pdf_pages": [
+                5,
+                7,
+                8
+              ]
+            },
+            {
+              "path": "2680/6.AgentsDesignIII.AgentMemoryAndReliability/readings/Why_Do_Multi-Agent_LLM_Systems_Fail.pdf",
+              "sha256": "1b9e317a2a421e60ca2b2eda4a30844557a01e63286a790890c0ecef32d25460",
+              "version": "arXiv:2503.13657v3，2025-10-26",
+              "range": "pp.1–8、26–27全文；方法、14类别、PhoneAgent、样本分母与干预实验",
+              "visually_inspected_pdf_pages": [
+                2,
+                6,
+                8,
+                27
+              ]
+            },
+            {
+              "path": "2680/6.AgentsDesignIII.AgentMemoryAndReliability/readings/Reasoning_Failures_in_Large_Language_Model_Agents.pdf",
+              "sha256": "fa4a400e0cd34f4b9c8381f6424dbb641815e6e1cff27c017bc2450c6845daf1",
+              "version": "归档16页，正文实际标题Beyond the Leaderboard；PDF无arXiv修订标记",
+              "range": "pp.1–14全文；方法、六类失败、综合论点与局限；未读15–16",
+              "visually_inspected_pdf_pages": []
+            },
+            {
+              "path": "2680/6.AgentsDesignIII.AgentMemoryAndReliability/readings/The_Danger_of_Overthinking_Examining_the_Reasoning-Action_Dilemma_in_Agentic_Tasks.pdf",
+              "sha256": "49c65719e1756597e41ddde8677894d133691a90b7fbe1652ea6c832c45eb5b6",
+              "version": "arXiv:2502.08235v1，2025-02-12",
+              "range": "pp.1–8全文；定义、评分、预算/采样、成本和函数调用对照",
+              "visually_inspected_pdf_pages": [
+                2,
+                4,
+                7
+              ]
+            }
+          ],
+          "coverage_assessment": {
+            "lecture": "31页主讲义全文核对：持久记忆与窗口、六生命周期问题、四种编码/存储、三读取策略、五检索信号、归纳/遗忘/时态/所有权、八故障、评估、独立错误累积、五层故障和面向失败设计均已覆盖；补回第12页归纳触发时机。",
+            "mechanisms": "六阅读分别解释检索联合训练、上下文分层调度、关键错误与重展开、组织交接、测量有效性、推理与环境反馈。完整保留AgentDebug算法与正文冲突、MAST图分母、Overthinking不同成本基线，不拼接为统一实验。",
+            "implementation_and_diagnosis": "证据/事实/执行/经验四逻辑记录→任务合同→状态准入→版本绑定→依赖失效→检查点/外部副作用→故障注入/消融/验收，形成完整实现思路。"
+          },
+          "pedagogical_review": {
+            "reader_prerequisites": "LLM Developer/Java；熟悉接口、缓存、并发、状态与测试，不预设概率、训练梯度或统计。新增开篇明确前提。",
+            "question_chain": "错误被摘要持久化的失败轨迹→四类状态→RAG读取→MemGPT主动调度→生命周期治理→单步与恢复→错误定位/反馈/团队交接→测量→数据结构与验收；章间依赖合理。",
+            "prerequisites_and_steps": "补πθ/条件/采样、token与编码器、隐变量/边缘化/乘积、负对数/softmax/偏导/学习率及固定候选梯度；两个文档两个token手算0.09vs0.25与责任权重/分数更新；补ROUGE-L、P/R/F1、κ、宏平均/加权、条件恢复、候选存在率×选择率、p值定义。",
+            "cases": "保留原稿A/C实体身份贯穿案例（完整错误链、JSON记录、恢复与自测），说明无需金融前置；新增通用v1/v2接口和后台旧摘要覆盖新状态案例及应用自测，未虚构用户项目。",
+            "organization": "14章较长但导航、讲义对照和来源差异附录清楚；新增两遍阅读路线，先系统机制再训练/实验证据。首次使用术语已前置解释；机制与实验各自闭环。",
+            "learning_outcomes": "能从API表面成功追到语义状态错误，解释外部记忆更新与参数训练差异，手算RAG/恢复/选择，设计版本状态与可恢复验收；9道自测有可核对答案。",
+            "fixes": "补必要前置和演算，而非仅核对数字；补讲义归纳时机缺口；保留正确来源边界和工程流程。"
+          },
+          "issues_and_fixes": [
+            {
+              "issue": "RAG公式、梯度、概率与评估统计跳过定义和中间步骤",
+              "fix": "逐处补符号、直觉、手算、假设与分母，使开发者能读懂训练和测量，而非背结论。"
+            },
+            {
+              "issue": "讲义p12何时归纳未完整展开",
+              "fix": "补事件数/上下文/冲突重复触发、后台归纳及明确标注的版本冲突工程推演。"
+            },
+            {
+              "issue": "通用开发经验起点和部分首次术语不足",
+              "fix": "补接口版本/缓存案例、Harness轨迹定义、zero/few-shot与SFT/DAG解释、两道应用自测；中间复读再修后重新两遍完整阅读。"
+            }
+          ],
+          "post_fix_full_rereads": [
+            {
+              "round": 1,
+              "sha256": "aa705282548f99d66a93db6adaec56db903a233cb6e478d0bde33d34465c2692",
+              "ranges": [
+                "1-440",
+                "441-880",
+                "881-1320",
+                "1321-1760",
+                "1761-2194"
+              ],
+              "result": "全文完成，定义、机制、案例状态、来源边界与自测相互一致，无新实质问题。 441–880首次请求未返回正文，跨压缩后完整重读该段；未将失败输出计为阅读。"
+            },
+            {
+              "round": 2,
+              "sha256": "aa705282548f99d66a93db6adaec56db903a233cb6e478d0bde33d34465c2692",
+              "ranges": [
+                "1-440",
+                "441-880",
+                "881-1320",
+                "1321-1760",
+                "1761-2194"
+              ],
+              "result": "全文完成，定义、机制、案例状态、来源边界与自测相互一致，无新实质问题。"
+            }
+          ],
+          "limitations": [
+            "主讲义全文已读；六辅助论文仅声明所列实际范围，未声称未读附录全文。",
+            "20张关键PDF页已渲染目视；综述仅用于分类与论证，未把其二手汇总数字作为新实测。",
+            "Beyond the Leaderboard来源URL及线上版本未独立核验，以本地16页PDF为依据，正文明确限制。",
+            "没有GPU/模型/API/论文实验复现；伪代码与JSON是教学结构，新增数值是手算示例，非部署效果。",
+            "原始资料未改；未运行整理同步或修改课程根审核记录。"
+          ],
+          "record_file": "tools/reviews/2026-10-28-full/harvard_full/06-memory-reliability.json",
+          "review_id": "2026-10-28-full-learning-review"
         }
       ],
       "maintenance": [
@@ -769,7 +2195,9 @@
           "final_sha256": "ba0b2c8125c6c884f9bd5a6aad64c481af331fbac1d7bafa332ac6d89b2433ca",
           "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
         }
-      ]
+      ],
+      "full_learning_review_record": "tools/reviews/2026-10-28-full/harvard_full/06-memory-reliability.json",
+      "latest_review_date": "2026-10-28"
     },
     {
       "note": "2680/7.AgentDesignIV.AgentEvaluation/Agent_Eval_Lecture07_Integrated_Notes.md",
@@ -777,7 +2205,7 @@
       "action": "review_existing",
       "status": "passed",
       "original_sha256": "6e57a89fa549437053ad7a87ad1a5e8991bed623a593105ff9bc0871e3b03e7c",
-      "final_sha256": "a6fbd1da8e2ccb72b70fd8be29b09f27add6885b2f599ee7e7f28d3cb388a630",
+      "final_sha256": "14cf12d24ddfd74b7c13cde9c8faf3b880f0c91abf84237b0b40a91515c88de5",
       "reviews": [
         {
           "report_file": "2680-07-agent-evaluation.json",
@@ -896,6 +2324,277 @@
             "未运行 GPU、付费 API 或论文基准实验"
           ],
           "final_sha256": "a6fbd1da8e2ccb72b70fd8be29b09f27add6885b2f599ee7e7f28d3cb388a630"
+        },
+        {
+          "note": "2680/7.AgentDesignIV.AgentEvaluation/Agent_Eval_Lecture07_Integrated_Notes.md",
+          "original_sha256": "a6fbd1da8e2ccb72b70fd8be29b09f27add6885b2f599ee7e7f28d3cb388a630",
+          "final_sha256": "14cf12d24ddfd74b7c13cde9c8faf3b880f0c91abf84237b0b40a91515c88de5",
+          "status": "passed_with_fixes",
+          "final_line_count": 2035,
+          "full_read_ranges": [
+            {
+              "round": "initial",
+              "sha256": "a6fbd1da8e2ccb72b70fd8be29b09f27add6885b2f599ee7e7f28d3cb388a630",
+              "ranges": [
+                "1-400",
+                "401-800",
+                "801-1200",
+                "1201-1600",
+                "1601-2001"
+              ]
+            },
+            {
+              "round": "intermediate_full_reread",
+              "sha256": "b6d1e6d6e3fe0ccdc2019b16cda9d460b12a47cdac81c5a76a2280ca61518419",
+              "ranges": [
+                "1-420",
+                "421-840",
+                "841-1260",
+                "1261-1680",
+                "1681-2031"
+              ],
+              "result": "发现风险点评估与终点DCR的TP/FP语境需明确、指标段落负荷偏大；修复后重做两轮。"
+            },
+            {
+              "round": "post_fix_1",
+              "sha256": "14cf12d24ddfd74b7c13cde9c8faf3b880f0c91abf84237b0b40a91515c88de5",
+              "ranges": [
+                "1-420",
+                "421-920",
+                "921-1420",
+                "1421-2035"
+              ]
+            },
+            {
+              "round": "post_fix_2",
+              "sha256": "14cf12d24ddfd74b7c13cde9c8faf3b880f0c91abf84237b0b40a91515c88de5",
+              "ranges": [
+                "1-500",
+                "501-1000",
+                "1001-1500",
+                "1501-2035"
+              ]
+            }
+          ],
+          "sources_read": [
+            {
+              "path": "2680/7.AgentDesignIV.AgentEvaluation/SOURCES.md",
+              "sha256": "04db5c02704e5371abd5c0ccaf4822a1ccb9c4b70944958933910bfcd7055dc0",
+              "version": "本地索引",
+              "range": "全文，正文阅读前",
+              "visually_inspected_pdf_pages": []
+            },
+            {
+              "path": "2680/7.AgentDesignIV.AgentEvaluation/REFERENCES.json",
+              "sha256": "a19f7e2fbdfa0394e271148276b2501851f7c116cf1c0439880810009e4ce7f4",
+              "version": "本地补充索引",
+              "range": "全文，正文阅读前；本课无README",
+              "visually_inspected_pdf_pages": []
+            },
+            {
+              "path": "2680/7.AgentDesignIV.AgentEvaluation/7_agent_design_4.pdf",
+              "sha256": "87f1c93e4711985ff4624de14b297beb118ed9f429523b455a3d1acb8fe515b8",
+              "version": "37页官方课程讲义",
+              "range": "实际PDF pp.1–37全文；p37空白",
+              "visually_inspected_pdf_pages": [
+                13,
+                19,
+                22,
+                28,
+                29,
+                32,
+                33,
+                35
+              ]
+            },
+            {
+              "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/AI_Agents_That_Matter.pdf",
+              "sha256": "1681013e0421f9d193ca5bb556b566f50d1e5eaa43d7a9700a31ca3dd0e2ff7a",
+              "version": "arXiv:2407.01502v1，2024-07-01",
+              "range": "pp.1–11、16–17、20–21全文；成本分母、重试策略、训练测试分割、HotPot与NovelQA",
+              "visually_inspected_pdf_pages": [
+                4,
+                6,
+                20
+              ]
+            },
+            {
+              "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/Towards_a_Science_of_AI_Agent_Reliability.pdf",
+              "sha256": "f6347ad130f009ea385cfa341a32fd1c7d757d65458b4d1d73dae5c3a28a2ccf",
+              "version": "arXiv:2602.16666v3，2026-06-02",
+              "range": "pp.1–9、33–34全文；12指标、干净任务子集、校准、API扰动",
+              "visually_inspected_pdf_pages": [
+                4,
+                8
+              ]
+            },
+            {
+              "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/Establishing_Best_Practices_for_Building_Rigorous_Agentic_Benchmarks.pdf",
+              "sha256": "6bee07172c55c1146fdc8a14e0a4839854f7b4be36616729fda3ee6d519a698b",
+              "version": "arXiv:2507.02825v5，2025-08-07",
+              "range": "pp.1–8、27–28全文；有效性链、τ任务缺陷与无动作攻击",
+              "visually_inspected_pdf_pages": [
+                3
+              ]
+            },
+            {
+              "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/SWE-bench_Can_Language_Models_Resolve_Real-World_GitHub_Issues.pdf",
+              "sha256": "f7e8e1df64129742b8199a21a042734519a823a1dafd6f48f8f3ddcfb48ee296",
+              "version": "arXiv:2310.06770v3，2024-11-11",
+              "range": "pp.1–6全文；构建、2294任务、定位条件、Tables2/3",
+              "visually_inspected_pdf_pages": [
+                5
+              ]
+            },
+            {
+              "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/AgentBench_Evaluating_LLMs_as_Agents.pdf",
+              "sha256": "9c780e35fc0b2de6c2e21e0572f6aaaadcf7ecdd56d63cfaae2b415bc0dc83c3",
+              "version": "arXiv:2308.03688v3，2025-10-04",
+              "range": "pp.1–8全文；8环境、终止条件、CoT基线、加权分数",
+              "visually_inspected_pdf_pages": [
+                6
+              ]
+            },
+            {
+              "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/Measuring_AI_Ability_to_Complete_Long_Software_Tasks.pdf",
+              "sha256": "29216eb3af4daa417666757a462ab7c7b5f8c18c188ee5a56e258b04116211f7",
+              "version": "arXiv:2503.14499v4，2026-07-10",
+              "range": "pp.1–8全文；170任务、人类基线、拟合、分层bootstrap与外推限制",
+              "visually_inspected_pdf_pages": [
+                6
+              ]
+            },
+            {
+              "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/tau-bench_A_Benchmark_for_Tool-Agent-User_Interaction_in_Real-World_Domains.pdf",
+              "sha256": "0ce66a1763d698c61bb311c3c874bf593d1e9a5bfff11bb35f6f72b981f6da56",
+              "version": "arXiv:2406.12045v1，2024-06-17",
+              "range": "pp.1–9全文；奖励、pass^k、模型/温度、策略消融、任务错误",
+              "visually_inspected_pdf_pages": [
+                4,
+                7,
+                8
+              ]
+            },
+            {
+              "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/AgentOps_Enabling_Observability_of_LLM_Agents.pdf",
+              "sha256": "fc2a9aca1107bf4faace5cc18966f4bd85b05109793ca0cc7df6a3fcf88dadf3",
+              "version": "arXiv:2411.05285v2，2024-11-30；PDF日期12-03",
+              "range": "pp.1–10全文；17工具历史调查、实体关系、trace/span分类",
+              "visually_inspected_pdf_pages": [
+                8,
+                9
+              ]
+            },
+            {
+              "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/ActPlane_Programmable_OS-Level_Policy_Enforcement_for_Agent_Harnesses.pdf",
+              "sha256": "59c2b86a375aa637abe0e4e4630b0b56affc540fa34dfbf2234493f63573220a",
+              "version": "arXiv:2606.25189v2，2026-06-30",
+              "range": "pp.1–12全文；策略集、DCR、190轨迹、延迟、OpenSafety与覆盖限制",
+              "visually_inspected_pdf_pages": [
+                9,
+                12
+              ]
+            },
+            {
+              "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/2._Examples_of_cheating_in_CAISI_s_agent_evaluations.html",
+              "sha256": "0d1f02ad54f1e7c4849b91a1d5bcaf1f8e51ceff6e2211eb8f8a9f7d2e58daeb",
+              "version": "创建2025-11-28，更新2025-12-02",
+              "range": "文章正文全部§§2.1–2.3及方法说明；泄漏/评分作弊/未成功策略",
+              "visually_inspected_pdf_pages": []
+            },
+            {
+              "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/Headlong_a_microharness_for_persistent_agents.html",
+              "sha256": "e4fd2046cbba2a00c2b8411fb0b6397f72a58f956b06a3853072ee075bd3a6f7",
+              "version": "2026-08归档文章",
+              "range": "正文从引言到致谢/引用全文；持续运行、摘要、后台状态与运行事件",
+              "visually_inspected_pdf_pages": []
+            },
+            {
+              "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/Dapper_a_Large-Scale_Distributed_Systems_Tracing_Infrastructure.html",
+              "sha256": "f33968a9c204cdd790a212634d1ac7ceca8390b9b402a47146b1495f150664d2",
+              "version": "Google Research，2010",
+              "range": "归档短介绍/摘要全文；不是完整论文",
+              "visually_inspected_pdf_pages": []
+            },
+            {
+              "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/Firecracker_Lightweight_Virtualization_for_Serverless_Applications.html",
+              "sha256": "516298233390603aaeb3178d3ae56ce5e042d0227735b4e5ecbfb216a09ce759",
+              "version": "NSDI 2020",
+              "range": "归档介绍摘要及BibTeX全文；不是完整论文",
+              "visually_inspected_pdf_pages": []
+            },
+            {
+              "url": "https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/",
+              "version": "2026-02-23",
+              "range": "在线正文相关lines40–76；138个选定任务、人工复核、59.4%缺陷、类型比例与污染讨论；未声称全文或本地下载"
+            }
+          ],
+          "coverage_assessment": {
+            "lecture": "37页全文核对，组件与端到端目标、评估循环、GAIA/BFCL/WebArena/OSWorld/SWE/τ/Terminal/AgentCompany、泄漏与作弊、开发工作流、可靠性、饱和与成本Pareto均覆盖。",
+            "mechanisms": "通过评估对象→任务/判分→pass与一致性→可靠性多维→horizon→作弊/有效性→可观测与策略执行→落地协议形成完整问题链；各论文版本、子集、基线和分母保持分离。",
+            "implementation": "数据/任务/环境/模型/harness/grader版本冻结，重复运行、轨迹字段、校准、配对分层bootstrap、零事故上界、故障分诊和回归门禁均可用于工程设计。"
+          },
+          "pedagogical_review": {
+            "reader_prerequisites": "LLM Developer/Java；熟悉接口、测试、状态与调用链，不预设POMDP、统计或数学。",
+            "question_chain": "用API v1→v2迁移映射task/harness/grader与运行结果；从通过测试是否代表可靠开始，依次处理评分对象、重复性、置信度、安全、难度、有效性和工程采集。",
+            "prerequisites_and_steps": "补POMDP符号/Markov与HTTP超时例、困惑度/F1、组合数无放回与概率插件区别、轨迹分布与顺序、资源CV、ECE/Brier、logistic/logit和时域、分层bootstrap与零事件上界。每一处有定义和可手算例，不要求背公式。",
+            "cases": "新增通用接口迁移和read/test/write顺序例贯穿测量；原有业务案例保留为迁移应用，未把教学数值当实验。",
+            "organization": "原稿完整链条与来源附录保留；新增指标段落分开并定义首次术语，先测试工程直觉再统计推导，降低术语密度。",
+            "learning_outcomes": "能选择成功率/全成功率，解释同终点异轨迹，计算Brier与pass估计，设计同任务配对实验与零事故证据边界；新增三题带计算和答案，共13题。",
+            "fixes": "学习断层实质修复；最终两轮未发现新问题。"
+          },
+          "issues_and_fixes": [
+            {
+              "issue": "统计、概率、POMDP和语言模型指标直接使用，开发者难以形成机制理解",
+              "fix": "逐处补条件分母、符号、例子、推导和适用边界。"
+            },
+            {
+              "issue": "多指标名称与数学公式缺乏可执行的选择路径",
+              "fix": "接口迁移映射、轨迹反例、校准/时域/零事件算例、bootstrap操作步骤和自测。"
+            },
+            {
+              "issue": "中间复读发现风险点TP/FP与终点DCR可能混淆",
+              "fix": "明确两套标签的判定对象；拆分高密度指标段落并修正数学排版后重新全文两轮。"
+            }
+          ],
+          "post_fix_full_rereads": [
+            {
+              "round": 1,
+              "sha256": "14cf12d24ddfd74b7c13cde9c8faf3b880f0c91abf84237b0b40a91515c88de5",
+              "ranges": [
+                "1-420",
+                "421-920",
+                "921-1420",
+                "1421-2035"
+              ],
+              "result": "全文实际完成，问题链、术语前置、演算、来源版本与案例/自测相互一致，无新实质问题。"
+            },
+            {
+              "round": 2,
+              "sha256": "14cf12d24ddfd74b7c13cde9c8faf3b880f0c91abf84237b0b40a91515c88de5",
+              "ranges": [
+                "1-500",
+                "501-1000",
+                "1001-1500",
+                "1501-2035"
+              ],
+              "result": "全文实际完成，问题链、术语前置、演算、来源版本与案例/自测相互一致，无新实质问题。"
+            }
+          ],
+          "validation": {
+            "command": "python3 2680/7.AgentDesignIV.AgentEvaluation/examples/eval_metrics_demo.py",
+            "exit_code": 0,
+            "result": "built-in self-test passed；macro success=0.6，pass@3=2/3，pass^3=0.4666667，consistency=0.7866667，n=1000零事件95%上界0.00299125。正文嵌入Python与保存文件逐字比对一致。"
+          },
+          "limitations": [
+            "主讲义全文已读；辅助来源仅声明列出的实际阅读范围，未冒充全部附录。",
+            "24张关键PDF页渲染目视；讲义饱和榜单作为历史教学图，未独立重建外部榜单。",
+            "Dapper/Firecracker仅归档摘要页；OpenAI审计在线查阅，无新增本地原文。",
+            "只实际运行确定性指标教学代码；未复现模型/GPU/API/各benchmark实验。",
+            "原始资料及课程根记录未改；未运行整理同步。"
+          ],
+          "record_file": "tools/reviews/2026-10-28-full/harvard_full/07-evaluation.json",
+          "review_id": "2026-10-28-full-learning-review"
         }
       ],
       "maintenance": [
@@ -906,7 +2605,9 @@
           "final_sha256": "a6fbd1da8e2ccb72b70fd8be29b09f27add6885b2f599ee7e7f28d3cb388a630",
           "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
         }
-      ]
+      ],
+      "full_learning_review_record": "tools/reviews/2026-10-28-full/harvard_full/07-evaluation.json",
+      "latest_review_date": "2026-10-28"
     },
     {
       "note": "2680/8.AdvancedAgentDesignI.CostAndPerformance/lecture-08_agent_cost_and_performance.md",
@@ -914,7 +2615,7 @@
       "action": "review_existing",
       "status": "passed",
       "original_sha256": "d5c1c95cfa162bbf77e829180e4941d5a78ed9c756abdb9100882ad8a45c378c",
-      "final_sha256": "c67d8002502ce4285ba0d5cacd6724f0cfe76003232d6a4629042216dde2ba02",
+      "final_sha256": "153aa3abd2915777c0595fa352524918e00a45cbc1daa6bbbfec7dbad34b8e4b",
       "reviews": [
         {
           "report_file": "2680-08-cost-performance.json",
@@ -1020,6 +2721,200 @@
             "未运行 GPU、付费 API 或论文基准实验"
           ],
           "final_sha256": "c67d8002502ce4285ba0d5cacd6724f0cfe76003232d6a4629042216dde2ba02"
+        },
+        {
+          "note": "2680/8.AdvancedAgentDesignI.CostAndPerformance/lecture-08_agent_cost_and_performance.md",
+          "original_sha256": "c67d8002502ce4285ba0d5cacd6724f0cfe76003232d6a4629042216dde2ba02",
+          "final_sha256": "153aa3abd2915777c0595fa352524918e00a45cbc1daa6bbbfec7dbad34b8e4b",
+          "status": "passed_with_fixes",
+          "final_line_count": 1975,
+          "full_read_ranges": [
+            {
+              "round": "initial",
+              "sha256": "c67d8002502ce4285ba0d5cacd6724f0cfe76003232d6a4629042216dde2ba02",
+              "ranges": [
+                "1-400",
+                "401-800",
+                "801-1200",
+                "1201-1600",
+                "1601-1922"
+              ]
+            },
+            {
+              "round": "intermediate_full_reread",
+              "sha256": "45c235e6688dee0edd8bf41b29fc6321ab75de770cd11a369e5f819056f3df90",
+              "ranges": [
+                "1-420",
+                "421-840",
+                "841-1260",
+                "1261-1680",
+                "1681-1973"
+              ],
+              "result": "发现总成本返工账项可能重复计费，修复后重新两轮"
+            },
+            {
+              "round": "post_fix_1",
+              "sha256": "153aa3abd2915777c0595fa352524918e00a45cbc1daa6bbbfec7dbad34b8e4b",
+              "ranges": [
+                "1-500",
+                "501-1000",
+                "1001-1500",
+                "1501-1975"
+              ]
+            },
+            {
+              "round": "post_fix_2",
+              "sha256": "153aa3abd2915777c0595fa352524918e00a45cbc1daa6bbbfec7dbad34b8e4b",
+              "ranges": [
+                "1-400",
+                "401-800",
+                "801-1200",
+                "1201-1600",
+                "1601-1975"
+              ]
+            }
+          ],
+          "sources_read": [
+            {
+              "path": "2680/8.AdvancedAgentDesignI.CostAndPerformance/SOURCES.md",
+              "sha256": "6b03ab54f15bbd694ddfc286ee776e0e67ef290a19f5bf12d87e5b86c81889fa",
+              "version": "本地索引",
+              "range": "全文，正文阅读前；无README/REFERENCES.json",
+              "visually_inspected_pdf_pages": []
+            },
+            {
+              "path": "2680/8.AdvancedAgentDesignI.CostAndPerformance/8_agent_design_5.pdf",
+              "sha256": "0ca8e326cd72fe52e9d676e19c30837bf718e63867f6f1ce7b3f7c3749db8e0e",
+              "version": "54页官方讲义",
+              "range": "PDF pp.1–54全文",
+              "visually_inspected_pdf_pages": [
+                8,
+                10,
+                13,
+                14,
+                15,
+                29,
+                40,
+                45
+              ]
+            },
+            {
+              "path": "2680/8.AdvancedAgentDesignI.CostAndPerformance/../assignment/assignment-3/8_assignment3.pdf",
+              "sha256": "aad61822cdb769afe289b19994312923bb9dc582cb428c0e734cb2659db38550",
+              "version": "7页官方Assignment 3",
+              "range": "PDF pp.1–7全文",
+              "visually_inspected_pdf_pages": [
+                2,
+                3,
+                7
+              ]
+            },
+            {
+              "path": "2680/8.AdvancedAgentDesignI.CostAndPerformance/readings/Reducing_cost_and_improving_performance_with_Claude_Platform.html",
+              "sha256": "d305ca40ee74907797e8985976e6fa3f2ca9cb6c2ae30bfc885f902ad9aad44a",
+              "version": "2026-09-08发布、后续模型更新的本地快照",
+              "range": "文章全文：缓存、指令反模式、effort、配置搜索和成本优化；文本提取244行全文",
+              "visually_inspected_pdf_pages": []
+            },
+            {
+              "path": "2680/8.AdvancedAgentDesignI.CostAndPerformance/readings/RouteLLM_Learning_to_Route_LLMs_with_Preference_Data.pdf",
+              "sha256": "c9bc9c8171cab95bb3832cde8767c6b5e0925cd62930e51ddbd60d7cb2616741",
+              "version": "arXiv:2406.18665v4，2025-02-23；ICLR2025",
+              "range": "pp.1–10、13–16全文；pp.11–12参考文献未读",
+              "visually_inspected_pdf_pages": [
+                2,
+                6,
+                7,
+                9,
+                10
+              ]
+            },
+            {
+              "path": "2680/8.AdvancedAgentDesignI.CostAndPerformance/readings/Beyond_Accuracy_Unveiling_Inefficiency_Patterns_in_Tool-Integrated_Reasoning.pdf",
+              "sha256": "5bfd78d749a79762d2be401889e2c84f9c99dde2d453e890d0f6c5a95bca6e86",
+              "version": "arXiv:2604.05404v2，2026-04-14",
+              "range": "pp.1–9、12–22全文；pp.10–11参考文献未读",
+              "visually_inspected_pdf_pages": [
+                4,
+                7,
+                13,
+                14,
+                16,
+                17
+              ]
+            },
+            {
+              "url": "https://www.uber.com/us/en/blog/efficient-software-factory/",
+              "version": "2026-08-27；本轮2026-10-28在线查阅",
+              "range": "正文lines15–239；引用重点lines126–162 Code-Mode和Prompt Caching Strategy；无本地下载"
+            }
+          ],
+          "coverage_assessment": {
+            "lecture": "54页全部覆盖：会话成本分解、步骤/上下文/输出/单价、反向成本、预算、关键路径与投机、三种Harness责任划分及八种历史案例；实际PDF页序与幻灯片编号明确区分。",
+            "mechanisms": "PTE模型及其参数不一致、四种路由器训练/推理、质量差距指标与实验基线、缓存回本和模型切换、验证升级分母均逐项解释。",
+            "implementation": "从任务验收到调用账、预算预留、工具状态、压缩、路由、并行、回归评测；作业限制与教学策略分开。"
+          },
+          "pedagogical_review": {
+            "reader_prerequisites": "LLM Developer/Java；熟悉接口、缓存、调用链、并发与测试，不预设训练、线性代数、统计或GPU知识。",
+            "question_chain": "API单次变便宜但交付更差→完整轨迹成本→重复计算与等待→缓存/能力分配→运行系统约束→同任务实验；第一遍系统设计与第二遍内部机制路线可区分。",
+            "prerequisites_and_steps": "补min/E/Pr/p95、token/K/B、权重与KV、prefill/decode、算力/带宽/容量、FLOP/字节及gamma时间比推导；路由embedding、BT、矩阵维度、sigmoid、负对数、交叉熵局部梯度和链式更新均给解释或手算。",
+            "cases": "新增日期解析API修复贯通案例，49→43秒依赖图、热缓存与剩余轮次、压缩保留失败状态、验证后停止；旧业务案例作为迁移保留，不虚构用户系统。",
+            "organization": "原有讲义主线完整，首次术语就地解释；用接口数组形状理解矩阵，先成本问题再公式，来源限制集中附录并在风险点提醒。",
+            "learning_outcomes": "可手算KV字节与路由阈值、解释为何并行不等于成本减半，设计完整成本和质量配对实验；新增3题答案，共11题。",
+            "fixes": "实质补齐学习断层；两轮最终全文阅读未发现新增问题。"
+          },
+          "issues_and_fixes": [
+            {
+              "issue": "硬件与学习式路由跨越多个未教前置",
+              "fix": "补模型状态、带宽/计算机制、符号维度与梯度算例，保留论文假设边界。"
+            },
+            {
+              "issue": "乘法成本的均值解释与返工账项可能误导",
+              "fix": "说明总量比率约消和未加权均值差异；总账项互斥，返工按标签或额外损失计算。"
+            },
+            {
+              "issue": "缺少通用开发者可走通的完整路线",
+              "fix": "新增日期API修复从验收到日志/缓存/路由/并行/验证全链条及自测。"
+            }
+          ],
+          "post_fix_full_rereads": [
+            {
+              "round": 1,
+              "sha256": "153aa3abd2915777c0595fa352524918e00a45cbc1daa6bbbfec7dbad34b8e4b",
+              "ranges": [
+                "1-500",
+                "501-1000",
+                "1001-1500",
+                "1501-1975"
+              ],
+              "result": "实际全文完成，问题链、符号先后、计算、案例、自测和证据边界一致，无新增实质问题。"
+            },
+            {
+              "round": 2,
+              "sha256": "153aa3abd2915777c0595fa352524918e00a45cbc1daa6bbbfec7dbad34b8e4b",
+              "ranges": [
+                "1-400",
+                "401-800",
+                "801-1200",
+                "1201-1600",
+                "1601-1975"
+              ],
+              "result": "实际全文完成，问题链、符号先后、计算、案例、自测和证据边界一致，无新增实质问题。"
+            }
+          ],
+          "validation": {
+            "runtime": "Python 3.11.10",
+            "result": "原样提取并运行正文完整Decimal示例，0.011与0.0252金额断言通过；gamma代入0.007996449与论文0.00320差异已明确保留。"
+          },
+          "limitations": [
+            "主讲义54页、作业7页全文；辅助论文只声明实际页范围。",
+            "22张关键PDF页渲染目视；Anthropic远程图像未核验，仅使用正文可复核数字。",
+            "产品/API/Harness仅按归档版本解释，未进行当前源码或硬件厂商规格审计。",
+            "未复现GPU、模型、Router、Assignment或业务实验；只实际运行确定性成本代码。",
+            "原始资料未改，无新增原文下载，未运行sync/organize或修改课程根记录。"
+          ],
+          "record_file": "tools/reviews/2026-10-28-full/harvard_full/08-cost-performance.json",
+          "review_id": "2026-10-28-full-learning-review"
         }
       ],
       "maintenance": [
@@ -1030,7 +2925,9 @@
           "final_sha256": "c67d8002502ce4285ba0d5cacd6724f0cfe76003232d6a4629042216dde2ba02",
           "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
         }
-      ]
+      ],
+      "full_learning_review_record": "tools/reviews/2026-10-28-full/harvard_full/08-cost-performance.json",
+      "latest_review_date": "2026-10-28"
     },
     {
       "note": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/notes.zh-CN.md",
@@ -1038,7 +2935,7 @@
       "action": "create_and_review",
       "status": "passed",
       "original_sha256": null,
-      "final_sha256": "77bb027d7244c96155921d296dd1c8ce9330682d978c73c809522ad5b7c7925e",
+      "final_sha256": "8060719a2eb1d8d7aa31726b25afba82d0c151be37fc9167aeb0555efdafc8d1",
       "reviews": [
         {
           "report_file": "harvard-9-cross-review.json",
@@ -1197,6 +3094,328 @@
             "未运行 GPU、付费 API 或论文基准实验"
           ],
           "final_sha256": "77bb027d7244c96155921d296dd1c8ce9330682d978c73c809522ad5b7c7925e"
+        },
+        {
+          "note": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/notes.zh-CN.md",
+          "owner": "harvard_full",
+          "review_date": "2026-10-28",
+          "original_sha256": "77bb027d7244c96155921d296dd1c8ce9330682d978c73c809522ad5b7c7925e",
+          "final_sha256": "8060719a2eb1d8d7aa31726b25afba82d0c151be37fc9167aeb0555efdafc8d1",
+          "status": "passed_with_fixes",
+          "full_read_ranges": [
+            {
+              "round": "initial",
+              "lines": [
+                [
+                  1,
+                  180
+                ],
+                [
+                  181,
+                  360
+                ],
+                [
+                  361,
+                  526
+                ]
+              ],
+              "sha256": "77bb027d7244c96155921d296dd1c8ce9330682d978c73c809522ad5b7c7925e"
+            },
+            {
+              "round": "final-1",
+              "lines": [
+                [
+                  1,
+                  200
+                ],
+                [
+                  201,
+                  400
+                ],
+                [
+                  401,
+                  581
+                ]
+              ],
+              "sha256": "8060719a2eb1d8d7aa31726b25afba82d0c151be37fc9167aeb0555efdafc8d1"
+            },
+            {
+              "round": "final-2",
+              "lines": [
+                [
+                  1,
+                  200
+                ],
+                [
+                  201,
+                  400
+                ],
+                [
+                  401,
+                  581
+                ]
+              ],
+              "sha256": "8060719a2eb1d8d7aa31726b25afba82d0c151be37fc9167aeb0555efdafc8d1"
+            }
+          ],
+          "sources_read": [
+            {
+              "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/SOURCES.md",
+              "range": "全文",
+              "purpose": "课次资料入口，明确无教师Slides"
+            },
+            {
+              "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/README.md",
+              "range": "全文"
+            },
+            {
+              "path": "2680/site/readings/oct-14.html",
+              "range": "HTML正文全文，提取文本1–170、171–259",
+              "purpose": "四组18篇与AI生成导读声明"
+            },
+            {
+              "path": "2680/site/discussion.html",
+              "range": "HTML正文全文，提取文本1–169",
+              "purpose": "讨论目标、读论文方法、20分钟结构与开放题"
+            },
+            {
+              "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/AI_Control_Improving_Safety_Despite_Intentional_Subversion.pdf",
+              "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+              "pdf_pages_read": "3–7",
+              "visual_pages": [],
+              "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+              "sha256": "999f7a92bb8c085799e68f3d88f491ad8a334f862ccf5b286e5c2766677864c0"
+            },
+            {
+              "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/AgentDojo_A_Dynamic_Environment_to_Evaluate_Prompt_Injection_Attacks_and_Defenses_for_LLM_Agents.pdf",
+              "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+              "pdf_pages_read": "3–7,20",
+              "visual_pages": [
+                20
+              ],
+              "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+              "sha256": "349884fffbf43282591c5accffd57bb651632f38e412fe303114941bdd111b05"
+            },
+            {
+              "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/AgentPoison_Red-teaming_LLM_Agents_via_Poisoning_Memory_or_Knowledge_Bases.pdf",
+              "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+              "pdf_pages_read": "3–8",
+              "visual_pages": [
+                7
+              ],
+              "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+              "sha256": "008c4b0f70150ae2e26cead8ca6bad773cb4e2cd370154a10db320a456ea5ee1"
+            },
+            {
+              "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Agentic_Context_Engineering_Evolving_Contexts_for_Self-Improving_Language_Models.pdf",
+              "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+              "pdf_pages_read": "2–10",
+              "visual_pages": [
+                3,
+                8
+              ],
+              "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+              "sha256": "51050ced82df75c143b151262d5af8763916968ca50374bd8ff778f40552b0ad"
+            },
+            {
+              "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Agentic_Harness_Engineering_Observability-Driven_Automatic_Evolution_of_Coding-Agent_Harnesses.pdf",
+              "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+              "pdf_pages_read": "3–10",
+              "visual_pages": [
+                4,
+                9
+              ],
+              "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+              "sha256": "299f2633b4c13db7bed52434b4db7c48ea621993581014d30e7bcd036d3464df"
+            },
+            {
+              "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Automated_Design_of_Agentic_Systems.pdf",
+              "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+              "pdf_pages_read": "2–7",
+              "visual_pages": [
+                7
+              ],
+              "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+              "sha256": "32eb1c1a6888e35fae0f618e33c58698b54d9c49bc063fef91ee591719fca376"
+            },
+            {
+              "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf",
+              "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+              "pdf_pages_read": "3–7,32,69–71",
+              "visual_pages": [
+                71
+              ],
+              "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+              "sha256": "13ff4abe0c7ad4a7dd3b4876d19a8bf940e39e70dabbf06065aa774a6c3457de"
+            },
+            {
+              "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Defeating_Prompt_Injections_by_Design.pdf",
+              "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+              "pdf_pages_read": "1,3–18",
+              "visual_pages": [
+                7,
+                10
+              ],
+              "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+              "sha256": "c3719f6ce73eecf45e3764debef8a3d8ff8c9233b37d128c558b694ec3790cc7"
+            },
+            {
+              "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Design_Patterns_for_Securing_LLM_Agents_against_Prompt_Injections.pdf",
+              "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+              "pdf_pages_read": "3–11",
+              "visual_pages": [],
+              "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+              "sha256": "c202a240f8f03c93cfafd157f218ec790c9e503beeaf80e229fb5e1645ab7f9c"
+            },
+            {
+              "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Live-SWE-agent_Can_Software_Engineering_Agents_Self-Evolve_on_the_Fly.pdf",
+              "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+              "pdf_pages_read": "2–7",
+              "visual_pages": [
+                6
+              ],
+              "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+              "sha256": "7bd8e1c6345c2ff8d5a93674a8a88fcfc70ab6f657f946c82a2961f449e01535"
+            },
+            {
+              "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf",
+              "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+              "pdf_pages_read": "3–10",
+              "visual_pages": [
+                7,
+                9
+              ],
+              "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+              "sha256": "7d9b90f53a9f4801a090f1a4acb843340cde81e4f865f97d53fff2a6a570eb73"
+            },
+            {
+              "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Multi-Agent_Systems_Execute_Arbitrary_Malicious_Code.pdf",
+              "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+              "pdf_pages_read": "1–8",
+              "visual_pages": [
+                7
+              ],
+              "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+              "sha256": "5fb79d30a11ef7b2e28d5eadc53af9b7ecb41d8ee60c8e04c2ec3c59e8b1fb11"
+            },
+            {
+              "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Not_what_you_ve_signed_up_for_Compromising_Real-World_LLM-Integrated_Applications_with_Indirect_Prompt_Injection.pdf",
+              "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+              "pdf_pages_read": "1–7（p.4截断后单独补读）",
+              "visual_pages": [],
+              "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+              "sha256": "428e23e8c7e4f89310e113e38d082b3f65548a8b887188ebc536099061800e81"
+            },
+            {
+              "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/OWASP_Top_10_For_Agentic_Applications_2026.pdf",
+              "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+              "pdf_pages_read": "4–9",
+              "visual_pages": [],
+              "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+              "sha256": "a2db94cd00b08e0b3a5e5b619afe024bdbcd74503111085705e4f3dd886fcb5c"
+            },
+            {
+              "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf",
+              "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+              "pdf_pages_read": "2–8",
+              "visual_pages": [
+                3,
+                8
+              ],
+              "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+              "sha256": "6059b6f89fea9959bd3dab553fbb97756a3dfb1b15e3cbab2fbf3ab6664333bd"
+            },
+            {
+              "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Self-Refine_Iterative_Refinement_with_Self-Feedback.pdf",
+              "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+              "pdf_pages_read": "1–5",
+              "visual_pages": [
+                5
+              ],
+              "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+              "sha256": "81e44592314d80218ad108d3490cd0b84ba5962fefd5c84819987afd77a57087"
+            },
+            {
+              "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/The_Attacker_Moves_Second_Stronger_Adaptive_Attacks_Bypass_Defenses_Against_LLM_Jailbreaks_and_Prompt_Injections.pdf",
+              "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+              "pdf_pages_read": "1–5",
+              "visual_pages": [
+                1
+              ],
+              "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+              "sha256": "5067f88c7c14a007c205a452e8cdc5bcbf2e87f0958efcc620aa23c81465a9c3"
+            },
+            {
+              "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/The_Instruction_Hierarchy_Training_LLMs_to_Prioritize_Privileged_Instructions.pdf",
+              "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+              "pdf_pages_read": "3–9",
+              "visual_pages": [
+                7,
+                9
+              ],
+              "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+              "sha256": "fbc2d65e913e75b8f0ae74e83e3443c36a727636d1038a071a2f10d8be63dac4"
+            },
+            {
+              "path": "2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/examples/policy_and_promotion.py",
+              "range": "全文",
+              "purpose": "检查实现并实际重跑，7个case断言通过，JSON输出与RUN.json一致"
+            }
+          ],
+          "coverage_assessment": "本课没有教师讲义，按官方四组18篇导读与讨论规范审查。原稿安全入口→信任/能力→协议评价→反馈/记忆/程序演化→安全发布主线完整；18篇各有机制与证据定位，保留攻击访问假设、分母和版本。新增讨论练习使读者能提出反例与替代设计，且不把论文误标为lecture。",
+          "pedagogical_review": {
+            "reader_assumptions": "LLM Developer、Java/通用开发经验；不预设强化学习、概率符号、信息流安全专门背景。",
+            "problem_chain": "先定义谁授权/谁持久化/谁改变评价，再解释攻击和约束，随后按更新对象比较演化，最后统一内外循环；保持普遍知识体系。",
+            "prerequisites_and_jumps": "补白盒/黑盒/logits、embedding/trigger、SFT/RLHF参数更新、轨迹和期望符号、F1与accuracy、TOCTOU/隐式依赖；将数学从代码引用改为数学排版，推导多次尝试至少一次成功。",
+            "cases": "保留原有文档例，新增通用日期API修复6阶段完整链；标签并集/读者交集可手算并对应实际脚本。",
+            "organization": "增加阅读路线并强调先比较更新对象和反馈，再读数字；按官方讨论要求追加开放题，未把整课改成金融或RAG专门教程。",
+            "learning_outcomes": "19道自测含标签传播、净增与回归、零事件上界；4道开放讨论包含参考论证路径。能区别类型正确/授权正确、反思/权重训练、搜索最高分/独立测试、平均提升/高风险回归。",
+            "revisions": "针对术语跳步、缺完整通用开发链、讨论课缺讨论练习修补；保留已有有效解释。"
+          },
+          "issues_and_fixes": [
+            {
+              "issue": "术语、公式和反馈链存在前置跳步",
+              "fix": "补定义、数学推导和通用API修复贯穿例，并新增手算/诊断自测。"
+            },
+            {
+              "issue": "Instruction Hierarchy原则与实际训练边界易混同",
+              "fix": "补实际浏览/工具指令全部忽略的当时实现范围。"
+            },
+            {
+              "issue": "CaMeL保证的持久记忆、隐式流和副作用恢复假设不完整",
+              "fix": "补未被攻陷记忆假设、strict/normal差异、无原子回滚的实现限制。"
+            },
+            {
+              "issue": "DGM日志案例过于笼统",
+              "fix": "明确是文本marker改为结构化日志造成检测遗漏，并引出观测协议也必须保护。"
+            },
+            {
+              "issue": "成功演化数字遮蔽负例/口径",
+              "fix": "补Reflexion与ACE负例，ACE百分点和时延对照，Meta-Harness中位数/最佳/测试集分数分别解释。"
+            }
+          ],
+          "post_fix_full_rereads": [
+            {
+              "round": 1,
+              "sha256": "8060719a2eb1d8d7aa31726b25afba82d0c151be37fc9167aeb0555efdafc8d1",
+              "lines": "1–581",
+              "result": "完整分三段复读；问题链、例子、结论边界无新增阻断问题"
+            },
+            {
+              "round": 2,
+              "sha256": "8060719a2eb1d8d7aa31726b25afba82d0c151be37fc9167aeb0555efdafc8d1",
+              "lines": "1–581",
+              "result": "完整分三段复读；新定义、数学、19自测与4讨论题对应一致"
+            }
+          ],
+          "limitations": [
+            "未运行模型、攻击、GPU或论文基准；仅重跑本地确定性教学脚本。",
+            "18篇按所列机制/评价范围回查，未声称全部长附录逐页读完。",
+            "只审查本地归档版本，不把历史实验数字描述为当前产品能力；本课无教师讲义。",
+            "REFERENCES.json不存在；没有新增或改写原始材料。"
+          ],
+          "record_file": "tools/reviews/2026-10-28-full/harvard_full/09-safety-evolution.json",
+          "review_id": "2026-10-28-full-learning-review"
         }
       ],
       "maintenance": [
@@ -1207,7 +3426,9 @@
           "final_sha256": "77bb027d7244c96155921d296dd1c8ce9330682d978c73c809522ad5b7c7925e",
           "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
         }
-      ]
+      ],
+      "full_learning_review_record": "tools/reviews/2026-10-28-full/harvard_full/09-safety-evolution.json",
+      "latest_review_date": "2026-10-28"
     },
     {
       "note": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/notes.zh-CN.md",
@@ -1215,7 +3436,7 @@
       "action": "create_and_review",
       "status": "passed",
       "original_sha256": null,
-      "final_sha256": "c2873f5b07927a2da929f27d7e1fbe31cb9eb330fe39505a36f82fd2f4d06580",
+      "final_sha256": "ccae61aa430d46101675b44d4c145f6f97411a02d4cd78d5b16a7dc6a0ae7c67",
       "reviews": [
         {
           "report_file": "harvard-10-cross-review.json",
@@ -1335,6 +3556,327 @@
             "未运行 GPU、付费 API 或论文基准实验"
           ],
           "final_sha256": "c2873f5b07927a2da929f27d7e1fbe31cb9eb330fe39505a36f82fd2f4d06580"
+        },
+        {
+          "note": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/notes.zh-CN.md",
+          "owner": "harvard_full",
+          "review_date": "2026-10-28",
+          "original_sha256": "c2873f5b07927a2da929f27d7e1fbe31cb9eb330fe39505a36f82fd2f4d06580",
+          "final_sha256": "ccae61aa430d46101675b44d4c145f6f97411a02d4cd78d5b16a7dc6a0ae7c67",
+          "status": "passed_with_fixes",
+          "full_read_ranges": [
+            {
+              "round": "initial",
+              "lines": [
+                [
+                  1,
+                  165
+                ],
+                [
+                  166,
+                  330
+                ],
+                [
+                  331,
+                  482
+                ]
+              ],
+              "sha256": "c2873f5b07927a2da929f27d7e1fbe31cb9eb330fe39505a36f82fd2f4d06580"
+            },
+            {
+              "round": "final-1",
+              "lines": [
+                [
+                  1,
+                  175
+                ],
+                [
+                  176,
+                  350
+                ],
+                [
+                  351,
+                  519
+                ]
+              ],
+              "sha256": "ccae61aa430d46101675b44d4c145f6f97411a02d4cd78d5b16a7dc6a0ae7c67"
+            },
+            {
+              "round": "final-2",
+              "lines": [
+                [
+                  1,
+                  175
+                ],
+                [
+                  176,
+                  350
+                ],
+                [
+                  351,
+                  519
+                ]
+              ],
+              "sha256": "ccae61aa430d46101675b44d4c145f6f97411a02d4cd78d5b16a7dc6a0ae7c67"
+            }
+          ],
+          "sources_read": [
+            {
+              "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/SOURCES.md",
+              "range": "全文；本课无 README.md / REFERENCES.json"
+            },
+            {
+              "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/9_llm_serving_basics_1.pdf",
+              "pdf_pages_read": "1–36全文",
+              "visual_pages": [
+                6,
+                7,
+                8,
+                12,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                23,
+                24,
+                25,
+                26,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34
+              ],
+              "range": "提取正文连续行1–260、261–560、561–末尾；不是目录扫描",
+              "sha256": "1cfe4fd6a413cdd168d711b413beff19e4967fe0ec0cb89b0cbe3c2c7fb5872a"
+            },
+            {
+              "path": "2680/site/readings/oct-19.html",
+              "range": "官网阅读分组正文全文，提取文本1–235",
+              "purpose": "15篇阅读分工与选读边界"
+            },
+            {
+              "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Attention_Is_All_You_Need.pdf",
+              "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+              "pdf_pages_read": "2–8",
+              "visual_pages": [],
+              "read_method": "所列页连续正文精读，未声称整篇附录全读",
+              "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+            },
+            {
+              "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/DeepSeek-V3_Technical_Report.pdf",
+              "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+              "pdf_pages_read": "1,5–12,22",
+              "visual_pages": [
+                7
+              ],
+              "read_method": "所列页连续正文精读，未声称整篇附录全读",
+              "sha256": "812a3fd645c80725354de9d831a6785503007a60681461407f64e97305fa9330"
+            },
+            {
+              "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/DeepSeekMoE_Towards_Ultimate_Expert_Specialization_in_Mixture-of-Experts_Language_Models.pdf",
+              "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+              "pdf_pages_read": "3–6,8–10",
+              "visual_pages": [],
+              "read_method": "所列页连续正文精读，未声称整篇附录全读",
+              "sha256": "a64b509e1410d09cf5b70570788d27790985fb9808ce436b9da8de73f2eed651"
+            },
+            {
+              "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Dream_7B_Diffusion_Large_Language_Models.pdf",
+              "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+              "pdf_pages_read": "1,3–8",
+              "visual_pages": [
+                7
+              ],
+              "read_method": "所列页连续正文精读，未声称整篇附录全读",
+              "sha256": "461f5ac618e86dd398af3662958178c3c243ee97b7e5ee9c20f5ed6399107a0d"
+            },
+            {
+              "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/GLU_Variants_Improve_Transformer.pdf",
+              "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+              "pdf_pages_read": "1–3",
+              "visual_pages": [
+                3
+              ],
+              "read_method": "所列页连续正文精读，未声称整篇附录全读",
+              "sha256": "7398ae8b163722a6b5410fb975722adbe6b5f6f9c7f1efa584f1c6b79eaa93e2"
+            },
+            {
+              "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Large_Language_Diffusion_Models.pdf",
+              "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+              "pdf_pages_read": "3–6",
+              "visual_pages": [
+                3
+              ],
+              "read_method": "所列页连续正文精读，未声称整篇附录全读",
+              "sha256": "18942f14544d696bef711acd43c84017e51b8428b15edc74130761218e66f73b"
+            },
+            {
+              "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Mixtral_of_Experts.pdf",
+              "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+              "pdf_pages_read": "2–4",
+              "visual_pages": [],
+              "read_method": "所列页连续正文精读，未声称整篇附录全读",
+              "sha256": "f8bbf0e9d979b7a8ce7be65119266545a229a85b57e077d8bd048e458bb642da"
+            },
+            {
+              "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Neural_Machine_Translation_of_Rare_Words_with_Subword_Units.pdf",
+              "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+              "pdf_pages_read": "3–5",
+              "visual_pages": [],
+              "read_method": "所列页连续正文精读，未声称整篇附录全读",
+              "sha256": "f4e5a6bbbe0d87459997fffe892f8be485e33903cc71f923c2884639fbf96401"
+            },
+            {
+              "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Root_Mean_Square_Layer_Normalization.pdf",
+              "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+              "pdf_pages_read": "2–6",
+              "visual_pages": [
+                4
+              ],
+              "read_method": "所列页连续正文精读，未声称整篇附录全读",
+              "sha256": "a38ab771022fc10525d2b6b23de40307b2ca7b2bf463f5219da6a0ba1c41225f"
+            },
+            {
+              "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Scaling_up_Test-Time_Compute_with_Latent_Reasoning_A_Recurrent_Depth_Approach.pdf",
+              "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+              "pdf_pages_read": "3–9",
+              "visual_pages": [
+                4
+              ],
+              "read_method": "所列页连续正文精读，未声称整篇附录全读",
+              "sha256": "96f4543683a06a470ccb0b6b0db27a98f283fde9467d175e838f03a629a76c7b"
+            },
+            {
+              "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Switch_Transformers_Scaling_to_Trillion_Parameter_Models_with_Simple_and_Efficient_Sparsity.pdf",
+              "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+              "pdf_pages_read": "3–6",
+              "visual_pages": [],
+              "read_method": "所列页连续正文精读，未声称整篇附录全读",
+              "sha256": "f340f6ace31abf7d0730ef461404279f40d3c890e9cc2daeb7068b3304afdbd6"
+            },
+            {
+              "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/The_Llama_3_Herd_of_Models.pdf",
+              "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+              "pdf_pages_read": "6–8",
+              "visual_pages": [
+                7
+              ],
+              "read_method": "所列页连续正文精读，未声称整篇附录全读",
+              "sha256": "481f1599468f95a07d05e97fafe55bbe786dc1624c6f881bcb4c7d14c933d083"
+            },
+            {
+              "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/The_Illustrated_Transformer.html",
+              "range": "提取正文1–317全文",
+              "version": "本地HTML快照"
+            },
+            {
+              "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Transformer_Inference_Arithmetic.html",
+              "range": "提取正文1–309全文",
+              "version": "本地HTML快照"
+            },
+            {
+              "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/The_Annotated_Transformer.html",
+              "range": "提取正文320–385（attention）、610–700（错位标签与训练循环）、798–840（label smoothing）",
+              "version": "本地HTML快照"
+            },
+            {
+              "path": "2680/10.EfficientLLMServingBasicsI.IntroToLLMs/examples/inference_basics.py",
+              "range": "全文阅读及实际执行；输出与RUN.json全部字段一致；临时副本遗漏当前KV的反例以AssertionError失败，原文件未改"
+            }
+          ],
+          "coverage_assessment": [
+            "主讲义36页完整覆盖：请求阶段、分词、调度、Transformer形状、GQA/KV、参数/FLOPs/容量、MoE、长上下文与循环/扩散均保持原问题链。",
+            "对15项阅读分别核实相关机制和条件；主线保持普通GQA decoder，其他架构定位为比较扩展，未把趋势图变为通用性能保证。",
+            "准确保留320KiB/字节、全层score并非推理峰值、64×80K超两H200容量、Switch训练非decode加速、Dream初始化成本、AR/diffusion缓存差异等已有正确论述。"
+          ],
+          "issues_and_fixes": [
+            {
+              "issue": "应用开发到矩阵、模型学习缺少前置桥梁",
+              "fix": "新增4.0：数组/矩阵/张量与shape、数值投影、embedding表、参数与激活、交叉熵手算、梯度与优化器、teacher forcing与因果标签对齐。补RMS数值例和sigmoid定义。"
+            },
+            {
+              "issue": "生成token与进入KV缓存的时刻易混淆",
+              "fix": "增加ABC→采样D→decodeD预测E轨迹，解释当前token可读自身缓存与历史Q不复用。"
+            },
+            {
+              "issue": "滑动窗口缓存比例漏n<w条件",
+              "fix": "改为(5min(n,w)+n)/(6n)，补短上下文不节省。"
+            },
+            {
+              "issue": "扩散损失符号未定义，t被表述成固定比例",
+              "fix": "逐一定义theta/x0/xt/i/indicator/expectation，连接交叉熵；t是独立掩码概率而非每样本精确比例。"
+            },
+            {
+              "issue": "原CPU反例要求修改RoPE，但示例没有位置编码",
+              "fix": "替换为实际可执行的遗漏当前KV代码，临时副本已运行并触发断言；说明未来泄漏应检查较早位置。"
+            },
+            {
+              "issue": "进阶公式和选型学习目标尚缺操作题",
+              "fix": "补MLA维度、MoE路由权重与1共享+8路由专家；新增4道计算/状态/容量/短窗口自测与答案，共16题。"
+            }
+          ],
+          "pedagogical_review": {
+            "reader_assumptions": "LLM Developer、Java经验；懂调用链/数组/缓存/并发，不预设线性代数、训练和GPU术语；保留通用体系，未缩成金融/RAG教程。",
+            "question_chain": "为什么同模型性能不同→输入长度→调度和状态→前向/学习/矩阵→注意力→缓存→资源账本→架构改动→验证与故障。前8节必学，后续比较降低首次认知负担。",
+            "prerequisites_and_jumps": "补先前ID→向量→矩阵→训练目标的最大断层；训练标签错位与mask用ABC具体推演，后续扩散损失能沿既有交叉熵理解。",
+            "examples": "原研报案例保留为应用示例；新通用ABC token轨迹、3×2矩阵、RMS和损失手算、1GiB容量与错误KV对照均可走通，不冒充论文实验。",
+            "organization": "原章节依赖合理，无需重排整篇；在block前置4.0补桥，初读范围明确。",
+            "learning_outcomes": "能解释参数/激活/缓存、算shape与loss、分清并行训练和串行生成、复算容量与性能下界；16道自测与CPU正负例覆盖理解和操作。"
+          },
+          "post_fix_full_rereads": [
+            {
+              "round": 1,
+              "sha256": "ccae61aa430d46101675b44d4c145f6f97411a02d4cd78d5b16a7dc6a0ae7c67",
+              "lines": [
+                [
+                  1,
+                  175
+                ],
+                [
+                  176,
+                  350
+                ],
+                [
+                  351,
+                  519
+                ]
+              ],
+              "result": "完整逐段复读，无新问题；符号、标签、状态、数值、来源边界与自测互相一致"
+            },
+            {
+              "round": 2,
+              "sha256": "ccae61aa430d46101675b44d4c145f6f97411a02d4cd78d5b16a7dc6a0ae7c67",
+              "lines": [
+                [
+                  1,
+                  175
+                ],
+                [
+                  176,
+                  350
+                ],
+                [
+                  351,
+                  519
+                ]
+              ],
+              "result": "完整逐段复读，无新问题；符号、标签、状态、数值、来源边界与自测互相一致"
+            }
+          ],
+          "limitations": [
+            "未运行GPU、真实模型、服务压测或论文训练实验；CPU检查只覆盖算术和一头注意力缓存。",
+            "高级架构部分若无对应本地原论文，仅按主讲义解释机制，未新增外推性能或宣称复现。",
+            "阅读论文仅声称所列页与图，未声称全部附录、全部模型比较均精读；官网AI导读不作论文证据。"
+          ],
+          "record_file": "tools/reviews/2026-10-28-full/harvard_full/10-llm-basics.json",
+          "review_id": "2026-10-28-full-learning-review"
         }
       ],
       "maintenance": [
@@ -1345,7 +3887,9 @@
           "final_sha256": "c2873f5b07927a2da929f27d7e1fbe31cb9eb330fe39505a36f82fd2f4d06580",
           "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
         }
-      ]
+      ],
+      "full_learning_review_record": "tools/reviews/2026-10-28-full/harvard_full/10-llm-basics.json",
+      "latest_review_date": "2026-10-28"
     },
     {
       "note": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/notes.zh-CN.md",
@@ -1353,7 +3897,7 @@
       "action": "create_and_review",
       "status": "passed",
       "original_sha256": null,
-      "final_sha256": "c7834b817f0b0a0b062822c1cf235e382f93688fe9852d0ddf5863b139a7b5ed",
+      "final_sha256": "a4c936d78c356e9f24b080cc9a4d7c6cb77d41960de6be014a2df23bb331aea4",
       "reviews": [
         {
           "report_file": "harvard-11-cross-review.json",
@@ -1476,6 +4020,399 @@
             "未运行 GPU、付费 API 或论文基准实验"
           ],
           "final_sha256": "c7834b817f0b0a0b062822c1cf235e382f93688fe9852d0ddf5863b139a7b5ed"
+        },
+        {
+          "note": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/notes.zh-CN.md",
+          "original_sha256": "c7834b817f0b0a0b062822c1cf235e382f93688fe9852d0ddf5863b139a7b5ed",
+          "final_sha256": "a4c936d78c356e9f24b080cc9a4d7c6cb77d41960de6be014a2df23bb331aea4",
+          "status": "passed_with_fixes",
+          "final_line_count": 463,
+          "full_read_ranges": [
+            {
+              "round": "initial",
+              "sha256": "c7834b817f0b0a0b062822c1cf235e382f93688fe9852d0ddf5863b139a7b5ed",
+              "ranges": [
+                "1-170",
+                "171-330",
+                "331-436"
+              ]
+            },
+            {
+              "round": "post_fix_1",
+              "sha256": "a4c936d78c356e9f24b080cc9a4d7c6cb77d41960de6be014a2df23bb331aea4",
+              "ranges": [
+                "1-160",
+                "161-315",
+                "316-463"
+              ]
+            },
+            {
+              "round": "post_fix_2",
+              "sha256": "a4c936d78c356e9f24b080cc9a4d7c6cb77d41960de6be014a2df23bb331aea4",
+              "ranges": [
+                "1-155",
+                "156-310",
+                "311-463"
+              ]
+            }
+          ],
+          "sources_read": [
+            {
+              "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/SOURCES.md",
+              "sha256": "ed4e64165c425f2167363f7ea14546d25305a79c781ec73e423d903d37356621",
+              "range": "全文；初读正文之前",
+              "version": "本地归档固定版本",
+              "reviewer": "harvard_full_audit"
+            },
+            {
+              "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/REFERENCES.json",
+              "sha256": "e9602b57b733428edbdd4c8945c90e0be7b30fe9172e7b9571a9439d7708eb4c",
+              "range": "全文；初读正文之前",
+              "version": "本地归档固定版本",
+              "reviewer": "harvard_full_audit"
+            },
+            {
+              "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/10_llm_serving_basics_2a.pdf",
+              "sha256": "b7351ed4f055e0196ebf06cf348e5042b83392f45dd30cbca379ad28be72b63b",
+              "range": "PDF实际pp1–41全文，提取文本1–420、421–840、841–EOF",
+              "version": "2026-10-21主讲义，41页",
+              "reviewer": "harvard_full_audit",
+              "visually_inspected_pdf_pages": [
+                7,
+                8,
+                9,
+                10,
+                11,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                38,
+                39,
+                40,
+                41
+              ]
+            },
+            {
+              "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/CUDA_C++_Programming_Guide.pdf",
+              "sha256": "9d3c313edfa39fbd932cc1517dec8d3a3690802132f8e65530a155e6eb3339b8",
+              "range": "PDF pp1–2、27–36、73–82全文；编程层级、cluster、Graph更新和限制",
+              "version": "Release13.4 2026-09-15；正文legacy",
+              "reviewer": "harvard_full_audit"
+            },
+            {
+              "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/references/Roofline_An_Insightful_Visual_Performance_Model_for_Floating-Point_Programs_and_Multicore_Architectures.pdf",
+              "sha256": "c92f852eed1070b140302114339271dc1a4d6d665814ac9000be6ce06a7d6bcb",
+              "range": "PDF pp3–6全文；DRAM口径、roofline与ceilings",
+              "version": "Berkeley EECS-2008-134",
+              "reviewer": "harvard_full_audit",
+              "visually_inspected_pdf_pages": [
+                4
+              ]
+            },
+            {
+              "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashAttention_Fast_and_Memory-Efficient_Exact_Attention_with_IO-Awareness.pdf",
+              "sha256": "ca7f9fda10b90fc05dd291a3accc85e9c1a4a860b99b31928dab03ed3fcb14e4",
+              "range": "PDF pp3–6全文；online softmax、Algorithm1、IO与重算",
+              "version": "归档FlashAttention原论文",
+              "reviewer": "harvard_full_audit",
+              "visually_inspected_pdf_pages": [
+                5
+              ]
+            },
+            {
+              "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashAttention-2_Faster_Attention_with_Better_Parallelism_and_Work_Partitioning.pdf",
+              "sha256": "4aa8935dfacaf6ae8c68f772ca92f730154a0dd0e1bceeb59c7bc56c512d5868",
+              "range": "PDF p1、pp4–9全文；工作划分与实验摘要",
+              "version": "归档FlashAttention-2",
+              "reviewer": "harvard_full_audit",
+              "visually_inspected_pdf_pages": [
+                9
+              ]
+            },
+            {
+              "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashAttention-3_Fast_and_Accurate_Attention_with_Asynchrony_and_Low-precision.pdf",
+              "sha256": "3d05ca102802e6b8ebbae5181efe777b7d258cd75e2fe9cca209efd2f5e6c6cb",
+              "range": "PDF p1、pp3–5、9–10全文；producer/consumer、WGMMA、pipeline消融和精度条件",
+              "version": "FlashAttention-3 本地v2",
+              "reviewer": "harvard_full_audit",
+              "visually_inspected_pdf_pages": [
+                5,
+                9
+              ]
+            },
+            {
+              "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashAttention-4_Algorithm_and_Kernel_Pipelining_Co-Design_for_Asymmetric_Hardware_Scaling.pdf",
+              "sha256": "7c053b2b45a9d7da93b21f7dbe16ff8a927a9dc7e92537a034ca58a4eb5f10eb",
+              "range": "PDF p1、pp3–9、p20全文；TMEM、2CTA、pipeline、指数近似和内部硬件/日期矛盾",
+              "version": "FlashAttention-4 本地v1",
+              "reviewer": "harvard_full_audit",
+              "visually_inspected_pdf_pages": [
+                20
+              ]
+            },
+            {
+              "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashInfer_Efficient_and_Customizable_Attention_Engine_for_LLM_Inference_Serving.pdf",
+              "sha256": "6995874b7a43b0693ba0da805c4d99327a4cb4013edbea3e36f4c42949e63303",
+              "range": "PDF pp3–10全文；布局、运行时、CUDA Graph、服务对照和parallel generation",
+              "version": "FlashInfer 本地v2",
+              "reviewer": "harvard_full_audit",
+              "visually_inspected_pdf_pages": [
+                3,
+                8
+              ]
+            },
+            {
+              "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FLUX_Fast_Software-based_Communication_Overlap_on_GPUs_through_Kernel_Fusion.pdf",
+              "sha256": "14256ca83b1595bcee9d1bc6cb5fcb84d8fda8d6a18c51a8e45797a47b7bf455",
+              "range": "PDF p1、pp4–6、10–17全文；ECT定义、细粒度通信、硬件/版本/shape与分层实验",
+              "version": "FLUX 2024-10-25稿",
+              "reviewer": "harvard_full_audit"
+            },
+            {
+              "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/TVM_An_Automated_End-to-End_Optimizing_Compiler_for_Deep_Learning.pdf",
+              "sha256": "6032d5a54db0ec552168a5f5295a954edea6a24d91ae03bed1e0da0d858c9fa9",
+              "range": "PDF pp3–5、7–8全文；compute/schedule、流水线和代价模型",
+              "version": "TVM 2018",
+              "reviewer": "harvard_full_audit"
+            },
+            {
+              "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/Mirage_A_Multi-Level_Superoptimizer_for_Tensor_Programs.pdf",
+              "sha256": "1f0b88aa3b56253ada9d85343bc5e0bdcf89790240fcce92113573b7927e2a2b",
+              "range": "PDF pp3–11全文；μGraph、生成、验证定理、实现限制及Figure7",
+              "version": "Mirage 本地v3",
+              "reviewer": "harvard_full_audit",
+              "visually_inspected_pdf_pages": [
+                11
+              ]
+            },
+            {
+              "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/Making_Deep_Learning_go_Brrrr_From_First_Principles.html",
+              "sha256": "b035a3c38d61db25dc26c2c6cc76b1df17fd4d5a20735b857f2ffb6e248bcf90",
+              "range": "去导航提取文本1–292全文；compute/memory/overhead与全部脚注",
+              "version": "Horace He 2022归档",
+              "reviewer": "harvard_full_audit"
+            },
+            {
+              "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashAttention-4_from_Scratch_to_Near-SOTA_in_60_Diagrams_CUDA_PTX.html",
+              "sha256": "22ff6b10fa6853e0c9ea268aa7a7958237271392ef507be8dff20b3e8095a63f",
+              "range": "去导航提取文本1–140、3540–3765全文；主线范围、最终4项小优化、逐shape结果、布局及FA4标定；不是4007行全文",
+              "version": "2026-08-28文章；2026-09-12更新",
+              "reviewer": "harvard_full_audit"
+            },
+            {
+              "path": "2680/site/readings/oct-21.html",
+              "sha256": "2db6884eb3be13a95ec274822118ec20f57b5604b568c8c172d77018b5ad3294",
+              "range": "去导航提取文本1–135、136–264全文；官方阅读分组，仅作课程范围，AI生成Why read it不作主证据",
+              "version": "本地归档固定版本",
+              "reviewer": "harvard_full_audit"
+            },
+            {
+              "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/MPK_A_Compiler_and_Runtime_for_Mega-Kernelizing_Tensor_Programs.pdf",
+              "sha256": "0069c67600b194c4a935110889df803dd0ff8ca8caebc324ef6e13aeaa4da4cb",
+              "pdf_pages_read": [
+                2,
+                7,
+                8,
+                9,
+                10,
+                13,
+                14
+              ],
+              "visual_pdf_pages": [
+                7,
+                10
+              ],
+              "findings": "§4–7: SM-level task/event graph, JIT/AOT dispatch, shared-memory paging, 4 SM/16 scheduler warps, A100/H100/B200, prompt64/output1024 BF16 offline maxbatch1–16; current guide supported. Suggest throughput-ratio wording for 1.7× to avoid ambiguous latency-decrease times.",
+              "reviewer": "primary reviewer /root；独立核查记录已读取并整合，非本子代理冒称亲读",
+              "range": "实际PDF页 2, 7, 8, 9, 10, 13, 14",
+              "version": "本地归档版本，绑定SHA；详见独立记录"
+            },
+            {
+              "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/references/PyTorch_2_Faster_Machine_Learning_Through_Dynamic_Python_Bytecode_Transformation_and_Graph_Compilation.pdf",
+              "sha256": "9fba949b34051ae1b0936c91ddb23e43638912b180dba490616256e5446f4e6e",
+              "pdf_pages_read": [
+                2,
+                3,
+                4,
+                5,
+                8,
+                9,
+                10,
+                12,
+                13,
+                14,
+                15
+              ],
+              "visual_pdf_pages": [
+                4,
+                14
+              ],
+              "findings": "§3/4 guard/partial graphs/side-effect preservation and GPU Triton/CPU C++ supported; §6 settings 2023-08-30 nightly/CUDA11.6, warmups excluded, training means forward+backward excluding optimizer; recommend making this boundary explicit beside summary speedups.",
+              "reviewer": "primary reviewer /root；独立核查记录已读取并整合，非本子代理冒称亲读",
+              "range": "实际PDF页 2, 3, 4, 5, 8, 9, 10, 12, 13, 14, 15",
+              "version": "本地归档版本，绑定SHA；详见独立记录"
+            },
+            {
+              "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/A_Systematic_Characterization_of_LLM_Inference_on_GPUs.pdf",
+              "sha256": "f3929c0b1bdf5c42730f9a57c29cc986523a78f2ff307d1e9afb9d439e7d4116",
+              "pdf_pages_read": [
+                4,
+                5,
+                6,
+                11,
+                12,
+                14,
+                15
+              ],
+              "visual_pdf_pages": [
+                5,
+                14
+              ],
+              "findings": "§3 vLLM0.9.2 BF16 eager offline batches/4A10080GB and Orin; §5.2 warp-level stall; §6.1 summary Qwen2.5-32B uses4096input16output (different from Table2), TP2 1.24→0.66s. Guide appropriately limits generalization; recommend exact workload/model beside numbers.",
+              "reviewer": "primary reviewer /root；独立核查记录已读取并整合，非本子代理冒称亲读",
+              "range": "实际PDF页 4, 5, 6, 11, 12, 14, 15",
+              "version": "本地归档版本，绑定SHA；详见独立记录"
+            },
+            {
+              "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/Ragged_Paged_Attention_A_High-Performance_and_Flexible_LLM_Inference_Kernel_for_TPU.pdf",
+              "sha256": "6b546d2af7bd3673cdfedc2d4efb17e3ebc149d1cfa28e893f45cae9b7aca578",
+              "pdf_pages_read": [
+                1,
+                6,
+                7,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16
+              ],
+              "visual_pdf_pages": [
+                13,
+                15,
+                16
+              ],
+              "findings": "§4 decode128 uniform-length sequences; prefill1 sequence512–32K. MFU denominator hardware peak × maxMXUutilization: dk128 uses50%peak. Reported73%noncausal/63%causal are adjusted-denominator metrics; guide must clarify this. 86%MBU is controlled shape, not arbitrary ragged workload guarantee.",
+              "reviewer": "primary reviewer /root；独立核查记录已读取并整合，非本子代理冒称亲读",
+              "range": "实际PDF页 1, 6, 7, 11, 12, 13, 14, 15, 16",
+              "version": "本地归档版本，绑定SHA；详见独立记录"
+            },
+            {
+              "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/examples/roofline_online_softmax.py",
+              "sha256": "c5c4dcd7572288949924cbd5646e5d27ec3d7f8f4db62485219c2bda9e60ed92",
+              "range": "代码全文；CPU执行并与RUN.json逐字段比对；另在内存临时变体删除旧状态缩放，验证6.0→5.2反例",
+              "version": "本地归档固定版本",
+              "reviewer": "harvard_full_audit"
+            },
+            {
+              "path": "2680/11.EfficientLLMServingBasicsII.IntroToGPUs/examples/RUN.json",
+              "sha256": "0385200ffa6c8dc9c8ce589be86e09a72fa3cdff0b7aad59aaec7238c2ea376e",
+              "range": "全文，复跑输出一致",
+              "version": "本地归档固定版本",
+              "reviewer": "harvard_full_audit"
+            }
+          ],
+          "coverage_assessment": [
+            "41页主讲义问题链完整：CPU/GPU吞吐差异→逻辑线程与物理SM→算力/容量/带宽→roofline→batch/context→内存并发→异步搬运→多卡与异构硬件；没有用阅读论文替代讲义。",
+            "全部官方阅读组在§9–14有位置；FA1–4解释瓶颈迁移，FlashInfer与RPA解释服务布局，FLUX/编译运行时解释执行边界；高级来源按核心机制与对照范围审核，未声称每篇论文全读。",
+            "保留具体计算、CPU等价实现、实验执行顺序、故障分流表、持久编译状态和18项有答案自测；补齐初学GPU所需词义与贯穿计算。"
+          ],
+          "pedagogical_review": {
+            "reader_prerequisites": "LLM Developer与Java经验，可理解数组、异步任务、缓存、并发和服务指标；不预设CUDA/高级数学/硬件知识。",
+            "problem_chain": "先解释为什么GPU峰值不等于用户速度；新增§0.2 CPU提交数组任务→grid/block/thread/warp→SM→存储路径，使之后吞吐、occupancy与流量分析有共同对象。",
+            "prerequisites_and_skipped_steps": "补kernel/launch/tile/HBM/SM/lane/barrier/spill、类型字节、GEMV/GEMM、WGMMA/CTA/SFU/MXU/JIT/DMA定义；明确Nθ权重数不同于N矩阵边长，补P=F/T到min屋顶推导。",
+            "worked_examples": "1000元素/256线程→4块/24尾线程→最多4SM；同一FP32向量加法1/12FLOP/B解释扩大工作与提高复用不同；6搬运+10计算双缓冲解释所有权和收尾；100ms Amdahl及scores[0,ln2,ln4]/values[2,4,8]完整算到6并用5.2错误反例验证。",
+            "organization": "主线在§0–8，attention机制在§9–10，跨kernel与平台扩展在§11–14，测量和诊断收束；不围绕特定金融或RAG业务收窄。",
+            "learning_outcomes": "新增自测15–18要求算block/尾界、区分规模与算术强度、计算在线softmax、识别布局转换成本；对应正文均有可追踪推导。",
+            "judgment": "修改后适合有应用开发经验读者逐步学习GPU系统；深入写高性能CUDA kernel仍需另做实机练习。"
+          },
+          "issues_and_fixes": [
+            {
+              "issue": "前半篇术语先用后解释且缺完整执行样例",
+              "fix": "新增§0.2调用/数据路径与§2.2索引实例，补类型、同步、spill及指令术语"
+            },
+            {
+              "issue": "roofline推导跳步且N在矩阵边长与权重数之间换义",
+              "fix": "由时间下界推到吞吐上界，权重元素数改Nθ；向量加法贯穿算术强度，增加Amdahl和双缓冲数值例"
+            },
+            {
+              "issue": "online softmax例只算分母，没有输出也缺标准缩放与mask回顾",
+              "fix": "补完整attention式和因果mask，value例算到6，漏旧状态缩放得到5.2；临时CPU反例实际验证"
+            },
+            {
+              "issue": "B200教程94.4%含义不完整",
+              "fix": "明确14主线+4小优化、4K/8K94.4%与16K94.1%、偏好布局BHLD/BSHD无转换计时及直接BSHD92.1–92.7%"
+            },
+            {
+              "issue": "Mirage定理保证可能被读成实现已经达到",
+              "fix": "依据v3p10明确小素数一次检验与最终理论保证仍待实现，保留浮点测试和受限程序语言边界"
+            },
+            {
+              "issue": "FLUX通信隐藏指标分母与FA4指数实现精度边界不够清晰",
+              "fix": "解释ECT/overlap efficiency基线；明确FA4部分指数近似和BF16误差验收"
+            },
+            {
+              "issue": "独立来源核查补出四项实验条件",
+              "fix": "MPK使用单batch吞吐1.7倍；PyTorch2补nightly/CUDA/warmup及不含optimizer；Characterization补具体Qwen2.5-32B/4096/16/TP2；RPA补调整MXU分母而非全芯片峰值"
+            },
+            {
+              "issue": "新增数学编辑中转义损坏，在最终完整复读之前发现",
+              "fix": "修复全部转义和控制字符，再对最终SHA重新完成两轮全文；中间片段阅读未计作最终两轮"
+            }
+          ],
+          "post_fix_full_rereads": [
+            {
+              "round": 1,
+              "sha256": "a4c936d78c356e9f24b080cc9a4d7c6cb77d41960de6be014a2df23bb331aea4",
+              "ranges": [
+                "1-160",
+                "161-315",
+                "316-463"
+              ],
+              "result": "全文实际分段阅读，无截断；概念先后、符号、例题、数字条件、索引和自测一致，未发现需再改问题"
+            },
+            {
+              "round": 2,
+              "sha256": "a4c936d78c356e9f24b080cc9a4d7c6cb77d41960de6be014a2df23bb331aea4",
+              "ranges": [
+                "1-155",
+                "156-310",
+                "311-463"
+              ],
+              "result": "全文实际分段阅读，无截断；概念先后、符号、例题、数字条件、索引和自测一致，未发现需再改问题"
+            }
+          ],
+          "additional_evidence": {
+            "independent_source_checks": "tools/reviews/2026-10-28-full/harvard/11-independent-source-checks.json",
+            "independent_source_checks_sha256": "a88744a956d46ec5743bec2e136376ee7d1456ee90703915c0612a3cee2705c3",
+            "cpu_run": "RUN.json逐字段一致；direct与online均6.0；删除缩放临时变体5.2"
+          },
+          "limitations": [
+            "未运行GPU/CUDA/TPU/论文benchmark或验证当前API版本；CPU验证不能证明性能和并发正确性。",
+            "B200 walkthrough只读明确列出的原文范围；CUDA Guide和论文按正文相关范围精读，未冒称全部数百页全文。",
+            "FA4原文件B100/B200及日期内部冲突仍作为来源限制保留；未改原始PDF。",
+            "四篇独立核查由主代理完成并归档，本文如实标记读者身份；没有代替最终正文两轮实读。",
+            "未新增/改写原始资料或运行sync；README在本课不存在，已用SOURCES与REFERENCES作入口。"
+          ],
+          "record_file": "tools/reviews/2026-10-28-full/harvard_full/11-gpus.json",
+          "review_id": "2026-10-28-full-learning-review"
         }
       ],
       "maintenance": [
@@ -1486,7 +4423,9 @@
           "final_sha256": "c7834b817f0b0a0b062822c1cf235e382f93688fe9852d0ddf5863b139a7b5ed",
           "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
         }
-      ]
+      ],
+      "full_learning_review_record": "tools/reviews/2026-10-28-full/harvard_full/11-gpus.json",
+      "latest_review_date": "2026-10-28"
     }
   ],
   "original_sources": {
@@ -2250,5 +5189,38 @@
         "PDF parsing warnings preserved; selected pages rendered; no claim every figure/page was visually reviewed"
       ]
     }
-  ]
+  ],
+  "review_scope_history": [
+    {
+      "replaced_by": "2026-10-28-full-learning-review",
+      "review_date": "2026-10-26",
+      "scope": "Complete reading and final rereading of 30 Chinese study documents across the two courses; existing archive sources preserved. New guides cross-reviewed separately. No claim of universal correctness or full model/benchmark reproduction.",
+      "base_commit": "9c3971bffc77ae0805a2a6130fc90369a96d4449",
+      "standard": "MAS.S62 Senior AI Engineer: lecture-driven mechanism, implementation, evidence, cases, selection, cost, failure diagnosis, self-test and answer boundaries"
+    }
+  ],
+  "learner_profile": {
+    "background": "LLM Developer，有 Java 及一般应用开发经验",
+    "bridges": [
+      "接口与调用链",
+      "运行状态与持久状态",
+      "并发与恢复",
+      "缓存与测试"
+    ],
+    "not_assumed": [
+      "机器学习训练理论",
+      "概率统计与微积分",
+      "GPU 体系结构"
+    ],
+    "scope_boundary": "具体业务只作为独立例子；保留课程普遍知识体系，不能把全部课程改写为 RAG、金融投研或报告审核教程。"
+  },
+  "full_learning_review_2026_10_28": {
+    "manifest": "tools/reviews/2026-10-28-full/MANIFEST.json",
+    "report": "tools/reviews/2026-10-28-full/README.md",
+    "documents": 12,
+    "changed_documents": 12,
+    "unchanged_after_full_review": 0,
+    "original_integrity": "tools/reviews/2026-10-28-full/ORIGINAL_INTEGRITY.json",
+    "limitations": "逐篇来源页段和未执行实验见记录；结构校验不等于内容正确性或学习效果证明。"
+  }
 }

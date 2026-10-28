@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-28",
+  "python": "3.11.10",
+  "status": "passed",
+  "runs": [
+    {
+      "command": "python3 MAS.S62/6.HarnessEvolution2/examples/handoff_contract.py",
+      "exit_code": 0,
+      "stdout": "PASS: paired handoff, stale/evidence/unresolved/incomplete rejection\n",
+      "sha256": "a2393b737054503290dd804152892c208457e97985b85389029f371d10e0b5e1"
+    },
+    {
+      "command": "python3 MAS.S62/6.HarnessEvolution2/examples/metrics_and_boundaries.py",
+      "exit_code": 0,
+      "stdout": "Toolformer teaching loss improvement: 0.500\nTask macro average: 0.666667\nGain: 16.6 percentage points; relative 48.967552%\nR squared: 0.888889; kappa: 0.800; Jaccard: 0.333333\nPASS: arithmetic and trailing-newline boundary; no Django or model run\n",
+      "sha256": "75bb50eae58b6e62a2c28348e7796b33d501dd386c728ff2d2ec3d12ec3658c7"
+    }
+  ],
+  "limitations": [
+    "No model, API, Django or paper benchmark run."
+  ]
+}

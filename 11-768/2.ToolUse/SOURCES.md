@@ -36,7 +36,7 @@
 - [Hugging Face Chat Templates](references/002_Hugging_Face_Chat_Templates.html)
   - Source: https://huggingface.co/docs/transformers/chat_templating
 
-- Qwen2.5 Chat Template
+- [Qwen2.5 Chat Template](references/003_Qwen2.json)
   - Source: https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/blob/main/tokenizer_config.json
 
 - [Berkeley Function-Calling Leaderboard V4](references/004_Berkeley_Function-Calling_Leaderboard_V4.html)
@@ -51,7 +51,7 @@
 - [OpenAI Function Calling Guide](references/007_OpenAI_Function_Calling_Guide.html)
   - Source: https://developers.openai.com/api/docs/guides/function-calling
 
-- Qwen3.8 Tool-Call Template
+- [Qwen3.8 Tool-Call Template](references/008_Qwen3.json)
   - Source: https://huggingface.co/Qwen/Qwen3.8-27B/blob/main/tokenizer_config.json
 
 - [Mistral Small 4 Model Card](references/009_Mistral_Small_4_Model_Card.html)
@@ -60,7 +60,7 @@
 - [Mistral Tool-Call Tokenization Guide](references/010_Mistral_Tool-Call_Tokenization_Guide.md)
   - Source: https://github.com/mistralai/cookbook/blob/main/concept-deep-dive/tokenization/tool_calling.md
 
-- DeepSeek V3.2 Tool-Call Encoding
+- [DeepSeek V3.2 Tool-Call Encoding](references/011_DeepSeek_V3.py)
   - Source: https://huggingface.co/deepseek-ai/DeepSeek-V3.2/blob/main/encoding/encoding_dsv32.py
 
 - [OpenHands Tool System Architecture](references/012_OpenHands_Tool_System_Architecture.html)

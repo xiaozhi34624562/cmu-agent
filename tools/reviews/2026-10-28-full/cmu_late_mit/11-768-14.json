@@ -1,0 +1,255 @@
+{
+  "note": "11-768/14.OpenHands/Lecture14_OpenHands_Integrated_Notes.md",
+  "original_sha256": "a8a97cbdf143c898f69b63fb666c9f1784e1ee888f9be0ef28807a431b0616d6",
+  "final_sha256": "a8a97cbdf143c898f69b63fb666c9f1784e1ee888f9be0ef28807a431b0616d6",
+  "status": "passed_unchanged",
+  "review_date": "2026-10-28",
+  "full_readings": [
+    {
+      "round": 1,
+      "sha256": "a8a97cbdf143c898f69b63fb666c9f1784e1ee888f9be0ef28807a431b0616d6",
+      "line_ranges": [
+        [
+          1,
+          320
+        ],
+        [
+          321,
+          660
+        ],
+        [
+          661,
+          1000
+        ],
+        [
+          1001,
+          1370
+        ],
+        [
+          1371,
+          1786
+        ]
+      ],
+      "result": "全文完成"
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "11-768/14.OpenHands/SOURCES.md",
+      "range": "全文；本目录无 REFERENCES.json"
+    },
+    {
+      "path": "11-768/14.OpenHands/lecture-14-openhands.pdf",
+      "pages": "1–44 全文",
+      "text_read_ranges": [
+        [
+          1,
+          300
+        ],
+        [
+          301,
+          553
+        ]
+      ]
+    },
+    {
+      "path": "11-768/14.OpenHands/references/The_OpenHands_Software_Agent_SDK_A_Composable_and_Extensible_Foundation_for_Production_Agents.pdf",
+      "version": "arXiv 2511.03690 v1",
+      "pages": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        18,
+        19,
+        20
+      ],
+      "range": "所列 PDF 页全文，非全篇论文"
+    },
+    {
+      "path": "11-768/14.OpenHands/references/Evaluating_Large_Language_Models_Trained_on_Code.pdf",
+      "version": "arXiv 2107.03374 v2",
+      "pages": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "range": "所列 PDF 页全文，非全篇论文"
+    },
+    {
+      "path": "11-768/14.OpenHands/references/SWE-bench_Can_Language_Models_Resolve_Real-World_GitHub_Issues.pdf",
+      "version": "arXiv 2310.06770 v1",
+      "pages": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "range": "所列 PDF 页全文，非全篇论文"
+    },
+    {
+      "path": "11-768/14.OpenHands/references/SWE-agent_Agent-Computer_Interfaces_Enable_Automated_Software_Engineering.pdf",
+      "version": "arXiv 2405.15793 v3",
+      "pages": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        19,
+        20
+      ],
+      "range": "所列 PDF 页全文，非全篇论文"
+    },
+    {
+      "path": "11-768/14.OpenHands/references/CodeR_Issue_Resolving_with_Multi-Agent_and_Task_Graphs.pdf",
+      "version": "arXiv 2406.01304 v3",
+      "pages": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9
+      ],
+      "range": "所列 PDF 页全文，非全篇论文"
+    },
+    {
+      "path": "11-768/14.OpenHands/references/MetaGPT_Meta_Programming_for_a_Multi-Agent_Collaborative_Framework.pdf",
+      "version": "arXiv 2308.00352 v7",
+      "pages": [
+        4,
+        5,
+        6,
+        7,
+        9
+      ],
+      "range": "所列 PDF 页全文，非全篇论文"
+    },
+    {
+      "path": "11-768/14.OpenHands/references/Coding_Agents_with_Multimodal_Browsing_are_Generalist_Problem_Solvers.pdf",
+      "version": "arXiv 2506.03011 v1",
+      "pages": [
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9
+      ],
+      "range": "所列 PDF 页全文，非全篇论文"
+    },
+    {
+      "path": "11-768/14.OpenHands/references/Code_with_Me_or_for_Me_How_Increasing_AI_Automation_Transforms_Developer_Workflows.pdf",
+      "version": "arXiv 2507.08149 v1",
+      "pages": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "range": "所列 PDF 页全文，非全篇论文"
+    },
+    {
+      "path": "11-768/14.OpenHands/references/010_OpenDevin_CodeAct_1.0.html",
+      "version": "本地固定网页归档",
+      "range": "提取正文完整阅读"
+    },
+    {
+      "path": "11-768/14.OpenHands/references/011_Don_t_Sleep_on_Single-agent_Systems.html",
+      "version": "本地固定网页归档",
+      "range": "提取正文完整阅读"
+    },
+    {
+      "path": "11-768/14.OpenHands/references/016_VS_Code_with_Copilot_agent_quickstart.html",
+      "version": "本地固定网页归档",
+      "range": "提取正文完整阅读"
+    },
+    {
+      "path": "11-768/14.OpenHands/references/018_GitHub_Copilot_coding_agent.html",
+      "version": "本地固定网页归档",
+      "range": "提取正文完整阅读"
+    },
+    {
+      "path": "11-768/14.OpenHands/references/020_SkillRefiner_offline_skill_refinement.html",
+      "version": "本地固定网页归档",
+      "range": "提取正文完整阅读"
+    }
+  ],
+  "coverage_assessment": "完整覆盖44页讲义：功能验收与评测、ACI/CodeAct、SDK对象和事件状态、持久化与远程执行、权限隔离、单/多Agent、任务图、浏览工具、人类协作、软件工厂与SkillRefiner。引用材料承担各自机制和证据角色；实验模型、数据集、成本、版本与快照限制已有明确区分。",
+  "pedagogical_review": {
+    "reader_prerequisites": "LLM Developer及Java经验；可理解接口、状态、日志、依赖、测试和服务。未预设论文评测和Agent运行时细节。",
+    "question_chain": "怎样验收代码任务→怎样设计可反馈的行动接口→怎样组织可恢复的运行时→何时分工→怎样增加浏览能力→人如何协作与监督→怎样用运行反馈改善后续任务。",
+    "conceptual_bridges": "分页下载器末页丢失贯穿接口契约、行动反馈、回归验收与故障诊断；不可变配置、ConversationState与Workspace分别解释，避免把状态日志当外部世界事务。pass@k有变量和数值示例，SDK伪代码与论文机制边界明确。",
+    "gaps_found": "本轮未发现阻碍学习的实质跳步。数学仅用于解释采样评测；机制先以工程对象说明，再给实现和研究证据。",
+    "examples_and_organization": "通用代码修复案例贯穿，14章循序推进，附录补术语、来源差异与判断题。自测10题及答案覆盖机制、实验归因和落地选择。",
+    "learning_outcomes": "能选择单/多Agent与接口，设计状态恢复、权限、验收和观测，解释成功率与真实生产效果的差异，诊断工具反馈和上下文失效。",
+    "changes": "无需实质修改；保持课程普遍知识体系。"
+  },
+  "issues_and_fixes": [],
+  "post_fix_full_rereads": [],
+  "visual_checks": {
+    "lecture_pages": [
+      3,
+      6,
+      27,
+      34,
+      38,
+      40,
+      42,
+      43
+    ],
+    "papers": {
+      "SDK": [
+        2,
+        11
+      ],
+      "HumanEval": [
+        3
+      ],
+      "CodeR": [
+        5
+      ],
+      "Versa": [
+        7,
+        8
+      ],
+      "Human collaboration": [
+        8,
+        10
+      ]
+    },
+    "result": "查看16页渲染图；机制箭头、表格行列、模型版本和对照与讲解一致。"
+  },
+  "executed_examples": [
+    {
+      "path": "11-768/14.OpenHands/examples/pagination_contract.py",
+      "result": "PASS: 6 pagination contracts; faulty final-page case exposed; 3 arithmetic checks",
+      "scope": "本轮实际运行标准库离线例子；无模型、SDK、网络或论文复现"
+    }
+  ],
+  "limitations": [
+    "未复现模型、SDK或生产系统实验；产品描述按固定网页归档，未断言当前在线产品行为。",
+    "SkillRefiner没有完整主论文；主讲义图表、作者摘要与网页AI Overview的证据层级在正文已明确区分，未将网页评论当论文实验确认。",
+    "论文仅核查列出的页序，未声称全部附录已读；原始资料未改写。"
+  ]
+}

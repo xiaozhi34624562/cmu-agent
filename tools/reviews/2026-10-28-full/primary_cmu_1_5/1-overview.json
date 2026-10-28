@@ -1,0 +1,97 @@
+{
+  "review_date": "2026-10-28",
+  "note": "11-768/1.WhatIsAnAgent/notes.zh-CN.md",
+  "original_sha256": "0c7fdec43af0bcb0c7ae02af3945cc2dc5e78aed519f8f52d23dcc131ce19d41",
+  "final_sha256": "ef11d38aafd8edd4e92aff103504756d5b8a046a762a177e2e19f7898b0fe6f1",
+  "status": "full_review_passed_after_revision",
+  "full_read_ranges": [
+    {
+      "pass": "initial",
+      "lines": [
+        1,
+        594
+      ],
+      "result": "初轮完成全文及来源核查；后按用户明确的教学标准发现前置与公式跳步，已继续修订。"
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "11-768/1.WhatIsAnAgent/lecture-01-agents.pdf",
+      "pages": "1-39",
+      "scope": "全文文本回读，关键截图2、3、4、15目视核对"
+    },
+    {
+      "path": "11-768/1.WhatIsAnAgent/readings/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf",
+      "pages": "2-8,10",
+      "scope": "过滤损失/两种负对照/训练与推理/工具契约/ASDiv/语言建模/错误调用",
+      "version": "2302.04761v1"
+    },
+    {
+      "path": "11-768/1.WhatIsAnAgent/readings/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf",
+      "pages": "2-3,5-8,10",
+      "scope": "动作空间/图1/表1-4/样本分母/best-of协议/伦理边界",
+      "version": "2210.03629v3"
+    },
+    {
+      "path": "11-768/1.WhatIsAnAgent/readings/003_Mini-SWE-Agent.md",
+      "scope": "全文，本地归档v2声明，无固定commit"
+    }
+  ],
+  "coverage_assessment": "覆盖主讲义39页、Toolformer与ReAct主要机制和证据；以配置默认值修复贯穿，形成决策—执行—训练—评测的问题链，附13道自测与答案。",
+  "issues_and_fixes": [
+    {
+      "scope": "导读、§2–3",
+      "issue": "运行框架和概率策略先于直觉，默认已有训练术语知识",
+      "fix": "以应用层和调试过程桥接，定义 Harness、状态/观察/策略、条件/采样符号、自回归及序列概率。"
+    },
+    {
+      "scope": "§4、§6.3、§7–8",
+      "issue": "集合、求和、损失与解码术语缺少中间步骤",
+      "fix": "解释动作集合，三轮展开并推导等差和；给负对数小算例、训练三阶段分工、贪心解码和评价指标释义。"
+    },
+    {
+      "scope": "§10–12、§16",
+      "issue": "系统术语与重试概率直接使用，读者不易把算式用于判断",
+      "fix": "解释批处理/KV/rollout/checkpoint、延迟分项；推导至少一次成功概率，增加累计输入迁移题和答案。"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "pass": 1,
+      "sha256": "ef11d38aafd8edd4e92aff103504756d5b8a046a762a177e2e19f7898b0fe6f1",
+      "lines": "1–630",
+      "chunks": [
+        "1–325",
+        "326–630"
+      ],
+      "result": "全文复读通过：例子与符号逐一对应，教学新增内容未混成来源实验。"
+    },
+    {
+      "pass": 2,
+      "sha256": "ef11d38aafd8edd4e92aff103504756d5b8a046a762a177e2e19f7898b0fe6f1",
+      "lines": "1–630",
+      "chunks": [
+        "1–630",
+        "285–375（补读输出截断段）"
+      ],
+      "result": "全文再读通过：问题链、章节过渡、学习层次与自测答案一致，无新增问题。"
+    }
+  ],
+  "validation": {
+    "offline_example": "实际执行§14全部4类输入断言通过",
+    "source_numbers": "Toolformer ASDiv 7.5/9.6/14.8/40.4；ReAct HotpotQA 27.4 vs29.4、ALFWorld57/71及WebShop40.0核对一致",
+    "new_teaching_arithmetic": "实际核算三轮累计输入450、负对数0.1/0.8、独立三次至少一次成功0.875，均通过。"
+  },
+  "limitations": [
+    "未复现模型训练、在线工具、SWE-bench/ALFWorld/WebShop实验",
+    "视频仅按讲义封面定位，未声称观看或验证动态演示"
+  ],
+  "pedagogical_review": {
+    "reader": "LLM Developer，有 Java 和一般软件工程经验；不预设概率模型或强化学习训练背景",
+    "problem_chain": "先区分模型决策与外围执行→观察/状态/策略→生成token与工具调用→交互反馈→训练怎样改善调用→评测、成本和诊断",
+    "prerequisites": "修订前直接给策略符号、连乘、负对数损失及若干训练/系统缩写；已从调试行为、两token概率、0.1/0.8损失等具体例子引出，并解释符号。",
+    "organization": "开头明确三段路线；训练段先解释比较对象与分数含义，再给公式，后接推理执行；导论仅建立训练分工，不要求先学完整梯度算法。",
+    "examples_and_transfer": "保留通用配置修复贯穿案例，新增三轮输入量算例与迁移自测；没有将内容收窄为某行业或 RAG 专题。",
+    "learning_outcomes": "能画出模型—Harness—工具—观察循环，识别出错环节，解释训练数据筛选，区分单步与累计成本并设计对照。"
+  }
+}

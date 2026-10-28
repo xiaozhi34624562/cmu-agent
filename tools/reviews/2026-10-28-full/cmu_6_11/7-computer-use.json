@@ -1,0 +1,244 @@
+{
+  "note": "11-768/7.ComputerUseAgents/lecture-07-computer-use-agents-notes.md",
+  "original_sha256": "df268f5c1b8c65ca92d3f7aa2a79f3a6c922a21fb94530a67a7215d7daa7c313",
+  "final_sha256": "0ee2689be7615c480a4903c08e09eca1f5914753e47357859178b03e3c00f190",
+  "status": "completed_with_fixes",
+  "full_reads": [
+    {
+      "round": "initial",
+      "line_ranges": [
+        [
+          1,
+          280
+        ],
+        [
+          281,
+          560
+        ],
+        [
+          561,
+          840
+        ],
+        [
+          841,
+          1120
+        ],
+        [
+          1121,
+          1400
+        ],
+        [
+          1401,
+          1803
+        ]
+      ]
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "11-768/7.ComputerUseAgents/SOURCES.md",
+      "actual_scope": "全文；无README/REFERENCES.json"
+    },
+    {
+      "path": "11-768/7.ComputerUseAgents/lecture-07-computer-use-agents.pdf",
+      "version": "2026-09-15",
+      "pages": "1–94",
+      "actual_scope": "主讲义全文，含附录移动/企业/个人环境；提取文本1–1846行分3段完整读取"
+    },
+    {
+      "path": "11-768/7.ComputerUseAgents/references/WebShop_Towards_Scalable_Real-World_Web_Interaction_with_Grounded_Language_Agents.pdf",
+      "version": "v4 2023-02-08",
+      "pages": "4–9",
+      "actual_scope": "所列页全文定向核查：方法、公式、比较条件、实验与局限；非整篇全文精读"
+    },
+    {
+      "path": "11-768/7.ComputerUseAgents/references/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf",
+      "version": "v3 2023-03-10",
+      "pages": "3,4,8",
+      "actual_scope": "所列页全文定向核查：方法、公式、比较条件、实验与局限；非整篇全文精读"
+    },
+    {
+      "path": "11-768/7.ComputerUseAgents/references/Mind2Web_Towards_a_Generalist_Agent_for_the_Web.pdf",
+      "version": "v3 2023-12-09",
+      "pages": "5–8",
+      "actual_scope": "所列页全文定向核查：方法、公式、比较条件、实验与局限；非整篇全文精读"
+    },
+    {
+      "path": "11-768/7.ComputerUseAgents/readings/WebArena_A_Realistic_Web_Environment_for_Building_Autonomous_Agents.pdf",
+      "version": "v4 2024-04-16",
+      "pages": "4,6–8",
+      "actual_scope": "所列页全文定向核查：方法、公式、比较条件、实验与局限；非整篇全文精读"
+    },
+    {
+      "path": "11-768/7.ComputerUseAgents/readings/VisualWebArena_Evaluating_Multimodal_Agents_on_Realistic_Visually_Grounded_Web_Tasks.pdf",
+      "version": "v2 2024-06-06",
+      "pages": "1,3,4,8",
+      "actual_scope": "所列页全文定向核查：方法、公式、比较条件、实验与局限；非整篇全文精读"
+    },
+    {
+      "path": "11-768/7.ComputerUseAgents/references/WebVoyager_Building_an_End-to-End_Web_Agent_with_Large_Multimodal_Models.pdf",
+      "version": "v4 2024-06-06",
+      "pages": "3–5,7",
+      "actual_scope": "所列页全文定向核查：方法、公式、比较条件、实验与局限；非整篇全文精读"
+    },
+    {
+      "path": "11-768/7.ComputerUseAgents/readings/OSWorld_Benchmarking_Multimodal_Agents_for_Open-Ended_Tasks_in_Real_Computer_Environments.pdf",
+      "version": "v2 2024-05-30",
+      "pages": "3–6,10–12",
+      "actual_scope": "所列页全文定向核查：方法、公式、比较条件、实验与局限；非整篇全文精读"
+    },
+    {
+      "path": "11-768/7.ComputerUseAgents/references/ScreenSpot-Pro_GUI_Grounding_for_Professional_High-Resolution_Computer_Use.pdf",
+      "version": "v1 2025-04-04",
+      "pages": "1,2,5,6,8",
+      "actual_scope": "所列页全文定向核查：方法、公式、比较条件、实验与局限；非整篇全文精读"
+    },
+    {
+      "path": "11-768/7.ComputerUseAgents/readings/OpenCUA_Open_Foundations_for_Computer-Use_Agents.pdf",
+      "version": "v3 2025-10-04",
+      "pages": "4–8,10,11,13,14",
+      "actual_scope": "所列页全文定向核查：方法、公式、比较条件、实验与局限；非整篇全文精读"
+    },
+    {
+      "path": "11-768/7.ComputerUseAgents/references/MolmoWeb_Open_Visual_Web_Agent_and_Open_Data_for_the_Open_Web.pdf",
+      "version": "v1 2026-04-09",
+      "pages": "3–12",
+      "actual_scope": "所列页全文定向核查：方法、公式、比较条件、实验与局限；非整篇全文精读"
+    },
+    {
+      "path": "11-768/7.ComputerUseAgents/readings/CUA-Gym_Scaling_Verifiable_Training_Environments_and_Tasks_for_Computer-Use_Agents.pdf",
+      "version": "v2 2026-06-08; 封面2026-06-09",
+      "pages": "3–10,16,17,28,29",
+      "actual_scope": "所列页全文定向核查：方法、公式、比较条件、实验与局限；非整篇全文精读"
+    },
+    {
+      "path": "11-768/7.ComputerUseAgents/references/Gym-Anything_Turn_any_Software_into_an_Agent_Environment.pdf",
+      "version": "v1 2026-04-07",
+      "pages": "5–15",
+      "actual_scope": "所列页全文定向核查：方法、公式、比较条件、实验与局限；非整篇全文精读"
+    },
+    {
+      "path": "11-768/7.ComputerUseAgents/readings/Multi-Agent_Computer_Use.pdf",
+      "version": "v1 2026-06-01",
+      "pages": "3–8",
+      "actual_scope": "所列页全文定向核查：方法、公式、比较条件、实验与局限；非整篇全文精读"
+    }
+  ],
+  "figures_rendered_and_viewed": [
+    "Lecture p56",
+    "Mind2Web p6",
+    "VisualWebArena p4",
+    "OSWorld p4",
+    "ScreenSpot-Pro p6",
+    "OpenCUA p6,p13",
+    "MolmoWeb p11",
+    "CUA-Gym p6,p8",
+    "Gym-Anything p13",
+    "MACU p8"
+  ],
+  "coverage_assessment": {
+    "suitability": "适合LLM Developer和Java背景；界面、状态、调用、重试、并发等可直接利用既有经验。补齐SFT/GSPO的机器学习前置，避免早于第8/9课的数学突入。",
+    "completeness": "完整涵盖定义/三类正确性、离线在线视觉桌面长任务评测、候选检索/SoM/grounding、示范与训练数据、可重置环境与奖励、长任务计算和多Agent、执行系统、成本/选型/泛化/诊断、贯穿记账案例与自测。主讲义附录也有对应。",
+    "accuracy": "已回查主讲义全文及13篇辅助原文高风险页，图表实看。原稿已保留评判一致率≠准确率、SFT初始化与RL收益、环境多样性SFT实验、TTA额外成本、MACU推理排除等边界，无需改动。"
+  },
+  "issues_and_fixes": [
+    {
+      "location": "§2.2",
+      "issue": "策略概率记号没有就地定义。",
+      "fix": "解释策略参数、条件概率和采样符号。"
+    },
+    {
+      "location": "§6.7",
+      "issue": "从执行系统直接跳到SFT损失，默认读者掌握训练、梯度、负对数和teacher forcing。",
+      "fix": "先区分运行时状态与训练参数，再用0.2→0.8概率的损失例解释监督方向、梯度和环境观察掩码，并连接第8课。"
+    },
+    {
+      "location": "§8.7",
+      "issue": "GSPO概率比、优势、裁剪与KL只给公式，旧策略/参考策略职责及终态奖励不能定位动作原因未充分铺垫。",
+      "fix": "加入四轨迹手算优势，定义轨迹/参数/几何平均比率，解释裁剪动机与KL锚点，明确未解决动作信用分配并链接后续课程。"
+    },
+    {
+      "location": "附录A.3–A.4",
+      "issue": "新增训练前置需要能验证掌握的题目。",
+      "fix": "增加观察掩码与同奖励零标准差自测及答案。"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "round": 1,
+      "sha256": "0ee2689be7615c480a4903c08e09eca1f5914753e47357859178b03e3c00f190",
+      "line_ranges": [
+        [
+          1,
+          320
+        ],
+        [
+          321,
+          640
+        ],
+        [
+          641,
+          960
+        ],
+        [
+          961,
+          1280
+        ],
+        [
+          1281,
+          1600
+        ],
+        [
+          1601,
+          1818
+        ]
+      ],
+      "result": "完整全文复读，无新增实质问题；机制、例子、来源边界与自测一致"
+    },
+    {
+      "round": 2,
+      "sha256": "0ee2689be7615c480a4903c08e09eca1f5914753e47357859178b03e3c00f190",
+      "line_ranges": [
+        [
+          1,
+          320
+        ],
+        [
+          321,
+          640
+        ],
+        [
+          641,
+          960
+        ],
+        [
+          961,
+          1280
+        ],
+        [
+          1281,
+          1600
+        ],
+        [
+          1601,
+          1818
+        ]
+      ],
+      "result": "完整全文复读，无新增实质问题；机制、例子、来源边界与自测一致"
+    }
+  ],
+  "pedagogical_review": {
+    "reader_prerequisites": "LLM应用开发和Java经验；不假设已有强化学习/概率优化专业基础。",
+    "problem_chain": "正确改变软件状态需要什么→如何观察和定位→如何证明完成→如何把轨迹变成监督→如何构造RL环境→如何扩展长任务计算→如何实现与诊断。",
+    "derivation_gaps": "修复执行→训练与SFT→GSPO两处跳步；仅讲本课理解所需信号方向，详细优化推导交第8/9/11课。",
+    "examples": "原贯穿记账与蓝杯任务保持；新增沿蓝杯任务计算组内优势，明确教学构造，不假冒论文结果或用户真实系统。",
+    "organization": "新增解释放在公式前后，沿现有问题链推进，不重排为金融/RAG特例。",
+    "learning_outcomes": "能区分状态与参数更新、解释概率损失和优势、判断观察掩码与零方差；原题继续验证泛化、输入来源、验证器与成本归因。",
+    "fixes": "§2.2、§6.7、§8.7和两道自测。"
+  },
+  "limitations": [
+    "辅助论文仅记录所列页定向阅读，未称全部全文精读。",
+    "未重跑GUI基准、SFT/RL训练、模型/API实验；数值教学例仅做本地算术验证。",
+    "World of Bits仅历史定位，未在本轮重新精读其全文；其他无归档原论文工作仍明确以讲义为证据。"
+  ]
+}

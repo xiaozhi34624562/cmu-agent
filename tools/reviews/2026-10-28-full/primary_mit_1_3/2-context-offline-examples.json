@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-28",
+  "note": "MAS.S62/2.ContextEvolution1/notes.zh-CN.md",
+  "sha256": "ed358c94035f8e57c98002fc1ec3228ccea509f03b9fdb4fd293c3d0fe2f2669",
+  "execution": "Python standard-library arithmetic only; no model/API/GPU experiment.",
+  "checks": {
+    "two_token_probability": true,
+    "candidate_average": true,
+    "gradient_step": true,
+    "loss_after_step": true,
+    "percent_positive": true,
+    "percent_zero": true,
+    "percent_negative": true,
+    "attention_weights": true,
+    "attention_output": true,
+    "pair_count": true,
+    "cache_cost": true
+  },
+  "passed": true
+}

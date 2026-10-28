@@ -1,0 +1,106 @@
+{
+  "note": "11-768/4.SkillsAndMemory/Skills_and_Memory_Integrated_Notes.md",
+  "original_sha256": "63cab3ff64df7663f5423135d332aa73eb3403d275ac0dbe0eacb275ca84f68c",
+  "final_sha256": "63cab3ff64df7663f5423135d332aa73eb3403d275ac0dbe0eacb275ca84f68c",
+  "status": "full_review_passed_unchanged",
+  "full_read_ranges": [
+    "1–300",
+    "301–620",
+    "621–940",
+    "941–1260",
+    "1261–1580",
+    "1581–1830",
+    "1831–2065",
+    "1760–1820（补读输出截断段）"
+  ],
+  "sources_read": [
+    {
+      "path": "11-768/4.SkillsAndMemory/lecture-04-memory-and-skills.pdf",
+      "pages": "1–46",
+      "scope": "主讲义全文；p.17/33 图示",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/4.SkillsAndMemory/readings/SkillsBench_Benchmarking_How_Well_Agent_Skills_Work_Across_Diverse_Tasks.pdf",
+      "pages": "5–7,23,28;38 §M.7",
+      "scope": "配对实验、宏平均、总表、自生成失败、任务分组及泄漏",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/4.SkillsAndMemory/readings/MemGPT_Towards_LLMs_as_Operating_Systems.pdf",
+      "pages": "2–5",
+      "scope": "上下文/外存/控制流和 DMR 对照",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/4.SkillsAndMemory/readings/Agent_Workflow_Memory.pdf",
+      "pages": "3–5,7–8,10",
+      "scope": "表示、离线/在线、步级与任务指标、宏动作与动态状态",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/4.SkillsAndMemory/readings/Inducing_Programmatic_Skills_for_Agentic_Tasks.pdf",
+      "pages": "3–8,18",
+      "scope": "准入三检查、重写前缀与删答案尾部、表示消融、检查点、跨站与统计检验",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/4.SkillsAndMemory/readings/ReasoningBank_Scaling_Agent_Self-Evolving_with_Reasoning_Memory.pdf",
+      "pages": "4–5,9–11,21–23,26–27",
+      "scope": "检索与追加式整合、MaTTS、失败/判断器、Pass@1/BoN、总成本",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/4.SkillsAndMemory/references/Reinforcement_Learning_for_Self-Improving_Agent_with_Skill_Library.pdf",
+      "pages": "4–5,9",
+      "scope": "两任务 rollout、技能奖励、SAGE 不作标准差归一化、奖励与 SFT 消融",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/4.SkillsAndMemory/references/Agentic_Memory_Learning_Unified_Long-Term_and_Short-Term_Memory_Management_for_Large_Language_Model_Agents.pdf",
+      "pages": "4–6",
+      "scope": "六工具、三阶段与上下文重置、优势广播、组合奖励及训练集",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/4.SkillsAndMemory/references/Not_All_Skills_Help_Measuring_and_Repairing_Agent_Knowledge.pdf",
+      "pages": "3–5,17",
+      "scope": "随机屏蔽平均差、依赖其他技能分布、开发集门控与回退、顺序消融",
+      "version": "本地归档版本"
+    },
+    {
+      "path": "11-768/4.SkillsAndMemory/references/TroVE_Inducing_Verifiable_and_Efficient_Toolboxes_for_Solving_Programmatic_Tasks.pdf",
+      "pages": "3–4",
+      "scope": "3K 采样、执行一致性、频次修剪和旧解重生成",
+      "version": "本地归档版本"
+    }
+  ],
+  "additional_source_checks": [
+    "OpenHands 2026-02-27 技能文章全文；人类采纳率与正确性区别",
+    "Hermes prompt_builder.py 1219–1430：构建、可见性、索引展示；skills_tool.py 420–468/572–721：就绪、正文加载、view/use 统计和缓存拦截",
+    "看图：主讲义 17/33、SkillsBench 6、ReasoningBank 9、ASI 4/18"
+  ],
+  "coverage_assessment": "覆盖主讲义表示—提炼—生命周期，并通过外部记忆、技能归纳、反馈训练和验证串成完整机制。未发现本轮必须修改的教学正文问题。",
+  "pedagogical_review": {
+    "reader": "LLM Developer，有 Java/一般软件工程背景；不预设 RL 或统计专门知识",
+    "problem_chain": "重复任务为何不能只存日志→事实/经历/技能选择→文本/程序各固定什么→怎样验证提炼→何时复用、改写或淘汰→后续价值怎样进入训练反馈",
+    "prerequisites": "开篇定义运行框架、观察、轨迹、外部状态/模型参数；§1 解释符号；§3 有宏平均算例；§6 解释统计显著性的读法；§8 明确奖励、GRPO、指示量及奖励三种情况，完整优化推导留给 RL 课程。",
+    "examples_and_transfer": "搜索关键词由实例到参数的例子贯穿 AWM/ASI；代码审核的调用方异常处理案例串起六个学习环节，适合一般开发经验；文档案例作为第二种迁移情境而非整课读者身份。",
+    "organization": "三部分按问题推进；每种方法说明更新对象与使用位置，章节之间交代为什么引入下一种方法；附录提供数字/术语回查，主体不依赖记住论文名。",
+    "learning_outcomes": "能区分加载、调用、最终成功与对照收益；设计删除旧答案的技能准入测试；选择保留经历/事实/文本/程序；识别负面迁移与错误反馈，构造冻结和持续学习评测。",
+    "fix_decision": "已有讲解符合本轮学习定位，保留正文。只给来源索引补两份已归档源码的入口。"
+  },
+  "issues_and_fixes": [
+    {
+      "scope": "SOURCES.md",
+      "issue": "两份 Hermes 源码只有上游链接，无本地入口",
+      "fix": "补指向本课归档快照的链接，原始文件及正文不变"
+    }
+  ],
+  "post_fix_full_rereads": [],
+  "limitations": [
+    "参考论文按核心机制、高风险数字/公式/条件核查，未声称全部 23 篇参考全文逐字复读。",
+    "没有执行模型、GPU 或线上 Agent 实验；图表复核与代码阅读不代表论文复现。",
+    "正文未修改，不虚报修改后两轮复读；后续统一链接/页码/校验值检查另记验证报告。"
+  ]
+}

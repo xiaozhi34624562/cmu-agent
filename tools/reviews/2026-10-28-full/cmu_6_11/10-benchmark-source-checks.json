@@ -1,0 +1,290 @@
+{
+  "note": "11-768/10.DeepResearchAgents/Deep_Research_Lecture10_Integrated_Notes.md",
+  "checked_note_sha256": "fda8fadc03b1a446f0fe12324ae754613fb7593737a9a3e48dd32a54934ef663",
+  "status": "source_checks_and_independent_final_full_reread_completed",
+  "sources_index_read": [
+    "11-768/10.DeepResearchAgents/SOURCES.md",
+    "11-768/10.DeepResearchAgents/REFERENCES.json"
+  ],
+  "chinese_note_targeted_sections_read": [
+    "§2.2–3.5",
+    "§9.2–9.4",
+    "R02/R03/R09–R14",
+    "相关命中段落上下文由最终全文复读补齐"
+  ],
+  "sources_read": [
+    {
+      "path": "11-768/10.DeepResearchAgents/readings/BrowseComp_A_Simple_Yet_Challenging_Benchmark_for_Browsing_Agents.pdf",
+      "pages": 11,
+      "sha256": "8de2e7a024b43ff7fbab29e0bb6dbdc131ad07206e6c186c2122502d69477760",
+      "extract_lines": 571,
+      "version": "arXiv 2504.12516v1, 2025-04-16",
+      "pages_read": [
+        [
+          1,
+          11
+        ]
+      ],
+      "actual_scope": "全文 11 页，文本提取 1–571 行全部阅读；pp.1、7 图像目视",
+      "figures_visually_read": [
+        1,
+        7
+      ],
+      "checked_claims": [
+        "反向构题、答案不保证唯一、最终答案匹配与长报告能力边界",
+        "§4.2 自报置信度校准不足；§4.4 Best-of-N 按置信度而非真值选择",
+        "推理时计算扩展只在所测 Deep Research 配置下成立"
+      ],
+      "result": "与当前中文正文一致，未发现需要修改的实质问题"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/BrowseComp-Plus_A_More_Fair_and_Transparent_Evaluation_Benchmark_of_Deep-Research_Agent.pdf",
+      "pages": 25,
+      "sha256": "0aa19d874913ae5f95fc9913aaa9c0cb68f4a8cbba8d2e436ea9b41738e69d3c",
+      "extract_lines": 1779,
+      "version": "arXiv 2508.06600v1, 2025-08-08",
+      "pages_read": [
+        [
+          1,
+          7
+        ],
+        [
+          10,
+          13
+        ]
+      ],
+      "actual_scope": "pp.1–7 全部文本；p.10 仅 §4.8/4.8.1（855–876行）；pp.11–13 全部文本；p.10 表3另作目视，不宣称全文论文精读",
+      "figures_visually_read": [
+        5,
+        10,
+        11,
+        12,
+        13
+      ],
+      "checked_claims": [
+        "evidence 与 gold 文档语义、固定语料和负例设计",
+        "top-5/512-token 预览，86.5% 是 gold 文档答案位置而非实际检索命中",
+        "oracle gpt-4.1 93.49% vs BM25 14.58%",
+        "表5 gpt-4.1 35.42→43.61/1.85 calls，Qwen3-32B 10.36→11.69/0.27 calls，固定 Qwen3-Embedding-8B",
+        "FineWeb 未标注文档视为不相关及最终答案不改善；原文将9.77M称100K的10倍存在笔误，正文未复述"
+      ],
+      "result": "与当前中文正文一致，未发现需要修改的实质问题"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/readings/DeepResearch_Bench_A_Comprehensive_Benchmark_for_Deep_Research_Agents.pdf",
+      "pages": 31,
+      "sha256": "8fbf30398f5e62f8839f0c9c8609bbb9e3cd0b57ae27d4bf33cb5db2007d1118",
+      "extract_lines": 1725,
+      "version": "arXiv 2506.11763v1, 2025-06-13",
+      "pages_read": [
+        [
+          1,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          18,
+          19
+        ]
+      ],
+      "actual_scope": "pp.1–5 全部文本；p.6 §4.1（至207行）及pp.6–7整页目视；附录 E 完整，附录 F.1/F.2 顺带读取；不是整篇论文全文",
+      "figures_visually_read": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "checked_claims": [
+        "RACE 动态维度/条目权重与两报告相对分公式",
+        "2025年4月 Gemini-2.5-pro Deep Research 参考报告不是真值",
+        "FACT 同URL同事实去重、Jina Reader 支持判定、每任务引用精度平均与平均有效陈述–URL数",
+        "引用精度不覆盖完全未写出的内容"
+      ],
+      "result": "与当前中文正文一致，未发现需要修改的实质问题"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/AutoResearchBench_Benchmarking_AI_Agents_on_Complex_Scientific_Literature_Discovery.pdf",
+      "pages": 28,
+      "sha256": "9303b8930eb3c5b6eca8e4cfda6d56506ade638200c86c32a8fa7b91f44cae60",
+      "extract_lines": 2357,
+      "version": "arXiv 2604.25256v1, 2026-04-28",
+      "pages_read": [
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          14,
+          14
+        ],
+        [
+          22,
+          24
+        ]
+      ],
+      "actual_scope": "p.1、pp.3–6 全文；p.7 §3.1 设置；pp.9–10、14、22–24 全文；定向页段精读",
+      "figures_visually_read": [
+        6,
+        9,
+        10,
+        22,
+        23,
+        24
+      ],
+      "checked_claims": [
+        "指定语料内零/一篇严格集合相等与Wide集合IoU；Wide参考集合非空",
+        "全文条件、引用扩展、条件剪枝、无答案构题、集合审查与边界局限",
+        "相同ReAct/DeepXiv及30轮上限的thinking比较，Deep无一致收益/Wide下降且延迟增大",
+        "Pass@k 与 oracle best@k IoU 为不同指标；重复运行非候选并集",
+        "相关/正确候选已检索仍可能约束核验、证据整合、排序和停止失败"
+      ],
+      "result": "与当前中文正文一致，未发现需要修改的实质问题"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/FinSearchComp_Towards_a_Realistic_Expert-Level_Evaluation_of_Financial_Search_and_Reasoning.pdf",
+      "pages": 29,
+      "sha256": "74887941b188b76c9c0eeb5294a47e8dcde43dd80e9201d881984527d828f416",
+      "extract_lines": 2276,
+      "version": "arXiv 2509.13160v1, 2025-09-16",
+      "pages_read": [
+        [
+          1,
+          2
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          14,
+          14
+        ],
+        [
+          20,
+          21
+        ]
+      ],
+      "actual_scope": "pp.1–2、4–5全文；p.6 仅§2.3；pp.7–9全文；p.14 §4.4–4.5及相关工作；pp.20–21全文；定向页段精读",
+      "figures_visually_read": [
+        7,
+        9,
+        14,
+        20,
+        21
+      ],
+      "checked_claims": [
+        "三类任务及新鲜度/时点/字段/单位/多期整合",
+        "动态答案API、收盘后统一评价、按资产容差；历史题预设误差/时点",
+        "简单查询overthinking是所测配置观察",
+        "复杂历史任务结构化API/SQL需求是作者诊断，不是统一工具消融",
+        "财年/自然年、流量/存量、GAAP、币种、价格调整与源版本边界"
+      ],
+      "result": "与当前中文正文一致，未发现需要修改的实质问题"
+    },
+    {
+      "path": "11-768/10.DeepResearchAgents/references/A_Critical_Evaluation_of_Evaluations_for_Long-form_Question_Answering.pdf",
+      "pages": 21,
+      "sha256": "e84a3c72733d2a56c33351012b7557b10e10430af6d5f5830d0743b2a3e3fe8d",
+      "extract_lines": 2724,
+      "version": "ACL 2023, pp.3225–3245",
+      "pages_read": [
+        [
+          1,
+          8
+        ]
+      ],
+      "actual_scope": "PDF pp.1–7 全部提取文本；p.8正文及表注全部读、表4渲染逐列目视；非21页论文全文",
+      "figures_visually_read": [
+        4,
+        5,
+        7,
+        8
+      ],
+      "checked_claims": [
+        "7领域专家与自由解释、分歧来自属性权重",
+        "专家/普通标注者各50解释且问题集不同，不能单因素归因",
+        "12类指标在所测总体偏好不稳定；部分细分属性可测",
+        "长度基线和QAFactEval须保留数据/证据输入条件",
+        "表4 ROUGE .58/BERTScore .57/BLEURT .62 的109对参考可用专家比较，非所有样本分母"
+      ],
+      "result": "与当前中文正文一致，未发现需要修改的实质问题"
+    }
+  ],
+  "issues_and_fixes": [],
+  "limitations": [
+    "本记录是六篇评测来源核查，非第10讲义/所有引用的完整审核；其余由主代理审核。",
+    "只有 BrowseComp 11页全文读完，其余来源按实际页段与章节记录；图表实际渲染目视，未改原文。",
+    "未重跑论文模型、检索、API或训练实验；结论只针对本地归档版本。"
+  ],
+  "independent_final_full_reread": {
+    "status": "completed",
+    "reviewer": "cmu_6_11",
+    "date": "2026-10-28",
+    "round": "independent_round_2_after_primary_round_1_on_same_final_sha",
+    "sha256": "fda8fadc03b1a446f0fe12324ae754613fb7593737a9a3e48dd32a54934ef663",
+    "line_count": 2345,
+    "actual_full_read_line_ranges": [
+      [
+        1,
+        350
+      ],
+      [
+        351,
+        700
+      ],
+      [
+        701,
+        1050
+      ],
+      [
+        1051,
+        1400
+      ],
+      [
+        1401,
+        1750
+      ],
+      [
+        1751,
+        2100
+      ],
+      [
+        2101,
+        2345
+      ]
+    ],
+    "method": "逐段读取最终中文主文全部内容，包括附录、自测、答案、来源索引与124页讲义覆盖表；各段实际输出均未截断，不以关键词扫描或技术校验代替阅读。",
+    "result": "全文复读未发现新的实质错误或必须补讲的学习断层；本轮没有修改正文。",
+    "pedagogical_review": {
+      "reader_prerequisites": "按熟悉LLM应用与Java开发、但不能预设机器学习/数学专门知识的读者检查。通用接口、状态、缓存、并发与测试经验可作为桥梁；正文仍保留课程普遍知识体系。",
+      "problem_chain": "先区分短答案调查与开放综合的目标，再说明评测如何定义成功，进入运行轨迹、训练数据、SFT/RL、奖励和检索，最后用两个案例及诊断实验连接成可执行选择路径。",
+      "mechanism_prerequisites": "概率与参数更新、期望奖励与梯度、组内均值/标准差、正负优势裁剪、DPR正负例损失均给出符号与小例子；运行状态更新和模型参数训练明确分开。",
+      "examples_and_boundaries": "通用研究助手瓶颈诊断贯穿检索/流程/训练取舍；财务案例标为虚构并明确资料不足时的阶段交付。ScholarSearch例子已改为属性取值子集组合筛选后汇总，未将多属性限于多个数值指标。",
+      "organization_and_cognitive_load": "主文按依赖关系展开，公式在对应机制处解释，附录负责回顾和索引；算法、奖励、数据与系统成本没有混成同一层级。",
+      "learning_outcomes_and_self_tests": "读者可解释各评测对象、区分证据获取/阅读/核验/综合错误、判断训练前提、设计受控诊断，并用C.4实际计算中心化优势、负优势裁剪与错标损失。答案与正文机制吻合。"
+    },
+    "limitations": [
+      "此独立全文复读不声称重新全文阅读所有引用原文；本审读人实际来源核查仅限sources_read明确记录的六篇及其范围，其他来源由根代理负责。",
+      "没有运行模型、GPU训练、搜索API或论文实验；正文离线算式执行由根代理记录。"
+    ]
+  }
+}

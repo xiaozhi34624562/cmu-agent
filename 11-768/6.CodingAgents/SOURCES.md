@@ -35,7 +35,7 @@
 - [Code Llama](references/Code_Llama_Open_Foundation_Models_for_Code.pdf)
   - Source: https://arxiv.org/abs/2308.12950
 
-- Qwen2.5-Coder
+- [Qwen2.5-Coder](references/Qwen2.5-Coder_Technical_Report.pdf)
   - Source: https://arxiv.org/abs/2409.12186
 
 - [InCoder](references/InCoder_A_Generative_Model_for_Code_Infilling_and_Synthesis.pdf)

@@ -1,0 +1,134 @@
+{
+  "checked_at_utc": "2026-10-28T15:31:03.406882+00:00",
+  "status": "passed",
+  "reviewed_documents": 37,
+  "changed_documents": 31,
+  "unchanged_documents": 6,
+  "verified_final_full_reread_records": 62,
+  "course_report_files": [
+    "11-768/VERIFICATION.json",
+    "2680/VERIFICATION.json",
+    "MAS.S62/VERIFICATION.json"
+  ],
+  "course_reports": {
+    "11-768": {
+      "course": "11-768",
+      "checked_at_utc": "2026-10-28T15:30:33.212559+00:00",
+      "reviewed_documents": 19,
+      "published_lessons": [
+        "1.WhatIsAnAgent",
+        "10.DeepResearchAgents",
+        "11.AdvancedRLAlgorithms",
+        "12.TrainingRLSystems",
+        "13.AgentSafety",
+        "14.OpenHands",
+        "15.OrchestrationAndMonitoring",
+        "16.AgentsAndTheFutureOfWork",
+        "2.ToolUse",
+        "3.LongContext",
+        "4.SkillsAndMemory",
+        "5.PlanningAndCoordination",
+        "6.CodingAgents",
+        "7.ComputerUseAgents",
+        "8.SupervisedFineTuning",
+        "9.TrainingRLBasics"
+      ],
+      "checked_local_links": 2835,
+      "explicit_pdf_page_links_sources": 10,
+      "supplementary_sources": 26,
+      "original_source_checksums": 493,
+      "scope": "Offline structure and integrity; not semantic proof or model benchmark replication",
+      "errors": []
+    },
+    "2680": {
+      "course": "2680",
+      "checked_at_utc": "2026-10-28T15:30:36.255471+00:00",
+      "reviewed_documents": 12,
+      "published_lessons": [
+        "1.CourseOverviewAndLogistics",
+        "10.EfficientLLMServingBasicsI.IntroToLLMs",
+        "11.EfficientLLMServingBasicsII.IntroToGPUs",
+        "2.AgentsUseI.HowClaudeCodeWorks",
+        "3.AgentsUseII.100xEngineerWithMultiAgents",
+        "4.AgentsDesignI.ContextManagementAndToolDesign",
+        "5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication",
+        "6.AgentsDesignIII.AgentMemoryAndReliability",
+        "7.AgentDesignIV.AgentEvaluation",
+        "8.AdvancedAgentDesignI.CostAndPerformance",
+        "9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness"
+      ],
+      "checked_local_links": 1378,
+      "explicit_pdf_page_links_sources": 0,
+      "supplementary_sources": 16,
+      "original_source_checksums": 604,
+      "scope": "Offline structure and integrity; not semantic proof or model benchmark replication",
+      "errors": []
+    },
+    "MAS.S62": {
+      "saved_sources": 95,
+      "classification_copies": 42,
+      "archive_checksums": 136,
+      "checked_local_links": 548,
+      "published_weeks": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7
+      ],
+      "study_guides": [
+        {
+          "week": 1,
+          "path": "1.CourseIntroduction/notes.zh-CN.md",
+          "characters": 23491,
+          "lines": 641
+        },
+        {
+          "week": 2,
+          "path": "2.ContextEvolution1/notes.zh-CN.md",
+          "characters": 31734,
+          "lines": 811
+        },
+        {
+          "week": 3,
+          "path": "3.ContextEvolution2/notes.zh-CN.md",
+          "characters": 26090,
+          "lines": 563
+        },
+        {
+          "week": 5,
+          "path": "5.HarnessEvolution1/notes.zh-CN.md",
+          "characters": 33744,
+          "lines": 711
+        },
+        {
+          "week": 6,
+          "path": "6.HarnessEvolution2/notes.zh-CN.md",
+          "characters": 35812,
+          "lines": 730
+        },
+        {
+          "week": 7,
+          "path": "7.ModelEvolution1/notes.zh-CN.md",
+          "characters": 36469,
+          "lines": 836
+        }
+      ],
+      "errors": []
+    }
+  },
+  "original_integrity": {
+    "checked_at_utc": "2026-10-28T15:31:03.397370+00:00",
+    "base_commit": "32b11714be3fbd5cbe4188abaa799ece9bb615b5",
+    "scope": "Tracked PDFs/notebooks and archived site/readings/references/assignment/project contents; generated SOURCES.md, CHECKSUMS.sha256 and SNAPSHOT.json excluded from archive-path predicate. Compared to pushed sync snapshot by Git content diff.",
+    "tracked_original_paths": 1658,
+    "changed_original_paths": [],
+    "errors": [],
+    "material_name_integrity_report": "tools/MATERIAL_NAMES_VERIFICATION.json"
+  },
+  "checked_source_record_hashes": 255,
+  "checked_report_local_links": 99,
+  "scope": "Record-to-final-file hashes, post-fix reread bindings, course REVIEW linkage, source content integrity, local report links, and actual course verifier outputs. Reading quality is documented in individual reviews; these mechanical checks do not prove semantics or learner mastery.",
+  "errors": []
+}

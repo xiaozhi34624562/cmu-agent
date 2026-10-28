@@ -1,0 +1,18 @@
+{
+  "note": "11-768/8.SupervisedFineTuning/SFT_Lecture08_Integrated_Notes.md",
+  "sha256": "713f8c4a3667c003a3d8df056cb317f807bbd2f1cf5f0ac52485120905a6b58e",
+  "python": "3.11.10 (main, Sep  7 2024, 01:03:31) [Clang 15.0.0 (clang-1500.3.9.4)]",
+  "preprocessing_mock_checks": 13,
+  "loss_p02": 1.6094379124341003,
+  "loss_p08": 0.2231435513142097,
+  "gradient": -0.8,
+  "updated_probability": 0.2131075922435446,
+  "lora_parameters": 65536,
+  "full_matrix_parameters": 16777216,
+  "steps_single": 10,
+  "steps_two_dp": 5,
+  "limitations": [
+    "本轮只有 Python 标准库和模拟 tokenizer 检查；当前 Python 环境没有 transformers/tokenizers，未重跑历史真实 BPE 检查。",
+    "未运行模型训练、GPU 或论文实验。"
+  ]
+}

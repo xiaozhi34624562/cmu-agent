@@ -87,10 +87,10 @@
 - [AgeMem](references/Agentic_Memory_Learning_Unified_Long-Term_and_Short-Term_Memory_Management_for_Large_Language_Model_Agents.pdf)
   - Source: https://aclanthology.org/2026.acl-long.981/
 
-- HermesAgent: prompt_builder.py
+- [HermesAgent: prompt_builder.py](references/018_HermesAgent_prompt_builder.py)
   - Source: https://github.com/NousResearch/hermes-agent/blob/main/agent/prompt_builder.py
 
-- HermesAgent: skills_tool.py
+- [HermesAgent: skills_tool.py](references/019_HermesAgent_skills_tool.py)
   - Source: https://github.com/NousResearch/hermes-agent/blob/main/tools/skills_tool.py
 
 <!-- BEGIN LOCAL LEARNING -->

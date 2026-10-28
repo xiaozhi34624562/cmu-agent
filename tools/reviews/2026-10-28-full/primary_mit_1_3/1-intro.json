@@ -1,0 +1,119 @@
+{
+  "review_date": "2026-10-28",
+  "note": "MAS.S62/1.CourseIntroduction/notes.zh-CN.md",
+  "original_sha256": "f4ee7f71dbb1de0c7f8079cb4aa2ba61727ce071fb62ea9eee10fde1fc237c07",
+  "final_sha256": "c46d1ea9c8333736704e7bb008ae61c79fae5dd2bf0eb93b58ef715495231337",
+  "status": "full_review_passed_after_revision",
+  "full_read_ranges": [
+    {
+      "pass": "initial",
+      "lines": [
+        1,
+        621
+      ],
+      "chunks": [
+        "1–320",
+        "321–end"
+      ],
+      "result": "完整阅读并回查86页主讲义与7篇参考的相关机制和边界。"
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "MAS.S62/1.CourseIntroduction/slides/lec1 - intro.pdf",
+      "pages": "1–86",
+      "scope": "主讲义全文；目视核查34/35/58/60/62/64/66/67/69/71/73/74页图示"
+    },
+    {
+      "path": "MAS.S62/1.CourseIntroduction/references/Language_Models_are_Few-Shot_Learners.pdf",
+      "pages": "6–8,10",
+      "scope": "ICL和微调设置、评测协议"
+    },
+    {
+      "path": "MAS.S62/1.CourseIntroduction/references/Training_language_models_to_follow_instructions_with_human_feedback.pdf",
+      "pages": "2–10",
+      "scope": "偏好结论范围、SFT/RM/PPO方法与评价；图2目视"
+    },
+    {
+      "path": "MAS.S62/1.CourseIntroduction/references/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf",
+      "pages": "2–4",
+      "scope": "动作/思考/观察定义，图1目视补足乱码文本"
+    },
+    {
+      "path": "MAS.S62/1.CourseIntroduction/references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf",
+      "pages": "11–14",
+      "scope": "PPO/GRPO概率比率、裁剪、KL、组内优势；图4目视"
+    },
+    {
+      "path": "MAS.S62/1.CourseIntroduction/references/SWE-agent_Agent-Computer_Interfaces_Enable_Automated_Software_Engineering.pdf",
+      "pages": "3–6",
+      "scope": "ACI设计、反馈、上下文和实验控制"
+    },
+    {
+      "path": "MAS.S62/1.CourseIntroduction/references/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf",
+      "pages": "2–5",
+      "scope": "经验验证、冻结底座、档案与父代选择不可自改；图1目视"
+    },
+    {
+      "path": "MAS.S62/1.CourseIntroduction/references/Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data.pdf",
+      "pages": "1–6",
+      "scope": "v3日期、零数据范围、提出/求解/验证和种子；图4目视"
+    }
+  ],
+  "coverage_assessment": "覆盖主讲义86页问题链；导论深度围绕对象、更新、反馈、持久状态与评价，保留通用配置修复贯穿案例、工程闭环、成本与诊断，增加训练桥接与10道自测。",
+  "pedagogical_review": {
+    "reader": "LLM Developer，具Java和后端经验；不预设概率或RL训练背景",
+    "problem_chain": "一次请求是否完成→上下文与权重→交互反馈→运行和训练的不同贡献→演化对象与更新者→版本化试验和新任务迁移",
+    "prerequisites": "原文直接使用连乘、期望、critic/裁剪/KL、MDP及未定义的配置符号；补两token概率、四样本奖励/优势、超时状态例子与逐项定义。",
+    "organization": "沿课程三张地图；将必要数学直觉放在首次使用处，完整梯度算法留给后续模型课。",
+    "examples_and_transfer": "用发布配置、更新程序、请求ID/落库状态衔接软件经验；保留代码缺省值案例，不收窄为金融或RAG。",
+    "learning_outcomes": "能分辨输入条件变化与参数学习、任务步与系统版本；能指出真正发生更新的对象，并设计迁移对照。"
+  },
+  "issues_and_fixes": [
+    {
+      "scope": "导读与§2",
+      "issue": "读者基础未说明；概率乘积和SFT/RM/RL职责跳步",
+      "fix": "明确LLM/Java背景及学习产出；解释条件概率和示范/比较/结果三种训练输入输出。"
+    },
+    {
+      "scope": "§4.1",
+      "issue": "期望、轨迹、组相对优势与训练控制术语默认已知",
+      "fix": "补0.75样本均值、四输出组内优势算例及概率比率/裁剪/KL用途，注明不代表参数硬约束。"
+    },
+    {
+      "scope": "§7.1、§7.3、§16",
+      "issue": "MDP与版本更新公式缺少所需状态、符号和迁移检验",
+      "fix": "补超时/落库状态例子，定义两个时间尺度及各配置量；MetaUpdate避免和回报V重名，增加两道迁移自测及答案。"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "pass": 1,
+      "sha256": "c46d1ea9c8333736704e7bb008ae61c79fae5dd2bf0eb93b58ef715495231337",
+      "lines": "1–641",
+      "chunks": [
+        "1–330",
+        "331–641"
+      ],
+      "result": "全文复读通过：新增概率/训练解释与后文状态分类、评测设计一致。"
+    },
+    {
+      "pass": 2,
+      "sha256": "c46d1ea9c8333736704e7bb008ae61c79fae5dd2bf0eb93b58ef715495231337",
+      "lines": "1–641",
+      "chunks": [
+        "1–320",
+        "321–641"
+      ],
+      "result": "第二遍全文复读通过：章节连贯、学习层次适合开发者，案例边界与答案一致，无新增问题。"
+    }
+  ],
+  "validation": {
+    "offline_example": "1-intro-offline-examples.json；缺省/None/0/2四输入、错误与中间版本、两token概率、组内优势与成本算式实际通过",
+    "source_checks": "主讲义全部文本与分类图；参考仅列出实际阅读页，不宣称七篇论文全文复现"
+  },
+  "limitations": [
+    "未运行LLM、GPU训练或自演化实验；正文实验设计为教学方案。",
+    "导论引用的宣传/企业案例仅核对讲义归因，未将其作为可迁移提升证据。"
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-28T08:45:56.033689+00:00",
+  "checked_at_utc": "2026-10-28T15:26:54.458683+00:00",
   "scope": "Reading filenames, original content hashes and offline sync path resolution; no paper-content or model-experiment re-review",
   "renamed_materials": 886,
   "by_course_or_topic": {
@@ -14,6 +14,6 @@
     ".pdf": 785
   },
   "sync_archive_url_checks": 326,
-  "checked_material_links": 1492,
+  "checked_material_links": 1504,
   "errors": []
 }

@@ -1,0 +1,381 @@
+{
+  "note": "11-768/9.TrainingRLBasics/rl_lecture09_integrated_notes.md",
+  "original_sha256": "3a97a0100ee0d608f5f87b3c4afaf93db0d760f74dc13bdbe82390538e2896fd",
+  "final_sha256": "9a8f8fabf884d62f402024674b2fb738910a8feaef1ee20d687fc4ed500c9e1b",
+  "status": "completed_with_fixes",
+  "full_reading": [
+    {
+      "round": "initial",
+      "line_ranges": [
+        [
+          1,
+          280
+        ],
+        [
+          281,
+          560
+        ],
+        [
+          561,
+          850
+        ],
+        [
+          851,
+          1140
+        ],
+        [
+          1141,
+          1430
+        ],
+        [
+          1431,
+          1720
+        ],
+        [
+          1721,
+          2023
+        ]
+      ],
+      "result": "完整阅读主文与全部附录；识别开发者到概率梯度及信用分配的教学跳步"
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "11-768/9.TrainingRLBasics/SOURCES.md",
+      "scope": "编辑前全文阅读来源索引",
+      "sha256": "94dabb5b22e0317cde637bfddf37af2475fe0424ecc619a472978ed5a2321bbe"
+    },
+    {
+      "path": "11-768/9.TrainingRLBasics/lecture-09-rl-basics.pdf",
+      "version": "Daniel Fried, RL Foundations for Agents: From SFT to policy gradients",
+      "scope": "全文 46 页；提取 1841 行分三段全部阅读；主讲义覆盖对照",
+      "pages": [
+        [
+          1,
+          46
+        ]
+      ],
+      "figures_visually_read": [
+        12,
+        22,
+        30,
+        37,
+        39,
+        40
+      ],
+      "sha256": "c8724ca6fbadb2afef38d627bbab2e09f8e8077fb1bb4dc0a4a078fb8669c1ca"
+    },
+    {
+      "path": "11-768/9.TrainingRLBasics/readings/Reinforced_Self-Training_ReST_for_Language_Modeling.pdf",
+      "pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "page_count": 23,
+      "sha256": "b22741558628b3056ad68dc10d505064b81edb22f7f8bbb0a40c5c1634598c47",
+      "extract_lines": 559,
+      "version": "arXiv 2308.08998v2, 2023-08-21",
+      "figures_visually_read": [
+        7,
+        9
+      ],
+      "scope": "定向阅读所列全部页段及提取文本，未宣称整篇论文全文精读"
+    },
+    {
+      "path": "11-768/9.TrainingRLBasics/readings/Beyond_Human_Data_Scaling_Self-Training_for_Problem-Solving_with_Language_Models.pdf",
+      "pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "page_count": 16,
+      "sha256": "5ca8f5dd8ba3d8368867ffbba936306f0b3c77c09f5390be00f6915bd49f4964",
+      "extract_lines": 908,
+      "version": "arXiv 2312.06585v4, 2024-04-18; TMLR 04/2024",
+      "figures_visually_read": [
+        4,
+        11
+      ],
+      "scope": "定向阅读所列全部页段及提取文本，未宣称整篇论文全文精读"
+    },
+    {
+      "path": "11-768/9.TrainingRLBasics/readings/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf",
+      "pages": [
+        1,
+        2,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        18,
+        19,
+        20,
+        21,
+        22,
+        29,
+        30
+      ],
+      "page_count": 30,
+      "sha256": "6cc20b3c5b8d25b8b53868fc4ec1792c144f07d67bdf7395138efd4422197e7b",
+      "extract_lines": 1083,
+      "version": "arXiv 2402.03300v3, 2024-04-27",
+      "figures_visually_read": [
+        13,
+        14,
+        19,
+        21
+      ],
+      "scope": "定向阅读所列全部页段及提取文本，未宣称整篇论文全文精读"
+    },
+    {
+      "path": "11-768/9.TrainingRLBasics/readings/Understanding_R1-Zero-Like_Training_A_Critical_Perspective.pdf",
+      "pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "page_count": 20,
+      "sha256": "98243d51297f011fb5baad8a70a972d061ffbef618f1d7cfc10deea37c5887d0",
+      "extract_lines": 1661,
+      "version": "arXiv 2503.20783v2, 2025-10-06; COLM 2025",
+      "figures_visually_read": [
+        4,
+        6,
+        7,
+        15
+      ],
+      "scope": "定向阅读所列全部页段及提取文本，未宣称整篇论文全文精读"
+    },
+    {
+      "path": "11-768/9.TrainingRLBasics/references/CS11-711_Advanced_NLP_-_Reinforcement_Learning.pdf",
+      "pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50
+      ],
+      "page_count": 50,
+      "sha256": "92e174a97b0aa36a0222c49bb9f303d33d73bf75360a986c725945f7e352ee48",
+      "extract_lines": 801,
+      "version": "CS11-711 Advanced NLP, Sean Welleck, 本地归档",
+      "figures_visually_read": [
+        40
+      ],
+      "scope": "全文 50 页，801 行提取文本分两段全部阅读"
+    },
+    {
+      "path": "11-768/9.TrainingRLBasics/references/Simple_statistical_gradient-following_algorithms_for_connectionist_reinforcement_learning.pdf",
+      "pages": [
+        1,
+        5,
+        6,
+        7,
+        8,
+        9,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18
+      ],
+      "page_count": 28,
+      "sha256": "e1029df5459f4a83bf33a876df018ee4f7b628b210bb9d047a6d60ec13f7c838",
+      "extract_lines": 550,
+      "version": "Machine Learning 8:229–256, 1992",
+      "figures_visually_read": [
+        6,
+        17
+      ],
+      "scope": "定向阅读所列全部页段及提取文本，未宣称整篇论文全文精读"
+    }
+  ],
+  "coverage_assessment": "完整覆盖讲义的 SFT 错位→轨迹→ReST→REINFORCE→baseline→GRPO→DrGRPO→退化组问题链；辅助来源补足 EM、MDP、TD/GAE、clipping/KL、数据与评价器循环。已有 Number Search 贯穿例、实验控制、成本、迁移与故障诊断、数据契约及可运行策略损失；本轮补齐数学前置和局部计算，使机制能从开发经验连续推到参数更新。",
+  "pedagogical_review": {
+    "reader_prerequisites": "LLM Developer，做过 Java，理解接口、状态、调用链与测试；不预设概率梯度、KL、MDP、价值函数等专门知识",
+    "question_chain": "示范不等于任务成功→如何记录尝试→筛选为何改变分布→不可微结果怎样更新概率→失败如何有信号→哪些动作获得多少信用→组比较与约束更新→归一化、探索和评测为何影响结论",
+    "gaps_found": [
+      "期望、梯度、概率参数与运行状态缺少共同前置",
+      "KL/EM 下界与 log-derivative 直接跳到公式",
+      "二动作例缺少 sigmoid 导数和一次实际参数更新",
+      "TD/GAE 缺少两步手算、critic 自己如何训练及截断解释"
+    ],
+    "changes": [
+      "新增 §0.4 数学/训练接口桥接，§2.2 MDP 与实际历史边界",
+      "补 KL 拟合、Jensen 下界与 score-function 的逐步解释",
+      "补失败 B 的参数更新与两步 TD/GAE，补 E.9–E.10 自测答案"
+    ],
+    "case": "Number Search 贯穿主线，二动作微型策略与两步奖励序列验证数学；保留代码与工具轨迹的通用工程桥梁",
+    "organization": "保留讲义问题顺序，在首次使用概念处补前置；不重排成统一模板或业务专题",
+    "learning_outcomes": "能解释奖励到概率梯度的路径，手算失败样本方向、baseline 方差与 GAE，区分价值预测/奖励、采样/更新、old/reference，并据分组/mask/概率/奖励契约诊断训练。"
+  },
+  "issues_and_fixes": [
+    {
+      "type": "pedagogical",
+      "location": "§0.4、§2.2、§4.3–4.4、§5.1",
+      "fix": "补训练对象、数学符号、MDP、KL/下界和概率梯度必要前置；原文与教学推导边界明确"
+    },
+    {
+      "type": "pedagogical",
+      "location": "§6.4、§7.5、E.9–E.10",
+      "fix": "新增单步参数更新、两步 TD/GAE 和含中间价值误差的自测；说明 critic 学习与 bootstrap/终止边界"
+    },
+    {
+      "type": "execution_evidence",
+      "location": "§15.1、B.2",
+      "fix": "记录 2026-10-28 本轮 CPU 原样运行结果，与历史运行和未执行模型实验区分"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "round": 1,
+      "sha256": "9a8f8fabf884d62f402024674b2fb738910a8feaef1ee20d687fc4ed500c9e1b",
+      "line_ranges": [
+        [
+          1,
+          350
+        ],
+        [
+          351,
+          700
+        ],
+        [
+          701,
+          1050
+        ],
+        [
+          1051,
+          1400
+        ],
+        [
+          1401,
+          1750
+        ],
+        [
+          1751,
+          2070
+        ]
+      ],
+      "result": "最终 2070 行全文复读，无新增实质问题；问题链、公式前置、实现与答案一致"
+    },
+    {
+      "round": 2,
+      "sha256": "9a8f8fabf884d62f402024674b2fb738910a8feaef1ee20d687fc4ed500c9e1b",
+      "line_ranges": [
+        [
+          1,
+          350
+        ],
+        [
+          351,
+          700
+        ],
+        [
+          701,
+          1050
+        ],
+        [
+          1051,
+          1400
+        ],
+        [
+          1401,
+          1750
+        ],
+        [
+          1751,
+          2070
+        ]
+      ],
+      "result": "最终 2070 行全文复读，无新增实质问题；问题链、公式前置、实现与答案一致"
+    }
+  ],
+  "limitations": [
+    "除主讲义及 FUND 全文外，五篇辅助论文仅精读记录中的全部页段，未声称整篇全文。",
+    "21 页关键公式/图表已渲染目视，未重新绘制或改写原 PDF。",
+    "执行范围为 CPU 精确枚举与五组策略损失梯度检查，以及教学算术；未运行 LLM/GPU/外部 API 或复现论文训练。",
+    "§15.2–15.5 为建议实验，未执行；技术检查不替代本轮实际全文阅读。"
+  ],
+  "execution_record": "tools/reviews/2026-10-28-full/cmu_6_11/9-rl-basics-checks.json"
+}

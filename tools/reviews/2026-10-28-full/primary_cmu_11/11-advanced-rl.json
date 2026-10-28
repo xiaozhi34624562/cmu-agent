@@ -1,0 +1,336 @@
+{
+  "review_date": "2026-10-28",
+  "note": "11-768/11.AdvancedRLAlgorithms/lecture-11-advanced-rl-integrated.md",
+  "original_sha256": "a5ec0cd5dbfe533ee95eaabfbc3c2ef3b06380c25985ded258ad1510f52d5222",
+  "final_sha256": "b6743af2d150e66a27ecbd196e4acf8d3064959f764edfacead1083e2059314a",
+  "status": "full_review_passed_after_revision",
+  "full_read_ranges": [
+    {
+      "pass": "initial",
+      "lines": "1–2081",
+      "result": "原稿全文阅读，核对58页主讲义、辅助材料使用页段和现有CPU教学代码"
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "11-768/11.AdvancedRLAlgorithms/lecture-11-rl-advanced.pdf",
+      "pages": "1–58",
+      "scope": "主讲义全文；8页关键图表目视"
+    },
+    {
+      "path": "11-768/11.AdvancedRLAlgorithms/references/Sequence_Level_Training_with_Recurrent_Neural_Networks.pdf",
+      "pdf_pages_read": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8
+      ],
+      "sha256": "fb8b75ce2d9418ffa40fa7187c4b42921afbfd8ea0ecf72f2f83275b6335a85e",
+      "scope": "本文机制、公式、实验及局限的引用页段；辅助论文未宣称穷尽全部附录"
+    },
+    {
+      "path": "11-768/11.AdvancedRLAlgorithms/references/Training_language_models_to_follow_instructions_with_human_feedback.pdf",
+      "pdf_pages_read": [
+        7,
+        8,
+        9,
+        42
+      ],
+      "sha256": "c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98",
+      "scope": "本文机制、公式、实验及局限的引用页段；辅助论文未宣称穷尽全部附录"
+    },
+    {
+      "path": "11-768/11.AdvancedRLAlgorithms/references/High-Dimensional_Continuous_Control_Using_Generalized_Advantage_Estimation.pdf",
+      "pdf_pages_read": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "sha256": "5aa736ccf3517a1f36d0ca8146982e69beaf9a2bdccac2ae324f780743bc045e",
+      "scope": "本文机制、公式、实验及局限的引用页段；辅助论文未宣称穷尽全部附录"
+    },
+    {
+      "path": "11-768/11.AdvancedRLAlgorithms/references/Let_s_Verify_Step_by_Step.pdf",
+      "pdf_pages_read": [
+        3,
+        4,
+        5,
+        7,
+        8,
+        9
+      ],
+      "sha256": "fbd170e2042c32950c3fe97d3a558d89e8a8dffaadc942e774ccb4b751abc123",
+      "scope": "本文机制、公式、实验及局限的引用页段；辅助论文未宣称穷尽全部附录"
+    },
+    {
+      "path": "11-768/11.AdvancedRLAlgorithms/references/AReaL_A_Large-Scale_Asynchronous_Reinforcement_Learning_System_for_Language_Reasoning.pdf",
+      "pdf_pages_read": [
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10
+      ],
+      "sha256": "5785033bdd229ee6ddf26d8fcd9f61671801f208272c921ba6884da87cc5b351",
+      "scope": "本文机制、公式、实验及局限的引用页段；辅助论文未宣称穷尽全部附录"
+    },
+    {
+      "path": "11-768/11.AdvancedRLAlgorithms/references/Rethinking_Importance_Sampling_in_LLM_Policy_Optimization_A_Cumulative_Token_Perspective.pdf",
+      "pdf_pages_read": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "sha256": "9f919201071f6352fdec180480ae5659725895b9869ab9dce260bb79a293d241",
+      "scope": "本文机制、公式、实验及局限的引用页段；辅助论文未宣称穷尽全部附录"
+    },
+    {
+      "path": "11-768/11.AdvancedRLAlgorithms/references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf",
+      "pdf_pages_read": [
+        13,
+        14,
+        15,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "sha256": "6cc20b3c5b8d25b8b53868fc4ec1792c144f07d67bdf7395138efd4422197e7b",
+      "scope": "本文机制、公式、实验及局限的引用页段；辅助论文未宣称穷尽全部附录"
+    },
+    {
+      "path": "11-768/11.AdvancedRLAlgorithms/references/MiniMax-M1_Scaling_Test-Time_Compute_Efficiently_with_Lightning_Attention.pdf",
+      "pdf_pages_read": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "sha256": "d355a6a41a26b85ca145aec5154650f4d39733c92f54775ae7f5851ecbedf600",
+      "scope": "本文机制、公式、实验及局限的引用页段；辅助论文未宣称穷尽全部附录"
+    },
+    {
+      "path": "11-768/11.AdvancedRLAlgorithms/references/Group_Sequence_Policy_Optimization.pdf",
+      "pdf_pages_read": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "sha256": "67221ec313f42d8b3029686b604b2621a311ae0d74e38524092e7c7a94613bd0",
+      "scope": "本文机制、公式、实验及局限的引用页段；辅助论文未宣称穷尽全部附录"
+    },
+    {
+      "path": "11-768/11.AdvancedRLAlgorithms/references/DAPO_An_Open-Source_LLM_Reinforcement_Learning_System_at_Scale.pdf",
+      "pdf_pages_read": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10
+      ],
+      "sha256": "f01e4fd347530cadd68e5c36b1998532a6d1adb272c817e73b927453c26e9d79",
+      "scope": "本文机制、公式、实验及局限的引用页段；辅助论文未宣称穷尽全部附录"
+    },
+    {
+      "path": "11-768/11.AdvancedRLAlgorithms/references/SABER_Small_Actions_Big_Errors_-_Safeguarding_Mutating_Steps_in_LLM_Agents.pdf",
+      "pdf_pages_read": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "sha256": "e6875d7dccabcfd4acaebffc96e160434bf32932180febce7429c4230d0c7c99",
+      "scope": "本文机制、公式、实验及局限的引用页段；辅助论文未宣称穷尽全部附录"
+    },
+    {
+      "path": "11-768/11.AdvancedRLAlgorithms/references/MAI-Thinking-1_Building_a_Hill-Climbing_Machine.pdf",
+      "pdf_pages_read": [
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        39,
+        40,
+        41,
+        42,
+        43,
+        49,
+        50,
+        51,
+        52,
+        53
+      ],
+      "sha256": "a267d745b1eb3792a8abf58e71e204a6f44f9c18eeb5ad8671320deae71986bd",
+      "scope": "本文机制、公式、实验及局限的引用页段；辅助论文未宣称穷尽全部附录"
+    },
+    {
+      "path": "11-768/11.AdvancedRLAlgorithms/references/PostTrainBench_Can_LLM_Agents_Automate_LLM_Post-Training.pdf",
+      "pdf_pages_read": [
+        2,
+        3,
+        4,
+        7,
+        8,
+        9
+      ],
+      "sha256": "823f11de21206c9ba5be0531bee62f1d29d97cfeb5c8e9a6c90a2256f1f948bc",
+      "scope": "本文机制、公式、实验及局限的引用页段；辅助论文未宣称穷尽全部附录"
+    },
+    {
+      "path": "11-768/11.AdvancedRLAlgorithms/references/On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf",
+      "pdf_pages_read": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "sha256": "a81c71fa0cd15506642092790d854347f030c29ee1d6aa643b55aa51348e6869",
+      "scope": "本文机制、公式、实验及局限的引用页段；辅助论文未宣称穷尽全部附录"
+    },
+    {
+      "path": "11-768/11.AdvancedRLAlgorithms/references/Self-Distilled_Reasoner_On-Policy_Self-Distillation_for_Large_Language_Models.pdf",
+      "pdf_pages_read": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "sha256": "e521ed6c2939dc612daec5fe6fb47bef554a291228c02cafae07102b9729bad8",
+      "scope": "本文机制、公式、实验及局限的引用页段；辅助论文未宣称穷尽全部附录"
+    },
+    {
+      "path": "11-768/11.AdvancedRLAlgorithms/references/Curriculum_Learning.pdf",
+      "pdf_pages_read": [
+        1,
+        2,
+        3,
+        7
+      ],
+      "sha256": "be4bd220a1fd82d979cf08fa90520787eaa2ec24745ab9a35e90054a8feb9e7b",
+      "scope": "本文机制、公式、实验及局限的引用页段；辅助论文未宣称穷尽全部附录"
+    },
+    {
+      "path": "11-768/11.AdvancedRLAlgorithms/references/Proximal_Policy_Optimization_Algorithms.pdf",
+      "pdf_pages_read": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "sha256": "e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b",
+      "scope": "本文机制、公式、实验及局限的引用页段；辅助论文未宣称穷尽全部附录"
+    },
+    {
+      "path": "11-768/11.AdvancedRLAlgorithms/references/015_tau-bench_task_fixes.html",
+      "scope": "正文全文；任务修订、五类问题、pass¹/pass⁴及14–20百分点的范围",
+      "sha256": "e5200d64a34e3a11e288e9a9711a6dd1e61b0f2c86fcf0a3077fe574da93997a"
+    },
+    {
+      "path": "11-768/11.AdvancedRLAlgorithms/references/016_Reward_Hacking_in_Reinforcement_Learning.html",
+      "scope": "Let’s Define Reward Hacking、Hacking RLHF of LLMs、Hacking the Training Process、Hacking the Evaluator、In-Context Reward Hacking和Peek into Mitigations；未逐篇重读二级论文",
+      "sha256": "99da73635a1800451d546644414161325c9fcd1455e971df5bf3dce987bbdd4e"
+    },
+    {
+      "path": "11-768/11.AdvancedRLAlgorithms/references/020_OpenAI_calculator_hacking_and_production_evaluations.html",
+      "scope": "正文全文；代表性/针对性评测、calculator hacking、生产分布与限制",
+      "sha256": "98af425f70635dae6991125ca1eab03a7e49e4b3d7ae9f7e283b460e14a1cd18"
+    },
+    {
+      "path": "11-768/11.AdvancedRLAlgorithms/references/Interaction-assisted_SU_2_adiabatic_holonomies_in_Josephson_phase_qubits.pdf",
+      "scope": "仅第1页核查真实标题与误归档；不作为课程学习证据",
+      "sha256": "1adf3705b32fdd2abe3c938ed8223f583e496e0f171ac53584f3828df90e0aa8"
+    }
+  ],
+  "coverage_assessment": "讲义的有效反馈、异步执行、稳定更新、可靠奖励与教师学习五条问题链均覆盖；逐段回查公式假设、实验条件、数字与实际计算图。",
+  "pedagogical_review": {
+    "reader": "有Java开发经验的LLM Developer，不默认已掌握概率梯度或策略优化",
+    "problem_chain": "为什么成功/失败不足以逐步归因→如何估计改进方向→旧轨迹怎样复用→怎样控制更新→反馈与教师何时可信",
+    "prerequisites": "新增从状态/权重、logits/softmax、负对数损失、期望、梯度和停止梯度到两动作策略梯度的连续推导",
+    "examples_and_transfer": "通用代码修复案例与两动作手算；编程背景帮助理解数据路径与计算图，未把内容限定为RAG或金融业务"
+  },
+  "issues_and_fixes": [
+    {
+      "scope": "导读、§0.4、§2.2",
+      "issue": "从开发者经验到期望/梯度/策略优化存在前置知识跳步",
+      "fix": "补权重与请求状态、概率与负对数、下降/上升、两动作数值推导，明确环境与奖励不显式依赖参数的推导条件"
+    },
+    {
+      "scope": "§2.4、§3.6",
+      "issue": "偏好损失与偏差/方差的术语过快",
+      "fix": "展开sigmoid概率和loss手算，解释随机波动与系统偏离的区别"
+    },
+    {
+      "scope": "§8.5、§11.5",
+      "issue": "MoE和F2P/P2P缩写默认了额外背景",
+      "fix": "说明专家是子网络与路由机制；解释失败转通过和通过保持的测试含义"
+    },
+    {
+      "scope": "自测第7题",
+      "issue": "旧KV重建的措辞未清楚说明使用哪组权重",
+      "fix": "明确丢弃旧权重KV，用新权重重新计算已有前缀缓存"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "pass": 1,
+      "sha256": "b6743af2d150e66a27ecbd196e4acf8d3064959f764edfacead1083e2059314a",
+      "lines": "1–2124",
+      "chunks": [
+        "1–350",
+        "351–700",
+        "701–1050",
+        "1051–1400",
+        "1401–1750",
+        "1751–2124（截断后补读1940–2015）"
+      ],
+      "result": "最终修改后全文复读；公式、问题链、例子、实验条件、答案及来源边界未发现继续修改问题"
+    },
+    {
+      "pass": 2,
+      "sha256": "b6743af2d150e66a27ecbd196e4acf8d3064959f764edfacead1083e2059314a",
+      "lines": "1–2124",
+      "chunks": [
+        "1–350",
+        "351–700",
+        "701–1050",
+        "1051–1400",
+        "1401–1750",
+        "1751–1940",
+        "1941–2124"
+      ],
+      "result": "最终修改后全文复读；公式、问题链、例子、实验条件、答案及来源边界未发现继续修改问题"
+    }
+  ],
+  "validation": {
+    "offline_examples": "11-advanced-rl-offline-examples.json；PyTorch CPU PPO/CISPO、组优势、停止梯度与padding测试通过；新增基础算术/有限差分/自动梯度一致",
+    "visual_checks": "24页：lecture 7,14,19,26,31,34,41,46；GAE 4,5；AReaL 6,8；CISPO 6,8；CTPO 7,8；MAI 32,36,42,51；PRM 5,6；OPSD 5,6",
+    "run_history": "examples/RUN.json 保留2026-10-26原运行并追加2026-10-28实际结果"
+  },
+  "limitations": [
+    "没有执行模型训练、GPU/API或论文基准复现；CPU小例子只验证数学和计算图契约。",
+    "未重新核查CTPO作者代码；保留MAI采样数量、SABER表述及OPSD图示/实验配置差异。",
+    "辅助论文只按列明的引用页段核查；二级综述未展开为每篇被引文献全文复读。"
+  ]
+}

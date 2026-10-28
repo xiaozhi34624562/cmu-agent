@@ -2123,8 +2123,8 @@ delivery:
 |---|---|---|
 | Qwen 混合实验纯代码组 MMLU | 讲义 p.12 为 23.8；R06 表3 MMLU 为 42.8，23.8 对应 GSM8K | 分别说明，表格明确按原论文列名展示 |
 | Qwen 中间比例行 | 原论文正文与表格存在不一致 | 不使用该行推导或补猜“正确比例” |
-| `Evaluating_Large_Language_Models_Trained_on_Code.pdf` 文件名 | 名称只指向 tokenizer 主题，内容是完整 Codex 论文 | 使用真实论文题名，并保留归档文件名 |
-| `Qwen2.5-Coder_Technical_Report.pdf` 文件名 | 内容实际为 Qwen2.5-Coder | 按真实题名引用 |
+| 课程来源索引中的 “Whitespace-run tokens” | 这是讲义引用该材料的主题；本地文件是完整 Codex 论文，并已按完整论文标题命名 | 区分课程引用标签与论文题名，R03 指向完整原文 |
+| Qwen 报告的题名与版本 | 本地正文与封面均为 *Qwen2.5-Coder Technical Report*，归档版本为 v3 | 按 R06 的完整题名与版本引用，不混同于一般 Qwen2 报告 |
 | `010_DrRepair.html` | 是摘要页，不是全文 PDF | 只将摘要支持的机制作为直接文件依据 |
 
 ### C.2 不可混用的实验口径

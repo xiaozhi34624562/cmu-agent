@@ -1,0 +1,402 @@
+{
+  "note": "11-768/5.PlanningAndCoordination/lecture05_planning_coordination_integrated_notes.md",
+  "original_sha256": "c907e064ff29e972a22cc2dcfe0cab9f37538db5c43abdec194f6651838b4f0a",
+  "final_sha256": "02c80d33b436b7c2f7cb459694e5fa74e2a1a8dd7c76d98221cf4515f766e4b6",
+  "status": "full_review_passed_after_revision",
+  "full_read_ranges": [
+    [
+      1,
+      340
+    ],
+    [
+      341,
+      680
+    ],
+    [
+      681,
+      1020
+    ],
+    [
+      1021,
+      1360
+    ],
+    [
+      1361,
+      1700
+    ],
+    [
+      1701,
+      2040
+    ],
+    [
+      2041,
+      2315
+    ]
+  ],
+  "revision_review": "Full revised document read in ranges 1-300,301-600,601-900,901-1200,1201-1500,1501-1800,1801-2080,2081-2353; further fixes made during/after this pass. Not counted as a final-hash reread.",
+  "sources_read": [
+    {
+      "path": "11-768/5.PlanningAndCoordination/lecture-05-planning.pdf",
+      "pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ],
+      "scope": "full lecture text",
+      "sha256": "32271dff69a87f555fe82a192d5cd20ac058b3266bc965e8a5411897781f8adf"
+    },
+    {
+      "path": "11-768/5.PlanningAndCoordination/readings/Least-to-Most_Prompting_Enables_Complex_Reasoning_in_Large_Language_Models.pdf",
+      "pages": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "scope": "targeted full pages; not entire paper",
+      "sha256": "ab71759f86119d1c368cef0ffabc5499562b605188a5dd6a00ed7ca0fa995c71"
+    },
+    {
+      "path": "11-768/5.PlanningAndCoordination/readings/Decomposed_Prompting_A_Modular_Approach_for_Solving_Complex_Tasks.pdf",
+      "pages": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "scope": "targeted full pages; not entire paper",
+      "sha256": "93cb61f35249c60a9e91a5fac66673c373d30070925ba05ac9f79098dd2e7d87"
+    },
+    {
+      "path": "11-768/5.PlanningAndCoordination/readings/Code_as_Policies_Language_Model_Programs_for_Embodied_Control.pdf",
+      "pages": [
+        4,
+        5
+      ],
+      "scope": "targeted full pages; not entire paper",
+      "sha256": "e36857fa13746da031444ec59549e61204ca92d599b1d048ac1c55aaf1f6d0a3"
+    },
+    {
+      "path": "11-768/5.PlanningAndCoordination/readings/Do_As_I_Can_Not_As_I_Say_Grounding_Language_in_Robotic_Affordances.pdf",
+      "pages": [
+        4,
+        5,
+        9,
+        10
+      ],
+      "scope": "targeted full pages; not entire paper",
+      "sha256": "48c22d36a044bbbd34e640beb1db4fb4ba57e74d97fefa0fb121d55c31282312"
+    },
+    {
+      "path": "11-768/5.PlanningAndCoordination/readings/Plan-and-Act_Improving_Planning_of_Agents_for_Long-Horizon_Tasks.pdf",
+      "pages": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "scope": "targeted full pages; not entire paper",
+      "sha256": "811bd0e66a13e984fdb6f4b750eb1e18e2cfb751f1a32d8be50f74bcd74e4d1d"
+    },
+    {
+      "path": "11-768/5.PlanningAndCoordination/readings/Thinking_vs._Doing_Agents_that_Reason_by_Scaling_Test-Time_Interaction.pdf",
+      "pages": [
+        4,
+        5,
+        7,
+        8,
+        9,
+        10
+      ],
+      "scope": "targeted full pages; not entire paper",
+      "sha256": "be76d2989976e3d59e20189821c3dfccc7b6008e2e29f1a2741b567fd5b01c65"
+    },
+    {
+      "path": "11-768/5.PlanningAndCoordination/readings/Calibrate-Then-Act_Cost-Aware_Exploration_in_LLM_Agents.pdf",
+      "pages": [
+        3,
+        4,
+        5,
+        7,
+        8,
+        9
+      ],
+      "scope": "targeted full pages; not entire paper",
+      "sha256": "1169305b7d9d7bfc0c379103742d8e841a39d66d4418d69821636025fdf5613f"
+    },
+    {
+      "path": "11-768/5.PlanningAndCoordination/readings/Recursive_Agent_Optimization.pdf",
+      "pages": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "scope": "targeted full pages; not entire paper",
+      "sha256": "78d5d1fbcd5be9f4b3946310d937100d8936600af3e4bdb1b8e82b8dbe1325ce"
+    },
+    {
+      "path": "11-768/5.PlanningAndCoordination/readings/Multi-Agent_Computer_Use.pdf",
+      "pages": [
+        6,
+        7,
+        8,
+        14,
+        15,
+        30,
+        32,
+        33,
+        34,
+        35,
+        40
+      ],
+      "scope": "targeted full pages; not entire paper",
+      "sha256": "5a8e347bd731600d1ab92633130aa971d4fb72b10df684519793b307ddb6751e"
+    },
+    {
+      "path": "11-768/5.PlanningAndCoordination/references/Web_Agents_Should_Adopt_the_Plan-Then-Execute_Paradigm.pdf",
+      "pages": [
+        3,
+        5,
+        6,
+        7,
+        8
+      ],
+      "scope": "targeted full pages; not entire paper",
+      "sha256": "9745d489b274a377803cb6c785021377c27d55a35ecc28825dbef0426f226a24"
+    },
+    {
+      "path": "11-768/5.PlanningAndCoordination/references/TravelPlanner_A_Benchmark_for_Real-World_Planning_with_Language_Agents.pdf",
+      "pages": [
+        5,
+        6
+      ],
+      "scope": "targeted full pages; not entire paper",
+      "sha256": "a91b967cf5227a65b7e2fb0f63c7c006aeed800a31fd5020e594acd5ba935e9a"
+    },
+    {
+      "path": "11-768/5.PlanningAndCoordination/references/The_Illusion_of_Diminishing_Returns_Measuring_Long_Horizon_Execution_in_LLMs.pdf",
+      "pages": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "scope": "targeted full pages; not entire paper",
+      "sha256": "244143cdf580fd8c11c4288b4c18b031cd7f6c2aa49be874547fcdc9ae36f439"
+    },
+    {
+      "path": "11-768/5.PlanningAndCoordination/references/Vending-Bench_A_Benchmark_for_Long-Term_Coherence_of_Autonomous_Agents.pdf",
+      "pages": [
+        3,
+        5,
+        8,
+        23,
+        24
+      ],
+      "scope": "targeted full pages; not entire paper",
+      "sha256": "6d081d99d4f21041b4990846f675aeb6d2f46ebf034fa58ab436b1c78286e8c2"
+    },
+    {
+      "path": "11-768/5.PlanningAndCoordination/references/Recursive_Language_Models.pdf",
+      "pages": [
+        7,
+        8
+      ],
+      "scope": "targeted full pages; not entire paper",
+      "sha256": "8567362c22768d9b50d4a4a8d63bb28dda2c2b2051be30d67f70f645170429ca"
+    },
+    {
+      "path": "11-768/5.PlanningAndCoordination/references/PROGPROMPT_Generating_Situated_Robot_Task_Plans_using_Large_Language_Models.pdf",
+      "pages": [
+        4
+      ],
+      "scope": "targeted full pages; not entire paper",
+      "sha256": "f9106cad86a1e73ecb93366a85cf4845989207ae21a176693a7ecdb02403692a"
+    },
+    {
+      "path": "11-768/5.PlanningAndCoordination/references/ADAPT_As-Needed_Decomposition_and_Planning_with_Language_Models.pdf",
+      "pages": [
+        3,
+        4
+      ],
+      "scope": "targeted full pages; not entire paper",
+      "sha256": "9de7a8f3fa07efc9b35c5dac4f5d7a8b55720e3eeaa9f65788aa06a54aa05a0f"
+    },
+    {
+      "path": "11-768/5.PlanningAndCoordination/references/SWIFTSAGE_A_Generative_Agent_with_Fast_and_Slow_Thinking_for_Complex_Interactive_Tasks.pdf",
+      "pages": [
+        6,
+        7
+      ],
+      "scope": "targeted full pages; not entire paper",
+      "sha256": "193dbdfb2bcf9a155dda81eeab11a951628754bb69d3a91e0ccf89a9c005456f"
+    }
+  ],
+  "visual_checks": [
+    "Lecture 5 physical pp29,38",
+    "RAO p4 figure2",
+    "DECOMP p7 figure7",
+    "MACU p8 tables3-4/figure5",
+    "CTA p5 figure2",
+    "CTA physical p7 figure4: Prompted code-first nonzero versus RL all zero"
+  ],
+  "coverage_assessment": "Lecture four pressures and all main readings retained; concrete execution, training, evaluation, recovery, constraints and two transferable engineering cases. Reference details are selectively explained, not a full textbook of all cited fields.",
+  "pedagogical_review": {
+    "reader": "LLM developer with Java/software experience; no assumed RL/robotics expertise",
+    "problem_chain": "runtime structure -> feasibility -> supervised planning -> interaction/reward -> recursive training -> state coordination -> implementation/evaluation",
+    "prerequisites": "Added SFT, BC/RL relation, value expectation, probability notation, calibration/ECE, reward indicator/discount, log horizon derivation, advantage direction, depth weighting and DAG",
+    "examples": "General batch API contract and retries bridge engineering experience. Retained separate source-grounded robotics/browser examples and optional material-audit case.",
+    "organization": "Added route and learning outcomes; source versus teaching assumptions distinguished.",
+    "outcomes": "Learner can choose structure, diagnose wrong layer, interpret training signals, and work through numerical transfer questions.",
+    "fixes": [
+      "Replaced several over-specialized bridge examples with API/state/retry cases",
+      "Added SFT sample-to-parameter mechanism and inference gap",
+      "Unpacked CTA and RAO formulas with arithmetic",
+      "Derived integer execution horizon with sign reversal",
+      "Clarified timeout retry preconditions and final reference pointers"
+    ]
+  },
+  "issues_and_fixes": [
+    "Unstated training/probability prerequisites repaired",
+    "No broad ban on future prediction: warning specifically concerns treating unseen runtime identity as already observed in initial plans",
+    "Stale source filename-prefix wording repaired",
+    "Explicitly marked five model experiments as proposed/not run"
+  ],
+  "post_fix_full_rereads": [
+    {
+      "pass": 1,
+      "sha256": "02c80d33b436b7c2f7cb459694e5fa74e2a1a8dd7c76d98221cf4515f766e4b6",
+      "ranges": [
+        [
+          1,
+          400
+        ],
+        [
+          401,
+          750
+        ],
+        [
+          751,
+          1100
+        ],
+        [
+          1101,
+          1450
+        ],
+        [
+          1451,
+          1800
+        ],
+        [
+          1801,
+          2100
+        ],
+        [
+          2101,
+          2353
+        ]
+      ],
+      "result": "passed; continuous mechanism, prerequisite, example and self-test correspondence reviewed"
+    },
+    {
+      "pass": 2,
+      "sha256": "02c80d33b436b7c2f7cb459694e5fa74e2a1a8dd7c76d98221cf4515f766e4b6",
+      "ranges": [
+        [
+          1,
+          400
+        ],
+        [
+          401,
+          750
+        ],
+        [
+          751,
+          1100
+        ],
+        [
+          1101,
+          1500
+        ],
+        [
+          1501,
+          1900
+        ],
+        [
+          1901,
+          2353
+        ]
+      ],
+      "result": "passed; complete second reread including source index, limitations and all question/answer pairs"
+    }
+  ],
+  "teaching_checks": {
+    "status": "passed",
+    "scope": "7 sets of local scalar calculations, no models/API/environment",
+    "cases": [
+      "SayCan product",
+      "NLL 0.2/0.8",
+      "CTA 0.576",
+      "horizon68/69",
+      "RAOreward1.2",
+      "advantage-0.6",
+      "depthweights2 and 2/3"
+    ]
+  },
+  "limitations": [
+    "Main lecture fully read; listed reference pages targeted, not every reference paper fully read.",
+    "No GPU/model/API/browser environment experiments reproduced."
+  ]
+}

@@ -1,0 +1,279 @@
+{
+  "note": "11-768/15.OrchestrationAndMonitoring/lecture-15-orchestration-and-monitoring-complete-guide.md",
+  "original_sha256": "e1d34fd863db3c873166a1eff62b3301af4a0ea0d75d2397537b0b72acf62393",
+  "final_sha256": "e1d34fd863db3c873166a1eff62b3301af4a0ea0d75d2397537b0b72acf62393",
+  "status": "passed_unchanged",
+  "review_date": "2026-10-28",
+  "full_readings": [
+    {
+      "round": 1,
+      "sha256": "e1d34fd863db3c873166a1eff62b3301af4a0ea0d75d2397537b0b72acf62393",
+      "line_ranges": [
+        [
+          1,
+          290
+        ],
+        [
+          291,
+          620
+        ],
+        [
+          621,
+          950
+        ],
+        [
+          951,
+          1280
+        ],
+        [
+          1281,
+          1610
+        ],
+        [
+          1611,
+          1940
+        ],
+        [
+          1941,
+          2260
+        ],
+        [
+          2261,
+          2432
+        ]
+      ],
+      "result": "完整阅读，无实质修改"
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "11-768/15.OrchestrationAndMonitoring/SOURCES.md",
+      "range": "全文"
+    },
+    {
+      "path": "11-768/15.OrchestrationAndMonitoring/REFERENCES.json",
+      "range": "全文"
+    },
+    {
+      "path": "11-768/15.OrchestrationAndMonitoring/lecture-15-orchestration-and-monitoring.pdf",
+      "pages": "1–39 全文",
+      "text_read_ranges": [
+        [
+          1,
+          330
+        ],
+        [
+          331,
+          635
+        ]
+      ]
+    },
+    {
+      "path": "11-768/15.OrchestrationAndMonitoring/readings/Hodoscope_Unsupervised_Monitoring_for_AI_Misbehaviors.pdf",
+      "version": "arXiv 2604.11072v1 2026-04-13",
+      "pages": "1–21 全文，包括附录 B–K",
+      "text_read_ranges": [
+        [
+          1,
+          400
+        ],
+        [
+          401,
+          770
+        ],
+        [
+          771,
+          1160
+        ]
+      ]
+    },
+    {
+      "path": "11-768/15.OrchestrationAndMonitoring/readings/001_Building_effective_agents.html",
+      "version": "本地固定网页归档",
+      "range": "正文全文；HTML 代码预格式化区域合并 token 后阅读，未执行其中命令"
+    },
+    {
+      "path": "11-768/15.OrchestrationAndMonitoring/readings/002_Thinking_in_LangGraph.html",
+      "version": "本地固定网页归档",
+      "range": "正文全文；HTML 代码预格式化区域合并 token 后阅读，未执行其中命令"
+    },
+    {
+      "path": "11-768/15.OrchestrationAndMonitoring/readings/003_Diagnosing_a_performance_regression_on_Terminal-Bench_with_Docent.html",
+      "version": "本地固定网页归档",
+      "range": "正文全文；HTML 代码预格式化区域合并 token 后阅读，未执行其中命令"
+    },
+    {
+      "path": "11-768/15.OrchestrationAndMonitoring/references/002_LangGraph_Persistence.html",
+      "version": "本地固定网页归档",
+      "range": "正文全文；HTML 代码预格式化区域合并 token 后阅读，未执行其中命令"
+    },
+    {
+      "path": "11-768/15.OrchestrationAndMonitoring/references/003_LangGraph_Interrupts.html",
+      "version": "本地固定网页归档",
+      "range": "正文全文；HTML 代码预格式化区域合并 token 后阅读，未执行其中命令"
+    },
+    {
+      "path": "11-768/15.OrchestrationAndMonitoring/references/004_LangGraph_Testing.html",
+      "version": "本地固定网页归档",
+      "range": "正文全文；HTML 代码预格式化区域合并 token 后阅读，未执行其中命令"
+    },
+    {
+      "path": "11-768/15.OrchestrationAndMonitoring/references/005_LangChain_Testing.html",
+      "version": "本地固定网页归档",
+      "range": "正文全文；HTML 代码预格式化区域合并 token 后阅读，未执行其中命令"
+    },
+    {
+      "path": "11-768/15.OrchestrationAndMonitoring/references/006_LangSmith_Evaluation.html",
+      "version": "本地固定网页归档",
+      "range": "正文全文；HTML 代码预格式化区域合并 token 后阅读，未执行其中命令"
+    },
+    {
+      "path": "11-768/15.OrchestrationAndMonitoring/references/012_Hodoscope_announcement.html",
+      "version": "本地固定网页归档",
+      "range": "正文全文；HTML 代码预格式化区域合并 token 后阅读，未执行其中命令"
+    },
+    {
+      "path": "11-768/15.OrchestrationAndMonitoring/references/013_Embedding_Atlas.html",
+      "version": "本地固定网页归档",
+      "range": "正文全文；HTML 代码预格式化区域合并 token 后阅读，未执行其中命令"
+    },
+    {
+      "path": "11-768/15.OrchestrationAndMonitoring/references/014_OpenHands_SDK.html",
+      "version": "本地固定网页归档",
+      "range": "正文全文；HTML 代码预格式化区域合并 token 后阅读，未执行其中命令"
+    },
+    {
+      "path": "11-768/15.OrchestrationAndMonitoring/references/015_LangGraph_overview.html",
+      "version": "本地固定网页归档",
+      "range": "正文全文；HTML 代码预格式化区域合并 token 后阅读，未执行其中命令"
+    },
+    {
+      "path": "11-768/15.OrchestrationAndMonitoring/references/016_OpenAI_Agents_SDK.html",
+      "version": "本地固定网页归档",
+      "range": "正文全文；HTML 代码预格式化区域合并 token 后阅读，未执行其中命令"
+    },
+    {
+      "path": "11-768/15.OrchestrationAndMonitoring/references/017_AG2_overview.html",
+      "version": "本地固定网页归档",
+      "range": "正文全文；HTML 代码预格式化区域合并 token 后阅读，未执行其中命令"
+    },
+    {
+      "path": "11-768/15.OrchestrationAndMonitoring/references/018_DSPy.html",
+      "version": "本地固定网页归档",
+      "range": "正文全文；HTML 代码预格式化区域合并 token 后阅读，未执行其中命令"
+    },
+    {
+      "path": "11-768/15.OrchestrationAndMonitoring/references/001_LangGraph_Workflows_and_agents.html",
+      "version": "本地固定网页归档",
+      "range": "导论/增强调用/prompt chaining；orchestrator workers/Send/共享 reducer；运行时 State/Context",
+      "extracted_text_line_ranges": [
+        [
+          1,
+          160
+        ],
+        [
+          396,
+          580
+        ],
+        [
+          850,
+          917
+        ]
+      ],
+      "extraction": "/tmp/cmu15/compact/ 中主文与完整 pre 文本；仅记录实际读过的范围"
+    },
+    {
+      "path": "11-768/15.OrchestrationAndMonitoring/references/025_LangGraph_Graph_API_overview.html",
+      "version": "本地固定网页归档",
+      "range": "图、State/schema/reducer；节点重执行/幂等/内部task；边/Send/Command静态边及恢复",
+      "extracted_text_line_ranges": [
+        [
+          1,
+          440
+        ],
+        [
+          635,
+          805
+        ],
+        [
+          850,
+          1170
+        ]
+      ],
+      "extraction": "/tmp/cmu15/compact/ 中主文与完整 pre 文本；仅记录实际读过的范围"
+    },
+    {
+      "path": "11-768/15.OrchestrationAndMonitoring/references/026_LangGraph_Checkpointers.html",
+      "version": "本地固定网页归档",
+      "range": "checkpoint/thread/superstep/pending writes；状态历史/replay/update；sync/async/exit；持久后端与接口",
+      "extracted_text_line_ranges": [
+        [
+          1,
+          460
+        ]
+      ],
+      "extraction": "/tmp/cmu15/compact/ 中主文与完整 pre 文本；仅记录实际读过的范围"
+    },
+    {
+      "path": "11-768/15.OrchestrationAndMonitoring/references/027_LangGraph_Functional_API_overview.html",
+      "version": "本地固定网页归档",
+      "range": "与Graph API区别；entrypoint/task；恢复示例；序列化与注入参数",
+      "extracted_text_line_ranges": [
+        [
+          1,
+          240
+        ]
+      ],
+      "extraction": "/tmp/cmu15/compact/ 中主文与完整 pre 文本；仅记录实际读过的范围"
+    },
+    {
+      "path": "11-768/15.OrchestrationAndMonitoring/references/024_LangSmith_Custom_instrumentation.html",
+      "version": "本地固定网页归档",
+      "range": "instrumentation概览/前提；Python装饰器及嵌套调用示例，另包含TS示例与Java示例开头",
+      "extracted_text_line_ranges": [
+        [
+          1,
+          200
+        ]
+      ],
+      "extraction": "/tmp/cmu15/compact/ 中主文与完整 pre 文本；仅记录实际读过的范围"
+    }
+  ],
+  "coverage_assessment": "39页主讲义的客服编排、恢复、测试、轨迹、Docent诊断与Hodoscope发现全部具备对应讲解。审核路径采用课堂版本，明确不同于文档示例；超时统计分母、无超时任务筛选与macro、论文表1–3和算法均核对。38页视频入口没有完整本地内容，未据其虚构事件经过。",
+  "pedagogical_review": {
+    "reader_prerequisites": "明确面向LLM开发工程师及Python/Java后端经验；接口、状态、服务和测试作为已有知识，图、checkpoint、thread、中断、密度探索与评估指标逐步解释。",
+    "question_chain": "模型判断正确为何任务仍失败→如何分配固定流程与动态自由度→哪些事实进入状态→崩溃/等待后重做什么→怎样观测和验证→分数下降怎样诊断→未知问题如何发现→如何验证并反馈修复。",
+    "conceptual_bridges": "重复扣款客服贯穿前半篇；草稿A/B错配、先发送后崩溃与静态边/Command混用把恢复语义转成可验证程序行为。Docent先形成假设再看统计，Hodoscope先解释动作表示与平滑密度再谈排序和论文消融。",
+    "gaps_found": "本轮未发现影响学习的实质机制跳步。数学使用概率/期望/平均和启发式排序，配套直观解释、假设与数值例子；不要求读者预先掌握t-SNE优化求解。",
+    "examples_and_organization": "课程主线保持通用客服、编码轨迹与系统工程；第12章既有投研材料案例作为迁移练习，不替代普遍课程知识。章节依赖清晰，16个自检问题配6组关联推理答案，5个实践实验明确产物。",
+    "learning_outcomes": "能建立状态/恢复/审批契约，分开确定性测试与随机质量，读懂成对诊断和分布探索的证据边界，设计监控反馈闭环及故障定位。",
+    "changes": "无需模板化补写；保留已有完整教学内容。"
+  },
+  "issues_and_fixes": [],
+  "post_fix_full_rereads": [],
+  "visual_checks": {
+    "lecture_pages": [
+      7,
+      14,
+      18,
+      30,
+      31,
+      33,
+      35,
+      36
+    ],
+    "Hodoscope_pages": [
+      2,
+      5,
+      7,
+      9
+    ],
+    "result": "12页渲染图已看；路由箭头、trace关系、Docent任务/rollout分母、密度差图与实验表值一致。"
+  },
+  "limitations": [
+    "本轮未运行模型、LangGraph故障注入或Hodoscope API实验；第14章为明确的实践方案而非已完成实测。",
+    "文档按固定归档核查，未做当前线上产品/API验收。",
+    "LangSmith/Docent演示页面缺原始trace，故课堂统计不能从完整原始运行重新计算；正文已保留此边界。",
+    "补充长API文档按记录章节核查，并未声称全部内容均已阅读。"
+  ]
+}

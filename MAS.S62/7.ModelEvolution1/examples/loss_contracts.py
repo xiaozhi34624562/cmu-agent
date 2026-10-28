@@ -39,10 +39,56 @@ def clipped_objective(ratio, advantage, epsilon=0.2):
     return min(ratio * advantage, clipped * advantage)
 
 
-def group_advantage(rewards, epsilon=1e-8):
+def group_advantage(rewards, epsilon=1e-8, correction=0):
+    """Teaching default is population std; correction=1 uses sample std."""
+    assert 0 <= correction < len(rewards)
     average = sum(rewards) / len(rewards)
-    std = math.sqrt(sum((r - average) ** 2 for r in rewards) / len(rewards))
+    std = math.sqrt(sum((r - average) ** 2 for r in rewards)
+                    / (len(rewards) - correction))
     return [(reward - average) / (std + epsilon) for reward in rewards]
+
+
+def prerequisite_checks():
+    """Connect a sampled reward to a scalar update, not a training claim."""
+    sigmoid = lambda value: 1 / (1 + math.exp(-value))
+    score = math.log(1 / 3)
+    probability = sigmoid(score)
+    sampled_success_gradient = 1 - probability
+    next_probability = sigmoid(score + 0.1 * sampled_success_gradient)
+    numeric_gradient = finite_difference(
+        lambda values: math.log(sigmoid(values[0])), [score]
+    )[0]
+    assert math.isclose(probability, 0.25)
+    assert math.isclose(numeric_gradient, sampled_success_gradient, abs_tol=1e-9)
+    assert 0.264 < next_probability < 0.265
+    # Both outcomes are enumerated: R(success)=1 and R(failure)=0.
+    expected_without_baseline = probability * sampled_success_gradient
+    baseline = 0.25
+    expected_with_baseline = (
+        probability * (1 - baseline) * (1 - probability)
+        + (1 - probability) * (0 - baseline) * (-probability)
+    )
+    assert math.isclose(expected_without_baseline, expected_with_baseline)
+    population = group_advantage([1, 0, 0, 0], epsilon=0)
+    sample = group_advantage([1, 0, 0, 0], epsilon=0, correction=1)
+    assert math.isclose(population[0], math.sqrt(3))
+    assert sample == [1.5, -0.5, -0.5, -0.5]
+    dpo_start, dpo_after = -math.log(sigmoid(0)), -math.log(sigmoid(math.log(3)))
+    assert math.isclose(dpo_start, math.log(2))
+    assert math.isclose(dpo_after, -math.log(0.75))
+    assert softmax([math.log(3), 0]) == [0.75, 0.25]
+    assert 1024 * 8 + 8 * 1024 == 1024 * 1024 // 64
+    return {
+        "sampled_success_probability_before": probability,
+        "sampled_success_probability_after": next_probability,
+        "sampled_success_score_gradient": numeric_gradient,
+        "expected_gradient_with_and_without_baseline": expected_with_baseline,
+        "target_cross_entropy_before_after": [-math.log(0.25), -math.log(0.5)],
+        "group_population_std_advantages": population,
+        "group_sample_std_advantages": sample,
+        "dpo_loss_before_after": [dpo_start, dpo_after],
+        "lora_increment_parameters": 1024 * 8 + 8 * 1024,
+    }
 
 
 def two_step_sequence_check():
@@ -123,6 +169,7 @@ def main():
     assert (responses, optimizer_steps, per_worker, accumulation) == (5120, 4, 160, 40)
     print(json.dumps({
         "scope": "one-state and two-step fixed-teacher arithmetic; no model training",
+        "prerequisites": prerequisite_checks(),
         "student": student,
         "teacher": teacher,
         "KL_student_teacher": reverse(logits),

@@ -1,0 +1,269 @@
+{
+  "note": "2680/7.AgentDesignIV.AgentEvaluation/Agent_Eval_Lecture07_Integrated_Notes.md",
+  "original_sha256": "a6fbd1da8e2ccb72b70fd8be29b09f27add6885b2f599ee7e7f28d3cb388a630",
+  "final_sha256": "14cf12d24ddfd74b7c13cde9c8faf3b880f0c91abf84237b0b40a91515c88de5",
+  "status": "passed_with_fixes",
+  "final_line_count": 2035,
+  "full_read_ranges": [
+    {
+      "round": "initial",
+      "sha256": "a6fbd1da8e2ccb72b70fd8be29b09f27add6885b2f599ee7e7f28d3cb388a630",
+      "ranges": [
+        "1-400",
+        "401-800",
+        "801-1200",
+        "1201-1600",
+        "1601-2001"
+      ]
+    },
+    {
+      "round": "intermediate_full_reread",
+      "sha256": "b6d1e6d6e3fe0ccdc2019b16cda9d460b12a47cdac81c5a76a2280ca61518419",
+      "ranges": [
+        "1-420",
+        "421-840",
+        "841-1260",
+        "1261-1680",
+        "1681-2031"
+      ],
+      "result": "发现风险点评估与终点DCR的TP/FP语境需明确、指标段落负荷偏大；修复后重做两轮。"
+    },
+    {
+      "round": "post_fix_1",
+      "sha256": "14cf12d24ddfd74b7c13cde9c8faf3b880f0c91abf84237b0b40a91515c88de5",
+      "ranges": [
+        "1-420",
+        "421-920",
+        "921-1420",
+        "1421-2035"
+      ]
+    },
+    {
+      "round": "post_fix_2",
+      "sha256": "14cf12d24ddfd74b7c13cde9c8faf3b880f0c91abf84237b0b40a91515c88de5",
+      "ranges": [
+        "1-500",
+        "501-1000",
+        "1001-1500",
+        "1501-2035"
+      ]
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "2680/7.AgentDesignIV.AgentEvaluation/SOURCES.md",
+      "sha256": "04db5c02704e5371abd5c0ccaf4822a1ccb9c4b70944958933910bfcd7055dc0",
+      "version": "本地索引",
+      "range": "全文，正文阅读前",
+      "visually_inspected_pdf_pages": []
+    },
+    {
+      "path": "2680/7.AgentDesignIV.AgentEvaluation/REFERENCES.json",
+      "sha256": "a19f7e2fbdfa0394e271148276b2501851f7c116cf1c0439880810009e4ce7f4",
+      "version": "本地补充索引",
+      "range": "全文，正文阅读前；本课无README",
+      "visually_inspected_pdf_pages": []
+    },
+    {
+      "path": "2680/7.AgentDesignIV.AgentEvaluation/7_agent_design_4.pdf",
+      "sha256": "87f1c93e4711985ff4624de14b297beb118ed9f429523b455a3d1acb8fe515b8",
+      "version": "37页官方课程讲义",
+      "range": "实际PDF pp.1–37全文；p37空白",
+      "visually_inspected_pdf_pages": [
+        13,
+        19,
+        22,
+        28,
+        29,
+        32,
+        33,
+        35
+      ]
+    },
+    {
+      "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/AI_Agents_That_Matter.pdf",
+      "sha256": "1681013e0421f9d193ca5bb556b566f50d1e5eaa43d7a9700a31ca3dd0e2ff7a",
+      "version": "arXiv:2407.01502v1，2024-07-01",
+      "range": "pp.1–11、16–17、20–21全文；成本分母、重试策略、训练测试分割、HotPot与NovelQA",
+      "visually_inspected_pdf_pages": [
+        4,
+        6,
+        20
+      ]
+    },
+    {
+      "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/Towards_a_Science_of_AI_Agent_Reliability.pdf",
+      "sha256": "f6347ad130f009ea385cfa341a32fd1c7d757d65458b4d1d73dae5c3a28a2ccf",
+      "version": "arXiv:2602.16666v3，2026-06-02",
+      "range": "pp.1–9、33–34全文；12指标、干净任务子集、校准、API扰动",
+      "visually_inspected_pdf_pages": [
+        4,
+        8
+      ]
+    },
+    {
+      "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/Establishing_Best_Practices_for_Building_Rigorous_Agentic_Benchmarks.pdf",
+      "sha256": "6bee07172c55c1146fdc8a14e0a4839854f7b4be36616729fda3ee6d519a698b",
+      "version": "arXiv:2507.02825v5，2025-08-07",
+      "range": "pp.1–8、27–28全文；有效性链、τ任务缺陷与无动作攻击",
+      "visually_inspected_pdf_pages": [
+        3
+      ]
+    },
+    {
+      "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/SWE-bench_Can_Language_Models_Resolve_Real-World_GitHub_Issues.pdf",
+      "sha256": "f7e8e1df64129742b8199a21a042734519a823a1dafd6f48f8f3ddcfb48ee296",
+      "version": "arXiv:2310.06770v3，2024-11-11",
+      "range": "pp.1–6全文；构建、2294任务、定位条件、Tables2/3",
+      "visually_inspected_pdf_pages": [
+        5
+      ]
+    },
+    {
+      "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/AgentBench_Evaluating_LLMs_as_Agents.pdf",
+      "sha256": "9c780e35fc0b2de6c2e21e0572f6aaaadcf7ecdd56d63cfaae2b415bc0dc83c3",
+      "version": "arXiv:2308.03688v3，2025-10-04",
+      "range": "pp.1–8全文；8环境、终止条件、CoT基线、加权分数",
+      "visually_inspected_pdf_pages": [
+        6
+      ]
+    },
+    {
+      "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/Measuring_AI_Ability_to_Complete_Long_Software_Tasks.pdf",
+      "sha256": "29216eb3af4daa417666757a462ab7c7b5f8c18c188ee5a56e258b04116211f7",
+      "version": "arXiv:2503.14499v4，2026-07-10",
+      "range": "pp.1–8全文；170任务、人类基线、拟合、分层bootstrap与外推限制",
+      "visually_inspected_pdf_pages": [
+        6
+      ]
+    },
+    {
+      "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/tau-bench_A_Benchmark_for_Tool-Agent-User_Interaction_in_Real-World_Domains.pdf",
+      "sha256": "0ce66a1763d698c61bb311c3c874bf593d1e9a5bfff11bb35f6f72b981f6da56",
+      "version": "arXiv:2406.12045v1，2024-06-17",
+      "range": "pp.1–9全文；奖励、pass^k、模型/温度、策略消融、任务错误",
+      "visually_inspected_pdf_pages": [
+        4,
+        7,
+        8
+      ]
+    },
+    {
+      "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/AgentOps_Enabling_Observability_of_LLM_Agents.pdf",
+      "sha256": "fc2a9aca1107bf4faace5cc18966f4bd85b05109793ca0cc7df6a3fcf88dadf3",
+      "version": "arXiv:2411.05285v2，2024-11-30；PDF日期12-03",
+      "range": "pp.1–10全文；17工具历史调查、实体关系、trace/span分类",
+      "visually_inspected_pdf_pages": [
+        8,
+        9
+      ]
+    },
+    {
+      "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/ActPlane_Programmable_OS-Level_Policy_Enforcement_for_Agent_Harnesses.pdf",
+      "sha256": "59c2b86a375aa637abe0e4e4630b0b56affc540fa34dfbf2234493f63573220a",
+      "version": "arXiv:2606.25189v2，2026-06-30",
+      "range": "pp.1–12全文；策略集、DCR、190轨迹、延迟、OpenSafety与覆盖限制",
+      "visually_inspected_pdf_pages": [
+        9,
+        12
+      ]
+    },
+    {
+      "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/2._Examples_of_cheating_in_CAISI_s_agent_evaluations.html",
+      "sha256": "0d1f02ad54f1e7c4849b91a1d5bcaf1f8e51ceff6e2211eb8f8a9f7d2e58daeb",
+      "version": "创建2025-11-28，更新2025-12-02",
+      "range": "文章正文全部§§2.1–2.3及方法说明；泄漏/评分作弊/未成功策略",
+      "visually_inspected_pdf_pages": []
+    },
+    {
+      "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/Headlong_a_microharness_for_persistent_agents.html",
+      "sha256": "e4fd2046cbba2a00c2b8411fb0b6397f72a58f956b06a3853072ee075bd3a6f7",
+      "version": "2026-08归档文章",
+      "range": "正文从引言到致谢/引用全文；持续运行、摘要、后台状态与运行事件",
+      "visually_inspected_pdf_pages": []
+    },
+    {
+      "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/Dapper_a_Large-Scale_Distributed_Systems_Tracing_Infrastructure.html",
+      "sha256": "f33968a9c204cdd790a212634d1ac7ceca8390b9b402a47146b1495f150664d2",
+      "version": "Google Research，2010",
+      "range": "归档短介绍/摘要全文；不是完整论文",
+      "visually_inspected_pdf_pages": []
+    },
+    {
+      "path": "2680/7.AgentDesignIV.AgentEvaluation/readings/Firecracker_Lightweight_Virtualization_for_Serverless_Applications.html",
+      "sha256": "516298233390603aaeb3178d3ae56ce5e042d0227735b4e5ecbfb216a09ce759",
+      "version": "NSDI 2020",
+      "range": "归档介绍摘要及BibTeX全文；不是完整论文",
+      "visually_inspected_pdf_pages": []
+    },
+    {
+      "url": "https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/",
+      "version": "2026-02-23",
+      "range": "在线正文相关lines40–76；138个选定任务、人工复核、59.4%缺陷、类型比例与污染讨论；未声称全文或本地下载"
+    }
+  ],
+  "coverage_assessment": {
+    "lecture": "37页全文核对，组件与端到端目标、评估循环、GAIA/BFCL/WebArena/OSWorld/SWE/τ/Terminal/AgentCompany、泄漏与作弊、开发工作流、可靠性、饱和与成本Pareto均覆盖。",
+    "mechanisms": "通过评估对象→任务/判分→pass与一致性→可靠性多维→horizon→作弊/有效性→可观测与策略执行→落地协议形成完整问题链；各论文版本、子集、基线和分母保持分离。",
+    "implementation": "数据/任务/环境/模型/harness/grader版本冻结，重复运行、轨迹字段、校准、配对分层bootstrap、零事故上界、故障分诊和回归门禁均可用于工程设计。"
+  },
+  "pedagogical_review": {
+    "reader_prerequisites": "LLM Developer/Java；熟悉接口、测试、状态与调用链，不预设POMDP、统计或数学。",
+    "question_chain": "用API v1→v2迁移映射task/harness/grader与运行结果；从通过测试是否代表可靠开始，依次处理评分对象、重复性、置信度、安全、难度、有效性和工程采集。",
+    "prerequisites_and_steps": "补POMDP符号/Markov与HTTP超时例、困惑度/F1、组合数无放回与概率插件区别、轨迹分布与顺序、资源CV、ECE/Brier、logistic/logit和时域、分层bootstrap与零事件上界。每一处有定义和可手算例，不要求背公式。",
+    "cases": "新增通用接口迁移和read/test/write顺序例贯穿测量；原有业务案例保留为迁移应用，未把教学数值当实验。",
+    "organization": "原稿完整链条与来源附录保留；新增指标段落分开并定义首次术语，先测试工程直觉再统计推导，降低术语密度。",
+    "learning_outcomes": "能选择成功率/全成功率，解释同终点异轨迹，计算Brier与pass估计，设计同任务配对实验与零事故证据边界；新增三题带计算和答案，共13题。",
+    "fixes": "学习断层实质修复；最终两轮未发现新问题。"
+  },
+  "issues_and_fixes": [
+    {
+      "issue": "统计、概率、POMDP和语言模型指标直接使用，开发者难以形成机制理解",
+      "fix": "逐处补条件分母、符号、例子、推导和适用边界。"
+    },
+    {
+      "issue": "多指标名称与数学公式缺乏可执行的选择路径",
+      "fix": "接口迁移映射、轨迹反例、校准/时域/零事件算例、bootstrap操作步骤和自测。"
+    },
+    {
+      "issue": "中间复读发现风险点TP/FP与终点DCR可能混淆",
+      "fix": "明确两套标签的判定对象；拆分高密度指标段落并修正数学排版后重新全文两轮。"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "round": 1,
+      "sha256": "14cf12d24ddfd74b7c13cde9c8faf3b880f0c91abf84237b0b40a91515c88de5",
+      "ranges": [
+        "1-420",
+        "421-920",
+        "921-1420",
+        "1421-2035"
+      ],
+      "result": "全文实际完成，问题链、术语前置、演算、来源版本与案例/自测相互一致，无新实质问题。"
+    },
+    {
+      "round": 2,
+      "sha256": "14cf12d24ddfd74b7c13cde9c8faf3b880f0c91abf84237b0b40a91515c88de5",
+      "ranges": [
+        "1-500",
+        "501-1000",
+        "1001-1500",
+        "1501-2035"
+      ],
+      "result": "全文实际完成，问题链、术语前置、演算、来源版本与案例/自测相互一致，无新实质问题。"
+    }
+  ],
+  "validation": {
+    "command": "python3 2680/7.AgentDesignIV.AgentEvaluation/examples/eval_metrics_demo.py",
+    "exit_code": 0,
+    "result": "built-in self-test passed；macro success=0.6，pass@3=2/3，pass^3=0.4666667，consistency=0.7866667，n=1000零事件95%上界0.00299125。正文嵌入Python与保存文件逐字比对一致。"
+  },
+  "limitations": [
+    "主讲义全文已读；辅助来源仅声明列出的实际阅读范围，未冒充全部附录。",
+    "24张关键PDF页渲染目视；讲义饱和榜单作为历史教学图，未独立重建外部榜单。",
+    "Dapper/Firecracker仅归档摘要页；OpenAI审计在线查阅，无新增本地原文。",
+    "只实际运行确定性指标教学代码；未复现模型/GPU/API/各benchmark实验。",
+    "原始资料及课程根记录未改；未运行整理同步。"
+  ]
+}

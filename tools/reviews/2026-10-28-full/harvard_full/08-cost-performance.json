@@ -1,0 +1,192 @@
+{
+  "note": "2680/8.AdvancedAgentDesignI.CostAndPerformance/lecture-08_agent_cost_and_performance.md",
+  "original_sha256": "c67d8002502ce4285ba0d5cacd6724f0cfe76003232d6a4629042216dde2ba02",
+  "final_sha256": "153aa3abd2915777c0595fa352524918e00a45cbc1daa6bbbfec7dbad34b8e4b",
+  "status": "passed_with_fixes",
+  "final_line_count": 1975,
+  "full_read_ranges": [
+    {
+      "round": "initial",
+      "sha256": "c67d8002502ce4285ba0d5cacd6724f0cfe76003232d6a4629042216dde2ba02",
+      "ranges": [
+        "1-400",
+        "401-800",
+        "801-1200",
+        "1201-1600",
+        "1601-1922"
+      ]
+    },
+    {
+      "round": "intermediate_full_reread",
+      "sha256": "45c235e6688dee0edd8bf41b29fc6321ab75de770cd11a369e5f819056f3df90",
+      "ranges": [
+        "1-420",
+        "421-840",
+        "841-1260",
+        "1261-1680",
+        "1681-1973"
+      ],
+      "result": "发现总成本返工账项可能重复计费，修复后重新两轮"
+    },
+    {
+      "round": "post_fix_1",
+      "sha256": "153aa3abd2915777c0595fa352524918e00a45cbc1daa6bbbfec7dbad34b8e4b",
+      "ranges": [
+        "1-500",
+        "501-1000",
+        "1001-1500",
+        "1501-1975"
+      ]
+    },
+    {
+      "round": "post_fix_2",
+      "sha256": "153aa3abd2915777c0595fa352524918e00a45cbc1daa6bbbfec7dbad34b8e4b",
+      "ranges": [
+        "1-400",
+        "401-800",
+        "801-1200",
+        "1201-1600",
+        "1601-1975"
+      ]
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "2680/8.AdvancedAgentDesignI.CostAndPerformance/SOURCES.md",
+      "sha256": "6b03ab54f15bbd694ddfc286ee776e0e67ef290a19f5bf12d87e5b86c81889fa",
+      "version": "本地索引",
+      "range": "全文，正文阅读前；无README/REFERENCES.json",
+      "visually_inspected_pdf_pages": []
+    },
+    {
+      "path": "2680/8.AdvancedAgentDesignI.CostAndPerformance/8_agent_design_5.pdf",
+      "sha256": "0ca8e326cd72fe52e9d676e19c30837bf718e63867f6f1ce7b3f7c3749db8e0e",
+      "version": "54页官方讲义",
+      "range": "PDF pp.1–54全文",
+      "visually_inspected_pdf_pages": [
+        8,
+        10,
+        13,
+        14,
+        15,
+        29,
+        40,
+        45
+      ]
+    },
+    {
+      "path": "2680/8.AdvancedAgentDesignI.CostAndPerformance/../assignment/assignment-3/8_assignment3.pdf",
+      "sha256": "aad61822cdb769afe289b19994312923bb9dc582cb428c0e734cb2659db38550",
+      "version": "7页官方Assignment 3",
+      "range": "PDF pp.1–7全文",
+      "visually_inspected_pdf_pages": [
+        2,
+        3,
+        7
+      ]
+    },
+    {
+      "path": "2680/8.AdvancedAgentDesignI.CostAndPerformance/readings/Reducing_cost_and_improving_performance_with_Claude_Platform.html",
+      "sha256": "d305ca40ee74907797e8985976e6fa3f2ca9cb6c2ae30bfc885f902ad9aad44a",
+      "version": "2026-09-08发布、后续模型更新的本地快照",
+      "range": "文章全文：缓存、指令反模式、effort、配置搜索和成本优化；文本提取244行全文",
+      "visually_inspected_pdf_pages": []
+    },
+    {
+      "path": "2680/8.AdvancedAgentDesignI.CostAndPerformance/readings/RouteLLM_Learning_to_Route_LLMs_with_Preference_Data.pdf",
+      "sha256": "c9bc9c8171cab95bb3832cde8767c6b5e0925cd62930e51ddbd60d7cb2616741",
+      "version": "arXiv:2406.18665v4，2025-02-23；ICLR2025",
+      "range": "pp.1–10、13–16全文；pp.11–12参考文献未读",
+      "visually_inspected_pdf_pages": [
+        2,
+        6,
+        7,
+        9,
+        10
+      ]
+    },
+    {
+      "path": "2680/8.AdvancedAgentDesignI.CostAndPerformance/readings/Beyond_Accuracy_Unveiling_Inefficiency_Patterns_in_Tool-Integrated_Reasoning.pdf",
+      "sha256": "5bfd78d749a79762d2be401889e2c84f9c99dde2d453e890d0f6c5a95bca6e86",
+      "version": "arXiv:2604.05404v2，2026-04-14",
+      "range": "pp.1–9、12–22全文；pp.10–11参考文献未读",
+      "visually_inspected_pdf_pages": [
+        4,
+        7,
+        13,
+        14,
+        16,
+        17
+      ]
+    },
+    {
+      "url": "https://www.uber.com/us/en/blog/efficient-software-factory/",
+      "version": "2026-08-27；本轮2026-10-28在线查阅",
+      "range": "正文lines15–239；引用重点lines126–162 Code-Mode和Prompt Caching Strategy；无本地下载"
+    }
+  ],
+  "coverage_assessment": {
+    "lecture": "54页全部覆盖：会话成本分解、步骤/上下文/输出/单价、反向成本、预算、关键路径与投机、三种Harness责任划分及八种历史案例；实际PDF页序与幻灯片编号明确区分。",
+    "mechanisms": "PTE模型及其参数不一致、四种路由器训练/推理、质量差距指标与实验基线、缓存回本和模型切换、验证升级分母均逐项解释。",
+    "implementation": "从任务验收到调用账、预算预留、工具状态、压缩、路由、并行、回归评测；作业限制与教学策略分开。"
+  },
+  "pedagogical_review": {
+    "reader_prerequisites": "LLM Developer/Java；熟悉接口、缓存、调用链、并发与测试，不预设训练、线性代数、统计或GPU知识。",
+    "question_chain": "API单次变便宜但交付更差→完整轨迹成本→重复计算与等待→缓存/能力分配→运行系统约束→同任务实验；第一遍系统设计与第二遍内部机制路线可区分。",
+    "prerequisites_and_steps": "补min/E/Pr/p95、token/K/B、权重与KV、prefill/decode、算力/带宽/容量、FLOP/字节及gamma时间比推导；路由embedding、BT、矩阵维度、sigmoid、负对数、交叉熵局部梯度和链式更新均给解释或手算。",
+    "cases": "新增日期解析API修复贯通案例，49→43秒依赖图、热缓存与剩余轮次、压缩保留失败状态、验证后停止；旧业务案例作为迁移保留，不虚构用户系统。",
+    "organization": "原有讲义主线完整，首次术语就地解释；用接口数组形状理解矩阵，先成本问题再公式，来源限制集中附录并在风险点提醒。",
+    "learning_outcomes": "可手算KV字节与路由阈值、解释为何并行不等于成本减半，设计完整成本和质量配对实验；新增3题答案，共11题。",
+    "fixes": "实质补齐学习断层；两轮最终全文阅读未发现新增问题。"
+  },
+  "issues_and_fixes": [
+    {
+      "issue": "硬件与学习式路由跨越多个未教前置",
+      "fix": "补模型状态、带宽/计算机制、符号维度与梯度算例，保留论文假设边界。"
+    },
+    {
+      "issue": "乘法成本的均值解释与返工账项可能误导",
+      "fix": "说明总量比率约消和未加权均值差异；总账项互斥，返工按标签或额外损失计算。"
+    },
+    {
+      "issue": "缺少通用开发者可走通的完整路线",
+      "fix": "新增日期API修复从验收到日志/缓存/路由/并行/验证全链条及自测。"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "round": 1,
+      "sha256": "153aa3abd2915777c0595fa352524918e00a45cbc1daa6bbbfec7dbad34b8e4b",
+      "ranges": [
+        "1-500",
+        "501-1000",
+        "1001-1500",
+        "1501-1975"
+      ],
+      "result": "实际全文完成，问题链、符号先后、计算、案例、自测和证据边界一致，无新增实质问题。"
+    },
+    {
+      "round": 2,
+      "sha256": "153aa3abd2915777c0595fa352524918e00a45cbc1daa6bbbfec7dbad34b8e4b",
+      "ranges": [
+        "1-400",
+        "401-800",
+        "801-1200",
+        "1201-1600",
+        "1601-1975"
+      ],
+      "result": "实际全文完成，问题链、符号先后、计算、案例、自测和证据边界一致，无新增实质问题。"
+    }
+  ],
+  "validation": {
+    "runtime": "Python 3.11.10",
+    "result": "原样提取并运行正文完整Decimal示例，0.011与0.0252金额断言通过；gamma代入0.007996449与论文0.00320差异已明确保留。"
+  },
+  "limitations": [
+    "主讲义54页、作业7页全文；辅助论文只声明实际页范围。",
+    "22张关键PDF页渲染目视；Anthropic远程图像未核验，仅使用正文可复核数字。",
+    "产品/API/Harness仅按归档版本解释，未进行当前源码或硬件厂商规格审计。",
+    "未复现GPU、模型、Router、Assignment或业务实验；只实际运行确定性成本代码。",
+    "原始资料未改，无新增原文下载，未运行sync/organize或修改课程根记录。"
+  ]
+}

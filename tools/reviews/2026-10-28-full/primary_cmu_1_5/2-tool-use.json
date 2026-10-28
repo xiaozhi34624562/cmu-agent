@@ -1,0 +1,162 @@
+{
+  "review_date": "2026-10-28",
+  "note": "11-768/2.ToolUse/lecture-02-tool-use-complete-notes.zh-CN.md",
+  "original_sha256": "d50a4ce191bb6610a8e8c43b5fec385dfd5c9802804591735345b6f44f31728e",
+  "final_sha256": "084df2819ec3f2c1acd52bec6d38cb4aea3ec540035b58805375e70a147bfe93",
+  "status": "full_review_passed_after_revision",
+  "full_read_ranges": [
+    {
+      "pass": "initial",
+      "lines": [
+        1,
+        2680
+      ],
+      "result": "全篇逐段精读（含4.19/4.20扩展与附录）"
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "11-768/2.ToolUse/lecture-02-tool-use.pdf",
+      "pages": "1-60",
+      "scope": "主讲义全文回读，p16结果图目视核对"
+    },
+    {
+      "path": "11-768/2.ToolUse/readings/Executable_Code_Actions_Elicit_Better_LLM_Agents.pdf",
+      "pages": "4-5,7-9",
+      "scope": "API-Bank/M3ToolEval设置及表2-5、训练混合、变量幻觉限制；p5表格目视"
+    },
+    {
+      "path": "11-768/2.ToolUse/readings/XGrammar_Flexible_and_Efficient_Structured_Generation_Engine_For_Large_Language_Models.pdf",
+      "pages": "4-6,10",
+      "scope": "缓存/上下文扩展机制与1134→120、160→0.46MB、表2-4；p10目视"
+    },
+    {
+      "path": "11-768/2.ToolUse/readings/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf",
+      "scope": "与第1课本轮已核对原文同字节版本，损失/阈值/ASDiv表/推理预算一致"
+    },
+    {
+      "path": "11-768/2.ToolUse/references",
+      "scope": "Qwen2/3模板完整、DeepSeek encode_arguments_to_dsml、OpenHands _ActionBatch完整及输入/输出类型转换、MCP2026-07-28发布说明相关全文段落、FastMCP httpx2示例、BFCL评分、MCP输出结构和错误条款"
+    },
+    {
+      "path": "11-768/8.SupervisedFineTuning/references/Kimi_K2_Open_Agentic_Intelligence.pdf",
+      "pages": "9-11",
+      "scope": "工具合成、模拟器/真实执行、筛选及RL"
+    },
+    {
+      "path": "11-768/3.LongContext/references/DeepSeek-V3.2_Pushing_the_Frontier_of_Open_Large_Language_Models.pdf",
+      "pages": "9-11",
+      "scope": "冷启动、真实工具/合成环境、工具接口和验证器限制"
+    },
+    {
+      "path": "11-768/3.LongContext/references/GLM-5_from_Vibe_Coding_to_Agentic_Engineering.pdf",
+      "pages": "11",
+      "scope": "错误轨迹保留但损失屏蔽"
+    }
+  ],
+  "coverage_assessment": "主讲义60页完整回查，正文全读；运行调用链、工具学习、结构约束、API/MCP、认证、并发、恢复和端到端评测形成连贯链路。原有细节充足，但训练损失、mask和评测比例的前置解释不足，已补齐。",
+  "issues_and_fixes": [
+    {
+      "file": "11-768/2.ToolUse/SOURCES.md",
+      "issue": "已归档的Qwen2.5/Qwen3.8模板和DeepSeek编码器只有远程入口",
+      "fix": "补齐三个现有本地文件链接；原始资料未改写"
+    },
+    {
+      "issue": "读者容易在模型名和接口细节中失去主线",
+      "fix": "以Java接口调用桥接，提供运行链→可靠性→能力来源的学习路线与三个可检验成果"
+    },
+    {
+      "issue": "Toolformer公式默认负对数损失、求和和条件概率知识",
+      "fix": "增加概率0.1→0.8与损失2.303→0.223的解释，逐项定义j、权重、条件概率和空内容"
+    },
+    {
+      "issue": "token masking和precision/recall缺少可手算的前置例子",
+      "fix": "增加0.6/0.3/0.1屏蔽归一化例子，以及20请求、8必要、10调用、6正确的60%/75%例子"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "pass": 1,
+      "sha256": "084df2819ec3f2c1acd52bec6d38cb4aea3ec540035b58805375e70a147bfe93",
+      "ranges": [
+        [
+          1,
+          400
+        ],
+        [
+          401,
+          800
+        ],
+        [
+          801,
+          1200
+        ],
+        [
+          1201,
+          1600
+        ],
+        [
+          1601,
+          2000
+        ],
+        [
+          2001,
+          2400
+        ],
+        [
+          2401,
+          2694
+        ]
+      ],
+      "result": "passed; full final text including extended training/API sections, questions and source appendix"
+    },
+    {
+      "pass": 2,
+      "sha256": "084df2819ec3f2c1acd52bec6d38cb4aea3ec540035b58805375e70a147bfe93",
+      "ranges": [
+        [
+          1,
+          450
+        ],
+        [
+          451,
+          900
+        ],
+        [
+          901,
+          1350
+        ],
+        [
+          1351,
+          1800
+        ],
+        [
+          1801,
+          2250
+        ],
+        [
+          2251,
+          2694
+        ]
+      ],
+      "result": "passed; independent learning-path, prerequisite, mechanism and example review of complete final document"
+    }
+  ],
+  "validation": {
+    "normalize_arguments": "实际执行字典/JSON对象两正例和数组/不完整JSON/None三负例，全部通过",
+    "numerical_checks": "CodeAct74.4−52.4=22.0百分点、74.4−53.7=20.7百分点，与轮数7.6−5.5/7.7−5.5分别对应；并行延迟6.4/2.8一致",
+    "teaching_arithmetic": "Checked -ln(0.1), -ln(0.8), masked probabilities2/3,1/3,0, precision6/10 and recall6/8"
+  },
+  "limitations": [
+    "没有运行模型/API/GPU/CodeAct或XGrammar基准",
+    "40项扩展参考未逐篇全文重读；回查主讲义全文及本文列出的高风险机制和数字，其他已有版本说明保留"
+  ],
+  "pedagogical_review": {
+    "reader": "LLM developer with Java experience; functions/JSON/service calls assumed, model training and constrained decoding not assumed",
+    "logic": "definition -> model/runtime chain -> training -> constraint -> interface/protocol -> scheduling -> evaluation",
+    "organization": "Added explicit reading route separating runtime, reliability and learning mechanisms",
+    "prerequisites": "NLL, logits/softmax/mask, probability notation and precision/recall explained before use",
+    "examples": "General interface/caller boundary anchors the lesson; existing analysis scenario remains one separate transfer case",
+    "self_check": "All 12 question-answer cues map to mechanisms discussed in the text; reading route adds three practical transfer outcomes"
+  }
+}

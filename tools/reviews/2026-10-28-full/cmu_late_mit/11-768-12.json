@@ -1,0 +1,167 @@
+{
+  "note": "11-768/12.TrainingRLSystems/notes.zh-CN.md",
+  "original_sha256": "a3d34a54ddb21bc16159d80a0baec5cc4908f0074fcc132c2590b21f34e85dc3",
+  "final_sha256": "ff454afbd85a02f0ef93efd9bdea5ab0b225e09fe3bdb77125067c9bc85b572e",
+  "status": "passed_after_fix",
+  "full_text_reads": [
+    {
+      "round": "initial",
+      "line_ranges": [
+        [
+          1,
+          220
+        ],
+        [
+          221,
+          440
+        ],
+        [
+          441,
+          633
+        ]
+      ]
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "11-768/12.TrainingRLSystems/SOURCES.md",
+      "actual_range": "全文"
+    },
+    {
+      "path": "11-768/12.TrainingRLSystems/REFERENCES.json",
+      "actual_range": "全文"
+    },
+    {
+      "path": "11-768/12.TrainingRLSystems/lecture-12-rl-systems.pdf",
+      "pages": [
+        1,
+        43
+      ],
+      "version": "本地43页归档",
+      "actual_range": "全部43页提取文本；图表目视14、17、19、20、37、40页"
+    },
+    {
+      "path": "11-768/12.TrainingRLSystems/references/Fast_Inference_from_Transformers_via_Speculative_Decoding.pdf",
+      "version": "arXiv:2211.17192v2  [cs.LG]  18 May 2023",
+      "pages": [
+        2,
+        5
+      ],
+      "actual_range": "所列连续PDF页全文；DTA另目视7—8页图表"
+    },
+    {
+      "path": "11-768/12.TrainingRLSystems/references/Training_Deep_Nets_with_Sublinear_Memory_Cost.pdf",
+      "version": "arXiv:1604.06174v2  [cs.LG]  22 Apr 2016",
+      "pages": [
+        2,
+        5
+      ],
+      "actual_range": "所列连续PDF页全文；DTA另目视7—8页图表"
+    },
+    {
+      "path": "11-768/12.TrainingRLSystems/references/SGLang_Efficient_Execution_of_Structured_Language_Model_Programs.pdf",
+      "version": "arXiv:2312.07104v2  [cs.AI]  6 Jun 2024",
+      "pages": [
+        3,
+        5
+      ],
+      "actual_range": "所列连续PDF页全文；DTA另目视7—8页图表"
+    },
+    {
+      "path": "11-768/12.TrainingRLSystems/references/AReaL_A_Large-Scale_Asynchronous_Reinforcement_Learning_System_for_Language_Reasoning.pdf",
+      "version": "arXiv:2505.24298v5  [cs.LG]  2 Mar 2026",
+      "pages": [
+        4,
+        7
+      ],
+      "actual_range": "所列连续PDF页全文；DTA另目视7—8页图表"
+    },
+    {
+      "path": "11-768/12.TrainingRLSystems/references/Stabilizing_MoE_Reinforcement_Learning_by_Aligning_Training_and_Inference_Routers.pdf",
+      "version": "arXiv:2510.11370v2  [cs.CL]  21 Oct 2025",
+      "pages": [
+        4,
+        6
+      ],
+      "actual_range": "所列连续PDF页全文；DTA另目视7—8页图表"
+    },
+    {
+      "path": "11-768/12.TrainingRLSystems/references/AREAL-DTA_Dynamic_Tree_Attention_for_Efficient_Reinforcement_Learning_of_Large_Language_Models.pdf",
+      "version": "arXiv:2602.00482v2  [cs.LG]  13 Jun 2026",
+      "pages": [
+        4,
+        8
+      ],
+      "actual_range": "所列连续PDF页全文；DTA另目视7—8页图表"
+    }
+  ],
+  "coverage_assessment": "43页主讲义从双引擎到KV/前缀/连续批处理、重算、并行、同步、R3、TITO、异步、多策略/多租户和附页指标均有解释。代码修复贯穿案例、符号假设、实现步骤、成本、等价基线、故障诊断、14项自测答案完整，适合Senior AI Engineer；额外论文与工程建议明确分层。",
+  "issues_and_fixes": [
+    {
+      "issue": "8.31×加速对照基线和计时范围过于笼统，仅写相对dense。",
+      "fix": "明确Dense+CKPT、单GPU梯度计算阶段、4096-token chunk与不含优化器更新，增加R6 PDF pp.7—8。"
+    },
+    {
+      "issue": "面向LLM Developer/Java背景，直接从策略梯度和训练术语进入，前向/反向、计算图、QKV/MoE及多卡通信存在学习跳步。",
+      "fix": "新增第0节从有状态调用链解释rollout与参数更新，提前解释策略/奖励/优势/梯度/激活/显存容量和带宽；第1节释读公式；第2节用A B C说明teacher forcing与因果mask；第3节解释QKV/GQA；第8/17节补MoE、collective通信和rank。",
+      "scope": "教学桥接，不新增实验主张。"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "round": 1,
+      "sha256": "ff454afbd85a02f0ef93efd9bdea5ab0b225e09fe3bdb77125067c9bc85b572e",
+      "line_ranges": [
+        [
+          1,
+          230
+        ],
+        [
+          231,
+          450
+        ],
+        [
+          451,
+          649
+        ]
+      ],
+      "result": "最终教学修订后全文复读；问题链、术语、公式、案例和引文连贯，无新增问题。"
+    },
+    {
+      "round": 2,
+      "sha256": "ff454afbd85a02f0ef93efd9bdea5ab0b225e09fe3bdb77125067c9bc85b572e",
+      "line_ranges": [
+        [
+          1,
+          325
+        ],
+        [
+          326,
+          649
+        ]
+      ],
+      "result": "最终稿第二轮全文复读完成；未再修改。"
+    }
+  ],
+  "executable_checks": [
+    {
+      "scope": "§21三个离线断言",
+      "result": "passed",
+      "gpu_or_model_experiment": false
+    }
+  ],
+  "limitations": [
+    "未复现GPU训练、跨引擎logprob或论文加速实验。",
+    "ZoRRo、PULSE、RAO/RLM、AstraFlow、Cursor和Multi-LoRA外链仅按本地主讲义归属核对，未重新下载全部全文；笔记已显式限定。",
+    "主讲义动画/无法辨识媒体不补造。"
+  ],
+  "pedagogical_review": {
+    "reader_prerequisites": "LLM Developer及Java工程背景；接口/调用链/状态/缓存/并发/服务/测试可作为前提；不预设掌握训练公式和硬件术语。",
+    "question_chain": "一条Agent调用链如何变成可更新数据→生成与训练为何不同→如何减少生成/训练成本→如何保持跨引擎和跨版本语义→复杂历史与异步如何记录→怎样验证与诊断。",
+    "gaps_and_resolution": "原先直接写策略梯度与术语，补上第0节和就地定义后，先建立数据流和状态，再解释公式与优化。保留完整RL系统课程，未变成业务案例教程。",
+    "example": "测试驱动代码修复Agent贯穿策略、轨迹、环境、优化四种状态；静态批次槽位、精确前缀、历史压缩、token往返等微例子可手推。",
+    "organization": "保持讲义问题链；新导读指出章节依赖与前面RL算法课的角色；表格用于对比责任、成本和故障。",
+    "self_assessment": "14题检验为什么重算、缓存失效、分布保持、mask、版本、跨引擎一致性及吞吐/学习效率，答案与正文对应；离线代码只验证明确的三个小性质。",
+    "outcome": "能解释RL运行时如何生产可训练轨迹、识别优化前提，设计版本/日志和最小实验；尚不能由本文直接实现完整PPO训练器，正文明确算法边界。"
+  }
+}

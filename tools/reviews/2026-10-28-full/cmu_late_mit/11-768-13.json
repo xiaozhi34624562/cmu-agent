@@ -1,0 +1,270 @@
+{
+  "note": "11-768/13.AgentSafety/lecture-13-agent-safety-study-guide.md",
+  "original_sha256": "59b94773614fa9884318066ffc8b8b4d6526b2de877e8a94755dfa93197bb7ef",
+  "final_sha256": "59b94773614fa9884318066ffc8b8b4d6526b2de877e8a94755dfa93197bb7ef",
+  "status": "passed_unchanged",
+  "review_date": "2026-10-28",
+  "full_readings": [
+    {
+      "round": 1,
+      "sha256": "59b94773614fa9884318066ffc8b8b4d6526b2de877e8a94755dfa93197bb7ef",
+      "line_ranges": [
+        [
+          1,
+          360
+        ],
+        [
+          361,
+          720
+        ],
+        [
+          721,
+          1080
+        ],
+        [
+          1081,
+          1440
+        ],
+        [
+          1441,
+          1770
+        ],
+        [
+          1771,
+          2064
+        ]
+      ],
+      "result": "全文完成"
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "11-768/13.AgentSafety/SOURCES.md",
+      "range": "全文"
+    },
+    {
+      "path": "11-768/13.AgentSafety/lecture-13-agent-safety.pdf",
+      "pages": "1–43 全文",
+      "visual_pages": [
+        3,
+        6,
+        11,
+        12,
+        14,
+        34,
+        40,
+        42
+      ]
+    },
+    {
+      "path": "11-768/13.AgentSafety/references/Identifying_the_Risks_of_LM_Agents_with_an_LM-Emulated_Sandbox.pdf",
+      "version": "arXiv v2 2024-05-17",
+      "pages": [
+        3,
+        4,
+        6,
+        10,
+        11,
+        12
+      ],
+      "range": "指定页正文完整阅读，非全文论文"
+    },
+    {
+      "path": "11-768/13.AgentSafety/references/AgentHarm_A_Benchmark_for_Measuring_Harmfulness_of_LLM_Agents.pdf",
+      "version": "v3 2025-04-18",
+      "pages": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        8
+      ],
+      "range": "指定页正文完整阅读，非全文论文"
+    },
+    {
+      "path": "11-768/13.AgentSafety/references/AgentDojo_A_Dynamic_Environment_to_Evaluate_Prompt_Injection_Attacks_and_Defenses_for_LLM_Agents.pdf",
+      "version": "v3 2024-11-24",
+      "pages": [
+        3,
+        4,
+        5,
+        8,
+        9,
+        20
+      ],
+      "range": "指定页正文完整阅读，非全文论文"
+    },
+    {
+      "path": "11-768/13.AgentSafety/references/Security_Challenges_in_AI_Agent_Deployment_Insights_from_a_Large_Scale_Public_Competition.pdf",
+      "version": "v1 2025-07-28",
+      "pages": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "range": "指定页正文完整阅读，非全文论文"
+    },
+    {
+      "path": "11-768/13.AgentSafety/references/Jailbreaking_Black_Box_Large_Language_Models_in_Twenty_Queries.pdf",
+      "version": "v4 2024-07-18",
+      "pages": [
+        3,
+        4,
+        5
+      ],
+      "range": "指定页正文完整阅读，非全文论文"
+    },
+    {
+      "path": "11-768/13.AgentSafety/references/Nemotron_3_Super_Open_Efficient_Mixture-of-Experts_Hybrid_Mamba-Transformer_Model_for_Agentic_Reasoning.pdf",
+      "version": "2026-04-03",
+      "pages": [
+        22,
+        26,
+        27,
+        28
+      ],
+      "range": "指定页正文完整阅读，非全文论文"
+    },
+    {
+      "path": "11-768/13.AgentSafety/references/AI_Control_Improving_Safety_Despite_Intentional_Subversion.pdf",
+      "version": "v5 2024-07-23",
+      "pages": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "range": "指定页正文完整阅读，非全文论文"
+    },
+    {
+      "path": "11-768/13.AgentSafety/references/Monitoring_Reasoning_Models_for_Misbehavior_and_the_Risks_of_Promoting_Obfuscation.pdf",
+      "version": "v1 2025-03-14",
+      "pages": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "range": "指定页正文完整阅读，非全文论文"
+    },
+    {
+      "path": "11-768/13.AgentSafety/references/OpenAgentSafety_A_Comprehensive_Framework_for_Evaluating_Real-World_AI_Agent_Safety.pdf",
+      "version": "v2 2026-02-16",
+      "pages": [
+        3,
+        4,
+        5,
+        6,
+        9,
+        10,
+        16
+      ],
+      "range": "指定页正文完整阅读，非全文论文"
+    },
+    {
+      "path": "11-768/13.AgentSafety/references/Monitoring_Monitorability.pdf",
+      "version": "v1 2025-12-20",
+      "pages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "range": "指定页正文完整阅读，非全文论文"
+    },
+    {
+      "path": "11-768/13.AgentSafety/references/004_Cline_supply-chain_compromise_postmortem.html",
+      "version": "本地固定归档",
+      "range": "完整正文"
+    },
+    {
+      "path": "11-768/13.AgentSafety/references/014_Modal_sandbox_networking_and_security.html",
+      "version": "本地固定归档",
+      "range": "完整正文"
+    },
+    {
+      "path": "11-768/13.AgentSafety/references/017_E2B_sandbox_persistence.html",
+      "version": "本地固定归档",
+      "range": "完整正文"
+    },
+    {
+      "path": "11-768/13.AgentSafety/references/023_GitHub_App_installation_access_tokens.html",
+      "version": "本地固定归档",
+      "range": "完整正文"
+    },
+    {
+      "path": "11-768/13.AgentSafety/references/008_Introducing_Docent.html",
+      "version": "本地固定归档",
+      "range": "完整正文"
+    },
+    {
+      "path": "11-768/13.AgentSafety/references/013_Docker_Engine_security.html",
+      "version": "本地固定归档",
+      "range": "完整正文"
+    },
+    {
+      "path": "11-768/13.AgentSafety/references/016_Modal_sandboxes.html",
+      "version": "本地固定归档",
+      "range": "Lifecycle / Events / Timeouts / Idle Timeouts / Readiness Probes前段"
+    },
+    {
+      "path": "11-768/13.AgentSafety/references/002_PocketOS_database-deletion_incident.html",
+      "version": "本地固定归档",
+      "range": "事件叙述段落；保留二手报道限定"
+    },
+    {
+      "path": "11-768/13.AgentSafety/references/005_Gambit_Security_AI_agents_targeting_online_retailers.html",
+      "version": "本地固定归档",
+      "range": "研究说明、证据限制、成本和活动范围、数据删除与结论段落"
+    }
+  ],
+  "coverage_assessment": "从43页讲义的事故与威胁模型，经过红队/训练、沙箱、凭证和监控，到完整安全评测有连贯覆盖。补充论文分别承担不同解释角色；没有把模拟工具、有状态真实工具、行为分数和生产事故率混为一谈。工具权限、共享缓存、暂停失败、审批绑定、证据和恢复边界有实现层说明。",
+  "pedagogical_review": {
+    "reader_prerequisites": "LLM Developer及Java工程背景；接口、状态、调用链、权限、测试可作为已知知识。安全模型与统计指标不预设。",
+    "question_chain": "一次正确回答为何仍会造成损害→风险来自谁→怎样发现与减少坏行为→模型失败时怎样限制执行→怎样检查和干预→如何用对照证明效果。",
+    "conceptual_bridges": "第1章以只查询/已付款的相同回答解释轨迹；第8–9章把进程隔离与API授权分开；第10–13章从规则检查走向模型监控及混合评测。每个研究有自己的问题、机制和局限。",
+    "gaps_found": "本轮未发现阻碍理解的机制跳步。POMDP在此仅用于表达隐藏状态和行动历史，不要求读者掌握其求解算法。",
+    "examples_and_organization": "既有银行查询、代码测试、邮件、供应链等通用例子，也保留第14章材料审核的完整落地例子；不要求读者具备金融领域知识。章节连接与讲义对应表清晰，术语附录、自测及参考答案能复习推理链。",
+    "learning_outcomes": "能够从威胁模型选择执行边界与监控，设计审批/回滚/追踪流程，解释安全与效用的取舍，识别错误分母与评测捷径。",
+    "changes": "无；未为贴合业务场景缩窄通用知识体系。"
+  },
+  "issues_and_fixes": [],
+  "post_fix_full_rereads": [],
+  "visual_checks": {
+    "lecture_pages": [
+      3,
+      6,
+      11,
+      12,
+      14,
+      34,
+      40,
+      42
+    ],
+    "papers": "ToolEmu pp10–11；AgentHarm p8；AgentDojo p20；AI Control p7；CoT monitoring pp8,10；OpenAgentSafety pp6,16",
+    "result": "图例、表列、分母、对照和机制箭头与讲解一致"
+  },
+  "limitations": [
+    "未重新运行模型、攻击、GPU或真实API实验；不将已有运行记录冒充本轮运行。",
+    "产品行为按本地归档解释，未作当前在线服务验收。",
+    "论文按明确列出的高风险范围核查，未宣称阅读全部附录；事件材料存在原文声明的证据限制。"
+  ]
+}

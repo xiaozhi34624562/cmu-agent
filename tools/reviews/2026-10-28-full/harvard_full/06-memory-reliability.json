@@ -1,0 +1,200 @@
+{
+  "note": "2680/6.AgentsDesignIII.AgentMemoryAndReliability/lecture06_agent_memory_reliability.md",
+  "original_sha256": "ba0b2c8125c6c884f9bd5a6aad64c481af331fbac1d7bafa332ac6d89b2433ca",
+  "final_sha256": "aa705282548f99d66a93db6adaec56db903a233cb6e478d0bde33d34465c2692",
+  "status": "passed_with_fixes",
+  "final_line_count": 2194,
+  "full_read_ranges": [
+    {
+      "round": "initial",
+      "sha256": "ba0b2c8125c6c884f9bd5a6aad64c481af331fbac1d7bafa332ac6d89b2433ca",
+      "ranges": [
+        "1-360",
+        "361-720",
+        "721-1080",
+        "1081-1440",
+        "1441-1800",
+        "1801-2156"
+      ]
+    },
+    {
+      "round": "intermediate_full_reread_before_final_repairs",
+      "sha256": "2f539ae6f6e94ed2795ebecc87b8f8c1c06a5a93a05fc41bfd3b342b8241c1a0",
+      "ranges": [
+        "1-440",
+        "441-880",
+        "881-1320",
+        "1321-1760",
+        "1761-2194"
+      ],
+      "result": "发现E_t事件、Harness/rollout、zero/few-shot、SFT和DAG仍需先定义；修复后重做两轮。"
+    },
+    {
+      "round": "post_fix_1",
+      "sha256": "aa705282548f99d66a93db6adaec56db903a233cb6e478d0bde33d34465c2692",
+      "ranges": [
+        "1-440",
+        "441-880",
+        "881-1320",
+        "1321-1760",
+        "1761-2194"
+      ]
+    },
+    {
+      "round": "post_fix_2",
+      "sha256": "aa705282548f99d66a93db6adaec56db903a233cb6e478d0bde33d34465c2692",
+      "ranges": [
+        "1-440",
+        "441-880",
+        "881-1320",
+        "1321-1760",
+        "1761-2194"
+      ]
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "2680/6.AgentsDesignIII.AgentMemoryAndReliability/SOURCES.md",
+      "sha256": "e7fd0b060445b3fec6537563bc58a2fc833c1cccd5f3365e8c0ead15d424d61c",
+      "version": "本地归档",
+      "range": "全文；正文阅读前；本课无 README/REFERENCES.json",
+      "visually_inspected_pdf_pages": []
+    },
+    {
+      "path": "2680/6.AgentsDesignIII.AgentMemoryAndReliability/6_agent_design_3.pdf",
+      "sha256": "7ed1b959e40acc5a90e67057e521e0d3a47ad25829be10e4939908fabbac4728",
+      "version": "2026-09-28 课程讲义，31页",
+      "range": "实际 PDF pp.1–31 全文；p4空白；后半页脚偏移",
+      "visually_inspected_pdf_pages": [
+        6,
+        22,
+        30
+      ]
+    },
+    {
+      "path": "2680/6.AgentsDesignIII.AgentMemoryAndReliability/readings/Retrieval-Augmented_Generation_for_Knowledge-Intensive_NLP_Tasks.pdf",
+      "sha256": "23e3249e9a1e75418d82efecab0ea8c4d033b89c93742f63208d47ce01f21233",
+      "version": "arXiv:2005.11401v4，2021-04-12",
+      "range": "pp.1–8全文；机制、两种生成、联合训练、各任务/消融、时态索引和证据边界",
+      "visually_inspected_pdf_pages": [
+        2,
+        7,
+        8
+      ]
+    },
+    {
+      "path": "2680/6.AgentsDesignIII.AgentMemoryAndReliability/readings/MemGPT_Towards_LLMs_as_Operating_Systems.pdf",
+      "sha256": "9f674bcff69c86f11c813dcfad613d8841f5f8ed17979e3c4df06a91df7762e0",
+      "version": "arXiv:2310.08560v2，2024-02-12",
+      "range": "pp.1–8全文；架构权限、控制流、历史回忆/开场/文档QA/嵌套键值实验",
+      "visually_inspected_pdf_pages": [
+        3,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "path": "2680/6.AgentsDesignIII.AgentMemoryAndReliability/readings/Where_LLM_Agents_Fail_and_How_They_can_Learn_From_Failures.pdf",
+      "sha256": "5dea81aa176cf3993123c46f2cef3e70c49a4fe5f2a5c6794c4b9fbc8f532a6b",
+      "version": "arXiv:2509.25370v1，2025-09-29",
+      "range": "pp.1–9、12–14、19–21全文；分类、方法/算法、实验、限制与提示模板",
+      "visually_inspected_pdf_pages": [
+        5,
+        7,
+        8
+      ]
+    },
+    {
+      "path": "2680/6.AgentsDesignIII.AgentMemoryAndReliability/readings/Why_Do_Multi-Agent_LLM_Systems_Fail.pdf",
+      "sha256": "1b9e317a2a421e60ca2b2eda4a30844557a01e63286a790890c0ecef32d25460",
+      "version": "arXiv:2503.13657v3，2025-10-26",
+      "range": "pp.1–8、26–27全文；方法、14类别、PhoneAgent、样本分母与干预实验",
+      "visually_inspected_pdf_pages": [
+        2,
+        6,
+        8,
+        27
+      ]
+    },
+    {
+      "path": "2680/6.AgentsDesignIII.AgentMemoryAndReliability/readings/Reasoning_Failures_in_Large_Language_Model_Agents.pdf",
+      "sha256": "fa4a400e0cd34f4b9c8381f6424dbb641815e6e1cff27c017bc2450c6845daf1",
+      "version": "归档16页，正文实际标题Beyond the Leaderboard；PDF无arXiv修订标记",
+      "range": "pp.1–14全文；方法、六类失败、综合论点与局限；未读15–16",
+      "visually_inspected_pdf_pages": []
+    },
+    {
+      "path": "2680/6.AgentsDesignIII.AgentMemoryAndReliability/readings/The_Danger_of_Overthinking_Examining_the_Reasoning-Action_Dilemma_in_Agentic_Tasks.pdf",
+      "sha256": "49c65719e1756597e41ddde8677894d133691a90b7fbe1652ea6c832c45eb5b6",
+      "version": "arXiv:2502.08235v1，2025-02-12",
+      "range": "pp.1–8全文；定义、评分、预算/采样、成本和函数调用对照",
+      "visually_inspected_pdf_pages": [
+        2,
+        4,
+        7
+      ]
+    }
+  ],
+  "coverage_assessment": {
+    "lecture": "31页主讲义全文核对：持久记忆与窗口、六生命周期问题、四种编码/存储、三读取策略、五检索信号、归纳/遗忘/时态/所有权、八故障、评估、独立错误累积、五层故障和面向失败设计均已覆盖；补回第12页归纳触发时机。",
+    "mechanisms": "六阅读分别解释检索联合训练、上下文分层调度、关键错误与重展开、组织交接、测量有效性、推理与环境反馈。完整保留AgentDebug算法与正文冲突、MAST图分母、Overthinking不同成本基线，不拼接为统一实验。",
+    "implementation_and_diagnosis": "证据/事实/执行/经验四逻辑记录→任务合同→状态准入→版本绑定→依赖失效→检查点/外部副作用→故障注入/消融/验收，形成完整实现思路。"
+  },
+  "pedagogical_review": {
+    "reader_prerequisites": "LLM Developer/Java；熟悉接口、缓存、并发、状态与测试，不预设概率、训练梯度或统计。新增开篇明确前提。",
+    "question_chain": "错误被摘要持久化的失败轨迹→四类状态→RAG读取→MemGPT主动调度→生命周期治理→单步与恢复→错误定位/反馈/团队交接→测量→数据结构与验收；章间依赖合理。",
+    "prerequisites_and_steps": "补πθ/条件/采样、token与编码器、隐变量/边缘化/乘积、负对数/softmax/偏导/学习率及固定候选梯度；两个文档两个token手算0.09vs0.25与责任权重/分数更新；补ROUGE-L、P/R/F1、κ、宏平均/加权、条件恢复、候选存在率×选择率、p值定义。",
+    "cases": "保留原稿A/C实体身份贯穿案例（完整错误链、JSON记录、恢复与自测），说明无需金融前置；新增通用v1/v2接口和后台旧摘要覆盖新状态案例及应用自测，未虚构用户项目。",
+    "organization": "14章较长但导航、讲义对照和来源差异附录清楚；新增两遍阅读路线，先系统机制再训练/实验证据。首次使用术语已前置解释；机制与实验各自闭环。",
+    "learning_outcomes": "能从API表面成功追到语义状态错误，解释外部记忆更新与参数训练差异，手算RAG/恢复/选择，设计版本状态与可恢复验收；9道自测有可核对答案。",
+    "fixes": "补必要前置和演算，而非仅核对数字；补讲义归纳时机缺口；保留正确来源边界和工程流程。"
+  },
+  "issues_and_fixes": [
+    {
+      "issue": "RAG公式、梯度、概率与评估统计跳过定义和中间步骤",
+      "fix": "逐处补符号、直觉、手算、假设与分母，使开发者能读懂训练和测量，而非背结论。"
+    },
+    {
+      "issue": "讲义p12何时归纳未完整展开",
+      "fix": "补事件数/上下文/冲突重复触发、后台归纳及明确标注的版本冲突工程推演。"
+    },
+    {
+      "issue": "通用开发经验起点和部分首次术语不足",
+      "fix": "补接口版本/缓存案例、Harness轨迹定义、zero/few-shot与SFT/DAG解释、两道应用自测；中间复读再修后重新两遍完整阅读。"
+    }
+  ],
+  "post_fix_full_rereads": [
+    {
+      "round": 1,
+      "sha256": "aa705282548f99d66a93db6adaec56db903a233cb6e478d0bde33d34465c2692",
+      "ranges": [
+        "1-440",
+        "441-880",
+        "881-1320",
+        "1321-1760",
+        "1761-2194"
+      ],
+      "result": "全文完成，定义、机制、案例状态、来源边界与自测相互一致，无新实质问题。 441–880首次请求未返回正文，跨压缩后完整重读该段；未将失败输出计为阅读。"
+    },
+    {
+      "round": 2,
+      "sha256": "aa705282548f99d66a93db6adaec56db903a233cb6e478d0bde33d34465c2692",
+      "ranges": [
+        "1-440",
+        "441-880",
+        "881-1320",
+        "1321-1760",
+        "1761-2194"
+      ],
+      "result": "全文完成，定义、机制、案例状态、来源边界与自测相互一致，无新实质问题。"
+    }
+  ],
+  "limitations": [
+    "主讲义全文已读；六辅助论文仅声明所列实际范围，未声称未读附录全文。",
+    "20张关键PDF页已渲染目视；综述仅用于分类与论证，未把其二手汇总数字作为新实测。",
+    "Beyond the Leaderboard来源URL及线上版本未独立核验，以本地16页PDF为依据，正文明确限制。",
+    "没有GPU/模型/API/论文实验复现；伪代码与JSON是教学结构，新增数值是手算示例，非部署效果。",
+    "原始资料未改；未运行整理同步或修改课程根审核记录。"
+  ]
+}
