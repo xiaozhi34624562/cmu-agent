@@ -1,0 +1,40 @@
+# Part 5: the final run, asynchronous GRPO on TextCraft-Synth (medium difficulty).
+# Differs from p3: the textcraft env, thinking enabled with max_tokens 512,
+# 16 groups of 8 per step from 32 rollout workers, and max_staleness 4.
+# Run it unchanged with scripts/train_async.py: Part 5 is a single hero run
+# with this configuration (see ASSIGNMENT.md).
+model:
+  base_model: Qwen/Qwen3.5-4B
+  chat_template: scottyrl/chat_templates/qwen3_5.jinja
+  enable_thinking: true       # TextCraft: let the model plan before each tool call
+  preserve_thinking_history: true
+  lora_rank: 32
+  max_tokens: 512             # per turn: thinking plus craft() calls with dict args need room
+  temperature: 1.0
+
+train:
+  env: textcraft
+  agent: xml_toolcall
+  algo: grpo
+  group_size: 8
+  groups_per_batch: 16
+  # 32 workers keep 256 episodes in flight, enough to keep three sampling GPUs
+  # busy. (num_workers + queue_capacity) / groups_per_batch stays below
+  # max_staleness: that ratio is how many versions old a group can be when a
+  # slow learner finally trains on it.
+  num_workers: 32
+  max_staleness: 4
+  queue_capacity: 16
+  loss_fn: ppo
+  lr: 1.0e-5
+  grad_clip_norm: 1.0
+  num_steps: 50
+  eval_every: 10
+  eval_k: 4
+  eval_tasks: 50
+  seed: 11768
+  run_name: p5_textcraft_grpo
+  resume: false               # --set train.resume=true to continue after a crash
+  resume_save_every: 10       # resumable checkpoint every N optimizer steps
+  trajectory_log_every: 5     # full transcripts every N steps under runs/
+  # wandb_project: 11768-a3   # uncomment (or --set) to enable wandb

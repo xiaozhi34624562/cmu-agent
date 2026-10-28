@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+runs/
+wandb/
+.venv/
+.env
+.DS_Store
+# Zip-based submission artifacts (scripts/package_submission.py).
+submission*.zip
+submission/

@@ -358,7 +358,7 @@ def write_sources(mirrored: dict[str, Path], readings: dict[str, list[str]], sav
     if not site_failures and not reading_failures:
         lines.append("- 无。")
     else:
-        for url, error in site_failures + reading_failures:
+        for url, error in sorted(site_failures + reading_failures):
             lines.append(f"- {url} — {error.replace(chr(10), ' ')[:180]}")
     (ROOT / "SOURCES.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 

@@ -1,0 +1,306 @@
+{
+  "repository": "https://github.com/cmu-agents/assignment-3",
+  "commit": "88d1b1fa2aea58938d6d251847ce5559c4ac6558",
+  "commit_date": "2026-10-25T21:07:03-04:00",
+  "snapshot_date": "2026-10-28",
+  "status": "saved",
+  "scope": "Unmodified upstream tracked files; no nested .git, dependencies, model weights, runs or credentials. Archive metadata is maintained separately.",
+  "file_count": 59,
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "863b473653c56b04f977f675c40ce1b7ec8cb7feaa7b74c393b02d3312f795ea",
+      "bytes": 175
+    },
+    {
+      "path": "ASSIGNMENT.md",
+      "sha256": "4cd525a37999d5e61b926ea5b0caaf29c3ccc81d1a63c2fb6f8d8e0555519920",
+      "bytes": 32887
+    },
+    {
+      "path": "README.md",
+      "sha256": "e89b8ed245e25eda2efecca74b8c8486e68c006146d2144021e35106327e681f",
+      "bytes": 10311
+    },
+    {
+      "path": "assets/scottyrl-logo.webp",
+      "sha256": "93a3e601927ba9a5c44c7f63d9932825c2180b07a529773de4cdcd51a6d39e0f",
+      "bytes": 142962
+    },
+    {
+      "path": "configs/p2a_number_search_reinforce.yaml",
+      "sha256": "1c39c236965b07375946772f20ff24b9e3dfc8aedc2b68b428f412d909af9f11",
+      "bytes": 1055
+    },
+    {
+      "path": "configs/p2b_number_search_grpo.yaml",
+      "sha256": "f31e7002033d928509f8fb1f50096f72389fcc78d48ba286a7c5fdd0a73c56f7",
+      "bytes": 971
+    },
+    {
+      "path": "configs/p3_number_search_async.yaml",
+      "sha256": "c4dc1fdd613b6720c852c7daa5244fb50ead760d30f13998dabd8973eb424e84",
+      "bytes": 1152
+    },
+    {
+      "path": "configs/p41_number_search_grpo_g2.yaml",
+      "sha256": "f48d4ebb8b51686fe1e03ea988884fbe317ec125f7e7efba1d3e9342c64bdbb7",
+      "bytes": 1016
+    },
+    {
+      "path": "configs/p43_number_search_async_stale4_iw.yaml",
+      "sha256": "1d33306fe8a06c6653fe98fa81fb61ac26498a8c2ece28d067ccb93f8f0badeb",
+      "bytes": 1160
+    },
+    {
+      "path": "configs/p43_number_search_async_stale4_noiw.yaml",
+      "sha256": "b885f0a32d3bcb1b4ea74a1d783ce075c00c2e6d148e56faf45a1d8efa684d01",
+      "bytes": 1204
+    },
+    {
+      "path": "configs/p5_textcraft_grpo.yaml",
+      "sha256": "3945e3cc5734285ad140238fcade5c2cdb9a025940635ecc6bac52ea326b4f41",
+      "bytes": 1577
+    },
+    {
+      "path": "configs/required_runs.yaml",
+      "sha256": "58a65560d56f413a9b1304954bd62605378bb1dce47a900b0d390b411b3afbc9",
+      "bytes": 782
+    },
+    {
+      "path": "data/README.md",
+      "sha256": "e418c971054d83c041c27ddcf401295cff11ff86a57819435ee5a43955dfa41d",
+      "bytes": 1016
+    },
+    {
+      "path": "data/number_search_train.jsonl",
+      "sha256": "cae438c86221f97eac794d08725c37c81f710fe5f79105f9cffd86bd5f59b470",
+      "bytes": 7933244
+    },
+    {
+      "path": "data/number_search_val.jsonl",
+      "sha256": "d972f285ca634c556b4acedab9c02fc0696e90ca7028e04a90c255115f15e475",
+      "bytes": 154839
+    },
+    {
+      "path": "data/textcraft_recipes.json",
+      "sha256": "ff86f237708e53eb45f9e208536b8f3548508e9363b85830c7b06a1b60a45c52",
+      "bytes": 139725
+    },
+    {
+      "path": "data/textcraft_train.jsonl",
+      "sha256": "8a4aaa73020080d22eeefa8916b32d188480bb1499f570d0481ee4731da2ee4b",
+      "bytes": 294773
+    },
+    {
+      "path": "data/textcraft_val.jsonl",
+      "sha256": "a3d4758529034ed888ad4e49aec3ba2619c58a7cd9e23c6968e9a3769e002ded",
+      "bytes": 73197
+    },
+    {
+      "path": "data/textcraft_val_hard.jsonl",
+      "sha256": "9082f04056af4649384700dfeca8c749220987f171f6cf0124852bd009ca9265",
+      "bytes": 51976
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "bec397537a0f339a43ab6e9e1686de1fab2f546672a4c2d1cae29c6c489fc538",
+      "bytes": 1175
+    },
+    {
+      "path": "scottyrl/__init__.py",
+      "sha256": "b0045613abeb1bff373b1c02208cd17019b5c977b7efcbce9cc1db0fcc709d81",
+      "bytes": 146
+    },
+    {
+      "path": "scottyrl/advantages.py",
+      "sha256": "7482f7f0f7d6cb0cf3ec92ed204e9fb2bd50abc0e8948b11fceab3b2f3473161",
+      "bytes": 1669
+    },
+    {
+      "path": "scottyrl/agents/__init__.py",
+      "sha256": "fd9d15d68a3a75d768eaa3242d1e241ceaa6018d3537b477c8ae5aedadc26fdf",
+      "bytes": 630
+    },
+    {
+      "path": "scottyrl/agents/base.py",
+      "sha256": "b91da9147e8b224f592c8a4ae72a60d053a7e4aff0e126df71cd17151949cf67",
+      "bytes": 1693
+    },
+    {
+      "path": "scottyrl/agents/xml_tool_call.py",
+      "sha256": "a9b9d6fc17fb5bd1fa2fa1c7bb283e9ee067f1058bc7ba4964e89c798c6c49e6",
+      "bytes": 8172
+    },
+    {
+      "path": "scottyrl/chat_templates/qwen3_5.jinja",
+      "sha256": "e41e0f040a800afa6454037b808ad883939c48a9a907d4864a7c9881730fab8d",
+      "bytes": 3600
+    },
+    {
+      "path": "scottyrl/config.py",
+      "sha256": "5009790adef5d43c13e2dcd42c0868811d7bd3cc88e5982eb502fd36e5d91ae3",
+      "bytes": 15406
+    },
+    {
+      "path": "scottyrl/datagen.py",
+      "sha256": "5bb662b08271f81e445f44a7dd205b0a5c3c5bc04ef265c817f94de567326624",
+      "bytes": 4232
+    },
+    {
+      "path": "scottyrl/envs/__init__.py",
+      "sha256": "6c456175544982d94fd3241721290f580b12b884fd006699012ef5b56f82f0be",
+      "bytes": 697
+    },
+    {
+      "path": "scottyrl/envs/base.py",
+      "sha256": "073a50438af1c00d11b770fc81944b12f4c4f4a54836e59bb6cf18bfede8aa91",
+      "bytes": 2062
+    },
+    {
+      "path": "scottyrl/envs/number_search.py",
+      "sha256": "4f5f42305a19a3a0dcc1b88075d26b9b3cffd23322637f90544448ab9a6f69b9",
+      "bytes": 1700
+    },
+    {
+      "path": "scottyrl/envs/textcraft/__init__.py",
+      "sha256": "97aec285ccd4774068a185cec234584b57bed1306e9e5a8878d19c3825bf4ae1",
+      "bytes": 269
+    },
+    {
+      "path": "scottyrl/envs/textcraft/env.py",
+      "sha256": "c8e78fef79ec9334fd81720effe5d8a2b9e2a9f5b1bbbd6826b8c49e633b692b",
+      "bytes": 8886
+    },
+    {
+      "path": "scottyrl/envs/textcraft/recipe_book.py",
+      "sha256": "933e85abe65d766c2266dff9c758cd2400a36b8789bd068e092a1d497ebcead7",
+      "bytes": 2234
+    },
+    {
+      "path": "scottyrl/evaluate.py",
+      "sha256": "99445decb55b20a82d63b5d93ecd8750139bcd22cd0a313ead0c3cd41ab82d97",
+      "bytes": 2574
+    },
+    {
+      "path": "scottyrl/metrics.py",
+      "sha256": "653597ec98c69c7f90eadde588cfe544f4558a17559548fedff76bd0ff0b63f2",
+      "bytes": 24734
+    },
+    {
+      "path": "scottyrl/policy.py",
+      "sha256": "af58fa997b291c2760530d3663074c276d582670404cb0f3ff845dca6ef3c43f",
+      "bytes": 14360
+    },
+    {
+      "path": "scottyrl/rollout.py",
+      "sha256": "66a9a16416cfcf1b1992a03d67d0110a8acb83d24422219eb9db75633355552b",
+      "bytes": 6758
+    },
+    {
+      "path": "scottyrl/tinker_adapter.py",
+      "sha256": "096969d0075875af860d01e2694faf328d63cd04c4d3d61dc79d26ca53ed7422",
+      "bytes": 27920
+    },
+    {
+      "path": "scottyrl/train/__init__.py",
+      "sha256": "602a2ef982529182714db8f0f8356d024be36016c0a336de695acc5523f1b13c",
+      "bytes": 115
+    },
+    {
+      "path": "scottyrl/train/async_grpo.py",
+      "sha256": "d6a1a2b6eb1df499875c53ac0517408b98f178ab600a9391f42985bcd9997fb7",
+      "bytes": 20046
+    },
+    {
+      "path": "scottyrl/train/common.py",
+      "sha256": "0e07903a165a679efb000aa659f6a20c4fb688e46703c5cbd1e75368cde3e02f",
+      "bytes": 2880
+    },
+    {
+      "path": "scottyrl/train/sync.py",
+      "sha256": "9e8f86a27fb4b685bb0cf0d234b02d1175e3f8542fa8021e2e3766b0b7806a29",
+      "bytes": 10946
+    },
+    {
+      "path": "scottyrl/types.py",
+      "sha256": "12f9262a3ebd640078ef4f61fd5ca663dc0ae337ab552cd0c18460f0ffe22025",
+      "bytes": 4877
+    },
+    {
+      "path": "scripts/evaluate_checkpoint.py",
+      "sha256": "5850d1c51bfaa74960ba6560d59643ac177270763597b74bc61079cb195d9468",
+      "bytes": 4755
+    },
+    {
+      "path": "scripts/export_checkpoint.py",
+      "sha256": "6b25239643e2cfe3a7417a431bdd349004d25e04264c33f2cecdabe97c971472",
+      "bytes": 17786
+    },
+    {
+      "path": "scripts/package_submission.py",
+      "sha256": "1895b5faaa8efdf93b9c1386cc6610f6a785cce45c26f2b2dc152cec2b276555",
+      "bytes": 12281
+    },
+    {
+      "path": "scripts/train_async.py",
+      "sha256": "8f02a969ab132443dbaf2ab8ca87b1c34536eb3a27b718e9280636411257cb40",
+      "bytes": 4525
+    },
+    {
+      "path": "scripts/train_sync.py",
+      "sha256": "58939a4e280f273489eaccf3654fc7fdf49bb5a9ebdda1b52be2480b0f570a81",
+      "bytes": 3947
+    },
+    {
+      "path": "skyrl_tinker_modal/README.md",
+      "sha256": "09732261fca951a8af396f3c59cffaa22e838a28499605cc1377ef5bd5d0505c",
+      "bytes": 14048
+    },
+    {
+      "path": "skyrl_tinker_modal/serve_evaluation.py",
+      "sha256": "9d72737f0c885e41dccfa882f6c94ab557f54dcda35c533c66f299f7ede81896",
+      "bytes": 2474
+    },
+    {
+      "path": "skyrl_tinker_modal/serve_number_search_async.py",
+      "sha256": "bd3d798776137ed690feb23b211ccd81cdbf359d6dd358390fa7ac678f25f3d0",
+      "bytes": 1533
+    },
+    {
+      "path": "skyrl_tinker_modal/serve_number_search_sync.py",
+      "sha256": "9c9cb5566f31eb3725e0b9fc1c135e3c4f3faf2a9360451ce091f0813b8a53c7",
+      "bytes": 1478
+    },
+    {
+      "path": "skyrl_tinker_modal/serve_textcraft.py",
+      "sha256": "f91cf3ba84a0e79aa627c317f81b7bc060f7571925f3b15ea2135a215258e4c0",
+      "bytes": 1429
+    },
+    {
+      "path": "skyrl_tinker_modal/skyrl_server.py",
+      "sha256": "5f72fdc29a7531410188dc5510290fdd50f23d9f1f6f76af3f6deae5e8c748e4",
+      "bytes": 11100
+    },
+    {
+      "path": "tests/test_contracts.py",
+      "sha256": "69477f01bf179aebf595355e90be87e3108fff2b1d7bd4421d000be9716a8341",
+      "bytes": 12733
+    },
+    {
+      "path": "tests/test_envs.py",
+      "sha256": "eb9f7541a19d55b5f2e1e58c02b3e3ed04feed847047019f150f96624f58821d",
+      "bytes": 10737
+    },
+    {
+      "path": "tests/test_interfaces.py",
+      "sha256": "f69b8ce98760a535b6f6e5ac65c1d7c0d7893068ef299359eadbee726c2698b6",
+      "bytes": 5093
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "1268b7eb868b046672136901c4e5ebe2872f68eabf691358fc0615069ac4931a",
+      "bytes": 606545
+    }
+  ]
+}

@@ -7,6 +7,13 @@
 - [Lecture 4 slides](lecture-04-memory-and-skills.pdf)
   - Source: https://www.cmu-agents.com/slides/lecture-04-memory-and-skills.pdf
 
+## Course Video
+
+- [Lecture 4 official video](https://www.youtube.com/watch?v=6zigF2a-2Pw&list=PLSN0qpDfUvTM&index=4)
+  - Source: https://www.youtube.com/watch?v=6zigF2a-2Pw&list=PLSN0qpDfUvTM&index=4
+  - Checked: 2026-10-28 (Asia/Shanghai); linked from the official course schedule.
+  - Status: 仅登记官方视频入口；未下载视频或字幕，未将视频内容作为本轮讲解核验依据。
+
 ## Readings
 
 - [OpenHands: How to Create Effective Agent Skills](readings/001_OpenHands_How_to_Create_Effective_Agent_Skills.html)

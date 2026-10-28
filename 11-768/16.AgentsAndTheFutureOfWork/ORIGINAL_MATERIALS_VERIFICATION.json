@@ -1,0 +1,156 @@
+{
+  "checked_at_utc": "2026-10-28T08:26:47.292558+00:00",
+  "scope": "Full-page text parse, PDF signatures, page counts and recorded SHA-256. Does not imply every reference page visually inspected or semantically reviewed.",
+  "files": [
+    {
+      "path": "11-768/16.AgentsAndTheFutureOfWork/2026-10-27-zora-wang.pdf",
+      "pages": 62,
+      "sha256": "e07e9da87a97680981fca5b3ba766a7c620c83e8c1515fb75a798fe5812b79b1",
+      "matches_index": true,
+      "parse_warnings": ""
+    },
+    {
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/GDPval_Evaluating_AI_Model_Performance_on_Real-World_Economically_Valuable_Tasks.pdf",
+      "pages": 29,
+      "sha256": "37c7604bc9da68cd8d9345ad16938164fe985182ad723fcb09e9415f84dc25d4",
+      "matches_index": true,
+      "parse_warnings": ""
+    },
+    {
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/Remote_Labor_Index_Measuring_AI_Automation_of_Remote_Work.pdf",
+      "pages": 31,
+      "sha256": "7bc1e50585429c83a93a8045fdaa654ba074c4fa3a35671613024de69c46d2ed",
+      "matches_index": true,
+      "parse_warnings": "premature end of data in flate filter\n... repeated 6 times..."
+    },
+    {
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/Future_of_Work_with_AI_Agents_Auditing_Automation_and_Augmentation_Potential_across_the_U.S._Workforce.pdf",
+      "pages": 45,
+      "sha256": "8cea403d86046b14a9296991b91f659192b0aedf3d86806faeeecce3a81d962a",
+      "matches_index": true,
+      "parse_warnings": "premature end of data in flate filter\n... repeated 34 times..."
+    },
+    {
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/GPTs_are_GPTs_An_Early_Look_at_the_Labor_Market_Impact_Potential_of_Large_Language_Models.pdf",
+      "pages": 36,
+      "sha256": "af3edd4efc120c70f0e2e6dc7a4e314a41f1b9eb5a7e88bc25533db631f79632",
+      "matches_index": true,
+      "parse_warnings": ""
+    },
+    {
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/Canaries_in_the_Coal_Mine_Six_Facts_about_the_Recent_Employment_Effects_of_Artificial_Intelligence.pdf",
+      "pages": 140,
+      "sha256": "c8d2e5c4ccc0de7ef977c191c144726d6073e164b33f30397fcb0090165d2bdf",
+      "matches_index": true,
+      "parse_warnings": ""
+    },
+    {
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/Measuring_AI_Ability_to_Complete_Long_Software_Tasks.pdf",
+      "pages": 45,
+      "sha256": "29216eb3af4daa417666757a462ab7c7b5f8c18c188ee5a56e258b04116211f7",
+      "matches_index": true,
+      "parse_warnings": ""
+    },
+    {
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/How_Well_Does_Agent_Development_Reflect_Real-World_Work.pdf",
+      "pages": 24,
+      "sha256": "3911d2d529c297fc8e00ab66a10b1f2a1084a8cade5e439849b648d56b7b6246",
+      "matches_index": true,
+      "parse_warnings": ""
+    },
+    {
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/CollabSkill_Evaluating_Human-Agent_Collaboration_On_Real-World_Tasks.pdf",
+      "pages": 28,
+      "sha256": "ae47c83fbe88fb05e60809f061f6f7e05ed87967db3b7a079254b3f6e80703cc",
+      "matches_index": true,
+      "parse_warnings": ""
+    },
+    {
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/Efficient_Test-Time_Adaptation_through_Human-AI_Interaction.pdf",
+      "pages": 30,
+      "sha256": "ad19a223bd6d9f92758c536e10d6c64821f4b38e8c11a9bba8d5613a4c229675",
+      "matches_index": true,
+      "parse_warnings": "Actualtext with no position. Text may be lost or mispositioned.\n... repeated 4 times..."
+    }
+  ],
+  "total_pages": 470,
+  "errors": [],
+  "repeated_fetches_for_flate_warnings": [
+    {
+      "path": "references/Remote_Labor_Index_Measuring_AI_Automation_of_Remote_Work.pdf",
+      "url": "https://arxiv.org/pdf/2510.26787v1",
+      "status": 200,
+      "bytes": 11494857,
+      "content_length": "11494857",
+      "sha256": "7bc1e50585429c83a93a8045fdaa654ba074c4fa3a35671613024de69c46d2ed",
+      "same_bytes_as_archive": true
+    },
+    {
+      "path": "references/Future_of_Work_with_AI_Agents_Auditing_Automation_and_Augmentation_Potential_across_the_U.S._Workforce.pdf",
+      "url": "https://arxiv.org/pdf/2506.06576v3",
+      "status": 200,
+      "bytes": 7097252,
+      "content_length": "7097252",
+      "sha256": "8cea403d86046b14a9296991b91f659192b0aedf3d86806faeeecce3a81d962a",
+      "same_bytes_as_archive": true
+    }
+  ],
+  "visual_spot_checks": [
+    {
+      "file": "Remote_Labor_Index_Measuring_AI_Automation_of_Remote_Work.pdf",
+      "page": 1,
+      "render_succeeded": true,
+      "warnings": ""
+    },
+    {
+      "file": "Remote_Labor_Index_Measuring_AI_Automation_of_Remote_Work.pdf",
+      "page": 4,
+      "render_succeeded": true,
+      "warnings": ""
+    },
+    {
+      "file": "Remote_Labor_Index_Measuring_AI_Automation_of_Remote_Work.pdf",
+      "page": 6,
+      "render_succeeded": true,
+      "warnings": ""
+    },
+    {
+      "file": "Future_of_Work_with_AI_Agents_Auditing_Automation_and_Augmentation_Potential_across_the_U.S._Workforce.pdf",
+      "page": 1,
+      "render_succeeded": true,
+      "warnings": ""
+    },
+    {
+      "file": "Future_of_Work_with_AI_Agents_Auditing_Automation_and_Augmentation_Potential_across_the_U.S._Workforce.pdf",
+      "page": 5,
+      "render_succeeded": true,
+      "warnings": ""
+    },
+    {
+      "file": "Future_of_Work_with_AI_Agents_Auditing_Automation_and_Augmentation_Potential_across_the_U.S._Workforce.pdf",
+      "page": 9,
+      "render_succeeded": true,
+      "warnings": ""
+    },
+    {
+      "file": "Efficient_Test-Time_Adaptation_through_Human-AI_Interaction.pdf",
+      "page": 2,
+      "render_succeeded": true,
+      "warnings": ""
+    },
+    {
+      "file": "Efficient_Test-Time_Adaptation_through_Human-AI_Interaction.pdf",
+      "page": 5,
+      "render_succeeded": true,
+      "warnings": ""
+    },
+    {
+      "file": "Efficient_Test-Time_Adaptation_through_Human-AI_Interaction.pdf",
+      "page": 6,
+      "render_succeeded": true,
+      "warnings": ""
+    }
+  ],
+  "visual_result": "Nine selected pages rendered and viewed: RLI pp1,4,6; WORKBank pp1,5,9; TAHI pp2,5,6. Text, charts and figures readable. This is not a full-page visual review of every supplemental PDF.",
+  "warning_disposition": "Original PDF bytes retained. RLI and WORKBank repeat downloads have matching Content-Length, file size and SHA-256; nonfatal parser diagnostics also occur on upstream bytes. TAHI text-position warning retained; checked relevant method pages visually."
+}

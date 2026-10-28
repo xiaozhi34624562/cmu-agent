@@ -2,7 +2,7 @@
 
 本目录按 CMU 11-768 资料库的方式，**以课次为单位**整理 Harvard CS2680: Modern AI Systems: Agents and System Optimizations（2026 年秋季学期）。目录按课程日期连续编号，名称保留官网课程原题的词语及 I、II、III 等分节标记。每个目录包含原始讲义、`readings/` 阅读文件和逐课 `SOURCES.md`；本地课次包含论文讨论课，因此目录编号不等同于官网 PDF 文件名中的编号。
 
-资料抓取日期：**2026-10-23**。[原课程网站](https://cs2680.com/) · [完整来源索引](SOURCES.md) · [课程信息](0.CourseInformation/SOURCES.md)
+官网同步日期：**2026-10-28**。[原课程网站](https://cs2680.com/) · [完整来源索引](SOURCES.md) · [课程信息](0.CourseInformation/SOURCES.md)
 
 <!-- BEGIN COURSE INDEX -->
 
@@ -67,9 +67,11 @@
 
 ## 原始归档与更新
 
+本轮更新和核查范围见 [2026-10-28 同步记录](UPDATE-2026-10-28.md)。官网页面本次重新获取；已有外部阅读复用此前归档，原论文版本与历史审核记录保持可追溯。
+
 - `site/`：课程网站的网页、幻灯片、样式和图片，保留原站目录结构。
 - `readings/`：外部论文与网页的原始下载归档；编号课次目录中有按主题命名的学习副本。
-- `assignments/course-repo/`：作业仓库的既有快照。2026-10-23 上游仓库返回不可访问，保留 2026-10-13 的固定提交；状态见 [SNAPSHOT.json](assignments/SNAPSHOT.json)。作业 4 使用课程网站的官方归档。
+- `assignments/course-repo/`：作业仓库的既有快照。2026-10-28 上游仓库仍不可访问，保留 2026-10-13 的固定提交；状态见 [SNAPSHOT.json](assignments/SNAPSHOT.json)。作业 4 使用课程网站的官方归档。
 - [CHECKSUMS.sha256](CHECKSUMS.sha256)：原始归档文件的校验值。
 
 视频和无法自动下载的网页保留在对应课次的 `SOURCES.md` 中；失败原因汇总于根目录 [SOURCES.md](SOURCES.md)。

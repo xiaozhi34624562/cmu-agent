@@ -1,0 +1,23 @@
+{
+  "checked_at_utc": "2026-10-28T08:25:14.827288+00:00",
+  "python": "3.11.10",
+  "command": "python3 11-768/16.AgentsAndTheFutureOfWork/examples/evaluation_math.py",
+  "exit_code": 0,
+  "script_sha256": "e7b14e1a8473189988404ef4dae62ad5d3f94210faa92c95ea33131e46bae516",
+  "result": {
+    "scope": "Synthetic teaching arithmetic only; no AI, human or safety experiment.",
+    "baseline_cost_per_accepted": 102.5,
+    "cheaper_model_cost_per_accepted": 108.125,
+    "reported_revenue_growth": 0.2,
+    "bad_outputs_conditioning_population": 100,
+    "conditional_false_accept_rate": 0.2,
+    "incorrect_product_of_cumulative_rates": 0.024,
+    "zero_accepted_rejected": true,
+    "assertions_passed": 6
+  },
+  "stderr": "",
+  "limitations": [
+    "All numbers are synthetic teaching inputs.",
+    "No model/API/GPU, human study, production acceptance or benchmark replication was performed."
+  ]
+}

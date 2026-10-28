@@ -7,6 +7,13 @@
 - [Lecture 5 slides](lecture-05-planning.pdf)
   - Source: https://www.cmu-agents.com/slides/lecture-05-planning.pdf
 
+## Course Video
+
+- [Lecture 5 official video](https://www.youtube.com/watch?v=S8v-dR4s29M&list=PLSN0qpDfUvTM&index=5)
+  - Source: https://www.youtube.com/watch?v=S8v-dR4s29M&list=PLSN0qpDfUvTM&index=5
+  - Checked: 2026-10-28 (Asia/Shanghai); linked from the official course schedule.
+  - Status: 仅登记官方视频入口；未下载视频或字幕，未将视频内容作为本轮讲解核验依据。
+
 ## Readings
 
 - [Cursor: Introducing Plan Mode](readings/001_Cursor_Introducing_Plan_Mode.html)

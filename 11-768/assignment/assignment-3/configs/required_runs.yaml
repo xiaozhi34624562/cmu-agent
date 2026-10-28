@@ -1,0 +1,11 @@
+# The seven required runs: train.run_name -> the config it is trained with.
+# scripts/package_submission.py reads this to collect runs/<run_name>.jsonl,
+# runs/<run_name>_trajectories/ and runs/<run_name>.checkpoints.json for each.
+# Keep the run names as they are; the graders look for exactly these files.
+p2a_number_search_reinforce: configs/p2a_number_search_reinforce.yaml
+p2b_number_search_grpo: configs/p2b_number_search_grpo.yaml
+p3_number_search_async: configs/p3_number_search_async.yaml
+p41_number_search_grpo_g2: configs/p41_number_search_grpo_g2.yaml
+p43_number_search_async_stale4_iw: configs/p43_number_search_async_stale4_iw.yaml
+p43_number_search_async_stale4_noiw: configs/p43_number_search_async_stale4_noiw.yaml
+p5_textcraft_grpo: configs/p5_textcraft_grpo.yaml

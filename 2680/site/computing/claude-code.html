@@ -179,52 +179,6 @@
             properly, so read it.</p>
 </div>
 </div>
-<div class="col-12 section" id="telemetry">
-<h1>Turning on telemetry</h1>
-<p>Alongside the per-assignment upload, Claude Code can report usage
-          <em>metadata</em> continuously to a course collector. Please switch it on in week one and leave it on for
-          the semester. It gives me a picture of how the class is getting on while the course is still running rather
-          than three weeks after each deadline. It does <strong>not</strong> replace the session archive required with
-          each assignment.
-        </p>
-<!-- TODO: stand up the collector, then replace the endpoint and token below and drop this comment.
-             Deployment runbook: docs/telemetry.md. -->
-<p>Put this in <strong><code>~/.claude/settings.json</code></strong>, your user settings rather than a
-          project's <code>.claude/settings.json</code>, which would end up committed to a repo you push:</p>
-<div class="formula">{<br/>  "env": {<br/>    "CLAUDE_CODE_ENABLE_TELEMETRY": "1",<br/>    "OTEL_METRICS_EXPORTER": "otlp",<br/>    "OTEL_LOGS_EXPORTER": "otlp",<br/>    "OTEL_EXPORTER_OTLP_PROTOCOL": "http/protobuf",<br/>    "OTEL_EXPORTER_OTLP_ENDPOINT": "https://TBD.example.harvard.edu",<br/>    "OTEL_EXPORTER_OTLP_HEADERS": "Authorization=Bearer TBD",<br/>    "OTEL_RESOURCE_ATTRIBUTES": "course=cs2680,term=fall2026"<br/>  }<br/>}</div>
-<p>If the file already exists, merge the <code>env</code> block into it rather than overwriting the file. Do
-          this on every machine you work on, the HPC included. A node that cannot reach the endpoint simply reports
-          nothing.</p>
-<div class="subsection">
-<h2>What this sends, and what it does not</h2>
-<p>You should be able to check this rather than take my word for it, so here is the whole of it. Each
-            request and each tool call produces a record carrying a timestamp, which tool ran, whether it succeeded
-            and how long it took, token counts, cost, the model, your Harvard email, and ids that group records into
-            a session.</p>
-<p><strong>No prompt text, no code, and no command strings.</strong> Content logging is off by default and
-            the course configuration above does not turn it on: the prompt field arrives as the literal string
-            <code>&lt;REDACTED&gt;</code>, and only its length is recorded. Nothing you type, nothing Claude writes,
-            no file contents, and no Bash commands leave your machine through this channel. That makes it a
-            <em>narrower</em> disclosure than the session archive you upload with each assignment, not a wider one.
-          </p>
-<p>See it for yourself before sending anything anywhere. Set
-            <code>"OTEL_METRICS_EXPORTER": "console"</code> and <code>"OTEL_LOGS_EXPORTER": "console"</code> instead of <code>"otlp"</code>, run a session, and Claude
-            Code prints its telemetry to your own terminal, exactly the records the collector would receive. The logs exporter is the one that carries the per-event records, so switching only the metrics exporter hides the very fields this section is about.
-            Switch them both back to <code>"otlp"</code> when you are satisfied.
-          </p>
-</div>
-<div class="subsection">
-<h2>How it is used</h2>
-<p>For feedback and for steering the course: which tools the class leans on, where sessions fail, what an
-            assignment actually costs in tokens. It is <strong>not</strong> an attendance or effort record.
-            Timestamps show when people work, and I am not grading anyone on working late or on how many prompts they
-            sent. Prompt counts have no right answer, and a metric that had one would just become a target.
-            Grades come from the submitted work.</p>
-<p>If you would rather not run it, tell me and that is the end of it. It costs you nothing in the
-            grade, and the per-assignment archive already covers what the assignments are marked on. Do say so
-            though, because a machine sending nothing looks the same from here as a machine that was never set up.</p>
-</div>
-</div>
 <div class="col-12 section" id="related">
 <h1>Related</h1>
 <ul>

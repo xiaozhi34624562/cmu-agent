@@ -6,6 +6,7 @@
 - [material_names.py](material_names.py)：MAS.S62 和 CS2680 同步、整理共用的命名函数；通过来源 URL 解析课表中的方法简称，同时保留课表原始标签。
 - [verify_material_names.py](verify_material_names.py)：检查文件名、原始字节、旧路径是否被重新生成，以及同步脚本的离线路径解析。
 - [MATERIAL_NAMES_VERIFICATION.json](MATERIAL_NAMES_VERIFICATION.json)：本次实际验证结果。
+- [verify_assignment3_archive.py](verify_assignment3_archive.py)：核对 CMU 作业 3 固定提交的原始文件哈希、Python 语法、本地文件链接和数据集结构；结果写入作业目录的 `VERIFICATION.json`，公开测试另记于 `BASELINE_TESTS.json`。
 
 新增材料时先核对 PDF 标题页、版本及本课来源索引。课表仅提供简称时，在清单中登记完整标题与来源 URL，再运行同步或整理。不要只根据 PDF 元数据自动命名：元数据可能缺失、截断或保留投稿模板标题。清单中的历史改名条目保留原始哈希；上游更新版本时单独记录版本与新哈希，避免将正文修订混入改名验证。
 
@@ -18,6 +19,7 @@ python3 MAS.S62/sync.py --organize-only
 python3 2680/organize.py
 python3 tools/verify_material_names.py --write-report
 python3 tools/verify_course_notes.py --write-report
+python3 tools/verify_assignment3_archive.py --write-report
 python3 MAS.S62/verify.py --require-notes > MAS.S62/VERIFICATION.json
 ```
 

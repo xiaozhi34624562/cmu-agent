@@ -1,0 +1,39 @@
+[project]
+name = "scottyrl"
+version = "0.1.0"
+description = "Minimal agentic RL training framework for 11-768 Assignment 3"
+requires-python = ">=3.11"
+dependencies = [
+    "pyyaml",
+    "pytest",
+    # Pinned: the SkyRL Modal server (skyrl_tinker_modal/) speaks the 0.24 wire
+    # format -- tinker 0.25+ expects protobuf SampleResponse payloads it does
+    # not emit. The official Tinker service accepts 0.24.0 too.
+    "tinker==0.24.0",
+    "transformers",
+    # transformers needs jinja2 to render chat templates.
+    "jinja2",
+    "wandb",
+    # scripts/export_checkpoint.py: uploads the Part 5 adapter to the Hub.
+    "huggingface_hub",
+    # scripts/export_checkpoint.py downloads the checkpoint archive and
+    # CompletionsServerPolicy talks to a vLLM/SGLang server.
+    "httpx",
+]
+
+[project.optional-dependencies]
+# Only needed to deploy the SkyRL Tinker server (skyrl_tinker_modal/).
+modal = ["modal"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["scottyrl*"]
+
+[tool.setuptools.package-data]
+scottyrl = ["chat_templates/*.jinja"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

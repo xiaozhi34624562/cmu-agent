@@ -7,6 +7,13 @@
 - [Lecture 7 slides](lecture-07-computer-use-agents.pdf)
   - Source: https://www.cmu-agents.com/slides/lecture-07-computer-use-agents.pdf
 
+## Course Video
+
+- [Lecture 7 official video](https://www.youtube.com/watch?v=jwGluLrrqjQ&list=PLSN0qpDfUvTM&index=7)
+  - Source: https://www.youtube.com/watch?v=jwGluLrrqjQ&list=PLSN0qpDfUvTM&index=7
+  - Checked: 2026-10-28 (Asia/Shanghai); linked from the official course schedule.
+  - Status: 仅登记官方视频入口；未下载视频或字幕，未将视频内容作为本轮讲解核验依据。
+
 ## Readings
 
 - [WebArena](readings/WebArena_A_Realistic_Web_Environment_for_Building_Autonomous_Agents.pdf)
@@ -35,7 +42,8 @@
   - Source: https://proceedings.mlr.press/v70/shi17a.html
   - PDF: https://proceedings.mlr.press/v70/shi17a/shi17a.pdf
   - Version: ICML 2017, PMLR 70:3135–3144
-  - 校正记录（2026-09-22）：此前误链接至摘要论文 arXiv:1704.04368，现已替换为介绍 MiniWoB 的 World of Bits 原论文；文件名保留以兼容原有路径。
+  - 官网原始参考链接（错链，2026-10-28 仍如此）：https://arxiv.org/abs/1704.04368。该链接对应摘要研究，不能作为 MiniWoB 的原始论文。
+  - 校正记录（2026-09-22）：已改用介绍 MiniWoB 的 World of Bits 原论文；2026-10-27 再按完整标题统一文件名并更新引用，旧名与未改变的内容校验值见根目录 [tools/MATERIAL_RENAMES.json](../../tools/MATERIAL_RENAMES.json)。
 
 - [WebShop](references/WebShop_Towards_Scalable_Real-World_Web_Interaction_with_Grounded_Language_Agents.pdf)
   - Source: https://arxiv.org/abs/2207.01206

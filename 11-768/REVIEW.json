@@ -1,8 +1,8 @@
 {
   "course": "11-768",
-  "review_date": "2026-10-26",
+  "review_date": "2026-10-28",
   "standard": "MAS.S62 Senior AI Engineer: lecture-driven mechanism, implementation, evidence, cases, selection, cost, failure diagnosis, self-test and answer boundaries",
-  "scope": "Complete reading and final rereading of 30 Chinese study documents across the two courses; existing archive sources preserved. New guides cross-reviewed separately. No claim of universal correctness or full model/benchmark reproduction.",
+  "scope": "2026-10-28: new lesson16 complete Chinese guide, primary full review and post-correction full reread with independently prepared source checks; original-material integrity and targeted rechecks across existing18guides; assignment3 fixed snapshot and offline public-test baseline. Earlier full-review histories are retained; existing18guides were not all fully reread in this followup.",
   "base_commit": "9c3971bffc77ae0805a2a6130fc90369a96d4449",
   "documents": [
     {
@@ -167,6 +167,28 @@
             "Supplementary paper appendices not exhaustively used"
           ],
           "final_sha256": "aa626e701fefcb4dcd201660eba7891cf5b0ebe6dc2fdaafccf3f36faba52828"
+        },
+        {
+          "date": "2026-10-28",
+          "reviewer": "cmu_existing_materials_followup",
+          "review": "targeted original-source and content recheck",
+          "scope": "§7–8 Toolformer/ReAct 的具体任务、基线、工具可用范围和失败样本定义；未全文重读本讲解。",
+          "source_checks": [
+            {
+              "path": "11-768/1.WhatIsAnAgent/readings/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf",
+              "scope": "PDF pp.6–7：ASDiv 40.4、首个数字评分规则、不同任务禁用不同工具，以及问答任务未胜过 GPT-3 的边界",
+              "sha256": "6d7483d94653008e40c2058a1c22441c92e3713dae278b6361e8efc447c99522"
+            },
+            {
+              "path": "11-768/1.WhatIsAnAgent/readings/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf",
+              "scope": "PDF pp.5–6：HotpotQA/FEVER 对照表及 50 正确 + 50 错误的失败分析采样口径",
+              "sha256": "f285b0971ae4a790e402fb93966bed3adde2cf0a04977d08b2b40d6ab0cace69"
+            }
+          ],
+          "issues_found": [],
+          "result": "在上述限定核查范围内未发现新的实质性讲解错误；正文未修改。",
+          "final_sha256": "0c7fdec43af0bcb0c7ae02af3945cc2dc5e78aed519f8f52d23dcc131ce19d41",
+          "reread_result": "正文未修改；保留此前全文审核/复读历史。本轮不声称对 18 篇讲解全部全文重审。"
         }
       ],
       "maintenance": [
@@ -242,6 +264,23 @@
             "No live model/API/network integration tests or paper experiment replications were performed."
           ],
           "final_sha256": "1ed03b9946a85fcd8f0a55fa601ca75b4edb2b4e2f7b9d01df878bdeda929052"
+        },
+        {
+          "date": "2026-10-28",
+          "reviewer": "cmu_existing_materials_followup",
+          "review": "targeted original-source and content recheck",
+          "scope": "§5 CodeAct 实验对照、工具接口和平均轮数解释；未全文重读本讲解。",
+          "source_checks": [
+            {
+              "path": "11-768/2.ToolUse/readings/Executable_Code_Actions_Elicit_Better_LLM_Agents.pdf",
+              "scope": "PDF pp.4–5：82 个可解任务、最多 10 轮、76.7/82.7/73.4 及正文/表格的相对改善措辞区别",
+              "sha256": "749a45e36cf89fc7e1b701a2a72f6609ce8d3697577ceb0fff5ce9339ce8539e"
+            }
+          ],
+          "issues_found": [],
+          "result": "在上述限定核查范围内未发现新的实质性讲解错误；正文未修改。",
+          "final_sha256": "d50a4ce191bb6610a8e8c43b5fec385dfd5c9802804591735345b6f44f31728e",
+          "reread_result": "正文未修改；保留此前全文审核/复读历史。本轮不声称对 18 篇讲解全部全文重审。"
         }
       ],
       "maintenance": [
@@ -312,6 +351,23 @@
             "Historical external E01–E04 implementation snapshots were not silently upgraded to current software behavior."
           ],
           "final_sha256": "2b19be2ff3a49fd0d7bece14b0f3b612c2e796f3cf5adfde173d6d00590aa475"
+        },
+        {
+          "date": "2026-10-28",
+          "reviewer": "cmu_existing_materials_followup",
+          "review": "targeted original-source and content recheck",
+          "scope": "KV cache 容量公式、GQA 的 KV 头数与示例单位；未全文重读本讲解。",
+          "source_checks": [
+            {
+              "path": "11-768/3.LongContext/references/GQA_Training_Generalized_Multi-Query_Transformer_Models_from_Multi-Head_Checkpoints.pdf",
+              "scope": "PDF pp.1–2：MQA/GQA/MHA 的头共享关系；以 KV 头数计算缓存的依据",
+              "sha256": "ba9094fe73db9bf515d47ae8b2d502fee9d8a6c7b1327e197ddb160f4c63b94a"
+            }
+          ],
+          "issues_found": [],
+          "result": "在上述限定核查范围内未发现新的实质性讲解错误；正文未修改。",
+          "final_sha256": "67f5041bd567f8702e121b2e43fff43a81c681e17df7dae03f68c9e6853d8947",
+          "reread_result": "正文未修改；保留此前全文审核/复读历史。本轮不声称对 18 篇讲解全部全文重审。"
         }
       ],
       "maintenance": [
@@ -380,6 +436,23 @@
             "Only explanatory prose, questions and answers changed; no executable example or source snapshot changed."
           ],
           "final_sha256": "b604b64770c0c3d5816549939769a22beadd73b3ee1cc3715ff8bd6119d803bb"
+        },
+        {
+          "date": "2026-10-28",
+          "reviewer": "cmu_existing_materials_followup",
+          "review": "targeted original-source and content recheck",
+          "scope": "SkillsBench 平均成功率、百分点与平均归一化增益的区别；未全文重读本讲解。",
+          "source_checks": [
+            {
+              "path": "11-768/4.SkillsAndMemory/readings/SkillsBench_Benchmarking_How_Well_Agent_Skills_Work_Across_Diverse_Tasks.pdf",
+              "scope": "PDF pp.5–6：任务/系统配置、33.9→50.5 与 16.6pp，平均归一化增益 25.5% 的口径",
+              "sha256": "e987ebc3f0084a1ffc8acbca58259e33120b95fcef3876abfad060e169cf210b"
+            }
+          ],
+          "issues_found": [],
+          "result": "在上述限定核查范围内未发现新的实质性讲解错误；正文未修改。",
+          "final_sha256": "63cab3ff64df7663f5423135d332aa73eb3403d275ac0dbe0eacb275ca84f68c",
+          "reread_result": "正文未修改；保留此前全文审核/复读历史。本轮不声称对 18 篇讲解全部全文重审。"
         }
       ],
       "maintenance": [
@@ -464,6 +537,23 @@
             "SOURCES中Thinking vs. Doing只有上游链接，但本地readings/Thinking_vs._Doing_Agents_that_Reason_by_Scaling_Test-Time_Interaction.pdf确实存在；已通知父代理，未越界编辑来源索引。"
           ],
           "final_sha256": "e48758b918027905de3b3e54760c46c4edfb884971b47eeb0ffb24e50f2ffea3"
+        },
+        {
+          "date": "2026-10-28",
+          "reviewer": "cmu_existing_materials_followup",
+          "review": "targeted original-source and content recheck",
+          "scope": "Least-to-Most 的 SCAN/GSM8K 对照及原文 60.87/60.97 的不一致处理；未全文重读本讲解。",
+          "source_checks": [
+            {
+              "path": "11-768/5.PlanningAndCoordination/readings/Least-to-Most_Prompting_Enables_Complex_Reasoning_in_Large_Language_Models.pdf",
+              "scope": "PDF pp.6–8：SCAN 99.7、GSM8K 62.39 与基线、≥5 步子集结果",
+              "sha256": "ab71759f86119d1c368cef0ffabc5499562b605188a5dd6a00ed7ca0fa995c71"
+            }
+          ],
+          "issues_found": [],
+          "result": "在上述限定核查范围内未发现新的实质性讲解错误；正文未修改。",
+          "final_sha256": "c907e064ff29e972a22cc2dcfe0cab9f37538db5c43abdec194f6651838b4f0a",
+          "reread_result": "正文未修改；保留此前全文审核/复读历史。本轮不声称对 18 篇讲解全部全文重审。"
         }
       ],
       "maintenance": [
@@ -554,6 +644,23 @@
             "Historical run retained as original record; current repeat only verifies teaching script"
           ],
           "final_sha256": "74956600b2fb284ab80d9bbf3f7192baefaf433203a587a11b481732917c3a52"
+        },
+        {
+          "date": "2026-10-28",
+          "reviewer": "cmu_existing_materials_followup",
+          "review": "targeted original-source and content recheck",
+          "scope": "Qwen2.5-Coder 数据清洗和混合比例实例；未全文重读本讲解。",
+          "source_checks": [
+            {
+              "path": "11-768/6.CodingAgents/references/Qwen2.5-Coder_Technical_Report.pdf",
+              "scope": "PDF pp.5–6：582B→118B、41.6→46.8、70/20/10 的具体数据配方",
+              "sha256": "8416ad8d885737ed15f757180499f5202fa93e791180a6d3fcd6f0381d79595e"
+            }
+          ],
+          "issues_found": [],
+          "result": "在上述限定核查范围内未发现新的实质性讲解错误；正文未修改。",
+          "final_sha256": "d19aa6daa518a82f4d41b0493acc24eae2c8ce7ca972ae4c5354860addde2229",
+          "reread_result": "正文未修改；保留此前全文审核/复读历史。本轮不声称对 18 篇讲解全部全文重审。"
         }
       ],
       "maintenance": [
@@ -643,6 +750,23 @@
             "Lecture-only works such as MobileWorld,WeaveBench lack separately archived originals and are explicitly introduced only at lecture scope"
           ],
           "final_sha256": "9cc09d66f2403a51d49d17e8d6e308a5eee613e5e6fe7f9bbf6cd823a0d42401"
+        },
+        {
+          "date": "2026-10-28",
+          "reviewer": "cmu_existing_materials_followup",
+          "review": "targeted original-source and content recheck",
+          "scope": "WebShop IL 与 RL 的 score/success 差异以及 World of Bits/MiniWoB 来源映射；未全文重读本讲解。",
+          "source_checks": [
+            {
+              "path": "11-768/7.ComputerUseAgents/references/WebShop_Towards_Scalable_Real-World_Web_Interaction_with_Grounded_Language_Agents.pdf",
+              "scope": "PDF pp.7–8：59.9→62.4 score、29.1→28.7 success，保留不同指标不一致的解释",
+              "sha256": "131e93080bc8d9ff801ff40bf69b7d12bfd9db018c223fdf03e622928f7ec032"
+            }
+          ],
+          "issues_found": [],
+          "result": "在上述限定核查范围内未发现新的实质性讲解错误；正文未修改。",
+          "final_sha256": "df268f5c1b8c65ca92d3f7aa2a79f3a6c922a21fb94530a67a7215d7daa7c313",
+          "reread_result": "正文未修改；保留此前全文审核/复读历史。本轮不声称对 18 篇讲解全部全文重审。"
         }
       ],
       "maintenance": [
@@ -804,6 +928,23 @@
             "Framework documentation is an archived snapshot; code checked against pinned Transformers4.57.6, not all production model templates."
           ],
           "final_sha256": "b868e3ab79340de495e798ed2f7eb0263c5eb7e80e9e754806b86d35fff203f3"
+        },
+        {
+          "date": "2026-10-28",
+          "reviewer": "cmu_existing_materials_followup",
+          "review": "targeted original-source and content recheck",
+          "scope": "WIT 的 525+525 实验、配置选择和后续 DPO 增益口径；未全文重读本讲解。",
+          "source_checks": [
+            {
+              "path": "11-768/8.SupervisedFineTuning/references/On_the_Effect_of_Instruction_Tuning_Loss_on_Generalization.pdf",
+              "scope": "PDF pp.2–3 和 p.8 Table 3/相邻正文：525 SFT + 525 DPO，8.01% 与 2.44% 是不同配置选择下的相对增益",
+              "sha256": "78246fe7eb519d93849c2f282c76feaabb56ad572fe733cd23309ca5874c2be8"
+            }
+          ],
+          "issues_found": [],
+          "result": "在上述限定核查范围内未发现新的实质性讲解错误；正文未修改。",
+          "final_sha256": "757e2661dffe0ee2a1fbe517cd2a21ff2f650fbc190437075037280e75e3bc00",
+          "reread_result": "正文未修改；保留此前全文审核/复读历史。本轮不声称对 18 篇讲解全部全文重审。"
         }
       ],
       "maintenance": [
@@ -923,6 +1064,28 @@
             "CPUlosschecksvalidatea localmathematicalkernel,notdistributedreduction/productioninferenceprobabilityorverifiercorrectness."
           ],
           "final_sha256": "03067a560c389a6df35c6953fb2188c3986018352a7e90ccc62cb309d2672a9b"
+        },
+        {
+          "date": "2026-10-28",
+          "reviewer": "cmu_existing_materials_followup",
+          "review": "targeted original-source and content recheck",
+          "scope": "§6.3–6.6、§8.1–8.6、§9.3–9.6、§10.1–10.8：baseline 独立性、组均值与 LOO、KL 估计、DrGRPO 长度/标准差归一化；未全文重读本讲解。",
+          "source_checks": [
+            {
+              "path": "11-768/9.TrainingRLBasics/readings/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf",
+              "scope": "PDF pp.13–14：GRPO 目标、组内优势与参考策略项",
+              "sha256": "6cc20b3c5b8d25b8b53868fc4ec1792c144f07d67bdf7395138efd4422197e7b"
+            },
+            {
+              "path": "11-768/9.TrainingRLBasics/readings/Understanding_R1-Zero-Like_Training_A_Critical_Perspective.pdf",
+              "scope": "PDF pp.6–7、13–14：常数长度归一化、组内标准差、附录 G/(G-1) 缩放与固定组大小等假设",
+              "sha256": "98243d51297f011fb5baad8a70a972d061ffbef618f1d7cfc10deea37c5887d0"
+            }
+          ],
+          "issues_found": [],
+          "result": "在上述限定核查范围内未发现新的实质性讲解错误；正文未修改。",
+          "final_sha256": "3a97a0100ee0d608f5f87b3c4afaf93db0d760f74dc13bdbe82390538e2896fd",
+          "reread_result": "正文未修改；保留此前全文审核/复读历史。本轮不声称对 18 篇讲解全部全文重审。"
         }
       ],
       "maintenance": [
@@ -988,6 +1151,17 @@
             "Source paper sections checked selectively; this supplementary design is not a full lecture reproduction"
           ],
           "final_sha256": "17cdde2462453514999ab029fb3b418dc062e1dd6643e43298408c391ee59904"
+        },
+        {
+          "date": "2026-10-28",
+          "reviewer": "cmu_existing_materials_followup",
+          "review": "targeted original-source and content recheck",
+          "scope": "完整阅读来源核查说明；核对本地文件存在与版本/出处边界，不把历史来源检查宣称为本次重新访问全部网站。",
+          "source_checks": [],
+          "issues_found": [],
+          "result": "在上述限定核查范围内未发现新的实质性讲解错误；正文未修改。",
+          "final_sha256": "cb654117212e38aaa96a729251e68d4b905ff54a09340612c6e509fa6bddcce6",
+          "reread_result": "正文未修改；保留此前全文审核/复读历史。本轮不声称对 18 篇讲解全部全文重审。"
         }
       ],
       "maintenance": [
@@ -1053,6 +1227,17 @@
             "Source paper sections checked selectively; this supplementary design is not a full lecture reproduction"
           ],
           "final_sha256": "37b6320fc7c7dcc5de056ed3aa260b528dc26fd29e7191f13b7ebee7b667a9d1"
+        },
+        {
+          "date": "2026-10-28",
+          "reviewer": "cmu_existing_materials_followup",
+          "review": "targeted original-source and content recheck",
+          "scope": "查看开头的问题界定、部分设计/来源边界说明；本轮主要执行链接、来源映射与最终哈希检查，未全文重读或逐条重证全部设计建议。",
+          "source_checks": [],
+          "issues_found": [],
+          "result": "在上述限定核查范围内未发现新的实质性讲解错误；正文未修改。",
+          "final_sha256": "3b57ec0a89adf5bb53805195225f400fcfc649f54c59e3b48c7c548e96b1374c",
+          "reread_result": "正文未修改；保留此前全文审核/复读历史。本轮不声称对 18 篇讲解全部全文重审。"
         }
       ],
       "maintenance": [
@@ -1274,6 +1459,23 @@
             "Natural Questions archive is dynamic shell, not body dataset"
           ],
           "final_sha256": "2309274fb9980762879fab0875c8f1648415fe15cb46b589cb2b430814925795"
+        },
+        {
+          "date": "2026-10-28",
+          "reviewer": "cmu_existing_materials_followup",
+          "review": "targeted original-source and content recheck",
+          "scope": "§3.6–3.8 ResearchQA 的 rubric Coverage、专家一致率、遗漏率与来源泄漏边界；未全文重读本讲解。",
+          "source_checks": [
+            {
+              "path": "11-768/10.DeepResearchAgents/references/ResearchQA_Evaluating_Scholarly_Question_Answering_at_Scale_Across_75_Fields_with_Survey-Mined_Questions_and_Rubrics.pdf",
+              "scope": "PDF pp.7–8、10：0–4 覆盖及归一化、75%/84% 一致率、表5 的未完全覆盖比例",
+              "sha256": "5804ffd0982a7d18253cae419d3891e3fd3cd2d82c6de71635e48b800111fde1"
+            }
+          ],
+          "issues_found": [],
+          "result": "在上述限定核查范围内未发现新的实质性讲解错误；正文未修改。",
+          "final_sha256": "06dbf34ba88d30689a5128f2b60e59490e6f9a01598f3398098195cbfcfdff92",
+          "reread_result": "正文未修改；保留此前全文审核/复读历史。本轮不声称对 18 篇讲解全部全文重审。"
         }
       ],
       "maintenance": [
@@ -1355,6 +1557,33 @@
             "Primary papers selectively checked,not every unrelated reference or appendix independently read"
           ],
           "final_sha256": "c31152723e0645be2381addfa8f7811ca4e8bab2f19464104665c85ea344f105"
+        },
+        {
+          "date": "2026-10-28",
+          "reviewer": "cmu_existing_materials_followup",
+          "review": "targeted original-source and content recheck",
+          "scope": "重点阅读 FutureX 任务/评分和复现边界、MBABench 评分/裁判/公式勘误、AURA 数据筛选/训练/评分/时段比较；未全文重读本专题。",
+          "source_checks": [
+            {
+              "path": "11-768/10.DeepResearchAgents/references/FutureX-Pro_Extending_Future_Prediction_to_High-Value_Vertical_Domains.pdf",
+              "scope": "PDF pp.3–4：100 美股/50 A 股、任务定义、相对误差线性式与金融分数",
+              "sha256": "585bbb56adbcb936f8e979d3bf8d16373a361921a688ea32d9c07aa080a47074"
+            },
+            {
+              "path": "11-768/10.DeepResearchAgents/references/MBABench_Evaluating_LLM_Agents_on_End-to-End_Spreadsheet_Tasks_in_Finance.pdf",
+              "scope": "PDF p.39 附录 E.2：2M 字符阈值、221/187 标注组及不同裁判指标；本轮未重新核验原图公式",
+              "sha256": "64a804a40295abb7ed2a7b56c55d89bf472841884e74ea1b68ba81703d3f5455"
+            },
+            {
+              "path": "11-768/10.DeepResearchAgents/references/Can_Language_Models_Learn_to_Forecast_Stock_Prices.pdf",
+              "scope": "PDF pp.4–5、7、15、17：outcome-selected 分布、398→240、S=D*M/100、训练参数、时间分组及不等于交易收益的限制",
+              "sha256": "71492474e331ddd26f0f3c21e77752350cd137f995b5bafaa5ec70dbf71ae891"
+            }
+          ],
+          "issues_found": [],
+          "result": "在上述限定核查范围内未发现新的实质性讲解错误；正文未修改。",
+          "final_sha256": "9c266d1965a43b105841d99689a9287f619e0337a12a76dbef0495e2b38cfa77",
+          "reread_result": "正文未修改；保留此前全文审核/复读历史。本轮不声称对 18 篇讲解全部全文重审。"
         }
       ],
       "maintenance": [
@@ -1405,6 +1634,23 @@
             "Reward Hacking为综述来源，其二级文献未逐篇独立复核"
           ],
           "final_sha256": "e15f7f048a05f0ca25a52c8e81bb4828c0ade244c8d78ab58967bcda408bf831"
+        },
+        {
+          "date": "2026-10-28",
+          "reviewer": "cmu_existing_materials_followup",
+          "review": "targeted original-source and content recheck",
+          "scope": "AReaL 的同模型耗时和成绩对照，未将其推广为所有 RL 配方的固定加速比；未全文重读本讲解。",
+          "source_checks": [
+            {
+              "path": "11-768/11.AdvancedRLAlgorithms/references/AReaL_A_Large-Scale_Asynchronous_Reinforcement_Learning_System_for_Language_Reasoning.pdf",
+              "scope": "PDF p.8：1.5B 41.0h/14.8h、7B 57.7h/25.4h 与各自成绩/采样口径",
+              "sha256": "5785033bdd229ee6ddf26d8fcd9f61671801f208272c921ba6884da87cc5b351"
+            }
+          ],
+          "issues_found": [],
+          "result": "在上述限定核查范围内未发现新的实质性讲解错误；正文未修改。",
+          "final_sha256": "a5ec0cd5dbfe533ee95eaabfbc3c2ef3b06380c25985ded258ad1510f52d5222",
+          "reread_result": "正文未修改；保留此前全文审核/复读历史。本轮不声称对 18 篇讲解全部全文重审。"
         }
       ],
       "maintenance": [
@@ -1572,6 +1818,20 @@
             "Additional six references read selectively in mechanism/evaluation sections, not exhaustive appendices"
           ],
           "final_sha256": "10ee026947909fca4a7d653bc289193a98fd39c6feae612b4fb5c77b1f94fcf6"
+        },
+        {
+          "date": "2026-10-28",
+          "reviewer": "cmu_existing_materials_followup",
+          "review": "targeted original-source and content recheck",
+          "scope": "完整阅读现有讲解；重点复核 KV 容量、prefix/tree 梯度、mask、TITO、speculative decoding 和策略滞后边界。未对全部补充论文逐页重审。",
+          "source_checks": [],
+          "issues_found": [],
+          "result": "在上述限定核查范围内未发现新的实质性讲解错误；正文未修改。",
+          "final_sha256": "a3d34a54ddb21bc16159d80a0baec5cc4908f0074fcc132c2590b21f34e85dc3",
+          "reread_result": "正文未修改；保留此前全文审核/复读历史。本轮不声称对 18 篇讲解全部全文重审。",
+          "validation": {
+            "offline_example": "实际抽取并执行 §21 教学代码：KV 字节数、token 往返、动作 mask 共 5 项断言通过；不涉及模型训练/推理复现。"
+          }
         }
       ],
       "maintenance": [
@@ -1701,6 +1961,23 @@
             "Productbehaviorstiedtolocalarchivessnapshot,notclaiminglatestserviceconfiguration"
           ],
           "final_sha256": "c26e4c3dbc0bd9afa1c4d4f95a616bdf2074c2f5b52d526eee5e1d5f4a40e68f"
+        },
+        {
+          "date": "2026-10-28",
+          "reviewer": "cmu_existing_materials_followup",
+          "review": "targeted original-source and content recheck",
+          "scope": "ToolEmu 精度/风险发生率及 ±1 SEM 与置信区间的区别；未全文重读本讲解。",
+          "source_checks": [
+            {
+              "path": "11-768/13.AgentSafety/references/Identifying_the_Risks_of_LM_Agents_with_an_LM-Emulated_Sandbox.pdf",
+              "scope": "PDF p.10：72.5±7.1、68.8±6.7 的精度，39.6±4.9/50.0±5.1 的 incidence，误差条为 1 SEM",
+              "sha256": "2d746c512086bd47084e616a0848c6dd25052dfe8b6da64e42e4c5e2f0050722"
+            }
+          ],
+          "issues_found": [],
+          "result": "在上述限定核查范围内未发现新的实质性讲解错误；正文未修改。",
+          "final_sha256": "59b94773614fa9884318066ffc8b8b4d6526b2de877e8a94755dfa93197bb7ef",
+          "reread_result": "正文未修改；保留此前全文审核/复读历史。本轮不声称对 18 篇讲解全部全文重审。"
         }
       ],
       "maintenance": [
@@ -1833,6 +2110,23 @@
             "SDKsourceandproductdemosunavailableperSOURCES;APIillustrationsnotcompatibilityguarantees"
           ],
           "final_sha256": "20b86376be89539425161799e81cec539358b5cbe67f3bce435fa7eaeee17caa"
+        },
+        {
+          "date": "2026-10-28",
+          "reviewer": "cmu_existing_materials_followup",
+          "review": "targeted original-source and content recheck",
+          "scope": "Codex pass@k、oracle 与 mean-logprob 选样口径；未全文重读本讲解。",
+          "source_checks": [
+            {
+              "path": "11-768/14.OpenHands/references/Evaluating_Large_Language_Models_Trained_on_Code.pdf",
+              "scope": "PDF pp.2–3：组合数 pass@k 估计器、100 个候选中的 77.5% oracle 与 44.5% mean-logprob 选择结果",
+              "sha256": "ebae72ea0e8a5eb2ecbccdb985aec6cc1254a7c4d29e6d4de7866db1e66c4855"
+            }
+          ],
+          "issues_found": [],
+          "result": "在上述限定核查范围内未发现新的实质性讲解错误；正文未修改。",
+          "final_sha256": "a8a97cbdf143c898f69b63fb666c9f1784e1ee888f9be0ef28807a431b0616d6",
+          "reread_result": "正文未修改；保留此前全文审核/复读历史。本轮不声称对 18 篇讲解全部全文重审。"
         }
       ],
       "maintenance": [
@@ -1949,6 +2243,23 @@
             "unchanged_reviewed_content": true,
             "tail_reread": "Final glossary tail reread; no content changed after full reread."
           }
+        },
+        {
+          "date": "2026-10-28",
+          "reviewer": "cmu_existing_materials_followup",
+          "review": "targeted original-source and content recheck",
+          "scope": "§11.1–11.10 Hodoscope 的发现/监控指标、对照和效果边界；另查看编排持久状态/恢复说明。未全文重读本讲解。",
+          "source_checks": [
+            {
+              "path": "11-768/15.OrchestrationAndMonitoring/readings/Hodoscope_Unsupervised_Monitoring_for_AI_Misbehaviors.pdf",
+              "scope": "PDF pp.1、5–7、9：分组分布差异、发现排名与 Table 3；加入示例对弱监控器有利但对强监控器可能退化",
+              "sha256": "ba734ebcad05c877d331e33377939c48d3b2a8c3e3c603a09fd931cd7ec228c4"
+            }
+          ],
+          "issues_found": [],
+          "result": "在上述限定核查范围内未发现新的实质性讲解错误；正文未修改。",
+          "final_sha256": "e1d34fd863db3c873166a1eff62b3301af4a0ea0d75d2397537b0b72acf62393",
+          "reread_result": "正文未修改；保留此前全文审核/复读历史。本轮不声称对 18 篇讲解全部全文重审。"
         }
       ],
       "maintenance": [
@@ -1958,6 +2269,206 @@
           "previous_reviewed_sha256": "6eff155053a28ad573e8f2ad9e9805d7b861ac6e30fe11db310c0be70f6ea7c8",
           "final_sha256": "e1d34fd863db3c873166a1eff62b3301af4a0ea0d75d2397537b0b72acf62393",
           "validation": "Local links, PDF page bounds and source bytes checked by repository verifiers; prior paper-content reviews retained, no new semantic/full-text review claimed"
+        }
+      ]
+    },
+    {
+      "note": "11-768/16.AgentsAndTheFutureOfWork/notes.zh-CN.md",
+      "lesson": 16,
+      "action": "new_complete_guide",
+      "status": "passed",
+      "final_sha256": "25d1c39fabd5d16b4a2d2839c5943f40b660f8109dd0efd121aeb3ef5f5cd1fe",
+      "reviews": [
+        {
+          "review_date": "2026-10-28",
+          "reviewer": "primary_author_and_source_cross_checks",
+          "files_read": [
+            {
+              "path": "11-768/16.AgentsAndTheFutureOfWork/notes.zh-CN.md",
+              "scope": "Final complete guide, lines1–400; full reread after METR/RLI/notation/input-period corrections. Supplemental source cross-check was independently prepared; this record describes primary-agent guide review."
+            },
+            {
+              "path": "11-768/16.AgentsAndTheFutureOfWork/2026-10-27-zora-wang.pdf",
+              "scope": "62 pages text read and all rendered contact-sheet pages inspected; high-risk panels enlarged in independent preparation. Not every small screenshot transcribed."
+            }
+          ],
+          "source_checks": [
+            {
+              "path": "11-768/16.AgentsAndTheFutureOfWork/references/GDPval_Evaluating_AI_Model_Performance_on_Real-World_Economically_Valuable_Tasks.pdf",
+              "version": "Official OpenAI paper, arXiv:2510.04374; 29-page publisher PDF",
+              "sha256": "37c7604bc9da68cd8d9345ad16938164fe985182ad723fcb09e9415f84dc25d4",
+              "pdf_pages_checked": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                8,
+                9
+              ],
+              "scope": "Targeted primary-source review of claims used in this guide; combines preparatory independent reading and main-agent checks, not a full-paper reread."
+            },
+            {
+              "path": "11-768/16.AgentsAndTheFutureOfWork/references/Remote_Labor_Index_Measuring_AI_Automation_of_Remote_Work.pdf",
+              "version": "arXiv:2510.26787v1",
+              "sha256": "7bc1e50585429c83a93a8045fdaa654ba074c4fa3a35671613024de69c46d2ed",
+              "pdf_pages_checked": [
+                1,
+                4,
+                5,
+                6,
+                7
+              ],
+              "scope": "Targeted primary-source review of claims used in this guide; combines preparatory independent reading and main-agent checks, not a full-paper reread."
+            },
+            {
+              "path": "11-768/16.AgentsAndTheFutureOfWork/references/Future_of_Work_with_AI_Agents_Auditing_Automation_and_Augmentation_Potential_across_the_U.S._Workforce.pdf",
+              "version": "arXiv:2506.06576v3",
+              "sha256": "8cea403d86046b14a9296991b91f659192b0aedf3d86806faeeecce3a81d962a",
+              "pdf_pages_checked": [
+                1,
+                3,
+                4,
+                5,
+                6,
+                7,
+                9,
+                16
+              ],
+              "scope": "Targeted primary-source review of claims used in this guide; combines preparatory independent reading and main-agent checks, not a full-paper reread."
+            },
+            {
+              "path": "11-768/16.AgentsAndTheFutureOfWork/references/GPTs_are_GPTs_An_Early_Look_at_the_Labor_Market_Impact_Potential_of_Large_Language_Models.pdf",
+              "version": "arXiv:2303.10130v5; title page August 22, 2023",
+              "sha256": "af3edd4efc120c70f0e2e6dc7a4e314a41f1b9eb5a7e88bc25533db631f79632",
+              "pdf_pages_checked": [
+                1,
+                7,
+                9
+              ],
+              "scope": "Targeted primary-source review of claims used in this guide; combines preparatory independent reading and main-agent checks, not a full-paper reread."
+            },
+            {
+              "path": "11-768/16.AgentsAndTheFutureOfWork/references/Canaries_in_the_Coal_Mine_Six_Facts_about_the_Recent_Employment_Effects_of_Artificial_Intelligence.pdf",
+              "version": "August 2026; 140 pages",
+              "sha256": "c8d2e5c4ccc0de7ef977c191c144726d6073e164b33f30397fcb0090165d2bdf",
+              "pdf_pages_checked": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "scope": "Targeted primary-source review of claims used in this guide; combines preparatory independent reading and main-agent checks, not a full-paper reread."
+            },
+            {
+              "path": "11-768/16.AgentsAndTheFutureOfWork/references/Measuring_AI_Ability_to_Complete_Long_Software_Tasks.pdf",
+              "version": "arXiv:2503.14499v4, July 10, 2026",
+              "sha256": "29216eb3af4daa417666757a462ab7c7b5f8c18c188ee5a56e258b04116211f7",
+              "pdf_pages_checked": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                10,
+                11
+              ],
+              "scope": "Targeted primary-source review of claims used in this guide; combines preparatory independent reading and main-agent checks, not a full-paper reread."
+            },
+            {
+              "path": "11-768/16.AgentsAndTheFutureOfWork/references/How_Well_Does_Agent_Development_Reflect_Real-World_Work.pdf",
+              "version": "2603.01203v2",
+              "sha256": "3911d2d529c297fc8e00ab66a10b1f2a1084a8cade5e439849b648d56b7b6246",
+              "pdf_pages_checked": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ],
+              "scope": "Targeted primary-source review of claims used in this guide; combines preparatory independent reading and main-agent checks, not a full-paper reread."
+            },
+            {
+              "path": "11-768/16.AgentsAndTheFutureOfWork/references/CollabSkill_Evaluating_Human-Agent_Collaboration_On_Real-World_Tasks.pdf",
+              "version": "2606.09833v2",
+              "sha256": "ae47c83fbe88fb05e60809f061f6f7e05ed87967db3b7a079254b3f6e80703cc",
+              "pdf_pages_checked": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ],
+              "scope": "Targeted primary-source review of claims used in this guide; combines preparatory independent reading and main-agent checks, not a full-paper reread."
+            },
+            {
+              "path": "11-768/16.AgentsAndTheFutureOfWork/references/Efficient_Test-Time_Adaptation_through_Human-AI_Interaction.pdf",
+              "version": "2609.04141v1",
+              "sha256": "ad19a223bd6d9f92758c536e10d6c64821f4b38e8c11a9bba8d5613a4c229675",
+              "pdf_pages_checked": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ],
+              "scope": "Targeted primary-source review of claims used in this guide; combines preparatory independent reading and main-agent checks, not a full-paper reread."
+            }
+          ],
+          "issues_found": [
+            {
+              "issue": "Running example introduced only previous-quarter inputs while later example used year-over-year comparison.",
+              "fix": "Added prior-year comparable-period report to the task input."
+            },
+            {
+              "issue": "RLI customer-acceptance wording could be mistaken for actual purchasing/adoption.",
+              "fix": "Defined human-rated project completion at least as good as professional reference, citing original PDF p6."
+            },
+            {
+              "issue": "METR axis wording could mix release-date trend with task-duration success curve.",
+              "fix": "Separated the two plot types and explicitly defined human baseline duration."
+            },
+            {
+              "issue": "Skill-model notation and adaptation abbreviations were not fully defined.",
+              "fix": "Defined beta, posterior mean/standard deviation, DPO and LoRA."
+            }
+          ],
+          "coverage_check": [
+            "Task, environment, evaluation and six distinct outcome measures",
+            "METR time horizon and version-aware leaderboard reading",
+            "GDPval/RLI population, public/private split and grading",
+            "Work coverage and synthetic/trace data construct validity",
+            "GUI, programmatic tools and environment/data shift",
+            "Deterministic checks, semantic rubrics and human review",
+            "LLM judge calibration and conditional errors",
+            "CollabSkill assumptions and TAHI updates/persistent state/generalization",
+            "HAS, implementation, cost, safety and meaningful work",
+            "Labor exposure and observational/causal boundaries",
+            "Research-report review case, diagnosis, 16 questions with answers and executable arithmetic"
+          ],
+          "validation": {
+            "teaching_example": "11-768/16.AgentsAndTheFutureOfWork/examples/EXECUTION.json",
+            "original_materials": "11-768/16.AgentsAndTheFutureOfWork/ORIGINAL_MATERIALS_VERIFICATION.json",
+            "changed_markdown_links": {
+              "scope": "Final modified/new Markdown local file targets, including all updated source indexes; excludes remote HTTP and full anchor verification.",
+              "files": 33,
+              "links": 984,
+              "errors": []
+            }
+          },
+          "reread_result": "Passed: primary agent completed initial full read, corrected the reported issues, then reread the complete final 400-line guide. A batched output was truncated, so lines 101–300 were read again separately; all final lines were visible and reviewed.",
+          "limitations": [
+            "Original studies not experimentally reproduced; no GPU, paid model/API or human study.",
+            "OpenCUA, BAGEL, NNetNav and some slide illustrations explained only from lecture; not independent paper-level review.",
+            "Canaries August2026 archive is not the historical 2025 figure version.",
+            "Original PDF parser warnings retained; source bytes unchanged."
+          ],
+          "final_sha256": "25d1c39fabd5d16b4a2d2839c5943f40b660f8109dd0efd121aeb3ef5f5cd1fe"
         }
       ]
     }
@@ -2386,7 +2897,76 @@
     "11-768/11.AdvancedRLAlgorithms/references/On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf": "a81c71fa0cd15506642092790d854347f030c29ee1d6aa643b55aa51348e6869",
     "11-768/11.AdvancedRLAlgorithms/references/SABER_Small_Actions_Big_Errors_-_Safeguarding_Mutating_Steps_in_LLM_Agents.pdf": "e6875d7dccabcfd4acaebffc96e160434bf32932180febce7429c4230d0c7c99",
     "11-768/11.AdvancedRLAlgorithms/references/015_tau-bench_task_fixes.html": "e5200d64a34e3a11e288e9a9711a6dd1e61b0f2c86fcf0a3077fe574da93997a",
-    "11-768/11.AdvancedRLAlgorithms/references/MAI-Thinking-1_Building_a_Hill-Climbing_Machine.pdf": "a267d745b1eb3792a8abf58e71e204a6f44f9c18eeb5ad8671320deae71986bd"
+    "11-768/11.AdvancedRLAlgorithms/references/MAI-Thinking-1_Building_a_Hill-Climbing_Machine.pdf": "a267d745b1eb3792a8abf58e71e204a6f44f9c18eeb5ad8671320deae71986bd",
+    "11-768/assignment/assignment-3/.gitignore": "863b473653c56b04f977f675c40ce1b7ec8cb7feaa7b74c393b02d3312f795ea",
+    "11-768/assignment/assignment-3/ASSIGNMENT.md": "4cd525a37999d5e61b926ea5b0caaf29c3ccc81d1a63c2fb6f8d8e0555519920",
+    "11-768/assignment/assignment-3/README.md": "e89b8ed245e25eda2efecca74b8c8486e68c006146d2144021e35106327e681f",
+    "11-768/assignment/assignment-3/assets/scottyrl-logo.webp": "93a3e601927ba9a5c44c7f63d9932825c2180b07a529773de4cdcd51a6d39e0f",
+    "11-768/assignment/assignment-3/configs/p2a_number_search_reinforce.yaml": "1c39c236965b07375946772f20ff24b9e3dfc8aedc2b68b428f412d909af9f11",
+    "11-768/assignment/assignment-3/configs/p2b_number_search_grpo.yaml": "f31e7002033d928509f8fb1f50096f72389fcc78d48ba286a7c5fdd0a73c56f7",
+    "11-768/assignment/assignment-3/configs/p3_number_search_async.yaml": "c4dc1fdd613b6720c852c7daa5244fb50ead760d30f13998dabd8973eb424e84",
+    "11-768/assignment/assignment-3/configs/p41_number_search_grpo_g2.yaml": "f48d4ebb8b51686fe1e03ea988884fbe317ec125f7e7efba1d3e9342c64bdbb7",
+    "11-768/assignment/assignment-3/configs/p43_number_search_async_stale4_iw.yaml": "1d33306fe8a06c6653fe98fa81fb61ac26498a8c2ece28d067ccb93f8f0badeb",
+    "11-768/assignment/assignment-3/configs/p43_number_search_async_stale4_noiw.yaml": "b885f0a32d3bcb1b4ea74a1d783ce075c00c2e6d148e56faf45a1d8efa684d01",
+    "11-768/assignment/assignment-3/configs/p5_textcraft_grpo.yaml": "3945e3cc5734285ad140238fcade5c2cdb9a025940635ecc6bac52ea326b4f41",
+    "11-768/assignment/assignment-3/configs/required_runs.yaml": "58a65560d56f413a9b1304954bd62605378bb1dce47a900b0d390b411b3afbc9",
+    "11-768/assignment/assignment-3/data/README.md": "e418c971054d83c041c27ddcf401295cff11ff86a57819435ee5a43955dfa41d",
+    "11-768/assignment/assignment-3/data/number_search_train.jsonl": "cae438c86221f97eac794d08725c37c81f710fe5f79105f9cffd86bd5f59b470",
+    "11-768/assignment/assignment-3/data/number_search_val.jsonl": "d972f285ca634c556b4acedab9c02fc0696e90ca7028e04a90c255115f15e475",
+    "11-768/assignment/assignment-3/data/textcraft_recipes.json": "ff86f237708e53eb45f9e208536b8f3548508e9363b85830c7b06a1b60a45c52",
+    "11-768/assignment/assignment-3/data/textcraft_train.jsonl": "8a4aaa73020080d22eeefa8916b32d188480bb1499f570d0481ee4731da2ee4b",
+    "11-768/assignment/assignment-3/data/textcraft_val.jsonl": "a3d4758529034ed888ad4e49aec3ba2619c58a7cd9e23c6968e9a3769e002ded",
+    "11-768/assignment/assignment-3/data/textcraft_val_hard.jsonl": "9082f04056af4649384700dfeca8c749220987f171f6cf0124852bd009ca9265",
+    "11-768/assignment/assignment-3/pyproject.toml": "bec397537a0f339a43ab6e9e1686de1fab2f546672a4c2d1cae29c6c489fc538",
+    "11-768/assignment/assignment-3/scottyrl/__init__.py": "b0045613abeb1bff373b1c02208cd17019b5c977b7efcbce9cc1db0fcc709d81",
+    "11-768/assignment/assignment-3/scottyrl/advantages.py": "7482f7f0f7d6cb0cf3ec92ed204e9fb2bd50abc0e8948b11fceab3b2f3473161",
+    "11-768/assignment/assignment-3/scottyrl/agents/__init__.py": "fd9d15d68a3a75d768eaa3242d1e241ceaa6018d3537b477c8ae5aedadc26fdf",
+    "11-768/assignment/assignment-3/scottyrl/agents/base.py": "b91da9147e8b224f592c8a4ae72a60d053a7e4aff0e126df71cd17151949cf67",
+    "11-768/assignment/assignment-3/scottyrl/agents/xml_tool_call.py": "a9b9d6fc17fb5bd1fa2fa1c7bb283e9ee067f1058bc7ba4964e89c798c6c49e6",
+    "11-768/assignment/assignment-3/scottyrl/chat_templates/qwen3_5.jinja": "e41e0f040a800afa6454037b808ad883939c48a9a907d4864a7c9881730fab8d",
+    "11-768/assignment/assignment-3/scottyrl/config.py": "5009790adef5d43c13e2dcd42c0868811d7bd3cc88e5982eb502fd36e5d91ae3",
+    "11-768/assignment/assignment-3/scottyrl/datagen.py": "5bb662b08271f81e445f44a7dd205b0a5c3c5bc04ef265c817f94de567326624",
+    "11-768/assignment/assignment-3/scottyrl/envs/__init__.py": "6c456175544982d94fd3241721290f580b12b884fd006699012ef5b56f82f0be",
+    "11-768/assignment/assignment-3/scottyrl/envs/base.py": "073a50438af1c00d11b770fc81944b12f4c4f4a54836e59bb6cf18bfede8aa91",
+    "11-768/assignment/assignment-3/scottyrl/envs/number_search.py": "4f5f42305a19a3a0dcc1b88075d26b9b3cffd23322637f90544448ab9a6f69b9",
+    "11-768/assignment/assignment-3/scottyrl/envs/textcraft/__init__.py": "97aec285ccd4774068a185cec234584b57bed1306e9e5a8878d19c3825bf4ae1",
+    "11-768/assignment/assignment-3/scottyrl/envs/textcraft/env.py": "c8e78fef79ec9334fd81720effe5d8a2b9e2a9f5b1bbbd6826b8c49e633b692b",
+    "11-768/assignment/assignment-3/scottyrl/envs/textcraft/recipe_book.py": "933e85abe65d766c2266dff9c758cd2400a36b8789bd068e092a1d497ebcead7",
+    "11-768/assignment/assignment-3/scottyrl/evaluate.py": "99445decb55b20a82d63b5d93ecd8750139bcd22cd0a313ead0c3cd41ab82d97",
+    "11-768/assignment/assignment-3/scottyrl/metrics.py": "653597ec98c69c7f90eadde588cfe544f4558a17559548fedff76bd0ff0b63f2",
+    "11-768/assignment/assignment-3/scottyrl/policy.py": "af58fa997b291c2760530d3663074c276d582670404cb0f3ff845dca6ef3c43f",
+    "11-768/assignment/assignment-3/scottyrl/rollout.py": "66a9a16416cfcf1b1992a03d67d0110a8acb83d24422219eb9db75633355552b",
+    "11-768/assignment/assignment-3/scottyrl/tinker_adapter.py": "096969d0075875af860d01e2694faf328d63cd04c4d3d61dc79d26ca53ed7422",
+    "11-768/assignment/assignment-3/scottyrl/train/__init__.py": "602a2ef982529182714db8f0f8356d024be36016c0a336de695acc5523f1b13c",
+    "11-768/assignment/assignment-3/scottyrl/train/async_grpo.py": "d6a1a2b6eb1df499875c53ac0517408b98f178ab600a9391f42985bcd9997fb7",
+    "11-768/assignment/assignment-3/scottyrl/train/common.py": "0e07903a165a679efb000aa659f6a20c4fb688e46703c5cbd1e75368cde3e02f",
+    "11-768/assignment/assignment-3/scottyrl/train/sync.py": "9e8f86a27fb4b685bb0cf0d234b02d1175e3f8542fa8021e2e3766b0b7806a29",
+    "11-768/assignment/assignment-3/scottyrl/types.py": "12f9262a3ebd640078ef4f61fd5ca663dc0ae337ab552cd0c18460f0ffe22025",
+    "11-768/assignment/assignment-3/scripts/evaluate_checkpoint.py": "5850d1c51bfaa74960ba6560d59643ac177270763597b74bc61079cb195d9468",
+    "11-768/assignment/assignment-3/scripts/export_checkpoint.py": "6b25239643e2cfe3a7417a431bdd349004d25e04264c33f2cecdabe97c971472",
+    "11-768/assignment/assignment-3/scripts/package_submission.py": "1895b5faaa8efdf93b9c1386cc6610f6a785cce45c26f2b2dc152cec2b276555",
+    "11-768/assignment/assignment-3/scripts/train_async.py": "8f02a969ab132443dbaf2ab8ca87b1c34536eb3a27b718e9280636411257cb40",
+    "11-768/assignment/assignment-3/scripts/train_sync.py": "58939a4e280f273489eaccf3654fc7fdf49bb5a9ebdda1b52be2480b0f570a81",
+    "11-768/assignment/assignment-3/skyrl_tinker_modal/README.md": "09732261fca951a8af396f3c59cffaa22e838a28499605cc1377ef5bd5d0505c",
+    "11-768/assignment/assignment-3/skyrl_tinker_modal/serve_evaluation.py": "9d72737f0c885e41dccfa882f6c94ab557f54dcda35c533c66f299f7ede81896",
+    "11-768/assignment/assignment-3/skyrl_tinker_modal/serve_number_search_async.py": "bd3d798776137ed690feb23b211ccd81cdbf359d6dd358390fa7ac678f25f3d0",
+    "11-768/assignment/assignment-3/skyrl_tinker_modal/serve_number_search_sync.py": "9c9cb5566f31eb3725e0b9fc1c135e3c4f3faf2a9360451ce091f0813b8a53c7",
+    "11-768/assignment/assignment-3/skyrl_tinker_modal/serve_textcraft.py": "f91cf3ba84a0e79aa627c317f81b7bc060f7571925f3b15ea2135a215258e4c0",
+    "11-768/assignment/assignment-3/skyrl_tinker_modal/skyrl_server.py": "5f72fdc29a7531410188dc5510290fdd50f23d9f1f6f76af3f6deae5e8c748e4",
+    "11-768/assignment/assignment-3/tests/test_contracts.py": "69477f01bf179aebf595355e90be87e3108fff2b1d7bd4421d000be9716a8341",
+    "11-768/assignment/assignment-3/tests/test_envs.py": "eb9f7541a19d55b5f2e1e58c02b3e3ed04feed847047019f150f96624f58821d",
+    "11-768/assignment/assignment-3/tests/test_interfaces.py": "f69b8ce98760a535b6f6e5ac65c1d7c0d7893068ef299359eadbee726c2698b6",
+    "11-768/assignment/assignment-3/uv.lock": "1268b7eb868b046672136901c4e5ebe2872f68eabf691358fc0615069ac4931a",
+    "11-768/16.AgentsAndTheFutureOfWork/2026-10-27-zora-wang.pdf": "e07e9da87a97680981fca5b3ba766a7c620c83e8c1515fb75a798fe5812b79b1",
+    "11-768/16.AgentsAndTheFutureOfWork/references/GDPval_Evaluating_AI_Model_Performance_on_Real-World_Economically_Valuable_Tasks.pdf": "37c7604bc9da68cd8d9345ad16938164fe985182ad723fcb09e9415f84dc25d4",
+    "11-768/16.AgentsAndTheFutureOfWork/references/Remote_Labor_Index_Measuring_AI_Automation_of_Remote_Work.pdf": "7bc1e50585429c83a93a8045fdaa654ba074c4fa3a35671613024de69c46d2ed",
+    "11-768/16.AgentsAndTheFutureOfWork/references/Future_of_Work_with_AI_Agents_Auditing_Automation_and_Augmentation_Potential_across_the_U.S._Workforce.pdf": "8cea403d86046b14a9296991b91f659192b0aedf3d86806faeeecce3a81d962a",
+    "11-768/16.AgentsAndTheFutureOfWork/references/GPTs_are_GPTs_An_Early_Look_at_the_Labor_Market_Impact_Potential_of_Large_Language_Models.pdf": "af3edd4efc120c70f0e2e6dc7a4e314a41f1b9eb5a7e88bc25533db631f79632",
+    "11-768/16.AgentsAndTheFutureOfWork/references/Canaries_in_the_Coal_Mine_Six_Facts_about_the_Recent_Employment_Effects_of_Artificial_Intelligence.pdf": "c8d2e5c4ccc0de7ef977c191c144726d6073e164b33f30397fcb0090165d2bdf",
+    "11-768/16.AgentsAndTheFutureOfWork/references/Measuring_AI_Ability_to_Complete_Long_Software_Tasks.pdf": "29216eb3af4daa417666757a462ab7c7b5f8c18c188ee5a56e258b04116211f7",
+    "11-768/16.AgentsAndTheFutureOfWork/references/How_Well_Does_Agent_Development_Reflect_Real-World_Work.pdf": "3911d2d529c297fc8e00ab66a10b1f2a1084a8cade5e439849b648d56b7b6246",
+    "11-768/16.AgentsAndTheFutureOfWork/references/CollabSkill_Evaluating_Human-Agent_Collaboration_On_Real-World_Tasks.pdf": "ae47c83fbe88fb05e60809f061f6f7e05ed87967db3b7a079254b3f6e80703cc",
+    "11-768/16.AgentsAndTheFutureOfWork/references/Efficient_Test-Time_Adaptation_through_Human-AI_Interaction.pdf": "ad19a223bd6d9f92758c536e10d6c64821f4b38e8c11a9bba8d5613a4c229675"
   },
   "path_maintenance": [
     {
@@ -2501,5 +3081,489 @@
       ],
       "verification": "tools/verify_material_names.py and tools/verify_course_notes.py --write-report"
     }
-  ]
+  ],
+  "followup_audits": [
+    {
+      "date": "2026-10-28",
+      "scope": "已有第 1–15 课和 18 篇讲解。所有原始归档执行完整性检查，各课执行重点语义回查；新第 16 课和作业 3 由各自更新记录管理。",
+      "official_schedule": "https://www.cmu-agents.com/",
+      "schedule_check": "对照本轮获取的官网课程资源列表，既有讲义/阅读/参考资料入口已登记；补记第 1–9 课官方视频入口。讲师主页不作为教学资料缺失。",
+      "primary_slides": [
+        {
+          "path": "11-768/1.WhatIsAnAgent/lecture-01-agents.pdf",
+          "url": "https://www.cmu-agents.com/slides/lecture-01-agents.pdf",
+          "online_same_bytes": true,
+          "sha256": "16ad94b7cea06da50ff1736fba9ba3afcbb753fdea51c57b8df1ae3f9a7dd26c"
+        },
+        {
+          "path": "11-768/2.ToolUse/lecture-02-tool-use.pdf",
+          "url": "https://www.cmu-agents.com/slides/lecture-02-tool-use.pdf",
+          "online_same_bytes": true,
+          "sha256": "671b9d0c849150aa9b5d95a9655b892dbe5fa2d6fc7a6c704c0f8e3f876e74ad"
+        },
+        {
+          "path": "11-768/3.LongContext/lecture-03-long-context.pdf",
+          "url": "https://www.cmu-agents.com/slides/lecture-03-long-context.pdf",
+          "online_same_bytes": true,
+          "sha256": "cd08b3463430b78a144a24de611ec9a58befae32c5d2109471d89934fbf2f926"
+        },
+        {
+          "path": "11-768/4.SkillsAndMemory/lecture-04-memory-and-skills.pdf",
+          "url": "https://www.cmu-agents.com/slides/lecture-04-memory-and-skills.pdf",
+          "online_same_bytes": true,
+          "sha256": "15165b0ab74f7ebe2704bbfbc341f2273d27e66041f3bfedf2c887c02e6a549d"
+        },
+        {
+          "path": "11-768/5.PlanningAndCoordination/lecture-05-planning.pdf",
+          "url": "https://www.cmu-agents.com/slides/lecture-05-planning.pdf",
+          "online_same_bytes": true,
+          "sha256": "32271dff69a87f555fe82a192d5cd20ac058b3266bc965e8a5411897781f8adf"
+        },
+        {
+          "path": "11-768/6.CodingAgents/lecture-06-coding-agents.pdf",
+          "url": "https://www.cmu-agents.com/slides/lecture-06-coding-agents.pdf",
+          "online_same_bytes": true,
+          "sha256": "9f764df75b573499d090ed71d19a7b8bbfa01ad7059a440ca1af00111b480b51"
+        },
+        {
+          "path": "11-768/7.ComputerUseAgents/lecture-07-computer-use-agents.pdf",
+          "url": "https://www.cmu-agents.com/slides/lecture-07-computer-use-agents.pdf",
+          "online_same_bytes": true,
+          "sha256": "444b4f2188fc62a50675ec3ef43896905437bbd95f3429879d2dfcc14929473c"
+        },
+        {
+          "path": "11-768/8.SupervisedFineTuning/lecture-08-sft.pdf",
+          "url": "https://www.cmu-agents.com/slides/lecture-08-sft.pdf",
+          "online_same_bytes": true,
+          "sha256": "1598a8bd9784ec044f89b8951af52bb2f80c0236b73aada0ca4cc3038049c4e3"
+        },
+        {
+          "path": "11-768/9.TrainingRLBasics/lecture-09-rl-basics.pdf",
+          "url": "https://www.cmu-agents.com/slides/lecture-09-rl-basics.pdf",
+          "online_same_bytes": true,
+          "sha256": "c8724ca6fbadb2afef38d627bbab2e09f8e8077fb1bb4dc0a4a078fb8669c1ca"
+        },
+        {
+          "path": "11-768/10.DeepResearchAgents/lecture-10-deep-research-agents.pdf",
+          "url": "https://www.cmu-agents.com/slides/lecture-10-deep-research-agents.pdf",
+          "online_same_bytes": true,
+          "sha256": "b3f9fafe7d586394efe3880d026c653b8b079151ffc75607d6aa7fab9c9ee259"
+        },
+        {
+          "path": "11-768/11.AdvancedRLAlgorithms/lecture-11-rl-advanced.pdf",
+          "url": "https://www.cmu-agents.com/slides/lecture-11-rl-advanced.pdf",
+          "online_same_bytes": true,
+          "sha256": "e2f23de9092424cde3a72805e3b343d261a2e219518871843e719c4dbe5cc968"
+        },
+        {
+          "path": "11-768/12.TrainingRLSystems/lecture-12-rl-systems.pdf",
+          "url": "https://www.cmu-agents.com/slides/lecture-12-rl-systems.pdf",
+          "online_same_bytes": true,
+          "sha256": "15a062df1513c0710e4e3bd8cfa247d4b131b966faadc32e5101561c322a8a13"
+        },
+        {
+          "path": "11-768/13.AgentSafety/lecture-13-agent-safety.pdf",
+          "url": "https://www.cmu-agents.com/slides/lecture-13-agent-safety.pdf",
+          "online_same_bytes": true,
+          "sha256": "6a1efa5cf21ab696750710c6aa77cba640b9da548b91eba2188001a7e64e611c"
+        },
+        {
+          "path": "11-768/14.OpenHands/lecture-14-openhands.pdf",
+          "url": "https://www.cmu-agents.com/slides/lecture-14-openhands.pdf",
+          "online_same_bytes": true,
+          "sha256": "1b4626e1b25b6eaac463e8b82360c9a7b4ffc34f6ccc4b9ab162761d5427a60a"
+        },
+        {
+          "path": "11-768/15.OrchestrationAndMonitoring/lecture-15-orchestration-and-monitoring.pdf",
+          "url": "https://www.cmu-agents.com/slides/lecture-15-orchestration-and-monitoring.pdf",
+          "online_same_bytes": true,
+          "sha256": "93b54a49f5202d4420e40d0223cd80472ae2875323715a910f476f94812fd73c"
+        }
+      ],
+      "lecture_cover_and_page_checks": [
+        {
+          "path": "11-768/1.WhatIsAnAgent/lecture-01-agents.pdf",
+          "pages": 39,
+          "cover_text": "What Are Agents? And How Do They Work? From language modeling to systems that act in the world Daniel Fried · Graham Neubig 11-768: AI Agents 1"
+        },
+        {
+          "path": "11-768/10.DeepResearchAgents/lecture-10-deep-research-agents.pdf",
+          "pages": 124,
+          "cover_text": "https://akariasai.github.io/ | aasai@andrew.cmu.edu Deep Research Agents Tasks, Benchmarks, and Methods Akari Asai Language Technologies Institute Carnegie Mellon University 11‑768: AI Agents Fall 2026"
+        },
+        {
+          "path": "11-768/11.AdvancedRLAlgorithms/lecture-11-rl-advanced.pdf",
+          "pages": 58,
+          "cover_text": "Advanced RL Algorithms for Agents Graham Neubig Language Technologies Institute Improving how agents learn from experience 1"
+        },
+        {
+          "path": "11-768/12.TrainingRLSystems/lecture-12-rl-systems.pdf",
+          "pages": 43,
+          "cover_text": "Reinforcement Learning Systems Apurva Gandhi 11-768: AI Agents"
+        },
+        {
+          "path": "11-768/13.AgentSafety/lecture-13-agent-safety.pdf",
+          "pages": 43,
+          "cover_text": "1 1 - 7 6 8 · A I AG E N TS · S A F E TY Agent Safety Limiting what agents can access and do 1"
+        },
+        {
+          "path": "11-768/14.OpenHands/lecture-14-openhands.pdf",
+          "pages": 44,
+          "cover_text": "AG E N T I C A I | L E CT U R E 1 4 OpenHands Frameworks 1 · October 8, 2026 1"
+        },
+        {
+          "path": "11-768/15.OrchestrationAndMonitoring/lecture-15-orchestration-and-monitoring.pdf",
+          "pages": 39,
+          "cover_text": "Orchestration and monitoring Frameworks 2 · October 20, 2026 Daniel Fried 11-768: AI Agents 1"
+        },
+        {
+          "path": "11-768/2.ToolUse/lecture-02-tool-use.pdf",
+          "pages": 60,
+          "cover_text": "Tool Use for Language Model Agents Graham Neubig Language Technologies Institute How models turn token predictions into actions 1"
+        },
+        {
+          "path": "11-768/3.LongContext/lecture-03-long-context.pdf",
+          "pages": 54,
+          "cover_text": "Context Management for Long-Context Agents Graham Neubig Language Technologies Institute How agents keep working as their history grows 1"
+        },
+        {
+          "path": "11-768/4.SkillsAndMemory/lecture-04-memory-and-skills.pdf",
+          "pages": 46,
+          "cover_text": "Memory and Skills Daniel Fried 11-768: AI Agents How agents improve without starting over 1"
+        },
+        {
+          "path": "11-768/5.PlanningAndCoordination/lecture-05-planning.pdf",
+          "pages": 48,
+          "cover_text": "Planning and Task Decomposition Daniel Fried 11-768: AI Agents How agents decide what to do. Plus, a bit of multi-agent. 1"
+        },
+        {
+          "path": "11-768/6.CodingAgents/lecture-06-coding-agents.pdf",
+          "pages": 82,
+          "cover_text": "Agents for Coding and Software Development Graham Neubig Language Technologies Institute From code completion to software engineering 1"
+        },
+        {
+          "path": "11-768/7.ComputerUseAgents/lecture-07-computer-use-agents.pdf",
+          "pages": 94,
+          "cover_text": "JY Koh 11-768: AI Agents 15 Sep 2026 Computer Use Agents 1"
+        },
+        {
+          "path": "11-768/8.SupervisedFineTuning/lecture-08-sft.pdf",
+          "pages": 49,
+          "cover_text": "1 1 - 7 6 8 · A I AG E N TS | T RA I N I N G 1 Supervised Fine-Tuning for Agents Yueqi Song Language Technologies Institute Turning recorded trajectories into weights 1"
+        },
+        {
+          "path": "11-768/9.TrainingRLBasics/lecture-09-rl-basics.pdf",
+          "pages": 46,
+          "cover_text": "RL Foundations for Agents From SFT to policy gradients Daniel Fried 11-768: AI Agents 1"
+        }
+      ],
+      "original_archive_integrity": {
+        "recorded_files": 424,
+        "sha256_matches": 424,
+        "mismatches": 0,
+        "pdf_files_opened_and_all_pages_text_extracted": 221,
+        "fatal_pdf_errors": 0,
+        "sources_local_link_failures": [],
+        "html_challenge_or_error_title_candidates": [],
+        "method_note": "校验值核对覆盖 REVIEW.original_sources 全部条目；221 份 PDF 逐页提取用于可解析性检查，不能替代逐页人工理解或视觉检查。HTML 只筛查常见验证/错误标题，不保证每个外部网站内容完整。"
+      },
+      "pdf_parser_cautions": {
+        "files_with_nonfatal_warnings": 36,
+        "warnings": [
+          {
+            "path": "11-768/1.WhatIsAnAgent/readings/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf",
+            "message": "bogus font ascent/descent values (0 / -82)\nbogus font ascent/descent values (0 / -85)\nbogus font ascent/descent values (0 / -56)"
+          },
+          {
+            "path": "11-768/7.ComputerUseAgents/references/WebShop_Towards_Scalable_Real-World_Web_Interaction_with_Grounded_Language_Agents.pdf",
+            "message": "bogus font ascent/descent values (772 / -2960)\n... repeated 3 times..."
+          },
+          {
+            "path": "11-768/7.ComputerUseAgents/readings/OpenCUA_Open_Foundations_for_Computer-Use_Agents.pdf",
+            "message": "Actualtext with no position. Text may be lost or mispositioned.\n... repeated 5 times..."
+          },
+          {
+            "path": "11-768/4.SkillsAndMemory/references/Agentic_Memory_Learning_Unified_Long-Term_and_Short-Term_Memory_Management_for_Large_Language_Model_Agents.pdf",
+            "message": "bogus font ascent/descent values (772 / -2960)\nbogus font ascent/descent values (772 / -2958)"
+          },
+          {
+            "path": "11-768/4.SkillsAndMemory/references/DreamCoder_Growing_generalizable_interpretable_knowledge_with_wake-sleep_Bayesian_program_learning.pdf",
+            "message": "bogus font ascent/descent values (772 / -2960)\n... repeated 2 times..."
+          },
+          {
+            "path": "11-768/4.SkillsAndMemory/references/Reinforcement_Learning_for_Self-Improving_Agent_with_Skill_Library.pdf",
+            "message": "bogus font ascent/descent values (772 / -2960)"
+          },
+          {
+            "path": "11-768/4.SkillsAndMemory/references/Leveraging_Language_to_Learn_Program_Abstractions_and_Search_Heuristics.pdf",
+            "message": "bogus font ascent/descent values (803 / -2958)\nbogus font ascent/descent values (772 / -2960)\n... repeated 2 times..."
+          },
+          {
+            "path": "11-768/4.SkillsAndMemory/readings/ReasoningBank_Scaling_Agent_Self-Evolving_with_Reasoning_Memory.pdf",
+            "message": "Actualtext with no position. Text may be lost or mispositioned."
+          },
+          {
+            "path": "11-768/3.LongContext/references/GLM-5_from_Vibe_Coding_to_Agentic_Engineering.pdf",
+            "message": "bogus font ascent/descent values (0 / -93)"
+          },
+          {
+            "path": "11-768/3.LongContext/references/DeepSeek-V4_Towards_Highly_Efficient_Million-Token_Context_Intelligence.pdf",
+            "message": "bogus font ascent/descent values (3117 / -2464)\nbogus font ascent/descent values (0 / -88)\nbogus font ascent/descent values (0 / -85)\nbogus font ascent/descent values (0 / -56)\nbogus font ascent/descent values (0 / -87)\n... repeated 2 times...\nbogus font ascent/descent values (0 / -80)\nbogus font ascent/descent values (0 / -91)\nbogus font ascent/descent values (0 / -86)\nbogus font ascent/descent values (0 / -88)\nbogus font ascent/descent values (0 / -95)\nbogus font ascent/descent values (0 / -83)\nbogus font ascent/descent values (0 / -88)"
+          },
+          {
+            "path": "11-768/3.LongContext/references/LongLLMLingua_Accelerating_and_Enhancing_LLMs_in_Long_Context_Scenarios_via_Prompt_Compression.pdf",
+            "message": "bogus font ascent/descent values (771 / -2955)\nbogus font ascent/descent values (772 / -2960)\nbogus font ascent/descent values (772 / -2958)"
+          },
+          {
+            "path": "11-768/3.LongContext/references/Gated_Delta_Networks_Improving_Mamba2_with_Delta_Rule.pdf",
+            "message": "bogus font ascent/descent values (750 / -2959)"
+          },
+          {
+            "path": "11-768/3.LongContext/references/Prompt_Cache_Modular_Attention_Reuse_for_Low-Latency_Inference.pdf",
+            "message": "syntax error: could not parse color space (105 0 R)\nIgnoring Page blending colorspace.\nsyntax error: could not parse color space (236 0 R)\nIgnoring Page blending colorspace.\nsyntax error: could not parse color space (389 0 R)\nIgnoring Page blending colorspace.\nsyntax error: could not parse color space (429 0 R)\nIgnoring Page blending colorspace.\nsyntax error: could not parse color space (473 0 R)\nIgnoring Page blending colorspace."
+          },
+          {
+            "path": "11-768/3.LongContext/references/DeepSeek-V3.2_Pushing_the_Frontier_of_Open_Large_Language_Models.pdf",
+            "message": "bogus font ascent/descent values (3117 / -2464)\n... repeated 2 times..."
+          },
+          {
+            "path": "11-768/3.LongContext/references/DeepSeek-V2_A_Strong_Economical_and_Efficient_Mixture-of-Experts_Language_Model.pdf",
+            "message": "bogus font ascent/descent values (3117 / -2464)\n... repeated 2 times...\nbogus font ascent/descent values (0 / -95)\nbogus font ascent/descent values (0 / -89)\nbogus font ascent/descent values (0 / -88)\nbogus font ascent/descent values (0 / -85)\nbogus font ascent/descent values (0 / -88)\nbogus font ascent/descent values (0 / -92)\nbogus font ascent/descent values (0 / -80)\nbogus font ascent/descent values (0 / -82)\nbogus font ascent/descent values (0 / -88)\nbogus font ascent/descent values (0 / -86)\nbogus font ascent/descent values (0 / -87)\nbogus font ascent/descent values (0 / -93)\nbogus font ascent/descent values (0 / -87)\nbogus font ascent/descent values (0 / -56)\nbogus font ascent/descent values (0 / -83)\nbogus font ascent/descent values (0 / -47)\nbogus font ascent/descent values (0 / -83)\nbogus font ascent/descent values (0 / -91)"
+          },
+          {
+            "path": "11-768/5.PlanningAndCoordination/references/DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_Reinforcement_Learning.pdf",
+            "message": "bogus font ascent/descent values (3117 / -2464)\n... repeated 3 times...\nbogus font ascent/descent values (0 / -88)\nbogus font ascent/descent values (0 / -85)\nbogus font ascent/descent values (0 / -80)\nbogus font ascent/descent values (0 / -93)\nbogus font ascent/descent values (0 / -86)\nbogus font ascent/descent values (0 / -56)\nbogus font ascent/descent values (0 / -88)\nbogus font ascent/descent values (0 / -92)\nbogus font ascent/descent values (0 / -47)\nbogus font ascent/descent values (0 / -83)\nbogus font ascent/descent values (0 / -87)\n... repeated 2 times...\nbogus font ascent/descent values (0 / -88)\nbogus font ascent/descent values (0 / -82)\nbogus font ascent/descent values (0 / -83)\nbogus font ascent/descent values (0 / -95)\nbogus font ascent/descent values (0 / -89)"
+          },
+          {
+            "path": "11-768/5.PlanningAndCoordination/readings/Do_As_I_Can_Not_As_I_Say_Grounding_Language_in_Robotic_Affordances.pdf",
+            "message": "bogus font ascent/descent values (0 / -85)\nbogus font ascent/descent values (0 / -88)"
+          },
+          {
+            "path": "11-768/6.CodingAgents/references/SWE-smith_Scaling_Data_for_Software_Engineering_Agents.pdf",
+            "message": "bogus font ascent/descent values (0 / -85)"
+          },
+          {
+            "path": "11-768/6.CodingAgents/references/SWE-Milestone_Evaluating_AI_Agents_on_Continuous_Software_Evolution.pdf",
+            "message": "closepath with no current point\n... repeated 108 times..."
+          },
+          {
+            "path": "11-768/6.CodingAgents/references/A_Syntactic_Neural_Model_for_General-Purpose_Code_Generation.pdf",
+            "message": "bogus font ascent/descent values (772 / -2960)"
+          },
+          {
+            "path": "11-768/6.CodingAgents/references/CodeBERTScore_Evaluating_Code_Generation_with_Pretrained_Models_of_Code.pdf",
+            "message": "bogus font ascent/descent values (772 / -2960)\nbogus font ascent/descent values (771 / -2955)"
+          },
+          {
+            "path": "11-768/2.ToolUse/readings/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf",
+            "message": "bogus font ascent/descent values (0 / -82)\nbogus font ascent/descent values (0 / -85)\nbogus font ascent/descent values (0 / -56)"
+          },
+          {
+            "path": "11-768/8.SupervisedFineTuning/references/Instruction_Tuning_With_Loss_Over_Instructions.pdf",
+            "message": "bogus font ascent/descent values (772 / -2960)"
+          },
+          {
+            "path": "11-768/8.SupervisedFineTuning/references/Kimi_K2_Open_Agentic_Intelligence.pdf",
+            "message": "bogus font ascent/descent values (0 / -88)"
+          },
+          {
+            "path": "11-768/8.SupervisedFineTuning/references/DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_Reinforcement_Learning.pdf",
+            "message": "bogus font ascent/descent values (3117 / -2464)\n... repeated 3 times...\nbogus font ascent/descent values (0 / -88)\nbogus font ascent/descent values (0 / -85)\nbogus font ascent/descent values (0 / -80)\nbogus font ascent/descent values (0 / -93)\nbogus font ascent/descent values (0 / -86)\nbogus font ascent/descent values (0 / -56)\nbogus font ascent/descent values (0 / -88)\nbogus font ascent/descent values (0 / -92)\nbogus font ascent/descent values (0 / -47)\nbogus font ascent/descent values (0 / -83)\nbogus font ascent/descent values (0 / -87)\n... repeated 2 times...\nbogus font ascent/descent values (0 / -88)\nbogus font ascent/descent values (0 / -82)\nbogus font ascent/descent values (0 / -83)\nbogus font ascent/descent values (0 / -95)\nbogus font ascent/descent values (0 / -89)"
+          },
+          {
+            "path": "11-768/10.DeepResearchAgents/lecture-10-deep-research-agents.pdf",
+            "message": "closepath with no current point\n... repeated 20 times..."
+          },
+          {
+            "path": "11-768/10.DeepResearchAgents/references/A_Critical_Evaluation_of_Evaluations_for_Long-form_Question_Answering.pdf",
+            "message": "bogus font ascent/descent values (772 / -2960)"
+          },
+          {
+            "path": "11-768/10.DeepResearchAgents/references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf",
+            "message": "bogus font ascent/descent values (3117 / -2464)\n... repeated 3 times...\nbogus font ascent/descent values (0 / -82)\nbogus font ascent/descent values (0 / -88)\nbogus font ascent/descent values (0 / -86)\nbogus font ascent/descent values (0 / -89)"
+          },
+          {
+            "path": "11-768/10.DeepResearchAgents/references/ResearchQA_Evaluating_Scholarly_Question_Answering_at_Scale_Across_75_Fields_with_Survey-Mined_Questions_and_Rubrics.pdf",
+            "message": "closepath with no current point\n... repeated 107 times..."
+          },
+          {
+            "path": "11-768/9.TrainingRLBasics/references/CS11-711_Advanced_NLP_-_Reinforcement_Learning.pdf",
+            "message": "Actualtext with no position. Text may be lost or mispositioned.\n... repeated 2 times..."
+          },
+          {
+            "path": "11-768/9.TrainingRLBasics/readings/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf",
+            "message": "bogus font ascent/descent values (3117 / -2464)\n... repeated 3 times...\nbogus font ascent/descent values (0 / -82)\nbogus font ascent/descent values (0 / -88)\nbogus font ascent/descent values (0 / -86)\nbogus font ascent/descent values (0 / -89)"
+          },
+          {
+            "path": "11-768/9.TrainingRLBasics/readings/Understanding_R1-Zero-Like_Training_A_Critical_Perspective.pdf",
+            "message": "bogus font ascent/descent values (772 / -2960)\n... repeated 2 times..."
+          },
+          {
+            "path": "11-768/11.AdvancedRLAlgorithms/references/Interaction-assisted_SU_2_adiabatic_holonomies_in_Josephson_phase_qubits.pdf",
+            "message": "bogus font ascent/descent values (334 / -2960)"
+          },
+          {
+            "path": "11-768/11.AdvancedRLAlgorithms/references/Distilling_the_Knowledge_in_a_Neural_Network.pdf",
+            "message": "bogus font ascent/descent values (40 / -2959)"
+          },
+          {
+            "path": "11-768/11.AdvancedRLAlgorithms/references/Proximal_Policy_Optimization_Algorithms.pdf",
+            "message": "bogus font ascent/descent values (772 / -2960)"
+          },
+          {
+            "path": "11-768/11.AdvancedRLAlgorithms/references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf",
+            "message": "bogus font ascent/descent values (3117 / -2464)\n... repeated 3 times...\nbogus font ascent/descent values (0 / -82)\nbogus font ascent/descent values (0 / -88)\nbogus font ascent/descent values (0 / -86)\nbogus font ascent/descent values (0 / -89)"
+          }
+        ],
+        "interpretation": "警告见于与既有记录哈希一致的原始 PDF，包括字体 ascent/descent、ActualText、path 和 blending color space。未改写或重编码官方原件。",
+        "visual_spot_checks": [
+          {
+            "path": "11-768/3.LongContext/references/Prompt_Cache_Modular_Attention_Reuse_for_Low-Latency_Inference.pdf",
+            "pages": [
+              2
+            ],
+            "result": "正文和图可见，无该页可见损坏"
+          },
+          {
+            "path": "11-768/7.ComputerUseAgents/readings/OpenCUA_Open_Foundations_for_Computer-Use_Agents.pdf",
+            "pages": [
+              12
+            ],
+            "result": "图表和正文可见，无该页可见损坏"
+          },
+          {
+            "path": "11-768/10.DeepResearchAgents/lecture-10-deep-research-agents.pdf",
+            "pages": [
+              43
+            ],
+            "result": "ResearchQA 图文可见，无该页可见损坏"
+          }
+        ]
+      },
+      "corrections": [
+        {
+          "paths": [
+            "11-768/1.WhatIsAnAgent/SOURCES.md",
+            "11-768/2.ToolUse/SOURCES.md",
+            "11-768/3.LongContext/SOURCES.md",
+            "11-768/4.SkillsAndMemory/SOURCES.md",
+            "11-768/5.PlanningAndCoordination/SOURCES.md",
+            "11-768/6.CodingAgents/SOURCES.md",
+            "11-768/7.ComputerUseAgents/SOURCES.md",
+            "11-768/8.SupervisedFineTuning/SOURCES.md",
+            "11-768/9.TrainingRLBasics/SOURCES.md"
+          ],
+          "change": "新增官网已提供的课程视频入口与核查日期，明确未下载视频/字幕且未作为内容核查依据。"
+        },
+        {
+          "path": "11-768/7.ComputerUseAgents/SOURCES.md",
+          "change": "补记官网当前仍指向 arXiv:1704.04368 的 MiniWoB 错链；修正已在 10 月 27 日按完整标题改名、而旧说明仍声称保留文件名的元数据矛盾。正确 World of Bits 原文不变。"
+        }
+      ],
+      "changed_notes": [],
+      "limits": [
+        "本轮未对全部 18 篇讲解再做全文精审；逐篇具体范围见 documents.reviews 的本日记录。",
+        "仅 15 份主讲义逐字节对照本轮官网文件；其余归档与既有记录哈希一致，不代表全部外部论文/网页均为当前最新版。",
+        "PDF 逐页文本提取和 3 页目视抽查不等于 221 份 PDF 的全页视觉验收。非致命解析警告保留。",
+        "未运行模型、API、GPU 或论文实验，未播放官方视频。第 12 课仅执行离线教学断言。"
+      ],
+      "verification": {
+        "command": "python3 tools/verify_course_notes.py --course 11-768",
+        "checked_at_utc": "2026-10-28T07:30:32.242054+00:00",
+        "result": "passed",
+        "reviewed_documents": 18,
+        "published_lessons": 15,
+        "checked_local_links": 2771,
+        "supplementary_sources": 17,
+        "original_source_checksums": 424,
+        "errors": [],
+        "scope": "此结果是新第 16 课合入前的既有课程验证；主代理将对整合结果再次运行并写入 VERIFICATION.json。"
+      }
+    }
+  ],
+  "initial_full_review": {
+    "review_date": "2026-10-26",
+    "scope": "Complete reading and final rereading of 30 Chinese study documents across the two courses; existing archive sources preserved. New guides cross-reviewed separately. No claim of universal correctness or full model/benchmark reproduction.",
+    "note": "历史完整精读与复读声明，对应 documents 中 2026-10-26 的原审核记录；不代表每次后续维护均重做全文语义审核。"
+  },
+  "assignment_reviews": [
+    {
+      "review_date": "2026-10-28",
+      "assignment": 3,
+      "repository": "https://github.com/cmu-agents/assignment-3",
+      "commit": "88d1b1fa2aea58938d6d251847ce5559c4ac6558",
+      "status": "archive_verified_starter_incomplete_by_design",
+      "files_read": [
+        {
+          "path": "11-768/assignment/assignment-3/README.md",
+          "scope": "全文"
+        },
+        {
+          "path": "11-768/assignment/assignment-3/ASSIGNMENT.md",
+          "scope": "全文"
+        },
+        {
+          "path": "11-768/assignment/assignment-3/pyproject.toml",
+          "scope": "全文"
+        },
+        {
+          "path": "11-768/assignment/assignment-3/data/README.md",
+          "scope": "全文"
+        },
+        {
+          "path": "11-768/assignment/assignment-3/scottyrl/tinker_adapter.py",
+          "scope": "to_tinker_datum、重要性权重统计、submit_update 接口和TODO"
+        },
+        {
+          "path": "11-768/assignment/assignment-3/tests",
+          "scope": "公开测试的环境、接口与训练控制契约；实际运行全部25项"
+        }
+      ],
+      "local_documents": [
+        {
+          "path": "11-768/assignment/assignment-3/SOURCES.md",
+          "sha256": "87e03993077809c0da2e28da3b0bb1539c80ad39f1514d2dd723f4914452b6be",
+          "reread_result": "全文复读通过；与固定版本官方说明和本次验证结果对应"
+        },
+        {
+          "path": "11-768/assignment/assignment-3/ARCHIVE_NOTES.zh-CN.md",
+          "sha256": "5e60c6f8a5ea913bef0999c786a4d1d53b759683e37854613465bab8dcd6376b",
+          "reread_result": "全文复读通过；与固定版本官方说明和本次验证结果对应"
+        }
+      ],
+      "validation": {
+        "archive_report": "11-768/assignment/assignment-3/VERIFICATION.json",
+        "baseline_tests": "11-768/assignment/assignment-3/BASELINE_TESTS.json",
+        "upstream_files": 59,
+        "dataset_tasks": 52201,
+        "public_tests_passed": 12,
+        "expected_student_stub_failures": 13,
+        "unexpected_failures": 0
+      },
+      "issues_found": [],
+      "limitations": [
+        "未实现学生TODO，不把starter code当作已完成作业。",
+        "没有复现官方Python 3.12及uv.lock完整环境，离线测试在符合pyproject要求的隔离Python 3.11环境运行，依赖版本记录于BASELINE_TESTS.json。",
+        "没有训练模型、部署服务、调用学校资源或上传模型。",
+        "数据校验不证明每个TextCraft任务的预算内可解性。"
+      ],
+      "independent_review": {
+        "reviewer": "harvard_sync_review",
+        "scope": "SOURCES, ARCHIVE_NOTES, BASELINE_TESTS, SNAPSHOT, archive verifier; official assignment/readme/data and environment contracts",
+        "result": "No archive errors or unsupported passing-test claim found. Clarified TextCraft target as net final-minus-initial inventory.",
+        "reread_result": "主代理对净增量条件回查环境代码，并全文复读最终ARCHIVE_NOTES。"
+      }
+    }
+  ],
+  "new_materials_2026_10_28": {
+    "lecture": 16,
+    "guide": "11-768/16.AgentsAndTheFutureOfWork/notes.zh-CN.md",
+    "supplemental_pdfs": 9,
+    "new_downloads": 8,
+    "reused_archive": 1,
+    "original_materials_verification": "11-768/16.AgentsAndTheFutureOfWork/ORIGINAL_MATERIALS_VERIFICATION.json",
+    "source_index": "11-768/SOURCES.md",
+    "assignment3": "11-768/assignment/assignment-3/SOURCES.md",
+    "scope": "New lesson full guide review and executable teaching arithmetic; previous guides retained with separately recorded focused audits."
+  }
 }

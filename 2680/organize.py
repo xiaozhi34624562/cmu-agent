@@ -426,6 +426,19 @@ def update_course_index() -> None:
     replacement = begin + "\n\n" + "\n".join(sections) + "\n" + end + "\n\n"
     path = ROOT / "README.md"
     content = path.read_text(encoding="utf-8")
+    content = re.sub(r"(?:资料抓取日期|官网同步日期)：\*\*[0-9-]+\*\*。",
+                     f"官网同步日期：**{archive_snapshot_date()}**。", content, count=1)
+    metadata_path = ROOT / "assignments/SNAPSHOT.json"
+    if metadata_path.exists():
+        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+        if metadata.get("status") == "upstream_unavailable":
+            content = re.sub(
+                r"- `assignments/course-repo/`：[^\n]+",
+                "- `assignments/course-repo/`：作业仓库的既有快照。"
+                f"{metadata.get('last_attempt', archive_snapshot_date())} 上游仓库仍不可访问，"
+                f"保留 {metadata.get('snapshot_date', '未记录日期')} 的固定提交；"
+                "状态见 [SNAPSHOT.json](assignments/SNAPSHOT.json)。作业 4 使用课程网站的官方归档。",
+                content, count=1)
     if begin in content and end in content:
         content = re.sub(re.escape(begin) + r".*?" + re.escape(end) + r"\s*", lambda _: replacement, content, count=1, flags=re.S)
     else:

@@ -7,6 +7,13 @@
 - [Lecture 2 slides](lecture-02-tool-use.pdf)
   - Source: https://www.cmu-agents.com/slides/lecture-02-tool-use.pdf
 
+## Course Video
+
+- [Lecture 2 official video](https://www.youtube.com/watch?v=jXChFB4JSyw&list=PLSN0qpDfUvTM&index=2)
+  - Source: https://www.youtube.com/watch?v=jXChFB4JSyw&list=PLSN0qpDfUvTM&index=2
+  - Checked: 2026-10-28 (Asia/Shanghai); linked from the official course schedule.
+  - Status: 仅登记官方视频入口；未下载视频或字幕，未将视频内容作为本轮讲解核验依据。
+
 ## Readings
 
 - [What Are Tools Anyway?](readings/What_Are_Tools_Anyway_A_Survey_from_the_Language_Model_Perspective.pdf)

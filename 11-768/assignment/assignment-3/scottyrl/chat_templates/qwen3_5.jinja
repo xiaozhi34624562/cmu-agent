@@ -1,0 +1,63 @@
+{#-
+  scottyrl chat template for Qwen/Qwen3.5-4B.
+
+  Derived from the tokenizer's stock chat template (transformers 5.x, tokenizer
+  downloaded from the Hub as "Qwen/Qwen3.5-4B"), with the vision, tools and
+  tool-call machinery removed and two knobs added. No default system prompt is
+  injected: scottyrl always passes its own system message.
+
+  Knobs (passed as extra kwargs to tokenizer.apply_chat_template):
+
+  enable_thinking (default false)
+      Controls the assistant PREFILL that follows "<|im_start|>assistant\n".
+      Qwen3.5 was trained with an opening think tag already in the prompt:
+        thinking on  -> "<think>\n"                 (model writes reasoning,
+                                                     then "</think>\n\n", then
+                                                     the answer)
+        thinking off -> "<think>\n\n</think>\n\n"   (empty reasoning block)
+      This is exactly what the stock template emits for the generation prompt,
+      so the model sees what it was trained on. Note the difference from Qwen3,
+      where the model itself emitted "<think>" as its first sampled token.
+
+  preserve_thinking_history (default true)
+      Historical assistant turns are rendered as
+        "<|im_start|>assistant\n" + prefill + content + "<|im_end|>\n"
+      where `content` is VERBATIM whatever the model sampled after the prefill
+      (reasoning + "</think>\n\n" + answer when thinking is on, the bare answer
+      when it is off, minus the trailing <|im_end|> stop token). Re-rendering a
+      conversation therefore reproduces the exact text the model saw and
+      produced, so a multi-turn episode is one growing token sequence
+      (the sequence-extension property scottyrl's datagen relies on).
+      With preserve_thinking_history=false and thinking on, everything up to
+      and including "</think>" is dropped from historical assistant turns
+      (this is what the stock template does for turns before the last user
+      query). The context is shorter, but re-rendering no longer extends the
+      previous prompt, so every turn becomes its own training sequence. With
+      thinking off there is nothing to strip and the knob has no effect.
+-#}
+{%- set enable_thinking = enable_thinking if enable_thinking is defined else false -%}
+{%- set preserve_thinking_history = preserve_thinking_history if preserve_thinking_history is defined else true -%}
+{%- set prefill = '<think>\n' if enable_thinking else '<think>\n\n</think>\n\n' -%}
+{%- for message in messages -%}
+    {%- if message.content is not string -%}
+        {{- raise_exception('scottyrl template: message content must be a string (role=' ~ message.role ~ ')') -}}
+    {%- endif -%}
+    {%- if message.role == 'system' or message.role == 'user' -%}
+        {{- '<|im_start|>' + message.role + '\n' + (message.content | trim) + '<|im_end|>\n' -}}
+    {%- elif message.role == 'assistant' -%}
+        {%- if enable_thinking and not preserve_thinking_history -%}
+            {%- set body = message.content -%}
+            {%- if '</think>' in body -%}
+                {%- set body = body.split('</think>')[-1] -%}
+            {%- endif -%}
+            {{- '<|im_start|>assistant\n' + (body | trim) + '<|im_end|>\n' -}}
+        {%- else -%}
+            {{- '<|im_start|>assistant\n' + prefill + message.content + '<|im_end|>\n' -}}
+        {%- endif -%}
+    {%- else -%}
+        {{- raise_exception('scottyrl template: unsupported role ' ~ message.role) -}}
+    {%- endif -%}
+{%- endfor -%}
+{%- if add_generation_prompt -%}
+    {{- '<|im_start|>assistant\n' + prefill -}}
+{%- endif -%}

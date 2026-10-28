@@ -29,6 +29,7 @@
 | `11-768/13.AgentSafety/` | Agent 安全、沙箱、权限、监控与风险案例 |
 | `11-768/14.OpenHands/` | OpenHands、软件 Agent SDK 与 Coding Agent 案例 |
 | `11-768/15.OrchestrationAndMonitoring/` | Agent 编排、工作流、评测、可观测性与行为监控 |
+| `11-768/16.AgentsAndTheFutureOfWork/` | 面向人类工作的 Agent、任务自动化与增强、职业任务评测和人机协作 |
 
 `2680/` 的根目录 `README.md` 和 `SOURCES.md` 是课程总入口。18 个编号课次按官网日期排序，目录名保留课程原题；每课的 `SOURCES.md` 记录讲义、阅读资料、来源链接及尚未获取的内容。目录编号不一定等于官方讲义 PDF 的编号。
 
@@ -38,7 +39,7 @@
 
 其他资料位于：
 
-- `11-768/assignment/assignment-1/`、`11-768/assignment/assignment-2/`：11-768 的 Agent Harness 与数据可视化 Agent 作业资料、代码、测试和样例数据。
+- `11-768/assignment/assignment-1/`、`11-768/assignment/assignment-2/`、`11-768/assignment/assignment-3/`：11-768 的 Agent Harness、数据可视化 Agent 评测与强化学习训练作业资料、代码、测试和样例数据。作业 3 保留官方未完成的 starter code；来源提交与逐文件校验值见其 `SNAPSHOT.json`，不要把学生待实现部分当作归档损坏而填入答案。
 - `2680/assignment/`、`2680/assignments/`、`2680/project/`：CS2680 的作业 1–4、公开作业仓库快照和项目资料；作业入口见 `2680/README.md`。
 - `RAG-KDD-Cup/`：多个 KDD Cup RAG 挑战赛的论文、说明、笔记和参赛代码快照。目录中部分上游项目曾有独立 Git 历史；本仓库只管理其中收录的文件。
 - `DSec/`：DeepSeek DSec 论文和中文解读。

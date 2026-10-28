@@ -1,0 +1,181 @@
+{
+  "checked_at": "2026-10-28",
+  "commit": "88d1b1fa2aea58938d6d251847ce5559c4ac6558",
+  "environment": {
+    "python": "3.11.10",
+    "packages": {
+      "pytest": "9.2.0",
+      "tinker": "0.24.0",
+      "pyyaml": "6.0.3",
+      "transformers": "5.21.0",
+      "numpy": "2.4.6"
+    }
+  },
+  "environment_scope": "Disposable isolated Python environment with tinker==0.24.0, pytest, PyYAML and transitive dependencies; not a frozen uv.lock recreation. Python 3.11 meets pyproject >=3.11 but differs from upstream recommended/tested 3.12.",
+  "command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 python -m pytest -p no:cacheprovider -q --tb=short",
+  "working_directory": "11-768/assignment/assignment-3",
+  "exit_code": 1,
+  "tests": 25,
+  "passed": 12,
+  "failed": 13,
+  "expected_stub_failures": 13,
+  "unexpected_failures": [],
+  "matches_upstream_documented_starter_baseline": true,
+  "results": [
+    {
+      "test": "tests.test_contracts::test_submit_update_submits_both_operations_before_resolving_either",
+      "status": "failed",
+      "failure_type": "NotImplementedError",
+      "expected_student_stub": true
+    },
+    {
+      "test": "tests.test_contracts::test_submit_update_lets_sdk_errors_propagate[forward_submit]",
+      "status": "failed",
+      "failure_type": "NotImplementedError",
+      "expected_student_stub": true
+    },
+    {
+      "test": "tests.test_contracts::test_submit_update_lets_sdk_errors_propagate[optim_result]",
+      "status": "failed",
+      "failure_type": "NotImplementedError",
+      "expected_student_stub": true
+    },
+    {
+      "test": "tests.test_contracts::test_sync_snapshot_names_are_step_000000_to_num_steps",
+      "status": "failed",
+      "failure_type": "NotImplementedError",
+      "expected_student_stub": true
+    },
+    {
+      "test": "tests.test_contracts::test_sync_empty_batch_is_a_skipped_step_with_a_record_but_no_update_or_snapshot",
+      "status": "failed",
+      "failure_type": "NotImplementedError",
+      "expected_student_stub": true
+    },
+    {
+      "test": "tests.test_contracts::test_async_groups_consumed_excludes_stale_dequeues",
+      "status": "failed",
+      "failure_type": "NotImplementedError",
+      "expected_student_stub": true
+    },
+    {
+      "test": "tests.test_contracts::test_async_batch_without_sequences_is_a_skipped_step_without_update_or_publish",
+      "status": "failed",
+      "failure_type": "NotImplementedError",
+      "expected_student_stub": true
+    },
+    {
+      "test": "tests.test_contracts::test_async_evaluation_records_the_captured_version_without_blocking_training",
+      "status": "failed",
+      "failure_type": "NotImplementedError",
+      "expected_student_stub": true
+    },
+    {
+      "test": "tests.test_contracts::test_async_worker_failure_propagates_instead_of_deadlocking_the_consumer",
+      "status": "failed",
+      "failure_type": "NotImplementedError",
+      "expected_student_stub": true
+    },
+    {
+      "test": "tests.test_envs::test_parse_tool_call",
+      "status": "passed",
+      "failure_type": null,
+      "expected_student_stub": false
+    },
+    {
+      "test": "tests.test_envs::test_number_search_feedback",
+      "status": "passed",
+      "failure_type": null,
+      "expected_student_stub": false
+    },
+    {
+      "test": "tests.test_envs::test_number_search_budget_and_invalid",
+      "status": "passed",
+      "failure_type": null,
+      "expected_student_stub": false
+    },
+    {
+      "test": "tests.test_envs::test_episode_messages_hold_the_task_and_stop_stripped_completions",
+      "status": "passed",
+      "failure_type": null,
+      "expected_student_stub": false
+    },
+    {
+      "test": "tests.test_envs::test_prompts_extend_in_token_space_across_turns",
+      "status": "passed",
+      "failure_type": null,
+      "expected_student_stub": false
+    },
+    {
+      "test": "tests.test_envs::test_history_rewrite_forces_a_reencode_and_breaks_the_extension",
+      "status": "passed",
+      "failure_type": null,
+      "expected_student_stub": false
+    },
+    {
+      "test": "tests.test_envs::test_textcraft_happy_path",
+      "status": "passed",
+      "failure_type": null,
+      "expected_student_stub": false
+    },
+    {
+      "test": "tests.test_envs::test_textcraft_strict_craft_rules",
+      "status": "passed",
+      "failure_type": null,
+      "expected_student_stub": false
+    },
+    {
+      "test": "tests.test_envs::test_textcraft_finish_requires_crafted_delta",
+      "status": "passed",
+      "failure_type": null,
+      "expected_student_stub": false
+    },
+    {
+      "test": "tests.test_envs::test_textcraft_get_info_and_inventory",
+      "status": "passed",
+      "failure_type": null,
+      "expected_student_stub": false
+    },
+    {
+      "test": "tests.test_interfaces::test_advantages_shape",
+      "status": "failed",
+      "failure_type": "NotImplementedError",
+      "expected_student_stub": true
+    },
+    {
+      "test": "tests.test_interfaces::test_datagen_shapes",
+      "status": "failed",
+      "failure_type": "NotImplementedError",
+      "expected_student_stub": true
+    },
+    {
+      "test": "tests.test_interfaces::test_collect_group_shape",
+      "status": "failed",
+      "failure_type": "NotImplementedError",
+      "expected_student_stub": true
+    },
+    {
+      "test": "tests.test_interfaces::test_groups_to_batch_shape",
+      "status": "failed",
+      "failure_type": "NotImplementedError",
+      "expected_student_stub": true
+    },
+    {
+      "test": "tests.test_interfaces::test_student_signatures_unchanged",
+      "status": "passed",
+      "failure_type": null,
+      "expected_student_stub": false
+    },
+    {
+      "test": "tests.test_interfaces::test_async_trainer_signatures",
+      "status": "passed",
+      "failure_type": null,
+      "expected_student_stub": false
+    }
+  ],
+  "limitations": [
+    "No student TODO implementation changed. A full passing test suite requires completing the assignment.",
+    "No GPU, training backend, remote inference or model artifact upload was executed.",
+    "Earlier probe in the host environment encountered a missing Tinker dependency; after installing the pinned SDK in an isolated environment, all 13 failures were NotImplementedError."
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "checked_at": "2026-10-28",
+  "course": "11-768",
+  "schedule": "https://www.cmu-agents.com/#/schedule",
+  "schedule_bundle": "https://www.cmu-agents.com/assets/index-CkO9Zh56.js",
+  "schedule_bundle_sha256": "ad9461394f87461565a182a693bd19965b0f4b3d773e49458c16ce3c378580d2",
+  "method": "GET official PDF bytes, check PDF signature, compare SHA-256/bytes with prior archive; new lecture read and reviewed separately.",
+  "slides": [
+    {
+      "url": "https://www.cmu-agents.com/slides/lecture-01-agents.pdf",
+      "path": "11-768/1.WhatIsAnAgent/lecture-01-agents.pdf",
+      "status": "saved",
+      "sha256": "16ad94b7cea06da50ff1736fba9ba3afcbb753fdea51c57b8df1ae3f9a7dd26c",
+      "bytes": 7299825,
+      "comparison": "identical_to_previous_archive"
+    },
+    {
+      "url": "https://www.cmu-agents.com/slides/lecture-02-tool-use.pdf",
+      "path": "11-768/2.ToolUse/lecture-02-tool-use.pdf",
+      "status": "saved",
+      "sha256": "671b9d0c849150aa9b5d95a9655b892dbe5fa2d6fc7a6c704c0f8e3f876e74ad",
+      "bytes": 3800412,
+      "comparison": "identical_to_previous_archive"
+    },
+    {
+      "url": "https://www.cmu-agents.com/slides/lecture-03-long-context.pdf",
+      "path": "11-768/3.LongContext/lecture-03-long-context.pdf",
+      "status": "saved",
+      "sha256": "cd08b3463430b78a144a24de611ec9a58befae32c5d2109471d89934fbf2f926",
+      "bytes": 1940129,
+      "comparison": "identical_to_previous_archive"
+    },
+    {
+      "url": "https://www.cmu-agents.com/slides/lecture-04-memory-and-skills.pdf",
+      "path": "11-768/4.SkillsAndMemory/lecture-04-memory-and-skills.pdf",
+      "status": "saved",
+      "sha256": "15165b0ab74f7ebe2704bbfbc341f2273d27e66041f3bfedf2c887c02e6a549d",
+      "bytes": 5755966,
+      "comparison": "identical_to_previous_archive"
+    },
+    {
+      "url": "https://www.cmu-agents.com/slides/lecture-05-planning.pdf",
+      "path": "11-768/5.PlanningAndCoordination/lecture-05-planning.pdf",
+      "status": "saved",
+      "sha256": "32271dff69a87f555fe82a192d5cd20ac058b3266bc965e8a5411897781f8adf",
+      "bytes": 17930410,
+      "comparison": "identical_to_previous_archive"
+    },
+    {
+      "url": "https://www.cmu-agents.com/slides/lecture-06-coding-agents.pdf",
+      "path": "11-768/6.CodingAgents/lecture-06-coding-agents.pdf",
+      "status": "saved",
+      "sha256": "9f764df75b573499d090ed71d19a7b8bbfa01ad7059a440ca1af00111b480b51",
+      "bytes": 4338661,
+      "comparison": "identical_to_previous_archive"
+    },
+    {
+      "url": "https://www.cmu-agents.com/slides/lecture-07-computer-use-agents.pdf",
+      "path": "11-768/7.ComputerUseAgents/lecture-07-computer-use-agents.pdf",
+      "status": "saved",
+      "sha256": "444b4f2188fc62a50675ec3ef43896905437bbd95f3429879d2dfcc14929473c",
+      "bytes": 7022752,
+      "comparison": "identical_to_previous_archive"
+    },
+    {
+      "url": "https://www.cmu-agents.com/slides/lecture-08-sft.pdf",
+      "path": "11-768/8.SupervisedFineTuning/lecture-08-sft.pdf",
+      "status": "saved",
+      "sha256": "1598a8bd9784ec044f89b8951af52bb2f80c0236b73aada0ca4cc3038049c4e3",
+      "bytes": 2472422,
+      "comparison": "identical_to_previous_archive"
+    },
+    {
+      "url": "https://www.cmu-agents.com/slides/lecture-09-rl-basics.pdf",
+      "path": "11-768/9.TrainingRLBasics/lecture-09-rl-basics.pdf",
+      "status": "saved",
+      "sha256": "c8724ca6fbadb2afef38d627bbab2e09f8e8077fb1bb4dc0a4a078fb8669c1ca",
+      "bytes": 1520364,
+      "comparison": "identical_to_previous_archive"
+    },
+    {
+      "url": "https://www.cmu-agents.com/slides/lecture-10-deep-research-agents.pdf",
+      "path": "11-768/10.DeepResearchAgents/lecture-10-deep-research-agents.pdf",
+      "status": "saved",
+      "sha256": "b3f9fafe7d586394efe3880d026c653b8b079151ffc75607d6aa7fab9c9ee259",
+      "bytes": 3868312,
+      "comparison": "identical_to_previous_archive"
+    },
+    {
+      "url": "https://www.cmu-agents.com/slides/lecture-11-rl-advanced.pdf",
+      "path": "11-768/11.AdvancedRLAlgorithms/lecture-11-rl-advanced.pdf",
+      "status": "saved",
+      "sha256": "e2f23de9092424cde3a72805e3b343d261a2e219518871843e719c4dbe5cc968",
+      "bytes": 1758555,
+      "comparison": "identical_to_previous_archive"
+    },
+    {
+      "url": "https://www.cmu-agents.com/slides/lecture-12-rl-systems.pdf",
+      "path": "11-768/12.TrainingRLSystems/lecture-12-rl-systems.pdf",
+      "status": "saved",
+      "sha256": "15a062df1513c0710e4e3bd8cfa247d4b131b966faadc32e5101561c322a8a13",
+      "bytes": 2172197,
+      "comparison": "identical_to_previous_archive"
+    },
+    {
+      "url": "https://www.cmu-agents.com/slides/lecture-13-agent-safety.pdf",
+      "path": "11-768/13.AgentSafety/lecture-13-agent-safety.pdf",
+      "status": "saved",
+      "sha256": "6a1efa5cf21ab696750710c6aa77cba640b9da548b91eba2188001a7e64e611c",
+      "bytes": 2611273,
+      "comparison": "identical_to_previous_archive"
+    },
+    {
+      "url": "https://www.cmu-agents.com/slides/lecture-14-openhands.pdf",
+      "path": "11-768/14.OpenHands/lecture-14-openhands.pdf",
+      "status": "saved",
+      "sha256": "1b4626e1b25b6eaac463e8b82360c9a7b4ffc34f6ccc4b9ab162761d5427a60a",
+      "bytes": 3146318,
+      "comparison": "identical_to_previous_archive"
+    },
+    {
+      "url": "https://www.cmu-agents.com/slides/lecture-15-orchestration-and-monitoring.pdf",
+      "path": "11-768/15.OrchestrationAndMonitoring/lecture-15-orchestration-and-monitoring.pdf",
+      "status": "saved",
+      "sha256": "93b54a49f5202d4420e40d0223cd80472ae2875323715a910f476f94812fd73c",
+      "bytes": 3278110,
+      "comparison": "identical_to_previous_archive"
+    },
+    {
+      "url": "https://www.cmu-agents.com/slides/2026-10-27-zora-wang.pdf",
+      "path": "11-768/16.AgentsAndTheFutureOfWork/2026-10-27-zora-wang.pdf",
+      "status": "saved",
+      "sha256": "e07e9da87a97680981fca5b3ba766a7c620c83e8c1515fb75a798fe5812b79b1",
+      "bytes": 10445576,
+      "comparison": "new_official_material"
+    }
+  ],
+  "new_assignment": {
+    "path": "11-768/assignment/assignment-3/SOURCES.md",
+    "repository": "https://github.com/cmu-agents/assignment-3",
+    "commit": "88d1b1fa2aea58938d6d251847ce5559c4ac6558",
+    "file_count": 59
+  },
+  "unpublished": [
+    {
+      "date": "2026-10-22",
+      "title": "Safety 2: Observability and Monitoring",
+      "status": "schedule_entry_without_slides_readings_references"
+    },
+    {
+      "date": "2026-10-29",
+      "title": "Interaction 1: Multi-Agent Interaction",
+      "status": "schedule_entry_without_slides"
+    }
+  ],
+  "limitations": [
+    "No video or subtitles downloaded. External reading versions were not all re-fetched; existing source checks and focused semantic reviews are recorded in REVIEW.json.",
+    "No GPU training, hosted model evaluation or course submission performed."
+  ]
+}

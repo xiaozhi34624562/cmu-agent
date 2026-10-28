@@ -1,0 +1,113 @@
+[
+  {
+    "title": "GDPval: Evaluating AI Model Performance on Real-World Economically Valuable Tasks",
+    "url": "https://cdn.openai.com/pdf/d5eb7428-c4e9-4a33-bd86-86dd4bcf12ce/GDPval.pdf",
+    "path": "references/GDPval_Evaluating_AI_Model_Performance_on_Real-World_Economically_Valuable_Tasks.pdf",
+    "status": "saved",
+    "sha256": "37c7604bc9da68cd8d9345ad16938164fe985182ad723fcb09e9415f84dc25d4",
+    "pages": 29,
+    "version": "Official OpenAI paper, arXiv:2510.04374; 29-page publisher PDF",
+    "downloaded_at": "2026-10-28",
+    "original_filename": "GDPval.pdf"
+  },
+  {
+    "title": "Remote Labor Index: Measuring AI Automation of Remote Work",
+    "url": "https://arxiv.org/pdf/2510.26787v1",
+    "path": "references/Remote_Labor_Index_Measuring_AI_Automation_of_Remote_Work.pdf",
+    "status": "saved",
+    "sha256": "7bc1e50585429c83a93a8045fdaa654ba074c4fa3a35671613024de69c46d2ed",
+    "pages": 31,
+    "version": "arXiv:2510.26787v1",
+    "note": "正文摘要最高 2.5%，不能写为 3.75% 或讲义后续榜单 21.25%。",
+    "downloaded_at": "2026-10-28",
+    "original_filename": "2510.26787v1"
+  },
+  {
+    "title": "Future of Work with AI Agents: Auditing Automation and Augmentation Potential across the U.S. Workforce",
+    "url": "https://arxiv.org/pdf/2506.06576v3",
+    "path": "references/Future_of_Work_with_AI_Agents_Auditing_Automation_and_Augmentation_Potential_across_the_U.S._Workforce.pdf",
+    "status": "saved",
+    "sha256": "8cea403d86046b14a9296991b91f659192b0aedf3d86806faeeecce3a81d962a",
+    "pages": 45,
+    "version": "arXiv:2506.06576v3",
+    "downloaded_at": "2026-10-28",
+    "original_filename": "2506.06576v3"
+  },
+  {
+    "title": "GPTs are GPTs: An Early Look at the Labor Market Impact Potential of Large Language Models",
+    "url": "https://arxiv.org/pdf/2303.10130v5",
+    "path": "references/GPTs_are_GPTs_An_Early_Look_at_the_Labor_Market_Impact_Potential_of_Large_Language_Models.pdf",
+    "status": "saved",
+    "sha256": "af3edd4efc120c70f0e2e6dc7a4e314a41f1b9eb5a7e88bc25533db631f79632",
+    "pages": 36,
+    "version": "arXiv:2303.10130v5; title page August 22, 2023",
+    "downloaded_at": "2026-10-28",
+    "original_filename": "2303.10130v5"
+  },
+  {
+    "title": "Canaries in the Coal Mine? Six Facts about the Recent Employment Effects of Artificial Intelligence",
+    "url": "https://digitaleconomy.stanford.edu/wp-content/uploads/2025/11/CanariesintheCoalMine_Nov25.pdf",
+    "path": "references/Canaries_in_the_Coal_Mine_Six_Facts_about_the_Recent_Employment_Effects_of_Artificial_Intelligence.pdf",
+    "status": "saved",
+    "sha256": "c8d2e5c4ccc0de7ef977c191c144726d6073e164b33f30397fcb0090165d2bdf",
+    "pages": 140,
+    "version": "August 2026; 140 pages",
+    "note": "旧 2025/11 URL 实际返回 August 2026 正文（140 页），不可当成 2025 归档；官方当前 PDF https://digitaleconomy.stanford.edu/app/uploads/2026/08/Canaries_August2026.pdf",
+    "downloaded_at": "2026-10-28",
+    "original_filename": "CanariesintheCoalMine_Nov25.pdf",
+    "canonical_url": "https://digitaleconomy.stanford.edu/app/uploads/2026/08/Canaries_August2026.pdf",
+    "version_note": "Legacy 2025/11 URL actually returns August 2026 PDF; not a 2025 historical snapshot."
+  },
+  {
+    "title": "Measuring AI Ability to Complete Long Software Tasks",
+    "url": "https://arxiv.org/pdf/2503.14499v4",
+    "path": "references/Measuring_AI_Ability_to_Complete_Long_Software_Tasks.pdf",
+    "status": "saved",
+    "sha256": "29216eb3af4daa417666757a462ab7c7b5f8c18c188ee5a56e258b04116211f7",
+    "pages": 45,
+    "version": "arXiv:2503.14499v4, July 10, 2026",
+    "original_filename": "2503.14499.pdf",
+    "reused_from": "2680/readings/papers/Measuring_AI_Ability_to_Complete_Long_Software_Tasks.pdf",
+    "verified_at": "2026-10-28",
+    "provenance_note": "Reused existing local archive. No new download date asserted."
+  },
+  {
+    "title": "How Well Does Agent Development Reflect Real-World Work?",
+    "url": "https://arxiv.org/abs/2603.01203",
+    "download_url": "https://arxiv.org/pdf/2603.01203",
+    "retrieved_at": "2026-10-28",
+    "original_filename": "2603.01203.pdf",
+    "path": "references/How_Well_Does_Agent_Development_Reflect_Real-World_Work.pdf",
+    "status": "saved",
+    "sha256": "3911d2d529c297fc8e00ab66a10b1f2a1084a8cade5e439849b648d56b7b6246",
+    "pages": 24,
+    "pdf_version": "2603.01203v2",
+    "version": "2603.01203v2"
+  },
+  {
+    "title": "CollabSkill: Evaluating Human-Agent Collaboration On Real-World Tasks",
+    "url": "https://arxiv.org/abs/2606.09833",
+    "download_url": "https://arxiv.org/pdf/2606.09833",
+    "retrieved_at": "2026-10-28",
+    "original_filename": "2606.09833.pdf",
+    "path": "references/CollabSkill_Evaluating_Human-Agent_Collaboration_On_Real-World_Tasks.pdf",
+    "status": "saved",
+    "sha256": "ae47c83fbe88fb05e60809f061f6f7e05ed87967db3b7a079254b3f6e80703cc",
+    "pages": 28,
+    "pdf_version": "2606.09833v2",
+    "version": "2606.09833v2"
+  },
+  {
+    "title": "Efficient Test-Time Adaptation through Human-AI Interaction",
+    "url": "https://arxiv.org/abs/2609.04141",
+    "download_url": "https://arxiv.org/pdf/2609.04141",
+    "retrieved_at": "2026-10-28",
+    "original_filename": "2609.04141.pdf",
+    "path": "references/Efficient_Test-Time_Adaptation_through_Human-AI_Interaction.pdf",
+    "status": "saved",
+    "sha256": "ad19a223bd6d9f92758c536e10d6c64821f4b38e8c11a9bba8d5613a4c229675",
+    "pages": 30,
+    "pdf_version": "2609.04141v1",
+    "version": "2609.04141v1"
+  }
+]

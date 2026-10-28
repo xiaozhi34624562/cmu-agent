@@ -7,6 +7,13 @@
 - [Lecture 6 slides](lecture-06-coding-agents.pdf)
   - Source: https://www.cmu-agents.com/slides/lecture-06-coding-agents.pdf
 
+## Course Video
+
+- [Lecture 6 official video](https://www.youtube.com/watch?v=1BWeH1oOM7k&list=PLSN0qpDfUvTM&index=6)
+  - Source: https://www.youtube.com/watch?v=1BWeH1oOM7k&list=PLSN0qpDfUvTM&index=6
+  - Checked: 2026-10-28 (Asia/Shanghai); linked from the official course schedule.
+  - Status: 仅登记官方视频入口；未下载视频或字幕，未将视频内容作为本轮讲解核验依据。
+
 ## Readings
 
 - None

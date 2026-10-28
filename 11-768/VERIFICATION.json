@@ -1,7 +1,7 @@
 {
   "course": "11-768",
-  "checked_at_utc": "2026-10-27T03:12:12.602723+00:00",
-  "reviewed_documents": 18,
+  "checked_at_utc": "2026-10-28T08:45:43.085854+00:00",
+  "reviewed_documents": 19,
   "published_lessons": [
     "1.WhatIsAnAgent",
     "10.DeepResearchAgents",
@@ -10,6 +10,7 @@
     "13.AgentSafety",
     "14.OpenHands",
     "15.OrchestrationAndMonitoring",
+    "16.AgentsAndTheFutureOfWork",
     "2.ToolUse",
     "3.LongContext",
     "4.SkillsAndMemory",
@@ -19,10 +20,10 @@
     "8.SupervisedFineTuning",
     "9.TrainingRLBasics"
   ],
-  "checked_local_links": 2771,
-  "explicit_pdf_page_links_sources": 0,
-  "supplementary_sources": 17,
-  "original_source_checksums": 424,
+  "checked_local_links": 2815,
+  "explicit_pdf_page_links_sources": 10,
+  "supplementary_sources": 26,
+  "original_source_checksums": 493,
   "scope": "Offline structure and integrity; not semantic proof or model benchmark replication",
   "errors": []
 }

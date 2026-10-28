@@ -76,7 +76,7 @@ chmod 600 ~/.ssh/authorized_keys</div>
             <div class="formula">curl -fsSL https://claude.ai/install.sh | bash
 echo 'export PATH="$HOME/.local/bin:$PATH"' &gt;&gt; ~/.bashrc &amp;&amp; source ~/.bashrc
 claude # sign in, then /exit</div>
-            Over SSH or in the browser terminal, the login gives you a code to paste back; the <a href="claude-code.html#login">Claude Code page</a> walks through it. Then add the course telemetry block to <code>~/.claude/settings.json</code> on the cluster, as the <a href="claude-code.html#telemetry">Claude Code page</a> describes. When you <a href="claude-code.html#export">archive your session files</a>, include the cluster's <code>~/.claude/projects/</code>.
+            Over SSH or in the browser terminal, the login gives you a code to paste back; the <a href="claude-code.html#login">Claude Code page</a> walks through it. When you<a href="claude-code.html#export">archive your session files</a>, include the cluster's <code>~/.claude/projects/</code>.
           </li>
 </ol>
 <hr/>
@@ -267,7 +267,7 @@ python3 analyze.py --in /scratch/$USER/data --out /scratch/$USER/results</div>
 </tr>
 <tr>
 <td><code>/tmp</code> and <code>/var/tmp</code> on a compute node</td>
-<td>Only scratch space for a running job; you cannot reach it afterwards.</td>
+<td>Scratch space for a running job. Files there are not deleted when the job ends. They stay until the node shuts down and take disk space from the next person on that node, so delete them before you end the job.</td>
 </tr>
 </table></div>
 <p>Move code with git. Move other files from your laptop with <code>rsync</code> (create the target directory first), or with <code>scp</code> on Windows, which has no <code>rsync</code>:</p>
@@ -281,7 +281,7 @@ rsync -av cs2680:/scratch/YOUR_USERNAME/results/ ./results/ # download</div>
 <p>The whole class shares these nodes, the course pays for every GPU-hour, and there is no per-student limit. We may cancel a job that holds far more than its share, especially before a deadline.</p>
 <ul>
 <li>Ask for what you need, and give every job a time limit with <code>-t</code>.</li>
-<li>End a job when you stop working (<code>exit</code>, or <code>scancel &lt;jobid&gt;</code>). An idle job still holds its node.</li>
+<li>End a job when you stop working (<code>exit</code>, or <code>scancel &lt;jobid&gt;</code>). An idle job still holds its node. Delete your files in <code>/var/tmp</code> first. For Assignment 4, run <code>bash $A4/bin/cleanup.sh</code>.</li>
 <li>Keep the login node for light work.</li>
 </ul>
 <hr/>

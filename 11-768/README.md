@@ -19,8 +19,19 @@
 | 13 | [13. Safety 1: Agent Safety](13.AgentSafety/SOURCES.md) | [课程讲解](13.AgentSafety/lecture-13-agent-safety-study-guide.md) |
 | 14 | [14. Frameworks 1: OpenHands](14.OpenHands/SOURCES.md) | [课程讲解](14.OpenHands/Lecture14_OpenHands_Integrated_Notes.md) |
 | 15 | [15. Frameworks 2: Orchestration and Monitoring](15.OrchestrationAndMonitoring/SOURCES.md) | [课程讲解](15.OrchestrationAndMonitoring/lecture-15-orchestration-and-monitoring-complete-guide.md) |
+| 16 | [16. Agents and the Future of Work](16.AgentsAndTheFutureOfWork/SOURCES.md) | [课程讲解](16.AgentsAndTheFutureOfWork/notes.zh-CN.md) |
 
 第 10 课还保留[通用设计](10.DeepResearchAgents/Deep_Research_Agent_General_Design.md)、[来源核对](10.DeepResearchAgents/Deep_Research_Agent_Design_Source_Checks.md)与[金融 Agent 三篇论文研究](10.DeepResearchAgents/Finance_Agent_Research_2026_Three_Papers.md)。这些是专题补充，不是新增课次。
+
+第 16 课对应官网 **2026-10-27** 的 Zora Wang 嘉宾课，讲义封面为 *AI Agents for Human Work*，保留原文件名；16 是本地资料目录序号。官网 10 月 22 日的 *Safety 2: Observability and Monitoring* 仍未提供材料，没有据此虚构一份讲义。最新同步范围和待获取事项见[来源总入口](SOURCES.md)。
+
+## 作业资料
+
+| 作业 | 原始说明与代码 | 本地归档状态 |
+|---|---|---|
+| 1 · Agent Harness | [官方 README](assignment/assignment-1/README.md) · [作业说明](assignment/assignment-1/ASSIGNMENT.md) | 保留既有归档 |
+| 2 · 数据可视化 Agent 评测 | [官方 README](assignment/assignment-2/README.md) · [作业说明](assignment/assignment-2/ASSIGNMENT.md) | 保留既有归档 |
+| 3 · 强化学习训练 | [来源和阅读入口](assignment/assignment-3/SOURCES.md) · [官方作业说明](assignment/assignment-3/ASSIGNMENT.md) | 2026-10-28 收录固定提交 `88d1b1f` 的 59 个原始文件；包含待实现函数，未进行训练 |
 
 ## 阅读与维护
 

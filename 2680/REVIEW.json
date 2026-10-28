@@ -154,6 +154,23 @@
             "Course policies are archive state, not current registrar/Canvas advice"
           ],
           "final_sha256": "0fb2761ce03b9824be25d3720e6c11a6075eaf15e344f3a56f59186666253d4f"
+        },
+        {
+          "date": "2026-10-28",
+          "review": "targeted source and high-risk claim recheck",
+          "status": "passed_for_stated_scope",
+          "files_and_passages_checked": [
+            "中文讲解可靠性、浮点与课表版本边界段；主讲义 p.31、p.34 等历史问题与现有说明对照；AFR/MTBF 教学数值重新计算"
+          ],
+          "issues_found": [],
+          "coverage_check": "本轮按每课高风险数字、公式、统计条件和本次官网更新影响范围进行重点复核；所有主讲义及归档的完整性检查另见 ORIGINAL_MATERIALS_VERIFICATION.json。",
+          "reread_result": "not_performed_in_full_this_run; note unchanged; preserve prior full-reading and final-rereading history",
+          "limitations": [
+            "本轮没有再次全文重读该讲解，不把重点回查扩大为全文语义审核",
+            "外部阅读复用既有归档，未声称所有外部 URL 的当前最新版均重新下载",
+            "未运行 GPU、付费 API 或论文基准实验"
+          ],
+          "final_sha256": "0fb2761ce03b9824be25d3720e6c11a6075eaf15e344f3a56f59186666253d4f"
         }
       ]
     },
@@ -243,6 +260,24 @@
             "产品接口按本地归档版本解释"
           ],
           "final_sha256": "10722d729f28489033ecb290beacf63849d4f62c1ae071aad0f78277bda4153f"
+        },
+        {
+          "date": "2026-10-28",
+          "review": "targeted source and high-risk claim recheck",
+          "status": "passed_for_stated_scope",
+          "files_and_passages_checked": [
+            "两篇讲解中的规则实验基线、统计显著性和版本边界段；Guardrails Beat Guidance pp.5–7、11：50.0/60.3 与 63.8 不混作统一基线",
+            "本轮删除的课程遥测配置与笔记中的产品遥测讨论分开检索，未发现依赖被删除课程配置的操作要求"
+          ],
+          "issues_found": [],
+          "coverage_check": "本轮按每课高风险数字、公式、统计条件和本次官网更新影响范围进行重点复核；所有主讲义及归档的完整性检查另见 ORIGINAL_MATERIALS_VERIFICATION.json。",
+          "reread_result": "not_performed_in_full_this_run; note unchanged; preserve prior full-reading and final-rereading history",
+          "limitations": [
+            "本轮没有再次全文重读该讲解，不把重点回查扩大为全文语义审核",
+            "外部阅读复用既有归档，未声称所有外部 URL 的当前最新版均重新下载",
+            "未运行 GPU、付费 API 或论文基准实验"
+          ],
+          "final_sha256": "2cc9da938fd0f648426128389ca53105fbb811206be2b378f17d21d618fa0adf"
         }
       ],
       "maintenance": [
@@ -337,6 +372,24 @@
             "产品接口按本地归档版本解释"
           ],
           "final_sha256": "e8d8986697834545b04c5cd811f9276aacce6635b1a06765c86e2788f310450a"
+        },
+        {
+          "date": "2026-10-28",
+          "review": "targeted source and high-risk claim recheck",
+          "status": "passed_for_stated_scope",
+          "files_and_passages_checked": [
+            "两篇讲解中的规则实验基线、统计显著性和版本边界段；Guardrails Beat Guidance pp.5–7、11：50.0/60.3 与 63.8 不混作统一基线",
+            "本轮删除的课程遥测配置与笔记中的产品遥测讨论分开检索，未发现依赖被删除课程配置的操作要求"
+          ],
+          "issues_found": [],
+          "coverage_check": "本轮按每课高风险数字、公式、统计条件和本次官网更新影响范围进行重点复核；所有主讲义及归档的完整性检查另见 ORIGINAL_MATERIALS_VERIFICATION.json。",
+          "reread_result": "not_performed_in_full_this_run; note unchanged; preserve prior full-reading and final-rereading history",
+          "limitations": [
+            "本轮没有再次全文重读该讲解，不把重点回查扩大为全文语义审核",
+            "外部阅读复用既有归档，未声称所有外部 URL 的当前最新版均重新下载",
+            "未运行 GPU、付费 API 或论文基准实验"
+          ],
+          "final_sha256": "ca727e8f13fc66bdee4cec1682f9768ed76a44b7c785eb9429962552c4947824"
         }
       ],
       "maintenance": [
@@ -424,6 +477,23 @@
             "未将观察性使用指标当因果生产力；未重复模型基准"
           ],
           "final_sha256": "87050c187234c1b442d68f795a450c05831f44b86e15e0ace075da8815860f6d"
+        },
+        {
+          "date": "2026-10-28",
+          "review": "targeted source and high-risk claim recheck",
+          "status": "passed_for_stated_scope",
+          "files_and_passages_checked": [
+            "Codex 使用研究 pp.8、10、12–13、18–19、21：平均用户 26.8% 与汇总 token 88.3%，35.4%→70.2%，2.1%→25.6%，并发时长统计口径；对应讲解段落"
+          ],
+          "issues_found": [],
+          "coverage_check": "本轮按每课高风险数字、公式、统计条件和本次官网更新影响范围进行重点复核；所有主讲义及归档的完整性检查另见 ORIGINAL_MATERIALS_VERIFICATION.json。",
+          "reread_result": "not_performed_in_full_this_run; note unchanged; preserve prior full-reading and final-rereading history",
+          "limitations": [
+            "本轮没有再次全文重读该讲解，不把重点回查扩大为全文语义审核",
+            "外部阅读复用既有归档，未声称所有外部 URL 的当前最新版均重新下载",
+            "未运行 GPU、付费 API 或论文基准实验"
+          ],
+          "final_sha256": "baf643d3f71133a5d3bbe3b2aafadf33625dd5825e256d7b89c98a2d5173253f"
         }
       ],
       "maintenance": [
@@ -469,6 +539,23 @@
             "其他长篇来源核查限于正文所用机制、数字和边界；未穷尽二级文献和附录"
           ],
           "final_sha256": "e6273bd70febfd3218204415dd69a9b0421b06a4a8e5dd4bc2e0ea191d0b7c8c"
+        },
+        {
+          "date": "2026-10-28",
+          "review": "targeted source and high-risk claim recheck",
+          "status": "passed_for_stated_scope",
+          "files_and_passages_checked": [
+            "主讲义 p.26 图表渲染：shell-only 11.0 与 purpose-built tools 18.0；ReAct p.6 的失败分析与 23% 样本口径；对应讲解段落"
+          ],
+          "issues_found": [],
+          "coverage_check": "本轮按每课高风险数字、公式、统计条件和本次官网更新影响范围进行重点复核；所有主讲义及归档的完整性检查另见 ORIGINAL_MATERIALS_VERIFICATION.json。",
+          "reread_result": "not_performed_in_full_this_run; note unchanged; preserve prior full-reading and final-rereading history",
+          "limitations": [
+            "本轮没有再次全文重读该讲解，不把重点回查扩大为全文语义审核",
+            "外部阅读复用既有归档，未声称所有外部 URL 的当前最新版均重新下载",
+            "未运行 GPU、付费 API 或论文基准实验"
+          ],
+          "final_sha256": "52b0c4e521f1dfc6b8894c2dc78ec791adb816b3934a7da07ee39ecfd824b7af"
         }
       ],
       "maintenance": [
@@ -545,6 +632,23 @@
             "Protocol descriptions remain scoped to archived teacher lecture, not claims about latest A2A/MCP versions."
           ],
           "final_sha256": "16e4f14c0b39ce6fe4b84747b4fd93b7d22c8f7c0d9247c1ba8775ef84ea4d33"
+        },
+        {
+          "date": "2026-10-28",
+          "review": "targeted source and high-risk claim recheck",
+          "status": "passed_for_stated_scope",
+          "files_and_passages_checked": [
+            "Scaling Agent Systems pp.3–4、8、14、19–20、23、25–27 重点结果：17.2/4.4 属于 trace-level 指标，约 45% 是所测条件的经验边界；对应讲解段落"
+          ],
+          "issues_found": [],
+          "coverage_check": "本轮按每课高风险数字、公式、统计条件和本次官网更新影响范围进行重点复核；所有主讲义及归档的完整性检查另见 ORIGINAL_MATERIALS_VERIFICATION.json。",
+          "reread_result": "not_performed_in_full_this_run; note unchanged; preserve prior full-reading and final-rereading history",
+          "limitations": [
+            "本轮没有再次全文重读该讲解，不把重点回查扩大为全文语义审核",
+            "外部阅读复用既有归档，未声称所有外部 URL 的当前最新版均重新下载",
+            "未运行 GPU、付费 API 或论文基准实验"
+          ],
+          "final_sha256": "ea7db39497caf999eb9c76dd2645813f8fcb1fbb2e485554f0fb41eb49e4b97f"
         }
       ],
       "maintenance": [
@@ -637,6 +741,24 @@
             "Paper-internal inconsistencies are explicitly retained rather than silently resolved. Archived product/protocol capabilities and historical prices are not asserted as current."
           ],
           "final_sha256": "9c0b9e48c1d53f6753fbc17a96b1f8392ca741a12dc1df8c91e45d5c00657595"
+        },
+        {
+          "date": "2026-10-28",
+          "review": "targeted source and high-risk claim recheck",
+          "status": "passed_for_stated_scope",
+          "files_and_passages_checked": [
+            "RAG pp.2–4 的边缘化、Top-K 与固定文档编码器；讲解中固定候选集合条件下 p_z-r_z 推导",
+            "AgentDebug pp.7–9 的 45.0/31.3/24.3 与 21→55、48→74、60→84 数值；对应记忆可靠性与实验段落"
+          ],
+          "issues_found": [],
+          "coverage_check": "本轮按每课高风险数字、公式、统计条件和本次官网更新影响范围进行重点复核；所有主讲义及归档的完整性检查另见 ORIGINAL_MATERIALS_VERIFICATION.json。",
+          "reread_result": "not_performed_in_full_this_run; note unchanged; preserve prior full-reading and final-rereading history",
+          "limitations": [
+            "本轮没有再次全文重读该讲解，不把重点回查扩大为全文语义审核",
+            "外部阅读复用既有归档，未声称所有外部 URL 的当前最新版均重新下载",
+            "未运行 GPU、付费 API 或论文基准实验"
+          ],
+          "final_sha256": "ba0b2c8125c6c884f9bd5a6aad64c481af331fbac1d7bafa332ac6d89b2433ca"
         }
       ],
       "maintenance": [
@@ -757,6 +879,23 @@
             "对所有长参考按所用机制/实验/局限回查，未穷尽全部附录"
           ],
           "final_sha256": "3ee70302f3d81833322ce3bcd78e5368017ac87879ba7ac16fa30976ea2f25e8"
+        },
+        {
+          "date": "2026-10-28",
+          "review": "targeted source and high-risk claim recheck",
+          "status": "passed_for_stated_scope",
+          "files_and_passages_checked": [
+            "τ-bench pp.7–8 的主实验 35.2 与消融 33.2；讲解 pass@k/pass^k 的独立性与逐任务条件；0.8 的五次实验算术复算"
+          ],
+          "issues_found": [],
+          "coverage_check": "本轮按每课高风险数字、公式、统计条件和本次官网更新影响范围进行重点复核；所有主讲义及归档的完整性检查另见 ORIGINAL_MATERIALS_VERIFICATION.json。",
+          "reread_result": "not_performed_in_full_this_run; note unchanged; preserve prior full-reading and final-rereading history",
+          "limitations": [
+            "本轮没有再次全文重读该讲解，不把重点回查扩大为全文语义审核",
+            "外部阅读复用既有归档，未声称所有外部 URL 的当前最新版均重新下载",
+            "未运行 GPU、付费 API 或论文基准实验"
+          ],
+          "final_sha256": "a6fbd1da8e2ccb72b70fd8be29b09f27add6885b2f599ee7e7f28d3cb388a630"
         }
       ],
       "maintenance": [
@@ -864,6 +1003,23 @@
             "Noactualproductioncostreductionorfullpaperexperimentreproduced."
           ],
           "final_sha256": "1e32c9c6c3a4604e9fdc2fd4e59a9f7b9584748605fa216ded4225c6a4c3f6e6"
+        },
+        {
+          "date": "2026-10-28",
+          "review": "targeted source and high-risk claim recheck",
+          "status": "passed_for_stated_scope",
+          "files_and_passages_checked": [
+            "Beyond Accuracy: Unveiling Inefficiency Patterns in Tool-Integrated Reasoning pp.3–5 的 PTE、gamma、HBM/计算假设与相关性条件；对应讲解对缓存保留与原文近似边界的说明"
+          ],
+          "issues_found": [],
+          "coverage_check": "本轮按每课高风险数字、公式、统计条件和本次官网更新影响范围进行重点复核；所有主讲义及归档的完整性检查另见 ORIGINAL_MATERIALS_VERIFICATION.json。",
+          "reread_result": "not_performed_in_full_this_run; note unchanged; preserve prior full-reading and final-rereading history",
+          "limitations": [
+            "本轮没有再次全文重读该讲解，不把重点回查扩大为全文语义审核",
+            "外部阅读复用既有归档，未声称所有外部 URL 的当前最新版均重新下载",
+            "未运行 GPU、付费 API 或论文基准实验"
+          ],
+          "final_sha256": "c67d8002502ce4285ba0d5cacd6724f0cfe76003232d6a4629042216dde2ba02"
         }
       ],
       "maintenance": [
@@ -1023,6 +1179,24 @@
             "change": "Replaced two currency dollar signs with 美元 to avoid accidental inline math; numerical values unchanged.",
             "reread": "Complete final document reread consecutively in lines 1–180,181–355,356–end; passed."
           }
+        },
+        {
+          "date": "2026-10-28",
+          "review": "targeted source and high-risk claim recheck",
+          "status": "passed_for_stated_scope",
+          "files_and_passages_checked": [
+            "官网 10/14 阅读讨论分组，确认没有教师 lecture PDF；中文讲解前半的威胁与机制段",
+            "AgentPoison pp.5、7–8 的访问假设、ASR-r/a/t 与 80.0/68.5/56.8/91.1 数值；CaMeL p.7 图5 渲染并回查 P-LLM/Q-LLM 隔离"
+          ],
+          "issues_found": [],
+          "coverage_check": "本轮按每课高风险数字、公式、统计条件和本次官网更新影响范围进行重点复核；所有主讲义及归档的完整性检查另见 ORIGINAL_MATERIALS_VERIFICATION.json。",
+          "reread_result": "not_performed_in_full_this_run; note unchanged; preserve prior full-reading and final-rereading history",
+          "limitations": [
+            "本轮没有再次全文重读该讲解，不把重点回查扩大为全文语义审核",
+            "外部阅读复用既有归档，未声称所有外部 URL 的当前最新版均重新下载",
+            "未运行 GPU、付费 API 或论文基准实验"
+          ],
+          "final_sha256": "77bb027d7244c96155921d296dd1c8ce9330682d978c73c809522ad5b7c7925e"
         }
       ],
       "maintenance": [
@@ -1144,6 +1318,23 @@
             "Lecture-only advanced examples without a corresponding locally assigned original paper are explicitly bounded to lecture mechanism claims."
           ],
           "final_sha256": "11d0d8872853f3bbd79d216c9a73f2039308b4a05d5e505594cad80c577756b1"
+        },
+        {
+          "date": "2026-10-28",
+          "review": "targeted source and high-risk claim recheck",
+          "status": "passed_for_stated_scope",
+          "files_and_passages_checked": [
+            "中文讲解参数、注意力复杂度、GQA/KV 容量与单位段；主讲义 p.18 与 p.24（p.24 渲染），区分累计中间量和实际峰值；KV 字节量重新计算"
+          ],
+          "issues_found": [],
+          "coverage_check": "本轮按每课高风险数字、公式、统计条件和本次官网更新影响范围进行重点复核；所有主讲义及归档的完整性检查另见 ORIGINAL_MATERIALS_VERIFICATION.json。",
+          "reread_result": "not_performed_in_full_this_run; note unchanged; preserve prior full-reading and final-rereading history",
+          "limitations": [
+            "本轮没有再次全文重读该讲解，不把重点回查扩大为全文语义审核",
+            "外部阅读复用既有归档，未声称所有外部 URL 的当前最新版均重新下载",
+            "未运行 GPU、付费 API 或论文基准实验"
+          ],
+          "final_sha256": "c2873f5b07927a2da929f27d7e1fbe31cb9eb330fe39505a36f82fd2f4d06580"
         }
       ],
       "maintenance": [
@@ -1268,6 +1459,23 @@
             "New Roofline archive is author-hosted2008technicalreport; clearly distinguished from official2009journalDOI."
           ],
           "final_sha256": "f922ce423cbb49d60d643fbcc11c37dd47294ffcaed4bc0ea81e6f4fe8262fbf"
+        },
+        {
+          "date": "2026-10-28",
+          "review": "targeted source and high-risk claim recheck",
+          "status": "passed_for_stated_scope",
+          "files_and_passages_checked": [
+            "中文讲解 GPU 层次、roofline、带宽与并发段；主讲义 pp.13–21、24–29（p.29 渲染）；206.04 FLOP/B、0.485% 和约 9 KB/SM 在途量重新计算"
+          ],
+          "issues_found": [],
+          "coverage_check": "本轮按每课高风险数字、公式、统计条件和本次官网更新影响范围进行重点复核；所有主讲义及归档的完整性检查另见 ORIGINAL_MATERIALS_VERIFICATION.json。",
+          "reread_result": "not_performed_in_full_this_run; note unchanged; preserve prior full-reading and final-rereading history",
+          "limitations": [
+            "本轮没有再次全文重读该讲解，不把重点回查扩大为全文语义审核",
+            "外部阅读复用既有归档，未声称所有外部 URL 的当前最新版均重新下载",
+            "未运行 GPU、付费 API 或论文基准实验"
+          ],
+          "final_sha256": "c7834b817f0b0a0b062822c1cf235e382f93688fe9852d0ddf5863b139a7b5ed"
         }
       ],
       "maintenance": [
@@ -1818,11 +2026,11 @@
     "2680/13.EfficientLLMServing.SpeculativeDecoding/readings/MagicDec_Breaking_the_Latency-Throughput_Tradeoff_for_Long_Context_Generation_with_Speculative_Decoding.pdf": "a790569abe3000955becc89de7faecb613180a2e87131d3a34e2d114aa018ea5",
     "2680/13.EfficientLLMServing.SpeculativeDecoding/readings/DSpark_Confidence-Scheduled_Speculative_Decoding_with_Semi-Autoregressive_Generation.pdf": "522036b0cc16ad4678bd7c278dd0a0ab4da31170af7b97c2041067cc09a8289a",
     "2680/site/to_release.html": "2e2d39878611f922d36346e4a829004f08d24ddb207a061b834198da1d1b665b",
-    "2680/site/index.html": "05d3b89c4355ead6be71afd121e4068fb06fd2b5a6bc2beca529ea8ead2f012f",
+    "2680/site/index.html": "e306354078be13ce8e144aedb4ac1022b495361ce9c36a9e33b7fceed682ac32",
     "2680/site/seas-logo.png": "3bac23521d2edf3e90e628fef2ddeef8720944816d51269c69b0206815c4e797",
     "2680/site/readings.html": "73134198582f0fd23e9c3ef594b980f1926e6dbe893a5be498de8e8e76466238",
-    "2680/site/project.html": "54dc9a9436e62e3a31f08d6f04a4c3aa79cd406720c59d40779c4cf5fa9f314d",
-    "2680/site/header.html": "610a566d63c031a9f3e8865553703dda35a21db18098c5491ad7270c08c02ffd",
+    "2680/site/project.html": "c01484edd114b86bb7c80e5d24f48887aa3b5bf5975697e5a89f95d35c8555b4",
+    "2680/site/header.html": "0167746c267af6b678a3b9dbe62a8dd90e5fe8138f36f36ddd28fd2261deb5d5",
     "2680/site/discussion.html": "b7294fa3e2b9fbf4181c333e0298b64970b56e30fff03c368612a40e77ef4b74",
     "2680/site/favicon.svg": "1c46089593e84ef2567da962983139b5ad72bac7dc1d783e3ce31db2f91024b6",
     "2680/site/policy.html": "697b5bcbabfca9ab7611aa8f5ffb4fe151966e40221c9f8b891921b89b6c0107",
@@ -1830,7 +2038,7 @@
     "2680/site/assignments/assignment2.html": "ea8667c4c6a71d01cfe3b97ac836c821b3e598026a60ac906685765ab1fb7c4c",
     "2680/site/assignments/index.html": "5e632c9e93f429f3b53f1f34ab3a3472f562e993b343231eb2f92983b775a375",
     "2680/site/assignments/assignment3.html": "5d7041419365c9c66acb3e54cb4f5580fce443d8f3a4cf6de555048562fb6ffe",
-    "2680/site/assignments/assignment4.html": "254b60f2db5515897c2b844384c6ebb8651531c3d21bb2ec6c1b286d3321f425",
+    "2680/site/assignments/assignment4.html": "5cb88bd3cccaf54be4a41d4e6ace67dd633621ec6f843e2a281e5e138961319a",
     "2680/site/assignments/assignment4.tar.gz": "5165475e1ae37b0581bcb2b1a17acef5d8839944ea0f0f6dc6f11f1e26a12b62",
     "2680/site/assignments/assignment3.tar.gz": "6da8e16187337ee631532d7a01f67a44f5ac4903f6cb85ea6ebecb120c01ae87",
     "2680/site/assignments/assignment1.html": "6a37ef7fd39a2775489cbfaf13380599068478ad7d418fe0d48310bf438b4db5",
@@ -1872,9 +2080,9 @@
     "2680/site/staff/yunjia-zheng.jpg": "493e02c5a8cb3fb2c80fa06b0e3b1850a44cf0de42e82cf1c55619b6d578cfea",
     "2680/site/computing/index.html": "ad05e1ac92428fc4ef35d1c45d2ce4ff6cdf7a572146d07ede3277fa941ba389",
     "2680/site/computing/aws.html": "5dd3a3acb6867ce6c6a1e1240f43d40832f4e23a4876e483ccb94bb2481441de",
-    "2680/site/computing/claude-code.html": "fb2f3e611b35a3de2b2519803d151894b7b8a071acb237e49b62fc6564a3069d",
-    "2680/site/computing/cluster.html": "8d849b23ff76e82ad01ffc2968ce5dea19f0171d19e1fb49b19368eb6abacc54",
-    "2680/site/computing/cloudlab.html": "598f46cc9fe5bae8f0592dbc8026bf9a18ab1611cfcfd2f3b964ba898cce0a3b",
+    "2680/site/computing/claude-code.html": "52fbd3db1bf8403137ab914f619fa1a3c34c38e402c69aeb9ef939f13593304f",
+    "2680/site/computing/cluster.html": "ca3227bb054cbddd9647ad17df7cc4372c59d94626acd782f95f7fc057403879",
+    "2680/site/computing/cloudlab.html": "541a7bd33fa2b12fd697d7e3798a7534a0c8f245d8715e116d1c92069c4b3e5d",
     "2680/site/computing/api.html": "5e54b02fa5a980c896bed89748c5b245def5d125810c19c2ed72e519fec89859",
     "2680/2.AgentsUseI.HowClaudeCodeWorks/2_agent_use_1.pdf": "348a480ba58823f695abff7aa65c54f7fabee114866fca938b29ea42b3702dcf",
     "2680/2.AgentsUseI.HowClaudeCodeWorks/readings/The_Scaffolding_Matters_More_Than_the_Interface.pdf": "f257cb076d82ba5d40d2e637fe46a57eb800e6f2de80a33f23ecb2d271b00780",
@@ -1951,6 +2159,96 @@
       ],
       "preexisting_source_checksum_discrepancies": [],
       "verification": "tools/verify_material_names.py and tools/verify_course_notes.py --write-report"
+    }
+  ],
+  "last_maintenance_date": "2026-10-28",
+  "source_version_updates": [
+    {
+      "date": "2026-10-28",
+      "method": "python3 2680/sync.py; official HTML content refresh with existing local navigation rewriting; no manual original prose edits",
+      "changes": [
+        {
+          "path": "2680/site/index.html",
+          "previous_sha256": "05d3b89c4355ead6be71afd121e4068fb06fd2b5a6bc2beca529ea8ead2f012f",
+          "sha256": "e306354078be13ce8e144aedb4ac1022b495361ce9c36a9e33b7fceed682ac32",
+          "reason": "Official HTML revised; local navigation rewritten by sync.py only",
+          "url": "https://cs2680.com/index.html"
+        },
+        {
+          "path": "2680/site/project.html",
+          "previous_sha256": "54dc9a9436e62e3a31f08d6f04a4c3aa79cd406720c59d40779c4cf5fa9f314d",
+          "sha256": "c01484edd114b86bb7c80e5d24f48887aa3b5bf5975697e5a89f95d35c8555b4",
+          "reason": "Official HTML revised; local navigation rewritten by sync.py only",
+          "url": "https://cs2680.com/project.html"
+        },
+        {
+          "path": "2680/site/header.html",
+          "previous_sha256": "610a566d63c031a9f3e8865553703dda35a21db18098c5491ad7270c08c02ffd",
+          "sha256": "0167746c267af6b678a3b9dbe62a8dd90e5fe8138f36f36ddd28fd2261deb5d5",
+          "reason": "Official HTML revised; local navigation rewritten by sync.py only",
+          "url": "https://cs2680.com/header.html"
+        },
+        {
+          "path": "2680/site/assignments/assignment4.html",
+          "previous_sha256": "254b60f2db5515897c2b844384c6ebb8651531c3d21bb2ec6c1b286d3321f425",
+          "sha256": "5cb88bd3cccaf54be4a41d4e6ace67dd633621ec6f843e2a281e5e138961319a",
+          "reason": "Official HTML revised; local navigation rewritten by sync.py only",
+          "url": "https://cs2680.com/assignments/assignment4.html"
+        },
+        {
+          "path": "2680/site/computing/claude-code.html",
+          "previous_sha256": "fb2f3e611b35a3de2b2519803d151894b7b8a071acb237e49b62fc6564a3069d",
+          "sha256": "52fbd3db1bf8403137ab914f619fa1a3c34c38e402c69aeb9ef939f13593304f",
+          "reason": "Official HTML revised; local navigation rewritten by sync.py only",
+          "url": "https://cs2680.com/computing/claude-code.html"
+        },
+        {
+          "path": "2680/site/computing/cluster.html",
+          "previous_sha256": "8d849b23ff76e82ad01ffc2968ce5dea19f0171d19e1fb49b19368eb6abacc54",
+          "sha256": "ca3227bb054cbddd9647ad17df7cc4372c59d94626acd782f95f7fc057403879",
+          "reason": "Official HTML revised; local navigation rewritten by sync.py only",
+          "url": "https://cs2680.com/computing/cluster.html"
+        },
+        {
+          "path": "2680/site/computing/cloudlab.html",
+          "previous_sha256": "598f46cc9fe5bae8f0592dbc8026bf9a18ab1611cfcfd2f3b964ba898cce0a3b",
+          "sha256": "541a7bd33fa2b12fd697d7e3798a7534a0c8f245d8715e116d1c92069c4b3e5d",
+          "reason": "Official HTML revised; local navigation rewritten by sync.py only",
+          "url": "https://cs2680.com/computing/cloudlab.html"
+        }
+      ]
+    }
+  ],
+  "maintenance_runs": [
+    {
+      "date": "2026-10-28",
+      "scope": "All 18 course mappings and original archive integrity; targeted source checks for 12 unchanged Chinese documents; historical full reviews preserved.",
+      "original_materials_report": "2680/ORIGINAL_MATERIALS_VERIFICATION.json",
+      "update_note": "2680/UPDATE-2026-10-28.md",
+      "notes_changed": [],
+      "arithmetic_checks": {
+        "afR_9_percent_exponential_MTBF_hours": 92884.49674112716,
+        "50000h_MTBF_for_16000_independent_devices_hours": 3.125,
+        "pass_all_5_at_p_0_8": 0.3276800000000001,
+        "pass_at_least_one_5_at_p_0_8": 0.99968,
+        "KV_bytes_per_token_L80_Hkv8_D128_FP16": 327680,
+        "KV_GB_80000_tokens_decimal": 26.2144,
+        "weights_plus_64x80000_KV_GB_decimal": 1818.9216000000001,
+        "GPU_ridge_FLOP_per_byte": 206.04166666666669,
+        "GEMV_bandwidth_peak_fraction": 0.004853387259858443,
+        "inflight_bytes_per_SM": 9090.90909090909,
+        "30_to_26_seconds_speedup": 1.1538461538461537
+      },
+      "corrections": [
+        "organize.py refreshes README official-site sync date and the retained assignment snapshot last-attempt date",
+        "sync.py writes stable URL order for fetch failures"
+      ],
+      "limitations": [
+        "HarvardMadSys/cs2680_assignments remains unavailable; retained 2026-10-13 commit 7562690a4ad9de0d827b0f73e6ca69ea92c09cfd",
+        "11 reading entries remain unavailable or browser-verification-only",
+        "10/28 lesson 12 has no linked lecture PDF",
+        "PDF parsing warnings preserved; selected pages rendered; no claim every figure/page was visually reviewed"
+      ]
     }
   ]
 }

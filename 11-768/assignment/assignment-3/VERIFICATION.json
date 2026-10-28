@@ -1,0 +1,59 @@
+{
+  "checked_at_utc": "2026-10-28T07:43:17.333548+00:00",
+  "repository": "https://github.com/cmu-agents/assignment-3",
+  "commit": "88d1b1fa2aea58938d6d251847ce5559c4ac6558",
+  "upstream_files": 59,
+  "python_files_parsed": 36,
+  "local_file_links_checked": 42,
+  "datasets": [
+    {
+      "file": "number_search_train.jsonl",
+      "rows": 50000,
+      "expected_rows": 50000,
+      "unique_ids": 50000,
+      "cross_split_id_overlap": [],
+      "invalid_tasks": []
+    },
+    {
+      "file": "number_search_val.jsonl",
+      "rows": 1000,
+      "expected_rows": 1000,
+      "unique_ids": 1000,
+      "cross_split_id_overlap": [],
+      "invalid_tasks": []
+    },
+    {
+      "file": "textcraft_train.jsonl",
+      "rows": 852,
+      "expected_rows": 852,
+      "unique_ids": 852,
+      "cross_split_id_overlap": [],
+      "invalid_tasks": []
+    },
+    {
+      "file": "textcraft_val.jsonl",
+      "rows": 213,
+      "expected_rows": 213,
+      "unique_ids": 213,
+      "cross_split_id_overlap": [],
+      "invalid_tasks": []
+    },
+    {
+      "file": "textcraft_val_hard.jsonl",
+      "rows": 136,
+      "expected_rows": 136,
+      "unique_ids": 136,
+      "cross_split_id_overlap": [],
+      "invalid_tasks": []
+    }
+  ],
+  "recipe_items": 1452,
+  "recipe_count": 1402,
+  "base_items": 50,
+  "scope": "Snapshot hashes, Python syntax, local file links and dataset structure; public-test results recorded separately in BASELINE_TESTS.json.",
+  "limitations": [
+    "Does not prove all TextCraft tasks solvable within the action budget.",
+    "No student functions implemented; no model/GPU training or evaluation performed."
+  ],
+  "errors": []
+}

@@ -4,7 +4,7 @@
 
 ## Slides
 
-- No slides linked on the course website as of 2026-10-23.
+- No slides linked on the course website as of 2026-10-28.
 
 ## Readings
 

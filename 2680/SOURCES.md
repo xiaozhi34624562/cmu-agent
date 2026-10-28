@@ -1,7 +1,7 @@
 # CS2680 来源索引
 
 - 课程：[CS2680 Modern AI Systems](https://cs2680.com/)（2026 Fall）
-- 本地同步日期：2026-10-23
+- 本地同步日期：2026-10-28
 - `site/` 保存课程网站公开页面和站内文件；网页中的站内链接已改为本地路径。
 - `readings/` 保存可获取的外部论文 PDF 和网页快照；视频保留原始链接。
 - 原始网页内容、PDF 和作业代码均未翻译或修改；网页仅调整了站内链接。
@@ -362,15 +362,14 @@
 
 ## 未获取的文件
 
+- https://doi.org/10.1145/1498765.1498785 — 403 Client Error: Forbidden for url: https://dl.acm.org/doi/10.1145/1498765.1498785
+- https://doi.org/10.1145/3600006.3613147 — 403 Client Error: Forbidden for url: https://dl.acm.org/doi/10.1145/3600006.3613147
+- https://doi.org/10.1145/3620665.3640366 — 403 Client Error: Forbidden for url: https://dl.acm.org/doi/10.1145/3620665.3640366
+- https://doi.org/10.1145/3676641.3716278 — 403 Client Error: Forbidden for url: https://dl.acm.org/doi/10.1145/3676641.3716278
+- https://doi.org/10.1145/3745756.3809203 — 403 Client Error: Forbidden for url: https://dl.acm.org/doi/10.1145/3745756.3809203
+- https://karpathy.medium.com/software-2-0-a64152b37c35 — 403 Client Error: Forbidden for url: https://karpathy.medium.com/software-2-0-a64152b37c35
 - https://medium.com/@itamar_f/software-3-0-the-era-of-intelligent-software-development-acd3cafe6cd7 — 403 Client Error: Forbidden for url: https://medium.com/@itamar_f/software-3-0-the-era-of-intelligent-software-development-acd3cafe6cd7
 - https://openai.com/index/research-acceleration-view-inside-openai/ — 403 Client Error: Forbidden for url: https://openai.com/index/research-acceleration-view-inside-openai/
-- https://karpathy.medium.com/software-2-0-a64152b37c35 — 403 Client Error: Forbidden for url: https://karpathy.medium.com/software-2-0-a64152b37c35
 - https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified — 403 Client Error: Forbidden for url: https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified
+- https://openreview.net/forum?id=Vj48eXaQDM — Archived browser verification/access page; reading body not downloaded
 - https://www.uber.com/us/en/blog/efficient-software-factory — 406 Client Error: Not Acceptable for url: https://www.uber.com/us/en/blog/efficient-software-factory
-- https://doi.org/10.1145/1498765.1498785 — 403 Client Error: Forbidden for url: https://dl.acm.org/doi/10.1145/1498765.1498785
-- https://doi.org/10.1145/3620665.3640366 — 403 Client Error: Forbidden for url: https://dl.acm.org/doi/10.1145/3620665.3640366
-- https://doi.org/10.1145/3600006.3613147 — 403 Client Error: Forbidden for url: https://dl.acm.org/doi/10.1145/3600006.3613147
-- https://doi.org/10.1145/3745756.3809203 — 403 Client Error: Forbidden for url: https://dl.acm.org/doi/10.1145/3745756.3809203
-- https://doi.org/10.1145/3676641.3716278 — 403 Client Error: Forbidden for url: https://dl.acm.org/doi/10.1145/3676641.3716278
-
-- https://openreview.net/forum?id=Vj48eXaQDM — 返回浏览器验证页面；已保留原始网页快照，尚未取得 LPC 正文。

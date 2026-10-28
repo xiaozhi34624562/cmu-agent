@@ -8813,6 +8813,133 @@
         "https://openaccess.thecvf.com/content/ICCV2023W/CLVL/html/Palit_Towards_Vision-Language_Mechanistic_Interpretability_A_Causal_Tracing_Tool_for_BLIP_ICCVW_2023_paper.html"
       ],
       "title_basis": "archived HTML title / existing source index; verification body explicitly marked"
+    },
+    {
+      "old_path": "11-768/16.AgentsAndTheFutureOfWork/references/GDPval_Evaluating_AI_Model_Performance_on_Real-World_Economically_Valuable_Tasks.pdf",
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/GDPval_Evaluating_AI_Model_Performance_on_Real-World_Economically_Valuable_Tasks.pdf",
+      "title": "GDPval: Evaluating AI Model Performance on Real-World Economically Valuable Tasks",
+      "sha256": "37c7604bc9da68cd8d9345ad16938164fe985182ad723fcb09e9415f84dc25d4",
+      "urls": [
+        "https://cdn.openai.com/pdf/d5eb7428-c4e9-4a33-bd86-86dd4bcf12ce/GDPval.pdf"
+      ],
+      "original_filename": "GDPval.pdf",
+      "version": "Official OpenAI paper, arXiv:2510.04374; 29-page publisher PDF",
+      "registered_at": "2026-10-28",
+      "action": "new_archive_with_full_title",
+      "title_basis": "Full first-page title checked against original PDF; new archive, no historical path rename."
+    },
+    {
+      "old_path": "11-768/16.AgentsAndTheFutureOfWork/references/Remote_Labor_Index_Measuring_AI_Automation_of_Remote_Work.pdf",
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/Remote_Labor_Index_Measuring_AI_Automation_of_Remote_Work.pdf",
+      "title": "Remote Labor Index: Measuring AI Automation of Remote Work",
+      "sha256": "7bc1e50585429c83a93a8045fdaa654ba074c4fa3a35671613024de69c46d2ed",
+      "urls": [
+        "https://arxiv.org/pdf/2510.26787v1"
+      ],
+      "original_filename": "2510.26787v1",
+      "version": "arXiv:2510.26787v1",
+      "registered_at": "2026-10-28",
+      "action": "new_archive_with_full_title",
+      "title_basis": "Full first-page title checked against original PDF; new archive, no historical path rename."
+    },
+    {
+      "old_path": "11-768/16.AgentsAndTheFutureOfWork/references/Future_of_Work_with_AI_Agents_Auditing_Automation_and_Augmentation_Potential_across_the_U.S._Workforce.pdf",
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/Future_of_Work_with_AI_Agents_Auditing_Automation_and_Augmentation_Potential_across_the_U.S._Workforce.pdf",
+      "title": "Future of Work with AI Agents: Auditing Automation and Augmentation Potential across the U.S. Workforce",
+      "sha256": "8cea403d86046b14a9296991b91f659192b0aedf3d86806faeeecce3a81d962a",
+      "urls": [
+        "https://arxiv.org/pdf/2506.06576v3"
+      ],
+      "original_filename": "2506.06576v3",
+      "version": "arXiv:2506.06576v3",
+      "registered_at": "2026-10-28",
+      "action": "new_archive_with_full_title",
+      "title_basis": "Full first-page title checked against original PDF; new archive, no historical path rename."
+    },
+    {
+      "old_path": "11-768/16.AgentsAndTheFutureOfWork/references/GPTs_are_GPTs_An_Early_Look_at_the_Labor_Market_Impact_Potential_of_Large_Language_Models.pdf",
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/GPTs_are_GPTs_An_Early_Look_at_the_Labor_Market_Impact_Potential_of_Large_Language_Models.pdf",
+      "title": "GPTs are GPTs: An Early Look at the Labor Market Impact Potential of Large Language Models",
+      "sha256": "af3edd4efc120c70f0e2e6dc7a4e314a41f1b9eb5a7e88bc25533db631f79632",
+      "urls": [
+        "https://arxiv.org/pdf/2303.10130v5"
+      ],
+      "original_filename": "2303.10130v5",
+      "version": "arXiv:2303.10130v5; title page August 22, 2023",
+      "registered_at": "2026-10-28",
+      "action": "new_archive_with_full_title",
+      "title_basis": "Full first-page title checked against original PDF; new archive, no historical path rename."
+    },
+    {
+      "old_path": "11-768/16.AgentsAndTheFutureOfWork/references/Canaries_in_the_Coal_Mine_Six_Facts_about_the_Recent_Employment_Effects_of_Artificial_Intelligence.pdf",
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/Canaries_in_the_Coal_Mine_Six_Facts_about_the_Recent_Employment_Effects_of_Artificial_Intelligence.pdf",
+      "title": "Canaries in the Coal Mine? Six Facts about the Recent Employment Effects of Artificial Intelligence",
+      "sha256": "c8d2e5c4ccc0de7ef977c191c144726d6073e164b33f30397fcb0090165d2bdf",
+      "urls": [
+        "https://digitaleconomy.stanford.edu/wp-content/uploads/2025/11/CanariesintheCoalMine_Nov25.pdf"
+      ],
+      "original_filename": "CanariesintheCoalMine_Nov25.pdf",
+      "version": "August 2026; 140 pages",
+      "registered_at": "2026-10-28",
+      "action": "new_archive_with_full_title",
+      "title_basis": "Full first-page title checked against original PDF; new archive, no historical path rename."
+    },
+    {
+      "old_path": "11-768/16.AgentsAndTheFutureOfWork/references/Measuring_AI_Ability_to_Complete_Long_Software_Tasks.pdf",
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/Measuring_AI_Ability_to_Complete_Long_Software_Tasks.pdf",
+      "title": "Measuring AI Ability to Complete Long Software Tasks",
+      "sha256": "29216eb3af4daa417666757a462ab7c7b5f8c18c188ee5a56e258b04116211f7",
+      "urls": [
+        "https://arxiv.org/pdf/2503.14499v4"
+      ],
+      "original_filename": "2503.14499.pdf",
+      "version": "arXiv:2503.14499v4, July 10, 2026",
+      "registered_at": "2026-10-28",
+      "action": "new_archive_with_full_title",
+      "title_basis": "Full first-page title checked against original PDF; new archive, no historical path rename."
+    },
+    {
+      "old_path": "11-768/16.AgentsAndTheFutureOfWork/references/How_Well_Does_Agent_Development_Reflect_Real-World_Work.pdf",
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/How_Well_Does_Agent_Development_Reflect_Real-World_Work.pdf",
+      "title": "How Well Does Agent Development Reflect Real-World Work?",
+      "sha256": "3911d2d529c297fc8e00ab66a10b1f2a1084a8cade5e439849b648d56b7b6246",
+      "urls": [
+        "https://arxiv.org/abs/2603.01203"
+      ],
+      "original_filename": "2603.01203.pdf",
+      "version": "2603.01203v2",
+      "registered_at": "2026-10-28",
+      "action": "new_archive_with_full_title",
+      "title_basis": "Full first-page title checked against original PDF; new archive, no historical path rename."
+    },
+    {
+      "old_path": "11-768/16.AgentsAndTheFutureOfWork/references/CollabSkill_Evaluating_Human-Agent_Collaboration_On_Real-World_Tasks.pdf",
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/CollabSkill_Evaluating_Human-Agent_Collaboration_On_Real-World_Tasks.pdf",
+      "title": "CollabSkill: Evaluating Human-Agent Collaboration On Real-World Tasks",
+      "sha256": "ae47c83fbe88fb05e60809f061f6f7e05ed87967db3b7a079254b3f6e80703cc",
+      "urls": [
+        "https://arxiv.org/abs/2606.09833"
+      ],
+      "original_filename": "2606.09833.pdf",
+      "version": "2606.09833v2",
+      "registered_at": "2026-10-28",
+      "action": "new_archive_with_full_title",
+      "title_basis": "Full first-page title checked against original PDF; new archive, no historical path rename."
+    },
+    {
+      "old_path": "11-768/16.AgentsAndTheFutureOfWork/references/Efficient_Test-Time_Adaptation_through_Human-AI_Interaction.pdf",
+      "path": "11-768/16.AgentsAndTheFutureOfWork/references/Efficient_Test-Time_Adaptation_through_Human-AI_Interaction.pdf",
+      "title": "Efficient Test-Time Adaptation through Human-AI Interaction",
+      "sha256": "ad19a223bd6d9f92758c536e10d6c64821f4b38e8c11a9bba8d5613a4c229675",
+      "urls": [
+        "https://arxiv.org/abs/2609.04141"
+      ],
+      "original_filename": "2609.04141.pdf",
+      "version": "2609.04141v1",
+      "registered_at": "2026-10-28",
+      "action": "new_archive_with_full_title",
+      "title_basis": "Full first-page title checked against original PDF; new archive, no historical path rename."
     }
-  ]
+  ],
+  "last_updated": "2026-10-28"
 }

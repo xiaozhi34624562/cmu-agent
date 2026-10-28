@@ -7,6 +7,13 @@
 - [Lecture 9 slides](lecture-09-rl-basics.pdf)
   - Source: https://www.cmu-agents.com/slides/lecture-09-rl-basics.pdf
 
+## Course Video
+
+- [Lecture 9 official video](https://www.youtube.com/watch?v=paAcPaaYZGM&list=PLSN0qpDfUvTM&index=9)
+  - Source: https://www.youtube.com/watch?v=paAcPaaYZGM&list=PLSN0qpDfUvTM&index=9
+  - Checked: 2026-10-28 (Asia/Shanghai); linked from the official course schedule.
+  - Status: 仅登记官方视频入口；未下载视频或字幕，未将视频内容作为本轮讲解核验依据。
+
 ## Readings
 
 - [ReST](readings/Reinforced_Self-Training_ReST_for_Language_Modeling.pdf)
