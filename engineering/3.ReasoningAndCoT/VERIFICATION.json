@@ -1,0 +1,101 @@
+{
+  "verified_at": "2026-10-30",
+  "timezone": "Asia/Shanghai",
+  "scope": "Local artifact integrity, source-index coverage, relative links, Python snippet syntax. Separate source-content review was performed; not proven by these checks.",
+  "paper_count": 11,
+  "official_source_count": 11,
+  "local_links_checked": 16,
+  "papers": [
+    {
+      "id": "R01",
+      "path": "references/To_CoT_or_not_to_CoT__Chain-of-thought_helps_mainly_on_math_and_symbolic_reasoning.pdf",
+      "pages": 45,
+      "sha256_matches": true,
+      "first_page_excerpt": "Published as a conference paper at ICLR 2025 TO COT OR NOT TO COT? CHAIN-OF-THOUGHT HELPS MAINLY ON MATH AND SYMBOLIC REASONING Zayne Sprague♠, Fangcong Yin♠, Juan Diego Rodriguez♠, Dongwei Jiang♢, Manya Wadhwa♠, Prasann Singhal♠, Xinyu Zhao♠, Xi Ye♡, Kyle Mahowald♠, Greg Durrett♠ ♠The University of Texas at Austin, ♢Johns Hopkins University, ♡Prin"
+    },
+    {
+      "id": "R02",
+      "path": "references/Scaling_LLM_Test-Time_Compute_Optimally_can_be_More_Effective_than_Scaling_Model_Parameters.pdf",
+      "pages": 37,
+      "sha256_matches": true,
+      "first_page_excerpt": "2024-8-7 Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters Charlie Snell♦, 1, Jaehoon Lee2, Kelvin Xu♣, 2 and Aviral Kumar♣, 2 ♣Equal advising, 1UC Berkeley, 2Google DeepMind, ♦Work done during an internship at Google DeepMind Enabling LLMs to improve their outputs by using more test-time computation is a c"
+    },
+    {
+      "id": "R03",
+      "path": "references/Don’t_Overthink_it._Preferring_Shorter_Thinking_Chains_for_Improved_LLM_Reasoning.pdf",
+      "pages": 24,
+      "sha256_matches": true,
+      "first_page_excerpt": "Don’t Overthink it. PREFERRING SHORTER THINKING CHAINS FOR IMPROVED LLM REASONING Michael Hassid1,2, Gabriel Synnaeve1, Yossi Adi1,2, Roy Schwartz2 1FAIR Team, Meta 2The Hebrew University of Jerusalem ABSTRACT Reasoning large language models (LLMs) heavily rely on scaling test-time com- pute to perform complex reasoning tasks by generating extensiv"
+    },
+    {
+      "id": "R04",
+      "path": "references/Thinking_to_Recall__How_Reasoning_Unlocks_Parametric_Knowledge_in_LLMs.pdf",
+      "pages": 23,
+      "sha256_matches": true,
+      "first_page_excerpt": "Thinking to Recall: How Reasoning Unlocks Parametric Knowledge in LLMs Zorik Gekhman1,2, Roee Aharoni1, Eran Ofek1, Mor Geva3, Roi Reichart2, Jonathan Herzig1 1Google Research, 2Technion - Israel Institute of Technology, 3Tel Aviv University While reasoning in LLMs plays a natural role in math, code generation, and multi-hop factual questions, its "
+    },
+    {
+      "id": "R05",
+      "path": "references/LIR³AG__A_Lightweight_Rerank_Reasoning_Strategy_Framework_for_Retrieval-Augmented_Generation.pdf",
+      "pages": 9,
+      "sha256_matches": true,
+      "first_page_excerpt": "LIR3AG: A Lightweight Rerank Reasoning Strategy Framework for Retrieval-Augmented Generation Guo Chen1, Junjie Huang1*, Huaijin Xie2, Fei Sun3, Tao Jia1 4 1College of Computer and Information Science, Southwest University, Chongqing, China 2School of Computer and Cyber Sciences, Communication University of China, Beijing, China 3State Key Laborator"
+    },
+    {
+      "id": "R06",
+      "path": "references/One_Size_Does_Not_Fit_All!_Dynamic_Retriever_and_Generator_Selection_for_RAG.pdf",
+      "pages": 12,
+      "sha256_matches": true,
+      "first_page_excerpt": "One Size Does Not Fit All! Dynamic Retriever and Generator Selection for RAG Neeraj Anand Media and Data Science Research Lab Adobe Systems, Noida, India neeraja@adobe.com Payel Santra IACS Kolkata, India payel.iacs@gmail.com Partha Basuchowdhuri IACS Kolkata, India partha.basuchowdhuri@iacs.res.in Debasis Ganguly University of Glasgow Glasgow, Uni"
+    },
+    {
+      "id": "R07",
+      "path": "references/Sufficient_Context__A_New_Lens_on_Retrieval_Augmented_Generation_Systems.pdf",
+      "pages": 25,
+      "sha256_matches": true,
+      "first_page_excerpt": "Published as a conference paper at ICLR 2025 SUFFICIENT CONTEXT: A NEW LENS ON RETRIEVAL AUGMENTED GENERATION SYSTEMS Hailey Joren∗ UC San Diego hjoren@ucsd.edu Jianyi Zhang† Duke University jianyi.zhang@duke.edu Chun-Sung Ferng Google csferng@google.com Da-Cheng Juan Google dacheng@google.com Ankur Taly Google ataly@google.com Cyrus Rashtchian Goo"
+    },
+    {
+      "id": "R08",
+      "path": "references/GRACE__Step-Level_Benchmark_for_Faithful_Reasoning_over_Context.pdf",
+      "pages": 26,
+      "sha256_matches": true,
+      "first_page_excerpt": "GRACE: Step-Level Benchmark for Faithful Reasoning over Context Hoang Pham1 Dong Le1 Anh Tuan Luu1,2* 1Nanyang Technological University 2VinUniversity {pham0100, leducdong001, anhtuan.luu}@ntu.edu.sg Abstract Many reasoning tasks require models to reason over input context, from document-grounded question answering to rule-based deduction. Chain-of"
+    },
+    {
+      "id": "R09",
+      "path": "references/The_Danger_of_Overthinking__Examining_the_Reasoning-Action_Dilemma_in_Agentic_Tasks.pdf",
+      "pages": 16,
+      "sha256_matches": true,
+      "first_page_excerpt": "The Danger of Overthinking: Examining the Reasoning-Action Dilemma in Agentic Tasks Alejandro Cuadron 1 2 Dacheng Li 1 Wenjie Ma 1 Xingyao Wang 3 Yichuan Wang 1 Siyuan Zhuang 1 Shu Liu 1 Luis Gaspar Schroeder 1 Tian Xia 1 Huanzhi Mao 1 Nicholas Thumiger 2 Aditya Desai 1 Ion Stoica 1 Ana Klimovic 2 Graham Neubig 4 Joseph E. Gonzalez 1 Abstract Large"
+    },
+    {
+      "id": "R10",
+      "path": "references/Reasoning_Models_Don’t_Always_Say_What_They_Think.pdf",
+      "pages": 18,
+      "sha256_matches": true,
+      "first_page_excerpt": "arXiv:2505.05410v1 [cs.CL] 8 May 2025 Reasoning Models Don’t Always Say What They Think Yanda Chen Joe Benton Ansh Radhakrishnan Jonathan Uesato Carson Denison John Schulman+ Arushi Somani Peter Hase+ Misha Wagner Fabien Roger Vlad Mikulik Samuel R. Bowman Jan Leike Jared Kaplan Ethan Perez Alignment Science Team, Anthropic Abstract Chain-of-though"
+    },
+    {
+      "id": "R11",
+      "path": "references/Inverse_Scaling_in_Test-Time_Compute.pdf",
+      "pages": 78,
+      "sha256_matches": true,
+      "first_page_excerpt": "Published in Transactions on Machine Learning Research (12/2025) Inverse Scaling in Test-Time Compute Aryo Pradipta Gema aryo.gema@ed.ac.uk Anthropic Fellows Program, University of Edinburgh Alexander Hägele Anthropic Fellows Program, EPFL Runjin Chen Anthropic Fellows Program, University of Texas at Austin Andy Arditi Anthropic Fellows Program Jac"
+    }
+  ],
+  "artifact_hashes": {
+    "REFERENCES.json": "4e73f3e2edfc1e6a1ed83a4c171204961b255aa7a9e34b5f1901622d5e74476f",
+    "SOURCES.md": "19f1ae883ae1551a99b5b34cb88c0a6d67cdd2ff0efe78bee9735c9b2956baa2",
+    "research.zh-CN.md": "1567efbb79e25f48d5edfe4ba986afedb1b028b3215d1da4a128742259a9ecfe"
+  },
+  "errors": [],
+  "model_experiments_run": false,
+  "production_inspected": false,
+  "limitations": [
+    "No paid API call or inference benchmark.",
+    "No reproduction of paper results.",
+    "Official webpages are dynamic and not archived locally.",
+    "Historical tuning records were not revalidated."
+  ]
+}

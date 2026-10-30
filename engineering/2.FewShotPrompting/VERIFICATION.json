@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-30",
+  "scope": "New engineering topic only; no course-wide checks or model experiments",
+  "papers": [
+    {
+      "id": "R01",
+      "sha256": "9ca76d9f11855b715ab871a8c50e15bbf21b6bbb294d9e8fccaa99770f4f4c71",
+      "pdf_pages": 17,
+      "valid_pdf": true
+    },
+    {
+      "id": "R02",
+      "sha256": "257a0527b152dc970a21d20a1f9e85e2eb9834ec5cabdc1e662b68a24d04351f",
+      "pdf_pages": 15,
+      "valid_pdf": true
+    },
+    {
+      "id": "R03",
+      "sha256": "2535437fd05477046953a04d0e03e93a933f46c98357d7ee3d575ee5781af6c4",
+      "pdf_pages": 13,
+      "valid_pdf": true
+    },
+    {
+      "id": "R04",
+      "sha256": "de35fe36a9b673c015166ecf259cbee41a3dc7c020c65613478dadb4426f7121",
+      "pdf_pages": 51,
+      "valid_pdf": true
+    },
+    {
+      "id": "R05",
+      "sha256": "e9a67f0cd64499e54c2476f3b39310dcec16a2ea84e363360e7e13bf8a1365a4",
+      "pdf_pages": 37,
+      "valid_pdf": true
+    },
+    {
+      "id": "R06",
+      "sha256": "62b41c425503e86988ce6ad22ae980bca5c4c7a5601fe40e337d885ef14728f9",
+      "pdf_pages": 18,
+      "valid_pdf": true
+    },
+    {
+      "id": "R07",
+      "sha256": "2c413d04d3ba85d52617f836b8640e483f80833041a0daf185235b7875ba2b55",
+      "pdf_pages": 24,
+      "valid_pdf": true
+    },
+    {
+      "id": "R08",
+      "sha256": "02d0025ca725a9dbff769ba9f61ed55f8e97caaa4f92abf10b10307cce2d1ee2",
+      "pdf_pages": 35,
+      "valid_pdf": true
+    },
+    {
+      "id": "R09",
+      "sha256": "6e5cccb75f58a4e0a5fe7533cfbd4ca9e2ca08fd844c9548b92e8b6fe719a35f",
+      "pdf_pages": 18,
+      "valid_pdf": true
+    },
+    {
+      "id": "R10",
+      "sha256": "e18af61b6e258e2d0538f18b5fde786ad8b63aa7a383cc618af9abbce210af5b",
+      "pdf_pages": 12,
+      "valid_pdf": true
+    },
+    {
+      "id": "R11",
+      "sha256": "a42a690084db162a94ef151596d2279c9a78a7119ef020e66c5048573baaa929",
+      "pdf_pages": 12,
+      "valid_pdf": true
+    }
+  ],
+  "local_markdown_links_checked": 16,
+  "teaching_examples_json_and_evidence_checked": 4,
+  "modern_evidence_full_text_review": "Completed separately; no substantive corrections required",
+  "errors": [],
+  "model_experiments_run": false,
+  "document_sha256": "fc361731fdfac6e42eb65bdc9b992fc012009e02e29da115492ac9363ccb0064"
+}
