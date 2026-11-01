@@ -1,0 +1,22 @@
+{
+  "checked_at": "2026-11-01",
+  "commands": [
+    {
+      "command": "python3 -m pytest 329z/test_sync.py -q",
+      "result": "7 passed",
+      "scope": [
+        "official Week/lesson/event mapping",
+        "invalid PDF refresh retains verified old source",
+        "revised PDF retains old bytes and clears stale current transport provenance",
+        "failed first fetch is not saved",
+        "unexpected page layout rejected",
+        "local PDF mutation never silently blessed",
+        "failed course-page batch leaves all verified archived pages unchanged"
+      ],
+      "warnings": "PyMuPDF SWIG deprecation warnings only"
+    }
+  ],
+  "limitations": [
+    "No model/API/GPU or live benchmark execution. Official starter tests are recorded separately; unimplemented student work remains unchanged."
+  ]
+}

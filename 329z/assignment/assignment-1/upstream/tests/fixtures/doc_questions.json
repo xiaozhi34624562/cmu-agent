@@ -1,0 +1,251 @@
+[
+  {
+    "id": "d01",
+    "question": "Who manages the Firmware team?",
+    "answers": [
+      "Nadia Ferreira",
+      "Ferreira"
+    ],
+    "doc_id": "org-chart",
+    "line": 33,
+    "kind": "direct"
+  },
+  {
+    "id": "d02",
+    "question": "What is the minimum password length under the IT and Security Policy?",
+    "answers": [
+      "14 characters",
+      "14 character",
+      "fourteen characters",
+      "14 chars",
+      "fourteen",
+      "14"
+    ],
+    "doc_id": "it-security-policy",
+    "line": 30,
+    "kind": "direct"
+  },
+  {
+    "id": "d03",
+    "question": "How many requests per minute may one client make to the GridLens Ingestion API?",
+    "answers": [
+      "600"
+    ],
+    "doc_id": "gridlens-api-spec",
+    "line": 42,
+    "kind": "direct"
+  },
+  {
+    "id": "d04",
+    "question": "What is the price per meter per month of the GridLens Professional tier?",
+    "answers": [
+      "1.40",
+      "1.4"
+    ],
+    "doc_id": "gridlens-product-faq",
+    "line": 95,
+    "kind": "direct"
+  },
+  {
+    "id": "d05",
+    "question": "Who is the technical lead for Project Kestrel?",
+    "answers": [
+      "Jonas Weber",
+      "Weber"
+    ],
+    "doc_id": "project-kestrel-brief",
+    "line": 5,
+    "kind": "direct"
+  },
+  {
+    "id": "d06",
+    "question": "On what date will version 1 of the GridLens API be shut down?",
+    "answers": [
+      "2026-12-31",
+      "December 31, 2026",
+      "31 December 2026",
+      "Dec 31, 2026",
+      "December 31st, 2026",
+      "12/31/2026"
+    ],
+    "doc_id": "gridlens-api-spec",
+    "line": 120,
+    "kind": "direct"
+  },
+  {
+    "id": "d07",
+    "question": "For how many working days does Cardinal Energy pay full salary during jury duty?",
+    "answers": [
+      "10 working days",
+      "ten working days",
+      "10 days",
+      "ten days",
+      "10 business days"
+    ],
+    "doc_id": "employee-handbook",
+    "line": 132,
+    "kind": "deep"
+  },
+  {
+    "id": "d08",
+    "question": "What is the phone number of the anonymous ethics hotline?",
+    "answers": [
+      "1-800-555-0142",
+      "800-555-0142",
+      "555-0142"
+    ],
+    "doc_id": "employee-handbook",
+    "line": 258,
+    "kind": "deep"
+  },
+  {
+    "id": "d09",
+    "question": "Which EmberOS error code means that the sensor mesh link was lost?",
+    "answers": [
+      "E-214",
+      "E214"
+    ],
+    "doc_id": "firmware-spec-emberos",
+    "line": 136,
+    "kind": "deep"
+  },
+  {
+    "id": "d10",
+    "question": "How many business days after an incident is resolved is the postmortem draft due?",
+    "answers": [
+      "5 business days",
+      "five business days",
+      "5 working days",
+      "five working days"
+    ],
+    "doc_id": "oncall-incident-process",
+    "line": 96,
+    "kind": "deep"
+  },
+  {
+    "id": "d11",
+    "question": "What is the recovery time objective for GridLens after a regional failure?",
+    "answers": [
+      "4 hours",
+      "four hours",
+      "4 hour",
+      "4h"
+    ],
+    "doc_id": "architecture-overview",
+    "line": 61,
+    "kind": "deep"
+  },
+  {
+    "id": "d12",
+    "question": "What is the daily meal limit when I travel on business within the United States?",
+    "answers": [
+      "75"
+    ],
+    "doc_id": "expense-policy-2026",
+    "line": 40,
+    "kind": "superseded",
+    "stale": [
+      "60"
+    ]
+  },
+  {
+    "id": "d13",
+    "question": "Above what amount does a single expense need approval from my department's vice president?",
+    "answers": [
+      "750"
+    ],
+    "doc_id": "finance-memo-2026-08-approval-thresholds",
+    "line": 13,
+    "kind": "superseded",
+    "stale": [
+      "500",
+      "1,000"
+    ]
+  },
+  {
+    "id": "d14",
+    "question": "How many days of unused PTO can I carry over into the next calendar year?",
+    "answers": [
+      "10 days",
+      "ten days",
+      "80 hours",
+      "10 working days"
+    ],
+    "doc_id": "people-announcement-2025-11-pto-carryover",
+    "line": 11,
+    "kind": "superseded",
+    "stale": [
+      "5 days",
+      "40 hours"
+    ]
+  },
+  {
+    "id": "d15",
+    "question": "Which days of the week are hybrid employees required to work from the office?",
+    "answers": [
+      "Tuesday, Wednesday, and Thursday",
+      "Wednesday"
+    ],
+    "doc_id": "people-announcement-2026-05-office-days",
+    "line": 7,
+    "kind": "superseded",
+    "stale": [
+      "Tuesday and Thursday"
+    ]
+  },
+  {
+    "id": "d16",
+    "question": "How much is the weekly stipend for the primary on-call engineer?",
+    "answers": [
+      "500"
+    ],
+    "doc_id": "engineering-announcement-2026-02-oncall-stipend",
+    "line": 11,
+    "kind": "superseded",
+    "stale": [
+      "350"
+    ]
+  },
+  {
+    "id": "d17",
+    "question": "How much will Cardinal Energy reimburse each month for my gym membership?",
+    "answers": [
+      "65"
+    ],
+    "doc_id": "benefits-summary-2026",
+    "line": 31,
+    "kind": "lexical"
+  },
+  {
+    "id": "d18",
+    "question": "My laptop was stolen. What phone extension do I call to report it?",
+    "answers": [
+      "4911"
+    ],
+    "doc_id": "it-security-policy",
+    "line": 57,
+    "kind": "lexical"
+  },
+  {
+    "id": "d19",
+    "question": "When is payday?",
+    "answers": [
+      "15th",
+      "fifteenth",
+      "last business day"
+    ],
+    "doc_id": "employee-handbook",
+    "line": 70,
+    "kind": "lexical"
+  },
+  {
+    "id": "d20",
+    "question": "How much can I spend per year on conferences and online courses for my own development?",
+    "answers": [
+      "1,800"
+    ],
+    "doc_id": "benefits-summary-2026",
+    "line": 35,
+    "kind": "lexical"
+  }
+]

@@ -1,0 +1,47 @@
+{
+  "id": "coding-big-listing",
+  "category": "coding",
+  "role": "A data analyst at Cardinal Energy checking an export.",
+  "disposition": "Precise. Says exactly what is wanted.",
+  "sessions": [
+    {
+      "goal": "Have the agent print the sender of every email dated in August 2001 and tell you how many lines that is. After you get the count, ask which address is on line 4321 of that list (the first line is line 1).",
+      "opening": "Use the terminal to print the sender (the from field) of every email dated in August 2001 (UTC dates), one per line, in archive order. Then tell me how many lines that is.",
+      "max_user_turns": 4
+    }
+  ],
+  "mode": "confirm",
+  "approval": {
+    "policy": "Approve commands that only read, count or search files. Deny any command that deletes, moves or overwrites a file, and say why in one sentence.",
+    "overrides": [
+      {
+        "tool": "run_terminal",
+        "pattern": "\\brm\\b",
+        "decision": "deny",
+        "reason": "Do not delete anything."
+      }
+    ]
+  },
+  "checks": [
+    {
+      "type": "any_reply_contains_any",
+      "values": [
+        "7965",
+        "7,965"
+      ]
+    },
+    {
+      "type": "any_reply_contains_any",
+      "values": [
+        "m..presto@enron.com"
+      ]
+    },
+    {
+      "type": "no_agent_error"
+    }
+  ],
+  "rubric": [
+    "The agent says the listing has 7,965 lines. Reference answer: 7965.",
+    "The agent says line 4321 is m..presto@enron.com."
+  ]
+}

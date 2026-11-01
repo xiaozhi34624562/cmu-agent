@@ -1,0 +1,100 @@
+{
+  "course": "329z",
+  "checked_at": "2026-11-01T08:57:51+08:00",
+  "scope": "Offline structure, coverage, source versions, snapshot bytes and local PDF page bounds; semantic review separately in REVIEW.json; no model benchmark replication",
+  "lessons": 19,
+  "saved_sources": 83,
+  "classifications": 65,
+  "guides": [
+    {
+      "lesson": 1,
+      "path": "1.IntroductionWhatAreAgenticSystems/notes.zh-CN.md",
+      "characters": 13050,
+      "sha256": "44de3dffa9508fa33573a983d374da89461eda39d7d267b0817ed11ec0e40859"
+    },
+    {
+      "lesson": 2,
+      "path": "2.LLMsForBuilders/notes.zh-CN.md",
+      "characters": 14328,
+      "sha256": "057d6d96c06900616224ec3550c24bcbf9be854af528b9abf5079439efa14147"
+    },
+    {
+      "lesson": 3,
+      "path": "3.RetrievalAugmentedGenerationRAG/notes.zh-CN.md",
+      "characters": 17040,
+      "sha256": "a169e4ea477c4dbe13b6e0361d6a786e1824355b3aef0ff122f5a8096a01d653"
+    },
+    {
+      "lesson": 4,
+      "path": "4.ToolUseFunctionCalling/notes.zh-CN.md",
+      "characters": 12709,
+      "sha256": "4a8bae0760d97376c6bb6099944ce26d5fcbb09a7b41bf0330cbf0b0f801c49b"
+    },
+    {
+      "lesson": 5,
+      "path": "5.FrameworksOrchestration/notes.zh-CN.md",
+      "characters": 14899,
+      "sha256": "6573247b5a157ddb512edcf94e0f895aa45f49fe2ddf972a8d059a8c9f9700b4"
+    },
+    {
+      "lesson": 6,
+      "path": "6.AgentDesignPatternsScaffolds/notes.zh-CN.md",
+      "characters": 15950,
+      "sha256": "ea314d9d1ffd74eef45355a68550f73d8e5aed1404b21ec3bc078abb4f9238e1"
+    },
+    {
+      "lesson": 7,
+      "path": "7.AgentMemoryArchitectures/notes.zh-CN.md",
+      "characters": 16939,
+      "sha256": "ced392bede1827cf12ee31d6ae3e973dcd89d632f49bd20b139e869a93cced11"
+    },
+    {
+      "lesson": 8,
+      "path": "8.MultiAgentSystems/notes.zh-CN.md",
+      "characters": 16085,
+      "sha256": "101ae3f749ccb56f1ab06e9b0a8acfec89595d98403634a0a2b22785ce33062b"
+    },
+    {
+      "lesson": 9,
+      "path": "9.Optimization/notes.zh-CN.md",
+      "characters": 18930,
+      "sha256": "bae084e5c3b8bb716671230b9009f60f041ecb815fb5bf0a30e59ee50300ae73"
+    },
+    {
+      "lesson": 10,
+      "path": "10.GuestLectureTerminalBench/notes.zh-CN.md",
+      "characters": 14643,
+      "sha256": "1a463876d95b3cfc994135e11d8878841d33e2f01f71250e1bb97ccd06911cdd"
+    },
+    {
+      "lesson": 11,
+      "path": "11.WhatDataDoAgentsNeed/notes.zh-CN.md",
+      "characters": 17020,
+      "sha256": "59720890c5a11b532a9da1842ee4942ec7345cc50e7d5e0463ff1718d5c85082"
+    }
+  ],
+  "supplementary_sources": 8,
+  "checked_local_links": 459,
+  "code_snapshots": 2,
+  "published_lectures": 11,
+  "complete_guides": 11,
+  "verified_example_runs": 1,
+  "limitations": [
+    {
+      "url": "https://openreview.net/forum?id=4BjGVZ7Bxn",
+      "status": "unavailable",
+      "reason": "Error: HTTP 403"
+    },
+    {
+      "url": "https://openai.com/index/prompt-injections/",
+      "status": "unavailable",
+      "reason": "Error: HTTP 403"
+    },
+    {
+      "url": "https://github.com/openclaw/openclaw",
+      "status": "unavailable",
+      "reason": "TypeError: fetch failed"
+    }
+  ],
+  "errors": []
+}

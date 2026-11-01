@@ -8,6 +8,7 @@
 - [MATERIAL_NAMES_VERIFICATION.json](MATERIAL_NAMES_VERIFICATION.json)：本次实际验证结果。
 - [verify_assignment3_archive.py](verify_assignment3_archive.py)：核对 CMU 作业 3 固定提交的原始文件哈希、Python 语法、本地文件链接和数据集结构；结果写入作业目录的 `VERIFICATION.json`，公开测试另记于 `BASELINE_TESTS.json`。
 - [三门课程学习质量复核](reviews/2026-10-28-full/README.md)：面向有 Java 经验的 LLM Developer，逐篇检查问题链、前置知识、机制推导、案例和自测；清单与复读记录绑定最终讲解的校验值。
+- [Stanford CS329Z](../329z/README.md)：第四门课程按教学课次组织，课程自己的 `sync.py` 与 `verify.py` 维护来源版本、分类副本、主讲义绑定、固定代码快照和逐课完整讲解；复核记录见 `329z/REVIEW.json`。
 
 新增材料时先核对 PDF 标题页、版本及本课来源索引。课表仅提供简称时，在清单中登记完整标题与来源 URL，再运行同步或整理。不要只根据 PDF 元数据自动命名：元数据可能缺失、截断或保留投稿模板标题。清单中的历史改名条目保留原始哈希；上游更新版本时单独记录版本与新哈希，避免将正文修订混入改名验证。
 
@@ -22,6 +23,8 @@ python3 tools/verify_material_names.py --write-report
 python3 tools/verify_course_notes.py --write-report
 python3 tools/verify_assignment3_archive.py --write-report
 python3 MAS.S62/verify.py --require-notes > MAS.S62/VERIFICATION.json
+python3 329z/sync.py --organize-only
+python3 329z/verify.py --require-notes --write-report
 ```
 
 这些检查验证路径、校验值和引用结构，不代替论文精读，不表示重新复现了模型实验。各课程 `REVIEW.json` 的本轮路径维护记录保留了改名前的讲解哈希和既有内容审核历史。

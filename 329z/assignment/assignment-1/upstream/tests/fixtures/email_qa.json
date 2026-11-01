@@ -1,0 +1,357 @@
+[
+ {
+  "id": "q01",
+  "question": "What bid cap did the deal committee approve for Project Thistledown?",
+  "answers": [
+   "$41.5 million",
+   "41.5 million",
+   "41.5MM",
+   "41.5 MM",
+   "41.5M",
+   "41,500,000"
+  ],
+  "support": [
+   "em-02196"
+  ],
+  "hops": 1
+ },
+ {
+  "id": "q02",
+  "question": "Where is the lead due-diligence analyst for Project Thistledown staying during the plant visit?",
+  "answers": [
+   "Coldharbor Inn",
+   "Coldharbor"
+  ],
+  "support": [
+   "em-03365",
+   "em-03715"
+  ],
+  "hops": 2
+ },
+ {
+  "id": "q03",
+  "question": "Which bank did the outside law firm on Project Thistledown find holding a claim against the plant site?",
+  "answers": [
+   "First Pelican Savings Bank",
+   "First Pelican"
+  ],
+  "support": [
+   "em-06757"
+  ],
+  "hops": 2
+ },
+ {
+  "id": "q04",
+  "question": "What date was the Marrowstone cutover rescheduled to?",
+  "answers": [
+   "August 3",
+   "Aug 3",
+   "8/3",
+   "08/03",
+   "3 August",
+   "August 3rd",
+   "Aug 3rd",
+   "3rd of August",
+   "2001-08-03"
+  ],
+  "support": [
+   "em-13291",
+   "em-13617"
+  ],
+  "hops": 1
+ },
+ {
+  "id": "q05",
+  "question": "What hourly rate is the vendor doing the Marrowstone migration charging?",
+  "answers": [
+   "$185",
+   "185"
+  ],
+  "support": [
+   "em-08486"
+  ],
+  "hops": 2
+ },
+ {
+  "id": "q06",
+  "question": "On what date is the Basin Analytics group scheduled to move?",
+  "answers": [
+   "August 24",
+   "Aug 24",
+   "8/24",
+   "08/24",
+   "24 August",
+   "August 24th",
+   "Aug 24th",
+   "24th of August",
+   "2001-08-24"
+  ],
+  "support": [
+   "em-20982"
+  ],
+  "hops": 1
+ },
+ {
+  "id": "q07",
+  "question": "How much did the moving company charge in total for the Basin Analytics move?",
+  "answers": [
+   "$7,840",
+   "7,840",
+   "7840"
+  ],
+  "support": [
+   "em-25664"
+  ],
+  "hops": 2
+ },
+ {
+  "id": "q08",
+  "question": "What annual price was agreed for the Skywatch data feed renewal?",
+  "answers": [
+   "$274,500",
+   "274,500",
+   "274500",
+   "274.5 thousand",
+   "274.5K"
+  ],
+  "support": [
+   "em-07081",
+   "em-07656"
+  ],
+  "hops": 1
+ },
+ {
+  "id": "q09",
+  "question": "How many days of notice to end the contract did the attorney reviewing the Skywatch agreement insist on?",
+  "answers": [
+   "90 days",
+   "90 day",
+   "ninety days",
+   "ninety day",
+   "90"
+  ],
+  "support": [
+   "em-09740"
+  ],
+  "hops": 2
+ },
+ {
+  "id": "q10",
+  "question": "When is Ironvale Unit 3 expected back in service?",
+  "answers": [
+   "August 17",
+   "Aug 17",
+   "8/17",
+   "08/17",
+   "17 August",
+   "August 17th",
+   "Aug 17th",
+   "17th of August",
+   "2001-08-17"
+  ],
+  "support": [
+   "em-18739",
+   "em-19679"
+  ],
+  "hops": 1
+ },
+ {
+  "id": "q11",
+  "question": "Which city is the replacement part for the Ironvale Unit 3 repair being shipped from?",
+  "answers": [
+   "Tulsa"
+  ],
+  "support": [
+   "em-19085"
+  ],
+  "hops": 2
+ },
+ {
+  "id": "q12",
+  "question": "Where is the Feldspar offsite being held?",
+  "answers": [
+   "Pinecrest Lodge",
+   "Pinecrest"
+  ],
+  "support": [
+   "em-15803"
+  ],
+  "hops": 1
+ },
+ {
+  "id": "q13",
+  "question": "What is the title of the keynote talk at the Feldspar offsite?",
+  "answers": [
+   "Pricing the Monsoon"
+  ],
+  "support": [
+   "em-22091"
+  ],
+  "hops": 2
+ },
+ {
+  "id": "q14",
+  "question": "What is the credit limit for Corvane Petrochemical?",
+  "answers": [
+   "$15 million",
+   "15 million",
+   "15MM",
+   "15 MM",
+   "15M",
+   "15,000,000"
+  ],
+  "support": [
+   "em-05676"
+  ],
+  "hops": 1
+ },
+ {
+  "id": "q15",
+  "question": "Which bank is providing the collateral for the counterparty flagged in the Whinstone review?",
+  "answers": [
+   "Bank of Halverstad",
+   "Halverstad"
+  ],
+  "support": [
+   "em-07307"
+  ],
+  "hops": 2
+ },
+ {
+  "id": "q16",
+  "question": "What fixed price is in the Copperline term sheet?",
+  "answers": [
+   "$3.87",
+   "3.87"
+  ],
+  "support": [
+   "em-08400",
+   "em-09616"
+  ],
+  "hops": 1
+ },
+ {
+  "id": "q17",
+  "question": "Where does the customer in the Copperline deal want the gas delivered?",
+  "answers": [
+   "Pelham Junction"
+  ],
+  "support": [
+   "em-11801"
+  ],
+  "hops": 2
+ },
+ {
+  "id": "q18",
+  "question": "When is the filing due in the Hollyoak rate case?",
+  "answers": [
+   "August 31",
+   "Aug 31",
+   "8/31",
+   "08/31",
+   "31 August",
+   "August 31st",
+   "Aug 31st",
+   "31st of August",
+   "2001-08-31"
+  ],
+  "support": [
+   "em-14177"
+  ],
+  "hops": 1
+ },
+ {
+  "id": "q19",
+  "question": "How much is the outside economist retained for the Hollyoak rate case charging?",
+  "answers": [
+   "$28,500",
+   "28,500",
+   "28500"
+  ],
+  "support": [
+   "em-15220"
+  ],
+  "hops": 2
+ },
+ {
+  "id": "q20",
+  "question": "On what date is the Obsidian server room power shutdown?",
+  "answers": [
+   "August 18",
+   "Aug 18",
+   "8/18",
+   "08/18",
+   "18 August",
+   "August 18th",
+   "Aug 18th",
+   "18th of August",
+   "2001-08-18"
+  ],
+  "support": [
+   "em-20928"
+  ],
+  "hops": 1
+ },
+ {
+  "id": "q21",
+  "question": "How many minutes did the backup generator run in the load test planned under Obsidian?",
+  "answers": [
+   "47 minutes",
+   "47 min",
+   "47"
+  ],
+  "support": [
+   "em-22536"
+  ],
+  "hops": 2
+ },
+ {
+  "id": "q22",
+  "question": "How much did the 2001 Foxglove Classic raise for the Bayou Literacy Fund?",
+  "answers": [
+   "$64,300",
+   "64,300",
+   "64300"
+  ],
+  "support": [
+   "em-11462"
+  ],
+  "hops": 1
+ },
+ {
+  "id": "q23",
+  "question": "How large a deposit did the caterer for the Foxglove Classic ask for?",
+  "answers": [
+   "$2,250",
+   "2,250",
+   "2250"
+  ],
+  "support": [
+   "em-06347"
+  ],
+  "hops": 2
+ },
+ {
+  "id": "q24",
+  "question": "How many seats are licensed for Stonecrop?",
+  "answers": [
+   "120"
+  ],
+  "support": [
+   "em-18409"
+  ],
+  "hops": 1
+ },
+ {
+  "id": "q25",
+  "question": "The owner of the queue that takes Stonecrop access requests is away the week of August 13. Who is covering for him?",
+  "answers": [
+   "Marguerite Oyelaran",
+   "Oyelaran"
+  ],
+  "support": [
+   "em-20373"
+  ],
+  "hops": 2
+ }
+]

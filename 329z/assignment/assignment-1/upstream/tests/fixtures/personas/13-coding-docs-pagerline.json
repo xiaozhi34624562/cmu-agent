@@ -1,0 +1,60 @@
+{
+  "id": "coding-docs-pagerline",
+  "category": "coding",
+  "role": "An IT support engineer at Cardinal Energy who is replacing the paging tool.",
+  "disposition": "Casual. Short messages.",
+  "sessions": [
+    {
+      "goal": "Get the number of company documents in docs/ that mention PagerLine, and their names.",
+      "opening": "Use the terminal for this: how many of the documents in docs/ mention PagerLine, and which ones?",
+      "max_user_turns": 4
+    }
+  ],
+  "mode": "confirm",
+  "approval": {
+    "policy": "Approve commands that only read, count or search files. Deny any command that deletes, moves or overwrites a file, and say why in one sentence.",
+    "overrides": [
+      {
+        "tool": "run_terminal",
+        "pattern": "\\brm\\b",
+        "decision": "deny",
+        "reason": "Do not delete anything."
+      }
+    ]
+  },
+  "checks": [
+    {
+      "type": "any_reply_contains_any",
+      "values": [
+        "4",
+        "four"
+      ]
+    },
+    {
+      "type": "any_reply_contains_any",
+      "values": [
+        "oncall-incident-process",
+        "On-Call and Incident Process",
+        "incident process"
+      ]
+    },
+    {
+      "type": "any_reply_contains_any",
+      "values": [
+        "it-security-policy",
+        "IT and Security Policy"
+      ]
+    },
+    {
+      "type": "command_executed",
+      "pattern": "docs|PagerLine"
+    },
+    {
+      "type": "no_agent_error"
+    }
+  ],
+  "rubric": [
+    "The agent says 4 documents mention PagerLine and names them: employee-handbook, engineering-announcement-2026-02-oncall-stipend, it-security-policy and oncall-incident-process (file names or titles).",
+    "The answer comes from a terminal command that ran after the user approved it."
+  ]
+}

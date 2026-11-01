@@ -1,0 +1,56 @@
+{
+  "id": "memory-my-team",
+  "category": "memory",
+  "role": "A customer success manager at Cardinal Energy, based in Rotterdam.",
+  "disposition": "Warm and brief.",
+  "sessions": [
+    {
+      "goal": "Tell the agent which team you are on so that it knows in later conversations. You need nothing else today.",
+      "opening": "For future reference: I'm on the Customer Success team, based in Rotterdam.",
+      "max_user_turns": 2
+    },
+    {
+      "goal": "It is a later day. Find out who manages your team and how many people are on it. You already told the agent your team in an earlier conversation, so you do not repeat it unless the agent asks.",
+      "opening": "Who manages my team, and how many people are on it?",
+      "max_user_turns": 3
+    }
+  ],
+  "knowledge": [
+    "You are on the Customer Success team.",
+    "You are based in Rotterdam."
+  ],
+  "checks": [
+    {
+      "type": "first_reply_contains_any",
+      "values": [
+        "Kowalski"
+      ],
+      "session": 2
+    },
+    {
+      "type": "tool_not_called",
+      "name": "ask_user",
+      "session": 2
+    },
+    {
+      "type": "any_reply_contains_any",
+      "values": [
+        "15",
+        "fifteen"
+      ],
+      "session": 2
+    },
+    {
+      "type": "session2_did_not_reask",
+      "pattern": "which team|what team|which department|what is your team"
+    },
+    {
+      "type": "no_agent_error"
+    }
+  ],
+  "rubric": [
+    "In session 2 the agent says the team is managed by Hannah Kowalski and has 15 people. Reference: org chart, Customer Success.",
+    "In session 2 the agent does not ask the user which team they are on."
+  ],
+  "mode": "auto"
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "title": "AutoLibra: Agent Metric Induction from Open-Ended Human Feedback",
+    "url": "https://arxiv.org/abs/2505.02820",
+    "download_url": "https://arxiv.org/pdf/2505.02820",
+    "course_url": "https://openreview.net/forum?id=4BjGVZ7Bxn",
+    "path": "references/AutoLibra_Agent_Metric_Induction_from_Open-Ended_Human_Feedback.pdf",
+    "status": "saved",
+    "retrieved_at": "2026-10-31T23:07:00.021Z",
+    "sha256": "584079f8651492bceb2bb86fdf8ae9f3cb36633833eb7b3551761ac099a620cc",
+    "bytes": 8381946,
+    "version_note": "Author preprint obtained as alternative; original OpenReview endpoint returned403, not asserted identical to final publication",
+    "pages": 67,
+    "pdf_version": "2505.02820v3",
+    "cover_date": "2025-10-31"
+  }
+]

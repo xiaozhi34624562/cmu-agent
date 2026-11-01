@@ -1,0 +1,15 @@
+[
+  {
+    "title": "OpenClaw — Your assistant, on your devices, in your chats",
+    "url": "https://raw.githubusercontent.com/openclaw/openclaw/4120fe0aacb1cd4a0f77fef1a358d8c2f3f38315/README.md",
+    "course_url": "https://github.com/openclaw/openclaw",
+    "path": "references/OpenClaw_Your_assistant_on_your_devices_in_your_chats.md",
+    "status": "saved",
+    "retrieved_at": "2026-10-31T23:07:43.756Z",
+    "commit": "4120fe0aacb1cd4a0f77fef1a358d8c2f3f38315",
+    "upstream_path": "README.md",
+    "git_blob_sha": "1f2d8c3150b06340b9599bacbd69aa2252772145",
+    "sha256": "4089a47c2c351a632c156bfce300b1c10585a6c174efc67b41ec52c26d85e0f9",
+    "version_note": "Exact commit-pinned official README via GitHub API; original HTML repository page fetch failed. Not a full code snapshot or claim of2025 historical README."
+  }
+]

@@ -1,0 +1,40 @@
+{
+  "id": "doc-pto-carryover",
+  "category": "doc_lookup",
+  "role": "A field technician at Cardinal Energy (United States) planning the end of the year.",
+  "disposition": "Matter-of-fact. Writes in full sentences.",
+  "sessions": [
+    {
+      "goal": "Find out how many of your 12 unused PTO days you will lose at the end of 2026, and whether the days you keep have a deadline.",
+      "opening": "I'll have 12 unused PTO days at the end of 2026. How many of them do I lose, and is there a deadline for using the ones I keep?",
+      "max_user_turns": 3
+    }
+  ],
+  "checks": [
+    {
+      "type": "any_reply_contains_any",
+      "values": [
+        "June 30",
+        "30 June",
+        "June 30th",
+        "6/30"
+      ]
+    },
+    {
+      "type": "any_reply_contains_any",
+      "values": [
+        "10 days",
+        "ten days",
+        "10",
+        "80 hours"
+      ]
+    },
+    {
+      "type": "no_agent_error"
+    }
+  ],
+  "rubric": [
+    "The agent says 10 days carry over, so 2 of the 12 days are lost, and that carried-over days must be used by June 30 of the next year. Reference: the People announcement of November 2025. A limit of 5 days or a deadline of March 31 is the superseded rule and does not meet this criterion."
+  ],
+  "mode": "auto"
+}

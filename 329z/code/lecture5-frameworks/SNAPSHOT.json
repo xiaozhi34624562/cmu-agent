@@ -1,0 +1,30 @@
+{
+  "repository": "https://github.com/cs329z/lecture5-frameworks",
+  "commit": "4e418289b3032cb960984250395525eb91ae25c2",
+  "url": "https://codeload.github.com/cs329z/lecture5-frameworks/tar.gz/4e418289b3032cb960984250395525eb91ae25c2",
+  "final_url": "https://codeload.github.com/cs329z/lecture5-frameworks/tar.gz/4e418289b3032cb960984250395525eb91ae25c2",
+  "http_status": 200,
+  "content_type": "application/x-gzip",
+  "retrieved_at": "2026-10-31T23:04:05.370Z",
+  "sha256": "96384c3e067b145fa6d2b489719d7c5b75258e8863855aa582755edb300171b5",
+  "bytes": 152165,
+  "files": {
+    "upstream/.env.example": "33d04f3aa751e1e61d8798d074ee96c074d26dec5ad4438e40232446b697bc82",
+    "upstream/.gitignore": "2773f8021921f1b59caedc0328856c0ed2e3d1729d69481380aa845bd45ac2cc",
+    "upstream/.python-version": "7b55f8e67b5623c4bef3fa691288da9437d79d3aba156de48d481db32ac7d16d",
+    "upstream/LICENSE": "f028adc749f5d0951569365ebbf13b595c7b3129a2a2a68ed32bfe4410092ed5",
+    "upstream/README.md": "b98d60cb13d8da1f5574cf49e1b3d648574037009e67f21f1fba1f385926f513",
+    "upstream/data/emails.json": "502783de54aa191f861230a75fd94244139f09b8b3e3110d5a64838541b92e5f",
+    "upstream/data/make_emails.py": "9fbe407b3cb2c126b76362fc22f4452a2ef35698e19053ffd40015c64de4c7c4",
+    "upstream/lecture5.ipynb": "88cc090bfe99948dfb4f03fc1e7df746f1bdaf7a8c22f816d48e6cfebbfefa44",
+    "upstream/llm_cache.py": "48a145ecb446a3ae467db118dfb1bab246230f4ef429373589662b1768d68b5f",
+    "upstream/pyproject.toml": "093593325536be6e3553a3a5fdc516e5578ec5f41fb129a74d02646558d61271",
+    "upstream/setup.sh": "14c4726104177ac3e0f4f87b9f71fa42c8152170c9eda5f8bd2d8db8b6283776",
+    "upstream/tinycal/__init__.py": "2f7d05dd32b4e111d8db773147c654096c47544d4c6a6a22a4d05d5d1b9f73d3",
+    "upstream/tinycal/__main__.py": "2368e2fff74211bcd895261a8d2dc3ec3a1be9013e35a343c05ef1436b4b7fc8",
+    "upstream/tinycal/sdk.py": "2c5366b77a7cbfc7e57c464c15240f69ebfa9ad07200e9ccdf0a6c30b5f42445",
+    "upstream/tinycal/server.py": "73a8d390603b33769f56cb6e0e401c12ed8dd4260608176669c43e2a394b0966",
+    "upstream/uv.lock": "ec229dcf9c2c6698cc8fd4192869539c57e48371850f00a2188c81221b67f7d1"
+  },
+  "scope": "Exact original files extracted from commit-pinned official GitHub codeload archive. No student TODOs completed. No model/API execution."
+}

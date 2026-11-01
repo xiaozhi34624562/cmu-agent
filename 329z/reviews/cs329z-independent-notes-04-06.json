@@ -1,0 +1,113 @@
+{
+  "reviewer": "course_sources independent source audit",
+  "checked_at_utc": "2026-10-31T23:18:19.703930+00:00",
+  "scope": "Fullnotes4–6 and selected highrisk primarysource/code checks",
+  "notes": [
+    {
+      "lesson": 4,
+      "note": "329z/4.ToolUseFunctionCalling/notes.zh-CN.md",
+      "final_sha256": "64371152f00247d168c9d1d6710b1104ad2cf264478231be9d464a2924ca6dc1",
+      "status": "passed",
+      "read_scope": [
+        "Entire note read (258 lines), including equations, experiments, schema/auth and self-tests.",
+        "Toolformer savedv1 actualPDFpp2–8 read: candidate sampling, min loss baseline, threshold, fine-tuning, original/CC/disabled baselines, evaluation limits and temporal dependence caveat.",
+        "Gorilla savedv1 actualPDFpp4–6 read: retriever-aware training, test-time docs, AST optional-argument exclusion and hallucination definition.",
+        "MCP2025-06-18 saved overview inspected for host/client/server, JSONRPC2.0, resources/prompts/tools and limits of protocol enforcement.",
+        "Lecture04 selected actualpages53–56,59–67 read; actualp64 formula image rendered and visually checked.",
+        "pass@k/pass^k example independently recalculated."
+      ],
+      "confirmed": [
+        "Toolformer filter and fine-tuning mechanics match source; business safety is not conflated with LM loss reduction.",
+        "One APIcall/input downstream-eval limit and independent trainingcall sampling are correctly bounded to original version.",
+        "Gorilla AST matching does not claim full business semantic correctness or execution guarantee.",
+        "MCP inbound AGENT_TOKEN and outbound LMS_TOKEN distinction matches actual lecture56; simplified TTL field is not promoted to规范 requiredfield.",
+        "pass@k estimator and all-k-success estimator and97.78%/62.22%example correct."
+      ],
+      "issues_found": [],
+      "reread_result": "Entire final note read once and selected primary-source claims cross-checked.",
+      "limitations": [
+        "Scoped audit; did not independently reread every slide or every cited paper in full.",
+        "No model,training,API,Temporal or real business sideeffect experiments performed.",
+        "No restyling or note edits by reviewer."
+      ]
+    },
+    {
+      "lesson": 5,
+      "note": "329z/5.FrameworksOrchestration/notes.zh-CN.md",
+      "final_sha256": "be2762c7257fb6edddf041f9cca6ac64d0ce064c783bc516b461c060d92f9679",
+      "status": "passed_after_minor_citation_fix",
+      "read_scope": [
+        "Entire initial note read (269 lines); final localized citation correction then checked.",
+        "Official fixed notebook code cells17,22,25–33,39–44,46–52,54,59–62,64–65,67–69 read.",
+        "Read full llm_cache.py and tinycal/server.py storage/validation/_insert sections; source commit4e418289b3032cb960984250395525eb91ae25c2.",
+        "DSPy savedv1 actualPDFpp4–7 checked for signatures/modules/teacher bootstrap/compiler stages.",
+        "HarnessTax saved first-party page Experiment Setup and Ending Notes checked for30tasks×3attempts,21pairs, effort/turn semantics, price list and limitation scope.",
+        "No framework dependency installed and no notebook/API/Temporal execution; claims evaluated statically."
+      ],
+      "confirmed": [
+        "Dataset50 and seeded30train/20test split match actualcells25–26.",
+        "Metric checks date,start,duration only; omitted eventtitle/authorization/conflicts/idempotency correctly identified.",
+        "GEPAmax_metric_calls100/reflection_lm default configuredLM, Gemma3 12Btarget and instruction-only optimization framing match actualclassroomcode.",
+        "create_agent is from langchain.agents; compile() has no checkpointer; graph ability is distinguished from activated configuration.",
+        "Temporal1sec initialretry/max5attempts/1minstart_to_close,503fail twice,worker stop/resume and history reuse match code.",
+        "tinycal randomnewID and missing idempotency key substantiate duplicate-sideeffect caution.",
+        "Cachekey prompt+model config is distinguished from businessstate/workflowhistory."
+      ],
+      "issues_found": [
+        {
+          "severity": "low",
+          "issue": "Temporal str(d.start)[:5] conversion was attributed only to notebookcells17/22, but actualoperation resides in cell59.",
+          "evidence": "Official notebookcell59 extract_event returns start as str(d.start)[:5]; cell22 passes details.start directly.",
+          "fix": "Author added cell59 to sourcecitation, now cells17,22,59.",
+          "resolution": "Resolved; exact final citation checked."
+        }
+      ],
+      "reread_result": "Initial entire note read; final citation-only edit verified; no second independent full reread after that edit.",
+      "limitations": [
+        "Scoped audit; did not independently reread every slide or every cited paper in full.",
+        "No model,training,API,Temporal or real business sideeffect experiments performed.",
+        "No restyling or note edits by reviewer."
+      ]
+    },
+    {
+      "lesson": 6,
+      "note": "329z/6.AgentDesignPatternsScaffolds/notes.zh-CN.md",
+      "final_sha256": "b5f545d610be168a4f8263e0598272cf8f337e5a6a8e3a0bde8754e263f5521b",
+      "status": "passed",
+      "read_scope": [
+        "Entire note read (325 lines), including self-tests and mechanism/experiment boundaries.",
+        "ReAct savedv3 actualPDFpp3,5–6 checked for thought-vs-environment distinction,27.4/29.4HotpotQA,60.9/56.3FEVER and repetitive/noninformative search failure analysis.",
+        "Reflexion savedv4 actualPDFpp3–4,7–8 checked for3roles, memory update,MBPPPython regression and self-generated-test false positives/negatives.",
+        "CodeAct savedv4 actualPDFpp3–5 checked forPython action/observation framework,M3ToolEval82tasks,max10turns and mixed model outcomes.",
+        "Lecture06 selected actualPDFpp47–52,59,64,66–68,70,77–83 read; ReWOO actualp48 and LLMCompiler actualp51 diagrams rendered and visually checked.",
+        "Saved LangChain Context Engineering write/select/compress/isolate sections inspected."
+      ],
+      "confirmed": [
+        "ReAct numerical comparisons and non-environment-effect of thoughts match paper.",
+        "Reflexion remains textmemory update rather than PPO/GRPOweight training; regression/testquality caveats match original.",
+        "CodeAct82task/10turn setup and not-all-models-improve limitation match source.",
+        "ReWOO#E dependencies and observedresults substitution agree with lecturediagram; no claim planningorwhole system ignores observations.",
+        "LLMCompiler parallelism/dynamicreplanning only attributed to lecture, not independently audited code/benchmarks.",
+        "Pi default4tools/treehistory/skill disclosure/compaction/no-defaultpermissionfeatures bounded to lecture snapshot; branches do not claim rollback.",
+        "Context/isolation/offloading/cost model explicitly separated from permission and persistence guarantees."
+      ],
+      "issues_found": [],
+      "reread_result": "Entire final note read once and selected primary-source claims cross-checked.",
+      "limitations": [
+        "Scoped audit; did not independently reread every slide or every cited paper in full.",
+        "No model,training,API,Temporal or real business sideeffect experiments performed.",
+        "No restyling or note edits by reviewer."
+      ]
+    }
+  ],
+  "visual_checks": [
+    "Lecture04 actualPDFp64 pass@k/pass^k",
+    "Lecture06 actualPDFp48 ReWOO",
+    "Lecture06 actualPDFp51 LLMCompiler"
+  ],
+  "independent_calculations": {
+    "pass_at_2_n10_c8": 0.9777777777777777,
+    "pass_power2_n10_c8": 0.6222222222222222
+  },
+  "open_issues": []
+}

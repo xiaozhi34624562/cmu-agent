@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Large Language Models as Optimizers",
+    "url": "https://arxiv.org/abs/2309.03409",
+    "path": "references/Large_Language_Models_as_Optimizers.pdf",
+    "status": "saved",
+    "sha256": "61c8493c964f6d4436f69ae63ff52d3a91540708e9387615f3a8f034bab081c0",
+    "pages": 42,
+    "version": "2309.03409v3",
+    "reused_from": "MAS.S62/readings/papers/Large_Language_Models_as_Optimizers.pdf",
+    "reused_at": "2026-10-31",
+    "provenance_note": "复用既有仓库归档；不是本次重新下载，不宣称当前最新版本。"
+  },
+  {
+    "title": "TextGrad: Automatic Differentiation via Text",
+    "url": "https://arxiv.org/abs/2406.07496",
+    "path": "references/TextGrad_Automatic_Differentiation_via_Text.pdf",
+    "status": "saved",
+    "sha256": "9cbfd5c78ad69e2a8363e76d6774f3e6b5e68f46b409d8b560e98276a985b428",
+    "pages": 41,
+    "version": "2406.07496v1",
+    "reused_from": "MAS.S62/readings/papers/TextGrad_Automatic_Differentiation_via_Text.pdf",
+    "reused_at": "2026-10-31",
+    "provenance_note": "复用既有仓库归档；不是本次重新下载，不宣称当前最新版本。"
+  },
+  {
+    "title": "Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents",
+    "url": "https://arxiv.org/abs/2505.22954",
+    "path": "references/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf",
+    "status": "saved",
+    "sha256": "13ff4abe0c7ad4a7dd3b4876d19a8bf940e39e70dabbf06065aa774a6c3457de",
+    "pages": 72,
+    "version": "2505.22954v3",
+    "reused_from": "MAS.S62/readings/papers/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf",
+    "reused_at": "2026-10-31",
+    "provenance_note": "复用既有仓库归档；不是本次重新下载，不宣称当前最新版本。"
+  },
+  {
+    "title": "On-Policy Distillation of Language Models: Learning from Self-Generated Mistakes",
+    "url": "https://arxiv.org/abs/2306.13649",
+    "path": "references/On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf",
+    "status": "saved",
+    "sha256": "a81c71fa0cd15506642092790d854347f030c29ee1d6aa643b55aa51348e6869",
+    "pages": 18,
+    "version": "2306.13649v3",
+    "reused_from": "MAS.S62/7.ModelEvolution1/references/On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf",
+    "reused_at": "2026-10-31",
+    "provenance_note": "复用既有仓库归档；不是本次重新下载，不宣称当前最新版本。"
+  }
+]

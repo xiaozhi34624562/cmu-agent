@@ -1,0 +1,31 @@
+{
+  "id": "doc-office-days",
+  "category": "doc_lookup",
+  "role": "A software engineer in their second week at Cardinal Energy, hybrid, Oakland office.",
+  "disposition": "Friendly and a little chatty. Adds a detail nobody asked for.",
+  "sessions": [
+    {
+      "goal": "Find out which days of the week you are required to be in the office.",
+      "opening": "Hi! I started last week (hybrid, Oakland office) and my badge finally works. Which days am I actually required to be in the office? It's September 2026, if that matters.",
+      "max_user_turns": 3
+    }
+  ],
+  "knowledge": [
+    "You live in Berkeley, about 20 minutes from the office."
+  ],
+  "checks": [
+    {
+      "type": "any_reply_contains_any",
+      "values": [
+        "Wednesday"
+      ]
+    },
+    {
+      "type": "no_agent_error"
+    }
+  ],
+  "rubric": [
+    "The agent says hybrid employees must be in the office three days a week: Tuesday, Wednesday and Thursday. Reference: the People announcement of May 2026, in effect since 2026-06-01. An answer of two days (Tuesday and Thursday) is the superseded rule and does not meet this criterion."
+  ],
+  "mode": "auto"
+}

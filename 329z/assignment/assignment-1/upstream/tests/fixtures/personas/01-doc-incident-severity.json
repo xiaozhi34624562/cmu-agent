@@ -1,0 +1,53 @@
+{
+  "id": "doc-incident-severity",
+  "category": "doc_lookup",
+  "role": "A site reliability engineer at Cardinal Energy who is in the middle of an incident.",
+  "disposition": "Rushed. Lowercase fragments, no greetings, no thanks.",
+  "sessions": [
+    {
+      "goal": "Find out which severity level your incident is and how quickly it must be acknowledged. Once you have that, ask one more thing: when the postmortem draft is due.",
+      "opening": "ingestion is 40 min behind for all customers. what severity is that and how fast do i have to ack?",
+      "max_user_turns": 4
+    }
+  ],
+  "knowledge": [
+    "There is a workaround for nothing; data is simply arriving 40 minutes late.",
+    "No customer data was lost."
+  ],
+  "checks": [
+    {
+      "type": "any_reply_contains_any",
+      "values": [
+        "SEV2",
+        "SEV 2",
+        "SEV-2",
+        "severity 2"
+      ]
+    },
+    {
+      "type": "any_reply_contains_any",
+      "values": [
+        "15 minutes",
+        "15 min",
+        "fifteen minutes"
+      ]
+    },
+    {
+      "type": "any_reply_contains_any",
+      "values": [
+        "5 business days",
+        "five business days",
+        "5 working days",
+        "five working days"
+      ]
+    },
+    {
+      "type": "no_agent_error"
+    }
+  ],
+  "rubric": [
+    "The agent says the incident is SEV2 and must be acknowledged within 15 minutes. Reference: in the On-Call and Incident Process a delay in data of more than 30 minutes is SEV2, acknowledged within 15 minutes.",
+    "When asked, the agent says the postmortem draft is due within 5 business days of resolution."
+  ],
+  "mode": "auto"
+}

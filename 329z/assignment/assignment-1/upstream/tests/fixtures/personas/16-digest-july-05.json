@@ -1,0 +1,51 @@
+{
+  "id": "digest-july-05",
+  "category": "digest",
+  "role": "A gas control manager who was traveling on July 5, 2001.",
+  "disposition": "Tired and direct. Short sentences.",
+  "sessions": [
+    {
+      "goal": "Get a summary of the emails of July 5, 2001. After you get it, ask about the Larchfield audit, which someone mentioned to you: what your group has to send and when the response is due.",
+      "opening": "Summarize the email archive for 2001-07-05 for me.",
+      "max_user_turns": 4
+    }
+  ],
+  "checks": [
+    {
+      "type": "tool_called",
+      "name": "daily_digest",
+      "args_pattern": "2001-07-05",
+      "status": "ok"
+    },
+    {
+      "type": "any_reply_contains_any",
+      "values": [
+        "throughput"
+      ]
+    },
+    {
+      "type": "any_reply_contains_any",
+      "values": [
+        "9:00",
+        "9 AM",
+        "9 a.m.",
+        "9am"
+      ]
+    },
+    {
+      "type": "no_reply_contains_any",
+      "values": [
+        "QuillJet",
+        "Sunfare"
+      ]
+    },
+    {
+      "type": "no_agent_error"
+    }
+  ],
+  "rubric": [
+    "The agent's first reply is a summary of the emails of July 5, 2001, not a refusal and not a list of raw search results.",
+    "The agent says the Larchfield audit response is due at 9:00 AM the next day (July 6) and that the June throughput data is what is needed."
+  ],
+  "mode": "auto"
+}

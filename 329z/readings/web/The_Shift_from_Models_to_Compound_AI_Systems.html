@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>The Shift from Models to Compound AI Systems &#8211; The Berkeley Artificial Intelligence Research Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The BAIR Blog">
+    <meta name="author" content="C.K. Wolfe">
+    <meta name="keywords" content="">
+    <link rel="canonical" href="http://bair.berkeley.edu/blog/2024/02/18/compound-ai-systems/">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for The Berkeley Artificial Intelligence Research Blog" href="/blog/feed.xml" />
+    <link rel="stylesheet" href="/blog/css/pixyll.css?202607291655" type="text/css">
+    <link rel="stylesheet" href="/blog/css/bair-blog.css" type="text/css">
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+    
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The Shift from Models to Compound AI Systems">
+    <meta property="og:description" content="The BAIR Blog">
+    <meta property="og:url" content="http://bair.berkeley.edu/blog/2024/02/18/compound-ai-systems/">
+    <meta property="og:site_name" content="The Berkeley Artificial Intelligence Research Blog">
+    
+      
+    <meta property="og:image" content="http://bair.berkeley.edu/blog/assets/compound-ai-systems/compound-ai-systems.png" />
+    <meta property="og:image:url" content="http://bair.berkeley.edu/blog/assets/compound-ai-systems/compound-ai-systems.png" />
+      
+    
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+          processEscapes: true
+        },
+        messageStyle: "none",
+        "HTML-CSS": { availableFonts: ["TeX"] }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js">
+    </script>
+
+
+</head>
+
+<body class="site">
+
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <div class="blog-logo-container">
+        <a href="/blog/"><img class="bair-logo" src="/blog/assets/BAIR_Logo.png" /></a>
+      </div>
+      <nav class="site-nav bair-blog-site-nav">
+        <a href="/blog/subscribe/">Subscribe</a>
+<a href="/blog/about/">About</a>
+<a href="/blog/archive/">Archive</a>
+<a href="http://bair.berkeley.edu">BAIR</a>
+
+      </nav>
+      <div class="clearfix"></div>
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        <div class="post-header mb2">
+  <h1>The Shift from Models to Compound AI Systems</h1>
+  <div class="post-meta">
+  
+  <a href="https://people.eecs.berkeley.edu/~matei/">Matei Zaharia</a>, <a href="https://omarkhattab.com">Omar Khattab</a>, <a href="https://lchen001.github.io">Lingjiao Chen</a>, <a href="https://scholar.google.com/citations?user=_3bbpWoAAAAJ&hl=en">Jared Quincy Davis</a>, <a href="https://heather.miller.am">Heather Miller</a>, <a href="https://web.stanford.edu/~cgpotts/">Chris Potts</a>, <a href="https://www.james-zou.com">James Zou</a>, <a href="https://people.csail.mit.edu/mcarbin/">Michael Carbin</a>, <a href="http://www.jfrankle.com">Jonathan Frankle</a>, <a href="https://www.linkedin.com/in/naveen-rao-bba5b01//">Naveen Rao</a>, <a href="https://www.linkedin.com/in/alighodsi/">Ali Ghodsi</a> &nbsp;&nbsp;
+  
+  
+  Feb 18, 2024
+  
+  
+  </div>
+</div>
+
+
+
+<article class="post-content">
+  <!--
+These are comments in HTML. The above header text is needed to format the
+title, authors, etc. The "example_post" is an example representative image (not
+GIF) that we use for each post for tweeting (see below as well) and for the
+emails to subscribers. Please provide this image (and any other images and
+GIFs) in the blog to the BAIR Blog editors directly.
+
+The text directly below gets tweets to work. Please adjust according to your
+post.
+
+The `static/blog` directory is a location on the blog server which permanently
+stores the images/GIFs in BAIR Blog posts. Each post has a subdirectory under
+this for its images (titled `example_post` here, please change).
+
+Keeping the post visbility as False will mean the post is only accessible if
+you know the exact URL.
+
+You can also turn on Disqus comments, but we recommend disabling this feature.
+-->
+
+<!-- twitter -->
+<meta name="twitter:title" content="The Shift from Models to Compound AI Systems" />
+
+<meta name="twitter:card" content="summary_large_image" />
+
+<meta name="twitter:image" content="https://bair.berkeley.edu/static/blog/compound-ai-systems/compound-ai-systems.png" />
+
+<meta name="keywords" content="compound ai systems, dspy, frugalgpt, ai routers" />
+
+<meta name="description" content="The BAIR Blog" />
+
+<meta name="author" content="Matei Zaharia, Omar Khattab, Lingjiao Chen, Jared Quincy Davis, Heather Miller, Chris Potts, James Zou, Michael Carbin, Jonathan Frankle, Naveen Rao, Ali Ghodsi" />
+
+<!--
+The actual text for the post content appears below.  Text will appear on the
+homepage, i.e., https://bair.berkeley.edu/blog/ but we only show part of the
+posts on the homepage. The rest is accessed via clicking 'Continue'. This is
+enforced with the `more` excerpt separator.
+-->
+
+<p>AI caught everyone’s attention in 2023 with Large Language Models (LLMs) that can be instructed to perform general tasks, such as translation or coding, just by prompting. This naturally led to an intense focus on models as the primary ingredient in AI application development, with everyone wondering what capabilities new LLMs will bring.
+As more developers begin to build using LLMs, however, we believe that this focus is rapidly changing: <strong>state-of-the-art AI results are increasingly obtained by compound systems with multiple components, not just monolithic models</strong>.</p>
+
+<p>For example, Google’s <a href="https://storage.googleapis.com/deepmind-media/AlphaCode2/AlphaCode2_Tech_Report.pdf">AlphaCode 2</a> set state-of-the-art results in programming through a carefully engineered system that uses LLMs to generate up to 1 million possible solutions for a task and then filter down the set. <a href="https://deepmind.google/discover/blog/alphageometry-an-olympiad-level-ai-system-for-geometry/">AlphaGeometry</a>, likewise, combines an LLM with a traditional symbolic solver to tackle olympiad problems. In enterprises, our colleagues at Databricks found that 60% of LLM applications use some form of <a href="https://arxiv.org/pdf/2005.11401.pdf">retrieval-augmented generation (RAG)</a>, and 30% use multi-step chains. 
+Even researchers working on traditional language model tasks, who used to report results from a single LLM call, are now reporting results from increasingly complex inference strategies: Microsoft <a href="https://www.microsoft.com/en-us/research/blog/the-power-of-prompting/">wrote</a> about a chaining strategy that exceeded GPT-4’s accuracy on medical exams by 9%, and <a href="https://blog.google/technology/ai/google-gemini-ai/#performance">Google’s Gemini launch post</a> measured its MMLU benchmark results using a new CoT@32 inference strategy that calls the model 32 times, which raised questions about its comparison to just a single call to GPT-4. This shift to compound systems opens many interesting design questions, but it is also exciting, because it means leading AI results can be achieved through clever engineering, not just scaling up training.</p>
+
+<p>In this post, we analyze the trend toward compound AI systems and what it means for AI developers. Why are developers building compound systems? Is this paradigm here to stay as models improve? And what are the emerging tools for developing and optimizing such systems—an area that has received far less research than model training? We argue that <strong>compound AI systems will likely be the best way to maximize AI results in the future</strong>, and might be one of the most impactful trends in AI in 2024.</p>
+
+<!--more-->
+
+<p style="text-align:center;">
+<img src="https://bair.berkeley.edu/static/blog/compound-ai-systems/compound-ai-systems.png" width="50%" />
+<br />
+<i>Increasingly many new AI results are from compound systems.</i>
+</p>
+
+<h1 id="why-use-compound-ai-systems">Why Use Compound AI Systems?</h1>
+
+<p>We define a Compound AI System as a system that tackles AI tasks using multiple interacting components, including multiple calls to models, retrievers, or external tools. In contrast, an AI Model is simply a <a href="https://en.wikipedia.org/wiki/Statistical_model">statistical model</a>, e.g., a Transformer that predicts the next token in text.</p>
+
+<p>Even though AI models are continually getting better, and there is no clear end in sight to their scaling, more and more state-of-the-art results are obtained using compound systems. Why is that? We have seen several distinct reasons:</p>
+
+<ol>
+  <li><strong>Some tasks are easier to improve via system design.</strong> While LLMs appear to follow remarkable <a href="https://arxiv.org/pdf/2001.08361.pdf">scaling laws</a> that predictably yield better results with more compute, in many applications, scaling offers lower returns-vs-cost than building a compound system. For example, suppose that the current best LLM can solve coding contest problems 30% of the time, and tripling its training budget would increase this to 35%; this is still not reliable enough to win a coding contest! In contrast, engineering a system that samples from the model multiple times, tests each sample, etc. might increase performance to 80% with today’s models, as shown in work like <a href="https://storage.googleapis.com/deepmind-media/AlphaCode2/AlphaCode2_Tech_Report.pdf">AlphaCode</a>. Even more importantly, iterating on a system design is often much faster than waiting for training runs. We believe that in any high-value application, developers will want to use every tool available to maximize AI quality, so they will use system ideas in addition to scaling. We frequently see this with LLM users, where a good LLM creates a compelling but frustratingly unreliable first demo, and engineering teams then go on to systematically raise quality.</li>
+  <li><strong>Systems can be dynamic.</strong> Machine learning models are inherently limited because they are trained on static datasets, so their “knowledge” is fixed. Therefore, developers need to combine models with other components, such as search and retrieval, to incorporate timely data. In addition, training lets a model “see” the whole training set, so more complex systems are needed to build AI applications with access controls (e.g., answer a user’s questions based only on files the user has access to).</li>
+  <li><strong>Improving control and trust is easier with systems.</strong> Neural network models alone are hard to control: while training will influence them, it is nearly impossible to guarantee that a model will avoid certain behaviors. Using an AI system instead of a model can help developers control behavior more tightly, e.g., by filtering model outputs. Likewise, even the best LLMs still hallucinate, but a system combining, say, LLMs with retrieval can increase user trust by providing citations or <a href="https://arxiv.org/pdf/2305.14292.pdf">automatically verifying facts</a>.</li>
+  <li><strong>Performance goals vary widely.</strong> Each AI model has a fixed quality level and cost, but applications often need to vary these parameters. In some applications, such as inline code suggestions, the best AI models are too expensive, so tools like Github Copilot use <a href="https://thakkarparth007.github.io/copilot-explorer/posts/copilot-internals.html">carefully tuned smaller models and various search heuristics</a> to provide results. In other applications, even the largest models, like GPT-4, are too cheap! Many users would be willing to pay a few dollars for a correct legal opinion, instead of the few cents it takes to ask GPT-4, but a developer would need to design an AI system to utilize this larger budget.</li>
+</ol>
+
+<p>The shift to compound systems in Generative AI also matches the industry trends in other AI fields, such as self-driving cars: most of the state-of-the-art implementations are systems with multiple specialized components (<a href="https://maithraraghu.com/blog/2023/does-one-model-rule-them-all/">more discussion here</a>). For these reasons, we believe compound AI systems will remain a leading paradigm even as models improve.</p>
+
+<h1 id="developing-compound-ai-systems">Developing Compound AI Systems</h1>
+
+<p>While compound AI systems can offer clear benefits, the art of designing, optimizing, and operating them is still emerging. On the surface, an AI system is a combination of traditional software and AI models, but there are many interesting design questions. For example, should the overall “control logic” be written in traditional code (e.g., Python code that calls an LLM), or should it be driven by an AI model (e.g. LLM agents that call external tools)? Likewise, in a compound system, where should a developer invest resources—for example, in a RAG pipeline, is it better to spend more FLOPS on the retriever or the LLM, or even to call an LLM multiple times? Finally, how can we optimize an AI system with discrete components end-to-end to maximize a metric, the same way we can train a neural network? In this section, we detail a few example AI systems, then discuss these challenges and recent research on them.</p>
+
+<h2 id="the-ai-system-design-space">The AI System Design Space</h2>
+
+<p>Below are few recent compound AI systems to show the breadth of design choices:</p>
+
+<style>
+    #mytable {
+        font-size: 16px;
+    }
+    #mytable ul {
+        font-size: 16px;
+        text-align: left;
+    }
+    #mytable td {
+        vertical-align: top;
+    }
+    #mytable th {
+        font-weight: bold;
+    }
+    #mytable ul {
+        padding-left: 15px;
+    }
+</style>
+
+<table id="mytable">
+    <tr>
+        <th>AI System</th>
+        <th style="min-width: 220px;">Components</th>
+        <th style="min-width: 180px;">Design</th>
+        <th style="min-width: 150px;">Results</th>
+    </tr>
+    <tr>
+        <td><a href="https://storage.googleapis.com/deepmind-media/AlphaCode2/AlphaCode2_Tech_Report.pdf">AlphaCode 2</a></td>
+        <td>
+            <ul>
+                <li>Fine-tuned LLMs for sampling and scoring programs</li>
+                <li>Code execution module</li>
+                <li>Clustering model</li>
+            </ul>
+        </td>
+        <td>Generates up to 1 million solutions for a coding problem then filters and scores them</td>
+        <td>Matches 85th percentile of humans on coding contests</td>
+    </tr>
+    <tr>
+        <td><a href="https://deepmind.google/discover/blog/alphageometry-an-olympiad-level-ai-system-for-geometry/">AlphaGeometry</a></td>
+        <td>
+            <ul>
+                <li>Fine-tuned LLM</li>
+                <li>Symbolic math engine</li>
+            </ul>
+        </td>
+        <td>Iteratively suggests constructions in a geometry problem via LLM and checks deduced facts produced by symbolic engine</td>
+        <td>Between silver and gold International Math Olympiad medalists on timed test</td>
+    </tr>
+    <tr>
+        <td><a href="https://www.microsoft.com/en-us/research/blog/the-power-of-prompting/">Medprompt</a></td>
+        <td>
+            <ul>
+                <li>GPT-4 LLM</li>
+                <li>Nearest-neighbor search in database of correct examples</li>
+                <li>LLM-generated chain-of-thought examples</li>
+                <li>Multiple samples and ensembling</li>
+            </ul>
+        </td>
+        <td>Answers medical questions by searching for similar examples to construct a few-shot prompt, adding model-generated chain-of-thought for each example, and generating and judging up to 11 solutions</td>
+        <td>Outperforms specialized medical models like Med-PaLM used with simpler prompting strategies</td>
+    </tr>
+    <tr>
+        <td><a href="https://blog.google/technology/ai/google-gemini-ai/#performance">Gemini on MMLU</a></td>
+        <td>
+            <ul>
+                <li>Gemini LLM</li>
+                <li>Custom inference logic</li>
+            </ul>
+        </td>
+        <td>Gemini's CoT@32 inference strategy for the MMLU benchmark samples 32 chain-of-thought answers from the model, and returns the top choice if enough of them agree, or uses generation without chain-of-thought if not</td>
+        <td>90.04% on MMLU, compared to 86.4% for GPT-4 with 5-shot prompting or 83.7% for Gemini with 5-shot prompting</td>
+    </tr>
+    <tr>
+        <td><a href="https://openai.com/chatgpt/pricing">ChatGPT Plus</a></td>
+        <td>
+            <ul>
+                <li>LLM</li>
+                <li>Web Browser plugin for retrieving timely content</li>
+                <li>Code Interpreter plugin for executing Python</li>
+                <li>DALL-E image generator</li>
+            </ul>
+        </td>
+        <td>The ChatGPT Plus offering can call tools such as web browsing to answer questions; the LLM determines when and how to call each tool as it responds</td>
+        <td>Popular consumer AI product with millions of paid subscribers</td>
+    </tr>
+    <tr>
+        <td>
+            <a href="https://arxiv.org/pdf/2005.11401.pdf">RAG</a>,
+            <a href="https://arxiv.org/pdf/1906.00300.pdf">ORQA</a>,
+            <a href="https://bing.com">Bing</a>,
+            <a href="https://arxiv.org/pdf/2101.00436.pdf">Baleen</a>, etc
+        </td>
+        <td>
+            <ul>
+                <li>LLM (sometimes called multiple times)</li>
+                <li>Retrieval system</li>
+            </ul>
+        </td>
+        <td>Combine LLMs with retrieval systems in various ways, e.g., asking an LLM to generate a search query, or directly searching for the current context</td>
+        <td>Widely used technique in search engines and enterprise apps</td>
+    </tr>
+</table>
+
+<h2 id="key-challenges-in-compound-ai-systems">Key Challenges in Compound AI Systems</h2>
+<p>Compound AI systems pose new challenges in design, optimization and operation compared to AI models.</p>
+
+<h3 id="design-space">Design Space</h3>
+<p>The range of possible system designs for a given task is vast. For example, even in the simple case of retrieval-augmented generation (RAG) with a retriever and language model, there are: (i) many retrieval and language models to choose from, (ii) other techniques to improve retrieval quality, such as query expansion or reranking models, and (iii) techniques to improve the LLM’s generated output (e.g., running another LLM to <a href="https://arxiv.org/pdf/2305.14292.pdf">check</a> that the output relates to the retrieved passages). Developers have to explore this vast space to find a good design.</p>
+
+<p>In addition, developers need to allocate limited resources, like latency and cost budgets, among the system components. For example, if you want to answer RAG questions in 100 milliseconds, should you budget to spend 20 ms on the retriever and 80 on the LLM, or the other way around?</p>
+
+<h3 id="optimization">Optimization</h3>
+<p>Often in ML, maximizing the quality of a compound system requires co-optimizing the components to work well together. For example, consider a simple RAG application where an LLM sees a user question, generates a search query to send to a retriever, and then generates an answer. Ideally, the LLM would be tuned to generate queries that work well <em>for that particular retriever</em>, and the retriever would be tuned to prefer answers that work well <em>for that LLM</em>.</p>
+
+<p>In single model development a la PyTorch, users can easily optimize a model end-to-end because the whole model is differentiable. However, compound AI systems contain non-differentiable components like search engines or code interpreters, and thus require new methods of optimization. Optimizing these compound AI systems is still a new research area; for example, <a href="https://arxiv.org/pdf/2310.03714.pdf">DSPy</a> offers a general optimizer for pipelines of pretrained LLMs and other components, while others systems, like <a href="https://arxiv.org/pdf/2201.08239.pdf">LaMDA</a>, <a href="https://arxiv.org/pdf/2302.04761.pdf">Toolformer</a> and <a href="https://deepmind.google/discover/blog/alphageometry-an-olympiad-level-ai-system-for-geometry/">AlphaGeometry</a>, use tool calls during model training to optimize models for those tools.</p>
+
+<h3 id="operation">Operation</h3>
+<p>Machine learning operations (MLOps) become more challenging for compound AI systems. For example, while it is easy to track success rates for a traditional ML model like a spam classifier, how should developers track and debug the performance of an LLM agent for the same task, which might use a variable number of “reflection” steps or external API calls to classify a message? We believe that a new generation of MLOps tools will be developed to tackle these problems. Interesting problems include:</p>
+<ul>
+  <li><strong>Monitoring:</strong> How can developers most efficiently log, analyze, and debug traces from complex AI systems?</li>
+  <li><strong>DataOps:</strong> Because many AI systems involve data serving components like vector DBs, and their behavior depends on the quality of data served, any focus on operations for these systems should additionally span data pipelines.</li>
+  <li><strong>Security:</strong> Research has shown that compound AI systems, such as an LLM chatbot with a content filter, can create <a href="https://arxiv.org/pdf/2309.05610.pdf">unforeseen security risks</a> compared to individual models. New tools will be required to secure these systems.</li>
+</ul>
+
+<h2 id="emerging-paradigms">Emerging Paradigms</h2>
+
+<p>To tackle the challenges of building compound AI systems, multiple new approaches are arising in the industry and in research. We highlight a few of the most widely used ones and examples from our research on tackling these challenges.</p>
+
+<p><strong>Designing AI Systems: Composition Frameworks and Strategies.</strong> Many developers are now using <a href="https://www.twosigma.com/articles/a-guide-to-large-language-model-abstractions/">“language model programming”</a> frameworks that let them build applications out of multiple calls to AI models and other components. These include component libraries like <a href="https://www.langchain.com">LangChain</a> and <a href="https://www.llamaindex.ai">LlamaIndex</a> that developers call from traditional programs, agent frameworks like <a href="https://autogpt.net">AutoGPT</a> and <a href="https://github.com/yoheinakajima/babyagi">BabyAGI</a> that let an LLM drive the application, and tools for controlling LM outputs, like <a href="https://www.guardrailsai.com/">Guardrails</a>, <a href="https://outlines-dev.github.io/outlines/">Outlines</a>, <a href="https://lmql.ai">LMQL</a> and <a href="https://arxiv.org/pdf/2312.07104.pdf">SGLang</a>. In parallel, researchers are developing numerous new inference strategies to generate better outputs using calls to models and tools, such as <a href="https://arxiv.org/pdf/2201.11903.pdf">chain-of-thought</a>, <a href="https://arxiv.org/pdf/2203.11171.pdf">self-consistency</a>, <a href="https://arxiv.org/pdf/2305.14292.pdf">WikiChat</a>, <a href="https://arxiv.org/pdf/2005.11401.pdf">RAG</a> and others.</p>
+
+<p><strong>Automatically Optimizing Quality: DSPy.</strong> Coming from academia, <a href="https://arxiv.org/pdf/2310.03714.pdf">DSPy</a> is the first framework that aims to optimize a system composed of LLM calls and other tools to maximize a target metric. Users write an application out of calls to LLMs and other tools, and provide a target metric such as accuracy on a validation set, and then DSPy automatically tunes the pipeline by creating prompt instructions, few-shot examples, and other parameter choices for each module to maximize end-to-end performance. The effect is similar to end-to-end optimization of a multi-layer neural network in <a href="https://pytorch.org">PyTorch</a>, except that the modules in DSPy are not always differentiable layers. To do that, DSPy leverages the linguistic abilities of LLMs in a clean way: to specify each module, users write a natural language signature, such as <code class="language-plaintext highlighter-rouge">user_question -&gt; search_query</code>, where the names of the input and output fields are meaningful, and DSPy automatically turns this into suitable prompts with instructions, few-shot examples, or even weight updates to the underlying language models.</p>
+
+<p><strong>Optimizing Cost: FrugalGPT and AI Gateways.</strong> The wide range of AI models and services available makes it challenging to pick the right one for an application. Moreover, different models may perform better on different inputs. <a href="https://arxiv.org/pdf/2305.05176.pdf">FrugalGPT</a> is a framework to automatically route inputs to different AI model cascades to maximize quality subject to a target budget. Based on a small set of examples, it learns a routing strategy that can outperform the best LLM services by up to 4% at the same cost, or reduce cost by up to 90% while matching their quality. FrugalGPT is an example of a broader emerging concept of AI gateways or routers, implemented in software like <a href="https://docs.databricks.com/en/generative-ai/external-models/index.html">Databricks AI Gateway</a>, <a href="https://openrouter.ai">OpenRouter</a>, and <a href="https://withmartian.com">Martian</a>, to optimize the performance of each component of an AI application. These systems work even better when an AI task is broken into smaller modular steps in a compound system, and the gateway can optimize routing separately for each step.</p>
+
+<p><strong>Operation: LLMOps and DataOps.</strong> AI applications have always required careful monitoring of both model outputs and data pipelines to run reliably. With compound AI systems, however, the behavior of the system on each input can be considerably more complex, so it is important to track all the steps taken by the application and intermediate outputs. Software like <a href="https://www.langchain.com/langsmith">LangSmith</a>, <a href="https://docs.arize.com/phoenix/quickstart/llm-traces">Phoenix Traces</a>, and <a href="https://www.databricks.com/blog/announcing-inference-tables-simplified-monitoring-and-diagnostics-ai-models">Databricks Inference Tables</a> can track, visualize and evaluate these outputs at a fine granularity, in some cases also correlating them with data pipeline quality and downstream metrics. In the research world, <a href="https://arxiv.org/pdf/2312.13382.pdf">DSPy Assertions</a> seeks to leverage feedback from monitoring checks directly in AI systems to improve outputs, and AI-based quality evaluation methods like <a href="https://arxiv.org/pdf/2306.05685.pdf">MT-Bench</a>, <a href="https://arxiv.org/pdf/2401.06855.pdf">FAVA</a> and <a href="https://arxiv.org/pdf/2311.09476.pdf">ARES</a> aim to automate quality monitoring.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+<p>Generative AI has excited every developer by unlocking a wide range of capabilities through natural language prompting. As developers aim to move beyond demos and maximize the quality of their AI applications, however, they are increasingly turning to compound AI systems as a natural way to control and enhance the capabilities of LLMs. Figuring out the best practices for developing compound AI systems is still an open question, but there are already exciting approaches to aid with design, end-to-end optimization, and operation. We believe that compound AI systems will remain the best way to maximize the quality and reliability of AI applications going forward, and may be one of the most important trends in AI in 2024.</p>
+
+<p>BibTex for this post:</p>
+<div class="language-bibtex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">@misc</span><span class="p">{</span><span class="nl">compound-ai-blog</span><span class="p">,</span>
+  <span class="na">title</span><span class="p">=</span><span class="s">{The Shift from Models to Compound AI Systems}</span><span class="p">,</span>
+  <span class="na">author</span><span class="p">=</span><span class="s">{Matei Zaharia and Omar Khattab and Lingjiao Chen and Jared Quincy Davis
+          and Heather Miller and Chris Potts and James Zou and Michael Carbin
+          and Jonathan Frankle and Naveen Rao and Ali Ghodsi}</span><span class="p">,</span>
+  <span class="na">howpublished</span><span class="p">=</span><span class="s">{\url{https://bair.berkeley.edu/blog/2024/02/18/compound-ai-systems/}}</span><span class="p">,</span>
+  <span class="na">year</span><span class="p">=</span><span class="s">{2024}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+
+</article>
+
+<div class="generic-box">
+Subscribe to our <a href="/blog/feed.xml">RSS feed</a>.
+
+  <div class="share-page">
+<div class="share-links" style="text-align:center;">
+  Spread the word:   
+    
+      <a class = "fa fa-facebook" href="https://facebook.com/sharer.php?u=http://bair.berkeley.edu/blog/2024/02/18/compound-ai-systems/" rel="nofollow" target="_blank" title="Share on Facebook"></a>
+    
+
+    
+      <a class="fa fa-twitter" href="https://twitter.com/intent/tweet?text=The Shift from Models to Compound AI Systems&url=http://bair.berkeley.edu/blog/2024/02/18/compound-ai-systems/" rel="nofollow" target="_blank" title="Share on Twitter"></a>
+    
+
+    
+      <a class="fa fa-google-plus" href="https://plus.google.com/share?url=http://bair.berkeley.edu/blog/2024/02/18/compound-ai-systems/" rel="nofollow" target="_blank" title="Share on Google+"></a>
+    
+
+    
+      <a class="fa fa-linkedin" href="http://www.linkedin.com/shareArticle?url=http://bair.berkeley.edu/blog/2024/02/18/compound-ai-systems/&title=The Shift from Models to Compound AI Systems" rel="nofollow" target="_blank" title="Share on LinkedIn"></a>
+    
+
+    
+
+    
+
+    
+      <a class="fa fa-reddit" href="http://reddit.com/submit?url=http://bair.berkeley.edu/blog/2024/02/18/compound-ai-systems/&title=The Shift from Models to Compound AI Systems" rel="nofollow" target="_blank" title="Share on Reddit"></a>
+    
+
+    
+
+    
+      <a class = "fa fa-hacker-news" onclick="parent.postMessage('submit','*')" href="https://news.ycombinator.com/submitlink?u=http://bair.berkeley.edu/blog/2024/02/18/compound-ai-systems/&t=The Shift from Models to Compound AI Systems" rel="nofollow" target="_blank" title="Share on Hacker News"></a>
+    
+  </div>
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="center">
+  <div class="measure">
+  </div>
+</footer>
+
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-101338021-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<script async src="https://siteimproveanalytics.com/js/siteanalyze_6294756.js"></script>
+
+  
+</body>
+</html>

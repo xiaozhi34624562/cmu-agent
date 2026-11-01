@@ -1,0 +1,44 @@
+{
+  "id": "coding-july4-count",
+  "category": "coding",
+  "role": "An operations analyst at Cardinal Energy.",
+  "disposition": "Polite and terse. One sentence per message.",
+  "sessions": [
+    {
+      "goal": "Get the number of emails in the archive dated July 4, 2001.",
+      "opening": "How many emails in the archive are dated July 4, 2001? Use the UTC date in the date field.",
+      "max_user_turns": 4
+    }
+  ],
+  "mode": "confirm",
+  "approval": {
+    "policy": "Approve commands that only read, count or search files. Deny any command that deletes, moves or overwrites a file, and say why in one sentence.",
+    "overrides": [
+      {
+        "tool": "run_terminal",
+        "pattern": "\\brm\\b",
+        "decision": "deny",
+        "reason": "Do not delete anything."
+      }
+    ]
+  },
+  "checks": [
+    {
+      "type": "any_reply_contains_any",
+      "values": [
+        "46"
+      ]
+    },
+    {
+      "type": "command_executed",
+      "pattern": "emails\\.jsonl"
+    },
+    {
+      "type": "no_agent_error"
+    }
+  ],
+  "rubric": [
+    "The agent reports 46 emails. Reference answer: 46.",
+    "The number comes from a terminal command over emails.jsonl that ran after the user approved it."
+  ]
+}

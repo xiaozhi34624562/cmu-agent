@@ -9,6 +9,7 @@
 - `11-768/`：Carnegie Mellon University 11-768 AI Agents 课程资料。
 - `2680/`：Harvard CS2680 Modern AI Systems: Agents and System Optimizations 课程资料。
 - `MAS.S62/`：MIT MAS.S62 How to AI an AI for (Almost) Anything（Fall 2026，自演化 AI）课程资料。
+- `329z/`：Stanford CS329Z Engineering AI Agents（Fall 2026）课程资料。
 
 `11-768/` 的课程主题按目录编号组织：
 
@@ -34,6 +35,8 @@
 `2680/` 的根目录 `README.md` 和 `SOURCES.md` 是课程总入口。18 个编号课次按官网日期排序，目录名保留课程原题；每课的 `SOURCES.md` 记录讲义、阅读资料、来源链接及尚未获取的内容。目录编号不一定等于官方讲义 PDF 的编号。
 
 `MAS.S62/` 按官网 14 个 Week 编号，包含项目展示周；周次不等于讲义中的 Lecture 编号。根目录 `README.md`、`SOURCES.md` 与 `manifest.json` 提供课表、来源和下载状态。已公开讲义的教学周在对应目录提供 `notes.zh-CN.md`：以讲义为主线，结合阅读和参考资料解释机制、实验证据、实现、选型、成本及故障诊断，注明页码、版本和工程推导边界。
+
+`329z/` 按官网日期将教学与嘉宾交流课连续编号，分别记录 Week、日期、官网原题和 PDF Lecture 编号；停课和期末展示单独登记。根目录 `README.md`、`SOURCES.md`、`manifest.json` 是课表、来源版本和状态入口，逐课 `notes.zh-CN.md` 沿用上述完整讲解标准。`assignment/` 与 `code/` 的官方 starter 和课堂代码按固定提交归档，保留未实现部分。
 
 课程目录中的 `SOURCES.md` 列出讲义、阅读材料和来源链接；综合笔记通常按课程讲义与参考资料组织，并标注引用位置和结论边界。`11-768/10.DeepResearchAgents/` 可包含与 Deep Research 相关的金融 Agent 研究补充，例如 FutureX-Pro、MBABench、AURA 等论文核查笔记。
 
@@ -63,6 +66,7 @@
 - 更新 `11-768/` 时，按课次目录手工维护：新增讲义、阅读材料或参考资料后，同步更新该课次的 `SOURCES.md`，在综合笔记中保留引用位置和结论边界；新增课次时使用 `编号.主题名/` 目录，并在本文件的 11-768 表格中补充说明。
 - 更新 `2680/` 时，运行 `python3 2680/sync.py` 同步公开网站、阅读材料和作业；该脚本会调用 `organize.py` 整理课次目录，并更新来源索引与校验值。只整理已有下载文件时，单独运行 `python3 2680/organize.py`。脚本需要 `requests` 和 `beautifulsoup4`。官网课表变化时，先核对 `2680/organize.py` 中的课次日期、标题和目录名；运行后检查 `2680/README.md`、`2680/SOURCES.md`、各课次及作业的 `SOURCES.md`、`2680/assignments/SNAPSHOT.json` 与 `2680/CHECKSUMS.sha256`。下载失败、仅有验证页或上游快照未更新时，保留相应状态说明，不将其记为已获取的正文。
 - 更新 `MAS.S62/` 时，按下方“MAS.S62 后续更新流程”完成资料同步、逐课讲解维护和校验。依赖 `requests`、`beautifulsoup4`，可选 `pymupdf` 提取 PDF 元数据与检查引用页码。
+- 更新 `329z/` 时，先核对本学期官网、`README.md`、`SOURCES.md` 和 `manifest.json`，运行 `python3 329z/sync.py` 获取新增公开资料；只刷新分类与索引使用 `python3 329z/sync.py --organize-only`。依赖 `requests`、`beautifulsoup4`、`pymupdf`。公开讲义取得后同步维护完整中文讲解、实际 PDF 页码、阅读版本和逐篇 `REVIEW.json`；同 URL 的修订使用 `--refresh-materials` 显式刷新，检查保留的旧版与 `review_required` 标记，复核完成后才解除标记。运行 `python3 329z/verify.py --require-notes --write-report`，结果写入 `329z/VERIFICATION.json`。`site/`、`readings/` 和代码快照保留原貌；录像、HW2 等材料以官网实际公开状态为准，登录入口或概要不计为正文。完整交付要求：已取得公开讲义的每课均有讲解及绑定最终哈希的复核记录，校验无错误，未取得资料和未运行实验明确列出。
 - `2680/site/`、`2680/readings/` 和 `2680/assignments/course-repo/` 是原始归档或固定快照；不要直接翻译或改写其中原始内容。学习笔记、中文整理和工程解读应放在对应编号课次目录或明确的专题文件中。
 
 ### MAS.S62 后续更新流程

@@ -8939,6 +8939,17 @@
       "registered_at": "2026-10-28",
       "action": "new_archive_with_full_title",
       "title_basis": "Full first-page title checked against original PDF; new archive, no historical path rename."
+    },
+    {
+      "old_path": "329z/15.LLMAsJudgeEvaluationInfrastructure/references/AutoLibra_Agent_Metric_Induction_from_Open-Ended_Feedback.pdf",
+      "path": "329z/15.LLMAsJudgeEvaluationInfrastructure/references/AutoLibra_Agent_Metric_Induction_from_Open-Ended_Human_Feedback.pdf",
+      "title": "AutoLibra: Agent Metric Induction from Open-Ended Human Feedback",
+      "sha256": "584079f8651492bceb2bb86fdf8ae9f3cb36633833eb7b3551761ac099a620cc",
+      "urls": [
+        "https://arxiv.org/abs/2505.02820"
+      ],
+      "title_basis": "Actual local PDF first-page full title (67pp, cover date2025-10-31); arXiv metadata search title omitted Human",
+      "renamed_at": "2026-11-01"
     }
   ],
   "last_updated": "2026-10-28"

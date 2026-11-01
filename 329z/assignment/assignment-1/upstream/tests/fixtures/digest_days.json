@@ -1,0 +1,367 @@
+[
+ {
+  "date": "2001-06-22",
+  "email_ids": [
+   "em-08014",
+   "em-08027",
+   "em-08036",
+   "em-08064",
+   "em-08072",
+   "em-08086",
+   "em-08100",
+   "em-08104",
+   "em-08125",
+   "em-08129",
+   "em-08132",
+   "em-08148",
+   "em-08149",
+   "em-08151",
+   "em-08157",
+   "em-08163",
+   "em-08167",
+   "em-08169",
+   "em-08172",
+   "em-08180",
+   "em-08183",
+   "em-08188",
+   "em-08198",
+   "em-08202",
+   "em-08207",
+   "em-08222",
+   "em-08225",
+   "em-08227",
+   "em-08231",
+   "em-08250"
+  ],
+  "urgent": [
+   {
+    "id": "em-08125",
+    "must_mention": [
+     [
+      "Orlin Valley",
+      "Orlin"
+     ]
+    ]
+   },
+   {
+    "id": "em-08149",
+    "must_mention": [
+     [
+      "Bulrush Bend",
+      "Bulrush"
+     ]
+    ]
+   },
+   {
+    "id": "em-08169",
+    "must_mention": [
+     [
+      "Windrow Steel",
+      "Windrow"
+     ]
+    ]
+   }
+  ],
+  "ignore": [
+   {
+    "id": "em-08086",
+    "must_not_mention": [
+     "ZephyrDesk"
+    ]
+   },
+   {
+    "id": "em-08129",
+    "must_not_mention": [
+     "Pennywort"
+    ]
+   }
+  ]
+ },
+ {
+  "date": "2001-07-05",
+  "email_ids": [
+   "em-11982",
+   "em-11997",
+   "em-12002",
+   "em-12005",
+   "em-12017",
+   "em-12027",
+   "em-12030",
+   "em-12036",
+   "em-12053",
+   "em-12069",
+   "em-12072",
+   "em-12073",
+   "em-12082",
+   "em-12098",
+   "em-12111",
+   "em-12132",
+   "em-12159",
+   "em-12164",
+   "em-12167",
+   "em-12169",
+   "em-12177",
+   "em-12192",
+   "em-12196",
+   "em-12200",
+   "em-12207",
+   "em-12208",
+   "em-12214",
+   "em-12215",
+   "em-12218"
+  ],
+  "urgent": [
+   {
+    "id": "em-12053",
+    "must_mention": [
+     [
+      "Castellan Refining",
+      "Castellan"
+     ]
+    ]
+   },
+   {
+    "id": "em-12167",
+    "must_mention": [
+     [
+      "Larchfield"
+     ]
+    ]
+   }
+  ],
+  "ignore": [
+   {
+    "id": "em-12002",
+    "must_not_mention": [
+     "QuillJet"
+    ]
+   },
+   {
+    "id": "em-12027",
+    "must_not_mention": [
+     "Sunfare"
+    ]
+   }
+  ]
+ },
+ {
+  "date": "2001-07-25",
+  "email_ids": [
+   "em-16370",
+   "em-16387",
+   "em-16392",
+   "em-16399",
+   "em-16404",
+   "em-16410",
+   "em-16417",
+   "em-16422",
+   "em-16431",
+   "em-16441",
+   "em-16444",
+   "em-16446",
+   "em-16448",
+   "em-16452",
+   "em-16456",
+   "em-16473",
+   "em-16483",
+   "em-16516",
+   "em-16522",
+   "em-16531",
+   "em-16532",
+   "em-16533",
+   "em-16543",
+   "em-16549",
+   "em-16600",
+   "em-16601",
+   "em-16602",
+   "em-16646",
+   "em-16652",
+   "em-16660"
+  ],
+  "urgent": [
+   {
+    "id": "em-16431",
+    "must_mention": [
+     [
+      "Halberd"
+     ]
+    ]
+   },
+   {
+    "id": "em-16483",
+    "must_mention": [
+     [
+      "Dunleavy Paper",
+      "Dunleavy"
+     ]
+    ]
+   },
+   {
+    "id": "em-16532",
+    "must_mention": [
+     [
+      "Quillwort"
+     ]
+    ]
+   }
+  ],
+  "ignore": [
+   {
+    "id": "em-16399",
+    "must_not_mention": [
+     "NimbusPhone"
+    ]
+   },
+   {
+    "id": "em-16448",
+    "must_not_mention": [
+     "Teasel"
+    ]
+   }
+  ]
+ },
+ {
+  "date": "2001-08-08",
+  "email_ids": [
+   "em-19856",
+   "em-19873",
+   "em-19874",
+   "em-19890",
+   "em-19896",
+   "em-19898",
+   "em-19903",
+   "em-19914",
+   "em-19916",
+   "em-19922",
+   "em-19929",
+   "em-19930",
+   "em-19937",
+   "em-19945",
+   "em-19952",
+   "em-19959",
+   "em-19965",
+   "em-19968",
+   "em-19987",
+   "em-20015",
+   "em-20025",
+   "em-20035",
+   "em-20041",
+   "em-20043",
+   "em-20053",
+   "em-20054",
+   "em-20058",
+   "em-20067",
+   "em-20113"
+  ],
+  "urgent": [
+   {
+    "id": "em-19922",
+    "must_mention": [
+     [
+      "Thornbury Pipeline",
+      "Thornbury"
+     ]
+    ]
+   },
+   {
+    "id": "em-20054",
+    "must_mention": [
+     [
+      "Ketteridge"
+     ]
+    ]
+   }
+  ],
+  "ignore": [
+   {
+    "id": "em-19874",
+    "must_not_mention": [
+     "OptiLens"
+    ]
+   },
+   {
+    "id": "em-19965",
+    "must_not_mention": [
+     "MegaMiles"
+    ]
+   }
+  ]
+ },
+ {
+  "date": "2001-08-21",
+  "email_ids": [
+   "em-22942",
+   "em-22943",
+   "em-22954",
+   "em-22955",
+   "em-22956",
+   "em-22957",
+   "em-22963",
+   "em-22964",
+   "em-22968",
+   "em-22971",
+   "em-22974",
+   "em-22988",
+   "em-23003",
+   "em-23006",
+   "em-23012",
+   "em-23025",
+   "em-23063",
+   "em-23110",
+   "em-23116",
+   "em-23131",
+   "em-23140",
+   "em-23151",
+   "em-23160",
+   "em-23168",
+   "em-23169",
+   "em-23173",
+   "em-23189",
+   "em-23241",
+   "em-23242",
+   "em-23249"
+  ],
+  "urgent": [
+   {
+    "id": "em-22988",
+    "must_mention": [
+     [
+      "Alderbrook Gathering",
+      "Alderbrook"
+     ]
+    ]
+   },
+   {
+    "id": "em-23063",
+    "must_mention": [
+     [
+      "Whitlock"
+     ]
+    ]
+   },
+   {
+    "id": "em-23131",
+    "must_mention": [
+     [
+      "Fernhollow Electric",
+      "Fernhollow"
+     ]
+    ]
+   }
+  ],
+  "ignore": [
+   {
+    "id": "em-22974",
+    "must_not_mention": [
+     "DataSilo"
+    ]
+   },
+   {
+    "id": "em-23006",
+    "must_not_mention": [
+     "Gingersnap"
+    ]
+   }
+  ]
+ }
+]

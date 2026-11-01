@@ -1,0 +1,169 @@
+[
+  {
+    "id": "req-01",
+    "request": "What is 17 plus 25? Use the add tool.",
+    "tool": "add",
+    "args": {
+      "a": 17,
+      "b": 25
+    }
+  },
+  {
+    "id": "req-02",
+    "request": "Add 3.5 and 0.25.",
+    "tool": "add",
+    "args": {
+      "a": 3.5,
+      "b": 0.25
+    }
+  },
+  {
+    "id": "req-03",
+    "request": "Compute the sum of -40 and 12.",
+    "tool": "add",
+    "args": {
+      "a": -40,
+      "b": 12
+    }
+  },
+  {
+    "id": "req-04",
+    "request": "I need 1200 + 345 worked out.",
+    "tool": "add",
+    "args": {
+      "a": 1200,
+      "b": 345
+    }
+  },
+  {
+    "id": "req-05",
+    "request": "Echo the text: hello world",
+    "tool": "echo",
+    "args": {
+      "text": "hello world"
+    }
+  },
+  {
+    "id": "req-06",
+    "request": "Use the echo tool on exactly this sentence: She said \"ship it\" twice.",
+    "tool": "echo",
+    "args": {
+      "text": "She said \"ship it\" twice."
+    }
+  },
+  {
+    "id": "req-07",
+    "request": "Echo this file path back to me exactly: C:\\Users\\dana\\notes.txt",
+    "tool": "echo",
+    "args": {
+      "text": "C:\\Users\\dana\\notes.txt"
+    }
+  },
+  {
+    "id": "req-08",
+    "request": "Echo exactly this text: {\"status\": \"ok\"}",
+    "tool": "echo",
+    "args": {
+      "text": "{\"status\": \"ok\"}"
+    }
+  },
+  {
+    "id": "req-09",
+    "request": "What is the IT helpdesk extension?",
+    "tool": "lookup",
+    "args": {
+      "key": "it_helpdesk"
+    }
+  },
+  {
+    "id": "req-10",
+    "request": "Where is the company headquarters?",
+    "tool": "lookup",
+    "args": {
+      "key": "hq_address"
+    }
+  },
+  {
+    "id": "req-11",
+    "request": "What's the guest wifi password?",
+    "tool": "lookup",
+    "args": {
+      "key": "guest_wifi"
+    }
+  },
+  {
+    "id": "req-12",
+    "request": "When is the payroll cutoff each month?",
+    "tool": "lookup",
+    "args": {
+      "key": "payroll_cutoff"
+    }
+  },
+  {
+    "id": "req-13",
+    "request": "Where do I find the parking office?",
+    "tool": "lookup",
+    "args": {
+      "key": "parking_office"
+    }
+  },
+  {
+    "id": "req-14",
+    "request": "Wait for 2 seconds.",
+    "tool": "slow",
+    "args": {
+      "seconds": 2
+    }
+  },
+  {
+    "id": "req-15",
+    "request": "Pause for half a second.",
+    "tool": "slow",
+    "args": {
+      "seconds": 0.5
+    }
+  },
+  {
+    "id": "req-16",
+    "request": "Produce 50 lines of filler output.",
+    "tool": "big_output",
+    "args": {
+      "n_lines": 50
+    }
+  },
+  {
+    "id": "req-17",
+    "request": "Generate a 3-line test output.",
+    "tool": "big_output",
+    "args": {
+      "n_lines": 3
+    }
+  },
+  {
+    "id": "req-18",
+    "request": "Save a note that says: buy printer toner",
+    "tool": "write_note",
+    "contains": {
+      "text": [
+        "buy printer toner"
+      ]
+    }
+  },
+  {
+    "id": "req-19",
+    "request": "Write one note with two lines. The first line is alpha and the second line is beta.",
+    "tool": "write_note",
+    "contains": {
+      "text": [
+        "alpha",
+        "beta"
+      ]
+    }
+  },
+  {
+    "id": "req-20",
+    "request": "Run the tool that always fails. I want to see its error message.",
+    "tool": "fail",
+    "args": {}
+  }
+]

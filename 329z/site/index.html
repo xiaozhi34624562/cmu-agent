@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Stanford CS329Z | Engineering AI Agents</title>
+  <meta name="description" content="Official course website for Stanford CS329Z: Engineering AI Agents — schedule, project, coursework, and logistics.">
+  <link rel="canonical" href="https://cs329z.stanford.edu/">
+  
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Stanford CS329Z | Engineering AI Agents">
+  <meta property="og:description" content="Official course website for Stanford CS329Z: Engineering AI Agents — schedule, project, coursework, and logistics.">
+  <meta property="og:site_name" content="Stanford CS329Z">
+
+  <link rel="icon" type="image/png" href="static/images/stanford.png">
+  <link rel="stylesheet" href="static/css/main.css?v=c3e8462e">
+</head>
+
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">CS329Z Home</a>
+      <button type="button" class="navbar-toggle" aria-expanded="false" aria-label="Toggle navigation"
+              onclick="var m=document.getElementById('nav-menu');var o=m.classList.toggle('in');this.setAttribute('aria-expanded',o)">
+        <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse" id="nav-menu">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="index.html#schedule">Schedule</a></li>
+        <li><a href="logistics.html">Logistics</a></li>
+        <li><a href="logistics.html#office-hours">Office Hours</a></li>
+        <li><a href="project.html">Project</a></li>
+        <li><a href="https://edstem.org/us/courses/106723/discussion">Discussion</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+<main>
+  
+<!-- Course header shared by all pages -->
+<div id="header" style="text-align:center">
+  <a href="https://nlp.stanford.edu/">
+    <img src="static/images/Stanford-NLP-stack.jpg" class="logo-left" alt="Stanford NLP Group logo">
+  </a>
+  <a href="https://www.stanford.edu/">
+    <img src="static/images/stanfordlogo.jpg" class="logo-right" alt="Stanford University logo">
+  </a>
+  <h1>CS 329Z: Engineering AI Agents</h1>
+  <h3>Stanford / Fall 2026</h3>
+  <div style="clear:both;"></div>
+</div>
+
+
+
+<!-- Course staff -->
+<div class="container sec" id="staff">
+  <div class="row"><div class="col-md-10">
+    <h2>Instructors</h2>
+    
+    <div class="instructor">
+      <a href="https://cs.stanford.edu/~diyiy/">
+        <div class="instructorphoto"><img src="static/images/diyiy.jpg" alt="Diyi Yang headshot"></div>
+        <div>Diyi Yang, Instructor</div>
+      </a>
+    </div>
+    
+    <div class="instructor">
+      <a href="https://michryan.com/">
+        <div class="instructorphoto"><img src="static/images/mryan.jpg" alt="Michael Ryan headshot"></div>
+        <div>Michael Ryan, Instructor</div>
+      </a>
+    </div>
+    
+    <div class="instructor">
+      <a href="https://john-b-yang.github.io/">
+        <div class="instructorphoto"><img src="static/images/jyang.jpg" alt="John Yang headshot"></div>
+        <div>John Yang, Instructor</div>
+      </a>
+    </div>
+    
+    
+    <div class="instructor">
+      <a href="https://owencqueen.github.io/">
+        <div class="instructorphoto"><img src="static/images/oqueen.jpg" alt="Owen Queen headshot"></div>
+        <div>Owen Queen, TA</div>
+      </a>
+    </div>
+    
+    <div class="instructor">
+      <a href="https://www.linkedin.com/in/anushehchaudry/">
+        <div class="instructorphoto"><img src="static/images/achaudry.jpg" alt="Anusheh Chaudry headshot"></div>
+        <div>Anusheh Chaudry, TA</div>
+      </a>
+    </div>
+    
+    <div class="instructor">
+      <a href="https://www.linkedin.com/in/shreyas-n-sharma/">
+        <div class="instructorphoto"><img src="static/images/ssharma.jpg" alt="Shreyas Sharma headshot"></div>
+        <div>Shreyas Sharma, TA</div>
+      </a>
+    </div>
+    
+    <div class="instructor">
+      <a href="https://nlp.stanford.edu/~houjun/">
+        <div class="instructorphoto"><img src="static/images/hliu.jpg" alt="Houjun Liu headshot"></div>
+        <div>Houjun Liu, TA</div>
+      </a>
+    </div>
+    
+  </div></div>
+</div>
+
+<!-- Overview -->
+<div class="container sec sechighlight" id="overview">
+  <h2>Welcome!</h2>
+  <p>The shift from monolithic language models to <strong>compound AI systems</strong> — systems with multiple
+interacting components including LLMs, retrievers, tools, and optimizers — represents a fundamental
+change in how AI applications are built for people. This course teaches students how to engineer
+agentic systems: the full spectrum from simple LLM pipelines to compound AI systems to autonomous
+agents. Students will learn to pick what types of problems to focus on, decompose problems, select
+appropriate components, collect and curate data, build evaluations, and reason about the design
+tradeoffs that arise when building these systems in practice.</p>
+<p>Students first build core components (RAG, tool use, agent loops) from scratch, then learn how
+frameworks like DSPy abstract these patterns. Through two fully applied homework assignments and a
+quarter-long project, students gain hands-on experience building, optimizing, and evaluating agentic
+systems.</p>
+<p>For more information about coursework, office hours, and logistics, please refer to the <a href="logistics.html">Logistics</a> page. You can also view course dates on the <a href="https://calendar.google.com/calendar/u/0/embed?src=59a6e4ad6abfe74cf389924dd1a5f8a9c7358ee32c2c7db1fd49d6ce4d252de1@group.calendar.google.com&amp;ctz=America/Los_Angeles">Google Calendar</a>.</p>
+</div>
+
+<!-- Schedule -->
+<div class="container sec" id="schedule">
+  <h2>Class Schedule</h2>
+  <p>Note: the schedule is tentative and subject to change. Classes meet Mondays and Wednesdays, 1:30–2:50 p.m., in Skilling Auditorium. Lecture materials will be linked here as they are released.</p>
+  <table class="table">
+    <colgroup>
+      <col style="width:5%"><col style="width:8%"><col style="width:42%"><col style="width:45%">
+    </colgroup>
+    <thead>
+      <tr class="active"><th>Week</th><th>Date</th><th>Lecture</th><th>Course Material</th></tr>
+    </thead>
+    <tbody>
+      
+      
+        
+        
+        
+        
+        
+        
+        <tr class="">
+          <td>1</td>
+          <td>Wed Sep 23</td>
+          <td>
+            <span class="theme-tag">Foundations &amp; Landscape</span>
+            <span class="lec-title">Introduction — What Are Agentic Systems?</span>
+            
+            <span class="lec-desc">Course logistics, a brief history of agents, and the anatomy of an agent: LLM core, reasoning, memory, tools, and environment. Compound AI systems and workflows vs. agents, plus the key challenges of reliability, training, safety, and evaluation.</span>
+            
+            <span class="slides-link">
+              <a href="https://web.stanford.edu/class/cs329z/slides/lecture01.pdf">Slides</a>
+              
+              
+            </span>
+            
+          </td>
+          <td class="material">
+            
+            <b>Readings</b>:
+            <ul>
+              
+              <li><a href="https://bair.berkeley.edu/blog/2024/02/18/compound-ai-systems/">Zaharia et al. &#34;The Shift from Models to Compound AI Systems.&#34; BAIR Blog (2024).</a></li>
+              
+              <li><a href="https://lilianweng.github.io/posts/2023-06-23-agent/">Weng. &#34;LLM Powered Autonomous Agents.&#34; Lil&#39;Log (2023).</a></li>
+              
+              <li><a href="https://arxiv.org/abs/2407.01502">Kapoor et al. &#34;AI Agents That Matter.&#34; TMLR (2025).</a></li>
+              
+            </ul>
+            
+            
+          </td>
+        </tr>
+        
+      
+        
+        
+        
+        
+        <tr class="">
+          <td>2</td>
+          <td>Mon Sep 28</td>
+          <td>
+            
+            <span class="lec-title">LLMs for Builders</span>
+            
+            <span class="lec-desc">Language model internals for agent builders: decoding strategies, transformer attention (including linear and hybrid) and context length, the pretraining-to-post-training pipeline, inference and test-time scaling, structured I/O and constrained decoding, and context engineering.</span>
+            
+            <span class="slides-link">
+              <a href="https://web.stanford.edu/class/cs329z/slides/lecture02.pdf">Slides</a>
+              
+              
+            </span>
+            
+          </td>
+          <td class="material">
+            
+            <b>Readings</b>:
+            <ul>
+              
+              <li><a href="https://arxiv.org/abs/1706.03762">Vaswani et al. &#34;Attention Is All You Need.&#34; NeurIPS (2017).</a></li>
+              
+              <li><a href="https://arxiv.org/abs/2006.16236">Katharopoulos et al. &#34;Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention.&#34; ICML (2020).</a></li>
+              
+              <li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Rajasekaran et al. &#34;Effective Context Engineering for AI Agents.&#34; Anthropic (2025).</a></li>
+              
+            </ul>
+            
+            
+          </td>
+        </tr>
+        
+        
+        
+        
+        
+        
+        <tr class="alt">
+          <td>2</td>
+          <td>Wed Sep 30</td>
+          <td>
+            <span class="theme-tag">Building Blocks</span>
+            <span class="lec-title">Retrieval-Augmented Generation (RAG)</span>
+            
+            <span class="lec-desc">Why retrieval helps, then the RAG pipeline end to end: indexing (chunking, contextual retrieval, RAPTOR, HNSW), retrievers from BM25 and DPR to hybrid search, reranking, and ColBERT, agentic RAG (Self-RAG, Search-R1), and common failure modes. Plus a course project overview.</span>
+            
+            <span class="slides-link">
+              <a href="https://web.stanford.edu/class/cs329z/slides/lecture03.pdf">Slides</a>
+              
+              
+            </span>
+            
+          </td>
+          <td class="material">
+            
+            <b>Readings</b>:
+            <ul>
+              
+              <li><a href="https://arxiv.org/abs/2005.11401">Lewis et al. &#34;Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks.&#34; NeurIPS (2020).</a></li>
+              
+              <li><a href="https://arxiv.org/abs/2004.04906">Karpukhin et al. &#34;Dense Passage Retrieval for Open-Domain Question Answering.&#34; EMNLP (2020).</a></li>
+              
+              <li><a href="https://arxiv.org/abs/2004.12832">Khattab &amp; Zaharia. &#34;ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT.&#34; SIGIR (2020).</a></li>
+              
+            </ul>
+            
+            
+          </td>
+        </tr>
+        
+      
+        
+        
+        
+        
+        <tr class="alt">
+          <td>3</td>
+          <td>Mon Oct 5</td>
+          <td>
+            
+            <span class="lec-title">Tool Use &amp; Function Calling</span>
+            
+            <span class="lec-desc">Why LLMs need tools and how they learn to use them: Toolformer, scaling to thousands of APIs with Gorilla and ToolLLM, standard interfaces from REST to function calling to MCP, evaluating tool use with BFCL, ToolBench, and τ-bench, and common failure modes.</span>
+            
+            <span class="slides-link">
+              <a href="https://web.stanford.edu/class/cs329z/slides/lecture04.pdf">Slides</a>
+              
+              
+            </span>
+            
+          </td>
+          <td class="material">
+            
+            <b>Readings</b>:
+            <ul>
+              
+              <li><a href="https://arxiv.org/abs/2302.04761">Schick et al. &#34;Toolformer: Language Models Can Teach Themselves to Use Tools.&#34; NeurIPS (2023).</a></li>
+              
+              <li><a href="https://arxiv.org/abs/2305.15334">Patil et al. &#34;Gorilla: Large Language Model Connected with Massive APIs.&#34; NeurIPS (2024).</a></li>
+              
+              <li><a href="https://modelcontextprotocol.io/specification/2025-06-18">Model Context Protocol Specification, revision 2025-06-18. modelcontextprotocol.io (2025).</a></li>
+              
+            </ul>
+            
+            
+          </td>
+        </tr>
+        
+        
+        
+        
+        
+        
+        <tr class="">
+          <td>3</td>
+          <td>Wed Oct 7</td>
+          <td>
+            <span class="theme-tag">Frameworks &amp; Agent Design</span>
+            <span class="lec-title">Frameworks &amp; Orchestration</span>
+            
+            <span class="lec-desc">The data, system, and evals pillars of agent engineering, with live demos of DSPy (signatures, modules, optimizers) and LangGraph (state, nodes, edges). A tour of open-source agent harnesses (mini-SWE-agent, OpenHands, Pi), durable orchestration with Temporal, observability tooling, and best practices.</span>
+            
+            <span class="slides-link">
+              <a href="https://web.stanford.edu/class/cs329z/slides/lecture05.pdf">Slides</a>
+              
+              <a class="code-link" href="https://github.com/cs329z/lecture5-frameworks">Code</a>
+            </span>
+            
+          </td>
+          <td class="material">
+            
+            <b>Readings</b>:
+            <ul>
+              
+              <li><a href="https://arxiv.org/abs/2310.03714">Khattab et al. &#34;DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines.&#34; ICLR (2024).</a></li>
+              
+              <li><a href="https://docs.langchain.com/oss/python/langgraph/overview">LangChain. &#34;LangGraph Overview.&#34; LangChain Docs.</a></li>
+              
+              <li><a href="https://arena.ai/blog/coding-agents-harness-tax">Arena.ai. &#34;HarnessTax: How Much Does the Harness Matter for Coding Agents?&#34; Arena Blog (2026).</a></li>
+              
+            </ul>
+            
+            
+          </td>
+        </tr>
+        
+      
+        
+        
+        
+        
+        <tr class="">
+          <td>4</td>
+          <td>Mon Oct 12</td>
+          <td>
+            
+            <span class="lec-title">Agent Design Patterns &amp; Scaffolds</span>
+            
+            <span class="lec-desc">Workflows vs. agents and the design patterns for each: five composable workflow patterns, reasoning and acting patterns (ReAct, Reflexion, CodeAct, ReWOO), and context-management patterns (event logs, compaction, observation masking, context isolation). Case study of the Pi harness.</span>
+            
+            <span class="slides-link">
+              <a href="https://web.stanford.edu/class/cs329z/slides/lecture06.pdf">Slides</a>
+              
+              
+            </span>
+            
+          </td>
+          <td class="material">
+            
+            <b>Readings</b>:
+            <ul>
+              
+              <li><a href="https://arxiv.org/abs/2210.03629">Yao et al. &#34;ReAct: Synergizing Reasoning and Acting in Language Models.&#34; ICLR (2023).</a></li>
+              
+              <li><a href="https://www.anthropic.com/engineering/building-effective-agents">Schluntz &amp; Zhang. &#34;Building Effective AI Agents.&#34; Anthropic (2024).</a></li>
+              
+              <li><a href="https://www.langchain.com/blog/context-engineering-for-agents">LangChain. &#34;Context Engineering.&#34; LangChain Blog (2025).</a></li>
+              
+            </ul>
+            
+            
+            <details class="more-readings">
+              <summary>Additional readings</summary>
+              <ul>
+                
+                <li><a href="https://arxiv.org/abs/2303.11366">Shinn et al. &#34;Reflexion: Language Agents with Verbal Reinforcement Learning.&#34; NeurIPS (2023).</a></li>
+                
+                <li><a href="https://arxiv.org/abs/2402.01030">Wang et al. &#34;Executable Code Actions Elicit Better LLM Agents.&#34; ICML (2024).</a></li>
+                
+              </ul>
+            </details>
+            
+          </td>
+        </tr>
+        
+        
+        
+        
+        
+        
+        <tr class="alt">
+          <td>4</td>
+          <td>Wed Oct 14</td>
+          <td>
+            <span class="theme-tag">Memory &amp; Multi-Agent Systems</span>
+            <span class="lec-title">Agent Memory Architectures</span>
+            
+            <span class="lec-desc">Why agents need memory and the four types (working, episodic, semantic, procedural). Four architecture patterns: skill libraries, tiered hierarchies like MemGPT, reflective consolidation, and memory maintenance. Memory benchmarks and open problems in forgetting, privacy, and over-personalization.</span>
+            
+            <span class="slides-link">
+              <a href="https://web.stanford.edu/class/cs329z/slides/lecture07.pdf">Slides</a>
+              
+              
+            </span>
+            
+          </td>
+          <td class="material">
+            
+            <b>Readings</b>:
+            <ul>
+              
+              <li><a href="https://arxiv.org/abs/2309.02427">Sumers et al. &#34;Cognitive Architectures for Language Agents.&#34; TMLR (2024).</a></li>
+              
+              <li><a href="https://arxiv.org/abs/2310.08560">Packer et al. &#34;MemGPT: Towards LLMs as Operating Systems.&#34; arXiv (2023).</a></li>
+              
+              <li><a href="https://arxiv.org/abs/2304.03442">Park et al. &#34;Generative Agents: Interactive Simulacra of Human Behavior.&#34; UIST (2023).</a></li>
+              
+            </ul>
+            
+            
+          </td>
+        </tr>
+        
+      
+        
+        
+        
+        
+        <tr class="alt">
+          <td>5</td>
+          <td>Mon Oct 19</td>
+          <td>
+            
+            <span class="lec-title">Multi-Agent Systems</span>
+            
+            <span class="lec-desc">When to use single vs. multi-agent systems and how to build them: orchestration patterns (orchestrator, swarm, hybrid), communication through handoffs, message boards, and the A2A protocol, and coordination infrastructure (task ledgers, shared memory, worktree isolation). Why multi-agent systems fail.</span>
+            
+            <span class="slides-link">
+              <a href="https://web.stanford.edu/class/cs329z/slides/lecture08.pdf">Slides</a>
+              
+              
+            </span>
+            
+          </td>
+          <td class="material">
+            
+            <b>Readings</b>:
+            <ul>
+              
+              <li><a href="https://arxiv.org/abs/2308.08155">Wu et al. &#34;AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation.&#34; COLM (2024).</a></li>
+              
+              <li><a href="https://arxiv.org/abs/2503.13657">Cemri et al. &#34;Why Do Multi-Agent LLM Systems Fail?&#34; NeurIPS Datasets &amp; Benchmarks (2025).</a></li>
+              
+              <li><a href="https://arxiv.org/abs/2512.08296">Kim et al. &#34;Towards a Science of Scaling Agent Systems.&#34; arXiv (2025).</a></li>
+              
+            </ul>
+            
+            
+          </td>
+        </tr>
+        
+        
+        
+        
+        
+        
+        <tr class="">
+          <td>5</td>
+          <td>Wed Oct 21</td>
+          <td>
+            <span class="theme-tag">Optimization</span>
+            <span class="lec-title">Optimization</span>
+            
+            <span class="lec-desc">When optimization pays off and how to do it: context optimization (bootstrapped few-shot, MIPROv2, OPRO, TextGrad, GEPA), weight optimization (SFT on agent rollouts, RL with PPO and GRPO, on-policy distillation), agents as optimizers (Darwin Gödel Machine, autoresearch), and when to optimize prompts vs. weights.</span>
+            
+            <span class="slides-link">
+              <a href="https://web.stanford.edu/class/cs329z/slides/lecture09.pdf">Slides</a>
+              
+              
+            </span>
+            
+          </td>
+          <td class="material">
+            
+            <b>Readings</b>:
+            <ul>
+              
+              <li><a href="https://arxiv.org/abs/2507.19457">Agrawal et al. &#34;GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning.&#34; ICLR (2026).</a></li>
+              
+              <li><a href="https://arxiv.org/abs/2406.11695">Opsahl-Ong et al. &#34;Optimizing Instructions and Demonstrations for Multi-Stage Language Model Programs.&#34; EMNLP (2024).</a></li>
+              
+              <li><a href="https://arxiv.org/abs/2402.03300">Shao et al. &#34;DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models.&#34; arXiv (2024).</a></li>
+              
+            </ul>
+            
+            
+          </td>
+        </tr>
+        
+      
+        
+        
+        
+        
+        <tr class="">
+          <td>6</td>
+          <td>Mon Oct 26</td>
+          <td>
+            
+            <span class="lec-title">📺 Guest Lecture: Terminal-Bench</span>
+            <span class="lec-speakers"><a href="https://ryanmarten.com">Ryan Marten</a>, <a href="https://www.alexgshaw.com">Alex Shaw</a></span>
+            <span class="lec-desc">Ryan Marten and Alex Shaw (Laude Institute), co-creators of Terminal-Bench, on benchmarking how well AI agents accomplish real-world tasks in a terminal environment.</span>
+            
+            <span class="slides-link">
+              <a href="https://web.stanford.edu/class/cs329z/slides/lecture10.pdf">Slides</a>
+              
+              
+            </span>
+            
+          </td>
+          <td class="material">
+            
+            <b>Readings</b>:
+            <ul>
+              
+              <li><a href="https://www.tbench.ai/">Terminal-Bench project site (leaderboard, tasks, and harness).</a></li>
+              
+              <li><a href="https://arxiv.org/abs/2601.11868">Merrill et al. &#34;Terminal-Bench: Benchmarking Agents on Hard, Realistic Tasks in Command Line Interfaces.&#34; ICLR (2026).</a></li>
+              
+            </ul>
+            
+            
+          </td>
+        </tr>
+        
+        
+        
+        
+        
+        
+        <tr class="alt">
+          <td>6</td>
+          <td>Wed Oct 28</td>
+          <td>
+            <span class="theme-tag">Data for Agentic Systems</span>
+            <span class="lec-title">What Data Do Agents Need?</span>
+            
+            <span class="lec-desc">Traces, demonstrations, and feedback, data for optimization vs. evaluation, data flywheels, synthetic data generation, and collecting data from human-agent interaction.</span>
+            
+            <span class="slides-link">
+              <a href="https://web.stanford.edu/class/cs329z/slides/lecture11.pdf">Slides</a>
+              
+              
+            </span>
+            
+          </td>
+          <td class="material">
+            
+            <b>Readings</b>:
+            <ul>
+              
+              <li><a href="https://www.sh-reya.com/blog/ai-engineering-flywheel/">Shankar. &#34;Data Flywheels for LLM Applications.&#34; (2024).</a></li>
+              
+            </ul>
+            
+            
+            <details class="more-readings">
+              <summary>Additional readings</summary>
+              <ul>
+                
+                <li><a href="https://aclanthology.org/2024.emnlp-main.54/">Tan et al. &#34;Large Language Models for Data Annotation and Synthesis: A Survey.&#34; EMNLP (2024).</a></li>
+                
+              </ul>
+            </details>
+            
+          </td>
+        </tr>
+        
+      
+        
+        
+        
+        
+        <tr class="alt">
+          <td>7</td>
+          <td>Mon Nov 2</td>
+          <td>
+            
+            <span class="lec-title">Data Selection &amp; Quality</span>
+            
+            <span class="lec-desc">Finding maximally informative data, filtering and selection strategies, tiny-but-targeted benchmarks, annotation practices, quality assessment, and building datasets from agent traces.</span>
+            
+          </td>
+          <td class="material">
+            
+            <b>Readings</b>:
+            <ul>
+              
+              <li><a href="https://arxiv.org/abs/2504.21798">Yang et al. &#34;SWE-smith: Scaling Data for Software Engineering Agents.&#34; NeurIPS D&amp;B (2025).</a></li>
+              
+              <li><a href="https://arxiv.org/abs/2404.12272">Shankar et al. &#34;Who Validates the Validators? Aligning LLM-Assisted Evaluation with Human Preferences.&#34; UIST (2024).</a></li>
+              
+            </ul>
+            
+            
+            <details class="more-readings">
+              <summary>Additional readings</summary>
+              <ul>
+                
+                <li><a href="https://arxiv.org/abs/2305.11206">Zhou et al. &#34;LIMA: Less Is More for Alignment.&#34; NeurIPS (2023).</a></li>
+                
+              </ul>
+            </details>
+            
+          </td>
+        </tr>
+        
+        
+        
+        
+        
+        
+        <tr class="">
+          <td>7</td>
+          <td>Wed Nov 4</td>
+          <td>
+            <span class="theme-tag">Evaluation for Agentic Systems</span>
+            <span class="lec-title">Evaluation Fundamentals &amp; Benchmark Design</span>
+            
+            <span class="lec-desc">Why evals are hard, the 4-tuple framework (request, environment, stopping criteria, scorer), designing each component, properties of good benchmarks, realistic scaffolding, and reliability dimensions.</span>
+            
+          </td>
+          <td class="material">
+            
+            <b>Readings</b>:
+            <ul>
+              
+              <li><a href="https://arxiv.org/abs/2507.02825">Zhu et al. &#34;Establishing Best Practices for Building Rigorous Agentic Benchmarks.&#34; (2025).</a></li>
+              
+            </ul>
+            
+            
+            <details class="more-readings">
+              <summary>Additional readings</summary>
+              <ul>
+                
+                <li><a href="https://ofir.io/How-to-Build-Good-Language-Modeling-Benchmarks/">Press. &#34;How to Build Good Language Modeling Benchmarks.&#34; (2024).</a></li>
+                
+                <li><a href="https://arxiv.org/abs/2402.14992">Polo et al. &#34;tinyBenchmarks: Evaluating LLMs with Fewer Examples.&#34; ICML (2024).</a></li>
+                
+              </ul>
+            </details>
+            
+          </td>
+        </tr>
+        
+      
+        
+        
+        
+        
+        <tr class="">
+          <td>8</td>
+          <td>Mon Nov 9</td>
+          <td>
+            
+            <span class="lec-title">📺 Fireside Chat with Andrew Ng</span>
+            <span class="lec-speakers"><a href="https://www.andrewng.org">Andrew Ng</a></span>
+            <span class="lec-desc">A fireside chat with Andrew Ng, hosted by Diyi Yang. Professor Ng is the founder of DeepLearning.AI, co-founder of Coursera, founding lead of Google Brain, and a Professor of Computer Science at Stanford.</span>
+            
+          </td>
+          <td class="material">
+            
+            
+          </td>
+        </tr>
+        
+        
+        
+        
+        <tr class="">
+          <td>8</td>
+          <td>Wed Nov 11</td>
+          <td>
+            
+            <span class="lec-title">LLM-as-Judge &amp; Evaluation Infrastructure</span>
+            
+            <span class="lec-desc">The three grader types, designing judge prompts, known biases, pairwise vs. pointwise evaluation, non-determinism metrics (pass@k vs. pass^k), harness design, and Anthropic&#39;s 8-step roadmap.</span>
+            
+          </td>
+          <td class="material">
+            
+            <b>Readings</b>:
+            <ul>
+              
+              <li><a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents">Grace et al. &#34;Demystifying Evals for AI Agents.&#34; Anthropic (2026).</a></li>
+              
+              <li><a href="https://arxiv.org/abs/2306.05685">Zheng et al. &#34;Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena.&#34; NeurIPS (2023).</a></li>
+              
+              <li><a href="https://arxiv.org/abs/2512.17267">Ryan et al. &#34;AutoMetrics: Approximate Human Judgements with Automatically Generated Evaluators.&#34; ICLR (2026).</a></li>
+              
+            </ul>
+            
+            
+            <details class="more-readings">
+              <summary>Additional readings</summary>
+              <ul>
+                
+                <li><a href="https://openreview.net/forum?id=4BjGVZ7Bxn">Zhu et al. &#34;AutoLibra: Agent Metric Induction from Open-Ended Human Feedback.&#34; ICLR (2026).</a></li>
+                
+              </ul>
+            </details>
+            
+          </td>
+        </tr>
+        
+      
+        
+        
+        
+        
+        <tr class="">
+          <td>9</td>
+          <td>Mon Nov 16</td>
+          <td>
+            
+            <span class="lec-title">📺 Guest Lecture: SWE-bench</span>
+            <span class="lec-speakers"><a href="https://www.carlosejimenez.com">Carlos Jimenez</a>, <a href="https://codecreator.github.io">Alexander Wettig</a></span>
+            <span class="lec-desc">Carlos Jimenez and Alexander Wettig (Anthropic), creators of SWE-bench, on the evolution and future of evaluations for coding capabilities and beyond.</span>
+            
+          </td>
+          <td class="material">
+            
+            <b>Readings</b>:
+            <ul>
+              
+              <li><a href="https://arxiv.org/abs/2310.06770">Jimenez et al. &#34;SWE-bench: Can Language Models Resolve Real-World GitHub Issues?&#34; ICLR (2024).</a></li>
+              
+            </ul>
+            
+            
+          </td>
+        </tr>
+        
+        
+        
+        
+        
+        
+        <tr class="alt">
+          <td>9</td>
+          <td>Wed Nov 18</td>
+          <td>
+            <span class="theme-tag">Safety</span>
+            <span class="lec-title">Agent Safety &amp; Guardrails</span>
+            
+            <span class="lec-desc">Privacy risks of tool access, prompt injection (including indirect injection), red-teaming, sandboxing and permission models, output guardrails, liability considerations, responsible deployment, and human-in-the-loop patterns.</span>
+            
+          </td>
+          <td class="material">
+            
+            <b>Readings</b>:
+            <ul>
+              
+              <li><a href="https://arxiv.org/abs/2409.00138">Shao et al. &#34;PrivacyLens: Evaluating Privacy Norm Awareness of LMs in Action.&#34; NeurIPS D&amp;B (2024).</a></li>
+              
+              <li><a href="https://arxiv.org/abs/2508.10880">Zhang &amp; Yang. &#34;Searching for Privacy Risks in LLM Agents via Simulation.&#34; arXiv (2025).</a></li>
+              
+              <li><a href="https://arxiv.org/abs/2601.05918">Li. &#34;Agentic LLMs as Powerful Deanonymizers.&#34; arXiv (2026).</a></li>
+              
+            </ul>
+            
+            
+            <details class="more-readings">
+              <summary>Additional readings</summary>
+              <ul>
+                
+                <li><a href="https://arxiv.org/abs/2603.02983">Wen et al. &#34;Contextualized Privacy Defense for LLM Agents.&#34; arXiv (2026).</a></li>
+                
+                <li><a href="https://openai.com/index/prompt-injections/">OpenAI. &#34;Understanding Prompt Injections: A Frontier Security Challenge.&#34; (2025).</a></li>
+                
+                <li><a href="https://www.anthropic.com/news/anthropics-responsible-scaling-policy">Anthropic. &#34;Anthropic&#39;s Responsible Scaling Policy.&#34; (2023).</a></li>
+                
+              </ul>
+            </details>
+            
+          </td>
+        </tr>
+        
+      
+        
+        
+        
+        
+        <tr class="alt holiday">
+          <td>10</td>
+          <td>Mon Nov 23</td>
+          <td>
+            
+            <span class="lec-title">No Class — Thanksgiving Recess</span>
+            
+            
+            
+          </td>
+          <td class="material">
+            
+            
+          </td>
+        </tr>
+        
+        
+        
+        
+        <tr class="alt holiday">
+          <td>10</td>
+          <td>Wed Nov 25</td>
+          <td>
+            
+            <span class="lec-title">No Class — Thanksgiving Recess</span>
+            
+            
+            
+          </td>
+          <td class="material">
+            
+            
+          </td>
+        </tr>
+        
+      
+        
+        
+        
+        
+        
+        
+        <tr class="">
+          <td>11</td>
+          <td>Mon Nov 30</td>
+          <td>
+            <span class="theme-tag">Coding Agents &amp; Proactive Agents</span>
+            <span class="lec-title">Coding &amp; Software Agents</span>
+            
+            <span class="lec-desc">How coding agents work end to end: the SWE-agent, Claude Code, and OpenHands architectures, scaffolds as design decisions, SWE-bench and the 4-tuple framework in practice, and the future of software development with agents.</span>
+            
+          </td>
+          <td class="material">
+            
+            <b>Readings</b>:
+            <ul>
+              
+              <li><a href="https://arxiv.org/abs/2405.15793">Yang et al. &#34;SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering.&#34; NeurIPS (2024).</a></li>
+              
+              <li><a href="https://arxiv.org/abs/2407.16741">Wang et al. &#34;OpenHands: An Open Platform for AI Software Developers.&#34; ICLR (2025).</a></li>
+              
+            </ul>
+            
+            
+            <details class="more-readings">
+              <summary>Additional readings</summary>
+              <ul>
+                
+                <li><a href="https://www.anthropic.com/engineering/claude-code-best-practices">Anthropic. &#34;Claude Code: Best Practices for Agentic Coding.&#34; (2025).</a></li>
+                
+                <li><a href="https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents">Young. &#34;Effective Harnesses for Long-Running Agents.&#34; Anthropic (2025).</a></li>
+                
+              </ul>
+            </details>
+            
+          </td>
+        </tr>
+        
+        
+        
+        
+        <tr class="">
+          <td>11</td>
+          <td>Wed Dec 2</td>
+          <td>
+            
+            <span class="lec-title">Proactive Agents</span>
+            
+            <span class="lec-desc">From reactive to proactive agents: General User Models (GUM), Next Action Prediction, open-source proactive personal agents, privacy and trust implications, and when agents should initiate vs. wait (mixed initiative).</span>
+            
+          </td>
+          <td class="material">
+            
+            <b>Readings</b>:
+            <ul>
+              
+              <li><a href="https://arxiv.org/abs/2505.10831">Shaikh et al. &#34;Creating General User Models from Computer Use.&#34; UIST (2025).</a></li>
+              
+            </ul>
+            
+            
+            <details class="more-readings">
+              <summary>Additional readings</summary>
+              <ul>
+                
+                <li><a href="https://arxiv.org/abs/2603.05923">Shaikh et al. &#34;Learning Next Action Predictors from Human-Computer Interaction.&#34; arXiv (2026).</a></li>
+                
+                <li><a href="https://github.com/openclaw/openclaw">Steinberger. &#34;OpenClaw: Open-source proactive AI agent.&#34; (2025).</a></li>
+                
+              </ul>
+            </details>
+            
+          </td>
+        </tr>
+        
+      
+        
+        
+        
+        
+        
+        
+        <tr class="alt">
+          <td>—</td>
+          <td>Finals Week (Dec 7–11)</td>
+          <td>
+            <span class="theme-tag">Open Problems &amp; Final Demos</span>
+            <span class="lec-title">Final Project Demo Day</span>
+            
+            <span class="lec-desc">Held during the end-quarter examination period. Exact time and location TBA.</span>
+            
+          </td>
+          <td class="material">
+            
+            
+          </td>
+        </tr>
+        
+      
+    </tbody>
+  </table>
+</div>
+
+<!-- Deadlines -->
+<div class="container sec sechighlight" id="deadlines">
+  <h2>Deadlines</h2>
+  <p>All times are Pacific. Deadlines are subject to change; any changes will be announced in class and posted here.</p>
+  <table class="table" style="max-width:640px">
+    <colgroup>
+      <col style="width:8%"><col style="width:52%"><col style="width:20%"><col style="width:20%">
+    </colgroup>
+    <thead>
+      <tr class="active"><th>Week</th><th>Deadline</th><th>Date</th><th>Time</th></tr>
+    </thead>
+    <tbody>
+      
+      <tr><td>3</td><td><a href="https://github.com/cs329z/assignment1-harness">HW1 Released</a></td><td>Mon Oct 5</td><td>—</td></tr>
+      
+      <tr><td>3</td><td>Project Proposal Due</td><td>Fri Oct 9</td><td>11:59 p.m.</td></tr>
+      
+      <tr><td>6</td><td>HW2 Released</td><td>Mon Oct 26</td><td>—</td></tr>
+      
+      <tr><td>6</td><td>HW1 Due</td><td>Fri Oct 30</td><td>11:59 p.m.</td></tr>
+      
+      <tr><td>7</td><td>Midpoint Demo Video Due</td><td>Wed Nov 4</td><td>11:59 p.m.</td></tr>
+      
+      <tr><td>7</td><td>Midway Report Due</td><td>Fri Nov 6</td><td>11:59 p.m.</td></tr>
+      
+      <tr><td>8</td><td><a href="https://web.stanford.edu/class/cs329z/assignments/paper_video.pdf">Paper Video Due (10–15 min)</a></td><td>Fri Nov 13</td><td>11:59 p.m.</td></tr>
+      
+      <tr><td>9</td><td>HW2 Due</td><td>Fri Nov 20</td><td>11:59 p.m.</td></tr>
+      
+      <tr><td>11</td><td>Paper Video Peer Reviews Due (2 videos)</td><td>Mon Nov 30</td><td>11:59 p.m.</td></tr>
+      
+      <tr><td>Finals</td><td>Final Report Due &amp; Final System Demo</td><td>Dec 7–11</td><td>TBA</td></tr>
+      
+    </tbody>
+  </table>
+</div>
+
+<!-- Sponsors -->
+<section class="container sec sponsors" aria-labelledby="sponsors-heading">
+  <h2 id="sponsors-heading">Sponsors</h2>
+  <p>We are grateful to our sponsors for their generous support of CS 329Z.</p>
+  <div class="sponsor-logos">
+    <a href="https://about.google/" target="_blank" rel="noopener noreferrer" aria-label="Visit Google">
+      <img class="sponsor-logo sponsor-logo-google" src="static/images/google-logo.svg" alt="Google">
+    </a>
+    <a href="https://www.laude.org/" target="_blank" rel="noopener noreferrer" aria-label="Visit Laude Institute">
+      <img class="sponsor-logo sponsor-logo-laude" src="static/images/laude.jpeg" alt="Laude Institute">
+    </a>
+    <a href="https://thinkingmachines.ai/" target="_blank" rel="noopener noreferrer" aria-label="Visit Thinking Machines Lab">
+      <img class="sponsor-logo sponsor-logo-thinking-machines" src="static/images/thinking-machines-logo.png" alt="Thinking Machines Lab">
+    </a>
+  </div>
+</section>
+
+</main>
+
+</body>
+</html>

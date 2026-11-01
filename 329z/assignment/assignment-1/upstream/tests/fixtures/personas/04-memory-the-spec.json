@@ -1,0 +1,55 @@
+{
+  "id": "memory-the-spec",
+  "category": "memory",
+  "role": "A staff engineer on the Platform team at Cardinal Energy.",
+  "disposition": "Direct. Short sentences.",
+  "sessions": [
+    {
+      "goal": "Tell the agent that you are on the Platform team and that by 'the spec' you always mean the GridLens API specification, and ask it to remember that. You need nothing else today.",
+      "opening": "Hi. I'm on the Platform team. When I say \"the spec\" I always mean the GridLens API spec. Please remember that.",
+      "max_user_turns": 2
+    },
+    {
+      "goal": "It is a later day. Find out the document number of 'the spec' and the date on it. You told the agent in an earlier conversation which spec you mean, so you do not say it again unless the agent asks.",
+      "opening": "What's the document number of the spec, and what date is on it?",
+      "max_user_turns": 3
+    }
+  ],
+  "knowledge": [
+    "You are on the Platform team.",
+    "By 'the spec' you mean the GridLens API specification."
+  ],
+  "checks": [
+    {
+      "type": "first_reply_contains_any",
+      "values": [
+        "API-SPEC-002"
+      ],
+      "session": 2
+    },
+    {
+      "type": "tool_not_called",
+      "name": "ask_user",
+      "session": 2
+    },
+    {
+      "type": "no_reply_contains_any",
+      "values": [
+        "FW-SPEC-003"
+      ],
+      "session": 2
+    },
+    {
+      "type": "session2_did_not_reask",
+      "pattern": "which (spec|specification|document|one)\\b|do you mean the"
+    },
+    {
+      "type": "no_agent_error"
+    }
+  ],
+  "rubric": [
+    "In session 2 the agent gives API-SPEC-002, dated 2026-02-20, as the answer. Reference: the GridLens API specification. FW-SPEC-003 (the firmware specification) is the wrong document for this user. A reply that lists both documents without committing to the API specification does not meet this criterion.",
+    "In session 2 the agent does not ask the user which spec they mean."
+  ],
+  "mode": "auto"
+}

@@ -1,0 +1,13 @@
+[
+  {
+    "title": "Search-R1: Training LLMs to Reason and Leverage Search Engines with Reinforcement Learning",
+    "url": "https://arxiv.org/abs/2503.09516",
+    "path": "references/Search-R1_Training_LLMs_to_Reason_and_Leverage_Search_Engines_with_Reinforcement_Learning.pdf",
+    "status": "saved",
+    "sha256": "524306de91f80d7755c43f8daad11eb463832762ba1debe0f37788bdbb3a6a0d",
+    "version": "arXiv:2503.09516v5 (2025-08-05; COLM 2025)",
+    "reused_from": "11-768/10.DeepResearchAgents/references/Search-R1_Training_LLMs_to_Reason_and_Leverage_Search_Engines_with_Reinforcement_Learning.pdf",
+    "reused_at": "2026-10-31",
+    "provenance_note": "Existing repository PDF reused; original retrieval date not inferred or replaced with this reuse date"
+  }
+]

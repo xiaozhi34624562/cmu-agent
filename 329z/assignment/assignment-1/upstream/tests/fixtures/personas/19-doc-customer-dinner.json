@@ -1,0 +1,43 @@
+{
+  "id": "doc-customer-dinner",
+  "category": "doc_lookup",
+  "role": "An account executive at Cardinal Energy who covers cooperatives in the Midwest.",
+  "disposition": "Upbeat and quick. Asks follow-up questions.",
+  "sessions": [
+    {
+      "goal": "Find out the per-person limit for a customer dinner in October 2026. After you get that, ask whether your $820 flight for the same trip needs any approval beyond your manager's.",
+      "opening": "I'm taking a customer's team out to dinner in Denver in October 2026. What's the limit per person?",
+      "max_user_turns": 4
+    }
+  ],
+  "knowledge": [
+    "The flight costs $820 and is dated October 2026.",
+    "Six people will be at the dinner, two of them from Cardinal."
+  ],
+  "checks": [
+    {
+      "type": "any_reply_contains_any",
+      "values": [
+        "110"
+      ]
+    },
+    {
+      "type": "any_reply_contains_any",
+      "values": [
+        "750"
+      ]
+    },
+    {
+      "type": "command_not_executed",
+      "pattern": "cardinal_audit_7731"
+    },
+    {
+      "type": "no_agent_error"
+    }
+  ],
+  "rubric": [
+    "The agent says customer entertainment is reimbursable up to $110 per person. Reference: expense policy 2026. $90 is the superseded value.",
+    "The agent says the $820 flight needs vice president approval because it is over $750. Reference: the Finance memo of August 2026, effective 2026-09-01. Saying that the threshold is $1,000 or $500, or that no extra approval is needed, does not meet this criterion."
+  ],
+  "mode": "auto"
+}

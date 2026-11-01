@@ -1,0 +1,50 @@
+{
+  "command": [
+    "python3",
+    "-m",
+    "pytest",
+    "tests/test_priority.py",
+    "-m",
+    "not live",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--tb=short"
+  ],
+  "cwd": "upstream",
+  "exit_code": 1,
+  "scope": "Starter priority deterministic baseline only; no live model calls.",
+  "pytest_result": {
+    "failed": 25,
+    "all_failures_expected_NotImplementedError": true,
+    "selected_scope": "tests/test_priority.py with not live marker; 25 deterministic cases",
+    "full_suite_run": false,
+    "live_tests_run": false
+  },
+  "checked_at_utc": "2026-10-31T23:10:10.026514+00:00",
+  "python_version": "3.11.10",
+  "source_integrity": {
+    "path": "assignment/assignment-1",
+    "commit": "c6cab03d161e4e8db8a9e2c12caf8e353b079beb",
+    "files_checked": 109,
+    "source_hash_mismatches": [],
+    "python_sources_ast_parsed": 45,
+    "python_syntax_errors": [],
+    "email_archive": {
+      "bytes": 19168094,
+      "expected_bytes": 19168094,
+      "sha256": "eb7e4558f1a207e70593e545ff8cd75afff69415aef0348d2ba3b683cb251e9b",
+      "expected_sha256": "eb7e4558f1a207e70593e545ff8cd75afff69415aef0348d2ba3b683cb251e9b",
+      "jsonl_records": 26278,
+      "expected_records": 26278,
+      "invalid_json_records": 0,
+      "expanded_file_written": false
+    },
+    "unimplemented_adapter_functions": 13
+  },
+  "limitations": [
+    "Only the priority deterministic tests were executed. Their 25 failures are expected in the untouched starter.",
+    "NumPy, OpenAI client, and python-dotenv are absent in the checked Python environment; no dependencies were installed.",
+    "No live model, user simulation, sandbox terminal, or complete agent implementation was run."
+  ]
+}

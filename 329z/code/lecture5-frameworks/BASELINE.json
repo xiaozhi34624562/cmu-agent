@@ -1,0 +1,24 @@
+{
+  "checked_at_utc": "2026-10-31T23:10:10.026761+00:00",
+  "python_version": "3.11.10",
+  "scope": "Offline snapshot checks only",
+  "source_integrity": {
+    "path": "code/lecture5-frameworks",
+    "commit": "4e418289b3032cb960984250395525eb91ae25c2",
+    "files_checked": 16,
+    "source_hash_mismatches": [],
+    "python_sources_ast_parsed": 6,
+    "python_syntax_errors": [],
+    "notebook": {
+      "nbformat": 4,
+      "total_cells": 70,
+      "code_cells": 51,
+      "executed": false
+    },
+    "synthetic_emails": 50
+  },
+  "limitations": [
+    "Notebook, GEPA optimizer, LangGraph agent and Temporal workflow were not executed.",
+    "No setup script, server, model API, dependency installation or credentials were used."
+  ]
+}

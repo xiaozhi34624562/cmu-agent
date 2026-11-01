@@ -1,0 +1,91 @@
+[
+ {
+  "id": "t01",
+  "question": "How many emails in the archive have a `date` in June 2001? Dates are UTC; use the first seven characters of the `date` field.",
+  "answers": [
+   "11382",
+   "11,382"
+  ],
+  "notes": "count of records whose date starts with 2001-06"
+ },
+ {
+  "id": "t02",
+  "question": "Which address appears most often in the `from` field of emails dated in August 2001 (UTC dates)? Give the full address.",
+  "answers": [
+   "d..steffes@enron.com"
+  ],
+  "notes": "d..steffes@enron.com sent 364; the runner-up sent 314"
+ },
+ {
+  "id": "t03",
+  "question": "How many emails dated in August 2001 (UTC dates) have `from` equal to d..steffes@enron.com?",
+  "answers": [
+   "364"
+  ],
+  "notes": "exact match on the from field"
+ },
+ {
+  "id": "t04",
+  "question": "How many emails in the archive mention Thistledown? Count an email if the word appears in its subject or body, ignoring case.",
+  "answers": [
+   "4",
+   "four"
+  ],
+  "notes": "case-insensitive substring in subject or body; senders: cormac.delahunty@enron.com, marisol.quintanar@enron.com, tobias.hallqvist@enron.com"
+ },
+ {
+  "id": "t05",
+  "question": "How many emails in the archive have an empty `subject` (the empty string)?",
+  "answers": [
+   "858"
+  ],
+  "notes": "subject == ''"
+ },
+ {
+  "id": "t06",
+  "question": "On which calendar day (UTC, from the `date` field) were the most emails sent? Answer with the date.",
+  "answers": [
+   "2001-06-27",
+   "June 27",
+   "Jun 27",
+   "6/27",
+   "06/27",
+   "27 June"
+  ],
+  "notes": "2001-06-27 has 1338 emails; the next day has 1046"
+ },
+ {
+  "id": "t07",
+  "question": "How many distinct addresses appear in the `from` field across the whole archive?",
+  "answers": [
+   "4183",
+   "4,183"
+  ],
+  "notes": "number of distinct from values (exact strings)"
+ },
+ {
+  "id": "t08",
+  "question": "How many emails in the archive have a `reply_to` that is not null?",
+  "answers": [
+   "5107",
+   "5,107"
+  ],
+  "notes": "reply_to is not None"
+ },
+ {
+  "id": "t09",
+  "big_output": true,
+  "question": "Use the terminal to print the subject of every email dated in July 2001 (UTC dates), one subject per line, in archive order. Print an empty line for an email whose subject is empty. Then tell me how many lines that is.",
+  "answers": [
+   "6931",
+   "6,931"
+  ],
+  "followup": {
+   "question": "In the list you just printed, what is the subject on line 6201 (counting the first line as line 1, and counting empty lines)?",
+   "answers": [
+    "FYI:  Discuss Negative CTCs & CPUC/CDWR 1 cent Surcharge Pass-through"
+   ]
+  },
+  "notes": "the listing is 217818 characters; line 6201 is em-17583"
+ }
+]

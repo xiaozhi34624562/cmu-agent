@@ -1,0 +1,11 @@
+[
+  {
+    "title": "Context Engineering",
+    "url": "https://www.langchain.com/blog/context-engineering-for-agents",
+    "path": "references/Context_Engineering.html",
+    "status": "saved",
+    "sha256": "8158ed8d7934e2f9aa484e5df4a37ff423df97ffd6fcf8273b5d495c34bb18da",
+    "reused_from": "329z/6.AgentDesignPatternsScaffolds/readings/Context_Engineering.html",
+    "provenance_note": "Reuse the already verified CS329Z lesson 6 assigned-reading archive; no new download claimed"
+  }
+]
