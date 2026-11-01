@@ -2,7 +2,7 @@
 """Verify title-based reading names, original bytes and organizer stability.
 
 Run after either course organizer: python3 tools/verify_material_names.py
-Use --write-report to save the current result beside the rename catalog.
+Use --output PATH to save the current JSON result when needed.
 """
 from __future__ import annotations
 
@@ -51,24 +51,24 @@ def verify() -> dict:
 
     # Exercise the actual sync/organize entry points without network downloads.
     # Import each independent course script separately (both are named sync.py).
-    harvard = load_script("harvard_material_sync", ROOT / "2680/sync.py")
-    mit = load_script("mit_material_sync", ROOT / "MAS.S62/sync.py")
+    harvard = load_script("harvard_material_sync", ROOT / "courses/2680/sync.py")
+    mit = load_script("mit_material_sync", ROOT / "courses/MAS.S62/sync.py")
     archive_urls = 0
     for entry in entries:
         for url in entry["urls"]:
             path = Path(entry["path"])
-            if path.parts[:2] == ("2680", "readings"):
+            if path.parts[:3] == ("courses", "2680", "readings"):
                 actual = harvard.reading_destination(url)
                 if actual != ROOT / path:
                     errors.append(f"Harvard sync would change a registered path: {entry['path']}")
                 archive_urls += 1
-            elif path.parts[:2] == ("MAS.S62", "readings"):
+            elif path.parts[:3] == ("courses", "MAS.S62", "readings"):
                 item = mit.paper_resource("course abbreviation", url, "reading")
-                if ROOT / "MAS.S62" / item["path"] != ROOT / path:
+                if ROOT / "courses" / "MAS.S62" / item["path"] != ROOT / path:
                     errors.append(f"MIT sync would change a registered path: {entry['path']}")
                 archive_urls += 1
     for course in ("11-768", "2680", "MAS.S62"):
-        for path in (ROOT / course).rglob("*.pdf"):
+        for path in (ROOT / "courses" / course).rglob("*.pdf"):
             if "site" in path.parts or "assignment" in path.parts or "assignments" in path.parts:
                 continue
             if re.fullmatch(r"\d{4}\.\d{4,5}(?:v\d+)?|\d+", path.stem):
@@ -93,7 +93,7 @@ def verify() -> dict:
         "checked_at_utc": datetime.now(timezone.utc).isoformat(),
         "scope": "Reading filenames, original content hashes and offline sync path resolution; no paper-content or model-experiment re-review",
         "renamed_materials": len(entries),
-        "by_course_or_topic": dict(sorted(Counter(Path(e["path"]).parts[0] for e in entries).items())),
+        "by_course_or_topic": dict(sorted(Counter(Path(e["path"]).parts[1] if Path(e["path"]).parts[0] == "courses" else Path(e["path"]).parts[0] for e in entries).items())),
         "by_extension": dict(sorted(Counter(Path(e["path"]).suffix for e in entries).items())),
         "sync_archive_url_checks": archive_urls,
         "checked_material_links": checked_material_links,
@@ -103,11 +103,11 @@ def verify() -> dict:
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--write-report", action="store_true")
+    parser.add_argument("--output", type=Path, help="Optional JSON output path; default is stdout only")
     args = parser.parse_args()
     result = verify()
-    if args.write_report:
-        CATALOG.with_name("MATERIAL_NAMES_VERIFICATION.json").write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
+    if args.output:
+        args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps(result, ensure_ascii=False, indent=2))
     raise SystemExit(bool(result["errors"]))
 

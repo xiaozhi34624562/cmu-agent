@@ -1,0 +1,785 @@
+{
+  "course": "MAS.S62",
+  "review_date": "2026-10-28",
+  "standard": "面向有 Java 经验的 LLM Developer：以讲义问题链组织完整中文教学；检查前置知识、机制推导、案例、自测和来源证据；修改后的最终版本完整复读两遍。",
+  "scope": "当前版本的内容审核状态；保留最近实际阅读范围、复读结论和限制。结构校验不代替语义审核；元数据整理不构成新一轮内容审核。",
+  "study_guides": [
+    {
+      "path": "courses/MAS.S62/1.CourseIntroduction/notes.zh-CN.md",
+      "week": 1,
+      "status": "passed",
+      "sha256": "c46d1ea9c8333736704e7bb008ae61c79fae5dd2bf0eb93b58ef715495231337",
+      "reviewed_at": "2026-10-28",
+      "content_review_sha256": "c46d1ea9c8333736704e7bb008ae61c79fae5dd2bf0eb93b58ef715495231337",
+      "coverage": "覆盖主讲义86页问题链；导论深度围绕对象、更新、反馈、持久状态与评价，保留通用配置修复贯穿案例、工程闭环、成本与诊断，增加训练桥接与10道自测。",
+      "sources_read": [
+        {
+          "path": "courses/MAS.S62/1.CourseIntroduction/slides/lec1 - intro.pdf",
+          "pages": "1–86",
+          "scope": "主讲义全文；目视核查34/35/58/60/62/64/66/67/69/71/73/74页图示"
+        },
+        {
+          "path": "courses/MAS.S62/1.CourseIntroduction/references/Language_Models_are_Few-Shot_Learners.pdf",
+          "pages": "6–8,10",
+          "scope": "ICL和微调设置、评测协议"
+        },
+        {
+          "path": "courses/MAS.S62/1.CourseIntroduction/references/Training_language_models_to_follow_instructions_with_human_feedback.pdf",
+          "pages": "2–10",
+          "scope": "偏好结论范围、SFT/RM/PPO方法与评价；图2目视"
+        },
+        {
+          "path": "courses/MAS.S62/1.CourseIntroduction/references/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf",
+          "pages": "2–4",
+          "scope": "动作/思考/观察定义，图1目视补足乱码文本"
+        },
+        {
+          "path": "courses/MAS.S62/1.CourseIntroduction/references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf",
+          "pages": "11–14",
+          "scope": "PPO/GRPO概率比率、裁剪、KL、组内优势；图4目视"
+        },
+        {
+          "path": "courses/MAS.S62/1.CourseIntroduction/references/SWE-agent_Agent-Computer_Interfaces_Enable_Automated_Software_Engineering.pdf",
+          "pages": "3–6",
+          "scope": "ACI设计、反馈、上下文和实验控制"
+        },
+        {
+          "path": "courses/MAS.S62/1.CourseIntroduction/references/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf",
+          "pages": "2–5",
+          "scope": "经验验证、冻结底座、档案与父代选择不可自改；图1目视"
+        },
+        {
+          "path": "courses/MAS.S62/1.CourseIntroduction/references/Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data.pdf",
+          "pages": "1–6",
+          "scope": "v3日期、零数据范围、提出/求解/验证和种子；图4目视"
+        }
+      ],
+      "reread_result": [
+        "全文复读通过：新增概率/训练解释与后文状态分类、评测设计一致。",
+        "第二遍全文复读通过：章节连贯、学习层次适合开发者，案例边界与答案一致，无新增问题。"
+      ],
+      "remaining_issues": [],
+      "limitations": [
+        "未运行LLM、GPU训练或自演化实验；正文实验设计为教学方案。",
+        "导论引用的宣传/企业案例仅核对讲义归因，未将其作为可迁移提升证据。"
+      ]
+    },
+    {
+      "path": "courses/MAS.S62/2.ContextEvolution1/notes.zh-CN.md",
+      "week": 2,
+      "status": "passed",
+      "sha256": "ed358c94035f8e57c98002fc1ec3228ccea509f03b9fdb4fd293c3d0fe2f2669",
+      "reviewed_at": "2026-10-28",
+      "content_review_sha256": "ed358c94035f8e57c98002fc1ec3228ccea509f03b9fdb4fd293c3d0fe2f2669",
+      "coverage": "覆盖47页主讲义、36页嘉宾与教程；以Context→搜索→反馈图→模块化→策略记忆→长上下文→增量更新组织，机制、实施、实验、成本、诊断与13道自测齐全。",
+      "sources_read": [
+        {
+          "path": "courses/MAS.S62/2.ContextEvolution1/slides/lec2 - context.pdf",
+          "pages": "1–47",
+          "scope": "主讲义全文，12/14/26–30/36/37/40/44/46页目视"
+        },
+        {
+          "path": "courses/MAS.S62/2.ContextEvolution1/slides/context_guest.pdf",
+          "pages": "1–36",
+          "scope": "嘉宾全文，12/19/23/29/30/31页目视"
+        },
+        {
+          "path": "courses/MAS.S62/2.ContextEvolution1/tutorials/Textgrad_tutorial.ipynb",
+          "pages": "all 34 cells",
+          "scope": "全部代码与Markdown、已保存实质输出；重复进度条略去，未运行API"
+        },
+        {
+          "path": "courses/MAS.S62/readings/papers/Large_Language_Models_Are_Human-Level_Prompt_Engineers.pdf",
+          "pages": "3–5",
+          "scope": "候选搜索与train/test、评分"
+        },
+        {
+          "path": "courses/MAS.S62/readings/papers/TextGrad_Automatic_Differentiation_via_Text.pdf",
+          "pages": "1,3–8,11–14,33–34",
+          "scope": "机制、约束、示例、论文与教程数据协议、分子与放疗应用边界"
+        },
+        {
+          "path": "courses/MAS.S62/readings/papers/DSPy_Compiling_Declarative_Language_Model_Calls_into_Self-Improving_Pipelines.pdf",
+          "pages": "3–7",
+          "scope": "签名/模块/编译、Bootstrap、评分和微调"
+        },
+        {
+          "path": "courses/MAS.S62/readings/papers/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf",
+          "pages": "2–7",
+          "scope": "Actor/Evaluator/Reflection、预算与隐藏评测；p4图2目视"
+        },
+        {
+          "path": "courses/MAS.S62/readings/papers/Evolving_Prompts_In-Context_An_Open-ended_Self-replicating_Perspective.pdf",
+          "pages": "3–6",
+          "scope": "固定顺序子序列、遗传搜索、验证测试"
+        },
+        {
+          "path": "courses/MAS.S62/readings/papers/GEPA_Reflective_Prompt_Evolution_Can_Outperform_Reinforcement_Learning.pdf",
+          "pages": "1,4–8,10–11,23",
+          "scope": "模块反馈、实例前沿选择、Merge条件与负结果；p6算法目视"
+        },
+        {
+          "path": "courses/MAS.S62/readings/papers/ReasoningBank_Scaling_Agent_Self-Evolving_with_Reasoning_Memory.pdf",
+          "pages": "4–6,8,21–24; p1 author/version",
+          "scope": "检索追加、MaTTS、粒度、同模型BoN选择器"
+        },
+        {
+          "path": "courses/MAS.S62/2.ContextEvolution1/references/Agentic_Context_Engineering_Evolving_Contexts_for_Self-Improving_Language_Models.pdf",
+          "pages": "3–10,12–14,18–19",
+          "scope": "机制、表1/2/3目视、warmup、缓存、两组成本统计；12–14仅参考列表"
+        }
+      ],
+      "reread_result": [
+        "最终修改后完整复读：数学含义、机制和来源条件相容，无新增问题。",
+        "第二遍全文复读：章节先后与例子衔接，自测可从正文作答，领域例子不替代通用原理。"
+      ],
+      "remaining_issues": [],
+      "limitations": [
+        "未运行TextGrad远程API、提示搜索或ACE模型实验；练习为设计。",
+        "ACE warmup标签权限、两组rollout计数的完整对齐在本地来源未给出，正文如实保留。"
+      ]
+    },
+    {
+      "path": "courses/MAS.S62/3.ContextEvolution2/notes.zh-CN.md",
+      "week": 3,
+      "status": "passed",
+      "sha256": "c9eb63f594bf8cb792e006b0a3e6ec593dbf2bab57da5c2eb1f87413656d9bb7",
+      "reviewed_at": "2026-10-28",
+      "content_review_sha256": "d0497414dc5d39737fbed91dd509263bbe1c121a4cd36067b8e97026f56191ac",
+      "coverage": "49页讲义主线覆盖；Prompt优化→候选表示→档案与选择→FunSearch→广义程序搜索→科学评价→形式验证→装箱实践，11道自测及答案。",
+      "sources_read": [
+        {
+          "path": "courses/MAS.S62/3.ContextEvolution2/slides/lec3 - llm optimizers.pdf",
+          "pages": "1–49",
+          "scope": "主讲义全文；13张关键图表页目视"
+        },
+        {
+          "path": "courses/MAS.S62/3.ContextEvolution2/references/TextGrad_Automatic_Differentiation_via_Text.pdf",
+          "pages": "1,3–8,11–14,33–34",
+          "scope": "与第2课阅读文件哈希相同，复用本轮第2课实读范围；文本计算图/反馈/实验限制"
+        },
+        {
+          "path": "courses/MAS.S62/3.ContextEvolution2/references/Self-Refine_Iterative_Refinement_with_Self-Feedback.pdf",
+          "pages": "2–4",
+          "scope": "反馈与更新机制、任务设置和四轮上限"
+        },
+        {
+          "path": "courses/MAS.S62/readings/papers/Large_Language_Models_as_Optimizers.pdf",
+          "pages": "1,3–5,7–8",
+          "scope": "优化轨迹、optimizer/scorer分工、表1与候选/历史/示例配置"
+        },
+        {
+          "path": "courses/MAS.S62/3.ContextEvolution2/references/Mathematical_discoveries_from_program_search_with_large_language_models.pdf",
+          "pages": "1–11,17–18,50",
+          "scope": "函数骨架、两级采样、岛屿重置、Cap Set与装箱实验、预算；8/11/18页目视"
+        },
+        {
+          "path": "courses/MAS.S62/readings/papers/AlphaEvolve_A_coding_agent_for_scientific_and_algorithmic_discovery.pdf",
+          "pages": "2–8",
+          "scope": "可修改块、diff、多指标级联与档案；4/6页目视"
+        },
+        {
+          "path": "courses/MAS.S62/readings/papers/Can_LLMs_Generate_Novel_Research_Ideas_A_Large-Scale_Human_Study_with_100+_NLP_Researchers.pdf",
+          "pages": "5–12,14",
+          "scope": "生成去重、招募重叠、三个统计单位、表7–9及盲评限制；10–12页目视"
+        },
+        {
+          "path": "courses/MAS.S62/readings/papers/The_AI_Scientist_Towards_Fully_Automated_Open-Ended_Scientific_Discovery.pdf",
+          "pages": "3–7,10",
+          "scope": "流程、评价数据与真实数值退步被写成改善的例子"
+        },
+        {
+          "path": "courses/MAS.S62/readings/papers/Towards_End-to-End_Automation_of_AI_Research.pdf",
+          "pages": "1–7",
+          "scope": "版本、树搜索、人工筛选、workshop三个提交与撤回；3/5页目视"
+        },
+        {
+          "path": "courses/MAS.S62/3.ContextEvolution2/references/DeepSeek-Prover-V2_Advancing_Formal_Mathematical_Reasoning_via_Reinforcement_Learning_for_Subgoal_Decomposition.pdf",
+          "pages": "2–6",
+          "scope": "子目标/sorry/组合证明、冷启动与后续训练；3页目视"
+        },
+        {
+          "path": "courses/MAS.S62/assignment/assignment-1/OpenEvolve_assignment.ipynb",
+          "pages": "all 40 cells",
+          "scope": "所有Markdown和代码完整阅读；未将保存输出当成实际运行，核查缺件与导入"
+        },
+        {
+          "path": "courses/MAS.S62/3.ContextEvolution2/examples/bin_packing_lab.py",
+          "pages": "full",
+          "scope": "完整读代码并实际重跑，核对标量接口、平分策略、开发选择和独立测试"
+        }
+      ],
+      "reread_result": [
+        "最终修改后全文复读，公式与例子条件、原论文与教学接口及缺件描述一致。",
+        "第二遍全文复读，问题链顺序连贯，自测可从正文作答，未发现需再修改问题。"
+      ],
+      "remaining_issues": [],
+      "limitations": [
+        "没有运行OpenEvolve/LLM/API/Lean，原始Notebook仍缺配套文件与导入，学生TODO保持。",
+        "辅助论文只读上述明确页段；AI Scientist长附录未逐篇复核，EdgeBench只按讲义解释。",
+        "装箱实验比较预写规则，没有模型生成或岛屿演化，不能视为FunSearch复现。"
+      ],
+      "editorial_maintenance": {
+        "scope": "审核后的路径或维护链接调整；课程知识正文与来源原件未改动，沿用上述内容审核结论。",
+        "content_review_sha256": "d0497414dc5d39737fbed91dd509263bbe1c121a4cd36067b8e97026f56191ac",
+        "current_sha256": "c9eb63f594bf8cb792e006b0a3e6ec593dbf2bab57da5c2eb1f87413656d9bb7"
+      }
+    },
+    {
+      "path": "courses/MAS.S62/5.HarnessEvolution1/notes.zh-CN.md",
+      "week": 5,
+      "status": "passed",
+      "sha256": "7efe2e36bb2476bbdfab3d4ffd96b84bf9539c95ed10d0756c50c84eb9ead102",
+      "reviewed_at": "2026-10-28",
+      "content_review_sha256": "e8e8631457282cef3626575d6618bfdebcfaaef815a3000783a474a2ba93fa55",
+      "coverage": "两份讲义76页全部回读，保持Context/Harness分类→外部记忆→MEM1→Reflexion/ExpeL→CLM→工具和程序技能→RLM嘉宾组合观点→完整Harness搜索→评测成本及诊断主线。15篇论文按实际引用机制页段回查，3篇工具/技能来源明确复用根代理本轮MIT6审核；HarnessTax正文完整读。没有用概念列表替代机制，也没有把演示截图当作统一实验。",
+      "sources_read": [
+        {
+          "path": "courses/MAS.S62/5.HarnessEvolution1/SOURCES.md",
+          "scope": "全文；先于正文审核读取，定位主讲义、嘉宾、阅读和补充索引。"
+        },
+        {
+          "path": "courses/MAS.S62/5.HarnessEvolution1/REFERENCES.json",
+          "scope": "7条完整补充索引全文。"
+        },
+        {
+          "path": "courses/MAS.S62/README.md",
+          "scope": "全文；Week与Lecture编号区别。"
+        },
+        {
+          "path": "courses/MAS.S62/SOURCES.md",
+          "scope": "仅本课Week5条目与有关来源部分，未声称根索引全文阅读。"
+        },
+        {
+          "path": "courses/MAS.S62/manifest.json",
+          "scope": "Week5条目、对应2个讲义条目和7个补充条目，未声称根manifest全文阅读。"
+        },
+        {
+          "path": "courses/MAS.S62/5.HarnessEvolution1/slides/lec4 - harness.pdf",
+          "pages": "1–53",
+          "scope": "主讲义全文；提取文本1–400、401–529行完整读；关键图表另行渲染目视。"
+        },
+        {
+          "path": "courses/MAS.S62/5.HarnessEvolution1/slides/harness_guest.pdf",
+          "pages": "1–23",
+          "scope": "嘉宾讲义全文；提取文本1–150行完整读，23页全部渲染目视以补图中内容。"
+        },
+        {
+          "path": "courses/MAS.S62/5.HarnessEvolution1/readings/MEM1_Learning_to_Synergize_Memory_and_Reasoning_for_Efficient_Long-Horizon_Agents.pdf",
+          "pdf_pages_read": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            18
+          ],
+          "version": "arXiv:2506.15841v2  [cs.CL]  17 Jul 2025",
+          "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+          "sha256": "9fd4873473d5721d3e3622021188ceca4021f614a60bfc38351ad4a05929168f",
+          "scope": "动态内部状态和轨迹剪除、二维注意力/一维信息掩码、PPO与模型基座、QA奖励及2到16目标评测、EM Count图轴。列出页段全文阅读，未声称整篇论文全文。"
+        },
+        {
+          "path": "courses/MAS.S62/5.HarnessEvolution1/readings/Context_Language_Models.pdf",
+          "pdf_pages_read": [
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "version": "arXiv:2609.37725v1  [cs.AI]  29 Sep 2026",
+          "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+          "sha256": "ac5c926814434d8ad2f499183cd2a81e53b4c14f327587f99980ade9157db01b",
+          "scope": "活动上下文文件接口、自然语言策略优化、stepwise GRPO和成功门控效率公式、标准前缀与旧后缀缓存语义、零样本模型/上下文/预算及实验条件。列出页段全文阅读，未声称整篇论文全文。"
+        },
+        {
+          "path": "courses/MAS.S62/5.HarnessEvolution1/readings/Recursive_Language_Models.pdf",
+          "pdf_pages_read": [
+            3,
+            4
+          ],
+          "version": "arXiv:2512.24601v3  [cs.AI]  11 May 2026",
+          "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+          "sha256": "8567362c22768d9b50d4a4a8d63bb28dda2c2b2051be30d67f70f645170429ca",
+          "scope": "算法1–2全文，外置长输入、程序化递归、符号状态与传统委托循环对照。列出页段全文阅读，未声称整篇论文全文。"
+        },
+        {
+          "path": "courses/MAS.S62/5.HarnessEvolution1/readings/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf",
+          "pdf_pages_read": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "version": "arXiv:2603.28052v1  [cs.AI]  30 Mar 2026",
+          "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+          "sha256": "7d9b90f53a9f4801a090f1a4acb843340cde81e4f865f97d53fff2a6a570eb73",
+          "scope": "Table1反馈规模、完整方法与分类/数学/编码三设置；重点核查§4.3同89任务搜索评估及人工/正则检查边界。列出页段全文阅读，未声称整篇论文全文。"
+        },
+        {
+          "path": "courses/MAS.S62/5.HarnessEvolution1/readings/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf",
+          "pdf_pages_read": [
+            4,
+            5,
+            6
+          ],
+          "version": "arXiv:2505.22954v3  [cs.AI]  12 Mar 2026",
+          "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+          "sha256": "13ff4abe0c7ad4a7dd3b4876d19a8bf940e39e70dabbf06065aa774a6c3457de",
+          "scope": "档案、父代选择、准入、分阶段评测与固定外部演化循环。列出页段全文阅读，未声称整篇论文全文。"
+        },
+        {
+          "path": "courses/MAS.S62/5.HarnessEvolution1/readings/Continual_Harness_Online_Adaptation_for_Self-Improving_Foundation_Agents.pdf",
+          "pdf_pages_read": [
+            3,
+            4,
+            5
+          ],
+          "version": "arXiv:2605.09998v1  [cs.LG]  11 May 2026",
+          "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+          "sha256": "50f60996b0d962cdbf01f5b6a262ccd68b149c8b67cc2594218453717ea0c45e",
+          "scope": "持续环境、周期性refiner、提示/技能/记忆/子代理更新与模型共学习分离。列出页段全文阅读，未声称整篇论文全文。"
+        },
+        {
+          "path": "courses/MAS.S62/5.HarnessEvolution1/readings/Harness_Updating_Is_Not_Harness_Benefit_Disentangling_Evolution_Capabilities_in_Self-Evolving_LLM_Agents.pdf",
+          "pdf_pages_read": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "version": "arXiv:2605.30621v1  [cs.AI]  28 May 2026",
+          "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+          "sha256": "a3a09f90dc278f1c6ceee5a3f7bf807b5a92b642cbcb0123d20b824a0e880d6b",
+          "scope": "solve-evolve、配对依赖Harness、平均更新收益和最大受益、in-situ协议、激活与遵循失败及任务流成绩边界。列出页段全文阅读，未声称整篇论文全文。"
+        },
+        {
+          "path": "courses/MAS.S62/5.HarnessEvolution1/references/MemGPT_Towards_LLMs_as_Operating_Systems.pdf",
+          "pdf_pages_read": [
+            2,
+            3,
+            4
+          ],
+          "version": "arXiv:2310.08560v2  [cs.AI]  12 Feb 2024",
+          "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+          "sha256": "9f674bcff69c86f11c813dcfad613d8841f5f8ed17979e3c4df06a91df7762e0",
+          "scope": "层级存储、工作上下文与FIFO、外部召回/归档、函数调用与记忆压力控制。列出页段全文阅读，未声称整篇论文全文。"
+        },
+        {
+          "path": "courses/MAS.S62/5.HarnessEvolution1/references/Mem0_Building_Production-Ready_AI_Agents_with_Scalable_Long-Term_Memory.pdf",
+          "pdf_pages_read": [
+            3,
+            4,
+            5
+          ],
+          "version": "arXiv:2504.19413v1  [cs.CL]  28 Apr 2025",
+          "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+          "sha256": "bec870b657aa73405275a6d8fe27bcd4271799e028bc62986ab9c4cd27a3712d",
+          "scope": "基础Mem0提取/更新与Mem0g图记忆区分、更新四操作。列出页段全文阅读，未声称整篇论文全文。"
+        },
+        {
+          "path": "courses/MAS.S62/5.HarnessEvolution1/references/ExpeL_LLM_Agents_Are_Experiential_Learners.pdf",
+          "pdf_pages_read": [
+            4,
+            6
+          ],
+          "version": "arXiv:2308.10144v3  [cs.LG]  20 Dec 2024",
+          "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+          "sha256": "01e533d81fb4a5f91797c073a9b1929acbaa64da45a592b26563ca7d135024f3",
+          "scope": "成功失败对与成功轨迹组抽取、计数和增删改/赞踩、未见任务评测与算法。列出页段全文阅读，未声称整篇论文全文。"
+        },
+        {
+          "path": "courses/MAS.S62/5.HarnessEvolution1/references/Executable_Code_Actions_Elicit_Better_LLM_Agents.pdf",
+          "pdf_pages_read": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "version": "arXiv:2402.01030v4  [cs.CL]  7 Jun 2024",
+          "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+          "sha256": "749a45e36cf89fc7e1b701a2a72f6609ce8d3697577ceb0fff5ce9339ce8539e",
+          "scope": "代码动作控制/数据流、工具调用比较设置、交互错误反馈、不同模型与任务适用边界。列出页段全文阅读，未声称整篇论文全文。"
+        },
+        {
+          "path": "courses/MAS.S62/5.HarnessEvolution1/references/Agent_Workflow_Memory.pdf",
+          "pdf_pages_read": [
+            3,
+            4
+          ],
+          "version": "arXiv:2409.07429v1  [cs.CL]  11 Sep 2024",
+          "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+          "sha256": "ddc6f6fedec48c88ae743b43a464f7eb4aecaab05acd18c29cfb657ab445ebe4",
+          "scope": "工作流描述与状态/推理/动作表示、变量抽象、offline/online及在线只从被判成功轨迹诱导。列出页段全文阅读，未声称整篇论文全文。"
+        },
+        {
+          "path": "courses/MAS.S62/5.HarnessEvolution1/references/Inducing_Programmatic_Skills_for_Agentic_Tasks.pdf",
+          "pdf_pages_read": [
+            3,
+            4
+          ],
+          "version": "arXiv:2504.06821v2  [cs.CL]  29 Aug 2025",
+          "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+          "sha256": "209400bfd02e0213232dd8953075d64596863064a78a33398cf9d80c11122ac0",
+          "scope": "技能诱导、重写轨迹、截除最后新技能调用后的旧动作、续写与三重验证。列出页段全文阅读，未声称整篇论文全文。"
+        },
+        {
+          "path": "courses/MAS.S62/5.HarnessEvolution1/references/PolySkill_Learning_Generalizable_Skills_Through_Polymorphic_Abstraction.pdf",
+          "pdf_pages_read": [
+            4,
+            5,
+            6
+          ],
+          "version": "arXiv:2510.15863v2  [cs.CL]  2 Mar 2026",
+          "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+          "sha256": "4fd727b7dcc0320a8c3c5dfcf3bd8fd9760bfd7ad69ba3af0283dfecf03f2b8d",
+          "scope": "父类抽象接口、网站子类与组合技能、基于ASI的验证及跨站适配。列出页段全文阅读，未声称整篇论文全文。"
+        },
+        {
+          "path": "courses/MAS.S62/5.HarnessEvolution1/readings/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf",
+          "pdf_pages_read": [
+            3,
+            4,
+            5
+          ],
+          "version": "arXiv:2303.11366v4  [cs.AI]  10 Oct 2023",
+          "version_check": "另查看封面标题、总页数与arXiv版本标记，不把封面摘要计为全文阅读。",
+          "sha256": "6059b6f89fea9959bd3dab553fbb97756a3dfb1b15e3cbab2fbf3ab6664333bd",
+          "scope": "执行者/评估者/反思模型与语言记忆、同题多次尝试和后续迁移区别。列出页段全文阅读，未声称整篇论文全文。"
+        },
+        {
+          "path": "courses/MAS.S62/5.HarnessEvolution1/readings/HarnessTax_How_Much_Does_the_Harness_Matter_for_Coding_Agents.html",
+          "version": "published 2026-09-16 / updated 2026-09-18 archival page",
+          "scope": "正文从标题、引言到Experiment Setup、三项结果、Ending Notes、Citation、Acknowledgement和Reference全文；不执行归档脚本。核查7×3、每基准30任务、3次、100turn、high effort、2026-09-01价格。"
+        },
+        {
+          "path": "courses/MAS.S62/5.HarnessEvolution1/examples/versioned_memory.py",
+          "lines": "1–64",
+          "scope": "完整代码阅读并实际运行。"
+        }
+      ],
+      "reread_result": [
+        "最终格式调整后全文复读；问题链、前提、来源边界和自测答案衔接通过，未再修改。",
+        "第二次逐段最终稿全文复读；全篇含附录完成，未发现需继续修改问题，结束SHA与第一遍一致。"
+      ],
+      "remaining_issues": [],
+      "limitations": [
+        "没有运行MEM1/CLM训练、模型/API、GPU、Minecraft或论文基准实验；本文对照设计与成本数值教学例不是新实证结果。",
+        "辅助论文按列出页段而非整篇全文审核；Toolformer/ToolLLM/Voyager明确复用根代理本轮审核，非本人全文复读。",
+        "归档文章和论文按所存版本核查，未查线上最新修订，也未新增下载或改写任何原始材料。"
+      ],
+      "editorial_maintenance": {
+        "scope": "审核后的路径或维护链接调整；课程知识正文与来源原件未改动，沿用上述内容审核结论。",
+        "content_review_sha256": "e8e8631457282cef3626575d6618bfdebcfaaef815a3000783a474a2ba93fa55",
+        "current_sha256": "7efe2e36bb2476bbdfab3d4ffd96b84bf9539c95ed10d0756c50c84eb9ead102"
+      }
+    },
+    {
+      "path": "courses/MAS.S62/6.HarnessEvolution2/notes.zh-CN.md",
+      "week": 6,
+      "status": "passed",
+      "sha256": "224eaa1d4177356777f5411e2959f4d1555a010b44708f7aa725e66c5653317b",
+      "reviewed_at": "2026-10-28",
+      "content_review_sha256": "b2c2cb4aedbf66e57ca2df744c5a45db22335cb8cea86cff387770b8153249c9",
+      "coverage": "两份讲义87页全文核查；Agent Loop、工具与技能、上下文、规划、拓扑、协作测量和CORAL演化主线均覆盖。",
+      "sources_read": [
+        {
+          "path": "courses/MAS.S62/6.HarnessEvolution2/slides/lec5 - multi agent.pdf",
+          "pages": "1–40",
+          "scope": "主讲义全文；13页关键图表目视"
+        },
+        {
+          "path": "courses/MAS.S62/6.HarnessEvolution2/tutorials/harness engineering tutorial.pdf",
+          "pages": "1–47",
+          "scope": "教程全文；9页关键图表目视"
+        },
+        {
+          "path": "courses/MAS.S62/6.HarnessEvolution2/readings/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf",
+          "pdf_pages_read": [
+            2,
+            3,
+            4
+          ],
+          "scope": "机制、公式、实验条件及本文高风险引用页段；辅助论文未宣称全文复现",
+          "sha256": "6d7483d94653008e40c2058a1c22441c92e3713dae278b6361e8efc447c99522"
+        },
+        {
+          "path": "courses/MAS.S62/6.HarnessEvolution2/readings/ToolLLM_Facilitating_Large_Language_Models_to_Master_16000+_Real-world_APIs.pdf",
+          "pdf_pages_read": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "scope": "机制、公式、实验条件及本文高风险引用页段；辅助论文未宣称全文复现",
+          "sha256": "295299721d67b250661fb6598bee86a2e9fe766241fdc08dd7cf389e984b4d1a"
+        },
+        {
+          "path": "courses/MAS.S62/6.HarnessEvolution2/readings/SkillsBench_Benchmarking_How_Well_Agent_Skills_Work_Across_Diverse_Tasks.pdf",
+          "pdf_pages_read": [
+            1,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scope": "机制、公式、实验条件及本文高风险引用页段；辅助论文未宣称全文复现",
+          "sha256": "e987ebc3f0084a1ffc8acbca58259e33120b95fcef3876abfad060e169cf210b"
+        },
+        {
+          "path": "courses/MAS.S62/6.HarnessEvolution2/readings/VOYAGER_An_Open-Ended_Embodied_Agent_with_Large_Language_Models.pdf",
+          "pdf_pages_read": [
+            3,
+            4,
+            5
+          ],
+          "scope": "机制、公式、实验条件及本文高风险引用页段；辅助论文未宣称全文复现",
+          "sha256": "769a4e33ddeeb73870849232eece49afe882c2d146362e33917ccb432ba0efb8"
+        },
+        {
+          "path": "courses/MAS.S62/6.HarnessEvolution2/readings/CORAL_Towards_Autonomous_Multi-Agent_Evolution_for_Open-Ended_Discovery.pdf",
+          "pdf_pages_read": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            17,
+            18
+          ],
+          "scope": "机制、公式、实验条件及本文高风险引用页段；辅助论文未宣称全文复现",
+          "sha256": "4462e8e60d73887223559e83e4a66850b515fe92a12aabad7ac9d810b5037894"
+        },
+        {
+          "path": "courses/MAS.S62/6.HarnessEvolution2/readings/Towards_a_Science_of_Scaling_Agent_Systems.pdf",
+          "pdf_pages_read": [
+            1,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "scope": "机制、公式、实验条件及本文高风险引用页段；辅助论文未宣称全文复现",
+          "sha256": "028f329010d95143915db8db6ce1ad26a4e844b66e4abd6b36fdb39651aff7fd"
+        },
+        {
+          "path": "courses/MAS.S62/6.HarnessEvolution2/readings/Why_Do_Multi-Agent_LLM_Systems_Fail.pdf",
+          "pdf_pages_read": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scope": "机制、公式、实验条件及本文高风险引用页段；辅助论文未宣称全文复现",
+          "sha256": "1b9e317a2a421e60ca2b2eda4a30844557a01e63286a790890c0ecef32d25460"
+        },
+        {
+          "path": "courses/MAS.S62/6.HarnessEvolution2/references/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf",
+          "pdf_pages_read": [
+            2,
+            3
+          ],
+          "scope": "机制、公式、实验条件及本文高风险引用页段；辅助论文未宣称全文复现",
+          "sha256": "f285b0971ae4a790e402fb93966bed3adde2cf0a04977d08b2b40d6ab0cace69"
+        },
+        {
+          "path": "courses/MAS.S62/6.HarnessEvolution2/references/SWE-agent_Agent-Computer_Interfaces_Enable_Automated_Software_Engineering.pdf",
+          "pdf_pages_read": [
+            5,
+            6,
+            7
+          ],
+          "scope": "机制、公式、实验条件及本文高风险引用页段；辅助论文未宣称全文复现",
+          "sha256": "d171e0693060b910ceb2cddd0fd4bc7cae302005d42d0d8059bfdbe056c3adba"
+        },
+        {
+          "path": "courses/MAS.S62/6.HarnessEvolution2/references/mini-swe-agent-68d367b/src/minisweagent/agents/default.py",
+          "scope": "全文；预算0值、异常、完成信号、进程状态及交互语义"
+        },
+        {
+          "path": "courses/MAS.S62/6.HarnessEvolution2/references/mini-swe-agent-68d367b/src/minisweagent/agents/interactive.py",
+          "scope": "全文；预算0值、异常、完成信号、进程状态及交互语义"
+        },
+        {
+          "path": "courses/MAS.S62/6.HarnessEvolution2/references/mini-swe-agent-68d367b/src/minisweagent/environments/local.py",
+          "scope": "全文；预算0值、异常、完成信号、进程状态及交互语义"
+        },
+        {
+          "path": "courses/MAS.S62/6.HarnessEvolution2/references/mini-swe-agent-68d367b/src/minisweagent/config/default.yaml",
+          "scope": "全文；预算0值、异常、完成信号、进程状态及交互语义"
+        }
+      ],
+      "reread_result": [
+        "最终修改后全文复读，检查逻辑、前置知识、数值与来源边界，未发现需继续修改问题",
+        "最终修改后全文复读，检查逻辑、前置知识、数值与来源边界，未发现需继续修改问题"
+      ],
+      "remaining_issues": [],
+      "limitations": [
+        "未执行模型/API、Django基准、mini-swe-agent CLI或论文实验；样例只验证契约、算术和Python正则。",
+        "辅助论文按列出页段核查；CORAL文件内部任务计数差异与SAS预测输入可用性保留说明。"
+      ],
+      "editorial_maintenance": {
+        "scope": "审核后的路径或维护链接调整；课程知识正文与来源原件未改动，沿用上述内容审核结论。",
+        "content_review_sha256": "b2c2cb4aedbf66e57ca2df744c5a45db22335cb8cea86cff387770b8153249c9",
+        "current_sha256": "224eaa1d4177356777f5411e2959f4d1555a010b44708f7aa725e66c5653317b"
+      }
+    },
+    {
+      "path": "courses/MAS.S62/7.ModelEvolution1/notes.zh-CN.md",
+      "week": 7,
+      "status": "passed",
+      "sha256": "4936cdd32f8eae6e0b8ffd4c899e5d31b07ced55fc39f61f26d969ee70cea95d",
+      "reviewed_at": "2026-10-28",
+      "content_review_sha256": "964c939511acd0c3cb930bf11c4c49d6b71a9ea93e89d47d201e152f2c3f0ff4",
+      "coverage": "三份讲义111页全部覆盖；RL→稳定更新→测试时训练→在策略蒸馏→持续学习→verl实践，11道自测含推导和故障诊断。",
+      "sources_read": [
+        {
+          "path": "courses/MAS.S62/7.ModelEvolution1/slides/lec6 - training.pdf",
+          "pages": "1–45",
+          "scope": "主讲义全文，10页关键图表目视"
+        },
+        {
+          "path": "courses/MAS.S62/7.ModelEvolution1/slides/model_guest.pdf",
+          "pages": "1–51",
+          "scope": "嘉宾讲义全文，19页关键图表目视"
+        },
+        {
+          "path": "courses/MAS.S62/7.ModelEvolution1/tutorials/lec6 - rl in practice.pdf",
+          "pages": "1–15",
+          "scope": "教程全文，3页关键图表目视"
+        },
+        {
+          "path": "courses/MAS.S62/7.ModelEvolution1/references/Proximal_Policy_Optimization_Algorithms.pdf",
+          "pages": "2–5",
+          "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+          "sha256": "e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b"
+        },
+        {
+          "path": "courses/MAS.S62/7.ModelEvolution1/references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf",
+          "pages": "12–14",
+          "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+          "sha256": "6cc20b3c5b8d25b8b53868fc4ec1792c144f07d67bdf7395138efd4422197e7b"
+        },
+        {
+          "path": "courses/MAS.S62/7.ModelEvolution1/references/Direct_Preference_Optimization_Your_Language_Model_is_Secretly_a_Reward_Model.pdf",
+          "pages": "3–5",
+          "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+          "sha256": "92cb3a2b71362acda98a789b03d88688fd33cf5fcf13f81d2b1de30ee7d3b67a"
+        },
+        {
+          "path": "courses/MAS.S62/7.ModelEvolution1/references/Self-Distillation_Enables_Continual_Learning.pdf",
+          "pages": "1,3–11,16–20",
+          "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+          "sha256": "8e79ea6fc872f599b7076ab6d05a0037ed9e7f2e504c8610aea129546e497e14"
+        },
+        {
+          "path": "courses/MAS.S62/7.ModelEvolution1/references/On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf",
+          "pages": "3–4",
+          "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+          "sha256": "a81c71fa0cd15506642092790d854347f030c29ee1d6aa643b55aa51348e6869"
+        },
+        {
+          "path": "courses/MAS.S62/7.ModelEvolution1/references/RL_s_Razor_Why_Online_Reinforcement_Learning_Forgets_Less.pdf",
+          "pages": "3–8,23",
+          "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+          "sha256": "bf3b6ab3b0b5db847aae235cc93a5a9475be2b7aca1e163304822d13d2dd0373"
+        },
+        {
+          "path": "courses/MAS.S62/7.ModelEvolution1/references/The_Surprising_Effectiveness_of_Test-Time_Training_for_Few-Shot_Learning.pdf",
+          "pages": "2–7",
+          "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+          "sha256": "9da8f434864b90ec18378dfa8c920e1d128e5bb694343f8a5a524302e17a5dad"
+        },
+        {
+          "path": "courses/MAS.S62/7.ModelEvolution1/references/TTRL_Test-Time_Reinforcement_Learning.pdf",
+          "pages": "1,3–5",
+          "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+          "sha256": "3828cc886a0133749fe857dc12fff190f76c17dd7421dccfca01c96ec1dd5882"
+        },
+        {
+          "path": "courses/MAS.S62/7.ModelEvolution1/references/OpenClaw-RL_Train_Any_Agent_Simply_by_Talking.pdf",
+          "pages": "1,5–9",
+          "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+          "sha256": "4d8c1aa05fdb439201b5edfca65208fc610eee3169b0ba0689f4378f2c4fe6ae"
+        },
+        {
+          "path": "courses/MAS.S62/7.ModelEvolution1/references/Learning_to_Discover_at_Test_Time.pdf",
+          "pages": "3–6",
+          "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+          "sha256": "4656ec28d800002d9a3e3f83a71c7d9032ef5f1873cd953b8808a8391ce06ec7"
+        },
+        {
+          "path": "courses/MAS.S62/7.ModelEvolution1/references/Self-Distilled_Reasoner_On-Policy_Self-Distillation_for_Large_Language_Models.pdf",
+          "pages": "3–5",
+          "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+          "sha256": "e521ed6c2939dc612daec5fe6fb47bef554a291228c02cafae07102b9729bad8"
+        },
+        {
+          "path": "courses/MAS.S62/7.ModelEvolution1/references/Reinforcement_Learning_via_Self-Distillation.pdf",
+          "pages": "3–6,10–13",
+          "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+          "sha256": "2714e7734c43cf849c2e7c49fc95cf57a6533c0833465a01983b87eb7f72d190"
+        },
+        {
+          "path": "courses/MAS.S62/7.ModelEvolution1/references/Evolving_in_Thought_Space_Training_a_Small_Model_at_Test_Time_Unlocks_Better_Discoveries.pdf",
+          "pages": "1–8",
+          "scope": "机制、公式、实验条件及正文引用的高风险结论；辅助论文按列出页段阅读",
+          "sha256": "351bcdd2c9c5275d007f2d15a4e0fb9d016a03b4e19f66258d1c3a44e6f28997"
+        },
+        {
+          "path": "courses/MAS.S62/7.ModelEvolution1/references/verl-ddf7007/trainer_base.py",
+          "lines": "534–620",
+          "scope": "固定verl版本入口、GAE/GRPO、损失归约及裁剪"
+        },
+        {
+          "path": "courses/MAS.S62/7.ModelEvolution1/references/verl-ddf7007/core_algos.py",
+          "lines": "216–334,1140–1284",
+          "scope": "固定verl版本入口、GAE/GRPO、损失归约及裁剪"
+        },
+        {
+          "path": "courses/MAS.S62/7.ModelEvolution1/references/verl-ddf7007/run_qwen3_8b_fsdp.sh",
+          "lines": "全文",
+          "scope": "固定verl版本入口、GAE/GRPO、损失归约及裁剪"
+        }
+      ],
+      "reread_result": [
+        "最后两处来源修订后重新全文复读，问题链、计算方向及边界一致。",
+        "最终全文第二遍复读，全部中段补读，未发现需继续修改问题。"
+      ],
+      "remaining_issues": [],
+      "limitations": [
+        "未运行GPU、模型、API或verl训练，标准库例子只验证数学和批次算术。",
+        "辅助论文按明确页段阅读，未逐篇声称全文复现。",
+        "SDFT原文伪码和实践描述内部不一致，未取得作者训练运行证据；TTRL首页数值差异保留说明。"
+      ],
+      "editorial_maintenance": {
+        "scope": "审核后的路径或维护链接调整；课程知识正文与来源原件未改动，沿用上述内容审核结论。",
+        "content_review_sha256": "964c939511acd0c3cb930bf11c4c49d6b71a9ea93e89d47d201e152f2c3f0ff4",
+        "current_sha256": "4936cdd32f8eae6e0b8ffd4c899e5d31b07ced55fc39f61f26d969ee70cea95d"
+      }
+    }
+  ]
+}

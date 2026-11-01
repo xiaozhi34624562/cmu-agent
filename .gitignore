@@ -5,6 +5,7 @@ __pycache__/
 node_modules/
 .pytest_cache/
 .ruff_cache/
+.page-refresh/
 .env
 .env.local
 .env.*.local

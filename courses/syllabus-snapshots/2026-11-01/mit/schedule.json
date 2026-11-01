@@ -1,0 +1,521 @@
+[
+  {
+    "course": "MIT MAS.S62",
+    "id": "MIT-W1",
+    "date": "2026-09-09",
+    "title": "Course introduction",
+    "kind": "teaching",
+    "phase": "P0",
+    "materials": [
+      {
+        "label": "[slides]",
+        "url": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec1 - intro.pdf"
+      }
+    ],
+    "placeholder_links": [],
+    "readings": [],
+    "local_path": "MAS.S62/1.CourseIntroduction",
+    "source": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
+    "evidence": "mit/schedule.html",
+    "raw_cells": [
+      "9/9",
+      "Week 1 Course introduction [slides] Basics of LLMs and foundation models AI agents and self-evolution",
+      ""
+    ]
+  },
+  {
+    "course": "MIT MAS.S62",
+    "id": "MIT-W2",
+    "date": "2026-09-16",
+    "title": "Context evolution 1",
+    "kind": "teaching",
+    "phase": "P5",
+    "materials": [
+      {
+        "label": "[slides 1]",
+        "url": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec2 - context.pdf"
+      },
+      {
+        "label": "[tutorial]",
+        "url": "https://colab.research.google.com/drive/1rL24Ydm9yQKRUPoGXHr2-zJumFbBRfvJ"
+      },
+      {
+        "label": "[slides 2]",
+        "url": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/context_guest.pdf"
+      }
+    ],
+    "placeholder_links": [],
+    "readings": [
+      {
+        "label": "Large Language Models Are Human-Level Prompt Engineers",
+        "url": "https://arxiv.org/abs/2211.01910"
+      },
+      {
+        "label": "TextGrad: Automatic \"Differentiation\" via Text",
+        "url": "https://arxiv.org/abs/2406.07496"
+      },
+      {
+        "label": "DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines",
+        "url": "https://arxiv.org/abs/2310.03714"
+      },
+      {
+        "label": "Reflexion: Language Agents with Verbal Reinforcement Learning",
+        "url": "https://arxiv.org/abs/2303.11366"
+      },
+      {
+        "label": "Evolving Prompts In-Context: An Open-ended, Self-replicating Perspective",
+        "url": "https://arxiv.org/abs/2506.17930"
+      },
+      {
+        "label": "GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning",
+        "url": "https://arxiv.org/abs/2507.19457"
+      },
+      {
+        "label": "ReasoningBank: Scaling Agent Self-Evolving with Reasoning Memory",
+        "url": "https://arxiv.org/abs/2509.25140"
+      }
+    ],
+    "local_path": "MAS.S62/2.ContextEvolution1",
+    "source": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
+    "evidence": "mit/schedule.html",
+    "raw_cells": [
+      "9/16",
+      "Week 2 Context evolution 1 [slides 1] [tutorial] [slides 2] Prompt optimization Memory, tools, knowledge",
+      "Large Language Models Are Human-Level Prompt Engineers TextGrad: Automatic \"Differentiation\" via Text DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines Reflexion: Language Agents with Verbal Reinforcement Learning Evolving Prompts In-Context: An Open-ended, Self-replicating Perspective GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning ReasoningBank: Scaling Agent Self-Evolving with Reasoning Memory"
+    ]
+  },
+  {
+    "course": "MIT MAS.S62",
+    "id": "MIT-W3",
+    "date": "2026-09-23",
+    "title": "Context evolution 2",
+    "kind": "teaching",
+    "phase": "P5",
+    "materials": [
+      {
+        "label": "[slides]",
+        "url": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec3 - llm optimizers.pdf"
+      }
+    ],
+    "placeholder_links": [],
+    "readings": [
+      {
+        "label": "FunSearch: Mathematical discoveries from program search with large language models",
+        "url": "https://www.nature.com/articles/s41586-023-06924-6"
+      },
+      {
+        "label": "Large Language Models as Optimizers",
+        "url": "https://arxiv.org/abs/2309.03409"
+      },
+      {
+        "label": "AlphaEvolve: A coding agent for scientific and algorithmic discovery",
+        "url": "https://arxiv.org/abs/2506.13131"
+      },
+      {
+        "label": "The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery",
+        "url": "https://arxiv.org/abs/2408.06292"
+      },
+      {
+        "label": "Can LLMs Generate Novel Research Ideas? A Large-Scale Human Study with 100+ NLP Researchers",
+        "url": "https://arxiv.org/abs/2409.04109"
+      },
+      {
+        "label": "Towards End-to-End Automation of AI Research",
+        "url": "https://arxiv.org/abs/2606.15497"
+      }
+    ],
+    "local_path": "MAS.S62/3.ContextEvolution2",
+    "source": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
+    "evidence": "mit/schedule.html",
+    "raw_cells": [
+      "9/23",
+      "Week 3 Context evolution 2 [slides] LLMs as optimizers LLMs for discovery",
+      "FunSearch: Mathematical discoveries from program search with large language models Large Language Models as Optimizers AlphaEvolve: A coding agent for scientific and algorithmic discovery The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery Can LLMs Generate Novel Research Ideas? A Large-Scale Human Study with 100+ NLP Researchers Towards End-to-End Automation of AI Research"
+    ]
+  },
+  {
+    "course": "MIT MAS.S62",
+    "id": "MIT-W4",
+    "date": "2026-09-30",
+    "title": "Project proposal presentations",
+    "kind": "project",
+    "phase": "PROJECT",
+    "materials": [],
+    "placeholder_links": [],
+    "readings": [],
+    "local_path": "MAS.S62/4.ProjectProposalPresentations",
+    "source": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
+    "evidence": "mit/schedule.html",
+    "raw_cells": [
+      "9/30",
+      "Week 4 Project proposal presentations",
+      ""
+    ]
+  },
+  {
+    "course": "MIT MAS.S62",
+    "id": "MIT-W5",
+    "date": "2026-10-07",
+    "title": "Harness evolution 1",
+    "kind": "teaching",
+    "phase": "P5",
+    "materials": [
+      {
+        "label": "[slides 1]",
+        "url": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec4 - harness.pdf"
+      },
+      {
+        "label": "[slides 2]",
+        "url": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/harness_guest.pdf"
+      }
+    ],
+    "placeholder_links": [],
+    "readings": [
+      {
+        "label": "Darwin Godel Machine: Open-Ended Evolution of Self-Improving Agents",
+        "url": "https://arxiv.org/abs/2505.22954"
+      },
+      {
+        "label": "Recursive Language Models",
+        "url": "https://arxiv.org/abs/2512.24601"
+      },
+      {
+        "label": "Context Language Models",
+        "url": "https://arxiv.org/abs/2609.37725"
+      },
+      {
+        "label": "MEM1: Learning to Synergize Memory and Reasoning for Efficient Long-horizon Agents",
+        "url": "https://arxiv.org/abs/2506.15841"
+      },
+      {
+        "label": "Reflexion: Language Agents with Verbal Reinforcement Learning",
+        "url": "https://arxiv.org/abs/2303.11366"
+      },
+      {
+        "label": "Meta-Harness: End-to-End Optimization of Model Harnesses",
+        "url": "https://arxiv.org/abs/2603.28052"
+      },
+      {
+        "label": "Continual Harness: Online Adaptation for Self-Improving Foundation Agents",
+        "url": "https://arxiv.org/abs/2605.09998"
+      },
+      {
+        "label": "HarnessTax: How Much Does the Harness Matter for Coding Agents?",
+        "url": "https://arena.ai/blog/coding-agents-harness-tax"
+      },
+      {
+        "label": "Harness Updating Is Not Harness Benefit: Disentangling Evolution Capabilities in Self-Evolving LLM Agents",
+        "url": "https://arxiv.org/abs/2605.30621"
+      }
+    ],
+    "local_path": "MAS.S62/5.HarnessEvolution1",
+    "source": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
+    "evidence": "mit/schedule.html",
+    "raw_cells": [
+      "10/7",
+      "Week 5 Harness evolution 1 [slides 1] [slides 2] Harness components Agent memory Harness evolution",
+      "Darwin Godel Machine: Open-Ended Evolution of Self-Improving Agents Recursive Language Models Context Language Models MEM1: Learning to Synergize Memory and Reasoning for Efficient Long-horizon Agents Reflexion: Language Agents with Verbal Reinforcement Learning Meta-Harness: End-to-End Optimization of Model Harnesses Continual Harness: Online Adaptation for Self-Improving Foundation Agents HarnessTax: How Much Does the Harness Matter for Coding Agents? Harness Updating Is Not Harness Benefit: Disentangling Evolution Capabilities in Self-Evolving LLM Agents"
+    ]
+  },
+  {
+    "course": "MIT MAS.S62",
+    "id": "MIT-W6",
+    "date": "2026-10-14",
+    "title": "Harness evolution 2",
+    "kind": "teaching",
+    "phase": "P5",
+    "materials": [
+      {
+        "label": "[slides 1]",
+        "url": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/harness engineering tutorial.pdf"
+      },
+      {
+        "label": "[slides 2]",
+        "url": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec5 - multi agent.pdf"
+      }
+    ],
+    "placeholder_links": [],
+    "readings": [
+      {
+        "label": "Toolformer: Language Models Can Teach Themselves to Use Tools",
+        "url": "https://arxiv.org/abs/2302.04761"
+      },
+      {
+        "label": "ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs",
+        "url": "https://arxiv.org/abs/2307.16789"
+      },
+      {
+        "label": "SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks",
+        "url": "https://arxiv.org/abs/2602.12670"
+      },
+      {
+        "label": "Voyager: An Open-Ended Embodied Agent with Large Language Models",
+        "url": "https://arxiv.org/abs/2305.16291"
+      },
+      {
+        "label": "CORAL: Towards Autonomous Multi-Agent Evolution for Open-Ended Discovery",
+        "url": "https://arxiv.org/abs/2604.01658"
+      },
+      {
+        "label": "Towards a Science of Scaling Agent Systems",
+        "url": "https://arxiv.org/abs/2512.08296"
+      },
+      {
+        "label": "Why Do Multi-Agent LLM Systems Fail?",
+        "url": "https://arxiv.org/abs/2503.13657"
+      }
+    ],
+    "local_path": "MAS.S62/6.HarnessEvolution2",
+    "source": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
+    "evidence": "mit/schedule.html",
+    "raw_cells": [
+      "10/14",
+      "Week 6 Harness evolution 2 [slides 1] [slides 2] Harness engineering tutorial Tool and skill evolution Multi-agent evolution",
+      "Toolformer: Language Models Can Teach Themselves to Use Tools ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks Voyager: An Open-Ended Embodied Agent with Large Language Models CORAL: Towards Autonomous Multi-Agent Evolution for Open-Ended Discovery Towards a Science of Scaling Agent Systems Why Do Multi-Agent LLM Systems Fail?"
+    ]
+  },
+  {
+    "course": "MIT MAS.S62",
+    "id": "MIT-W7",
+    "date": "2026-10-21",
+    "title": "Model evolution 1",
+    "kind": "teaching",
+    "phase": "P7",
+    "materials": [
+      {
+        "label": "[slides 1]",
+        "url": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec6 - training.pdf"
+      },
+      {
+        "label": "[slides 2]",
+        "url": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/model_guest.pdf"
+      }
+    ],
+    "placeholder_links": [],
+    "readings": [
+      {
+        "label": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+        "url": "https://arxiv.org/abs/2501.12948"
+      },
+      {
+        "label": "On-Policy Distillation of Language Models: Learning from Self-Generated Mistakes",
+        "url": "https://arxiv.org/abs/2306.13649"
+      },
+      {
+        "label": "TTRL: Test-Time Reinforcement Learning",
+        "url": "https://arxiv.org/abs/2504.16084"
+      },
+      {
+        "label": "Self-Rewarding Language Models",
+        "url": "https://arxiv.org/abs/2401.10020"
+      },
+      {
+        "label": "s1: Simple Test-Time Scaling",
+        "url": "https://arxiv.org/abs/2501.19393"
+      },
+      {
+        "label": "Does RL Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?",
+        "url": "https://arxiv.org/abs/2504.13837"
+      },
+      {
+        "label": "Understanding R1-Zero-Like Training: A Critical Perspective",
+        "url": "https://arxiv.org/abs/2503.20783"
+      },
+      {
+        "label": "RLs Razor: Why Online Reinforcement Learning Forgets Less",
+        "url": "https://arxiv.org/abs/2509.04259"
+      },
+      {
+        "label": "Self-Distilled Reasoner: On-Policy Self-Distillation for Large Language Models",
+        "url": "https://arxiv.org/abs/2601.18734"
+      },
+      {
+        "label": "Reinforcement Learning via Self-Distillation",
+        "url": "https://arxiv.org/abs/2601.20802"
+      },
+      {
+        "label": "Scaling Test-Time Compute Without Verification or RL is Suboptimal",
+        "url": "https://arxiv.org/abs/2502.12118"
+      }
+    ],
+    "local_path": "MAS.S62/7.ModelEvolution1",
+    "source": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
+    "evidence": "mit/schedule.html",
+    "raw_cells": [
+      "10/21",
+      "Week 7 Model evolution 1 [slides 1] [slides 2] Reinforcement learning Distillation Test-time training",
+      "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning On-Policy Distillation of Language Models: Learning from Self-Generated Mistakes TTRL: Test-Time Reinforcement Learning Self-Rewarding Language Models s1: Simple Test-Time Scaling Does RL Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model? Understanding R1-Zero-Like Training: A Critical Perspective RLs Razor: Why Online Reinforcement Learning Forgets Less Self-Distilled Reasoner: On-Policy Self-Distillation for Large Language Models Reinforcement Learning via Self-Distillation Scaling Test-Time Compute Without Verification or RL is Suboptimal"
+    ]
+  },
+  {
+    "course": "MIT MAS.S62",
+    "id": "MIT-W8",
+    "date": "2026-10-28",
+    "title": "Project midterm presentations",
+    "kind": "project",
+    "phase": "PROJECT",
+    "materials": [],
+    "placeholder_links": [],
+    "readings": [],
+    "local_path": "MAS.S62/8.ProjectMidtermPresentations",
+    "source": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
+    "evidence": "mit/schedule.html",
+    "raw_cells": [
+      "10/28",
+      "Week 8 Project midterm presentations",
+      ""
+    ]
+  },
+  {
+    "course": "MIT MAS.S62",
+    "id": "MIT-W9",
+    "date": "2026-11-04",
+    "title": "Model evolution 2",
+    "kind": "teaching",
+    "phase": "P7",
+    "materials": [
+      {
+        "label": "[slides 1]",
+        "url": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec6 - rl in practice.pdf"
+      }
+    ],
+    "placeholder_links": [],
+    "readings": [
+      {
+        "label": "Absolute Zero: Reinforced Self-play Reasoning with Zero Data",
+        "url": "https://arxiv.org/abs/2505.03335"
+      },
+      {
+        "label": "R-Zero: Self-Evolving Reasoning LLM from Zero Data",
+        "url": "https://arxiv.org/abs/2508.05004"
+      },
+      {
+        "label": "Propose, Solve, Verify: Self-Play Through Formal Verification",
+        "url": "https://arxiv.org/abs/2512.18160"
+      }
+    ],
+    "local_path": "MAS.S62/9.ModelEvolution2",
+    "source": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
+    "evidence": "mit/schedule.html",
+    "raw_cells": [
+      "11/4",
+      "Week 9 Model evolution 2 [slides 1] RL in practice Self-play approaches",
+      "Absolute Zero: Reinforced Self-play Reasoning with Zero Data R-Zero: Self-Evolving Reasoning LLM from Zero Data Propose, Solve, Verify: Self-Play Through Formal Verification"
+    ]
+  },
+  {
+    "course": "MIT MAS.S62",
+    "id": "MIT-W10",
+    "date": "2026-11-11",
+    "title": "Environment evolution 1",
+    "kind": "teaching",
+    "phase": "P8",
+    "materials": [],
+    "placeholder_links": [
+      {
+        "label": "[slides]",
+        "url": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/"
+      }
+    ],
+    "readings": [],
+    "local_path": "MAS.S62/10.EnvironmentEvolution1",
+    "source": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
+    "evidence": "mit/schedule.html",
+    "raw_cells": [
+      "11/11",
+      "Week 10 Environment evolution 1 [slides] Synthetic data and tasks Environment generation",
+      ""
+    ]
+  },
+  {
+    "course": "MIT MAS.S62",
+    "id": "MIT-W11",
+    "date": "2026-11-18",
+    "title": "Environment evolution 2",
+    "kind": "teaching",
+    "phase": "P8",
+    "materials": [],
+    "placeholder_links": [
+      {
+        "label": "[slides]",
+        "url": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/"
+      }
+    ],
+    "readings": [],
+    "local_path": "MAS.S62/11.EnvironmentEvolution2",
+    "source": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
+    "evidence": "mit/schedule.html",
+    "raw_cells": [
+      "11/18",
+      "Week 11 Environment evolution 2 [slides] World models Evolving evaluation and rewards",
+      ""
+    ]
+  },
+  {
+    "course": "MIT MAS.S62",
+    "id": "MIT-W12",
+    "date": "2026-11-25",
+    "title": "Future topics",
+    "kind": "teaching",
+    "phase": "P8",
+    "materials": [],
+    "placeholder_links": [
+      {
+        "label": "[slides]",
+        "url": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/"
+      }
+    ],
+    "readings": [],
+    "local_path": "MAS.S62/12.FutureTopics",
+    "source": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
+    "evidence": "mit/schedule.html",
+    "raw_cells": [
+      "11/25",
+      "Week 12 Future topics [slides] AI for scientific discovery Multimodal agents",
+      ""
+    ]
+  },
+  {
+    "course": "MIT MAS.S62",
+    "id": "MIT-W13",
+    "date": "2026-12-02",
+    "title": "Project final presentations",
+    "kind": "project",
+    "phase": "PROJECT",
+    "materials": [],
+    "placeholder_links": [],
+    "readings": [],
+    "local_path": "MAS.S62/13.ProjectFinalPresentations",
+    "source": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
+    "evidence": "mit/schedule.html",
+    "raw_cells": [
+      "12/2",
+      "Week 13 Project final presentations",
+      ""
+    ]
+  },
+  {
+    "course": "MIT MAS.S62",
+    "id": "MIT-W14",
+    "date": "2026-12-09",
+    "title": "Future topics",
+    "kind": "teaching",
+    "phase": "P8",
+    "materials": [],
+    "placeholder_links": [
+      {
+        "label": "[slides]",
+        "url": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/"
+      }
+    ],
+    "readings": [],
+    "local_path": "MAS.S62/14.FutureTopics",
+    "source": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
+    "evidence": "mit/schedule.html",
+    "raw_cells": [
+      "12/9",
+      "Week 14 Future topics [slides] Embodied harnesses Safe evolution",
+      ""
+    ]
+  }
+]

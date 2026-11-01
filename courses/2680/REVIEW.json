@@ -1,0 +1,2451 @@
+{
+  "course": "2680",
+  "review_date": "2026-10-28",
+  "standard": "面向有 Java 经验的 LLM Developer：以讲义问题链组织完整中文教学；检查前置知识、机制推导、案例、自测和来源证据；修改后的最终版本完整复读两遍。",
+  "scope": "当前版本的内容审核状态；保留最近实际阅读范围、复读结论和限制。结构校验不代替语义审核；元数据整理不构成新一轮内容审核。",
+  "documents": [
+    {
+      "note": "courses/2680/1.CourseOverviewAndLogistics/notes.zh-CN.md",
+      "lesson": 1,
+      "status": "passed",
+      "final_sha256": "899f863d320e4b28e397cdfa0654eb179f479505b9d8c88a64e255df459844ea",
+      "reviewed_at": "2026-10-28",
+      "content_review_sha256": "899f863d320e4b28e397cdfa0654eb179f479505b9d8c88a64e255df459844ea",
+      "coverage": {
+        "suitability": "适合LLM Developer与有Java经验的读者：新增最小模型计算与硬件词汇桥接，系统细节分主线和可选校核；不再预设已具系统课程背景。",
+        "lecture_coverage": "50页的技术主线均有对应讲解，行政页以历史版本与课程组织概括；p.45列明不讲的课程范围没有被误当新增教学目标。",
+        "mechanisms_and_boundaries": "prefill/decode瓶颈的工作区间、KV容量单位、层次栈、关键路径、缓存路由、故障恢复与观测均明确；课堂分类、类比、构造算例与工程推导有标注。",
+        "high_risk_checks": "重新计算256GiB KV示例、3.125h集群间隔、9% AFR对应92884.5h而非50000h、16.071%反算、浮点1.0/0.0、每成功成本1.667/1.444；与正文一致。",
+        "learning_completeness": "包含符号与假设、选型、费用与能耗、故障表、实验控制与泛化、15题及答案。"
+      },
+      "sources_read": [
+        {
+          "path": "courses/2680/1.CourseOverviewAndLogistics/SOURCES.md",
+          "range": "full"
+        },
+        {
+          "path": "courses/2680/1.CourseOverviewAndLogistics/REFERENCES.json",
+          "range": "full"
+        },
+        {
+          "path": "courses/2680/1.CourseOverviewAndLogistics/1_intro.pdf",
+          "pages": "1-50",
+          "version": "local archived PDF; 50 pages; page footer offset checked",
+          "visual_pages": [
+            31,
+            34,
+            36,
+            40,
+            41,
+            43,
+            49
+          ],
+          "range": "全讲义文本；关键数值/架构/指标/分类图目视"
+        },
+        {
+          "path": "courses/2680/site/assignments/assignment1.html",
+          "range": "learning goals; Part 1; Part 2 all seven features and replay; Part 3; deliverables (not all grading tail)"
+        },
+        {
+          "path": "courses/2680/1.CourseOverviewAndLogistics/references/python-floatingpoint.html",
+          "range": "§15 main text; representation-error appendix not required for claims",
+          "version": "snapshot in REFERENCES.json"
+        },
+        {
+          "path": "courses/2680/1.CourseOverviewAndLogistics/references/nvidia-floating-point.html",
+          "range": "§2.1-2.3 including operation order and FMA",
+          "version": "snapshot in REFERENCES.json"
+        }
+      ],
+      "reread_result": [
+        "最终全文复读；模型生成→资源约束→任务链→验收的衔接清楚，无需再修正",
+        "最终全文复读；模型生成→资源约束→任务链→验收的衔接清楚，无需再修正"
+      ],
+      "remaining_issues": [],
+      "limitations": [
+        "未运行LLM、GPU、生产故障注入或真实Agent实验；仅重新运行正文离线数值检查。",
+        "本轮审核针对已归档课程版本，未把历史政策/CLI当作实时产品指引。",
+        "未声称补充资料每篇全文或原论文实验已复现；上面sources_read列出实际读取范围。"
+      ]
+    },
+    {
+      "note": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/coding_agent_integrated_guide.md",
+      "lesson": 2,
+      "status": "passed",
+      "final_sha256": "073d667b9e332bf7e56a419954cb12bde850c30786d6f251467d0b5de1f06de4",
+      "reviewed_at": "2026-10-28",
+      "content_review_sha256": "073d667b9e332bf7e56a419954cb12bde850c30786d6f251467d0b5de1f06de4",
+      "coverage": {
+        "suitability": "明确为课程主讲解之后的工程案例篇；符合具备Java/Python经验的LLM工程师学习深度。",
+        "lecture_coverage": "loop、上下文、记忆、六类工具、Skills/MCP/Hooks/Plugin及可选Gateway均覆盖；非技术行政页适当略写。",
+        "mechanisms_and_practice": "区分上下文/训练、业务知识/API、未知/零、超时/未执行；两个贯穿案例覆盖计划、红绿测试、集成验证、独立审查、恢复与交付。",
+        "high_risk_checks": "S8样本58/35/17、3544+1500运行、64.9%项目规则排除、不同基线与表2-5数值一致；S9 54/46/40、13对0.43-29.06中位0.93、139倍、按需3.1倍混杂、成本与失败率区分、代理例外均核实。Hooks字段与版本和归档一致。",
+        "learning_completeness": "包含选型、成本、失效边界、泛化限制和8题有条件答案；实验与教学示意未冒充已运行结果。"
+      },
+      "sources_read": [
+        {
+          "path": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/SOURCES.md",
+          "range": "full"
+        },
+        {
+          "path": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/REFERENCES.json",
+          "range": "full"
+        },
+        {
+          "path": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/2_agent_use_1.pdf",
+          "pages": "1-53",
+          "version": "local 53-page archived lecture; page 53 blank transition",
+          "range": "full text",
+          "visual_pages": [
+            7,
+            12,
+            18,
+            38,
+            42,
+            52
+          ]
+        },
+        {
+          "path": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Guardrails_Beat_Guidance_A_Large-Scale_Study_of_Rules_Skills_and_Persistent_Configuration_for_Coding_Agents.pdf",
+          "pages": "1-12",
+          "version": "arXiv:2604.11088v2, 28 May 2026",
+          "range": "full text, Tables 2-5, figures and limitations",
+          "visual_pages": [
+            6,
+            7,
+            11,
+            12
+          ]
+        },
+        {
+          "path": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/The_Scaffolding_Matters_More_Than_the_Interface.pdf",
+          "pages": "1-27",
+          "range": "full text, methods, Tables 1-8 and Appendix A; figure/table inspection",
+          "visual_pages": [
+            10,
+            13,
+            14,
+            15,
+            16
+          ]
+        },
+        {
+          "path": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Equipping_agents_for_the_real_world_with_Agent_Skills.html",
+          "range": "full article text"
+        },
+        {
+          "path": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Code_execution_with_MCP_building_more_efficient_AI_agents.html",
+          "range": "full article text"
+        },
+        {
+          "path": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/How_skills_and_MCPs_actually_work.html",
+          "range": "full article text"
+        },
+        {
+          "path": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/The_Harness_Is_the_Thing.html",
+          "range": "full article text"
+        },
+        {
+          "path": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Hooks_reference.html",
+          "range": "PreToolUse decision control; PostToolUse decision control; other exit codes; timeouts; onFailure block; Stop; background hooks; all included subheadings",
+          "version": "archived moving documentation, checks include v2.1.295 qualification"
+        },
+        {
+          "path": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Best_practices_for_Claude_Code.html",
+          "range": "verification; explore/plan/code; manage context; rewind checkpoints; adversarial review; failure patterns"
+        },
+        {
+          "path": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/references",
+          "range": "001-009 individual Simon Willison articles, full article body (navigation excluded where possible)"
+        }
+      ],
+      "reread_result": [
+        "全部正文、案例、模板、自测答案、附录逐段完整复读通过。",
+        "第二轮逐段完整复读通过，未发现新增实质问题。"
+      ],
+      "remaining_issues": [],
+      "limitations": [
+        "未复跑S8/S9模型实验或真实Claude Code/MCP集成；配置结论限定归档快照。",
+        "S9原文本身存在部分描述/统计不一致，正文已注明不同失败中位数并避免合并；没有将论文全部推断作为已证实因果。",
+        "未观看指定视频；文中明确不从视频标题补写内容。"
+      ]
+    },
+    {
+      "note": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/lecture_02_agent_use_integrated_notes.md",
+      "lesson": 2,
+      "status": "passed",
+      "final_sha256": "5a918dcea8b43d1f8646e1d21e1d79ad4cfa1e96fed1c2bb4a206d270ec0af81",
+      "reviewed_at": "2026-10-28",
+      "content_review_sha256": "5a918dcea8b43d1f8646e1d21e1d79ad4cfa1e96fed1c2bb4a206d270ec0af81",
+      "coverage": {
+        "suitability": "以53页讲义为主线，清楚区分产品快照、论文证据、第一手工程经验和教学推导，适合作为本课完整中文主讲解。",
+        "lecture_coverage": "loop、上下文、记忆、六类工具、Skills/MCP/Hooks/Plugin及可选Gateway均覆盖；非技术行政页适当略写。",
+        "mechanisms_and_practice": "从loop、上下文与持久记忆展开至工具语义、Skills、MCP、Hooks、Subagents/Plugin和任务状态，提供工作流程、诊断矩阵、成本口径与金融预审核迁移案例。",
+        "high_risk_checks": "S8样本58/35/17、3544+1500运行、64.9%项目规则排除、不同基线与表2-5数值一致；S9 54/46/40、13对0.43-29.06中位0.93、139倍、按需3.1倍混杂、成本与失败率区分、代理例外均核实。Hooks字段与版本和归档一致。",
+        "learning_completeness": "讲义逐页映射完整；8题参考答案、7项分类练习与任务/指令/Skill/交接/评测模板齐全；未把模板或金融推演写成已部署实验。"
+      },
+      "sources_read": [
+        {
+          "path": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/SOURCES.md",
+          "range": "full"
+        },
+        {
+          "path": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/REFERENCES.json",
+          "range": "full"
+        },
+        {
+          "path": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/2_agent_use_1.pdf",
+          "pages": "1-53",
+          "version": "local 53-page archived lecture; page 53 blank transition",
+          "range": "full text",
+          "visual_pages": [
+            7,
+            12,
+            18,
+            38,
+            42,
+            52
+          ]
+        },
+        {
+          "path": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Guardrails_Beat_Guidance_A_Large-Scale_Study_of_Rules_Skills_and_Persistent_Configuration_for_Coding_Agents.pdf",
+          "pages": "1-12",
+          "version": "arXiv:2604.11088v2, 28 May 2026",
+          "range": "full text, Tables 2-5, figures and limitations",
+          "visual_pages": [
+            6,
+            7,
+            11,
+            12
+          ]
+        },
+        {
+          "path": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/The_Scaffolding_Matters_More_Than_the_Interface.pdf",
+          "pages": "1-27",
+          "range": "full text, methods, Tables 1-8 and Appendix A; figure/table inspection",
+          "visual_pages": [
+            10,
+            13,
+            14,
+            15,
+            16
+          ]
+        },
+        {
+          "path": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Equipping_agents_for_the_real_world_with_Agent_Skills.html",
+          "range": "full article text"
+        },
+        {
+          "path": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Code_execution_with_MCP_building_more_efficient_AI_agents.html",
+          "range": "full article text"
+        },
+        {
+          "path": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/How_skills_and_MCPs_actually_work.html",
+          "range": "full article text"
+        },
+        {
+          "path": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/The_Harness_Is_the_Thing.html",
+          "range": "full article text"
+        },
+        {
+          "path": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Hooks_reference.html",
+          "range": "PreToolUse decision control; PostToolUse decision control; other exit codes; timeouts; onFailure block; Stop; background hooks; all included subheadings",
+          "version": "archived moving documentation, checks include v2.1.295 qualification"
+        },
+        {
+          "path": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Best_practices_for_Claude_Code.html",
+          "range": "verification; explore/plan/code; manage context; rewind checkpoints; adversarial review; failure patterns; Let Claude interview you; Automate and scale and all subheadings"
+        },
+        {
+          "path": "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/references",
+          "range": "001-010 individual Simon Willison articles, full article text; 008 is not substantively used by this guide"
+        }
+      ],
+      "reread_result": [
+        "逐段完整复读通过；定义—机制—案例—自测衔接与来源边界无新增问题。",
+        "逐段完整复读通过；定义—机制—案例—自测衔接与来源边界无新增问题。"
+      ],
+      "remaining_issues": [],
+      "limitations": [
+        "未复跑S8/S9模型实验或真实Claude Code/MCP集成；配置结论限定归档快照。",
+        "S9原文本身存在部分描述/统计不一致，正文已注明不同失败中位数并避免合并；没有将论文全部推断作为已证实因果。",
+        "未观看指定视频；文中明确不从视频标题补写内容。"
+      ]
+    },
+    {
+      "note": "courses/2680/3.AgentsUseII.100xEngineerWithMultiAgents/Lecture03_MultiAgent_完整学习讲义.md",
+      "lesson": 3,
+      "status": "passed",
+      "final_sha256": "0f40b4cd0327ca5491cb9e8efc703735857f9adf09aa2482138535cdb237d960",
+      "reviewed_at": "2026-10-28",
+      "content_review_sha256": "0f40b4cd0327ca5491cb9e8efc703735857f9adf09aa2482138535cdb237d960",
+      "coverage": {
+        "lecture": "讲义1–72的课程背景、Superpowers、Caveman、worktree、Subagents、Teams、Workflow、goal/loop、编译器案例、Software3.0、不确定性、Codex研究、可选工具选型均在主线或附录覆盖；产品版本差异独立说明。",
+        "mechanisms": "交接上下文、工具/skill权限、fork/resume/memory、任务锁/邮箱/批准、Workflow恢复和副作用皆回到具体机制；代码为未执行运行时示例，未冒充已复现。",
+        "evidence": "编译器16个Agent与2万美元等仅作案例而非对照因果；Codex观察研究分人群、时间窗与分母；lecture第65页代码行数不能解释交付8倍；相关性与验证概率公式保留假设边界。",
+        "engineering": "第14–16章覆盖状态、版本、恢复、权限、全局预算、可观测性、独立验证、成本/质量基线和故障注入；保留贯穿案例与答案。"
+      },
+      "sources_read": [
+        {
+          "path": "courses/2680/3.AgentsUseII.100xEngineerWithMultiAgents/SOURCES.md",
+          "version": "本地归档快照",
+          "scope": "全文；确认日期与9项阅读，无另附README/REFERENCES",
+          "visual_pages": []
+        },
+        {
+          "path": "courses/2680/3.AgentsUseII.100xEngineerWithMultiAgents/3_agent_use_2.pdf",
+          "version": "课程2026-09-14",
+          "scope": "PDF 1–72全文，分1–25、26–50、51–72；原生PDF页序",
+          "visual_pages": [
+            34,
+            64,
+            65,
+            66,
+            67
+          ]
+        },
+        {
+          "path": "courses/2680/3.AgentsUseII.100xEngineerWithMultiAgents/readings/Create_custom_subagents.html",
+          "version": "本地归档快照",
+          "scope": "完整阅读所用章节：Write subagent files、Supported frontmatter fields、Available tools、Preload skills、Enable persistent memory、Run foreground/background、Let subagents spawn、Concurrent limit、What loads at startup、Resume、Auto-compaction、Fork current conversation/How forks differ；并非整站或整份93k字符全文",
+          "visual_pages": []
+        },
+        {
+          "path": "courses/2680/3.AgentsUseII.100xEngineerWithMultiAgents/readings/Orchestrate_teams_of_Claude_Code_sessions.html",
+          "version": "本地归档快照",
+          "scope": "提取正文全文约34k字符",
+          "visual_pages": []
+        },
+        {
+          "path": "courses/2680/3.AgentsUseII.100xEngineerWithMultiAgents/readings/Orchestrate_subagents_at_scale_with_dynamic_workflows.html",
+          "version": "本地归档快照",
+          "scope": "提取正文全文约36k字符",
+          "visual_pages": []
+        },
+        {
+          "path": "courses/2680/3.AgentsUseII.100xEngineerWithMultiAgents/readings/Building_a_C_compiler_with_a_team_of_parallel_Claudes.html",
+          "version": "2026-02-05",
+          "scope": "正文全文约15k字符",
+          "visual_pages": []
+        },
+        {
+          "path": "courses/2680/3.AgentsUseII.100xEngineerWithMultiAgents/readings/The_Shift_to_Agentic_AI_Evidence_from_Codex.pdf",
+          "version": "arXiv:2606.26959v1 2026-06-25",
+          "scope": "PDF 1–24正文全文；49–50附录F全文；25–48其余附录未全读",
+          "visual_pages": [
+            7,
+            14,
+            17,
+            20,
+            50
+          ]
+        },
+        {
+          "url": "https://openai.com/index/research-acceleration-view-inside-openai/",
+          "version": "2026-09-06网页，2026-10-28在线复核",
+          "scope": "引言与§1–3至成功率图说明；未声称§4–5全文"
+        },
+        {
+          "url": "https://arxiv.org/abs/2503.13657v3",
+          "version": "v3",
+          "scope": "摘要及版本元数据，支持附录D限于摘要的概括"
+        },
+        {
+          "url": "https://arxiv.org/abs/2512.08296v3",
+          "version": "v3",
+          "scope": "摘要及版本元数据，支持附录D限于摘要的概括"
+        }
+      ],
+      "reread_result": [
+        "完整复读，无需进一步修改；术语/公式/案例与来源边界衔接成立",
+        "完整复读，无新增实质问题；阅读路线、原讲义主线、迁移题及答案对应一致"
+      ],
+      "remaining_issues": [],
+      "limitations": [
+        "未运行真实Claude产品、Agent调用或编译器实验；示例明确未执行。",
+        "R1仅所用章节全文精读；R5未全读25–48页非所引附录；延伸论文只核对摘要，不冒充全文研究。",
+        "未取得Software2.0/3.0外链和视频全文；相关概念以已全读讲义为依据。",
+        "产品机制依归档版本，不宣称当前安装版已验证。",
+        "曾有一次841–1260输出完全被截断，未计为阅读；已分段841–1050/1051–1260补读。早期被修改的稿件复读未计入最终两轮。"
+      ]
+    },
+    {
+      "note": "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/lecture-04_context_and_tool_design_integrated.md",
+      "lesson": 4,
+      "status": "passed",
+      "final_sha256": "a007f58371d0270667e7e9f375fa4e631cfa14ccaefaa757d4d8b3ccf523a554",
+      "reviewed_at": "2026-10-28",
+      "content_review_sha256": "a007f58371d0270667e7e9f375fa4e631cfa14ccaefaa757d4d8b3ccf523a554",
+      "coverage": {
+        "lecture": "56 页全文核对：Agent loop/职责 pp4–7、检索与编辑 pp8–21、Shell/工具 pp22–26、Prompt 八技巧 pp27–40、上下文组成与四操作 pp41–50、Harness/延伸 pp51–56 均有实质解释；附录 A 保留教学图与外部转引的边界。",
+        "mechanisms": "ReAct 更新工作状态、Toolformer 三条件训练筛选、检索/编辑/工具契约、长命令生命周期、局部状态与全局进度、七种搜索上下文策略均能接到实现取舍。",
+        "implementation_and_diagnosis": "双案例、完整循环伪代码、接口/任务双层评测、未知/空值/超时、版本和异步状态、摘要验收可用于设计评审；未声称案例已经执行。"
+      },
+      "sources_read": [
+        {
+          "path": "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/SOURCES.md",
+          "sha256": "cbee8d9241f48410f74a952e342cfb97acf01826eeea7dfe3b6513678b7cc382",
+          "version": "本地归档版本",
+          "range": "全文；首次正文阅读前"
+        },
+        {
+          "path": "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/REFERENCES.json",
+          "sha256": "c0cfd24d56f2d66952cb3e83f8fb473a78a4a5284afd230b84e6b0e9c7c0ab05",
+          "version": "本地归档版本",
+          "range": "全文；首次正文阅读前"
+        },
+        {
+          "path": "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/4_agent_design_1.pdf",
+          "sha256": "aee815f49719d38c9cee4c284a161c63081082ec20859daa9af7b6720f473304",
+          "version": "2026-09-16 课程讲义，56 页",
+          "range": "PDF 实际 pp. 1–56 全文；按文本分段 1–600、601–EOF（页 32 跨段）",
+          "visually_inspected_pdf_pages": [
+            11,
+            21,
+            26,
+            43,
+            52
+          ]
+        },
+        {
+          "path": "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf",
+          "sha256": "f285b0971ae4a790e402fb93966bed3adde2cf0a04977d08b2b40d6ab0cace69",
+          "version": "arXiv:2210.03629v3，2023-03-10",
+          "range": "pp. 1–9 全文；p. 1 曾输出截断后单独补读完整；§2、Tables 1–2、§4、微调与混合回退设置",
+          "visually_inspected_pdf_pages": [
+            2,
+            5,
+            6
+          ]
+        },
+        {
+          "path": "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf",
+          "sha256": "6d7483d94653008e40c2058a1c22441c92e3713dae278b6361e8efc447c99522",
+          "version": "arXiv:2302.04761v1，2023-02-09",
+          "range": "pp. 1–10 全文；三条件损失、前缀筛选/插入训练、解码规则、五工具、单调用依赖限制与 Table 10",
+          "visually_inspected_pdf_pages": [
+            2,
+            3,
+            10
+          ]
+        },
+        {
+          "path": "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Less_Context_Better_Agents_Efficient_Context_Engineering_for_Long-Horizon_Tool-Using_LLM_Agents.pdf",
+          "sha256": "31aa21cfc78d1528d07752527b6039720bc8b31eb82906a6c55a40e41fe98a5d",
+          "version": "arXiv:2606.10209v1，2026-06-08",
+          "range": "pp. 1–12、16–17 全文；Algorithm 1、C1–C4、Tables 2–5、Appendix C 评分、D 统计、H 敏感性、I 跨模型",
+          "visually_inspected_pdf_pages": [
+            5,
+            6,
+            7,
+            9
+          ]
+        },
+        {
+          "path": "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Lost_in_the_Middle_How_Language_Models_Use_Long_Contexts.pdf",
+          "sha256": "653b29619eae2ae4b361d7bdcdc06db4bedcb1b0eabe31814036beca8c1af0b1",
+          "version": "arXiv:2307.03172v3，2023-11-20",
+          "range": "pp. 1–10 全文；任务构造、所用模型版本、位置、query-aware、架构分析及 Figure 11",
+          "visually_inspected_pdf_pages": [
+            5,
+            8,
+            10
+          ]
+        },
+        {
+          "path": "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Diagnosing_and_Mitigating_Context_Rot_in_Long-horizon_Search.pdf",
+          "sha256": "89f838c60ac54a940e4d70e4c2e2771cadfdfd0e477acffd43231b25221dcdbb",
+          "version": "arXiv:2606.29718v2，2026-08-04；封面 2026-08-05",
+          "range": "pp. 1–10 全文；六终态、PT、五次长度排序、七策略、Tables 3/5、采样预算和边界",
+          "visually_inspected_pdf_pages": [
+            6,
+            8,
+            9
+          ]
+        },
+        {
+          "path": "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/A_practical_guide_to_building_agents.pdf",
+          "sha256": "1903c2b1837b206d1951d8a3d1124515aee1bebebd8f2448c630c75a6b0aad86",
+          "version": "本地归档版本",
+          "range": "pp. 1–34 全文提取阅读；SDK 示例只作为归档设计材料，未验证当前 API"
+        },
+        {
+          "path": "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Building_Effective_AI_Agents.html",
+          "sha256": "8600702d1292a3712ca43ca5206eae781e3135fe6589e3912ee17cc68337a99d",
+          "version": "本地归档版本",
+          "range": "文章全文（去脚本/导航后 1–187 行）；工作流/Agent、五模式、附录 1–2"
+        },
+        {
+          "path": "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Effective_context_engineering_for_AI_agents.html",
+          "sha256": "6cc1c0b5e326f229fdd683c9294dc50fc3bf94ad2cdc563943a7f1905dcd277b",
+          "version": "本地归档版本",
+          "range": "文章全文（1–150 行）；全部正文与 compaction、笔记、子 Agent"
+        },
+        {
+          "path": "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Context_Engineering_A_Practical_Guide_for_AI_Agents_2026.html",
+          "sha256": "824ad1ff81a193333d72aadcae79f2a7550c0d3bf4d825570829cb9472681f10",
+          "version": "Matt Tanner，2026-05-28 归档",
+          "range": "文章全文（1–149 行）；四支柱、生产管线、代码智能与 370 任务指标"
+        },
+        {
+          "path": "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Writing_effective_tools_for_AI_agents_using_AI_agents.html",
+          "sha256": "1740f094f5cb2e7a9d6ab37082f04268ca9cb3a1002488ca95d629b54307d454",
+          "version": "本地归档版本",
+          "range": "文章全文（1–258 行）；工具契约、粒度、错误、输出、评测与保留集"
+        },
+        {
+          "path": "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/How_Foundational_Models_Became_Superhuman_in_Bash.html",
+          "sha256": "45283d9e0b53d0a4e3cf424257d1ab7f5cd9c2d56b26523f4491285e62527627",
+          "version": "2026-09-01 归档",
+          "range": "文章全文含全部三段示例代码（1–412 行）；核对多文件预检查、工作区二分、日志关联筛选口径"
+        },
+        {
+          "path": "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/What_Is_an_Agent_Harness_Harness_Engineering_Explained.html",
+          "sha256": "be5d36e5af0d5884bc1ec3eef815aa9060836a5500f137224443fe49b56bade1",
+          "version": "本地归档版本",
+          "range": "文章全文含演示代码（1–621 行）；明确作者演示非普遍可靠性保证"
+        },
+        {
+          "path": "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Agent_Patterns_for_AI_Agent_Development_-_AgentPatterns.ai.html",
+          "sha256": "7ad3f7de7cb66ebc781b04af50e236867910c50904156f8645da4ac733e8d612",
+          "version": "本地归档版本",
+          "range": "归档首页全文（1–81 行）；未读取所链接网站全部子页"
+        },
+        {
+          "path": "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/LLM_Powered_Autonomous_Agents.html",
+          "sha256": "03b6ed75b1dc0dedd200a077367d1f7737f0a18e08c104e7f653115e1f52b0ef",
+          "version": "2023-06-23 归档",
+          "range": "提取文本 1–180、302–355 行；Overview、Planning/Self-Reflection、Memory 引入、Generative Agents Memory/Retrieval；不是整篇全文"
+        },
+        {
+          "path": "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/references/016_Aider_Repository_Map.html",
+          "sha256": "77708d7004b0755018668f7db831cb09b7cb5883da4e46d90bd65fe5683b07f0",
+          "version": "本地归档版本",
+          "range": "文章全文（1–93 行）"
+        },
+        {
+          "path": "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/references/017_Aider_Repository_Map.html",
+          "sha256": "312c556eee765b5843e1017be7d7f568ecbe6e9bb048e5a93337f296bedb2397",
+          "version": "2023-10-22 文章，2026-10-26 既有归档",
+          "range": "文章全文（1–253 行）"
+        },
+        {
+          "path": "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/How_skills_and_MCPs_actually_work.html",
+          "sha256": "025685349889065651f42130786a3501c0ee41bf44162087c614426f8315ce61",
+          "version": "Lawrence Jones，2026-09-01 归档",
+          "range": "复用本轮第 2 课已完成的文章全文精读；本次重新核对两课副本 SHA 完全一致 025685349889065651f42130786a3501c0ee41bf44162087c614426f8315ce61"
+        }
+      ],
+      "reread_result": [
+        "修正因果位置表述后完整分段复读1–2224行（无截断）；确认工具训练、检索指标、上下文实验、系统案例、自测与附录一致，无新实质问题。",
+        "同一最终SHA下再次完整分段复读1–2224行（无截断）；因果mask含当前输入与预测下一个token对齐，既有教学问题链、案例与答案保持连贯，无需继续修改。"
+      ],
+      "remaining_issues": [],
+      "limitations": [
+        "论文与网页按已归档版本，未核验实时产品API；完整主讲义已读，辅助材料严格按sources_read所列范围，不冒称各PDF全部附录已读。",
+        "主讲义p52外部研究仍仅按讲义转引，未读该独立论文；Sourcegraph外链基准未复现。",
+        "无GPU/模型/API/ERP业务实验执行；第14章为伪代码，第15章为教学设计；新增数值例经逐项手算复核，不声明真实效果。",
+        "本轮未新增或改写任何原始资料；未运行整理同步或修改课程根审核文件。"
+      ]
+    },
+    {
+      "note": "courses/2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/lecture-05_multi-agent-coordination_完整学习笔记.md",
+      "lesson": 5,
+      "status": "passed",
+      "final_sha256": "d7357c95d3d11abe5baace48929115c950d10f1acebafaad25c52f8075bb2c09",
+      "reviewed_at": "2026-10-28",
+      "content_review_sha256": "d7357c95d3d11abe5baace48929115c950d10f1acebafaad25c52f8075bb2c09",
+      "coverage": {
+        "lecture": "46页全文核对：拆分理由、三张图、八类架构、六分解维度/八契约字段、粒度/动态/六类失败、四通信维度与控制内容分离、分布式运行状态、A2A/MCP及四原则均有实质讲解；memory按最后页说明留给下课。",
+        "mechanisms": "五份阅读分别补对话编程/反馈、SOP/结构化产物、隐含共同决定、研究并行与生产恢复、受控架构实验。没有将工程观点拼成同条件实验或通用阈值。",
+        "implementation_and_diagnosis": "分页API共享契约、候选→验收→持久状态、条件漏检、超时副作用/幂等恢复、版本绑定、过程约束与机制消融构成从设计到故障诊断闭环。"
+      },
+      "sources_read": [
+        {
+          "path": "courses/2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/SOURCES.md",
+          "sha256": "dcee22a2678eae9256e40ee8dfa84a4906fdd8ce0bcdf43aee81d8c436bfae5e",
+          "version": "本地归档",
+          "range": "全文；首次正文阅读前；本课无 README/REFERENCES.json",
+          "visually_inspected_pdf_pages": []
+        },
+        {
+          "path": "courses/2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/5_agent_design_2.pdf",
+          "sha256": "4dbc20e3cdfcc7a22879672c2300058c8c41b7364a4fbe5d3378f7861501c9bd",
+          "version": "2026-09-21 课程讲义，46页",
+          "range": "实际 PDF pp.1–46 全文；第4页空白；后半页脚与实际页序不同",
+          "visually_inspected_pdf_pages": [
+            7,
+            17,
+            24,
+            25,
+            33,
+            40
+          ]
+        },
+        {
+          "path": "courses/2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/readings/AutoGen_Enabling_Next-Gen_LLM_Applications_via_Multi-Agent_Conversation.pdf",
+          "sha256": "fcf8b1acae6b1bd6f14c92463caa9726828bf998234ba9f10c2411087897c96b",
+          "version": "arXiv:2308.08155v2，2023-10-03",
+          "range": "pp.1–10、22–23、26–28；六应用、接口、交互式检索、ALFWorld、OptiGuide、Group Chat",
+          "visually_inspected_pdf_pages": [
+            4,
+            7,
+            26,
+            28
+          ]
+        },
+        {
+          "path": "courses/2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/readings/MetaGPT_Meta_Programming_for_a_Multi-Agent_Collaborative_Framework.pdf",
+          "sha256": "17582e47647fac8eaa3681feade41c8408310c4133acc5c6823565fbe880e1ac",
+          "version": "arXiv:2308.00352v7，2024-11-01",
+          "range": "pp.1–10、15–16；SOP、消息池、执行反馈、三组实验与附录自改进/展望",
+          "visually_inspected_pdf_pages": [
+            2,
+            4,
+            5,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "path": "courses/2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/readings/Don_t_Build_Multi-Agents.html",
+          "sha256": "c0f8c4656ee7c278071a23518e12d05a0d42e587b0c9fdde3717a00c24b7742c",
+          "version": "Cognition，2025-06-12 归档",
+          "range": "文章全文；提取后1–71行，包括完整上下文、隐含决定、压缩、历史产品案例",
+          "visually_inspected_pdf_pages": []
+        },
+        {
+          "path": "courses/2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/readings/How_we_built_our_multi-agent_research_system.html",
+          "sha256": "f7c4539731f0fe4794b0db96f95dbb712331338febdb11e835dedff5bb3232eb",
+          "version": "Anthropic，2025-06-13 归档",
+          "range": "文章及附录全文；提取后1–53、54–97行；完整工作流图注已读；远端图未能获取",
+          "visually_inspected_pdf_pages": []
+        },
+        {
+          "path": "courses/2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/readings/Towards_a_Science_of_Scaling_Agent_Systems.pdf",
+          "sha256": "028f329010d95143915db8db6ce1ad26a4e844b66e4abd6b36fdb39651aff7fd",
+          "version": "arXiv:2512.08296v3，2026-04-08",
+          "range": "pp.1–21、25–27；架构/预算/实验、回归、标准化、指标、泛化/统计限制；未读22–24、28–44",
+          "visually_inspected_pdf_pages": [
+            11,
+            19,
+            20
+          ]
+        }
+      ],
+      "reread_result": [
+        "全文完成，章节依赖、通用开发案例与新增推导连贯，无新实质问题。",
+        "全文完成；1321–1765首次请求因上下文容量未返回正文，随后分1321–1550、1551–1765完整补读；指标分母、自测答案、来源附录一致，无再修改。"
+      ],
+      "remaining_issues": [],
+      "limitations": [
+        "主讲义全文已读；辅助论文按sources_read范围读取，未声称全部附录全文。",
+        "Anthropic完整研究架构图只有远端CDN引用，本地无图；已告知主代理并尝试临时获取，HTTP403，未目视该图；文章全文及图注已读，其余所列重要图表已渲染目视。",
+        "历史AutoGen/API/A2A按归档材料解释，未核验当前SDK或协议实现。",
+        "无GPU/模型/API或论文实验复现；新增概率/指标数值为手算教学例，非真实效果。",
+        "未改原始资料、未运行整理同步、未修改课程根审核记录。"
+      ]
+    },
+    {
+      "note": "courses/2680/6.AgentsDesignIII.AgentMemoryAndReliability/lecture06_agent_memory_reliability.md",
+      "lesson": 6,
+      "status": "passed",
+      "final_sha256": "aa705282548f99d66a93db6adaec56db903a233cb6e478d0bde33d34465c2692",
+      "reviewed_at": "2026-10-28",
+      "content_review_sha256": "aa705282548f99d66a93db6adaec56db903a233cb6e478d0bde33d34465c2692",
+      "coverage": {
+        "lecture": "31页主讲义全文核对：持久记忆与窗口、六生命周期问题、四种编码/存储、三读取策略、五检索信号、归纳/遗忘/时态/所有权、八故障、评估、独立错误累积、五层故障和面向失败设计均已覆盖；补回第12页归纳触发时机。",
+        "mechanisms": "六阅读分别解释检索联合训练、上下文分层调度、关键错误与重展开、组织交接、测量有效性、推理与环境反馈。完整保留AgentDebug算法与正文冲突、MAST图分母、Overthinking不同成本基线，不拼接为统一实验。",
+        "implementation_and_diagnosis": "证据/事实/执行/经验四逻辑记录→任务合同→状态准入→版本绑定→依赖失效→检查点/外部副作用→故障注入/消融/验收，形成完整实现思路。"
+      },
+      "sources_read": [
+        {
+          "path": "courses/2680/6.AgentsDesignIII.AgentMemoryAndReliability/SOURCES.md",
+          "sha256": "e7fd0b060445b3fec6537563bc58a2fc833c1cccd5f3365e8c0ead15d424d61c",
+          "version": "本地归档",
+          "range": "全文；正文阅读前；本课无 README/REFERENCES.json",
+          "visually_inspected_pdf_pages": []
+        },
+        {
+          "path": "courses/2680/6.AgentsDesignIII.AgentMemoryAndReliability/6_agent_design_3.pdf",
+          "sha256": "7ed1b959e40acc5a90e67057e521e0d3a47ad25829be10e4939908fabbac4728",
+          "version": "2026-09-28 课程讲义，31页",
+          "range": "实际 PDF pp.1–31 全文；p4空白；后半页脚偏移",
+          "visually_inspected_pdf_pages": [
+            6,
+            22,
+            30
+          ]
+        },
+        {
+          "path": "courses/2680/6.AgentsDesignIII.AgentMemoryAndReliability/readings/Retrieval-Augmented_Generation_for_Knowledge-Intensive_NLP_Tasks.pdf",
+          "sha256": "23e3249e9a1e75418d82efecab0ea8c4d033b89c93742f63208d47ce01f21233",
+          "version": "arXiv:2005.11401v4，2021-04-12",
+          "range": "pp.1–8全文；机制、两种生成、联合训练、各任务/消融、时态索引和证据边界",
+          "visually_inspected_pdf_pages": [
+            2,
+            7,
+            8
+          ]
+        },
+        {
+          "path": "courses/2680/6.AgentsDesignIII.AgentMemoryAndReliability/readings/MemGPT_Towards_LLMs_as_Operating_Systems.pdf",
+          "sha256": "9f674bcff69c86f11c813dcfad613d8841f5f8ed17979e3c4df06a91df7762e0",
+          "version": "arXiv:2310.08560v2，2024-02-12",
+          "range": "pp.1–8全文；架构权限、控制流、历史回忆/开场/文档QA/嵌套键值实验",
+          "visually_inspected_pdf_pages": [
+            3,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "path": "courses/2680/6.AgentsDesignIII.AgentMemoryAndReliability/readings/Where_LLM_Agents_Fail_and_How_They_can_Learn_From_Failures.pdf",
+          "sha256": "5dea81aa176cf3993123c46f2cef3e70c49a4fe5f2a5c6794c4b9fbc8f532a6b",
+          "version": "arXiv:2509.25370v1，2025-09-29",
+          "range": "pp.1–9、12–14、19–21全文；分类、方法/算法、实验、限制与提示模板",
+          "visually_inspected_pdf_pages": [
+            5,
+            7,
+            8
+          ]
+        },
+        {
+          "path": "courses/2680/6.AgentsDesignIII.AgentMemoryAndReliability/readings/Why_Do_Multi-Agent_LLM_Systems_Fail.pdf",
+          "sha256": "1b9e317a2a421e60ca2b2eda4a30844557a01e63286a790890c0ecef32d25460",
+          "version": "arXiv:2503.13657v3，2025-10-26",
+          "range": "pp.1–8、26–27全文；方法、14类别、PhoneAgent、样本分母与干预实验",
+          "visually_inspected_pdf_pages": [
+            2,
+            6,
+            8,
+            27
+          ]
+        },
+        {
+          "path": "courses/2680/6.AgentsDesignIII.AgentMemoryAndReliability/readings/Reasoning_Failures_in_Large_Language_Model_Agents.pdf",
+          "sha256": "fa4a400e0cd34f4b9c8381f6424dbb641815e6e1cff27c017bc2450c6845daf1",
+          "version": "归档16页，正文实际标题Beyond the Leaderboard；PDF无arXiv修订标记",
+          "range": "pp.1–14全文；方法、六类失败、综合论点与局限；未读15–16",
+          "visually_inspected_pdf_pages": []
+        },
+        {
+          "path": "courses/2680/6.AgentsDesignIII.AgentMemoryAndReliability/readings/The_Danger_of_Overthinking_Examining_the_Reasoning-Action_Dilemma_in_Agentic_Tasks.pdf",
+          "sha256": "49c65719e1756597e41ddde8677894d133691a90b7fbe1652ea6c832c45eb5b6",
+          "version": "arXiv:2502.08235v1，2025-02-12",
+          "range": "pp.1–8全文；定义、评分、预算/采样、成本和函数调用对照",
+          "visually_inspected_pdf_pages": [
+            2,
+            4,
+            7
+          ]
+        }
+      ],
+      "reread_result": [
+        "全文完成，定义、机制、案例状态、来源边界与自测相互一致，无新实质问题。 441–880首次请求未返回正文，跨压缩后完整重读该段；未将失败输出计为阅读。",
+        "全文完成，定义、机制、案例状态、来源边界与自测相互一致，无新实质问题。"
+      ],
+      "remaining_issues": [],
+      "limitations": [
+        "主讲义全文已读；六辅助论文仅声明所列实际范围，未声称未读附录全文。",
+        "20张关键PDF页已渲染目视；综述仅用于分类与论证，未把其二手汇总数字作为新实测。",
+        "Beyond the Leaderboard来源URL及线上版本未独立核验，以本地16页PDF为依据，正文明确限制。",
+        "没有GPU/模型/API/论文实验复现；伪代码与JSON是教学结构，新增数值是手算示例，非部署效果。",
+        "原始资料未改；未运行整理同步或修改课程根审核记录。"
+      ]
+    },
+    {
+      "note": "courses/2680/7.AgentDesignIV.AgentEvaluation/Agent_Eval_Lecture07_Integrated_Notes.md",
+      "lesson": 7,
+      "status": "passed",
+      "final_sha256": "14cf12d24ddfd74b7c13cde9c8faf3b880f0c91abf84237b0b40a91515c88de5",
+      "reviewed_at": "2026-10-28",
+      "content_review_sha256": "14cf12d24ddfd74b7c13cde9c8faf3b880f0c91abf84237b0b40a91515c88de5",
+      "coverage": {
+        "lecture": "37页全文核对，组件与端到端目标、评估循环、GAIA/BFCL/WebArena/OSWorld/SWE/τ/Terminal/AgentCompany、泄漏与作弊、开发工作流、可靠性、饱和与成本Pareto均覆盖。",
+        "mechanisms": "通过评估对象→任务/判分→pass与一致性→可靠性多维→horizon→作弊/有效性→可观测与策略执行→落地协议形成完整问题链；各论文版本、子集、基线和分母保持分离。",
+        "implementation": "数据/任务/环境/模型/harness/grader版本冻结，重复运行、轨迹字段、校准、配对分层bootstrap、零事故上界、故障分诊和回归门禁均可用于工程设计。"
+      },
+      "sources_read": [
+        {
+          "path": "courses/2680/7.AgentDesignIV.AgentEvaluation/SOURCES.md",
+          "sha256": "04db5c02704e5371abd5c0ccaf4822a1ccb9c4b70944958933910bfcd7055dc0",
+          "version": "本地索引",
+          "range": "全文，正文阅读前",
+          "visually_inspected_pdf_pages": []
+        },
+        {
+          "path": "courses/2680/7.AgentDesignIV.AgentEvaluation/REFERENCES.json",
+          "sha256": "a19f7e2fbdfa0394e271148276b2501851f7c116cf1c0439880810009e4ce7f4",
+          "version": "本地补充索引",
+          "range": "全文，正文阅读前；本课无README",
+          "visually_inspected_pdf_pages": []
+        },
+        {
+          "path": "courses/2680/7.AgentDesignIV.AgentEvaluation/7_agent_design_4.pdf",
+          "sha256": "87f1c93e4711985ff4624de14b297beb118ed9f429523b455a3d1acb8fe515b8",
+          "version": "37页官方课程讲义",
+          "range": "实际PDF pp.1–37全文；p37空白",
+          "visually_inspected_pdf_pages": [
+            13,
+            19,
+            22,
+            28,
+            29,
+            32,
+            33,
+            35
+          ]
+        },
+        {
+          "path": "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/AI_Agents_That_Matter.pdf",
+          "sha256": "1681013e0421f9d193ca5bb556b566f50d1e5eaa43d7a9700a31ca3dd0e2ff7a",
+          "version": "arXiv:2407.01502v1，2024-07-01",
+          "range": "pp.1–11、16–17、20–21全文；成本分母、重试策略、训练测试分割、HotPot与NovelQA",
+          "visually_inspected_pdf_pages": [
+            4,
+            6,
+            20
+          ]
+        },
+        {
+          "path": "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/Towards_a_Science_of_AI_Agent_Reliability.pdf",
+          "sha256": "f6347ad130f009ea385cfa341a32fd1c7d757d65458b4d1d73dae5c3a28a2ccf",
+          "version": "arXiv:2602.16666v3，2026-06-02",
+          "range": "pp.1–9、33–34全文；12指标、干净任务子集、校准、API扰动",
+          "visually_inspected_pdf_pages": [
+            4,
+            8
+          ]
+        },
+        {
+          "path": "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/Establishing_Best_Practices_for_Building_Rigorous_Agentic_Benchmarks.pdf",
+          "sha256": "6bee07172c55c1146fdc8a14e0a4839854f7b4be36616729fda3ee6d519a698b",
+          "version": "arXiv:2507.02825v5，2025-08-07",
+          "range": "pp.1–8、27–28全文；有效性链、τ任务缺陷与无动作攻击",
+          "visually_inspected_pdf_pages": [
+            3
+          ]
+        },
+        {
+          "path": "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/SWE-bench_Can_Language_Models_Resolve_Real-World_GitHub_Issues.pdf",
+          "sha256": "f7e8e1df64129742b8199a21a042734519a823a1dafd6f48f8f3ddcfb48ee296",
+          "version": "arXiv:2310.06770v3，2024-11-11",
+          "range": "pp.1–6全文；构建、2294任务、定位条件、Tables2/3",
+          "visually_inspected_pdf_pages": [
+            5
+          ]
+        },
+        {
+          "path": "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/AgentBench_Evaluating_LLMs_as_Agents.pdf",
+          "sha256": "9c780e35fc0b2de6c2e21e0572f6aaaadcf7ecdd56d63cfaae2b415bc0dc83c3",
+          "version": "arXiv:2308.03688v3，2025-10-04",
+          "range": "pp.1–8全文；8环境、终止条件、CoT基线、加权分数",
+          "visually_inspected_pdf_pages": [
+            6
+          ]
+        },
+        {
+          "path": "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/Measuring_AI_Ability_to_Complete_Long_Software_Tasks.pdf",
+          "sha256": "29216eb3af4daa417666757a462ab7c7b5f8c18c188ee5a56e258b04116211f7",
+          "version": "arXiv:2503.14499v4，2026-07-10",
+          "range": "pp.1–8全文；170任务、人类基线、拟合、分层bootstrap与外推限制",
+          "visually_inspected_pdf_pages": [
+            6
+          ]
+        },
+        {
+          "path": "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/tau-bench_A_Benchmark_for_Tool-Agent-User_Interaction_in_Real-World_Domains.pdf",
+          "sha256": "0ce66a1763d698c61bb311c3c874bf593d1e9a5bfff11bb35f6f72b981f6da56",
+          "version": "arXiv:2406.12045v1，2024-06-17",
+          "range": "pp.1–9全文；奖励、pass^k、模型/温度、策略消融、任务错误",
+          "visually_inspected_pdf_pages": [
+            4,
+            7,
+            8
+          ]
+        },
+        {
+          "path": "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/AgentOps_Enabling_Observability_of_LLM_Agents.pdf",
+          "sha256": "fc2a9aca1107bf4faace5cc18966f4bd85b05109793ca0cc7df6a3fcf88dadf3",
+          "version": "arXiv:2411.05285v2，2024-11-30；PDF日期12-03",
+          "range": "pp.1–10全文；17工具历史调查、实体关系、trace/span分类",
+          "visually_inspected_pdf_pages": [
+            8,
+            9
+          ]
+        },
+        {
+          "path": "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/ActPlane_Programmable_OS-Level_Policy_Enforcement_for_Agent_Harnesses.pdf",
+          "sha256": "59c2b86a375aa637abe0e4e4630b0b56affc540fa34dfbf2234493f63573220a",
+          "version": "arXiv:2606.25189v2，2026-06-30",
+          "range": "pp.1–12全文；策略集、DCR、190轨迹、延迟、OpenSafety与覆盖限制",
+          "visually_inspected_pdf_pages": [
+            9,
+            12
+          ]
+        },
+        {
+          "path": "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/2._Examples_of_cheating_in_CAISI_s_agent_evaluations.html",
+          "sha256": "0d1f02ad54f1e7c4849b91a1d5bcaf1f8e51ceff6e2211eb8f8a9f7d2e58daeb",
+          "version": "创建2025-11-28，更新2025-12-02",
+          "range": "文章正文全部§§2.1–2.3及方法说明；泄漏/评分作弊/未成功策略",
+          "visually_inspected_pdf_pages": []
+        },
+        {
+          "path": "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/Headlong_a_microharness_for_persistent_agents.html",
+          "sha256": "e4fd2046cbba2a00c2b8411fb0b6397f72a58f956b06a3853072ee075bd3a6f7",
+          "version": "2026-08归档文章",
+          "range": "正文从引言到致谢/引用全文；持续运行、摘要、后台状态与运行事件",
+          "visually_inspected_pdf_pages": []
+        },
+        {
+          "path": "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/Dapper_a_Large-Scale_Distributed_Systems_Tracing_Infrastructure.html",
+          "sha256": "f33968a9c204cdd790a212634d1ac7ceca8390b9b402a47146b1495f150664d2",
+          "version": "Google Research，2010",
+          "range": "归档短介绍/摘要全文；不是完整论文",
+          "visually_inspected_pdf_pages": []
+        },
+        {
+          "path": "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/Firecracker_Lightweight_Virtualization_for_Serverless_Applications.html",
+          "sha256": "516298233390603aaeb3178d3ae56ce5e042d0227735b4e5ecbfb216a09ce759",
+          "version": "NSDI 2020",
+          "range": "归档介绍摘要及BibTeX全文；不是完整论文",
+          "visually_inspected_pdf_pages": []
+        },
+        {
+          "url": "https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/",
+          "version": "2026-02-23",
+          "range": "在线正文相关lines40–76；138个选定任务、人工复核、59.4%缺陷、类型比例与污染讨论；未声称全文或本地下载"
+        }
+      ],
+      "reread_result": [
+        "全文实际完成，问题链、术语前置、演算、来源版本与案例/自测相互一致，无新实质问题。",
+        "全文实际完成，问题链、术语前置、演算、来源版本与案例/自测相互一致，无新实质问题。"
+      ],
+      "remaining_issues": [],
+      "limitations": [
+        "主讲义全文已读；辅助来源仅声明列出的实际阅读范围，未冒充全部附录。",
+        "24张关键PDF页渲染目视；讲义饱和榜单作为历史教学图，未独立重建外部榜单。",
+        "Dapper/Firecracker仅归档摘要页；OpenAI审计在线查阅，无新增本地原文。",
+        "只实际运行确定性指标教学代码；未复现模型/GPU/API/各benchmark实验。",
+        "原始资料及课程根记录未改；未运行整理同步。"
+      ]
+    },
+    {
+      "note": "courses/2680/8.AdvancedAgentDesignI.CostAndPerformance/lecture-08_agent_cost_and_performance.md",
+      "lesson": 8,
+      "status": "passed",
+      "final_sha256": "153aa3abd2915777c0595fa352524918e00a45cbc1daa6bbbfec7dbad34b8e4b",
+      "reviewed_at": "2026-10-28",
+      "content_review_sha256": "153aa3abd2915777c0595fa352524918e00a45cbc1daa6bbbfec7dbad34b8e4b",
+      "coverage": {
+        "lecture": "54页全部覆盖：会话成本分解、步骤/上下文/输出/单价、反向成本、预算、关键路径与投机、三种Harness责任划分及八种历史案例；实际PDF页序与幻灯片编号明确区分。",
+        "mechanisms": "PTE模型及其参数不一致、四种路由器训练/推理、质量差距指标与实验基线、缓存回本和模型切换、验证升级分母均逐项解释。",
+        "implementation": "从任务验收到调用账、预算预留、工具状态、压缩、路由、并行、回归评测；作业限制与教学策略分开。"
+      },
+      "sources_read": [
+        {
+          "path": "courses/2680/8.AdvancedAgentDesignI.CostAndPerformance/SOURCES.md",
+          "sha256": "6b03ab54f15bbd694ddfc286ee776e0e67ef290a19f5bf12d87e5b86c81889fa",
+          "version": "本地索引",
+          "range": "全文，正文阅读前；无README/REFERENCES.json",
+          "visually_inspected_pdf_pages": []
+        },
+        {
+          "path": "courses/2680/8.AdvancedAgentDesignI.CostAndPerformance/8_agent_design_5.pdf",
+          "sha256": "0ca8e326cd72fe52e9d676e19c30837bf718e63867f6f1ce7b3f7c3749db8e0e",
+          "version": "54页官方讲义",
+          "range": "PDF pp.1–54全文",
+          "visually_inspected_pdf_pages": [
+            8,
+            10,
+            13,
+            14,
+            15,
+            29,
+            40,
+            45
+          ]
+        },
+        {
+          "path": "courses/2680/8.AdvancedAgentDesignI.CostAndPerformance/../assignment/assignment-3/8_assignment3.pdf",
+          "sha256": "aad61822cdb769afe289b19994312923bb9dc582cb428c0e734cb2659db38550",
+          "version": "7页官方Assignment 3",
+          "range": "PDF pp.1–7全文",
+          "visually_inspected_pdf_pages": [
+            2,
+            3,
+            7
+          ]
+        },
+        {
+          "path": "courses/2680/8.AdvancedAgentDesignI.CostAndPerformance/readings/Reducing_cost_and_improving_performance_with_Claude_Platform.html",
+          "sha256": "d305ca40ee74907797e8985976e6fa3f2ca9cb6c2ae30bfc885f902ad9aad44a",
+          "version": "2026-09-08发布、后续模型更新的本地快照",
+          "range": "文章全文：缓存、指令反模式、effort、配置搜索和成本优化；文本提取244行全文",
+          "visually_inspected_pdf_pages": []
+        },
+        {
+          "path": "courses/2680/8.AdvancedAgentDesignI.CostAndPerformance/readings/RouteLLM_Learning_to_Route_LLMs_with_Preference_Data.pdf",
+          "sha256": "c9bc9c8171cab95bb3832cde8767c6b5e0925cd62930e51ddbd60d7cb2616741",
+          "version": "arXiv:2406.18665v4，2025-02-23；ICLR2025",
+          "range": "pp.1–10、13–16全文；pp.11–12参考文献未读",
+          "visually_inspected_pdf_pages": [
+            2,
+            6,
+            7,
+            9,
+            10
+          ]
+        },
+        {
+          "path": "courses/2680/8.AdvancedAgentDesignI.CostAndPerformance/readings/Beyond_Accuracy_Unveiling_Inefficiency_Patterns_in_Tool-Integrated_Reasoning.pdf",
+          "sha256": "5bfd78d749a79762d2be401889e2c84f9c99dde2d453e890d0f6c5a95bca6e86",
+          "version": "arXiv:2604.05404v2，2026-04-14",
+          "range": "pp.1–9、12–22全文；pp.10–11参考文献未读",
+          "visually_inspected_pdf_pages": [
+            4,
+            7,
+            13,
+            14,
+            16,
+            17
+          ]
+        },
+        {
+          "url": "https://www.uber.com/us/en/blog/efficient-software-factory/",
+          "version": "2026-08-27；本轮2026-10-28在线查阅",
+          "range": "正文lines15–239；引用重点lines126–162 Code-Mode和Prompt Caching Strategy；无本地下载"
+        }
+      ],
+      "reread_result": [
+        "实际全文完成，问题链、符号先后、计算、案例、自测和证据边界一致，无新增实质问题。",
+        "实际全文完成，问题链、符号先后、计算、案例、自测和证据边界一致，无新增实质问题。"
+      ],
+      "remaining_issues": [],
+      "limitations": [
+        "主讲义54页、作业7页全文；辅助论文只声明实际页范围。",
+        "22张关键PDF页渲染目视；Anthropic远程图像未核验，仅使用正文可复核数字。",
+        "产品/API/Harness仅按归档版本解释，未进行当前源码或硬件厂商规格审计。",
+        "未复现GPU、模型、Router、Assignment或业务实验；只实际运行确定性成本代码。",
+        "原始资料未改，无新增原文下载，未运行sync/organize或修改课程根记录。"
+      ]
+    },
+    {
+      "note": "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/notes.zh-CN.md",
+      "lesson": 9,
+      "status": "passed",
+      "final_sha256": "8060719a2eb1d8d7aa31726b25afba82d0c151be37fc9167aeb0555efdafc8d1",
+      "reviewed_at": "2026-10-28",
+      "content_review_sha256": "8060719a2eb1d8d7aa31726b25afba82d0c151be37fc9167aeb0555efdafc8d1",
+      "coverage": "本课没有教师讲义，按官方四组18篇导读与讨论规范审查。原稿安全入口→信任/能力→协议评价→反馈/记忆/程序演化→安全发布主线完整；18篇各有机制与证据定位，保留攻击访问假设、分母和版本。新增讨论练习使读者能提出反例与替代设计，且不把论文误标为lecture。",
+      "sources_read": [
+        {
+          "path": "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/SOURCES.md",
+          "range": "全文",
+          "purpose": "课次资料入口，明确无教师Slides"
+        },
+        {
+          "path": "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/README.md",
+          "range": "全文"
+        },
+        {
+          "path": "courses/2680/site/readings/oct-14.html",
+          "range": "HTML正文全文，提取文本1–170、171–259",
+          "purpose": "四组18篇与AI生成导读声明"
+        },
+        {
+          "path": "courses/2680/site/discussion.html",
+          "range": "HTML正文全文，提取文本1–169",
+          "purpose": "讨论目标、读论文方法、20分钟结构与开放题"
+        },
+        {
+          "path": "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/AI_Control_Improving_Safety_Despite_Intentional_Subversion.pdf",
+          "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+          "pdf_pages_read": "3–7",
+          "visual_pages": [],
+          "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+          "sha256": "999f7a92bb8c085799e68f3d88f491ad8a334f862ccf5b286e5c2766677864c0"
+        },
+        {
+          "path": "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/AgentDojo_A_Dynamic_Environment_to_Evaluate_Prompt_Injection_Attacks_and_Defenses_for_LLM_Agents.pdf",
+          "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+          "pdf_pages_read": "3–7,20",
+          "visual_pages": [
+            20
+          ],
+          "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+          "sha256": "349884fffbf43282591c5accffd57bb651632f38e412fe303114941bdd111b05"
+        },
+        {
+          "path": "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/AgentPoison_Red-teaming_LLM_Agents_via_Poisoning_Memory_or_Knowledge_Bases.pdf",
+          "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+          "pdf_pages_read": "3–8",
+          "visual_pages": [
+            7
+          ],
+          "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+          "sha256": "008c4b0f70150ae2e26cead8ca6bad773cb4e2cd370154a10db320a456ea5ee1"
+        },
+        {
+          "path": "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Agentic_Context_Engineering_Evolving_Contexts_for_Self-Improving_Language_Models.pdf",
+          "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+          "pdf_pages_read": "2–10",
+          "visual_pages": [
+            3,
+            8
+          ],
+          "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+          "sha256": "51050ced82df75c143b151262d5af8763916968ca50374bd8ff778f40552b0ad"
+        },
+        {
+          "path": "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Agentic_Harness_Engineering_Observability-Driven_Automatic_Evolution_of_Coding-Agent_Harnesses.pdf",
+          "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+          "pdf_pages_read": "3–10",
+          "visual_pages": [
+            4,
+            9
+          ],
+          "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+          "sha256": "299f2633b4c13db7bed52434b4db7c48ea621993581014d30e7bcd036d3464df"
+        },
+        {
+          "path": "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Automated_Design_of_Agentic_Systems.pdf",
+          "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+          "pdf_pages_read": "2–7",
+          "visual_pages": [
+            7
+          ],
+          "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+          "sha256": "32eb1c1a6888e35fae0f618e33c58698b54d9c49bc063fef91ee591719fca376"
+        },
+        {
+          "path": "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf",
+          "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+          "pdf_pages_read": "3–7,32,69–71",
+          "visual_pages": [
+            71
+          ],
+          "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+          "sha256": "13ff4abe0c7ad4a7dd3b4876d19a8bf940e39e70dabbf06065aa774a6c3457de"
+        },
+        {
+          "path": "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Defeating_Prompt_Injections_by_Design.pdf",
+          "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+          "pdf_pages_read": "1,3–18",
+          "visual_pages": [
+            7,
+            10
+          ],
+          "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+          "sha256": "c3719f6ce73eecf45e3764debef8a3d8ff8c9233b37d128c558b694ec3790cc7"
+        },
+        {
+          "path": "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Design_Patterns_for_Securing_LLM_Agents_against_Prompt_Injections.pdf",
+          "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+          "pdf_pages_read": "3–11",
+          "visual_pages": [],
+          "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+          "sha256": "c202a240f8f03c93cfafd157f218ec790c9e503beeaf80e229fb5e1645ab7f9c"
+        },
+        {
+          "path": "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Live-SWE-agent_Can_Software_Engineering_Agents_Self-Evolve_on_the_Fly.pdf",
+          "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+          "pdf_pages_read": "2–7",
+          "visual_pages": [
+            6
+          ],
+          "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+          "sha256": "7bd8e1c6345c2ff8d5a93674a8a88fcfc70ab6f657f946c82a2961f449e01535"
+        },
+        {
+          "path": "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf",
+          "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+          "pdf_pages_read": "3–10",
+          "visual_pages": [
+            7,
+            9
+          ],
+          "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+          "sha256": "7d9b90f53a9f4801a090f1a4acb843340cde81e4f865f97d53fff2a6a570eb73"
+        },
+        {
+          "path": "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Multi-Agent_Systems_Execute_Arbitrary_Malicious_Code.pdf",
+          "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+          "pdf_pages_read": "1–8",
+          "visual_pages": [
+            7
+          ],
+          "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+          "sha256": "5fb79d30a11ef7b2e28d5eadc53af9b7ecb41d8ee60c8e04c2ec3c59e8b1fb11"
+        },
+        {
+          "path": "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Not_what_you_ve_signed_up_for_Compromising_Real-World_LLM-Integrated_Applications_with_Indirect_Prompt_Injection.pdf",
+          "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+          "pdf_pages_read": "1–7（p.4截断后单独补读）",
+          "visual_pages": [],
+          "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+          "sha256": "428e23e8c7e4f89310e113e38d082b3f65548a8b887188ebc536099061800e81"
+        },
+        {
+          "path": "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/OWASP_Top_10_For_Agentic_Applications_2026.pdf",
+          "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+          "pdf_pages_read": "4–9",
+          "visual_pages": [],
+          "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+          "sha256": "a2db94cd00b08e0b3a5e5b619afe024bdbcd74503111085705e4f3dd886fcb5c"
+        },
+        {
+          "path": "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf",
+          "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+          "pdf_pages_read": "2–8",
+          "visual_pages": [
+            3,
+            8
+          ],
+          "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+          "sha256": "6059b6f89fea9959bd3dab553fbb97756a3dfb1b15e3cbab2fbf3ab6664333bd"
+        },
+        {
+          "path": "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Self-Refine_Iterative_Refinement_with_Self-Feedback.pdf",
+          "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+          "pdf_pages_read": "1–5",
+          "visual_pages": [
+            5
+          ],
+          "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+          "sha256": "81e44592314d80218ad108d3490cd0b84ba5962fefd5c84819987afd77a57087"
+        },
+        {
+          "path": "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/The_Attacker_Moves_Second_Stronger_Adaptive_Attacks_Bypass_Defenses_Against_LLM_Jailbreaks_and_Prompt_Injections.pdf",
+          "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+          "pdf_pages_read": "1–5",
+          "visual_pages": [
+            1
+          ],
+          "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+          "sha256": "5067f88c7c14a007c205a452e8cdc5bcbf2e87f0958efcc620aa23c81465a9c3"
+        },
+        {
+          "path": "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/The_Instruction_Hierarchy_Training_LLMs_to_Prioritize_Privileged_Instructions.pdf",
+          "version": "本地原始归档版本；正文映射表记录已辨识的v1/v2/v3/会议版",
+          "pdf_pages_read": "3–9",
+          "visual_pages": [
+            7,
+            9
+          ],
+          "read_method": "逐页连续正文精读所列范围；图表另渲染目视；未声称附录全部阅读",
+          "sha256": "fbc2d65e913e75b8f0ae74e83e3443c36a727636d1038a071a2f10d8be63dac4"
+        },
+        {
+          "path": "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/examples/policy_and_promotion.py",
+          "range": "全文",
+          "purpose": "检查实现并实际重跑，7个case断言通过，JSON输出与RUN.json一致"
+        }
+      ],
+      "reread_result": [
+        "完整分三段复读；问题链、例子、结论边界无新增阻断问题",
+        "完整分三段复读；新定义、数学、19自测与4讨论题对应一致"
+      ],
+      "remaining_issues": [],
+      "limitations": [
+        "未运行模型、攻击、GPU或论文基准；仅重跑本地确定性教学脚本。",
+        "18篇按所列机制/评价范围回查，未声称全部长附录逐页读完。",
+        "只审查本地归档版本，不把历史实验数字描述为当前产品能力；本课无教师讲义。",
+        "REFERENCES.json不存在；没有新增或改写原始材料。"
+      ]
+    },
+    {
+      "note": "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/notes.zh-CN.md",
+      "lesson": 10,
+      "status": "passed",
+      "final_sha256": "ccae61aa430d46101675b44d4c145f6f97411a02d4cd78d5b16a7dc6a0ae7c67",
+      "reviewed_at": "2026-10-28",
+      "content_review_sha256": "ccae61aa430d46101675b44d4c145f6f97411a02d4cd78d5b16a7dc6a0ae7c67",
+      "coverage": [
+        "主讲义36页完整覆盖：请求阶段、分词、调度、Transformer形状、GQA/KV、参数/FLOPs/容量、MoE、长上下文与循环/扩散均保持原问题链。",
+        "对15项阅读分别核实相关机制和条件；主线保持普通GQA decoder，其他架构定位为比较扩展，未把趋势图变为通用性能保证。",
+        "准确保留320KiB/字节、全层score并非推理峰值、64×80K超两H200容量、Switch训练非decode加速、Dream初始化成本、AR/diffusion缓存差异等已有正确论述。"
+      ],
+      "sources_read": [
+        {
+          "path": "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/SOURCES.md",
+          "range": "全文；本课无 README.md / REFERENCES.json"
+        },
+        {
+          "path": "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/9_llm_serving_basics_1.pdf",
+          "pdf_pages_read": "1–36全文",
+          "visual_pages": [
+            6,
+            7,
+            8,
+            12,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            23,
+            24,
+            25,
+            26,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34
+          ],
+          "range": "提取正文连续行1–260、261–560、561–末尾；不是目录扫描",
+          "sha256": "1cfe4fd6a413cdd168d711b413beff19e4967fe0ec0cb89b0cbe3c2c7fb5872a"
+        },
+        {
+          "path": "courses/2680/site/readings/oct-19.html",
+          "range": "官网阅读分组正文全文，提取文本1–235",
+          "purpose": "15篇阅读分工与选读边界"
+        },
+        {
+          "path": "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Attention_Is_All_You_Need.pdf",
+          "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+          "pdf_pages_read": "2–8",
+          "visual_pages": [],
+          "read_method": "所列页连续正文精读，未声称整篇附录全读",
+          "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+        },
+        {
+          "path": "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/DeepSeek-V3_Technical_Report.pdf",
+          "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+          "pdf_pages_read": "1,5–12,22",
+          "visual_pages": [
+            7
+          ],
+          "read_method": "所列页连续正文精读，未声称整篇附录全读",
+          "sha256": "812a3fd645c80725354de9d831a6785503007a60681461407f64e97305fa9330"
+        },
+        {
+          "path": "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/DeepSeekMoE_Towards_Ultimate_Expert_Specialization_in_Mixture-of-Experts_Language_Models.pdf",
+          "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+          "pdf_pages_read": "3–6,8–10",
+          "visual_pages": [],
+          "read_method": "所列页连续正文精读，未声称整篇附录全读",
+          "sha256": "a64b509e1410d09cf5b70570788d27790985fb9808ce436b9da8de73f2eed651"
+        },
+        {
+          "path": "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Dream_7B_Diffusion_Large_Language_Models.pdf",
+          "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+          "pdf_pages_read": "1,3–8",
+          "visual_pages": [
+            7
+          ],
+          "read_method": "所列页连续正文精读，未声称整篇附录全读",
+          "sha256": "461f5ac618e86dd398af3662958178c3c243ee97b7e5ee9c20f5ed6399107a0d"
+        },
+        {
+          "path": "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/GLU_Variants_Improve_Transformer.pdf",
+          "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+          "pdf_pages_read": "1–3",
+          "visual_pages": [
+            3
+          ],
+          "read_method": "所列页连续正文精读，未声称整篇附录全读",
+          "sha256": "7398ae8b163722a6b5410fb975722adbe6b5f6f9c7f1efa584f1c6b79eaa93e2"
+        },
+        {
+          "path": "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Large_Language_Diffusion_Models.pdf",
+          "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+          "pdf_pages_read": "3–6",
+          "visual_pages": [
+            3
+          ],
+          "read_method": "所列页连续正文精读，未声称整篇附录全读",
+          "sha256": "18942f14544d696bef711acd43c84017e51b8428b15edc74130761218e66f73b"
+        },
+        {
+          "path": "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Mixtral_of_Experts.pdf",
+          "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+          "pdf_pages_read": "2–4",
+          "visual_pages": [],
+          "read_method": "所列页连续正文精读，未声称整篇附录全读",
+          "sha256": "f8bbf0e9d979b7a8ce7be65119266545a229a85b57e077d8bd048e458bb642da"
+        },
+        {
+          "path": "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Neural_Machine_Translation_of_Rare_Words_with_Subword_Units.pdf",
+          "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+          "pdf_pages_read": "3–5",
+          "visual_pages": [],
+          "read_method": "所列页连续正文精读，未声称整篇附录全读",
+          "sha256": "f4e5a6bbbe0d87459997fffe892f8be485e33903cc71f923c2884639fbf96401"
+        },
+        {
+          "path": "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Root_Mean_Square_Layer_Normalization.pdf",
+          "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+          "pdf_pages_read": "2–6",
+          "visual_pages": [
+            4
+          ],
+          "read_method": "所列页连续正文精读，未声称整篇附录全读",
+          "sha256": "a38ab771022fc10525d2b6b23de40307b2ca7b2bf463f5219da6a0ba1c41225f"
+        },
+        {
+          "path": "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Scaling_up_Test-Time_Compute_with_Latent_Reasoning_A_Recurrent_Depth_Approach.pdf",
+          "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+          "pdf_pages_read": "3–9",
+          "visual_pages": [
+            4
+          ],
+          "read_method": "所列页连续正文精读，未声称整篇附录全读",
+          "sha256": "96f4543683a06a470ccb0b6b0db27a98f283fde9467d175e838f03a629a76c7b"
+        },
+        {
+          "path": "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Switch_Transformers_Scaling_to_Trillion_Parameter_Models_with_Simple_and_Efficient_Sparsity.pdf",
+          "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+          "pdf_pages_read": "3–6",
+          "visual_pages": [],
+          "read_method": "所列页连续正文精读，未声称整篇附录全读",
+          "sha256": "f340f6ace31abf7d0730ef461404279f40d3c890e9cc2daeb7068b3304afdbd6"
+        },
+        {
+          "path": "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/The_Llama_3_Herd_of_Models.pdf",
+          "version": "本地固定归档版本，按原PDF；Dream明确arXiv v1、DeepSeek-V3 v2",
+          "pdf_pages_read": "6–8",
+          "visual_pages": [
+            7
+          ],
+          "read_method": "所列页连续正文精读，未声称整篇附录全读",
+          "sha256": "481f1599468f95a07d05e97fafe55bbe786dc1624c6f881bcb4c7d14c933d083"
+        },
+        {
+          "path": "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/The_Illustrated_Transformer.html",
+          "range": "提取正文1–317全文",
+          "version": "本地HTML快照"
+        },
+        {
+          "path": "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Transformer_Inference_Arithmetic.html",
+          "range": "提取正文1–309全文",
+          "version": "本地HTML快照"
+        },
+        {
+          "path": "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/The_Annotated_Transformer.html",
+          "range": "提取正文320–385（attention）、610–700（错位标签与训练循环）、798–840（label smoothing）",
+          "version": "本地HTML快照"
+        },
+        {
+          "path": "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/examples/inference_basics.py",
+          "range": "全文阅读及实际执行；输出与RUN.json全部字段一致；临时副本遗漏当前KV的反例以AssertionError失败，原文件未改"
+        }
+      ],
+      "reread_result": [
+        "完整逐段复读，无新问题；符号、标签、状态、数值、来源边界与自测互相一致",
+        "完整逐段复读，无新问题；符号、标签、状态、数值、来源边界与自测互相一致"
+      ],
+      "remaining_issues": [],
+      "limitations": [
+        "未运行GPU、真实模型、服务压测或论文训练实验；CPU检查只覆盖算术和一头注意力缓存。",
+        "高级架构部分若无对应本地原论文，仅按主讲义解释机制，未新增外推性能或宣称复现。",
+        "阅读论文仅声称所列页与图，未声称全部附录、全部模型比较均精读；官网AI导读不作论文证据。"
+      ]
+    },
+    {
+      "note": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/notes.zh-CN.md",
+      "lesson": 11,
+      "status": "passed",
+      "final_sha256": "a4c936d78c356e9f24b080cc9a4d7c6cb77d41960de6be014a2df23bb331aea4",
+      "reviewed_at": "2026-10-28",
+      "content_review_sha256": "a4c936d78c356e9f24b080cc9a4d7c6cb77d41960de6be014a2df23bb331aea4",
+      "coverage": [
+        "41页主讲义问题链完整：CPU/GPU吞吐差异→逻辑线程与物理SM→算力/容量/带宽→roofline→batch/context→内存并发→异步搬运→多卡与异构硬件；没有用阅读论文替代讲义。",
+        "全部官方阅读组在§9–14有位置；FA1–4解释瓶颈迁移，FlashInfer与RPA解释服务布局，FLUX/编译运行时解释执行边界；高级来源按核心机制与对照范围审核，未声称每篇论文全读。",
+        "保留具体计算、CPU等价实现、实验执行顺序、故障分流表、持久编译状态和18项有答案自测；补齐初学GPU所需词义与贯穿计算。"
+      ],
+      "sources_read": [
+        {
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/SOURCES.md",
+          "sha256": "ed4e64165c425f2167363f7ea14546d25305a79c781ec73e423d903d37356621",
+          "range": "全文；初读正文之前",
+          "version": "本地归档固定版本",
+          "reviewer": "harvard_full_audit"
+        },
+        {
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/REFERENCES.json",
+          "sha256": "e9602b57b733428edbdd4c8945c90e0be7b30fe9172e7b9571a9439d7708eb4c",
+          "range": "全文；初读正文之前",
+          "version": "本地归档固定版本",
+          "reviewer": "harvard_full_audit"
+        },
+        {
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/10_llm_serving_basics_2a.pdf",
+          "sha256": "b7351ed4f055e0196ebf06cf348e5042b83392f45dd30cbca379ad28be72b63b",
+          "range": "PDF实际pp1–41全文，提取文本1–420、421–840、841–EOF",
+          "version": "2026-10-21主讲义，41页",
+          "reviewer": "harvard_full_audit",
+          "visually_inspected_pdf_pages": [
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            38,
+            39,
+            40,
+            41
+          ]
+        },
+        {
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/CUDA_C++_Programming_Guide.pdf",
+          "sha256": "9d3c313edfa39fbd932cc1517dec8d3a3690802132f8e65530a155e6eb3339b8",
+          "range": "PDF pp1–2、27–36、73–82全文；编程层级、cluster、Graph更新和限制",
+          "version": "Release13.4 2026-09-15；正文legacy",
+          "reviewer": "harvard_full_audit"
+        },
+        {
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/references/Roofline_An_Insightful_Visual_Performance_Model_for_Floating-Point_Programs_and_Multicore_Architectures.pdf",
+          "sha256": "c92f852eed1070b140302114339271dc1a4d6d665814ac9000be6ce06a7d6bcb",
+          "range": "PDF pp3–6全文；DRAM口径、roofline与ceilings",
+          "version": "Berkeley EECS-2008-134",
+          "reviewer": "harvard_full_audit",
+          "visually_inspected_pdf_pages": [
+            4
+          ]
+        },
+        {
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashAttention_Fast_and_Memory-Efficient_Exact_Attention_with_IO-Awareness.pdf",
+          "sha256": "ca7f9fda10b90fc05dd291a3accc85e9c1a4a860b99b31928dab03ed3fcb14e4",
+          "range": "PDF pp3–6全文；online softmax、Algorithm1、IO与重算",
+          "version": "归档FlashAttention原论文",
+          "reviewer": "harvard_full_audit",
+          "visually_inspected_pdf_pages": [
+            5
+          ]
+        },
+        {
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashAttention-2_Faster_Attention_with_Better_Parallelism_and_Work_Partitioning.pdf",
+          "sha256": "4aa8935dfacaf6ae8c68f772ca92f730154a0dd0e1bceeb59c7bc56c512d5868",
+          "range": "PDF p1、pp4–9全文；工作划分与实验摘要",
+          "version": "归档FlashAttention-2",
+          "reviewer": "harvard_full_audit",
+          "visually_inspected_pdf_pages": [
+            9
+          ]
+        },
+        {
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashAttention-3_Fast_and_Accurate_Attention_with_Asynchrony_and_Low-precision.pdf",
+          "sha256": "3d05ca102802e6b8ebbae5181efe777b7d258cd75e2fe9cca209efd2f5e6c6cb",
+          "range": "PDF p1、pp3–5、9–10全文；producer/consumer、WGMMA、pipeline消融和精度条件",
+          "version": "FlashAttention-3 本地v2",
+          "reviewer": "harvard_full_audit",
+          "visually_inspected_pdf_pages": [
+            5,
+            9
+          ]
+        },
+        {
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashAttention-4_Algorithm_and_Kernel_Pipelining_Co-Design_for_Asymmetric_Hardware_Scaling.pdf",
+          "sha256": "7c053b2b45a9d7da93b21f7dbe16ff8a927a9dc7e92537a034ca58a4eb5f10eb",
+          "range": "PDF p1、pp3–9、p20全文；TMEM、2CTA、pipeline、指数近似和内部硬件/日期矛盾",
+          "version": "FlashAttention-4 本地v1",
+          "reviewer": "harvard_full_audit",
+          "visually_inspected_pdf_pages": [
+            20
+          ]
+        },
+        {
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashInfer_Efficient_and_Customizable_Attention_Engine_for_LLM_Inference_Serving.pdf",
+          "sha256": "6995874b7a43b0693ba0da805c4d99327a4cb4013edbea3e36f4c42949e63303",
+          "range": "PDF pp3–10全文；布局、运行时、CUDA Graph、服务对照和parallel generation",
+          "version": "FlashInfer 本地v2",
+          "reviewer": "harvard_full_audit",
+          "visually_inspected_pdf_pages": [
+            3,
+            8
+          ]
+        },
+        {
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FLUX_Fast_Software-based_Communication_Overlap_on_GPUs_through_Kernel_Fusion.pdf",
+          "sha256": "14256ca83b1595bcee9d1bc6cb5fcb84d8fda8d6a18c51a8e45797a47b7bf455",
+          "range": "PDF p1、pp4–6、10–17全文；ECT定义、细粒度通信、硬件/版本/shape与分层实验",
+          "version": "FLUX 2024-10-25稿",
+          "reviewer": "harvard_full_audit"
+        },
+        {
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/TVM_An_Automated_End-to-End_Optimizing_Compiler_for_Deep_Learning.pdf",
+          "sha256": "6032d5a54db0ec552168a5f5295a954edea6a24d91ae03bed1e0da0d858c9fa9",
+          "range": "PDF pp3–5、7–8全文；compute/schedule、流水线和代价模型",
+          "version": "TVM 2018",
+          "reviewer": "harvard_full_audit"
+        },
+        {
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/Mirage_A_Multi-Level_Superoptimizer_for_Tensor_Programs.pdf",
+          "sha256": "1f0b88aa3b56253ada9d85343bc5e0bdcf89790240fcce92113573b7927e2a2b",
+          "range": "PDF pp3–11全文；μGraph、生成、验证定理、实现限制及Figure7",
+          "version": "Mirage 本地v3",
+          "reviewer": "harvard_full_audit",
+          "visually_inspected_pdf_pages": [
+            11
+          ]
+        },
+        {
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/Making_Deep_Learning_go_Brrrr_From_First_Principles.html",
+          "sha256": "b035a3c38d61db25dc26c2c6cc76b1df17fd4d5a20735b857f2ffb6e248bcf90",
+          "range": "去导航提取文本1–292全文；compute/memory/overhead与全部脚注",
+          "version": "Horace He 2022归档",
+          "reviewer": "harvard_full_audit"
+        },
+        {
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashAttention-4_from_Scratch_to_Near-SOTA_in_60_Diagrams_CUDA_PTX.html",
+          "sha256": "22ff6b10fa6853e0c9ea268aa7a7958237271392ef507be8dff20b3e8095a63f",
+          "range": "去导航提取文本1–140、3540–3765全文；主线范围、最终4项小优化、逐shape结果、布局及FA4标定；不是4007行全文",
+          "version": "2026-08-28文章；2026-09-12更新",
+          "reviewer": "harvard_full_audit"
+        },
+        {
+          "path": "courses/2680/site/readings/oct-21.html",
+          "sha256": "2db6884eb3be13a95ec274822118ec20f57b5604b568c8c172d77018b5ad3294",
+          "range": "去导航提取文本1–135、136–264全文；官方阅读分组，仅作课程范围，AI生成Why read it不作主证据",
+          "version": "本地归档固定版本",
+          "reviewer": "harvard_full_audit"
+        },
+        {
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/MPK_A_Compiler_and_Runtime_for_Mega-Kernelizing_Tensor_Programs.pdf",
+          "sha256": "0069c67600b194c4a935110889df803dd0ff8ca8caebc324ef6e13aeaa4da4cb",
+          "pdf_pages_read": [
+            2,
+            7,
+            8,
+            9,
+            10,
+            13,
+            14
+          ],
+          "visual_pdf_pages": [
+            7,
+            10
+          ],
+          "findings": "§4–7: SM-level task/event graph, JIT/AOT dispatch, shared-memory paging, 4 SM/16 scheduler warps, A100/H100/B200, prompt64/output1024 BF16 offline maxbatch1–16; current guide supported. Suggest throughput-ratio wording for 1.7× to avoid ambiguous latency-decrease times.",
+          "reviewer": "primary reviewer /root；独立核查记录已读取并整合，非本子代理冒称亲读",
+          "range": "实际PDF页 2, 7, 8, 9, 10, 13, 14",
+          "version": "本地归档版本，绑定SHA；详见独立记录"
+        },
+        {
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/references/PyTorch_2_Faster_Machine_Learning_Through_Dynamic_Python_Bytecode_Transformation_and_Graph_Compilation.pdf",
+          "sha256": "9fba949b34051ae1b0936c91ddb23e43638912b180dba490616256e5446f4e6e",
+          "pdf_pages_read": [
+            2,
+            3,
+            4,
+            5,
+            8,
+            9,
+            10,
+            12,
+            13,
+            14,
+            15
+          ],
+          "visual_pdf_pages": [
+            4,
+            14
+          ],
+          "findings": "§3/4 guard/partial graphs/side-effect preservation and GPU Triton/CPU C++ supported; §6 settings 2023-08-30 nightly/CUDA11.6, warmups excluded, training means forward+backward excluding optimizer; recommend making this boundary explicit beside summary speedups.",
+          "reviewer": "primary reviewer /root；独立核查记录已读取并整合，非本子代理冒称亲读",
+          "range": "实际PDF页 2, 3, 4, 5, 8, 9, 10, 12, 13, 14, 15",
+          "version": "本地归档版本，绑定SHA；详见独立记录"
+        },
+        {
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/A_Systematic_Characterization_of_LLM_Inference_on_GPUs.pdf",
+          "sha256": "f3929c0b1bdf5c42730f9a57c29cc986523a78f2ff307d1e9afb9d439e7d4116",
+          "pdf_pages_read": [
+            4,
+            5,
+            6,
+            11,
+            12,
+            14,
+            15
+          ],
+          "visual_pdf_pages": [
+            5,
+            14
+          ],
+          "findings": "§3 vLLM0.9.2 BF16 eager offline batches/4A10080GB and Orin; §5.2 warp-level stall; §6.1 summary Qwen2.5-32B uses4096input16output (different from Table2), TP2 1.24→0.66s. Guide appropriately limits generalization; recommend exact workload/model beside numbers.",
+          "reviewer": "primary reviewer /root；独立核查记录已读取并整合，非本子代理冒称亲读",
+          "range": "实际PDF页 4, 5, 6, 11, 12, 14, 15",
+          "version": "本地归档版本，绑定SHA；详见独立记录"
+        },
+        {
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/Ragged_Paged_Attention_A_High-Performance_and_Flexible_LLM_Inference_Kernel_for_TPU.pdf",
+          "sha256": "6b546d2af7bd3673cdfedc2d4efb17e3ebc149d1cfa28e893f45cae9b7aca578",
+          "pdf_pages_read": [
+            1,
+            6,
+            7,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "visual_pdf_pages": [
+            13,
+            15,
+            16
+          ],
+          "findings": "§4 decode128 uniform-length sequences; prefill1 sequence512–32K. MFU denominator hardware peak × maxMXUutilization: dk128 uses50%peak. Reported73%noncausal/63%causal are adjusted-denominator metrics; guide must clarify this. 86%MBU is controlled shape, not arbitrary ragged workload guarantee.",
+          "reviewer": "primary reviewer /root；独立核查记录已读取并整合，非本子代理冒称亲读",
+          "range": "实际PDF页 1, 6, 7, 11, 12, 13, 14, 15, 16",
+          "version": "本地归档版本，绑定SHA；详见独立记录"
+        },
+        {
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/examples/roofline_online_softmax.py",
+          "sha256": "c5c4dcd7572288949924cbd5646e5d27ec3d7f8f4db62485219c2bda9e60ed92",
+          "range": "代码全文；CPU执行并与RUN.json逐字段比对；另在内存临时变体删除旧状态缩放，验证6.0→5.2反例",
+          "version": "本地归档固定版本",
+          "reviewer": "harvard_full_audit"
+        },
+        {
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/examples/RUN.json",
+          "sha256": "0385200ffa6c8dc9c8ce589be86e09a72fa3cdff0b7aad59aaec7238c2ea376e",
+          "range": "全文，复跑输出一致",
+          "version": "本地归档固定版本",
+          "reviewer": "harvard_full_audit"
+        }
+      ],
+      "additional_evidence": {
+        "cpu_run": "RUN.json逐字段一致；direct与online均6.0；删除缩放临时变体5.2",
+        "source_checks": {
+          "scope": "§9.4–15.1, original working guide lines230–365; this record is not a full-guide reread",
+          "sources_read": [
+            {
+              "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/MPK_A_Compiler_and_Runtime_for_Mega-Kernelizing_Tensor_Programs.pdf",
+              "sha256": "0069c67600b194c4a935110889df803dd0ff8ca8caebc324ef6e13aeaa4da4cb",
+              "pdf_pages_read": [
+                2,
+                7,
+                8,
+                9,
+                10,
+                13,
+                14
+              ],
+              "visual_pdf_pages": [
+                7,
+                10
+              ],
+              "findings": "§4–7: SM-level task/event graph, JIT/AOT dispatch, shared-memory paging, 4 SM/16 scheduler warps, A100/H100/B200, prompt64/output1024 BF16 offline maxbatch1–16; current guide supported. Suggest throughput-ratio wording for 1.7× to avoid ambiguous latency-decrease times."
+            },
+            {
+              "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/references/PyTorch_2_Faster_Machine_Learning_Through_Dynamic_Python_Bytecode_Transformation_and_Graph_Compilation.pdf",
+              "sha256": "9fba949b34051ae1b0936c91ddb23e43638912b180dba490616256e5446f4e6e",
+              "pdf_pages_read": [
+                2,
+                3,
+                4,
+                5,
+                8,
+                9,
+                10,
+                12,
+                13,
+                14,
+                15
+              ],
+              "visual_pdf_pages": [
+                4,
+                14
+              ],
+              "findings": "§3/4 guard/partial graphs/side-effect preservation and GPU Triton/CPU C++ supported; §6 settings 2023-08-30 nightly/CUDA11.6, warmups excluded, training means forward+backward excluding optimizer; recommend making this boundary explicit beside summary speedups."
+            },
+            {
+              "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/A_Systematic_Characterization_of_LLM_Inference_on_GPUs.pdf",
+              "sha256": "f3929c0b1bdf5c42730f9a57c29cc986523a78f2ff307d1e9afb9d439e7d4116",
+              "pdf_pages_read": [
+                4,
+                5,
+                6,
+                11,
+                12,
+                14,
+                15
+              ],
+              "visual_pdf_pages": [
+                5,
+                14
+              ],
+              "findings": "§3 vLLM0.9.2 BF16 eager offline batches/4A10080GB and Orin; §5.2 warp-level stall; §6.1 summary Qwen2.5-32B uses4096input16output (different from Table2), TP2 1.24→0.66s. Guide appropriately limits generalization; recommend exact workload/model beside numbers."
+            },
+            {
+              "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/Ragged_Paged_Attention_A_High-Performance_and_Flexible_LLM_Inference_Kernel_for_TPU.pdf",
+              "sha256": "6b546d2af7bd3673cdfedc2d4efb17e3ebc149d1cfa28e893f45cae9b7aca578",
+              "pdf_pages_read": [
+                1,
+                6,
+                7,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16
+              ],
+              "visual_pdf_pages": [
+                13,
+                15,
+                16
+              ],
+              "findings": "§4 decode128 uniform-length sequences; prefill1 sequence512–32K. MFU denominator hardware peak × maxMXUutilization: dk128 uses50%peak. Reported73%noncausal/63%causal are adjusted-denominator metrics; guide must clarify this. 86%MBU is controlled shape, not arbitrary ragged workload guarantee."
+            }
+          ],
+          "limitations": [
+            "Source checks only in listed ranges; no GPU/TPU/compiler benchmark execution or current software behavior verification claimed.",
+            "Use archived version-specific claims, not present-day performance recommendations."
+          ]
+        }
+      },
+      "reread_result": [
+        "全文实际分段阅读，无截断；概念先后、符号、例题、数字条件、索引和自测一致，未发现需再改问题",
+        "全文实际分段阅读，无截断；概念先后、符号、例题、数字条件、索引和自测一致，未发现需再改问题"
+      ],
+      "remaining_issues": [],
+      "limitations": [
+        "未运行GPU/CUDA/TPU/论文benchmark或验证当前API版本；CPU验证不能证明性能和并发正确性。",
+        "B200 walkthrough只读明确列出的原文范围；CUDA Guide和论文按正文相关范围精读，未冒称全部数百页全文。",
+        "FA4原文件B100/B200及日期内部冲突仍作为来源限制保留；未改原始PDF。",
+        "四篇独立核查由主代理完成并归档，本文如实标记读者身份；没有代替最终正文两轮实读。",
+        "未新增/改写原始资料或运行sync；README在本课不存在，已用SOURCES与REFERENCES作入口。"
+      ]
+    }
+  ],
+  "original_sources": {
+    "courses/2680/7.AgentDesignIV.AgentEvaluation/7_agent_design_4.pdf": "87f1c93e4711985ff4624de14b297beb118ed9f429523b455a3d1acb8fe515b8",
+    "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/AI_Agents_That_Matter.pdf": "1681013e0421f9d193ca5bb556b566f50d1e5eaa43d7a9700a31ca3dd0e2ff7a",
+    "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/AgentOps_Enabling_Observability_of_LLM_Agents.pdf": "fc2a9aca1107bf4faace5cc18966f4bd85b05109793ca0cc7df6a3fcf88dadf3",
+    "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/Headlong_a_microharness_for_persistent_agents.html": "e4fd2046cbba2a00c2b8411fb0b6397f72a58f956b06a3853072ee075bd3a6f7",
+    "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/tau-bench_A_Benchmark_for_Tool-Agent-User_Interaction_in_Real-World_Domains.pdf": "0ce66a1763d698c61bb311c3c874bf593d1e9a5bfff11bb35f6f72b981f6da56",
+    "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/Firecracker_Lightweight_Virtualization_for_Serverless_Applications.html": "516298233390603aaeb3178d3ae56ce5e042d0227735b4e5ecbfb216a09ce759",
+    "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/Measuring_AI_Ability_to_Complete_Long_Software_Tasks.pdf": "29216eb3af4daa417666757a462ab7c7b5f8c18c188ee5a56e258b04116211f7",
+    "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/ActPlane_Programmable_OS-Level_Policy_Enforcement_for_Agent_Harnesses.pdf": "59c2b86a375aa637abe0e4e4630b0b56affc540fa34dfbf2234493f63573220a",
+    "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/Dapper_a_Large-Scale_Distributed_Systems_Tracing_Infrastructure.html": "f33968a9c204cdd790a212634d1ac7ceca8390b9b402a47146b1495f150664d2",
+    "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/SWE-bench_Can_Language_Models_Resolve_Real-World_GitHub_Issues.pdf": "f7e8e1df64129742b8199a21a042734519a823a1dafd6f48f8f3ddcfb48ee296",
+    "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/2._Examples_of_cheating_in_CAISI_s_agent_evaluations.html": "0d1f02ad54f1e7c4849b91a1d5bcaf1f8e51ceff6e2211eb8f8a9f7d2e58daeb",
+    "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/Establishing_Best_Practices_for_Building_Rigorous_Agentic_Benchmarks.pdf": "6bee07172c55c1146fdc8a14e0a4839854f7b4be36616729fda3ee6d519a698b",
+    "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/AgentBench_Evaluating_LLMs_as_Agents.pdf": "9c780e35fc0b2de6c2e21e0572f6aaaadcf7ecdd56d63cfaae2b415bc0dc83c3",
+    "courses/2680/7.AgentDesignIV.AgentEvaluation/readings/Towards_a_Science_of_AI_Agent_Reliability.pdf": "f6347ad130f009ea385cfa341a32fd1c7d757d65458b4d1d73dae5c3a28a2ccf",
+    "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/9_llm_serving_basics_1.pdf": "1cfe4fd6a413cdd168d711b413beff19e4967fe0ec0cb89b0cbe3c2c7fb5872a",
+    "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/DeepSeek-V3_Technical_Report.pdf": "812a3fd645c80725354de9d831a6785503007a60681461407f64e97305fa9330",
+    "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Mixtral_of_Experts.pdf": "f8bbf0e9d979b7a8ce7be65119266545a229a85b57e077d8bd048e458bb642da",
+    "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Dream_7B_Diffusion_Large_Language_Models.pdf": "461f5ac618e86dd398af3662958178c3c243ee97b7e5ee9c20f5ed6399107a0d",
+    "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Switch_Transformers_Scaling_to_Trillion_Parameter_Models_with_Simple_and_Efficient_Sparsity.pdf": "f340f6ace31abf7d0730ef461404279f40d3c890e9cc2daeb7068b3304afdbd6",
+    "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Root_Mean_Square_Layer_Normalization.pdf": "a38ab771022fc10525d2b6b23de40307b2ca7b2bf463f5219da6a0ba1c41225f",
+    "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/The_Illustrated_Transformer.html": "375d8acf1096832ddfff288d93ff0ace405b6a4897bb96e280e6d71f3d353556",
+    "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/DeepSeekMoE_Towards_Ultimate_Expert_Specialization_in_Mixture-of-Experts_Language_Models.pdf": "a64b509e1410d09cf5b70570788d27790985fb9808ce436b9da8de73f2eed651",
+    "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/The_Annotated_Transformer.html": "ee355423ba684165fca361da0f3d3b1c8fd0c79964732116af54d2f2ed73cb4a",
+    "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/The_Llama_3_Herd_of_Models.pdf": "481f1599468f95a07d05e97fafe55bbe786dc1624c6f881bcb4c7d14c933d083",
+    "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Large_Language_Diffusion_Models.pdf": "18942f14544d696bef711acd43c84017e51b8428b15edc74130761218e66f73b",
+    "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/GLU_Variants_Improve_Transformer.pdf": "7398ae8b163722a6b5410fb975722adbe6b5f6f9c7f1efa584f1c6b79eaa93e2",
+    "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Transformer_Inference_Arithmetic.html": "47d08ab07b7a4fd14abcc9d059737b16fda7ce14d38fdbc70b002526da89af1b",
+    "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Neural_Machine_Translation_of_Rare_Words_with_Subword_Units.pdf": "f4e5a6bbbe0d87459997fffe892f8be485e33903cc71f923c2884639fbf96401",
+    "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Scaling_up_Test-Time_Compute_with_Latent_Reasoning_A_Recurrent_Depth_Approach.pdf": "96f4543683a06a470ccb0b6b0db27a98f283fde9467d175e838f03a629a76c7b",
+    "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/Attention_Is_All_You_Need.pdf": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/FP8_Formats_for_Deep_Learning.pdf": "809a9557e907765b452c5a1b7308a92e31dd31a07e668d49d14b1594b6c0cf0c",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/ProxSparse_Regularized_Learning_of_Semi-Structured_Sparsity_Masks_for_Pretrained_LLMs.pdf": "2e96a0c5050dd3875b77faa6e53182630952eec1e597f0fb0fc41f5b0d905746",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/LLM-Pruner_On_the_Structural_Pruning_of_Large_Language_Models.pdf": "8b2292dddcaa88f3801acf4d91f7aa276f2affc141215f5990a1af02984ce514",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/ZipCache_Accurate_and_Efficient_KV_Cache_Quantization_with_Salient_Token_Identification.pdf": "8765c59681a203fc1fd34d1908e7195699b2e1118e2aca0791449c306f4eebf2",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/SageAttention3_Microscaling_FP4_Attention_for_Inference_and_An_Exploration_of_8-Bit_Training.pdf": "87943b08c65ab39f341b2691ed5aa19934f8444cf8eb488cc45064fea67436a6",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/Beyond_FLOPs_Benchmarking_Real_Inference_Acceleration_of_LLM_Pruning_under_a_GEMM-Centric_Taxonomy.pdf": "51bfb81de59af9359f5a75012321fd15ab368470c8dab915ae6b19ec062ad0f3",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/KIVI_A_Tuning-Free_Asymmetric_2bit_Quantization_for_KV_Cache.pdf": "df31ef32d71bfb280c533c5db8220cadf5ef42076bf45d82ba4c8da8e50ea5f4",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/QuIPSharp_Even_Better_LLM_Quantization_with_Hadamard_Incoherence_and_Lattice_Codebooks.pdf": "2a5c4c103ba31f4a889344d95059c40e96841761e725500829f00b5a16c3d825",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/Bridging_the_Gap_Between_Promise_and_Performance_for_Microscaling_FP4_Quantization.pdf": "46366a1f76d680c0135e311e8d0d4a75cfce0a621840f63f615729c8549e5904",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/SqueezeLLM_Dense-and-Sparse_Quantization.pdf": "9781d343dbe73e5353f5500d0e0732006c941bf3fdcd0d70cbc59f89622ec821",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/Silent_Failures_in_Quantized_LLM_Reasoning_A_Taxonomy-Based_Analysis_of_Hollow_Convergence_and_Failure_Mode_Shifts.pdf": "aca9d92eacb24f5440397ced15736e6206d0dccb0913346a982600782c13873f",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/SparseGPT_Massive_Language_Models_Can_be_Accurately_Pruned_in_One-Shot.pdf": "1ae9e436a5ff2279cf89e1a642c89139ef411e01d21dfd67da2aec40af895f03",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/Stable_FP4_Training_via_Transposition-Invariant_Block_Quantization.pdf": "f4953def41bab77533df9b15695f101f76fa386c6eb1071dcb27d3d0047e8c32",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/Atom_Low-Bit_Quantization_for_Efficient_and_Accurate_LLM_Serving.pdf": "d33aaa47a1e86f346c27ce4e53aaec412e41c656f5473c657f38740b3945700d",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/ZeroQuant_Efficient_and_Affordable_Post-Training_Quantization_for_Large-Scale_Transformers.pdf": "085dcd0e5ae6705dc0130fe0ed9a389805bf9df67a03501e1a4c6551d75da62f",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/QLoRA_Efficient_Finetuning_of_Quantized_LLMs.pdf": "33a4e757c19d6ea8d3cca8958fce8fe405e290272e135c99ee66065c775d5bd1",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/The_Era_of_1-bit_LLMs_All_Large_Language_Models_are_in_1.58_Bits.pdf": "bcd625e89f95c39dc9143af4174978fcf2467eb9659d86f8da448d7d9366c332",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/SpinQuant_LLM_Quantization_with_Learned_Rotations.pdf": "fe437770d7c981eae9e028eacaa5c772ed0add900ed9dec54c10cfce6dfd86c3",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/A_Simple_and_Effective_Pruning_Approach_for_Large_Language_Models.pdf": "f64206d0698bb09ae36e906065205af135bb1c34a7a65ab9a94aee989edb7aa4",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/KVQuant_Towards_10_Million_Context_Length_LLM_Inference_with_KV_Cache_Quantization.pdf": "7ca1001fee6be5013d40ebf00e81df3bb677c90f1feb5c78b413cba64589ecfc",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/Mixed_Precision_Training.pdf": "3bbff2f757abdcfe4c5a4cee338f7b7d888110b9013ec4a934e334016f527c78",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/QServe_W4A8KV4_Quantization_and_System_Co-design_for_Efficient_LLM_Serving.pdf": "2e8ff61b02bd6a0f0a4a55f94b1c77095905bfb53b77d3a324df43d789a7286d",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/Pretraining_Large_Language_Models_with_NVFP4.pdf": "8f0a2eeab9cdd71c36af759922f7e41a43c00cc6fc3cd8525e23b2c8d0d82565",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/Tilus_A_Tile-Level_GPGPU_Programming_Language_for_Low-Precision_Computation.pdf": "0871ac7c3d2147336baea59763de3a3732a9343c103b4ebd7939a19c8b54c7c4",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/Block_Rotation_is_All_You_Need_for_MXFP4_Quantization.pdf": "7425e1c0e49e44bb131cb1d340d8430841f2200507d5890a80eff7e5af552f27",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/GPTQ_Accurate_Post-Training_Quantization_for_Generative_Pre-trained_Transformers.pdf": "35e339171cd48bbf8dda246bd018b11aa33a5cda0c4a1587cdae574208f56396",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/BitNet_b1.58_2B4T_Technical_Report.pdf": "af78afa2409dc8c50ef16574d80081c340d93ea52656be5224640b6eec7f5f01",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/Reliability_Scaling_Laws_for_Quantized_Large_Language_Models.pdf": "62d0b023b7eb8db59101e5b84acd0f2a92fc79bcbc2c21261b509910a5b129cd",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/SmoothQuant_Accurate_and_Efficient_Post-Training_Quantization_for_Large_Language_Models.pdf": "d17856490ff664a99f8d08fe76eabd83219ed048cd1bc18ce3d0571e71056ff8",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/INT_v.s._FP_A_Comprehensive_Study_of_Fine-Grained_Low-bit_Quantization_Formats.pdf": "4ddbb7a38ad9a146410ff621f44f9f67f1dd48d58622c35225009bcc57994f67",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/ParetoQ_Improving_Scaling_Laws_in_Extremely_Low-bit_LLM_Quantization.pdf": "8c9b4ec1beaea9af616f78b12f6238275dbd4fae760544b4177df818cdc7ffa8",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/QuaRot_Outlier-Free_4-Bit_Inference_in_Rotated_LLMs.pdf": "f611888c63ef63a5c0232e2c8416619f0c9ace08d0e05692731da82791202e3e",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/Quartet_Native_FP4_Training_Can_Be_Optimal_for_Large_Language_Models.pdf": "5489e1d230561a9fbe7ac99f1628d2e3b7f585cd8a46d2b7a8d9618d1bf31b69",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/OmniQuant_Omnidirectionally_Calibrated_Quantization_for_Large_Language_Models.pdf": "8aa575f85ffb4da0a4bcfd4143c2c3ddbd4805cbdac4d39448c9960d5a29036f",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/LLM.int8_8-bit_Matrix_Multiplication_for_Transformers_at_Scale.pdf": "40da3ce2d38eb3baa8b638cab093bd048178205c1eb4d0671e79c108f72906bf",
+    "courses/2680/15.EfficientLLMServing.PruningAndQuantization/readings/AWQ_Activation-aware_Weight_Quantization_for_LLM_Compression_and_Acceleration.pdf": "6e35c8fe7af1f18a5c48dd2524629d859a2013a91d4b3666b554705287a17764",
+    "courses/2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/5_agent_design_2.pdf": "4dbc20e3cdfcc7a22879672c2300058c8c41b7364a4fbe5d3378f7861501c9bd",
+    "courses/2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/readings/How_we_built_our_multi-agent_research_system.html": "f7c4539731f0fe4794b0db96f95dbb712331338febdb11e835dedff5bb3232eb",
+    "courses/2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/readings/MetaGPT_Meta_Programming_for_a_Multi-Agent_Collaborative_Framework.pdf": "17582e47647fac8eaa3681feade41c8408310c4133acc5c6823565fbe880e1ac",
+    "courses/2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/readings/AutoGen_Enabling_Next-Gen_LLM_Applications_via_Multi-Agent_Conversation.pdf": "fcf8b1acae6b1bd6f14c92463caa9726828bf998234ba9f10c2411087897c96b",
+    "courses/2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/readings/Don_t_Build_Multi-Agents.html": "c0f8c4656ee7c278071a23518e12d05a0d42e587b0c9fdde3717a00c24b7742c",
+    "courses/2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/readings/Towards_a_Science_of_Scaling_Agent_Systems.pdf": "028f329010d95143915db8db6ce1ad26a4e844b66e4abd6b36fdb39651aff7fd",
+    "courses/2680/8.AdvancedAgentDesignI.CostAndPerformance/8_agent_design_5.pdf": "0ca8e326cd72fe52e9d676e19c30837bf718e63867f6f1ce7b3f7c3749db8e0e",
+    "courses/2680/8.AdvancedAgentDesignI.CostAndPerformance/readings/Reducing_cost_and_improving_performance_with_Claude_Platform.html": "d305ca40ee74907797e8985976e6fa3f2ca9cb6c2ae30bfc885f902ad9aad44a",
+    "courses/2680/8.AdvancedAgentDesignI.CostAndPerformance/readings/RouteLLM_Learning_to_Route_LLMs_with_Preference_Data.pdf": "c9bc9c8171cab95bb3832cde8767c6b5e0925cd62930e51ddbd60d7cb2616741",
+    "courses/2680/8.AdvancedAgentDesignI.CostAndPerformance/readings/Beyond_Accuracy_Unveiling_Inefficiency_Patterns_in_Tool-Integrated_Reasoning.pdf": "5bfd78d749a79762d2be401889e2c84f9c99dde2d453e890d0f6c5a95bca6e86",
+    "courses/2680/3.AgentsUseII.100xEngineerWithMultiAgents/3_agent_use_2.pdf": "a0e010e9787730a5120f83b2e3d405eec940ff5468392d23b762ff2cd86e35ee",
+    "courses/2680/3.AgentsUseII.100xEngineerWithMultiAgents/readings/Orchestrate_subagents_at_scale_with_dynamic_workflows.html": "6dab85faf8aeed2d421b10627b1a5e80acb91db41ef4ed51969a92c09ac42e24",
+    "courses/2680/3.AgentsUseII.100xEngineerWithMultiAgents/readings/The_Shift_to_Agentic_AI_Evidence_from_Codex.pdf": "e1f19f36a590ae5131aeb6322e2e69b66b22db3d7786d8e5bf477beb4ec37c47",
+    "courses/2680/3.AgentsUseII.100xEngineerWithMultiAgents/readings/Building_a_C_compiler_with_a_team_of_parallel_Claudes.html": "ca57d820e45ec9752095bda5f645949ea8cdadc10692d61973b3a73b5d65ca93",
+    "courses/2680/3.AgentsUseII.100xEngineerWithMultiAgents/readings/Orchestrate_teams_of_Claude_Code_sessions.html": "0e0621efd26fe25070fa97022d0ea219b09b1bc4a42dc1f1bd35e7cf81712a23",
+    "courses/2680/3.AgentsUseII.100xEngineerWithMultiAgents/readings/Create_custom_subagents.html": "fa2d4451989f4670aa617fb4b9cff0dffe8684a039b960a9495d122b89512a0b",
+    "courses/2680/6.AgentsDesignIII.AgentMemoryAndReliability/6_agent_design_3.pdf": "7ed1b959e40acc5a90e67057e521e0d3a47ad25829be10e4939908fabbac4728",
+    "courses/2680/6.AgentsDesignIII.AgentMemoryAndReliability/readings/Where_LLM_Agents_Fail_and_How_They_can_Learn_From_Failures.pdf": "5dea81aa176cf3993123c46f2cef3e70c49a4fe5f2a5c6794c4b9fbc8f532a6b",
+    "courses/2680/6.AgentsDesignIII.AgentMemoryAndReliability/readings/Retrieval-Augmented_Generation_for_Knowledge-Intensive_NLP_Tasks.pdf": "23e3249e9a1e75418d82efecab0ea8c4d033b89c93742f63208d47ce01f21233",
+    "courses/2680/6.AgentsDesignIII.AgentMemoryAndReliability/readings/The_Danger_of_Overthinking_Examining_the_Reasoning-Action_Dilemma_in_Agentic_Tasks.pdf": "49c65719e1756597e41ddde8677894d133691a90b7fbe1652ea6c832c45eb5b6",
+    "courses/2680/6.AgentsDesignIII.AgentMemoryAndReliability/readings/Why_Do_Multi-Agent_LLM_Systems_Fail.pdf": "1b9e317a2a421e60ca2b2eda4a30844557a01e63286a790890c0ecef32d25460",
+    "courses/2680/6.AgentsDesignIII.AgentMemoryAndReliability/readings/Reasoning_Failures_in_Large_Language_Model_Agents.pdf": "fa4a400e0cd34f4b9c8381f6424dbb641815e6e1cff27c017bc2450c6845daf1",
+    "courses/2680/6.AgentsDesignIII.AgentMemoryAndReliability/readings/MemGPT_Towards_LLMs_as_Operating_Systems.pdf": "9f674bcff69c86f11c813dcfad613d8841f5f8ed17979e3c4df06a91df7762e0",
+    "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/Efficient_Memory_Management_for_Large_Language_Model_Serving_with_PagedAttention.pdf": "55b3b324d779a67c59dac2519445e3b07c14e6ff5c656fadb47a3d7b5997469e",
+    "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/vAttention_Dynamic_Memory_Management_for_Serving_LLMs_without_PagedAttention.pdf": "89017c3e7f5900cdf2b7295d647fc19bf45e674dddd3525ba86a5f203861c701",
+    "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/NanoFlow_Towards_Optimal_Large_Language_Model_Serving_Throughput.pdf": "b35b05f22115bc55897e65fb40eda77969b52efcebfb1b3450791d3960bb33b2",
+    "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/Efficiently_Scaling_Transformer_Inference.pdf": "a34aacd15d1d4918da0001697a01b4ae8f547fec0169fe886f5f10a529529a93",
+    "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/Orca_A_Distributed_Serving_System_for_Transformer-Based_Generative_Models.html": "7ed01ec6c5300c9061a6475535fa69ce91e62a34902136f8aa83c48724f417c4",
+    "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/LoongServe_Efficiently_Serving_Long-Context_Large_Language_Models_with_Elastic_Sequence_Parallelism.pdf": "d5ae35fa9a1645af42fd2760eb5ff423d5c994eed846e171602a5a14133e1401",
+    "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/Megatron-LM_Training_Multi-Billion_Parameter_Language_Models_Using_Model_Parallelism.pdf": "fa89e54e23c0cea5cbd9d24720db7647c61af299afdb9a170c7119160e6d207a",
+    "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/JENGA_Effective_Memory_Management_for_Serving_LLM_with_Heterogeneity.pdf": "3381af8fb16f93575feff4eda8fcdb846beaa2b2962eabb110e5aecfefacb094",
+    "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/GPipe_Easy_Scaling_with_Micro-Batch_Pipeline_Parallelism.pdf": "697f257e85667829053707594800447f3a75482226ddb6eb24374905c5af6d44",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/Cost-Efficient_Large_Language_Model_Serving_for_Multi-turn_Conversations_with_CachedAttention.pdf": "a4710b144a6ee4c396a68afabaacbf0a7f4943be766b4fed5a68cf67eb2a0f57",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/Mooncake_A_KVCache-centric_Disaggregated_Architecture_for_LLM_Serving.pdf": "6877ae1059097d9f67e98b6ee8012e99ffeee786d0d1ba4f902a953fcbef8441",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/Agentix_An_Efficient_Serving_Engine_for_LLM_Agents_as_General_Programs.html": "859cd823715b3cc553a1dfb084c4f197727aaf62389c2667b710b433ca064b8e",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/The_CacheLib_Caching_Engine_Design_and_Experiences_at_Scale.html": "04d9d6dc4de0fefcaf97c5a37cf33cd9b5d3db54b71a8a45ed07abdc153f7fee",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/Kairos_Low-latency_Multi-Agent_Serving_with_Shared_LLMs_and_Excessive_Loads_in_the_Public_Cloud.pdf": "5e7f309c3632439d4df49485fede715f6910ca65f33709aa8a97043bdff814f1",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/Maestro_Workload-Aware_Cross-Cluster_Scheduling_for_LLM-Based_Multi-Agent_Systems.pdf": "6eee00020f1e881ce800847c23613a4a08c87de995d04a5a7fe75860bc954d58",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/Pie_A_Programmable_Serving_System_for_Emerging_LLM_Applications.pdf": "833136422474feeffa5c87e6b9d9ff5edb6015d371cdc5b5e033294a099c73d9",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/From_LLM_Inference_to_Agentic_Workloads_Characterization_and_Implications_for_Serving_Systems.pdf": "44cb376351841de7c03304ca21e87ef9a0a759d0cd7fe8af68abc42c1230e477",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/Architectural_Implications_of_Agentic_AI_Workflows.pdf": "11d56e25503752a63194ec493690740794b673e6ddf136ab22f1c56a74c7c252",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/Pythia_Exploiting_Workflow_Predictability_for_Efficient_Agent-Native_LLM_Serving.pdf": "7283a8f87a00338d64c315312d8f487a21876f462902020a4b3cfbb525d2ba89",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/CacheGen_KV_Cache_Compression_and_Streaming_for_Fast_Large_Language_Model_Serving.pdf": "3bbadb232c66d89dd1a68ecea65d76edc5e67074a97072e4a401ca7a6335a8de",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/SAGA_Workflow-Atomic_Scheduling_for_AI_Agent_Inference_on_GPU_Clusters.pdf": "87f1fe0eec3762bd5ef6f119a0d17c3b7eb2e7bc714db2acae4f2ff063fe0b89",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/Nalar_Workflow-Aware_Management_of_Agentic_Applications.pdf": "9de66a22c66b406c38361d4d776b7bdf8cbd061dc1a7dc3624021e6c3a623ae1",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/The_Rollout_Infrastructure_Tax_in_Coding-Agent_Reinforcement_Learning.pdf": "eea2330406e163a29df33083a05391b9833c5fcf3e356f6ed2163ca9d39c51cf",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/SMetric_Rethink_LLM_Scheduling_for_Serving_Agents_with_Balanced_Session-centric_Scheduling.pdf": "b9ed965fd28e8348c27b03f8833c1f61592db2216b1508df66f98d93df84e40a",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/Murakkab_Resource-Efficient_Agentic_Workflow_Orchestration_in_Cloud_Platforms.html": "f875b2a4fd6ecb635b8c12486baec964324758dfbb3c29e3ccc4da46ebf11ffd",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/MemServe_Flexible_Mem_Pool_for_Building_Disaggregated_LLM_Serving_with_Caching.pdf": "a3023cef82e7ba13bdf389a9c8c25a74cfb8c985f35a22321821f9f64a1d8cc3",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/The_Shift_from_Models_to_Compound_AI_Systems.html": "44e2dbc1587ea35bb5c2b64371fb50d5a72860eef8a68de98149c07824736244",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/KVFlow_Efficient_Prefix_Caching_for_Accelerating_LLM-Based_Multi-Agent_Workflows.html": "171e65ab0f4ad7ec5fdd2b7b7eab93682094b71277795fb08b96e9a82fb7ff43",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/Prompt_Cache_Modular_Attention_Reuse_for_Low-Latency_Inference.pdf": "15e198a54c37a1177c9b17cf44261b4bec50fe5c3a2377bc8d1af4eadabea20f",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/CacheBlend_Fast_Large_Language_Model_Serving_for_RAG_with_Cached_Knowledge_Fusion.pdf": "034b9f230930f20ed23fc7dc17bbdf3fee0a9ff11c928563904bce34ec2e98e6",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/DroidSpeak_KV_Cache_Sharing_for_Cross-LLM_Communication_and_Multi-LLM_Serving.pdf": "483670c3756e062605f27ab4ff2bb084938d86da5308e0e48f425a47542f0c77",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/libCacheSim_A_High_Performance_Library_for_Building_Cache_Simulators.html": "4a9eb7ce7f48bb4fc1b2ccff10c92944d8698ac6ddeaa703d982dbc63ad37898",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/HexAGenT_Efficient_Agentic_LLM_Serving_via_Workflow-_and_Heterogeneity-Aware_Scheduling.pdf": "b68e289c703dd112156f19d99fc488e33ea5165b816150e6606aa0b78fd95b0e",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/Scheduling_Mixed_RL_Rollouts_Beyond_Prefix_Locality.pdf": "cf0da0a167051dee752cee4bc27c4f4df8b403d87c0b6253388cfc8126210cd0",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/Observation_Not_Prediction_Conversation-Level_Disaggregated_Scheduling_for_Agentic_Serving.pdf": "bbd169f1d61af8db6d1a24552352e30600e32d43a8750da2744c0aff01ed7c70",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/Software-Defined_Agentic_Serving.pdf": "cddebd441af7d94390a62062e607184d022aaf76e252194408704dd15be37525",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/LMCache_An_Efficient_KV_Cache_Layer_for_Enterprise-Scale_LLM_Inference.pdf": "a1b6a90258c7e9091f24603ca4cff85f9f47410be10f5de89b7f902a2d3f6417",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/Marconi_Prefix_Caching_for_the_Era_of_Hybrid_LLMs.pdf": "335e0114c3181896949e1ade75e2838f4c1a4e6d150c45d93ea62ecf7c2a1f28",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/When_Does_Disaggregation_Pay_Simulating_Prefill_Decode_Attention_FFN_Specialization_for_Agentic_LLM_Inference.pdf": "84da9036b288e30ad99dafae322f0cd670e4bf1b9157993cb2cdeb5ce8a13118",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/CacheWise_Understanding_Workloads_and_Optimizing_KVCache_Management_for_Efficiently_Serving_LLM_Coding_Agents.pdf": "8787570ba7d61444aced8378af2069796d7e801920bc6b7476afabcc347aed3c",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/TokenLake_A_Unified_Segment-level_Prefix_Cache_Pool_for_Fine-grained_Elastic_Long-Context_LLM_Serving.pdf": "7cb2e6a9ac0dbde07644dc69e08d04259208d043ec5b85273b3aa90d3b54c892",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/Batch_Query_Processing_and_Optimization_for_Agentic_Workflows.pdf": "ad409e26dac13648c89263c82d616c1e107d8668627991679c9823826cc45e2d",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/LPC_-_browser_verification_-_reading_body_unavailable.html": "03a18f01cbdb4c1f3db12bd5ff0d13244679f51674f0646bd267229726e8f11d",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/Learning_Relaxed_Belady_for_Content_Distribution_Network_Caching.html": "1f8425b176491802955a5e1d86e49280ecbda5c9757617220a7061cb775d87d4",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/Parrot_Efficient_Serving_of_LLM-based_Applications_with_Semantic_Variable.html": "6b83b264eb68aef30ebd0b34ed49895abb66364ba6f01c7693c5a0d9d6a4d15b",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/Serving_Agentic_Workflows_with_a_Physical-Plan_Compiler_and_Adaptive_Runtime.pdf": "60b6f698f6426e889788cfcd4f912903e6027ca5305d84ca5801154966dfa2bf",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/Agentic_AI_Workload_Characteristics.pdf": "1ac1dec2a35de7f55bcbe009e0712b58fece92e52583300a25bca7eac2250881",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/Efficient_LLM_Serving_for_Agentic_Workflows_A_Data_Systems_Perspective.pdf": "61a1e4b087685fa976a96d1b6a9abf035716bd1534fbaad5a576a1ada863f60a",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/TraceLab_Characterizing_Coding_Agent_Workloads_for_LLM_Serving.pdf": "936e31ed424798058cd6da3bb773c516994fb3ebec2b54ddc4c83f5c1ecffb44",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/Libra_Efficient_Resource_Management_for_Agentic_RL_Post-Training.pdf": "40810df5c8869473727aafa955db3efafc810115cdf70addbb3ff3d8759492cc",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/SIEVE_is_Simpler_than_LRU_an_Efficient_Turn-Key_Eviction_Algorithm_for_Web_Caches.html": "6d420524c7e68577986036b681c8286a709ab38a1558900a4e44dbde9b054a11",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/TideRL_Boosting_Agentic_RL_Goodput_with_Readiness-Aware_Scheduling.pdf": "71e5b879bd6c3f0b22dcea152db6b2704d84aab8b22183358c0c6c37b47a5369",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/TinyLFU_A_Highly_Efficient_Cache_Admission_Policy.pdf": "7358c2ad100899c566158fabf0076065309d0dba3fc7265a5b8a38cdf2ecba60",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/SGLang_Efficient_Execution_of_Structured_Language_Model_Programs.pdf": "161e0a0123a89cd8a57d68734ae704680b0e577fee41e1e7e1029c37a9d99b57",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/Benchmarking_LLM_Serving_Systems_for_Agentic_AI_Workloads_with_XPerf.pdf": "478804426740fd3de5e69ee83b62bd883a773f9617696578907809880d761256",
+    "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/readings/HYPIC_Accelerating_Hybrid-Attention_LLM_Serving_with_Position-Independent_Caching.pdf": "db3d74bb3315f8f078140bf65bb42c80e1f566e5e4b010f4847c229e625444bb",
+    "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf": "13ff4abe0c7ad4a7dd3b4876d19a8bf940e39e70dabbf06065aa774a6c3457de",
+    "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Automated_Design_of_Agentic_Systems.pdf": "32eb1c1a6888e35fae0f618e33c58698b54d9c49bc063fef91ee591719fca376",
+    "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Multi-Agent_Systems_Execute_Arbitrary_Malicious_Code.pdf": "5fb79d30a11ef7b2e28d5eadc53af9b7ecb41d8ee60c8e04c2ec3c59e8b1fb11",
+    "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/OWASP_Top_10_For_Agentic_Applications_2026.pdf": "a2db94cd00b08e0b3a5e5b619afe024bdbcd74503111085705e4f3dd886fcb5c",
+    "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf": "6059b6f89fea9959bd3dab553fbb97756a3dfb1b15e3cbab2fbf3ab6664333bd",
+    "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Agentic_Context_Engineering_Evolving_Contexts_for_Self-Improving_Language_Models.pdf": "51050ced82df75c143b151262d5af8763916968ca50374bd8ff778f40552b0ad",
+    "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/AgentDojo_A_Dynamic_Environment_to_Evaluate_Prompt_Injection_Attacks_and_Defenses_for_LLM_Agents.pdf": "349884fffbf43282591c5accffd57bb651632f38e412fe303114941bdd111b05",
+    "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Design_Patterns_for_Securing_LLM_Agents_against_Prompt_Injections.pdf": "c202a240f8f03c93cfafd157f218ec790c9e503beeaf80e229fb5e1645ab7f9c",
+    "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/The_Attacker_Moves_Second_Stronger_Adaptive_Attacks_Bypass_Defenses_Against_LLM_Jailbreaks_and_Prompt_Injections.pdf": "5067f88c7c14a007c205a452e8cdc5bcbf2e87f0958efcc620aa23c81465a9c3",
+    "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf": "7d9b90f53a9f4801a090f1a4acb843340cde81e4f865f97d53fff2a6a570eb73",
+    "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Not_what_you_ve_signed_up_for_Compromising_Real-World_LLM-Integrated_Applications_with_Indirect_Prompt_Injection.pdf": "428e23e8c7e4f89310e113e38d082b3f65548a8b887188ebc536099061800e81",
+    "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Self-Refine_Iterative_Refinement_with_Self-Feedback.pdf": "81e44592314d80218ad108d3490cd0b84ba5962fefd5c84819987afd77a57087",
+    "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Agentic_Harness_Engineering_Observability-Driven_Automatic_Evolution_of_Coding-Agent_Harnesses.pdf": "299f2633b4c13db7bed52434b4db7c48ea621993581014d30e7bcd036d3464df",
+    "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Live-SWE-agent_Can_Software_Engineering_Agents_Self-Evolve_on_the_Fly.pdf": "7bd8e1c6345c2ff8d5a93674a8a88fcfc70ab6f657f946c82a2961f449e01535",
+    "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/AgentPoison_Red-teaming_LLM_Agents_via_Poisoning_Memory_or_Knowledge_Bases.pdf": "008c4b0f70150ae2e26cead8ca6bad773cb4e2cd370154a10db320a456ea5ee1",
+    "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/The_Instruction_Hierarchy_Training_LLMs_to_Prioritize_Privileged_Instructions.pdf": "fbc2d65e913e75b8f0ae74e83e3443c36a727636d1038a071a2f10d8be63dac4",
+    "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/AI_Control_Improving_Safety_Despite_Intentional_Subversion.pdf": "999f7a92bb8c085799e68f3d88f491ad8a334f862ccf5b286e5c2766677864c0",
+    "courses/2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/readings/Defeating_Prompt_Injections_by_Design.pdf": "c3719f6ce73eecf45e3764debef8a3d8ff8c9233b37d128c558b694ec3790cc7",
+    "courses/2680/1.CourseOverviewAndLogistics/1_intro.pdf": "0183cf9edfce3247501a5aeba176e9b17ab470613195d8e1cc61f35f6e820094",
+    "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/4_agent_design_1.pdf": "aee815f49719d38c9cee4c284a161c63081082ec20859daa9af7b6720f473304",
+    "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Writing_effective_tools_for_AI_agents_using_AI_agents.html": "1740f094f5cb2e7a9d6ab37082f04268ca9cb3a1002488ca95d629b54307d454",
+    "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Diagnosing_and_Mitigating_Context_Rot_in_Long-horizon_Search.pdf": "89f838c60ac54a940e4d70e4c2e2771cadfdfd0e477acffd43231b25221dcdbb",
+    "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Agent_Patterns_for_AI_Agent_Development_-_AgentPatterns.ai.html": "7ad3f7de7cb66ebc781b04af50e236867910c50904156f8645da4ac733e8d612",
+    "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/What_Is_an_Agent_Harness_Harness_Engineering_Explained.html": "be5d36e5af0d5884bc1ec3eef815aa9060836a5500f137224443fe49b56bade1",
+    "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/A_practical_guide_to_building_agents.pdf": "1903c2b1837b206d1951d8a3d1124515aee1bebebd8f2448c630c75a6b0aad86",
+    "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf": "f285b0971ae4a790e402fb93966bed3adde2cf0a04977d08b2b40d6ab0cace69",
+    "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Effective_context_engineering_for_AI_agents.html": "6cc1c0b5e326f229fdd683c9294dc50fc3bf94ad2cdc563943a7f1905dcd277b",
+    "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Building_Effective_AI_Agents.html": "8600702d1292a3712ca43ca5206eae781e3135fe6589e3912ee17cc68337a99d",
+    "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf": "6d7483d94653008e40c2058a1c22441c92e3713dae278b6361e8efc447c99522",
+    "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/LLM_Powered_Autonomous_Agents.html": "03b6ed75b1dc0dedd200a077367d1f7737f0a18e08c104e7f653115e1f52b0ef",
+    "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Less_Context_Better_Agents_Efficient_Context_Engineering_for_Long-Horizon_Tool-Using_LLM_Agents.pdf": "31aa21cfc78d1528d07752527b6039720bc8b31eb82906a6c55a40e41fe98a5d",
+    "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/How_skills_and_MCPs_actually_work.html": "025685349889065651f42130786a3501c0ee41bf44162087c614426f8315ce61",
+    "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Context_Engineering_A_Practical_Guide_for_AI_Agents_2026.html": "824ad1ff81a193333d72aadcae79f2a7550c0d3bf4d825570829cb9472681f10",
+    "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/Lost_in_the_Middle_How_Language_Models_Use_Long_Contexts.pdf": "653b29619eae2ae4b361d7bdcdc06db4bedcb1b0eabe31814036beca8c1af0b1",
+    "courses/2680/4.AgentsDesignI.ContextManagementAndToolDesign/readings/How_Foundational_Models_Became_Superhuman_in_Bash.html": "45283d9e0b53d0a4e3cf424257d1ab7f5cd9c2d56b26523f4491285e62527627",
+    "courses/2680/17.EfficientAgenticSystem.RoutingAndLoadBalancing/readings/DualMap_Enabling_Both_Cache_Affinity_and_Load_Balancing_for_Distributed_LLM_Serving.pdf": "73eced1ccb15059945437039d25c6780786817f6dc91559197e4e9732b99fd92",
+    "courses/2680/17.EfficientAgenticSystem.RoutingAndLoadBalancing/readings/SMetric_Rethink_LLM_Scheduling_for_Serving_Agents_with_Balanced_Session-centric_Scheduling.pdf": "b9ed965fd28e8348c27b03f8833c1f61592db2216b1508df66f98d93df84e40a",
+    "courses/2680/17.EfficientAgenticSystem.RoutingAndLoadBalancing/readings/RouterBench_A_Benchmark_for_Multi-LLM_Routing_System.pdf": "1df05ba3e75ad24c3f8e00039a4a35704eb0f8df44088616f8244936e0a9aa01",
+    "courses/2680/17.EfficientAgenticSystem.RoutingAndLoadBalancing/readings/Llumnix_Dynamic_Scheduling_for_Large_Language_Model_Serving.pdf": "c76d726aced3e5d24920b10259938922d37ebcb3b8d80b89d9bb9550e4bdf97a",
+    "courses/2680/17.EfficientAgenticSystem.RoutingAndLoadBalancing/readings/Preble_Efficient_Distributed_Prompt_Scheduling_for_LLM_Serving.pdf": "44114cf18e9e33e52fdc7c45c69dbbac8ddd69ae3cabefcd3b366d5660e39750",
+    "courses/2680/17.EfficientAgenticSystem.RoutingAndLoadBalancing/readings/RouteLLM_Learning_to_Route_LLMs_with_Preference_Data.pdf": "c9bc9c8171cab95bb3832cde8767c6b5e0925cd62930e51ddbd60d7cb2616741",
+    "courses/2680/17.EfficientAgenticSystem.RoutingAndLoadBalancing/readings/Simple_Is_Better_Multiplication_May_Be_All_You_Need_for_LLM_Request_Scheduling.html": "f9bb286b4a08da27dcbf5bdc5164bb4e691ddbc2448f38a1022d378e6d6c8cc7",
+    "courses/2680/17.EfficientAgenticSystem.RoutingAndLoadBalancing/readings/Hybrid_LLM_Cost-Efficient_and_Quality-Aware_Query_Routing.pdf": "c0ebc21073112b8f8e51c7ea279eeac4d5b62be88c69a5cd2bccc2d58ec28cbb",
+    "courses/2680/17.EfficientAgenticSystem.RoutingAndLoadBalancing/readings/AutoMix_Automatically_Mixing_Language_Models.pdf": "150bed4aa0b00d8d10992dd9c577fe8d81a52d3a920df0e81695f98345b831f5",
+    "courses/2680/16.EfficientLLMServing.KVCacheOptimizationAndModelArchitectures/readings/DeepSeek-V2_A_Strong_Economical_and_Efficient_Mixture-of-Experts_Language_Model.pdf": "f149f9c09aa8b46ce6a740a255a99b7cc2317ac5b065989339919b7e6c329c9b",
+    "courses/2680/16.EfficientLLMServing.KVCacheOptimizationAndModelArchitectures/readings/The_Sparse_Frontier_Sparse_Attention_Trade-offs_in_Transformer_LLMs.pdf": "457fb3a9a86757a45769729a88112d9153468ae0277a2c81e5123913e53d8ff9",
+    "courses/2680/16.EfficientLLMServing.KVCacheOptimizationAndModelArchitectures/readings/You_Only_Cache_Once_Decoder-Decoder_Architectures_for_Language_Models.pdf": "6de0b29ef88c51adbee42c981ecf0835add88d1c0f6c99d17de305a9e8a0f5c4",
+    "courses/2680/16.EfficientLLMServing.KVCacheOptimizationAndModelArchitectures/readings/MoBA_Mixture_of_Block_Attention_for_Long-Context_LLMs.pdf": "9ea3247701683eff6d901052367a6d6ebcffcb5a78bed239923d9e696bc9d121",
+    "courses/2680/16.EfficientLLMServing.KVCacheOptimizationAndModelArchitectures/readings/GQA_Training_Generalized_Multi-Query_Transformer_Models_from_Multi-Head_Checkpoints.pdf": "ba9094fe73db9bf515d47ae8b2d502fee9d8a6c7b1327e197ddb160f4c63b94a",
+    "courses/2680/16.EfficientLLMServing.KVCacheOptimizationAndModelArchitectures/readings/Mistral_7B.pdf": "dfbac4e7035344b305c947481f2e7e8a02f7a24a563917eb6e47f6591d14c5ae",
+    "courses/2680/16.EfficientLLMServing.KVCacheOptimizationAndModelArchitectures/readings/Fast_Transformer_Decoding_One_Write-Head_is_All_You_Need.pdf": "3250947d7be32f1a15531ab3062134edd431b9cf79e669d324ab5cbddd9a2094",
+    "courses/2680/16.EfficientLLMServing.KVCacheOptimizationAndModelArchitectures/readings/DeepSeek-V4_Towards_Highly_Efficient_Million-Token_Context_Intelligence.pdf": "55b2d72f772ac00de2e470b3ee08443c648d971c7f57c52d6202895665e5978d",
+    "courses/2680/16.EfficientLLMServing.KVCacheOptimizationAndModelArchitectures/readings/Kimi_Linear_An_Expressive_Efficient_Attention_Architecture.pdf": "e2e23a449fc9bb27e34e783d20b2e6cd0f1ac67d58efdc0479c03c54db956a17",
+    "courses/2680/16.EfficientLLMServing.KVCacheOptimizationAndModelArchitectures/readings/Reducing_Transformer_Key-Value_Cache_Size_with_Cross-Layer_Attention.pdf": "1ecbd39c150d725a216d9e9409af7999a6a81e43938f4e03924a688b29fa67c4",
+    "courses/2680/16.EfficientLLMServing.KVCacheOptimizationAndModelArchitectures/readings/Mamba_Linear-Time_Sequence_Modeling_with_Selective_State_Spaces.pdf": "adf70ed1803c85b1899dec3e21f3af0b124411439e8654b840ea65f7b9f52b2e",
+    "courses/2680/16.EfficientLLMServing.KVCacheOptimizationAndModelArchitectures/readings/Native_Sparse_Attention_Hardware-Aligned_and_Natively_Trainable_Sparse_Attention.pdf": "2314e53e3c122a839b14724e4a5096a208f0317d02cca21cc6962e52e070c74e",
+    "courses/2680/16.EfficientLLMServing.KVCacheOptimizationAndModelArchitectures/readings/DeepSeek-V3.2_Pushing_the_Frontier_of_Open_Large_Language_Models.pdf": "2bec0671778769c159ec389412727d1f3d4889fe1c71564b61edaa24705bd17b",
+    "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/10_llm_serving_basics_2a.pdf": "b7351ed4f055e0196ebf06cf348e5042b83392f45dd30cbca379ad28be72b63b",
+    "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/A_Systematic_Characterization_of_LLM_Inference_on_GPUs.pdf": "f3929c0b1bdf5c42730f9a57c29cc986523a78f2ff307d1e9afb9d439e7d4116",
+    "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashInfer_Efficient_and_Customizable_Attention_Engine_for_LLM_Inference_Serving.pdf": "6995874b7a43b0693ba0da805c4d99327a4cb4013edbea3e36f4c42949e63303",
+    "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashAttention-2_Faster_Attention_with_Better_Parallelism_and_Work_Partitioning.pdf": "4aa8935dfacaf6ae8c68f772ca92f730154a0dd0e1bceeb59c7bc56c512d5868",
+    "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/TVM_An_Automated_End-to-End_Optimizing_Compiler_for_Deep_Learning.pdf": "6032d5a54db0ec552168a5f5295a954edea6a24d91ae03bed1e0da0d858c9fa9",
+    "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/Ragged_Paged_Attention_A_High-Performance_and_Flexible_LLM_Inference_Kernel_for_TPU.pdf": "6b546d2af7bd3673cdfedc2d4efb17e3ebc149d1cfa28e893f45cae9b7aca578",
+    "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashAttention-4_Algorithm_and_Kernel_Pipelining_Co-Design_for_Asymmetric_Hardware_Scaling.pdf": "7c053b2b45a9d7da93b21f7dbe16ff8a927a9dc7e92537a034ca58a4eb5f10eb",
+    "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/MPK_A_Compiler_and_Runtime_for_Mega-Kernelizing_Tensor_Programs.pdf": "0069c67600b194c4a935110889df803dd0ff8ca8caebc324ef6e13aeaa4da4cb",
+    "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FLUX_Fast_Software-based_Communication_Overlap_on_GPUs_through_Kernel_Fusion.pdf": "14256ca83b1595bcee9d1bc6cb5fcb84d8fda8d6a18c51a8e45797a47b7bf455",
+    "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/Mirage_A_Multi-Level_Superoptimizer_for_Tensor_Programs.pdf": "1f0b88aa3b56253ada9d85343bc5e0bdcf89790240fcce92113573b7927e2a2b",
+    "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashAttention-4_from_Scratch_to_Near-SOTA_in_60_Diagrams_CUDA_PTX.html": "22ff6b10fa6853e0c9ea268aa7a7958237271392ef507be8dff20b3e8095a63f",
+    "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/CUDA_C++_Programming_Guide.pdf": "9d3c313edfa39fbd932cc1517dec8d3a3690802132f8e65530a155e6eb3339b8",
+    "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/Making_Deep_Learning_go_Brrrr_From_First_Principles.html": "b035a3c38d61db25dc26c2c6cc76b1df17fd4d5a20735b857f2ffb6e248bcf90",
+    "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashAttention_Fast_and_Memory-Efficient_Exact_Attention_with_IO-Awareness.pdf": "ca7f9fda10b90fc05dd291a3accc85e9c1a4a860b99b31928dab03ed3fcb14e4",
+    "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashAttention-3_Fast_and_Accurate_Attention_with_Asynchrony_and_Low-precision.pdf": "3d05ca102802e6b8ebbae5181efe777b7d258cd75e2fe9cca209efd2f5e6c6cb",
+    "courses/2680/assignment/assignment-3/8_assignment3.pdf": "aad61822cdb769afe289b19994312923bb9dc582cb428c0e734cb2659db38550",
+    "courses/2680/assignment/assignment-4/assignment4.pdf": "ddd740a7f1272a68c0f5424839cd862a6bdf858c99e325e0189681a614cfb2fa",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/Optimizing_Agentic_Language_Model_Inference_via_Speculative_Tool_Calls.pdf": "92b4b02076765d37467dbfbb9800c6752ebccef83aaf311a78793b77046fd282",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/Idleness_is_Relative_Exploiting_Tool-Call_Idle_Windows_for_Offloading_in_Agentic_Systems_with_MORI.pdf": "ec1bf7be1d9052f5602b5093e8d4405126c29c30450280edd295565f4b0123e3",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/TokenCake_A_KV-Cache-centric_Serving_Framework_for_LLM-based_Multi-Agent_Applications.pdf": "fcf5549669b956a15c87bdc1ae90b3013e9535517a6f8de3e25abd797c67d4d5",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/DeltaBox_Scaling_Stateful_AI_Agents_with_Millisecond-Level_Sandbox_Checkpoint_Rollback.pdf": "74c96242a33cb0aa72a614520e886fcb8c4bec58bed381841936cd742762ef41",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/XGrammar_Flexible_and_Efficient_Structured_Generation_Engine_For_Large_Language_Models.pdf": "61e94a1a28bb6307250c4f82a9ff0dcd07273fed80011d6ba7535f388a8fa5f0",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/TClone_Low-Latency_Forking_of_Live_GUI_Environments_for_Computer-Use_Agents.pdf": "cd6d543feb3ec804b35f91ae9dd897a563038f9230067abd5eaafd88976e46af",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/AgentSight_System-Level_Observability_for_AI_Agents_Using_eBPF.pdf": "79b197bf15f69e7a5bba2285c8189d1fd45fb637eae1489b7099e6215c2c69dc",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/Governed_Shared_Memory_for_Multi-Agent_LLM_Systems.pdf": "6c3b893a8b4be981e27ad90fd2adbb3412df661aec7c1a21fd006a071f166b0b",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/SpecBox_Speculative_Sandbox_Scheduling_for_Efficient_LLM_Agent_Serving.pdf": "48fec6709abcd7bbb4c28dde2ebbefae8c372ee1c361c982a569fe9d1fcf8056",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/SYMPHONY_Enabling_Compute-Memory_Disaggregation_in_LLM_Serving_Systems.html": "bb2c2cbb2aebbe3823cfc92ffd2362eee87c719268a9abf739a84b426b69b2da",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/Cortex_Achieving_Low-Latency_Cost-Efficient_Remote_Data_Access_For_LLM_via_Semantic-Aware_Knowledge_Caching.html": "c6ce50856b28ce7619d53bcd5d0934c29375d3207c785fc8cf4de35fdddecf79",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/ActPlane_Programmable_OS-Level_Policy_Enforcement_for_Agent_Harnesses.pdf": "59c2b86a375aa637abe0e4e4630b0b56affc540fa34dfbf2234493f63573220a",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/Firecracker_Lightweight_Virtualization_for_Serverless_Applications.html": "516298233390603aaeb3178d3ae56ce5e042d0227735b4e5ecbfb216a09ce759",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/IC-Cache_Efficient_Large_Language_Model_Serving_via_In-context_Caching.pdf": "5fcd8c9d7345afa050de298abcc95b74d4d02c09bcba3601fbd307ac7bc321da",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/Scalable_LLM_Agent_Tool_Access_in_the_Cloud.pdf": "d3966a9b02f4b3a37d5d6caae0ac60040681a501abd2cbbea5019dc3c73bae6e",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/Efficient_Serving_for_Dynamic_Agent_Workflows_with_Prediction-based_KV-Cache_Management.pdf": "eb2cc2a7750f972a228519376ad27214cc4d674686c2e7209207c8d47b0da301",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/AgentCgroup_Understanding_and_Controlling_OS_Resources_of_AI_Agents.pdf": "535ea6b9d278dd3a83c653212a1e108a320816f6752c6a2bfb9d2477ad7b9cee",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/Talaria_Session-Aware_Serverless_Serving_of_Hundred-Billion-Parameter_LLMs.pdf": "012328c43d1c773d9183541a0f8c6e49629617dcf0f3daaa8dd9d19dafb50327",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/Atomix_Timely_Transactional_Tool_Use_for_Reliable_Agentic_Workflows.pdf": "d11f797ac196295c138274d8d446cc5ebc67e91c3a0e718765102a0ebe4a82ed",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/AgentTrace_Causal_Graph_Tracing_for_Root_Cause_Analysis_in_Deployed_Multi-Agent_Systems.pdf": "c1ab6d937e1c5e6e3454848193faa2477a9d9fd19497e29e4eaca200edb7ad7a",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/AgentServe_Algorithm-System_Co-Design_for_Efficient_Agentic_AI_Serving_on_a_Consumer-Grade_GPU.pdf": "ff1dd20d13b905fe2f88fdf5eea20ea6a2a00c777ba6566f228e74f621ed5730",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/CoAgent_Concurrency_Control_for_Multi-Agent_Systems.pdf": "b006d2993a9cd6cef286c4402f4b15665522b2b050c2ff27f5911be718d315d4",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/Continuum_Efficient_and_Robust_Multi-Turn_LLM_Agent_Scheduling_with_KV_Cache_Time-to-Live.pdf": "d4f34502b4578310f905a521d2b0577d4c332a3f677355079a3d74b4eb6aeeae",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/AgentOps_Enabling_Observability_of_LLM_Agents.pdf": "fc2a9aca1107bf4faace5cc18966f4bd85b05109793ca0cc7df6a3fcf88dadf3",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/Parallelizing_Tool_Execution_and_LLM_Generation_for_Low-Latency_Agent_Serving.pdf": "edf6ff58b17652804a793b7dda94691ccb1fa16672c0ceb846e278eaa79b9275",
+    "courses/2680/18.EfficientAgenticSystems.Others/readings/Learning_Agent_Execution_for_KV-Cache_Management_in_Agentic_Serving.pdf": "5ad759abf4184abd0412ee827e5343298fa91cf3b4d871be6beb6ce707428cad",
+    "courses/2680/readings/papers/TokenCake_A_KV-Cache-centric_Serving_Framework_for_LLM-based_Multi-Agent_Applications.pdf": "fcf5549669b956a15c87bdc1ae90b3013e9535517a6f8de3e25abd797c67d4d5",
+    "courses/2680/readings/papers/The_Danger_of_Overthinking_Examining_the_Reasoning-Action_Dilemma_in_Agentic_Tasks.pdf": "49c65719e1756597e41ddde8677894d133691a90b7fbe1652ea6c832c45eb5b6",
+    "courses/2680/readings/papers/AI_Agents_That_Matter.pdf": "1681013e0421f9d193ca5bb556b566f50d1e5eaa43d7a9700a31ca3dd0e2ff7a",
+    "courses/2680/readings/papers/TraceLab_Characterizing_Coding_Agent_Workloads_for_LLM_Serving.pdf": "936e31ed424798058cd6da3bb773c516994fb3ebec2b54ddc4c83f5c1ecffb44",
+    "courses/2680/readings/papers/Stable_FP4_Training_via_Transposition-Invariant_Block_Quantization.pdf": "f4953def41bab77533df9b15695f101f76fa386c6eb1071dcb27d3d0047e8c32",
+    "courses/2680/readings/papers/tau-bench_A_Benchmark_for_Tool-Agent-User_Interaction_in_Real-World_Domains.pdf": "0ce66a1763d698c61bb311c3c874bf593d1e9a5bfff11bb35f6f72b981f6da56",
+    "courses/2680/readings/papers/Observation_Not_Prediction_Conversation-Level_Disaggregated_Scheduling_for_Agentic_Serving.pdf": "bbd169f1d61af8db6d1a24552352e30600e32d43a8750da2744c0aff01ed7c70",
+    "courses/2680/readings/papers/AutoMix_Automatically_Mixing_Language_Models.pdf": "150bed4aa0b00d8d10992dd9c577fe8d81a52d3a920df0e81695f98345b831f5",
+    "courses/2680/readings/papers/Continuum_Efficient_and_Robust_Multi-Turn_LLM_Agent_Scheduling_with_KV_Cache_Time-to-Live.pdf": "d4f34502b4578310f905a521d2b0577d4c332a3f677355079a3d74b4eb6aeeae",
+    "courses/2680/readings/papers/Online_Speculative_Decoding.pdf": "48286f9ef3e2e7daded63fb4b7b9fc71637763942939d76348f3e02f46d74af2",
+    "courses/2680/readings/papers/DeltaBox_Scaling_Stateful_AI_Agents_with_Millisecond-Level_Sandbox_Checkpoint_Rollback.pdf": "74c96242a33cb0aa72a614520e886fcb8c4bec58bed381841936cd742762ef41",
+    "courses/2680/readings/papers/Talaria_Session-Aware_Serverless_Serving_of_Hundred-Billion-Parameter_LLMs.pdf": "012328c43d1c773d9183541a0f8c6e49629617dcf0f3daaa8dd9d19dafb50327",
+    "courses/2680/readings/papers/Guardrails_Beat_Guidance_A_Large-Scale_Study_of_Rules_Skills_and_Persistent_Configuration_for_Coding_Agents.pdf": "5c258c0d1520060450c18499d66608820e1c9d149c83e9a85a30839f129fa473",
+    "courses/2680/readings/papers/OWASP_Top_10_For_Agentic_Applications_2026.pdf": "a2db94cd00b08e0b3a5e5b619afe024bdbcd74503111085705e4f3dd886fcb5c",
+    "courses/2680/readings/papers/Serving_Agentic_Workflows_with_a_Physical-Plan_Compiler_and_Adaptive_Runtime.pdf": "60b6f698f6426e889788cfcd4f912903e6027ca5305d84ca5801154966dfa2bf",
+    "courses/2680/readings/papers/Mirror_Speculative_Decoding_Breaking_the_Serial_Barrier_in_LLM_Inference.pdf": "5b90962f154c9d22a4e6400bc2701fed689c1bc3e8d9e65d827e92ffa3b45d5b",
+    "courses/2680/readings/papers/Atomix_Timely_Transactional_Tool_Use_for_Reliable_Agentic_Workflows.pdf": "d11f797ac196295c138274d8d446cc5ebc67e91c3a0e718765102a0ebe4a82ed",
+    "courses/2680/readings/papers/GPTQ_Accurate_Post-Training_Quantization_for_Generative_Pre-trained_Transformers.pdf": "35e339171cd48bbf8dda246bd018b11aa33a5cda0c4a1587cdae574208f56396",
+    "courses/2680/readings/papers/A_Systematic_Characterization_of_LLM_Inference_on_GPUs.pdf": "f3929c0b1bdf5c42730f9a57c29cc986523a78f2ff307d1e9afb9d439e7d4116",
+    "courses/2680/readings/papers/SparseGPT_Massive_Language_Models_Can_be_Accurately_Pruned_in_One-Shot.pdf": "1ae9e436a5ff2279cf89e1a642c89139ef411e01d21dfd67da2aec40af895f03",
+    "courses/2680/readings/papers/SpinQuant_LLM_Quantization_with_Learned_Rotations.pdf": "fe437770d7c981eae9e028eacaa5c772ed0add900ed9dec54c10cfce6dfd86c3",
+    "courses/2680/readings/papers/Beyond_Accuracy_Unveiling_Inefficiency_Patterns_in_Tool-Integrated_Reasoning.pdf": "5bfd78d749a79762d2be401889e2c84f9c99dde2d453e890d0f6c5a95bca6e86",
+    "courses/2680/readings/papers/AI_Control_Improving_Safety_Despite_Intentional_Subversion.pdf": "999f7a92bb8c085799e68f3d88f491ad8a334f862ccf5b286e5c2766677864c0",
+    "courses/2680/readings/papers/Sequoia_Scalable_Robust_and_Hardware-aware_Speculative_Decoding.pdf": "4e93904ae0a2a8b1813767e8a67c6709833b8affd60aff927c30619c37e4e7f8",
+    "courses/2680/readings/papers/Agentic_Harness_Engineering_Observability-Driven_Automatic_Evolution_of_Coding-Agent_Harnesses.pdf": "299f2633b4c13db7bed52434b4db7c48ea621993581014d30e7bcd036d3464df",
+    "courses/2680/readings/papers/You_Only_Cache_Once_Decoder-Decoder_Architectures_for_Language_Models.pdf": "6de0b29ef88c51adbee42c981ecf0835add88d1c0f6c99d17de305a9e8a0f5c4",
+    "courses/2680/readings/papers/Pretraining_Large_Language_Models_with_NVFP4.pdf": "8f0a2eeab9cdd71c36af759922f7e41a43c00cc6fc3cd8525e23b2c8d0d82565",
+    "courses/2680/readings/papers/IC-Cache_Efficient_Large_Language_Model_Serving_via_In-context_Caching.pdf": "5fcd8c9d7345afa050de298abcc95b74d4d02c09bcba3601fbd307ac7bc321da",
+    "courses/2680/readings/papers/Beyond_FLOPs_Benchmarking_Real_Inference_Acceleration_of_LLM_Pruning_under_a_GEMM-Centric_Taxonomy.pdf": "51bfb81de59af9359f5a75012321fd15ab368470c8dab915ae6b19ec062ad0f3",
+    "courses/2680/readings/papers/Agentic_AI_Workload_Characteristics.pdf": "1ac1dec2a35de7f55bcbe009e0712b58fece92e52583300a25bca7eac2250881",
+    "courses/2680/readings/papers/SmoothQuant_Accurate_and_Efficient_Post-Training_Quantization_for_Large_Language_Models.pdf": "d17856490ff664a99f8d08fe76eabd83219ed048cd1bc18ce3d0571e71056ff8",
+    "courses/2680/readings/papers/JENGA_Effective_Memory_Management_for_Serving_LLM_with_Heterogeneity.pdf": "3381af8fb16f93575feff4eda8fcdb846beaa2b2962eabb110e5aecfefacb094",
+    "courses/2680/readings/papers/SpecExec_Massively_Parallel_Speculative_Decoding_for_Interactive_LLM_Inference_on_Consumer_Devices.pdf": "b6af8dd38bf7e0754fefeea398342de7bdc90d5b55edd5d34e6faa0dcc59d9eb",
+    "courses/2680/readings/papers/Agentic_Context_Engineering_Evolving_Contexts_for_Self-Improving_Language_Models.pdf": "51050ced82df75c143b151262d5af8763916968ca50374bd8ff778f40552b0ad",
+    "courses/2680/readings/papers/Fast_Inference_from_Transformers_via_Speculative_Decoding.pdf": "8967e2daab74178b8a73a6f0b0780c5cbb40f9f6dcbd5c456b24a89c128c52ed",
+    "courses/2680/readings/papers/Scalable_LLM_Agent_Tool_Access_in_the_Cloud.pdf": "d3966a9b02f4b3a37d5d6caae0ac60040681a501abd2cbbea5019dc3c73bae6e",
+    "courses/2680/readings/papers/GPipe_Easy_Scaling_with_Micro-Batch_Pipeline_Parallelism.pdf": "697f257e85667829053707594800447f3a75482226ddb6eb24374905c5af6d44",
+    "courses/2680/readings/papers/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf": "6059b6f89fea9959bd3dab553fbb97756a3dfb1b15e3cbab2fbf3ab6664333bd",
+    "courses/2680/readings/papers/Batch_Query_Processing_and_Optimization_for_Agentic_Workflows.pdf": "ad409e26dac13648c89263c82d616c1e107d8668627991679c9823826cc45e2d",
+    "courses/2680/readings/papers/Kimi_Linear_An_Expressive_Efficient_Attention_Architecture.pdf": "e2e23a449fc9bb27e34e783d20b2e6cd0f1ac67d58efdc0479c03c54db956a17",
+    "courses/2680/readings/papers/LMCache_An_Efficient_KV_Cache_Layer_for_Enterprise-Scale_LLM_Inference.pdf": "a1b6a90258c7e9091f24603ca4cff85f9f47410be10f5de89b7f902a2d3f6417",
+    "courses/2680/readings/papers/AgentPoison_Red-teaming_LLM_Agents_via_Poisoning_Memory_or_Knowledge_Bases.pdf": "008c4b0f70150ae2e26cead8ca6bad773cb4e2cd370154a10db320a456ea5ee1",
+    "courses/2680/readings/papers/AutoGen_Enabling_Next-Gen_LLM_Applications_via_Multi-Agent_Conversation.pdf": "fcf8b1acae6b1bd6f14c92463caa9726828bf998234ba9f10c2411087897c96b",
+    "courses/2680/readings/papers/Quartet_Native_FP4_Training_Can_Be_Optimal_for_Large_Language_Models.pdf": "5489e1d230561a9fbe7ac99f1628d2e3b7f585cd8a46d2b7a8d9618d1bf31b69",
+    "courses/2680/readings/papers/INT_v.s._FP_A_Comprehensive_Study_of_Fine-Grained_Low-bit_Quantization_Formats.pdf": "4ddbb7a38ad9a146410ff621f44f9f67f1dd48d58622c35225009bcc57994f67",
+    "courses/2680/readings/papers/EAGLE-3_Scaling_up_Inference_Acceleration_of_Large_Language_Models_via_Training-Time_Test.pdf": "8a178337a1b05067907167dd81a43a7184596d71d4b795d6a0c73e6235fe1a27",
+    "courses/2680/readings/papers/AgentOps_Enabling_Observability_of_LLM_Agents.pdf": "fc2a9aca1107bf4faace5cc18966f4bd85b05109793ca0cc7df6a3fcf88dadf3",
+    "courses/2680/readings/papers/MoBA_Mixture_of_Block_Attention_for_Long-Context_LLMs.pdf": "9ea3247701683eff6d901052367a6d6ebcffcb5a78bed239923d9e696bc9d121",
+    "courses/2680/readings/papers/CUDA_C++_Programming_Guide.pdf": "9d3c313edfa39fbd932cc1517dec8d3a3690802132f8e65530a155e6eb3339b8",
+    "courses/2680/readings/papers/HexAGenT_Efficient_Agentic_LLM_Serving_via_Workflow-_and_Heterogeneity-Aware_Scheduling.pdf": "b68e289c703dd112156f19d99fc488e33ea5165b816150e6606aa0b78fd95b0e",
+    "courses/2680/readings/papers/Preble_Efficient_Distributed_Prompt_Scheduling_for_LLM_Serving.pdf": "44114cf18e9e33e52fdc7c45c69dbbac8ddd69ae3cabefcd3b366d5660e39750",
+    "courses/2680/readings/papers/Cost-Efficient_Large_Language_Model_Serving_for_Multi-turn_Conversations_with_CachedAttention.pdf": "a4710b144a6ee4c396a68afabaacbf0a7f4943be766b4fed5a68cf67eb2a0f57",
+    "courses/2680/readings/papers/KVQuant_Towards_10_Million_Context_Length_LLM_Inference_with_KV_Cache_Quantization.pdf": "7ca1001fee6be5013d40ebf00e81df3bb677c90f1feb5c78b413cba64589ecfc",
+    "courses/2680/readings/papers/CacheWise_Understanding_Workloads_and_Optimizing_KVCache_Management_for_Efficiently_Serving_LLM_Coding_Agents.pdf": "8787570ba7d61444aced8378af2069796d7e801920bc6b7476afabcc347aed3c",
+    "courses/2680/readings/papers/BitNet_b1.58_2B4T_Technical_Report.pdf": "af78afa2409dc8c50ef16574d80081c340d93ea52656be5224640b6eec7f5f01",
+    "courses/2680/readings/papers/Where_LLM_Agents_Fail_and_How_They_can_Learn_From_Failures.pdf": "5dea81aa176cf3993123c46f2cef3e70c49a4fe5f2a5c6794c4b9fbc8f532a6b",
+    "courses/2680/readings/papers/Learning_Agent_Execution_for_KV-Cache_Management_in_Agentic_Serving.pdf": "5ad759abf4184abd0412ee827e5343298fa91cf3b4d871be6beb6ce707428cad",
+    "courses/2680/readings/papers/Pie_A_Programmable_Serving_System_for_Emerging_LLM_Applications.pdf": "833136422474feeffa5c87e6b9d9ff5edb6015d371cdc5b5e033294a099c73d9",
+    "courses/2680/readings/papers/Silent_Failures_in_Quantized_LLM_Reasoning_A_Taxonomy-Based_Analysis_of_Hollow_Convergence_and_Failure_Mode_Shifts.pdf": "aca9d92eacb24f5440397ced15736e6206d0dccb0913346a982600782c13873f",
+    "courses/2680/readings/papers/DSpark_Confidence-Scheduled_Speculative_Decoding_with_Semi-Autoregressive_Generation.pdf": "522036b0cc16ad4678bd7c278dd0a0ab4da31170af7b97c2041067cc09a8289a",
+    "courses/2680/readings/papers/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf": "7d9b90f53a9f4801a090f1a4acb843340cde81e4f865f97d53fff2a6a570eb73",
+    "courses/2680/readings/papers/Defeating_Prompt_Injections_by_Design.pdf": "c3719f6ce73eecf45e3764debef8a3d8ff8c9233b37d128c558b694ec3790cc7",
+    "courses/2680/readings/papers/Marconi_Prefix_Caching_for_the_Era_of_Hybrid_LLMs.pdf": "335e0114c3181896949e1ade75e2838f4c1a4e6d150c45d93ea62ecf7c2a1f28",
+    "courses/2680/readings/papers/Mooncake_A_KVCache-centric_Disaggregated_Architecture_for_LLM_Serving.pdf": "6877ae1059097d9f67e98b6ee8012e99ffeee786d0d1ba4f902a953fcbef8441",
+    "courses/2680/readings/papers/EAGLE_Speculative_Sampling_Requires_Rethinking_Feature_Uncertainty.pdf": "3484aad4d255ac8ff3ebbb0df9f3b2fdb222145923f59ad25727812f4748a0f4",
+    "courses/2680/readings/papers/Efficient_Memory_Management_for_Large_Language_Model_Serving_with_PagedAttention.pdf": "55b3b324d779a67c59dac2519445e3b07c14e6ff5c656fadb47a3d7b5997469e",
+    "courses/2680/readings/papers/Bridging_the_Gap_Between_Promise_and_Performance_for_Microscaling_FP4_Quantization.pdf": "46366a1f76d680c0135e311e8d0d4a75cfce0a621840f63f615729c8549e5904",
+    "courses/2680/readings/papers/AgentBench_Evaluating_LLMs_as_Agents.pdf": "9c780e35fc0b2de6c2e21e0572f6aaaadcf7ecdd56d63cfaae2b415bc0dc83c3",
+    "courses/2680/readings/papers/Reliability_Scaling_Laws_for_Quantized_Large_Language_Models.pdf": "62d0b023b7eb8db59101e5b84acd0f2a92fc79bcbc2c21261b509910a5b129cd",
+    "courses/2680/readings/papers/SMetric_Rethink_LLM_Scheduling_for_Serving_Agents_with_Balanced_Session-centric_Scheduling.pdf": "b9ed965fd28e8348c27b03f8833c1f61592db2216b1508df66f98d93df84e40a",
+    "courses/2680/readings/papers/Mirage_A_Multi-Level_Superoptimizer_for_Tensor_Programs.pdf": "1f0b88aa3b56253ada9d85343bc5e0bdcf89790240fcce92113573b7927e2a2b",
+    "courses/2680/readings/papers/SpotServe_Serving_Generative_Large_Language_Models_on_Preemptible_Instances.pdf": "ab0c6a988c9c8dea2e47e00518ed5c300ef8aeda7c209cdbf2fabf6a7803bc0d",
+    "courses/2680/readings/papers/TinyLFU_A_Highly_Efficient_Cache_Admission_Policy.pdf": "7358c2ad100899c566158fabf0076065309d0dba3fc7265a5b8a38cdf2ecba60",
+    "courses/2680/readings/papers/FP8_Formats_for_Deep_Learning.pdf": "809a9557e907765b452c5a1b7308a92e31dd31a07e668d49d14b1594b6c0cf0c",
+    "courses/2680/readings/papers/Native_Sparse_Attention_Hardware-Aligned_and_Natively_Trainable_Sparse_Attention.pdf": "2314e53e3c122a839b14724e4a5096a208f0317d02cca21cc6962e52e070c74e",
+    "courses/2680/readings/papers/MemServe_Flexible_Mem_Pool_for_Building_Disaggregated_LLM_Serving_with_Caching.pdf": "a3023cef82e7ba13bdf389a9c8c25a74cfb8c985f35a22321821f9f64a1d8cc3",
+    "courses/2680/readings/papers/A_Simple_and_Effective_Pruning_Approach_for_Large_Language_Models.pdf": "f64206d0698bb09ae36e906065205af135bb1c34a7a65ab9a94aee989edb7aa4",
+    "courses/2680/readings/papers/Kairos_Low-latency_Multi-Agent_Serving_with_Shared_LLMs_and_Excessive_Loads_in_the_Public_Cloud.pdf": "5e7f309c3632439d4df49485fede715f6910ca65f33709aa8a97043bdff814f1",
+    "courses/2680/readings/papers/LoongServe_Efficiently_Serving_Long-Context_Large_Language_Models_with_Elastic_Sequence_Parallelism.pdf": "d5ae35fa9a1645af42fd2760eb5ff423d5c994eed846e171602a5a14133e1401",
+    "courses/2680/readings/papers/ParetoQ_Improving_Scaling_Laws_in_Extremely_Low-bit_LLM_Quantization.pdf": "8c9b4ec1beaea9af616f78b12f6238275dbd4fae760544b4177df818cdc7ffa8",
+    "courses/2680/readings/papers/A_practical_guide_to_building_agents.pdf": "1903c2b1837b206d1951d8a3d1124515aee1bebebd8f2448c630c75a6b0aad86",
+    "courses/2680/readings/papers/DroidSpeak_KV_Cache_Sharing_for_Cross-LLM_Communication_and_Multi-LLM_Serving.pdf": "483670c3756e062605f27ab4ff2bb084938d86da5308e0e48f425a47542f0c77",
+    "courses/2680/readings/papers/Atom_Low-Bit_Quantization_for_Efficient_and_Accurate_LLM_Serving.pdf": "d33aaa47a1e86f346c27ce4e53aaec412e41c656f5473c657f38740b3945700d",
+    "courses/2680/readings/papers/FLUX_Fast_Software-based_Communication_Overlap_on_GPUs_through_Kernel_Fusion.pdf": "14256ca83b1595bcee9d1bc6cb5fcb84d8fda8d6a18c51a8e45797a47b7bf455",
+    "courses/2680/readings/papers/Maestro_Workload-Aware_Cross-Cluster_Scheduling_for_LLM-Based_Multi-Agent_Systems.pdf": "6eee00020f1e881ce800847c23613a4a08c87de995d04a5a7fe75860bc954d58",
+    "courses/2680/readings/papers/REST_Retrieval-Based_Speculative_Decoding.pdf": "2c959dd4e7ea6ac9455c2ee7184779ba86cdfa87729967f3b68ac36a5c450147",
+    "courses/2680/readings/papers/AgentSight_System-Level_Observability_for_AI_Agents_Using_eBPF.pdf": "79b197bf15f69e7a5bba2285c8189d1fd45fb637eae1489b7099e6215c2c69dc",
+    "courses/2680/readings/papers/Establishing_Best_Practices_for_Building_Rigorous_Agentic_Benchmarks.pdf": "6bee07172c55c1146fdc8a14e0a4839854f7b4be36616729fda3ee6d519a698b",
+    "courses/2680/readings/papers/Software-Defined_Agentic_Serving.pdf": "cddebd441af7d94390a62062e607184d022aaf76e252194408704dd15be37525",
+    "courses/2680/readings/papers/Draft_Verify_Lossless_Large_Language_Model_Acceleration_via_Self-Speculative_Decoding.pdf": "4136bdd1fccbc5a6e09b00548d0db2e9e83de7c6af14c8f2d5c2deb3e77219fa",
+    "courses/2680/readings/papers/The_Scaffolding_Matters_More_Than_the_Interface.pdf": "f257cb076d82ba5d40d2e637fe46a57eb800e6f2de80a33f23ecb2d271b00780",
+    "courses/2680/readings/papers/Nalar_Workflow-Aware_Management_of_Agentic_Applications.pdf": "9de66a22c66b406c38361d4d776b7bdf8cbd061dc1a7dc3624021e6c3a623ae1",
+    "courses/2680/readings/papers/Intelligence_per_Watt_Measuring_Intelligence_Efficiency_of_Local_AI.pdf": "6a36e15b1b8b84b4fed0d92999b62dbf0243615f73e6f473e116689ef20f9988",
+    "courses/2680/readings/papers/Design_Patterns_for_Securing_LLM_Agents_against_Prompt_Injections.pdf": "c202a240f8f03c93cfafd157f218ec790c9e503beeaf80e229fb5e1645ab7f9c",
+    "courses/2680/readings/papers/AdaServe_SLO-Customized_LLM_Serving_with_Fine-Grained_Speculative_Decoding.pdf": "a7d926691a18f5bed30079897c8b3e5ef39581aa510528296aed6659fcb26ea8",
+    "courses/2680/readings/papers/FlashAttention-3_Fast_and_Accurate_Attention_with_Asynchrony_and_Low-precision.pdf": "3d05ca102802e6b8ebbae5181efe777b7d258cd75e2fe9cca209efd2f5e6c6cb",
+    "courses/2680/readings/papers/The_Instruction_Hierarchy_Training_LLMs_to_Prioritize_Privileged_Instructions.pdf": "fbc2d65e913e75b8f0ae74e83e3443c36a727636d1038a071a2f10d8be63dac4",
+    "courses/2680/readings/papers/From_Words_to_Watts_Benchmarking_the_Energy_Costs_of_Large_Language_Model_Inference.pdf": "6a5bc05ede1ee1161df2f1224542a230d8445ba72356f182a710b895c92bbf21",
+    "courses/2680/readings/papers/EAGLE-2_Faster_Inference_of_Language_Models_with_Dynamic_Draft_Trees.pdf": "712a5af2ca1936d60eaa22cbebaaed36029777661dd61b2fab56de06eb931f6b",
+    "courses/2680/readings/papers/AWQ_Activation-aware_Weight_Quantization_for_LLM_Compression_and_Acceleration.pdf": "6e35c8fe7af1f18a5c48dd2524629d859a2013a91d4b3666b554705287a17764",
+    "courses/2680/readings/papers/Ragged_Paged_Attention_A_High-Performance_and_Flexible_LLM_Inference_Kernel_for_TPU.pdf": "6b546d2af7bd3673cdfedc2d4efb17e3ebc149d1cfa28e893f45cae9b7aca578",
+    "courses/2680/readings/papers/Retrieval-Augmented_Generation_for_Knowledge-Intensive_NLP_Tasks.pdf": "23e3249e9a1e75418d82efecab0ea8c4d033b89c93742f63208d47ce01f21233",
+    "courses/2680/readings/papers/GLU_Variants_Improve_Transformer.pdf": "7398ae8b163722a6b5410fb975722adbe6b5f6f9c7f1efa584f1c6b79eaa93e2",
+    "courses/2680/readings/papers/MetaGPT_Meta_Programming_for_a_Multi-Agent_Collaborative_Framework.pdf": "17582e47647fac8eaa3681feade41c8408310c4133acc5c6823565fbe880e1ac",
+    "courses/2680/readings/papers/Reducing_Transformer_Key-Value_Cache_Size_with_Cross-Layer_Attention.pdf": "1ecbd39c150d725a216d9e9409af7999a6a81e43938f4e03924a688b29fa67c4",
+    "courses/2680/readings/papers/Scaling_up_Test-Time_Compute_with_Latent_Reasoning_A_Recurrent_Depth_Approach.pdf": "96f4543683a06a470ccb0b6b0db27a98f283fde9467d175e838f03a629a76c7b",
+    "courses/2680/readings/papers/AgentServe_Algorithm-System_Co-Design_for_Efficient_Agentic_AI_Serving_on_a_Consumer-Grade_GPU.pdf": "ff1dd20d13b905fe2f88fdf5eea20ea6a2a00c777ba6566f228e74f621ed5730",
+    "courses/2680/readings/papers/Large_Language_Diffusion_Models.pdf": "18942f14544d696bef711acd43c84017e51b8428b15edc74130761218e66f73b",
+    "courses/2680/readings/papers/Blockwise_Parallel_Decoding_for_Deep_Autoregressive_Models.pdf": "e34c3c9ddd1066b7dc2c11406580a586a6d483a23e6362e1414f760b655c52e1",
+    "courses/2680/readings/papers/ServerlessLLM_Low-Latency_Serverless_Inference_for_Large_Language_Models.pdf": "7b39c246c79218277ac1d1e1af213345721ed7977bb7643ad878ed58b8fc4424",
+    "courses/2680/readings/papers/Diagnosing_and_Mitigating_Context_Rot_in_Long-horizon_Search.pdf": "89f838c60ac54a940e4d70e4c2e2771cadfdfd0e477acffd43231b25221dcdbb",
+    "courses/2680/readings/papers/The_Sparse_Frontier_Sparse_Attention_Trade-offs_in_Transformer_LLMs.pdf": "457fb3a9a86757a45769729a88112d9153468ae0277a2c81e5123913e53d8ff9",
+    "courses/2680/readings/papers/AgentSpec_Speculative_Decoding_for_Batch_Inference_of_LLM_Agents.pdf": "beb0b3908c975d608b1ce157fb85f65c57530ae65fd4afb0e6c248651028007b",
+    "courses/2680/readings/papers/LLM.int8_8-bit_Matrix_Multiplication_for_Transformers_at_Scale.pdf": "40da3ce2d38eb3baa8b638cab093bd048178205c1eb4d0671e79c108f72906bf",
+    "courses/2680/readings/papers/The_Rollout_Infrastructure_Tax_in_Coding-Agent_Reinforcement_Learning.pdf": "eea2330406e163a29df33083a05391b9833c5fcf3e356f6ed2163ca9d39c51cf",
+    "courses/2680/readings/papers/Libra_Efficient_Resource_Management_for_Agentic_RL_Post-Training.pdf": "40810df5c8869473727aafa955db3efafc810115cdf70addbb3ff3d8759492cc",
+    "courses/2680/readings/papers/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf": "13ff4abe0c7ad4a7dd3b4876d19a8bf940e39e70dabbf06065aa774a6c3457de",
+    "courses/2680/readings/papers/MagicDec_Breaking_the_Latency-Throughput_Tradeoff_for_Long_Context_Generation_with_Speculative_Decoding.pdf": "a790569abe3000955becc89de7faecb613180a2e87131d3a34e2d114aa018ea5",
+    "courses/2680/readings/papers/Less_Context_Better_Agents_Efficient_Context_Engineering_for_Long-Horizon_Tool-Using_LLM_Agents.pdf": "31aa21cfc78d1528d07752527b6039720bc8b31eb82906a6c55a40e41fe98a5d",
+    "courses/2680/readings/papers/MemGPT_Towards_LLMs_as_Operating_Systems.pdf": "9f674bcff69c86f11c813dcfad613d8841f5f8ed17979e3c4df06a91df7762e0",
+    "courses/2680/readings/papers/QLoRA_Efficient_Finetuning_of_Quantized_LLMs.pdf": "33a4e757c19d6ea8d3cca8958fce8fe405e290272e135c99ee66065c775d5bd1",
+    "courses/2680/readings/papers/TVM_An_Automated_End-to-End_Optimizing_Compiler_for_Deep_Learning.pdf": "6032d5a54db0ec552168a5f5295a954edea6a24d91ae03bed1e0da0d858c9fa9",
+    "courses/2680/readings/papers/NanoFlow_Towards_Optimal_Large_Language_Model_Serving_Throughput.pdf": "b35b05f22115bc55897e65fb40eda77969b52efcebfb1b3450791d3960bb33b2",
+    "courses/2680/readings/papers/Architectural_Implications_of_Agentic_AI_Workflows.pdf": "11d56e25503752a63194ec493690740794b673e6ddf136ab22f1c56a74c7c252",
+    "courses/2680/readings/papers/Attention_Is_All_You_Need.pdf": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+    "courses/2680/readings/papers/QServe_W4A8KV4_Quantization_and_System_Co-design_for_Efficient_LLM_Serving.pdf": "2e8ff61b02bd6a0f0a4a55f94b1c77095905bfb53b77d3a324df43d789a7286d",
+    "courses/2680/readings/papers/Parallelizing_Tool_Execution_and_LLM_Generation_for_Low-Latency_Agent_Serving.pdf": "edf6ff58b17652804a793b7dda94691ccb1fa16672c0ceb846e278eaa79b9275",
+    "courses/2680/readings/papers/Efficient_LLM_Serving_for_Agentic_Workflows_A_Data_Systems_Perspective.pdf": "61a1e4b087685fa976a96d1b6a9abf035716bd1534fbaad5a576a1ada863f60a",
+    "courses/2680/readings/papers/DeepSeek-V3_Technical_Report.pdf": "812a3fd645c80725354de9d831a6785503007a60681461407f64e97305fa9330",
+    "courses/2680/readings/papers/Llumnix_Dynamic_Scheduling_for_Large_Language_Model_Serving.pdf": "c76d726aced3e5d24920b10259938922d37ebcb3b8d80b89d9bb9550e4bdf97a",
+    "courses/2680/readings/papers/CacheBlend_Fast_Large_Language_Model_Serving_for_RAG_with_Cached_Knowledge_Fusion.pdf": "034b9f230930f20ed23fc7dc17bbdf3fee0a9ff11c928563904bce34ec2e98e6",
+    "courses/2680/readings/papers/Efficiently_Scaling_Transformer_Inference.pdf": "a34aacd15d1d4918da0001697a01b4ae8f547fec0169fe886f5f10a529529a93",
+    "courses/2680/readings/papers/Lost_in_the_Middle_How_Language_Models_Use_Long_Contexts.pdf": "653b29619eae2ae4b361d7bdcdc06db4bedcb1b0eabe31814036beca8c1af0b1",
+    "courses/2680/readings/papers/SpecInfer_Accelerating_Large_Language_Model_Serving_with_Tree-based_Speculative_Inference_and_Verification.pdf": "38764bfe741d39c9a309d1b715e8dc2cea6ea6c965337752b3562b1785afd9f1",
+    "courses/2680/readings/papers/CacheGen_KV_Cache_Compression_and_Streaming_for_Fast_Large_Language_Model_Serving.pdf": "3bbadb232c66d89dd1a68ecea65d76edc5e67074a97072e4a401ca7a6335a8de",
+    "courses/2680/readings/papers/DynamoLLM_Designing_LLM_Inference_Clusters_for_Performance_and_Energy_Efficiency.pdf": "c9f24c66bfb8d5f75e2840f94fce30f65e42f6d1a36ec55f8619839e8037c9a1",
+    "courses/2680/readings/papers/SageAttention3_Microscaling_FP4_Attention_for_Inference_and_An_Exploration_of_8-Bit_Training.pdf": "87943b08c65ab39f341b2691ed5aa19934f8444cf8eb488cc45064fea67436a6",
+    "courses/2680/readings/papers/SpecBox_Speculative_Sandbox_Scheduling_for_Efficient_LLM_Agent_Serving.pdf": "48fec6709abcd7bbb4c28dde2ebbefae8c372ee1c361c982a569fe9d1fcf8056",
+    "courses/2680/readings/papers/SWE-bench_Can_Language_Models_Resolve_Real-World_GitHub_Issues.pdf": "f7e8e1df64129742b8199a21a042734519a823a1dafd6f48f8f3ddcfb48ee296",
+    "courses/2680/readings/papers/OmniQuant_Omnidirectionally_Calibrated_Quantization_for_Large_Language_Models.pdf": "8aa575f85ffb4da0a4bcfd4143c2c3ddbd4805cbdac4d39448c9960d5a29036f",
+    "courses/2680/readings/papers/Switch_Transformers_Scaling_to_Trillion_Parameter_Models_with_Simple_and_Efficient_Sparsity.pdf": "f340f6ace31abf7d0730ef461404279f40d3c890e9cc2daeb7068b3304afdbd6",
+    "courses/2680/readings/papers/Neural_Machine_Translation_of_Rare_Words_with_Subword_Units.pdf": "f4e5a6bbbe0d87459997fffe892f8be485e33903cc71f923c2884639fbf96401",
+    "courses/2680/readings/papers/Dream_7B_Diffusion_Large_Language_Models.pdf": "461f5ac618e86dd398af3662958178c3c243ee97b7e5ee9c20f5ed6399107a0d",
+    "courses/2680/readings/papers/Mamba_Linear-Time_Sequence_Modeling_with_Selective_State_Spaces.pdf": "adf70ed1803c85b1899dec3e21f3af0b124411439e8654b840ea65f7b9f52b2e",
+    "courses/2680/readings/papers/QuaRot_Outlier-Free_4-Bit_Inference_in_Rotated_LLMs.pdf": "f611888c63ef63a5c0232e2c8416619f0c9ace08d0e05692731da82791202e3e",
+    "courses/2680/readings/papers/ZipCache_Accurate_and_Efficient_KV_Cache_Quantization_with_Salient_Token_Identification.pdf": "8765c59681a203fc1fd34d1908e7195699b2e1118e2aca0791449c306f4eebf2",
+    "courses/2680/readings/papers/MPK_A_Compiler_and_Runtime_for_Mega-Kernelizing_Tensor_Programs.pdf": "0069c67600b194c4a935110889df803dd0ff8ca8caebc324ef6e13aeaa4da4cb",
+    "courses/2680/readings/papers/TideRL_Boosting_Agentic_RL_Goodput_with_Readiness-Aware_Scheduling.pdf": "71e5b879bd6c3f0b22dcea152db6b2704d84aab8b22183358c0c6c37b47a5369",
+    "courses/2680/readings/papers/The_Shift_to_Agentic_AI_Evidence_from_Codex.pdf": "e1f19f36a590ae5131aeb6322e2e69b66b22db3d7786d8e5bf477beb4ec37c47",
+    "courses/2680/readings/papers/Prompt_Cache_Modular_Attention_Reuse_for_Low-Latency_Inference.pdf": "15e198a54c37a1177c9b17cf44261b4bec50fe5c3a2377bc8d1af4eadabea20f",
+    "courses/2680/readings/papers/CoAgent_Concurrency_Control_for_Multi-Agent_Systems.pdf": "b006d2993a9cd6cef286c4402f4b15665522b2b050c2ff27f5911be718d315d4",
+    "courses/2680/readings/papers/Block_Rotation_is_All_You_Need_for_MXFP4_Quantization.pdf": "7425e1c0e49e44bb131cb1d340d8430841f2200507d5890a80eff7e5af552f27",
+    "courses/2680/readings/papers/Hybrid_LLM_Cost-Efficient_and_Quality-Aware_Query_Routing.pdf": "c0ebc21073112b8f8e51c7ea279eeac4d5b62be88c69a5cd2bccc2d58ec28cbb",
+    "courses/2680/readings/papers/DeepSeek-V4_Towards_Highly_Efficient_Million-Token_Context_Intelligence.pdf": "55b2d72f772ac00de2e470b3ee08443c648d971c7f57c52d6202895665e5978d",
+    "courses/2680/readings/papers/RouteLLM_Learning_to_Route_LLMs_with_Preference_Data.pdf": "c9bc9c8171cab95bb3832cde8767c6b5e0925cd62930e51ddbd60d7cb2616741",
+    "courses/2680/readings/papers/Mistral_7B.pdf": "dfbac4e7035344b305c947481f2e7e8a02f7a24a563917eb6e47f6591d14c5ae",
+    "courses/2680/readings/papers/Measuring_the_environmental_impact_of_delivering_AI_at_Google_Scale.pdf": "348b58c832076258e1792a710fab3f0ac60f02001857532a7136771b52b30339",
+    "courses/2680/readings/papers/RouterBench_A_Benchmark_for_Multi-LLM_Routing_System.pdf": "1df05ba3e75ad24c3f8e00039a4a35704eb0f8df44088616f8244936e0a9aa01",
+    "courses/2680/readings/papers/Efficient_Serving_for_Dynamic_Agent_Workflows_with_Prediction-based_KV-Cache_Management.pdf": "eb2cc2a7750f972a228519376ad27214cc4d674686c2e7209207c8d47b0da301",
+    "courses/2680/readings/papers/Break_the_Sequential_Dependency_of_LLM_Inference_Using_Lookahead_Decoding.pdf": "f448d302916d213547abc262397c004b093f3d493ee0a5a365791d64b0cf8218",
+    "courses/2680/readings/papers/The_Attacker_Moves_Second_Stronger_Adaptive_Attacks_Bypass_Defenses_Against_LLM_Jailbreaks_and_Prompt_Injections.pdf": "5067f88c7c14a007c205a452e8cdc5bcbf2e87f0958efcc620aa23c81465a9c3",
+    "courses/2680/readings/papers/AgentTrace_Causal_Graph_Tracing_for_Root_Cause_Analysis_in_Deployed_Multi-Agent_Systems.pdf": "c1ab6d937e1c5e6e3454848193faa2477a9d9fd19497e29e4eaca200edb7ad7a",
+    "courses/2680/readings/papers/SqueezeLLM_Dense-and-Sparse_Quantization.pdf": "9781d343dbe73e5353f5500d0e0732006c941bf3fdcd0d70cbc59f89622ec821",
+    "courses/2680/readings/papers/Tilus_A_Tile-Level_GPGPU_Programming_Language_for_Low-Precision_Computation.pdf": "0871ac7c3d2147336baea59763de3a3732a9343c103b4ebd7939a19c8b54c7c4",
+    "courses/2680/readings/papers/QuIPSharp_Even_Better_LLM_Quantization_with_Hadamard_Incoherence_and_Lattice_Codebooks.pdf": "2a5c4c103ba31f4a889344d95059c40e96841761e725500829f00b5a16c3d825",
+    "courses/2680/readings/papers/GQA_Training_Generalized_Multi-Query_Transformer_Models_from_Multi-Head_Checkpoints.pdf": "ba9094fe73db9bf515d47ae8b2d502fee9d8a6c7b1327e197ddb160f4c63b94a",
+    "courses/2680/readings/papers/Megatron-LM_Training_Multi-Billion_Parameter_Language_Models_Using_Model_Parallelism.pdf": "fa89e54e23c0cea5cbd9d24720db7647c61af299afdb9a170c7119160e6d207a",
+    "courses/2680/readings/papers/Toolformer_Language_Models_Can_Teach_Themselves_to_Use_Tools.pdf": "6d7483d94653008e40c2058a1c22441c92e3713dae278b6361e8efc447c99522",
+    "courses/2680/readings/papers/Self-Refine_Iterative_Refinement_with_Self-Feedback.pdf": "81e44592314d80218ad108d3490cd0b84ba5962fefd5c84819987afd77a57087",
+    "courses/2680/readings/papers/AgentDojo_A_Dynamic_Environment_to_Evaluate_Prompt_Injection_Attacks_and_Defenses_for_LLM_Agents.pdf": "349884fffbf43282591c5accffd57bb651632f38e412fe303114941bdd111b05",
+    "courses/2680/readings/papers/Efficient_Inference_for_Large_Vision-Language_Models_Bottlenecks_Techniques_and_Prospects.pdf": "f9f6bd3e226f26939a48306070649d0aa6acb63e8a861ab3512062e8954e2f3d",
+    "courses/2680/readings/papers/Why_Do_Multi-Agent_LLM_Systems_Fail.pdf": "1b9e317a2a421e60ca2b2eda4a30844557a01e63286a790890c0ecef32d25460",
+    "courses/2680/readings/papers/SpecForge_A_Flexible_and_Efficient_Open-Source_Training_Framework_for_Speculative_Decoding.pdf": "42f682f2efc204e753c92216f692d8b1828f9a987e29038f2b3db080edbd7d2d",
+    "courses/2680/readings/papers/Pythia_Exploiting_Workflow_Predictability_for_Efficient_Agent-Native_LLM_Serving.pdf": "7283a8f87a00338d64c315312d8f487a21876f462902020a4b3cfbb525d2ba89",
+    "courses/2680/readings/papers/ProxSparse_Regularized_Learning_of_Semi-Structured_Sparsity_Masks_for_Pretrained_LLMs.pdf": "2e96a0c5050dd3875b77faa6e53182630952eec1e597f0fb0fc41f5b0d905746",
+    "courses/2680/readings/papers/From_LLM_Inference_to_Agentic_Workloads_Characterization_and_Implications_for_Serving_Systems.pdf": "44cb376351841de7c03304ca21e87ef9a0a759d0cd7fe8af68abc42c1230e477",
+    "courses/2680/readings/papers/DeepSeek-V3.2_Pushing_the_Frontier_of_Open_Large_Language_Models.pdf": "2bec0671778769c159ec389412727d1f3d4889fe1c71564b61edaa24705bd17b",
+    "courses/2680/readings/papers/SAGA_Workflow-Atomic_Scheduling_for_AI_Agent_Inference_on_GPU_Clusters.pdf": "87f1fe0eec3762bd5ef6f119a0d17c3b7eb2e7bc714db2acae4f2ff063fe0b89",
+    "courses/2680/readings/papers/Governed_Shared_Memory_for_Multi-Agent_LLM_Systems.pdf": "6c3b893a8b4be981e27ad90fd2adbb3412df661aec7c1a21fd006a071f166b0b",
+    "courses/2680/readings/papers/Not_what_you_ve_signed_up_for_Compromising_Real-World_LLM-Integrated_Applications_with_Indirect_Prompt_Injection.pdf": "428e23e8c7e4f89310e113e38d082b3f65548a8b887188ebc536099061800e81",
+    "courses/2680/readings/papers/FlashInfer_Efficient_and_Customizable_Attention_Engine_for_LLM_Inference_Serving.pdf": "6995874b7a43b0693ba0da805c4d99327a4cb4013edbea3e36f4c42949e63303",
+    "courses/2680/readings/papers/TClone_Low-Latency_Forking_of_Live_GUI_Environments_for_Computer-Use_Agents.pdf": "cd6d543feb3ec804b35f91ae9dd897a563038f9230067abd5eaafd88976e46af",
+    "courses/2680/readings/papers/Mixed_Precision_Training.pdf": "3bbff2f757abdcfe4c5a4cee338f7b7d888110b9013ec4a934e334016f527c78",
+    "courses/2680/readings/papers/Medusa_Simple_LLM_Inference_Acceleration_Framework_with_Multiple_Decoding_Heads.pdf": "93d98f2e858c87ee04be440ee81ab8ad93700652ed759227d25fcf75cfdd5ef0",
+    "courses/2680/readings/papers/Revisiting_Lossy_Verification_in_Speculative_Decoding_Mechanisms_Trade-offs_and_Failure_Modes.pdf": "684468872eb77959f1c8c0164503854f352d0f49904e842d7a893b753d7034bd",
+    "courses/2680/readings/papers/POLCA_Power_Oversubscription_in_LLM_Cloud_Providers.pdf": "6799d1981745091455cc83ba1176a043b87ea32d40374095516644a548c0dccb",
+    "courses/2680/readings/papers/TokenLake_A_Unified_Segment-level_Prefix_Cache_Pool_for_Fine-grained_Elastic_Long-Context_LLM_Serving.pdf": "7cb2e6a9ac0dbde07644dc69e08d04259208d043ec5b85273b3aa90d3b54c892",
+    "courses/2680/readings/papers/Live-SWE-agent_Can_Software_Engineering_Agents_Self-Evolve_on_the_Fly.pdf": "7bd8e1c6345c2ff8d5a93674a8a88fcfc70ab6f657f946c82a2961f449e01535",
+    "courses/2680/readings/papers/HYPIC_Accelerating_Hybrid-Attention_LLM_Serving_with_Position-Independent_Caching.pdf": "db3d74bb3315f8f078140bf65bb42c80e1f566e5e4b010f4847c229e625444bb",
+    "courses/2680/readings/papers/Accelerating_Large_Language_Model_Decoding_with_Speculative_Sampling.pdf": "ffa03c6ae46f3122570bacd7da358cae8659b6421162bbc25088622fd4889c37",
+    "courses/2680/readings/papers/AgentCgroup_Understanding_and_Controlling_OS_Resources_of_AI_Agents.pdf": "535ea6b9d278dd3a83c653212a1e108a320816f6752c6a2bfb9d2477ad7b9cee",
+    "courses/2680/readings/papers/Idleness_is_Relative_Exploiting_Tool-Call_Idle_Windows_for_Offloading_in_Agentic_Systems_with_MORI.pdf": "ec1bf7be1d9052f5602b5093e8d4405126c29c30450280edd295565f4b0123e3",
+    "courses/2680/readings/papers/Optimizing_Agentic_Language_Model_Inference_via_Speculative_Tool_Calls.pdf": "92b4b02076765d37467dbfbb9800c6752ebccef83aaf311a78793b77046fd282",
+    "courses/2680/readings/papers/Multi-Agent_Systems_Execute_Arbitrary_Malicious_Code.pdf": "5fb79d30a11ef7b2e28d5eadc53af9b7ecb41d8ee60c8e04c2ec3c59e8b1fb11",
+    "courses/2680/readings/papers/FlashAttention_Fast_and_Memory-Efficient_Exact_Attention_with_IO-Awareness.pdf": "ca7f9fda10b90fc05dd291a3accc85e9c1a4a860b99b31928dab03ed3fcb14e4",
+    "courses/2680/readings/papers/The_Era_of_1-bit_LLMs_All_Large_Language_Models_are_in_1.58_Bits.pdf": "bcd625e89f95c39dc9143af4174978fcf2467eb9659d86f8da448d7d9366c332",
+    "courses/2680/readings/papers/ActPlane_Programmable_OS-Level_Policy_Enforcement_for_Agent_Harnesses.pdf": "59c2b86a375aa637abe0e4e4630b0b56affc540fa34dfbf2234493f63573220a",
+    "courses/2680/readings/papers/Automated_Design_of_Agentic_Systems.pdf": "32eb1c1a6888e35fae0f618e33c58698b54d9c49bc063fef91ee591719fca376",
+    "courses/2680/readings/papers/DualMap_Enabling_Both_Cache_Affinity_and_Load_Balancing_for_Distributed_LLM_Serving.pdf": "73eced1ccb15059945437039d25c6780786817f6dc91559197e4e9732b99fd92",
+    "courses/2680/readings/papers/ZeroQuant_Efficient_and_Affordable_Post-Training_Quantization_for_Large-Scale_Transformers.pdf": "085dcd0e5ae6705dc0130fe0ed9a389805bf9df67a03501e1a4c6551d75da62f",
+    "courses/2680/readings/papers/Measuring_AI_Ability_to_Complete_Long_Software_Tasks.pdf": "29216eb3af4daa417666757a462ab7c7b5f8c18c188ee5a56e258b04116211f7",
+    "courses/2680/readings/papers/FlashAttention-2_Faster_Attention_with_Better_Parallelism_and_Work_Partitioning.pdf": "4aa8935dfacaf6ae8c68f772ca92f730154a0dd0e1bceeb59c7bc56c512d5868",
+    "courses/2680/readings/papers/KIVI_A_Tuning-Free_Asymmetric_2bit_Quantization_for_KV_Cache.pdf": "df31ef32d71bfb280c533c5db8220cadf5ef42076bf45d82ba4c8da8e50ea5f4",
+    "courses/2680/readings/papers/DeepSeekMoE_Towards_Ultimate_Expert_Specialization_in_Mixture-of-Experts_Language_Models.pdf": "a64b509e1410d09cf5b70570788d27790985fb9808ce436b9da8de73f2eed651",
+    "courses/2680/readings/papers/vAttention_Dynamic_Memory_Management_for_Serving_LLMs_without_PagedAttention.pdf": "89017c3e7f5900cdf2b7295d647fc19bf45e674dddd3525ba86a5f203861c701",
+    "courses/2680/readings/papers/FlashAttention-4_Algorithm_and_Kernel_Pipelining_Co-Design_for_Asymmetric_Hardware_Scaling.pdf": "7c053b2b45a9d7da93b21f7dbe16ff8a927a9dc7e92537a034ca58a4eb5f10eb",
+    "courses/2680/readings/papers/Mixtral_of_Experts.pdf": "f8bbf0e9d979b7a8ce7be65119266545a229a85b57e077d8bd048e458bb642da",
+    "courses/2680/readings/papers/CoRun_Padding_is_Simple_and_Efficient_for_Deterministic_LLM_Inference.pdf": "7f76c92ccad53bb312acab1a511b1bbb69caf142c4bcdbf526c110c4890ce90d",
+    "courses/2680/readings/papers/ReAct_Synergizing_Reasoning_and_Acting_in_Language_Models.pdf": "f285b0971ae4a790e402fb93966bed3adde2cf0a04977d08b2b40d6ab0cace69",
+    "courses/2680/readings/papers/SGLang_Efficient_Execution_of_Structured_Language_Model_Programs.pdf": "161e0a0123a89cd8a57d68734ae704680b0e577fee41e1e7e1029c37a9d99b57",
+    "courses/2680/readings/papers/ElasticMM_Efficient_Multimodal_LLMs_Serving_with_Elastic_Multimodal_Parallelism.pdf": "e8d7594ed0d7eff32daadda6c57648bc2c13d0c690299641d46345d1cfc8f6a0",
+    "courses/2680/readings/papers/Reasoning_Failures_in_Large_Language_Model_Agents.pdf": "fa4a400e0cd34f4b9c8381f6424dbb641815e6e1cff27c017bc2450c6845daf1",
+    "courses/2680/readings/papers/Benchmarking_LLM_Serving_Systems_for_Agentic_AI_Workloads_with_XPerf.pdf": "478804426740fd3de5e69ee83b62bd883a773f9617696578907809880d761256",
+    "courses/2680/readings/papers/Towards_a_Science_of_Scaling_Agent_Systems.pdf": "028f329010d95143915db8db6ce1ad26a4e844b66e4abd6b36fdb39651aff7fd",
+    "courses/2680/readings/papers/Scheduling_Mixed_RL_Rollouts_Beyond_Prefix_Locality.pdf": "cf0da0a167051dee752cee4bc27c4f4df8b403d87c0b6253388cfc8126210cd0",
+    "courses/2680/readings/papers/Towards_a_Science_of_AI_Agent_Reliability.pdf": "f6347ad130f009ea385cfa341a32fd1c7d757d65458b4d1d73dae5c3a28a2ccf",
+    "courses/2680/readings/papers/Fast_Transformer_Decoding_One_Write-Head_is_All_You_Need.pdf": "3250947d7be32f1a15531ab3062134edd431b9cf79e669d324ab5cbddd9a2094",
+    "courses/2680/readings/papers/Root_Mean_Square_Layer_Normalization.pdf": "a38ab771022fc10525d2b6b23de40307b2ca7b2bf463f5219da6a0ba1c41225f",
+    "courses/2680/readings/papers/XGrammar_Flexible_and_Efficient_Structured_Generation_Engine_For_Large_Language_Models.pdf": "61e94a1a28bb6307250c4f82a9ff0dcd07273fed80011d6ba7535f388a8fa5f0",
+    "courses/2680/readings/papers/When_Does_Disaggregation_Pay_Simulating_Prefill_Decode_Attention_FFN_Specialization_for_Agentic_LLM_Inference.pdf": "84da9036b288e30ad99dafae322f0cd670e4bf1b9157993cb2cdeb5ce8a13118",
+    "courses/2680/readings/papers/The_Llama_3_Herd_of_Models.pdf": "481f1599468f95a07d05e97fafe55bbe786dc1624c6f881bcb4c7d14c933d083",
+    "courses/2680/readings/papers/DeepSeek-V2_A_Strong_Economical_and_Efficient_Mixture-of-Experts_Language_Model.pdf": "f149f9c09aa8b46ce6a740a255a99b7cc2317ac5b065989339919b7e6c329c9b",
+    "courses/2680/readings/papers/LLM-Pruner_On_the_Structural_Pruning_of_Large_Language_Models.pdf": "8b2292dddcaa88f3801acf4d91f7aa276f2affc141215f5990a1af02984ce514",
+    "courses/2680/readings/web/Building_Effective_AI_Agents.html": "8600702d1292a3712ca43ca5206eae781e3135fe6589e3912ee17cc68337a99d",
+    "courses/2680/readings/web/Orchestrate_subagents_at_scale_with_dynamic_workflows.html": "6dab85faf8aeed2d421b10627b1a5e80acb91db41ef4ed51969a92c09ac42e24",
+    "courses/2680/readings/web/Headlong_a_microharness_for_persistent_agents.html": "e4fd2046cbba2a00c2b8411fb0b6397f72a58f956b06a3853072ee075bd3a6f7",
+    "courses/2680/readings/web/How_we_built_our_multi-agent_research_system.html": "f7c4539731f0fe4794b0db96f95dbb712331338febdb11e835dedff5bb3232eb",
+    "courses/2680/readings/web/Learning_Relaxed_Belady_for_Content_Distribution_Network_Caching.html": "1f8425b176491802955a5e1d86e49280ecbda5c9757617220a7061cb775d87d4",
+    "courses/2680/readings/web/2._Examples_of_cheating_in_CAISI_s_agent_evaluations.html": "0d1f02ad54f1e7c4849b91a1d5bcaf1f8e51ceff6e2211eb8f8a9f7d2e58daeb",
+    "courses/2680/readings/web/The_Shift_from_Models_to_Compound_AI_Systems.html": "44e2dbc1587ea35bb5c2b64371fb50d5a72860eef8a68de98149c07824736244",
+    "courses/2680/readings/web/Making_Deep_Learning_go_Brrrr_From_First_Principles.html": "b035a3c38d61db25dc26c2c6cc76b1df17fd4d5a20735b857f2ffb6e248bcf90",
+    "courses/2680/readings/web/Agent_Patterns_for_AI_Agent_Development_-_AgentPatterns.ai.html": "7ad3f7de7cb66ebc781b04af50e236867910c50904156f8645da4ac733e8d612",
+    "courses/2680/readings/web/KVFlow_Efficient_Prefix_Caching_for_Accelerating_LLM-Based_Multi-Agent_Workflows.html": "171e65ab0f4ad7ec5fdd2b7b7eab93682094b71277795fb08b96e9a82fb7ff43",
+    "courses/2680/readings/web/Parrot_Efficient_Serving_of_LLM-based_Applications_with_Semantic_Variable.html": "6b83b264eb68aef30ebd0b34ed49895abb66364ba6f01c7693c5a0d9d6a4d15b",
+    "courses/2680/readings/web/Create_custom_subagents.html": "fa2d4451989f4670aa617fb4b9cff0dffe8684a039b960a9495d122b89512a0b",
+    "courses/2680/readings/web/Firecracker_Lightweight_Virtualization_for_Serverless_Applications.html": "516298233390603aaeb3178d3ae56ce5e042d0227735b4e5ecbfb216a09ce759",
+    "courses/2680/readings/web/Hooks_reference.html": "b8b0f560049124e18a6d5bd2a1dff6e0eae1573ac2efa2004a204dbab9c09449",
+    "courses/2680/readings/web/The_Illustrated_Transformer.html": "375d8acf1096832ddfff288d93ff0ace405b6a4897bb96e280e6d71f3d353556",
+    "courses/2680/readings/web/libCacheSim_A_High_Performance_Library_for_Building_Cache_Simulators.html": "4a9eb7ce7f48bb4fc1b2ccff10c92944d8698ac6ddeaa703d982dbc63ad37898",
+    "courses/2680/readings/web/Context_Engineering_A_Practical_Guide_for_AI_Agents_2026.html": "824ad1ff81a193333d72aadcae79f2a7550c0d3bf4d825570829cb9472681f10",
+    "courses/2680/readings/web/FlashAttention-4_from_Scratch_to_Near-SOTA_in_60_Diagrams_CUDA_PTX.html": "22ff6b10fa6853e0c9ea268aa7a7958237271392ef507be8dff20b3e8095a63f",
+    "courses/2680/readings/web/What_Is_an_Agent_Harness_Harness_Engineering_Explained.html": "be5d36e5af0d5884bc1ec3eef815aa9060836a5500f137224443fe49b56bade1",
+    "courses/2680/readings/web/LLM_Powered_Autonomous_Agents.html": "03b6ed75b1dc0dedd200a077367d1f7737f0a18e08c104e7f653115e1f52b0ef",
+    "courses/2680/readings/web/SIEVE_is_Simpler_than_LRU_an_Efficient_Turn-Key_Eviction_Algorithm_for_Web_Caches.html": "6d420524c7e68577986036b681c8286a709ab38a1558900a4e44dbde9b054a11",
+    "courses/2680/readings/web/Don_t_Build_Multi-Agents.html": "c0f8c4656ee7c278071a23518e12d05a0d42e587b0c9fdde3717a00c24b7742c",
+    "courses/2680/readings/web/Building_a_C_compiler_with_a_team_of_parallel_Claudes.html": "ca57d820e45ec9752095bda5f645949ea8cdadc10692d61973b3a73b5d65ca93",
+    "courses/2680/readings/web/The_Annotated_Transformer.html": "ee355423ba684165fca361da0f3d3b1c8fd0c79964732116af54d2f2ed73cb4a",
+    "courses/2680/readings/web/SYMPHONY_Enabling_Compute-Memory_Disaggregation_in_LLM_Serving_Systems.html": "bb2c2cbb2aebbe3823cfc92ffd2362eee87c719268a9abf739a84b426b69b2da",
+    "courses/2680/readings/web/Equipping_agents_for_the_real_world_with_Agent_Skills.html": "045e2eb2c64b1225dd98af81b35aeabde9046c2d655bc9582af9d02f765ee79d",
+    "courses/2680/readings/web/Cortex_Achieving_Low-Latency_Cost-Efficient_Remote_Data_Access_For_LLM_via_Semantic-Aware_Knowledge_Caching.html": "c6ce50856b28ce7619d53bcd5d0934c29375d3207c785fc8cf4de35fdddecf79",
+    "courses/2680/readings/web/Agentic_Engineering_Patterns.html": "61897b926de3a88a27673ca40c3f9a88356df2c317757c652d38563281748b45",
+    "courses/2680/readings/web/Writing_effective_tools_for_AI_agents_using_AI_agents.html": "1740f094f5cb2e7a9d6ab37082f04268ca9cb3a1002488ca95d629b54307d454",
+    "courses/2680/readings/web/Reducing_cost_and_improving_performance_with_Claude_Platform.html": "d305ca40ee74907797e8985976e6fa3f2ca9cb6c2ae30bfc885f902ad9aad44a",
+    "courses/2680/readings/web/Simple_Is_Better_Multiplication_May_Be_All_You_Need_for_LLM_Request_Scheduling.html": "f9bb286b4a08da27dcbf5bdc5164bb4e691ddbc2448f38a1022d378e6d6c8cc7",
+    "courses/2680/readings/web/Orca_A_Distributed_Serving_System_for_Transformer-Based_Generative_Models.html": "7ed01ec6c5300c9061a6475535fa69ce91e62a34902136f8aa83c48724f417c4",
+    "courses/2680/readings/web/Transformer_Inference_Arithmetic.html": "47d08ab07b7a4fd14abcc9d059737b16fda7ce14d38fdbc70b002526da89af1b",
+    "courses/2680/readings/web/How_skills_and_MCPs_actually_work.html": "025685349889065651f42130786a3501c0ee41bf44162087c614426f8315ce61",
+    "courses/2680/readings/web/The_Harness_Is_the_Thing.html": "078de61dd468238f9fdcfbb84269e50329880a2f56be3994338b1bb6d74a4caa",
+    "courses/2680/readings/web/How_Foundational_Models_Became_Superhuman_in_Bash.html": "45283d9e0b53d0a4e3cf424257d1ab7f5cd9c2d56b26523f4491285e62527627",
+    "courses/2680/readings/web/Effective_context_engineering_for_AI_agents.html": "6cc1c0b5e326f229fdd683c9294dc50fc3bf94ad2cdc563943a7f1905dcd277b",
+    "courses/2680/readings/web/Dapper_a_Large-Scale_Distributed_Systems_Tracing_Infrastructure.html": "f33968a9c204cdd790a212634d1ac7ceca8390b9b402a47146b1495f150664d2",
+    "courses/2680/readings/web/The_CacheLib_Caching_Engine_Design_and_Experiences_at_Scale.html": "04d9d6dc4de0fefcaf97c5a37cf33cd9b5d3db54b71a8a45ed07abdc153f7fee",
+    "courses/2680/readings/web/Murakkab_Resource-Efficient_Agentic_Workflow_Orchestration_in_Cloud_Platforms.html": "f875b2a4fd6ecb635b8c12486baec964324758dfbb3c29e3ccc4da46ebf11ffd",
+    "courses/2680/readings/web/Defeating_Nondeterminism_in_LLM_Inference.html": "a17675dcac9f1f87886bf9473fa8dff433c46104e127be97babfe68ea25d01dc",
+    "courses/2680/readings/web/Code_execution_with_MCP_building_more_efficient_AI_agents.html": "8a7950c54824b46716ef0c2a24faeb2bd1df888c1f4e3c8f997427764b0e9070",
+    "courses/2680/readings/web/Orchestrate_teams_of_Claude_Code_sessions.html": "0e0621efd26fe25070fa97022d0ea219b09b1bc4a42dc1f1bd35e7cf81712a23",
+    "courses/2680/readings/web/Agentix_An_Efficient_Serving_Engine_for_LLM_Agents_as_General_Programs.html": "859cd823715b3cc553a1dfb084c4f197727aaf62389c2667b710b433ca064b8e",
+    "courses/2680/readings/web/Best_practices_for_Claude_Code.html": "ea637432eb94072b32f3d393b8319ebe3c49179cde99358bb35c3f704c7fd869",
+    "courses/2680/readings/web/LPC_-_browser_verification_-_reading_body_unavailable.html": "03a18f01cbdb4c1f3db12bd5ff0d13244679f51674f0646bd267229726e8f11d",
+    "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/readings/SpecForge_A_Flexible_and_Efficient_Open-Source_Training_Framework_for_Speculative_Decoding.pdf": "42f682f2efc204e753c92216f692d8b1828f9a987e29038f2b3db080edbd7d2d",
+    "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/readings/Medusa_Simple_LLM_Inference_Acceleration_Framework_with_Multiple_Decoding_Heads.pdf": "93d98f2e858c87ee04be440ee81ab8ad93700652ed759227d25fcf75cfdd5ef0",
+    "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/readings/AgentSpec_Speculative_Decoding_for_Batch_Inference_of_LLM_Agents.pdf": "beb0b3908c975d608b1ce157fb85f65c57530ae65fd4afb0e6c248651028007b",
+    "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/readings/Blockwise_Parallel_Decoding_for_Deep_Autoregressive_Models.pdf": "e34c3c9ddd1066b7dc2c11406580a586a6d483a23e6362e1414f760b655c52e1",
+    "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/readings/SpecInfer_Accelerating_Large_Language_Model_Serving_with_Tree-based_Speculative_Inference_and_Verification.pdf": "38764bfe741d39c9a309d1b715e8dc2cea6ea6c965337752b3562b1785afd9f1",
+    "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/readings/Revisiting_Lossy_Verification_in_Speculative_Decoding_Mechanisms_Trade-offs_and_Failure_Modes.pdf": "684468872eb77959f1c8c0164503854f352d0f49904e842d7a893b753d7034bd",
+    "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/readings/Draft_Verify_Lossless_Large_Language_Model_Acceleration_via_Self-Speculative_Decoding.pdf": "4136bdd1fccbc5a6e09b00548d0db2e9e83de7c6af14c8f2d5c2deb3e77219fa",
+    "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/readings/EAGLE-2_Faster_Inference_of_Language_Models_with_Dynamic_Draft_Trees.pdf": "712a5af2ca1936d60eaa22cbebaaed36029777661dd61b2fab56de06eb931f6b",
+    "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/readings/AdaServe_SLO-Customized_LLM_Serving_with_Fine-Grained_Speculative_Decoding.pdf": "a7d926691a18f5bed30079897c8b3e5ef39581aa510528296aed6659fcb26ea8",
+    "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/readings/Break_the_Sequential_Dependency_of_LLM_Inference_Using_Lookahead_Decoding.pdf": "f448d302916d213547abc262397c004b093f3d493ee0a5a365791d64b0cf8218",
+    "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/readings/EAGLE_Speculative_Sampling_Requires_Rethinking_Feature_Uncertainty.pdf": "3484aad4d255ac8ff3ebbb0df9f3b2fdb222145923f59ad25727812f4748a0f4",
+    "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/readings/SpecExec_Massively_Parallel_Speculative_Decoding_for_Interactive_LLM_Inference_on_Consumer_Devices.pdf": "b6af8dd38bf7e0754fefeea398342de7bdc90d5b55edd5d34e6faa0dcc59d9eb",
+    "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/readings/Mirror_Speculative_Decoding_Breaking_the_Serial_Barrier_in_LLM_Inference.pdf": "5b90962f154c9d22a4e6400bc2701fed689c1bc3e8d9e65d827e92ffa3b45d5b",
+    "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/readings/Sequoia_Scalable_Robust_and_Hardware-aware_Speculative_Decoding.pdf": "4e93904ae0a2a8b1813767e8a67c6709833b8affd60aff927c30619c37e4e7f8",
+    "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/readings/Online_Speculative_Decoding.pdf": "48286f9ef3e2e7daded63fb4b7b9fc71637763942939d76348f3e02f46d74af2",
+    "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/readings/Accelerating_Large_Language_Model_Decoding_with_Speculative_Sampling.pdf": "ffa03c6ae46f3122570bacd7da358cae8659b6421162bbc25088622fd4889c37",
+    "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/readings/Fast_Inference_from_Transformers_via_Speculative_Decoding.pdf": "8967e2daab74178b8a73a6f0b0780c5cbb40f9f6dcbd5c456b24a89c128c52ed",
+    "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/readings/REST_Retrieval-Based_Speculative_Decoding.pdf": "2c959dd4e7ea6ac9455c2ee7184779ba86cdfa87729967f3b68ac36a5c450147",
+    "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/readings/EAGLE-3_Scaling_up_Inference_Acceleration_of_Large_Language_Models_via_Training-Time_Test.pdf": "8a178337a1b05067907167dd81a43a7184596d71d4b795d6a0c73e6235fe1a27",
+    "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/readings/MagicDec_Breaking_the_Latency-Throughput_Tradeoff_for_Long_Context_Generation_with_Speculative_Decoding.pdf": "a790569abe3000955becc89de7faecb613180a2e87131d3a34e2d114aa018ea5",
+    "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/readings/DSpark_Confidence-Scheduled_Speculative_Decoding_with_Semi-Autoregressive_Generation.pdf": "522036b0cc16ad4678bd7c278dd0a0ab4da31170af7b97c2041067cc09a8289a",
+    "courses/2680/site/to_release.html": "2e2d39878611f922d36346e4a829004f08d24ddb207a061b834198da1d1b665b",
+    "courses/2680/site/index.html": "e306354078be13ce8e144aedb4ac1022b495361ce9c36a9e33b7fceed682ac32",
+    "courses/2680/site/seas-logo.png": "3bac23521d2edf3e90e628fef2ddeef8720944816d51269c69b0206815c4e797",
+    "courses/2680/site/readings.html": "73134198582f0fd23e9c3ef594b980f1926e6dbe893a5be498de8e8e76466238",
+    "courses/2680/site/project.html": "c01484edd114b86bb7c80e5d24f48887aa3b5bf5975697e5a89f95d35c8555b4",
+    "courses/2680/site/header.html": "0167746c267af6b678a3b9dbe62a8dd90e5fe8138f36f36ddd28fd2261deb5d5",
+    "courses/2680/site/discussion.html": "b7294fa3e2b9fbf4181c333e0298b64970b56e30fff03c368612a40e77ef4b74",
+    "courses/2680/site/favicon.svg": "1c46089593e84ef2567da962983139b5ad72bac7dc1d783e3ce31db2f91024b6",
+    "courses/2680/site/policy.html": "697b5bcbabfca9ab7611aa8f5ffb4fe151966e40221c9f8b891921b89b6c0107",
+    "courses/2680/site/assignments/assignment2.tar.gz": "b3c150a27dd774133f4f2f76c656c54d1c116c54d589fe37892ce2793e6a122a",
+    "courses/2680/site/assignments/assignment2.html": "ea8667c4c6a71d01cfe3b97ac836c821b3e598026a60ac906685765ab1fb7c4c",
+    "courses/2680/site/assignments/index.html": "5e632c9e93f429f3b53f1f34ab3a3472f562e993b343231eb2f92983b775a375",
+    "courses/2680/site/assignments/assignment3.html": "5d7041419365c9c66acb3e54cb4f5580fce443d8f3a4cf6de555048562fb6ffe",
+    "courses/2680/site/assignments/assignment4.html": "5cb88bd3cccaf54be4a41d4e6ace67dd633621ec6f843e2a281e5e138961319a",
+    "courses/2680/site/assignments/assignment4.tar.gz": "5165475e1ae37b0581bcb2b1a17acef5d8839944ea0f0f6dc6f11f1e26a12b62",
+    "courses/2680/site/assignments/assignment3.tar.gz": "6da8e16187337ee631532d7a01f67a44f5ac4903f6cb85ea6ebecb120c01ae87",
+    "courses/2680/site/assignments/assignment1.html": "6a37ef7fd39a2775489cbfaf13380599068478ad7d418fe0d48310bf438b4db5",
+    "courses/2680/site/slides/1_intro.pdf": "0183cf9edfce3247501a5aeba176e9b17ab470613195d8e1cc61f35f6e820094",
+    "courses/2680/site/slides/9_llm_serving_basics_1.pdf": "1cfe4fd6a413cdd168d711b413beff19e4967fe0ec0cb89b0cbe3c2c7fb5872a",
+    "courses/2680/site/slides/7_agent_design_4.pdf": "87f1c93e4711985ff4624de14b297beb118ed9f429523b455a3d1acb8fe515b8",
+    "courses/2680/site/slides/4_agent_design_1.pdf": "aee815f49719d38c9cee4c284a161c63081082ec20859daa9af7b6720f473304",
+    "courses/2680/site/slides/8_assignment3.pdf": "aad61822cdb769afe289b19994312923bb9dc582cb428c0e734cb2659db38550",
+    "courses/2680/site/slides/10_llm_serving_basics_2a.pdf": "b7351ed4f055e0196ebf06cf348e5042b83392f45dd30cbca379ad28be72b63b",
+    "courses/2680/site/slides/assignment4.pdf": "ddd740a7f1272a68c0f5424839cd862a6bdf858c99e325e0189681a614cfb2fa",
+    "courses/2680/site/slides/8_agent_design_5.pdf": "0ca8e326cd72fe52e9d676e19c30837bf718e63867f6f1ce7b3f7c3749db8e0e",
+    "courses/2680/site/slides/6_agent_design_3.pdf": "7ed1b959e40acc5a90e67057e521e0d3a47ad25829be10e4939908fabbac4728",
+    "courses/2680/site/slides/5_agent_design_2.pdf": "4dbc20e3cdfcc7a22879672c2300058c8c41b7364a4fbe5d3378f7861501c9bd",
+    "courses/2680/site/slides/3_agent_use_2.pdf": "a0e010e9787730a5120f83b2e3d405eec940ff5468392d23b762ff2cd86e35ee",
+    "courses/2680/site/slides/2_agent_use_1.pdf": "348a480ba58823f695abff7aa65c54f7fabee114866fca938b29ea42b3702dcf",
+    "courses/2680/site/sponsors/harvard-seas.svg": "8017eed2ed379128daba2b392ae0a33d4adf55ba9ce031a539656e2d9e290e6e",
+    "courses/2680/site/sponsors/madsys.png": "27e6ce0f0101102c7b0ca40a9a49258020937510ed838eb96910188ce333dabb",
+    "courses/2680/site/sponsors/harvard-fas.svg": "2b32d3e13580a7462a21c45f7385cf54ce29c8128ab0c2a532b8ca01cc3d3af7",
+    "courses/2680/site/sponsors/aws.png": "2a1b0db50b559b656e3c851db3c1a8c9eac0c9f1e6e535f6cd57ecad2241d599",
+    "courses/2680/site/sponsors/fas-atg.png": "71f712d03c3995a8c274a8cb3a818751e91f079487029128907dc22fa6b991d9",
+    "courses/2680/site/sponsors/nvidia.svg": "aff8ffaf69ff6868c5e5c256952341c31e9688b39cf76e86f2116e11a61b5c47",
+    "courses/2680/site/notes/agent-evaluation.html": "3ab3e06aac490c39b72c0c8212344d21f9c7085aaf930d4c96e8cd864cc4cdf1",
+    "courses/2680/site/notes/cost-effective-agents.html": "10a6adb227da48bf14860b9f5d07339bcadc4cdc6071bb2a2453040cedd139ae",
+    "courses/2680/site/notes/transformers.html": "d26002775296e7c90a5878f60cd49d03ce386b314e62785a9fa7d5b65649e7f5",
+    "courses/2680/site/readings/sep-28.html": "63e6fa7710007a630b54625d81362c4e945a3d560eece35e306819925aeadf83",
+    "courses/2680/site/readings/index.html": "9d7ad0290d651e881bb53a1ec57e482d4234be614b5e73e0b1d407e8e7f9fb34",
+    "courses/2680/site/readings/sep-09.html": "b94ba7f3a91dca7baf797e27f6b97cce8b2453e49a1a3a26750a948ecd2ca386",
+    "courses/2680/site/readings/sep-14.html": "3a7953468070a30997b12f2643bc23066e733257e28430718d96ab3adb8f0d4d",
+    "courses/2680/site/readings/oct-14.html": "cf6a77486217c8d50592149121b34e9d4042a48ef0834fa06439d6cf84001818",
+    "courses/2680/site/readings/sep-23.html": "36261406682ba3e58167593d1e8c3ddd81c27d7b240d8043cd83c412fd9ed2c7",
+    "courses/2680/site/readings/oct-19.html": "262b725c3a2326a5a73fc7699bbc4cb34a37c0ce3d4cea1da9c23f301d5a7e50",
+    "courses/2680/site/readings/sep-16.html": "60888f249683a1461dcf415282dbd745188b2579bf275e664bec2e64a61ae424",
+    "courses/2680/site/readings/oct-21.html": "2db6884eb3be13a95ec274822118ec20f57b5604b568c8c172d77018b5ad3294",
+    "courses/2680/site/readings/nov-16.html": "760a9be9bd26253090b1e339b5f7bd970c63a2db2b3927b51b9b7e1348d154cd",
+    "courses/2680/site/staff/charles.jpg": "cee87335470078054c0e9b9e3476920cb60b0db28487455bb30e36e5fd42a356",
+    "courses/2680/site/staff/yiyu-liu.jpg": "7606e3a2b0bed9168d8df50ae3de8d306bd9eb6482e6dc7593a2278c6bea70bf",
+    "courses/2680/site/staff/juncheng-yang.jpg": "22000edb51796ab9b973a310dcd2b535b01e0e5e9ac70f920cbb6a8d8a437317",
+    "courses/2680/site/staff/AdvaithRavishankar.jpg": "f5db8f57a99232bb58b7fa2c83c79d3a910a4dceff33815cca992742042f5bbb",
+    "courses/2680/site/staff/yunjia-zheng.jpg": "493e02c5a8cb3fb2c80fa06b0e3b1850a44cf0de42e82cf1c55619b6d578cfea",
+    "courses/2680/site/computing/index.html": "ad05e1ac92428fc4ef35d1c45d2ce4ff6cdf7a572146d07ede3277fa941ba389",
+    "courses/2680/site/computing/aws.html": "5dd3a3acb6867ce6c6a1e1240f43d40832f4e23a4876e483ccb94bb2481441de",
+    "courses/2680/site/computing/claude-code.html": "52fbd3db1bf8403137ab914f619fa1a3c34c38e402c69aeb9ef939f13593304f",
+    "courses/2680/site/computing/cluster.html": "ca3227bb054cbddd9647ad17df7cc4372c59d94626acd782f95f7fc057403879",
+    "courses/2680/site/computing/cloudlab.html": "541a7bd33fa2b12fd697d7e3798a7534a0c8f245d8715e116d1c92069c4b3e5d",
+    "courses/2680/site/computing/api.html": "5e54b02fa5a980c896bed89748c5b245def5d125810c19c2ed72e519fec89859",
+    "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/2_agent_use_1.pdf": "348a480ba58823f695abff7aa65c54f7fabee114866fca938b29ea42b3702dcf",
+    "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/The_Scaffolding_Matters_More_Than_the_Interface.pdf": "f257cb076d82ba5d40d2e637fe46a57eb800e6f2de80a33f23ecb2d271b00780",
+    "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/The_Harness_Is_the_Thing.html": "078de61dd468238f9fdcfbb84269e50329880a2f56be3994338b1bb6d74a4caa",
+    "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Equipping_agents_for_the_real_world_with_Agent_Skills.html": "045e2eb2c64b1225dd98af81b35aeabde9046c2d655bc9582af9d02f765ee79d",
+    "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Hooks_reference.html": "b8b0f560049124e18a6d5bd2a1dff6e0eae1573ac2efa2004a204dbab9c09449",
+    "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Guardrails_Beat_Guidance_A_Large-Scale_Study_of_Rules_Skills_and_Persistent_Configuration_for_Coding_Agents.pdf": "5c258c0d1520060450c18499d66608820e1c9d149c83e9a85a30839f129fa473",
+    "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Best_practices_for_Claude_Code.html": "ea637432eb94072b32f3d393b8319ebe3c49179cde99358bb35c3f704c7fd869",
+    "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/How_skills_and_MCPs_actually_work.html": "025685349889065651f42130786a3501c0ee41bf44162087c614426f8315ce61",
+    "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Code_execution_with_MCP_building_more_efficient_AI_agents.html": "8a7950c54824b46716ef0c2a24faeb2bd1df888c1f4e3c8f997427764b0e9070",
+    "courses/2680/2.AgentsUseI.HowClaudeCodeWorks/readings/Agentic_Engineering_Patterns.html": "61897b926de3a88a27673ca40c3f9a88356df2c317757c652d38563281748b45"
+  }
+}

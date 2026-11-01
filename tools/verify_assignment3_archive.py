@@ -2,7 +2,7 @@
 """Verify the unchanged CMU Assignment 3 snapshot and shipped dataset structure.
 
 This checks archival integrity, not student solutions or RL learning quality.
-Run at any location; --write-report saves assignment-3/VERIFICATION.json.
+Run at any location; --output PATH optionally saves the JSON result.
 """
 from __future__ import annotations
 
@@ -17,7 +17,7 @@ from urllib.parse import unquote, urlparse
 from verify_course_notes import prose, targets
 
 ROOT = Path(__file__).resolve().parents[1]
-ARCHIVE = ROOT / "11-768/assignment/assignment-3"
+ARCHIVE = ROOT / "courses/11-768/assignment/assignment-3"
 
 
 def verify() -> dict:
@@ -115,11 +115,11 @@ def verify() -> dict:
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--write-report", action="store_true")
+    parser.add_argument("--output", type=Path, help="Optional JSON output path; default is stdout only")
     args = parser.parse_args()
     report = verify()
-    if args.write_report:
-        (ARCHIVE / "VERIFICATION.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
+    if args.output:
+        args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps(report, ensure_ascii=False, indent=2))
     raise SystemExit(bool(report["errors"]))
 

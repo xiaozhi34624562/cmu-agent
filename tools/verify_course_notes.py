@@ -76,7 +76,7 @@ def anchors(text: str) -> set[str]:
 
 
 def verify(course: str) -> dict:
-    folder = ROOT / course
+    folder = ROOT / "courses" / course
     review_path = folder / "REVIEW.json"
     errors = []
     if not review_path.exists():
@@ -168,12 +168,11 @@ def verify(course: str) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--course", choices=["11-768", "2680"])
-    parser.add_argument("--write-report", action="store_true")
+    parser.add_argument("--output", type=Path, help="Optional JSON output path; default is stdout only")
     args = parser.parse_args()
     results = [verify(course) for course in ([args.course] if args.course else ["11-768", "2680"])]
-    if args.write_report:
-        for result in results:
-            (ROOT / result["course"] / "VERIFICATION.json").write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
+    if args.output:
+        args.output.write_text(json.dumps(results, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps(results, ensure_ascii=False, indent=2))
     raise SystemExit(1 if any(r["errors"] for r in results) else 0)
 

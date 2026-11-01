@@ -1,0 +1,218 @@
+{
+  "course": {
+    "courseCode": "11-768",
+    "courseTitle": "AI Agents",
+    "university": "Carnegie Mellon University",
+    "universityUrl": "https://www.cmu.edu",
+    "term": "Fall 2026",
+    "instructors": [
+      {
+        "name": "Daniel Fried",
+        "role": "Instructor",
+        "url": "https://dpfried.github.io/",
+        "twitter": "dan_fried"
+      },
+      {
+        "name": "Graham Neubig",
+        "role": "Instructor",
+        "url": "https://www.phontron.com/",
+        "twitter": "gneubig"
+      }
+    ],
+    "tas": [
+      {
+        "name": "Aditya Soni",
+        "role": "Teaching Assistant",
+        "url": "https://adityasoni9998.github.io/",
+        "twitter": "Aditya_Soni_8"
+      },
+      {
+        "name": "Andy Liu",
+        "role": "Teaching Assistant",
+        "url": "https://andyjliu.github.io/",
+        "twitter": "uilydna"
+      },
+      {
+        "name": "Apurva Gandhi",
+        "role": "Teaching Assistant",
+        "url": "https://apga.github.io/",
+        "twitter": "apurvasgandhi"
+      },
+      {
+        "name": "Demi Wang",
+        "role": "Teaching Assistant",
+        "url": "https://d3mi.wang/",
+        "twitter": "demisama_"
+      },
+      {
+        "name": "Jiarui Liu",
+        "role": "Teaching Assistant",
+        "url": "https://jiarui-liu.github.io/",
+        "twitter": "Jiarui_Liu_"
+      },
+      {
+        "name": "Saujas Vaduguru",
+        "role": "Teaching Assistant",
+        "url": "https://saujasv.github.io/",
+        "twitter": "saujasv"
+      },
+      {
+        "name": "Weiwei Sun",
+        "role": "Teaching Assistant",
+        "url": "https://sunnweiwei.github.io/",
+        "twitter": "sunweiwei12"
+      },
+      {
+        "name": "Yueqi Song",
+        "role": "Teaching Assistant",
+        "url": "https://yueqis.github.io/",
+        "twitter": "yueqi_song"
+      }
+    ],
+    "overview": [
+      "This course studies LLM-based AI agents: systems that use large language models to perceive, reason, plan, and act over many steps. Agents interact with their environments — calling tools, navigating interfaces, writing code, working alongside people — to complete real tasks.",
+      "The course covers both the foundations of building agents and active research questions around long-horizon reasoning, training, safety, and interaction. We emphasize hands-on implementation with modern frameworks and the training methods that make agents more capable and reliable."
+    ],
+    "audience": "Graduate students with prior experience training neural language models. Relevant background includes coursework such as 11-667, 11-711, or 10-202, or equivalent experience.",
+    "piazzaUrl": "https://piazza.com/cmu/fall2026/11768/home",
+    "courseStaffEmail": "11-768-fall-2026@lists.andrew.cmu.edu",
+    "logistics": [
+      {
+        "label": "Meeting pattern",
+        "value": "Tue/Thu, 3:30–4:50 PM"
+      },
+      {
+        "label": "Classroom",
+        "value": "Porter Hall 100"
+      },
+      {
+        "label": "Academic breaks",
+        "value": "Fall Break: Oct. 12 – 16 · Thanksgiving Break: Nov. 25 – 27"
+      },
+      {
+        "label": "Final presentations",
+        "value": "Dec. 1 & 3, 2026 (posters)"
+      }
+    ],
+    "publicLinks": [
+      {
+        "label": "Piazza",
+        "url": "https://piazza.com/cmu/fall2026/11768/home"
+      },
+      {
+        "label": "Canvas",
+        "url": "https://canvas.cmu.edu/courses/55126"
+      },
+      {
+        "label": "Official CMU 2026-2027 Academic Calendar",
+        "url": "https://www.cmu.edu/hub/calendar/docs/2627-academic-calendar.pdf"
+      },
+      {
+        "label": "Language Technologies Institute",
+        "url": "https://lti.cs.cmu.edu"
+      }
+    ]
+  },
+  "themes": [
+    {
+      "title": "Agent Capabilities",
+      "topics": "Instruction following, tool use, planning, and memory systems."
+    },
+    {
+      "title": "Application Domains",
+      "topics": "General tool use, coding agents, GUI agents, and social agents."
+    },
+    {
+      "title": "Training Methods",
+      "topics": "Supervised fine-tuning plus reinforcement learning algorithms and systems."
+    },
+    {
+      "title": "Frameworks",
+      "topics": "OpenHands, LangGraph, and other agent development frameworks."
+    },
+    {
+      "title": "Safety",
+      "topics": "Sandboxing, credentialing, and adversarial attacks on agents."
+    },
+    {
+      "title": "Advanced Topics",
+      "topics": "Human-agent interaction, multi-agent systems, and search-based reasoning."
+    }
+  ],
+  "learning_objectives": [
+    "Implement an agent from scratch on top of an open-source LLM.",
+    "Design evaluations for multi-step tasks.",
+    "Train agents to improve their capabilities.",
+    "Reason about safety and reliability tradeoffs.",
+    "Pursue an open research question in agents."
+  ],
+  "assignments": [
+    {
+      "title": "Assignment 1 · Harness",
+      "dueDate": "Mon, Sep 14, 2026",
+      "dueDateIsTentative": false,
+      "url": "https://github.com/cmu-agents/assignment-1",
+      "summary": "Build the harness infrastructure for a coding agent on top of an open-source LLM."
+    },
+    {
+      "title": "Assignment 2 · Eval",
+      "dueDate": "Thu, Oct 1, 2026",
+      "dueDateIsTentative": false,
+      "url": "https://github.com/cmu-agents/assignment-2",
+      "summary": "Design the evaluation framework needed to measure agent correctness and functionality."
+    },
+    {
+      "title": "Assignment 3 · Training",
+      "dueDate": "Thu, Oct 29, 2026",
+      "dueDateIsTentative": false,
+      "url": "https://github.com/cmu-agents/assignment-3",
+      "summary": "Implement the training procedures used to adapt and improve the agent."
+    },
+    {
+      "title": "Half-semester research project",
+      "summary": "Teams of 2–4 explore an advanced topic in LLM agents and produce a proposal, check-in, poster presentation, and final report."
+    }
+  ],
+  "grading": [
+    {
+      "component": "Assignment 1: Harness",
+      "weight": "10%",
+      "format": "Individual"
+    },
+    {
+      "component": "Assignment 2: Eval",
+      "weight": "15%",
+      "format": "Individual"
+    },
+    {
+      "component": "Assignment 3: Training",
+      "weight": "15%",
+      "format": "Individual"
+    },
+    {
+      "component": "Lecture highlights",
+      "weight": "10%",
+      "format": "Individual"
+    },
+    {
+      "component": "Project proposal",
+      "weight": "5%",
+      "format": "Team of 2–4"
+    },
+    {
+      "component": "Project check-in",
+      "weight": "5%",
+      "format": "Team of 2–4"
+    },
+    {
+      "component": "Final presentation",
+      "weight": "10%",
+      "format": "Team of 2–4"
+    },
+    {
+      "component": "Final report",
+      "weight": "30%",
+      "format": "Team of 2–4"
+    }
+  ]
+}

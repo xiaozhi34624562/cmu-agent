@@ -1,0 +1,725 @@
+[
+  {
+    "course": "Stanford CS329Z",
+    "id": "S-2026-09-23",
+    "date": "2026-09-23",
+    "title": "Introduction — What Are Agentic Systems?",
+    "kind": "teaching",
+    "phase": "P0",
+    "materials": [
+      {
+        "label": "Slides",
+        "url": "https://web.stanford.edu/class/cs329z/slides/lecture01.pdf"
+      }
+    ],
+    "readings": [
+      {
+        "label": "Zaharia et al. \"The Shift from Models to Compound AI Systems.\" BAIR Blog (2024).",
+        "url": "https://bair.berkeley.edu/blog/2024/02/18/compound-ai-systems/"
+      },
+      {
+        "label": "Weng. \"LLM Powered Autonomous Agents.\" Lil'Log (2023).",
+        "url": "https://lilianweng.github.io/posts/2023-06-23-agent/"
+      },
+      {
+        "label": "Kapoor et al. \"AI Agents That Matter.\" TMLR (2025).",
+        "url": "https://arxiv.org/abs/2407.01502"
+      }
+    ],
+    "local_path": "329z/1.IntroductionWhatAreAgenticSystems",
+    "source": "https://cs329z.stanford.edu/index.html",
+    "evidence": "stanford/index.html",
+    "raw_cells": [
+      "1",
+      "Wed Sep 23",
+      "Foundations & Landscape Introduction — What Are Agentic Systems? Course logistics, a brief history of agents, and the anatomy of an agent: LLM core, reasoning, memory, tools, and environment. Compound AI systems and workflows vs. agents, plus the key challenges of reliability, training, safety, and evaluation. Slides",
+      "Readings : Zaharia et al. \"The Shift from Models to Compound AI Systems.\" BAIR Blog (2024). Weng. \"LLM Powered Autonomous Agents.\" Lil'Log (2023). Kapoor et al. \"AI Agents That Matter.\" TMLR (2025)."
+    ]
+  },
+  {
+    "course": "Stanford CS329Z",
+    "id": "S-2026-09-28",
+    "date": "2026-09-28",
+    "title": "LLMs for Builders",
+    "kind": "teaching",
+    "phase": "P0",
+    "materials": [
+      {
+        "label": "Slides",
+        "url": "https://web.stanford.edu/class/cs329z/slides/lecture02.pdf"
+      }
+    ],
+    "readings": [
+      {
+        "label": "Vaswani et al. \"Attention Is All You Need.\" NeurIPS (2017).",
+        "url": "https://arxiv.org/abs/1706.03762"
+      },
+      {
+        "label": "Katharopoulos et al. \"Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention.\" ICML (2020).",
+        "url": "https://arxiv.org/abs/2006.16236"
+      },
+      {
+        "label": "Rajasekaran et al. \"Effective Context Engineering for AI Agents.\" Anthropic (2025).",
+        "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
+      }
+    ],
+    "local_path": "329z/2.LLMsForBuilders",
+    "source": "https://cs329z.stanford.edu/index.html",
+    "evidence": "stanford/index.html",
+    "raw_cells": [
+      "2",
+      "Mon Sep 28",
+      "LLMs for Builders Language model internals for agent builders: decoding strategies, transformer attention (including linear and hybrid) and context length, the pretraining-to-post-training pipeline, inference and test-time scaling, structured I/O and constrained decoding, and context engineering. Slides",
+      "Readings : Vaswani et al. \"Attention Is All You Need.\" NeurIPS (2017). Katharopoulos et al. \"Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention.\" ICML (2020). Rajasekaran et al. \"Effective Context Engineering for AI Agents.\" Anthropic (2025)."
+    ]
+  },
+  {
+    "course": "Stanford CS329Z",
+    "id": "S-2026-09-30",
+    "date": "2026-09-30",
+    "title": "Retrieval-Augmented Generation (RAG)",
+    "kind": "teaching",
+    "phase": "P1",
+    "materials": [
+      {
+        "label": "Slides",
+        "url": "https://web.stanford.edu/class/cs329z/slides/lecture03.pdf"
+      }
+    ],
+    "readings": [
+      {
+        "label": "Lewis et al. \"Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks.\" NeurIPS (2020).",
+        "url": "https://arxiv.org/abs/2005.11401"
+      },
+      {
+        "label": "Karpukhin et al. \"Dense Passage Retrieval for Open-Domain Question Answering.\" EMNLP (2020).",
+        "url": "https://arxiv.org/abs/2004.04906"
+      },
+      {
+        "label": "Khattab & Zaharia. \"ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT.\" SIGIR (2020).",
+        "url": "https://arxiv.org/abs/2004.12832"
+      }
+    ],
+    "local_path": "329z/3.RetrievalAugmentedGenerationRAG",
+    "source": "https://cs329z.stanford.edu/index.html",
+    "evidence": "stanford/index.html",
+    "raw_cells": [
+      "2",
+      "Wed Sep 30",
+      "Building Blocks Retrieval-Augmented Generation (RAG) Why retrieval helps, then the RAG pipeline end to end: indexing (chunking, contextual retrieval, RAPTOR, HNSW), retrievers from BM25 and DPR to hybrid search, reranking, and ColBERT, agentic RAG (Self-RAG, Search-R1), and common failure modes. Plus a course project overview. Slides",
+      "Readings : Lewis et al. \"Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks.\" NeurIPS (2020). Karpukhin et al. \"Dense Passage Retrieval for Open-Domain Question Answering.\" EMNLP (2020). Khattab & Zaharia. \"ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT.\" SIGIR (2020)."
+    ]
+  },
+  {
+    "course": "Stanford CS329Z",
+    "id": "S-2026-10-05",
+    "date": "2026-10-05",
+    "title": "Tool Use & Function Calling",
+    "kind": "teaching",
+    "phase": "P1",
+    "materials": [
+      {
+        "label": "Slides",
+        "url": "https://web.stanford.edu/class/cs329z/slides/lecture04.pdf"
+      }
+    ],
+    "readings": [
+      {
+        "label": "Schick et al. \"Toolformer: Language Models Can Teach Themselves to Use Tools.\" NeurIPS (2023).",
+        "url": "https://arxiv.org/abs/2302.04761"
+      },
+      {
+        "label": "Patil et al. \"Gorilla: Large Language Model Connected with Massive APIs.\" NeurIPS (2024).",
+        "url": "https://arxiv.org/abs/2305.15334"
+      },
+      {
+        "label": "Model Context Protocol Specification, revision 2025-06-18. modelcontextprotocol.io (2025).",
+        "url": "https://modelcontextprotocol.io/specification/2025-06-18"
+      }
+    ],
+    "local_path": "329z/4.ToolUseFunctionCalling",
+    "source": "https://cs329z.stanford.edu/index.html",
+    "evidence": "stanford/index.html",
+    "raw_cells": [
+      "3",
+      "Mon Oct 5",
+      "Tool Use & Function Calling Why LLMs need tools and how they learn to use them: Toolformer, scaling to thousands of APIs with Gorilla and ToolLLM, standard interfaces from REST to function calling to MCP, evaluating tool use with BFCL, ToolBench, and τ-bench, and common failure modes. Slides",
+      "Readings : Schick et al. \"Toolformer: Language Models Can Teach Themselves to Use Tools.\" NeurIPS (2023). Patil et al. \"Gorilla: Large Language Model Connected with Massive APIs.\" NeurIPS (2024). Model Context Protocol Specification, revision 2025-06-18. modelcontextprotocol.io (2025)."
+    ]
+  },
+  {
+    "course": "Stanford CS329Z",
+    "id": "S-2026-10-07",
+    "date": "2026-10-07",
+    "title": "Frameworks & Orchestration",
+    "kind": "teaching",
+    "phase": "P1/P4",
+    "materials": [
+      {
+        "label": "Slides",
+        "url": "https://web.stanford.edu/class/cs329z/slides/lecture05.pdf"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/cs329z/lecture5-frameworks"
+      }
+    ],
+    "readings": [
+      {
+        "label": "Khattab et al. \"DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines.\" ICLR (2024).",
+        "url": "https://arxiv.org/abs/2310.03714"
+      },
+      {
+        "label": "LangChain. \"LangGraph Overview.\" LangChain Docs.",
+        "url": "https://docs.langchain.com/oss/python/langgraph/overview"
+      },
+      {
+        "label": "Arena.ai. \"HarnessTax: How Much Does the Harness Matter for Coding Agents?\" Arena Blog (2026).",
+        "url": "https://arena.ai/blog/coding-agents-harness-tax"
+      }
+    ],
+    "local_path": "329z/5.FrameworksOrchestration",
+    "source": "https://cs329z.stanford.edu/index.html",
+    "evidence": "stanford/index.html",
+    "raw_cells": [
+      "3",
+      "Wed Oct 7",
+      "Frameworks & Agent Design Frameworks & Orchestration The data, system, and evals pillars of agent engineering, with live demos of DSPy (signatures, modules, optimizers) and LangGraph (state, nodes, edges). A tour of open-source agent harnesses (mini-SWE-agent, OpenHands, Pi), durable orchestration with Temporal, observability tooling, and best practices. Slides Code",
+      "Readings : Khattab et al. \"DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines.\" ICLR (2024). LangChain. \"LangGraph Overview.\" LangChain Docs. Arena.ai. \"HarnessTax: How Much Does the Harness Matter for Coding Agents?\" Arena Blog (2026)."
+    ]
+  },
+  {
+    "course": "Stanford CS329Z",
+    "id": "S-2026-10-12",
+    "date": "2026-10-12",
+    "title": "Agent Design Patterns & Scaffolds",
+    "kind": "teaching",
+    "phase": "P1",
+    "materials": [
+      {
+        "label": "Slides",
+        "url": "https://web.stanford.edu/class/cs329z/slides/lecture06.pdf"
+      }
+    ],
+    "readings": [
+      {
+        "label": "Yao et al. \"ReAct: Synergizing Reasoning and Acting in Language Models.\" ICLR (2023).",
+        "url": "https://arxiv.org/abs/2210.03629"
+      },
+      {
+        "label": "Schluntz & Zhang. \"Building Effective AI Agents.\" Anthropic (2024).",
+        "url": "https://www.anthropic.com/engineering/building-effective-agents"
+      },
+      {
+        "label": "LangChain. \"Context Engineering.\" LangChain Blog (2025).",
+        "url": "https://www.langchain.com/blog/context-engineering-for-agents"
+      },
+      {
+        "label": "Shinn et al. \"Reflexion: Language Agents with Verbal Reinforcement Learning.\" NeurIPS (2023).",
+        "url": "https://arxiv.org/abs/2303.11366"
+      },
+      {
+        "label": "Wang et al. \"Executable Code Actions Elicit Better LLM Agents.\" ICML (2024).",
+        "url": "https://arxiv.org/abs/2402.01030"
+      }
+    ],
+    "local_path": "329z/6.AgentDesignPatternsScaffolds",
+    "source": "https://cs329z.stanford.edu/index.html",
+    "evidence": "stanford/index.html",
+    "raw_cells": [
+      "4",
+      "Mon Oct 12",
+      "Agent Design Patterns & Scaffolds Workflows vs. agents and the design patterns for each: five composable workflow patterns, reasoning and acting patterns (ReAct, Reflexion, CodeAct, ReWOO), and context-management patterns (event logs, compaction, observation masking, context isolation). Case study of the Pi harness. Slides",
+      "Readings : Yao et al. \"ReAct: Synergizing Reasoning and Acting in Language Models.\" ICLR (2023). Schluntz & Zhang. \"Building Effective AI Agents.\" Anthropic (2024). LangChain. \"Context Engineering.\" LangChain Blog (2025). Additional readings Shinn et al. \"Reflexion: Language Agents with Verbal Reinforcement Learning.\" NeurIPS (2023). Wang et al. \"Executable Code Actions Elicit Better LLM Agents.\" ICML (2024)."
+    ]
+  },
+  {
+    "course": "Stanford CS329Z",
+    "id": "S-2026-10-14",
+    "date": "2026-10-14",
+    "title": "Agent Memory Architectures",
+    "kind": "teaching",
+    "phase": "P1",
+    "materials": [
+      {
+        "label": "Slides",
+        "url": "https://web.stanford.edu/class/cs329z/slides/lecture07.pdf"
+      }
+    ],
+    "readings": [
+      {
+        "label": "Sumers et al. \"Cognitive Architectures for Language Agents.\" TMLR (2024).",
+        "url": "https://arxiv.org/abs/2309.02427"
+      },
+      {
+        "label": "Packer et al. \"MemGPT: Towards LLMs as Operating Systems.\" arXiv (2023).",
+        "url": "https://arxiv.org/abs/2310.08560"
+      },
+      {
+        "label": "Park et al. \"Generative Agents: Interactive Simulacra of Human Behavior.\" UIST (2023).",
+        "url": "https://arxiv.org/abs/2304.03442"
+      }
+    ],
+    "local_path": "329z/7.AgentMemoryArchitectures",
+    "source": "https://cs329z.stanford.edu/index.html",
+    "evidence": "stanford/index.html",
+    "raw_cells": [
+      "4",
+      "Wed Oct 14",
+      "Memory & Multi-Agent Systems Agent Memory Architectures Why agents need memory and the four types (working, episodic, semantic, procedural). Four architecture patterns: skill libraries, tiered hierarchies like MemGPT, reflective consolidation, and memory maintenance. Memory benchmarks and open problems in forgetting, privacy, and over-personalization. Slides",
+      "Readings : Sumers et al. \"Cognitive Architectures for Language Agents.\" TMLR (2024). Packer et al. \"MemGPT: Towards LLMs as Operating Systems.\" arXiv (2023). Park et al. \"Generative Agents: Interactive Simulacra of Human Behavior.\" UIST (2023)."
+    ]
+  },
+  {
+    "course": "Stanford CS329Z",
+    "id": "S-2026-10-19",
+    "date": "2026-10-19",
+    "title": "Multi-Agent Systems",
+    "kind": "teaching",
+    "phase": "P2",
+    "materials": [
+      {
+        "label": "Slides",
+        "url": "https://web.stanford.edu/class/cs329z/slides/lecture08.pdf"
+      }
+    ],
+    "readings": [
+      {
+        "label": "Wu et al. \"AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation.\" COLM (2024).",
+        "url": "https://arxiv.org/abs/2308.08155"
+      },
+      {
+        "label": "Cemri et al. \"Why Do Multi-Agent LLM Systems Fail?\" NeurIPS Datasets & Benchmarks (2025).",
+        "url": "https://arxiv.org/abs/2503.13657"
+      },
+      {
+        "label": "Kim et al. \"Towards a Science of Scaling Agent Systems.\" arXiv (2025).",
+        "url": "https://arxiv.org/abs/2512.08296"
+      }
+    ],
+    "local_path": "329z/8.MultiAgentSystems",
+    "source": "https://cs329z.stanford.edu/index.html",
+    "evidence": "stanford/index.html",
+    "raw_cells": [
+      "5",
+      "Mon Oct 19",
+      "Multi-Agent Systems When to use single vs. multi-agent systems and how to build them: orchestration patterns (orchestrator, swarm, hybrid), communication through handoffs, message boards, and the A2A protocol, and coordination infrastructure (task ledgers, shared memory, worktree isolation). Why multi-agent systems fail. Slides",
+      "Readings : Wu et al. \"AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation.\" COLM (2024). Cemri et al. \"Why Do Multi-Agent LLM Systems Fail?\" NeurIPS Datasets & Benchmarks (2025). Kim et al. \"Towards a Science of Scaling Agent Systems.\" arXiv (2025)."
+    ]
+  },
+  {
+    "course": "Stanford CS329Z",
+    "id": "S-2026-10-21",
+    "date": "2026-10-21",
+    "title": "Optimization",
+    "kind": "teaching",
+    "phase": "P5/P7",
+    "materials": [
+      {
+        "label": "Slides",
+        "url": "https://web.stanford.edu/class/cs329z/slides/lecture09.pdf"
+      }
+    ],
+    "readings": [
+      {
+        "label": "Agrawal et al. \"GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning.\" ICLR (2026).",
+        "url": "https://arxiv.org/abs/2507.19457"
+      },
+      {
+        "label": "Opsahl-Ong et al. \"Optimizing Instructions and Demonstrations for Multi-Stage Language Model Programs.\" EMNLP (2024).",
+        "url": "https://arxiv.org/abs/2406.11695"
+      },
+      {
+        "label": "Shao et al. \"DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models.\" arXiv (2024).",
+        "url": "https://arxiv.org/abs/2402.03300"
+      }
+    ],
+    "local_path": "329z/9.Optimization",
+    "source": "https://cs329z.stanford.edu/index.html",
+    "evidence": "stanford/index.html",
+    "raw_cells": [
+      "5",
+      "Wed Oct 21",
+      "Optimization Optimization When optimization pays off and how to do it: context optimization (bootstrapped few-shot, MIPROv2, OPRO, TextGrad, GEPA), weight optimization (SFT on agent rollouts, RL with PPO and GRPO, on-policy distillation), agents as optimizers (Darwin Gödel Machine, autoresearch), and when to optimize prompts vs. weights. Slides",
+      "Readings : Agrawal et al. \"GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning.\" ICLR (2026). Opsahl-Ong et al. \"Optimizing Instructions and Demonstrations for Multi-Stage Language Model Programs.\" EMNLP (2024). Shao et al. \"DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models.\" arXiv (2024)."
+    ]
+  },
+  {
+    "course": "Stanford CS329Z",
+    "id": "S-2026-10-26",
+    "date": "2026-10-26",
+    "title": "📺 Guest Lecture: Terminal-Bench",
+    "kind": "teaching",
+    "phase": "P2/P3",
+    "materials": [
+      {
+        "label": "Slides",
+        "url": "https://web.stanford.edu/class/cs329z/slides/lecture10.pdf"
+      }
+    ],
+    "readings": [
+      {
+        "label": "Terminal-Bench project site (leaderboard, tasks, and harness).",
+        "url": "https://www.tbench.ai/"
+      },
+      {
+        "label": "Merrill et al. \"Terminal-Bench: Benchmarking Agents on Hard, Realistic Tasks in Command Line Interfaces.\" ICLR (2026).",
+        "url": "https://arxiv.org/abs/2601.11868"
+      }
+    ],
+    "local_path": "329z/10.GuestLectureTerminalBench",
+    "source": "https://cs329z.stanford.edu/index.html",
+    "evidence": "stanford/index.html",
+    "raw_cells": [
+      "6",
+      "Mon Oct 26",
+      "📺 Guest Lecture: Terminal-Bench Ryan Marten , Alex Shaw Ryan Marten and Alex Shaw (Laude Institute), co-creators of Terminal-Bench, on benchmarking how well AI agents accomplish real-world tasks in a terminal environment. Slides",
+      "Readings : Terminal-Bench project site (leaderboard, tasks, and harness). Merrill et al. \"Terminal-Bench: Benchmarking Agents on Hard, Realistic Tasks in Command Line Interfaces.\" ICLR (2026)."
+    ]
+  },
+  {
+    "course": "Stanford CS329Z",
+    "id": "S-2026-10-28",
+    "date": "2026-10-28",
+    "title": "What Data Do Agents Need?",
+    "kind": "teaching",
+    "phase": "P3",
+    "materials": [
+      {
+        "label": "Slides",
+        "url": "https://web.stanford.edu/class/cs329z/slides/lecture11.pdf"
+      }
+    ],
+    "readings": [
+      {
+        "label": "Shankar. \"Data Flywheels for LLM Applications.\" (2024).",
+        "url": "https://www.sh-reya.com/blog/ai-engineering-flywheel/"
+      },
+      {
+        "label": "Tan et al. \"Large Language Models for Data Annotation and Synthesis: A Survey.\" EMNLP (2024).",
+        "url": "https://aclanthology.org/2024.emnlp-main.54/"
+      }
+    ],
+    "local_path": "329z/11.WhatDataDoAgentsNeed",
+    "source": "https://cs329z.stanford.edu/index.html",
+    "evidence": "stanford/index.html",
+    "raw_cells": [
+      "6",
+      "Wed Oct 28",
+      "Data for Agentic Systems What Data Do Agents Need? Traces, demonstrations, and feedback, data for optimization vs. evaluation, data flywheels, synthetic data generation, and collecting data from human-agent interaction. Slides",
+      "Readings : Shankar. \"Data Flywheels for LLM Applications.\" (2024). Additional readings Tan et al. \"Large Language Models for Data Annotation and Synthesis: A Survey.\" EMNLP (2024)."
+    ]
+  },
+  {
+    "course": "Stanford CS329Z",
+    "id": "S-2026-11-02",
+    "date": "2026-11-02",
+    "title": "Data Selection & Quality",
+    "kind": "teaching",
+    "phase": "P3",
+    "materials": [],
+    "readings": [
+      {
+        "label": "Yang et al. \"SWE-smith: Scaling Data for Software Engineering Agents.\" NeurIPS D&B (2025).",
+        "url": "https://arxiv.org/abs/2504.21798"
+      },
+      {
+        "label": "Shankar et al. \"Who Validates the Validators? Aligning LLM-Assisted Evaluation with Human Preferences.\" UIST (2024).",
+        "url": "https://arxiv.org/abs/2404.12272"
+      },
+      {
+        "label": "Zhou et al. \"LIMA: Less Is More for Alignment.\" NeurIPS (2023).",
+        "url": "https://arxiv.org/abs/2305.11206"
+      }
+    ],
+    "local_path": "329z/12.DataSelectionQuality",
+    "source": "https://cs329z.stanford.edu/index.html",
+    "evidence": "stanford/index.html",
+    "raw_cells": [
+      "7",
+      "Mon Nov 2",
+      "Data Selection & Quality Finding maximally informative data, filtering and selection strategies, tiny-but-targeted benchmarks, annotation practices, quality assessment, and building datasets from agent traces.",
+      "Readings : Yang et al. \"SWE-smith: Scaling Data for Software Engineering Agents.\" NeurIPS D&B (2025). Shankar et al. \"Who Validates the Validators? Aligning LLM-Assisted Evaluation with Human Preferences.\" UIST (2024). Additional readings Zhou et al. \"LIMA: Less Is More for Alignment.\" NeurIPS (2023)."
+    ]
+  },
+  {
+    "course": "Stanford CS329Z",
+    "id": "S-2026-11-04",
+    "date": "2026-11-04",
+    "title": "Evaluation Fundamentals & Benchmark Design",
+    "kind": "teaching",
+    "phase": "P3",
+    "materials": [],
+    "readings": [
+      {
+        "label": "Zhu et al. \"Establishing Best Practices for Building Rigorous Agentic Benchmarks.\" (2025).",
+        "url": "https://arxiv.org/abs/2507.02825"
+      },
+      {
+        "label": "Press. \"How to Build Good Language Modeling Benchmarks.\" (2024).",
+        "url": "https://ofir.io/How-to-Build-Good-Language-Modeling-Benchmarks/"
+      },
+      {
+        "label": "Polo et al. \"tinyBenchmarks: Evaluating LLMs with Fewer Examples.\" ICML (2024).",
+        "url": "https://arxiv.org/abs/2402.14992"
+      }
+    ],
+    "local_path": "329z/13.EvaluationFundamentalsBenchmarkDesign",
+    "source": "https://cs329z.stanford.edu/index.html",
+    "evidence": "stanford/index.html",
+    "raw_cells": [
+      "7",
+      "Wed Nov 4",
+      "Evaluation for Agentic Systems Evaluation Fundamentals & Benchmark Design Why evals are hard, the 4-tuple framework (request, environment, stopping criteria, scorer), designing each component, properties of good benchmarks, realistic scaffolding, and reliability dimensions.",
+      "Readings : Zhu et al. \"Establishing Best Practices for Building Rigorous Agentic Benchmarks.\" (2025). Additional readings Press. \"How to Build Good Language Modeling Benchmarks.\" (2024). Polo et al. \"tinyBenchmarks: Evaluating LLMs with Fewer Examples.\" ICML (2024)."
+    ]
+  },
+  {
+    "course": "Stanford CS329Z",
+    "id": "S-2026-11-09",
+    "date": "2026-11-09",
+    "title": "📺 Fireside Chat with Andrew Ng",
+    "kind": "teaching",
+    "phase": "PENDING",
+    "materials": [],
+    "readings": [],
+    "local_path": "329z/14.FiresideChatWithAndrewNg",
+    "source": "https://cs329z.stanford.edu/index.html",
+    "evidence": "stanford/index.html",
+    "raw_cells": [
+      "8",
+      "Mon Nov 9",
+      "📺 Fireside Chat with Andrew Ng Andrew Ng A fireside chat with Andrew Ng, hosted by Diyi Yang. Professor Ng is the founder of DeepLearning.AI, co-founder of Coursera, founding lead of Google Brain, and a Professor of Computer Science at Stanford.",
+      ""
+    ]
+  },
+  {
+    "course": "Stanford CS329Z",
+    "id": "S-2026-11-11",
+    "date": "2026-11-11",
+    "title": "LLM-as-Judge & Evaluation Infrastructure",
+    "kind": "teaching",
+    "phase": "P3",
+    "materials": [],
+    "readings": [
+      {
+        "label": "Grace et al. \"Demystifying Evals for AI Agents.\" Anthropic (2026).",
+        "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"
+      },
+      {
+        "label": "Zheng et al. \"Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena.\" NeurIPS (2023).",
+        "url": "https://arxiv.org/abs/2306.05685"
+      },
+      {
+        "label": "Ryan et al. \"AutoMetrics: Approximate Human Judgements with Automatically Generated Evaluators.\" ICLR (2026).",
+        "url": "https://arxiv.org/abs/2512.17267"
+      },
+      {
+        "label": "Zhu et al. \"AutoLibra: Agent Metric Induction from Open-Ended Human Feedback.\" ICLR (2026).",
+        "url": "https://openreview.net/forum?id=4BjGVZ7Bxn"
+      }
+    ],
+    "local_path": "329z/15.LLMAsJudgeEvaluationInfrastructure",
+    "source": "https://cs329z.stanford.edu/index.html",
+    "evidence": "stanford/index.html",
+    "raw_cells": [
+      "8",
+      "Wed Nov 11",
+      "LLM-as-Judge & Evaluation Infrastructure The three grader types, designing judge prompts, known biases, pairwise vs. pointwise evaluation, non-determinism metrics (pass@k vs. pass^k), harness design, and Anthropic's 8-step roadmap.",
+      "Readings : Grace et al. \"Demystifying Evals for AI Agents.\" Anthropic (2026). Zheng et al. \"Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena.\" NeurIPS (2023). Ryan et al. \"AutoMetrics: Approximate Human Judgements with Automatically Generated Evaluators.\" ICLR (2026). Additional readings Zhu et al. \"AutoLibra: Agent Metric Induction from Open-Ended Human Feedback.\" ICLR (2026)."
+    ]
+  },
+  {
+    "course": "Stanford CS329Z",
+    "id": "S-2026-11-16",
+    "date": "2026-11-16",
+    "title": "📺 Guest Lecture: SWE-bench",
+    "kind": "teaching",
+    "phase": "P2/P3",
+    "materials": [],
+    "readings": [
+      {
+        "label": "Jimenez et al. \"SWE-bench: Can Language Models Resolve Real-World GitHub Issues?\" ICLR (2024).",
+        "url": "https://arxiv.org/abs/2310.06770"
+      }
+    ],
+    "local_path": "329z/16.GuestLectureSWEBench",
+    "source": "https://cs329z.stanford.edu/index.html",
+    "evidence": "stanford/index.html",
+    "raw_cells": [
+      "9",
+      "Mon Nov 16",
+      "📺 Guest Lecture: SWE-bench Carlos Jimenez , Alexander Wettig Carlos Jimenez and Alexander Wettig (Anthropic), creators of SWE-bench, on the evolution and future of evaluations for coding capabilities and beyond.",
+      "Readings : Jimenez et al. \"SWE-bench: Can Language Models Resolve Real-World GitHub Issues?\" ICLR (2024)."
+    ]
+  },
+  {
+    "course": "Stanford CS329Z",
+    "id": "S-2026-11-18",
+    "date": "2026-11-18",
+    "title": "Agent Safety & Guardrails",
+    "kind": "teaching",
+    "phase": "P4",
+    "materials": [],
+    "readings": [
+      {
+        "label": "Shao et al. \"PrivacyLens: Evaluating Privacy Norm Awareness of LMs in Action.\" NeurIPS D&B (2024).",
+        "url": "https://arxiv.org/abs/2409.00138"
+      },
+      {
+        "label": "Zhang & Yang. \"Searching for Privacy Risks in LLM Agents via Simulation.\" arXiv (2025).",
+        "url": "https://arxiv.org/abs/2508.10880"
+      },
+      {
+        "label": "Li. \"Agentic LLMs as Powerful Deanonymizers.\" arXiv (2026).",
+        "url": "https://arxiv.org/abs/2601.05918"
+      },
+      {
+        "label": "Wen et al. \"Contextualized Privacy Defense for LLM Agents.\" arXiv (2026).",
+        "url": "https://arxiv.org/abs/2603.02983"
+      },
+      {
+        "label": "OpenAI. \"Understanding Prompt Injections: A Frontier Security Challenge.\" (2025).",
+        "url": "https://openai.com/index/prompt-injections/"
+      },
+      {
+        "label": "Anthropic. \"Anthropic's Responsible Scaling Policy.\" (2023).",
+        "url": "https://www.anthropic.com/news/anthropics-responsible-scaling-policy"
+      }
+    ],
+    "local_path": "329z/17.AgentSafetyGuardrails",
+    "source": "https://cs329z.stanford.edu/index.html",
+    "evidence": "stanford/index.html",
+    "raw_cells": [
+      "9",
+      "Wed Nov 18",
+      "Safety Agent Safety & Guardrails Privacy risks of tool access, prompt injection (including indirect injection), red-teaming, sandboxing and permission models, output guardrails, liability considerations, responsible deployment, and human-in-the-loop patterns.",
+      "Readings : Shao et al. \"PrivacyLens: Evaluating Privacy Norm Awareness of LMs in Action.\" NeurIPS D&B (2024). Zhang & Yang. \"Searching for Privacy Risks in LLM Agents via Simulation.\" arXiv (2025). Li. \"Agentic LLMs as Powerful Deanonymizers.\" arXiv (2026). Additional readings Wen et al. \"Contextualized Privacy Defense for LLM Agents.\" arXiv (2026). OpenAI. \"Understanding Prompt Injections: A Frontier Security Challenge.\" (2025). Anthropic. \"Anthropic's Responsible Scaling Policy.\" (2023)."
+    ]
+  },
+  {
+    "course": "Stanford CS329Z",
+    "id": "S-2026-11-23",
+    "date": "2026-11-23",
+    "title": "No Class — Thanksgiving Recess",
+    "kind": "break",
+    "phase": "BREAK",
+    "materials": [],
+    "readings": [],
+    "local_path": null,
+    "source": "https://cs329z.stanford.edu/index.html",
+    "evidence": "stanford/index.html",
+    "raw_cells": [
+      "10",
+      "Mon Nov 23",
+      "No Class — Thanksgiving Recess",
+      ""
+    ]
+  },
+  {
+    "course": "Stanford CS329Z",
+    "id": "S-2026-11-25",
+    "date": "2026-11-25",
+    "title": "No Class — Thanksgiving Recess",
+    "kind": "break",
+    "phase": "BREAK",
+    "materials": [],
+    "readings": [],
+    "local_path": null,
+    "source": "https://cs329z.stanford.edu/index.html",
+    "evidence": "stanford/index.html",
+    "raw_cells": [
+      "10",
+      "Wed Nov 25",
+      "No Class — Thanksgiving Recess",
+      ""
+    ]
+  },
+  {
+    "course": "Stanford CS329Z",
+    "id": "S-2026-11-30",
+    "date": "2026-11-30",
+    "title": "Coding & Software Agents",
+    "kind": "teaching",
+    "phase": "P2",
+    "materials": [],
+    "readings": [
+      {
+        "label": "Yang et al. \"SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering.\" NeurIPS (2024).",
+        "url": "https://arxiv.org/abs/2405.15793"
+      },
+      {
+        "label": "Wang et al. \"OpenHands: An Open Platform for AI Software Developers.\" ICLR (2025).",
+        "url": "https://arxiv.org/abs/2407.16741"
+      },
+      {
+        "label": "Anthropic. \"Claude Code: Best Practices for Agentic Coding.\" (2025).",
+        "url": "https://www.anthropic.com/engineering/claude-code-best-practices"
+      },
+      {
+        "label": "Young. \"Effective Harnesses for Long-Running Agents.\" Anthropic (2025).",
+        "url": "https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents"
+      }
+    ],
+    "local_path": "329z/18.CodingSoftwareAgents",
+    "source": "https://cs329z.stanford.edu/index.html",
+    "evidence": "stanford/index.html",
+    "raw_cells": [
+      "11",
+      "Mon Nov 30",
+      "Coding Agents & Proactive Agents Coding & Software Agents How coding agents work end to end: the SWE-agent, Claude Code, and OpenHands architectures, scaffolds as design decisions, SWE-bench and the 4-tuple framework in practice, and the future of software development with agents.",
+      "Readings : Yang et al. \"SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering.\" NeurIPS (2024). Wang et al. \"OpenHands: An Open Platform for AI Software Developers.\" ICLR (2025). Additional readings Anthropic. \"Claude Code: Best Practices for Agentic Coding.\" (2025). Young. \"Effective Harnesses for Long-Running Agents.\" Anthropic (2025)."
+    ]
+  },
+  {
+    "course": "Stanford CS329Z",
+    "id": "S-2026-12-02",
+    "date": "2026-12-02",
+    "title": "Proactive Agents",
+    "kind": "teaching",
+    "phase": "P4",
+    "materials": [],
+    "readings": [
+      {
+        "label": "Shaikh et al. \"Creating General User Models from Computer Use.\" UIST (2025).",
+        "url": "https://arxiv.org/abs/2505.10831"
+      },
+      {
+        "label": "Shaikh et al. \"Learning Next Action Predictors from Human-Computer Interaction.\" arXiv (2026).",
+        "url": "https://arxiv.org/abs/2603.05923"
+      },
+      {
+        "label": "Steinberger. \"OpenClaw: Open-source proactive AI agent.\" (2025).",
+        "url": "https://github.com/openclaw/openclaw"
+      }
+    ],
+    "local_path": "329z/19.ProactiveAgents",
+    "source": "https://cs329z.stanford.edu/index.html",
+    "evidence": "stanford/index.html",
+    "raw_cells": [
+      "11",
+      "Wed Dec 2",
+      "Proactive Agents From reactive to proactive agents: General User Models (GUM), Next Action Prediction, open-source proactive personal agents, privacy and trust implications, and when agents should initiate vs. wait (mixed initiative).",
+      "Readings : Shaikh et al. \"Creating General User Models from Computer Use.\" UIST (2025). Additional readings Shaikh et al. \"Learning Next Action Predictors from Human-Computer Interaction.\" arXiv (2026). Steinberger. \"OpenClaw: Open-source proactive AI agent.\" (2025)."
+    ]
+  },
+  {
+    "course": "Stanford CS329Z",
+    "id": "S-2026-12-07/11",
+    "date": "2026-12-07/11",
+    "title": "Final Project Demo Day",
+    "kind": "project",
+    "phase": "PROJECT",
+    "materials": [],
+    "readings": [],
+    "local_path": null,
+    "source": "https://cs329z.stanford.edu/index.html",
+    "evidence": "stanford/index.html",
+    "raw_cells": [
+      "—",
+      "Finals Week (Dec 7–11)",
+      "Open Problems & Final Demos Final Project Demo Day Held during the end-quarter examination period. Exact time and location TBA.",
+      ""
+    ]
+  }
+]
