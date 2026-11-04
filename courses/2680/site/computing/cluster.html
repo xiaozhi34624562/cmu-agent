@@ -137,13 +137,6 @@ claude # sign in, then /exit</div>
 <td><code>srun -p gpu-g7-reserved --gres=gpu:rtxpro4500:1 -c 8 --mem=28G -t 4:00:00 --pty bash</code></td>
 </tr>
 <tr>
-<td><code>gpu-cs2680-long</code></td>
-<td>RTX PRO 6000 Blackwell, 96 GB</td>
-<td>8 cores, about 60 GB</td>
-<td>2 days</td>
-<td><code>srun -p gpu-cs2680-long --gres=gpu:rtxproserver6000:1 -c 8 --mem=56G -t 4:00:00 --pty bash</code></td>
-</tr>
-<tr>
 <td><code>general</code></td>
 <td>none</td>
 <td>48 cores, about 90 GB</td>
@@ -151,7 +144,7 @@ claude # sign in, then /exit</div>
 <td><code>srun -p general -c 4 --mem=16G -t 2:00:00 --pty bash</code></td>
 </tr>
 </table></div>
-<p>Use the card your assignment names, because numbers measured on one card do not carry over to the other. <a href="../assignments/index.html#assignment-4">Assignment 4</a> uses the RTX PRO 4500. Other GPU partitions on the cluster need a TF's approval before you use them for course work.</p>
+<p><a href="../assignments/index.html#assignment-4">Assignment 4</a> uses the RTX PRO 4500. Other GPU partitions on the cluster need a TF's approval before you use them for course work.</p>
 <p>In a GPU job, <code>echo $CUDA_VISIBLE_DEVICES</code> should print a device number. If it prints nothing, the job has no GPU: you left out <code>--gres</code>. (<code>nvidia-smi</code> lists the card either way, so it does not tell you.)</p>
 <div class="subsection" id="serving">
 <h2>Serving a model on a GPU node</h2>
@@ -165,7 +158,7 @@ python -m sglang.launch_server ... --host 0.0.0.0 --port 30000 --api-key $(cat ~
 tail -f server.log # Ctrl-c stops watching; the server keeps running</div>
 <ul>
 <li><strong>Always set an API key.</strong> <code>--host 0.0.0.0</code> lets everyone on the cluster reach your server, and the key keeps them off your GPU.</li>
-<li><strong>Keep model weights out of your home directory.</strong> Use the copy your assignment provides, or keep weights in <code>/scratch/$USER</code> (<code>export HF_HOME=/scratch/$USER/hf</code>) and copy them to the node's local disk before loading, which is much faster than loading them from <code>/scratch</code>.</li>
+<li><strong>Keep model weights out of your home directory.</strong> Use the copy your assignment provides, or keep weights in <code>/scratch/$USER</code> (<code>export HF_HOME=/scratch/$USER/hf</code>) and copy them to the node's local disk (<code>/local_scratch/$USER</code>) before loading, which is much faster than loading them from <code>/scratch</code>.</li>
 <li><strong>Use the environment your assignment provides.</strong> Otherwise, install the engine in a virtualenv in your home directory, which every node sees.</li>
 </ul>
 </div>
@@ -266,8 +259,12 @@ python3 analyze.py --in /scratch/$USER/data --out /scratch/$USER/results</div>
 <td>The course folder, with what the course provides. Read-only.</td>
 </tr>
 <tr>
+<td><code>/local_scratch/$USER</code> on a compute node</td>
+<td>Fast space for a running job, on the node's own NVMe disk (about 400 GB). Nodes started after the cluster change on October 29, 2026 have it. Use it only if <code>ls -ld /local_scratch/$USER</code> shows you as the owner. Then run <code>chmod 700 /local_scratch/$USER</code>, so that only you can read it. If the folder is missing or belongs to someone else, use <code>/var/tmp</code> and tell the course staff. Files there are not deleted when the job ends. They stay until the node shuts down and take space on a disk that other people's jobs on that node also use, so delete them before you end the job.</td>
+</tr>
+<tr>
 <td><code>/tmp</code> and <code>/var/tmp</code> on a compute node</td>
-<td>Scratch space for a running job. Files there are not deleted when the job ends. They stay until the node shuts down and take disk space from the next person on that node, so delete them before you end the job.</td>
+<td>Scratch space for a running job, on the node's small root disk (about 66 GB free), which every job on the node shares. Use <code>/local_scratch/$USER</code> for large files when the node has it. Files there are not deleted when the job ends. They stay until the node shuts down and take disk space from the next person on that node, so delete them before you end the job.</td>
 </tr>
 </table></div>
 <p>Move code with git. Move other files from your laptop with <code>rsync</code> (create the target directory first), or with <code>scp</code> on Windows, which has no <code>rsync</code>:</p>
@@ -281,7 +278,7 @@ rsync -av cs2680:/scratch/YOUR_USERNAME/results/ ./results/ # download</div>
 <p>The whole class shares these nodes, the course pays for every GPU-hour, and there is no per-student limit. We may cancel a job that holds far more than its share, especially before a deadline.</p>
 <ul>
 <li>Ask for what you need, and give every job a time limit with <code>-t</code>.</li>
-<li>End a job when you stop working (<code>exit</code>, or <code>scancel &lt;jobid&gt;</code>). An idle job still holds its node. Delete your files in <code>/var/tmp</code> first. For Assignment 4, run <code>bash $A4/bin/cleanup.sh</code>.</li>
+<li>End a job when you stop working (<code>exit</code>, or <code>scancel &lt;jobid&gt;</code>). An idle job still holds its node. Delete your files in <code>/local_scratch/$USER</code> and <code>/var/tmp</code> first. For Assignment 4, run <code>bash $A4/bin/cleanup.sh</code>.</li>
 <li>Keep the login node for light work.</li>
 </ul>
 <hr/>

@@ -1,0 +1,29 @@
+# Local Python environment and secrets
+.venv/
+.env
+.envrc
+__pycache__/
+*.py[cod]
+
+# Harbor-generated state
+jobs/
+.harbor/
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.listing
+*.out
+*.synctex.gz
+*.toc
+
+# Editor and OS files
+.DS_Store
+*~
+*.swp
+*.swo
+*.tmp

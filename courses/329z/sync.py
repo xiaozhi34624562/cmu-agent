@@ -567,6 +567,13 @@ Python HTTP 不可用时，可选用 `node courses/329z/download.mjs /tmp/cs329z
     if (ROOT/'COURSE_SCHEDULE.md').exists():
         title, body = readme.split('\n', 1)
         readme = title + '\n\n[完整课表与待更新目录](COURSE_SCHEDULE.md) · [四课学习路线](../ROADMAP.zh-CN.md)\n' + body
+    hw2 = ROOT/'assignment/assignment-2/SNAPSHOT.json'
+    if hw2.exists():
+        snapshot = json.loads(hw2.read_text())
+        homework = ('## 新公开作业\n\n[HW2：Building an Evaluation Task](assignment/assignment-2/SOURCES.md) '
+                    f"已按固定提交 `{snapshot['commit'][:12]}` 归档 {len(snapshot['files'])} 个原始文件；"
+                    '正式题目、截止安排及未运行范围见作业索引。\n\n')
+        readme = readme.replace('## 学习和证据边界', homework+'## 学习和证据边界', 1)
     (ROOT/'README.md').write_text(readme)
     lines = ['# CS329Z 全部来源', '', f"- 学期：{SEMESTER}；索引日期：{manifest['snapshot_date']}",
              '- saved 表示已检查正文；reused_from 表示复用旧归档，不是本次新下载。',
@@ -604,6 +611,10 @@ Python HTTP 不可用时，可选用 `node courses/329z/download.mjs /tmp/cs329z
         snapshot = json.loads(snap.read_text())
         for relative, sha in snapshot.get('files', {}).items():
             checks[str((snap.parent/relative).relative_to(ROOT))] = sha
+    manifest['code_snapshots'] = [dict(path=str(snap.relative_to(ROOT)),
+        repository=data.get('repository'),commit=data['commit'],files=len(data['files']),
+        sha256=digest(snap)) for snap in sorted(ROOT.rglob('SNAPSHOT.json'))
+        for data in [json.loads(snap.read_text())]]
     (ROOT/'CHECKSUMS.sha256').write_text(''.join(f'{sha}  {path}\n' for path,sha in sorted(checks.items())))
     write_json(ROOT/'manifest.json',manifest)
 

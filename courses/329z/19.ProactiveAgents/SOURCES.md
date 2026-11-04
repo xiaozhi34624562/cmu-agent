@@ -20,7 +20,10 @@
   - Source: https://arxiv.org/abs/2603.05923
   - SHA-256: `6dd5e555b8293ba6ed7e804bf526c8022558a10f30a91002d734853a640ad33b`
   - 实际归档版本：2603.05923v1；不将官网的会议/期刊年份视为该 PDF 已是最终发表版。
-- [OpenClaw: Open-source proactive AI agent](https://github.com/openclaw/openclaw) — unavailable；尚未取得有效正文。
+- [OpenClaw: Open-source proactive AI agent](readings/OpenClaw_Open-source_proactive_AI_agent.html)
+  - Source: https://github.com/openclaw/openclaw
+  - SHA-256: `6387c609df0ab1d6afc53731a8240eec9221ea763e08b0b5c31d7e26366f2bf6`
+  - 实际归档页面标题：GitHub - openclaw/openclaw: The AI that really does things. Any OS. Any Platform. The lobster way. 🦞 · GitHub；官网阅读标签仍原样保留在 manifest 的课表记录中。
 
 ## 中文讲解与补充参考
 

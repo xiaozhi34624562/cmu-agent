@@ -2232,6 +2232,14 @@ details.aside[open] > summary {
     max-height: 34px;
 }
 
+.sponsor-cloudlab .sponsor-mark img {
+    max-height: 32px;
+}
+
+.sponsor-chameleon .sponsor-mark img {
+    max-height: 48px;
+}
+
 .sponsor-madsys .sponsor-mark img {
     max-height: 54px;
 }

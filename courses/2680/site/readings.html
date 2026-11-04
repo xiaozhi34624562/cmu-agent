@@ -757,7 +757,7 @@
 </td>
 </tr>
 <tr>
-<td><a href="https://arxiv.org/abs/2411.05285" rel="noopener noreferrer" target="_blank"><strong class="reading-name">AgentOps</strong></a><span class="reading-subtitle">AgentOps: Enabling Observability of LLM Agents</span><span class="reading-also">also <a href="#nov-30">Nov 30</a></span></td>
+<td><a href="https://arxiv.org/abs/2411.05285" rel="noopener noreferrer" target="_blank"><strong class="reading-name">AgentOps</strong></a><span class="reading-subtitle">AgentOps: Enabling Observability of LLM Agents</span></td>
 <td>2024</td>
 <td>
 <p><strong>Background.</strong> An agent's execution is a sequence of model calls, tool invocations, and state changes that no existing log format was designed to hold. The tracing services and evaluation harnesses that record it each invented their own vocabulary for it.</p>
@@ -767,7 +767,7 @@
 </td>
 </tr>
 <tr>
-<td><a href="https://www.usenix.org/conference/nsdi20/presentation/agache" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Firecracker</strong></a><span class="reading-subtitle">Lightweight Virtualization for Serverless Applications</span><span class="reading-also">also <a href="#nov-30">Nov 30</a></span></td>
+<td><a href="https://www.usenix.org/conference/nsdi20/presentation/agache" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Firecracker</strong></a><span class="reading-subtitle">Lightweight Virtualization for Serverless Applications</span></td>
 <td>2020</td>
 <td>
 <p><strong>Background.</strong> Serverless platforms run short, untrusted functions from many customers on shared hardware. Containers share a kernel, so the isolation boundary is the whole Linux syscall surface; a virtual machine gives a narrower boundary and a slower start.</p>
@@ -779,7 +779,7 @@
 </td>
 </tr>
 <tr>
-<td><a href="https://arxiv.org/abs/2606.25189" rel="noopener noreferrer" target="_blank"><strong class="reading-name">ActPlane</strong></a><span class="reading-subtitle">Programmable OS-Level Policy Enforcement for Agent Harnesses</span><span class="reading-also">also <a href="#nov-30">Nov 30</a></span></td>
+<td><a href="https://arxiv.org/abs/2606.25189" rel="noopener noreferrer" target="_blank"><strong class="reading-name">ActPlane</strong></a><span class="reading-subtitle">Programmable OS-Level Policy Enforcement for Agent Harnesses</span></td>
 <td>2026</td>
 <td>
 <p><strong>Background.</strong> Agent harnesses decide what an agent may do at the tool layer, in user space. A permission check runs before each tool call, and the allowlist of permitted tools is the whole policy.</p>
@@ -818,7 +818,7 @@
 </td>
 </tr>
 <tr>
-<td><a href="https://arxiv.org/abs/2406.18665" rel="noopener noreferrer" target="_blank"><strong class="reading-name">RouteLLM</strong></a><span class="reading-subtitle">Learning to Route LLMs with Preference Data</span><span class="reading-also">also <a href="#nov-23">Nov 23</a></span></td>
+<td><a href="https://arxiv.org/abs/2406.18665" rel="noopener noreferrer" target="_blank"><strong class="reading-name">RouteLLM</strong></a><span class="reading-subtitle">Learning to Route LLMs with Preference Data</span><span class="reading-also">also <a href="#nov-30">Nov 30</a></span></td>
 <td>2024</td>
 <td>
 <p><strong>Background.</strong> An agent may call a model many times in one run. Paying for the strongest model at every step adds up, while using a cheaper model throughout can put weak answers into the trajectory.</p>
@@ -1522,8 +1522,8 @@
 </table>
 </div>
 </div>
-<div class="subsection reading-meeting" id="oct-28">
-<h2><span class="reading-date">Oct 28</span> Efficient LLM serving basics III: Batching, paging, and parallelism</h2>
+<div class="subsection reading-meeting" id="nov-02">
+<h2><span class="reading-date">Nov 2</span> Efficient LLM serving basics III: Batching, paging, and parallelism</h2>
 <p>A serving engine raises utilization by changing the unit at which it manages work. Orca schedules
           one generation iteration instead of one whole request, PagedAttention allocates one cache page instead
           of one contiguous sequence, and the parallelism papers divide one model or sequence across devices.
@@ -1653,8 +1653,8 @@
 </table>
 </div>
 </div>
-<div class="subsection reading-meeting" id="nov-02">
-<h2><span class="reading-date">Nov 2</span> Efficient LLM serving: speculative decoding</h2>
+<div class="subsection reading-meeting" id="nov-04">
+<h2><span class="reading-date">Nov 4</span> Efficient LLM serving: speculative decoding</h2>
 <p>Speculative decoding spends inexpensive work to avoid expensive serial model steps while preserving
           the target model's output distribution. The readings answer four questions in order: why parallel
           verification is exact, where candidate tokens come from, how candidate trees should match the hardware
@@ -1919,12 +1919,11 @@
 </table>
 </div>
 </div>
-<div class="subsection reading-meeting" id="nov-04">
-<h2><span class="reading-date">Nov 4</span> Efficient agentic systems: scheduling and prefix caching</h2>
+<div class="subsection reading-meeting" id="nov-11">
+<h2><span class="reading-date">Nov 11</span> Efficient agentic systems: scheduling and prefix caching</h2>
 <p>This meeting asks what changes when the serving unit is an agent program rather than an isolated
           request: first measure and replay the workload, then expose workflow structure, schedule whole
-          programs, and optimize across their execution graphs. The <a href="#nov-30">nov-30 meeting</a> follows
-          the persistent runtime state those decisions create through tool stalls, sandboxes, and sessions.</p>
+          programs, and optimize across their execution graphs.</p>
 <p>Prefix-cache reuse is the other half of this meeting: recognize shared token spans, place their KV
           state, and choose what to retain. Scheduling and caching together prepare the serving work in
           Assignment 4.</p>
@@ -2132,7 +2131,7 @@
 </td>
 </tr>
 <tr>
-<td><a href="https://arxiv.org/abs/2607.08565" rel="noopener noreferrer" target="_blank"><strong class="reading-name">SMetric</strong></a><span class="reading-subtitle">Rethink LLM Scheduling for Serving Agents with Balanced Session-centric Scheduling</span><span class="reading-also">also <a href="#nov-23">Nov 23</a></span></td>
+<td><a href="https://arxiv.org/abs/2607.08565" rel="noopener noreferrer" target="_blank"><strong class="reading-name">SMetric</strong></a><span class="reading-subtitle">Rethink LLM Scheduling for Serving Agents with Balanced Session-centric Scheduling</span><span class="reading-also">also <a href="#nov-30">Nov 30</a></span></td>
 <td>2026</td>
 <td>
 <p><strong>Background.</strong> Serving metrics were defined for humans reading streamed output, so time to first token and inter-token latency drive the scheduler. Agents consume responses programmatically, and they issue many requests per session.</p>
@@ -2512,8 +2511,199 @@
 </table>
 </div>
 </div>
-<div class="subsection reading-meeting" id="nov-11">
-<h2><span class="reading-date">Nov 11</span> Efficient LLM serving: pruning and quantization</h2>
+<div class="subsection reading-meeting" id="nov-16">
+<h2><span class="reading-date">Nov 16</span> Efficient LLM serving: KV-cache optimization and model architectures</h2>
+<p>A cache entry is a product of four dimensions, heads times layers times tokens times dimensions,
+          and every group below attacks one of them. Multi-query and grouped-query attention share heads, latent
+          attention compresses the per-token vector, cross-layer attention and YOCO cut how many layers hold a
+          distinct entry, and windows and trained sparsity decide how many tokens are kept or read. Read the
+          page against one distinction the headline factors hide. Three quantities move independently, and they
+          are the bytes stored per token, the bytes read per generated token, and the attention arithmetic per
+          generated token. Cross-layer attention halves the first and leaves the second exactly where it was,
+          because a shared entry is still read separately in every layer that uses it. DeepSeek Sparse Attention
+          raises the first by about a fifth and cuts the second 4.6× at a 128k context. Latent attention
+          cuts the first two together and raises the third. A paper that improves one of the three tells you
+          nothing about the other two, and most of them do not say which they mean.</p>
+<p>The dedicated <a href="notes/transformers.html">Transformers and LLM foundations</a> page supplies
+          optional background for the model architectures discussed here.</p>
+<div class="table-responsive">
+<table class="table table-hover readings-table">
+<thead>
+<tr class="table-light">
+<th scope="col">Paper</th>
+<th scope="col">Year</th>
+<th scope="col">Why read it</th>
+</tr>
+</thead>
+<tr class="reading-topic">
+<th colspan="3" scope="colgroup">Storing fewer keys and values</th>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/1911.02150" rel="noopener noreferrer" target="_blank"><strong class="reading-name">MQA</strong></a><span class="reading-subtitle">Fast Transformer Decoding: One Write-Head is All You Need</span></td>
+<td>2019</td>
+<td>
+<p><strong>Background.</strong> Multi-head attention gives every head its own key and value projections, so incremental decoding has to store, and then re-read, one key vector and one value vector per head per layer for every token in the sequence.</p>
+<p><strong>Problem.</strong> A decode step does very little arithmetic and reads the whole cache to do it, so generation speed is set by how many bytes of keys and values move rather than by FLOPs. The cache scales with heads, layers, batch size, and length at once.</p>
+<p><strong>Key idea.</strong> Keep the query heads and collapse the rest, so one shared key head and one shared value head serve all of them. The cache shrinks by the number of heads, and every decode step reads that much less.</p>
+<p><strong>Findings.</strong> On WMT14 at batch size 1,024, multi-query attention cuts incremental decoder cost from 46 to 3.8 TPUv2 microseconds per output token, while beam-search BLEU rises from 28.4 to 28.5.</p>
+<p><strong>Why it matters.</strong> It changes the size of the problem before any serving system touches it, and it pays for the reduction in model quality rather than in engineering. Every optimization later in this meeting operates on a cache whose baseline size this one decision already set.</p>
+<p><strong>Adoption.</strong> PaLM projects keys and values to one shared head while retaining every query head. Gemini 1.0 names multi-query attention as the efficient attention behind its 32K context, and StarCoder, Falcon-7B, and Gemma 2B each ship one key-value head.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2305.13245" rel="noopener noreferrer" target="_blank"><strong class="reading-name">GQA</strong></a><span class="reading-subtitle">Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints</span></td>
+<td>2023</td>
+<td>
+<p><strong>Background.</strong> Multi-query attention minimizes the KV cache, while multi-head attention preserves quality. Their different parameter shapes made the layout appear to be a choice fixed before pretraining.</p>
+<p><strong>Problem.</strong> Multi-query attention loses quality on some tasks, but converting an existing multi-head checkpoint appeared to require pretraining again from scratch.</p>
+<p><strong>Key idea.</strong> Use an intermediate number of key and value heads, each shared by a group of query heads. Convert a multi-head checkpoint by mean-pooling projections within each group, then repair the lossy conversion with continued training.</p>
+<p><strong>Findings.</strong> The repair uses 5% of the original pretraining steps. The converted eight-group model scores 47.1 on the paper's seven-task average against 47.2 for multi-head attention, while reducing time per sample from 1.51 seconds to 0.28.</p>
+<p><strong>Why it matters.</strong> Cache size becomes a dial set by the number of groups rather than a binary choice, and an existing model can move along that tradeoff. The approximation is paid during conversion; serving remains exact for the converted model.</p>
+<p><strong>Adoption.</strong> Grouped-query attention appears in Llama 2 70B, every Llama 3 and Llama 4 release, Qwen 2.5, and Mistral models. Hugging Face Transformers, vLLM, SGLang, llama.cpp, and TensorRT-LLM support the layout.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2405.04434" rel="noopener noreferrer" target="_blank"><strong class="reading-name">MLA</strong></a><span class="reading-subtitle">DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model</span></td>
+<td>2024</td>
+<td>
+<p><strong>Background.</strong> Multi-query and grouped-query attention reduce the number of key and value heads but preserve the shape of each cached entry.</p>
+<p><strong>Problem.</strong> Reducing the group count eventually costs quality, so larger savings require changing what an entry stores.</p>
+<p><strong>Key idea.</strong> Project the hidden state into a low-dimensional latent and cache it with one small shared key carrying rotary position information. Fold the up-projections into the query and output matrices so decoding never materializes full keys and values in memory.</p>
+<p><strong>Findings.</strong> DeepSeek-V2 caches 576 elements per token per layer, 3.56× fewer than grouped-query attention with eight groups. Its controlled comparison reports 4% of multi-head attention's cache at the larger evaluated scale; the often-quoted 93.3% reduction also includes six-bit cache quantization.</p>
+<p><strong>Why it matters.</strong> Latent attention compresses the representation rather than the head count. Storage and read traffic fall together, but attention arithmetic rises because the folded form scores a wider latent vector. Dedicated decode kernels are therefore part of the design.</p>
+<p><strong>Adoption.</strong> DeepSeek V2 through V3.2, Kimi K2, Kimi Linear, and LongCat-Flash use latent attention. vLLM, SGLang, TensorRT-LLM, FlashInfer, and llama.cpp provide dedicated kernels.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2405.12981" rel="noopener noreferrer" target="_blank"><strong class="reading-name">CLA</strong></a><span class="reading-subtitle">Reducing Transformer Key-Value Cache Size with Cross-Layer Attention</span></td>
+<td>2024</td>
+<td>
+<p><strong>Background.</strong> Earlier methods reduce heads or entry dimensions while preserving a distinct cache for every layer.</p>
+<p><strong>Problem.</strong> Model depth multiplies the cache size, and that multiplier grows as model families scale.</p>
+<p><strong>Key idea.</strong> Give key and value projections to only some layers and let adjacent layers reuse their output. Every layer retains its own queries, attention, and output projection, so the model shares stored state rather than computation.</p>
+<p><strong>Findings.</strong> Pairwise sharing halves the cache on top of multi-query attention. Validation perplexity worsens by 0.04 points at 1B parameters and 0.05 at 3B, although both models were trained at only 2,048-token context.</p>
+<p><strong>Why it matters.</strong> Capacity and bandwidth are different budgets. Sharing doubles how many sequences fit, but each layer still reads the shared entry during decode, so per-step traffic does not fall.</p>
+<p><strong>Adoption.</strong> Character.AI, Apple's on-device foundation model, Gemma 3n and Gemma 4, and Hunyuan-Large share key-value state across layers.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2405.05254" rel="noopener noreferrer" target="_blank"><strong class="reading-name">YOCO</strong></a><span class="reading-subtitle">You Only Cache Once: Decoder-Decoder Architectures for Language Models</span></td>
+<td>2024</td>
+<td>
+<p><strong>Background.</strong> Cross-layer attention divides the depth multiplier by sharing state among a few neighboring layers.</p>
+<p><strong>Problem.</strong> Sharing across the entire model is harder because late layers would attend to state computed near the input.</p>
+<p><strong>Key idea.</strong> Split the model into a self-decoder and a cross-decoder. The lower half produces one global set of keys and values; every upper layer attends to that set. Cache size no longer scales with upper-layer depth, and prefill can stop producing cache entries halfway through the model.</p>
+<p><strong>Findings.</strong> At one million tokens, the trained 3B model uses 12.4 GB of inference memory, 9.4× less than the grouped-query baseline with the same kernel optimizations. Results quoted for 30B and 65B are projections rather than measurements.</p>
+<p><strong>Why it matters.</strong> YOCO removes the depth multiplier from storage, but not the sequence-length term from decode. Every cross-decoder layer still reads the global cache, so bandwidth and arithmetic continue to grow with context.</p>
+<p><strong>Adoption.</strong> Apple's on-device foundation model uses cache-free upper layers, and Microsoft's Phi-4-mini-flash-reasoning cross-attends from later layers to one global attention layer.</p>
+</td>
+</tr>
+<tr class="reading-topic">
+<th colspan="3" scope="colgroup">Sparsity fixed in advance</th>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2310.06825" rel="noopener noreferrer" target="_blank"><strong class="reading-name">SWA</strong></a><span class="reading-subtitle">Mistral 7B</span></td>
+<td>2023</td>
+<td>
+<p><strong>Background.</strong> Earlier methods change what a model stores per token while still letting every query read every retained position.</p>
+<p><strong>Problem.</strong> A fixed pattern is cheap to execute, but it may hide distant information that the current query needs.</p>
+<p><strong>Key idea.</strong> Let each query attend only to the latest W positions and store the cache in a fixed circular buffer. Per-token work stops growing after W, while stacking layers expands the theoretical receptive field beyond one window.</p>
+<p><strong>Findings.</strong> Mistral 7B uses a 4,096-token window in all 32 layers and reports 8× less cache at a 32k sequence. That factor is sequence length divided by window size; the paper does not evaluate quality beyond the window.</p>
+<p><strong>Why it matters.</strong> A sliding window reduces storage, read traffic, and arithmetic together while remaining exact for a model trained with it. However, recency rather than relevance decides what survives.</p>
+<p><strong>Adoption.</strong> Gemma 2, Gemma 3, GPT-OSS, Cohere Command A, and Ministral 8B interleave windowed and full-attention layers, preserving some global paths while bounding most layers' caches.</p>
+</td>
+</tr>
+<tr class="reading-topic">
+<th colspan="3" scope="colgroup">Removing the sequence-growing state</th>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2312.00752" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Mamba</strong></a><span class="reading-subtitle">Linear-Time Sequence Modeling with Selective State Spaces</span></td>
+<td>2023</td>
+<td>
+<p><strong>Background.</strong> Every entry above keeps a per-token cache and makes it smaller, by sharing heads, compressing an entry, sharing layers, or reading fewer positions. A state-space layer carries a recurrent state whose size is fixed by the state and channel dimensions, so length drops out of the cache term instead of being scaled down. Earlier structured state-space models were fast but their transitions did not depend on the input, which left them unable to do content-based recall.</p>
+<p><strong>Problem.</strong> A recurrence that ignores its input cannot decide what to keep, and that is why state-space models lost to attention on language. Making the transitions functions of the input repairs the recall, and it also removes the convolutional form the fast state-space algorithms relied on, so the modeling fix destroys the speed that motivated the family.</p>
+<p><strong>Key idea.</strong> Let the state-space parameters be functions of the input, which the paper calls selection, then recover throughput with a hardware-aware parallel scan that keeps the expanded state in SRAM rather than materializing it in HBM. A decode step then carries one state per sequence per layer, and that state is the same size after a million tokens as after one.</p>
+<p><strong>Findings.</strong> The paper reports 5× the generation throughput of a Transformer of comparable size, and Mamba-3B matching Transformers of twice its parameter count both in pretraining perplexity and on downstream evaluations.</p>
+<p><strong>Why it matters.</strong> It is the one entry here that deletes the KV-cache term rather than reducing it, so batch capacity stops depending on context length and the bytes read per generated token stop growing with it. Two costs come with that. Fixed state recalls a specific earlier token less reliably than attention, and it exposes no per-token entries to address, so the serving machinery the rest of this course builds on a token-indexed cache has nothing to act on: paged allocation, prefix reuse, and eviction all name entries the layer does not have.</p>
+<p><strong>Adoption.</strong> Mamba blocks ship in Hugging Face Transformers and vLLM. Jamba, Codestral Mamba, Falcon-Mamba, and NVIDIA's Nemotron-H all interleave state-space layers with attention layers rather than dropping attention entirely, which keeps a bounded number of layers that can still be addressed per token.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2510.26692" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Kimi Linear</strong></a><span class="reading-subtitle">An Expressive, Efficient Attention Architecture</span></td>
+<td>2025</td>
+<td>
+<p><strong>Background.</strong> Every full-attention layer retains per-token state even after heads, dimensions, layers, or windows are reduced.</p>
+<p><strong>Problem.</strong> Compression cannot eliminate growth with context; pure linear attention can, but it recalls specific earlier tokens less reliably.</p>
+<p><strong>Key idea.</strong> Combine mostly linear-attention layers, whose recurrent state has fixed size, with periodic latent-attention layers for exact lookup. Cache size follows the number of full-attention layers rather than total depth.</p>
+<p><strong>Findings.</strong> The 48B model uses seven latent-attention layers among 27 and reports up to 75% less cache than its full-attention counterpart. At batch size one and one million tokens, decode is 2.2× faster; the often-quoted 6× assumes a larger batch enabled by the freed memory.</p>
+<p><strong>Why it matters.</strong> Most layers replace sequence-growing cache with fixed recurrent state. The tradeoff moves into pretraining, where the ratio of linear to full layers is fixed rather than tunable per deployment.</p>
+</td>
+</tr>
+<tr class="reading-topic">
+<th colspan="3" scope="colgroup">Sparsity built into the model</th>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2502.11089" rel="noopener noreferrer" target="_blank"><strong class="reading-name">NSA</strong></a><span class="reading-subtitle">Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention</span></td>
+<td>2025</td>
+<td>
+<p><strong>Background.</strong> Many sparse-attention methods drop positions at inference from a model trained with full attention.</p>
+<p><strong>Problem.</strong> The model then sees an unfamiliar attention pattern, and scattered token-level sparsity may save FLOPs without reducing memory transactions.</p>
+<p><strong>Key idea.</strong> Pretrain three parallel attention branches: compressed block summaries, selected raw blocks, and a sliding window. Independent sigmoid gates combine their outputs, and blockwise selection preserves contiguous memory access.</p>
+<p><strong>Findings.</strong> At 64k tokens, the kernel is 9.0× faster forward and 6.0× faster backward than a Triton FlashAttention-2 implementation. The separate 11.6× figure is an expected ratio from memory-access volume, not a measured speedup.</p>
+<p><strong>Why it matters.</strong> Sparse arithmetic and reduced memory traffic are separate achievements. Because the selected blocks change by query, the full cache remains stored; the design reduces bytes read and attention arithmetic, not capacity.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2502.13189" rel="noopener noreferrer" target="_blank"><strong class="reading-name">MoBA</strong></a><span class="reading-subtitle">Mixture of Block Attention for Long-Context LLMs</span></td>
+<td>2025</td>
+<td>
+<p><strong>Background.</strong> Mixture-of-experts layers route each token selectively, while attention usually reads every key or follows a fixed sparse pattern.</p>
+<p><strong>Problem.</strong> A fixed pattern may discard useful long-range dependencies, while full attention grows quadratically with sequence length.</p>
+<p><strong>Key idea.</strong> Treat context blocks as experts. A parameter-free gate scores each block from the query and its mean-pooled keys, then routes attention to the top blocks while always retaining the current block for causality.</p>
+<p><strong>Findings.</strong> At 95.3% sparsity, the attention layer of an 8B model is up to 6.5× faster than FlashAttention at one million tokens and 16× faster at ten million, with validation loss within 0.001 of full attention.</p>
+<p><strong>Why it matters.</strong> Conditional computation applies to context rather than parameters. Because routing adds no parameters, a layer can alternate between sparse and full attention during training or across serving phases.</p>
+<p><strong>Adoption.</strong> Independent implementations include a CUDA kernel from MIT and NVIDIA and support in flash-linear-attention.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2512.02556" rel="noopener noreferrer" target="_blank"><strong class="reading-name">DeepSeek-V3.2</strong></a><span class="reading-subtitle">Pushing the Frontier of Open Large Language Models</span></td>
+<td>2025</td>
+<td>
+<p><strong>Background.</strong> Native sparse-attention methods require pretraining, which is impractical for an existing frontier checkpoint.</p>
+<p><strong>Problem.</strong> Reading fewer past tokens can reduce long-context cost, but it may also damage the reasoning and tool use that need the context.</p>
+<p><strong>Key idea.</strong> Add a lightweight indexer to the dense checkpoint. It scores every past position from one shared key per token, and attention reads only the top 2,048 latent entries. First train the indexer to imitate dense attention with the model frozen, then continue training the full model.</p>
+<p><strong>Findings.</strong> At 128k tokens, reported serving cost falls about 3.5× for prefill and 9× for decode while MMLU-Pro remains 85.0. However, the indexer still scans the full context on every step.</p>
+<p><strong>Why it matters.</strong> Reading less is not storing less. The full latent cache remains and the indexer adds state, so stored bytes rise about one fifth even as read traffic at 128k falls 4.6×. The indexer's full scan also caps the asymptotic saving.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2606.19348" rel="noopener noreferrer" target="_blank"><strong class="reading-name">DeepSeek-V4</strong></a><span class="reading-subtitle">Towards Highly Efficient Million-Token Context Intelligence</span></td>
+<td>2026</td>
+<td>
+<p><strong>Background.</strong> Token selection reduces what attention reads but still stores one cache entry per token.</p>
+<p><strong>Problem.</strong> At one million tokens, both cache capacity and the selector's full-context scan remain expensive.</p>
+<p><strong>Key idea.</strong> Compress the token axis before selection. One layer type forms learned summaries at one quarter of the original length and applies top-k selection; another pools every 128 positions and attends densely. Both retain an uncompressed 128-token local window.</p>
+<p><strong>Findings.</strong> At one million tokens, the larger model uses 27% of DeepSeek-V3.2's single-token inference FLOPs and 10% of its cache, despite activating more parameters. It scores 83.5 on million-token MRCR.</p>
+<p><strong>Why it matters.</strong> This method shrinks the number of entries rather than their width or number of copies. Compression reduces storage, read traffic, and arithmetic together; selection then reduces only the last two.</p>
+<p><strong>Adoption.</strong> vLLM, SGLang, and the Ascend and Cambricon ports of vLLM implement the mechanism.</p>
+</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2504.17768" rel="noopener noreferrer" target="_blank"><strong class="reading-name">sparse frontier</strong></a><span class="reading-subtitle">The Sparse Frontier: Sparse Attention Trade-offs in Transformer LLMs</span></td>
+<td>2025</td>
+<td>
+<p><strong>Background.</strong> Training-free sparse-attention methods report results under different sequence lengths, model sizes, tasks, and sparsity levels.</p>
+<p><strong>Problem.</strong> Those results do not answer which method and sparsity level an operator should use for a particular workload.</p>
+<p><strong>Key idea.</strong> Evaluate six training-free methods under one protocol while varying sequence length, model size, and sparsity together. The set spans both prefill and decode.</p>
+<p><strong>Findings.</strong> Tolerance depends on the task, phase, model size, and length. A 7B model's usable decode compression falls from 12× at 16k tokens to 5× at 128k, while 32B and 72B models remain near 17×.</p>
+<p><strong>Why it matters.</strong> One fixed sparsity setting cannot serve every workload. A sparse-attention speedup is not portable unless it names the task, sequence length, model size, and phase. Aggregate averages hide this operating regime.</p>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="subsection reading-meeting" id="nov-18">
+<h2><span class="reading-date">Nov 18</span> Efficient LLM serving: pruning and quantization</h2>
 <p>Quantization asks how to represent the same model with fewer bits after training. The first groups
           establish the available number formats, explain why activation outliers make a uniform INT8 conversion
           fail, and turn those observations into post-training weight-quantization methods. The later groups
@@ -2975,199 +3165,8 @@
 </table>
 </div>
 </div>
-<div class="subsection reading-meeting" id="nov-16">
-<h2><span class="reading-date">Nov 16</span> Efficient LLM serving: KV-cache optimization and model architectures</h2>
-<p>A cache entry is a product of four dimensions, heads times layers times tokens times dimensions,
-          and every group below attacks one of them. Multi-query and grouped-query attention share heads, latent
-          attention compresses the per-token vector, cross-layer attention and YOCO cut how many layers hold a
-          distinct entry, and windows and trained sparsity decide how many tokens are kept or read. Read the
-          page against one distinction the headline factors hide. Three quantities move independently, and they
-          are the bytes stored per token, the bytes read per generated token, and the attention arithmetic per
-          generated token. Cross-layer attention halves the first and leaves the second exactly where it was,
-          because a shared entry is still read separately in every layer that uses it. DeepSeek Sparse Attention
-          raises the first by about a fifth and cuts the second 4.6× at a 128k context. Latent attention
-          cuts the first two together and raises the third. A paper that improves one of the three tells you
-          nothing about the other two, and most of them do not say which they mean.</p>
-<p>The dedicated <a href="notes/transformers.html">Transformers and LLM foundations</a> page supplies
-          optional background for the model architectures discussed here.</p>
-<div class="table-responsive">
-<table class="table table-hover readings-table">
-<thead>
-<tr class="table-light">
-<th scope="col">Paper</th>
-<th scope="col">Year</th>
-<th scope="col">Why read it</th>
-</tr>
-</thead>
-<tr class="reading-topic">
-<th colspan="3" scope="colgroup">Storing fewer keys and values</th>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/1911.02150" rel="noopener noreferrer" target="_blank"><strong class="reading-name">MQA</strong></a><span class="reading-subtitle">Fast Transformer Decoding: One Write-Head is All You Need</span></td>
-<td>2019</td>
-<td>
-<p><strong>Background.</strong> Multi-head attention gives every head its own key and value projections, so incremental decoding has to store, and then re-read, one key vector and one value vector per head per layer for every token in the sequence.</p>
-<p><strong>Problem.</strong> A decode step does very little arithmetic and reads the whole cache to do it, so generation speed is set by how many bytes of keys and values move rather than by FLOPs. The cache scales with heads, layers, batch size, and length at once.</p>
-<p><strong>Key idea.</strong> Keep the query heads and collapse the rest, so one shared key head and one shared value head serve all of them. The cache shrinks by the number of heads, and every decode step reads that much less.</p>
-<p><strong>Findings.</strong> On WMT14 at batch size 1,024, multi-query attention cuts incremental decoder cost from 46 to 3.8 TPUv2 microseconds per output token, while beam-search BLEU rises from 28.4 to 28.5.</p>
-<p><strong>Why it matters.</strong> It changes the size of the problem before any serving system touches it, and it pays for the reduction in model quality rather than in engineering. Every optimization later in this meeting operates on a cache whose baseline size this one decision already set.</p>
-<p><strong>Adoption.</strong> PaLM projects keys and values to one shared head while retaining every query head. Gemini 1.0 names multi-query attention as the efficient attention behind its 32K context, and StarCoder, Falcon-7B, and Gemma 2B each ship one key-value head.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2305.13245" rel="noopener noreferrer" target="_blank"><strong class="reading-name">GQA</strong></a><span class="reading-subtitle">Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints</span></td>
-<td>2023</td>
-<td>
-<p><strong>Background.</strong> Multi-query attention minimizes the KV cache, while multi-head attention preserves quality. Their different parameter shapes made the layout appear to be a choice fixed before pretraining.</p>
-<p><strong>Problem.</strong> Multi-query attention loses quality on some tasks, but converting an existing multi-head checkpoint appeared to require pretraining again from scratch.</p>
-<p><strong>Key idea.</strong> Use an intermediate number of key and value heads, each shared by a group of query heads. Convert a multi-head checkpoint by mean-pooling projections within each group, then repair the lossy conversion with continued training.</p>
-<p><strong>Findings.</strong> The repair uses 5% of the original pretraining steps. The converted eight-group model scores 47.1 on the paper's seven-task average against 47.2 for multi-head attention, while reducing time per sample from 1.51 seconds to 0.28.</p>
-<p><strong>Why it matters.</strong> Cache size becomes a dial set by the number of groups rather than a binary choice, and an existing model can move along that tradeoff. The approximation is paid during conversion; serving remains exact for the converted model.</p>
-<p><strong>Adoption.</strong> Grouped-query attention appears in Llama 2 70B, every Llama 3 and Llama 4 release, Qwen 2.5, and Mistral models. Hugging Face Transformers, vLLM, SGLang, llama.cpp, and TensorRT-LLM support the layout.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2405.04434" rel="noopener noreferrer" target="_blank"><strong class="reading-name">MLA</strong></a><span class="reading-subtitle">DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model</span></td>
-<td>2024</td>
-<td>
-<p><strong>Background.</strong> Multi-query and grouped-query attention reduce the number of key and value heads but preserve the shape of each cached entry.</p>
-<p><strong>Problem.</strong> Reducing the group count eventually costs quality, so larger savings require changing what an entry stores.</p>
-<p><strong>Key idea.</strong> Project the hidden state into a low-dimensional latent and cache it with one small shared key carrying rotary position information. Fold the up-projections into the query and output matrices so decoding never materializes full keys and values in memory.</p>
-<p><strong>Findings.</strong> DeepSeek-V2 caches 576 elements per token per layer, 3.56× fewer than grouped-query attention with eight groups. Its controlled comparison reports 4% of multi-head attention's cache at the larger evaluated scale; the often-quoted 93.3% reduction also includes six-bit cache quantization.</p>
-<p><strong>Why it matters.</strong> Latent attention compresses the representation rather than the head count. Storage and read traffic fall together, but attention arithmetic rises because the folded form scores a wider latent vector. Dedicated decode kernels are therefore part of the design.</p>
-<p><strong>Adoption.</strong> DeepSeek V2 through V3.2, Kimi K2, Kimi Linear, and LongCat-Flash use latent attention. vLLM, SGLang, TensorRT-LLM, FlashInfer, and llama.cpp provide dedicated kernels.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2405.12981" rel="noopener noreferrer" target="_blank"><strong class="reading-name">CLA</strong></a><span class="reading-subtitle">Reducing Transformer Key-Value Cache Size with Cross-Layer Attention</span></td>
-<td>2024</td>
-<td>
-<p><strong>Background.</strong> Earlier methods reduce heads or entry dimensions while preserving a distinct cache for every layer.</p>
-<p><strong>Problem.</strong> Model depth multiplies the cache size, and that multiplier grows as model families scale.</p>
-<p><strong>Key idea.</strong> Give key and value projections to only some layers and let adjacent layers reuse their output. Every layer retains its own queries, attention, and output projection, so the model shares stored state rather than computation.</p>
-<p><strong>Findings.</strong> Pairwise sharing halves the cache on top of multi-query attention. Validation perplexity worsens by 0.04 points at 1B parameters and 0.05 at 3B, although both models were trained at only 2,048-token context.</p>
-<p><strong>Why it matters.</strong> Capacity and bandwidth are different budgets. Sharing doubles how many sequences fit, but each layer still reads the shared entry during decode, so per-step traffic does not fall.</p>
-<p><strong>Adoption.</strong> Character.AI, Apple's on-device foundation model, Gemma 3n and Gemma 4, and Hunyuan-Large share key-value state across layers.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2405.05254" rel="noopener noreferrer" target="_blank"><strong class="reading-name">YOCO</strong></a><span class="reading-subtitle">You Only Cache Once: Decoder-Decoder Architectures for Language Models</span></td>
-<td>2024</td>
-<td>
-<p><strong>Background.</strong> Cross-layer attention divides the depth multiplier by sharing state among a few neighboring layers.</p>
-<p><strong>Problem.</strong> Sharing across the entire model is harder because late layers would attend to state computed near the input.</p>
-<p><strong>Key idea.</strong> Split the model into a self-decoder and a cross-decoder. The lower half produces one global set of keys and values; every upper layer attends to that set. Cache size no longer scales with upper-layer depth, and prefill can stop producing cache entries halfway through the model.</p>
-<p><strong>Findings.</strong> At one million tokens, the trained 3B model uses 12.4 GB of inference memory, 9.4× less than the grouped-query baseline with the same kernel optimizations. Results quoted for 30B and 65B are projections rather than measurements.</p>
-<p><strong>Why it matters.</strong> YOCO removes the depth multiplier from storage, but not the sequence-length term from decode. Every cross-decoder layer still reads the global cache, so bandwidth and arithmetic continue to grow with context.</p>
-<p><strong>Adoption.</strong> Apple's on-device foundation model uses cache-free upper layers, and Microsoft's Phi-4-mini-flash-reasoning cross-attends from later layers to one global attention layer.</p>
-</td>
-</tr>
-<tr class="reading-topic">
-<th colspan="3" scope="colgroup">Sparsity fixed in advance</th>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2310.06825" rel="noopener noreferrer" target="_blank"><strong class="reading-name">SWA</strong></a><span class="reading-subtitle">Mistral 7B</span></td>
-<td>2023</td>
-<td>
-<p><strong>Background.</strong> Earlier methods change what a model stores per token while still letting every query read every retained position.</p>
-<p><strong>Problem.</strong> A fixed pattern is cheap to execute, but it may hide distant information that the current query needs.</p>
-<p><strong>Key idea.</strong> Let each query attend only to the latest W positions and store the cache in a fixed circular buffer. Per-token work stops growing after W, while stacking layers expands the theoretical receptive field beyond one window.</p>
-<p><strong>Findings.</strong> Mistral 7B uses a 4,096-token window in all 32 layers and reports 8× less cache at a 32k sequence. That factor is sequence length divided by window size; the paper does not evaluate quality beyond the window.</p>
-<p><strong>Why it matters.</strong> A sliding window reduces storage, read traffic, and arithmetic together while remaining exact for a model trained with it. However, recency rather than relevance decides what survives.</p>
-<p><strong>Adoption.</strong> Gemma 2, Gemma 3, GPT-OSS, Cohere Command A, and Ministral 8B interleave windowed and full-attention layers, preserving some global paths while bounding most layers' caches.</p>
-</td>
-</tr>
-<tr class="reading-topic">
-<th colspan="3" scope="colgroup">Removing the sequence-growing state</th>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2312.00752" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Mamba</strong></a><span class="reading-subtitle">Linear-Time Sequence Modeling with Selective State Spaces</span></td>
-<td>2023</td>
-<td>
-<p><strong>Background.</strong> Every entry above keeps a per-token cache and makes it smaller, by sharing heads, compressing an entry, sharing layers, or reading fewer positions. A state-space layer carries a recurrent state whose size is fixed by the state and channel dimensions, so length drops out of the cache term instead of being scaled down. Earlier structured state-space models were fast but their transitions did not depend on the input, which left them unable to do content-based recall.</p>
-<p><strong>Problem.</strong> A recurrence that ignores its input cannot decide what to keep, and that is why state-space models lost to attention on language. Making the transitions functions of the input repairs the recall, and it also removes the convolutional form the fast state-space algorithms relied on, so the modeling fix destroys the speed that motivated the family.</p>
-<p><strong>Key idea.</strong> Let the state-space parameters be functions of the input, which the paper calls selection, then recover throughput with a hardware-aware parallel scan that keeps the expanded state in SRAM rather than materializing it in HBM. A decode step then carries one state per sequence per layer, and that state is the same size after a million tokens as after one.</p>
-<p><strong>Findings.</strong> The paper reports 5× the generation throughput of a Transformer of comparable size, and Mamba-3B matching Transformers of twice its parameter count both in pretraining perplexity and on downstream evaluations.</p>
-<p><strong>Why it matters.</strong> It is the one entry here that deletes the KV-cache term rather than reducing it, so batch capacity stops depending on context length and the bytes read per generated token stop growing with it. Two costs come with that. Fixed state recalls a specific earlier token less reliably than attention, and it exposes no per-token entries to address, so the serving machinery the rest of this course builds on a token-indexed cache has nothing to act on: paged allocation, prefix reuse, and eviction all name entries the layer does not have.</p>
-<p><strong>Adoption.</strong> Mamba blocks ship in Hugging Face Transformers and vLLM. Jamba, Codestral Mamba, Falcon-Mamba, and NVIDIA's Nemotron-H all interleave state-space layers with attention layers rather than dropping attention entirely, which keeps a bounded number of layers that can still be addressed per token.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2510.26692" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Kimi Linear</strong></a><span class="reading-subtitle">An Expressive, Efficient Attention Architecture</span></td>
-<td>2025</td>
-<td>
-<p><strong>Background.</strong> Every full-attention layer retains per-token state even after heads, dimensions, layers, or windows are reduced.</p>
-<p><strong>Problem.</strong> Compression cannot eliminate growth with context; pure linear attention can, but it recalls specific earlier tokens less reliably.</p>
-<p><strong>Key idea.</strong> Combine mostly linear-attention layers, whose recurrent state has fixed size, with periodic latent-attention layers for exact lookup. Cache size follows the number of full-attention layers rather than total depth.</p>
-<p><strong>Findings.</strong> The 48B model uses seven latent-attention layers among 27 and reports up to 75% less cache than its full-attention counterpart. At batch size one and one million tokens, decode is 2.2× faster; the often-quoted 6× assumes a larger batch enabled by the freed memory.</p>
-<p><strong>Why it matters.</strong> Most layers replace sequence-growing cache with fixed recurrent state. The tradeoff moves into pretraining, where the ratio of linear to full layers is fixed rather than tunable per deployment.</p>
-</td>
-</tr>
-<tr class="reading-topic">
-<th colspan="3" scope="colgroup">Sparsity built into the model</th>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2502.11089" rel="noopener noreferrer" target="_blank"><strong class="reading-name">NSA</strong></a><span class="reading-subtitle">Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention</span></td>
-<td>2025</td>
-<td>
-<p><strong>Background.</strong> Many sparse-attention methods drop positions at inference from a model trained with full attention.</p>
-<p><strong>Problem.</strong> The model then sees an unfamiliar attention pattern, and scattered token-level sparsity may save FLOPs without reducing memory transactions.</p>
-<p><strong>Key idea.</strong> Pretrain three parallel attention branches: compressed block summaries, selected raw blocks, and a sliding window. Independent sigmoid gates combine their outputs, and blockwise selection preserves contiguous memory access.</p>
-<p><strong>Findings.</strong> At 64k tokens, the kernel is 9.0× faster forward and 6.0× faster backward than a Triton FlashAttention-2 implementation. The separate 11.6× figure is an expected ratio from memory-access volume, not a measured speedup.</p>
-<p><strong>Why it matters.</strong> Sparse arithmetic and reduced memory traffic are separate achievements. Because the selected blocks change by query, the full cache remains stored; the design reduces bytes read and attention arithmetic, not capacity.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2502.13189" rel="noopener noreferrer" target="_blank"><strong class="reading-name">MoBA</strong></a><span class="reading-subtitle">Mixture of Block Attention for Long-Context LLMs</span></td>
-<td>2025</td>
-<td>
-<p><strong>Background.</strong> Mixture-of-experts layers route each token selectively, while attention usually reads every key or follows a fixed sparse pattern.</p>
-<p><strong>Problem.</strong> A fixed pattern may discard useful long-range dependencies, while full attention grows quadratically with sequence length.</p>
-<p><strong>Key idea.</strong> Treat context blocks as experts. A parameter-free gate scores each block from the query and its mean-pooled keys, then routes attention to the top blocks while always retaining the current block for causality.</p>
-<p><strong>Findings.</strong> At 95.3% sparsity, the attention layer of an 8B model is up to 6.5× faster than FlashAttention at one million tokens and 16× faster at ten million, with validation loss within 0.001 of full attention.</p>
-<p><strong>Why it matters.</strong> Conditional computation applies to context rather than parameters. Because routing adds no parameters, a layer can alternate between sparse and full attention during training or across serving phases.</p>
-<p><strong>Adoption.</strong> Independent implementations include a CUDA kernel from MIT and NVIDIA and support in flash-linear-attention.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2512.02556" rel="noopener noreferrer" target="_blank"><strong class="reading-name">DeepSeek-V3.2</strong></a><span class="reading-subtitle">Pushing the Frontier of Open Large Language Models</span></td>
-<td>2025</td>
-<td>
-<p><strong>Background.</strong> Native sparse-attention methods require pretraining, which is impractical for an existing frontier checkpoint.</p>
-<p><strong>Problem.</strong> Reading fewer past tokens can reduce long-context cost, but it may also damage the reasoning and tool use that need the context.</p>
-<p><strong>Key idea.</strong> Add a lightweight indexer to the dense checkpoint. It scores every past position from one shared key per token, and attention reads only the top 2,048 latent entries. First train the indexer to imitate dense attention with the model frozen, then continue training the full model.</p>
-<p><strong>Findings.</strong> At 128k tokens, reported serving cost falls about 3.5× for prefill and 9× for decode while MMLU-Pro remains 85.0. However, the indexer still scans the full context on every step.</p>
-<p><strong>Why it matters.</strong> Reading less is not storing less. The full latent cache remains and the indexer adds state, so stored bytes rise about one fifth even as read traffic at 128k falls 4.6×. The indexer's full scan also caps the asymptotic saving.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2606.19348" rel="noopener noreferrer" target="_blank"><strong class="reading-name">DeepSeek-V4</strong></a><span class="reading-subtitle">Towards Highly Efficient Million-Token Context Intelligence</span></td>
-<td>2026</td>
-<td>
-<p><strong>Background.</strong> Token selection reduces what attention reads but still stores one cache entry per token.</p>
-<p><strong>Problem.</strong> At one million tokens, both cache capacity and the selector's full-context scan remain expensive.</p>
-<p><strong>Key idea.</strong> Compress the token axis before selection. One layer type forms learned summaries at one quarter of the original length and applies top-k selection; another pools every 128 positions and attends densely. Both retain an uncompressed 128-token local window.</p>
-<p><strong>Findings.</strong> At one million tokens, the larger model uses 27% of DeepSeek-V3.2's single-token inference FLOPs and 10% of its cache, despite activating more parameters. It scores 83.5 on million-token MRCR.</p>
-<p><strong>Why it matters.</strong> This method shrinks the number of entries rather than their width or number of copies. Compression reduces storage, read traffic, and arithmetic together; selection then reduces only the last two.</p>
-<p><strong>Adoption.</strong> vLLM, SGLang, and the Ascend and Cambricon ports of vLLM implement the mechanism.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2504.17768" rel="noopener noreferrer" target="_blank"><strong class="reading-name">sparse frontier</strong></a><span class="reading-subtitle">The Sparse Frontier: Sparse Attention Trade-offs in Transformer LLMs</span></td>
-<td>2025</td>
-<td>
-<p><strong>Background.</strong> Training-free sparse-attention methods report results under different sequence lengths, model sizes, tasks, and sparsity levels.</p>
-<p><strong>Problem.</strong> Those results do not answer which method and sparsity level an operator should use for a particular workload.</p>
-<p><strong>Key idea.</strong> Evaluate six training-free methods under one protocol while varying sequence length, model size, and sparsity together. The set spans both prefill and decode.</p>
-<p><strong>Findings.</strong> Tolerance depends on the task, phase, model size, and length. A 7B model's usable decode compression falls from 12× at 16k tokens to 5× at 128k, while 32B and 72B models remain near 17×.</p>
-<p><strong>Why it matters.</strong> One fixed sparsity setting cannot serve every workload. A sparse-attention speedup is not portable unless it names the task, sequence length, model size, and phase. Aggregate averages hide this operating regime.</p>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="subsection reading-meeting" id="nov-23">
-<h2><span class="reading-date">Nov 23</span> Efficient agentic system: routing and load balancing</h2>
+<div class="subsection reading-meeting" id="nov-30">
+<h2><span class="reading-date">Nov 30</span> Efficient agentic system: routing and load balancing</h2>
 <p>Routing names two decisions that look similar at an API boundary but optimize different outcomes. A
           load balancer chooses among equivalent replicas, trading queue length against cache affinity and
           migration cost. A model router chooses among non-equivalent models, trading response quality against
@@ -3230,7 +3229,7 @@
 </td>
 </tr>
 <tr>
-<td><a href="https://arxiv.org/abs/2607.08565" rel="noopener noreferrer" target="_blank"><strong class="reading-name">SMetric</strong></a><span class="reading-subtitle">Rethink LLM Scheduling for Serving Agents with Balanced Session-centric Scheduling</span><span class="reading-also">also <a href="#nov-04">Nov 4</a></span></td>
+<td><a href="https://arxiv.org/abs/2607.08565" rel="noopener noreferrer" target="_blank"><strong class="reading-name">SMetric</strong></a><span class="reading-subtitle">Rethink LLM Scheduling for Serving Agents with Balanced Session-centric Scheduling</span><span class="reading-also">also <a href="#nov-11">Nov 11</a></span></td>
 <td>2026</td>
 <td>
 <p><strong>Background.</strong> Every router above decides one request at a time. DualMap chooses between two candidates per request and CacheRoute plans per prefix key, but the unit being placed is still the individual request.</p>
@@ -3284,345 +3283,6 @@
 <p><strong>Problem.</strong> Those frontiers are not comparable to one another, so a new routing policy cannot be placed against the published ones. Evaluating one honestly also means knowing what every candidate model would have answered on every query, which is expensive enough to discourage measuring it at all.</p>
 <p><strong>Key idea.</strong> Precompute the outcomes once and share them. RouterBench releases more than 405,000 inference outcomes from representative LLMs over a benchmark mix, so a routing policy is evaluated by looking up what each model would have produced rather than by calling it. The paper adds a theoretical framework for routing and a comparative analysis of existing approaches under one metric.</p>
 <p><strong>Why it matters.</strong> Read it before designing a router. It fixes what a frontier means, supplies the non-routing reference points a router has to beat, and reduces an evaluation that would otherwise cost inference on every model to a table lookup, which is what makes iterating on a routing policy affordable.</p>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="subsection reading-meeting" id="nov-30">
-<h2><span class="reading-date">Nov 30</span> Efficient agentic systems: others</h2>
-<p>The nov-04 meeting asks how a serving control plane schedules an agent program rather than isolated
-          requests. This meeting supplies the runtime and data-plane complement: overlap or survive tool stalls,
-          isolate and checkpoint execution, retain session state, share state across branches and agents, and
-          trace the causal path when those mechanisms interact.</p>
-<p>Making a smaller model usable as an agent also requires reliable tool-call structure. The
-          structured-decoding group examines how the serving engine enforces output form while the harness
-          remains responsible for semantic correctness.</p>
-<div class="table-responsive">
-<table class="table table-hover readings-table">
-<thead>
-<tr class="table-light">
-<th scope="col">Paper</th>
-<th scope="col">Year</th>
-<th scope="col">Why read it</th>
-</tr>
-</thead>
-<tr class="reading-topic">
-<th colspan="3" scope="colgroup">Tool and environment stalls</th>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2603.18897" rel="noopener noreferrer" target="_blank"><strong class="reading-name">parallelizing tool execution</strong></a><span class="reading-subtitle">Parallelizing Tool Execution and LLM Generation for Low-Latency Agent Serving</span></td>
-<td>2026</td>
-<td>
-<p><strong>Background.</strong> An agent turn runs in a fixed order: the model generates a tool call, the runtime executes it, the model reads the result and generates again. The two halves occupy different resources, the GPU and whatever the tool runs on.</p>
-<p><strong>Problem.</strong> They run strictly one after the other, so the GPU idles for the length of the tool call and the tool idles for the length of the generation. A turn costs the sum of the two latencies even where the next tokens do not depend on the pending result.</p>
-<p><strong>Key idea.</strong> Overlap tool execution with token generation instead of serializing them, so a turn's latency moves toward the larger of the two rather than their sum.</p>
-<p><strong>Findings.</strong> Across deep-research, coding, and scientific-agent workloads, the proposed PASTE system reduces average task completion time by 43.5% and lowers observed tool latency by 1.8×.</p>
-<p><strong>Why it matters.</strong> Every other reading in this block decides what to do with GPU state during the stall. This one attacks the stall itself, which bounds how much those policies can be worth: overlap the call with generation and there is a smaller idle window left to schedule around.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://doi.org/10.1145/3745756.3809203" rel="noopener noreferrer" target="_blank"><strong class="reading-name">TimelyLLM</strong></a><span class="reading-subtitle">TimelyLLM: Time-sensitive LLM Serving System for Physical-I/O Limited Agents</span></td>
-<td>2026</td>
-<td>
-<p><strong>Background.</strong> Physical and spoken agents generate decisions while robots, sensors, or users execute them on a much slower wall-clock, leaving intervals in which the next piece of model output can be prepared before it is consumed.</p>
-<p><strong>Problem.</strong> A conventional serving engine optimizes token latency without knowing when an action is actually needed. It can spend scarce GPU time on output whose deadline is distant while another agent waits for a segment on its physical critical path.</p>
-<p><strong>Key idea.</strong> Segment generation around the slower execution loop, coordinate those segments with robot and spoken-agent progress, and schedule the available slack by time utility so the engine prioritizes output according to when it becomes valuable.</p>
-<p><strong>Findings.</strong> The MobiSys 2026 program summary reports up to 1.52× higher time utility and up to 84% less agent waiting in the evaluated settings.</p>
-<p><strong>Why it matters.</strong> It changes the objective from producing tokens as soon as possible to producing each segment when the surrounding world can use it. That is the right latency model whenever physical I/O, rather than decoding alone, sets the pace of an agent loop.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2606.00866" rel="noopener noreferrer" target="_blank"><strong class="reading-name">MORI</strong></a><span class="reading-subtitle">Idleness is Relative: Exploiting Tool-Call Idle Windows for Offloading in Agentic Systems with MORI</span></td>
-<td>2026</td>
-<td>
-<p><strong>Background.</strong> The sessions in an agentic system are rarely all active at once. Between tool calls a session holds KV cache and does nothing, and host DRAM sits below HBM as somewhere that state could go instead.</p>
-<p><strong>Problem.</strong> A binary busy-or-idle label is too coarse to decide what to move. Under it every stalled session looks alike, so the system cannot tell which state will be wanted back in milliseconds from which can afford a round trip across the interconnect.</p>
-<p><strong>Key idea.</strong> Rank agent programs on a continuous idleness spectrum, put the busiest in GPU HBM and the most idle in CPU DRAM, and shift the tier boundary to match the hardware's capacity ratio rather than fixing it at a threshold.</p>
-<p><strong>Findings.</strong> On Claude Code workloads across four GPU-model pairs, MORI delivers 20-71% higher throughput and 18-43% lower time to first token than the strongest evaluated offloading baseline.</p>
-<p><strong>Why it matters.</strong> The tradeoff is cross-tier KV transfer cost against how well a relative idleness ranking predicts the next stall. It is the constructive counterpart to InferCept's discard-or-retain choice at an interception: the same decision, taken across all sessions at once instead of one interception at a time.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2512.15834" rel="noopener noreferrer" target="_blank"><strong class="reading-name">speculative tool calls</strong></a><span class="reading-subtitle">Optimizing Agentic Language Model Inference via Speculative Tool Calls</span></td>
-<td>2025</td>
-<td>
-<p><strong>Background.</strong> An agent request stops generating at every tool call, and the engine must decide what to do with the KV cache while the tool runs. Discarding it means re-prefilling the whole prompt once the result comes back.</p>
-<p><strong>Problem.</strong> The stall is serial: the model emits the call, waits, then resumes. Nothing overlaps, and a resume whose blocks were reclaimed pays a full prefill on a prompt that grew only by a tool result.</p>
-<p><strong>Key idea.</strong> Speculate the tool call before the model commits to it and issue it early, and force the sequence to stay resident so the round trip costs no re-prefill. A theoretical analysis says which speculation configurations pay off, and a proposed “tool cache” endpoint asks providers to expose that residency.</p>
-<p><strong>Why it matters.</strong> It treats the price of a tool stall as a scheduling choice rather than a fixed cost, and it names its own limit: non-idempotent tools, where a wrong speculation has already had an effect.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2602.14849" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Atomix</strong></a><span class="reading-subtitle">Timely, Transactional Tool Use for Reliable Agentic Workflows</span></td>
-<td>2026</td>
-<td>
-<p><strong>Background.</strong> Agent tool calls write to the outside world; they send mail, file tickets, move money. Frameworks retry a failed step or abandon a branch with no account of the effects already released.</p>
-<p><strong>Problem.</strong> A retried or abandoned step can leave effects nothing undoes, and an effect released too early can be read by work that was ordered before it. A database would give you isolation; a tool call has no transaction to belong to.</p>
-<p><strong>Key idea.</strong> Wrap tool calls in progress-aware transactions. The runtime buffers effects, seals a transaction once its read and effect footprint is complete, and settles only after per-resource frontiers prove no earlier conflicting work can arrive, compensating reversible effects on abort and gating irreversible ones before release.</p>
-<p><strong>Findings.</strong> Fault-injection experiments show clean recovery and isolation for contending and speculative workflows, while microbenchmarks put the transaction wrapper's overhead at microsecond scale relative to tool latency.</p>
-<p><strong>Why it matters.</strong> It exposes the tension between isolation and the side effects real tools cannot take back. With that vocabulary an agent loop becomes a distributed transaction problem, and you can ask which of its effects are compensable.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2607.15593" rel="noopener noreferrer" target="_blank"><strong class="reading-name">MCP gateway</strong></a><span class="reading-subtitle">Scalable LLM Agent Tool Access in the Cloud</span></td>
-<td>2026</td>
-<td>
-<p><strong>Background.</strong> An agent learns what tools it has because their schemas sit in its prompt. The Model Context Protocol standardized how those schemas arrive, so one client can mount many tool servers at once.</p>
-<p><strong>Problem.</strong> Every mounted tool costs context window and latency before the agent does any useful work. A catalog of thousands of tools cannot be pasted into the prompt, and the agent cannot choose from tools it was never shown.</p>
-<p><strong>Key idea.</strong> Put a gateway between agents and MCP backends, and let it handle retrieval over the tool catalog, legacy-service integration, access control, compatibility, and session-aware routing.</p>
-<p><strong>Findings.</strong> In the production deployment, hybrid retrieval sustains 98% Top-15 recall over more than 3,000 tools, reduces tool-selection time by 8.9×, and reduces token usage by 23.8× while remaining stable as the gateway scales out.</p>
-<p><strong>Why it matters.</strong> The argument to take from it is that the tool catalog is a serving-system concern rather than an agent-prompt concern. Once it is one, tools get indexed, cached, and routed like any other resource the serving layer owns.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://www.usenix.org/conference/nsdi26/presentation/ruan-cortex" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Cortex</strong></a><span class="reading-subtitle">Cortex: Achieving Low-Latency, Cost-Efficient Remote Data Access For LLM via Semantic-Aware Knowledge Caching</span></td>
-<td>2026</td>
-<td>
-<p><strong>Background.</strong> Tool-using agents repeatedly fetch semantically related knowledge from remote search, code, and data services, and that access can dominate the latency of the model step that consumes it.</p>
-<p><strong>Problem.</strong> A byte- or object-level cache cannot reliably recognize reusable meaning across differently expressed requests, while keeping every retrieved result is too expensive and prefetching indiscriminately wastes both capacity and remote calls.</p>
-<p><strong>Key idea.</strong> Cache knowledge as semantic elements, use a two-stage retrieval and judging path to decide whether an element answers the current request, and make eviction and prefetch cost-aware.</p>
-<p><strong>Findings.</strong> In the evaluated settings, Cortex reports up to 3.6× search throughput and 20× coding-task throughput.</p>
-<p><strong>Why it matters.</strong> It moves remote knowledge access into the agent runtime's cache hierarchy. The important design question is no longer only whether two requests share tokens, but whether a cached semantic result is useful enough to avoid another tool round trip.</p>
-</td>
-</tr>
-<tr class="reading-topic">
-<th colspan="3" scope="colgroup">Sandboxes, checkpointing, and OS control</th>
-</tr>
-<tr>
-<td><a href="https://www.usenix.org/conference/nsdi20/presentation/agache" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Firecracker</strong></a><span class="reading-subtitle">Lightweight Virtualization for Serverless Applications</span><span class="reading-also">also <a href="#sep-30">Sep 30</a></span></td>
-<td>2020</td>
-<td>
-<p><strong>Background.</strong> Serverless platforms run short, untrusted functions from many customers on shared hardware. Containers share a kernel, so the isolation boundary is the whole Linux syscall surface; a virtual machine gives a narrower boundary and a slower start.</p>
-<p><strong>Problem.</strong> Neither end of that choice fits the workload. Container isolation is too weak for arbitrary tenant code, and a conventional VM with a general-purpose device model boots too slowly and holds too much memory to give every invocation its own.</p>
-<p><strong>Key idea.</strong> Build a minimal virtual machine monitor on KVM that emulates only the devices a serverless guest needs, and drop the rest. What remains boots fast enough, and costs little enough memory, to run one microVM per function.</p>
-<p><strong>Findings.</strong> With the minimal guest-kernel configuration, each microVM uses less than 5 MB of memory, boots to application code in less than 125 ms, and can be created at up to 150 microVMs per second per host.</p>
-<p><strong>Why it matters.</strong> It is the case for why a VM boundary can still be cheap, which is the assumption every agent sandbox in this group rests on. Once virtualization is affordable per invocation, isolation stops competing with density.</p>
-<p><strong>Adoption.</strong> Fly.io Machines use Firecracker microVMs, and the E2B agent-sandbox platform builds its isolation layer on Firecracker.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2607.23933" rel="noopener noreferrer" target="_blank"><strong class="reading-name">SpecBox</strong></a><span class="reading-subtitle">Speculative Sandbox Scheduling for Efficient LLM Agent Serving</span></td>
-<td>2026</td>
-<td>
-<p><strong>Background.</strong> An agent tool call runs in an isolated sandbox, and the sandbox has to exist before the call can run. Starting one on demand puts its start-up latency directly in the critical path of the agent loop.</p>
-<p><strong>Problem.</strong> You do not know a sandbox is needed until the model has emitted the tool call, and by then the request is already waiting. Keeping sandboxes hot in advance instead spends memory on the ones no request asks for.</p>
-<p><strong>Key idea.</strong> Schedule the sandbox speculatively. Start it before the model has committed to the tool call, so start-up overlaps generation instead of following it.</p>
-<p><strong>Findings.</strong> On high-concurrency, multi-turn traces, SpecBox reduces P99 end-to-end latency by up to 2.9× against on-demand sandbox creation and peak memory by 45.9% against permanently reserved sandboxes.</p>
-<p><strong>Why it matters.</strong> It makes sandbox start-up a scheduling decision rather than a fixed cost. Speculation buys latency with resources a wrong guess wastes, and the exchange rate depends on how well the next tool call can be predicted.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2605.22781" rel="noopener noreferrer" target="_blank"><strong class="reading-name">DeltaBox</strong></a><span class="reading-subtitle">Scaling Stateful AI Agents with Millisecond-Level Sandbox Checkpoint/Rollback</span></td>
-<td>2026</td>
-<td>
-<p><strong>Background.</strong> A long-running agent accumulates state in its sandbox: installed packages, edited files, live processes. Serving many such agents means suspending the idle ones and bringing them back, which is what a checkpoint is for.</p>
-<p><strong>Problem.</strong> The checkpoint mechanisms production sandboxes use write a full snapshot, so the cost scales with the size of the sandbox rather than with what changed since the last one. At that price you checkpoint rarely, and rollback stays coarse.</p>
-<p><strong>Key idea.</strong> Make checkpoint and rollback incremental, capturing the delta since the previous checkpoint instead of the whole sandbox, and bring both down to milliseconds.</p>
-<p><strong>Findings.</strong> On SWE-bench and reinforcement-learning microbenchmarks, DeltaBox completes checkpoints in 14 ms and rollbacks in 5 ms, allowing more search nodes within a fixed time budget.</p>
-<p><strong>Why it matters.</strong> Checkpoint cost sets the granularity of everything built on it: speculative branches, retry after a bad tool call, packing idle sessions off a host. Cheap rollback turns a sandbox into something you fork and discard rather than something you protect.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2605.17320" rel="noopener noreferrer" target="_blank"><strong class="reading-name">TClone</strong></a><span class="reading-subtitle">Low-Latency Forking of Live GUI Environments for Computer-Use Agents</span></td>
-<td>2026</td>
-<td>
-<p><strong>Background.</strong> A computer-use agent drives a live GUI environment: a running desktop with open windows, a filesystem, and process state. Trying an alternative means getting that environment back to where it was.</p>
-<p><strong>Problem.</strong> Whole-VM snapshots are the reset mechanism today, so exploring two branches means two full copies, and rolling back means restoring the entire machine. A snapshot is durable and slow; a branch needs to be neither.</p>
-<p><strong>Key idea.</strong> Make workspace versioning a first-class primitive. Sibling containers share memory copy-on-write and version the filesystem, so a live GUI workspace can be forked, rolled back, and selectively merged, and fast branch creation is separated from durable checkpointing.</p>
-<p><strong>Findings.</strong> In end-to-end agent-loop measurements, TClone reduces total task latency by 1.9× against KVM and 1.5× against CRIU.</p>
-<p><strong>Why it matters.</strong> Speculative and parallel agent branches pay off only if they share environment state. TClone also names the right split, cheap forks for exploring and slow snapshots for durability.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2602.09345" rel="noopener noreferrer" target="_blank"><strong class="reading-name">AgentCgroup</strong></a><span class="reading-subtitle">Understanding and Controlling OS Resources of AI Agents</span></td>
-<td>2026</td>
-<td>
-<p><strong>Background.</strong> A sandboxed coding agent spends much of its time not in the model but in the operating system, running the commands it emitted. Those resources are bounded at container granularity today, from user space.</p>
-<p><strong>Problem.</strong> Container-level control does not fit a workload whose demand changes at tool-call boundaries, so a user-space controller reacts after the spike it was meant to bound.</p>
-<p><strong>Key idea.</strong> Characterize the OS-level resource use of sandboxed agents first, then push enforcement into the kernel with eBPF and build cgroup hierarchies whose boundaries line up with tool calls rather than with containers. Note that the evaluation is preliminary.</p>
-<p><strong>Findings.</strong> Across 144 SWE-rebench tasks and two models, OS execution accounts for 55-60% of task latency, memory limits concurrency, and peak memory demand reaches 15.4× its average.</p>
-<p><strong>Why it matters.</strong> It puts numbers on the half of agent latency that serving papers skip, and argues the control point sits in the wrong place. If the unit of resource demand is a tool call, that is the unit a limit should attach to.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2606.25189" rel="noopener noreferrer" target="_blank"><strong class="reading-name">ActPlane</strong></a><span class="reading-subtitle">Programmable OS-Level Policy Enforcement for Agent Harnesses</span><span class="reading-also">also <a href="#sep-30">Sep 30</a></span></td>
-<td>2026</td>
-<td>
-<p><strong>Background.</strong> Agent harnesses decide what an agent may do at the tool layer, in user space. A permission check runs before each tool call, and the allowlist of permitted tools is the whole policy.</p>
-<p><strong>Problem.</strong> An agent that reaches the same effect by another path escapes that check; a shell command can write files or open sockets without passing through the tool the allowlist names. Policy intent also arrives as underspecified natural language while enforcement must act on concrete system actions.</p>
-<p><strong>Key idea.</strong> Split declaring policy from enforcing it. The agent declares policy in an information-flow DSL and eBPF enforces it in the kernel, so indirect execution paths are covered too, and refusals come back as semantic feedback rather than opaque errors.</p>
-<p><strong>Findings.</strong> Across empirical policies, coding tasks, and safety benchmarks, ActPlane improves compliance on indirect execution paths that tool interception cannot observe, with 1.9-8.4% runtime overhead.</p>
-<p><strong>Why it matters.</strong> It moves the agent permission question from the harness down to the operating system, where the actions actually land. Once enforcement sits below the tool layer, the hard part becomes translating vague intent into concrete rules rather than enumerating tools.</p>
-</td>
-</tr>
-<tr class="reading-topic">
-<th colspan="3" scope="colgroup">Session and KV-cache lifecycle</th>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2511.02230" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Continuum</strong></a><span class="reading-subtitle">Efficient and Robust Multi-Turn LLM Agent Scheduling with KV Cache Time-to-Live</span></td>
-<td>2025</td>
-<td>
-<p><strong>Background.</strong> A multi-turn agent session pauses between turns while a tool runs or a person replies, then resumes with nearly the same context. The KV cache for that context is expensive to rebuild and holds GPU memory while nothing is running.</p>
-<p><strong>Problem.</strong> A scheduler that keeps every paused session resident runs out of memory, and one that evicts under pressure alone discards caches that were about to be reused. Neither policy knows how long a given session is worth holding.</p>
-<p><strong>Key idea.</strong> Attach an explicit time-to-live to cached session state and schedule against it, so the question of how long a session's KV cache is worth keeping is answered by the scheduler rather than left to eviction pressure.</p>
-<p><strong>Findings.</strong> Across SWE-bench, BFCL, and OpenHands workloads spanning four model families, Continuum improves average job-completion time by more than 8× while also increasing throughput.</p>
-<p><strong>Why it matters.</strong> It makes session lifetime a first-class scheduling input instead of a side effect of cache replacement. That is the shift you need before you can reason about agent sessions as state with a policy rather than as requests that happen to repeat.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2607.17181" rel="noopener noreferrer" target="_blank"><strong class="reading-name">Talaria</strong></a><span class="reading-subtitle">Session-Aware Serverless Serving of Hundred-Billion-Parameter LLMs</span></td>
-<td>2026</td>
-<td>
-<p><strong>Background.</strong> Serverless serving scales by treating workers as interchangeable and disposable: any replica can take any request, and idle replicas go away. Hundred-billion-parameter models make each replica expensive to start.</p>
-<p><strong>Problem.</strong> An agent session wants the opposite. Its KV cache lives on one worker, so routing the next turn elsewhere means rebuilding the context, and scaling that worker down throws the cache away. Session affinity and elasticity pull directly against each other.</p>
-<p><strong>Key idea.</strong> Make the serverless layer session-aware rather than session-blind, and reconcile sticky KV with elastic workers at hundred-billion-parameter scale. What the paper shows is what that reconciliation costs.</p>
-<p><strong>Findings.</strong> On 30 SWE-bench sessions totaling 960 calls across three models larger than 100 billion parameters, Talaria cuts median session-completion time from 1,000 to 189 seconds and P95 from 2,296 to 867 seconds.</p>
-<p><strong>Why it matters.</strong> It states the conflict cleanly, which is useful even if you never deploy serverless inference. Any autoscaling decision for an agent workload is a bet about how much cached state you are willing to discard.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2605.06472" rel="noopener noreferrer" target="_blank"><strong class="reading-name">prediction-based KV management</strong></a><span class="reading-subtitle">Efficient Serving for Dynamic Agent Workflows with Prediction-based KV-Cache Management</span></td>
-<td>2026</td>
-<td>
-<p><strong>Background.</strong> An agent workflow is a program. It branches, calls tools, retries, and fans out, so which context comes back next is decided by that structure rather than by the request that just arrived.</p>
-<p><strong>Problem.</strong> Cache policies are reactive. They observe a hit or a miss after the fact, so a branch that is about to be taken looks the same as one that has been abandoned, and the cache evicts the wrong one.</p>
-<p><strong>Key idea.</strong> Predict what a dynamic agent workflow will need next and manage the cache against that prediction, admitting, retaining, and evicting by expected future use rather than by past access.</p>
-<p><strong>Findings.</strong> On three workflow benchmarks, PBKV delivers up to 1.85× speedup over LRU for dynamic workflows and up to 1.26× over KVFlow for a static workflow.</p>
-<p><strong>Why it matters.</strong> It asks whether the workflow's own structure is a usable signal for cache management. If it is, the agent runtime and the cache stop being independent layers and eviction becomes a scheduling decision.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2608.14624" rel="noopener noreferrer" target="_blank"><strong class="reading-name">CacheScout</strong></a><span class="reading-subtitle">Learning Agent Execution for KV-Cache Management in Agentic Serving</span></td>
-<td>2026</td>
-<td>
-<p><strong>Background.</strong> A multi-turn agent revisits some execution states and abandons others, but its serving engine usually sees only the requests that have already arrived rather than the transitions likely to come next.</p>
-<p><strong>Problem.</strong> Static eviction and prefetch policies miss reuse when an agent's future execution is implicit, while approaches that require a declared workflow DAG or offline training do not fit agents whose paths emerge online.</p>
-<p><strong>Key idea.</strong> Learn execution transitions online from observed agent behavior, use those predictions to guide eviction, and gate prefetch so the system moves KV state only when the expected reuse justifies the transfer.</p>
-<p><strong>Findings.</strong> Across the evaluated workloads, CacheScout raises cache hit rate by 10-18 percentage points, reduces mean time to first token by 18-45%, reduces mean per-turn latency by 29-38%, and improves peak throughput by up to 57%.</p>
-<p><strong>Why it matters.</strong> It occupies the middle ground between a runtime that knows the workflow and one that treats every turn as unrelated. Learned transitions can expose enough of the hidden session structure to manage cache state without requiring the application to declare its graph.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://www.usenix.org/conference/nsdi26/presentation/agarwal" rel="noopener noreferrer" target="_blank"><strong class="reading-name">SYMPHONY</strong></a><span class="reading-subtitle">SYMPHONY: Enabling Compute-Memory Disaggregation in LLM Serving Systems</span></td>
-<td>2026</td>
-<td>
-<p><strong>Background.</strong> Disaggregated serving can place model computation and a larger memory pool on different machines, but useful KV state must arrive at compute before the request that needs it.</p>
-<p><strong>Problem.</strong> Moving state only after a miss puts the network transfer on the critical path, and managing the remote cache without coordination can let background movement contend with latency-sensitive requests and the serving framework's own GPU memory use.</p>
-<p><strong>Key idea.</strong> Let the serving framework issue advisory prefetch requests, manage cached state by priority, and coordinate the GPU and framework memory cooperatively so transfers and residency follow the needs of computation.</p>
-<p><strong>Findings.</strong> In the evaluated workloads, SYMPHONY reports 2.4× lower end-to-end latency and 4× more served requests with minimal latency increase.</p>
-<p><strong>Why it matters.</strong> It makes disaggregated memory a serving-runtime participant rather than a passive backing store. The advisory interface is the key abstraction: computation can reveal future demand without taking over placement and eviction policy.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2603.10342" rel="noopener noreferrer" target="_blank"><strong class="reading-name">AgentServe</strong></a><span class="reading-subtitle">Algorithm-System Co-Design for Efficient Agentic AI Serving on a Consumer-Grade GPU</span></td>
-<td>2026</td>
-<td>
-<p><strong>Background.</strong> Cluster serving resolves prefill-decode interference by spreading the phases across machines. A single consumer-grade GPU has nowhere to spread them, so every phase of every request contends for one device.</p>
-<p><strong>Problem.</strong> Agent execution is not one traffic class but three: cold prefills over long system prompts, resume prefills that append tool output to an already cached context, and short decodes that are latency-critical. Run all three through one queue and the latency-critical decodes wait behind the long prefills.</p>
-<p><strong>Key idea.</strong> Isolate prefills from decodes, budget the resume prefills, and partition the GPU through CUDA Green Context slots so the classes run side by side without each one owning the whole device.</p>
-<p><strong>Findings.</strong> Across the evaluated single-GPU settings, AgentServe improves time to first token by as much as 2.8× and time per output token by as much as 2.7× over state-of-the-art baselines while sustaining competitive throughput.</p>
-<p><strong>Why it matters.</strong> It is the consumer-hardware version of the phase-isolation argument the cluster papers above make, which is a useful test of that argument. The same taxonomy of request kinds still pays when the resource being partitioned is one GPU rather than a fleet.</p>
-</td>
-</tr>
-<tr class="reading-topic">
-<th colspan="3" scope="colgroup">Agent memory and knowledge state</th>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2501.12689" rel="noopener noreferrer" target="_blank"><strong class="reading-name">IC-Cache</strong></a><span class="reading-subtitle">Efficient Large Language Model Serving via In-context Caching</span></td>
-<td>2025</td>
-<td>
-<p><strong>Background.</strong> Prefix caching reuses KV state only when a new request repeats an earlier request's tokens exactly. Two requests that mean the same thing in different words share nothing, and both pay a full prefill.</p>
-<p><strong>Problem.</strong> Chat and agent traffic is full of near-duplicates: the same question asked differently, the same task on a different input. Exact-token matching finds no reuse there, so each one runs a full forward pass on a large model.</p>
-<p><strong>Key idea.</strong> Cache past request-response pairs, retrieve the semantically similar ones, and replay them in context as examples. A smaller model given those examples absorbs work that would otherwise need a larger one. Reuse is by meaning rather than by token identity.</p>
-<p><strong>Findings.</strong> Across millions of realistic requests, IC-Cache raises serving throughput by 1.4-5.9× and reduces latency by 28-71% without lowering measured response quality.</p>
-<p><strong>Why it matters.</strong> A genuinely different reuse axis from exact-token caching, and a weaker guarantee. Exact prefix reuse returns the output the model would have produced anyway; in-context reuse changes what the model sees, so the saving is paid for in output fidelity.</p>
-</td>
-</tr>
-<tr class="reading-topic">
-<th colspan="3" scope="colgroup">Shared state across branches and agents</th>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2510.18586" rel="noopener noreferrer" target="_blank"><strong class="reading-name">TokenCake</strong></a><span class="reading-subtitle">A KV-Cache-centric Serving Framework for LLM-based Multi-Agent Applications</span></td>
-<td>2025</td>
-<td>
-<p><strong>Background.</strong> A multi-agent application issues many model calls that share a system prompt, a set of tool definitions, and a common history, and they run on serving stacks tuned for independent requests.</p>
-<p><strong>Problem.</strong> Treating each agent call as unrelated pays for the shared context again and again, and a scheduler blind to the dependencies between agents leaves the GPU idle while one agent waits on another's output.</p>
-<p><strong>Key idea.</strong> Organize serving around the KV cache rather than the request. Shared agent state then determines retention, eviction, and scheduling order.</p>
-<p><strong>Findings.</strong> On representative multi-agent benchmarks, TokenCake reduces end-to-end latency by more than 47.06% and improves effective GPU-memory utilization by up to 16.9% over vLLM.</p>
-<p><strong>Why it matters.</strong> It puts the shared cache instead of the request queue at the center of scheduling, which is the shift a multi-agent workload forces on a stack designed for one prompt at a time.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2606.15376" rel="noopener noreferrer" target="_blank"><strong class="reading-name">CoAgent</strong></a><span class="reading-subtitle">Concurrency Control for Multi-Agent Systems</span></td>
-<td>2026</td>
-<td>
-<p><strong>Background.</strong> Several agents in one system read and write the same shared state, a file tree, a database, a task list. Databases settled this long ago with serializability, enforced either by blocking under two-phase locking or by aborting under optimistic concurrency control.</p>
-<p><strong>Problem.</strong> Both remedies assume a participant you can cheaply stall or restart. An agent is neither. Blocking it stalls the workflow waiting on it, and aborting it discards a long chain of reasoning along with the tokens that paid for it.</p>
-<p><strong>Key idea.</strong> Fix a serialization order up front, apply writes speculatively in place, and notify the affected agent so the model re-judges and patches its own plan. Writes that turn out to be misordered are undone by saga-style inverses registered in advance.</p>
-<p><strong>Findings.</strong> On ten contended workloads, CoAgent remains within 5% of serial correctness while running 1.4× faster at near-serial token cost. On its bash-only target, pass rate rises from 45/71 to 63/71 while time and cost both fall.</p>
-<p><strong>Why it matters.</strong> It rebuilds concurrency control around a participant that can be told about a conflict and asked to adapt. The repair is performed by the model, which moves correctness from something the runtime enforces to something the agent must be persuaded to re-plan.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2606.24535" rel="noopener noreferrer" target="_blank"><strong class="reading-name">governed shared memory</strong></a><span class="reading-subtitle">Governed Shared Memory for Multi-Agent LLM Systems</span></td>
-<td>2026</td>
-<td>
-<p><strong>Background.</strong> The memory systems above are built for one agent and one conversation, and they optimise what comes back into the context window. A fleet of agents sharing one persistent store inherits none of that framing, because every agent writes into the state every other agent reads.</p>
-<p><strong>Problem.</strong> Shared memory raises questions retrieval quality cannot answer. Which agent may read a given memory, which version is current when two agents write facts that contradict each other, where a retrieved claim came from, and how long a write takes to become visible to a sibling. A larger context window addresses none of the four, so the paper names them as failure modes: unauthorized leakage, stale propagation, contradiction persistence, and provenance collapse.</p>
-<p><strong>Key idea.</strong> Treat the store as governed operational state rather than as an index, and give it four primitives that answer one failure mode each: scoped retrieval, temporal supersession, in which a later fact marks the earlier contradicting row non-active, provenance tracking, and policy-governed propagation. Then measure a running production service against them. The evaluation drives a live multi-tenant memory service through its REST API rather than a simulator, which is what makes the negative results possible.</p>
-<p><strong>Findings.</strong> Two primitives held. All 50 depth-four derivation chains reconstructed with the correct writer at every hop, at 291 ms per hop at the median, and propagation reached 97.5% of 120 fleet-sibling probes with no cross-fleet hit in 80, at a write-to-visible median of 0.83 s. The two failures are the more useful half. Semantic search honoured the fleet filter only partly, returning the row on 43.9% of the 164 probes it should have denied, and a direct fetch-by-id path enforced tenant scope but not sub-tenant scope until it was remediated during the study. Contradiction detection fired on 49.0% of 200 fact runs but on 100% of the 90 runs where both writes were admitted, because a synchronous near-duplicate gate rejected the contradicting write before the asynchronous detector could observe it.</p>
-<p><strong>Why it matters.</strong> It reads the agent memory subsystem as a distributed system with an access-control policy and a write pipeline, which is the reading a fleet forces and the one a retrieval benchmark cannot produce. Note what the two failures have in common: neither is a missing primitive. One is a policy enforced on one code path and not another, and one is two correct stages composed in the wrong order, which are the defects that only appear once the thing is running.</p>
-</td>
-</tr>
-<tr class="reading-topic">
-<th colspan="3" scope="colgroup">Runtime observability and causal diagnosis</th>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2411.05285" rel="noopener noreferrer" target="_blank"><strong class="reading-name">AgentOps</strong></a><span class="reading-subtitle">AgentOps: Enabling Observability of LLM Agents</span><span class="reading-also">also <a href="#sep-30">Sep 30</a></span></td>
-<td>2024</td>
-<td>
-<p><strong>Background.</strong> An agent's execution is a sequence of model calls, tool invocations, and state changes that no existing log format was designed to hold. The tracing services and evaluation harnesses that record it each invented their own vocabulary for it.</p>
-<p><strong>Problem.</strong> Without agreement on what to record, a trace is whatever the framework happened to emit. The same failure then looks different in two deployments, and neither trace answers the question the other was built to answer. What to instrument is the prior decision, and it has had far less attention than how.</p>
-<p><strong>Key idea.</strong> Derive the answer from what the tools already do. A systematic mapping study over existing AgentOps tools yields a taxonomy of the artifacts, and the data attached to each, that should be traced across an agent's whole lifecycle, offered as a reference template for building the infrastructure rather than as an implementation of it.</p>
-<p><strong>Why it matters.</strong> It is the checklist, and a checklist belongs before the mechanisms rather than after them, because a span you did not record is not recoverable later. Read it against the schema you would need to answer this meeting's own questions: which turn evicted the session, how long the sandbox took to start, and which agent in a group was waiting on which.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2508.02736" rel="noopener noreferrer" target="_blank"><strong class="reading-name">AgentSight</strong></a><span class="reading-subtitle">AgentSight: System-Level Observability for AI Agents Using eBPF</span></td>
-<td>2025</td>
-<td>
-<p><strong>Background.</strong> Coding agents now run as ordinary processes on developer and CI machines, issuing model calls over TLS and acting on the machine through system calls. Claude Code and Gemini CLI are the paper's examples.</p>
-<p><strong>Problem.</strong> The two views of such an agent are separately observable and separately useless. A prompt log says what the agent meant to do and offers no evidence that it did it; a system-call trace says what happened to the machine and gives no reason why. Instrumenting the framework to join them breaks whenever the framework's API changes, which for agent frameworks is often.</p>
-<p><strong>Key idea.</strong> Trace at the boundaries the agent cannot move. Use eBPF to intercept TLS-encrypted model traffic and recover intent, monitor kernel events to recover effect, and correlate the two streams across process boundaries in a real-time engine, with a secondary model used for the analysis. Nothing inside the agent is instrumented.</p>
-<p><strong>Findings.</strong> The technique is framework-agnostic and incurs less than 3% performance overhead. In the paper's evaluation it detects prompt-injection attacks, identifies reasoning loops that waste resources, and reveals coordination bottlenecks in multi-agent systems that no single agent's own logs expose.</p>
-<p><strong>Why it matters.</strong> It is the observability counterpart to this meeting's sandbox sections, because the kernel interface that constrains what an agent may touch is also the one place that can report what it did touch. The reasoning loops and coordination bottlenecks it finds are failure modes this meeting has already described from the inside, arrived at here from outside the framework, which is what makes the result portable to whichever agent stack you end up running.</p>
-</td>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2603.14688" rel="noopener noreferrer" target="_blank"><strong class="reading-name">AgentTrace</strong></a><span class="reading-subtitle">AgentTrace: Causal Graph Tracing for Root Cause Analysis in Deployed Multi-Agent Systems</span></td>
-<td>2026</td>
-<td>
-<p><strong>Background.</strong> A multi-agent workflow that fails leaves a long execution trace, and the error surfaces at whichever agent could not proceed rather than at the one that caused the trouble.</p>
-<p><strong>Problem.</strong> Cascading effects and hidden dependencies put distance between the manifestation and the cause. Reading the trace forward from the start is expensive, and reading it backward from the error requires knowing which earlier steps the failing one actually depended on. Handing the trace to a model instead puts an inference call, with its cost and its own nondeterminism, inside the debugging loop.</p>
-<p><strong>Key idea.</strong> Reconstruct a causal graph from the execution logs, walk backward from the point where the error appeared, and rank candidate root causes using structural and positional signals read off the graph, so that diagnosis at debugging time needs no model inference at all.</p>
-<p><strong>Findings.</strong> Across the paper's benchmark of multi-agent failure scenarios, AgentTrace localizes root causes with sub-second latency and higher accuracy than both the heuristic and the model-based baselines it is compared against. The scenarios are constructed to reflect common deployment patterns rather than sampled from production, so read the accuracy as a comparison among the evaluated methods.</p>
-<p><strong>Why it matters.</strong> It closes the loop this section opens. The Mystery Machine recovers a causal graph to explain where the latency went, and this recovers one to explain why the run failed, from the same raw material. Read the argument for keeping the model out of the debugging path: it is the critical-path argument this course makes about requests, applied to the operator instead.</p>
-</td>
-</tr>
-<tr class="reading-topic">
-<th colspan="3" scope="colgroup">Structured decoding for agent tool calls</th>
-</tr>
-<tr>
-<td><a href="https://arxiv.org/abs/2411.15100" rel="noopener noreferrer" target="_blank"><strong class="reading-name">XGrammar</strong></a><span class="reading-subtitle">XGrammar: Flexible and Efficient Structured Generation Engine for Large Language Models</span></td>
-<td>2024</td>
-<td>
-<p><strong>Background.</strong> A request that must return JSON, a function call, or code can be constrained while it decodes rather than checked after it finishes. A context-free grammar expresses the constraint, and the decoder enforces it by masking the tokens the grammar forbids at each step.</p>
-<p><strong>Problem.</strong> Enforcing a grammar means deciding, for every token in the vocabulary at every step, whether it is currently legal. Running that through the grammar's stack states at runtime costs enough to appear in the token rate, and it is per-token-per-vocabulary work that no batching trick amortizes away.</p>
-<p><strong>Key idea.</strong> Split the vocabulary in two. Most tokens are context-independent, so their legality can be precomputed per grammar state and cached, and only the remainder need interpreting against the runtime stack. Grammar transformations shrink the context-dependent set further, and a persistent stack makes the surviving checks cheap.</p>
-<p><strong>Findings.</strong> The paper reports up to 100× faster grammar execution than the systems it compares against, and near-zero end-to-end overhead once the grammar engine is co-designed with the inference engine so its computation overlaps GPU execution.</p>
-<p><strong>Why it matters.</strong> Grammar masking adds per-token work proportional to the vocabulary, but precomputation and overlap can remove it from the critical path. Tool-calling traffic makes this a common serving cost.</p>
-<p><strong>Adoption.</strong> vLLM and SGLang both ship XGrammar as a structured-output backend, so this is the mask computation running behind a JSON-schema request on either engine.</p>
 </td>
 </tr>
 </table>

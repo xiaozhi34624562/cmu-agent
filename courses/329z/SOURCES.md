@@ -1,6 +1,6 @@
 # CS329Z 全部来源
 
-- 学期：Fall 2026；索引日期：2026-11-01
+- 学期：Fall 2026；索引日期：2026-11-04
 - saved 表示已检查正文；reused_from 表示复用旧归档，不是本次新下载。
 - 未公开、登录限制、下载失败分别保留；页面 HTTP 200 不足以证明有正文。
 
@@ -91,13 +91,13 @@
 | reading | Effective Harnesses for Long-Running Agents | [saved](readings/web/Effective_Harnesses_for_Long-Running_Agents.html) | https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents |
 | reading | Creating General User Models from Computer Use | [saved](readings/papers/Creating_General_User_Models_from_Computer_Use.pdf) | https://arxiv.org/abs/2505.10831 |
 | reading | Learning Next Action Predictors from Human-Computer Interaction | [saved](readings/papers/Learning_Next_Action_Predictors_from_Human-Computer_Interaction.pdf) | https://arxiv.org/abs/2603.05923 |
-| reading | OpenClaw: Open-source proactive AI agent | unavailable | https://github.com/openclaw/openclaw |
+| reading | OpenClaw: Open-source proactive AI agent | [saved](readings/web/OpenClaw_Open-source_proactive_AI_agent.html) | https://github.com/openclaw/openclaw |
 
 ## 非教学事件
 
 - Mon Nov 23：No Class — Thanksgiving Recess
 - Wed Nov 25：No Class — Thanksgiving Recess
-- Finals Week (Dec 7–11)：Final Project Demo Day
+- Wed Dec 9：Final Project Demo Day
 
 ## 其他来源与限制
 

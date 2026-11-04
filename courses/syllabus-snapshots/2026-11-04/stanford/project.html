@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Project | Stanford CS329Z</title>
+  <meta name="description" content="Course project requirements for Stanford CS329Z: Engineering AI Agents.">
+  <link rel="canonical" href="https://cs329z.stanford.edu/project.html">
+  
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Project | Stanford CS329Z">
+  <meta property="og:description" content="Course project requirements for Stanford CS329Z: Engineering AI Agents.">
+  <meta property="og:site_name" content="Stanford CS329Z">
+
+  <link rel="icon" type="image/png" href="static/images/stanford.png">
+  <link rel="stylesheet" href="static/css/main.css?v=c3e8462e">
+</head>
+
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">CS329Z Home</a>
+      <button type="button" class="navbar-toggle" aria-expanded="false" aria-label="Toggle navigation"
+              onclick="var m=document.getElementById('nav-menu');var o=m.classList.toggle('in');this.setAttribute('aria-expanded',o)">
+        <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse" id="nav-menu">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="index.html#schedule">Schedule</a></li>
+        <li><a href="logistics.html">Logistics</a></li>
+        <li><a href="logistics.html#office-hours">Office Hours</a></li>
+        <li><a href="project.html">Project</a></li>
+        <li><a href="https://edstem.org/us/courses/106723/discussion">Discussion</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+<main>
+  
+<!-- Course header shared by all pages -->
+<div id="header" style="text-align:center">
+  <a href="https://nlp.stanford.edu/">
+    <img src="static/images/Stanford-NLP-stack.jpg" class="logo-left" alt="Stanford NLP Group logo">
+  </a>
+  <a href="https://www.stanford.edu/">
+    <img src="static/images/stanfordlogo.jpg" class="logo-right" alt="Stanford University logo">
+  </a>
+  <h1>CS 329Z: Engineering AI Agents</h1>
+  <h3>Stanford / Fall 2026</h3>
+  <div style="clear:both;"></div>
+</div>
+
+
+
+<div class="container sec" id="project">
+  <h2>Course Project</h2>
+  <p>The final project is the main assignment of the course. Working in teams, you will design, build, and
+evaluate an agentic system of your own choosing over the quarter. Projects must relate in a reasonable way
+to at least one of the central topics of the course: building agents (retrieval, tool use, memory,
+multi-agent systems, optimization), the data agents need, or evaluating and making agents safe. Beyond
+that, the choice of domain is yours. Example project ideas:</p>
+<ul>
+<li>A syllabus reader that extracts deadlines and adds them to your calendar</li>
+<li>A course-schedule optimizer for next quarter</li>
+<li>A research-paper discovery and summarization agent</li>
+<li>A campus-event aggregator and recommender</li>
+<li>A coding agent specialized for a particular codebase, framework, or language</li>
+<li>A rigorous evaluation of an existing agent that surfaces its failure modes</li>
+</ul>
+<p>Whatever you build, we expect rigor in how you evaluate it. Simply building a tool and showing that it
+works in one instance will not score highly. Strong projects define their evaluation early: what tasks
+the agent is expected to handle, where the data for those tasks comes from and how it was collected, what
+counts as success, and how success is measured (code-based graders, LLM-as-judge, human ratings, or a
+combination). Evaluate over a meaningful set of tasks, report results with appropriate baselines and
+comparisons, and analyze where and why the agent fails.</p>
+<h3>Teams &amp; Mentors</h3>
+<p>Projects can be done in teams of 1–3 people. In our experience, teams of 3 lead to the best outcomes, so we
+encourage you to form a team of that size. Each team will be assigned a mentor from the teaching team, who
+will give feedback on all project-related work and generally be available throughout the quarter.</p>
+<h3>Submission Format</h3>
+<p>The proposal, midway report, and final report must use the
+<a href="https://www.overleaf.com/latex/templates/template-for-iclr-2025-conference-submission/gqzkdyycxtvt">ICLR submission format</a>
+and follow the ICLR requirements, except where we specify otherwise below. Page limits exclude references.</p>
+<h3>AI-Use Disclosure Statement</h3>
+<p>Every stage of the project (proposal, midway report, and final report) must include an <strong>AI-Use Disclosure
+Statement</strong>, modeled on the
+<a href="https://iclr.cc/Conferences/2026/AuthorGuide">ICLR policy on the use of large language models</a>. ICLR
+requires a separate section describing the precise role of LLMs whenever they played a significant role in
+research ideation and/or writing; for this course, the statement is required at every stage even if your
+use was light or nonexistent (in which case, say so). Describe the precise role of any generative AI tools
+in that stage of the work: in ideation, in writing, and, since this is a systems course, in the code and
+experiments (e.g., writing or debugging code, generating or labeling data, analyzing results). As at ICLR,
+this section may appear in the appendix and does not count toward the page limit, and AI tools are not
+eligible for authorship. You take full responsibility for the contents submitted under your name, including
+content generated by AI tools that could be construed as plagiarism or fabrication. Using AI tools on the
+project is expected and consistent with the Honor Code &amp; AI Tools policy under <a href="logistics.html">Logistics</a>;
+the statement is about transparency. The statement is not graded on its own, but omitting it, or failing to
+disclose significant AI use, will cost points.</p>
+<h3>Code Submission</h3>
+<p>With the midpoint demo and the final report, you must also submit a link to a GitHub repository containing
+your project's code. The repository must include a README that walks a reader through running the project:
+how to install dependencies, configure any API keys or credentials, run the agent, and reproduce the
+evaluation reported in your paper. Write it so that a classmate who has never seen your code can get the
+system running. Your mentor will use the README when grading (reproducibility is scored separately from the final report),
+and it will also facilitate peer review of your project.</p>
+<hr />
+<h3>Milestones</h3>
+<p>Exact dates and times are listed in the <a href="index.html#deadlines">Deadlines</a> table, and the weight of each
+milestone is listed under <a href="logistics.html#coursework">Grading</a>.</p>
+<h4>1. Project Proposal (Week 3)</h4>
+<p>A short paper (1–2 pages) that explains the problem your agent will address, why it matters, and how it fits
+within the scope of CS329Z. Briefly summarize existing work and compare it to your idea to justify how your
+project builds on it. The goal is to clearly define a direction; this is not a full literature review, but a
+focused justification of what you want to work on and why. The ideal is to keep the same topic for the
+proposal and the final project, but it is fine if your direction changes over time. The proposal is graded
+on its own merits regardless of what you end up building. Suggested structure:</p>
+<ol>
+<li><strong>Problem Definition and Motivation:</strong> What is the core problem your agent will address? Why is it
+   meaningful, and to whom? Why is it a good fit for an agentic system rather than a simpler solution?</li>
+<li><strong>Comparison with Existing Work:</strong> What have past systems or papers tried in this area, and where do they
+   fall short? This might be due to limitations in model capability, missing tools or data, poor
+   reliability, or a lack of evaluation.</li>
+<li><strong>Next Steps and Direction:</strong> A possible approach or system design for how you plan to tackle this
+   problem, and how you would know if it works.</li>
+<li><strong>References:</strong> Entries should appear alphabetically and give at least full author name(s), year of
+   publication, title, and outlet if applicable (e.g., journal or proceedings name).</li>
+<li><strong>AI-Use Disclosure Statement:</strong> See above.</li>
+</ol>
+<h4>2. Midpoint Demo &amp; Midway Report (Week 7)</h4>
+<p>The midpoint demo is a recorded video of your system, submitted rather than presented in class; a working
+prototype is expected. Alongside the video, submit a link to your GitHub repository with a README for running
+the prototype (see <a href="#project">Code Submission</a> above). The midway report is a short,
+structured paper (3–4 pages) designed to help you establish your core system and evaluation framework. No
+prior-work discussion is needed. Grading is based mainly on the Environment &amp; Data, Methods, and Summary of
+Progress sections. Required sections:</p>
+<ol>
+<li><strong>Research Questions or Problem Specification:</strong> A statement of the project's core research questions,
+   or, for application-oriented projects, a specification of the problem the agent solves and for whom (one
+   paragraph).</li>
+<li><strong>Environment &amp; Data:</strong> A description of the environment, tools, and dataset(s) the agent will operate
+   on, and the data you will use to evaluate it, including how that evaluation data is collected or
+   constructed and what success criteria and metrics you will use.</li>
+<li><strong>Methods:</strong> A description of the agent architecture and approaches you are using, and a preliminary
+   description of the approach that will be the focus of your investigation. At this stage, some aspects
+   may not yet be worked out; preliminary descriptions are fine.</li>
+<li><strong>Summary of Progress:</strong> What you have done, what you still need to do, and any obstacles or concerns
+   that might prevent your project from coming to fruition.</li>
+<li><strong>References:</strong> In the same format as for the proposal.</li>
+<li><strong>AI-Use Disclosure Statement:</strong> See above.</li>
+</ol>
+<h4>3. Final Report &amp; Final System Demo (Finals Week)</h4>
+<p>The final system demo is presented live on Demo Day, Wednesday, December 9, 3:30–6:30 p.m. The final report is an 8-page paper in
+ICLR submission format, adhering to ICLR guidelines concerning references, layout, supplementary
+materials, and so forth. Submit it together with a link to your final GitHub repository, whose README must
+let a reader run the system and reproduce your results. The final submission is graded out of 25 points:
+20 for the report itself and 5 for reproducibility (see below). Required components of the report:</p>
+<ol>
+<li><strong>Introduction</strong> (2 points)</li>
+<li><strong>Related Work</strong> (1 point)</li>
+<li><strong>Environment &amp; Data</strong> (1 point)</li>
+<li><strong>Methods</strong> (5 points): The agent's architecture, components, and design decisions.</li>
+<li><strong>Results</strong> (10 points): Your evaluation of the system over a meaningful set of tasks, with baselines or
+   comparisons, and an error analysis of its failure modes. A single working example is not an evaluation.</li>
+<li><strong>Discussion / Conclusion</strong> (1 point)</li>
+<li><strong>Safety &amp; Ethical Considerations:</strong> An explicit discussion of any potential safety or ethical issues,
+   such as the implications of the project, the use of the data, the actions the agent is permitted to
+   take, and potential applications of your work. Here are some recommendations from
+   <a href="https://2021.aclweb.org/ethics/Ethics-FAQ/">ACL's ethics guidelines</a>: "Ethical questions may arise when
+   working with a variety of types of computational work with language, including (but not limited to) the
+   collection and release of data, inference of information or judgments about individuals, real-world
+   impact of the deployment of language technologies, and environmental consequences of large-scale
+   computation."</li>
+<li><strong>Authorship Statement:</strong> At the end of your paper (after the Acknowledgments section in the template),
+   include a brief authorship statement explaining how the individual authors contributed to the project.
+   You are free to include whatever information you deem important to convey. For guidance, see the
+   second page, right column, of this <a href="http://blog.pnas.org/iforc.pdf">guidance for PNAS authors</a>. We
+   require this largely because we think it is a good policy in general. This statement is required even
+   for singly-authored papers, because we want to know whether your project is a collaboration with people
+   outside of the class. Only in extreme cases, and after discussion with the team, would we consider giving
+   separate grades to team members based on this statement.</li>
+<li><strong>References</strong></li>
+<li><strong>AI-Use Disclosure Statement:</strong> See above. Place it after the Authorship Statement.</li>
+</ol>
+<p>The Safety &amp; Ethical Considerations, Authorship Statement, References, and AI-Use Disclosure Statement
+sections are required but not separately scored; a missing section will cost points.</p>
+<p><strong>Reproducibility (5 points).</strong> The remaining 5 points of the final submission are for reproducibility. We will
+follow your README and run your code on a simple instance, such as a single task or example from your
+evaluation, to check that the system runs and behaves as described in the paper. We will not rerun your full
+evaluation, so make sure the quick-start path in your README works out of the box.</p>
+</div>
+
+</main>
+
+</body>
+</html>

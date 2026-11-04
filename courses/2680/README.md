@@ -6,7 +6,7 @@
 
 本目录按 CMU 11-768 资料库的方式，**以课次为单位**整理 Harvard CS2680: Modern AI Systems: Agents and System Optimizations（2026 年秋季学期）。目录按课程日期连续编号，名称保留官网课程原题的词语及 I、II、III 等分节标记。每个目录包含原始讲义、`readings/` 阅读文件和逐课 `SOURCES.md`；本地课次包含论文讨论课，因此目录编号不等同于官网 PDF 文件名中的编号。
 
-官网同步日期：**2026-10-28**。[原课程网站](https://cs2680.com/) · [完整来源索引](SOURCES.md) · [课程信息](0.CourseInformation/SOURCES.md)
+官网同步日期：**2026-11-04**。[原课程网站](https://cs2680.com/) · [完整来源索引](SOURCES.md) · [课程信息](0.CourseInformation/SOURCES.md)
 
 <!-- BEGIN COURSE INDEX -->
 
@@ -18,9 +18,11 @@
 | 09-09 | [2. Agents use I: How Claude Code Works](2.AgentsUseI.HowClaudeCodeWorks/SOURCES.md) | [2_agent_use_1.pdf](2.AgentsUseI.HowClaudeCodeWorks/2_agent_use_1.pdf) | [中文讲解](2.AgentsUseI.HowClaudeCodeWorks/lecture_02_agent_use_integrated_notes.md) · [补充学习文档](2.AgentsUseI.HowClaudeCodeWorks/SOURCES.md) |
 | 09-14 | [3. Agents use II: 100x Engineer with Multi-agents](3.AgentsUseII.100xEngineerWithMultiAgents/SOURCES.md) | [3_agent_use_2.pdf](3.AgentsUseII.100xEngineerWithMultiAgents/3_agent_use_2.pdf) | [中文讲解](3.AgentsUseII.100xEngineerWithMultiAgents/Lecture03_MultiAgent_完整学习讲义.md) |
 | 09-16 | [4. Agents design I: context management and tool design](4.AgentsDesignI.ContextManagementAndToolDesign/SOURCES.md) | [4_agent_design_1.pdf](4.AgentsDesignI.ContextManagementAndToolDesign/4_agent_design_1.pdf) | [中文讲解](4.AgentsDesignI.ContextManagementAndToolDesign/lecture-04_context_and_tool_design_integrated.md) |
+| 09-21 | [21. Student sharing I: Learning from Assignment 1](21.StudentSharingI/README.md) | 官网尚未提供 | 暂无中文讲解 |
 | 09-23 | [5. Agents design II: multi-agent architecture, coordination, and communication](5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/SOURCES.md) | [5_agent_design_2.pdf](5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/5_agent_design_2.pdf) | [中文讲解](5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/lecture-05_multi-agent-coordination_完整学习笔记.md) |
 | 09-28 | [6. Agents design III: agent memory and reliability](6.AgentsDesignIII.AgentMemoryAndReliability/SOURCES.md) | [6_agent_design_3.pdf](6.AgentsDesignIII.AgentMemoryAndReliability/6_agent_design_3.pdf) | [中文讲解](6.AgentsDesignIII.AgentMemoryAndReliability/lecture06_agent_memory_reliability.md) |
 | 09-30 | [7. Agent design IV: agent evaluation](7.AgentDesignIV.AgentEvaluation/SOURCES.md) | [7_agent_design_4.pdf](7.AgentDesignIV.AgentEvaluation/7_agent_design_4.pdf) | [中文讲解](7.AgentDesignIV.AgentEvaluation/Agent_Eval_Lecture07_Integrated_Notes.md) |
+| 10-05 | [19. Guest lecture: Developing and Evaluating Agents in Enterprise Setting](19.GuestLectureDevelopingAndEvaluatingAgentsInEnterpriseSetting/README.md) | 官网尚未提供 | 暂无中文讲解 |
 | 10-07 | [8. Advanced agent design I: Cost and performance](8.AdvancedAgentDesignI.CostAndPerformance/SOURCES.md) | [8_agent_design_5.pdf](8.AdvancedAgentDesignI.CostAndPerformance/8_agent_design_5.pdf) | [中文讲解](8.AdvancedAgentDesignI.CostAndPerformance/lecture-08_agent_cost_and_performance.md) |
 | 10-14 | [9. Advanced agent design II: agent safety, self-evolving harness](9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/README.md) | 论文讨论课；官网未提供讲义 PDF | [中文讲解](9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/notes.zh-CN.md) |
 
@@ -30,15 +32,19 @@
 |---|---|---|---|
 | 10-19 | [10. Efficient LLM serving basics I: intro to LLMs](10.EfficientLLMServingBasicsI.IntroToLLMs/SOURCES.md) | [9_llm_serving_basics_1.pdf](10.EfficientLLMServingBasicsI.IntroToLLMs/9_llm_serving_basics_1.pdf) | [中文讲解](10.EfficientLLMServingBasicsI.IntroToLLMs/notes.zh-CN.md) |
 | 10-21 | [11. Efficient LLM serving basics II: intro to GPUs](11.EfficientLLMServingBasicsII.IntroToGPUs/SOURCES.md) | [10_llm_serving_basics_2a.pdf](11.EfficientLLMServingBasicsII.IntroToGPUs/10_llm_serving_basics_2a.pdf) | [中文讲解](11.EfficientLLMServingBasicsII.IntroToGPUs/notes.zh-CN.md) |
-| 10-28 | [12. Efficient LLM serving basics III: Batching, paging, and parallelism](12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/SOURCES.md) | 官网尚未提供 | 暂无中文讲解 |
-| 11-02 | [13. Efficient LLM serving: speculative decoding](13.EfficientLLMServing.SpeculativeDecoding/SOURCES.md) | 官网尚未提供 | 暂无中文讲解 |
-| 11-04 | [14. Efficient agentic systems: scheduling and prefix caching](14.EfficientAgenticSystems.SchedulingAndPrefixCaching/SOURCES.md) | 官网尚未提供 | 暂无中文讲解 |
-| 11-11 | [15. Efficient LLM serving: pruning and quantization](15.EfficientLLMServing.PruningAndQuantization/SOURCES.md) | 官网尚未提供 | 暂无中文讲解 |
+| 10-26 | [22. Assignment 3 student sharing](22.Assignment3StudentSharing/README.md) | PDF 需要密码；原件已归档，正文未取得 | 暂无中文讲解 |
+| 10-28 | [23. Assignment 3 feedback](23.Assignment3Feedback/README.md) | PDF 需要密码；原件已归档，正文未取得 | 暂无中文讲解 |
+| 11-02 | [12. Efficient LLM serving basics III: Batching, paging, and parallelism](12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/SOURCES.md) | 官网尚未提供 | 暂无中文讲解 |
+| 11-04 | [13. Efficient LLM serving: speculative decoding](13.EfficientLLMServing.SpeculativeDecoding/SOURCES.md) | 官网尚未提供 | 暂无中文讲解 |
+| 11-09 | [20. Guest lecture: Why Infrastructure sets the pace of AI](20.GuestLectureWhyInfrastructureSetsThePaceOfAI/README.md) | 官网尚未提供 | 暂无中文讲解 |
+| 11-11 | [14. Efficient agentic systems: scheduling and prefix caching](14.EfficientAgenticSystems.SchedulingAndPrefixCaching/SOURCES.md) | 官网尚未提供 | 暂无中文讲解 |
 | 11-16 | [16. Efficient LLM serving: KV-cache optimization and model architectures](16.EfficientLLMServing.KVCacheOptimizationAndModelArchitectures/SOURCES.md) | 论文讨论课；官网未提供讲义 PDF | 暂无中文讲解 |
-| 11-23 | [17. Efficient agentic system: routing and load balancing](17.EfficientAgenticSystem.RoutingAndLoadBalancing/SOURCES.md) | 官网尚未提供 | 暂无中文讲解 |
-| 11-30 | [18. Efficient agentic systems: others](18.EfficientAgenticSystems.Others/SOURCES.md) | 官网尚未提供 | 暂无中文讲解 |
+| 11-18 | [15. Efficient LLM serving: pruning and quantization](15.EfficientLLMServing.PruningAndQuantization/SOURCES.md) | 官网尚未提供 | 暂无中文讲解 |
+| 11-23 | [24. Student sharing III: Engine optimizations and agent-engine co-design](24.StudentSharingIII.EngineOptimizationsAndAgentEngineCoDesign/README.md) | 官网尚未提供 | 暂无中文讲解 |
+| 11-30 | [17. Efficient agentic system: routing and load balancing](17.EfficientAgenticSystem.RoutingAndLoadBalancing/SOURCES.md) | 官网尚未提供 | 暂无中文讲解 |
+| 12-02 | [25. Student sharing IV](25.StudentSharingIV/README.md) | 官网尚未提供 | 暂无中文讲解 |
 
-完整日历、调整后的日期和新增课次见[完整课表](COURSE_SCHEDULE.md)。上表及[旧版课程主页](site/index.html)保留资料归档时的课次与日期；原始 PDF 文件名保留官网编号。
+完整日历和材料状态见[完整课表](COURSE_SCHEDULE.md)。目录编号保持稳定，表中按当前官方日期排序；历史 `18.EfficientAgenticSystems.Others` 保留，不计为当前正式课次。原始 PDF 文件名保留官网编号。
 
 ### 文件名与归档位置核对（2026-10-23）
 
@@ -71,16 +77,16 @@
 
 ## 原始归档与更新
 
-官网页面最近同步于 2026-10-28；完整学期安排见 [COURSE_SCHEDULE.md](COURSE_SCHEDULE.md)。已有外部阅读复用此前归档，获取状态见 [SOURCES.md](SOURCES.md)，不将页面同步日期当作论文重新下载日期。部分 PDF 存在非致命解析告警；原始字节保留，局部渲染抽查可读不代表每张图均已检查。
+官网页面最近同步于 2026-11-04；完整学期安排见 [COURSE_SCHEDULE.md](COURSE_SCHEDULE.md)。已有外部阅读复用此前归档，获取状态见 [SOURCES.md](SOURCES.md)，不将页面同步日期当作论文重新下载日期。部分 PDF 存在非致命解析告警；原始字节保留，局部渲染抽查可读不代表每张图均已检查。
 
 - `site/`：课程网站的网页、幻灯片、样式和图片，保留原站目录结构。
 - `readings/`：外部论文与网页的原始下载归档；编号课次目录中有按主题命名的学习副本。
-- `assignments/course-repo/`：作业仓库的既有快照。2026-10-28 上游仓库仍不可访问，保留 2026-10-13 的固定提交；状态见 [SNAPSHOT.json](assignments/SNAPSHOT.json)。作业 4 使用课程网站的官方归档。
+- `assignments/course-repo/`：作业仓库的既有快照。2026-11-04 上游仓库仍不可访问，保留 2026-10-13 的固定提交；状态见 [SNAPSHOT.json](assignments/SNAPSHOT.json)。作业 4 使用课程网站的官方归档。
 - [CHECKSUMS.sha256](CHECKSUMS.sha256)：原始归档文件的校验值。
 
 视频和无法自动下载的网页保留在对应课次的 `SOURCES.md` 中；失败原因汇总于根目录 [SOURCES.md](SOURCES.md)。
 
-运行 `python3 courses/2680/sync.py` 可更新公开资料、课次目录和来源索引；仅重新整理已有下载文件时可运行 `python3 courses/2680/organize.py`。脚本需要 Python 的 `requests` 与 `beautifulsoup4`。浏览完整的本地网站时，可在仓库根目录运行 `python3 -m http.server 8765 --directory 2680/site`，然后访问 `http://localhost:8765/`。
+运行 `python3 courses/2680/sync.py` 可更新公开资料、课次目录和来源索引；仅重新整理已有下载文件时可运行 `python3 courses/2680/organize.py`。脚本需要 Python 的 `requests` 与 `beautifulsoup4`。浏览完整的本地网站时，可在仓库根目录运行 `python3 -m http.server 8765 --directory courses/2680/site`，然后访问 `http://localhost:8765/`。
 
 ## 中文讲解复核与维护
 

@@ -1,10 +1,10 @@
 # 13. Efficient LLM serving: speculative decoding
 
-- Date: 2026-11-02
+- Date: 2026-11-04
 
 ## Slides
 
-- No slides linked on the course website as of 2026-10-28.
+- No slides linked on the course website as of 2026-11-04.
 
 ## Readings
 
@@ -54,4 +54,4 @@
 ## References
 
 - [Full course reading list](../site/readings.html)
-  - Source: https://cs2680.com/readings.html#nov-02
+  - Source: https://cs2680.com/readings.html#nov-04

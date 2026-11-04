@@ -1,0 +1,174 @@
+%% Shared CS329Z assignment handout template.
+%% Keep this file in sync with hw1/handout/cs329z.sty.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cs329z}[2026/08/14 v0.1 CS329Z assignment handout style]
+
+\newif\ifcsz@minted\csz@mintedfalse
+\DeclareOption{minted}{\csz@mintedtrue}
+\ProcessOptions\relax
+
+\RequirePackage{iftex}
+\RequirePackage[letterpaper,margin=1in]{geometry}
+\RequirePackage{xcolor}
+\RequirePackage{etoolbox}
+\RequirePackage{parskip}
+\RequirePackage{enumitem}
+\RequirePackage{titlesec}
+\RequirePackage{changepage}
+\RequirePackage{tcolorbox}
+\RequirePackage{twemojis}
+\RequirePackage{pmboxdraw}
+\tcbuselibrary{skins,breakable,listings}
+
+\ifpdftex
+  \RequirePackage[T1]{fontenc}
+  \RequirePackage[utf8]{inputenc}
+  \RequirePackage{lmodern}
+  \RequirePackage[scaled=0.82]{DejaVuSansMono}
+\else
+  \RequirePackage[default]{fontsetup}
+  \setmonofont{DejaVu Sans Mono}[Scale=0.82]
+\fi
+
+\definecolor{cszOrange}{HTML}{FF851B}
+\definecolor{cszBlue}{HTML}{0074D9}
+\definecolor{cszRed}{HTML}{FF4136}
+\definecolor{cszGreen}{HTML}{2ECC40}
+\definecolor{cszMagenta}{HTML}{FF66FF}
+\definecolor{cszCodeBlue}{HTML}{4B69C6}
+\definecolor{cszCodeRed}{HTML}{B32E26}
+\definecolor{cszCodeGreen}{HTML}{114C18}
+\definecolor{cszCodeCyan}{HTML}{66D9EF}
+\definecolor{cszCodeYellow}{HTML}{E6DB74}
+\definecolor{cszCodeGray}{HTML}{A6A6A6}
+
+\titleformat{\paragraph}[block]{\normalsize\bfseries}{}{0pt}{}
+\titlespacing*{\paragraph}{0pt}{1.4ex plus .5ex minus .2ex}{0.4ex}
+
+\newcounter{csz@points}
+\newcommand\csz@addpoints[1]{\addtocounter{csz@points}{#1}}
+\AtEndDocument{\immediate\write\@auxout{%
+  \string\gdef\string\csz@totalpts{\arabic{csz@points}}}}
+\newcommand\totalpoints{\ifcsname csz@totalpts\endcsname\csz@totalpts\else ??\fi}
+
+\tcbset{cszbox/.style={
+  breakable, enhanced jigsaw,
+  colback=white, sharp corners,
+  left=1em, right=1em, top=1.4ex, bottom=1.8ex,
+  before skip=1.2\medskipamount, after skip=1.2\medskipamount,
+}}
+
+\newcommand\csz@boxheader[1]{%
+  {\bfseries #1}\par\nobreak\vspace{3pt}%
+  {\color{black!60}\hrule height 0.4pt}%
+  \nobreak\vspace{9pt}\nobreak}
+
+\newcommand\csz@boxbody{\setlength{\parskip}{.45\baselineskip}}
+
+\newenvironment{problem}[3]{%
+  \ifblank{#3}{}{\csz@addpoints{#3}}%
+  \begin{tcolorbox}[cszbox, colframe=cszOrange, boxrule=1.5pt]%
+  \phantomsection\label{prob:#1}%
+  \csz@boxheader{Problem (\texttt{\detokenize{#1}}):\enspace
+    #2\ifblank{#3}{}{ (#3 \ifnumequal{#3}{1}{point}{points})}}%
+  \begin{adjustwidth}{1.6em}{0.4em}\csz@boxbody%
+}{\end{adjustwidth}\end{tcolorbox}}
+
+% One-title callouts. Keep the title explicit so callers can write headers such
+% as "Example: A valid task" in the same style as "Tip: Terminology".
+\newenvironment{example}[1]{%
+  \begin{tcolorbox}[cszbox, colframe=black, boxrule=0.8pt]%
+  \csz@boxheader{\texttwemoji{magnifying glass tilted right}\enspace #1}%
+  \begin{adjustwidth}{1.6em}{0.4em}\csz@boxbody%
+}{\end{adjustwidth}\end{tcolorbox}}
+
+\newenvironment{tip}[1]{%
+  \begin{tcolorbox}[cszbox, colframe=cszBlue, boxrule=1.5pt]%
+  \csz@boxheader{#1}%
+  \begin{adjustwidth}{1.6em}{0.4em}\csz@boxbody%
+}{\end{adjustwidth}\end{tcolorbox}}
+
+\newenvironment{note}[1]{%
+  \begin{tcolorbox}[cszbox, colframe=black, boxrule=0.8pt]%
+  \csz@boxheader{\texttwemoji{light bulb}\enspace #1}%
+  \begin{adjustwidth}{1.6em}{0.4em}\csz@boxbody%
+}{\end{adjustwidth}\end{tcolorbox}}
+
+\newenvironment{warning}[1]{%
+  \begin{tcolorbox}[cszbox, colframe=black, boxrule=0.8pt]%
+  \csz@boxheader{\texttwemoji{warning}\enspace #1}%
+  \begin{adjustwidth}{1.6em}{0.4em}\csz@boxbody%
+}{\end{adjustwidth}\end{tcolorbox}}
+
+\newcommand\probref[1]{\hyperref[prob:#1]{Problem (\texttt{\detokenize{#1}})}}
+\newcommand\deliverable[1]{\textbf{Deliverable}: #1}
+\newcommand\resources[1]{\textbf{Resource requirements}: #1}
+
+\newenvironment{fields}
+  {\begin{description}[leftmargin=1.5em, labelindent=0pt,
+                       itemsep=3pt, parsep=0pt, font=\normalfont]}
+  {\end{description}}
+\newcommand\fielditem[2]{%
+  \item[{\ttfamily\bfseries \detokenize{#1}\ifblank{#2}{}{: {\mdseries\color{cszCodeBlue}\detokenize{#2}}}}]}
+
+\newcommand\code[1]{\texttt{\detokenize{#1}}}
+\ifcsz@minted
+  \RequirePackage{minted}
+  \setminted{autogobble, breaklines, fontsize=\normalsize}
+  \setminted[console]{bgcolor=black, style=monokai}
+  \newenvironment{pycode}{\VerbatimEnvironment\begin{minted}{python}}{\end{minted}}
+  \newenvironment{pyrepl}{\VerbatimEnvironment\begin{minted}{pycon}}{\end{minted}}
+  \newenvironment{shcode}{\VerbatimEnvironment\begin{minted}{console}}{\end{minted}}
+\else
+  \RequirePackage{listings}
+  \lstdefinestyle{cszpy}{
+    language=Python,
+    basicstyle=\ttfamily,
+    keywordstyle=\color{cszCodeBlue},
+    stringstyle=\color{cszCodeRed},
+    commentstyle=\color{black!55},
+    showstringspaces=false,
+    columns=fullflexible, keepspaces=true,
+    breaklines=true,
+    aboveskip=\smallskipamount, belowskip=\smallskipamount,
+  }
+  \lstdefinestyle{cszsh}{
+    language=bash,
+    literate={├}{{\textSFviii}}1 {─}{{\textSFx}}1 {└}{{\textSFii}}1,
+    basicstyle=\ttfamily\color{white},
+    keywordstyle=\bfseries\color{cszCodeCyan},
+    stringstyle=\color{cszCodeYellow},
+    commentstyle=\itshape\color{cszCodeGray},
+    showstringspaces=false,
+    columns=fullflexible, keepspaces=true,
+    breaklines=true,
+  }
+  \lstnewenvironment{pycode}{\lstset{style=cszpy}}{}
+  \lstnewenvironment{pyrepl}{\lstset{style=cszpy}}{}
+  \newtcblisting{shcode}{
+    listing only, breakable,
+    colback=black, colframe=black, boxrule=0pt, arc=0pt,
+    left=6pt, right=6pt, top=3pt, bottom=3pt,
+    before skip=0.75em, after skip=0.75em,
+    listing options={style=cszsh},
+  }
+\fi
+
+\newcommand\handouttitle[4]{%
+  \begingroup\centering
+  {\LARGE #1\par}\vspace{1.4em}
+  {\large Version #2\par}\vspace{1.1em}
+  #3\par\vspace{1.1em}
+  #4\par
+  \endgroup\vspace{1.8em}}
+
+\RequirePackage{hyperref}
+\hypersetup{
+  colorlinks=false,
+  pdfborder={0 0 1},
+  linkbordercolor=cszRed,
+  citebordercolor=cszGreen,
+  urlbordercolor=cszMagenta,
+}
+
+\endinput

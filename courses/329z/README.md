@@ -4,7 +4,7 @@
 
 Fall 2026。按官网日期展示课程，既有目录编号保持稳定；插入新课采用追加编号。Week、目录编号、PDF Lecture 编号分别保留。官网可能调整课表，原始页面和来源版本均可追溯。
 
-本轮索引日期：2026-11-01。已核实归档 11 份讲义；57 个去重阅读入口中 54 个有有效正文。材料的复用来源和获取限制见 [SOURCES.md](SOURCES.md) 与 [manifest.json](manifest.json)。
+本轮索引日期：2026-11-04。已核实归档 11 份讲义；57 个去重阅读入口中 55 个有有效正文。材料的复用来源和获取限制见 [SOURCES.md](SOURCES.md) 与 [manifest.json](manifest.json)。
 
 [官网](https://cs329z.stanford.edu/) · [课程信息](0.CourseInformation/SOURCES.md) · [作业](assignment/SOURCES.md) · [项目](project/SOURCES.md) · [课堂代码](code/SOURCES.md)
 
@@ -31,6 +31,10 @@ Fall 2026。按官网日期展示课程，既有目录编号保持稳定；插�
 | 17 / 9 / 11-18 | [Agent Safety & Guardrails](17.AgentSafetyGuardrails/SOURCES.md) | 尚未公开 | 待讲义公开/核实 |
 | 18 / 11 / 11-30 | [Coding & Software Agents](18.CodingSoftwareAgents/SOURCES.md) | 尚未公开 | 待讲义公开/核实 |
 | 19 / 11 / 12-02 | [Proactive Agents](19.ProactiveAgents/SOURCES.md) | 尚未公开 | 待讲义公开/核实 |
+
+## 新公开作业
+
+[HW2：Building an Evaluation Task](assignment/assignment-2/SOURCES.md) 已按固定提交 `be78339f6e74` 归档 28 个原始文件；正式题目、截止安排及未运行范围见作业索引。
 
 ## 学习和证据边界
 

@@ -1,0 +1,16 @@
+[
+  {
+    "url": "https://www.cmu-agents.com/slides/lecture-18-multi-agent-systems.pdf",
+    "final_url": "https://www.cmu-agents.com/slides/lecture-18-multi-agent-systems.pdf",
+    "retrieved_at": "2026-11-04T01:08:57.428707+00:00",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "bytes": 10046525,
+    "sha256": "5da3102180a75b0c8ad6c849ef497e6cc165ebcd77b4428ce8a177de6ebdc93c",
+    "path": "lecture-18-multi-agent-systems.pdf",
+    "pages": 44,
+    "title": "Multi-agent Systems",
+    "status": "saved",
+    "role": "lecture"
+  }
+]

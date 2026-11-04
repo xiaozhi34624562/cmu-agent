@@ -5,6 +5,10 @@
 - [原始课表与截止时间](../site/index.html#deadlines) — https://cs329z.stanford.edu/index.html#deadlines
 - 来源文件版本、取得时间及 SHA-256 见 [manifest.json](../manifest.json)。截止时间按官网 Pacific Time 原样理解；本地说明不替代最新课程通知。
 
+## 当前日程
+
+2026-11-04 核对官网：中期 demo 视频和 midway report 均在 **11-06 11:59 p.m.** 截止；最终现场演示为 **12-09 3:30–6:30 p.m.**，地点待定，最终报告日期仍记为 **Dec 7–11 / TBA**。以上均为 Pacific Time。完整日期见 [COURSE_SCHEDULE.md](../COURSE_SCHEDULE.md)。
+
 ## 项目主线
 
 官方项目要求 1–3 人设计、实现并评测一个与构建 Agent、Agent 数据或评测安全有关的系统。关键是尽早定义任务、环境、数据获取方式、成功条件和评价方法，报告有意义的一组任务、基线比较及失败分析，不能用单次成功演示代替评测。

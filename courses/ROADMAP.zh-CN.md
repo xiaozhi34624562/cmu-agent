@@ -11,7 +11,7 @@
 1. **一行对应一讲或一份作业。** 先沿“主讲义”确定本讲的问题，再配合“中文讲解”逐段学习；“全部资料”包含指定 readings、references、嘉宾和其他学习材料，按讲义主线穿插阅读。四门课的所有内容均保留。
 2. **遇到作业行就做作业。** 按正式原题完成必做要求，不等四门课全部看完才开始；同一时间只推进一项主要编码作业。
 3. **遇到“回访”只补本行明确的章节/目标。** 本讲所有部分、指定阅读与相应练习完成后，才标记整讲完成；不是把同一讲重新从头看一遍。
-4. **遇到“待讲义/待题目”保留待回访状态，继续下一条前置已满足的任务。** 材料状态基于 2026-11-01 的完整大纲与当前本地归档，未在本次重新抓取网站。未来课次的学习重点是规划，发布后按正文修订。
+4. **遇到“待讲义/待题目”保留待回访状态，继续下一条前置已满足的任务。** 材料状态于 2026-11-04 核对官网并同步新增正文；历史版本与获取限制保留在来源索引。未来课次的学习重点是规划，发布后按正文修订。
 
 你当前的掌握程度和每周投入时间尚未测量，所以这里给出明确顺序和验收，不编造完成日期或已学进度。
 
@@ -89,7 +89,7 @@
 | <a id="step-22"></a>22 | Stanford 08 · Multi-Agent Systems | [中文讲解](329z/8.MultiAgentSystems/notes.zh-CN.md) · [主讲义](329z/8.MultiAgentSystems/slides/lecture08.pdf) · [全部资料](329z/8.MultiAgentSystems/SOURCES.md) | 比较 handoff、agent-as-tool 与协作结构，写清共享状态和成本。 |
 | <a id="step-23"></a>23 | Harvard 03 · 100x Engineer with Multi-agents | [中文讲解](2680/3.AgentsUseII.100xEngineerWithMultiAgents/Lecture03_MultiAgent_完整学习讲义.md) · [主讲义](2680/3.AgentsUseII.100xEngineerWithMultiAgents/3_agent_use_2.pdf) · [全部资料](2680/3.AgentsUseII.100xEngineerWithMultiAgents/SOURCES.md) | 从使用者角度观察多 Agent 开发工作流和协调开销。 |
 | <a id="step-24"></a>24 | Harvard 05 · Multi-agent Architecture & Communication | [中文讲解](2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/lecture-05_multi-agent-coordination_完整学习笔记.md) · [主讲义](2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/5_agent_design_2.pdf) · [全部资料](2680/5.AgentsDesignII.MultiAgentArchitectureCoordinationAndCommunication/SOURCES.md) | 从实现者角度设计通信、协调与冲突处理。 |
-| <a id="step-25"></a>25 | CMU 18 · Multi-Agent Interaction（10/29） | [全部资料](11-768/18.MultiAgentInteraction/SOURCES.md) · **待讲义/分享材料** | 待讲义；保留正式 Multi-Agent Interaction 的学习位置，发布后核对与规划课的差异。 |
+| <a id="step-25"></a>25 | CMU 18 · Multi-Agent Interaction（10/29） | [完整中文讲解](11-768/18.MultiAgentInteraction/notes.zh-CN.md) · [44 页讲义](11-768/18.MultiAgentInteraction/lecture-18-multi-agent-systems.pdf) · [全部资料](11-768/18.MultiAgentInteraction/SOURCES.md) | 比较角色、开放委派、异步共享进展；继续学习人机交互、模拟器泛化、协作自训练与辩论监督，完成自测和确定性教学小程序。 |
 | <a id="step-26"></a>26 | CMU 06 · Coding Agents | [中文讲解](11-768/6.CodingAgents/coding_agent_lecture06_integrated_notes.md) · [主讲义](11-768/6.CodingAgents/lecture-06-coding-agents.pdf) · [全部资料](11-768/6.CodingAgents/SOURCES.md) | 理解代码任务、补丁、测试、环境和失败反馈怎样组成闭环。 |
 | <a id="step-27"></a>27 | CMU 14 · OpenHands | [中文讲解](11-768/14.OpenHands/Lecture14_OpenHands_Integrated_Notes.md) · [主讲义](11-768/14.OpenHands/lecture-14-openhands.pdf) · [全部资料](11-768/14.OpenHands/SOURCES.md) | 用 OpenHands 对照 agent SDK、执行环境与可复用 harness 结构。 |
 | <a id="step-28"></a>28 | Stanford 10 · Terminal-Bench 嘉宾课（后续 [第 41 步](#step-41)） | [讲解定位](329z/10.GuestLectureTerminalBench/notes.zh-CN.md#1-从写规则到观察结果工程责任如何移动) · [主讲义](329z/10.GuestLectureTerminalBench/slides/lecture10.pdf) · [全部资料](329z/10.GuestLectureTerminalBench/SOURCES.md) | **本次读 §1–5**：任务、尝试、轨迹、harness 与终端环境；评分与统计放到阶段 3。 |
@@ -121,7 +121,7 @@
 | <a id="step-41"></a>41 | Stanford 10 · Terminal-Bench 嘉宾课 **（回访）** | [讲解定位](329z/10.GuestLectureTerminalBench/notes.zh-CN.md#6-verifier-的权威来自隔离和有效性不能来自名字) · [主讲义](329z/10.GuestLectureTerminalBench/slides/lecture10.pdf) · [全部资料](329z/10.GuestLectureTerminalBench/SOURCES.md) | **回访 §6–14**：Verifier、作弊测试、重复实验、波动、失败分析和 benchmark 生命周期。 |
 | <a id="step-42"></a>42 | Stanford 16 · SWE-bench 嘉宾课 **（回访）** | [全部资料](329z/16.GuestLectureSWEBench/SOURCES.md) · **待讲义/分享材料** | 待讲义；回访评分器、任务分布、污染和可复现条件，不能因看过任务介绍就算完成。 |
 | <a id="step-43"></a>43 | Harvard 19 · 企业 Agent 开发与评测嘉宾课 | [全部资料](2680/19.GuestLectureDevelopingAndEvaluatingAgentsInEnterpriseSetting/SOURCES.md) · **待讲义/分享材料** | 待嘉宾材料；把企业任务约束与开发、评测闭环接起来。 |
-| <a id="step-44"></a>44 | **Stanford HW2 · Evaluate an Agent** | [概要与状态](329z/assignment/assignment-2/SOURCES.md) · [官方课程要求](329z/site/logistics.html) | **待完整题目。** 公开概要涉及任务四元组、代码评分、LLM Judge 与误差分析；目前只能做个人预习，不能记作完成正式作业。正式完成后接 [10 分钟闭卷验收](#stanford-quizzes)与 [HW2 评测互评](#stanford-peer-reviews)。 |
+| <a id="step-44"></a>44 | **Stanford HW2 · Building an Evaluation Task** | [17 页正式原题](329z/assignment/assignment-2/upstream/cs329z_assignment2_evaluation.pdf) · [starter / 版本](329z/assignment/assignment-2/SOURCES.md) | 学习 Harbor、Docker 和三类样例轨迹；构造一个有效任务，验证 oracle 与 verifier，提交五次独立模型尝试、一页报告和三份同伴评审。作业完成后接 [10 分钟闭卷验收](#stanford-quizzes)与 [评测互评](#stanford-peer-reviews)。 |
 
 **本阶段验收：** 评分器有正反例测试；开发集和验收集分开；能把解析、检索、推理、工具和评分错误区分开，并报告成本及结果波动。
 
@@ -162,8 +162,8 @@
 | <a id="step-56"></a>56 | CMU 20 · Reranking & Critic Models（11/12） | [全部资料](11-768/20.RerankingAndCriticModels/SOURCES.md) · **待讲义/分享材料** | 待讲义；区分最终评分器和搜索中的 critic，具体算法发布后核实。 |
 | <a id="step-57"></a>57 | CMU 21 · Tree Search（11/17） | [全部资料](11-768/21.TreeSearch/SOURCES.md) · **待讲义/分享材料** | 待讲义；在 critic/reranking 后学 Tree Search；比较时显式计入额外推理预算。 |
 | <a id="step-58"></a>58 | **Harvard HW3 · Mads-Opt** | [原题](2680/site/assignments/assignment3.html) · [starter](2680/assignment/assignment-3/SOURCES.md) | 在 HW2 基线上完成原题优化；同任务、同预算比较成功率、耗时与成本，说明每项改动的作用。 |
-| <a id="step-59"></a>59 | Harvard 22 · Assignment 3 Student Sharing | [全部资料](2680/22.Assignment3StudentSharing/SOURCES.md) · **待讲义/分享材料** | 在 HW3 后展示基线、改动、失败与取舍；官方分享材料待取得。 |
-| <a id="step-60"></a>60 | Harvard 23 · Assignment 3 Feedback | [全部资料](2680/23.Assignment3Feedback/SOURCES.md) · **待讲义/分享材料** | 在 HW3 后吸收正式反馈；把反馈转成可验证的下一项改动。 |
+| <a id="step-59"></a>59 | Harvard 22 · Assignment 3 Student Sharing | [全部资料](2680/22.Assignment3StudentSharing/SOURCES.md) · **原件有密码保护，正文待取得** | 在 HW3 后展示基线、改动、失败与取舍；官方分享材料待取得。 |
+| <a id="step-60"></a>60 | Harvard 23 · Assignment 3 Feedback | [全部资料](2680/23.Assignment3Feedback/SOURCES.md) · **原件有密码保护，正文待取得** | 在 HW3 后吸收正式反馈；把反馈转成可验证的下一项改动。 |
 | <a id="step-61"></a>61 | MIT W02 · Context Evolution 1 | [中文讲解](MAS.S62/2.ContextEvolution1/notes.zh-CN.md) · [主讲义](<MAS.S62/2.ContextEvolution1/slides/lec2 - context.pdf>) · [嘉宾讲义](MAS.S62/2.ContextEvolution1/slides/context_guest.pdf) · [教程](MAS.S62/2.ContextEvolution1/tutorials/Textgrad_tutorial.ipynb) · [全部资料](MAS.S62/2.ContextEvolution1/SOURCES.md) | 学习 Context Evolution 主讲、嘉宾和 TextGrad 教程，辨认优化对象与反馈。 |
 | <a id="step-62"></a>62 | MIT W03 · Context Evolution 2 | [中文讲解](MAS.S62/3.ContextEvolution2/notes.zh-CN.md) · [主讲义](<MAS.S62/3.ContextEvolution2/slides/lec3 - llm optimizers.pdf>) · [全部资料](MAS.S62/3.ContextEvolution2/SOURCES.md) | 学习 LLM optimizer 的候选生成、评估和选择，检查开发集与泛化。 |
 | <a id="step-63"></a>63 | **MIT Context Evolution · 计划作业** | [已公开 OpenEvolve notebook](MAS.S62/assignment/assignment-1/OpenEvolve_assignment.ipynb) · [题号与计划入口](MAS.S62/assignment/SOURCES.md) | 先完成已公开 notebook 的原题。它正文标 Assignment 3，本地旧入口为 HW1，大纲把 OpenEvolve 列为 Context 候选；正式编号对应关系待核实。 |
@@ -251,7 +251,7 @@
 
 | 项目 / 活动 | 在上面哪一阶段做 | 直接入口与交付 |
 |---|---|---|
-| <a id="project-stanford"></a>Stanford project | 阶段 1 proposal → 阶段 4 midpoint → 阶段 8 final | [项目要求](329z/project/SOURCES.md)：任务/数据/环境、工作原型、评测、报告与演示；官网 12/07–11 的 Demo Day 对应最终展示位置。 |
+| <a id="project-stanford"></a>Stanford project | 阶段 1 proposal → 阶段 4 midpoint → 阶段 8 final | [项目要求](329z/project/SOURCES.md)：任务/数据/环境、工作原型、评测、报告与演示；官网演示明确为 12/09 15:30–18:30，最终报告日期仍为 Dec 7–11/TBA；均为 Pacific Time。 |
 | <a id="project-cmu"></a>CMU mini research project | 阶段 3 问题/proposal → 阶段 5 check-in → 阶段 8 report/poster | [项目要求](11-768/project/SOURCES.md)：研究问题、基线、机制实验与反例；11/05 project hours、12/01 和 12/03 poster 均保留。项目占课程评分 50%；完整 handout 未取得，组队人数存在官方页面冲突。 |
 | <a id="project-harvard"></a>Harvard project | 阶段 3 proposal → 阶段 6 性能/产品实验 → 阶段 8 final | [正式要求](2680/project/SOURCES.md)：选择 product/research track；按原题完成比较、消融、反例、成本与可复现报告；12/07 poster/demo 保留。 |
 | <a id="project-mit-proposal"></a>MIT W4 · Project Proposal | 阶段 3 结束前 | [W4 活动](MAS.S62/4.ProjectProposalPresentations/SOURCES.md) · [本学期大纲](MAS.S62/site/syllabus/ai4ai-syllabus.pdf)：明确演化对象、研究问题与可信评测，提交相关工作综述和初步基线结果，并做 proposal 展示。 |
@@ -264,7 +264,7 @@
 |---|---|---|
 | Stanford Paper Video | 阶段 3 | [正式 handout](329z/site/assignments/paper_video.pdf)：录制 10–15 分钟视频，包含方法、批判分析和实践增量（运行代码、具体例子或小实验）。按 handout 的选题限制选论文；不能只复述论文。 |
 | <a id="stanford-quizzes"></a>Stanford 2 次 HW-based quiz | [第 20 步 HW1](#step-20)后一次；[第 44 步 HW2](#step-44)正式完成后一次 | [正式要求](329z/site/logistics.html#coursework)：每次 10 分钟，解释本人作业的设计决策与取舍。正式试题未公开时，独立闭卷自测并保存回答，标记为自学验收，不计作学校 quiz 成绩。 |
-| <a id="stanford-peer-reviews"></a>Stanford 4 类同伴评审 | 阶段 3 的论文视频与 HW2 评测各一次；阶段 4 的中期 demo、阶段 8 的最终 demo 各一次 | [正式要求](329z/site/logistics.html#coursework)：四类活动各评 2 份他人作品，使用对应 review form。没有课程作品或表单时，记录待完成；对公开作品的替代评审单独标为自学练习。 |
+| <a id="stanford-peer-reviews"></a>Stanford 同伴评审 | 阶段 3 的论文视频与 HW2 评测；阶段 4 的中期 demo、阶段 8 的最终 demo | [课程概要](329z/site/logistics.html#coursework) 仍统一写每类 2 份；新 [HW2 handout p.15](329z/assignment/assignment-2/upstream/cs329z_assignment2_evaluation.pdf#page=15) 明确要求评审 **3 份任务**，12/02 提交，按该作业具体要求理解。课程 gallery 未取得，替代评审单独标作自学练习。 |
 | CMU lecture highlights | 每一讲结束 | [官方大纲](syllabus-snapshots/2026-11-01/cmu/syllabus.json)：记录一个有证据的 takeaway、一个仍不明白的问题；正式课程提交规则以官网为准。 |
 | MIT 4 次 reading assignments | 阶段 5 Context 一次、Harness 一次；阶段 7 Model 一次；阶段 8 Task/Environment 一次 | [大纲与计划](MAS.S62/site/syllabus/ai4ai-syllabus.pdf)：每次提交指定论文的主旨总结，并结合本人数据或研究回答 research question probes。配套阅读见对应 lecture 的“全部资料”；四次作业的具体篇目和问题待核实，按主题插入是本路线的个人安排。 |
 | Harvard 讨论与学生分享 | 已插在相关 lecture / HW 后 | 第 9 项讨论与第 21–25 项分享/反馈都在主表中，不能因为没有教师 slides 而跳过。 |
@@ -302,6 +302,6 @@
 - 每讲以 lecture slides 决定主线，readings 补机制与证据，references 补背景与实现；讨论课按正式阅读要求组织。每个“全部资料”入口都保留未取得材料的状态。
 - 一个阶段可以“可执行部分完成，仍有待回访项”。后续讲义未发布时，继续前置已满足的任务；不把占位、阅读过概要或下载文件记成学会。
 - 同 URL 正文修订时保留来源版本，复查受影响的讲解、页码和作业约束；日期变更只调整课表，知识依赖有变化才重排步骤。
-- 内容公开后更新当前步骤、材料链接和 [课表覆盖表](SYLLABUS-COVERAGE.zh-CN.md)，不新增一份平行 roadmap。完整官方脉络与来源见 [COURSE_LAYOUT.json](COURSE_LAYOUT.json) 和 [大纲来源](syllabus-snapshots/2026-11-01/README.md)。
+- 内容公开后更新当前步骤、材料链接和 [课表覆盖表](SYLLABUS-COVERAGE.zh-CN.md)，不新增一份平行 roadmap。完整官方脉络与来源见 [COURSE_LAYOUT.json](COURSE_LAYOUT.json) 和 [大纲来源](syllabus-snapshots/2026-11-04/README.md)。
 
 学到 Senior 所需的证据包括：能运行、能解释失败、能做设计取舍、能在变化的任务中检验边界，并让他人理解和复现。课程项目提供练习场，真实运行维护和协作继续检验这些能力。

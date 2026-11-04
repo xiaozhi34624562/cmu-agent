@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-01",
+  "as_of": "2026-11-04",
   "timezone": "Asia/Shanghai",
   "scope": "完整公开日历；phase/local_path/status 为规划与本地核对字段，不是官方学习顺序",
   "phases": {
@@ -3399,7 +3399,12 @@
       "kind": "teaching",
       "phase": "P4",
       "materials": [],
-      "readings": [],
+      "readings": [
+        {
+          "label": "Securing our frontier model training environment",
+          "url": "https://openai.com/index/securing-our-frontier-model-training-environment/"
+        }
+      ],
       "references": [],
       "local_path": "courses/11-768/17.ObservabilityAndMonitoring",
       "source": "https://www.cmu-agents.com/#/schedule",
@@ -3412,7 +3417,13 @@
         "lecturer": {
           "name": "Eric Wallace",
           "url": "https://www.ericswallace.com/"
-        }
+        },
+        "readings": [
+          {
+            "label": "Securing our frontier model training environment",
+            "url": "https://openai.com/index/securing-our-frontier-model-training-environment/"
+          }
+        ]
       },
       "material_status": "公开课表已有安排，尚无讲义链接；等待官方材料。",
       "learning_status": "unknown_to_be_confirmed_by_learner"
@@ -3430,8 +3441,154 @@
           "url": "https://www.cmu-agents.com/slides/2026-10-27-zora-wang.pdf"
         }
       ],
-      "readings": [],
-      "references": [],
+      "readings": [
+        {
+          "label": "How Well Does Agent Development Reflect Real-World Work?",
+          "url": "https://arxiv.org/abs/2603.01203"
+        },
+        {
+          "label": "GDPval: Evaluating AI Model Performance on Real-World Economically Valuable Tasks",
+          "url": "https://arxiv.org/abs/2510.04374"
+        },
+        {
+          "label": "CollabSkill: Evaluating Human-Agent Collaboration on Real-World Tasks",
+          "url": "https://arxiv.org/abs/2606.09833"
+        },
+        {
+          "label": "Efficient Test-Time Adaptation through Human-AI Interaction",
+          "url": "https://arxiv.org/abs/2609.04141"
+        },
+        {
+          "label": "Future of Work with AI Agents: Auditing Automation and Augmentation Potential across the U.S. Workforce",
+          "url": "https://arxiv.org/abs/2506.06576"
+        }
+      ],
+      "references": [
+        {
+          "label": "How AI is transforming work at Anthropic",
+          "url": "https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic"
+        },
+        {
+          "label": "Measuring AI Ability to Complete Long Software Tasks",
+          "url": "https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/"
+        },
+        {
+          "label": "GPT-6 Astra: A new generation of intelligence",
+          "url": "https://openai.com/index/gpt-6-astra/"
+        },
+        {
+          "label": "Remote Labor Index: Measuring AI Automation of Remote Work",
+          "url": "https://arxiv.org/abs/2510.26787"
+        },
+        {
+          "label": "Humans are Missing from AI Coding Agent Research",
+          "url": "https://arxiv.org/abs/2608.12355"
+        },
+        {
+          "label": "The GenAI Divide: State of AI in Business 2025",
+          "url": "https://web.archive.org/web/20250818145714/https://nanda.media.mit.edu/ai_report_2025.pdf"
+        },
+        {
+          "label": "O*NET Database",
+          "url": "https://www.onetcenter.org/database.html"
+        },
+        {
+          "label": "JobBench: Aligning Agent Work With Human Will",
+          "url": "https://arxiv.org/abs/2605.26329"
+        },
+        {
+          "label": "OpenCUA: Open Foundations for Computer-Use Agents",
+          "url": "https://arxiv.org/abs/2508.09123"
+        },
+        {
+          "label": "BAGEL: Bootstrapping Agents by Guiding Exploration with Language",
+          "url": "https://arxiv.org/abs/2403.08140"
+        },
+        {
+          "label": "NNetNav: Unsupervised Learning of Browser Agents Through Environment Interaction in the Wild",
+          "url": "https://arxiv.org/abs/2410.02907"
+        },
+        {
+          "label": "Measuring what Matters: Construct Validity in Large Language Model Benchmarks",
+          "url": "https://arxiv.org/abs/2511.04703"
+        },
+        {
+          "label": "TheAgentCompany: Benchmarking LLM Agents on Consequential Real World Tasks",
+          "url": "https://arxiv.org/abs/2412.14161"
+        },
+        {
+          "label": "Gym-Anything: Turn any Software into an Agent Environment",
+          "url": "https://arxiv.org/abs/2604.06126"
+        },
+        {
+          "label": "WebArena: A Realistic Web Environment for Building Autonomous Agents",
+          "url": "https://arxiv.org/abs/2307.13854"
+        },
+        {
+          "label": "Terminal-Bench: Benchmarking Agents on Hard, Realistic Tasks in Command Line Interfaces",
+          "url": "https://arxiv.org/abs/2601.11868"
+        },
+        {
+          "label": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
+          "url": "https://arxiv.org/abs/2310.06770"
+        },
+        {
+          "label": "DR Tulu: Reinforcement Learning with Evolving Rubrics for Deep Research",
+          "url": "https://arxiv.org/abs/2511.19399"
+        },
+        {
+          "label": "Self-Preference Bias in Rubric-Based Evaluation of Large Language Models",
+          "url": "https://arxiv.org/abs/2604.06996"
+        },
+        {
+          "label": "Why SWE-bench Verified no longer measures frontier coding capabilities",
+          "url": "https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/"
+        },
+        {
+          "label": "LiveCodeBench: Holistic and Contamination Free Evaluation of Large Language Models for Code",
+          "url": "https://arxiv.org/abs/2403.07974"
+        },
+        {
+          "label": "CowPilot: A Framework for Autonomous and Human-Agent Collaborative Web Navigation",
+          "url": "https://arxiv.org/abs/2501.16609"
+        },
+        {
+          "label": "Modeling Distinct Human Interaction in Web Agents",
+          "url": "https://arxiv.org/abs/2602.17588"
+        },
+        {
+          "label": "On the Navier–Stokes Millennium Prize Problem",
+          "url": "https://openai.com/index/navier-stokes-solution/"
+        },
+        {
+          "label": "Into the Unknown: Benchmarking AI agents on open scientific research problems",
+          "url": "https://arxiv.org/abs/2610.19159"
+        },
+        {
+          "label": "OpenAgentSafety: A Comprehensive Framework for Evaluating Real-World AI Agent Safety",
+          "url": "https://arxiv.org/abs/2507.06134"
+        },
+        {
+          "label": "When Benign Inputs Lead to Severe Harms: Eliciting Unsafe Unintended Behaviors of Computer-Use Agents",
+          "url": "https://arxiv.org/abs/2602.08235"
+        },
+        {
+          "label": "Are We Automating the Joy Out of Work? Designing AI to Augment Work, Not Meaning",
+          "url": "https://arxiv.org/abs/2603.14963"
+        },
+        {
+          "label": "GPTs are GPTs: An Early Look at the Labor Market Impact Potential of Large Language Models",
+          "url": "https://arxiv.org/abs/2303.10130"
+        },
+        {
+          "label": "Automation and New Tasks: How Technology Displaces and Reinstates Labor",
+          "url": "https://www.nber.org/papers/w25684"
+        },
+        {
+          "label": "Canaries in the Coal Mine? Six Facts about the Recent Employment Effects of Artificial Intelligence",
+          "url": "https://digitaleconomy.stanford.edu/wp-content/uploads/2025/08/Canaries_BrynjolfssonChandarChen.pdf"
+        }
+      ],
       "local_path": "courses/11-768/16.AgentsAndTheFutureOfWork",
       "source": "https://www.cmu-agents.com/#/schedule",
       "evidence": "cmu/schedule.json",
@@ -3447,7 +3604,155 @@
         "slides": {
           "label": "Zora Wang lecture slides",
           "url": "/slides/2026-10-27-zora-wang.pdf"
-        }
+        },
+        "readings": [
+          {
+            "label": "How Well Does Agent Development Reflect Real-World Work?",
+            "url": "https://arxiv.org/abs/2603.01203"
+          },
+          {
+            "label": "GDPval: Evaluating AI Model Performance on Real-World Economically Valuable Tasks",
+            "url": "https://arxiv.org/abs/2510.04374"
+          },
+          {
+            "label": "CollabSkill: Evaluating Human-Agent Collaboration on Real-World Tasks",
+            "url": "https://arxiv.org/abs/2606.09833"
+          },
+          {
+            "label": "Efficient Test-Time Adaptation through Human-AI Interaction",
+            "url": "https://arxiv.org/abs/2609.04141"
+          },
+          {
+            "label": "Future of Work with AI Agents: Auditing Automation and Augmentation Potential across the U.S. Workforce",
+            "url": "https://arxiv.org/abs/2506.06576"
+          }
+        ],
+        "references": [
+          {
+            "label": "How AI is transforming work at Anthropic",
+            "url": "https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic"
+          },
+          {
+            "label": "Measuring AI Ability to Complete Long Software Tasks",
+            "url": "https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/"
+          },
+          {
+            "label": "GPT-6 Astra: A new generation of intelligence",
+            "url": "https://openai.com/index/gpt-6-astra/"
+          },
+          {
+            "label": "Remote Labor Index: Measuring AI Automation of Remote Work",
+            "url": "https://arxiv.org/abs/2510.26787"
+          },
+          {
+            "label": "Humans are Missing from AI Coding Agent Research",
+            "url": "https://arxiv.org/abs/2608.12355"
+          },
+          {
+            "label": "The GenAI Divide: State of AI in Business 2025",
+            "url": "https://web.archive.org/web/20250818145714/https://nanda.media.mit.edu/ai_report_2025.pdf"
+          },
+          {
+            "label": "O*NET Database",
+            "url": "https://www.onetcenter.org/database.html"
+          },
+          {
+            "label": "JobBench: Aligning Agent Work With Human Will",
+            "url": "https://arxiv.org/abs/2605.26329"
+          },
+          {
+            "label": "OpenCUA: Open Foundations for Computer-Use Agents",
+            "url": "https://arxiv.org/abs/2508.09123"
+          },
+          {
+            "label": "BAGEL: Bootstrapping Agents by Guiding Exploration with Language",
+            "url": "https://arxiv.org/abs/2403.08140"
+          },
+          {
+            "label": "NNetNav: Unsupervised Learning of Browser Agents Through Environment Interaction in the Wild",
+            "url": "https://arxiv.org/abs/2410.02907"
+          },
+          {
+            "label": "Measuring what Matters: Construct Validity in Large Language Model Benchmarks",
+            "url": "https://arxiv.org/abs/2511.04703"
+          },
+          {
+            "label": "TheAgentCompany: Benchmarking LLM Agents on Consequential Real World Tasks",
+            "url": "https://arxiv.org/abs/2412.14161"
+          },
+          {
+            "label": "Gym-Anything: Turn any Software into an Agent Environment",
+            "url": "https://arxiv.org/abs/2604.06126"
+          },
+          {
+            "label": "WebArena: A Realistic Web Environment for Building Autonomous Agents",
+            "url": "https://arxiv.org/abs/2307.13854"
+          },
+          {
+            "label": "Terminal-Bench: Benchmarking Agents on Hard, Realistic Tasks in Command Line Interfaces",
+            "url": "https://arxiv.org/abs/2601.11868"
+          },
+          {
+            "label": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
+            "url": "https://arxiv.org/abs/2310.06770"
+          },
+          {
+            "label": "DR Tulu: Reinforcement Learning with Evolving Rubrics for Deep Research",
+            "url": "https://arxiv.org/abs/2511.19399"
+          },
+          {
+            "label": "Self-Preference Bias in Rubric-Based Evaluation of Large Language Models",
+            "url": "https://arxiv.org/abs/2604.06996"
+          },
+          {
+            "label": "Why SWE-bench Verified no longer measures frontier coding capabilities",
+            "url": "https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/"
+          },
+          {
+            "label": "LiveCodeBench: Holistic and Contamination Free Evaluation of Large Language Models for Code",
+            "url": "https://arxiv.org/abs/2403.07974"
+          },
+          {
+            "label": "CowPilot: A Framework for Autonomous and Human-Agent Collaborative Web Navigation",
+            "url": "https://arxiv.org/abs/2501.16609"
+          },
+          {
+            "label": "Modeling Distinct Human Interaction in Web Agents",
+            "url": "https://arxiv.org/abs/2602.17588"
+          },
+          {
+            "label": "On the Navier–Stokes Millennium Prize Problem",
+            "url": "https://openai.com/index/navier-stokes-solution/"
+          },
+          {
+            "label": "Into the Unknown: Benchmarking AI agents on open scientific research problems",
+            "url": "https://arxiv.org/abs/2610.19159"
+          },
+          {
+            "label": "OpenAgentSafety: A Comprehensive Framework for Evaluating Real-World AI Agent Safety",
+            "url": "https://arxiv.org/abs/2507.06134"
+          },
+          {
+            "label": "When Benign Inputs Lead to Severe Harms: Eliciting Unsafe Unintended Behaviors of Computer-Use Agents",
+            "url": "https://arxiv.org/abs/2602.08235"
+          },
+          {
+            "label": "Are We Automating the Joy Out of Work? Designing AI to Augment Work, Not Meaning",
+            "url": "https://arxiv.org/abs/2603.14963"
+          },
+          {
+            "label": "GPTs are GPTs: An Early Look at the Labor Market Impact Potential of Large Language Models",
+            "url": "https://arxiv.org/abs/2303.10130"
+          },
+          {
+            "label": "Automation and New Tasks: How Technology Displaces and Reinstates Labor",
+            "url": "https://www.nber.org/papers/w25684"
+          },
+          {
+            "label": "Canaries in the Coal Mine? Six Facts about the Recent Employment Effects of Artificial Intelligence",
+            "url": "https://digitaleconomy.stanford.edu/wp-content/uploads/2025/08/Canaries_BrynjolfssonChandarChen.pdf"
+          }
+        ]
       },
       "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
       "learning_status": "unknown_to_be_confirmed_by_learner"
@@ -3459,9 +3764,108 @@
       "title": "Interaction 1: Multi-Agent Interaction",
       "kind": "teaching",
       "phase": "P2",
-      "materials": [],
-      "readings": [],
-      "references": [],
+      "materials": [
+        {
+          "label": "Lecture 18 slides",
+          "url": "https://www.cmu-agents.com/slides/lecture-18-multi-agent-systems.pdf"
+        }
+      ],
+      "readings": [
+        {
+          "label": "Improving Factuality and Reasoning in Language Models through Multiagent Debate",
+          "url": "https://arxiv.org/abs/2305.14325"
+        },
+        {
+          "label": "Multi-Agent Computer Use",
+          "url": "https://arxiv.org/abs/2606.01533"
+        },
+        {
+          "label": "Scaling Discovery through Test-Time Communication",
+          "url": "https://arxiv.org/abs/2609.21032"
+        },
+        {
+          "label": "SWEET-RL: Training Multi-Turn LLM Agents on Collaborative Reasoning Tasks",
+          "url": "https://arxiv.org/abs/2503.15478"
+        },
+        {
+          "label": "Don’t lie to your friends: Learning what you know from collaborative self-play",
+          "url": "https://arxiv.org/abs/2503.14481"
+        },
+        {
+          "label": "Debating with More Persuasive LLMs Leads to More Truthful Answers",
+          "url": "https://arxiv.org/abs/2402.06782"
+        }
+      ],
+      "references": [
+        {
+          "label": "Multi-Agent Reinforcement Learning: Foundations and Modern Approaches",
+          "url": "https://www.marl-book.com/"
+        },
+        {
+          "label": "In-Context Impersonation Reveals Large Language Models’ Strengths and Biases",
+          "url": "https://arxiv.org/abs/2305.14930"
+        },
+        {
+          "label": "ChatDev: Communicative Agents for Software Development",
+          "url": "https://arxiv.org/abs/2307.07924"
+        },
+        {
+          "label": "Build a personal assistant with subagents",
+          "url": "https://docs.langchain.com/oss/python/langchain/multi-agent/subagents-personal-assistant"
+        },
+        {
+          "label": "Recursive Agent Optimization",
+          "url": "https://arxiv.org/abs/2605.06639"
+        },
+        {
+          "label": "Effective Strategies for Asynchronous Software Engineering Agents",
+          "url": "https://arxiv.org/abs/2603.21489"
+        },
+        {
+          "label": "LLM-Based Multi-Agent Blackboard System for Information Discovery in Data Science",
+          "url": "https://arxiv.org/abs/2510.01285"
+        },
+        {
+          "label": "Decentralized Multi-Agent Systems with Shared Context",
+          "url": "https://arxiv.org/abs/2606.10662"
+        },
+        {
+          "label": "GitSwarm: Decentralized Compounding Inference",
+          "url": "https://arxiv.org/abs/2610.04862"
+        },
+        {
+          "label": "What does it take to build a human-like user simulator?",
+          "url": "https://nickatomlin.github.io/blog/user-simulators-2.html"
+        },
+        {
+          "label": "Training Proactive and Personalized LLM Agents",
+          "url": "https://arxiv.org/abs/2511.02208"
+        },
+        {
+          "label": "One Frozen Simulator Is Not Enough: Simulator Collapse in Multi-Agent RL",
+          "url": "https://arxiv.org/abs/2608.12253"
+        },
+        {
+          "label": "GlossoGen: Emergent Language in Complex Multi-Agent LLM Interactions",
+          "url": "https://arxiv.org/abs/2609.01491"
+        },
+        {
+          "label": "Brief independent investigation of agents’ behavior, reasoning and collaboration in the OpenAI / Hugging Face hacking incident",
+          "url": "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/"
+        },
+        {
+          "label": "Magentic Marketplace: An Open-Source Environment for Studying Agentic Markets",
+          "url": "https://arxiv.org/abs/2510.25779"
+        },
+        {
+          "label": "Generative Agents: Interactive Simulacra of Human Behavior",
+          "url": "https://arxiv.org/abs/2304.03442"
+        },
+        {
+          "label": "Relying on the Unreliable: The Impact of Language Models’ Reluctance to Express Uncertainty",
+          "url": "https://aclanthology.org/2024.acl-long.198/"
+        }
+      ],
       "local_path": "courses/11-768/18.MultiAgentInteraction",
       "source": "https://www.cmu-agents.com/#/schedule",
       "evidence": "cmu/schedule.json",
@@ -3474,9 +3878,109 @@
           "name": "Saujas Vaduguru",
           "url": "https://saujasv.github.io/"
         },
+        "slides": {
+          "label": "Lecture 18 slides",
+          "url": "/slides/lecture-18-multi-agent-systems.pdf"
+        },
+        "readings": [
+          {
+            "label": "Improving Factuality and Reasoning in Language Models through Multiagent Debate",
+            "url": "https://arxiv.org/abs/2305.14325"
+          },
+          {
+            "label": "Multi-Agent Computer Use",
+            "url": "https://arxiv.org/abs/2606.01533"
+          },
+          {
+            "label": "Scaling Discovery through Test-Time Communication",
+            "url": "https://arxiv.org/abs/2609.21032"
+          },
+          {
+            "label": "SWEET-RL: Training Multi-Turn LLM Agents on Collaborative Reasoning Tasks",
+            "url": "https://arxiv.org/abs/2503.15478"
+          },
+          {
+            "label": "Don’t lie to your friends: Learning what you know from collaborative self-play",
+            "url": "https://arxiv.org/abs/2503.14481"
+          },
+          {
+            "label": "Debating with More Persuasive LLMs Leads to More Truthful Answers",
+            "url": "https://arxiv.org/abs/2402.06782"
+          }
+        ],
+        "references": [
+          {
+            "label": "Multi-Agent Reinforcement Learning: Foundations and Modern Approaches",
+            "url": "https://www.marl-book.com/"
+          },
+          {
+            "label": "In-Context Impersonation Reveals Large Language Models’ Strengths and Biases",
+            "url": "https://arxiv.org/abs/2305.14930"
+          },
+          {
+            "label": "ChatDev: Communicative Agents for Software Development",
+            "url": "https://arxiv.org/abs/2307.07924"
+          },
+          {
+            "label": "Build a personal assistant with subagents",
+            "url": "https://docs.langchain.com/oss/python/langchain/multi-agent/subagents-personal-assistant"
+          },
+          {
+            "label": "Recursive Agent Optimization",
+            "url": "https://arxiv.org/abs/2605.06639"
+          },
+          {
+            "label": "Effective Strategies for Asynchronous Software Engineering Agents",
+            "url": "https://arxiv.org/abs/2603.21489"
+          },
+          {
+            "label": "LLM-Based Multi-Agent Blackboard System for Information Discovery in Data Science",
+            "url": "https://arxiv.org/abs/2510.01285"
+          },
+          {
+            "label": "Decentralized Multi-Agent Systems with Shared Context",
+            "url": "https://arxiv.org/abs/2606.10662"
+          },
+          {
+            "label": "GitSwarm: Decentralized Compounding Inference",
+            "url": "https://arxiv.org/abs/2610.04862"
+          },
+          {
+            "label": "What does it take to build a human-like user simulator?",
+            "url": "https://nickatomlin.github.io/blog/user-simulators-2.html"
+          },
+          {
+            "label": "Training Proactive and Personalized LLM Agents",
+            "url": "https://arxiv.org/abs/2511.02208"
+          },
+          {
+            "label": "One Frozen Simulator Is Not Enough: Simulator Collapse in Multi-Agent RL",
+            "url": "https://arxiv.org/abs/2608.12253"
+          },
+          {
+            "label": "GlossoGen: Emergent Language in Complex Multi-Agent LLM Interactions",
+            "url": "https://arxiv.org/abs/2609.01491"
+          },
+          {
+            "label": "Brief independent investigation of agents’ behavior, reasoning and collaboration in the OpenAI / Hugging Face hacking incident",
+            "url": "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/"
+          },
+          {
+            "label": "Magentic Marketplace: An Open-Source Environment for Studying Agentic Markets",
+            "url": "https://arxiv.org/abs/2510.25779"
+          },
+          {
+            "label": "Generative Agents: Interactive Simulacra of Human Behavior",
+            "url": "https://arxiv.org/abs/2304.03442"
+          },
+          {
+            "label": "Relying on the Unreliable: The Impact of Language Models’ Reluctance to Express Uncertainty",
+            "url": "https://aclanthology.org/2024.acl-long.198/"
+          }
+        ],
         "milestone": "Assignment 3 due: Training"
       },
-      "material_status": "公开课表已有安排，尚无讲义链接；等待官方材料。",
+      "material_status": "44 页讲义、6 篇指定阅读及参考材料已归档；完整中文讲解见本课索引",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -3740,7 +4244,7 @@
         "Juncheng Yang",
         "Course overview and logistics [slide]",
         "",
-        "Assignment 1 out (Mads-Lens: Watch the agent work); Sign up for AWS"
+        "Assignment 1 out (Mads-Lens: Watch the\n                agent work); Sign up for AWS"
       ],
       "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
       "learning_status": "unknown_to_be_confirmed_by_learner"
@@ -3918,7 +4422,7 @@
         "Students",
         "Student sharing I: Learning from Assignment 1",
         "",
-        "Assignment 2 out (Mads-Loop: Build the loop)"
+        "Assignment 2 out (Mads-Loop: Build\n                the loop)"
       ],
       "material_status": "公开课表已有安排，尚无讲义链接；等待官方材料。",
       "learning_status": "unknown_to_be_confirmed_by_learner"
@@ -4059,7 +4563,7 @@
         "Harsh Nilesh Pathak (Snowflake)",
         "Guest lecture: Developing and Evaluating Agents in Enterprise Setting",
         "",
-        "Assignment 3 out (Mads-Opt: Make every token count)"
+        "Assignment 3 out (Mads-Opt: Make\n                every token count)"
       ],
       "material_status": "公开课表已有安排，尚无讲义链接；等待官方材料。",
       "learning_status": "unknown_to_be_confirmed_by_learner"
@@ -4189,7 +4693,7 @@
         "Juncheng Yang",
         "Efficient LLM serving basics I: intro to LLMs [slide]",
         "Transformer ; Llama 3 ; Mixtral ; more reading →",
-        "Assignment 3 due Tue Oct 20, 11:59pm"
+        "Assignment 3 due Tue Oct 20,\n                11:59pm"
       ],
       "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
       "learning_status": "unknown_to_be_confirmed_by_learner"
@@ -4226,7 +4730,7 @@
         "Juncheng Yang",
         "Efficient LLM serving basics II: intro to GPUs [slide]",
         "CUDA programming guide ; more reading →",
-        "Assignment 4 out (Mads-Serve: Own the serving engine)"
+        "Assignment 4 out (Mads-Serve: Own\n                the serving engine)"
       ],
       "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
       "learning_status": "unknown_to_be_confirmed_by_learner"
@@ -4256,7 +4760,7 @@
         "",
         ""
       ],
-      "material_status": "官网已有讲义/分享材料链接；本地正文尚未归档。",
+      "material_status": "受密码保护的 PDF 原件已归档；未取得可读正文，不编写内容讲解",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4284,7 +4788,7 @@
         "",
         "Project proposal due"
       ],
-      "material_status": "官网已有讲义/分享材料链接；本地正文尚未归档。",
+      "material_status": "受密码保护的 PDF 原件已归档；未取得可读正文，不编写内容讲解",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4374,7 +4878,7 @@
         "Juncheng Yang",
         "Efficient agentic systems: scheduling and prefix caching",
         "",
-        "Assignment 5 out (Mads-Stack: Optimize the full stack)"
+        "Assignment 5 out (Mads-Stack:\n                Optimize the full stack)"
       ],
       "material_status": "已有题目/嘉宾安排；尚无讲义链接",
       "learning_status": "unknown_to_be_confirmed_by_learner"
@@ -4443,7 +4947,7 @@
         "Students",
         "Student sharing III: Engine optimizations and agent-engine co-design",
         "",
-        "Assignment 5 due Sun Nov 29, 11:59pm"
+        "Assignment 5 due Tue Nov 24, 11:59pm"
       ],
       "material_status": "公开课表已有安排，尚无讲义链接；等待官方材料。",
       "learning_status": "unknown_to_be_confirmed_by_learner"
@@ -4531,7 +5035,7 @@
         "2026-12-07",
         "Students",
         "Final project poster and demo",
-        "Present your final project as a poster and a live demo. Location: SEC 1.402 from 9:00 AM to 1:00 PM",
+        "Present your final project as a poster and a live demo. Location: SEC 1.402 from\n                  9:00 AM to 1:00 PM",
         "Final project due Tue Dec 8, 11:59pm"
       ],
       "material_status": "项目活动；按官方要求另排个人里程碑",
@@ -5100,15 +5604,18 @@
       "readings": [
         {
           "label": "Zaharia et al. \"The Shift from Models to Compound AI Systems.\" BAIR Blog (2024).",
-          "url": "https://bair.berkeley.edu/blog/2024/02/18/compound-ai-systems/"
+          "url": "https://bair.berkeley.edu/blog/2024/02/18/compound-ai-systems/",
+          "role": "assigned"
         },
         {
           "label": "Weng. \"LLM Powered Autonomous Agents.\" Lil'Log (2023).",
-          "url": "https://lilianweng.github.io/posts/2023-06-23-agent/"
+          "url": "https://lilianweng.github.io/posts/2023-06-23-agent/",
+          "role": "assigned"
         },
         {
           "label": "Kapoor et al. \"AI Agents That Matter.\" TMLR (2025).",
-          "url": "https://arxiv.org/abs/2407.01502"
+          "url": "https://arxiv.org/abs/2407.01502",
+          "role": "assigned"
         }
       ],
       "local_path": "courses/329z/1.IntroductionWhatAreAgenticSystems",
@@ -5139,15 +5646,18 @@
       "readings": [
         {
           "label": "Vaswani et al. \"Attention Is All You Need.\" NeurIPS (2017).",
-          "url": "https://arxiv.org/abs/1706.03762"
+          "url": "https://arxiv.org/abs/1706.03762",
+          "role": "assigned"
         },
         {
           "label": "Katharopoulos et al. \"Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention.\" ICML (2020).",
-          "url": "https://arxiv.org/abs/2006.16236"
+          "url": "https://arxiv.org/abs/2006.16236",
+          "role": "assigned"
         },
         {
           "label": "Rajasekaran et al. \"Effective Context Engineering for AI Agents.\" Anthropic (2025).",
-          "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
+          "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "role": "assigned"
         }
       ],
       "local_path": "courses/329z/2.LLMsForBuilders",
@@ -5178,15 +5688,18 @@
       "readings": [
         {
           "label": "Lewis et al. \"Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks.\" NeurIPS (2020).",
-          "url": "https://arxiv.org/abs/2005.11401"
+          "url": "https://arxiv.org/abs/2005.11401",
+          "role": "assigned"
         },
         {
           "label": "Karpukhin et al. \"Dense Passage Retrieval for Open-Domain Question Answering.\" EMNLP (2020).",
-          "url": "https://arxiv.org/abs/2004.04906"
+          "url": "https://arxiv.org/abs/2004.04906",
+          "role": "assigned"
         },
         {
           "label": "Khattab & Zaharia. \"ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT.\" SIGIR (2020).",
-          "url": "https://arxiv.org/abs/2004.12832"
+          "url": "https://arxiv.org/abs/2004.12832",
+          "role": "assigned"
         }
       ],
       "local_path": "courses/329z/3.RetrievalAugmentedGenerationRAG",
@@ -5217,15 +5730,18 @@
       "readings": [
         {
           "label": "Schick et al. \"Toolformer: Language Models Can Teach Themselves to Use Tools.\" NeurIPS (2023).",
-          "url": "https://arxiv.org/abs/2302.04761"
+          "url": "https://arxiv.org/abs/2302.04761",
+          "role": "assigned"
         },
         {
           "label": "Patil et al. \"Gorilla: Large Language Model Connected with Massive APIs.\" NeurIPS (2024).",
-          "url": "https://arxiv.org/abs/2305.15334"
+          "url": "https://arxiv.org/abs/2305.15334",
+          "role": "assigned"
         },
         {
           "label": "Model Context Protocol Specification, revision 2025-06-18. modelcontextprotocol.io (2025).",
-          "url": "https://modelcontextprotocol.io/specification/2025-06-18"
+          "url": "https://modelcontextprotocol.io/specification/2025-06-18",
+          "role": "assigned"
         }
       ],
       "local_path": "courses/329z/4.ToolUseFunctionCalling",
@@ -5260,15 +5776,18 @@
       "readings": [
         {
           "label": "Khattab et al. \"DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines.\" ICLR (2024).",
-          "url": "https://arxiv.org/abs/2310.03714"
+          "url": "https://arxiv.org/abs/2310.03714",
+          "role": "assigned"
         },
         {
           "label": "LangChain. \"LangGraph Overview.\" LangChain Docs.",
-          "url": "https://docs.langchain.com/oss/python/langgraph/overview"
+          "url": "https://docs.langchain.com/oss/python/langgraph/overview",
+          "role": "assigned"
         },
         {
           "label": "Arena.ai. \"HarnessTax: How Much Does the Harness Matter for Coding Agents?\" Arena Blog (2026).",
-          "url": "https://arena.ai/blog/coding-agents-harness-tax"
+          "url": "https://arena.ai/blog/coding-agents-harness-tax",
+          "role": "assigned"
         }
       ],
       "local_path": "courses/329z/5.FrameworksOrchestration",
@@ -5299,23 +5818,28 @@
       "readings": [
         {
           "label": "Yao et al. \"ReAct: Synergizing Reasoning and Acting in Language Models.\" ICLR (2023).",
-          "url": "https://arxiv.org/abs/2210.03629"
+          "url": "https://arxiv.org/abs/2210.03629",
+          "role": "assigned"
         },
         {
           "label": "Schluntz & Zhang. \"Building Effective AI Agents.\" Anthropic (2024).",
-          "url": "https://www.anthropic.com/engineering/building-effective-agents"
+          "url": "https://www.anthropic.com/engineering/building-effective-agents",
+          "role": "assigned"
         },
         {
           "label": "LangChain. \"Context Engineering.\" LangChain Blog (2025).",
-          "url": "https://www.langchain.com/blog/context-engineering-for-agents"
+          "url": "https://www.langchain.com/blog/context-engineering-for-agents",
+          "role": "assigned"
         },
         {
           "label": "Shinn et al. \"Reflexion: Language Agents with Verbal Reinforcement Learning.\" NeurIPS (2023).",
-          "url": "https://arxiv.org/abs/2303.11366"
+          "url": "https://arxiv.org/abs/2303.11366",
+          "role": "additional"
         },
         {
           "label": "Wang et al. \"Executable Code Actions Elicit Better LLM Agents.\" ICML (2024).",
-          "url": "https://arxiv.org/abs/2402.01030"
+          "url": "https://arxiv.org/abs/2402.01030",
+          "role": "additional"
         }
       ],
       "local_path": "courses/329z/6.AgentDesignPatternsScaffolds",
@@ -5346,15 +5870,18 @@
       "readings": [
         {
           "label": "Sumers et al. \"Cognitive Architectures for Language Agents.\" TMLR (2024).",
-          "url": "https://arxiv.org/abs/2309.02427"
+          "url": "https://arxiv.org/abs/2309.02427",
+          "role": "assigned"
         },
         {
           "label": "Packer et al. \"MemGPT: Towards LLMs as Operating Systems.\" arXiv (2023).",
-          "url": "https://arxiv.org/abs/2310.08560"
+          "url": "https://arxiv.org/abs/2310.08560",
+          "role": "assigned"
         },
         {
           "label": "Park et al. \"Generative Agents: Interactive Simulacra of Human Behavior.\" UIST (2023).",
-          "url": "https://arxiv.org/abs/2304.03442"
+          "url": "https://arxiv.org/abs/2304.03442",
+          "role": "assigned"
         }
       ],
       "local_path": "courses/329z/7.AgentMemoryArchitectures",
@@ -5385,15 +5912,18 @@
       "readings": [
         {
           "label": "Wu et al. \"AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation.\" COLM (2024).",
-          "url": "https://arxiv.org/abs/2308.08155"
+          "url": "https://arxiv.org/abs/2308.08155",
+          "role": "assigned"
         },
         {
           "label": "Cemri et al. \"Why Do Multi-Agent LLM Systems Fail?\" NeurIPS Datasets & Benchmarks (2025).",
-          "url": "https://arxiv.org/abs/2503.13657"
+          "url": "https://arxiv.org/abs/2503.13657",
+          "role": "assigned"
         },
         {
           "label": "Kim et al. \"Towards a Science of Scaling Agent Systems.\" arXiv (2025).",
-          "url": "https://arxiv.org/abs/2512.08296"
+          "url": "https://arxiv.org/abs/2512.08296",
+          "role": "assigned"
         }
       ],
       "local_path": "courses/329z/8.MultiAgentSystems",
@@ -5424,15 +5954,18 @@
       "readings": [
         {
           "label": "Agrawal et al. \"GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning.\" ICLR (2026).",
-          "url": "https://arxiv.org/abs/2507.19457"
+          "url": "https://arxiv.org/abs/2507.19457",
+          "role": "assigned"
         },
         {
           "label": "Opsahl-Ong et al. \"Optimizing Instructions and Demonstrations for Multi-Stage Language Model Programs.\" EMNLP (2024).",
-          "url": "https://arxiv.org/abs/2406.11695"
+          "url": "https://arxiv.org/abs/2406.11695",
+          "role": "assigned"
         },
         {
           "label": "Shao et al. \"DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models.\" arXiv (2024).",
-          "url": "https://arxiv.org/abs/2402.03300"
+          "url": "https://arxiv.org/abs/2402.03300",
+          "role": "assigned"
         }
       ],
       "local_path": "courses/329z/9.Optimization",
@@ -5463,11 +5996,13 @@
       "readings": [
         {
           "label": "Terminal-Bench project site (leaderboard, tasks, and harness).",
-          "url": "https://www.tbench.ai/"
+          "url": "https://www.tbench.ai/",
+          "role": "assigned"
         },
         {
           "label": "Merrill et al. \"Terminal-Bench: Benchmarking Agents on Hard, Realistic Tasks in Command Line Interfaces.\" ICLR (2026).",
-          "url": "https://arxiv.org/abs/2601.11868"
+          "url": "https://arxiv.org/abs/2601.11868",
+          "role": "assigned"
         }
       ],
       "local_path": "courses/329z/10.GuestLectureTerminalBench",
@@ -5498,11 +6033,13 @@
       "readings": [
         {
           "label": "Shankar. \"Data Flywheels for LLM Applications.\" (2024).",
-          "url": "https://www.sh-reya.com/blog/ai-engineering-flywheel/"
+          "url": "https://www.sh-reya.com/blog/ai-engineering-flywheel/",
+          "role": "assigned"
         },
         {
           "label": "Tan et al. \"Large Language Models for Data Annotation and Synthesis: A Survey.\" EMNLP (2024).",
-          "url": "https://aclanthology.org/2024.emnlp-main.54/"
+          "url": "https://aclanthology.org/2024.emnlp-main.54/",
+          "role": "additional"
         }
       ],
       "local_path": "courses/329z/11.WhatDataDoAgentsNeed",
@@ -5528,15 +6065,18 @@
       "readings": [
         {
           "label": "Yang et al. \"SWE-smith: Scaling Data for Software Engineering Agents.\" NeurIPS D&B (2025).",
-          "url": "https://arxiv.org/abs/2504.21798"
+          "url": "https://arxiv.org/abs/2504.21798",
+          "role": "assigned"
         },
         {
           "label": "Shankar et al. \"Who Validates the Validators? Aligning LLM-Assisted Evaluation with Human Preferences.\" UIST (2024).",
-          "url": "https://arxiv.org/abs/2404.12272"
+          "url": "https://arxiv.org/abs/2404.12272",
+          "role": "assigned"
         },
         {
           "label": "Zhou et al. \"LIMA: Less Is More for Alignment.\" NeurIPS (2023).",
-          "url": "https://arxiv.org/abs/2305.11206"
+          "url": "https://arxiv.org/abs/2305.11206",
+          "role": "additional"
         }
       ],
       "local_path": "courses/329z/12.DataSelectionQuality",
@@ -5562,15 +6102,18 @@
       "readings": [
         {
           "label": "Zhu et al. \"Establishing Best Practices for Building Rigorous Agentic Benchmarks.\" (2025).",
-          "url": "https://arxiv.org/abs/2507.02825"
+          "url": "https://arxiv.org/abs/2507.02825",
+          "role": "assigned"
         },
         {
           "label": "Press. \"How to Build Good Language Modeling Benchmarks.\" (2024).",
-          "url": "https://ofir.io/How-to-Build-Good-Language-Modeling-Benchmarks/"
+          "url": "https://ofir.io/How-to-Build-Good-Language-Modeling-Benchmarks/",
+          "role": "additional"
         },
         {
           "label": "Polo et al. \"tinyBenchmarks: Evaluating LLMs with Fewer Examples.\" ICML (2024).",
-          "url": "https://arxiv.org/abs/2402.14992"
+          "url": "https://arxiv.org/abs/2402.14992",
+          "role": "additional"
         }
       ],
       "local_path": "courses/329z/13.EvaluationFundamentalsBenchmarkDesign",
@@ -5617,19 +6160,23 @@
       "readings": [
         {
           "label": "Grace et al. \"Demystifying Evals for AI Agents.\" Anthropic (2026).",
-          "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"
+          "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+          "role": "assigned"
         },
         {
           "label": "Zheng et al. \"Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena.\" NeurIPS (2023).",
-          "url": "https://arxiv.org/abs/2306.05685"
+          "url": "https://arxiv.org/abs/2306.05685",
+          "role": "assigned"
         },
         {
           "label": "Ryan et al. \"AutoMetrics: Approximate Human Judgements with Automatically Generated Evaluators.\" ICLR (2026).",
-          "url": "https://arxiv.org/abs/2512.17267"
+          "url": "https://arxiv.org/abs/2512.17267",
+          "role": "assigned"
         },
         {
           "label": "Zhu et al. \"AutoLibra: Agent Metric Induction from Open-Ended Human Feedback.\" ICLR (2026).",
-          "url": "https://openreview.net/forum?id=4BjGVZ7Bxn"
+          "url": "https://openreview.net/forum?id=4BjGVZ7Bxn",
+          "role": "additional"
         }
       ],
       "local_path": "courses/329z/15.LLMAsJudgeEvaluationInfrastructure",
@@ -5655,7 +6202,8 @@
       "readings": [
         {
           "label": "Jimenez et al. \"SWE-bench: Can Language Models Resolve Real-World GitHub Issues?\" ICLR (2024).",
-          "url": "https://arxiv.org/abs/2310.06770"
+          "url": "https://arxiv.org/abs/2310.06770",
+          "role": "assigned"
         }
       ],
       "local_path": "courses/329z/16.GuestLectureSWEBench",
@@ -5681,27 +6229,33 @@
       "readings": [
         {
           "label": "Shao et al. \"PrivacyLens: Evaluating Privacy Norm Awareness of LMs in Action.\" NeurIPS D&B (2024).",
-          "url": "https://arxiv.org/abs/2409.00138"
+          "url": "https://arxiv.org/abs/2409.00138",
+          "role": "assigned"
         },
         {
           "label": "Zhang & Yang. \"Searching for Privacy Risks in LLM Agents via Simulation.\" arXiv (2025).",
-          "url": "https://arxiv.org/abs/2508.10880"
+          "url": "https://arxiv.org/abs/2508.10880",
+          "role": "assigned"
         },
         {
           "label": "Li. \"Agentic LLMs as Powerful Deanonymizers.\" arXiv (2026).",
-          "url": "https://arxiv.org/abs/2601.05918"
+          "url": "https://arxiv.org/abs/2601.05918",
+          "role": "assigned"
         },
         {
           "label": "Wen et al. \"Contextualized Privacy Defense for LLM Agents.\" arXiv (2026).",
-          "url": "https://arxiv.org/abs/2603.02983"
+          "url": "https://arxiv.org/abs/2603.02983",
+          "role": "additional"
         },
         {
           "label": "OpenAI. \"Understanding Prompt Injections: A Frontier Security Challenge.\" (2025).",
-          "url": "https://openai.com/index/prompt-injections/"
+          "url": "https://openai.com/index/prompt-injections/",
+          "role": "additional"
         },
         {
           "label": "Anthropic. \"Anthropic's Responsible Scaling Policy.\" (2023).",
-          "url": "https://www.anthropic.com/news/anthropics-responsible-scaling-policy"
+          "url": "https://www.anthropic.com/news/anthropics-responsible-scaling-policy",
+          "role": "additional"
         }
       ],
       "local_path": "courses/329z/17.AgentSafetyGuardrails",
@@ -5769,19 +6323,23 @@
       "readings": [
         {
           "label": "Yang et al. \"SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering.\" NeurIPS (2024).",
-          "url": "https://arxiv.org/abs/2405.15793"
+          "url": "https://arxiv.org/abs/2405.15793",
+          "role": "assigned"
         },
         {
           "label": "Wang et al. \"OpenHands: An Open Platform for AI Software Developers.\" ICLR (2025).",
-          "url": "https://arxiv.org/abs/2407.16741"
+          "url": "https://arxiv.org/abs/2407.16741",
+          "role": "assigned"
         },
         {
           "label": "Anthropic. \"Claude Code: Best Practices for Agentic Coding.\" (2025).",
-          "url": "https://www.anthropic.com/engineering/claude-code-best-practices"
+          "url": "https://www.anthropic.com/engineering/claude-code-best-practices",
+          "role": "additional"
         },
         {
           "label": "Young. \"Effective Harnesses for Long-Running Agents.\" Anthropic (2025).",
-          "url": "https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents"
+          "url": "https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents",
+          "role": "additional"
         }
       ],
       "local_path": "courses/329z/18.CodingSoftwareAgents",
@@ -5807,15 +6365,18 @@
       "readings": [
         {
           "label": "Shaikh et al. \"Creating General User Models from Computer Use.\" UIST (2025).",
-          "url": "https://arxiv.org/abs/2505.10831"
+          "url": "https://arxiv.org/abs/2505.10831",
+          "role": "assigned"
         },
         {
           "label": "Shaikh et al. \"Learning Next Action Predictors from Human-Computer Interaction.\" arXiv (2026).",
-          "url": "https://arxiv.org/abs/2603.05923"
+          "url": "https://arxiv.org/abs/2603.05923",
+          "role": "additional"
         },
         {
           "label": "Steinberger. \"OpenClaw: Open-source proactive AI agent.\" (2025).",
-          "url": "https://github.com/openclaw/openclaw"
+          "url": "https://github.com/openclaw/openclaw",
+          "role": "additional"
         }
       ],
       "local_path": "courses/329z/19.ProactiveAgents",
@@ -5832,8 +6393,8 @@
     },
     {
       "course": "Stanford CS329Z",
-      "id": "S-2026-12-07/11",
-      "date": "2026-12-07/11",
+      "id": "S-2026-12-09",
+      "date": "2026-12-09",
       "title": "Final Project Demo Day",
       "kind": "project",
       "phase": "PROJECT",
@@ -5844,16 +6405,17 @@
       "evidence": "stanford/index.html",
       "raw_cells": [
         "—",
-        "Finals Week (Dec 7–11)",
-        "Open Problems & Final Demos Final Project Demo Day Held during the end-quarter examination period. Exact time and location TBA.",
+        "Wed Dec 9",
+        "Open Problems & Final Demos Final Project Demo Day Held during the end-quarter examination period, 3:30–6:30 p.m. Location TBA.",
         ""
       ],
       "material_status": "项目活动；按官方要求另排个人里程碑",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "description": "3:30–6:30 p.m. Pacific Time; location TBA"
     }
   ],
-  "layout_updated_at": "2026-11-01",
-  "source_snapshot": "courses/syllabus-snapshots/2026-11-01/README.md",
+  "layout_updated_at": "2026-11-04",
+  "source_snapshot": "courses/syllabus-snapshots/2026-11-04/README.md",
   "legacy_items": [
     {
       "local_path": "courses/2680/18.EfficientAgenticSystems.Others",
@@ -5861,7 +6423,6 @@
     }
   ],
   "planned_homework_folders": [
-    "courses/329z/assignment/assignment-2",
     "courses/2680/assignment/assignment-5",
     "courses/MAS.S62/assignment/assignment-2",
     "courses/MAS.S62/assignment/assignment-3",

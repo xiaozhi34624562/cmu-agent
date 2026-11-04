@@ -34,7 +34,7 @@
 | `courses/11-768/15.OrchestrationAndMonitoring/` | Agent 编排、工作流、评测、可观测性与行为监控 |
 | `courses/11-768/16.AgentsAndTheFutureOfWork/` | 面向人类工作的 Agent、任务自动化与增强、职业任务评测和人机协作 |
 | `courses/11-768/17.ObservabilityAndMonitoring/` | 10/22 可观测性与监控；等待公开讲义 |
-| `courses/11-768/18.MultiAgentInteraction/` | 10/29 多 Agent 交互；等待公开讲义 |
+| `courses/11-768/18.MultiAgentInteraction/` | 10/29 多 Agent 交互；44 页讲义、指定阅读与完整中文讲解 |
 | `courses/11-768/19.HumanAgentInteraction/` | 11/10 人机交互；等待公开讲义 |
 | `courses/11-768/20.RerankingAndCriticModels/` | 11/12 Reranking 与 Critic Models；等待公开讲义 |
 | `courses/11-768/21.TreeSearch/` | 11/17 Tree Search；等待公开讲义 |

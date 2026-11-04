@@ -1,6 +1,6 @@
 # CMU 11-768：完整课表与目录
 
-核对日期：2026-11-01。目录编号保持稳定，授课顺序以官方日期为准。下表包括后续课次、嘉宾、分享、项目和停课；目录存在不表示材料已发布或学习已完成。
+核对日期：2026-11-04。目录编号保持稳定，授课顺序以官方日期为准。下表包括后续课次、嘉宾、分享、项目和停课；目录存在不表示材料已发布或学习已完成。
 
 | 日期 | 官方题目 | 目录 | 材料状态 | 学习阶段 |
 |---|---|---|---|---|
@@ -23,7 +23,7 @@
 | 2026-10-20 | Frameworks 2: Orchestration and Monitoring | [15.OrchestrationAndMonitoring](15.OrchestrationAndMonitoring/SOURCES.md) | 官网有讲义链接；本轮保存大纲，未逐份刷新讲义 | P4 |
 | 2026-10-22 | Safety 2: Observability and Monitoring | [17.ObservabilityAndMonitoring](17.ObservabilityAndMonitoring/SOURCES.md) | 公开课表已有安排，尚无讲义链接；等待官方材料。 | P4 |
 | 2026-10-27 | Agents and the Future of Work | [16.AgentsAndTheFutureOfWork](16.AgentsAndTheFutureOfWork/SOURCES.md) | 官网有讲义链接；本轮保存大纲，未逐份刷新讲义 | P4 |
-| 2026-10-29 | Interaction 1: Multi-Agent Interaction | [18.MultiAgentInteraction](18.MultiAgentInteraction/SOURCES.md) | 公开课表已有安排，尚无讲义链接；等待官方材料。 | P2 |
+| 2026-10-29 | Interaction 1: Multi-Agent Interaction | [18.MultiAgentInteraction](18.MultiAgentInteraction/SOURCES.md) | 44 页讲义、6 篇指定阅读及参考材料已归档；完整中文讲解见本课索引 | P2 |
 | 2026-11-03 | University holiday (no class) | 停课 | 停课；保留日历记录 | BREAK |
 | 2026-11-05 | Project hours | [project](project/SOURCES.md) | 项目活动；按官方要求另排个人里程碑 | PROJECT |
 | 2026-11-10 | Interaction 2: Human-Agent Interaction | [19.HumanAgentInteraction](19.HumanAgentInteraction/SOURCES.md) | 公开课表已有安排，尚无讲义链接；等待官方材料。 | P4 |
@@ -35,4 +35,4 @@
 | 2026-12-01 | Final presentations (posters) | [project](project/SOURCES.md) | 项目活动；按官方要求另排个人里程碑 | PROJECT |
 | 2026-12-03 | Final presentations (posters) | [project](project/SOURCES.md) | 项目活动；按官方要求另排个人里程碑 | PROJECT |
 
-[四课路线](../ROADMAP.zh-CN.md) · [全部课程映射](../COURSE_LAYOUT.json)
+[四课路线](../ROADMAP.zh-CN.md) · [全部课程映射](../COURSE_LAYOUT.json) · [本次来源](../syllabus-snapshots/2026-11-04/README.md)

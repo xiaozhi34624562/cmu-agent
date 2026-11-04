@@ -1,6 +1,6 @@
 # MIT MAS.S62：完整课表与目录
 
-核对日期：2026-11-01。目录编号保持稳定，授课顺序以官方日期为准。下表包括后续课次、嘉宾、分享、项目和停课；目录存在不表示材料已发布或学习已完成。
+核对日期：2026-11-04。目录编号保持稳定，授课顺序以官方日期为准。下表包括后续课次、嘉宾、分享、项目和停课；目录存在不表示材料已发布或学习已完成。
 
 | 日期 | 官方题目 | 目录 | 材料状态 | 学习阶段 |
 |---|---|---|---|---|
@@ -19,4 +19,4 @@
 | 2026-12-02 | Project final presentations | [13.ProjectFinalPresentations](13.ProjectFinalPresentations/SOURCES.md) | 项目活动；按官方要求另排个人里程碑 | PROJECT |
 | 2026-12-09 | Future topics | [14.FutureTopics](14.FutureTopics/SOURCES.md) | 已有主题；slides 仍为课表占位链接 | P8 |
 
-[四课路线](../ROADMAP.zh-CN.md) · [全部课程映射](../COURSE_LAYOUT.json)
+[四课路线](../ROADMAP.zh-CN.md) · [全部课程映射](../COURSE_LAYOUT.json) · [本次来源](../syllabus-snapshots/2026-11-04/README.md)

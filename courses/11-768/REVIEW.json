@@ -1,6 +1,6 @@
 {
   "course": "11-768",
-  "review_date": "2026-10-28",
+  "review_date": "2026-11-04",
   "standard": "面向有 Java 经验的 LLM Developer：以讲义问题链组织完整中文教学；检查前置知识、机制推导、案例、自测和来源证据；修改后的最终版本完整复读两遍。",
   "scope": "当前版本的内容审核状态；保留最近实际阅读范围、复读结论和限制。结构校验不代替语义审核；元数据整理不构成新一轮内容审核。",
   "documents": [
@@ -3297,6 +3297,139 @@
         "content_review_sha256": "7ebbb1257184eb4d2bd8521b4082a745b179d65773457c274a2661520dc9368e",
         "current_sha256": "30c72ca29aaec7ceb3b1faeca863de506ef60de2e3b89751e8b0d7fb0138dc49"
       }
+    },
+    {
+      "note": "courses/11-768/18.MultiAgentInteraction/notes.zh-CN.md",
+      "lesson": 18,
+      "status": "passed",
+      "final_sha256": "4d2dc8b25d57cfae0ff01af1a00aa836a92fd3d4a2e58f2c8d610579cebb9b78",
+      "content_review_sha256": "4d2dc8b25d57cfae0ff01af1a00aa836a92fd3d4a2e58f2c8d610579cebb9b78",
+      "reviewed_at": "2026-11-04",
+      "coverage": "覆盖 44 页主讲义三条问题链；角色/辩论/递归/MACU/异步黑板/进展共享/人机协作/信用分配/模拟器坍缩/涌现约定/市场/校准/监督；贯穿案例、选型、成本、诊断及16道自测；确定性教学程序已运行。",
+      "sources_read": [
+        {
+          "path": "courses/11-768/18.MultiAgentInteraction/lecture-18-multi-agent-systems.pdf",
+          "pages": "1–44",
+          "scope": "完整文本阅读；图表及协议示意按实际 PDF 页序核对",
+          "sha256": "5da3102180a75b0c8ad6c849ef497e6cc165ebcd77b4428ce8a177de6ebdc93c",
+          "visually_checked_pdf_pages": [
+            1,
+            6,
+            9,
+            10,
+            13,
+            14,
+            15,
+            16,
+            18,
+            19,
+            20,
+            22,
+            23,
+            25,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            39,
+            40,
+            41,
+            42,
+            43
+          ]
+        },
+        {
+          "path": "courses/11-768/18.MultiAgentInteraction/readings/Improving_Factuality_and_Reasoning_in_Language_Models_through_Multiagent_Debate.pdf",
+          "version": "2305.14325v1",
+          "pages": "1–3",
+          "scope": "选读核心机制及正文引用的高风险条件、公式和实验；不声称全文阅读全部附录",
+          "sha256": "b302ff15202dc3cda03f40ea1ac92b29e1519978540b345af92991f6d3e619b4"
+        },
+        {
+          "path": "courses/11-768/18.MultiAgentInteraction/readings/Multi-Agent_Computer_Use.pdf",
+          "version": "2606.01533v1",
+          "pages": "1–5",
+          "scope": "选读核心机制及正文引用的高风险条件、公式和实验；不声称全文阅读全部附录",
+          "sha256": "5a8e347bd731600d1ab92633130aa971d4fb72b10df684519793b307ddb6751e"
+        },
+        {
+          "path": "courses/11-768/18.MultiAgentInteraction/readings/Scaling_Discovery_through_Test-Time_Communication.pdf",
+          "version": "2609.21032v1",
+          "pages": "1–5,17",
+          "scope": "选读核心机制及正文引用的高风险条件、公式和实验；不声称全文阅读全部附录",
+          "sha256": "9fd89cd851d047fd3e8f2c8ebd31e0e0b4492f8513d1d7cb1b6f81ef2d3c101d"
+        },
+        {
+          "path": "courses/11-768/18.MultiAgentInteraction/readings/SWEET-RL_Training_Multi-Turn_LLM_Agents_on_Collaborative_Reasoning_Tasks.pdf",
+          "version": "2503.15478v1",
+          "pages": "1,3–7",
+          "scope": "选读核心机制及正文引用的高风险条件、公式和实验；不声称全文阅读全部附录",
+          "sha256": "eb4b5b01ef90b76361d9b92c78202a7e342fd247af24c4e694c802730c4ba428"
+        },
+        {
+          "path": "courses/11-768/18.MultiAgentInteraction/readings/Don_t_lie_to_your_friends_Learning_what_you_know_from_collaborative_self-play.pdf",
+          "version": "2503.14481v3",
+          "pages": "1,3–7",
+          "scope": "选读核心机制及正文引用的高风险条件、公式和实验；不声称全文阅读全部附录",
+          "sha256": "bdff738a018d08a2da948eb8533b65e0ebb51991a969f30c980ea2e43793f777"
+        },
+        {
+          "path": "courses/11-768/18.MultiAgentInteraction/readings/Debating_with_More_Persuasive_LLMs_Leads_to_More_Truthful_Answers.pdf",
+          "version": "2402.06782v4",
+          "pages": "1,3–4,6",
+          "scope": "选读核心机制及正文引用的高风险条件、公式和实验；不声称全文阅读全部附录",
+          "sha256": "7c821195db82719f5fbecdfaf6762d626bf5b47b20bc862b6a7dbfe577b0ecc6"
+        },
+        {
+          "path": "courses/11-768/18.MultiAgentInteraction/REFERENCES.json",
+          "scope": "17 项辅助参考按讲义需要选读摘要、机制与相关网页；全书及全部附录未逐页精读；下载完整性与内容审核范围分开"
+        }
+      ],
+      "source_sha256": {
+        "courses/11-768/18.MultiAgentInteraction/lecture-18-multi-agent-systems.pdf": "5da3102180a75b0c8ad6c849ef497e6cc165ebcd77b4428ce8a177de6ebdc93c",
+        "courses/11-768/18.MultiAgentInteraction/readings/Improving_Factuality_and_Reasoning_in_Language_Models_through_Multiagent_Debate.pdf": "b302ff15202dc3cda03f40ea1ac92b29e1519978540b345af92991f6d3e619b4",
+        "courses/11-768/18.MultiAgentInteraction/readings/Multi-Agent_Computer_Use.pdf": "5a8e347bd731600d1ab92633130aa971d4fb72b10df684519793b307ddb6751e",
+        "courses/11-768/18.MultiAgentInteraction/readings/Scaling_Discovery_through_Test-Time_Communication.pdf": "9fd89cd851d047fd3e8f2c8ebd31e0e0b4492f8513d1d7cb1b6f81ef2d3c101d",
+        "courses/11-768/18.MultiAgentInteraction/readings/SWEET-RL_Training_Multi-Turn_LLM_Agents_on_Collaborative_Reasoning_Tasks.pdf": "eb4b5b01ef90b76361d9b92c78202a7e342fd247af24c4e694c802730c4ba428",
+        "courses/11-768/18.MultiAgentInteraction/readings/Don_t_lie_to_your_friends_Learning_what_you_know_from_collaborative_self-play.pdf": "bdff738a018d08a2da948eb8533b65e0ebb51991a969f30c980ea2e43793f777",
+        "courses/11-768/18.MultiAgentInteraction/readings/Debating_with_More_Persuasive_LLMs_Leads_to_More_Truthful_Answers.pdf": "7c821195db82719f5fbecdfaf6762d626bf5b47b20bc862b6a7dbfe577b0ecc6",
+        "courses/11-768/18.MultiAgentInteraction/references/Multi-Agent_Reinforcement_Learning_Foundations_and_Modern_Approaches.pdf": "3117fd57185ab95ba081188dd549ce211649d47003b7ce5667a670d986a70bab",
+        "courses/11-768/18.MultiAgentInteraction/references/In-Context_Impersonation_Reveals_Large_Language_Models_Strengths_and_Biases.pdf": "bf4f83d6579cf96586a754a669cb763e6d8c89d0a4536be7a431d32b29575603",
+        "courses/11-768/18.MultiAgentInteraction/references/ChatDev_Communicative_Agents_for_Software_Development.pdf": "1cffa12eae0586ec7074fc660a90b4fe90e406e9c07f3a48819a899e4bf55fd1",
+        "courses/11-768/18.MultiAgentInteraction/references/Build_a_personal_assistant_with_subagents.html": "e712162465ced8425d0a80b4eb9889062bfa39ad8a6d2ca5588eaef610794706",
+        "courses/11-768/18.MultiAgentInteraction/references/Recursive_Agent_Optimization.pdf": "78d5d1fbcd5be9f4b3946310d937100d8936600af3e4bdb1b8e82b8dbe1325ce",
+        "courses/11-768/18.MultiAgentInteraction/references/Effective_Strategies_for_Asynchronous_Software_Engineering_Agents.pdf": "7db67ce0a2b2d4188149b5d84dd44f2a2aab6dc6edd1de02d5508ff561834e62",
+        "courses/11-768/18.MultiAgentInteraction/references/LLM-Based_Multi-Agent_Blackboard_System_for_Information_Discovery_in_Data_Science.pdf": "333545f7d918b877eb02579a04da724b0823e7886f232983453975797f5b19be",
+        "courses/11-768/18.MultiAgentInteraction/references/Decentralized_Multi-Agent_Systems_with_Shared_Context.pdf": "9637a7c7d8a09d2181f75c3150c9fac0d00333147b11d100ea5b1c89fed29e17",
+        "courses/11-768/18.MultiAgentInteraction/references/GitSwarm_Decentralized_Compounding_Inference.pdf": "1df39f09ce0cf67489711bf2f62b0259ea717eb0b57df03505ffc1b9aa9bce07",
+        "courses/11-768/18.MultiAgentInteraction/references/What_does_it_take_to_build_a_human-like_user_simulator.html": "9c92d7134e6cc72c764b9a43f460032a0376e80050e67ba2f217dc7854d8c797",
+        "courses/11-768/18.MultiAgentInteraction/references/Training_Proactive_and_Personalized_LLM_Agents.pdf": "8286ac58f1e734a5370ec23be907bad4b2547ca343efd12b980d2f4e2d347cb8",
+        "courses/11-768/18.MultiAgentInteraction/references/One_Frozen_Simulator_Is_Not_Enough_Simulator_Collapse_in_Multi-Agent_RL.pdf": "5b8c0cb6ddf3e053f437ec9e753285c26f60cd49906bf0b87b9fae91933ff80c",
+        "courses/11-768/18.MultiAgentInteraction/references/GlossoGen_Emergent_Language_in_Complex_Multi-Agent_LLM_Interactions.pdf": "5068771ccde165fd8d41bc190a58c5ff241ad3874f73c1491c0289cf719ad59c",
+        "courses/11-768/18.MultiAgentInteraction/references/Brief_independent_investigation_of_agents_behavior_reasoning_and_collaboration_in_the_OpenAI_Hugging_Face_hacking_incident.html": "9581c24f27a05c4e3112feb6254b4326d080da399b288411fca06e26ced9caf9",
+        "courses/11-768/18.MultiAgentInteraction/references/Magentic_Marketplace_An_Open-Source_Environment_for_Studying_Agentic_Markets.pdf": "d1a309d06fd3b211d6ef470a6721713403596a140c5e3f9b4abc38fe01099aa4",
+        "courses/11-768/18.MultiAgentInteraction/references/Generative_Agents_Interactive_Simulacra_of_Human_Behavior.pdf": "1b31e77fb24d25d7598f2c49e955d12a28b95a6dabad34acdac40f44bfb7a139",
+        "courses/11-768/18.MultiAgentInteraction/references/Relying_on_the_Unreliable_The_Impact_of_Language_Models_Reluctance_to_Express_Uncertainty.pdf": "564c49f55113804d97956e506fe7faa8cbb1288847eb30cc622ab4a65d658550"
+      },
+      "source_binding_scope": "来源字节绑定不表示全部参考正文已逐页精读；实际阅读范围以 sources_read 为准。",
+      "reread_result": [
+        "完整初稿复读后补清模型/预算条件、Terminal-Bench 对照与 oracle 选优限制、SWEET-RL 更新过程及图表指标。",
+        "最终全文分段复读与新增段落回查完成；公式、教学算例、章节覆盖、自测答案和本地引用一致，当前声明范围内无未解决内容问题。"
+      ],
+      "remaining_issues": [],
+      "limitations": [
+        "没有运行模型/API、GUI/VM、分布式 Agent、RL/SFT或论文基准；只有确定性算例程序实际执行。",
+        "辅助参考选读，不宣称完整精读 395 页教科书和全部论文附录。",
+        "教学案例、运行时契约与选型建议需在实际任务验证，不作为论文已证明的统一实现。"
+      ],
+      "review_type": "Primary agent source/content review and self-review; no independent-agent review claimed"
     }
   ],
   "original_sources": {
@@ -3792,6 +3925,30 @@
     "courses/11-768/16.AgentsAndTheFutureOfWork/references/Measuring_AI_Ability_to_Complete_Long_Software_Tasks.pdf": "29216eb3af4daa417666757a462ab7c7b5f8c18c188ee5a56e258b04116211f7",
     "courses/11-768/16.AgentsAndTheFutureOfWork/references/How_Well_Does_Agent_Development_Reflect_Real-World_Work.pdf": "3911d2d529c297fc8e00ab66a10b1f2a1084a8cade5e439849b648d56b7b6246",
     "courses/11-768/16.AgentsAndTheFutureOfWork/references/CollabSkill_Evaluating_Human-Agent_Collaboration_On_Real-World_Tasks.pdf": "ae47c83fbe88fb05e60809f061f6f7e05ed87967db3b7a079254b3f6e80703cc",
-    "courses/11-768/16.AgentsAndTheFutureOfWork/references/Efficient_Test-Time_Adaptation_through_Human-AI_Interaction.pdf": "ad19a223bd6d9f92758c536e10d6c64821f4b38e8c11a9bba8d5613a4c229675"
+    "courses/11-768/16.AgentsAndTheFutureOfWork/references/Efficient_Test-Time_Adaptation_through_Human-AI_Interaction.pdf": "ad19a223bd6d9f92758c536e10d6c64821f4b38e8c11a9bba8d5613a4c229675",
+    "courses/11-768/18.MultiAgentInteraction/lecture-18-multi-agent-systems.pdf": "5da3102180a75b0c8ad6c849ef497e6cc165ebcd77b4428ce8a177de6ebdc93c",
+    "courses/11-768/18.MultiAgentInteraction/readings/Improving_Factuality_and_Reasoning_in_Language_Models_through_Multiagent_Debate.pdf": "b302ff15202dc3cda03f40ea1ac92b29e1519978540b345af92991f6d3e619b4",
+    "courses/11-768/18.MultiAgentInteraction/readings/Multi-Agent_Computer_Use.pdf": "5a8e347bd731600d1ab92633130aa971d4fb72b10df684519793b307ddb6751e",
+    "courses/11-768/18.MultiAgentInteraction/readings/Scaling_Discovery_through_Test-Time_Communication.pdf": "9fd89cd851d047fd3e8f2c8ebd31e0e0b4492f8513d1d7cb1b6f81ef2d3c101d",
+    "courses/11-768/18.MultiAgentInteraction/readings/SWEET-RL_Training_Multi-Turn_LLM_Agents_on_Collaborative_Reasoning_Tasks.pdf": "eb4b5b01ef90b76361d9b92c78202a7e342fd247af24c4e694c802730c4ba428",
+    "courses/11-768/18.MultiAgentInteraction/readings/Don_t_lie_to_your_friends_Learning_what_you_know_from_collaborative_self-play.pdf": "bdff738a018d08a2da948eb8533b65e0ebb51991a969f30c980ea2e43793f777",
+    "courses/11-768/18.MultiAgentInteraction/readings/Debating_with_More_Persuasive_LLMs_Leads_to_More_Truthful_Answers.pdf": "7c821195db82719f5fbecdfaf6762d626bf5b47b20bc862b6a7dbfe577b0ecc6",
+    "courses/11-768/18.MultiAgentInteraction/references/Multi-Agent_Reinforcement_Learning_Foundations_and_Modern_Approaches.pdf": "3117fd57185ab95ba081188dd549ce211649d47003b7ce5667a670d986a70bab",
+    "courses/11-768/18.MultiAgentInteraction/references/In-Context_Impersonation_Reveals_Large_Language_Models_Strengths_and_Biases.pdf": "bf4f83d6579cf96586a754a669cb763e6d8c89d0a4536be7a431d32b29575603",
+    "courses/11-768/18.MultiAgentInteraction/references/ChatDev_Communicative_Agents_for_Software_Development.pdf": "1cffa12eae0586ec7074fc660a90b4fe90e406e9c07f3a48819a899e4bf55fd1",
+    "courses/11-768/18.MultiAgentInteraction/references/Build_a_personal_assistant_with_subagents.html": "e712162465ced8425d0a80b4eb9889062bfa39ad8a6d2ca5588eaef610794706",
+    "courses/11-768/18.MultiAgentInteraction/references/Recursive_Agent_Optimization.pdf": "78d5d1fbcd5be9f4b3946310d937100d8936600af3e4bdb1b8e82b8dbe1325ce",
+    "courses/11-768/18.MultiAgentInteraction/references/Effective_Strategies_for_Asynchronous_Software_Engineering_Agents.pdf": "7db67ce0a2b2d4188149b5d84dd44f2a2aab6dc6edd1de02d5508ff561834e62",
+    "courses/11-768/18.MultiAgentInteraction/references/LLM-Based_Multi-Agent_Blackboard_System_for_Information_Discovery_in_Data_Science.pdf": "333545f7d918b877eb02579a04da724b0823e7886f232983453975797f5b19be",
+    "courses/11-768/18.MultiAgentInteraction/references/Decentralized_Multi-Agent_Systems_with_Shared_Context.pdf": "9637a7c7d8a09d2181f75c3150c9fac0d00333147b11d100ea5b1c89fed29e17",
+    "courses/11-768/18.MultiAgentInteraction/references/GitSwarm_Decentralized_Compounding_Inference.pdf": "1df39f09ce0cf67489711bf2f62b0259ea717eb0b57df03505ffc1b9aa9bce07",
+    "courses/11-768/18.MultiAgentInteraction/references/What_does_it_take_to_build_a_human-like_user_simulator.html": "9c92d7134e6cc72c764b9a43f460032a0376e80050e67ba2f217dc7854d8c797",
+    "courses/11-768/18.MultiAgentInteraction/references/Training_Proactive_and_Personalized_LLM_Agents.pdf": "8286ac58f1e734a5370ec23be907bad4b2547ca343efd12b980d2f4e2d347cb8",
+    "courses/11-768/18.MultiAgentInteraction/references/One_Frozen_Simulator_Is_Not_Enough_Simulator_Collapse_in_Multi-Agent_RL.pdf": "5b8c0cb6ddf3e053f437ec9e753285c26f60cd49906bf0b87b9fae91933ff80c",
+    "courses/11-768/18.MultiAgentInteraction/references/GlossoGen_Emergent_Language_in_Complex_Multi-Agent_LLM_Interactions.pdf": "5068771ccde165fd8d41bc190a58c5ff241ad3874f73c1491c0289cf719ad59c",
+    "courses/11-768/18.MultiAgentInteraction/references/Brief_independent_investigation_of_agents_behavior_reasoning_and_collaboration_in_the_OpenAI_Hugging_Face_hacking_incident.html": "9581c24f27a05c4e3112feb6254b4326d080da399b288411fca06e26ced9caf9",
+    "courses/11-768/18.MultiAgentInteraction/references/Magentic_Marketplace_An_Open-Source_Environment_for_Studying_Agentic_Markets.pdf": "d1a309d06fd3b211d6ef470a6721713403596a140c5e3f9b4abc38fe01099aa4",
+    "courses/11-768/18.MultiAgentInteraction/references/Generative_Agents_Interactive_Simulacra_of_Human_Behavior.pdf": "1b31e77fb24d25d7598f2c49e955d12a28b95a6dabad34acdac40f44bfb7a139",
+    "courses/11-768/18.MultiAgentInteraction/references/Relying_on_the_Unreliable_The_Impact_of_Language_Models_Reluctance_to_Express_Uncertainty.pdf": "564c49f55113804d97956e506fe7faa8cbb1288847eb30cc622ab4a65d658550"
   }
 }

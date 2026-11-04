@@ -1,8 +1,8 @@
 # 四门课程完整公开课表与目录覆盖
 
-核对日期：2026-11-01。94 条日历记录均有明确状态；全部教学、嘉宾、分享及项目活动均有目录入口。停课不创建课程文件夹。已有课程资料与历史占位全部保留。
+核对日期：2026-11-04。94 条日历记录均有明确状态；全部教学、嘉宾、分享及项目活动均有目录入口。停课不创建课程文件夹。已有课程资料与历史占位全部保留。
 
-[按顺序逐讲学习](ROADMAP.zh-CN.md) · [当前完整映射](COURSE_LAYOUT.json) · [官方大纲来源](syllabus-snapshots/2026-11-01/README.md)
+[按顺序逐讲学习](ROADMAP.zh-CN.md) · [当前完整映射](COURSE_LAYOUT.json) · [官方大纲来源](syllabus-snapshots/2026-11-04/README.md)
 
 ## CMU 11-768
 
@@ -29,7 +29,7 @@
 | 2026-10-20 | Frameworks 2: Orchestration and Monitoring | [15.OrchestrationAndMonitoring](11-768/15.OrchestrationAndMonitoring/SOURCES.md) | [第 45 步](ROADMAP.zh-CN.md#step-45) | 官网有讲义链接；本轮保存大纲，未逐份刷新讲义 |
 | 2026-10-22 | Safety 2: Observability and Monitoring | [17.ObservabilityAndMonitoring](11-768/17.ObservabilityAndMonitoring/SOURCES.md) | [第 47 步](ROADMAP.zh-CN.md#step-47) | 公开课表已有安排，尚无讲义链接；等待官方材料。 |
 | 2026-10-27 | Agents and the Future of Work | [16.AgentsAndTheFutureOfWork](11-768/16.AgentsAndTheFutureOfWork/SOURCES.md) | [第 51 步](ROADMAP.zh-CN.md#step-51) | 官网有讲义链接；本轮保存大纲，未逐份刷新讲义 |
-| 2026-10-29 | Interaction 1: Multi-Agent Interaction | [18.MultiAgentInteraction](11-768/18.MultiAgentInteraction/SOURCES.md) | [第 25 步](ROADMAP.zh-CN.md#step-25) | 公开课表已有安排，尚无讲义链接；等待官方材料。 |
+| 2026-10-29 | Interaction 1: Multi-Agent Interaction | [18.MultiAgentInteraction](11-768/18.MultiAgentInteraction/SOURCES.md) | [第 25 步](ROADMAP.zh-CN.md#step-25) | 44 页讲义、6 篇指定阅读及参考材料已归档；完整中文讲解见本课索引 |
 | 2026-11-03 | University holiday (no class) | 停课 | 停课，无学习任务 | 停课；保留日历记录 |
 | 2026-11-05 | Project hours | [project](11-768/project/SOURCES.md) | [项目节点](ROADMAP.zh-CN.md#project-cmu) | 项目活动；按官方要求另排个人里程碑 |
 | 2026-11-10 | Interaction 2: Human-Agent Interaction | [19.HumanAgentInteraction](11-768/19.HumanAgentInteraction/SOURCES.md) | [第 52 步](ROADMAP.zh-CN.md#step-52) | 公开课表已有安排，尚无讲义链接；等待官方材料。 |
@@ -62,8 +62,8 @@
 | 2026-10-14 | Advanced agent design II: agent safety, self-evolving harness | [9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness](2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/SOURCES.md) | [第 49 步](ROADMAP.zh-CN.md#step-49) / [第 64 步](ROADMAP.zh-CN.md#step-64) | 已有题目/嘉宾安排；尚无讲义链接 |
 | 2026-10-19 | Efficient LLM serving basics I: intro to LLMs | [10.EfficientLLMServingBasicsI.IntroToLLMs](2680/10.EfficientLLMServingBasicsI.IntroToLLMs/SOURCES.md) | [第 05 步](ROADMAP.zh-CN.md#step-05) / [第 68 步](ROADMAP.zh-CN.md#step-68) | 官网有讲义链接；本轮保存大纲，未逐份刷新讲义 |
 | 2026-10-21 | Efficient LLM serving basics II: intro to GPUs | [11.EfficientLLMServingBasicsII.IntroToGPUs](2680/11.EfficientLLMServingBasicsII.IntroToGPUs/SOURCES.md) | [第 69 步](ROADMAP.zh-CN.md#step-69) | 官网有讲义链接；本轮保存大纲，未逐份刷新讲义 |
-| 2026-10-26 | Assignment 3 student sharing | [22.Assignment3StudentSharing](2680/22.Assignment3StudentSharing/SOURCES.md) | [第 59 步](ROADMAP.zh-CN.md#step-59) | 官网已有讲义/分享材料链接；本地正文尚未归档。 |
-| 2026-10-28 | Assignment 3 feedback | [23.Assignment3Feedback](2680/23.Assignment3Feedback/SOURCES.md) | [第 60 步](ROADMAP.zh-CN.md#step-60) | 官网已有讲义/分享材料链接；本地正文尚未归档。 |
+| 2026-10-26 | Assignment 3 student sharing | [22.Assignment3StudentSharing](2680/22.Assignment3StudentSharing/SOURCES.md) | [第 59 步](ROADMAP.zh-CN.md#step-59) | 受密码保护的 PDF 原件已归档；未取得可读正文，不编写内容讲解 |
+| 2026-10-28 | Assignment 3 feedback | [23.Assignment3Feedback](2680/23.Assignment3Feedback/SOURCES.md) | [第 60 步](ROADMAP.zh-CN.md#step-60) | 受密码保护的 PDF 原件已归档；未取得可读正文，不编写内容讲解 |
 | 2026-11-02 | Efficient LLM serving basics III: Batching, paging, and parallelism | [12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism](2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/SOURCES.md) | [第 70 步](ROADMAP.zh-CN.md#step-70) | 已有题目/嘉宾安排；尚无讲义链接 |
 | 2026-11-04 | Efficient LLM serving: speculative decoding | [13.EfficientLLMServing.SpeculativeDecoding](2680/13.EfficientLLMServing.SpeculativeDecoding/SOURCES.md) | [第 72 步](ROADMAP.zh-CN.md#step-72) | 已有题目/嘉宾安排；尚无讲义链接 |
 | 2026-11-09 | Guest lecture: Why Infrastructure sets the pace of AI | [20.GuestLectureWhyInfrastructureSetsThePaceOfAI](2680/20.GuestLectureWhyInfrastructureSetsThePaceOfAI/SOURCES.md) | [第 77 步](ROADMAP.zh-CN.md#step-77) | 公开课表已有安排，尚无讲义链接；等待官方材料。 |
@@ -124,7 +124,7 @@
 | 2026-11-25 | No Class — Thanksgiving Recess | 停课 | 停课，无学习任务 | 停课；保留日历记录 |
 | 2026-11-30 | Coding & Software Agents | [18.CodingSoftwareAgents](329z/18.CodingSoftwareAgents/SOURCES.md) | [第 30 步](ROADMAP.zh-CN.md#step-30) | 已有题目/嘉宾安排；尚无讲义链接 |
 | 2026-12-02 | Proactive Agents | [19.ProactiveAgents](329z/19.ProactiveAgents/SOURCES.md) | [第 53 步](ROADMAP.zh-CN.md#step-53) | 已有题目/嘉宾安排；尚无讲义链接 |
-| 2026-12-07/11 | Final Project Demo Day | [project](329z/project/SOURCES.md) | [项目节点](ROADMAP.zh-CN.md#project-stanford) | 项目活动；按官方要求另排个人里程碑 |
+| 2026-12-09 | Final Project Demo Day | [project](329z/project/SOURCES.md) | [项目节点](ROADMAP.zh-CN.md#project-stanford) | 项目活动；按官方要求另排个人里程碑 |
 
 ## 回访与历史项
 

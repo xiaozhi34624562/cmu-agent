@@ -72,14 +72,22 @@ LESSONS = (
     Lesson(10, "10.EfficientLLMServingBasicsI.IntroToLLMs", "2026-10-19", "Efficient LLM serving basics I: intro to LLMs", "oct-19",
            references=(("Transformers and LLM foundations", "notes/transformers.html"),)),
     Lesson(11, "11.EfficientLLMServingBasicsII.IntroToGPUs", "2026-10-21", "Efficient LLM serving basics II: intro to GPUs", "oct-21"),
-    Lesson(12, "12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism", "2026-10-28", "Efficient LLM serving basics III: Batching, paging, and parallelism", "oct-28"),
-    Lesson(13, "13.EfficientLLMServing.SpeculativeDecoding", "2026-11-02", "Efficient LLM serving: speculative decoding", "nov-02"),
-    Lesson(14, "14.EfficientAgenticSystems.SchedulingAndPrefixCaching", "2026-11-04", "Efficient agentic systems: scheduling and prefix caching", "nov-04"),
-    Lesson(15, "15.EfficientLLMServing.PruningAndQuantization", "2026-11-11", "Efficient LLM serving: pruning and quantization", "nov-11"),
+    Lesson(12, "12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism", "2026-11-02", "Efficient LLM serving basics III: Batching, paging, and parallelism", "nov-02"),
+    Lesson(13, "13.EfficientLLMServing.SpeculativeDecoding", "2026-11-04", "Efficient LLM serving: speculative decoding", "nov-04"),
+    Lesson(14, "14.EfficientAgenticSystems.SchedulingAndPrefixCaching", "2026-11-11", "Efficient agentic systems: scheduling and prefix caching", "nov-11"),
+    Lesson(15, "15.EfficientLLMServing.PruningAndQuantization", "2026-11-18", "Efficient LLM serving: pruning and quantization", "nov-18"),
     Lesson(16, "16.EfficientLLMServing.KVCacheOptimizationAndModelArchitectures", "2026-11-16", "Efficient LLM serving: KV-cache optimization and model architectures", "nov-16",
            references=(("Paper discussion format", "discussion.html"),), paper_discussion=True),
-    Lesson(17, "17.EfficientAgenticSystem.RoutingAndLoadBalancing", "2026-11-23", "Efficient agentic system: routing and load balancing", "nov-23"),
-    Lesson(18, "18.EfficientAgenticSystems.Others", "2026-11-30", "Efficient agentic systems: others", "nov-30"),
+    Lesson(17, "17.EfficientAgenticSystem.RoutingAndLoadBalancing", "2026-11-30", "Efficient agentic system: routing and load balancing", "nov-30"),
+    # Directory identities remain stable when the official calendar inserts meetings.
+    # Historical 18.Others stays on disk but is not a current scheduled meeting.
+    Lesson(19, "19.GuestLectureDevelopingAndEvaluatingAgentsInEnterpriseSetting", "2026-10-05", "Guest lecture: Developing and Evaluating Agents in Enterprise Setting", None),
+    Lesson(20, "20.GuestLectureWhyInfrastructureSetsThePaceOfAI", "2026-11-09", "Guest lecture: Why Infrastructure sets the pace of AI", None),
+    Lesson(21, "21.StudentSharingI", "2026-09-21", "Student sharing I: Learning from Assignment 1", None),
+    Lesson(22, "22.Assignment3StudentSharing", "2026-10-26", "Assignment 3 student sharing", None),
+    Lesson(23, "23.Assignment3Feedback", "2026-10-28", "Assignment 3 feedback", None),
+    Lesson(24, "24.StudentSharingIII.EngineOptimizationsAndAgentEngineCoDesign", "2026-11-23", "Student sharing III: Engine optimizations and agent-engine co-design", None),
+    Lesson(25, "25.StudentSharingIV", "2026-12-02", "Student sharing IV", None),
 )
 
 
@@ -105,12 +113,16 @@ def validate_course_layout() -> None:
         for anchor in cells[3].select("a"):
             anchor.decompose()
         titles[date] = cells[3].get_text(" ", strip=True)
-    for number, lesson in enumerate(sorted(LESSONS, key=lambda item: item.date), 1):
+    layout = json.loads((ROOT.parent / "COURSE_LAYOUT.json").read_text(encoding="utf-8"))
+    identities = {Path(row["local_path"]).name: row for row in layout["rows"]
+                  if row["course"] == "Harvard CS2680" and row.get("local_path")}
+    for lesson in LESSONS:
         official_title = titles.get(lesson.date)
         if official_title != lesson.title:
             raise ValueError(f"Course title changed on {lesson.date}: {official_title!r}; update LESSONS before organizing.")
-        if lesson.number != number or lesson.folder != course_title_folder(number, official_title):
-            raise ValueError(f"Course folder does not match its date and title: {lesson.folder}")
+        identity = identities.get(lesson.folder)
+        if not identity or identity["date"] != lesson.date or identity["title"] != lesson.title:
+            raise ValueError(f"Course folder differs from COURSE_LAYOUT.json: {lesson.folder}")
 
 
 def markdown_link(label: str, target: Path, from_dir: Path) -> str:
@@ -124,12 +136,26 @@ def copy_if_changed(source: Path, target: Path) -> None:
         shutil.copy2(source, target)
 
 
+def slide_access_issue(source: Path) -> str | None:
+    """Keep encrypted originals archived without classifying them as readable slides."""
+    if source.suffix.lower() != ".pdf":
+        return None
+    import fitz
+    try:
+        with fitz.open(source) as pdf:
+            return "原始 PDF 需要密码；未取得可读正文，不编写内容讲解" if pdf.needs_pass else None
+    except (RuntimeError, ValueError) as exc:
+        return f"无法读取 PDF 正文：{exc}"
+
+
 def filename_for(title: str, url: str, number: int, extension: str) -> str:
     return material_filename(title, url, extension)
 
 
 def slide_destination(site_path: str, lesson_folder: Path) -> Path:
     name = Path(site_path).name
+    if name.startswith(("assignment3_sharing_", "assignment3_feedback_")):
+        return lesson_folder / name
     assignment = re.search(r"assignment(\d+)", name, re.I)
     if assignment:
         return ROOT / "assignment" / f"assignment-{assignment.group(1)}" / name
@@ -199,6 +225,10 @@ def organize_lessons() -> None:
                 source = ROOT / "site" / site_path
                 target = folder / source.name
                 if source.exists():
+                    issue = slide_access_issue(source)
+                    if issue:
+                        lines += [f"- {markdown_link(label + '（受限原件）', source, folder)}", f"  - Source: {BASE}{site_path}", f"  - 状态：{issue}。"]
+                        continue
                     copy_if_changed(source, target)
                     lines += [f"- {markdown_link(label, target, folder)}", f"  - Source: {BASE}{site_path}"]
                     source_number = re.match(r"(\d+)_", source.name)
@@ -221,6 +251,11 @@ def organize_lessons() -> None:
                               f"  - Source: {BASE}{site_path}"]
         lines += ["", "## Readings", ""]
         items = meeting_readings(soup, lesson.meeting_id) if lesson.meeting_id else []
+        if lesson.meeting_id:
+            meeting = soup.find(class_="reading-meeting", id=lesson.meeting_id)
+            heading = meeting.find("h2") if meeting else None
+            if heading and not heading.get_text(" ", strip=True).endswith(lesson.title):
+                raise ValueError(f"Reading meeting differs from lesson title: {lesson.folder}")
         expected_readings: set[Path] = set()
         if items:
             file_index = 0
@@ -389,8 +424,8 @@ def update_course_index() -> None:
     slides_by_date = schedule_slides()
     sections = []
     for heading, lessons in (
-        ("Part I：Introduction to LLMs and agents", [l for l in LESSONS if l.date < "2026-10-19"]),
-        ("Part II：Systems for LLMs and agents", [l for l in LESSONS if l.date >= "2026-10-19"]),
+        ("Part I：Introduction to LLMs and agents", sorted((l for l in LESSONS if l.date < "2026-10-19"), key=lambda l: l.date)),
+        ("Part II：Systems for LLMs and agents", sorted((l for l in LESSONS if l.date >= "2026-10-19"), key=lambda l: l.date)),
     ):
         sections += [f"## {heading}", "", "| 日期 | 课程原题与资料入口 | 官方讲义 PDF | 中文学习讲解 |", "|---|---|---|---|"]
         for lesson in lessons:
@@ -403,6 +438,9 @@ def update_course_index() -> None:
             status = " · ".join(slide_links) if slide_links else (
                 "论文讨论课；官网未提供讲义 PDF" if lesson.paper_discussion else "官网尚未提供"
             )
+            if not slide_links and any((ROOT / "site" / p).is_file() and slide_access_issue(ROOT / "site" / p)
+                                       for _, p in slides_by_date.get(lesson.date, ())):
+                status = "PDF 需要密码；原件已归档，正文未取得"
             notes = sorted(path for path in folder.glob("*.md") if path.name not in {"README.md", "SOURCES.md"})
             preferred = folder / "notes.zh-CN.md"
             primary = preferred if preferred in notes else next((path for path in notes if path.name.startswith("lecture_02")), notes[0] if notes else None)
@@ -411,7 +449,7 @@ def update_course_index() -> None:
                 note_status += " · " + markdown_link("补充学习文档", folder / "SOURCES.md", ROOT)
             sections.append(f"| {lesson.date[5:]} | {markdown_link(f'{lesson.number}. {lesson.title}', entry, ROOT)} | {status} | {note_status} |")
         sections.append("")
-    sections += ["完整日历、调整后的日期和新增课次见[完整课表](COURSE_SCHEDULE.md)。上表及[旧版课程主页](site/index.html)保留资料归档时的课次与日期；原始 PDF 文件名保留官网编号。", ""]
+    sections += ["完整日历和材料状态见[完整课表](COURSE_SCHEDULE.md)。目录编号保持稳定，表中按当前官方日期排序；历史 `18.EfficientAgenticSystems.Others` 保留，不计为当前正式课次。原始 PDF 文件名保留官网编号。", ""]
     sections += ["### 文件名与归档位置核对（2026-10-23）", "",
                  "本次按课表日期、讲义封面、阅读链接和原始归档的校验值核对全部 18 个课次。264 份阅读副本均与对应原始下载文件一致；其中 LPC 的 HTML 是浏览器验证页，未取得阅读正文，已在第 14 课索引中明确标注。", "",
                  "| 容易混淆的文件 | 核对结论与处理 |", "|---|---|",

@@ -1,7 +1,7 @@
 {
   "course": "Stanford CS329Z — Engineering AI Agents",
   "semester": "Fall 2026",
-  "snapshot_date": "2026-11-01",
+  "snapshot_date": "2026-11-04",
   "base_url": "https://cs329z.stanford.edu/",
   "lessons": [
     {
@@ -572,7 +572,7 @@
     },
     {
       "week": "—",
-      "date_label": "Finals Week (Dec 7–11)",
+      "date_label": "Wed Dec 9",
       "title": "Final Project Demo Day"
     }
   ],
@@ -586,14 +586,20 @@
       "lessons": [],
       "status": "saved",
       "html_title": "Stanford CS329Z | Engineering AI Agents",
-      "sha256": "913a24331bbf0bd7198854e3c00e6e3fbcf84dd9af32510ceb5c9fbb8a460a2a",
-      "bytes": 39561,
-      "retrieved_at": "2026-10-31T14:10:24.584537+00:00",
-      "final_url": null,
-      "content_type": null,
-      "transport": "Node fetch; validated by sync.py",
-      "retrieved_at_basis": "Completed body file write timestamp; response metadata lost when original tool timed out",
-      "response_metadata_note": "Response headers and final redirect URL not recovered after transport interruption; download_url records requested source."
+      "sha256": "5d8755d9a53ba8f9b6a2cbb75a2376d06f574031d3fa70c48708caeeff654bd1",
+      "bytes": 39828,
+      "retrieved_at": "2026-11-04T09:06:46+08:00",
+      "final_url": "https://cs329z.stanford.edu/index.html",
+      "content_type": "text/html; charset=utf-8",
+      "transport": "Python requests; complete course-page batch validated",
+      "history": [
+        {
+          "path": "versions/913a24331bbf0bd7198854e3c00e6e3fbcf84dd9af32510ceb5c9fbb8a460a2a/site/index.html",
+          "sha256": "913a24331bbf0bd7198854e3c00e6e3fbcf84dd9af32510ceb5c9fbb8a460a2a",
+          "retrieved_at": "2026-10-31T14:10:24.584537+00:00",
+          "replaced_at": "2026-11-04T09:06:47+08:00"
+        }
+      ]
     },
     {
       "title": "Course logistics.html",
@@ -606,12 +612,10 @@
       "html_title": "Logistics | Stanford CS329Z",
       "sha256": "33626168e06a4ec8fd5439929100eab0df2bfbd37771746a5e508d33eee7d224",
       "bytes": 11955,
-      "retrieved_at": "2026-10-31T14:10:25.036415+00:00",
-      "final_url": null,
-      "content_type": null,
-      "transport": "Node fetch; validated by sync.py",
-      "retrieved_at_basis": "Completed body file write timestamp; response metadata lost when original tool timed out",
-      "response_metadata_note": "Response headers and final redirect URL not recovered after transport interruption; download_url records requested source."
+      "retrieved_at": "2026-11-04T09:06:47+08:00",
+      "final_url": "https://cs329z.stanford.edu/logistics.html",
+      "content_type": "text/html; charset=utf-8",
+      "transport": "Python requests; complete course-page batch validated"
     },
     {
       "title": "Course project.html",
@@ -622,12 +626,20 @@
       "lessons": [],
       "status": "saved",
       "html_title": "Project | Stanford CS329Z",
-      "sha256": "2b6d48a1f20829245886ee23cf5d7b2b513423f8c0b7dd27dc9c7617414b06d1",
-      "bytes": 13876,
-      "retrieved_at": "2026-10-31T22:57:40.017Z",
+      "sha256": "aeaafc242a0cb5fe445f8aefac1c5525316ce62b5b8ea14fa07fdeebcca9ba39",
+      "bytes": 13897,
+      "retrieved_at": "2026-11-04T09:06:47+08:00",
       "final_url": "https://cs329z.stanford.edu/project.html",
       "content_type": "text/html; charset=utf-8",
-      "transport": "Node fetch; validated by sync.py"
+      "transport": "Python requests; complete course-page batch validated",
+      "history": [
+        {
+          "path": "versions/2b6d48a1f20829245886ee23cf5d7b2b513423f8c0b7dd27dc9c7617414b06d1/site/project.html",
+          "sha256": "2b6d48a1f20829245886ee23cf5d7b2b513423f8c0b7dd27dc9c7617414b06d1",
+          "retrieved_at": "2026-10-31T22:57:40.017Z",
+          "replaced_at": "2026-11-04T09:06:47+08:00"
+        }
+      ]
     },
     {
       "title": "stanford.png",
@@ -1943,8 +1955,8 @@
         15
       ],
       "status": "unavailable",
-      "error": "Error: HTTP 403",
-      "checked_at": "2026-10-31T22:57:53.939Z",
+      "error": "403 Client Error: Forbidden for url: https://openreview.net/pdf?id=4BjGVZ7Bxn",
+      "checked_at": "2026-11-04T09:06:49+08:00",
       "landing_snapshot": {
         "path": "readings/web/AutoLibra_Agent_Metric_Induction_from_Open-Ended_Human_Feedback.html"
       }
@@ -2066,8 +2078,8 @@
         17
       ],
       "status": "unavailable",
-      "error": "Error: HTTP 403",
-      "checked_at": "2026-10-31T22:57:55.127Z"
+      "error": "403 Client Error: Forbidden for url: https://openai.com/index/prompt-injections/",
+      "checked_at": "2026-11-04T09:06:49+08:00"
     },
     {
       "title": "Anthropic's Responsible Scaling Policy",
@@ -2223,9 +2235,39 @@
       "lessons": [
         19
       ],
-      "status": "unavailable",
-      "error": "TypeError: fetch failed",
-      "checked_at": "2026-10-31T22:57:57.597Z"
+      "status": "saved",
+      "checked_at": "2026-10-31T22:57:57.597Z",
+      "html_title": "GitHub - openclaw/openclaw: The AI that really does things. Any OS. Any Platform. The lobster way. 🦞 · GitHub",
+      "sha256": "6387c609df0ab1d6afc53731a8240eec9221ea763e08b0b5c31d7e26366f2bf6",
+      "bytes": 965330,
+      "retrieved_at": "2026-11-04T09:06:50+08:00",
+      "final_url": "https://github.com/openclaw/openclaw",
+      "content_type": "text/html; charset=utf-8",
+      "content_disposition": "",
+      "transport": "Python requests; original response bytes validated"
+    }
+  ],
+  "code_snapshots": [
+    {
+      "path": "assignment/assignment-1/SNAPSHOT.json",
+      "repository": "https://github.com/cs329z/assignment1-harness",
+      "commit": "c6cab03d161e4e8db8a9e2c12caf8e353b079beb",
+      "files": 109,
+      "sha256": "d5206ce6c922ae9c875b449612924bb5b1aafc75bf3d85658463986b3db84505"
+    },
+    {
+      "path": "assignment/assignment-2/SNAPSHOT.json",
+      "repository": "https://github.com/cs329z/assignment2-harness",
+      "commit": "be78339f6e74d58cd426f272f61885d619f6edd1",
+      "files": 28,
+      "sha256": "827721ec7287a09fcab08dc5379743364e78965bf669ed0cd6999ea95d2fc1be"
+    },
+    {
+      "path": "code/lecture5-frameworks/SNAPSHOT.json",
+      "repository": "https://github.com/cs329z/lecture5-frameworks",
+      "commit": "4e418289b3032cb960984250395525eb91ae25c2",
+      "files": 16,
+      "sha256": "372a4fa80f1be220ca587775282ad41857fda70db6b219344ae13132a6684430"
     }
   ]
 }

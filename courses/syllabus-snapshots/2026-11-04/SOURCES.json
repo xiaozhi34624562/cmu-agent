@@ -1,0 +1,65 @@
+[
+  {
+    "path": "courses/syllabus-snapshots/2026-11-04/harvard/index.html",
+    "url": "https://cs2680.com/",
+    "final_url": "https://cs2680.com/",
+    "sha256": "26b2196e0f471ee534fb258261e731a790b489caad3873015edf9296daf54809",
+    "bytes": 38018,
+    "retrieved_at": "2026-11-04T01:14:49.280216+00:00",
+    "http_status": 200
+  },
+  {
+    "path": "courses/syllabus-snapshots/2026-11-04/harvard/assignments.html",
+    "url": "https://cs2680.com/assignments/",
+    "final_url": "https://cs2680.com/assignments/",
+    "sha256": "45368996ef24138add42e83d08339dfe4859afeb27ee193eee973c94a108a17f",
+    "bytes": 9946,
+    "retrieved_at": "2026-11-04T01:14:49.123000+00:00",
+    "http_status": 200
+  },
+  {
+    "path": "courses/syllabus-snapshots/2026-11-04/stanford/index.html",
+    "url": "https://cs329z.stanford.edu/index.html",
+    "final_url": "https://cs329z.stanford.edu/index.html",
+    "sha256": "5d8755d9a53ba8f9b6a2cbb75a2376d06f574031d3fa70c48708caeeff654bd1",
+    "bytes": 39828,
+    "retrieved_at": "2026-11-04T01:14:49.053081+00:00",
+    "http_status": 200
+  },
+  {
+    "path": "courses/syllabus-snapshots/2026-11-04/stanford/project.html",
+    "url": "https://cs329z.stanford.edu/project.html",
+    "final_url": "https://cs329z.stanford.edu/project.html",
+    "sha256": "aeaafc242a0cb5fe445f8aefac1c5525316ce62b5b8ea14fa07fdeebcca9ba39",
+    "bytes": 13897,
+    "retrieved_at": "2026-11-04T01:14:49.331611+00:00",
+    "http_status": 200
+  },
+  {
+    "url": "https://www.cmu-agents.com/",
+    "final_url": "https://www.cmu-agents.com/",
+    "retrieved_at": "2026-11-04T01:08:47.491611+00:00",
+    "http_status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 688,
+    "sha256": "905be76e4150d738043c062128e0dc9f8b97b7098c54cc4b2d4aff7760814421",
+    "path": "courses/syllabus-snapshots/2026-11-04/cmu/index.html"
+  },
+  {
+    "url": "https://www.cmu-agents.com/assets/index-BoEP-SNx.js",
+    "final_url": "https://www.cmu-agents.com/assets/index-BoEP-SNx.js",
+    "retrieved_at": "2026-11-04T01:08:47.869079+00:00",
+    "http_status": 200,
+    "content_type": "application/javascript; charset=utf-8",
+    "bytes": 225098,
+    "sha256": "15934bab647184610a472664b3e748f86e9a4bc17416fdbd064c07ebd58ef2fa",
+    "path": "courses/syllabus-snapshots/2026-11-04/cmu/app.js"
+  },
+  {
+    "path": "courses/syllabus-snapshots/2026-11-01/mit/schedule.html",
+    "url": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
+    "sha256": "2bcc674248c7ebc8ca4f29312b0dc0c5bd73300bfd1a0c3710dbd58ffe82d7fc",
+    "checked_at": "2026-11-04T01:14:49.860980+00:00",
+    "reuse_note": "Unchanged bytes; reuse 2026-11-01 snapshot, not a new acquisition"
+  }
+]

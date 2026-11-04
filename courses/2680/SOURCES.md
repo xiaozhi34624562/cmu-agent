@@ -1,7 +1,7 @@
 # CS2680 来源索引
 
 - 课程：[CS2680 Modern AI Systems](https://cs2680.com/)（2026 Fall）
-- 本地同步日期：2026-10-28
+- 本地同步日期：2026-11-04
 - `site/` 保存课程网站公开页面和站内文件；网页中的站内链接已改为本地路径。
 - `readings/` 保存可获取的外部论文 PDF 和网页快照；视频保留原始链接。
 - 原始网页内容、PDF 和作业代码均未翻译或修改；网页仅调整了站内链接。
@@ -24,7 +24,7 @@
 | [site/computing/cloudlab.html](site/computing/cloudlab.html) | https://cs2680.com/computing/cloudlab.html |
 | [site/computing/cluster.html](site/computing/cluster.html) | https://cs2680.com/computing/cluster.html |
 | [site/computing/index.html](site/computing/index.html) | https://cs2680.com/computing/ |
-| [site/css/main-2aee50d2d6.css](site/css/main-2aee50d2d6.css) | https://cs2680.com/css/main.css?v=a9616d75175b |
+| [site/css/main-712263a536.css](site/css/main-712263a536.css) | https://cs2680.com/css/main.css?v=2ef27d4fe964 |
 | [site/css/main.css](site/css/main.css) | https://cs2680.com/css/main.css |
 | [site/discussion.html](site/discussion.html) | https://cs2680.com/discussion.html |
 | [site/favicon.svg](site/favicon.svg) | https://cs2680.com/favicon.svg |
@@ -59,8 +59,12 @@
 | [site/slides/8_agent_design_5.pdf](site/slides/8_agent_design_5.pdf) | https://cs2680.com/slides/8_agent_design_5.pdf |
 | [site/slides/8_assignment3.pdf](site/slides/8_assignment3.pdf) | https://cs2680.com/slides/8_assignment3.pdf |
 | [site/slides/9_llm_serving_basics_1.pdf](site/slides/9_llm_serving_basics_1.pdf) | https://cs2680.com/slides/9_llm_serving_basics_1.pdf |
+| [site/slides/assignment3_feedback_protected.pdf](site/slides/assignment3_feedback_protected.pdf) | https://cs2680.com/slides/assignment3_feedback_protected.pdf |
+| [site/slides/assignment3_sharing_protected.pdf](site/slides/assignment3_sharing_protected.pdf) | https://cs2680.com/slides/assignment3_sharing_protected.pdf |
 | [site/slides/assignment4.pdf](site/slides/assignment4.pdf) | https://cs2680.com/slides/assignment4.pdf |
 | [site/sponsors/aws.png](site/sponsors/aws.png) | https://cs2680.com/sponsors/aws.png |
+| [site/sponsors/chameleon.png](site/sponsors/chameleon.png) | https://cs2680.com/sponsors/chameleon.png |
+| [site/sponsors/cloudlab.png](site/sponsors/cloudlab.png) | https://cs2680.com/sponsors/cloudlab.png |
 | [site/sponsors/harvard-fas.svg](site/sponsors/harvard-fas.svg) | https://cs2680.com/sponsors/harvard-fas.svg |
 | [site/sponsors/harvard-seas.svg](site/sponsors/harvard-seas.svg) | https://cs2680.com/sponsors/harvard-seas.svg |
 | [site/sponsors/madsys.png](site/sponsors/madsys.png) | https://cs2680.com/sponsors/madsys.png |
@@ -268,6 +272,19 @@
 | TinyLFU | [readings/papers/TinyLFU_A_Highly_Efficient_Cache_Admission_Policy.pdf](readings/papers/TinyLFU_A_Highly_Efficient_Cache_Admission_Policy.pdf) | https://arxiv.org/abs/1512.00727 |
 | libCacheSim | [readings/web/libCacheSim_A_High_Performance_Library_for_Building_Cache_Simulators.html](readings/web/libCacheSim_A_High_Performance_Library_for_Building_Cache_Simulators.html) | https://libcachesim.com/ |
 | CacheLib | [readings/web/The_CacheLib_Caching_Engine_Design_and_Experiences_at_Scale.html](readings/web/The_CacheLib_Caching_Engine_Design_and_Experiences_at_Scale.html) | https://www.usenix.org/conference/osdi20/presentation/berg |
+| MQA | [readings/papers/Fast_Transformer_Decoding_One_Write-Head_is_All_You_Need.pdf](readings/papers/Fast_Transformer_Decoding_One_Write-Head_is_All_You_Need.pdf) | https://arxiv.org/abs/1911.02150 |
+| GQA | [readings/papers/GQA_Training_Generalized_Multi-Query_Transformer_Models_from_Multi-Head_Checkpoints.pdf](readings/papers/GQA_Training_Generalized_Multi-Query_Transformer_Models_from_Multi-Head_Checkpoints.pdf) | https://arxiv.org/abs/2305.13245 |
+| MLA | [readings/papers/DeepSeek-V2_A_Strong_Economical_and_Efficient_Mixture-of-Experts_Language_Model.pdf](readings/papers/DeepSeek-V2_A_Strong_Economical_and_Efficient_Mixture-of-Experts_Language_Model.pdf) | https://arxiv.org/abs/2405.04434 |
+| CLA | [readings/papers/Reducing_Transformer_Key-Value_Cache_Size_with_Cross-Layer_Attention.pdf](readings/papers/Reducing_Transformer_Key-Value_Cache_Size_with_Cross-Layer_Attention.pdf) | https://arxiv.org/abs/2405.12981 |
+| YOCO | [readings/papers/You_Only_Cache_Once_Decoder-Decoder_Architectures_for_Language_Models.pdf](readings/papers/You_Only_Cache_Once_Decoder-Decoder_Architectures_for_Language_Models.pdf) | https://arxiv.org/abs/2405.05254 |
+| SWA | [readings/papers/Mistral_7B.pdf](readings/papers/Mistral_7B.pdf) | https://arxiv.org/abs/2310.06825 |
+| Mamba | [readings/papers/Mamba_Linear-Time_Sequence_Modeling_with_Selective_State_Spaces.pdf](readings/papers/Mamba_Linear-Time_Sequence_Modeling_with_Selective_State_Spaces.pdf) | https://arxiv.org/abs/2312.00752 |
+| Kimi Linear | [readings/papers/Kimi_Linear_An_Expressive_Efficient_Attention_Architecture.pdf](readings/papers/Kimi_Linear_An_Expressive_Efficient_Attention_Architecture.pdf) | https://arxiv.org/abs/2510.26692 |
+| NSA | [readings/papers/Native_Sparse_Attention_Hardware-Aligned_and_Natively_Trainable_Sparse_Attention.pdf](readings/papers/Native_Sparse_Attention_Hardware-Aligned_and_Natively_Trainable_Sparse_Attention.pdf) | https://arxiv.org/abs/2502.11089 |
+| MoBA | [readings/papers/MoBA_Mixture_of_Block_Attention_for_Long-Context_LLMs.pdf](readings/papers/MoBA_Mixture_of_Block_Attention_for_Long-Context_LLMs.pdf) | https://arxiv.org/abs/2502.13189 |
+| DeepSeek-V3.2 | [readings/papers/DeepSeek-V3.2_Pushing_the_Frontier_of_Open_Large_Language_Models.pdf](readings/papers/DeepSeek-V3.2_Pushing_the_Frontier_of_Open_Large_Language_Models.pdf) | https://arxiv.org/abs/2512.02556 |
+| DeepSeek-V4 | [readings/papers/DeepSeek-V4_Towards_Highly_Efficient_Million-Token_Context_Intelligence.pdf](readings/papers/DeepSeek-V4_Towards_Highly_Efficient_Million-Token_Context_Intelligence.pdf) | https://arxiv.org/abs/2606.19348 |
+| sparse frontier | [readings/papers/The_Sparse_Frontier_Sparse_Attention_Trade-offs_in_Transformer_LLMs.pdf](readings/papers/The_Sparse_Frontier_Sparse_Attention_Trade-offs_in_Transformer_LLMs.pdf) | https://arxiv.org/abs/2504.17768 |
 | mixed precision | [readings/papers/Mixed_Precision_Training.pdf](readings/papers/Mixed_Precision_Training.pdf) | https://arxiv.org/abs/1710.03740 |
 | FP8 formats | [readings/papers/FP8_Formats_for_Deep_Learning.pdf](readings/papers/FP8_Formats_for_Deep_Learning.pdf) | https://arxiv.org/abs/2209.05433 |
 | INT vs FP | [readings/papers/INT_v.s._FP_A_Comprehensive_Study_of_Fine-Grained_Low-bit_Quantization_Formats.pdf](readings/papers/INT_v.s._FP_A_Comprehensive_Study_of_Fine-Grained_Low-bit_Quantization_Formats.pdf) | https://arxiv.org/abs/2510.25602 |
@@ -304,19 +321,6 @@
 | LLM-Pruner | [readings/papers/LLM-Pruner_On_the_Structural_Pruning_of_Large_Language_Models.pdf](readings/papers/LLM-Pruner_On_the_Structural_Pruning_of_Large_Language_Models.pdf) | https://arxiv.org/abs/2305.11627 |
 | ProxSparse | [readings/papers/ProxSparse_Regularized_Learning_of_Semi-Structured_Sparsity_Masks_for_Pretrained_LLMs.pdf](readings/papers/ProxSparse_Regularized_Learning_of_Semi-Structured_Sparsity_Masks_for_Pretrained_LLMs.pdf) | https://arxiv.org/abs/2502.00258 |
 | beyond FLOPs | [readings/papers/Beyond_FLOPs_Benchmarking_Real_Inference_Acceleration_of_LLM_Pruning_under_a_GEMM-Centric_Taxonomy.pdf](readings/papers/Beyond_FLOPs_Benchmarking_Real_Inference_Acceleration_of_LLM_Pruning_under_a_GEMM-Centric_Taxonomy.pdf) | https://arxiv.org/abs/2606.09080 |
-| MQA | [readings/papers/Fast_Transformer_Decoding_One_Write-Head_is_All_You_Need.pdf](readings/papers/Fast_Transformer_Decoding_One_Write-Head_is_All_You_Need.pdf) | https://arxiv.org/abs/1911.02150 |
-| GQA | [readings/papers/GQA_Training_Generalized_Multi-Query_Transformer_Models_from_Multi-Head_Checkpoints.pdf](readings/papers/GQA_Training_Generalized_Multi-Query_Transformer_Models_from_Multi-Head_Checkpoints.pdf) | https://arxiv.org/abs/2305.13245 |
-| MLA | [readings/papers/DeepSeek-V2_A_Strong_Economical_and_Efficient_Mixture-of-Experts_Language_Model.pdf](readings/papers/DeepSeek-V2_A_Strong_Economical_and_Efficient_Mixture-of-Experts_Language_Model.pdf) | https://arxiv.org/abs/2405.04434 |
-| CLA | [readings/papers/Reducing_Transformer_Key-Value_Cache_Size_with_Cross-Layer_Attention.pdf](readings/papers/Reducing_Transformer_Key-Value_Cache_Size_with_Cross-Layer_Attention.pdf) | https://arxiv.org/abs/2405.12981 |
-| YOCO | [readings/papers/You_Only_Cache_Once_Decoder-Decoder_Architectures_for_Language_Models.pdf](readings/papers/You_Only_Cache_Once_Decoder-Decoder_Architectures_for_Language_Models.pdf) | https://arxiv.org/abs/2405.05254 |
-| SWA | [readings/papers/Mistral_7B.pdf](readings/papers/Mistral_7B.pdf) | https://arxiv.org/abs/2310.06825 |
-| Mamba | [readings/papers/Mamba_Linear-Time_Sequence_Modeling_with_Selective_State_Spaces.pdf](readings/papers/Mamba_Linear-Time_Sequence_Modeling_with_Selective_State_Spaces.pdf) | https://arxiv.org/abs/2312.00752 |
-| Kimi Linear | [readings/papers/Kimi_Linear_An_Expressive_Efficient_Attention_Architecture.pdf](readings/papers/Kimi_Linear_An_Expressive_Efficient_Attention_Architecture.pdf) | https://arxiv.org/abs/2510.26692 |
-| NSA | [readings/papers/Native_Sparse_Attention_Hardware-Aligned_and_Natively_Trainable_Sparse_Attention.pdf](readings/papers/Native_Sparse_Attention_Hardware-Aligned_and_Natively_Trainable_Sparse_Attention.pdf) | https://arxiv.org/abs/2502.11089 |
-| MoBA | [readings/papers/MoBA_Mixture_of_Block_Attention_for_Long-Context_LLMs.pdf](readings/papers/MoBA_Mixture_of_Block_Attention_for_Long-Context_LLMs.pdf) | https://arxiv.org/abs/2502.13189 |
-| DeepSeek-V3.2 | [readings/papers/DeepSeek-V3.2_Pushing_the_Frontier_of_Open_Large_Language_Models.pdf](readings/papers/DeepSeek-V3.2_Pushing_the_Frontier_of_Open_Large_Language_Models.pdf) | https://arxiv.org/abs/2512.02556 |
-| DeepSeek-V4 | [readings/papers/DeepSeek-V4_Towards_Highly_Efficient_Million-Token_Context_Intelligence.pdf](readings/papers/DeepSeek-V4_Towards_Highly_Efficient_Million-Token_Context_Intelligence.pdf) | https://arxiv.org/abs/2606.19348 |
-| sparse frontier | [readings/papers/The_Sparse_Frontier_Sparse_Attention_Trade-offs_in_Transformer_LLMs.pdf](readings/papers/The_Sparse_Frontier_Sparse_Attention_Trade-offs_in_Transformer_LLMs.pdf) | https://arxiv.org/abs/2504.17768 |
 | Preble | [readings/papers/Preble_Efficient_Distributed_Prompt_Scheduling_for_LLM_Serving.pdf](readings/papers/Preble_Efficient_Distributed_Prompt_Scheduling_for_LLM_Serving.pdf) | https://arxiv.org/abs/2407.00023 |
 | Llumnix | [readings/papers/Llumnix_Dynamic_Scheduling_for_Large_Language_Model_Serving.pdf](readings/papers/Llumnix_Dynamic_Scheduling_for_Large_Language_Model_Serving.pdf) | https://arxiv.org/abs/2406.03243 |
 | DualMap | [readings/papers/DualMap_Enabling_Both_Cache_Affinity_and_Load_Balancing_for_Distributed_LLM_Serving.pdf](readings/papers/DualMap_Enabling_Both_Cache_Affinity_and_Load_Balancing_for_Distributed_LLM_Serving.pdf) | https://arxiv.org/abs/2602.06502 |
@@ -324,35 +328,11 @@
 | Hybrid LLM | [readings/papers/Hybrid_LLM_Cost-Efficient_and_Quality-Aware_Query_Routing.pdf](readings/papers/Hybrid_LLM_Cost-Efficient_and_Quality-Aware_Query_Routing.pdf) | https://arxiv.org/abs/2404.14618 |
 | AutoMix | [readings/papers/AutoMix_Automatically_Mixing_Language_Models.pdf](readings/papers/AutoMix_Automatically_Mixing_Language_Models.pdf) | https://arxiv.org/abs/2310.12963 |
 | RouterBench | [readings/papers/RouterBench_A_Benchmark_for_Multi-LLM_Routing_System.pdf](readings/papers/RouterBench_A_Benchmark_for_Multi-LLM_Routing_System.pdf) | https://arxiv.org/abs/2403.12031 |
-| parallelizing tool execution | [readings/papers/Parallelizing_Tool_Execution_and_LLM_Generation_for_Low-Latency_Agent_Serving.pdf](readings/papers/Parallelizing_Tool_Execution_and_LLM_Generation_for_Low-Latency_Agent_Serving.pdf) | https://arxiv.org/abs/2603.18897 |
-| TimelyLLM | 仅链接 | https://doi.org/10.1145/3745756.3809203 |
-| MORI | [readings/papers/Idleness_is_Relative_Exploiting_Tool-Call_Idle_Windows_for_Offloading_in_Agentic_Systems_with_MORI.pdf](readings/papers/Idleness_is_Relative_Exploiting_Tool-Call_Idle_Windows_for_Offloading_in_Agentic_Systems_with_MORI.pdf) | https://arxiv.org/abs/2606.00866 |
-| speculative tool calls | [readings/papers/Optimizing_Agentic_Language_Model_Inference_via_Speculative_Tool_Calls.pdf](readings/papers/Optimizing_Agentic_Language_Model_Inference_via_Speculative_Tool_Calls.pdf) | https://arxiv.org/abs/2512.15834 |
-| Atomix | [readings/papers/Atomix_Timely_Transactional_Tool_Use_for_Reliable_Agentic_Workflows.pdf](readings/papers/Atomix_Timely_Transactional_Tool_Use_for_Reliable_Agentic_Workflows.pdf) | https://arxiv.org/abs/2602.14849 |
-| MCP gateway | [readings/papers/Scalable_LLM_Agent_Tool_Access_in_the_Cloud.pdf](readings/papers/Scalable_LLM_Agent_Tool_Access_in_the_Cloud.pdf) | https://arxiv.org/abs/2607.15593 |
-| Cortex | [readings/web/Cortex_Achieving_Low-Latency_Cost-Efficient_Remote_Data_Access_For_LLM_via_Semantic-Aware_Knowledge_Caching.html](readings/web/Cortex_Achieving_Low-Latency_Cost-Efficient_Remote_Data_Access_For_LLM_via_Semantic-Aware_Knowledge_Caching.html) | https://www.usenix.org/conference/nsdi26/presentation/ruan-cortex |
-| SpecBox | [readings/papers/SpecBox_Speculative_Sandbox_Scheduling_for_Efficient_LLM_Agent_Serving.pdf](readings/papers/SpecBox_Speculative_Sandbox_Scheduling_for_Efficient_LLM_Agent_Serving.pdf) | https://arxiv.org/abs/2607.23933 |
-| DeltaBox | [readings/papers/DeltaBox_Scaling_Stateful_AI_Agents_with_Millisecond-Level_Sandbox_Checkpoint_Rollback.pdf](readings/papers/DeltaBox_Scaling_Stateful_AI_Agents_with_Millisecond-Level_Sandbox_Checkpoint_Rollback.pdf) | https://arxiv.org/abs/2605.22781 |
-| TClone | [readings/papers/TClone_Low-Latency_Forking_of_Live_GUI_Environments_for_Computer-Use_Agents.pdf](readings/papers/TClone_Low-Latency_Forking_of_Live_GUI_Environments_for_Computer-Use_Agents.pdf) | https://arxiv.org/abs/2605.17320 |
-| AgentCgroup | [readings/papers/AgentCgroup_Understanding_and_Controlling_OS_Resources_of_AI_Agents.pdf](readings/papers/AgentCgroup_Understanding_and_Controlling_OS_Resources_of_AI_Agents.pdf) | https://arxiv.org/abs/2602.09345 |
-| Continuum | [readings/papers/Continuum_Efficient_and_Robust_Multi-Turn_LLM_Agent_Scheduling_with_KV_Cache_Time-to-Live.pdf](readings/papers/Continuum_Efficient_and_Robust_Multi-Turn_LLM_Agent_Scheduling_with_KV_Cache_Time-to-Live.pdf) | https://arxiv.org/abs/2511.02230 |
-| Talaria | [readings/papers/Talaria_Session-Aware_Serverless_Serving_of_Hundred-Billion-Parameter_LLMs.pdf](readings/papers/Talaria_Session-Aware_Serverless_Serving_of_Hundred-Billion-Parameter_LLMs.pdf) | https://arxiv.org/abs/2607.17181 |
-| prediction-based KV management | [readings/papers/Efficient_Serving_for_Dynamic_Agent_Workflows_with_Prediction-based_KV-Cache_Management.pdf](readings/papers/Efficient_Serving_for_Dynamic_Agent_Workflows_with_Prediction-based_KV-Cache_Management.pdf) | https://arxiv.org/abs/2605.06472 |
-| CacheScout | [readings/papers/Learning_Agent_Execution_for_KV-Cache_Management_in_Agentic_Serving.pdf](readings/papers/Learning_Agent_Execution_for_KV-Cache_Management_in_Agentic_Serving.pdf) | https://arxiv.org/abs/2608.14624 |
-| SYMPHONY | [readings/web/SYMPHONY_Enabling_Compute-Memory_Disaggregation_in_LLM_Serving_Systems.html](readings/web/SYMPHONY_Enabling_Compute-Memory_Disaggregation_in_LLM_Serving_Systems.html) | https://www.usenix.org/conference/nsdi26/presentation/agarwal |
-| AgentServe | [readings/papers/AgentServe_Algorithm-System_Co-Design_for_Efficient_Agentic_AI_Serving_on_a_Consumer-Grade_GPU.pdf](readings/papers/AgentServe_Algorithm-System_Co-Design_for_Efficient_Agentic_AI_Serving_on_a_Consumer-Grade_GPU.pdf) | https://arxiv.org/abs/2603.10342 |
-| IC-Cache | [readings/papers/IC-Cache_Efficient_Large_Language_Model_Serving_via_In-context_Caching.pdf](readings/papers/IC-Cache_Efficient_Large_Language_Model_Serving_via_In-context_Caching.pdf) | https://arxiv.org/abs/2501.12689 |
-| TokenCake | [readings/papers/TokenCake_A_KV-Cache-centric_Serving_Framework_for_LLM-based_Multi-Agent_Applications.pdf](readings/papers/TokenCake_A_KV-Cache-centric_Serving_Framework_for_LLM-based_Multi-Agent_Applications.pdf) | https://arxiv.org/abs/2510.18586 |
-| CoAgent | [readings/papers/CoAgent_Concurrency_Control_for_Multi-Agent_Systems.pdf](readings/papers/CoAgent_Concurrency_Control_for_Multi-Agent_Systems.pdf) | https://arxiv.org/abs/2606.15376 |
-| governed shared memory | [readings/papers/Governed_Shared_Memory_for_Multi-Agent_LLM_Systems.pdf](readings/papers/Governed_Shared_Memory_for_Multi-Agent_LLM_Systems.pdf) | https://arxiv.org/abs/2606.24535 |
-| AgentSight | [readings/papers/AgentSight_System-Level_Observability_for_AI_Agents_Using_eBPF.pdf](readings/papers/AgentSight_System-Level_Observability_for_AI_Agents_Using_eBPF.pdf) | https://arxiv.org/abs/2508.02736 |
-| AgentTrace | [readings/papers/AgentTrace_Causal_Graph_Tracing_for_Root_Cause_Analysis_in_Deployed_Multi-Agent_Systems.pdf](readings/papers/AgentTrace_Causal_Graph_Tracing_for_Root_Cause_Analysis_in_Deployed_Multi-Agent_Systems.pdf) | https://arxiv.org/abs/2603.14688 |
-| XGrammar | [readings/papers/XGrammar_Flexible_and_Efficient_Structured_Generation_Engine_For_Large_Language_Models.pdf](readings/papers/XGrammar_Flexible_and_Efficient_Structured_Generation_Engine_For_Large_Language_Models.pdf) | https://arxiv.org/abs/2411.15100 |
 
 ## 作业代码
 
 - 公开代码仓库：https://github.com/HarvardMadSys/cs2680_assignments.git（本次未能获取快照）。
-- 保留已有快照：[`assignments/course-repo/`](assignments/course-repo)，获取日期 2026-10-13。
+- 保留已有快照：[`assignments/course-repo/`](assignments/course-repo/)，获取日期 2026-10-13。
 - 固定提交：`7562690a4ad9de0d827b0f73e6ca69ea92c09cfd`（本次未更新）。
 - 快照状态与版本：[`assignments/SNAPSHOT.json`](assignments/SNAPSHOT.json)。
 - 网站提供的原始压缩包：[`site/assignments/assignment2.tar.gz`](site/assignments/assignment2.tar.gz)。
@@ -366,7 +346,6 @@
 - https://doi.org/10.1145/3600006.3613147 — 403 Client Error: Forbidden for url: https://dl.acm.org/doi/10.1145/3600006.3613147
 - https://doi.org/10.1145/3620665.3640366 — 403 Client Error: Forbidden for url: https://dl.acm.org/doi/10.1145/3620665.3640366
 - https://doi.org/10.1145/3676641.3716278 — 403 Client Error: Forbidden for url: https://dl.acm.org/doi/10.1145/3676641.3716278
-- https://doi.org/10.1145/3745756.3809203 — 403 Client Error: Forbidden for url: https://dl.acm.org/doi/10.1145/3745756.3809203
 - https://karpathy.medium.com/software-2-0-a64152b37c35 — 403 Client Error: Forbidden for url: https://karpathy.medium.com/software-2-0-a64152b37c35
 - https://medium.com/@itamar_f/software-3-0-the-era-of-intelligent-software-development-acd3cafe6cd7 — 403 Client Error: Forbidden for url: https://medium.com/@itamar_f/software-3-0-the-era-of-intelligent-software-development-acd3cafe6cd7
 - https://openai.com/index/research-acceleration-view-inside-openai/ — 403 Client Error: Forbidden for url: https://openai.com/index/research-acceleration-view-inside-openai/

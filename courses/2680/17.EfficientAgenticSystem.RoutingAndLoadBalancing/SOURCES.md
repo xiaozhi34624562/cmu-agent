@@ -1,10 +1,10 @@
 # 17. Efficient agentic system: routing and load balancing
 
-- Date: 2026-11-23
+- Date: 2026-11-30
 
 ## Slides
 
-- No slides linked on the course website as of 2026-10-28.
+- No slides linked on the course website as of 2026-11-04.
 
 ## Readings
 
@@ -30,4 +30,4 @@
 ## References
 
 - [Full course reading list](../site/readings.html)
-  - Source: https://cs2680.com/readings.html#nov-23
+  - Source: https://cs2680.com/readings.html#nov-30
