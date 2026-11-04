@@ -12,6 +12,7 @@ def majority_accuracy(p: float) -> float:
 
 
 def information_game(alpha1: float, alpha2: float, beta: float, cost: float):
+    """R5 Table 1: each helper pays only its own search cost."""
     mean = (alpha1 + alpha2) / 2
     payoffs = {
         ('S', 'S'): (mean-cost, mean-cost),
@@ -42,6 +43,18 @@ def main():
     assert math.isclose(vote, 0.784)
     table, eq = information_game(0.90, 0.54, 0.50, 0.05)
     assert eq == ['SG']
+    # R5's training reward instead charges all searches to one shared trajectory.
+    # Reuse the toy game's answer-selection assumptions only for this comparison.
+    shared_reward = {
+        'SS': (0.90 + 0.54) / 2 - 2 * 0.05,
+        'SG': 0.90 - 0.05,
+        'GS': 0.54 - 0.05,
+        'GG': 0.50,
+    }
+    assert math.isclose(table['SS'][0], 0.67)
+    assert math.isclose(shared_reward['SS'], 0.62)
+    assert math.isclose(table['SG'][1], 0.90)
+    assert math.isclose(shared_reward['SG'], 0.85)
     candidates = [
         dict(id='old-version',version=3,evidence_exists=True,score=0.99),
         dict(id='no-evidence',version=4,evidence_exists=False,score=0.99),
@@ -58,6 +71,7 @@ def main():
         kind='Deterministic teaching calculation; not a model or paper benchmark',
         voting=dict(independent=round(vote,3),fully_correlated=0.7),
         information_game=dict(payoffs=table,pure_equilibria=eq),
+        shared_training_reward={key: round(value, 3) for key, value in shared_reward.items()},
         candidate_acceptance=accepted,
         timing_seconds=dict(long_serial=serial,long_parallel=parallel,
                             short_serial=short_serial,short_parallel=short_parallel),

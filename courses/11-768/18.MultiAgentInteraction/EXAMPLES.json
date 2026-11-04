@@ -3,12 +3,12 @@
     "python3",
     "courses/11-768/18.MultiAgentInteraction/coordination_lab.py"
   ],
-  "script_sha256": "047aa4db3251eec698ec21f25baadd312b5b66ec1d9106d49012867cd137441c",
-  "executed_at": "2026-11-04",
+  "script_sha256": "0c510f1c9be7df702c4c667524376458bbd6d67966e228ce4255a7384cfdae7a",
+  "executed_at": "2026-11-04T11:21:34.599021+08:00",
   "python": "3.11.10",
   "platform": "Darwin",
   "exit_code": 0,
-  "scope": "Deterministic arithmetic and field-rule examples only; no model/API/training/paper replication",
+  "scope": "Deterministic arithmetic and field-rule examples only; private-cost game and shared training reward are separate; no model/API/training/paper replication",
   "result": {
     "kind": "Deterministic teaching calculation; not a model or paper benchmark",
     "voting": {
@@ -37,6 +37,12 @@
       "pure_equilibria": [
         "SG"
       ]
+    },
+    "shared_training_reward": {
+      "SS": 0.62,
+      "SG": 0.85,
+      "GS": 0.49,
+      "GG": 0.5
     },
     "candidate_acceptance": [
       "accepted"

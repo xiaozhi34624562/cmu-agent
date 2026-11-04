@@ -3302,94 +3302,156 @@
       "note": "courses/11-768/18.MultiAgentInteraction/notes.zh-CN.md",
       "lesson": 18,
       "status": "passed",
-      "final_sha256": "4d2dc8b25d57cfae0ff01af1a00aa836a92fd3d4a2e58f2c8d610579cebb9b78",
-      "content_review_sha256": "4d2dc8b25d57cfae0ff01af1a00aa836a92fd3d4a2e58f2c8d610579cebb9b78",
-      "reviewed_at": "2026-11-04",
-      "coverage": "覆盖 44 页主讲义三条问题链；角色/辩论/递归/MACU/异步黑板/进展共享/人机协作/信用分配/模拟器坍缩/涌现约定/市场/校准/监督；贯穿案例、选型、成本、诊断及16道自测；确定性教学程序已运行。",
+      "final_sha256": "c4c75f4bf4e270d5dda5580db41b02c722fede663201452761516d1deda370fc",
+      "content_review_sha256": "c4c75f4bf4e270d5dda5580db41b02c722fede663201452761516d1deda370fc",
+      "reviewed_at": "2026-11-04T11:30:35.086260+08:00",
+      "coverage": "覆盖 44 页讲义三条问题链及 6 篇指定阅读中的相关机制；按当前标准逐处区分讲义直接内容、阅读延伸、教学推导、工程建议及未执行实验。补全递归上下文、VM/文件/Git 交接、通信资源与协议边界、两阶段训练、用户奖励、模拟器和涌现通信；核对模型/任务/预算/指标/公式；包含贯穿案例、选型、成本、故障诊断和 18 道自测。",
       "sources_read": [
         {
           "path": "courses/11-768/18.MultiAgentInteraction/lecture-18-multi-agent-systems.pdf",
           "pages": "1–44",
-          "scope": "完整文本阅读；图表及协议示意按实际 PDF 页序核对",
+          "scope": "全文读取讲义文本，并重新视觉核对下列机制图、指标、资源条件和收益矩阵；实际 PDF 页序从 1 开始。",
           "sha256": "5da3102180a75b0c8ad6c849ef497e6cc165ebcd77b4428ce8a177de6ebdc93c",
           "visually_checked_pdf_pages": [
-            1,
             6,
-            9,
             10,
             13,
-            14,
             15,
-            16,
             18,
-            19,
-            20,
             22,
-            23,
             25,
-            27,
             28,
             29,
-            30,
             31,
             32,
-            33,
             34,
             35,
-            36,
-            37,
             39,
-            40,
             41,
-            42,
             43
           ]
         },
         {
           "path": "courses/11-768/18.MultiAgentInteraction/readings/Improving_Factuality_and_Reasoning_in_Language_Models_through_Multiagent_Debate.pdf",
           "version": "2305.14325v1",
-          "pages": "1–3",
-          "scope": "选读核心机制及正文引用的高风险条件、公式和实验；不声称全文阅读全部附录",
+          "pages": "2–5",
+          "scope": "辩论生成与修正、宝石算例、三个实例与两轮辩论、模型一致性及 Chess 指标。",
           "sha256": "b302ff15202dc3cda03f40ea1ac92b29e1519978540b345af92991f6d3e619b4"
         },
         {
           "path": "courses/11-768/18.MultiAgentInteraction/readings/Multi-Agent_Computer_Use.pdf",
           "version": "2606.01533v1",
-          "pages": "1–5",
-          "scope": "选读核心机制及正文引用的高风险条件、公式和实验；不声称全文阅读全部附录",
+          "pages": "3–5",
+          "scope": "动态 DAG、截图与文件交接、VM 初始化与继承、并发和重规划上限、主管/worker 模型及评分方式。",
           "sha256": "5a8e347bd731600d1ab92633130aa971d4fb72b10df684519793b307ddb6751e"
         },
         {
           "path": "courses/11-768/18.MultiAgentInteraction/readings/Scaling_Discovery_through_Test-Time_Communication.pdf",
           "version": "2609.21032v1",
-          "pages": "1–5,17",
-          "scope": "选读核心机制及正文引用的高风险条件、公式和实验；不声称全文阅读全部附录",
+          "pages": "3–5,17,25–26",
+          "scope": "ARC 采样与 best@k；Terminal-Bench 运行次数、最终容器状态和 oracle；提示约束与 harness 区别；共享 CPU/内存及槽位协议。",
           "sha256": "9fd89cd851d047fd3e8f2c8ebd31e0e0b4492f8513d1d7cb1b6f81ef2d3c101d"
         },
         {
           "path": "courses/11-768/18.MultiAgentInteraction/readings/SWEET-RL_Training_Multi-Turn_LLM_Agents_on_Collaborative_Reasoning_Tasks.pdf",
           "version": "2503.15478v1",
-          "pages": "1,3–7",
-          "scope": "选读核心机制及正文引用的高风险条件、公式和实验；不声称全文阅读全部附录",
-          "sha256": "eb4b5b01ef90b76361d9b92c78202a7e342fd247af24c4e694c802730c4ba428"
+          "pages": "4–7",
+          "scope": "ColBench、隐藏参考、critic/actor 输入、Bradley–Terry 和 token 概率比、长度归一化、16 动作偏好采样；视觉核对 p.7 式 (3)/(4)。",
+          "sha256": "eb4b5b01ef90b76361d9b92c78202a7e342fd247af24c4e694c802730c4ba428",
+          "visually_checked_pdf_pages": [
+            7
+          ]
         },
         {
           "path": "courses/11-768/18.MultiAgentInteraction/readings/Don_t_lie_to_your_friends_Learning_what_you_know_from_collaborative_self-play.pdf",
           "version": "2503.14481v3",
-          "pages": "1,3–7",
-          "scope": "选读核心机制及正文引用的高风险条件、公式和实验；不声称全文阅读全部附录",
+          "pages": "4–7",
+          "scope": "动作、共同轨迹奖励、按动作序列分组的 ReST、私人成本矩阵、Theorem 4.1 的条件、模型/检索工具/数据。",
           "sha256": "bdff738a018d08a2da948eb8533b65e0ebb51991a969f30c980ea2e43793f777"
         },
         {
           "path": "courses/11-768/18.MultiAgentInteraction/readings/Debating_with_More_Persuasive_LLMs_Leads_to_More_Truthful_Answers.pdf",
           "version": "2402.06782v4",
-          "pages": "1,3–4,6",
-          "scope": "选读核心机制及正文引用的高风险条件、公式和实验；不声称全文阅读全部附录",
+          "pages": "1,3–6",
+          "scope": "摘要数字、信息访问差异、QuALITY、引文匹配、轮次/词数、展示顺序与答案轮换、Elo 和 best-of-N。",
           "sha256": "7c821195db82719f5fbecdfaf6762d626bf5b47b20bc862b6a7dbfe577b0ecc6"
         },
         {
-          "path": "courses/11-768/18.MultiAgentInteraction/REFERENCES.json",
-          "scope": "17 项辅助参考按讲义需要选读摘要、机制与相关网页；全书及全部附录未逐页精读；下载完整性与内容审核范围分开"
+          "path": "courses/11-768/18.MultiAgentInteraction/references/Recursive_Agent_Optimization.pdf",
+          "version": "2605.06639v1",
+          "pages": "2–3,6–8",
+          "scope": "选读递归原语与训练机制、TEXTCRAFT-SYNTH 设置、Table 1(a) 的上下文和成功率；Steps/Time 的统计交集及图的训练横轴。",
+          "sha256": "78d5d1fbcd5be9f4b3946310d937100d8936600af3e4bdb1b8e82b8dbe1325ce"
+        },
+        {
+          "path": "courses/11-768/18.MultiAgentInteraction/references/Effective_Strategies_for_Asynchronous_Software_Engineering_Agents.pdf",
+          "version": "2603.21489v2",
+          "pages": "2–3",
+          "scope": "DAG 就绪条件、worktree 自验、主管集成与提交者解决冲突。",
+          "sha256": "7db67ce0a2b2d4188149b5d84dd44f2a2aab6dc6edd1de02d5508ff561834e62"
+        },
+        {
+          "path": "courses/11-768/18.MultiAgentInteraction/references/LLM-Based_Multi-Agent_Blackboard_System_for_Information_Discovery_in_Data_Science.pdf",
+          "version": "2510.01285v2",
+          "pages": "2–3",
+          "scope": "主 Agent 发请求、文件 Agent 自选响应、主 Agent 继续整体求解。",
+          "sha256": "333545f7d918b877eb02579a04da724b0823e7886f232983453975797f5b19be"
+        },
+        {
+          "path": "courses/11-768/18.MultiAgentInteraction/references/Decentralized_Multi-Agent_Systems_with_Shared_Context.pdf",
+          "version": "2606.10662v3",
+          "pages": "2–4",
+          "scope": "选读共享任务队列、append-only 消息板、去中心化异步执行；工程事务/租约建议单独标明。",
+          "sha256": "9637a7c7d8a09d2181f75c3150c9fac0d00333147b11d100ea5b1c89fed29e17"
+        },
+        {
+          "path": "courses/11-768/18.MultiAgentInteraction/references/GitSwarm_Decentralized_Compounding_Inference.pdf",
+          "version": "2610.04862v1",
+          "pages": "3–4",
+          "scope": "Git 父提交与 informed_by、贡献/提名/放弃、候选选择，以及发布校验和声明依赖的能力边界。",
+          "sha256": "1df39f09ce0cf67489711bf2f62b0259ea717eb0b57df03505ffc1b9aa9bce07"
+        },
+        {
+          "path": "courses/11-768/18.MultiAgentInteraction/references/Training_Proactive_and_Personalized_LLM_Agents.pdf",
+          "version": "2511.02208v2",
+          "pages": "3–5",
+          "scope": "选读模糊需求、隐藏需求与用户偏好、会话级努力和逐次奖励、主动性分值及偏好留出。",
+          "sha256": "8286ac58f1e734a5370ec23be907bad4b2547ca343efd12b980d2f4e2d347cb8"
+        },
+        {
+          "path": "courses/11-768/18.MultiAgentInteraction/references/One_Frozen_Simulator_Is_Not_Enough_Simulator_Collapse_in_Multi-Agent_RL.pdf",
+          "version": "2608.12253v2",
+          "pages": "1–2",
+          "scope": "选读坍缩机制、Verbalized Sampling 在训练 rollout 中的模拟器推理阶段、冻结权重与 population co-training 的区别。",
+          "sha256": "5b8c0cb6ddf3e053f437ec9e753285c26f60cd49906bf0b87b9fae91933ff80c"
+        },
+        {
+          "path": "courses/11-768/18.MultiAgentInteraction/references/GlossoGen_Emergent_Language_in_Complex_Multi-Agent_LLM_Interactions.pdf",
+          "version": "2609.01491v1",
+          "pages": "1–3,5–7",
+          "scope": "选读通信环境、预算与复盘的四组条件、字符到模拟时间的映射、GPT-2 perplexity 与任务成功指标。",
+          "sha256": "5068771ccde165fd8d41bc190a58c5ff241ad3874f73c1491c0289cf719ad59c"
+        },
+        {
+          "path": "courses/11-768/18.MultiAgentInteraction/references/Magentic_Marketplace_An_Open-Source_Environment_for_Studying_Agentic_Markets.pdf",
+          "version": "2510.25779v1",
+          "pages": "2",
+          "scope": "合成市场、搜索/匹配/通信/交易机制；工程验收建议不当作原文最优性结论。",
+          "sha256": "d1a309d06fd3b211d6ef470a6721713403596a140c5e3f9b4abc38fe01099aa4"
+        },
+        {
+          "path": "courses/11-768/18.MultiAgentInteraction/references/Generative_Agents_Interactive_Simulacra_of_Human_Behavior.pdf",
+          "version": "2304.03442v2",
+          "pages": "8–9",
+          "scope": "选读 memory stream、检索评分、反思和计划，区分外部状态与模型权重。",
+          "sha256": "1b31e77fb24d25d7598f2c49e955d12a28b95a6dabad34acdac40f44bfb7a139"
+        },
+        {
+          "path": "courses/11-768/18.MultiAgentInteraction/references/Direct_Preference_Optimization_Your_Language_Model_is_Secretly_a_Reward_Model.pdf",
+          "version": "2305.18290v3",
+          "pages": "4",
+          "scope": "式 (7) 标准 DPO 对数概率比，交叉核查 SWEET-RL v1 p.7 的排版差异；未审核作者训练代码。",
+          "sha256": "92cb3a2b71362acda98a789b03d88688fd33cf5fcf13f81d2b1de30ee7d3b67a"
         }
       ],
       "source_sha256": {
@@ -3416,20 +3478,28 @@
         "courses/11-768/18.MultiAgentInteraction/references/Brief_independent_investigation_of_agents_behavior_reasoning_and_collaboration_in_the_OpenAI_Hugging_Face_hacking_incident.html": "9581c24f27a05c4e3112feb6254b4326d080da399b288411fca06e26ced9caf9",
         "courses/11-768/18.MultiAgentInteraction/references/Magentic_Marketplace_An_Open-Source_Environment_for_Studying_Agentic_Markets.pdf": "d1a309d06fd3b211d6ef470a6721713403596a140c5e3f9b4abc38fe01099aa4",
         "courses/11-768/18.MultiAgentInteraction/references/Generative_Agents_Interactive_Simulacra_of_Human_Behavior.pdf": "1b31e77fb24d25d7598f2c49e955d12a28b95a6dabad34acdac40f44bfb7a139",
-        "courses/11-768/18.MultiAgentInteraction/references/Relying_on_the_Unreliable_The_Impact_of_Language_Models_Reluctance_to_Express_Uncertainty.pdf": "564c49f55113804d97956e506fe7faa8cbb1288847eb30cc622ab4a65d658550"
+        "courses/11-768/18.MultiAgentInteraction/references/Relying_on_the_Unreliable_The_Impact_of_Language_Models_Reluctance_to_Express_Uncertainty.pdf": "564c49f55113804d97956e506fe7faa8cbb1288847eb30cc622ab4a65d658550",
+        "courses/11-768/18.MultiAgentInteraction/references/Direct_Preference_Optimization_Your_Language_Model_is_Secretly_a_Reward_Model.pdf": "92cb3a2b71362acda98a789b03d88688fd33cf5fcf13f81d2b1de30ee7d3b67a"
       },
-      "source_binding_scope": "来源字节绑定不表示全部参考正文已逐页精读；实际阅读范围以 sources_read 为准。",
+      "source_binding_scope": "25 份原始材料的字节绑定不表示全部正文已逐页精读；本轮实际阅读和视觉核对范围以 sources_read 为准，其余辅助参考仅沿用归档和主讲义定位。",
       "reread_result": [
-        "完整初稿复读后补清模型/预算条件、Terminal-Bench 对照与 oracle 选优限制、SWEET-RL 更新过程及图表指标。",
-        "最终全文分段复读与新增段落回查完成；公式、教学算例、章节覆盖、自测答案和本地引用一致，当前声明范围内无未解决内容问题。"
+        "所有正文修订完成后，对同一最终版本完整复读第一遍：核对讲义主线、公式符号、实验条件、来源与工程推导边界，未发现新的待修正问题。",
+        "保持文件字节不变，分段再次完整复读全部 686 行：复核教学流程、章节关系、算例、自测答案、引用与未执行实验声明，未发现新的待修正问题。"
       ],
       "remaining_issues": [],
       "limitations": [
-        "没有运行模型/API、GUI/VM、分布式 Agent、RL/SFT或论文基准；只有确定性算例程序实际执行。",
-        "辅助参考选读，不宣称完整精读 395 页教科书和全部论文附录。",
-        "教学案例、运行时契约与选型建议需在实际任务验证，不作为论文已证明的统一实现。"
+        "仅执行确定性教学程序；未运行模型/API、GUI/VM、分布式 Agent、RL/SFT、论文基准、真实用户或市场实验。",
+        "辅助参考按相关机制选读；未声称全文精读 395 页教科书、全部参考或全部附录。",
+        "SWEET-RL v1 式 (4) 与标准 DPO 的差异按归档 PDF 和 DPO 原论文交叉核对；没有逐行核查作者代码，也不声称已确认作者实现有误。",
+        "教学案例、状态/权限/验收契约、成本模型和选型建议属于有依据的工程展开，仍须实际系统验证；结构校验不构成内容正确性的证明。"
       ],
-      "review_type": "Primary agent source/content review and self-review; no independent-agent review claimed"
+      "review_type": "Primary agent source/content review and two full final self-rereads; no independent-agent review claimed",
+      "requirements_applied": [
+        "AGENTS.md：中文课程讲解的通用标准",
+        "AGENTS.md：11-768 与 2680 的中文讲解维护"
+      ],
+      "final_full_rereads": 2,
+      "reread_sha256": "c4c75f4bf4e270d5dda5580db41b02c722fede663201452761516d1deda370fc"
     }
   ],
   "original_sources": {
@@ -3949,6 +4019,7 @@
     "courses/11-768/18.MultiAgentInteraction/references/Brief_independent_investigation_of_agents_behavior_reasoning_and_collaboration_in_the_OpenAI_Hugging_Face_hacking_incident.html": "9581c24f27a05c4e3112feb6254b4326d080da399b288411fca06e26ced9caf9",
     "courses/11-768/18.MultiAgentInteraction/references/Magentic_Marketplace_An_Open-Source_Environment_for_Studying_Agentic_Markets.pdf": "d1a309d06fd3b211d6ef470a6721713403596a140c5e3f9b4abc38fe01099aa4",
     "courses/11-768/18.MultiAgentInteraction/references/Generative_Agents_Interactive_Simulacra_of_Human_Behavior.pdf": "1b31e77fb24d25d7598f2c49e955d12a28b95a6dabad34acdac40f44bfb7a139",
-    "courses/11-768/18.MultiAgentInteraction/references/Relying_on_the_Unreliable_The_Impact_of_Language_Models_Reluctance_to_Express_Uncertainty.pdf": "564c49f55113804d97956e506fe7faa8cbb1288847eb30cc622ab4a65d658550"
+    "courses/11-768/18.MultiAgentInteraction/references/Relying_on_the_Unreliable_The_Impact_of_Language_Models_Reluctance_to_Express_Uncertainty.pdf": "564c49f55113804d97956e506fe7faa8cbb1288847eb30cc622ab4a65d658550",
+    "courses/11-768/18.MultiAgentInteraction/references/Direct_Preference_Optimization_Your_Language_Model_is_Secretly_a_Reward_Model.pdf": "92cb3a2b71362acda98a789b03d88688fd33cf5fcf13f81d2b1de30ee7d3b67a"
   }
 }

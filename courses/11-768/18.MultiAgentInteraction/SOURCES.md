@@ -49,6 +49,8 @@
 
 ## 来源、复用与校验
 
+本篇另有一项**教学复核补充**，不属于官方 6 篇 Readings / 17 项 References：[Direct Preference Optimization: Your Language Model is Secretly a Reward Model](references/Direct_Preference_Optimization_Your_Language_Model_is_Secretly_a_Reward_Model.pdf)，固定版本 `2305.18290v3`，27 页，原始来源 https://arxiv.org/abs/2305.18290v3 。复用仓库 `courses/MAS.S62/7.ModelEvolution1/references/` 的既有原件，用 p.4 式 (7) 核查 SWEET-RL v1 p.7 的 DPO 公式排版差异；复用位置和 SHA-256 见 REFERENCES.json，不记作本次新下载。
+
 [REFERENCES.json](REFERENCES.json) 逐项记录 role、URL、下载端点、正文路径、实际版本与 SHA-256。复用仓库既有材料时记 `reused_from` 和复用时间，不将其当作新下载。网页保存正文快照，未对原始论文做文本转换。
 
 [课程 REVIEW.json](../REVIEW.json) 绑定最终笔记与来源；自动验证不代替原文精读。未复现 MACU、CAID、DeLM、GitSwarm、RAO、SWEET-RL、CSP、PPP、用户模拟器训练、市场或人类实验。

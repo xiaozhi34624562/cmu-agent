@@ -355,5 +355,19 @@
     "status": "saved",
     "pages": 21,
     "version": "ACL 2024 proceedings"
+  },
+  {
+    "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+    "url": "https://arxiv.org/abs/2305.18290v3",
+    "path": "references/Direct_Preference_Optimization_Your_Language_Model_is_Secretly_a_Reward_Model.pdf",
+    "role": "review_supplement",
+    "status": "saved",
+    "version": "2305.18290v3",
+    "pages": 27,
+    "reused_from": "courses/MAS.S62/7.ModelEvolution1/references/Direct_Preference_Optimization_Your_Language_Model_is_Secretly_a_Reward_Model.pdf",
+    "reused_at": "2026-11-04T03:21:34.565335+00:00",
+    "provenance_note": "Reused existing MAS.S62 archive for formula review; not an official course reading and not a new download.",
+    "sha256": "92cb3a2b71362acda98a789b03d88688fd33cf5fcf13f81d2b1de30ee7d3b67a",
+    "bytes": 1299212
   }
 ]
