@@ -1,0 +1,2 @@
+# Preserve archived syllabus bytes so recorded source checksums survive checkout.
+courses/syllabus-snapshots/** -text

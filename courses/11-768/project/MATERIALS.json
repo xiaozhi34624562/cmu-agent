@@ -1,0 +1,19 @@
+[
+  {
+    "title": "Research Project",
+    "url": "https://www.cmu-agents.com/#/project",
+    "path": "Research_Project.html",
+    "role": "project_guidance",
+    "status": "saved",
+    "material_type": "extracted_spa_html",
+    "version": "Official course SPA snapshot 2026-11-13",
+    "source_script_url": "https://www.cmu-agents.com/assets/index-CP4uKDdk.js",
+    "source_script_sha256": "7b6c8b18714c28c260786d9774ea092e0e3244b07d5c7f0c4bf42275eaf92d69",
+    "source_snapshot": "../../syllabus-snapshots/2026-11-13/cmu/app.js",
+    "source_retrieved_at": "2026-11-13T06:18:17.007381+00:00",
+    "extracted_at": "2026-11-13T07:29:00.794033+00:00",
+    "sha256": "ea70b7b9a8a0f95ac41c0773b04c7c88cf8b22d0be642544fc0f39f4f303431c",
+    "bytes": 11511,
+    "extraction_note": "Static rendering of the exact official project React component and its original schedule, grading and report-section arrays; original English text retained. CSS and interactive scrolling omitted. Raw SPA remains in source snapshot."
+  }
+]

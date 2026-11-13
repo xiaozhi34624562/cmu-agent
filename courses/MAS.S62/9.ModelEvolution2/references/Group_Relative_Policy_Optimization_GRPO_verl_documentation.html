@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Group Relative Policy Optimization (GRPO) &mdash; verl  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=27552b18" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/js/runllm-widget.js?v=53011e60"></script>
+      <script src="../_static/js/resizable-sidebar.js?v=5610fd81"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Recipe: Decoupled Clip and Dynamic Sampling Policy Optimization (DAPO)" href="dapo.html" />
+    <link rel="prev" title="Proximal Policy Optimization (PPO)" href="ppo.html" /> 
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="verl" /><meta name="readthedocs-version-slug" content="latest" /><meta name="readthedocs-resolver-filename" content="/algo/grpo.html" /><meta name="readthedocs-http-status" content="200" /></head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            verl
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../start/quickstart.html">Quickstart: PPO training on GSM8K dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../start/multinode.html">Multinode Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../start/ray_debug_tutorial.html">Ray Debug Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../start/more_resources.html">More Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../start/agentic_rl.html">Agentic RL Training</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extend_guide.html">How to Extend verl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hybrid_flow.html">HybridFlow Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../single_controller.html">The Design of <code class="docutils literal notranslate"><span class="pre">verl.single_controller</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Preparation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/prepare_data.html">Prepare Data for Post-Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/reward_function.html">Implement Reward Function for Dataset</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configurations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/config.html">Config Explanation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PPO Example</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/ppo_code_architecture.html">PPO Example Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/gsm8k_example.html">GSM8K Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/megatron_fsdp_example.html">Megatron-FSDP Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/multi_modal_example.html">Multi-Modal Example Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/skypilot_examples.html">SkyPilot Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Algorithms</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ppo.html">Proximal Policy Optimization (PPO)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Group Relative Policy Optimization (GRPO)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#key-components">Key Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-extensions">Advanced Extensions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#drgrpo">DrGRPO</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#reference-example">Reference Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dapo.html">Recipe: Decoupled Clip and Dynamic Sampling Policy Optimization (DAPO)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spin.html">Recipe: Self-Play Fine-Tuning (SPIN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sppo.html">Recipe: Self-Play Preference Optimization (SPPO)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entropy.html">Recipe: Entropy Mechanism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opo.html">On-Policy RL with Optimal Reward Baseline (OPO)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="baseline.html">Algorithm Baselines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpg.html">GPG: Group Policy Gradient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rollout_corr.html">Rollout Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rollout_corr_math.html">Mathematical Formulations of Rollout Correction Methods in <code class="docutils literal notranslate"><span class="pre">verl</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="otb.html">Optimal Token Baseline (OTB)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dppo.html">Divergence Proximal Policy Optimization (DPPO)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opd.html">On-Policy Distillation (OPD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dro.html">Direct Reward Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PPO Trainer and Workers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../workers/ray_trainer.html">PPO Ray Trainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workers/model_engine.html">Model Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workers/engine_workers.html">Engine Workers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workers/automodel_workers.html">Automodel Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workers/torchtitan_workers.html">TorchTitan Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workers/sglang_worker.html">SGLang Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workers/trtllm_worker.html">TensorRT-LLM Backend</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Performance Tuning Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../perf/dpsk.html">Training DeepSeek 671b</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/dynamic_context_parallel.html">Dynamic Context Parallelism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../perf/best_practices.html">Verl LLM Best Practices (DAPO + Qwen3-235B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../perf/perf_tuning.html">Performance Tuning Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../perf/rollout_kv_offload.html">Rollout KV Cache Offload via Mooncake-Store</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_vllm0.8.html">Upgrading to vLLM &gt;= 0.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../perf/device_tuning.html">Hardware Resource Needed for RL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../perf/verl_profiler_system.html">verl Profiler System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../perf/nsight_profiling.html">NVIDIA Nsight Systems profiling in verl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../perf/torch_profiling.html">PyTorch Profiling in verl</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Adding new models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../advance/fsdp_extension.html">Add models with the FSDP backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/megatron_extension.html">Add models with the Megatron-LM backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/deepseek_v4_integration.html">Adding DeepSeek V4 support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/megatron_lite_backend.html">Experimental Megatron Agent Compose preview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Async Training</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../advance/one_step_off.html">Recipe: One Step Off Policy Async Trainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/delta_weight_sync.html">Delta Weight Sync</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/v1_async_trainer.html">V1 Async Trainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/fully_async.html">Recipe: Fully Async Policy Trainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/async-on-policy-distill.html">Recipe: Async On-Policy Knowledge Distillation Trainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/dynamic_schedule.html">Dynamic Resource Scheduling for Fully-Async Training</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Low Precision</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../low_precision/fp8.html">FP8 RL in verl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../low_precision/mxfp8.html">MXFP8 RL on Blackwell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../low_precision/mxfp4_qat.html">MXFP4 MoE QAT on Blackwell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../low_precision/nvfp4.html">NVFP4 RL on Blackwell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../low_precision/qat.html">Low-Precision Rollout and Quantization-Aware Training</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Features</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../advance/checkpoint.html">Using Checkpoints to Support Fault Tolerance Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/rope.html">RoPE Scaling override</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/attention_implementation.html">Attention Implementation Override</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/ppo_lora.html">RL(HF) algorithms with LoRA Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sglang_multiturn/multiturn.html">Multi-turn Rollout Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/placement.html">Ray API Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/dpo_extension.html">Extend to other RL(HF) algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/sandbox_fusion_example.html">Sandbox Fusion Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/rollout_trace.html">Trace Function Usage Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/rl_insight.html">Use RL-Insight to Monitor Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/skip_manager.html">SkipManager: Skip everything in the RL pipeline.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/agent_loop.html">Agent Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/reward_loop.html">Reward Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/transfer_queue.html">TransferQueue Data System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/grafana_prometheus.html">Use Prometheus and Grafana to Monitor Rollout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/mtp.html">Guide to Using MTP in SFT/RL Training and Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/determinism.html">Full Determinism for Reproducible RL Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/fsdp_turbo_backend.html">FSDP-Turbo backend</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/multi_chip_support.html">Multi-Chip Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amd_tutorial/index.html">AMD (ROCm) Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ascend_tutorial/index.html">Ascend (NPU) Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/data.html">Data interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/single_controller.html">Single Controller interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/trainer.html">Trainer Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/utils.html">Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Blog</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../blog/v0.7.html">verl 0.7 release blog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../faq/faq.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/editing-agent-instructions.html">Editing Agent Instructions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sglang_multiturn/sandbox_fusion.html">Sandbox Fusion Tool Integration</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">verl</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Group Relative Policy Optimization (GRPO)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/algo/grpo.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="group-relative-policy-optimization-grpo">
+<h1>Group Relative Policy Optimization (GRPO)<a class="headerlink" href="#group-relative-policy-optimization-grpo" title="Link to this heading"></a></h1>
+<p>Last updated: 05/31/2025.</p>
+<p>In reinforcement learning, classic algorithms like PPO rely on a “critic” model to estimate the value of actions, guiding the learning process. However, training this critic model can be resource-intensive.</p>
+<p>GRPO simplifies this process by eliminating the need for a separate critic model. Instead, it operates as follows:</p>
+<ul class="simple">
+<li><p>Group Sampling: For a given problem, the model generates multiple possible solutions, forming a “group” of outputs.</p></li>
+<li><p>Reward Assignment: Each solution is evaluated and assigned a reward based on its correctness or quality.</p></li>
+<li><p>Baseline Calculation: The average reward of the group serves as a baseline.</p></li>
+<li><p>Policy Update: The model updates its parameters by comparing each solution’s reward to the group baseline, reinforcing better-than-average solutions and discouraging worse-than-average ones.</p></li>
+</ul>
+<p>This approach reduces computational overhead by avoiding the training of a separate value estimation model, making the learning process more efficient. For more details, refer to the original paper <a class="reference external" href="https://arxiv.org/pdf/2402.03300">DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models</a></p>
+<section id="key-components">
+<h2>Key Components<a class="headerlink" href="#key-components" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>No Value Function (Critic-less): unlike PPO, GRPO does not train a separate value network (critic)</p></li>
+<li><p>Group Sampling (Grouped Rollouts): instead of evaluating one rollout per input, GRPO generates multiple completions (responses) from the current policy for each prompt. This set of completions is referred to as a group.</p></li>
+<li><p>Relative Rewards: within each group, completions are scored (e.g., based on correctness), and rewards are normalized relative to the group.</p></li>
+</ul>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>Note that all configs containing <code class="docutils literal notranslate"><span class="pre">micro_batch_size</span></code> are used to configure the maximum sample or token count per forward or backward pass to avoid GPU OOMs, whose value should not change algorithmic/convergence behavior.</p>
+<p>Despite that many configurations start with the <code class="docutils literal notranslate"><span class="pre">ppo_</span></code> prefix, they work across different RL algorithms in verl, as the GRPO training loop is similar to that of PPO (without critic).</p>
+<p><img alt="image" src="https://github.com/user-attachments/assets/16aebad1-0da6-4eb3-806d-54a74e712c2d" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">actor_rollout.ref.rollout.n</span></code>: For each prompt, sample n times. Default to 1. For GRPO, please set it to a value larger than 1 for group sampling.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data.train_batch_size</span></code>: The global batch size of prompts used to generate a set of sampled trajectories/rollouts. The number of responses/trajectories is <code class="docutils literal notranslate"><span class="pre">data.train_batch_size</span> <span class="pre">*</span> <span class="pre">actor_rollout.ref.rollout.n</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">actor_rollout_ref.actor.ppo_mini_batch_size</span></code>: The set of sampled trajectories is split into multiple mini-batches with batch_size=ppo_mini_batch_size for PPO actor updates. The ppo_mini_batch_size is a global size across all workers.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">actor_rollout_ref.actor.ppo_epochs</span></code>: Number of epochs for GRPO updates on one set of sampled trajectories for actor</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">actor_rollout_ref.actor.clip_ratio</span></code>: The GRPO clip range. Default to 0.2</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">algorithm.adv_estimator</span></code>: Default is gae. Please set it to grpo instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">actor_rollout_ref.actor.loss_agg_mode</span></code>: Default is “token-mean”. Options include “token-mean”, “seq-mean-token-sum”, “seq-mean-token-mean”. The original GRPO paper takes the sample-level loss (seq-mean-token-mean), which may be unstable in long-CoT scenarios. All GRPO example scripts provided in verl uses the default configuration “token-mean” for loss aggregation instead.</p></li>
+</ul>
+<p>Instead of adding KL penalty in the reward, GRPO regularizes by directly adding the KL divergence between the trained policy and the reference policy to the loss:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">actor_rollout_ref.actor.use_kl_loss</span></code>: To use kl loss in the actor. When used, we are not applying KL in the reward function. Default is False. Please set it to True for GRPO.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">actor_rollout_ref.actor.kl_loss_coef</span></code>: The coefficient of kl loss. Default is 0.001.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">actor_rollout_ref.actor.kl_loss_type</span></code>: Support kl(k1), abs, mse(k2), low_var_kl(k3) and full. Appending “+” in the end (e.g., ‘k1+’ and ‘k3+’) would apply straight through to employ k2 for unbiased gradient estimation, regardless of the kl value estimation (see https://github.com/verl-project/verl/pull/2953#issuecomment-3162113848 for more details). How to calculate the kl divergence between actor and reference policy. See this blog post for detailed analysis: http://joschu.net/blog/kl-approx.html</p></li>
+</ul>
+</section>
+<section id="advanced-extensions">
+<h2>Advanced Extensions<a class="headerlink" href="#advanced-extensions" title="Link to this heading"></a></h2>
+<section id="drgrpo">
+<h3>DrGRPO<a class="headerlink" href="#drgrpo" title="Link to this heading"></a></h3>
+<p><a class="reference external" href="https://arxiv.org/pdf/2503.20783">Understanding R1-Zero-Like Training: A Critical Perspective</a> claims there’s optimization bias in GRPO, which leads to artificially longer responses, especially for incorrect outputs. This inefficiency stems from the way GRPO calculates advantages using group-based reward normalization. Instead, DrGRPO aggregates token-level losses by normalizing with a global constant to eliminate length bias.</p>
+<p>Configure the following to enable DrGRPO, with all other parameters the same as GRPO’s:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">actor_rollout_ref.actor.loss_agg_mode</span></code>: “seq-mean-token-sum-norm”, which turns off seq-dim averaging</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">actor_rollout_ref.actor.loss_scale_factor</span></code>: (Optional) Set to a constant integer (e.g., max response length) to ensure consistent normalization throughout training. If not set, uses the current batch’s response length.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">actor_rollout_ref.actor.use_kl_loss</span></code>: Please set it to False for DrGRPO</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">algorithm.norm_adv_by_std_in_grpo</span></code>: False, which turns off standard deviation norm</p></li>
+</ul>
+</section>
+</section>
+<section id="reference-example">
+<h2>Reference Example<a class="headerlink" href="#reference-example" title="Link to this heading"></a></h2>
+<p>Qwen2.5 GRPO training log and commands: <a class="reference external" href="https://github.com/eric-haibin-lin/verl-data/blob/experiments/gsm8k/qwen2-7b-fsdp2.log">link</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bash<span class="w"> </span>examples/grpo_trainer/run_qwen3_8b_fsdp.sh
+</pre></div>
+</div>
+<p>For more reference performance, please see https://verl.readthedocs.io/en/latest/algo/baseline.html</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ppo.html" class="btn btn-neutral float-left" title="Proximal Policy Optimization (PPO)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dapo.html" class="btn btn-neutral float-right" title="Recipe: Decoupled Clip and Dynamic Sampling Policy Optimization (DAPO)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024 ByteDance Seed Foundation MLSys Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

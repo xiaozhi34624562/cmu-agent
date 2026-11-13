@@ -78,7 +78,7 @@
 <td>10%</td>
 </tr>
 <tr class="table-light">
-<td><strong>Bonus</strong> (optional presentations, course feedback &amp; problems AI cannot solve)</td>
+<td><strong>Bonus</strong> (optional presentations, course feedback, problems AI cannot solve &amp; the Assignment 5 rankings)</td>
 <td>up to 10%</td>
 </tr>
 </tbody>
@@ -88,9 +88,9 @@
 <hr/>
 <div class="subsection" id="leaderboard-grading">
 <h2>Leaderboard grading for Assignments 3 and 5</h2>
-<p>Assignment 3 and Assignment 5 are scored on a leaderboard. Each is scored out of 100 points, which scale to 20% of the course grade for Assignment 3 and 10% for Assignment 5 in the <a href="#grading">breakdown above</a>. Of those 100 points, 80 are for system performance and 20 are for the write-up (a published blog post) and the video.</p>
-<p>The two assignments rank on different metrics. Assignment 3 ranks on task solve rate and cost. Assignment 5 ranks on task solve rate, API and GPU cost, and latency.</p>
-<p><strong>Performance score.</strong> The 80 performance points come from your rank on the leaderboard, and the provided baseline sets a floor under them:</p>
+<p>Assignment 3 and Assignment 5 are scored on a leaderboard. Each is scored out of 100 points, which scale to 20% of the course grade for Assignment 3 and 10% for Assignment 5 in the <a href="#grading">breakdown above</a>. For Assignment 3, 80 of those points are for system performance and 20 are for the write-up (a published blog post) and the video. For Assignment 5, 50 are for the leaderboard, 40 for the published blog post and 10 for the video.</p>
+<p>The two assignments score their leaderboards differently. Assignment 3 ranks on task solve rate and cost. Assignment 5's leaderboard runs Terminal-Bench 2.0 (89 tasks) and measures tasks solved and end-to-end time. A submission that meets the baseline gets all 50 leaderboard points, as the <a href="assignments/assignment5.html#baseline">Assignment 5 page</a> explains.</p>
+<p><strong>Performance score in Assignment 3.</strong> The 80 performance points come from your rank on the leaderboard, and the provided baseline sets a floor under them:</p>
 <p class="leaderboard-formula">performance score = max(80 − rank, 50 if you beat the baseline)</p>
 <p>Beating the baseline therefore guarantees at least 50 of the 80 points, and the baseline is designed to be relatively easy to beat. At rank 30 the two terms are equal, so the floor changes nothing inside the top 30 and your score there is 80 − rank. Your score for the assignment is the performance score plus the write-up and video score.</p>
 <p>Four cases, each with a write-up and video score of 18 out of 20:</p>
@@ -112,13 +112,13 @@
 </tbody>
 </table>
 </div>
-<p>Most of you will not score 80 or higher on these two assignments. There are <a href="#bonus">bonus points</a> available throughout the semester to make that up.</p>
+<p>Most of you will not score 80 or higher on Assignment 3. There are <a href="#bonus">bonus points</a> available throughout the semester to make that up.</p>
 </div>
 <hr/>
 <div class="subsection" id="late-days">
 <h2>Late days</h2>
 <p>You have <strong>four late days</strong> for the semester, to spend as you like across the assignments. Late days are counted in whole days: a submission one minute past the deadline consumes one full late day.</p>
-<p>For Assignment 3, Assignment 5 and the project, the write-up is a published blog post and the deadline is the moment the <strong>pull request is open</strong> — not the moment it is merged.
+<p>For a published blog post (Assignment 3, Assignment 5 and the project), the deadline is the moment the <strong>pull request is open</strong> — not the moment it is merged.
           </p>
 <ul>
 <li>Late days are per student.</li>
@@ -142,6 +142,7 @@
 <li><strong>Optional presentations up to 4% each.</strong> Present your Assignment 1 frontend at the sharing session or volunteer to present a paper during a discussion meeting. Each presentation can earn up to four bonus percentage points; the <a href="discussion.html#presentation-feedback">presentation feedback criteria</a> explain how.</li>
 <li><strong>Course feedback up to 4%.</strong> Substantive feedback on lectures, readings, assignments, or the pacing of the course, submitted during the semester. Critical feedback is worth the same as praise; it is usually worth more.</li>
 <li><strong>Problems current AI cannot solve, 2% each.</strong> Find a question in this course's subject area that ChatGPT, Claude, and Gemini all get wrong — either they cannot solve it, or they answer confidently from expired knowledge.</li>
+<li><strong>Assignment 5 rankings up to 5%.</strong> Assignment 5's leaderboard also runs Assignment 4's 26 tasks. Submissions that meet its baseline earn up to three bonus percentage points for their rank on the 26 tasks and up to two for their rank on Terminal-Bench 2.0. The <a href="assignments/assignment5.html#bonus">Assignment 5 page</a> gives the rules.</li>
 </ul>
 <h3>What counts as an AI-stumper submission</h3>
 <p>This field moves faster than model training runs, so a great deal of what these systems "know" about GPUs,

@@ -1,10 +1,10 @@
-# 24. Student sharing III: Engine optimizations and agent-engine co-design
+# 24. Student sharing III: Showcase your serving engine (Assignment 4)
 
-- Date: 2026-11-23
+- Date: 2026-11-18
 
 ## Slides
 
-- No slides linked on the course website as of 2026-11-04.
+- No slides linked on the course website as of 2026-11-13.
 
 ## Readings
 

@@ -1,7 +1,5 @@
-# Assignment3StudentSharing
+# Student sharing II: Harness optimization
 
-官方日期：2026-10-26。2026-11-04 已保存原始 PDF，但需要密码，尚未取得可读正文。
+官方日期：2026-10-26。官网已更新分享课题目；目录编号与路径保留。原始 PDF 已归档，但需要密码，尚未取得可读正文。
 
-[原件、来源与限制](SOURCES.md) · [完整课表](../COURSE_SCHEDULE.md)
-
-暂不猜测或编写该受限分享材料的内容讲解。
+[来源与材料状态](SOURCES.md) · [完整课表](../COURSE_SCHEDULE.md)

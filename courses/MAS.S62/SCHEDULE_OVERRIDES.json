@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-11-13",
+  "purpose": "Use explicit official syllabus closure/date plan while retaining conflicting official HTML verbatim. This is a documented source-priority decision, not an upstream correction.",
+  "authority": {
+    "url": "https://docs.google.com/document/d/1H1vs32fhWaxEuP6-nA2GP-a1aFuEmjOXNMcer2UyKpM/export?format=pdf",
+    "path": "site/syllabus/ai4ai-syllabus.pdf",
+    "sha256": "c31e74cd0d8616d579ac60f34f361f2660fb70bb52814fe56642b9de96de9725",
+    "pages": [
+      2
+    ]
+  },
+  "conflicting_source": {
+    "url": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
+    "path": "site/schedule/index.html",
+    "observed_sha256": "058ca1a130f2c7597dd768d3ce551901065cd9a1f3db58ee360730f8851219b7",
+    "conflicts": [
+      "HTML W10 Nov11 Environment evolution1 vs syllabus Veterans Day no class",
+      "HTML W11 Nov18 Environment evolution2 vs syllabus Environment evolution1",
+      "HTML W12 Nov25 Future topics vs syllabus Environment evolution2",
+      "Syllabus merges four Future topics at W14 Dec9"
+    ],
+    "semantic_sha256": "f7afc4617b71a79b77882cfecfca2adddbf2e015c53d66e78e3acb6aa85ff915"
+  },
+  "directory_policy": "Stable topic folders do not equal current official Week numbers. Existing directories are retained; W10 no-class is a schedule-only row.",
+  "weeks": {
+    "10": {
+      "date": "2026-11-11",
+      "title": "Veterans Day — no class",
+      "kind": "no_class",
+      "folder": null,
+      "topics": [],
+      "materials": [],
+      "readings": []
+    },
+    "11": {
+      "content_from_week": 10,
+      "date": "2026-11-18",
+      "title": "Environment evolution 1",
+      "folder": "10.EnvironmentEvolution1"
+    },
+    "12": {
+      "content_from_week": 11,
+      "date": "2026-11-25",
+      "title": "Environment evolution 2",
+      "folder": "11.EnvironmentEvolution2"
+    },
+    "14": {
+      "date": "2026-12-09",
+      "title": "Future topics",
+      "folder": "14.FutureTopics",
+      "topics": [
+        "AI for scientific discovery",
+        "Multimodal agents",
+        "Embodied harnesses",
+        "Safe evolution"
+      ]
+    }
+  },
+  "homework_status": {
+    "current_list": [
+      1,
+      2,
+      3
+    ],
+    "overview_count": 4,
+    "homework_4": "unconfirmed; absent from detailed list but overview still says four; do not claim cancelled"
+  },
+  "retained_folders": {
+    "12.FutureTopics": "Former W12 topic merged into W14; retained for stable links"
+  },
+  "corroborating_sources": [
+    {
+      "title": "MIT Registrar 2026-2027 key dates",
+      "url": "https://registrar.mit.edu/calendar/current-key-dates",
+      "scope": "Root agent verified November 11, 2026 Veterans Day holiday; supports the syllabus no-class row, not the subsequent course-topic assignments",
+      "checked_at": "2026-11-13"
+    }
+  ]
+}

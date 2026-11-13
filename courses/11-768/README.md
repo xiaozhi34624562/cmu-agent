@@ -25,12 +25,13 @@
 | 15 | [15. Frameworks 2: Orchestration and Monitoring](15.OrchestrationAndMonitoring/SOURCES.md) | [课程讲解](15.OrchestrationAndMonitoring/lecture-15-orchestration-and-monitoring-complete-guide.md) |
 | 16 | [16. Agents and the Future of Work](16.AgentsAndTheFutureOfWork/SOURCES.md) | [课程讲解](16.AgentsAndTheFutureOfWork/notes.zh-CN.md) |
 | 18 | [18. Multi-Agent Interaction](18.MultiAgentInteraction/SOURCES.md) | [完整中文讲解](18.MultiAgentInteraction/notes.zh-CN.md) |
+| 20 | [20. Search 1: Reranking and Critic Models](20.RerankingAndCriticModels/SOURCES.md) | [完整中文讲解](20.RerankingAndCriticModels/notes.zh-CN.md)；31 页讲义与全部阅读已归档 |
 
 第 10 课还保留[通用设计](10.DeepResearchAgents/Deep_Research_Agent_General_Design.md)、[来源核对](10.DeepResearchAgents/Deep_Research_Agent_Design_Source_Checks.md)与[金融 Agent 三篇论文研究](10.DeepResearchAgents/Finance_Agent_Research_2026_Three_Papers.md)。这些是专题补充，不是新增课次。
 
-第 16 课对应官网 **2026-10-27** 的 Zora Wang 嘉宾课，讲义封面为 *AI Agents for Human Work*，保留原文件名；16 是本地资料目录序号。官网 10 月 22 日的 *Safety 2: Observability and Monitoring* 仍未提供材料，没有据此虚构一份讲义。最新同步范围和待获取事项见[来源总入口](SOURCES.md)。
+第 16 课对应官网 **2026-10-27** 的 Zora Wang 嘉宾课，讲义封面为 *AI Agents for Human Work*，保留原文件名；16 是本地资料目录序号。官网 10 月 22 日的 *Safety 2: Observability and Monitoring* 仍未提供 slides，官方安全文章入口与获取限制见该课来源索引。最新同步范围和待获取事项见[来源总入口](SOURCES.md)。
 
-2026-11-04 新增第 18 课的 44 页主讲义、6 篇指定阅读和 17 项参考，完整讲解覆盖协作、共同环境、训练与监督；本地目录号 17 仍等待公开讲义。
+2026-11-13 新增第 20 课的 31 页主讲义、4 篇指定阅读和 23 项参考，已同步[官方研究项目指南](project/SOURCES.md)及 10/22 阅读索引。第 20 课完整中文讲解已完成全文复读、来源核查和轻量示例运行，当前审核绑定见 REVIEW.json；历史中文笔记正文保持不变。第 17、19 课仍等待公开讲义。
 
 ## 作业资料
 

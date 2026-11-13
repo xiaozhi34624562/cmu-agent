@@ -1,0 +1,108 @@
+{
+  "purpose": "Synthetic numerical checks and an actual local Java compilation; not model evaluation",
+  "command": "python3 examples.py --output EXAMPLE_RUN.json",
+  "python": "3.11.10",
+  "script_sha256": "d4d20aaf63291b52657fa165639c85a7d80704944909ac03396936504d172f3c",
+  "java_compiler": "javac 21.0.10",
+  "java_source_sha256": "ee8bae9792008b5098cd6ba29d772f8d7f1fdccc9555373de9e29ffc4069733b",
+  "java_stdout": [
+    "0,0,0,0",
+    "1,0,0,0",
+    "2,2,0,2",
+    "11,30,30,30",
+    "12,42,30,42",
+    "overflow,-1794917296,2500050000",
+    "max_int,1152921503533105152",
+    "negative,rejected"
+  ],
+  "first_accept": {
+    "p": 0.25,
+    "q": 0.95,
+    "r": 0.1,
+    "seed_rule": "20261113 + k",
+    "trials_per_k": 100000,
+    "asymptotic_selected_success": 0.76,
+    "rows": [
+      {
+        "k": 1,
+        "oracle_coverage": 0.25,
+        "selected_success_exact": 0.25,
+        "selected_success_simulated": 0.24953
+      },
+      {
+        "k": 4,
+        "oracle_coverage": 0.68359375,
+        "selected_success_exact": 0.59427490234375,
+        "selected_success_simulated": 0.59293
+      },
+      {
+        "k": 16,
+        "oracle_coverage": 0.9899774042423815,
+        "selected_success_exact": 0.758152175531561,
+        "selected_success_simulated": 0.75737
+      },
+      {
+        "k": 64,
+        "oracle_coverage": 0.9999999899093102,
+        "selected_success_exact": 0.7599999999714406,
+        "selected_success_simulated": 0.76009
+      }
+    ]
+  },
+  "pass_k_estimator": {
+    "n": 10,
+    "correct": 2,
+    "k": 3,
+    "without_replacement": 0.5333333333333333,
+    "plug_in": 0.4879999999999999
+  },
+  "task_heterogeneity": {
+    "p_by_task": [
+      0.1,
+      0.9
+    ],
+    "k": 2,
+    "mean_coverage": 0.59,
+    "coverage_using_mean_p": 0.75
+  },
+  "temperature_two_tokens": {
+    "1": 0.8807970779778823,
+    "2": 0.7310585786300049
+  },
+  "log_success_gain": {
+    "0.1_to_0.2": 0.6931471805599452,
+    "0.8_to_0.9": 0.11778303565638343
+  },
+  "majority_counterexample": {
+    "outputs": [
+      30,
+      30,
+      42
+    ],
+    "correct": 42,
+    "majority": 30,
+    "oracle_coverage": 1,
+    "selected_correct": false
+  },
+  "refinement_counterexample": {
+    "initial_correct": 60,
+    "initial_wrong": 40,
+    "wrong_to_correct": 12,
+    "correct_to_wrong": 15,
+    "final_correct": 57,
+    "population": 100
+  },
+  "binary_tournament_budget": {
+    "candidates": 16,
+    "votes_per_pair": 8,
+    "comparison_calls_to_one": 120,
+    "sequential_rounds_to_one": 4,
+    "comparison_calls_to_four": 96
+  },
+  "limits": [
+    "No LLM, GPU, remote API, official repository code or benchmark executed",
+    "Monte Carlo trials assume iid attempts and fixed verifier error rates",
+    "Java example validates its stated contract; it is not a SWE-bench reproduction",
+    "Tournament counts assume one winner per pair and no retries or caching"
+  ]
+}

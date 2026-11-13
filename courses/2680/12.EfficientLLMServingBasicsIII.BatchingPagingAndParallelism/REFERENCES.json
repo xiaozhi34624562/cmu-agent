@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Orca: A Distributed Serving System for Transformer-Based Generative Models",
+    "url": "https://www.usenix.org/system/files/osdi22-yu.pdf",
+    "path": "references/Orca_A_Distributed_Serving_System_for_Transformer-Based_Generative_Models.pdf",
+    "status": "saved",
+    "sha256": "b8038438ad8ff99bb131c1a6e16f7df10cf2f962aeb1bf4f1c00cc37e70658ca",
+    "pages": 19,
+    "retrieved_at": "2026-11-13",
+    "original_filename": "osdi22-yu.pdf",
+    "source_note": "Full paper linked by official OSDI 2022 presentation page; the readings HTML is a landing page, not the paper body.",
+    "reused_from": null
+  }
+]

@@ -1,8 +1,8 @@
 {
   "course": "2680",
-  "review_date": "2026-10-28",
+  "review_date": "2026-11-13",
   "standard": "面向有 Java 经验的 LLM Developer：以讲义问题链组织完整中文教学；检查前置知识、机制推导、案例、自测和来源证据；修改后的最终版本完整复读两遍。",
-  "scope": "当前版本的内容审核状态；保留最近实际阅读范围、复读结论和限制。结构校验不代替语义审核；元数据整理不构成新一轮内容审核。",
+  "scope": "当前逐篇内容审核状态。2026-11-13 仅新增公开课的讲解完成内容审核与全文复读；历史讲解正文保持不变，原审核日期和实际来源范围分别保留。结构校验不代替语义审核。",
   "documents": [
     {
       "note": "courses/2680/1.CourseOverviewAndLogistics/notes.zh-CN.md",
@@ -1840,6 +1840,759 @@
         "四篇独立核查由主代理完成并归档，本文如实标记读者身份；没有代替最终正文两轮实读。",
         "未新增/改写原始资料或运行sync；README在本课不存在，已用SOURCES与REFERENCES作入口。"
       ]
+    },
+    {
+      "note": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/notes.zh-CN.md",
+      "lesson": 12,
+      "status": "passed",
+      "final_sha256": "a947ffe7e3e305aff3a40608aed6da966762682924708f06e7434ec95504b11c",
+      "content_review_sha256": "a947ffe7e3e305aff3a40608aed6da966762682924708f06e7434ec95504b11c",
+      "reviewed_at": "2026-11-13T16:36:02.467260+08:00",
+      "coverage": "59/59 physical pages mapped",
+      "sources_read": [
+        {
+          "title": "Efficient LLM serving basics III: Batching, paging, and parallelism",
+          "path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/11_llm_serving_basics_3.pdf",
+          "sha256": "d4aa80613188b43b6b40ee72db625bfdc6e9dd1f3c2336fa413a14e1751a7e41",
+          "pages": 59,
+          "sections": "physical pages 1–59",
+          "contribution": "Full problem chain, formulas, numerical examples, all end-of-section questions and reading map; note maps every slide range.",
+          "limits": "Teaching simplifications qualified: CP can extend to decode in LoongServe; TP and EP per-token normalization must be distinguished. Footer numbering is not physical page sequence.",
+          "read_status": "full lecture read",
+          "classification": "lecture"
+        },
+        {
+          "title": "On Evaluating Performance of LLM Inference Systems",
+          "path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/On_Evaluating_Performance_of_LLM_Inference_Systems.pdf",
+          "sha256": "e1747d82adfcd451efec667f3c6121042d848864c55ee8d64216c421d7bd7631",
+          "pages": 17,
+          "sections": "第 1–9、12–17 页",
+          "contribution": "第 1–9、12–17 页：指标、公开评测审计、推测解码例子和附录清单",
+          "limits": "2507.09019v1；区分作者公开材料审计与独立重跑",
+          "read_status": "body and mechanism/experiment-relevant appendices read; bibliography identified, references not recursively read",
+          "classification": "assigned_reading"
+        },
+        {
+          "title": "Orca: A Distributed Serving System for Transformer-Based Generative Models",
+          "path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/references/Orca_A_Distributed_Serving_System_for_Transformer-Based_Generative_Models.pdf",
+          "sha256": "b8038438ad8ff99bb131c1a6e16f7df10cf2f962aeb1bf4f1c00cc37e70658ca",
+          "pages": 19,
+          "sections": "实际第 2–14 页",
+          "contribution": "实际第 2–14 页：迭代调度、选择性 batching、KV 预算、引擎与端到端实验",
+          "limits": "第 1 页为出版封面；补充 PDF 是正文，原 readings HTML 为会议页面；2022 系统比较",
+          "read_status": "body and mechanism/experiment-relevant appendices read; bibliography identified, references not recursively read",
+          "classification": "assigned_reading"
+        },
+        {
+          "title": "Taming Throughput-Latency Tradeoff in LLM Inference with Sarathi-Serve",
+          "path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/Taming_Throughput-Latency_Tradeoff_in_LLM_Inference_with_Sarathi-Serve.pdf",
+          "sha256": "45f59f4474de29baf4d315c785b850625548b69a9bc7be2e036d6fc59f54b54a",
+          "pages": 18,
+          "sections": "第 1–14 页，重点 §3–5",
+          "contribution": "第 1–14 页，重点 §3–5：stall、chunk、混合 batch、PP 和消融",
+          "limits": "2403.02310v3；P99 TBT 与具体预算/硬件，不与 TPOT 混用",
+          "read_status": "body and mechanism/experiment-relevant appendices read; bibliography identified, references not recursively read",
+          "classification": "assigned_reading"
+        },
+        {
+          "title": "DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving",
+          "path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/DistServe_Disaggregating_Prefill_and_Decoding_for_Goodput-optimized_Large_Language_Model_Serving.pdf",
+          "sha256": "3ef8776301629419e97d7f6dc08b9a46f3577e05e96538a17dd4a526762f42f0",
+          "pages": 18,
+          "sections": "第 1–13、17–18 页",
+          "contribution": "第 1–13、17–18 页：阶段剖析、布局算法、传输及 goodput 实验",
+          "limits": "2401.09670v3；OPT 窗口、模拟部分、容错未实现",
+          "read_status": "body and mechanism/experiment-relevant appendices read; bibliography identified, references not recursively read",
+          "classification": "assigned_reading"
+        },
+        {
+          "title": "Splitwise: Efficient Generative LLM Inference Using Phase Splitting",
+          "path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/Splitwise_Efficient_Generative_LLM_Inference_Using_Phase_Splitting.pdf",
+          "sha256": "c7baf19039f7b760c5d83fb61324ec4ffdf384e8a047bd46f2c4e2ad85e3531d",
+          "pages": 15,
+          "sections": "第 1–12 页",
+          "contribution": "第 1–12 页：硬件/功耗剖析、池和转移、trace 与模拟",
+          "limits": "2311.18677v2；实体剖析与大集群模拟分开，平均 TBT 口径",
+          "read_status": "body and mechanism/experiment-relevant appendices read; bibliography identified, references not recursively read",
+          "classification": "assigned_reading"
+        },
+        {
+          "title": "Efficient LLM Scheduling by Learning to Rank",
+          "path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/Efficient_LLM_Scheduling_by_Learning_to_Rank.pdf",
+          "sha256": "e313118954302b1c81f9ad9a16ad516dfabf9f3f5452f3cab33bd44a3d401464",
+          "pages": 18,
+          "sections": "第 1–10、14–18 页",
+          "contribution": "第 1–10、14–18 页：排序损失、优先级、预测成本、域变化、附录实现",
+          "limits": "2408.15792v1；固定预测分数不是精确剩余时长；部分完成任务集合会变化",
+          "read_status": "body and mechanism/experiment-relevant appendices read; bibliography identified, references not recursively read",
+          "classification": "assigned_reading"
+        },
+        {
+          "title": "Fast Distributed Inference Serving for Large Language Models",
+          "path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/Fast_Distributed_Inference_Serving_for_Large_Language_Models.pdf",
+          "sha256": "f3cc10d868e0430bbabc063a9bec25ce5b826134ab876de14958a955c3bc7498",
+          "pages": 15,
+          "sections": "第 1–13 页",
+          "contribution": "第 1–13 页：skip-join MLFQ、KV 换出/预取、并行与消融",
+          "limits": "2305.05920v3；历史 baseline、normalized E2E 与队列消融",
+          "read_status": "body and mechanism/experiment-relevant appendices read; bibliography identified, references not recursively read",
+          "classification": "assigned_reading"
+        },
+        {
+          "title": "Efficient Memory Management for Large Language Model Serving with PagedAttention",
+          "path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/Efficient_Memory_Management_for_Large_Language_Model_Serving_with_PagedAttention.pdf",
+          "sha256": "55b3b324d779a67c59dac2519445e3b07c14e6ff5c656fadb47a3d7b5997469e",
+          "pages": 16,
+          "sections": "第 1–14 页",
+          "contribution": "第 1–14 页：块表、COW、抢占、分布式、内存与 kernel 消融",
+          "limits": "2309.06180v1；原文共享 prompt 与后续自动前缀缓存不同",
+          "read_status": "body and mechanism/experiment-relevant appendices read; bibliography identified, references not recursively read",
+          "classification": "assigned_reading"
+        },
+        {
+          "title": "JENGA: Effective Memory Management for Serving LLM with Heterogeneity",
+          "path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/JENGA_Effective_Memory_Management_for_Serving_LLM_with_Heterogeneity.pdf",
+          "sha256": "3381af8fb16f93575feff4eda8fcdb846beaa2b2962eabb110e5aecfefacb094",
+          "pages": 16,
+          "sections": "第 1–13 页",
+          "contribution": "第 1–13 页：异构布局、两级分配、类型依赖、模型/负载实验",
+          "limits": "2503.18292v1；缓存命中需所有必要类型成立，吞吐不等于 TPOT 改善",
+          "read_status": "body and mechanism/experiment-relevant appendices read; bibliography identified, references not recursively read",
+          "classification": "assigned_reading"
+        },
+        {
+          "title": "SGLang: Efficient Execution of Structured Language Model Programs",
+          "path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/SGLang_Efficient_Execution_of_Structured_Language_Model_Programs.pdf",
+          "sha256": "161e0a0123a89cd8a57d68734ae704680b0e577fee41e1e7e1029c37a9d99b57",
+          "pages": 20,
+          "sections": "第 1–10、14–20 页",
+          "contribution": "第 1–10、14–20 页：radix、调度条件、结构化程序及附录 FSM/编译限制",
+          "limits": "2312.07104v2；系统收益不全属 KV 复用；prompt 重排可能改变语义",
+          "read_status": "body and mechanism/experiment-relevant appendices read; bibliography identified, references not recursively read",
+          "classification": "assigned_reading"
+        },
+        {
+          "title": "Fairness in Serving Large Language Models",
+          "path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/Fairness_in_Serving_Large_Language_Models.pdf",
+          "sha256": "2fa74f1e7ff787bdf4ce7702ac0c28be0a4d627ecd08dab19df5b65f530060da",
+          "pages": 24,
+          "sections": "正文第 1–14 页及附录第 18–24 页",
+          "contribution": "正文第 1–14 页及附录第 18–24 页：成本、counter lift、公平条件与实验",
+          "limits": "原文可配置服务代理不等于精确 GPU 时间或延迟保证",
+          "read_status": "body and mechanism/experiment-relevant appendices read; bibliography identified, references not recursively read",
+          "classification": "assigned_reading"
+        },
+        {
+          "title": "Locality-aware Fair Scheduling in LLM Serving",
+          "path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/Locality-aware_Fair_Scheduling_in_LLM_Serving.pdf",
+          "sha256": "440269188e4163e15fecca730a2c91d4e8078f61118fc2df3d60b5a191187a2b",
+          "pages": 17,
+          "sections": "第 1–12、16–17 页",
+          "contribution": "第 1–12、16–17 页：额度与局部性、多节点公平、负载结果和界",
+          "limits": "2501.14312v1；extend 输入与客户端可见输入区分，跨用户共享成本未完全解决",
+          "read_status": "body and mechanism/experiment-relevant appendices read; bibliography identified, references not recursively read",
+          "classification": "assigned_reading"
+        },
+        {
+          "title": "Optimization of Collective Communication Operations in MPICH",
+          "path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/Optimization_of_Collective_Communication_Operations_in_MPICH.pdf",
+          "sha256": "6df2d9582ea1b9e39e7d79d7f5d11fe1516b37e48a700537e71f0e2b8287fdca",
+          "pages": 17,
+          "sections": "第 1–16 页",
+          "contribution": "第 1–16 页：通信语义、算法成本与旧平台实验",
+          "limits": "2005 年论文；成本模型用于理解，具体阈值不移植到 NCCL",
+          "read_status": "body and mechanism/experiment-relevant appendices read; bibliography identified, references not recursively read",
+          "classification": "assigned_reading"
+        },
+        {
+          "title": "Efficiently Scaling Transformer Inference",
+          "path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/Efficiently_Scaling_Transformer_Inference.pdf",
+          "sha256": "a34aacd15d1d4918da0001697a01b4ae8f547fec0169fe886f5f10a529529a93",
+          "pages": 18,
+          "sections": "第 1–11、15–18 页",
+          "contribution": "第 1–11、15–18 页：张量布局、MQA、算力/通信模型、TPU 实验",
+          "limits": "2211.05102v1；低延迟/高吞吐/量化设置不可混成同一次运行",
+          "read_status": "body and mechanism/experiment-relevant appendices read; bibliography identified, references not recursively read",
+          "classification": "assigned_reading"
+        },
+        {
+          "title": "Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism",
+          "path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/Megatron-LM_Training_Multi-Billion_Parameter_Language_Models_Using_Model_Parallelism.pdf",
+          "sha256": "fa89e54e23c0cea5cbd9d24720db7647c61af299afdb9a170c7119160e6d207a",
+          "pages": 15,
+          "sections": "第 1–9、11–15 页",
+          "contribution": "第 1–9、11–15 页：列/行分片、attention 头、DP 与训练实验",
+          "limits": "1909.08053v4；借用代数和布局，不把训练扩展效率说成推理结论",
+          "read_status": "body and mechanism/experiment-relevant appendices read; bibliography identified, references not recursively read",
+          "classification": "assigned_reading"
+        },
+        {
+          "title": "GPipe: Easy Scaling with Micro-Batch Pipeline Parallelism",
+          "path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/GPipe_Easy_Scaling_with_Micro-Batch_Pipeline_Parallelism.pdf",
+          "sha256": "697f257e85667829053707594800447f3a75482226ddb6eb24374905c5af6d44",
+          "pages": 11,
+          "sections": "第 1–9 页",
+          "contribution": "第 1–9 页：microbatch、空泡、重算和实验",
+          "limits": "1811.06965v5；训练系统，本文另限定前向理想模型",
+          "read_status": "body and mechanism/experiment-relevant appendices read; bibliography identified, references not recursively read",
+          "classification": "assigned_reading"
+        },
+        {
+          "title": "LoongServe: Efficiently Serving Long-Context Large Language Models with Elastic Sequence Parallelism",
+          "path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/LoongServe_Efficiently_Serving_Long-Context_Large_Language_Models_with_Elastic_Sequence_Parallelism.pdf",
+          "sha256": "d5ae35fa9a1645af42fd2760eb5ff423d5c994eed846e171602a5a14133e1401",
+          "pages": 15,
+          "sections": "第 1–13 页",
+          "contribution": "第 1–13 页：ESP、KV 管理、分布式 decode、调度和长上下文实验",
+          "limits": "2404.09526v2；不等于任意短 decode 都值得分片",
+          "read_status": "body and mechanism/experiment-relevant appendices read; bibliography identified, references not recursively read",
+          "classification": "assigned_reading"
+        },
+        {
+          "title": "NanoFlow: Towards Optimal Large Language Model Serving Throughput",
+          "path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/NanoFlow_Towards_Optimal_Large_Language_Model_Serving_Throughput.pdf",
+          "sha256": "b35b05f22115bc55897e65fb40eda77969b52efcebfb1b3450791d3960bb33b2",
+          "pages": 17,
+          "sections": "第 1–14 页",
+          "contribution": "第 1–14 页：资源模型、nano-batch、重叠与同系统消融",
+          "limits": "**历史保留**；2408.12757v2，不计当前指定阅读；离线吞吐与交互 SLO 分开",
+          "read_status": "body and mechanism/experiment-relevant appendices read; bibliography identified, references not recursively read",
+          "classification": "historical_retained"
+        },
+        {
+          "title": "vAttention: Dynamic Memory Management for Serving LLMs without PagedAttention",
+          "path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/vAttention_Dynamic_Memory_Management_for_Serving_LLMs_without_PagedAttention.pdf",
+          "sha256": "89017c3e7f5900cdf2b7295d647fc19bf45e674dddd3525ba86a5f203861c701",
+          "pages": 18,
+          "sections": "第 1–14、18 页",
+          "contribution": "第 1–14、18 页：VMM、页映射、后端比较、限制与复现实验说明",
+          "limits": "**历史保留**；2405.04437v3/ASPLOS 2025；驱动/后端版本条件不推到当前软件",
+          "read_status": "body and mechanism/experiment-relevant appendices read; bibliography identified, references not recursively read",
+          "classification": "historical_retained"
+        },
+        {
+          "title": "Official Orca conference landing page",
+          "path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/Orca_A_Distributed_Serving_System_for_Transformer-Based_Generative_Models.html",
+          "sha256": "7ed01ec6c5300c9061a6475535fa69ce91e62a34902136f8aa83c48724f417c4",
+          "pages": null,
+          "sections": "full HTML text",
+          "contribution": "Identified landing page and official full-paper link.",
+          "limits": "HTML is not paper body; added official full PDF under references.",
+          "read_status": "read",
+          "classification": "source_navigation"
+        },
+        {
+          "title": "Official course reading guide",
+          "path": "courses/2680/site/readings/nov-04.html",
+          "sha256": "f8614d60da3600f6c9f1dfb1ec065fdd69ebd475f578728668881b5c4762eca4",
+          "pages": null,
+          "sections": "full HTML text",
+          "contribution": "Full reading organization and descriptions cross-checked against actual papers.",
+          "limits": "Page labels summaries AI-generated; used only as organization, not as evidence for mechanism or numbers.",
+          "read_status": "read",
+          "classification": "source_navigation"
+        }
+      ],
+      "reread_result": [
+        {
+          "pass": "teaching full reread",
+          "coverage": "entire 546-line initial draft, four complete readbacks",
+          "findings_fixed": [
+            "Defined SLO/P99/kernel/thread block/FCFS/SRTF/MQA/SM/L2 near relevant use",
+            "Added ReLU numeric counterexample",
+            "Clarified weight-byte symbol and chunk preview",
+            "Changed VTC counter wording to accumulation",
+            "Made LRU explicitly oldest unused; block-softmax generalization qualified"
+          ],
+          "sha256_after": "a947ffe7e3e305aff3a40608aed6da966762682924708f06e7434ec95504b11c"
+        },
+        {
+          "pass": "technical full reread after teaching edits",
+          "coverage": "entire final note, lines 1–273 and 274–546 read back without truncation",
+          "source_rechecks": [
+            "Sarathi physical p13 table4 visually confirmed all six chat/summarization values and experiment caption",
+            "Slide physical p53 visual checked TP/EP byte-normalization ambiguity",
+            "Jenga p7 eviction/hit API and LoongServe p5 scaling lifecycle rendered and viewed",
+            "Orca p5,p11 read back to confirm execution granularity, model and fake workload boundaries"
+          ],
+          "checks": [
+            "KV 128KiB/token and 256MiB/2048 input",
+            "TTFT 200ms, TPOT56ms, E2E480ms, n=1 undefined",
+            "Ring allreduce sender bytes and EP global/local-token denominator",
+            "MLFQ/ltr prediction/fairness boundaries",
+            "COW ownership and global softmax merge",
+            "Training vs inference, physical vs simulated experiments and retained historical identity"
+          ],
+          "conclusion": "No unresolved technical issue found. All light CPU assertions passed; no GPU/model performance claim made.",
+          "sha256_after": "a947ffe7e3e305aff3a40608aed6da966762682924708f06e7434ec95504b11c"
+        },
+        {
+          "pass": "independent root full cross-review",
+          "reported_by": "/root",
+          "coverage": "Root reported complete read of chapters, self-tests and reading map.",
+          "conclusion": "No required changes reported; TP/EP denominator explanation accepted.",
+          "limitation": "Root review preceded final glossary/clarity-only edits; author technical reread binds final text."
+        }
+      ],
+      "remaining_issues": [],
+      "limitations": [
+        "No GPU kernels, model inference, network transfers, or paper performance reproduction were run.",
+        "Only original archived paper versions are discussed; current library performance is not asserted.",
+        "Paper theorem assumptions are explained; no independent formal verification claimed.",
+        "Original lecture and reading bytes preserved; only official Orca full paper newly obtained.",
+        "Global SOURCES/REVIEW/checksums and verification are reserved for parent agent."
+      ],
+      "examples": {
+        "script": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/examples.py",
+        "sha256": "c40d8d9c80587e0194f3f52612fd9f2dea942eeb3196ce2ab22f6443e65bd0cd",
+        "run_record": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/EXAMPLE_RUN.json",
+        "run_record_sha256": "f84377b791f453b00842de2faab2d53612163684d98e1cef76fc2564d6ba9f79",
+        "status": "passed",
+        "checks": [
+          "timing",
+          "batch_slots",
+          "chunk_prefix_visits",
+          "kv_and_transfer",
+          "copy_on_write",
+          "tensor_parallel_algebra",
+          "attention_merge",
+          "parallelism_costs"
+        ],
+        "run_at": "2026-11-13T08:27:32.341840+00:00",
+        "scope": "CPU arithmetic, algebra and ownership examples only"
+      }
+    },
+    {
+      "note": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/notes.zh-CN.md",
+      "lesson": 26,
+      "status": "passed",
+      "final_sha256": "87d96d3845ccacb482db6ef8c48a25ec43705c050d4348ee5aa088fe821fe1bb",
+      "content_review_sha256": "87d96d3845ccacb482db6ef8c48a25ec43705c050d4348ee5aa088fe821fe1bb",
+      "reviewed_at": "2026-11-13T16:36:02.467260+08:00",
+      "coverage": "58-page assignment feedback and 44-page GPU continuation both covered; LLM/Java developer prerequisites, one operator case, 20 sections, mechanisms, cost models, diagnostics and ten self-tests with answers.",
+      "sources_read": [
+        {
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/feedback_assignment.pdf",
+          "sha256": "8dd91d586685210214cb24305e11eee7a52c06035522c1fc8b43f8f2e3648b88",
+          "pages": "1–58",
+          "scope": "Complete lecture text read; selected diagrams/tables visually checked using actual PDF page order.",
+          "visually_checked_pdf_pages": [
+            46,
+            49,
+            53
+          ],
+          "role": "lecture"
+        },
+        {
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/10_llm_serving_basics_2b.pdf",
+          "sha256": "716ce76802eea4be08bd20e95aad55d6a39e636c8d3ed2411da807cbf90b9bc8",
+          "pages": "1–44",
+          "scope": "Complete lecture text read; selected diagrams/tables visually checked using actual PDF page order.",
+          "visually_checked_pdf_pages": [
+            17,
+            27,
+            29,
+            32,
+            34,
+            38
+          ],
+          "role": "lecture"
+        },
+        {
+          "title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashAttention_Fast_and_Memory-Efficient_Exact_Attention_with_IO-Awareness.pdf",
+          "sha256": "ca7f9fda10b90fc05dd291a3accc85e9c1a4a860b99b31928dab03ed3fcb14e4",
+          "scope": "Core IO model, tiled exact attention and online softmax; experiments and assumptions relevant to the lesson.",
+          "role": "reference",
+          "pages": "1–10",
+          "version": "2205.14135v2"
+        },
+        {
+          "title": "FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning",
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashAttention-2_Faster_Attention_with_Better_Parallelism_and_Work_Partitioning.pdf",
+          "sha256": "4aa8935dfacaf6ae8c68f772ca92f730154a0dd0e1bceeb59c7bc56c512d5868",
+          "scope": "Work partitioning, non-matmul operations, parallelism and reported configurations; appendix not exhaustively read.",
+          "role": "reference",
+          "pages": "1–12",
+          "version": "2307.08691v1"
+        },
+        {
+          "title": "FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision",
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashAttention-3_Fast_and_Accurate_Attention_with_Asynchrony_and_Low-precision.pdf",
+          "sha256": "3d05ca102802e6b8ebbae5181efe777b7d258cd75e2fe9cca209efd2f5e6c6cb",
+          "scope": "Hopper producer/consumer, TMA, asynchronous overlap, FP8 handling and experimental settings.",
+          "role": "reference",
+          "pages": "1–12",
+          "version": "2407.08608v2"
+        },
+        {
+          "title": "FlashAttention-4: Algorithm and Kernel Pipelining Co-Design for Asymmetric Hardware Scaling",
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashAttention-4_Algorithm_and_Kernel_Pipelining_Co-Design_for_Asymmetric_Hardware_Scaling.pdf",
+          "sha256": "7c053b2b45a9d7da93b21f7dbe16ff8a927a9dc7e92537a034ca58a4eb5f10eb",
+          "scope": "Blackwell resource imbalance, tensor memory, 2-CTA and pipeline/softmax optimizations; no claim to all appendices.",
+          "role": "reference",
+          "pages": "1–15",
+          "version": "2603.05451v1"
+        },
+        {
+          "title": "FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving",
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FlashInfer_Efficient_and_Customizable_Attention_Engine_for_LLM_Inference_Serving.pdf",
+          "sha256": "6995874b7a43b0693ba0da805c4d99327a4cb4013edbea3e36f4c42949e63303",
+          "scope": "KV layouts, composable attention, runtime balanced planning, persistent execution and CUDA Graph compatibility; v0.2 evaluation conditions.",
+          "role": "reference",
+          "pages": "3–8",
+          "version": "2501.01005v2"
+        },
+        {
+          "title": "FLUX: Fast Software-based Communication Overlap on GPUs through Kernel Fusion",
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/FLUX_Fast_Software-based_Communication_Overlap_on_GPUs_through_Kernel_Fusion.pdf",
+          "sha256": "14256ca83b1595bcee9d1bc6cb5fcb84d8fda8d6a18c51a8e45797a47b7bf455",
+          "scope": "Communication background and kernel-level fine-grained overlap; ReduceScatter epilogue and AllGather prologue/signalling.",
+          "role": "reference",
+          "pages": "3–7",
+          "version": "2406.06858v5"
+        },
+        {
+          "title": "The Llama 3 Herd of Models",
+          "path": "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/The_Llama_3_Herd_of_Models.pdf",
+          "sha256": "481f1599468f95a07d05e97fafe55bbe786dc1624c6f881bcb4c7d14c933d083",
+          "scope": "Training-system reliability context only; not the complete model report.",
+          "role": "reference",
+          "pages": "13",
+          "version": "2407.21783v3"
+        },
+        {
+          "title": "DeepSeek-V3 Technical Report",
+          "path": "courses/2680/10.EfficientLLMServingBasicsI.IntroToLLMs/readings/DeepSeek-V3_Technical_Report.pdf",
+          "sha256": "812a3fd645c80725354de9d831a6785503007a60681461407f64e97305fa9330",
+          "scope": "Pipeline and cross-node expert-parallel communication context only.",
+          "role": "reference",
+          "pages": "12–13",
+          "version": "2412.19437v2"
+        },
+        {
+          "title": "CUDA C++ Programming Guide",
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/CUDA_C++_Programming_Guide.pdf",
+          "sha256": "9d3c313edfa39fbd932cc1517dec8d3a3690802132f8e65530a155e6eb3339b8",
+          "scope": "Programming model and graph/PDL structure. Large CUDA 13.4 manual read selectively; current PDL and Best Practices sections separately checked.",
+          "role": "reference",
+          "pages": "27–31,73–75",
+          "version": "Archived edition bound to SHA-256; see original source index."
+        },
+        {
+          "title": "MPK: A Compiler and Runtime for Mega-Kernelizing Tensor Programs",
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/readings/MPK_A_Compiler_and_Runtime_for_Mega-Kernelizing_Tensor_Programs.pdf",
+          "sha256": "0069c67600b194c4a935110889df803dd0ff8ca8caebc324ef6e13aeaa4da4cb",
+          "scope": "tGraph tasks/events, compiler/runtime separation and SM-level scheduling; no complete appendix audit.",
+          "role": "reference",
+          "pages": "2–5",
+          "version": "2512.22219v2"
+        },
+        {
+          "title": "PyTorch 2: Faster Machine Learning Through Dynamic Python Bytecode Transformation and Graph Compilation",
+          "path": "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/references/PyTorch_2_Faster_Machine_Learning_Through_Dynamic_Python_Bytecode_Transformation_and_Graph_Compilation.pdf",
+          "sha256": "9fba949b34051ae1b0936c91ddb23e43638912b180dba490616256e5446f4e6e",
+          "scope": "Python bytecode capture, guards and compiler responsibility.",
+          "role": "reference",
+          "pages": "4–5",
+          "version": "Archived edition bound to SHA-256; see original source index."
+        },
+        {
+          "title": "Stream-K: Work-centric Parallel Decomposition for Dense Matrix-Matrix Multiplication on the GPU",
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Stream-K_Work-centric_Parallel_Decomposition_for_Dense_Matrix-Matrix_Multiplication_on_the_GPU.pdf",
+          "sha256": "f2db58086debe599590650cac1069102ddf9396ac398e5a57284d3d524832cc5",
+          "scope": "Wave quantization, tile versus MAC-loop decomposition and partial-result aggregation; p6 relevant mechanism.",
+          "role": "reference",
+          "pages": "2–6",
+          "version": "2301.03598v1"
+        },
+        {
+          "title": "KernelBench: Can LLMs Write Efficient GPU Kernels?",
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/KernelBench_Can_LLMs_Write_Efficient_GPU_Kernels.pdf",
+          "sha256": "fb1765807098915b853cca7a007aaa4bccdcd1a45eb1baef0d3919948abd7a6b",
+          "scope": "Tasks, correctness/performance protocol, fast_p and tested models/hardware.",
+          "role": "reference",
+          "pages": "3–7",
+          "version": "2502.10517v1"
+        },
+        {
+          "title": "AutoMegaKernel: A Statically-Checked Agent Harness for Self-Retargeting Megakernel Synthesis",
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/AutoMegaKernel_A_Statically-Checked_Agent_Harness_for_Self-Retargeting_Megakernel_Synthesis.pdf",
+          "sha256": "d15c2f1de8601cb824700d2ae0ed5f8b0603a41ed55adf84b5ecf5b90b607e21",
+          "scope": "Static-checking harness, synthesis/retargeting mechanism and evaluation boundary.",
+          "role": "reference",
+          "pages": "1–6",
+          "version": "2606.09682v1"
+        },
+        {
+          "title": "ThunderKittens: Simple, Fast, and Adorable AI Kernels",
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/ThunderKittens_Simple_Fast_and_Adorable_AI_Kernels.pdf",
+          "sha256": "262204198eea890622265616d68eca4d95bdeb1173d6108041f594f7ddc56268",
+          "scope": "Tile/data movement abstraction and design; not an independent examination of all performance results.",
+          "role": "reference",
+          "pages": "2–4",
+          "version": "2410.20399v1"
+        },
+        {
+          "title": "TileLang: A Composable Tiled Programming Model for AI Systems",
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/TileLang_A_Composable_Tiled_Programming_Model_for_AI_Systems.pdf",
+          "sha256": "1c4c86d6f2b90b226c42af3e3d7a61eb90bfd9c66137660fb858e35769862574",
+          "scope": "Tiled programming model, scheduling/compilation responsibilities; no hardware performance replication.",
+          "role": "reference",
+          "pages": "3–5",
+          "version": "2504.17577v2"
+        },
+        {
+          "title": "Reducing Activation Recomputation in Large Transformer Models",
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Reducing_Activation_Recomputation_in_Large_Transformer_Models.pdf",
+          "sha256": "5fcd24e92a086f5671cbb8c0624cd42251d2d43324245da9d93b0b2289e46abc",
+          "scope": "Activation recomputation, memory/FLOP tradeoffs and training measurement scope.",
+          "role": "reference",
+          "pages": "7–10",
+          "version": "2205.05198v1"
+        },
+        {
+          "title": "PaLM: Scaling Language Modeling with Pathways",
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/PaLM_Scaling_Language_Modeling_with_Pathways.pdf",
+          "sha256": "1e88f1f3027cd1abecb1713c1c08a89137c7730582549ec7ca78ca329f3f975d",
+          "scope": "Training efficiency and MFU versus hardware work and recomputation.",
+          "role": "reference",
+          "pages": "7–9",
+          "version": "2204.02311v5"
+        },
+        {
+          "title": "Making AI Less “Thirsty”: Uncovering and Addressing the Secret Water Footprint of AI Models",
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Making_AI_Less_Thirsty_Uncovering_and_Addressing_the_Secret_Water_Footprint_of_AI_Models.pdf",
+          "sha256": "eb2cb1678ff54142698acdb4be736d6923504cd4e5c1e418b6bab97b9b406d56",
+          "scope": "Direct/indirect water model, withdrawal versus consumption, historical assumptions and projections; p4 partially read, no claim to whole appendix.",
+          "role": "reference",
+          "pages": "1–3,5–6",
+          "version": "2304.03271v5"
+        },
+        {
+          "title": "Look Ma, No Bubbles! Designing a Low-Latency Megakernel for Llama-1B",
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Look_Ma_No_Bubbles_Designing_a_Low-Latency_Megakernel_for_Llama-1B.html",
+          "sha256": "e46989d56b58b544f924bb30d943e5554a87a80935488432a4f7f568aeb6e65d",
+          "scope": "Complete public article body: task queues/dependencies, batch-1 Llama megakernel and H100/B200 evaluation boundaries.",
+          "role": "reference",
+          "version": "Official/identified public page snapshot bound to SHA-256."
+        },
+        {
+          "title": "Flash-Decoding for long-context inference",
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Flash-Decoding_for_long-context_inference.html",
+          "sha256": "668ef1ccd6f12e329aa15439d012a3f335b67b690fcbcff87da0868181ee9ebd",
+          "scope": "Complete public article body: split-KV merge, end-to-end versus attention microbenchmark, workload conditions.",
+          "role": "reference",
+          "version": "Official/identified public page snapshot bound to SHA-256."
+        },
+        {
+          "title": "Programmatic Dependent Launch and Synchronization — CUDA Programming Guide",
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Programmatic_Dependent_Launch_and_Synchronization_CUDA_Programming_Guide.html",
+          "sha256": "41a826f308dce730688957edffbd746b92e9531ca9409079ff2e735f94873796",
+          "scope": "Complete PDL page §§4.5.1–4.5.3: early launch, visibility/wait and optional concurrency; no API execution.",
+          "role": "reference",
+          "version": "Official/identified public page snapshot bound to SHA-256."
+        },
+        {
+          "title": "CUDA C++ Best Practices Guide",
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/CUDA_C++_Best_Practices_Guide.html",
+          "sha256": "fcacb0b62ce545e154a6b7dc49778ec663162d7dfb469f85d74b0551e0341f68",
+          "scope": "Selected §§7.3 precision,9.1 timing,10.1 transfers,10.2.1 coalescing; no claim to full guide.",
+          "role": "reference",
+          "version": "Official/identified public page snapshot bound to SHA-256."
+        },
+        {
+          "title": "NVIDIA DCGM Profiling",
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/NVIDIA_DCGM_Profiling.html",
+          "sha256": "6f7aea35d935b1f5f13819fead823277fc54fa10153978bbde305aecf45dc37c",
+          "scope": "Profiling metric definitions for GPU/SM activity, occupancy, Tensor Core and memory activity.",
+          "role": "reference",
+          "version": "Official/identified public page snapshot bound to SHA-256."
+        },
+        {
+          "title": "Nsight Compute Profiling Guide",
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Nsight_Compute_Profiling_Guide.html",
+          "sha256": "6bdd25d8f532f4a9500e5cc4c2abfc7ec506f5bc3cce1bde349cdfa87b8eb967",
+          "scope": "Kernel/application replay, sets/sections and measurement overhead.",
+          "role": "reference",
+          "version": "Official/identified public page snapshot bound to SHA-256."
+        },
+        {
+          "title": "Nsight Systems User Guide",
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Nsight_Systems_User_Guide.html",
+          "sha256": "55c048476ded375d7f00a16ab960e9d3047aa452bcb3fbede2f462dce8ebf1b0",
+          "scope": "Profiling region selection, CPU/GPU timeline/NVTX association and CUDA tracing options.",
+          "role": "reference",
+          "version": "Official/identified public page snapshot bound to SHA-256."
+        },
+        {
+          "title": "LLM Inference Performance Engineering: Best Practices",
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/LLM_Inference_Performance_Engineering_Best_Practices.html",
+          "sha256": "f2741e9e100e1cffae51f059a10f062928d62f9231be85ed947520dcb5087938",
+          "scope": "Inference throughput/latency and MBU derivation and caveats; not all linked material.",
+          "role": "reference",
+          "version": "Official/identified public page snapshot bound to SHA-256."
+        },
+        {
+          "title": "NVIDIA HGX Platform: Data Center Physical Requirements Guide",
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/NVIDIA_HGX_Platform_Data_Center_Physical_Requirements_Guide.html",
+          "sha256": "cb6f9fb7d74c5aa5bfc1c67ad2cabb1e701f0658308c988866152234e2701815",
+          "scope": "Executive summary and background on power/cooling/physical requirements; explicitly a secondary article, not NVIDIA specifications.",
+          "role": "reference",
+          "version": "Official/identified public page snapshot bound to SHA-256."
+        },
+        {
+          "title": "CUTLASS Overview",
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/CUTLASS_Overview.html",
+          "sha256": "b61dbf71174cb353513afcb2d8b8a2156506a36ed5034d4cf5422aa573e04296",
+          "scope": "Overview and abstraction/design responsibilities; not every API or linked release document.",
+          "role": "reference",
+          "version": "Official/identified public page snapshot bound to SHA-256."
+        },
+        {
+          "title": "CuTe Layouts",
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/CuTe_Layouts.html",
+          "sha256": "de17e13066d60e0ed2930204e85a57dc51b975ce4f2f5470612b82b887d35170",
+          "scope": "Layout shape/stride/tensor mapping sections.",
+          "role": "reference",
+          "version": "Official/identified public page snapshot bound to SHA-256."
+        },
+        {
+          "title": "Triton Vector Addition",
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Triton_Vector_Addition.html",
+          "sha256": "5d4f7c223af55b37cf4c8ea004e4d9e5de175b3862e34550810fb724709c17e9",
+          "scope": "Complete vector-addition tutorial including code, mask, launch and benchmark scope; not run.",
+          "role": "reference",
+          "version": "Official/identified public page snapshot bound to SHA-256."
+        },
+        {
+          "title": "CUDA Tile Programming Model",
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/CUDA_Tile_Programming_Model.html",
+          "sha256": "b864712e485450c7d41dba8a4eb5befdf3303f29f9b86602b667628db8fa4d8c",
+          "scope": "Tile programming introduction and kernel-declaration sections; not run.",
+          "role": "reference",
+          "version": "Official/identified public page snapshot bound to SHA-256."
+        },
+        {
+          "title": "NVIDIA CUDA Compiler Driver",
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/NVIDIA_CUDA_Compiler_Driver.html",
+          "sha256": "6c9720e69697e86c105bfbc901c6131ddb1daf5fed21df7901735fa1676b901c",
+          "scope": "Compilation trajectory, host support and phase introduction.",
+          "role": "reference",
+          "version": "Official/identified public page snapshot bound to SHA-256."
+        },
+        {
+          "title": "Triton Documentation",
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Triton_Documentation.html",
+          "sha256": "bae2aae0f2986e29e71474bba96e6bdabea44563797f4deb84a5d6c2e390cc1f",
+          "scope": "Documentation landing page identity/navigation, supplemented by full vector-addition tutorial; this is not the 2019 Triton paper.",
+          "role": "reference",
+          "version": "Official/identified public page snapshot bound to SHA-256."
+        },
+        {
+          "title": "DeepEP: an efficient expert-parallel communication library",
+          "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/code/DeepEP/README.md",
+          "sha256": "86415f7fc11381dceb14c112b6c602103d975936444601666ab1fcfd65e8fceb",
+          "scope": "Fixed README lines1–290: V2.5 unified EPBuffer, SM requirements, removal of old backend, independent work/wait and router-weight responsibility.",
+          "role": "reference",
+          "version": "DeepEP f6aa38fe06cd4a0489e7730365d4e0114970a2f3; V2.5 README"
+        }
+      ],
+      "reread_result": [
+        {
+          "pass_id": "first_full_teaching_reread",
+          "scope": "Complete first draft in two contiguous chunks, including source map and self-tests",
+          "findings_fixed": [
+            "Added FP32/FP16/BF16, memory hierarchy and Tensor Core prerequisites",
+            "Explained tile/ReLU, attention QKV/head/softmax/scaling, GQA, GEMM/MAC and collectives",
+            "Added two-stage pipeline arithmetic and responsibility of barriers",
+            "Corrected lecture-to-section map and naive softmax averaging example"
+          ]
+        },
+        {
+          "pass_id": "second_full_technical_reread",
+          "scope": "Complete revised note, lines1–210 and211–end, all equations, self-tests and source map",
+          "findings_fixed": [
+            "Qualified ThunderKittens as design-section reading",
+            "Linked all35 saved sources directly in source map"
+          ],
+          "result": "No unresolved mechanism or learning-path defect identified; source version conflicts remain explicit."
+        },
+        {
+          "pass_id": "final_full_read_after_peer_fix",
+          "scope": "Full final note in contiguous line chunks1–155,156–300,301–end, including self-tests and35 direct source links",
+          "result": "Passed; no remaining learning-path, equation or source-boundary issue identified.",
+          "sha256": "87d96d3845ccacb482db6ef8c48a25ec43705c050d4348ee5aa088fe821fe1bb"
+        }
+      ],
+      "remaining_issues": [],
+      "limitations": [
+        "Two public entrances lack usable body: classroom feedback SPA and OpenXLA architecture. No private reports accessed.",
+        "No GPU, CUDA, Triton, model, RDMA, profiler or paper performance experiments executed.",
+        "Reference reading scopes are explicit; large manuals, model reports and unrelated appendices were not read in full.",
+        "Lecture statistics conflict between detailed and summary pages; preserved without speculative reconciliation.",
+        "MFU slide lacks aggregate/per-GPU and precision scope; conditional calculations do not assert actual experimental setup.",
+        "DeepEP slide historical zero-SM claim is separated from current archived V2.5 README; no current deployment claim.",
+        "Python float64 arithmetic does not verify FP32/FP16/BF16 CUDA numerical behavior."
+      ],
+      "examples": {
+        "script": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/examples/gpu_reasoning.py",
+        "sha256": "3f6806c889e496c693faa4e7cdd0af20b38e489c0441b277c6eab8f9c7b23f3b",
+        "run_record": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/examples/EXAMPLE_RUN.json",
+        "run_record_sha256": "a4766b9e5afde94d1cd526995fff0f74ecb2a3c442afd2a174020eba4f433a0f",
+        "status": "passed",
+        "execution": "Actual standard-library CPU execution; no GPU/model/API or profiler run"
+      },
+      "cross_review": {
+        "reviewer": "/root/plan_harvard_new",
+        "reviewed_at": "2026-11-13T08:34:21.421181+00:00",
+        "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/notes.zh-CN.md",
+        "sha256": "2055620beffb216dd4b745b7955c62882c267b55f8ede401234bb53820771d87",
+        "coverage": "Full 376-line note, source map, self-tests, and CPU example read.",
+        "source_pages_rechecked": {
+          "feedback_assignment.pdf": [
+            18,
+            37,
+            41,
+            46
+          ],
+          "10_llm_serving_basics_2b.pdf": [
+            5,
+            17,
+            19,
+            29,
+            30,
+            35,
+            36
+          ]
+        },
+        "other_sources_rechecked": [
+          "fixed DeepEP README version/API/SM/router-weight sections"
+        ],
+        "findings": [
+          {
+            "severity": "minor teaching context",
+            "location": "section5 F18 sample",
+            "issue": "18 submissions are selected top18 from12students; note omitted selection context",
+            "suggestion": "Mention selected sample and avoid generalizing it to whole class"
+          }
+        ],
+        "conclusion": "No mathematical, algorithmic or numerical blocking issue found; foundational explanations suitable for LLM developer/Java background.",
+        "limits": "Not independently re-read all supplementary papers; no GPU/model execution or performance reproduction.",
+        "resolution": "Added top18 submissions from12students and explicitly limited generalization; parent completed final full reread after this edit."
+      },
+      "unavailable_sources": [
+        {
+          "title": "How I Used Claude Code",
+          "url": "https://how-i-used-claude.cs2680.com/",
+          "status": "unavailable"
+        },
+        {
+          "title": "OpenXLA architecture",
+          "url": "https://openxla.org/xla/architecture",
+          "status": "unavailable"
+        }
+      ]
     }
   ],
   "original_sources": {
@@ -2378,20 +3131,20 @@
     "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/readings/EAGLE-3_Scaling_up_Inference_Acceleration_of_Large_Language_Models_via_Training-Time_Test.pdf": "8a178337a1b05067907167dd81a43a7184596d71d4b795d6a0c73e6235fe1a27",
     "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/readings/MagicDec_Breaking_the_Latency-Throughput_Tradeoff_for_Long_Context_Generation_with_Speculative_Decoding.pdf": "a790569abe3000955becc89de7faecb613180a2e87131d3a34e2d114aa018ea5",
     "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/readings/DSpark_Confidence-Scheduled_Speculative_Decoding_with_Semi-Autoregressive_Generation.pdf": "522036b0cc16ad4678bd7c278dd0a0ab4da31170af7b97c2041067cc09a8289a",
-    "courses/2680/site/to_release.html": "ba9dfc185224e11b6d7a77b620b26bf87fa2bc704e83016f136f1b50a8892702",
-    "courses/2680/site/index.html": "30f3c39abf5ee270bd84057b5017ec1b8538d8d927c1a29a3611dcd741b375b5",
+    "courses/2680/site/to_release.html": "72c2a6b5d777f98f90ed32ce8b2f616d4944d48e76161b481093d8d9e0244102",
+    "courses/2680/site/index.html": "5fc4c9a6846140af7fc2dcfa0618eeba4c748b13ee85d68daee32f7591e813fb",
     "courses/2680/site/seas-logo.png": "3bac23521d2edf3e90e628fef2ddeef8720944816d51269c69b0206815c4e797",
-    "courses/2680/site/readings.html": "a0e4979e2c247879b1f13f44cb8ddc851e928ce35e0496893e27129263910012",
+    "courses/2680/site/readings.html": "bc1aedf4cd395626aa60edaf4291f2a03d30340f4b0e2a7eef36dc9f4c0a83fc",
     "courses/2680/site/project.html": "557048a00cf3d59c893d62f3ddbe1057ae1a9d232a3d67d4810eec3d034ee00a",
     "courses/2680/site/header.html": "0167746c267af6b678a3b9dbe62a8dd90e5fe8138f36f36ddd28fd2261deb5d5",
     "courses/2680/site/discussion.html": "b7294fa3e2b9fbf4181c333e0298b64970b56e30fff03c368612a40e77ef4b74",
     "courses/2680/site/favicon.svg": "1c46089593e84ef2567da962983139b5ad72bac7dc1d783e3ce31db2f91024b6",
-    "courses/2680/site/policy.html": "697b5bcbabfca9ab7611aa8f5ffb4fe151966e40221c9f8b891921b89b6c0107",
+    "courses/2680/site/policy.html": "faa0c7b76a4192ff15760851f3fed5df1837c113d14d27518fe2349977db131f",
     "courses/2680/site/assignments/assignment2.tar.gz": "b3c150a27dd774133f4f2f76c656c54d1c116c54d589fe37892ce2793e6a122a",
     "courses/2680/site/assignments/assignment2.html": "ea8667c4c6a71d01cfe3b97ac836c821b3e598026a60ac906685765ab1fb7c4c",
-    "courses/2680/site/assignments/index.html": "644bf7bbb2a239dd268030d2f1c83c401ef839f2fffde24b3d3b2391b69d4cec",
+    "courses/2680/site/assignments/index.html": "94767dded9d6d1ef2c94d35b82ecb25d65acde01669f9969236c6898179c5a8c",
     "courses/2680/site/assignments/assignment3.html": "5d7041419365c9c66acb3e54cb4f5580fce443d8f3a4cf6de555048562fb6ffe",
-    "courses/2680/site/assignments/assignment4.html": "690eb4ef0672dc2b3018fcbef44a9707003300d66d43d2f7d02f47babc4ccf98",
+    "courses/2680/site/assignments/assignment4.html": "bb32d531057b744b4400e6d9e82c5c74ee19add37c1e3418693db16416761ccf",
     "courses/2680/site/assignments/assignment4.tar.gz": "5165475e1ae37b0581bcb2b1a17acef5d8839944ea0f0f6dc6f11f1e26a12b62",
     "courses/2680/site/assignments/assignment3.tar.gz": "6da8e16187337ee631532d7a01f67a44f5ac4903f6cb85ea6ebecb120c01ae87",
     "courses/2680/site/assignments/assignment1.html": "6a37ef7fd39a2775489cbfaf13380599068478ad7d418fe0d48310bf438b4db5",
@@ -2417,21 +3170,21 @@
     "courses/2680/site/notes/cost-effective-agents.html": "8ac8d775e0533abebef458b23b9fdd21fa4c189a05870fe8248ad214d711a31b",
     "courses/2680/site/notes/transformers.html": "128ede0514a07fdf2b0174041981d842c1fca0a60cbb277d0071d14515b04ae3",
     "courses/2680/site/readings/sep-28.html": "63e6fa7710007a630b54625d81362c4e945a3d560eece35e306819925aeadf83",
-    "courses/2680/site/readings/index.html": "9d7ad0290d651e881bb53a1ec57e482d4234be614b5e73e0b1d407e8e7f9fb34",
+    "courses/2680/site/readings/index.html": "5b1d943f3551f37afbdde9ff816d1e8b9cb4ba7b502e4039993f1a1fd0ff455c",
     "courses/2680/site/readings/sep-09.html": "b94ba7f3a91dca7baf797e27f6b97cce8b2453e49a1a3a26750a948ecd2ca386",
     "courses/2680/site/readings/sep-14.html": "3a7953468070a30997b12f2643bc23066e733257e28430718d96ab3adb8f0d4d",
     "courses/2680/site/readings/oct-14.html": "cf6a77486217c8d50592149121b34e9d4042a48ef0834fa06439d6cf84001818",
     "courses/2680/site/readings/sep-23.html": "36261406682ba3e58167593d1e8c3ddd81c27d7b240d8043cd83c412fd9ed2c7",
-    "courses/2680/site/readings/oct-19.html": "262b725c3a2326a5a73fc7699bbc4cb34a37c0ce3d4cea1da9c23f301d5a7e50",
+    "courses/2680/site/readings/oct-19.html": "f8eb37ba58f283938d7b60f6c876d1e865948fb64ba3e45172ddd1914497b882",
     "courses/2680/site/readings/sep-16.html": "60888f249683a1461dcf415282dbd745188b2579bf275e664bec2e64a61ae424",
-    "courses/2680/site/readings/oct-21.html": "2db6884eb3be13a95ec274822118ec20f57b5604b568c8c172d77018b5ad3294",
+    "courses/2680/site/readings/oct-21.html": "91d39c9ee1745421d5454d4a6df1d0ce758e68591c777e70d8a862b98ecbad2e",
     "courses/2680/site/readings/nov-16.html": "760a9be9bd26253090b1e339b5f7bd970c63a2db2b3927b51b9b7e1348d154cd",
     "courses/2680/site/staff/charles.jpg": "cee87335470078054c0e9b9e3476920cb60b0db28487455bb30e36e5fd42a356",
     "courses/2680/site/staff/yiyu-liu.jpg": "7606e3a2b0bed9168d8df50ae3de8d306bd9eb6482e6dc7593a2278c6bea70bf",
     "courses/2680/site/staff/juncheng-yang.jpg": "22000edb51796ab9b973a310dcd2b535b01e0e5e9ac70f920cbb6a8d8a437317",
     "courses/2680/site/staff/AdvaithRavishankar.jpg": "f5db8f57a99232bb58b7fa2c83c79d3a910a4dceff33815cca992742042f5bbb",
     "courses/2680/site/staff/yunjia-zheng.jpg": "493e02c5a8cb3fb2c80fa06b0e3b1850a44cf0de42e82cf1c55619b6d578cfea",
-    "courses/2680/site/computing/index.html": "ad05e1ac92428fc4ef35d1c45d2ce4ff6cdf7a572146d07ede3277fa941ba389",
+    "courses/2680/site/computing/index.html": "e4d4c20ddcbaa6c92b4dd076e395945f9bc56df25ef218acfe216ae247537d12",
     "courses/2680/site/computing/aws.html": "5dd3a3acb6867ce6c6a1e1240f43d40832f4e23a4876e483ccb94bb2481441de",
     "courses/2680/site/computing/claude-code.html": "52fbd3db1bf8403137ab914f619fa1a3c34c38e402c69aeb9ef939f13593304f",
     "courses/2680/site/computing/cluster.html": "a69a29d4b15f5ee9220fabf5255a118d416788269a8e4b7f2d06c2d86bace452",
@@ -2456,22 +3209,143 @@
     "courses/2680/versions/3ab3e06aac490c39b72c0c8212344d21f9c7085aaf930d4c96e8cd864cc4cdf1/site/notes/agent-evaluation.html": "3ab3e06aac490c39b72c0c8212344d21f9c7085aaf930d4c96e8cd864cc4cdf1",
     "courses/2680/versions/10a6adb227da48bf14860b9f5d07339bcadc4cdc6071bb2a2453040cedd139ae/site/notes/cost-effective-agents.html": "10a6adb227da48bf14860b9f5d07339bcadc4cdc6071bb2a2453040cedd139ae",
     "courses/2680/versions/d26002775296e7c90a5878f60cd49d03ce386b314e62785a9fa7d5b65649e7f5/site/notes/transformers.html": "d26002775296e7c90a5878f60cd49d03ce386b314e62785a9fa7d5b65649e7f5",
-    "courses/2680/versions/ca3227bb054cbddd9647ad17df7cc4372c59d94626acd782f95f7fc057403879/site/computing/cluster.html": "ca3227bb054cbddd9647ad17df7cc4372c59d94626acd782f95f7fc057403879"
+    "courses/2680/versions/ca3227bb054cbddd9647ad17df7cc4372c59d94626acd782f95f7fc057403879/site/computing/cluster.html": "ca3227bb054cbddd9647ad17df7cc4372c59d94626acd782f95f7fc057403879",
+    "courses/2680/source-versions/ba9dfc185224e11b6d7a77b620b26bf87fa2bc704e83016f136f1b50a8892702/to_release.html": "ba9dfc185224e11b6d7a77b620b26bf87fa2bc704e83016f136f1b50a8892702",
+    "courses/2680/source-versions/30f3c39abf5ee270bd84057b5017ec1b8538d8d927c1a29a3611dcd741b375b5/index.html": "30f3c39abf5ee270bd84057b5017ec1b8538d8d927c1a29a3611dcd741b375b5",
+    "courses/2680/source-versions/a0e4979e2c247879b1f13f44cb8ddc851e928ce35e0496893e27129263910012/readings.html": "a0e4979e2c247879b1f13f44cb8ddc851e928ce35e0496893e27129263910012",
+    "courses/2680/source-versions/697b5bcbabfca9ab7611aa8f5ffb4fe151966e40221c9f8b891921b89b6c0107/policy.html": "697b5bcbabfca9ab7611aa8f5ffb4fe151966e40221c9f8b891921b89b6c0107",
+    "courses/2680/source-versions/644bf7bbb2a239dd268030d2f1c83c401ef839f2fffde24b3d3b2391b69d4cec/index.html": "644bf7bbb2a239dd268030d2f1c83c401ef839f2fffde24b3d3b2391b69d4cec",
+    "courses/2680/source-versions/690eb4ef0672dc2b3018fcbef44a9707003300d66d43d2f7d02f47babc4ccf98/assignment4.html": "690eb4ef0672dc2b3018fcbef44a9707003300d66d43d2f7d02f47babc4ccf98",
+    "courses/2680/source-versions/9d7ad0290d651e881bb53a1ec57e482d4234be614b5e73e0b1d407e8e7f9fb34/index.html": "9d7ad0290d651e881bb53a1ec57e482d4234be614b5e73e0b1d407e8e7f9fb34",
+    "courses/2680/source-versions/262b725c3a2326a5a73fc7699bbc4cb34a37c0ce3d4cea1da9c23f301d5a7e50/oct-19.html": "262b725c3a2326a5a73fc7699bbc4cb34a37c0ce3d4cea1da9c23f301d5a7e50",
+    "courses/2680/source-versions/2db6884eb3be13a95ec274822118ec20f57b5604b568c8c172d77018b5ad3294/oct-21.html": "2db6884eb3be13a95ec274822118ec20f57b5604b568c8c172d77018b5ad3294",
+    "courses/2680/source-versions/ad05e1ac92428fc4ef35d1c45d2ce4ff6cdf7a572146d07ede3277fa941ba389/index.html": "ad05e1ac92428fc4ef35d1c45d2ce4ff6cdf7a572146d07ede3277fa941ba389",
+    "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/11_llm_serving_basics_3.pdf": "d4aa80613188b43b6b40ee72db625bfdc6e9dd1f3c2336fa413a14e1751a7e41",
+    "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/On_Evaluating_Performance_of_LLM_Inference_Systems.pdf": "e1747d82adfcd451efec667f3c6121042d848864c55ee8d64216c421d7bd7631",
+    "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/references/Orca_A_Distributed_Serving_System_for_Transformer-Based_Generative_Models.pdf": "b8038438ad8ff99bb131c1a6e16f7df10cf2f962aeb1bf4f1c00cc37e70658ca",
+    "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/Taming_Throughput-Latency_Tradeoff_in_LLM_Inference_with_Sarathi-Serve.pdf": "45f59f4474de29baf4d315c785b850625548b69a9bc7be2e036d6fc59f54b54a",
+    "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/DistServe_Disaggregating_Prefill_and_Decoding_for_Goodput-optimized_Large_Language_Model_Serving.pdf": "3ef8776301629419e97d7f6dc08b9a46f3577e05e96538a17dd4a526762f42f0",
+    "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/Splitwise_Efficient_Generative_LLM_Inference_Using_Phase_Splitting.pdf": "c7baf19039f7b760c5d83fb61324ec4ffdf384e8a047bd46f2c4e2ad85e3531d",
+    "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/Efficient_LLM_Scheduling_by_Learning_to_Rank.pdf": "e313118954302b1c81f9ad9a16ad516dfabf9f3f5452f3cab33bd44a3d401464",
+    "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/Fast_Distributed_Inference_Serving_for_Large_Language_Models.pdf": "f3cc10d868e0430bbabc063a9bec25ce5b826134ab876de14958a955c3bc7498",
+    "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/SGLang_Efficient_Execution_of_Structured_Language_Model_Programs.pdf": "161e0a0123a89cd8a57d68734ae704680b0e577fee41e1e7e1029c37a9d99b57",
+    "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/Fairness_in_Serving_Large_Language_Models.pdf": "2fa74f1e7ff787bdf4ce7702ac0c28be0a4d627ecd08dab19df5b65f530060da",
+    "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/Locality-aware_Fair_Scheduling_in_LLM_Serving.pdf": "440269188e4163e15fecca730a2c91d4e8078f61118fc2df3d60b5a191187a2b",
+    "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/readings/Optimization_of_Collective_Communication_Operations_in_MPICH.pdf": "6df2d9582ea1b9e39e7d79d7f5d11fe1516b37e48a700537e71f0e2b8287fdca",
+    "courses/2680/site/readings/nov-04.html": "f8614d60da3600f6c9f1dfb1ec065fdd69ebd475f578728668881b5c4762eca4",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/feedback_assignment.pdf": "8dd91d586685210214cb24305e11eee7a52c06035522c1fc8b43f8f2e3648b88",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/10_llm_serving_basics_2b.pdf": "716ce76802eea4be08bd20e95aad55d6a39e636c8d3ed2411da807cbf90b9bc8",
+    "courses/2680/11.EfficientLLMServingBasicsII.IntroToGPUs/references/PyTorch_2_Faster_Machine_Learning_Through_Dynamic_Python_Bytecode_Transformation_and_Graph_Compilation.pdf": "9fba949b34051ae1b0936c91ddb23e43638912b180dba490616256e5446f4e6e",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Stream-K_Work-centric_Parallel_Decomposition_for_Dense_Matrix-Matrix_Multiplication_on_the_GPU.pdf": "f2db58086debe599590650cac1069102ddf9396ac398e5a57284d3d524832cc5",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/KernelBench_Can_LLMs_Write_Efficient_GPU_Kernels.pdf": "fb1765807098915b853cca7a007aaa4bccdcd1a45eb1baef0d3919948abd7a6b",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/AutoMegaKernel_A_Statically-Checked_Agent_Harness_for_Self-Retargeting_Megakernel_Synthesis.pdf": "d15c2f1de8601cb824700d2ae0ed5f8b0603a41ed55adf84b5ecf5b90b607e21",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/ThunderKittens_Simple_Fast_and_Adorable_AI_Kernels.pdf": "262204198eea890622265616d68eca4d95bdeb1173d6108041f594f7ddc56268",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/TileLang_A_Composable_Tiled_Programming_Model_for_AI_Systems.pdf": "1c4c86d6f2b90b226c42af3e3d7a61eb90bfd9c66137660fb858e35769862574",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Reducing_Activation_Recomputation_in_Large_Transformer_Models.pdf": "5fcd24e92a086f5671cbb8c0624cd42251d2d43324245da9d93b0b2289e46abc",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/PaLM_Scaling_Language_Modeling_with_Pathways.pdf": "1e88f1f3027cd1abecb1713c1c08a89137c7730582549ec7ca78ca329f3f975d",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Making_AI_Less_Thirsty_Uncovering_and_Addressing_the_Secret_Water_Footprint_of_AI_Models.pdf": "eb2cb1678ff54142698acdb4be736d6923504cd4e5c1e418b6bab97b9b406d56",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Look_Ma_No_Bubbles_Designing_a_Low-Latency_Megakernel_for_Llama-1B.html": "e46989d56b58b544f924bb30d943e5554a87a80935488432a4f7f568aeb6e65d",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Flash-Decoding_for_long-context_inference.html": "668ef1ccd6f12e329aa15439d012a3f335b67b690fcbcff87da0868181ee9ebd",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Programmatic_Dependent_Launch_and_Synchronization_CUDA_Programming_Guide.html": "41a826f308dce730688957edffbd746b92e9531ca9409079ff2e735f94873796",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/CUDA_C++_Best_Practices_Guide.html": "fcacb0b62ce545e154a6b7dc49778ec663162d7dfb469f85d74b0551e0341f68",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/NVIDIA_DCGM_Profiling.html": "6f7aea35d935b1f5f13819fead823277fc54fa10153978bbde305aecf45dc37c",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Nsight_Compute_Profiling_Guide.html": "6bdd25d8f532f4a9500e5cc4c2abfc7ec506f5bc3cce1bde349cdfa87b8eb967",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Nsight_Systems_User_Guide.html": "55c048476ded375d7f00a16ab960e9d3047aa452bcb3fbede2f462dce8ebf1b0",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/LLM_Inference_Performance_Engineering_Best_Practices.html": "f2741e9e100e1cffae51f059a10f062928d62f9231be85ed947520dcb5087938",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/NVIDIA_HGX_Platform_Data_Center_Physical_Requirements_Guide.html": "cb6f9fb7d74c5aa5bfc1c67ad2cabb1e701f0658308c988866152234e2701815",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/CUTLASS_Overview.html": "b61dbf71174cb353513afcb2d8b8a2156506a36ed5034d4cf5422aa573e04296",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/CuTe_Layouts.html": "de17e13066d60e0ed2930204e85a57dc51b975ce4f2f5470612b82b887d35170",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Triton_Vector_Addition.html": "5d4f7c223af55b37cf4c8ea004e4d9e5de175b3862e34550810fb724709c17e9",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/CUDA_Tile_Programming_Model.html": "b864712e485450c7d41dba8a4eb5befdf3303f29f9b86602b667628db8fa4d8c",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/NVIDIA_CUDA_Compiler_Driver.html": "6c9720e69697e86c105bfbc901c6131ddb1daf5fed21df7901735fa1676b901c",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Triton_Documentation.html": "bae2aae0f2986e29e71474bba96e6bdabea44563797f4deb84a5d6c2e390cc1f",
+    "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/code/DeepEP/README.md": "86415f7fc11381dceb14c112b6c602103d975936444601666ab1fcfd65e8fceb"
   },
   "source_version_maintenance": {
-    "maintained_at": "2026-11-04",
-    "scope": "官网同步后的来源版本维护；保留已审核旧字节，新增当前网页完整性绑定，不将元数据迁移冒充讲解内容复核。",
-    "historical_bindings": {
-      "courses/2680/site/to_release.html": "courses/2680/versions/2e2d39878611f922d36346e4a829004f08d24ddb207a061b834198da1d1b665b/site/to_release.html",
-      "courses/2680/site/index.html": "courses/2680/versions/e306354078be13ce8e144aedb4ac1022b495361ce9c36a9e33b7fceed682ac32/site/index.html",
-      "courses/2680/site/readings.html": "courses/2680/versions/73134198582f0fd23e9c3ef594b980f1926e6dbe893a5be498de8e8e76466238/site/readings.html",
-      "courses/2680/site/project.html": "courses/2680/versions/c01484edd114b86bb7c80e5d24f48887aa3b5bf5975697e5a89f95d35c8555b4/site/project.html",
-      "courses/2680/site/assignments/index.html": "courses/2680/versions/5e632c9e93f429f3b53f1f34ab3a3472f562e993b343231eb2f92983b775a375/site/assignments/index.html",
-      "courses/2680/site/assignments/assignment4.html": "courses/2680/versions/5cb88bd3cccaf54be4a41d4e6ace67dd633621ec6f843e2a281e5e138961319a/site/assignments/assignment4.html",
-      "courses/2680/site/notes/agent-evaluation.html": "courses/2680/versions/3ab3e06aac490c39b72c0c8212344d21f9c7085aaf930d4c96e8cd864cc4cdf1/site/notes/agent-evaluation.html",
-      "courses/2680/site/notes/cost-effective-agents.html": "courses/2680/versions/10a6adb227da48bf14860b9f5d07339bcadc4cdc6071bb2a2453040cedd139ae/site/notes/cost-effective-agents.html",
-      "courses/2680/site/notes/transformers.html": "courses/2680/versions/d26002775296e7c90a5878f60cd49d03ce386b314e62785a9fa7d5b65649e7f5/site/notes/transformers.html",
-      "courses/2680/site/computing/cluster.html": "courses/2680/versions/ca3227bb054cbddd9647ad17df7cc4372c59d94626acd782f95f7fc057403879/site/computing/cluster.html"
-    }
-  }
+    "updated_at": "2026-11-13",
+    "scope": "Current source integrity and preserved reviewed source versions; does not re-review Chinese note content",
+    "sources": [
+      {
+        "path": "courses/2680/site/to_release.html",
+        "reviewed_source_path": "courses/2680/source-versions/ba9dfc185224e11b6d7a77b620b26bf87fa2bc704e83016f136f1b50a8892702/to_release.html",
+        "reviewed_sha256": "ba9dfc185224e11b6d7a77b620b26bf87fa2bc704e83016f136f1b50a8892702",
+        "current_sha256": "72c2a6b5d777f98f90ed32ce8b2f616d4944d48e76161b481093d8d9e0244102",
+        "content_review": "not_repeated_user_deferred",
+        "reason": "Official raw website refreshed during materials sync; previous reviewed bytes retained"
+      },
+      {
+        "path": "courses/2680/site/index.html",
+        "reviewed_source_path": "courses/2680/source-versions/30f3c39abf5ee270bd84057b5017ec1b8538d8d927c1a29a3611dcd741b375b5/index.html",
+        "reviewed_sha256": "30f3c39abf5ee270bd84057b5017ec1b8538d8d927c1a29a3611dcd741b375b5",
+        "current_sha256": "5fc4c9a6846140af7fc2dcfa0618eeba4c748b13ee85d68daee32f7591e813fb",
+        "content_review": "not_repeated_user_deferred",
+        "reason": "Official raw website refreshed during materials sync; previous reviewed bytes retained"
+      },
+      {
+        "path": "courses/2680/site/readings.html",
+        "reviewed_source_path": "courses/2680/source-versions/a0e4979e2c247879b1f13f44cb8ddc851e928ce35e0496893e27129263910012/readings.html",
+        "reviewed_sha256": "a0e4979e2c247879b1f13f44cb8ddc851e928ce35e0496893e27129263910012",
+        "current_sha256": "bc1aedf4cd395626aa60edaf4291f2a03d30340f4b0e2a7eef36dc9f4c0a83fc",
+        "content_review": "not_repeated_user_deferred",
+        "reason": "Official raw website refreshed during materials sync; previous reviewed bytes retained"
+      },
+      {
+        "path": "courses/2680/site/policy.html",
+        "reviewed_source_path": "courses/2680/source-versions/697b5bcbabfca9ab7611aa8f5ffb4fe151966e40221c9f8b891921b89b6c0107/policy.html",
+        "reviewed_sha256": "697b5bcbabfca9ab7611aa8f5ffb4fe151966e40221c9f8b891921b89b6c0107",
+        "current_sha256": "faa0c7b76a4192ff15760851f3fed5df1837c113d14d27518fe2349977db131f",
+        "content_review": "not_repeated_user_deferred",
+        "reason": "Official raw website refreshed during materials sync; previous reviewed bytes retained"
+      },
+      {
+        "path": "courses/2680/site/assignments/index.html",
+        "reviewed_source_path": "courses/2680/source-versions/644bf7bbb2a239dd268030d2f1c83c401ef839f2fffde24b3d3b2391b69d4cec/index.html",
+        "reviewed_sha256": "644bf7bbb2a239dd268030d2f1c83c401ef839f2fffde24b3d3b2391b69d4cec",
+        "current_sha256": "94767dded9d6d1ef2c94d35b82ecb25d65acde01669f9969236c6898179c5a8c",
+        "content_review": "not_repeated_user_deferred",
+        "reason": "Official raw website refreshed during materials sync; previous reviewed bytes retained"
+      },
+      {
+        "path": "courses/2680/site/assignments/assignment4.html",
+        "reviewed_source_path": "courses/2680/source-versions/690eb4ef0672dc2b3018fcbef44a9707003300d66d43d2f7d02f47babc4ccf98/assignment4.html",
+        "reviewed_sha256": "690eb4ef0672dc2b3018fcbef44a9707003300d66d43d2f7d02f47babc4ccf98",
+        "current_sha256": "bb32d531057b744b4400e6d9e82c5c74ee19add37c1e3418693db16416761ccf",
+        "content_review": "not_repeated_user_deferred",
+        "reason": "Official raw website refreshed during materials sync; previous reviewed bytes retained"
+      },
+      {
+        "path": "courses/2680/site/readings/index.html",
+        "reviewed_source_path": "courses/2680/source-versions/9d7ad0290d651e881bb53a1ec57e482d4234be614b5e73e0b1d407e8e7f9fb34/index.html",
+        "reviewed_sha256": "9d7ad0290d651e881bb53a1ec57e482d4234be614b5e73e0b1d407e8e7f9fb34",
+        "current_sha256": "5b1d943f3551f37afbdde9ff816d1e8b9cb4ba7b502e4039993f1a1fd0ff455c",
+        "content_review": "not_repeated_user_deferred",
+        "reason": "Official raw website refreshed during materials sync; previous reviewed bytes retained"
+      },
+      {
+        "path": "courses/2680/site/readings/oct-19.html",
+        "reviewed_source_path": "courses/2680/source-versions/262b725c3a2326a5a73fc7699bbc4cb34a37c0ce3d4cea1da9c23f301d5a7e50/oct-19.html",
+        "reviewed_sha256": "262b725c3a2326a5a73fc7699bbc4cb34a37c0ce3d4cea1da9c23f301d5a7e50",
+        "current_sha256": "f8eb37ba58f283938d7b60f6c876d1e865948fb64ba3e45172ddd1914497b882",
+        "content_review": "not_repeated_user_deferred",
+        "reason": "Official raw website refreshed during materials sync; previous reviewed bytes retained"
+      },
+      {
+        "path": "courses/2680/site/readings/oct-21.html",
+        "reviewed_source_path": "courses/2680/source-versions/2db6884eb3be13a95ec274822118ec20f57b5604b568c8c172d77018b5ad3294/oct-21.html",
+        "reviewed_sha256": "2db6884eb3be13a95ec274822118ec20f57b5604b568c8c172d77018b5ad3294",
+        "current_sha256": "91d39c9ee1745421d5454d4a6df1d0ce758e68591c777e70d8a862b98ecbad2e",
+        "content_review": "not_repeated_user_deferred",
+        "reason": "Official raw website refreshed during materials sync; previous reviewed bytes retained"
+      },
+      {
+        "path": "courses/2680/site/computing/index.html",
+        "reviewed_source_path": "courses/2680/source-versions/ad05e1ac92428fc4ef35d1c45d2ce4ff6cdf7a572146d07ede3277fa941ba389/index.html",
+        "reviewed_sha256": "ad05e1ac92428fc4ef35d1c45d2ce4ff6cdf7a572146d07ede3277fa941ba389",
+        "current_sha256": "e4d4c20ddcbaa6c92b4dd076e395945f9bc56df25ef218acfe216ae247537d12",
+        "content_review": "not_repeated_user_deferred",
+        "reason": "Official raw website refreshed during materials sync; previous reviewed bytes retained"
+      }
+    ]
+  },
+  "deferred_notes": []
 }

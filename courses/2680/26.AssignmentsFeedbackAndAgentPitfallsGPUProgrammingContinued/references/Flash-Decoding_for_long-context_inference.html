@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="/static/img/favicon.ico">
+	<title>Stanford CRFM</title>
+	<link rel="stylesheet" href="/static/css/plugins.css">
+	<link rel="stylesheet" href="/static/css/sandbox-aqua.css">
+	<link rel="stylesheet" href="/static/css/dm.css">
+	<link rel="stylesheet" href="/static/css/custom.css">
+</head>
+<body>
+	<div class="content-wrapper">
+		<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    .hidden { display: none; }
+    .research-dropdown::after,
+    .research-dropdown > a::after {
+        content: none !important;
+    }
+
+    .research-dropdown > a {
+        background-image: none !important;
+    }
+
+    .dropdown-item {
+        transition: background-color 0.3s ease;
+    }
+    .dropdown-item a {
+        color: black;
+        text-decoration: none;
+    }
+    .dropdown-item:hover a {
+        color: #53A8C7; 
+    }
+    </style>
+</head>
+
+<div style='background-color: #8c1515; padding-top:0.5em; padding-bottom:0.5em; margin-bottom:0.2em'>
+    <div class="container flex-lg-row flex-nowrap align-items-center" >
+        <a href="https://www.stanford.edu/" target="_blank">
+            <img src="/static/img/header/stanford-white.png" style="width: 160px; margin-top:7px">
+        </a>
+    </div>
+</div>
+
+<header class="wrapper bg-light pt-1">
+    <nav class="navbar classic transparent navbar-expand-lg navbar-light">
+        <div class="container flex-lg-row flex-nowrap align-items-center">
+            <div class="navbar-brand w-100 d-flex flex-row align-items-center">
+                <a href="/">
+                    <img class="nav_logo1" src="/static/img/header/crfm-rgb.png" style="width:9em; margin-top:3px">
+                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="https://hai.stanford.edu/" target="_blank">
+                    <img class="nav_logo2" src="/static/img/header/hai.png" style="width:14em; margin-top:3px">
+                </a>
+                <div class="ms-auto">
+                    <button class="navbar-toggler hamburger" data-toggle="offcanvas-nav"><span></span></button>
+                </div>
+            </div>
+            <div class="navbar-collapse offcanvas-nav">
+                <ul class="navbar-nav" style="list-style-type: none;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/people.html">People</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/report.html">Report</a>
+                    </li>
+                    <li id="dropdownContainer" class="nav-item inline-block dropdown research-dropdown" style="position: relative; list-style-type: none;">
+                        <a id="dropdownButton" class="nav-link text-black">Research</a>
+                        <div>
+                            <ul id="dropdownMenu" class="hidden absolute border border-solid border-black mb-3 z-10 dropdown-content menu shadow-lg bg-base-100 rounded-box " role="menu" style="list-style-type: none; position: absolute; top: 100%; left: 0; min-width: max-content; width: auto; padding: 0.5rem 0; text-align: left; background-color: #FEFEFE;">
+                                <li class="z-40 dropdown-item" style="text-align: left;"><a href="https://crfm.stanford.edu/helm" class="block px-4 py-2 hover:bg-gray-100 whitespace-nowrap" role="menuitem" style="text-align: left;">HELM</a></li>
+                                <li class="z-40 dropdown-item" style="text-align: left;"><a href="https://crfm.stanford.edu/2023/06/16/levanter-1_0-release.html" class="block px-4 py-2 hover:bg-gray-100 whitespace-nowrap" role="menuitem" style="text-align: left;">Levanter</a></li>
+                                <li class="z-40 dropdown-item" style="text-align: left;"><a href="https://crfm.stanford.edu/fmti" class="block px-4 py-2 hover:bg-gray-100 whitespace-nowrap" role="menuitem" style="text-align: left;">FMTI</a></li>
+                                <li class="z-40 dropdown-item" style="text-align: left;"><a href="https://crfm.stanford.edu/open-fms/" class="block px-4 py-2 hover:bg-gray-100 whitespace-nowrap" role="menuitem" style="text-align: left;">Openness</a></li>
+                                <li class="z-40 dropdown-item" style="text-align: left;"><a href="https://crfm.stanford.edu/ecosystem-graphs/" class="block px-4 py-2 hover:bg-gray-100 whitespace-nowrap" role="menuitem" style="text-align: left;">Ecosystem Graphs</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/policy.html">Policy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blog.html">Blog</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const dropdownContainer = document.getElementById('dropdownContainer');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+    
+        dropdownContainer.addEventListener('mouseenter', () => {
+            dropdownMenu.classList.remove('hidden');
+        });
+    
+        dropdownContainer.addEventListener('mouseleave', () => {
+            dropdownMenu.classList.add('hidden');
+        });
+    });
+    </script>
+</header>
+
+		<section class="wrapper bg-light" style="margin-top:1em">
+			<div class="container py-lg-8 gx-lg-8 gx-xl-12 py-md-4">
+				<style>
+  .blog-wrapper {
+    width:75%;
+    margin:0 auto;
+    text-align:justify;
+  }
+  .blog-title {
+    text-align:center;
+    margin:0;
+    margin-bottom:1em;
+    margin-top:2em;
+  }
+  .blog-start {
+    margin:0;
+    margin:0 auto;
+    height:4px !important;
+    margin-top:2.8em;
+    margin-bottom:2.2em;
+    width:70%;
+  }
+  .blog-break {
+    margin:0;
+    margin:0 auto;
+    height:4px !important;
+    margin-bottom:2.2em;
+    width:90%;
+  }
+  .blog-author {
+    padding-bottom:1em;
+    text-align:center;
+    margin:0.75em 0;
+    font-weight: 600;
+    font-size:1.1em;
+  }
+  .blog-author-team {
+    text-align:center;
+    margin:0.5em 0;
+    font-weight: 600;
+  }
+  .blog-author-team-secondary {
+    text-align:center;
+    margin:0;
+    font-weight: 600;
+  }
+  .blog-tagline {
+    margin:0;
+    margin-bottom:1.8em;
+  }
+  .blog-p {
+    margin:0;
+    margin-bottom:1.8em;
+  }
+  .blog-half-width-img {
+    text-align:center;
+    margin:0;
+    margin-top:1em;
+    margin-bottom:1em;
+    width:50%;
+  }
+  .blog-full-width-img {
+    margin:0;
+    margin-top:1em;
+    margin-bottom:1em;
+    width:100%;
+  }
+  .blog-full-width-img-caption {
+    margin:0;
+    padding:0;
+    text-align: center;
+    margin-bottom:2em;
+  }
+  .blog-list {
+    margin:0;
+    padding:0;
+    padding-left:2.5em;
+    margin-top:0.5em;
+  }
+  .blog-p-blockquote {
+    font-size:1em;
+  }
+  .blockquote-content {
+    font-style: italic;
+  }
+  .blockquote-cite {
+    text-align:right;
+    font-style: italic;
+    margin-top:-1em;
+  }
+  .hover-items{
+    width:20em;
+    padding-bottom:-1em;
+    font-size:0.95em;
+  }
+  .blog-h5 {
+    margin-top: 0px;
+  }
+  .table-of-content {
+    text-align:center;
+    margin:0;
+    margin-bottom:2em;
+  }
+  .table-of-content h5 {
+    margin-bottom:1em;
+   }
+  .table-of-content h6 {
+    font-size:0.95em;
+   }
+
+  pre {
+    margin-top: 1em;
+    background: #ebebeb;
+    padding: 2em;
+    border-radius: 12px;
+  }
+
+</style>
+
+  <h2 class="blog-title">Flash-Decoding for long-context inference</h2>
+  
+  
+  
+  <h4 class="blog-author"><strong>Authors:</strong>
+    
+    <a href="https://tridao.me/" target="_blank">Tri Dao</a> and 
+    
+    <a href="https://scholar.google.com/citations?user=2eSKdFMAAAAJ&amp;hl=fr" target="_blank">Daniel Haziza</a> and 
+    
+    <a href="https://scholar.google.com/citations?user=uWGCQkwAAAAJ&amp;hl=en" target="_blank">Francisco Massa</a> and 
+    
+    <a href="https://www.linkedin.com/in/grigory-sizov-547b2612b/?originalSubdomain=de" target="_blank">Grigory Sizov</a>
+    
+  </h4>
+  
+
+  
+
+  <hr class="blog-start">
+
+  
+
+  <div class="blog-p">
+    <style>
+    img.block-img {
+        width: 60%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%;
+    }
+    img.block-half-img {
+        width: 60%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 70%;
+    }
+</style>
+
+<h1 id="motivation">Motivation</h1>
+
+<p>Large language models (LLM) such as ChatGPT or Llama have received unprecedented attention lately. However, they remain massively expensive to run. Even though generating a single response can cost about $0.01 (a few seconds of an 8xA100 instance on AWS), the costs quickly add up when scaling to billions of users, who could have multiple daily interactions with such LLMs. Some use cases are more expensive, like code auto-completion, because it runs whenever a new character is typed. As LLM applications multiply, even small efficiency gains to the generation time can have a massive impact.</p>
+
+<p>LLM inference (or “decoding”) is an iterative process: tokens are generated one at a time. Generating full sentences of N tokens requires N forward passes through the model. Fortunately, it is possible to cache previously calculated tokens: this means that a single generation step does not depend on the context length, except for a single operation, the attention. This operation does not scale well with context length.</p>
+
+<p>There are a number of important emerging use cases of LLMs that utilize a long context. With a longer context, LLMs can reason about longer documents, either to summarize or answer questions about them, they can keep track of longer conversations, or even process entire codebases before writing code. As an example, most LLMs had a context length of up to 2k in 2022 (GPT-3), but we now have open-source LLMs scaling up to 32k (<a href="https://together.ai/blog/llama-2-7b-32k">Llama-2-32k</a>), or even 100k more recently (<a href="https://about.fb.com/news/2023/08/code-llama-ai-for-coding/">CodeLlama</a>). In this setting, attention takes a significant fraction of time during inference.</p>
+
+<p>When scaling on the batch size dimension, the attention can also become a bottleneck even with relatively small contexts. This is because the amount of memory to read scales with the batch dimension, whereas it only depends on the model size for the rest of the model.</p>
+
+<p>We present a technique, Flash-Decoding, that significantly speeds up attention during inference, bringing up to 8x faster generation for very long sequences. The main idea is to load the keys and values in parallel as fast as possible, then separately rescale and combine the results to maintain the right attention outputs.</p>
+
+<h1 id="multi-head-attention-for-decoding">Multi-head attention for decoding</h1>
+
+<p>During decoding, every new token that is generated needs to attend to all previous tokens, to compute: 
+softmax(queries @ keys.transpose) @ values</p>
+
+<p>This operation has been optimized with FlashAttention (v1 and v2 recently) in the training case, where the bottleneck is the memory bandwidth to read and write the intermediate results (e.g. Q @ K^T). However, these optimizations don’t apply directly to the inference case, because the bottlenecks are different. For training, FlashAttention parallelizes across the batch size and query length dimensions. During inference, the query length is typically 1: this means that if the batch size is smaller than the number of streaming multiprocessors (SMs) on the GPU (108 for an A100), the operation will only use a small part of the GPU! This is especially the case when using long contexts, because it requires smaller batch sizes to fit in GPU memory. With a batch size of 1, FlashAttention will use less than 1% of the GPU!</p>
+
+<p><img class="blog-full-width-img" src="/static/img/posts/2023-10-13-flashdecoding/parallelization.gif" /></p>
+
+<p>FlashAttention parallelizes across blocks of queries and batch size only, and does not manage to occupy the entire GPU during decoding</p>
+
+<p>The attention can also be done using matrix multiplication primitives - without using FlashAttention. In this case, the operation occupies the GPU entirely, but launches many kernels that write and read intermediate results, which is not optimal.</p>
+
+<h1 id="a-faster-attention-for-decoding-flash-decoding">A faster attention for decoding: Flash-Decoding</h1>
+
+<p>Our new approach Flash-Decoding is based on FlashAttention, and adds a new parallelization dimension: the keys/values sequence length. It combines the benefits of the 2 approaches from above. Like FlashAttention, it stores very little extra data to global memory, however it fully utilizes the GPU even when the batch size is small, as long as the context length is large enough.</p>
+
+<p><img class="blog-full-width-img" src="/static/img/posts/2023-10-13-flashdecoding/parallelization_kv.gif" /></p>
+
+<p>Flash-Decoding also parallelizes across keys and values, at the cost of a small final reduction step</p>
+
+<p>Flash-Decoding works in 3 steps:</p>
+<ol>
+  <li>First, we split the keys/values in smaller chunks</li>
+  <li>We compute the attention of the query with each of these splits in parallel using FlashAttention. We also write 1 extra scalar per row and per split: the log-sum-exp of the attention values.</li>
+  <li>Finally, we compute the actual output by reducing over all the splits, using the log-sum-exp to scale the contribution of each split.</li>
+</ol>
+
+<p>All of this is possible because the attention/softmax can be calculated iteratively. In Flash-Decoding, it is used at 2 levels: within splits (like FlashAttention), and across splits to perform the final reduction.</p>
+
+<p>In practice, step (1) does not involve any GPU operation, as the key/value chunks are views of the full key/value tensors. We then have 2 separate kernels to perform respectively (2) and (3).</p>
+
+<h2 id="benchmarks-on-codellama-34b">Benchmarks on CodeLlama 34B</h2>
+
+<p>To validate this approach, we benchmark the decoding throughput of the CodeLLaMa-34b. This model has the same architecture as Llama 2, and more generally results should generalize across many LLMs. We measure the decoding speed in tok/s at various sequence lengths, from 512 to 64k, and compare multiple ways of calculating the attention:</p>
+<ul>
+  <li>Pytorch: Running the attention using pure PyTorch primitives (without using FlashAttention)</li>
+  <li>FlashAttention v2 (before v2.2)</li>
+  <li>FasterTransformer: Uses the FasterTransformer attention kernel</li>
+  <li>Flash-Decoding</li>
+  <li>And an upper bound calculated as the time it takes to read from memory the entire model along with the KV-cache</li>
+</ul>
+
+<p>Flash-Decoding unlocks up to 8x speedups in decoding speed for very large sequences, and scales much better than alternative approaches.</p>
+
+<p><img class="block-half-img" src="/static/img/posts/2023-10-13-flashdecoding/performance.png" /></p>
+
+<p>All approaches perform similarly for small prompts, but scale poorly as the sequence length increases from 512 to 64k, except Flash-Decoding. In this regime (batch size 1) with Flash-Decoding, scaling the sequence length has little impact on generation speed.</p>
+
+<h2 id="component-level-micro-benchmarks">Component-level micro-benchmarks</h2>
+
+<p>We also micro-benchmark the scaled multi-head attention for various sequence lengths and batch sizes on A100 with inputs in f16. We set the batch size to 1, and use 16 query heads of dimension 128, for 2 key/value heads (grouped-query attention), which matches the dimensions used in CodeLLaMa-34b when running on 4 GPUs.</p>
+
+<p><img class="block-half-img" src="/static/img/posts/2023-10-13-flashdecoding/microbenchmark.png" /></p>
+
+<p>Micro-benchmark of the multi-head attention, run-time in us. Flash-Decoding achieves almost constant run-time as the sequence length scales to up to 64k.</p>
+
+<p>The up to 8x speedup end-to-end measured earlier is made possible because the attention itself is up to 50x faster than FlashAttention. Up until sequence length 32k, the attention time is roughly constant, because Flash-Decoding manages to fully utilize the GPU.</p>
+
+<h1 id="using-flash-decoding">Using Flash-Decoding</h1>
+
+<p>Flash-decoding is available:</p>
+<ul>
+  <li>In the <a href="https://github.com/Dao-AILab/flash-attention/tree/main">FlashAttention</a> package, starting at version 2.2.</li>
+  <li>Through <a href="https://github.com/facebookresearch/xformers">xFormers</a> starting at version 0.0.22 through <code class="language-plaintext highlighter-rouge">xformers.ops.memory_efficient_attention</code>. The dispatcher will automatically use either the Flash-Decoding or FlashAttention approaches depending on the problem size. When these approaches are not supported, it can dispatch to an efficient triton kernel that implements the Flash-Decoding algorithm.</li>
+</ul>
+
+<p>A full example of decoding with LLaMa v2 / CodeLLaMa is available in the FlashAttention repo <a href="https://github.com/Dao-AILab/flash-attention/tree/main/examples/inference">here</a> and in the xFormers repo <a href="https://github.com/facebookresearch/xformers">here</a>. We also provide a <a href="https://github.com/facebookresearch/xformers/tree/main/examples/llama_inference">minimal example</a> of an efficient decoding code for LLaMa v1/v2 models, meant to be fast, easy to read, educational and hackable.</p>
+
+<h1 id="acknowledgment">Acknowledgment</h1>
+
+<p>Thanks to Erich Elsen, Ashish Vaswani, and Michaël Benesty for suggesting this idea of splitting the KVcache loading. We want to thank Jeremy Reizenstein, Patrick Labatut and Andrew Tulloch for the valuable discussions. We also want to thank Geeta Chauhan and Gregory Chanan for helping with the writing.</p>
+
+  </div>
+
+
+			</div>
+		</section>
+		<footer class="bg-light mt-8">
+    <div class="container pb-7">
+        <hr class="mt-auto mb-7" />
+        <div class="d-md-flex align-items-center justify-content-between">
+            <p class="mb-2 mb-lg-0" style="">
+                CRFM is grateful to our <a href="/support.html">supporters</a>.
+            </p>
+        </div>
+        <div class="d-md-flex align-items-center justify-content-between">
+            <p class="mb-2 mb-lg-0">
+                © 2021–2025. Stanford Center for Research on Foundation Models.
+                <br>
+                <span style="font-size:0.92em">Designed by <a href="http://www.joonsungpark.com/" target="_blank" style="color:#61697A">Joon Sung Park</a>.</span>
+            </p>
+        </div>
+    </div>
+</footer>
+<div class="progress-wrap">
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+    </svg>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+<script src="/static/js/plugins.js"></script>
+<script src="/static/js/scripts.js"></script>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+# The harness's cache (A3_CACHE's default, starter_code/../.cache/cs2680_a3): Terminal-Bench's tasks with their
+# tests and solutions, SWE-bench Pro's tests and reference patches, the images' tar files and the host-only run
+# records. Never commit it. What run_all.py writes in starter_code/ is in starter_code/.gitignore. Commit
+# a5-sessions.tar.gz, which package_agent_sessions.py writes here: it is part of your submission.
+/.cache/

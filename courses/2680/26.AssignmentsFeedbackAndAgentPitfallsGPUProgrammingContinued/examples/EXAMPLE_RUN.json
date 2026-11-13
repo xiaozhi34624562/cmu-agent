@@ -1,0 +1,58 @@
+{
+  "status": "passed",
+  "scope": "CPU arithmetic and indexing only; no GPU/model benchmark",
+  "python": "3.11.10",
+  "platform": "Darwin arm64",
+  "script_sha256": "3f6806c889e496c693faa4e7cdd0af20b38e489c0441b277c6eab8f9c7b23f3b",
+  "coverage": {
+    "0": {
+      "blocks": 0,
+      "valid_elements": 0
+    },
+    "1": {
+      "blocks": 1,
+      "valid_elements": 1
+    },
+    "255": {
+      "blocks": 1,
+      "valid_elements": 255
+    },
+    "256": {
+      "blocks": 1,
+      "valid_elements": 256
+    },
+    "257": {
+      "blocks": 2,
+      "valid_elements": 257
+    },
+    "1048576": {
+      "blocks": 4096,
+      "valid_elements": 1048576
+    }
+  },
+  "reference_output": [
+    0.0,
+    0.0,
+    1.0,
+    3.0,
+    7.0
+  ],
+  "stable_attention": {
+    "output": 23.333333333333332,
+    "max_chunk_error": 3.552713678800501e-15,
+    "incorrect_local_average": 18.0
+  },
+  "conditional_cost_models": {
+    "ideal_fusion_byte_ratio": 3.0,
+    "equal_indivisible_tiles_utilization": 0.6060606060606061,
+    "mfu_3040_aggregate": 0.026882263769580597,
+    "mfu_3040_per_gpu": 0.21505811015664478,
+    "weight_only_mbu": 0.6666666666666666,
+    "amdahl_20pct_twice_as_fast": 1.1111111111111112
+  },
+  "limitations": [
+    "Finite scalar attention values only; not a CUDA implementation",
+    "Python float arithmetic does not verify FP16/BF16/FP32 kernels",
+    "Cost estimates assume the explicitly stated idealized conditions"
+  ]
+}

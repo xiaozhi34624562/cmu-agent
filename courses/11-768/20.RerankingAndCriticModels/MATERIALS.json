@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Search over Trajectories",
+    "official_schedule_title": "Search 1: Reranking and Critic Models",
+    "url": "https://www.cmu-agents.com/slides/lecture-20-search-basics.pdf",
+    "final_url": "https://www.cmu-agents.com/slides/lecture-20-search-basics.pdf",
+    "path": "lecture-20-search-basics.pdf",
+    "role": "lecture",
+    "status": "saved",
+    "pages": 31,
+    "lecturer": "Daniel Fried",
+    "lecture_date": "2026-11-12",
+    "original_filename": "lecture-20-search-basics.pdf",
+    "bytes": 1650999,
+    "sha256": "7ef0f29b2c1067258914c786f088326013f423c17a284ffe33069c7983a38c0f",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "retrieved_at": "2026-11-13T06:20:19.849057+00:00",
+    "acquisition_note": "PDF body downloaded during 2026-11-13 official-site check into temporary directory; retrieved_at records that verified download file save time. Copied into course archive without byte changes.",
+    "archived_at": "2026-11-13T07:25:08.492053+00:00"
+  }
+]

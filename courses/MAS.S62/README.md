@@ -6,9 +6,9 @@
 
 **How to AI an AI for (Almost) Anything · Fall 2026 · Paul Liang / Ao Qu**
 
-本资料库按官网 Week 组织。Lecture 构成中文讲解主线，Readings 补充机制与实验，References 补背景和实现。正文区分原文结论、教学推导与工程建议。
+本资料库目录编号保持稳定，当前官方Week和日期单独记录。Lecture 构成中文讲解主线，Readings 补充机制与实验，References 补背景和实现。正文区分原文结论、教学推导与工程建议。
 
-资料同步日期：**2026-10-26**。已归档 11 份课程 PDF；课表有 28 个去重阅读入口，其中 28 个已保存正文。
+资料同步日期：**2026-11-13**。已归档 11 份课程 PDF；课表有 42 个去重阅读入口，其中 42 个已保存正文。
 
 [官网](https://mit-mi.github.io/how2ai-course/fall2026/) · [官方课表](https://mit-mi.github.io/how2ai-course/fall2026/schedule/) · [全部来源](SOURCES.md) · [课程大纲](0.CourseInformation/SOURCES.md) · [作业](assignment/SOURCES.md) · [项目](project/SOURCES.md)
 
@@ -22,14 +22,14 @@
 | 4 / 09-30 | [Project proposal presentations](4.ProjectProposalPresentations/SOURCES.md) | 项目展示周 | 见项目要求 |
 | 5 / 10-07 | [Harness evolution 1](5.HarnessEvolution1/SOURCES.md) | 2 份 PDF | [完整讲解](5.HarnessEvolution1/notes.zh-CN.md) |
 | 6 / 10-14 | [Harness evolution 2](6.HarnessEvolution2/SOURCES.md) | 2 份 PDF | [完整讲解](6.HarnessEvolution2/notes.zh-CN.md) |
-| 7 / 10-21 | [Model evolution 1](7.ModelEvolution1/SOURCES.md) | 旧归档 3 份 PDF；新课表入口与指定阅读见本周索引 | [完整讲解](7.ModelEvolution1/notes.zh-CN.md) |
+| 7 / 10-21 | [Model evolution 1](7.ModelEvolution1/SOURCES.md) | 2 份 PDF | [旧版讲解（待复核）](7.ModelEvolution1/notes.zh-CN.md) |
 | 8 / 10-28 | [Project midterm presentations](8.ProjectMidtermPresentations/SOURCES.md) | 项目展示周 | 见项目要求 |
-| 9 / 11-04 | [Model evolution 2](9.ModelEvolution2/SOURCES.md) | 新课表已有资料入口；最新正文/课次归属待复核 | 待本周讲义核实后编写 |
-| 10 / 11-11 | [Environment evolution 1](10.EnvironmentEvolution1/SOURCES.md) | 新课表已有资料入口；最新正文/课次归属待复核 | 待本周讲义核实后编写 |
-| 11 / 11-18 | [Environment evolution 2](11.EnvironmentEvolution2/SOURCES.md) | 新课表已有资料入口；最新正文/课次归属待复核 | 待本周讲义核实后编写 |
-| 12 / 11-25 | [Future topics](12.FutureTopics/SOURCES.md) | 新课表已有资料入口；最新正文/课次归属待复核 | 待本周讲义核实后编写 |
+| 9 / 11-04 | [Model evolution 2](9.ModelEvolution2/SOURCES.md) | 1 份 PDF | [完整讲解](9.ModelEvolution2/notes.zh-CN.md) |
+| 10 / 11-11 | Veterans Day — no class | 停课（官方大纲）；网页课表冲突见 SCHEDULE_OVERRIDES.json | 无教学讲解要求 |
+| 11 / 11-18 | [Environment evolution 1](10.EnvironmentEvolution1/SOURCES.md) | 讲义链接尚为占位 | 待对应讲义公开 |
+| 12 / 11-25 | [Environment evolution 2](11.EnvironmentEvolution2/SOURCES.md) | 讲义链接尚为占位 | 待对应讲义公开 |
 | 13 / 12-02 | [Project final presentations](13.ProjectFinalPresentations/SOURCES.md) | 项目展示周 | 见项目要求 |
-| 14 / 12-09 | [Future topics](14.FutureTopics/SOURCES.md) | 新课表已有资料入口；最新正文/课次归属待复核 | 待本周讲义核实后编写 |
+| 14 / 12-09 | [Future topics](14.FutureTopics/SOURCES.md) | 讲义链接尚为占位 | 待对应讲义公开 |
 
 ## 学习方法
 
@@ -45,13 +45,15 @@
 - 每周 slides/、tutorials/、readings/ 是分类学习副本；讲义与教程保留官方原名，论文和阅读网页使用完整标题命名。
 - 论文原文件名、现路径、来源 URL 和未改变的内容校验值见 [文件改名记录](../../tools/MATERIAL_RENAMES.json)；同步与整理共用标题命名规则。
 - 周次不等于 PDF 的 Lecture 编号；例如 Week 5 对应 Lecture 4。
-- `lec6 - rl in practice.pdf` 前两页为嘉宾介绍，后续为 RL/自蒸馏实践教程；学习副本归入第 7 周 tutorials/，以全文内容说明用途。
+- `lec6 - rl in practice.pdf` 当前19页版本按网页材料归属放在W9 tutorials/；W7旧讲解及其原链接仍绑定15页历史版本，未修改讲解正文，复核状态见 REVIEW.json。
+- 当前计划按官方Google大纲的明确停课/日期安排维护；原网页课表正文保留，冲突与来源优先规则见 [SCHEDULE_OVERRIDES.json](SCHEDULE_OVERRIDES.json)。
+- W9 已提供完整中文讲解；W7 受影响的历史内容仍显式延期，具体状态见 REVIEW.json。结构校验不替代内容审核。
 - 官网后续 [slides] 占位不计作讲义；未获取正文的材料保留明确状态。
 - 项目展示周按课表保留目录，项目参考注明为往届成果。
 
 更新：`python3 courses/MAS.S62/sync.py`；只重建分类与索引：`python3 courses/MAS.S62/sync.py --organize-only`。需要 requests、beautifulsoup4；pymupdf 可补充 PDF 封面和页数。更新脚本保留 notes.zh-CN.md、人工补充 references/ 和学习记录。
 
-校验： [CHECKSUMS.sha256](CHECKSUMS.sha256) 覆盖原始归档及逐课补充材料；[manifest.json](manifest.json) 记录 URL、下载地址、状态和版本信息。运行 `python3 courses/MAS.S62/verify.py --require-notes` 检查归档校验值、分类副本、来源状态与讲解链接。
+校验： [CHECKSUMS.sha256](CHECKSUMS.sha256) 覆盖原始归档及逐课补充材料；[manifest.json](manifest.json) 记录 URL、下载地址、状态和版本信息。运行 `python3 courses/MAS.S62/verify.py --require-notes` 执行严格校验；本轮资料同步允许显式延期时增加 `--allow-deferred-notes`，仅放行 REVIEW.json 中绑定材料哈希的显式延期项（当前为W7），其他检查保持严格。
 
 [LECTURE_LINKS.json](LECTURE_LINKS.json) 另保存讲义内嵌的原始链接及实际 PDF 页码，便于追溯讲义中的参考、视频与作业入口。
 

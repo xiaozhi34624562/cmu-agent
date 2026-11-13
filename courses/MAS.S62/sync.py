@@ -8,6 +8,7 @@ Original downloads are retained; generated indexes never overwrite study notes.
 from __future__ import annotations
 
 import argparse
+import copy as copy_module
 import hashlib
 import json
 import os
@@ -28,7 +29,7 @@ from urllib3.util.retry import Retry
 
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT.parents[1] / "tools"))
-from material_names import material_filename, registered_material, url_key
+from material_names import material_filename, registered_material, title_filename, url_key
 
 BASE = "https://mit-mi.github.io/how2ai-course/fall2026/"
 ASSETS = "https://mit-mi.github.io/how2ai-course/assets/"
@@ -46,9 +47,12 @@ PDF_TITLES = {
     "harness engineering tutorial.pdf": "Tutorial — Harness Engineering (Ao Qu)",
     "lec5 - multi agent.pdf": "Lecture 5 — Multi-Agent Evolution",
     "lec6 - training.pdf": "Lecture 6 — Test-time Training",
-    "lec6 - rl in practice.pdf": "Tutorial — RL and Self-Distillation (pp.1–2: guest introduction)",
+    "lec6 - rl in practice.pdf": "Tutorial — RL and Self-Distillation in Practice",
     "model_guest.pdf": "Guest — Continual Learning via Self-Distillation",
 }
+
+
+PAPER_TITLES = {"arxiv:2504.13837": "Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?"}
 
 
 def normalized(url):
@@ -115,10 +119,53 @@ def inspect_download(path):
     return meta
 
 
+def reuse_repository_body(item, target):
+    """Reuse only a matching arXiv body; record provenance, never a new download."""
+    match = re.search(r"arxiv\.org/(?:abs|pdf)/(\d{4}\.\d{4,5})", item["url"])
+    if not match or target.exists():
+        return False
+    repository = ROOT.parents[1]
+    for candidate in sorted(repository.rglob(target.name)):
+        if candidate == target or candidate.suffix != ".pdf":
+            continue
+        metadata = inspect_download(candidate)
+        if not metadata.get("pdf_version", "").startswith(match.group(1) + "v"):
+            continue
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(candidate, target)
+        item.update(reused_from=str(candidate.relative_to(repository)),
+                    reuse_checked_at=TODAY, acquisition="repository_reuse")
+        return True
+    return False
+
+
+def retain_version(item, target):
+    old_hash = digest(target)
+    archive = ROOT / "site/versions" / old_hash / target.name
+    archive.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(target, archive)
+    entry = dict(title=item["title"], url=item["url"], kind=item["kind"],
+                 path=str(archive.relative_to(ROOT)), sha256=old_hash,
+                 status="saved", superseded_at=TODAY, **inspect_download(archive))
+    pinned = ROOT / "7.ModelEvolution1/tutorials/lec6 - rl in practice.pdf"
+    entry.update(bytes=target.stat().st_size, previous_retrieved_at=item.get("retrieved_at"),
+                 original_path=item["path"])
+    if target.name == "lec6 - rl in practice.pdf" and pinned.is_file() and digest(pinned) == old_hash:
+        entry.update(weeks=[7], retained_copies=[str(pinned.relative_to(ROOT))],
+                     reason="Existing unchanged W7 guide cites this 15-page edition; current tutorial is W9")
+    else:
+        entry.update(weeks=[], retained_copies=[], reason="Superseded official source retained for provenance")
+    versions = item.setdefault("versions", [])
+    if not any(v["sha256"] == old_hash for v in versions):
+        versions.append(entry)
+
+
 def fetch(item, refresh=False):
     target = ROOT / item["path"]
     temporary = None
     try:
+        if not refresh:
+            reuse_repository_body(item, target)
         if not target.exists() or refresh:
             response = session().get(item["download_url"], timeout=35)
             response.raise_for_status()
@@ -127,6 +174,8 @@ def fetch(item, refresh=False):
                 temporary = Path(f.name)
                 f.write(response.content)
             meta = inspect_download(temporary)
+            if target.exists() and digest(target) != digest(temporary) and item["kind"] != "site":
+                retain_version(item, target)
             os.replace(temporary, target)
             item["retrieved_at"] = TODAY
             item["content_type"] = response.headers.get("Content-Type", "")
@@ -134,7 +183,8 @@ def fetch(item, refresh=False):
             item["content_disposition"] = response.headers.get("Content-Disposition", "")
         else:
             meta = inspect_download(target)
-            item.setdefault("retrieved_at", TODAY)
+            if item.get("acquisition") != "repository_reuse":
+                item.setdefault("retrieved_at", TODAY)
         item.update(meta, status="saved", sha256=digest(target), bytes=target.stat().st_size)
         item.pop("error", None)
         print("SAVED", item["path"], flush=True)
@@ -173,10 +223,11 @@ def paper_resource(title, url, kind, weeks=()):
     entry = registered_material(url)
     if entry:
         title = entry["title"]
+    title = PAPER_TITLES.get(url_key(url), title)
     match = re.search(r"arxiv\.org/(?:abs|pdf)/(\d{4}\.\d{4,5}(?:v\d+)?)", url)
     if match:
         paper_id = match.group(1)
-        name = material_filename(title, url, ".pdf")
+        name = title_filename(title, ".pdf") if url_key(url) in PAPER_TITLES else material_filename(title, url, ".pdf")
         return resource(title, url, kind, weeks, f"readings/papers/{name}", f"https://arxiv.org/pdf/{paper_id}")
     suffix = Path(urlparse(url).path).suffix.lower()
     if suffix == ".pdf":
@@ -186,7 +237,40 @@ def paper_resource(title, url, kind, weeks=()):
     return resource(title, url, kind, weeks, path)
 
 
-def build_manifest():
+def schedule_semantic_digest(weeks):
+    rows = []
+    for week in weeks:
+        row = {key: week[key] for key in ("week", "date", "title", "folder", "topics")}
+        row["materials"] = [{key: item[key] for key in ("label", "url")} for item in week["materials"]]
+        row["readings"] = [{key: item[key] for key in ("title", "url")} for item in week["readings"]]
+        rows.append(row)
+    return hashlib.sha256(json.dumps(rows, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
+
+
+def apply_schedule_overrides(weeks):
+    path = ROOT / "SCHEDULE_OVERRIDES.json"
+    if not path.exists():
+        return weeks
+    policy = json.loads(path.read_text())
+    if schedule_semantic_digest(weeks) != policy["conflicting_source"]["semantic_sha256"]:
+        raise ValueError("Official HTML schedule content changed; recheck overrides before remapping weeks")
+    source = ROOT / policy["authority"]["path"]
+    if not source.is_file() or digest(source) != policy["authority"]["sha256"]:
+        raise ValueError("Schedule override authority checksum mismatch; recheck the official syllabus")
+    original = {w["week"]: w for w in weeks}
+    current = []
+    for week in weeks:
+        override = policy.get("weeks", {}).get(str(week["week"]))
+        row = copy_module.deepcopy(original[override.get("content_from_week", week["week"])]) if override else copy_module.deepcopy(week)
+        if override:
+            row.update({k: v for k, v in override.items() if k != "content_from_week"})
+            row["week"] = week["week"]
+            row["schedule_authority"] = "official_syllabus_override"
+        current.append(row)
+    return current
+
+
+def build_manifest(refresh_materials=()):
     previous_path = ROOT / "manifest.json"
     previous = json.loads(previous_path.read_text()) if previous_path.exists() else {}
     old = {r["url"]: r for r in previous.get("resources", [])}
@@ -250,8 +334,12 @@ def build_manifest():
             if title and any(host in urlparse(url).netloc for host in ("arxiv.org", "openreview.net", "aclanthology.org", "openaccess.thecvf.com", "dl.acm.org", "ttic.edu", "nips2018vigil.github.io", "cmu-multicomp-lab.github.io")):
                 add(paper_resource(title, url, "previous_project"))
     pending = [r for r in resources if r["status"] != "saved"]
+    def acquire(item):
+        refresh = any(value in (item["url"], item["path"], Path(item["path"]).name)
+                      for value in refresh_materials)
+        return fetch(item, refresh=refresh)
     with ThreadPoolExecutor(max_workers=4) as pool:
-        list(pool.map(fetch, pending))
+        list(pool.map(acquire, pending))
     # Linked paper landing pages can expose the actual public PDF.
     attachments = []
     for item in list(resources):
@@ -279,8 +367,13 @@ def build_manifest():
                     attachments.append(seen[url])
     with ThreadPoolExecutor(max_workers=4) as pool:
         list(pool.map(fetch, attachments))
+    current_weeks = apply_schedule_overrides(weeks)
+    historical = [version for item in resources for version in item.get("versions", [])]
     return dict(course="MIT MAS.S62 — How to AI an AI for (Almost) Anything", semester="Fall 2026",
-                snapshot_date=TODAY, base_url=BASE, weeks=weeks, resources=resources)
+                snapshot_date=TODAY, base_url=BASE, weeks=current_weeks, resources=resources,
+                historical_resources=historical,
+                retained_folders={"12.FutureTopics": "Old W12 future topics merged into current W14; directory retained"},
+                schedule_policy="SCHEDULE_OVERRIDES.json")
 
 
 def material_target(item, folder, index=0):
@@ -291,7 +384,7 @@ def material_target(item, folder, index=0):
         return folder / "tutorials" / name
     if item["kind"] == "homework":
         return ROOT / "assignment/assignment-1" / name
-    return folder / "readings" / material_filename(item["title"], item["url"], Path(name).suffix, ROOT / item["path"])
+    return folder / "readings" / (name if url_key(item["url"]) in PAPER_TITLES else material_filename(item["title"], item["url"], Path(name).suffix, ROOT / item["path"]))
 
 
 def copy(source, target):
@@ -355,14 +448,20 @@ def latest_schedule_lines(row, manifest, folder):
 
 
 def organize(manifest):
+    review = json.loads((ROOT/"REVIEW.json").read_text()) if (ROOT/"REVIEW.json").exists() else {}
+    deferred = {item["week"]: item for item in review.get("deferred_notes", [])}
     by_url = {r["url"]: r for r in manifest["resources"]}
     updates = latest_schedule_updates(manifest)
     for week in manifest["weeks"]:
+        if week.get("folder") is None:
+            continue
         folder = ROOT / week["folder"]
         folder.mkdir(parents=True, exist_ok=True)
         lines = [f"# Week {week['week']} — {week['title']}", "", f"- Date: {week['date']}",
                  f"- Source: {BASE}schedule/", f"- 资料归档日期：{manifest['snapshot_date']}；最新日历见[完整课表](../COURSE_SCHEDULE.md)。",
-                 "- 编号采用官网 Week；原 PDF 内的 Lecture 编号和文件名保持原样。", ""]
+                 "- 目录编号保持稳定；当前官方 Week、日期单独记录，原 PDF 内的 Lecture 编号和文件名保持原样。", ""]
+        if week.get("schedule_authority"):
+            lines += ["- 当前安排依据[官方大纲及冲突处理](../SCHEDULE_OVERRIDES.json)；网页旧课表正文保留，未据此改写。", ""]
         if week['week'] in updates:
             lines += latest_schedule_lines(updates[week['week']], manifest, folder)
         lines += ["## Topics（归档快照）", ""]
@@ -393,13 +492,20 @@ def organize(manifest):
             if item["status"] == "saved":
                 target = material_target(item, folder, index)
                 copy(ROOT/item["path"], target)
-                lines += [f"- R{index:02d}: {link(reading['title'], target, folder)}", f"  - Source: {reading['url']}"]
+                lines += [f"- R{index:02d}: {link(item['title'], target, folder)}", f"  - Source: {reading['url']}"]
                 if item.get("pdf_version"):
                     lines.append("  - PDF version: " + item["pdf_version"])
             else:
                 lines += [f"- R{index:02d}: [{reading['title']}]({reading['url']}) — 未取得正文", f"  - Status: {item.get('error', 'unavailable')}"]
         if not week["readings"]:
             lines.append("- 此次归档课表未单列本周阅读。" + ("最新指定阅读见上方更新节；" if week['week'] in updates else "") + "讲义引用及补充材料见下方 References。")
+        historical = [r for r in manifest.get("historical_resources", []) if week["week"] in r.get("weeks", [])]
+        if historical:
+            lines += ["", "## 旧讲解绑定版本（保留原引用）", ""]
+            for item in historical:
+                lines += [f"- {link(item['title'], ROOT/item['path'], folder)}：旧版 {item.get('pages', '?')} 页，SHA256 `{item['sha256']}`。当前新版归属W9；本周旧讲解未修改，内容/页码复核延期，见 REVIEW.json。"]
+                for relative in item.get("retained_copies", []):
+                    lines.append(f"  - {link('旧讲解原链接', ROOT/relative, folder)}；保留旧字节，不替换为新版。")
         lines += ["", "## References and local study guide", ""]
         if (ROOT/"LECTURE_LINKS.json").exists():
             lines.append("- [讲义内嵌链接及其 PDF 页码](../LECTURE_LINKS.json)；JSON 按 week、pdf、page 记录，视频和通用网站入口仅作来源导航。")
@@ -410,12 +516,21 @@ def organize(manifest):
                 label = link(item["title"], target, folder) if target and target.is_file() and item.get("status", "saved") in {"saved", "downloaded"} else item["title"] + " — 仅保留来源入口/未获取正文"
                 lines += [f"- {label}", f"  - Source: {item['url']}"]
         note = folder / "notes.zh-CN.md"
-        lines.append(f"- {link('完整中文课程讲解', note, folder)}" if note.exists() else "- 中文讲解：等待对应讲义资料齐备后编写。")
+        if week["week"] in deferred:
+            lines.append(f"- {link('旧版中文讲解（待复核）', note, folder)}；本轮只同步资料，旧版来源绑定及延期事项见 [REVIEW.json](../REVIEW.json)。" if note.exists() else "- 中文讲解：按本轮授权范围延期，资料已同步；未编写或审核新讲解，见 [REVIEW.json](../REVIEW.json)。")
+        else:
+            lines.append(f"- {link('完整中文课程讲解', note, folder)}" if note.exists() else "- 中文讲解：等待对应讲义资料齐备后编写。")
         (folder/"SOURCES.md").write_text("\n".join(lines)+"\n")
+    for name, reason in manifest.get("retained_folders", {}).items():
+        folder = ROOT/name
+        folder.mkdir(exist_ok=True)
+        (folder/"SOURCES.md").write_text("# 历史计划入口 — Future topics\n\n" + reason + "\n\n当前计划合并至[Week14](../14.FutureTopics/SOURCES.md)。本目录保留，不代表11月25日仍开设Future topics。\n\n来源：[官方大纲优先规则](../SCHEDULE_OVERRIDES.json)。\n")
     write_indexes(manifest, updates)
 
 
 def write_indexes(manifest, updates):
+    review = json.loads((ROOT/"REVIEW.json").read_text()) if (ROOT/"REVIEW.json").exists() else {}
+    deferred = {item["week"]: item for item in review.get("deferred_notes", [])}
     resources = manifest["resources"]
     info = ROOT / "0.CourseInformation"
     info.mkdir(exist_ok=True)
@@ -436,7 +551,7 @@ def write_indexes(manifest, updates):
     (project/"SOURCES.md").write_text("\n".join(lines)+"\n")
     assignment = ROOT / "assignment"
     assignment.mkdir(exist_ok=True)
-    lines = ["# 课程作业", "", "大纲计划四次作业：Context、Harness、Model、Task evolution；具体日期、题目和提交要求以教师最新说明为准。", "",
+    lines = ["# 课程作业", "", "当前官方大纲逐项列Context、Harness、Model三项，但概述仍写四次作业；旧版第四项Task evolution是否取消未确认。具体题目和提交要求以教师最新说明为准。", "",
              "- [课程大纲](../site/syllabus/ai4ai-syllabus.pdf)", "- [Canvas（提交平台，需要对应课程权限）](https://canvas.mit.edu/courses/40521/)", ""]
     for r in resources:
         if r["kind"] == "homework":
@@ -448,10 +563,15 @@ def write_indexes(manifest, updates):
             else:
                 lines += [f"- [{r['title']}]({r['url']}) — 未获取正文", f"  - Status: {r.get('error', '')}"]
     lines += ["", "其余作业尚未在已核查公开页面发现可下载正文，保留大纲计划及 Canvas 入口。"]
-    for number in (2, 3, 4):
+    pending_details = {
+        2: ("Harness evolution", "当前大纲保留此项，暂定SkillOpt、DGM或Meta-Harness；公开完整题目、代码和提交时间未取得。"),
+        3: ("Model evolution", "当前大纲保留此项，暂定test-time training或continual learning；公开完整题目、代码和提交时间未取得。已有OpenEvolve notebook内题为Assignment 3，但课内入口归属仍待教师确认，不据此挪作Model作业。"),
+        4: ("Task evolution — 状态未确认", "旧版大纲曾暂定PostTrainBench；当前大纲逐项列表不再列此项，但概述仍称四次作业。不能据此认定已取消，公开正文和教师确认均未取得。")}
+    for number, (title, detail) in pending_details.items():
         pending = assignment / f"assignment-{number}" / "SOURCES.md"
-        if pending.exists():
-            lines.append(f"- {link(f'计划作业 {number}：来源与状态', pending, assignment)}")
+        pending.parent.mkdir(exist_ok=True)
+        pending.write_text(f"# MAS.S62：计划作业 {number} — {title}\n\n- 状态核对：{manifest['snapshot_date']}。\n- {detail}\n- [当前官方大纲](../../site/syllabus/ai4ai-syllabus.pdf)；[官方入口]({BASE})；[Canvas（需课程权限）](https://canvas.mit.edu/courses/40521/)。\n\n本目录仅保存来源和状态；未取得正文时不生成题目、starter或答案。\n")
+        lines.append(f"- {link(f'计划作业 {number}：来源与状态', pending, assignment)}")
     (assignment/"SOURCES.md").write_text("\n".join(lines)+"\n")
     lines = ["# MAS.S62 全部来源", "", f"- 同步日期：{manifest['snapshot_date']}", f"- 本学期官网：{BASE}",
              "- 下载状态及 SHA256 见 [manifest.json](manifest.json)；HTTP 200 的登录/验证页面不计为阅读正文。",
@@ -460,6 +580,9 @@ def write_indexes(manifest, updates):
     for r in resources:
         local = link(Path(r["path"]).name, ROOT/r["path"], ROOT) if r["status"] == "saved" else "未获取正文："+r.get("error", "unavailable").replace("|", " ")
         lines.append(f"| {r['kind']} | {r['title'].replace('|',' / ')} | {local} | {r['url']} |")
+    lines += ["", "## 已保留的历史来源版本", "", "旧讲解不自动改绑新版；以下旧字节及版本关系保留用于追溯。", ""]
+    for item in manifest.get("historical_resources", []):
+        lines.append(f"- {link(item['title'], ROOT/item['path'], ROOT)}：SHA256 `{item['sha256']}`；{item['reason']}。")
     lines += ["", "## 逐课补充来源", ""]
     lines += ["补充来源由各课 REFERENCES.json 登记；核验日期表示本地文件检查日期，复用旧归档时不冒充原始下载日期。", "",
               "| 周次 | 补充资料 | 本地文件/状态 | 原始来源 |", "|---|---|---|---|"]
@@ -470,25 +593,30 @@ def write_indexes(manifest, updates):
     pdfs = [r for r in resources if r["kind"] in {"lecture", "guest", "tutorial"} and r["status"] == "saved"]
     readings = [r for r in resources if r["kind"] == "reading"]
     lines = ["# MIT MAS.S62：自演化 AI 学习资料", "", "**How to AI an AI for (Almost) Anything · Fall 2026 · Paul Liang / Ao Qu**", "",
-             "本资料库按官网 Week 组织。Lecture 构成中文讲解主线，Readings 补充机制与实验，References 补背景和实现。正文区分原文结论、教学推导与工程建议。", "",
+             "本资料库目录编号保持稳定，当前官方Week和日期单独记录。Lecture 构成中文讲解主线，Readings 补充机制与实验，References 补背景和实现。正文区分原文结论、教学推导与工程建议。", "",
              f"资料同步日期：**{manifest['snapshot_date']}**。已归档 {len(pdfs)} 份课程 PDF；课表有 {len(readings)} 个去重阅读入口，其中 {sum(r['status']=='saved' for r in readings)} 个已保存正文。", "",
              f"[官网]({BASE}) · [官方课表]({BASE}schedule/) · [全部来源](SOURCES.md) · [课程大纲](0.CourseInformation/SOURCES.md) · [作业](assignment/SOURCES.md) · [项目](project/SOURCES.md)", "",
              "## 课程目录", "", "| Week / 日期 | 官网课程名称 | 材料状态 | 中文讲解 |", "|---|---|---|---|"]
     for w in manifest["weeks"]:
+        if w.get("folder") is None:
+            lines.append(f"| {w['week']} / {w['date'][5:]} | {w['title']} | 停课（官方大纲）；网页课表冲突见 SCHEDULE_OVERRIDES.json | 无教学讲解要求 |")
+            continue
         folder = ROOT/w["folder"]
         count = sum(w["week"] in r["weeks"] for r in pdfs)
         status = f"{count} 份 PDF" if count else "项目展示周" if "presentations" in w["title"] else "讲义链接尚为占位"
         note = folder/"notes.zh-CN.md"
         study = link("完整讲解", note, ROOT) if note.exists() else "见项目要求" if "presentations" in w["title"] else "待对应讲义公开" if not count else "编写中"
+        if w["week"] in deferred:
+            study = link("旧版讲解（待复核）", note, ROOT) if note.exists() else "延期未编写；见 REVIEW.json"
         if w['week'] in updates:
             status = f"旧归档 {count} 份 PDF；新课表入口与指定阅读见本周索引" if count else "新课表已有资料入口；最新正文/课次归属待复核"
             if not note.exists():
                 study = "待本周讲义核实后编写"
         lines.append(f"| {w['week']} / {w['date'][5:]} | {link(w['title'], folder/'SOURCES.md', ROOT)} | {status} | {study} |")
     lines += ["", "## 学习方法", "", "1. 先阅读本课 notes.zh-CN.md 的导读与材料映射，建立核心问题。", "2. 沿正文学习机制、公式、实现案例和论文证据，按页码回读原讲义。", "3. 用自测及实验设计检查理解；区分来源已经报告的实验与尚未运行的本地实验计划。", "4. 更新系统时同时检查效果、预算、泛化、退化和回滚条件。", "",
-              "## 归档与维护", "", "- site/：本学期页面、讲义、大纲导出、教程与公开作业 notebook；原始下载不翻译。", "- readings/：课程论文及往届公开项目参考的原始归档；下载状态见 manifest.json。", "- 每周 slides/、tutorials/、readings/ 是分类学习副本；讲义与教程保留官方原名，论文和阅读网页使用完整标题命名。", "- 论文原文件名、现路径、来源 URL 和未改变的内容校验值见 [文件改名记录](../../tools/MATERIAL_RENAMES.json)；同步与整理共用标题命名规则。", "- 周次不等于 PDF 的 Lecture 编号；例如 Week 5 对应 Lecture 4。", "- `lec6 - rl in practice.pdf` 前两页为嘉宾介绍，后续为 RL/自蒸馏实践教程；学习副本归入第 7 周 tutorials/，以全文内容说明用途。", "- 官网后续 [slides] 占位不计作讲义；未获取正文的材料保留明确状态。", "- 项目展示周按课表保留目录，项目参考注明为往届成果。", "",
+              "## 归档与维护", "", "- site/：本学期页面、讲义、大纲导出、教程与公开作业 notebook；原始下载不翻译。", "- readings/：课程论文及往届公开项目参考的原始归档；下载状态见 manifest.json。", "- 每周 slides/、tutorials/、readings/ 是分类学习副本；讲义与教程保留官方原名，论文和阅读网页使用完整标题命名。", "- 论文原文件名、现路径、来源 URL 和未改变的内容校验值见 [文件改名记录](../../tools/MATERIAL_RENAMES.json)；同步与整理共用标题命名规则。", "- 周次不等于 PDF 的 Lecture 编号；例如 Week 5 对应 Lecture 4。", "- `lec6 - rl in practice.pdf` 当前19页版本按网页材料归属放在W9 tutorials/；W7旧讲解及其原链接仍绑定15页历史版本，未修改讲解正文，复核状态见 REVIEW.json。", "- 当前计划按官方Google大纲的明确停课/日期安排维护；原网页课表正文保留，冲突与来源优先规则见 [SCHEDULE_OVERRIDES.json](SCHEDULE_OVERRIDES.json)。", "- W9 已提供完整中文讲解；W7 受影响的历史内容仍显式延期，具体状态见 REVIEW.json。结构校验不替代内容审核。", "- 官网后续 [slides] 占位不计作讲义；未获取正文的材料保留明确状态。", "- 项目展示周按课表保留目录，项目参考注明为往届成果。", "",
               "更新：`python3 courses/MAS.S62/sync.py`；只重建分类与索引：`python3 courses/MAS.S62/sync.py --organize-only`。需要 requests、beautifulsoup4；pymupdf 可补充 PDF 封面和页数。更新脚本保留 notes.zh-CN.md、人工补充 references/ 和学习记录。", "",
-              "校验： [CHECKSUMS.sha256](CHECKSUMS.sha256) 覆盖原始归档及逐课补充材料；[manifest.json](manifest.json) 记录 URL、下载地址、状态和版本信息。运行 `python3 courses/MAS.S62/verify.py --require-notes` 检查归档校验值、分类副本、来源状态与讲解链接。", "",
+              "校验： [CHECKSUMS.sha256](CHECKSUMS.sha256) 覆盖原始归档及逐课补充材料；[manifest.json](manifest.json) 记录 URL、下载地址、状态和版本信息。运行 `python3 courses/MAS.S62/verify.py --require-notes` 执行严格校验；本轮资料同步允许显式延期时增加 `--allow-deferred-notes`，仅放行 REVIEW.json 中绑定材料哈希的显式延期项（当前为W7），其他检查保持严格。", "",
               "[LECTURE_LINKS.json](LECTURE_LINKS.json) 另保存讲义内嵌的原始链接及实际 PDF 页码，便于追溯讲义中的参考、视频与作业入口。"]
     if (ROOT/"REVIEW.json").exists():
         lines += ["", "当前内容审核状态见 [REVIEW.json](REVIEW.json)，保留逐课版本、最近阅读范围、复读结论与核验限制；校验结果直接输出到终端。"]
@@ -507,33 +635,13 @@ def checksums():
     (ROOT/"CHECKSUMS.sha256").write_text("".join(f"{digest(p)}  {p.relative_to(ROOT)}\n" for p in paths))
 
 
-def localize_pages(manifest):
-    """Only rewrite navigation; downloads' original URLs stay in manifest."""
-    targets = {r["url"]: ROOT/r["path"] for r in manifest["resources"] if r["status"] == "saved"}
-    for item in manifest["resources"]:
-        if item["kind"] != "site" or item["status"] != "saved":
-            continue
-        path = ROOT/item["path"]
-        soup = BeautifulSoup(path.read_bytes(), "html.parser")
-        for tag in soup.select("a[href], link[href], img[src], script[src]"):
-            key = "href" if tag.has_attr("href") else "src"
-            original = urljoin(item["url"], tag[key])
-            target = targets.get(normalized(original))
-            if target:
-                tag[key] = quote(os.path.relpath(target, path.parent), safe="/._-") + ("#"+urlparse(original).fragment if urlparse(original).fragment else "")
-            elif tag[key].startswith("//"):
-                tag[key] = "https:" + tag[key]
-        path.write_text(str(soup))
-        item["sha256"] = digest(path)
-
-
 def lecture_links(manifest):
     try:
         import fitz
     except ImportError:
         return
     rows = []
-    for item in manifest["resources"]:
+    for item in manifest["resources"] + manifest.get("historical_resources", []):
         if item["kind"] not in {"lecture", "guest", "tutorial"} or item["status"] != "saved":
             continue
         with fitz.open(ROOT/item["path"]) as doc:
@@ -541,13 +649,17 @@ def lecture_links(manifest):
                 for target in content.get_links():
                     url = target.get("uri", "")
                     if url.startswith(("https://", "http://")):
-                        rows.append(dict(weeks=item["weeks"], pdf=item["path"], page=page, url=url))
+                        rows.append(dict(weeks=item["weeks"], pdf=item["path"], sha256=item["sha256"],
+                                         version_status="historical" if "superseded_at" in item else "current",
+                                         page=page, url=url))
     (ROOT/"LECTURE_LINKS.json").write_text(json.dumps(rows, ensure_ascii=False, indent=2)+"\n")
 
 
 def supplementary_sources(manifest):
     rows = []
     for week in manifest["weeks"]:
+        if week.get("folder") is None:
+            continue
         folder = ROOT/week["folder"]
         index = folder/"REFERENCES.json"
         if not index.exists():
@@ -571,12 +683,14 @@ def supplementary_sources(manifest):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--organize-only", action="store_true")
+    parser.add_argument("--refresh-materials", nargs="+", default=[], metavar="PATH_OR_URL",
+                        help="Explicitly refresh named source files/URLs; changed old bytes are versioned")
     args = parser.parse_args()
     if args.organize_only:
         manifest = json.loads((ROOT/"manifest.json").read_text())
     else:
-        manifest = build_manifest()
-        localize_pages(manifest)
+        manifest = build_manifest(args.refresh_materials)
+        # Keep official HTML byte-for-byte; offline classification indexes provide local navigation.
     supplementary_sources(manifest)
     (ROOT/"manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2)+"\n")
     lecture_links(manifest)

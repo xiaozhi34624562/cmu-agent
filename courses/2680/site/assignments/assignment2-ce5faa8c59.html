@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="../vendor/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="../vendor/bootstrap.bundle.min.js"></script>
+<meta content="CS2680 Assignment 2: build madsLoop, a minimal coding-agent harness around qwen3.6-35b-a3b, and test it on SWE-bench Pro tasks" name="description"/>
+<meta content="Yunjia Zheng" name="author"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="CS2680 Modern AI Systems — Assignment 2: Build an agent harness" property="og:title"/>
+<meta content="CS2680 Assignment 2: build madsLoop, a minimal coding-agent harness around qwen3.6-35b, and test it on SWE-bench Pro tasks" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="CS2680 Modern AI Systems" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<link href="../css/main.css" rel="stylesheet"/>
+<title>CS2680 Modern AI Systems — Assignment 2: Build an agent harness</title>
+</head>
+<body>
+<div id="site-header"></div>
+<script src="../header.js"></script>
+<div class="container page">
+<div class="row">
+<div class="col-12">
+<div class="title">CS2680 Modern AI Systems: Agents and System Optimizations</div>
+</div>
+<div class="col-12 title2">
+Assignment 2 — Build an agent harness
+      </div>
+<div class="col-12 section" id="assignment-2">
+<h1>Assignment 2 — Build an agent harness <span class="para-heading-inline">(10%)</span></h1>
+<p><strong>Out</strong> Mon Sep 21 · <strong>due</strong> Sun Oct 4, 11:59pm ·
+          <a href="index.html">all five assignments</a></p>
+<p class="lead">You will build <code>madsLoop</code>, a minimal coding-agent harness, and test it with SWE-bench Pro. An agent is a model in a loop. It proposes tool calls, and your harness executes them and feeds the results back. This task aims to build everything you need beyond the model API.</p>
+<div class="tip"><p><strong>⚠️ Part 0 and Part 1 outline the basics of an agent. DO NOT TRUST IT.</strong></p><p>They describe a <strong>design choice</strong>, not the answer.
+         Follow their overall structure, but critically evaluate the underlying logic. Treat the interface, tools, workflow, and prompts as starting points, test them against real tasks and revise them as needed.
+        The write-up asks you what you did differently and why. An agent that follows everything might fail. The only requirement is that 1) Use qwen3.6-35b-a3b as the model; 2) we can call run_task.sh to generate a patch that can be evaluated (with run_all.sh) and the agent logs; 3) all logs follow the schema required.</p></div>
+<div class="tip"><p><strong>⚠️ Not all given tasks are solvable.</strong></p><p>We will provide 10 tasks. Some may be impossible to complete even with a perfect harness. However, if a task can be solved by modifying Parts 0 and 1, it is considered solvable.</p></div>
+<h2 id="the-model-api">The model API</h2>
+<p>We use the course proxy at <code>api.cs2680.com</code>, an OpenAI-compatible endpoint, to serve
+        the requests.</p>
+<p>Export your key in the shell you run from:</p>
+<pre><code>export CS2680_API_KEY="hyi-..."     # your key</code></pre>
+<pre><code>import os
+from openai import OpenAI
+
+# Read the key from the environment. Never hardcode it and never commit it.
+# Your agent runs inside the task container, so you have to pass it 
+# (e.g. `docker run -e CS2680_API_KEY=...`, see 2.3).
+CS2680_API_KEY = os.environ["CS2680_API_KEY"]
+
+client = OpenAI(
+    base_url="https://api.cs2680.com/v1",
+    api_key=CS2680_API_KEY,
+)
+resp = client.chat.completions.create(
+    model="qwen3.6-35b-a3b",
+    messages=[{"role": "user", "content": "hello"}],
+    tools=[...],         
+)</code></pre>
+<p>In this assignment, qwen3.6-35b-a3b will serve as the backbone model and should be
+        used for all evaluations.</p>
+<h2 id="setup">Set up the environment</h2>
+<p>The agent you designed will runs inside <strong>Docker containers</strong>: each task ships as a prebuilt image with the
+        repository and its dependencies, your agent runs inside that container, and the official evaluation runs in
+        another one too. Make sure Docker is installed and that you can run it without <code>sudo</code>; the ten provided task
+        images are about 1.6–1.8 GB each.</p>
+<ul>
+<li><strong>An x86-64 Linux host is the easy path.</strong> The images are built for <code>linux/amd64</code> and run natively.</li>
+<li><strong>Apple Silicon (M1–M4):</strong> the images run under emulation. Set <code>PLATFORM_FLAG="--platform linux/amd64"</code> in the shell you run the scripts from. <code>run_task.sh</code> passes it to <code>docker pull</code> and <code>docker run</code>. Expect slower runs.</li>
+<li><strong>Windows:</strong> use WSL 2 with Docker Desktop's WSL integration, and run everything from the Linux side.</li>
+<li><strong>Prefer a Linux machine?</strong> You can use the course cluster, see <a href="../computing/cluster.html">the cluster instructions</a>.</li>
+</ul>
+<p>If you encounter difficulty setting up the environment, please reach out to the TFs.</p>
+<h2 id="part-0">Part 0 — The interface and logging</h2>
+<p>Download the <a download="" href="assignment2.tar.gz">Assignment 2 starter archive</a> into the root of the same private GitHub repository used for Assignment 1. Extract it to create <code>assignment2/</code>, keep all Assignment 2 files in that directory, and run the commands below from there.</p>
+<pre><code># From your shared course repository:
+tar -xzf assignment2.tar.gz
+cd assignment2</code></pre>
+<h3 id="0-1-the-interface">0.1 The interface</h3>
+<pre><code>python madsLoop.py -p "&lt;problem statement&gt;" [--log] &lt;workdir&gt;</code></pre>
+<ul>
+<li><code>-p</code> — the issue text: the <code>problem_statement</code> field of the task's entry in
+          <code>evaluation_scripts/agent_task_input.json</code>. This is the task description your agent receives.</li>
+<li><code>&lt;workdir&gt;</code> — path to the repo checkout.
+          Your agent may read, search, edit, and run commands only inside this directory. We will use /app as an example.</li>
+<li><code>--log</code> — trace logging, off by default. When set, your agent writes its run
+          trace into a <code>madsLoop_logs/</code> directory in the current working directory (create
+          it if it doesn't exist), see schema in 0.3. We pass <code>--log</code> when we evaluate your agent.</li>
+<li>When the agent finishes, the fix exists as unstaged changes in <code>&lt;workdir&gt;</code>, and later patches will
+          be generated by <code>git diff</code>.</li>
+</ul>
+<h3 id="0-2-developer-logs-developer-logs">0.2 Developer logs (<code>developer_logs/</code>)</h3>
+<p>Your submission includes an <code>assignment2/developer_logs/</code> directory documenting <strong>how you built
+        <code>madsLoop</code></strong> with a coding agent. The logs should be in <code>.jsonl</code> format. If you use a coding agent through a terminal or IDE, you can typically find the session logs in the following locations:</p>
+<div class="table-responsive"><table class="table table-bordered">
+<thead class="table-light">
+<tr>
+<th>Tool</th>
+<th>How to export</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude Code (terminal, or the VS Code / JetBrains extension)</td>
+<td><code>/export</code> in the session, or the session transcripts under <code>~/.claude/projects/&lt;project&gt;/*.jsonl</code></td>
+</tr>
+<tr>
+<td>OpenAI Codex (CLI or IDE extension)</td>
+<td>session logs under <code>~/.codex/sessions/YYYY/MM/DD/rollout-*.jsonl</code></td>
+</tr>
+<tr>
+<td>Cursor</td>
+<td><code>~/.cursor/projects/&lt;project&gt;/agent-transcripts/*.jsonl</code></td>
+</tr>
+<tr>
+<td>Gemini CLI</td>
+<td><code>~/.gemini/tmp/&lt;project_hash&gt;/chats/session-*.jsonl</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="0-3-agent-logs-madsloop-logs">0.3 Agent logs (<code>madsLoop_logs/</code>)</h3>
+<p>When run with <code>--log</code>, your agent should write its trace into <code>./madsLoop_logs/</code> as
+        JSONL (one file per run, e.g. <code>madsLoop_logs/run1.jsonl</code>): one JSON object per line,
+        one line per event, in order, from which the whole run can be reconstructed. Every
+        line carries <code>timestamp</code> (ISO-8601) and <code>event</code>; the remaining fields depend on the
+        event type:</p>
+<div class="table-responsive"><table class="table table-bordered">
+<thead class="table-light">
+<tr>
+<th><code>event</code></th>
+<th>required fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>run_start</code></td>
+<td><code>model_id</code>, <code>workdir</code></td>
+</tr>
+<tr>
+<td><code>api_request</code></td>
+<td><code>iteration</code>, <code>prompt_tokens</code>, <code>completion_tokens</code>, <code>total_tokens</code> (straight from <code>response.usage</code>)</td>
+</tr>
+<tr>
+<td><code>api_retry</code></td>
+<td><code>iteration</code>, <code>error</code>, <code>backoff_s</code></td>
+</tr>
+<tr>
+<td><code>tool_call</code></td>
+<td><code>iteration</code>, <code>tool_name</code>, <code>arguments</code></td>
+</tr>
+<tr>
+<td><code>tool_result</code></td>
+<td><code>iteration</code>, <code>tool_name</code>, <code>result</code> (truncated exactly as fed to the model), <code>is_error</code></td>
+</tr>
+<tr>
+<td><code>run_end</code></td>
+<td><code>reason</code> (<code>done</code> / <code>no_tool_calls</code> / <code>error</code> / a self-imposed limit), <code>num_iterations</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Example lines:</p>
+<pre><code>{"timestamp": "2026-09-12T14:03:07+00:00", "event": "run_start", "model_id": "qwen3.6-35b-a3b", "workdir": "/app"}
+{"timestamp": "2026-09-12T14:03:11+00:00", "event": "api_request", "iteration": 1, "prompt_tokens": 1834, "completion_tokens": 96, "total_tokens": 1930}
+{"timestamp": "2026-09-12T14:03:11+00:00", "event": "tool_call", "iteration": 1, "tool_name": "bash", "arguments": {"command": "grep -rn 'version_check' qutebrowser/utils/"}}
+{"timestamp": "2026-09-12T14:03:12+00:00", "event": "tool_result", "iteration": 1, "tool_name": "bash", "result": "qutebrowser/utils/qtutils.py:91: ...", "is_error": false}
+{"timestamp": "2026-09-12T14:12:40+00:00", "event": "run_end", "reason": "done", "num_iterations": 14}</code></pre>
+<p>Please stick to exactly these fields. During development, you may use stderr for print-based debugging as needed. However, make sure that the output follows this schema when using --log.</p>
+<h2 id="part-1">Part 1 — What the harness must contain</h2>
+<h3 id="1-1-tool-definitions">1.1 Tool definitions</h3>
+<p>This is a list you tell the model which tools are available to use: each has a name, a
+        natural-language description, and a JSON Schema for its parameters. </p>
+<p>A workable minimal tool set, and you may design a different one:</p>
+<div class="table-responsive"><table class="table table-bordered">
+<thead class="table-light">
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bash(command)</code></td>
+<td>run a shell command in <code>&lt;workdir&gt;</code> (search, run tests, inspect)</td>
+</tr>
+<tr>
+<td><code>read_file(path)</code></td>
+<td>return file contents (with line numbers helps the model edit)</td>
+</tr>
+<tr>
+<td><code>edit_file(path, old_string, new_string)</code></td>
+<td>replace an exact string in a file</td>
+</tr>
+<tr>
+<td><code>done(summary)</code></td>
+<td>agent declares it has finished</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="1-2-the-agentic-loop">1.2 The agentic loop</h3>
+<p>The while-loop that makes it an agent rather than a chatbot:</p>
+<pre><code>messages = [system prompt, user message containing the problem statement]
+loop:
+    response = model(messages, tools)
+    if response contains tool calls:
+        execute each requested tool
+        append the assistant message AND one tool-result message per call
+        continue
+    else:
+        break   # model produced a final answer</code></pre>
+<p>It is important to fix failures you introduced and pre-existing failures unrelated to your change can be ignored . You can compare against the untouched code if unsure.</p>
+<h3 id="1-3-conversation-state-management">1.3 Conversation state management</h3>
+<p>The model is stateless: every request must resend the entire history. Your harness owns that history:</p>
+<ul>
+<li>Maintain the <code>messages</code> array: system prompt, initial user message, then alternating
+          assistant turns (including their tool calls) and tool-result messages. Every tool
+          call the model makes must be paired with exactly one result message referencing its
+          call ID — an unpaired call is an API error.</li>
+<li>Write a system prompt that tells the model its role, the interface ("you are
+          fixing an issue in the repo at ... ; make minimal changes; do not modify tests"), the
+          reproduction protocol ("before editing, write reproduction checks under <code>/tmp</code> from
+          the requirements and register each with <code>repro_check</code>;</li>
+<li>Context growth: tool outputs accumulate. At minimum, truncate large outputs before appending them.</li>
+</ul>
+<p>That's the whole minimal harness: tool definitions (what the model can ask for),
+        the loop + tool executors (your code doing what it asked), and conversation state (the memory tying the turns together).</p>
+<h2 id="part-2">Part 2 — Running in the container</h2>
+<div class="tip">
+<p><strong>⚠️ Part 2 can be trusted. :&gt;</strong></p>
+<p>run_task.sh can be modified. Make sure the run_task.sh can work with the changes you made for Part 0 and 1.</p>
+</div>
+<p>Each task entry in <code>agent_task_input.json</code> specifies a prebuilt Docker image (<code>docker_image</code>) containing the target repository. The repository is checked out at the designated <code>base_commit</code> in <code>/app</code>, with all required dependencies preinstalled. To run your agent, first launch the corresponding container, then execute the agent inside the running container using <code>/app</code> as the working repository.</p>
+<h3 id="2-1-pull-the-image-once-per-task">2.1 Pull the image (once per task)</h3>
+<p>The image names for the other tasks are in the <code>docker_image</code> field of their
+        <code>evaluation_scripts/agent_task_input.json</code> entries.
+        On an x86-64 host, the image runs natively:</p>
+<pre><code># the first task's image (jefzda/sweap-images:qutebrowser.qutebrowser-…)
+IMG=$(python -c "import json; print(list(json.load(open('evaluation_scripts/agent_task_input.json')).values())[0]['docker_image'])")
+docker pull "$IMG"</code></pre>
+<h3 id="2-2-set-up-the-container-environment-docker">2.2 Set up the container environment: <code>docker_env.sh</code></h3>
+<p>The task images don't have the <code>openai</code> package installed. Include
+        <code>assignment2/docker_env.sh</code> to install whatever your agent needs. It will run inside
+        the container before the agent runs. The minimal version:</p>
+<pre><code>#!/bin/bash
+# docker_env.sh — container setup, runs before madsLoop.py
+pip install -q openai</code></pre>
+<p>If your agent needs anything else (e.g. pinning an <code>openai</code> version), add it in docker_env.sh
+        to modify the container environment. Make sure your
+        agent run on Python 3.10+ with <code>openai</code> and the standard library.</p>
+<h3 id="2-3-run-your-agent-inside-it-run-task-sh">2.3 Run your agent inside it: run_task.sh</h3>
+<pre><code># the first task: its instance_id, and its problem statement (the -p payload) as a file
+IID=$(python -c "import json; print(list(json.load(open('evaluation_scripts/agent_task_input.json')))[0])")
+python -c "import json; print(list(json.load(open('evaluation_scripts/agent_task_input.json')).values())[0]['problem_statement'])" &gt; problem.txt
+
+docker run --rm \
+  --entrypoint bash \
+  -v "$PWD:/madsLoop" \
+  -e CS2680_API_KEY="$CS2680_API_KEY" \
+  "$IMG" \
+  -c 'bash /madsLoop/docker_env.sh &amp;&amp; \
+      cd /tmp &amp;&amp; \
+      python /madsLoop/madsLoop.py -p "$(cat /madsLoop/problem.txt)" --log /app &amp;&amp; \
+      cp -r madsLoop_logs /madsLoop/ &amp;&amp; \
+      git -C /app diff' \
+  &gt; "model_patch_$IID.diff"</code></pre>
+<p>The script above identifies the ID and problem statement for each task, mounts the corresponding codebase in a container, passes your <code>CS2680_API_KEY</code> through to it, and sets up the environment. It then runs madsLoop. After the agent finishes modifying the repository, the script exports the madsLoop logs and generates a diff patch. Feel free to modify the run_task.sh, just make sure run_all.sh can call it.</p>
+<h3 id="2-4-evaluate-your-patch">2.4 Evaluate your patch</h3>
+<p>Evaluate it for real with the <strong>official SWE-bench Pro evaluation script</strong>
+        (<a href="https://github.com/scaleapi/SWE-bench_Pro-os">scaleapi/SWE-bench_Pro-os</a>), the same
+        tool we grade with. It applies your diff to a fresh checkout, restores the held-out
+        test files, and runs the actual tests. Bundle your patches into a <code>patches.json</code> as in <code>make_patches.py</code>:</p>
+<pre><code>python - &lt;&lt;'EOF'
+import json, pathlib
+tasks = json.load(open("evaluation_scripts/agent_task_input.json"))
+predictions = [{"instance_id": iid,
+                "model_patch": pathlib.Path(f"model_patch_{iid}.diff").read_text(),
+                "prefix": "madsLoop"}
+               for iid in tasks]
+json.dump(predictions, open("patches.json", "w"), indent=2)
+EOF</code></pre>
+<p>and run the evaluation:</p>
+<pre><code>bash evaluation_scripts/evaluate.sh</code></pre>
+<p>It writes <code>pro_eval/eval_results.json</code>, mapping each <code>instance_id</code> to true/false
+        (resolved or not), plus per-instance test logs under <code>pro_eval/&lt;instance_id&gt;/</code> —
+        that's your ground truth for whether a task is actually solved, and can be used to iterate on your agent . Patches are graded by applying them to a fresh checkout, restoring the held-out test
+        files, and running hidden tests — any edits your agent made to existing test files are
+        overwritten, so editing tests cannot help you. </p>
+<h3 id="2-5-provided-evaluation-scripts-evaluation-s">2.5 Provided evaluation scripts (<code>evaluation_scripts/</code>)</h3>
+<p>The starter archive includes <code>assignment2/evaluation_scripts/</code> as the evaluation entry point. It contains:</p>
+<div class="table-responsive"><table class="table table-bordered">
+<thead class="table-light">
+<tr>
+<th>File</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>agent_task_input.json</code></td>
+<td>the local-test tasks, keyed by <code>instance_id</code> — the <strong>only</strong> task data your agent may use</td>
+</tr>
+<tr>
+<td><code>task_test.json</code></td>
+<td>per-task evaluation data (test setup, graded tests), keyed by <code>instance_id</code> — used by <code>evaluate.sh</code> only; your agent must never read it</td>
+</tr>
+<tr>
+<td><code>run_task.sh &lt;idx&gt;</code></td>
+<td>pulls the task image and runs your agent in its container (2.1–2.3); writes <code>model_patch_&lt;instance_id&gt;.diff</code> and copies <code>madsLoop_logs/</code> back</td>
+</tr>
+<tr>
+<td><code>make_patches.py</code></td>
+<td>bundles your <code>model_patch_*.diff</code> files into <code>patches.json</code></td>
+</tr>
+<tr>
+<td><code>evaluate.sh</code></td>
+<td>runs the official SWE-bench Pro evaluation (2.4) on <code>patches.json</code>, joining <code>agent_task_input.json</code> with <code>task_test.json</code> for the test setup</td>
+</tr>
+</tbody>
+</table></div>
+<p>Run these commands from <code>assignment2/</code> and set <code>MADSLOOP_REPO</code> to its absolute path. The task JSONs are
+        always read from inside <code>evaluation_scripts/</code> itself, and all outputs (patches,
+        <code>patches.json</code>, <code>madsLoop_logs/</code>, <code>pro_eval/</code>) land under <code>assignment2/</code>:</p>
+<pre><code># Run from assignment2/:
+export MADSLOOP_REPO="$PWD"
+bash evaluation_scripts/run_task.sh 0     # one task, or run_all.sh for all four
+python3 evaluation_scripts/make_patches.py
+bash evaluation_scripts/evaluate.sh       # -&gt; pro_eval/eval_results.json</code></pre>
+<p><strong>What you may change in <code>evaluation_scripts/</code>.</strong> You are free to edit
+        <code>run_task.sh</code>, <code>agent_task_input.json</code> and <code>task_test.json</code> to test things
+        locally — point them at your own tasks, add debugging, adjust how the container
+        is set up. <code>run_all.sh</code>, <code>evaluate.sh</code> and <code>make_patches.py</code> are what we keep: we run our own
+        copies of them unchanged. </p>
+<h3 id="2-6-build-your-own-tasks-mytest">2.6 Build your own tasks (<code>mytest/</code>)</h3>
+<p>Beyond the tasks we give you, you <strong>build four tasks of your own</strong>.
+        Do not take them from SWE-bench Pro, or from any other agent benchmark. The point is to see whether your harness holds up on a task nobody has tuned it for.
+        Source each of the four from one of:</p>
+<ul>
+<li><strong>an open-source repository</strong> — a real issue, together with the commit or pull
+          request that closed it, or</li>
+<li><strong>one of your own past projects</strong> — a bug you actually fixed, or a feature you
+          actually added.</li>
+</ul>
+<p>Building a task means producing three things.</p>
+<p><strong>1. One paragraph of description.</strong> This is everything your agent is told. It takes
+        the place of <code>problem_statement</code>, <code>requirements</code> and <code>interface</code> in the tasks we gave
+        you, and it should be a single paragraph, in the <code>problem_statement</code> field. Say what
+        is wrong or missing, how it shows up, and what counts as done. Keep <code>requirements</code> and <code>interface</code> as keys
+        with <code>""</code> values, so the entry has the same shape as <code>agent_task_input.json</code> and your
+        agent reads it unchanged.</p>
+<p><strong>2. Tests that show it is fixed.</strong> Record them in <code>mytest/task_test.json</code>, keyed by
+        <code>instance_id</code>, with the same four fields as <code>evaluation_scripts/task_test.json</code>:
+        <code>before_repo_set_cmd</code>, <code>selected_test_files_to_run</code>, <code>fail_to_pass</code>, <code>pass_to_pass</code>.
+        <code>fail_to_pass</code> is at least one test that fails at <code>base_commit</code> and passes once the
+        task is done. <code>pass_to_pass</code> is tests that pass in both states, so that a patch which
+        breaks the repo cannot be scored as a fix. </p>
+<p><strong>3. A container.</strong> <code>mytest/tasks/&lt;instance_id&gt;/Dockerfile</code> builds an image with the
+        repo checked out at <code>base_commit</code> and every dependency already installed, so the tests
+        run without network access. Tag it, and put that tag in the task's <code>docker_image</code>
+        field — that is the field <code>run_task.sh</code> runs. You do not have to push it anywhere:
+        when the pull fails, <code>run_task.sh</code> falls back to the image of that name in your
+        local Docker daemon.</p>
+<p>Alongside the Dockerfile, include <code>mytest/tasks/&lt;instance_id&gt;/gold.diff</code>: the real fix,
+        the upstream commit or whatever you wrote at the time. It is there so the tests can be trusted, meaning applying it must turn every
+        <code>fail_to_pass</code> test green.</p>
+<p>Split the four tasks into two files:</p>
+<ul>
+<li><code>mytest/solved_after_change.json</code> — <strong>two</strong> tasks your agent that solves the given tasks could <strong>not</strong> solve at
+          first, and <strong>can</strong> solve after you changed something in the agent. The change must be in the
+          submitted code. The write-up and the video explain it.</li>
+<li><code>mytest/unsolved.json</code> — <strong>two</strong> tasks your agent still cannot solve when you submit.
+          Their <code>gold.diff</code> must still make their tests pass.</li>
+</ul>
+<p><strong>Running them.</strong> The workflow is the one from 2.1–2.4, with one substitution: the
+        official evaluation in <code>evaluate.sh</code> only knows SWE-bench Pro instances, so it cannot
+        score your images. Write a <code>mytest/verify.sh</code> to do that job instead.</p>
+<pre><code>IID=...                                                # one of your four instance_ids
+IMG=...                                                # that task's docker_image tag
+
+docker build -t "$IMG" "mytest/tasks/$IID/"            # 1. build the image
+TASKS_JSON=mytest/solved_after_change.json \
+  bash evaluation_scripts/run_task.sh 0                # 2. agent -&gt; model_patch_$IID.diff
+bash mytest/verify.sh "$IID" "model_patch_$IID.diff"   # 3. apply, run tests, report</code></pre>
+<p><code>verify.sh</code> takes an <code>instance_id</code> and a diff, starts a fresh container from that task's
+        <code>docker_image</code>, resets the checkout with <code>before_repo_set_cmd</code>, applies the diff, runs
+        <code>selected_test_files_to_run</code>, and prints <code>RESOLVED</code> only if <strong>every</strong> <code>fail_to_pass</code>
+        test passes and <strong>no</strong> <code>pass_to_pass</code> test regresses, the same rule the official
+        evaluation applies. Run it with no diff to get the <code>base_commit</code> baseline.</p>
+<p>Save its output under <code>mytest/results/</code> for each of the four tasks:
+        <code>&lt;instance_id&gt;.before.log</code> (at <code>base_commit</code>, showing <code>fail_to_pass</code> failing) and
+        <code>&lt;instance_id&gt;.after.log</code> (with your agent's patch for the two in
+        <code>solved_after_change.json</code>; with <code>gold.diff</code> for the two in <code>unsolved.json</code>).</p>
+<p><strong>Minimal handin under <code>mytest/</code>:</strong></p>
+<div class="table-responsive"><table class="table table-bordered">
+<thead class="table-light">
+<tr>
+<th>Path</th>
+<th>Count</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>solved_after_change.json</code></td>
+<td>2 entries</td>
+<td>agent-side task fields, same shape as <code>agent_task_input.json</code></td>
+</tr>
+<tr>
+<td><code>unsolved.json</code></td>
+<td>2 entries</td>
+<td>same</td>
+</tr>
+<tr>
+<td><code>task_test.json</code></td>
+<td>4 entries</td>
+<td><code>before_repo_set_cmd</code>, <code>selected_test_files_to_run</code>, <code>fail_to_pass</code>, <code>pass_to_pass</code></td>
+</tr>
+<tr>
+<td><code>tasks/&lt;instance_id&gt;/Dockerfile</code></td>
+<td>4</td>
+<td>builds the image named in that task's <code>docker_image</code></td>
+</tr>
+<tr>
+<td><code>tasks/&lt;instance_id&gt;/gold.diff</code></td>
+<td>4</td>
+<td>the real fix; turns <code>fail_to_pass</code> green</td>
+</tr>
+<tr>
+<td><code>verify.sh</code></td>
+<td>1</td>
+<td>applies a diff in the container and reports <code>RESOLVED</code> / <code>unresolved</code></td>
+</tr>
+<tr>
+<td><code>results/&lt;instance_id&gt;.{before,after}.log</code></td>
+<td>8</td>
+<td>the runs you recorded</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="deliverables">Deliverables</h2>
+<p>The submission has three parts: the <strong>code</strong> (a GitHub repo), a <strong>write-up</strong>, and a
+        <strong>video</strong>. We will use the same <strong>private GitHub repository</strong> as in Assignment 1 with code and the writeup under <code>assignment2/</code>. 
+         The video should be uploaded to Canvas. </p>
+<h3 id="code">Code</h3>
+<p>We grade by cloning your shared repository and running <code>bash evaluation_scripts/run_all.sh</code> from <code>assignment2/</code>. Keep the agent entry point, container setup, evaluation scripts, write-up, and logs in that assignment directory using the layout below.</p>
+<p>Required layout inside your shared repository:</p>
+<pre><code>assignment2/
+├── madsLoop.py                             # the agent entry point
+├── docker_env.sh                           # container setup (see 2.2)
+├── writeup.pdf                             # the one-page write-up
+├── src/                                    # the modules madsLoop.py imports, the harness design
+│   ├── agentic_loop.py                     #   (any structure you like — this is one example)
+│   ├── tools.py
+│   └── prompts.py
+├── developer_logs/                         # how you built madsLoop (see 0.2)
+│   └── claude_code_session.jsonl           #   logs in jsonl
+├── evaluation_scripts/                     # provided by us (see 2.5)
+│   ├── agent_task_input.json               #   
+│   ├── task_test.json                      #  
+│   ├── run_task.sh                         #  
+│   ├── run_all.sh                          #   entry point for our grading evaluation, do not change it
+│   ├── make_patches.py                     #   
+│   └── evaluate.sh                         #   
+├── mytest/                                 #  four tasks you build yourself (see 2.6)
+│   ├── solved_after_change.json            #   2 tasks: unsolved at first, solved after a change to your agent
+│   ├── unsolved.json                       #   2 tasks: still unsolved at the end
+│   ├── task_test.json                      #  
+│   ├── tasks/&lt;instance_id&gt;/Dockerfile      #   one per task: builds the image named in docker_image
+│   ├── tasks/&lt;instance_id&gt;/gold.diff       #   one per task: the real fix, never shown to your agent
+│   ├── verify.sh                           #   applies a patch in the container and runs the tests
+│   └── results/                            #   &lt;instance_id&gt;.before.log and .after.log per task
+└── README.md                               # optional: design notes, tool-set rationale</code></pre>
+<p>We evaluate by running <code>run_all.sh</code>, which invokes <code>run_task.sh</code> for each task.
+        Your <code>run_task.sh</code> is expected to invoke your agent with <code>--log</code>, and to produce a
+        patch for each task; <code>run_all.sh</code> then bundles those patches and evaluates them.</p>
+<h3 id="write-up">Write-up</h3>
+<p>A one-page (hard limit) PDF at <code>assignment2/writeup.pdf</code>, with three sections:</p>
+<ol>
+<li><strong>Which tasks in <code>agent_task_input.json</code> you think (not the agent thinks) are unsolvable, and why.</strong> Name
+           the <code>instance_id</code>s and give the evidence from your runs: what the agent tried, where
+           it got stuck, and what about the task (not your agent) makes it unsolvable. You can change the instructions in Parts 0 and 1 in any way you think is appropriate. Failures caused by those instructions should not be considered unsolvable. Instead, identify problems with the tasks themselves that make them impossible to solve.</li>
+<li><strong>What you did differently from the handout.</strong> Use bullet points, one per
+           difference: where your harness departs from the design described in Parts 0–1
+           and why.</li>
+<li><strong>How you made the two <code>solved_after_change.json</code> tasks pass.</strong> For each of the
+           two: what failed at first, what you changed in the agent, and how
+           that change turns the failure into a pass.</li>
+</ol>
+<p>The document must be entirely your own work. No AI-generated text.</p>
+<h3 id="video">Video</h3>
+<p>Record a <strong>3-minute</strong> video. First walk through your code: the entry point, the tools,
+        the agentic loop, and how conversation state is kept. Then show which part of the code
+        you changed to turn the two <code>solved_after_change.json</code> tasks from unsolved to
+        solved, and why that change made the difference. It should be uploaded to Canvas.</p>
+<h2 id="grading">Grading</h2>
+<div class="table-responsive"><table class="table table-bordered">
+<thead class="table-light">
+<tr>
+<th>Part</th>
+<th>Weight</th>
+<th>What is graded</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hidden tasks</td>
+<td><strong>40%</strong></td>
+<td>We run your agent with <code>run_task.sh</code> on the provided tasks and some more hidden SWE-bench Pro tasks (same format as <code>agent_task_input.json</code>) and grade each patch with the official evaluation. Score is the fraction resolved among the solvable tasks. Get a PASS for unsolvable tasks will lose points. All hidden tasks are solvable. Use your own judgment to decide which tasks are solvable, and then solve them.</td>
+</tr>
+<tr>
+<td>Write-up</td>
+<td><strong>40%</strong></td>
+<td>20% — which given tasks are unsolvable and why. 10% — what you did differently from the handout. 10% — the <code>mytest/</code> tasks: four tasks you built yourself, none of them from SWE-bench Pro, each with a single-paragraph <code>problem_statement</code>, a <code>Dockerfile</code> that builds, and <code>fail_to_pass</code> / <code>pass_to_pass</code> tests that <code>gold.diff</code> turns green; all four run under <code>run_task.sh</code> and score under your <code>verify.sh</code>, the two <code>solved_after_change.json</code> tasks fail before and pass after the change you describe, and the explanation of the change matches the code.</td>
+</tr>
+<tr>
+<td>Video</td>
+<td><strong>20%</strong></td>
+<td>The 3-minute video: a clear walk-through of the code, and a correct account of which change turned the two <code>solved_after_change.json</code> tasks from unsolved to solved.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="get-started">Now let's get started!</h2>
+<p>Have fun with your agent! Download the starter files as <a download="" href="assignment2.tar.gz"><code>assignment2.tar.gz</code></a> and extract them as described in <a href="#part-0">Part 0</a>.</p>
+<div class="note-nav">
+<a href="assignment1.html">← Assignment 1 — Experience a coding agent</a>
+<a href="assignment3.html">Assignment 3 — Harness competition →</a>
+</div>
+</div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="container">
+<p><a href="https://madsys.seas.harvard.edu/" rel="noopener" target="_blank">MadSys Research Group</a> · <a href="https://seas.harvard.edu/" rel="noopener" target="_blank">Harvard John A. Paulson School of Engineering and Applied Sciences</a></p>
+<p class="footer-policies"><a href="https://trademark.harvard.edu/pages/trademark-notice" rel="noopener" target="_blank">Trademark Notice</a> · <a href="https://accessibility.harvard.edu/" rel="noopener" target="_blank">Accessibility</a> · <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" rel="noopener" target="_blank">Digital Accessibility</a> · <a href="https://privsec.harvard.edu/harvard-university-privacy-statement" rel="noopener" target="_blank">Privacy Statement</a></p>
+<p class="footer-copyright">© 2026 Juncheng Yang</p>
+</div>
+</footer>
+</body>
+</html>

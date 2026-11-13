@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-04",
+  "as_of": "2026-11-13",
   "timezone": "Asia/Shanghai",
   "scope": "完整公开日历；phase/local_path/status 为规划与本地核对字段，不是官方学习顺序",
   "phases": {
@@ -76,7 +76,7 @@
           }
         ]
       },
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -357,7 +357,7 @@
           }
         ]
       },
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -731,7 +731,7 @@
           }
         ]
       },
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -972,7 +972,7 @@
           }
         ]
       },
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -1301,7 +1301,7 @@
           }
         ]
       },
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -1668,7 +1668,7 @@
           }
         ]
       },
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -1825,7 +1825,7 @@
           }
         ]
       },
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -2019,7 +2019,7 @@
           }
         ]
       },
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -2108,7 +2108,7 @@
           }
         ]
       },
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -2341,7 +2341,7 @@
           }
         ]
       },
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -2575,7 +2575,7 @@
           }
         ]
       },
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -2611,7 +2611,7 @@
         },
         "milestone": "Assignment 2 due: Eval"
       },
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -2885,7 +2885,7 @@
           }
         ]
       },
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -3083,7 +3083,7 @@
           }
         ]
       },
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -3388,7 +3388,7 @@
           }
         ]
       },
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -3425,7 +3425,7 @@
           }
         ]
       },
-      "material_status": "公开课表已有安排，尚无讲义链接；等待官方材料。",
+      "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -3754,7 +3754,7 @@
           }
         ]
       },
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -3980,7 +3980,7 @@
         ],
         "milestone": "Assignment 3 due: Training"
       },
-      "material_status": "44 页讲义、6 篇指定阅读及参考材料已归档；完整中文讲解见本课索引",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4026,7 +4026,7 @@
         "description": "Meet in your project group with your assigned TA. Schedule will be posted on piazza",
         "module": null
       },
-      "material_status": "项目活动；按官方要求另排个人里程碑",
+      "material_status": "公开项目要求已归档；活动安排见来源索引",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4052,7 +4052,7 @@
           "url": "https://valeriechen.github.io/"
         }
       },
-      "material_status": "公开课表已有安排，尚无讲义链接；等待官方材料。",
+      "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4062,9 +4062,124 @@
       "title": "Search 1: Reranking and Critic Models",
       "kind": "teaching",
       "phase": "P5",
-      "materials": [],
-      "readings": [],
-      "references": [],
+      "materials": [
+        {
+          "label": "Lecture 20 slides",
+          "url": "https://www.cmu-agents.com/slides/lecture-20-search-basics.pdf"
+        }
+      ],
+      "readings": [
+        {
+          "label": "Large Language Monkeys: Scaling Inference Compute with Repeated Sampling",
+          "url": "https://arxiv.org/abs/2407.21787v3"
+        },
+        {
+          "label": "Rethinking Thinking Tokens: LLMs as Improvement Operators (PDR)",
+          "url": "https://arxiv.org/abs/2510.01123v1"
+        },
+        {
+          "label": "Scaling Test-Time Compute for Agentic Coding",
+          "url": "https://arxiv.org/abs/2604.16529v1"
+        },
+        {
+          "label": "Meta-Harness: End-to-End Optimization of Model Harnesses",
+          "url": "https://arxiv.org/abs/2603.28052v1"
+        }
+      ],
+      "references": [
+        {
+          "label": "Evaluating Large Language Models Trained on Code (Codex)",
+          "url": "https://arxiv.org/abs/2107.03374v2"
+        },
+        {
+          "label": "Verbalized Sampling",
+          "url": "https://arxiv.org/abs/2510.01171v4"
+        },
+        {
+          "label": "Mode-Conditioning",
+          "url": "https://arxiv.org/abs/2512.01127v1"
+        },
+        {
+          "label": "Rewarding the Unlikely",
+          "url": "https://arxiv.org/abs/2506.02355v2"
+        },
+        {
+          "label": "Differential Smoothing",
+          "url": "https://proceedings.mlr.press/v306/gai26a.html"
+        },
+        {
+          "label": "MaxRL",
+          "url": "https://proceedings.mlr.press/v306/tajwar26a.html"
+        },
+        {
+          "label": "SWE-Gym",
+          "url": "https://arxiv.org/abs/2412.21139v2"
+        },
+        {
+          "label": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+          "url": "https://arxiv.org/abs/2203.11171"
+        },
+        {
+          "label": "From Decoding to Meta-Generation",
+          "url": "https://arxiv.org/abs/2406.16838v2"
+        },
+        {
+          "label": "Natural Language to Code Translation with Execution (MBR-Exec)",
+          "url": "https://aclanthology.org/2022.emnlp-main.231/"
+        },
+        {
+          "label": "Competition-Level Code Generation with AlphaCode",
+          "url": "https://arxiv.org/abs/2203.07814"
+        },
+        {
+          "label": "Reflexion: Language Agents with Verbal Reinforcement Learning",
+          "url": "https://arxiv.org/abs/2303.11366"
+        },
+        {
+          "label": "Self-Refine: Iterative Refinement with Self-Feedback",
+          "url": "https://arxiv.org/abs/2303.17651v2"
+        },
+        {
+          "label": "Teaching Large Language Models to Self-Debug",
+          "url": "https://arxiv.org/abs/2304.05128v2"
+        },
+        {
+          "label": "Large Language Models Cannot Self-Correct Reasoning Yet",
+          "url": "https://arxiv.org/abs/2310.01798"
+        },
+        {
+          "label": "Recursive Self-Aggregation",
+          "url": "https://arxiv.org/abs/2509.26626v2"
+        },
+        {
+          "label": "WHALE: A Simple Recipe for Joint Harness-Weight Optimization",
+          "url": "https://arxiv.org/abs/2609.00196v1"
+        },
+        {
+          "label": "Darwin Gödel Machine",
+          "url": "https://arxiv.org/abs/2505.22954v3"
+        },
+        {
+          "label": "Group-Evolving Agents",
+          "url": "https://arxiv.org/abs/2602.04837v1"
+        },
+        {
+          "label": "Tree Search for Language Model Agents (web-search example)",
+          "url": "https://arxiv.org/abs/2407.01476"
+        },
+        {
+          "label": "Claude: extended thinking and sampling settings",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/extended-thinking"
+        },
+        {
+          "label": "DeepSeek-R1 usage recommendations",
+          "url": "https://github.com/deepseek-ai/DeepSeek-R1"
+        },
+        {
+          "label": "Meta-Harness: few-shot text-classification baseline",
+          "url": "https://github.com/stanford-iris-lab/meta-harness/blob/main/reference_examples/text_classification/agents/fewshot_memory.py#L92-L99"
+        }
+      ],
       "local_path": "courses/11-768/20.RerankingAndCriticModels",
       "source": "https://www.cmu-agents.com/#/schedule",
       "evidence": "cmu/schedule.json",
@@ -4072,9 +4187,125 @@
         "code": "12b",
         "date": "Thu, Nov 12",
         "title": "Search 1: Reranking and Critic Models",
-        "module": "Search and Inference"
+        "module": "Search and Inference",
+        "slides": {
+          "label": "Lecture 20 slides",
+          "url": "/slides/lecture-20-search-basics.pdf"
+        },
+        "readings": [
+          {
+            "label": "Large Language Monkeys: Scaling Inference Compute with Repeated Sampling",
+            "url": "https://arxiv.org/abs/2407.21787v3"
+          },
+          {
+            "label": "Rethinking Thinking Tokens: LLMs as Improvement Operators (PDR)",
+            "url": "https://arxiv.org/abs/2510.01123v1"
+          },
+          {
+            "label": "Scaling Test-Time Compute for Agentic Coding",
+            "url": "https://arxiv.org/abs/2604.16529v1"
+          },
+          {
+            "label": "Meta-Harness: End-to-End Optimization of Model Harnesses",
+            "url": "https://arxiv.org/abs/2603.28052v1"
+          }
+        ],
+        "references": [
+          {
+            "label": "Evaluating Large Language Models Trained on Code (Codex)",
+            "url": "https://arxiv.org/abs/2107.03374v2"
+          },
+          {
+            "label": "Verbalized Sampling",
+            "url": "https://arxiv.org/abs/2510.01171v4"
+          },
+          {
+            "label": "Mode-Conditioning",
+            "url": "https://arxiv.org/abs/2512.01127v1"
+          },
+          {
+            "label": "Rewarding the Unlikely",
+            "url": "https://arxiv.org/abs/2506.02355v2"
+          },
+          {
+            "label": "Differential Smoothing",
+            "url": "https://proceedings.mlr.press/v306/gai26a.html"
+          },
+          {
+            "label": "MaxRL",
+            "url": "https://proceedings.mlr.press/v306/tajwar26a.html"
+          },
+          {
+            "label": "SWE-Gym",
+            "url": "https://arxiv.org/abs/2412.21139v2"
+          },
+          {
+            "label": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+            "url": "https://arxiv.org/abs/2203.11171"
+          },
+          {
+            "label": "From Decoding to Meta-Generation",
+            "url": "https://arxiv.org/abs/2406.16838v2"
+          },
+          {
+            "label": "Natural Language to Code Translation with Execution (MBR-Exec)",
+            "url": "https://aclanthology.org/2022.emnlp-main.231/"
+          },
+          {
+            "label": "Competition-Level Code Generation with AlphaCode",
+            "url": "https://arxiv.org/abs/2203.07814"
+          },
+          {
+            "label": "Reflexion: Language Agents with Verbal Reinforcement Learning",
+            "url": "https://arxiv.org/abs/2303.11366"
+          },
+          {
+            "label": "Self-Refine: Iterative Refinement with Self-Feedback",
+            "url": "https://arxiv.org/abs/2303.17651v2"
+          },
+          {
+            "label": "Teaching Large Language Models to Self-Debug",
+            "url": "https://arxiv.org/abs/2304.05128v2"
+          },
+          {
+            "label": "Large Language Models Cannot Self-Correct Reasoning Yet",
+            "url": "https://arxiv.org/abs/2310.01798"
+          },
+          {
+            "label": "Recursive Self-Aggregation",
+            "url": "https://arxiv.org/abs/2509.26626v2"
+          },
+          {
+            "label": "WHALE: A Simple Recipe for Joint Harness-Weight Optimization",
+            "url": "https://arxiv.org/abs/2609.00196v1"
+          },
+          {
+            "label": "Darwin Gödel Machine",
+            "url": "https://arxiv.org/abs/2505.22954v3"
+          },
+          {
+            "label": "Group-Evolving Agents",
+            "url": "https://arxiv.org/abs/2602.04837v1"
+          },
+          {
+            "label": "Tree Search for Language Model Agents (web-search example)",
+            "url": "https://arxiv.org/abs/2407.01476"
+          },
+          {
+            "label": "Claude: extended thinking and sampling settings",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/extended-thinking"
+          },
+          {
+            "label": "DeepSeek-R1 usage recommendations",
+            "url": "https://github.com/deepseek-ai/DeepSeek-R1"
+          },
+          {
+            "label": "Meta-Harness: few-shot text-classification baseline",
+            "url": "https://github.com/stanford-iris-lab/meta-harness/blob/main/reference_examples/text_classification/agents/fewshot_memory.py#L92-L99"
+          }
+        ]
       },
-      "material_status": "公开课表已有安排，尚无讲义链接；等待官方材料。",
+      "material_status": "讲义、阅读与完整中文讲解已归档；内容审核版本见课程 REVIEW.json",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4100,7 +4331,7 @@
           "url": "https://jykoh.com/"
         }
       },
-      "material_status": "公开课表已有安排，尚无讲义链接；等待官方材料。",
+      "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4126,7 +4357,7 @@
           "url": "https://www.cs.princeton.edu/~karthikn/"
         }
       },
-      "material_status": "嘉宾已安排，具体题目和讲义尚未公开；目录按日期定位，内容待核实。",
+      "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4152,7 +4383,7 @@
           "url": "https://srush.github.io/"
         }
       },
-      "material_status": "嘉宾已安排，具体题目和讲义尚未公开；目录按日期定位，内容待核实。",
+      "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4196,7 +4427,7 @@
         "title": "Final presentations (posters)",
         "module": null
       },
-      "material_status": "项目活动；按官方要求另排个人里程碑",
+      "material_status": "公开项目要求已归档；活动安排见来源索引",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4218,7 +4449,7 @@
         "title": "Final presentations (posters)",
         "module": null
       },
-      "material_status": "项目活动；按官方要求另排个人里程碑",
+      "material_status": "公开项目要求已归档；活动安排见来源索引",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4246,7 +4477,7 @@
         "",
         "Assignment 1 out (Mads-Lens: Watch the\n                agent work); Sign up for AWS"
       ],
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4311,7 +4542,7 @@
         "How I use LLMs ; Best practices for Claude Code ; Agentic Engineering Patterns ; more reading →",
         ""
       ],
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4356,7 +4587,7 @@
         "Claude Code agent teams ; Software is changing (again) ; Research acceleration: The view inside OpenAI ; more reading →",
         ""
       ],
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4401,7 +4632,7 @@
         "ReAct ; A practical guide to building agents ; LLM Powered Autonomous Agents ; more reading →",
         "Assignment 1 due Sun Sep 20, 11:59pm"
       ],
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4424,7 +4655,7 @@
         "",
         "Assignment 2 out (Mads-Loop: Build\n                the loop)"
       ],
-      "material_status": "公开课表已有安排，尚无讲义链接；等待官方材料。",
+      "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4469,7 +4700,7 @@
         "multi-agent research system ; scaling agent systems ; don’t build multi-agents ; more reading →",
         ""
       ],
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4509,7 +4740,7 @@
         "Agents design III: agent memory and reliability [slide]",
         "where agents fail ; MemGPT ; more reading →"
       ],
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4542,7 +4773,7 @@
         "Agent evaluation and benchmarks",
         "Assignment 2 due Sun Oct 4, 11:59pm"
       ],
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4565,7 +4796,7 @@
         "",
         "Assignment 3 out (Mads-Opt: Make\n                every token count)"
       ],
-      "material_status": "公开课表已有安排，尚无讲义链接；等待官方材料。",
+      "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4598,7 +4829,7 @@
         "Cost-effective agents",
         "Pre-proposal due (optional and only submit if you want to discuss your ideas)"
       ],
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4650,7 +4881,7 @@
         "OWASP agentic top 10 ; more reading →",
         ""
       ],
-      "material_status": "已有题目/嘉宾安排；尚无讲义链接",
+      "material_status": "官方论文讨论课，无教师讲义PDF；阅读及原讲解已保留",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4695,7 +4926,7 @@
         "Transformer ; Llama 3 ; Mixtral ; more reading →",
         "Assignment 3 due Tue Oct 20,\n                11:59pm"
       ],
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4732,14 +4963,14 @@
         "CUDA programming guide ; more reading →",
         "Assignment 4 out (Mads-Serve: Own\n                the serving engine)"
       ],
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
       "course": "Harvard CS2680",
       "id": "H-2026-10-26",
       "date": "2026-10-26",
-      "title": "Assignment 3 student sharing",
+      "title": "Student sharing II: Harness optimization",
       "kind": "sharing",
       "phase": "P5",
       "materials": [
@@ -4756,11 +4987,11 @@
         "9",
         "2026-10-26",
         "Students",
-        "Assignment 3 student sharing [slide]",
+        "Student sharing II: Harness optimization [slide]",
         "",
         ""
       ],
-      "material_status": "受密码保护的 PDF 原件已归档；未取得可读正文，不编写内容讲解",
+      "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4788,53 +5019,80 @@
         "",
         "Project proposal due"
       ],
-      "material_status": "受密码保护的 PDF 原件已归档；未取得可读正文，不编写内容讲解",
+      "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
       "course": "Harvard CS2680",
       "id": "H-2026-11-02",
       "date": "2026-11-02",
-      "title": "Efficient LLM serving basics III: Batching, paging, and parallelism",
+      "title": "Assignments feedback and agent pitfalls, GPU programming (cont.)",
       "kind": "teaching",
       "phase": "P6",
-      "materials": [],
+      "materials": [
+        {
+          "label": "assignment",
+          "url": "https://cs2680.com/slides/feedback_assignment.pdf"
+        },
+        {
+          "label": "gpu",
+          "url": "https://cs2680.com/slides/10_llm_serving_basics_2b.pdf"
+        }
+      ],
       "readings": [],
-      "local_path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism",
+      "local_path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued",
       "source": "https://cs2680.com/",
       "evidence": "harvard/index.html",
       "raw_cells": [
         "10",
         "2026-11-02",
         "Juncheng Yang",
-        "Efficient LLM serving basics III: Batching, paging, and parallelism",
+        "Assignments feedback and agent pitfalls, GPU programming (cont.) [ assignment , gpu ]",
         "",
         ""
       ],
-      "material_status": "已有题目/嘉宾安排；尚无讲义链接",
+      "material_status": "讲义、阅读与完整中文讲解已归档；内容审核版本见课程 REVIEW.json",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
       "course": "Harvard CS2680",
       "id": "H-2026-11-04",
       "date": "2026-11-04",
-      "title": "Efficient LLM serving: speculative decoding",
+      "title": "Efficient LLM serving basics III: Batching, paging, and parallelism",
       "kind": "teaching",
       "phase": "P6",
-      "materials": [],
-      "readings": [],
-      "local_path": "courses/2680/13.EfficientLLMServing.SpeculativeDecoding",
+      "materials": [
+        {
+          "label": "[slide]",
+          "url": "https://cs2680.com/slides/11_llm_serving_basics_3.pdf"
+        }
+      ],
+      "readings": [
+        {
+          "label": "Orca",
+          "url": "https://www.usenix.org/conference/osdi22/presentation/yu"
+        },
+        {
+          "label": "vLLM",
+          "url": "https://arxiv.org/abs/2309.06180"
+        },
+        {
+          "label": "more reading →",
+          "url": "https://cs2680.com/readings/nov-04.html"
+        }
+      ],
+      "local_path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism",
       "source": "https://cs2680.com/",
       "evidence": "harvard/index.html",
       "raw_cells": [
         "10",
         "2026-11-04",
         "Juncheng Yang",
-        "Efficient LLM serving: speculative decoding",
-        "",
+        "Efficient LLM serving basics III: Batching, paging, and parallelism [slide]",
+        "Orca ; vLLM ; more reading →",
         ""
       ],
-      "material_status": "已有题目/嘉宾安排；尚无讲义链接",
+      "material_status": "讲义、阅读与完整中文讲解已归档；内容审核版本见课程 REVIEW.json",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4852,35 +5110,35 @@
       "raw_cells": [
         "11",
         "2026-11-09",
-        "Xianzheng Kou (Meta)",
+        "Xianzheng Dou and Haythem Memmi (Meta)",
         "Guest lecture: Why Infrastructure sets the pace of AI",
         "",
         "Assignment 4 due Tue Nov 10, 11:59pm"
       ],
-      "material_status": "公开课表已有安排，尚无讲义链接；等待官方材料。",
+      "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
       "course": "Harvard CS2680",
       "id": "H-2026-11-11",
       "date": "2026-11-11",
-      "title": "Efficient agentic systems: scheduling and prefix caching",
+      "title": "Efficient LLM serving: speculative decoding",
       "kind": "teaching",
       "phase": "P6",
       "materials": [],
       "readings": [],
-      "local_path": "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching",
+      "local_path": "courses/2680/13.EfficientLLMServing.SpeculativeDecoding",
       "source": "https://cs2680.com/",
       "evidence": "harvard/index.html",
       "raw_cells": [
         "11",
         "2026-11-11",
         "Juncheng Yang",
-        "Efficient agentic systems: scheduling and prefix caching",
+        "Efficient LLM serving: speculative decoding",
         "",
         "Assignment 5 out (Mads-Stack:\n                Optimize the full stack)"
       ],
-      "material_status": "已有题目/嘉宾安排；尚无讲义链接",
+      "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4903,13 +5161,36 @@
         "",
         ""
       ],
-      "material_status": "已有题目/嘉宾安排；尚无讲义链接",
+      "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
       "course": "Harvard CS2680",
       "id": "H-2026-11-18",
       "date": "2026-11-18",
+      "title": "Student sharing III: Showcase your serving engine (Assignment 4)",
+      "kind": "sharing",
+      "phase": "P6",
+      "materials": [],
+      "readings": [],
+      "local_path": "courses/2680/24.StudentSharingIII.EngineOptimizationsAndAgentEngineCoDesign",
+      "source": "https://cs2680.com/",
+      "evidence": "harvard/index.html",
+      "raw_cells": [
+        "12",
+        "2026-11-18",
+        "Students",
+        "Student sharing III: Showcase your serving engine (Assignment 4)",
+        "",
+        ""
+      ],
+      "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
+      "learning_status": "unknown_to_be_confirmed_by_learner"
+    },
+    {
+      "course": "Harvard CS2680",
+      "id": "H-2026-11-23",
+      "date": "2026-11-23",
       "title": "Efficient LLM serving: pruning and quantization",
       "kind": "teaching",
       "phase": "P6",
@@ -4919,37 +5200,14 @@
       "source": "https://cs2680.com/",
       "evidence": "harvard/index.html",
       "raw_cells": [
-        "12",
-        "2026-11-18",
+        "13",
+        "2026-11-23",
         "Juncheng Yang",
         "Efficient LLM serving: pruning and quantization",
         "",
-        ""
-      ],
-      "material_status": "已有题目/嘉宾安排；尚无讲义链接",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
-    },
-    {
-      "course": "Harvard CS2680",
-      "id": "H-2026-11-23",
-      "date": "2026-11-23",
-      "title": "Student sharing III: Engine optimizations and agent-engine co-design",
-      "kind": "sharing",
-      "phase": "P6",
-      "materials": [],
-      "readings": [],
-      "local_path": "courses/2680/24.StudentSharingIII.EngineOptimizationsAndAgentEngineCoDesign",
-      "source": "https://cs2680.com/",
-      "evidence": "harvard/index.html",
-      "raw_cells": [
-        "13",
-        "2026-11-23",
-        "Students",
-        "Student sharing III: Engine optimizations and agent-engine co-design",
-        "",
         "Assignment 5 due Tue Nov 24, 11:59pm"
       ],
-      "material_status": "公开课表已有安排，尚无讲义链接；等待官方材料。",
+      "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4976,7 +5234,30 @@
       "course": "Harvard CS2680",
       "id": "H-2026-11-30",
       "date": "2026-11-30",
-      "title": "Efficient agentic system: routing and load balancing",
+      "title": "Efficient agentic systems: scheduling and prefix caching",
+      "kind": "teaching",
+      "phase": "P6",
+      "materials": [],
+      "readings": [],
+      "local_path": "courses/2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching",
+      "source": "https://cs2680.com/",
+      "evidence": "harvard/index.html",
+      "raw_cells": [
+        "14",
+        "2026-11-30",
+        "Juncheng Yang",
+        "Efficient agentic systems: scheduling and prefix caching",
+        "",
+        ""
+      ],
+      "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
+      "learning_status": "unknown_to_be_confirmed_by_learner"
+    },
+    {
+      "course": "Harvard CS2680",
+      "id": "H-2026-12-02",
+      "date": "2026-12-02",
+      "title": "Efficient agentic systems: routing and load balancing",
       "kind": "teaching",
       "phase": "P6",
       "materials": [],
@@ -4986,36 +5267,13 @@
       "evidence": "harvard/index.html",
       "raw_cells": [
         "14",
-        "2026-11-30",
+        "2026-12-02",
         "Juncheng Yang",
-        "Efficient agentic system: routing and load balancing",
+        "Efficient agentic systems: routing and load balancing",
         "",
         ""
       ],
-      "material_status": "已有题目/嘉宾安排；尚无讲义链接",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
-    },
-    {
-      "course": "Harvard CS2680",
-      "id": "H-2026-12-02",
-      "date": "2026-12-02",
-      "title": "Student sharing IV",
-      "kind": "sharing",
-      "phase": "P6",
-      "materials": [],
-      "readings": [],
-      "local_path": "courses/2680/25.StudentSharingIV",
-      "source": "https://cs2680.com/",
-      "evidence": "harvard/index.html",
-      "raw_cells": [
-        "14",
-        "2026-12-02",
-        "Students",
-        "Student sharing IV",
-        "Showcase your full stack optimizations (Assignment 5)",
-        ""
-      ],
-      "material_status": "公开课表已有安排，尚无讲义链接；等待官方材料。",
+      "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -5038,7 +5296,7 @@
         "Present your final project as a poster and a live demo. Location: SEC 1.402 from\n                  9:00 AM to 1:00 PM",
         "Final project due Tue Dec 8, 11:59pm"
       ],
-      "material_status": "项目活动；按官方要求另排个人里程碑",
+      "material_status": "公开项目要求已归档；活动安排见来源索引",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -5064,8 +5322,10 @@
         "Week 1 Course introduction [slides] Basics of LLMs and foundation models AI agents and self-evolution",
         ""
       ],
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 1,
+      "source_schedule": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/"
     },
     {
       "course": "MIT MAS.S62",
@@ -5127,8 +5387,10 @@
         "Week 2 Context evolution 1 [slides 1] [tutorial] [slides 2] Prompt optimization Memory, tools, knowledge",
         "Large Language Models Are Human-Level Prompt Engineers TextGrad: Automatic \"Differentiation\" via Text DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines Reflexion: Language Agents with Verbal Reinforcement Learning Evolving Prompts In-Context: An Open-ended, Self-replicating Perspective GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning ReasoningBank: Scaling Agent Self-Evolving with Reasoning Memory"
       ],
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 2,
+      "source_schedule": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/"
     },
     {
       "course": "MIT MAS.S62",
@@ -5178,8 +5440,10 @@
         "Week 3 Context evolution 2 [slides] LLMs as optimizers LLMs for discovery",
         "FunSearch: Mathematical discoveries from program search with large language models Large Language Models as Optimizers AlphaEvolve: A coding agent for scientific and algorithmic discovery The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery Can LLMs Generate Novel Research Ideas? A Large-Scale Human Study with 100+ NLP Researchers Towards End-to-End Automation of AI Research"
       ],
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 3,
+      "source_schedule": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/"
     },
     {
       "course": "MIT MAS.S62",
@@ -5200,7 +5464,9 @@
         ""
       ],
       "material_status": "项目活动；按官方要求另排个人里程碑",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 4,
+      "source_schedule": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/"
     },
     {
       "course": "MIT MAS.S62",
@@ -5266,8 +5532,10 @@
         "Week 5 Harness evolution 1 [slides 1] [slides 2] Harness components Agent memory Harness evolution",
         "Darwin Godel Machine: Open-Ended Evolution of Self-Improving Agents Recursive Language Models Context Language Models MEM1: Learning to Synergize Memory and Reasoning for Efficient Long-horizon Agents Reflexion: Language Agents with Verbal Reinforcement Learning Meta-Harness: End-to-End Optimization of Model Harnesses Continual Harness: Online Adaptation for Self-Improving Foundation Agents HarnessTax: How Much Does the Harness Matter for Coding Agents? Harness Updating Is Not Harness Benefit: Disentangling Evolution Capabilities in Self-Evolving LLM Agents"
       ],
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 5,
+      "source_schedule": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/"
     },
     {
       "course": "MIT MAS.S62",
@@ -5325,8 +5593,10 @@
         "Week 6 Harness evolution 2 [slides 1] [slides 2] Harness engineering tutorial Tool and skill evolution Multi-agent evolution",
         "Toolformer: Language Models Can Teach Themselves to Use Tools ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks Voyager: An Open-Ended Embodied Agent with Large Language Models CORAL: Towards Autonomous Multi-Agent Evolution for Open-Ended Discovery Towards a Science of Scaling Agent Systems Why Do Multi-Agent LLM Systems Fail?"
       ],
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "material_status": "公开讲义已归档；既有中文讲解保持原版",
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 6,
+      "source_schedule": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/"
     },
     {
       "course": "MIT MAS.S62",
@@ -5400,8 +5670,10 @@
         "Week 7 Model evolution 1 [slides 1] [slides 2] Reinforcement learning Distillation Test-time training",
         "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning On-Policy Distillation of Language Models: Learning from Self-Generated Mistakes TTRL: Test-Time Reinforcement Learning Self-Rewarding Language Models s1: Simple Test-Time Scaling Does RL Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model? Understanding R1-Zero-Like Training: A Critical Perspective RLs Razor: Why Online Reinforcement Learning Forgets Less Self-Distilled Reasoner: On-Policy Self-Distillation for Large Language Models Reinforcement Learning via Self-Distillation Scaling Test-Time Compute Without Verification or RL is Suboptimal"
       ],
-      "material_status": "官网有讲义链接；本轮保存大纲，未逐份刷新讲义",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "material_status": "主讲与嘉宾归档；旧15页教程随原讲解保留，资料修订影响待复核",
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 7,
+      "source_schedule": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/"
     },
     {
       "course": "MIT MAS.S62",
@@ -5422,7 +5694,9 @@
         ""
       ],
       "material_status": "项目活动；按官方要求另排个人里程碑",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 8,
+      "source_schedule": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/"
     },
     {
       "course": "MIT MAS.S62",
@@ -5460,13 +5734,40 @@
         "Week 9 Model evolution 2 [slides 1] RL in practice Self-play approaches",
         "Absolute Zero: Reinforced Self-play Reasoning with Zero Data R-Zero: Self-Evolving Reasoning LLM from Zero Data Propose, Solve, Verify: Self-Play Through Formal Verification"
       ],
-      "material_status": "有 slides 链接；URL 对应既有 W7 RL 教程，最新正文待复核",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "material_status": "讲义、阅读与完整中文讲解已归档；内容审核版本见课程 REVIEW.json",
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 9,
+      "source_schedule": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/"
     },
     {
       "course": "MIT MAS.S62",
       "id": "MIT-W10",
       "date": "2026-11-11",
+      "title": "Veterans Day — no class",
+      "kind": "break",
+      "phase": "BREAK",
+      "materials": [],
+      "placeholder_links": [],
+      "readings": [],
+      "local_path": null,
+      "source": "https://docs.google.com/document/d/1H1vs32fhWaxEuP6-nA2GP-a1aFuEmjOXNMcer2UyKpM/edit",
+      "evidence": "mit/syllabus.txt",
+      "raw_cells": [
+        "11/11",
+        "Week 10 Environment evolution 1 [slides] Synthetic data and tasks Environment generation",
+        ""
+      ],
+      "material_status": "11/11停课：官方大纲与MIT Registrar校历一致",
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 10,
+      "source_schedule": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
+      "schedule_resolution": "采用官方大纲的明确周次安排；11/11停课另由MIT Registrar校历支持；官网HTML仍保留原始冲突记录",
+      "references": []
+    },
+    {
+      "course": "MIT MAS.S62",
+      "id": "MIT-W11",
+      "date": "2026-11-18",
       "title": "Environment evolution 1",
       "kind": "teaching",
       "phase": "P8",
@@ -5479,20 +5780,23 @@
       ],
       "readings": [],
       "local_path": "courses/MAS.S62/10.EnvironmentEvolution1",
-      "source": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
-      "evidence": "mit/schedule.html",
+      "source": "https://docs.google.com/document/d/1H1vs32fhWaxEuP6-nA2GP-a1aFuEmjOXNMcer2UyKpM/edit",
+      "evidence": "mit/syllabus.txt",
       "raw_cells": [
-        "11/11",
-        "Week 10 Environment evolution 1 [slides] Synthetic data and tasks Environment generation",
+        "11/18",
+        "Week 11 Environment evolution 2 [slides] World models Evolving evaluation and rewards",
         ""
       ],
-      "material_status": "已有主题；slides 仍为课表占位链接",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "material_status": "按大纲为11/18；无公开讲义正文",
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 11,
+      "source_schedule": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
+      "schedule_resolution": "采用官方大纲的明确周次安排；11/11停课另由MIT Registrar校历支持；官网HTML仍保留原始冲突记录"
     },
     {
       "course": "MIT MAS.S62",
-      "id": "MIT-W11",
-      "date": "2026-11-18",
+      "id": "MIT-W12",
+      "date": "2026-11-25",
       "title": "Environment evolution 2",
       "kind": "teaching",
       "phase": "P8",
@@ -5505,41 +5809,18 @@
       ],
       "readings": [],
       "local_path": "courses/MAS.S62/11.EnvironmentEvolution2",
-      "source": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
-      "evidence": "mit/schedule.html",
-      "raw_cells": [
-        "11/18",
-        "Week 11 Environment evolution 2 [slides] World models Evolving evaluation and rewards",
-        ""
-      ],
-      "material_status": "已有主题；slides 仍为课表占位链接",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
-    },
-    {
-      "course": "MIT MAS.S62",
-      "id": "MIT-W12",
-      "date": "2026-11-25",
-      "title": "Future topics",
-      "kind": "teaching",
-      "phase": "P8",
-      "materials": [],
-      "placeholder_links": [
-        {
-          "label": "[slides]",
-          "url": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/"
-        }
-      ],
-      "readings": [],
-      "local_path": "courses/MAS.S62/12.FutureTopics",
-      "source": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
-      "evidence": "mit/schedule.html",
+      "source": "https://docs.google.com/document/d/1H1vs32fhWaxEuP6-nA2GP-a1aFuEmjOXNMcer2UyKpM/edit",
+      "evidence": "mit/syllabus.txt",
       "raw_cells": [
         "11/25",
         "Week 12 Future topics [slides] AI for scientific discovery Multimodal agents",
         ""
       ],
-      "material_status": "已有主题；slides 仍为课表占位链接",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "material_status": "按大纲为11/25；无公开讲义正文",
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 12,
+      "source_schedule": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
+      "schedule_resolution": "采用官方大纲的明确周次安排；11/11停课另由MIT Registrar校历支持；官网HTML仍保留原始冲突记录"
     },
     {
       "course": "MIT MAS.S62",
@@ -5552,15 +5833,18 @@
       "placeholder_links": [],
       "readings": [],
       "local_path": "courses/MAS.S62/13.ProjectFinalPresentations",
-      "source": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
-      "evidence": "mit/schedule.html",
+      "source": "https://docs.google.com/document/d/1H1vs32fhWaxEuP6-nA2GP-a1aFuEmjOXNMcer2UyKpM/edit",
+      "evidence": "mit/syllabus.txt",
       "raw_cells": [
         "12/2",
         "Week 13 Project final presentations",
         ""
       ],
       "material_status": "项目活动；按官方要求另排个人里程碑",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 13,
+      "source_schedule": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
+      "schedule_resolution": "采用官方大纲的明确周次安排；11/11停课另由MIT Registrar校历支持；官网HTML仍保留原始冲突记录"
     },
     {
       "course": "MIT MAS.S62",
@@ -5578,15 +5862,19 @@
       ],
       "readings": [],
       "local_path": "courses/MAS.S62/14.FutureTopics",
-      "source": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
-      "evidence": "mit/schedule.html",
+      "source": "https://docs.google.com/document/d/1H1vs32fhWaxEuP6-nA2GP-a1aFuEmjOXNMcer2UyKpM/edit",
+      "evidence": "mit/syllabus.txt",
       "raw_cells": [
         "12/9",
         "Week 14 Future topics [slides] Embodied harnesses Safe evolution",
         ""
       ],
-      "material_status": "已有主题；slides 仍为课表占位链接",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "material_status": "大纲合并四类前沿主题；无公开讲义正文",
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 14,
+      "source_schedule": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
+      "schedule_resolution": "采用官方大纲的明确周次安排；11/11停课另由MIT Registrar校历支持；官网HTML仍保留原始冲突记录",
+      "description": "AI for scientific discovery; multimodal agents; embodied harnesses; safe evolution"
     },
     {
       "course": "Stanford CS329Z",
@@ -5620,7 +5908,7 @@
       ],
       "local_path": "courses/329z/1.IntroductionWhatAreAgenticSystems",
       "source": "https://cs329z.stanford.edu/index.html",
-      "evidence": "stanford/index.html",
+      "evidence": "../2026-11-04/stanford/index.html",
       "raw_cells": [
         "1",
         "Wed Sep 23",
@@ -5662,7 +5950,7 @@
       ],
       "local_path": "courses/329z/2.LLMsForBuilders",
       "source": "https://cs329z.stanford.edu/index.html",
-      "evidence": "stanford/index.html",
+      "evidence": "../2026-11-04/stanford/index.html",
       "raw_cells": [
         "2",
         "Mon Sep 28",
@@ -5704,7 +5992,7 @@
       ],
       "local_path": "courses/329z/3.RetrievalAugmentedGenerationRAG",
       "source": "https://cs329z.stanford.edu/index.html",
-      "evidence": "stanford/index.html",
+      "evidence": "../2026-11-04/stanford/index.html",
       "raw_cells": [
         "2",
         "Wed Sep 30",
@@ -5746,7 +6034,7 @@
       ],
       "local_path": "courses/329z/4.ToolUseFunctionCalling",
       "source": "https://cs329z.stanford.edu/index.html",
-      "evidence": "stanford/index.html",
+      "evidence": "../2026-11-04/stanford/index.html",
       "raw_cells": [
         "3",
         "Mon Oct 5",
@@ -5792,7 +6080,7 @@
       ],
       "local_path": "courses/329z/5.FrameworksOrchestration",
       "source": "https://cs329z.stanford.edu/index.html",
-      "evidence": "stanford/index.html",
+      "evidence": "../2026-11-04/stanford/index.html",
       "raw_cells": [
         "3",
         "Wed Oct 7",
@@ -5844,7 +6132,7 @@
       ],
       "local_path": "courses/329z/6.AgentDesignPatternsScaffolds",
       "source": "https://cs329z.stanford.edu/index.html",
-      "evidence": "stanford/index.html",
+      "evidence": "../2026-11-04/stanford/index.html",
       "raw_cells": [
         "4",
         "Mon Oct 12",
@@ -5886,7 +6174,7 @@
       ],
       "local_path": "courses/329z/7.AgentMemoryArchitectures",
       "source": "https://cs329z.stanford.edu/index.html",
-      "evidence": "stanford/index.html",
+      "evidence": "../2026-11-04/stanford/index.html",
       "raw_cells": [
         "4",
         "Wed Oct 14",
@@ -5928,7 +6216,7 @@
       ],
       "local_path": "courses/329z/8.MultiAgentSystems",
       "source": "https://cs329z.stanford.edu/index.html",
-      "evidence": "stanford/index.html",
+      "evidence": "../2026-11-04/stanford/index.html",
       "raw_cells": [
         "5",
         "Mon Oct 19",
@@ -5970,7 +6258,7 @@
       ],
       "local_path": "courses/329z/9.Optimization",
       "source": "https://cs329z.stanford.edu/index.html",
-      "evidence": "stanford/index.html",
+      "evidence": "../2026-11-04/stanford/index.html",
       "raw_cells": [
         "5",
         "Wed Oct 21",
@@ -6007,7 +6295,7 @@
       ],
       "local_path": "courses/329z/10.GuestLectureTerminalBench",
       "source": "https://cs329z.stanford.edu/index.html",
-      "evidence": "stanford/index.html",
+      "evidence": "../2026-11-04/stanford/index.html",
       "raw_cells": [
         "6",
         "Mon Oct 26",
@@ -6044,7 +6332,7 @@
       ],
       "local_path": "courses/329z/11.WhatDataDoAgentsNeed",
       "source": "https://cs329z.stanford.edu/index.html",
-      "evidence": "stanford/index.html",
+      "evidence": "../2026-11-04/stanford/index.html",
       "raw_cells": [
         "6",
         "Wed Oct 28",
@@ -6081,7 +6369,7 @@
       ],
       "local_path": "courses/329z/12.DataSelectionQuality",
       "source": "https://cs329z.stanford.edu/index.html",
-      "evidence": "stanford/index.html",
+      "evidence": "../2026-11-04/stanford/index.html",
       "raw_cells": [
         "7",
         "Mon Nov 2",
@@ -6118,7 +6406,7 @@
       ],
       "local_path": "courses/329z/13.EvaluationFundamentalsBenchmarkDesign",
       "source": "https://cs329z.stanford.edu/index.html",
-      "evidence": "stanford/index.html",
+      "evidence": "../2026-11-04/stanford/index.html",
       "raw_cells": [
         "7",
         "Wed Nov 4",
@@ -6139,7 +6427,7 @@
       "readings": [],
       "local_path": "courses/329z/14.FiresideChatWithAndrewNg",
       "source": "https://cs329z.stanford.edu/index.html",
-      "evidence": "stanford/index.html",
+      "evidence": "../2026-11-04/stanford/index.html",
       "raw_cells": [
         "8",
         "Mon Nov 9",
@@ -6181,7 +6469,7 @@
       ],
       "local_path": "courses/329z/15.LLMAsJudgeEvaluationInfrastructure",
       "source": "https://cs329z.stanford.edu/index.html",
-      "evidence": "stanford/index.html",
+      "evidence": "../2026-11-04/stanford/index.html",
       "raw_cells": [
         "8",
         "Wed Nov 11",
@@ -6208,7 +6496,7 @@
       ],
       "local_path": "courses/329z/16.GuestLectureSWEBench",
       "source": "https://cs329z.stanford.edu/index.html",
-      "evidence": "stanford/index.html",
+      "evidence": "../2026-11-04/stanford/index.html",
       "raw_cells": [
         "9",
         "Mon Nov 16",
@@ -6260,7 +6548,7 @@
       ],
       "local_path": "courses/329z/17.AgentSafetyGuardrails",
       "source": "https://cs329z.stanford.edu/index.html",
-      "evidence": "stanford/index.html",
+      "evidence": "../2026-11-04/stanford/index.html",
       "raw_cells": [
         "9",
         "Wed Nov 18",
@@ -6281,7 +6569,7 @@
       "readings": [],
       "local_path": null,
       "source": "https://cs329z.stanford.edu/index.html",
-      "evidence": "stanford/index.html",
+      "evidence": "../2026-11-04/stanford/index.html",
       "raw_cells": [
         "10",
         "Mon Nov 23",
@@ -6302,7 +6590,7 @@
       "readings": [],
       "local_path": null,
       "source": "https://cs329z.stanford.edu/index.html",
-      "evidence": "stanford/index.html",
+      "evidence": "../2026-11-04/stanford/index.html",
       "raw_cells": [
         "10",
         "Wed Nov 25",
@@ -6344,7 +6632,7 @@
       ],
       "local_path": "courses/329z/18.CodingSoftwareAgents",
       "source": "https://cs329z.stanford.edu/index.html",
-      "evidence": "stanford/index.html",
+      "evidence": "../2026-11-04/stanford/index.html",
       "raw_cells": [
         "11",
         "Mon Nov 30",
@@ -6381,7 +6669,7 @@
       ],
       "local_path": "courses/329z/19.ProactiveAgents",
       "source": "https://cs329z.stanford.edu/index.html",
-      "evidence": "stanford/index.html",
+      "evidence": "../2026-11-04/stanford/index.html",
       "raw_cells": [
         "11",
         "Wed Dec 2",
@@ -6402,7 +6690,7 @@
       "readings": [],
       "local_path": "courses/329z/project",
       "source": "https://cs329z.stanford.edu/index.html",
-      "evidence": "stanford/index.html",
+      "evidence": "../2026-11-04/stanford/index.html",
       "raw_cells": [
         "—",
         "Wed Dec 9",
@@ -6414,18 +6702,39 @@
       "description": "3:30–6:30 p.m. Pacific Time; location TBA"
     }
   ],
-  "layout_updated_at": "2026-11-04",
-  "source_snapshot": "courses/syllabus-snapshots/2026-11-04/README.md",
+  "layout_updated_at": "2026-11-13",
+  "source_snapshot": "courses/syllabus-snapshots/2026-11-13/README.md",
   "legacy_items": [
     {
       "local_path": "courses/2680/18.EfficientAgenticSystems.Others",
       "status": "历史课表占位；旧资料保留，当前正式日期/主题见完整课表"
+    },
+    {
+      "local_path": "courses/2680/25.StudentSharingIV",
+      "status": "旧12/2分享课占位；当前官网12/2为routing，本目录保留历史导航"
+    },
+    {
+      "local_path": "courses/MAS.S62/12.FutureTopics",
+      "status": "旧W12 Future topics计划；当前大纲合并至W14，保留目录与历史入口"
     }
   ],
   "planned_homework_folders": [
-    "courses/2680/assignment/assignment-5",
     "courses/MAS.S62/assignment/assignment-2",
     "courses/MAS.S62/assignment/assignment-3",
     "courses/MAS.S62/assignment/assignment-4"
+  ],
+  "course_checked_at": {
+    "CMU 11-768": "2026-11-13",
+    "Harvard CS2680": "2026-11-13",
+    "MIT MAS.S62": "2026-11-13",
+    "Stanford CS329Z": "2026-11-04"
+  },
+  "homework_uncertainties": [
+    {
+      "course": "MIT MAS.S62",
+      "assignment": 4,
+      "status": "unconfirmed",
+      "reason": "官方大纲逐项仅列HW1–3，但概述仍写四次；不据此断言取消"
+    }
   ]
 }

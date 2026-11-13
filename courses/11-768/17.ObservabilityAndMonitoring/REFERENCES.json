@@ -1,0 +1,19 @@
+[
+  {
+    "title": "Securing our frontier model training environment",
+    "url": "https://openai.com/index/securing-our-frontier-model-training-environment/",
+    "role": "assigned",
+    "material_type": "article_html",
+    "status": "download_failed",
+    "error": "403 Client Error: Forbidden for url: https://openai.com/index/securing-our-frontier-model-training-environment/",
+    "checked_at": "2026-11-13",
+    "publication_date": "2026-10-23",
+    "online_body_status": "Official article body visible through web retrieval; no local original response body archived",
+    "attempted_urls": [
+      "https://openai.com/index/securing-our-frontier-model-training-environment/",
+      "https://openai.com/index/securing-our-frontier-model-training-environment/?ref=cmu-agents-course",
+      "https://openai.com/en-US/index/securing-our-frontier-model-training-environment/"
+    ],
+    "acquisition_limit": "All direct archive requests returned HTTP 403; response challenge pages are not archived as article content."
+  }
+]

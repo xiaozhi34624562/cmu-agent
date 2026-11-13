@@ -1,0 +1,154 @@
+﻿How to AI an AI for (Almost) Anything – Fall 2026
+aka, Self-Evolving AI
+
+
+MAS.S62
+
+
+Instructors:        Paul Liang, ppliang@mit.edu, TA: Ao Qu, qua@mit.edu
+
+
+Class:                 Wed 2-4pm @ Media Lab E15-359
+Units:                12, 2-0-10
+
+
+Office hours:        Wed 4-5pm, in Media Lab area E15-383 (Multisensory Intelligence Group)
+
+
+Recommended pre-requisites: Students are expected to have some background in machine learning (6.390 or equivalent) and its associated pre-requisites in probability, linear algebra, and programming.
+
+
+Introduction
+Artificial Intelligence (AI) has made remarkable progress through increasingly capable foundation models trained on large-scale data. However, today's systems remain largely static after training, requiring substantial human effort to improve their capabilities, acquire new knowledge, and adapt to changing environments. This course introduces the emerging field of self-evolving AI: AI systems that can improve themselves through experience, feedback, memory, interaction, and exploration to continually adapt and optimize their behavior over long time horizons. We will cover methods for (1) context evolution through memory, retrieval, tool use, and long-context reasoning, (2) harness evolution through feedback, search, workflow optimization, and multi-agent systems, (3) model evolution through self-play, distillation, test-time training, and continual learning, (4) task evolution through generating increasingly complex synthetic tasks, simulations, evaluations, and environments.
+
+
+Through lectures, readings, discussions, homeworks, and a significant research component, this course will develop knowledge of recent technical achievements in self-evolving AI, critical thinking skills and intuitions in designing self-evolving AI, and a deeper understanding of the AI research process. Students will complete hands-on assignments on self-evolving AI, culminating in a novel research project.
+
+
+Canvas Students are asked to submit their assignments through the website Canvas. This platform will be used for grading and to handle any request for re-grading: https://canvas.mit.edu/courses/40521/
+ 
+Website The main public course website is online: https://mit-mi.github.io/how2ai-course/fall2026/
+
+
+Course Material
+Required:
+* Reading material will be based on published technical papers available via the ACM/IEEE/Springer digital libraries or freely available online (e.g., arxiv.org). All MIT students have already free access to these digital archives.
+* For project assignments, previous experience in Python and deep learning (e.g., Pytorch) programming is expected.
+
+
+Course Topics 
+** Exact topics may change based on student interests and time restrictions.
+
+
+Week 1 (9/9): Course introduction, basics of LLMs, foundation models, agents, self-evolution
+Week 2 (9/16): Context evolution 1 – Prompt optimization, memory, tools, knowledge
+Week 3 (9/23): Context evolution 2 – LLMs as optimizers for discovery
+Week 4 (9/30): Project proposal presentations
+Week 5 (10/7): Harness evolution 1 – Harness components, self-evolving harnesses
+Week 6 (10/14): Harness evolution 2 – Multi-agent systems and evolution
+Week 7 (10/21): Model evolution 1 – Continual learning, distillation, test-time training
+Week 8 (10/28): Project midterm presentations
+Week 9 (11/4): Model evolution 2 – Self-play approaches
+Week 10 (11/11): Environment evolution 1 – Synthetic data and tasks, environment generation
+Week 11 (11/18): Environment evolution 2 – World models, evolving evaluation and rewards
+Week 12 (11/25): Future topics – AI for science, multimodal agents
+Week 13 (12/2): Project final presentations
+Week 14 (12/9): Future topics – Embodied harnesses, safe evolution
+
+
+Course Homeworks
+** Exact timeline subject to change.
+Homework 1 (due in week 4): Context evolution (tentatively on Textgrad or OpenEvolve)
+Homework 2 (due in week 7): Harness evolution (tentatively on SkillOpt, DGM, or Meta-Harness)
+Homework 3 (due in week 10): Model evolution (tentatively on test-time training or continual learning)
+Homework 4 (due in week 12): Task evolution (tentatively on PostTrainBench)
+
+
+Course Project Timeline
+** Exact timeline subject to change.
+* Project preferences (due in week 2) – You should have selected your teammates, dataset, and task.
+* Proposal report (due in week 4) - Description of your research ideas, review of relevant papers, and initial results.
+* Midterm report (due in week 8) – Intermediate report documenting the updated results in exploring new research ideas.
+* Final report (due in week 14) – Final report describing explored research ideas, with experimental results, analysis, and discussion
+Grades
+The grading breakdown is as follows:
+   * 20% for 4 reading assignments covering state-of-the-art research in multimodal AI.
+   * 40% for 4 homework assignments.
+   * 40% for the course project, split between proposal, midterm, and final report/presentations.
+
+
+Reading assignments (20%):
+* There are a total of 4 reading assignments planned this semester. Each reading assignment will last a week and consists of 2 main parts:
+   * Assigned reading paper: Reading the assigned papers and summarizing the main take-away points of each paper.
+   * Research question probes: Answer several question probes related to the reading papers and your datasets or research.
+
+
+Homeworks (40%):
+* There will be 4 homework assignments, involving implementing, adapting, and applying key algorithms covered in class to the students’ chosen research domains.
+
+
+Course project (40%):
+* The course project will be done in groups of 2-4 students and is meant to introduce students to the research process. The project will span the entire semester with several key checkpoints, for which intermediate grades will be assigned as follows:
+   * Proposal report and presentation 10%
+   * Midterm report and presentation 10%
+   * Final report and presentation 20%
+* Project preference form
+   * This form is designed to help students with the team-matching process, for the course research project.
+* Proposal and literature review
+   * The proposal report should present the initial research ideas for the course project. Students are expected to explore a new data modality or task understudied in AI and new research ideas to process this new data modality or task. The proposal should summarize these new data modalities, new research ideas, and a robust evaluation plan.
+   * An important part of this proposal report will be a detailed literature review, including recent papers and models related to the data modality, research tasks, and new research ideas.
+* Midterm report
+   * The goal of the midterm report is to summarize the current research progress. Students should have already started exploring new research ideas. The midterm report should summarize these initial results and discuss them. This report should also present the updated list of research ideas that the team plans to explore.
+* Final report
+   * The final report should follow a similar structure to a research paper. It should motivate the problem and research ideas. It should present the novel approaches, describe the experiment, and discuss the results.
+* Final presentation
+   * The final project assignment will also include an oral presentation that may be open to the general MIT population.
+
+
+Notes about absences and late submissions
+In general, submitting assignments on time lets the instructional team provide feedback in a more timely and efficient manner. Timely submissions are particularly important for assignments with discussions and peer feedback. Also, it is expected that students will attend the lectures in person (or via Zoom when the course is required to be performed remotely). Live attendance is an essential component of this course, given that it is centered around live discussions. Given the live nature of the discussions, course sessions will not be recorded.
+
+
+We provide 2 late days for exceptional circumstances. There are 2 late days per student across all homework and reading assignments, each late day grants a 24-hour extension, max 1 per assignment. We also provide 2 late days per team for project proposal, midterm, or final report submissions, which can be used together for one submission deadline (no extensions for project presentations).
+
+
+Medical-related absences If for a medical reason, you require some extra time for an assignment or may not be able to attend the lecture in person, please contact instructors as soon as possible and we will help define a new plan that aligns with your constraints. 
+* Absence requests
+   * Students should contact instructors as promptly as possible regarding course absences, with a preference before the course lecture itself.
+   * If you plan to be absent for more than one class, please contact the instructors as promptly as possible.
+
+
+Academic integrity
+From the Office of Student Citizenship, W20-507, (617) 258-8423​
+
+
+In this course, I will hold you to the high standard of academic integrity expected of all students at the Institute. I do this for two reasons. First, it is essential to the learning process that you are the one doing the work. I have structured the assignments in this course to enable you to gain a mastery of the course material. Failing to do the work yourself will result in a lesser understanding of the content, and therefore a less meaningful education for you. Second, it is important that there be a level playing field for all students in this course and at the Institute so that the rigor and integrity of the Institute’s educational program are maintained.
+
+
+Violating the Academic Integrity policy in any way (e.g., plagiarism, unauthorized collaboration, cheating, etc.) will result in official Institute sanction. Possible sanctions include receiving a failing grade on the assignment or exam, being assigned a failing grade in the course, having a formal notation of disciplinary action placed on your MIT record, suspension from the Institute, and expulsion from the Institute for very serious cases.
+
+
+Please review the Academic Integrity policy and related resources (e.g., working under pressure; how to paraphrase, summarize, and quote; etc.) and contact me if you have any questions about appropriate citation methods, the degree of collaboration that is permitted, or anything else related to the Academic Integrity of this course.
+
+
+Special accommodations for students with disabilities
+MIT is committed to the principle of equal access. Students who need disability accommodations are encouraged to speak with Disability and Access Services (DAS), prior to or early in the semester so that accommodation requests can be evaluated and addressed in a timely fashion. If you have a disability and are not planning to use accommodations, it is still recommended that you meet with DAS staff to familiarize yourself with their services and resources. Please visit the DAS website for contact information.
+
+
+Once you have been approved for accommodations, inform us so we can assist with implementation.
+Website: https://studentlife.mit.edu/das
+
+
+Student mental health
+Undergraduate Students: Personal and medical issues can make it hard to focus on academics. If you find that something is getting in the way of your ability to attend class, complete work, or take an exam, you should contact a dean in Student Support Services (S3). The deans will provide you with support and help you work with us to determine next steps. We ask that you go to S3 so we know you have had a chance to talk through your situation with someone and to connect with any resources you might need. You can reach out to a dean you have worked with in the past, join their virtual help queue (https://sicp-s3.mit.edu/queue), or e-mail s3-support@mit.edu.
+*If you would like to consult with S3 about any aspects of your syllabus, you can reach out to a dean you know or e-mail s3-support@mit.edu to request a consultation.
+Website: https://studentlife.mit.edu/s3
+
+
+Graduate Students: As a graduate student, a variety of issues may impact your academic career, including faculty/student relationships, funding, and interpersonal concerns. In the Office of Graduate Education (OGE), GradSupport provides consultation, coaching, and advocacy to graduate students on matters related to academic and life challenges. If you are dealing with an issue that is impacting your ability to attend class, complete work, or take an exam, you may contact GradSupport by email at gradsupport@mit.edu or via phone at (617) 253-4860.
+*If you would like to consult with GradSupport about any aspects of your syllabus, please email gradsupport@mit.edu to request a consultation.
+Website: https://oge.mit.edu/development/gradsupport/
+
+
+Diversity
+MIT values an inclusive environment. I hope to foster a sense of community in this classroom and consider this classroom to be a place where you will be treated with respect. I welcome individuals of all backgrounds, beliefs, ethnicities, national origins, gender identities, sexual orientations, religious and political affiliations – and other visible and nonvisible differences. All members of this class are expected to contribute to a respectful, welcoming, and inclusive environment for every other member of the class. If this standard is not being upheld, please feel free to speak with me.

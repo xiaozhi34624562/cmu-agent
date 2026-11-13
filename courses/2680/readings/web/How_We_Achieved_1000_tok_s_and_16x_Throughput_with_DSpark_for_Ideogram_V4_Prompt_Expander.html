@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>How We Achieved ~1000 tok/s and 16x Throughput with DSpark for Ideogram V4 Prompt Expander</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="https://blog.fal.ai/assets/built/screen.css?v=oST-9zyDb55UWlbY" />
+
+    <link rel="icon" href="https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w256h256/2024/09/Fal-Branding-2024--1-.png" type="image/png">
+    <link rel="canonical" href="https://blog.fal.ai/how-we-achieved-1000-tok-s-and-16x-throughput-with-dspark-for-ideogram-v4-prompt-expander/">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="fal.ai Blog | Generative AI Model Releases &amp; Tutorials">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How We Achieved ~1000 tok/s and 16x Throughput with DSpark for Ideogram V4 Prompt Expander">
+    <meta property="og:description" content="At @fal , we&#x27;ve achieved 16 times higher throughput on Qwen3.6 for a use-case that required high interactivity per user using DSpark on SGLang. But why did we need it? And how did we achieve it?
+
+
+Intro
+
+Text-to-image models like Ideogram V4 can generate stunning, highly">
+    <meta property="og:url" content="https://blog.fal.ai/how-we-achieved-1000-tok-s-and-16x-throughput-with-dspark-for-ideogram-v4-prompt-expander/">
+    <meta property="og:image" content="https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/2026/07/ideogram-1.png">
+    <meta property="article:published_time" content="2026-07-08T15:14:35.000Z">
+    <meta property="article:modified_time" content="2026-07-08T15:14:35.000Z">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How We Achieved ~1000 tok/s and 16x Throughput with DSpark for Ideogram V4 Prompt Expander">
+    <meta name="twitter:description" content="At @fal , we&#x27;ve achieved 16 times higher throughput on Qwen3.6 for a use-case that required high interactivity per user using DSpark on SGLang. But why did we need it? And how did we achieve it?
+
+
+Intro
+
+Text-to-image models like Ideogram V4 can generate stunning, highly">
+    <meta name="twitter:url" content="https://blog.fal.ai/how-we-achieved-1000-tok-s-and-16x-throughput-with-dspark-for-ideogram-v4-prompt-expander/">
+    <meta name="twitter:image" content="https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/2026/07/ideogram-1.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Dogac Eldenk">
+    <meta name="twitter:site" content="@fal_ai_data">
+    <meta property="og:image:width" content="1080">
+    <meta property="og:image:height" content="1080">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "fal.ai Blog | Generative AI Model Releases & Tutorials",
+        "url": "https://blog.fal.ai/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/2024/09/fal_logo.svg",
+            "width": 120,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Dogac Eldenk",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w1200/2026/07/Gemini_Generated_Image_asv64aasv64aasv6.png",
+            "width": 1200,
+            "height": 1200
+        },
+        "url": "https://blog.fal.ai/author/dogac/",
+        "sameAs": []
+    },
+    "contributor": [
+        {
+            "@type": "Person",
+            "name": "Team fal",
+            "image": {
+                "@type": "ImageObject",
+                "url": "https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/2024/09/Cloock-Frame.png"
+            },
+            "url": "https://blog.fal.ai/author/features-and-labels/",
+            "sameAs": [
+                "https://fal.ai"
+            ]
+        }
+    ],
+    "headline": "How We Achieved ~1000 tok/s and 16x Throughput with DSpark for Ideogram V4 Prompt Expander",
+    "url": "https://blog.fal.ai/how-we-achieved-1000-tok-s-and-16x-throughput-with-dspark-for-ideogram-v4-prompt-expander/",
+    "datePublished": "2026-07-08T15:14:35.000Z",
+    "dateModified": "2026-07-08T15:14:35.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/2026/07/ideogram-1.png",
+        "width": 1080,
+        "height": 1080
+    },
+    "description": "At @fal , we've achieved 16 times higher throughput on Qwen3.6 for a use-case that required high interactivity per user using DSpark on SGLang. But why did we need it? And how did we achieve it?\n\n\nIntro\n\nText-to-image models like Ideogram V4 can generate stunning, highly detailed images. However they're only as good as the prompt you give them, and most users don't write detailed prompts. If a given prompt is not detailed enough, it might not look as impressive to the user. That's why a feature ",
+    "mainEntityOfPage": "https://blog.fal.ai/how-we-achieved-1000-tok-s-and-16x-throughput-with-dspark-for-ideogram-v4-prompt-expander/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 6.77">
+    <link rel="alternate" type="application/rss+xml" title="fal.ai Blog | Generative AI Model Releases &amp; Tutorials" href="https://blog.fal.ai/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.9/umd/sodo-search.min.js" data-key="144c7b7afcdbef7c73dafcd569" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.9/umd/main.css" data-sodo-search="https://features-labels-blog.ghost.io/" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="https://blog.fal.ai/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=mLGdiz8Ij-Hk3ydN"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=WwnU9jw5ancNC8Gc">
+    <script defer src="/public/ghost-stats.min.js?v=GjA0fyDfVPF71jEZ" data-stringify-payload="false" data-datasource="analytics_events" data-storage="localStorage" data-host="https://blog.fal.ai/.ghost/analytics/api/v1/page_hit"  tb_site_uuid="0e15ee8a-bd95-4b71-9258-950f77f4d196" tb_post_uuid="d2d38714-c707-44bf-81ba-be4d4bc028dc" tb_post_type="post" tb_member_uuid="undefined" tb_member_status="undefined" tb_gift_link=""></script><style>:root {--ghost-accent-color:#000000;}</style>
+    <!-- link tag -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css" />
+
+<!-- Make header readable -->
+<style>
+@media only screen and (min-width: 900px) {
+	.home-template .gh-head.has-cover {
+        background-color: rgba(0,0,0,.35) !important;
+	}
+}
+</style>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-20K8N62YW9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-20K8N62YW9');
+</script>
+
+<script>
+!function(t){var k="ko",i=(window.globalKoalaKey=window.globalKoalaKey||k);if(window[i])return;var ko=(window[i]=[]);["identify","track","removeListeners","on","off","qualify","ready"].forEach(function(t){ko[t]=function(){var n=[].slice.call(arguments);return n.unshift(t),ko.push(n),ko}});var n=document.createElement("script");n.async=!0,n.setAttribute("src","https://cdn.getkoala.com/v1/pk_f63728be455c83e0e4bf62a608599ea7eb65/sdk.js"),(document.body || document.head).appendChild(n)}();
+</script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- PostHog Analytics -->
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init Fe Us zs Oe js Ns capture Ze calculateEventProperties Hs register register_once register_for_session unregister unregister_for_session Js getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Gs qs createPersonProfile Vs As Ks opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Bs debug L Ws getPageViewId captureTraceFeedback captureTraceMetric".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_BkrygUwvQjwRHnwDjFQtoY77ts2fse3HVTHQUJk5BNO', {
+        api_host: 'https://us.i.posthog.com',
+        defaults: '2025-05-24',
+        person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+    })
+</script>
+<!-- End PostHog -->
+
+</head>
+<body class="post-template is-head-left-logo">
+<div class="viewport">
+
+    <header id="gh-head" class="gh-head outer is-header-hidden">
+        <div class="gh-head-inner inner">
+            <div class="gh-head-brand">
+                <a class="gh-head-logo" href="https://blog.fal.ai">
+                        <img src="https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/2024/09/fal_logo.svg" alt="fal.ai Blog | Generative AI Model Releases &amp; Tutorials">
+                </a>
+                <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                <button class="gh-burger"></button>
+            </div>
+
+            <nav class="gh-head-menu">
+                <ul class="nav">
+    <li class="nav-home"><a href="https://blog.fal.ai/">Home</a></li>
+    <li class="nav-docs"><a href="https://fal.ai/docs">Docs</a></li>
+    <li class="nav-discord"><a href="https://discord.com/invite/Fyc9PwrccF">Discord</a></li>
+</ul>
+
+            </nav>
+
+            <div class="gh-head-actions">
+                        <button class="gh-search gh-icon-btn" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="colorful-bar">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+    <div class="site-content">
+        
+
+
+
+<main id="site-main" class="site-main">
+<article class="article post ">
+
+    <header class="article-header gh-canvas">
+
+        <div class="article-tag post-card-tags">
+        </div>
+
+        <h1 class="article-title">How We Achieved ~1000 tok/s and 16x Throughput with DSpark for Ideogram V4 Prompt Expander</h1>
+
+
+        <div class="article-byline">
+        <section class="article-byline-content">
+
+            <ul class="author-list">
+                <li class="author-list-item">
+                    <a href="/author/dogac/" class="author-avatar">
+                        <img class="author-profile-image" src="https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w100/2026/07/Gemini_Generated_Image_asv64aasv64aasv6.png" alt="Dogac Eldenk" />
+                    </a>
+                </li>
+                <li class="author-list-item">
+                    <a href="/author/features-and-labels/" class="author-avatar">
+                        <img class="author-profile-image" src="https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w100/2024/09/Cloock-Frame.png" alt="Team fal" />
+                    </a>
+                </li>
+            </ul>
+
+            <div class="article-byline-meta">
+                <h4 class="author-name"><a href="/author/dogac/">Dogac Eldenk</a>, <a href="/author/features-and-labels/">Team fal</a></h4>
+                <div class="byline-meta-content">
+                    <time class="byline-meta-date" datetime="2026-07-08">Jul 8, 2026</time>
+                        <span class="byline-reading-time"><span class="bull">&bull;</span> 6 min read</span>
+                </div>
+            </div>
+
+        </section>
+        </div>
+
+            <figure class="article-image">
+                <img
+                    srcset="https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w300/2026/07/ideogram-1.png 300w,
+                            https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w600/2026/07/ideogram-1.png 600w,
+                            https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w1000/2026/07/ideogram-1.png 1000w,
+                            https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w2000/2026/07/ideogram-1.png 2000w"
+                    sizes="(min-width: 1400px) 1400px, 92vw"
+                    src="https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w2000/2026/07/ideogram-1.png"
+                    alt="How We Achieved ~1000 tok/s and 16x Throughput with DSpark for Ideogram V4 Prompt Expander"
+                />
+            </figure>
+
+    </header>
+
+    <section class="gh-content gh-canvas">
+        <p>At <a href="https://x.com/@fal?ref=blog.fal.ai" rel="noopener noreferrer nofollow">@fal</a> , we've achieved 16 times higher throughput on Qwen3.6 for a use-case that required high interactivity per user using DSpark on SGLang. But why did we need it? And how did we achieve it?</p><h2 id="intro">Intro</h2><p>Text-to-image models like Ideogram V4 can generate stunning, highly detailed images. However they're only as good as the prompt you give them, and most users don't write detailed prompts. If a given prompt is not detailed enough, it might not look as impressive to the user. That's why a feature called the <strong>prompt expander</strong> exists to enhance the user's prompt. The prompt expansion applies the LLM's world knowledge to the image model by describing the scene from the user's prompt in detail, with hints about the style and where everything is placed. This feature also makes the model very precise about where everything is placed, which lets users carefully edit any part of the scene, since the model can easily follow those instructions.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/2026/07/image.png" class="kg-image" alt="" loading="lazy" width="2000" height="648" srcset="https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w600/2026/07/image.png 600w, https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w1000/2026/07/image.png 1000w, https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w1600/2026/07/image.png 1600w, https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w2400/2026/07/image.png 2400w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">Generated image of "an airplane", the prompt gets more detailed left to right.</span></figcaption></figure><p>However, this prompt expansion stage is slow, especially compared to the time it takes for distilled models to generate images. The bottleneck might quickly become the prompt expansion rather than the image generation itself. We generate around 600 tokens to expand the prompt and describe the scene in detail. If you are using some API provider, <strong>it might take anywhere from 15 seconds up to a minute</strong>, whereas your image model only takes a couple of seconds to run.</p><h2 id="model-choice">Model Choice</h2><p>First of all, choosing a small model is not ideal; the prompt expansion stage is sensitive to the model's world knowledge. We have experimented with Qwen 3.5 4B model, and its output was significantly worse. On the other hand, a big model can create very good looking images; however, running it is more expensive, and getting high throughput is challenging. Unlike image models, a big model might require 4 or even 8 GPUs with significant VRAM to run.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/2026/07/image-1.png" class="kg-image" alt="" loading="lazy" width="2000" height="606" srcset="https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w600/2026/07/image-1.png 600w, https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w1000/2026/07/image-1.png 1000w, https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w1600/2026/07/image-1.png 1600w, https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w2400/2026/07/image-1.png 2400w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">Generated images from a prompt expanded by models of different sizes, model size shrinks left to right.</span></figcaption></figure><p>We identified a big model, Qwen 3.5 397B MoE, as our baseline. We compared it to 0.8B, 4B, 9B, and 27B dense variants and a 35B MoE variant. Despite the 35B model having only 3B active parameters, it outperformed them all, which we believe comes from its larger world knowledge.</p><p>One thing to note is that size is not linear with serving speed. <strong>LLM inference is heavily dominated by the memory bandwidth bottleneck</strong>. Serving a 0.8B model on a B200 doesn't guarantee 10x throughput over the 9B version. What we found is that these models are almost equally slow at low concurrency settings across all inference engines, which is where we aim to serve in order to give the most interactivity per user. This led us to the decision to use the 35B MoE model (FP8), which we found to be the sweet spot for inference speed without sacrificing significant image performance.</p><p>Images generated by the smaller model had some issues; it did not carry the same artistic style the bigger model was able to achieve. It was also making formatting errors with the JSON output of the expanded prompt, despite the few-shot examples. So next, we distilled our 397B model's output style and format onto our 35B version. We tried online distillation, offline distillation, and PEFT. Distillation took a lot longer and required more data; however, we found that all of them resulted in a similar model. We stuck to PEFT since it was much easier and faster to fine-tune. We froze the MoE weights during fine-tuning, as we found that training them creates more instability: the model sometimes tries to do more ambitious things beyond its capability, breaking the coherency in the image.</p><h2 id="how-to-serve-faster">How to Serve Faster?</h2><p>Since we now have our 35B model, the question is: how do we serve it efficiently? We can't rely on other providers since we have fine-tuned it. Also, prompt expansion requires high interactivity, so we aimed to get maximum speed at low concurrency. We tested both SGLang and vLLM, and we were only able to achieve 328 tok/s at concurrency=1 with SGLang's FlashInfer backend and FlashInfer + TRTLLM MoE kernels. This allowed us to get sub-2-second prompt expansion. However, if we increased concurrency to 8, our throughput dropped to &lt;200 tok/s, and at 16 and 32 we were getting near <strong>~100 tok/s, which is not fast enough for a highly interactive use case</strong>.</p><p>The Qwen 3.6 family comes with an <strong>MTP</strong> head, so the first natural thing to do was to enable this MTP head. Unfortunately, the PEFT framework did not fine-tune MTP heads, so our accuracy was slightly degraded; however, acceptance length was pretty close to the base model. We were able to increase our throughput to 500 tok/s by enabling speculative decoding using the MTP head with around ~2.5 acceptance length.</p><p>This wasn't enough, so we looked for other solutions such as <strong>DFlash</strong>, a diffusion-based speculative decoding model that predicts each token in parallel. It can get slightly better acceptance than MTP, and drafting overhead is lower for low batch size serving. However, we were only able to reach 468 tok/s with ~2.4 acceptance length using z-lab's checkpoints. This checkpoint was trained for the base model, so we expected lower than ideal acceptance, similar to the MTP head. The next natural step was to train our own speculative decoding model, specifically for this task and for the fine-tuned model.</p><p>We retrained a DFlash model using <a href="https://github.com/lightseekorg/TorchSpec?ref=blog.fal.ai" rel="noopener noreferrer nofollow"><strong>TorchSpec</strong></a>, a framework for training speculative decoding models with inference/training disaggregation,<strong> </strong>on our 250K prompt expansion samples, regenerated by our distilled model. This helped us match the output distribution better. However, the retrained model fell short: 250K samples were not diverse enough to give very high acceptance, and the training took a long time. So instead, we decided to warm-start the training by pre-loading the weights and just kept training on top of them using our 250K samples. This worked out great: we were able to get ~3.9 acceptance length @ block size 8 and <strong>700 tok/s throughput</strong>.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/2026/07/image-2.png" class="kg-image" alt="" loading="lazy" width="1274" height="1206" srcset="https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w600/2026/07/image-2.png 600w, https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w1000/2026/07/image-2.png 1000w, https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/2026/07/image-2.png 1274w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">DSpark architecture, source: DSpark paper by the DeepSeek team.</span></figcaption></figure><p>While we were working on speeding up the prompt expander, <strong>DSpark</strong> was released by the DeepSeek team. It combines a diffusion-based block predictor (DFlash) with Markovian heads that raise the conditional acceptance rates of later positions. It is almost like a small MTP-like autoregressive refining part attached to the DFlash drafter to improve the acceptance rate. The trainer for DSpark was released, but it required all hidden states to be stored on disk, something we did not want to deal with. Storing <strong>~38TB of hidden states</strong> wasn't easy, especially if the disk is networked, where it might quickly become the bottleneck. So we implemented DSpark in TorchSpec.</p><p>Since DSpark uses DFlash as the backbone, we warm-started our training from our own DFlash checkpoint by loading its weights and skipping the Markov heads. This allowed the model to quickly recover the accuracy of the DFlash backbone and compound more acceptance on top of it. It also let us train a DSpark model without going through a long training loop.</p><p>The next challenge was serving the DSpark model efficiently. First, we patched both vLLM and SGLang to support DSpark, since neither did yet given how recent it was. We eventually found that SGLang was faster for low batch serving, so we settled on it. We also wanted to know whether we could reach 1000 tok/s, so we tried Tensor Parallelism, but it caused a slowdown: the Markovian heads were doing collective operations because they were sharded across the ranks. We fixed it by replicating the weights instead, which finally pushed our serving speed past 1000 tok/s at TP=4. That said, we decided to keep TP=1 at 830 tok/s with 4.6 acceptance length in production, since TP=4 was heavily underutilizing the GPUs and wasn't cost-effective.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/2026/07/image-3.png" class="kg-image" alt="" loading="lazy" width="2000" height="1259" srcset="https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w600/2026/07/image-3.png 600w, https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w1000/2026/07/image-3.png 1000w, https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w1600/2026/07/image-3.png 1600w, https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w2400/2026/07/image-3.png 2400w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">Final inference speed of Qwen3.6 with and without DSpark. We were able to get 16x more throughput at the intended minimum per user interactivity, expand prompts under 2 seconds.</span></figcaption></figure><p>Finally, we ran experiments comparing our final serving config to where we started. First, at single-user serving for maximum interactivity, <strong>we got 2.6x throughput with under 1 second prompt expansion</strong>. But for a realistic serving setting, we targeted 300 tok/s per user, and under that constraint, on the same hardware, <strong>we were able to increase our total throughput by 16 times </strong>on a single B200 while keeping prompt expansion under 2 seconds.</p>
+    </section>
+
+
+</article>
+</main>
+
+
+
+
+            <aside class="read-more-wrap outer">
+                <div class="read-more inner">
+                        
+<article class="post-card post keep-ratio">
+
+    <a class="post-card-image-link" href="/eagle-4-technical-deepdive/">
+
+        <img class="post-card-image"
+            srcset="https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w300/2026/10/image--8--1.png 300w,
+                    https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w600/2026/10/image--8--1.png 600w,
+                    https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w1000/2026/10/image--8--1.png 1000w,
+                    https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w2000/2026/10/image--8--1.png 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w600/2026/10/image--8--1.png"
+            alt="EAGLE-4 Technical Deepdive"
+            loading="lazy"
+        />
+
+
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="/eagle-4-technical-deepdive/">
+            <header class="post-card-header">
+
+
+                <h2 class="post-card-title">
+                    EAGLE-4 Technical Deepdive
+                </h2>
+            </header>
+                <div class="post-card-excerpt">In collaboration with Fireworks and fal, we are releasing a technical analysis of EAGLE-4 alongside a public dataset for benchmarking speculative decoding on creative tasks.
+
+
+Why Speculative Decoding?
+
+LLMs generate text auto-regressively, predicting one token at a time. At small batch sizes, decoding relies on &quot;thin&quot;</div>
+        </a>
+
+        <footer class="post-card-meta">
+            <time class="post-card-meta-date" datetime="2026-10-20">Oct 20, 2026</time>
+                <span class="post-card-meta-length">8 min read</span>
+        </footer>
+
+    </div>
+
+</article>
+                        
+<article class="post-card post keep-ratio">
+
+    <a class="post-card-image-link" href="/h3-max-built-with-fal-inference-and-training/">
+
+        <img class="post-card-image"
+            srcset="https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w300/2026/09/Luma---Template-04---Happy-Hour---Brown.png 300w,
+                    https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w600/2026/09/Luma---Template-04---Happy-Hour---Brown.png 600w,
+                    https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w1000/2026/09/Luma---Template-04---Happy-Hour---Brown.png 1000w,
+                    https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w2000/2026/09/Luma---Template-04---Happy-Hour---Brown.png 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w600/2026/09/Luma---Template-04---Happy-Hour---Brown.png"
+            alt="H3 Max: Built with fal Inference and Training"
+            loading="lazy"
+        />
+
+
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="/h3-max-built-with-fal-inference-and-training/">
+            <header class="post-card-header">
+
+
+                <h2 class="post-card-title">
+                    H3 Max: Built with fal Inference and Training
+                </h2>
+            </header>
+                <div class="post-card-excerpt">H3 Max generates a 5-second video in under 3 seconds. In our human preference evaluations against twelve leading video models, it ranks first on quality, prompt understanding, and aesthetics. Independent benchmarks from Artificial Analysis and Design Arena rank it first as well. We’ve written about the model itself.</div>
+        </a>
+
+        <footer class="post-card-meta">
+            <time class="post-card-meta-date" datetime="2026-09-17">Sep 17, 2026</time>
+                <span class="post-card-meta-length">16 min read</span>
+        </footer>
+
+    </div>
+
+</article>
+                        
+<article class="post-card post keep-ratio">
+
+    <a class="post-card-image-link" href="/introducing-h3-max-by-fal/">
+
+        <img class="post-card-image"
+            srcset="https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w300/2026/08/fal-glitch-dust-1080x1080-1787861178159.png 300w,
+                    https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w600/2026/08/fal-glitch-dust-1080x1080-1787861178159.png 600w,
+                    https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w1000/2026/08/fal-glitch-dust-1080x1080-1787861178159.png 1000w,
+                    https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w2000/2026/08/fal-glitch-dust-1080x1080-1787861178159.png 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/size/w600/2026/08/fal-glitch-dust-1080x1080-1787861178159.png"
+            alt="Introducing H3 Max by fal"
+            loading="lazy"
+        />
+
+
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="/introducing-h3-max-by-fal/">
+            <header class="post-card-header">
+
+
+                <h2 class="post-card-title">
+                    Introducing H3 Max by fal
+                </h2>
+            </header>
+                <div class="post-card-excerpt">Announcing H3 Max, a post-trained version of MiniMax H3 developed by fal Research and optimized for maximum speed by fal&#39;s inference team.
+
+In our human preference evaluations, H3 Max ranks #1 across overall quality, prompt understanding, and aesthetics against leading video models. It does so while generating</div>
+        </a>
+
+        <footer class="post-card-meta">
+            <time class="post-card-meta-date" datetime="2026-08-27">Aug 27, 2026</time>
+                <span class="post-card-meta-length">5 min read</span>
+        </footer>
+
+    </div>
+
+</article>
+                </div>
+            </aside>
+
+
+
+    </div>
+
+    <footer class="site-footer outer">
+        <div class="inner">
+            <a class="gh-head-logo" href="https://blog.fal.ai">
+                        <img src="https://storage.ghost.io/c/0e/15/0e15ee8a-bd95-4b71-9258-950f77f4d196/content/images/2024/09/fal_logo.svg" alt="fal.ai Blog | Generative AI Model Releases &amp; Tutorials">
+                </a>
+            <nav class="site-footer-nav">
+                <ul class="nav">
+    <li class="nav-home"><a href="https://blog.fal.ai/">Home</a></li>
+    <li class="nav-docs"><a href="https://docs.fal.ai">Docs</a></li>
+    <li class="nav-discord"><a href="https://discord.com/invite/Fyc9PwrccF">Discord</a></li>
+    <li class="nav-dashboard"><a href="https://fal.ai#signup">Dashboard</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </footer>
+
+</div>
+
+
+<script
+    src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous">
+</script>
+<script src="https://blog.fal.ai/assets/built/casper.js?v=HTCbAI0XfTcOmI4E"></script>
+<script>
+$(document).ready(function () {
+    // Mobile Menu Trigger
+    $('.gh-burger').click(function () {
+        $('body').toggleClass('gh-head-open');
+    });
+    // FitVids - Makes video embeds responsive
+    $(".gh-content").fitVids();
+});
+</script>
+
+<!-- script tag -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-yaml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js"></script>
+<script>
+var node = document.createElement("a")
+node.innerHTML = 'Dashboard'
+node.classList = "gh-head-button gh-portal-close"
+node.style = "margin-left: 20px"
+node.href = "https://fal.ai"
+document.getElementsByClassName("gh-head-actions")[0].appendChild(node)
+</script>
+
+</body>
+</html>

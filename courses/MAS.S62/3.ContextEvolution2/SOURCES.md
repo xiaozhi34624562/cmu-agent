@@ -2,8 +2,8 @@
 
 - Date: 2026-09-23
 - Source: https://mit-mi.github.io/how2ai-course/fall2026/schedule/
-- 资料归档日期：2026-10-26；最新日历见[完整课表](../COURSE_SCHEDULE.md)。
-- 编号采用官网 Week；原 PDF 内的 Lecture 编号和文件名保持原样。
+- 资料归档日期：2026-11-13；最新日历见[完整课表](../COURSE_SCHEDULE.md)。
+- 目录编号保持稳定；当前官方 Week、日期单独记录，原 PDF 内的 Lecture 编号和文件名保持原样。
 
 ## Topics（归档快照）
 
@@ -24,7 +24,7 @@
 
 ## Assigned readings（归档快照）
 
-- R01: [FunSearch: Mathematical discoveries from program search with large language models](readings/Mathematical_discoveries_from_program_search_with_large_language_models.html)
+- R01: [Mathematical discoveries from program search with large language models](readings/Mathematical_discoveries_from_program_search_with_large_language_models.html)
   - Source: https://www.nature.com/articles/s41586-023-06924-6
 - R02: [Large Language Models as Optimizers](readings/Large_Language_Models_as_Optimizers.pdf)
   - Source: https://arxiv.org/abs/2309.03409

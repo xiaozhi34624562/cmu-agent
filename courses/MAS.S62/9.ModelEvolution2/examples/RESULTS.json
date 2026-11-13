@@ -1,0 +1,161 @@
+{
+  "scope": "Deterministic CPU arithmetic and hand-written function checks; no LLM training or paper reproduction.",
+  "python": "3.11.10",
+  "script_sha256": "3046afc98ce7b5da6c2f523fd63521dcaa0e1cc0c5cfe9222c12301cd7774110",
+  "function_checks": [
+    {
+      "n": 0,
+      "expected": 0,
+      "buggy": 0,
+      "correct": 0
+    },
+    {
+      "n": 1,
+      "expected": 0,
+      "buggy": 0,
+      "correct": 0
+    },
+    {
+      "n": 2,
+      "expected": 2,
+      "buggy": 0,
+      "correct": 2
+    },
+    {
+      "n": 4,
+      "expected": 6,
+      "buggy": 2,
+      "correct": 6
+    },
+    {
+      "n": 5,
+      "expected": 6,
+      "buggy": 6,
+      "correct": 6
+    }
+  ],
+  "group_rewards": [
+    1,
+    0,
+    0,
+    1
+  ],
+  "population_std_advantages": [
+    0.999998000004,
+    -0.999998000004,
+    -0.999998000004,
+    0.999998000004
+  ],
+  "sample_std_advantages": [
+    0.8660239037870368,
+    -0.8660239037870368,
+    -0.8660239037870368,
+    0.8660239037870368
+  ],
+  "all_equal_advantages": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "ppo_clipping": [
+    {
+      "ratio": 1.5,
+      "advantage": 1,
+      "surrogate": 1.2
+    },
+    {
+      "ratio": 0.5,
+      "advantage": 1,
+      "surrogate": 0.5
+    },
+    {
+      "ratio": 1.5,
+      "advantage": -1,
+      "surrogate": -1.5
+    },
+    {
+      "ratio": 0.5,
+      "advantage": -1,
+      "surrogate": -0.8
+    }
+  ],
+  "fixed_prefix_reverse_kl": {
+    "student": [
+      0.5,
+      0.5
+    ],
+    "teacher": [
+      0.8,
+      0.2
+    ],
+    "token_advantages": [
+      0.47000362924573563,
+      -0.916290731874155
+    ],
+    "before": 0.22314355131420976,
+    "gradient": [
+      -0.34657359027997264,
+      0.34657359027997264
+    ],
+    "finite_difference_gradient": [
+      -0.3465735902735689,
+      0.3465735902735689
+    ],
+    "max_error": 6.403766406037903e-12,
+    "after_one_gradient_step": 0.19973071990859584,
+    "student_after": [
+      0.5173217448321853,
+      0.48267825516781476
+    ]
+  },
+  "batch_accounting": {
+    "responses_per_rollout_batch": 5120,
+    "optimizer_steps_per_rollout_batch": 4,
+    "responses_per_optimizer_step": 1280,
+    "responses_per_dp_worker": 160,
+    "accumulations_per_optimizer_step": 40
+  },
+  "illustrative_memory_decimal_GB": {
+    "weights_8_2B_at_2_bytes": 16.4,
+    "training_states_8_2B_at_16_bytes": 131.2,
+    "ideal_training_states_divided_by_8": 16.4,
+    "kv_bytes_per_token": 147456,
+    "kv_100_sequences_of_4096_tokens": 60.3979776
+  },
+  "proposer_reward_shapes": [
+    {
+      "p": 0.0,
+      "azr": 0,
+      "r_zero_before_penalty": 0.0
+    },
+    {
+      "p": 0.125,
+      "azr": 0.875,
+      "r_zero_before_penalty": 0.25
+    },
+    {
+      "p": 0.5,
+      "azr": 0.5,
+      "r_zero_before_penalty": 1.0
+    },
+    {
+      "p": 1.0,
+      "azr": 0.0,
+      "r_zero_before_penalty": 0.0
+    }
+  ],
+  "wrong_majority_example": {
+    "task": "sum_even(2)",
+    "candidate_answers": [
+      4,
+      4,
+      4,
+      4,
+      2
+    ],
+    "majority_answer": 4,
+    "consistency": 0.8,
+    "verified_answer": 2
+  }
+}

@@ -75,13 +75,26 @@ def anchors(text: str) -> set[str]:
     return result
 
 
-def verify(course: str) -> dict:
+def verify(course: str, allow_deferred_notes: bool = False) -> dict:
     folder = ROOT / "courses" / course
     review_path = folder / "REVIEW.json"
     errors = []
     if not review_path.exists():
         return {"course": course, "errors": ["Missing REVIEW.json"]}
     review = json.loads(review_path.read_text())
+    deferred = {}
+    for item in review.get("deferred_notes", []):
+        lesson = item.get("lesson", "")
+        if (not re.fullmatch(r"[1-9]\d*\.[^/\\]+", lesson)
+                or item.get("status") != "deferred_by_user"
+                or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", item.get("requested_at", ""))
+                or not item.get("reason", "").strip()):
+            errors.append(f"Invalid explicit notes deferral: {lesson}")
+            continue
+        if lesson in deferred:
+            errors.append(f"Duplicate notes deferral: {lesson}")
+        deferred[lesson] = item
+    deferred_guides = []
     docs = review["documents"]
     indexed = set()
     checked_links = 0
@@ -95,7 +108,13 @@ def verify(course: str) -> dict:
         if entry.get("final_sha256") != sha256(path):
             errors.append(f"Review hash stale: {entry['note']}")
         if entry.get("status") != "passed":
-            errors.append(f"Review not passed: {entry['note']}")
+            explicitly_deferred = (allow_deferred_notes and path.parent.name in deferred
+                                   and entry.get("status") == "review_required")
+            if explicitly_deferred:
+                deferred_guides.append({**deferred[path.parent.name], "note": entry["note"],
+                                        "content_review": "pending"})
+            else:
+                errors.append(f"Review not passed: {entry['note']}")
         try:
             text = prose(path.read_text())
         except ValueError as exc:
@@ -138,7 +157,10 @@ def verify(course: str) -> dict:
         if list(lesson.glob("*.pdf")) or (course == "2680" and lesson.name.startswith("9.")):
             published.append(lesson.name)
             if not any(p.parent == lesson.resolve() for p in indexed):
-                errors.append(f"Published lesson without reviewed guide: {lesson.name}")
+                if allow_deferred_notes and lesson.name in deferred:
+                    deferred_guides.append({**deferred[lesson.name], "content_review": "pending"})
+                else:
+                    errors.append(f"Published lesson without reviewed guide: {lesson.name}")
     supplemental = 0
     for lesson in lessons:
         refs = lesson / "REFERENCES.json"
@@ -162,15 +184,20 @@ def verify(course: str) -> dict:
             "checked_local_links": checked_links, "explicit_pdf_page_links_sources": len(pdf_counts),
             "supplementary_sources": supplemental, "original_source_checksums": original,
             "scope": "Offline structure and integrity; not semantic proof or model benchmark replication",
+            "allow_deferred_notes": allow_deferred_notes,
+            "deferred_guides": deferred_guides,
             "errors": errors}
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--course", choices=["11-768", "2680"])
+    parser.add_argument("--allow-deferred-notes", action="store_true",
+                        help="Allow only explicitly recorded user deferrals; content review remains pending")
     parser.add_argument("--output", type=Path, help="Optional JSON output path; default is stdout only")
     args = parser.parse_args()
-    results = [verify(course) for course in ([args.course] if args.course else ["11-768", "2680"])]
+    results = [verify(course, args.allow_deferred_notes)
+               for course in ([args.course] if args.course else ["11-768", "2680"])]
     if args.output:
         args.output.write_text(json.dumps(results, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps(results, ensure_ascii=False, indent=2))

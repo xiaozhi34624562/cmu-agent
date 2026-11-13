@@ -1,0 +1,406 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quickstart: PPO training on GSM8K dataset &mdash; verl  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=27552b18" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/js/runllm-widget.js?v=53011e60"></script>
+      <script src="../_static/js/resizable-sidebar.js?v=5610fd81"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Multinode Training" href="multinode.html" />
+    <link rel="prev" title="Installation" href="install.html" /> 
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="verl" /><meta name="readthedocs-version-slug" content="latest" /><meta name="readthedocs-resolver-filename" content="/start/quickstart.html" /><meta name="readthedocs-http-status" content="200" /></head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            verl
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quickstart: PPO training on GSM8K dataset</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dataset-introduction">Dataset Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-1-prepare-the-dataset">Step 1: Prepare the dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-2-download-a-model-for-post-training">Step 2: Download a model for post-training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-3-perform-ppo-training-with-the-instruct-model">Step 3: Perform PPO training with the instruct model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multinode.html">Multinode Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ray_debug_tutorial.html">Ray Debug Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="more_resources.html">More Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agentic_rl.html">Agentic RL Training</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extend_guide.html">How to Extend verl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hybrid_flow.html">HybridFlow Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../single_controller.html">The Design of <code class="docutils literal notranslate"><span class="pre">verl.single_controller</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data Preparation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/prepare_data.html">Prepare Data for Post-Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../preparation/reward_function.html">Implement Reward Function for Dataset</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configurations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/config.html">Config Explanation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PPO Example</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/ppo_code_architecture.html">PPO Example Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/gsm8k_example.html">GSM8K Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/megatron_fsdp_example.html">Megatron-FSDP Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/multi_modal_example.html">Multi-Modal Example Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/skypilot_examples.html">SkyPilot Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Algorithms</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../algo/ppo.html">Proximal Policy Optimization (PPO)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algo/grpo.html">Group Relative Policy Optimization (GRPO)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algo/dapo.html">Recipe: Decoupled Clip and Dynamic Sampling Policy Optimization (DAPO)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algo/spin.html">Recipe: Self-Play Fine-Tuning (SPIN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algo/sppo.html">Recipe: Self-Play Preference Optimization (SPPO)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algo/entropy.html">Recipe: Entropy Mechanism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algo/opo.html">On-Policy RL with Optimal Reward Baseline (OPO)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algo/baseline.html">Algorithm Baselines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algo/gpg.html">GPG: Group Policy Gradient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algo/rollout_corr.html">Rollout Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algo/rollout_corr_math.html">Mathematical Formulations of Rollout Correction Methods in <code class="docutils literal notranslate"><span class="pre">verl</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algo/otb.html">Optimal Token Baseline (OTB)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algo/dppo.html">Divergence Proximal Policy Optimization (DPPO)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algo/opd.html">On-Policy Distillation (OPD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algo/dro.html">Direct Reward Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PPO Trainer and Workers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../workers/ray_trainer.html">PPO Ray Trainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workers/model_engine.html">Model Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workers/engine_workers.html">Engine Workers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workers/automodel_workers.html">Automodel Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workers/torchtitan_workers.html">TorchTitan Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workers/sglang_worker.html">SGLang Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workers/trtllm_worker.html">TensorRT-LLM Backend</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Performance Tuning Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../perf/dpsk.html">Training DeepSeek 671b</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/dynamic_context_parallel.html">Dynamic Context Parallelism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../perf/best_practices.html">Verl LLM Best Practices (DAPO + Qwen3-235B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../perf/perf_tuning.html">Performance Tuning Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../perf/rollout_kv_offload.html">Rollout KV Cache Offload via Mooncake-Store</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../README_vllm0.8.html">Upgrading to vLLM &gt;= 0.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../perf/device_tuning.html">Hardware Resource Needed for RL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../perf/verl_profiler_system.html">verl Profiler System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../perf/nsight_profiling.html">NVIDIA Nsight Systems profiling in verl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../perf/torch_profiling.html">PyTorch Profiling in verl</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Adding new models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../advance/fsdp_extension.html">Add models with the FSDP backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/megatron_extension.html">Add models with the Megatron-LM backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/deepseek_v4_integration.html">Adding DeepSeek V4 support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/megatron_lite_backend.html">Experimental Megatron Agent Compose preview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Async Training</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../advance/one_step_off.html">Recipe: One Step Off Policy Async Trainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/delta_weight_sync.html">Delta Weight Sync</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/v1_async_trainer.html">V1 Async Trainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/fully_async.html">Recipe: Fully Async Policy Trainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/async-on-policy-distill.html">Recipe: Async On-Policy Knowledge Distillation Trainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/dynamic_schedule.html">Dynamic Resource Scheduling for Fully-Async Training</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Low Precision</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../low_precision/fp8.html">FP8 RL in verl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../low_precision/mxfp8.html">MXFP8 RL on Blackwell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../low_precision/mxfp4_qat.html">MXFP4 MoE QAT on Blackwell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../low_precision/nvfp4.html">NVFP4 RL on Blackwell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../low_precision/qat.html">Low-Precision Rollout and Quantization-Aware Training</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Features</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../advance/checkpoint.html">Using Checkpoints to Support Fault Tolerance Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/rope.html">RoPE Scaling override</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/attention_implementation.html">Attention Implementation Override</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/ppo_lora.html">RL(HF) algorithms with LoRA Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sglang_multiturn/multiturn.html">Multi-turn Rollout Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/placement.html">Ray API Design Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/dpo_extension.html">Extend to other RL(HF) algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/sandbox_fusion_example.html">Sandbox Fusion Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/rollout_trace.html">Trace Function Usage Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/rl_insight.html">Use RL-Insight to Monitor Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/skip_manager.html">SkipManager: Skip everything in the RL pipeline.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/agent_loop.html">Agent Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/reward_loop.html">Reward Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/transfer_queue.html">TransferQueue Data System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/grafana_prometheus.html">Use Prometheus and Grafana to Monitor Rollout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/mtp.html">Guide to Using MTP in SFT/RL Training and Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/determinism.html">Full Determinism for Reproducible RL Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advance/fsdp_turbo_backend.html">FSDP-Turbo backend</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/multi_chip_support.html">Multi-Chip Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amd_tutorial/index.html">AMD (ROCm) Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ascend_tutorial/index.html">Ascend (NPU) Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/data.html">Data interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/single_controller.html">Single Controller interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/trainer.html">Trainer Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/utils.html">Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Blog</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../blog/v0.7.html">verl 0.7 release blog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FAQ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../faq/faq.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/editing-agent-instructions.html">Editing Agent Instructions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sglang_multiturn/sandbox_fusion.html">Sandbox Fusion Tool Integration</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">verl</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Quickstart: PPO training on GSM8K dataset</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/start/quickstart.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="quickstart-ppo-training-on-gsm8k-dataset">
+<span id="quickstart"></span><h1>Quickstart: PPO training on GSM8K dataset<a class="headerlink" href="#quickstart-ppo-training-on-gsm8k-dataset" title="Link to this heading"></a></h1>
+<p>Post-train a LLM using GSM8K dataset.</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>In this example, we train an LLM to tackle the <a class="reference external" href="hf_dataset_gsm8k">GSM8k</a> task with function-based rewards. <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<p>Prerequisite:</p>
+<ul class="simple">
+<li><p>the latest version of <code class="docutils literal notranslate"><span class="pre">verl</span></code> and its dependencies installed following the installation guide. Using the docker image is recommended.</p></li>
+<li><p>a GPU with at least 24 GB HBM</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">python3</span></code> commands below assume an interpreter that already provides
+verl — one of the docker images, or an activated <code class="docutils literal notranslate"><span class="pre">.venv</span></code>. With the uv
+workflow there is no install step: run them from the repo root behind a
+<code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span></code> prefix, which builds <code class="docutils literal notranslate"><span class="pre">.venv</span></code> from the committed <code class="docutils literal notranslate"><span class="pre">uv.lock</span></code> on
+first use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>UV_RUN="uv run --frozen --all-packages --extra vllm --extra fsdp"
+$UV_RUN python3 examples/data_preprocess/gsm8k.py --local_save_dir ~/data/gsm8k
+$UV_RUN python3 -m verl.trainer.main_ppo ... \
+    ray_kwargs.ray_init.runtime_env.py_executable="${UV_RUN}"
+</pre></div>
+</div>
+<p>That last override is what makes Ray start the TaskRunner and every worker
+actor in the same environment; the <code class="docutils literal notranslate"><span class="pre">examples/</span></code> scripts set it for you. See
+<a class="reference internal" href="install.html"><span class="doc">Installation</span></a> for the full uv workflow.</p>
+</div>
+</section>
+<section id="dataset-introduction">
+<h2>Dataset Introduction<a class="headerlink" href="#dataset-introduction" title="Link to this heading"></a></h2>
+<p>GSM8k is a math problem dataset. The prompt is an elementary school
+problem. The LLM model is asked to solve the math problem. Below is an example:</p>
+<p>Prompt</p>
+<blockquote>
+<div><p>Katy makes coffee using teaspoons of sugar and cups of water in the
+ratio of 7:13. If she used a total of 120 teaspoons of sugar and cups
+of water, calculate the number of teaspoonfuls of sugar she used.</p>
+</div></blockquote>
+<p>Solution</p>
+<blockquote>
+<div><p>The total ratio representing the ingredients she used to make the
+coffee is 7+13 = &lt;&lt;7+13=20&gt;&gt;20 Since the fraction representing the
+number of teaspoons she used is 7/20, she used 7/20<em>120 =
+&lt;&lt;7/20</em>120=42&gt;&gt;42 #### 42</p>
+</div></blockquote>
+</section>
+<section id="step-1-prepare-the-dataset">
+<h2>Step 1: Prepare the dataset<a class="headerlink" href="#step-1-prepare-the-dataset" title="Link to this heading"></a></h2>
+<p>We preprocess the dataset in parquet format so that (1) it contains necessary fields for computing RL rewards and (2) is faster to read.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>examples/data_preprocess/gsm8k.py<span class="w"> </span>--local_save_dir<span class="w"> </span>~/data/gsm8k
+</pre></div>
+</div>
+</section>
+<section id="step-2-download-a-model-for-post-training">
+<h2>Step 2: Download a model for post-training<a class="headerlink" href="#step-2-download-a-model-for-post-training" title="Link to this heading"></a></h2>
+<p>In this example, we start with the <code class="docutils literal notranslate"><span class="pre">Qwen2.5-0.5B-Instruct</span></code> model.</p>
+<p>If you want to perform SFT before RL, refer to the <a class="reference internal" href="../examples/gsm8k_example.html"><span class="doc">Complete GSM8K Example</span></a>, the <a class="reference external" href="https://github.com/verl-project/verl/blob/main/examples/sft/gsm8k">sft directory</a> and <a class="reference external" href="https://github.com/verl-project/verl/blob/main/verl/trainer/sft_trainer.py">SFT Trainer</a> for further details.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import transformers; transformers.pipeline('text-generation', model='Qwen/Qwen2.5-0.5B-Instruct')"</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-perform-ppo-training-with-the-instruct-model">
+<h2>Step 3: Perform PPO training with the instruct model<a class="headerlink" href="#step-3-perform-ppo-training-with-the-instruct-model" title="Link to this heading"></a></h2>
+<p><strong>Reward Model/Function</strong></p>
+<p>We use a pre-defined rule-based reward model. We force the model to produce a final
+answer following 4 “#” as shown in the solution. We extract the final
+answer from both the solution and model’s output using regular
+expression matching. We assign a reward of 1 to correct
+answer, 0.0 to incorrect answer and 0 to no answer.</p>
+<p>For more details, please refer to <a class="reference external" href="https://github.com/verl-project/verl/blob/v0.4.1/verl/utils/reward_score/gsm8k.py">verl/utils/reward_score/gsm8k.py</a>.</p>
+<p><strong>Training Script</strong></p>
+<p>Now let’s run PPO training with the dataset and model above. <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
+<p>Set the <code class="docutils literal notranslate"><span class="pre">data.train_files</span></code> ,<code class="docutils literal notranslate"><span class="pre">data.val_files</span></code>, <code class="docutils literal notranslate"><span class="pre">actor_rollout_ref.model.path</span></code> and <code class="docutils literal notranslate"><span class="pre">critic.model.path</span></code> based on your dataset and model names or paths.
+You may set <code class="docutils literal notranslate"><span class="pre">VERL_USE_MODELSCOPE=True</span></code> to download models from <a class="reference external" href="https://www.modelscope.cn">modelscope</a> instead of <a class="reference external" href="https://huggingface.co">huggingface</a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">PYTHONUNBUFFERED</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>verl.trainer.main_ppo<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>data.train_files<span class="o">=</span><span class="nv">$HOME</span>/data/gsm8k/train.parquet<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>data.val_files<span class="o">=</span><span class="nv">$HOME</span>/data/gsm8k/test.parquet<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>data.train_batch_size<span class="o">=</span><span class="m">256</span><span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>data.max_prompt_length<span class="o">=</span><span class="m">512</span><span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>data.max_response_length<span class="o">=</span><span class="m">512</span><span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>actor_rollout_ref.model.path<span class="o">=</span>Qwen/Qwen2.5-0.5B-Instruct<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>actor_rollout_ref.actor.optim.lr<span class="o">=</span>1e-6<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>actor_rollout_ref.actor.ppo_mini_batch_size<span class="o">=</span><span class="m">64</span><span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>actor_rollout_ref.actor.ppo_micro_batch_size_per_gpu<span class="o">=</span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>actor_rollout_ref.rollout.name<span class="o">=</span>vllm<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>actor_rollout_ref.rollout.log_prob_micro_batch_size_per_gpu<span class="o">=</span><span class="m">8</span><span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>actor_rollout_ref.rollout.tensor_model_parallel_size<span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>actor_rollout_ref.rollout.gpu_memory_utilization<span class="o">=</span><span class="m">0</span>.4<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>actor_rollout_ref.ref.log_prob_micro_batch_size_per_gpu<span class="o">=</span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>critic.optim.lr<span class="o">=</span>1e-5<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>critic.model.path<span class="o">=</span>Qwen/Qwen2.5-0.5B-Instruct<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>critic.ppo_micro_batch_size_per_gpu<span class="o">=</span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>algorithm.kl_ctrl.kl_coef<span class="o">=</span><span class="m">0</span>.001<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>trainer.logger<span class="o">=</span>console<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>trainer.val_before_train<span class="o">=</span>False<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>trainer.n_gpus_per_node<span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>trainer.nnodes<span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>trainer.save_freq<span class="o">=</span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>trainer.test_freq<span class="o">=</span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<span class="w"> </span>trainer.total_epochs<span class="o">=</span><span class="m">15</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>verl_demo.log
+</pre></div>
+</div>
+<p>You are expected to see the following logs, indicating training in progress. The key metric <code class="docutils literal notranslate"><span class="pre">val/test_score/openai/gsm8k</span></code> is computed every <code class="docutils literal notranslate"><span class="pre">trainer.test_freq</span></code> steps:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>step:0<span class="w"> </span>-<span class="w"> </span>timing/gen:21.470<span class="w"> </span>-<span class="w"> </span>timing/ref:4.360<span class="w"> </span>-<span class="w"> </span>timing/values:5.800<span class="w"> </span>-<span class="w"> </span>actor/reward_kl_penalty:0.000<span class="w"> </span>-<span class="w"> </span>actor/reward_kl_penalty_coeff:0.001<span class="w"> </span>-<span class="w"> </span>timing/adv:0.109<span class="w"> </span>-<span class="w"> </span>timing/update_critic:15.664<span class="w"> </span>-<span class="w"> </span>critic/vf_loss:14.947<span class="w"> </span>-<span class="w"> </span>critic/vf_clipfrac:0.000<span class="w"> </span>-<span class="w"> </span>critic/vpred_mean:-2.056<span class="w"> </span>-<span class="w"> </span>critic/grad_norm:1023.278<span class="w"> </span>-<span class="w"> </span>critic/lr<span class="o">(</span>1e-4<span class="o">)</span>:0.100<span class="w"> </span>-<span class="w"> </span>timing/update_actor:20.314<span class="w"> </span>-<span class="w"> </span>actor/entropy_loss:0.433<span class="w"> </span>-<span class="w"> </span>actor/pg_loss:-0.005<span class="w"> </span>-<span class="w"> </span>actor/pg_clipfrac:0.000<span class="w"> </span>-<span class="w"> </span>actor/ppo_kl:0.000<span class="w"> </span>-<span class="w"> </span>actor/grad_norm:1.992<span class="w"> </span>-<span class="w"> </span>actor/lr<span class="o">(</span>1e-4<span class="o">)</span>:0.010<span class="w"> </span>-<span class="w"> </span>critic/score/mean:0.004<span class="w"> </span>-<span class="w"> </span>critic/score/max:1.000<span class="w"> </span>-<span class="w"> </span>critic/score/min:0.000<span class="w"> </span>-<span class="w"> </span>critic/rewards/mean:0.004<span class="w"> </span>-<span class="w"> </span>critic/rewards/max:1.000<span class="w"> </span>-<span class="w"> </span>critic/rewards/min:0.000<span class="w"> </span>-<span class="w"> </span>critic/advantages/mean:-0.000<span class="w"> </span>-<span class="w"> </span>critic/advantages/max:2.360<span class="w"> </span>-<span class="w"> </span>critic/advantages/min:-2.280<span class="w"> </span>-<span class="w"> </span>critic/returns/mean:0.003<span class="w"> </span>-<span class="w"> </span>critic/returns/max:0.000<span class="w"> </span>-<span class="w"> </span>critic/returns/min:0.000<span class="w"> </span>-<span class="w"> </span>critic/values/mean:-2.045<span class="w"> </span>-<span class="w"> </span>critic/values/max:9.500<span class="w"> </span>-<span class="w"> </span>critic/values/min:-14.000<span class="w"> </span>-<span class="w"> </span>response_length/mean:239.133<span class="w"> </span>-<span class="w"> </span>response_length/max:256.000<span class="w"> </span>-<span class="w"> </span>response_length/min:77.000<span class="w"> </span>-<span class="w"> </span>prompt_length/mean:104.883<span class="w"> </span>-<span class="w"> </span>prompt_length/max:175.000<span class="w"> </span>-<span class="w"> </span>prompt_length/min:68.000
+step:1<span class="w"> </span>-<span class="w"> </span>timing/gen:23.020<span class="w"> </span>-<span class="w"> </span>timing/ref:4.322<span class="w"> </span>-<span class="w"> </span>timing/values:5.953<span class="w"> </span>-<span class="w"> </span>actor/reward_kl_penalty:0.000<span class="w"> </span>-<span class="w"> </span>actor/reward_kl_penalty:0.001<span class="w"> </span>-<span class="w"> </span>timing/adv:0.118<span class="w"> </span>-<span class="w"> </span>timing/update_critic:15.646<span class="w"> </span>-<span class="w"> </span>critic/vf_loss:18.472<span class="w"> </span>-<span class="w"> </span>critic/vf_clipfrac:0.384<span class="w"> </span>-<span class="w"> </span>critic/vpred_mean:1.038<span class="w"> </span>-<span class="w"> </span>critic/grad_norm:942.924<span class="w"> </span>-<span class="w"> </span>critic/lr<span class="o">(</span>1e-4<span class="o">)</span>:0.100<span class="w"> </span>-<span class="w"> </span>timing/update_actor:20.526<span class="w"> </span>-<span class="w"> </span>actor/entropy_loss:0.440<span class="w"> </span>-<span class="w"> </span>actor/pg_loss:0.000<span class="w"> </span>-<span class="w"> </span>actor/pg_clipfrac:0.002<span class="w"> </span>-<span class="w"> </span>actor/ppo_kl:0.000<span class="w"> </span>-<span class="w"> </span>actor/grad_norm:2.060<span class="w"> </span>-<span class="w"> </span>actor/lr<span class="o">(</span>1e-4<span class="o">)</span>:0.010<span class="w"> </span>-<span class="w"> </span>critic/score/mean:0.000<span class="w"> </span>-<span class="w"> </span>critic/score/max:0.000<span class="w"> </span>-<span class="w"> </span>critic/score/min:0.000<span class="w"> </span>-<span class="w"> </span>critic/rewards/mean:0.000<span class="w"> </span>-<span class="w"> </span>critic/rewards/max:0.000<span class="w"> </span>-<span class="w"> </span>critic/rewards/min:0.000<span class="w"> </span>-<span class="w"> </span>critic/advantages/mean:0.000<span class="w"> </span>-<span class="w"> </span>critic/advantages/max:2.702<span class="w"> </span>-<span class="w"> </span>critic/advantages/min:-2.616<span class="w"> </span>-<span class="w"> </span>critic/returns/mean:0.000<span class="w"> </span>-<span class="w"> </span>critic/returns/max:0.000<span class="w"> </span>-<span class="w"> </span>critic/returns/min:0.000<span class="w"> </span>-<span class="w"> </span>critic/values/mean:-2.280<span class="w"> </span>-<span class="w"> </span>critic/values/max:11.000<span class="w"> </span>-<span class="w"> </span>critic/values/min:-16.000<span class="w"> </span>-<span class="w"> </span>response_length/mean:232.242<span class="w"> </span>-<span class="w"> </span>response_length/max:256.000<span class="w"> </span>-<span class="w"> </span>response_length/min:91.000<span class="w"> </span>-<span class="w"> </span>prompt_length/mean:102.398<span class="w"> </span>-<span class="w"> </span>prompt_length/max:185.000<span class="w"> </span>-<span class="w"> </span>prompt_length/min:70.000
+</pre></div>
+</div>
+<p>Checkout <code class="docutils literal notranslate"><span class="pre">Algorithm</span> <span class="pre">Baselines</span></code> page for full training and validation logs for reference.</p>
+<p>The checkpoint is saved at the following dir by default: <code class="docutils literal notranslate"><span class="pre">checkpoints/${trainer.project_name}/${trainer.experiment_name}</span></code>. You can merge the saved checkpoints to huggingface model using <code class="docutils literal notranslate"><span class="pre">verl.model_merger</span></code> module, for example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>verl.model_merger<span class="w"> </span>merge<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--backend<span class="w"> </span>fsdp<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--local_dir<span class="w"> </span>checkpoints/<span class="si">${</span><span class="nv">trainer</span><span class="p">.project_name</span><span class="si">}</span>/<span class="si">${</span><span class="nv">trainer</span><span class="p">.experiment_name</span><span class="si">}</span>/global_step_1/actor<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--target_dir<span class="w"> </span>checkpoints/<span class="si">${</span><span class="nv">trainer</span><span class="p">.project_name</span><span class="si">}</span>/<span class="si">${</span><span class="nv">trainer</span><span class="p">.experiment_name</span><span class="si">}</span>/global_step_1/actor/huggingface
+</pre></div>
+</div>
+<p>For more details about checkpoint and model merging, please refer to <a class="reference internal" href="../advance/checkpoint.html#checkpoint-page"><span class="std std-ref">Using Checkpoints to Support Fault Tolerance Training</span></a>.</p>
+<p>To enable <code class="docutils literal notranslate"><span class="pre">wandb</span></code> for experiment tracking, set the following configs:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>trainer.logger<span class="o">=</span><span class="s1">'["console","wandb"]'</span><span class="w"> </span><span class="se">\</span>
+trainer.project_name<span class="o">=</span><span class="nv">$YOUR_PROJECT_NAME</span><span class="w"> </span><span class="se">\</span>
+trainer.experiment_name<span class="o">=</span><span class="nv">$YOUR_RUN_NAME</span><span class="w"> </span><span class="se">\</span>
+</pre></div>
+</div>
+<p>If you encounter out of memory issues with HBM less than 32GB, enable the following configs would help:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>actor_rollout_ref.actor.ppo_micro_batch_size_per_gpu<span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+critic.ppo_micro_batch_size_per_gpu<span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+</pre></div>
+</div>
+<p>For the full set of configs, please refer to <a class="reference internal" href="../examples/config.html#config-explain-page"><span class="std std-ref">Config Explanation</span></a> for detailed explanation and performance tuning.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id3" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>The original paper (<a class="reference external" href="https://arxiv.org/pdf/2110.14168">https://arxiv.org/pdf/2110.14168</a>) mainly focuses on training a verifier (a reward model) to solve math problems via Best-of-N sampling. In this example, we train an RL agent using a rule-based reward model.</p>
+</aside>
+<aside class="footnote brackets" id="id4" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>More training script examples for FSDP and Megatron-LM backend are stored in <a class="reference external" href="https://github.com/verl-project/verl/tree/main/examples/ppo_trainer">examples/ppo_trainer</a> directory.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="multinode.html" class="btn btn-neutral float-right" title="Multinode Training" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024 ByteDance Seed Foundation MLSys Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

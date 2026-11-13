@@ -1,11 +1,27 @@
-# 2680：计划作业 5 — Mads-Stack: Optimize the full stack
+# Assignment 5
 
-- 状态核对：2026-11-04。
-- 学习阶段：P6。
-- 官网计划 2026-11-11 发布，当前只有概要；完整题目与代码尚未公开取得。
+## Instructions
 
-[官方入口](https://cs2680.com/assignments/) · [本次大纲来源](../../../syllabus-snapshots/2026-11-04/harvard/assignments.html)
+- [Official assignment page](../../site/assignments/assignment5.html)
+  - Source: https://cs2680.com/assignments/assignment5.html
 
-本目录仅保存计划与状态；未取得正文时不生成题目、starter 或答案。
+## Starter code
 
-官网主页截止日期已调整为 **2026-11-24 11:59pm**（官网当地时间）；当前只有概要，未把截止安排视为完整作业发布。
+- [Official archive contents](code/)
+  - Source: https://cs2680.com/assignments/assignment5.tar.gz
+
+## Original archive
+
+- [assignment5.tar.gz](../../site/assignments/assignment5.tar.gz)
+  - Source: https://cs2680.com/assignments/assignment5.tar.gz
+
+## Referenced benchmark paper
+
+- [Terminal-Bench: Benchmarking Agents on Hard, Realistic Tasks in Command Line Interfaces](../../../329z/10.GuestLectureTerminalBench/readings/Terminal-Bench_Benchmarking_Agents_on_Hard_Realistic_Tasks_in_Command_Line_Interfaces.pdf)
+  - Source: https://arxiv.org/abs/2601.11868
+  - 复用 Stanford CS329Z 已有归档，不计为本次重新下载；版本见原课程 SOURCES.md。
+
+## Slides
+
+- [Assignment 5 slides](assignment5.pdf)
+  - Source: https://cs2680.com/slides/assignment5.pdf

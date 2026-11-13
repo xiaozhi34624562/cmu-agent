@@ -1,8 +1,8 @@
 {
   "course": "11-768",
-  "review_date": "2026-11-04",
+  "review_date": "2026-11-13",
   "standard": "面向有 Java 经验的 LLM Developer：以讲义问题链组织完整中文教学；检查前置知识、机制推导、案例、自测和来源证据；修改后的最终版本完整复读两遍。",
-  "scope": "当前版本的内容审核状态；保留最近实际阅读范围、复读结论和限制。结构校验不代替语义审核；元数据整理不构成新一轮内容审核。",
+  "scope": "当前逐篇内容审核状态。2026-11-13 仅新增公开课的讲解完成内容审核与全文复读；历史讲解正文保持不变，原审核日期和实际来源范围分别保留。结构校验不代替语义审核。",
   "documents": [
     {
       "note": "courses/11-768/1.WhatIsAnAgent/notes.zh-CN.md",
@@ -3500,6 +3500,432 @@
       ],
       "final_full_rereads": 2,
       "reread_sha256": "c4c75f4bf4e270d5dda5580db41b02c722fede663201452761516d1deda370fc"
+    },
+    {
+      "note": "courses/11-768/20.RerankingAndCriticModels/notes.zh-CN.md",
+      "lesson": 20,
+      "status": "passed",
+      "final_sha256": "e65fa1ac1e504229bc7b6bfa49be0a8dc7af997bc73df8405ea2f29a3fb8aa69",
+      "content_review_sha256": "e65fa1ac1e504229bc7b6bfa49be0a8dc7af997bc73df8405ea2f29a3fb8aa69",
+      "reviewed_at": "2026-11-13T16:36:02.467260+08:00",
+      "coverage": "31-page lecture read in full. All 4 Readings and 23 References examined beyond abstracts with mechanism and relevant experimental/appendix sections; exact actual pages/sections recorded. This is not a claim that every page of every long appendix was read.",
+      "sources_read": [
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/lecture-20-search-basics.pdf",
+          "sha256": "7ef0f29b2c1067258914c786f088326013f423c17a284ffe33069c7983a38c0f",
+          "pages": "1-31",
+          "sections": "Complete lecture: sampling, diversity, verification, Best-of-N/MBR, imperfect acceptance, refinement, PDR/RTV, harness search, budget and tree-search transition",
+          "contribution": "Controls the teaching question chain and order. All instructional sections are represented; divider/agenda pages do not become artificial teaching chapters.",
+          "limits": "Lecture p25 is mean rollout success before final selection on 100 tasks, not end-to-end final success; p15 bound is for the stated first-accepted/final-fallback process."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/readings/Large_Language_Monkeys_Scaling_Inference_Compute_with_Repeated_Sampling.pdf",
+          "sha256": "33889c6cb265ae11ed67e50070d3a31cd894036d8c9b404212a38df1783e8884",
+          "title": "Large Language Monkeys: Scaling Inference Compute with Repeated Sampling",
+          "role": "assigned",
+          "version": "2407.21787v3",
+          "contribution": "§2、§4–6：PDF 4–12，采样覆盖、选择瓶颈、测试不完美",
+          "limits": "历史任务和模型；oracle 覆盖不等于最终准确率",
+          "pages": "1-13",
+          "sections": "Mechanism, experiments or limitations relevant to the lecture; actual page ranges listed. PDF text extracted in full for navigation, but extraction alone was not counted as reading."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/readings/Rethinking_Thinking_Tokens_LLMs_as_Improvement_Operators.pdf",
+          "sha256": "85d5260a4d3660465990851e62571a7f8d0a438099f8e528c358e87f2f8099cb",
+          "title": "Rethinking Thinking Tokens: LLMs as Improvement Operators",
+          "role": "assigned",
+          "version": "2510.01123v1",
+          "contribution": "§8：PDF 2、5–12，有限上下文、PDR、两种预算、训练接口",
+          "limits": "文本蒸馏与参数更新分开；token 延迟代理不是实测时间",
+          "pages": "1-12",
+          "sections": "Mechanism, experiments or limitations relevant to the lecture; actual page ranges listed. PDF text extracted in full for navigation, but extraction alone was not counted as reading."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/readings/Scaling_Test-Time_Compute_for_Agentic_Coding.pdf",
+          "sha256": "02e9fa7c771a286f6a208c65abfd282b4f38553a057903109edc50abd444d88a",
+          "title": "Scaling Test-Time Compute for Agentic Coding",
+          "role": "assigned",
+          "version": "2604.16529v1",
+          "contribution": "§9、§11：PDF 3–15、49–53，摘要、RTV、PDR、消融与真实轨迹",
+          "limits": "阶段/任务集不能混用；论文执行记录不是本地复现",
+          "pages": "1-15;49-53",
+          "sections": "Mechanism, experiments or limitations relevant to the lecture; actual page ranges listed. PDF text extracted in full for navigation, but extraction alone was not counted as reading."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/readings/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf",
+          "sha256": "7d9b90f53a9f4801a090f1a4acb843340cde81e4f865f97d53fff2a6a570eb73",
+          "title": "Meta-Harness: End-to-End Optimization of Model Harnesses",
+          "role": "assigned",
+          "version": "2603.28052v1",
+          "contribution": "§10：PDF 2–10、24–25，文件历史、程序搜索、评测协议",
+          "limits": "TerminalBench 同基准搜索评估；工程经验非独立因果实证",
+          "pages": "1-10;24-26",
+          "sections": "Mechanism, experiments or limitations relevant to the lecture; actual page ranges listed. PDF text extracted in full for navigation, but extraction alone was not counted as reading."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/references/Evaluating_Large_Language_Models_Trained_on_Code.pdf",
+          "sha256": "ebae72ea0e8a5eb2ecbccdb985aec6cc1254a7c4d29e6d4de7866db1e66c4855",
+          "title": "Evaluating Large Language Models Trained on Code",
+          "role": "additional",
+          "version": "2107.03374v2",
+          "contribution": "§2：PDF 2–7，pass@k 估计与温度/采样关系",
+          "limits": "2021 论文，不是当前 Codex 产品能力说明",
+          "pages": "2-7",
+          "sections": "Mechanism, experiments or limitations relevant to the lecture; actual page ranges listed. PDF text extracted in full for navigation, but extraction alone was not counted as reading."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/references/Verbalized_Sampling_How_to_Mitigate_Mode_Collapse_and_Unlock_LLM_Diversity.pdf",
+          "sha256": "b93019722dcfd841279113c91d9fb812d71090e0158d30899db89c77a1900a64",
+          "title": "Verbalized Sampling: How to Mitigate Mode Collapse and Unlock LLM Diversity",
+          "role": "additional",
+          "version": "2510.01171v4",
+          "contribution": "§3：PDF 3–5，分布式提示与多样性机制",
+          "limits": "口述概率不等于校准概率；同次列举不等于独立环境",
+          "pages": "3-9",
+          "sections": "Mechanism, experiments or limitations relevant to the lecture; actual page ranges listed. PDF text extracted in full for navigation, but extraction alone was not counted as reading."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/references/Mode-Conditioning_Unlocks_Superior_Test-Time_Scaling.pdf",
+          "sha256": "6b668c12609cd1fc24a26969f93c7438c300195b77afef99a2d50d4f5cd955a8",
+          "title": "Mode-Conditioning Unlocks Superior Test-Time Scaling",
+          "role": "additional",
+          "version": "2512.01127v1",
+          "contribution": "§3：PDF 4–12，模式覆盖、条件训练与自动模式发现",
+          "limits": "训练后的模式控制不能简化成通用 prompt 技巧",
+          "pages": "4-12",
+          "sections": "Mechanism, experiments or limitations relevant to the lecture; actual page ranges listed. PDF text extracted in full for navigation, but extraction alone was not counted as reading."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/references/Rewarding_the_Unlikely_Lifting_GRPO_Beyond_Distribution_Sharpening.pdf",
+          "sha256": "5daad4497bf1a2af73ee663688ec7873b5d26aa883c5c246acfc0f0fa1e56292",
+          "title": "Rewarding the Unlikely: Lifting GRPO Beyond Distribution Sharpening",
+          "role": "additional",
+          "version": "2506.02355v2",
+          "contribution": "§3：PDF 2–7，低概率正确轨迹与分布锐化",
+          "limits": "不奖励罕见错误；形式化任务与训练超参有条件",
+          "pages": "2-9",
+          "sections": "Mechanism, experiments or limitations relevant to the lecture; actual page ranges listed. PDF text extracted in full for navigation, but extraction alone was not counted as reading."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/references/Differential_Smoothing_Mitigates_Sharpening_and_Improves_LLM_Reasoning.pdf",
+          "sha256": "8d5fd1b77f65ef8432e9068ad6fd9e956d4d44f3cf145c906fb23004fa1a3d78",
+          "title": "Differential Smoothing Mitigates Sharpening and Improves LLM Reasoning",
+          "role": "additional",
+          "version": "Official proceedings PDF",
+          "contribution": "§3：PDF 2–6，正确/错误分布差异处理",
+          "limits": "不是无条件提高熵；依赖奖励质量",
+          "pages": "2-9",
+          "sections": "Mechanism, experiments or limitations relevant to the lecture; actual page ranges listed. PDF text extracted in full for navigation, but extraction alone was not counted as reading."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/references/Maximum_Likelihood_Reinforcement_Learning.pdf",
+          "sha256": "f7627604393c065473154ac92a70133f3d8cf6ae509b93f18a1abe33f45aaa46",
+          "title": "Maximum Likelihood Reinforcement Learning",
+          "role": "additional",
+          "version": "Official proceedings PDF",
+          "contribution": "§3：PDF 2–6，平均奖励与似然目标差异",
+          "limits": "有限采样为截断目标估计；没有本地训练复现",
+          "pages": "2-6",
+          "sections": "Mechanism, experiments or limitations relevant to the lecture; actual page ranges listed. PDF text extracted in full for navigation, but extraction alone was not counted as reading."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/references/Training_Software_Engineering_Agents_and_Verifiers_with_SWE-Gym.pdf",
+          "sha256": "5c35e277544323fcc4ce8929e208bb8cc32efbbd40b8069c7daa084548d79396",
+          "title": "Training Software Engineering Agents and Verifiers with SWE-Gym",
+          "role": "additional",
+          "version": "2412.21139v2",
+          "contribution": "§4：PDF 6–7、17–18，轨迹评分、标签概率与候选覆盖差距",
+          "limits": "训练平衡分布不自动带来线上校准；采样数 N=8 的图文数值有差异，本文只使用一致的 N=16 数值",
+          "pages": "6-9;17-18",
+          "sections": "Mechanism, experiments or limitations relevant to the lecture; actual page ranges listed. PDF text extracted in full for navigation, but extraction alone was not counted as reading."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/references/Self-Consistency_Improves_Chain_of_Thought_Reasoning_in_Language_Models.pdf",
+          "sha256": "1a49ce0373afc89d2d6e97fb1aa8230f6b818c70590d732a3187f753f4df6aba",
+          "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+          "role": "additional",
+          "version": "2203.11171v4",
+          "contribution": "§5：PDF 2–3，对答案边缘化和投票",
+          "limits": "不是对推理文字投票；共享错误仍在",
+          "pages": "2-6",
+          "sections": "Mechanism, experiments or limitations relevant to the lecture; actual page ranges listed. PDF text extracted in full for navigation, but extraction alone was not counted as reading."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/references/From_Decoding_to_Meta-Generation_Inference-time_Algorithms_for_Large_Language_Models.pdf",
+          "sha256": "eb0d6904ecab0092396f6606db799c6b9e0c3cb2bd3d099bbccc993a0213004b",
+          "title": "From Decoding to Meta-Generation: Inference-time Algorithms for Large Language Models",
+          "role": "additional",
+          "version": "2406.16838v2",
+          "contribution": "§5：PDF 16–18，MBR 与候选选择框架",
+          "limits": "本文另行展开最小损失公式，未照搬抽取异常的符号",
+          "pages": "16-18",
+          "sections": "Mechanism, experiments or limitations relevant to the lecture; actual page ranges listed. PDF text extracted in full for navigation, but extraction alone was not counted as reading."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/references/Natural_Language_to_Code_Translation_with_Execution.pdf",
+          "sha256": "fcb3fe04d833fefe3b34e85fa3471e36ee32f03ffb6034163a0aa1a03762fb62",
+          "title": "Natural Language to Code Translation with Execution",
+          "role": "additional",
+          "version": "Proceedings of EMNLP 2022, pages 3533–3546",
+          "contribution": "§5：PDF 2–3，执行行为作为候选间损失",
+          "limits": "输入行为一致不等于已有正确输出",
+          "pages": "2-4;7-8",
+          "sections": "Mechanism, experiments or limitations relevant to the lecture; actual page ranges listed. PDF text extracted in full for navigation, but extraction alone was not counted as reading."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/references/Competition-Level_Code_Generation_with_AlphaCode.pdf",
+          "sha256": "4facd32698069e8eda5e3714f12be8519dbe2a184e9386e37a9939d7f4030bea",
+          "title": "Competition-Level Code Generation with AlphaCode",
+          "role": "additional",
+          "version": "2203.07814v1",
+          "contribution": "§5：PDF 11–13，过滤、行为聚类与跨簇提交",
+          "limits": "大规模竞赛预算不直接外推到交互服务",
+          "pages": "11-13",
+          "sections": "Mechanism, experiments or limitations relevant to the lecture; actual page ranges listed. PDF text extracted in full for navigation, but extraction alone was not counted as reading."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/references/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf",
+          "sha256": "6059b6f89fea9959bd3dab553fbb97756a3dfb1b15e3cbab2fbf3ab6664333bd",
+          "title": "Reflexion: Language Agents with Verbal Reinforcement Learning",
+          "role": "additional",
+          "version": "2303.11366v4",
+          "contribution": "§7：PDF 3–4、6，执行—评价—文字反思",
+          "limits": "文字记忆不是权重 RL；任务反馈条件不同",
+          "pages": "3-4;6",
+          "sections": "Mechanism, experiments or limitations relevant to the lecture; actual page ranges listed. PDF text extracted in full for navigation, but extraction alone was not counted as reading."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/references/Self-Refine_Iterative_Refinement_with_Self-Feedback.pdf",
+          "sha256": "81e44592314d80218ad108d3490cd0b84ba5962fefd5c84819987afd77a57087",
+          "title": "Self-Refine: Iterative Refinement with Self-Feedback",
+          "role": "additional",
+          "version": "2303.17651v2",
+          "contribution": "§7：PDF 2–4、9，自反馈、历史追加与迭代修改",
+          "limits": "自反馈不是外部正确性证明",
+          "pages": "2-4;9",
+          "sections": "Mechanism, experiments or limitations relevant to the lecture; actual page ranges listed. PDF text extracted in full for navigation, but extraction alone was not counted as reading."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/references/Teaching_Large_Language_Models_to_Self-Debug.pdf",
+          "sha256": "020e06b1fb9e1d4b6c33016a9471e8bd31f8ecfd7a22335d85956c14efa39f75",
+          "title": "Teaching Large Language Models to Self-Debug",
+          "role": "additional",
+          "version": "2304.05128v2",
+          "contribution": "§7：PDF 3–4，解释、执行信息、反馈",
+          "limits": "模型生成的解释 trace 与执行器 trace 分开",
+          "pages": "3-7",
+          "sections": "Mechanism, experiments or limitations relevant to the lecture; actual page ranges listed. PDF text extracted in full for navigation, but extraction alone was not counted as reading."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/references/Large_Language_Models_Cannot_Self-Correct_Reasoning_Yet.pdf",
+          "sha256": "15e1731e255ec6b217792a1e077926807da77e8e46b69e6c57dda30d67794761",
+          "title": "Large Language Models Cannot Self-Correct Reasoning Yet",
+          "role": "additional",
+          "version": "2310.01798v2",
+          "contribution": "§7：PDF 2–5，intrinsic/oracle 区分、正确改错",
+          "limits": "特定历史实验，不是所有未来模型的不可能定理",
+          "pages": "2-8",
+          "sections": "Mechanism, experiments or limitations relevant to the lecture; actual page ranges listed. PDF text extracted in full for navigation, but extraction alone was not counted as reading."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/references/Recursive_Self-Aggregation_Unlocks_Deep_Thinking_in_Large_Language_Models.pdf",
+          "sha256": "edff4dc2dc6393dc958d752f8c766221d8eaee77328745fa4d2e3dbc7824ff35",
+          "title": "Recursive Self-Aggregation Unlocks Deep Thinking in Large Language Models",
+          "role": "additional",
+          "version": "2509.26626v2",
+          "contribution": "§8：PDF 2–4，子集聚合产生新群体",
+          "limits": "生成新答案不等于 RTV 从旧答案里淘汰选择",
+          "pages": "2-4;6;9-10",
+          "sections": "Mechanism, experiments or limitations relevant to the lecture; actual page ranges listed. PDF text extracted in full for navigation, but extraction alone was not counted as reading."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/references/WHALE_A_Simple_Recipe_for_Joint_Harness-Weight_Optimization.pdf",
+          "sha256": "f4307846da7686ee75ef070fdc53112c8eb8ca557b9318da0a88838e56b9e602",
+          "title": "WHALE: A Simple Recipe for Joint Harness-Weight Optimization",
+          "role": "additional",
+          "version": "2609.00196v1",
+          "contribution": "§10：PDF 3–5，权重/程序交替优化",
+          "limits": "不是对程序端到端求梯度；本文不混报不同评测阶段成绩",
+          "pages": "3-10",
+          "sections": "Mechanism, experiments or limitations relevant to the lecture; actual page ranges listed. PDF text extracted in full for navigation, but extraction alone was not counted as reading."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/references/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf",
+          "sha256": "13ff4abe0c7ad4a7dd3b4876d19a8bf940e39e70dabbf06065aa774a6c3457de",
+          "title": "Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents",
+          "role": "additional",
+          "version": "2505.22954v3",
+          "contribution": "§10：PDF 3–8，候选归档、代码演化与工具改进",
+          "limits": "经验评测非形式化证明；外层搜索框架与基础模型不等同于被改代码",
+          "pages": "3-11",
+          "sections": "Mechanism, experiments or limitations relevant to the lecture; actual page ranges listed. PDF text extracted in full for navigation, but extraction alone was not counted as reading."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/references/Group-Evolving_Agents_Open-Ended_Self-Improvement_via_Experience_Sharing.pdf",
+          "sha256": "967517dbde132a515386f9c8ac25969be2578658a7b9a7927c893751b009c3c4",
+          "title": "Group-Evolving Agents: Open-Ended Self-Improvement via Experience Sharing",
+          "role": "additional",
+          "version": "2602.04837v1",
+          "contribution": "§10：PDF 3–5，群体经验与行为新颖性",
+          "limits": "经验共享不等于权重合并",
+          "pages": "3-12",
+          "sections": "Mechanism, experiments or limitations relevant to the lecture; actual page ranges listed. PDF text extracted in full for navigation, but extraction alone was not counted as reading."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/references/Tree_Search_for_Language_Model_Agents.pdf",
+          "sha256": "0b21710f26db2e9383f768cdaea5755f1a39fb0b5eafffdfa5451a33d106e130",
+          "title": "Tree Search for Language Model Agents",
+          "role": "additional",
+          "version": "2407.01476v4",
+          "contribution": "§11：PDF 3–6、11，中间状态分支、搜索与环境重放",
+          "limits": "作为下课衔接；向其他工具的副作用恢复推广是工程推导",
+          "pages": "3-6;11-12",
+          "sections": "Mechanism, experiments or limitations relevant to the lecture; actual page ranges listed. PDF text extracted in full for navigation, but extraction alone was not counted as reading."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/references/Extended_thinking.html",
+          "sha256": "4ed98be8b3f295a0c86080c128f6b3bf3b69ed3672797d688f986b892c3e8f94",
+          "title": "Extended thinking",
+          "role": "additional",
+          "version": "Official documentation snapshot",
+          "contribution": "§2，归档文档中的模式与预算约束",
+          "limits": "不将某个版本的 API 参数限制推广到全部推理模型",
+          "sections": "Archived Extended thinking documentation article body: manual/adaptive thinking, budgets, tool and compatibility constraints; not every outgoing linked document."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/references/code/DeepSeek-R1/README.md",
+          "sha256": "4ed979e497121ae4dd9f1573da1668219f43be55d62cc0bf2be5429211a67486",
+          "title": "DeepSeek-R1 usage recommendations",
+          "role": "additional",
+          "version": "Upstream tracked file at 0cf78561f1d51c84a21b2190626b21116d5c68bb",
+          "contribution": "§2，固定提交的 Usage Recommendations",
+          "limits": "特定模型和提交的推荐，不是普遍最优温度",
+          "sections": "Usage Recommendations read in full; model/readme context checked. Fixed commit, no upstream execution."
+        },
+        {
+          "path": "courses/11-768/20.RerankingAndCriticModels/references/code/meta-harness/reference_examples/text_classification/agents/fewshot_memory.py",
+          "sha256": "daa346dbae5a83ffd58c6507eca99cb9e718f1e406be80d95b2fa72d90576240",
+          "title": "Meta-Harness: few-shot text-classification baseline",
+          "role": "additional",
+          "version": "Upstream tracked file at f805ad3aa4ada290458c1e0deadbe132fbbdea4e",
+          "contribution": "§10，完整固定代码的存储、构造、调用、解析与状态恢复",
+          "limits": "实际常量优先于注释；未执行官方模型调用",
+          "sections": "Complete fixed fewshot_memory.py: imports/constants, _seed_for_input, constructor, _format_examples_section, predict, learn_from_batch, get_context_length, get_state, set_state."
+        }
+      ],
+      "reread_result": [
+        {
+          "pass": 1,
+          "perspective": "teaching",
+          "scope": "Complete notes from title through source map",
+          "findings_fixed": [
+            "Made negative-input exception part of the initial Java contract",
+            "Explained unbiased estimation, expectation/log symbols and entropy/RL prerequisites",
+            "Added automatically discovered modes in Mode-Conditioning, not only known labels",
+            "Separated observation from classifier capability inference",
+            "Connected Self-Refine history growth to PDR",
+            "Added held-out evaluation evidence distinction"
+          ]
+        },
+        {
+          "pass": 2,
+          "perspective": "technical and source fidelity",
+          "scope": "Complete revised notes from title through source map; source formulas/numbers and experiment identities revisited",
+          "findings_fixed": [
+            "Corrected argmax to return a trajectory rather than an index",
+            "Defined SR before cost discussion",
+            "Separated source-correlated summary quality from causal identification",
+            "Added actual tree-search reset/replay source at PDF11",
+            "Kept Java intermediate int overflow and long-bound checks aligned with real run"
+          ]
+        },
+        {
+          "pass": 3,
+          "perspective": "final learning and technical continuity after edits and root review",
+          "scope": "Complete final notes, lines 1-542, including ten self-tests and all27 source-map entries",
+          "result": "Passed; no unresolved teaching or technical defects identified in scope",
+          "sha256": "e65fa1ac1e504229bc7b6bfa49be0a8dc7af997bc73df8405ea2f29a3fb8aa69"
+        }
+      ],
+      "remaining_issues": [],
+      "limitations": [
+        "No LLM, remote API, GPU, official code execution, benchmark reproduction or historical SymPy environment run",
+        "Exact source reading ranges are recorded; not all appendices or all unrelated sections were read",
+        "All proposed Agent/PDR/RTV/harness engineering experiments remain unexecuted designs",
+        "Numerical verifier simulation assumes independent samples and fixed p/q/r; not a universal ranking-model guarantee",
+        "Archived source statements are not current provider API/pricing recommendations",
+        "Full repository/course REVIEW and aggregate verification are owned by parent; this child only updated its course directory"
+      ],
+      "examples": {
+        "path": "courses/11-768/20.RerankingAndCriticModels/examples.py",
+        "sha256": "d4d20aaf63291b52657fa165639c85a7d80704944909ac03396936504d172f3c",
+        "command": "python3 examples.py --output EXAMPLE_RUN.json",
+        "working_directory": "/Users/wangmingzhi/qg/code/cmu-agent/courses/11-768/20.RerankingAndCriticModels",
+        "results_path": "courses/11-768/20.RerankingAndCriticModels/EXAMPLE_RUN.json",
+        "results_sha256": "7fc6b45105a98932351e18277a5c637e1a07d82ee969b45c2a8fb0cfe2efa288",
+        "python": "3.11.10",
+        "java_compiler": "javac 21.0.10",
+        "execution": "Actual local Java compilation/execution plus standard-library analytical calculations and seeded Monte Carlo; latest execution exit0",
+        "checks": [
+          "pass@k combination estimator .533333 vs plugin .488",
+          "heterogeneous-task coverage .59 vs naive mean .75",
+          "temperature .880797/.731059 and log-target gains .693147/.117783",
+          "first-accept formula vs 100000 trials for each k=1,4,16,64",
+          "Java odd/even endpoints, zero, negative rejection, int intermediate overflow, max int closed-form long result",
+          "majority can miss available correct candidate",
+          "wrong-to-right and right-to-wrong net loss",
+          "binary tournament 120 total calls versus96 to retain4"
+        ]
+      },
+      "cross_review": {
+        "reviewer": "/root/plan_mit9",
+        "scope": "Complete notes, 542 lines and 30873 characters, including every self-test and the source map; independently revisited lecture PDF page 15 verifier p/q/r and fallback and page 25 metric interpretation",
+        "result": "Passed; no required changes. Learning progression, probability/combination prerequisites, fixed-parameter verifier derivation, RTV 120/96 cost counts, and source/example/engineering boundaries found coherent.",
+        "limits": "Not a second full reading of every supplementary paper or independent verification of all external numeric claims",
+        "sha256": "e65fa1ac1e504229bc7b6bfa49be0a8dc7af997bc73df8405ea2f29a3fb8aa69"
+      },
+      "root_review": {
+        "scope": "Parent reported full current-note reading, ~30801 characters at review time",
+        "result": "Passed overall learning chain; clarified SWE-Gym N=8 discrepancy as requested"
+      },
+      "visual_checks": [
+        {
+          "artifact": "visual-1.png",
+          "source": "lecture-20-search-basics.pdf",
+          "page": 15,
+          "checked": "p=.25,q=.95,r=.10 and 76 percent asymptote; first accepted candidate, final fallback"
+        },
+        {
+          "artifact": "visual-2.png",
+          "source": "lecture-20-search-basics.pdf",
+          "page": 25,
+          "checked": "100 tasks, mean rollout success BEFORE final selection, all six table values"
+        },
+        {
+          "artifact": "visual-3.png",
+          "source": "readings/Large_Language_Monkeys_Scaling_Inference_Compute_with_Repeated_Sampling.pdf",
+          "page": 10,
+          "checked": "Figure 7 color legend coverage vs majority/reward selectors and plateau"
+        },
+        {
+          "artifact": "visual-4.png",
+          "source": "readings/Scaling_Test-Time_Compute_for_Agentic_Coding.pdf",
+          "page": 8,
+          "checked": "Table1 matches lecture p25; distinction from main-results Table3"
+        },
+        {
+          "artifact": "visual-5.png",
+          "source": "readings/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf",
+          "page": 9,
+          "checked": "TerminalBench2 evaluation and same-benchmark search restriction"
+        },
+        {
+          "artifact": "visual-6.png",
+          "source": "references/Training_Software_Engineering_Agents_and_Verifiers_with_SWE-Gym.pdf",
+          "page": 7,
+          "checked": "SWE-Gym Figure3 pass16 42.8 versus Best16 32.0; N8 figure/prose discrepancy avoided"
+        }
+      ]
     }
   ],
   "original_sources": {
@@ -4020,6 +4446,35 @@
     "courses/11-768/18.MultiAgentInteraction/references/Magentic_Marketplace_An_Open-Source_Environment_for_Studying_Agentic_Markets.pdf": "d1a309d06fd3b211d6ef470a6721713403596a140c5e3f9b4abc38fe01099aa4",
     "courses/11-768/18.MultiAgentInteraction/references/Generative_Agents_Interactive_Simulacra_of_Human_Behavior.pdf": "1b31e77fb24d25d7598f2c49e955d12a28b95a6dabad34acdac40f44bfb7a139",
     "courses/11-768/18.MultiAgentInteraction/references/Relying_on_the_Unreliable_The_Impact_of_Language_Models_Reluctance_to_Express_Uncertainty.pdf": "564c49f55113804d97956e506fe7faa8cbb1288847eb30cc622ab4a65d658550",
-    "courses/11-768/18.MultiAgentInteraction/references/Direct_Preference_Optimization_Your_Language_Model_is_Secretly_a_Reward_Model.pdf": "92cb3a2b71362acda98a789b03d88688fd33cf5fcf13f81d2b1de30ee7d3b67a"
-  }
+    "courses/11-768/18.MultiAgentInteraction/references/Direct_Preference_Optimization_Your_Language_Model_is_Secretly_a_Reward_Model.pdf": "92cb3a2b71362acda98a789b03d88688fd33cf5fcf13f81d2b1de30ee7d3b67a",
+    "courses/11-768/20.RerankingAndCriticModels/lecture-20-search-basics.pdf": "7ef0f29b2c1067258914c786f088326013f423c17a284ffe33069c7983a38c0f",
+    "courses/11-768/20.RerankingAndCriticModels/readings/Large_Language_Monkeys_Scaling_Inference_Compute_with_Repeated_Sampling.pdf": "33889c6cb265ae11ed67e50070d3a31cd894036d8c9b404212a38df1783e8884",
+    "courses/11-768/20.RerankingAndCriticModels/readings/Rethinking_Thinking_Tokens_LLMs_as_Improvement_Operators.pdf": "85d5260a4d3660465990851e62571a7f8d0a438099f8e528c358e87f2f8099cb",
+    "courses/11-768/20.RerankingAndCriticModels/readings/Scaling_Test-Time_Compute_for_Agentic_Coding.pdf": "02e9fa7c771a286f6a208c65abfd282b4f38553a057903109edc50abd444d88a",
+    "courses/11-768/20.RerankingAndCriticModels/readings/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf": "7d9b90f53a9f4801a090f1a4acb843340cde81e4f865f97d53fff2a6a570eb73",
+    "courses/11-768/20.RerankingAndCriticModels/references/Evaluating_Large_Language_Models_Trained_on_Code.pdf": "ebae72ea0e8a5eb2ecbccdb985aec6cc1254a7c4d29e6d4de7866db1e66c4855",
+    "courses/11-768/20.RerankingAndCriticModels/references/Verbalized_Sampling_How_to_Mitigate_Mode_Collapse_and_Unlock_LLM_Diversity.pdf": "b93019722dcfd841279113c91d9fb812d71090e0158d30899db89c77a1900a64",
+    "courses/11-768/20.RerankingAndCriticModels/references/Mode-Conditioning_Unlocks_Superior_Test-Time_Scaling.pdf": "6b668c12609cd1fc24a26969f93c7438c300195b77afef99a2d50d4f5cd955a8",
+    "courses/11-768/20.RerankingAndCriticModels/references/Rewarding_the_Unlikely_Lifting_GRPO_Beyond_Distribution_Sharpening.pdf": "5daad4497bf1a2af73ee663688ec7873b5d26aa883c5c246acfc0f0fa1e56292",
+    "courses/11-768/20.RerankingAndCriticModels/references/Differential_Smoothing_Mitigates_Sharpening_and_Improves_LLM_Reasoning.pdf": "8d5fd1b77f65ef8432e9068ad6fd9e956d4d44f3cf145c906fb23004fa1a3d78",
+    "courses/11-768/20.RerankingAndCriticModels/references/Maximum_Likelihood_Reinforcement_Learning.pdf": "f7627604393c065473154ac92a70133f3d8cf6ae509b93f18a1abe33f45aaa46",
+    "courses/11-768/20.RerankingAndCriticModels/references/Training_Software_Engineering_Agents_and_Verifiers_with_SWE-Gym.pdf": "5c35e277544323fcc4ce8929e208bb8cc32efbbd40b8069c7daa084548d79396",
+    "courses/11-768/20.RerankingAndCriticModels/references/Self-Consistency_Improves_Chain_of_Thought_Reasoning_in_Language_Models.pdf": "1a49ce0373afc89d2d6e97fb1aa8230f6b818c70590d732a3187f753f4df6aba",
+    "courses/11-768/20.RerankingAndCriticModels/references/From_Decoding_to_Meta-Generation_Inference-time_Algorithms_for_Large_Language_Models.pdf": "eb0d6904ecab0092396f6606db799c6b9e0c3cb2bd3d099bbccc993a0213004b",
+    "courses/11-768/20.RerankingAndCriticModels/references/Natural_Language_to_Code_Translation_with_Execution.pdf": "fcb3fe04d833fefe3b34e85fa3471e36ee32f03ffb6034163a0aa1a03762fb62",
+    "courses/11-768/20.RerankingAndCriticModels/references/Competition-Level_Code_Generation_with_AlphaCode.pdf": "4facd32698069e8eda5e3714f12be8519dbe2a184e9386e37a9939d7f4030bea",
+    "courses/11-768/20.RerankingAndCriticModels/references/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf": "6059b6f89fea9959bd3dab553fbb97756a3dfb1b15e3cbab2fbf3ab6664333bd",
+    "courses/11-768/20.RerankingAndCriticModels/references/Self-Refine_Iterative_Refinement_with_Self-Feedback.pdf": "81e44592314d80218ad108d3490cd0b84ba5962fefd5c84819987afd77a57087",
+    "courses/11-768/20.RerankingAndCriticModels/references/Teaching_Large_Language_Models_to_Self-Debug.pdf": "020e06b1fb9e1d4b6c33016a9471e8bd31f8ecfd7a22335d85956c14efa39f75",
+    "courses/11-768/20.RerankingAndCriticModels/references/Large_Language_Models_Cannot_Self-Correct_Reasoning_Yet.pdf": "15e1731e255ec6b217792a1e077926807da77e8e46b69e6c57dda30d67794761",
+    "courses/11-768/20.RerankingAndCriticModels/references/Recursive_Self-Aggregation_Unlocks_Deep_Thinking_in_Large_Language_Models.pdf": "edff4dc2dc6393dc958d752f8c766221d8eaee77328745fa4d2e3dbc7824ff35",
+    "courses/11-768/20.RerankingAndCriticModels/references/WHALE_A_Simple_Recipe_for_Joint_Harness-Weight_Optimization.pdf": "f4307846da7686ee75ef070fdc53112c8eb8ca557b9318da0a88838e56b9e602",
+    "courses/11-768/20.RerankingAndCriticModels/references/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf": "13ff4abe0c7ad4a7dd3b4876d19a8bf940e39e70dabbf06065aa774a6c3457de",
+    "courses/11-768/20.RerankingAndCriticModels/references/Group-Evolving_Agents_Open-Ended_Self-Improvement_via_Experience_Sharing.pdf": "967517dbde132a515386f9c8ac25969be2578658a7b9a7927c893751b009c3c4",
+    "courses/11-768/20.RerankingAndCriticModels/references/Tree_Search_for_Language_Model_Agents.pdf": "0b21710f26db2e9383f768cdaea5755f1a39fb0b5eafffdfa5451a33d106e130",
+    "courses/11-768/20.RerankingAndCriticModels/references/Extended_thinking.html": "4ed98be8b3f295a0c86080c128f6b3bf3b69ed3672797d688f986b892c3e8f94",
+    "courses/11-768/20.RerankingAndCriticModels/references/code/DeepSeek-R1/README.md": "4ed979e497121ae4dd9f1573da1668219f43be55d62cc0bf2be5429211a67486",
+    "courses/11-768/20.RerankingAndCriticModels/references/code/meta-harness/reference_examples/text_classification/agents/fewshot_memory.py": "daa346dbae5a83ffd58c6507eca99cb9e718f1e406be80d95b2fa72d90576240"
+  },
+  "deferred_notes": []
 }

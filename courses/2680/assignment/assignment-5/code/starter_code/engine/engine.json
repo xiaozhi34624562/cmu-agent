@@ -1,0 +1,5 @@
+{
+  "format": 1,
+  "engine": "sglang",
+  "model": "nvidia/Qwen3.6-35B-A3B-NVFP4@1355db6a052410cfd62085d94b58866fd0f2c3c5"
+}

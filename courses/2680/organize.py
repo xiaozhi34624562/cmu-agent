@@ -21,7 +21,7 @@ from urllib.parse import urljoin, urlparse
 
 from bs4 import BeautifulSoup
 
-from sync import BASE, ROOT, normalized_url, reading_destination, reading_snapshot_issue
+from sync import BASE, ROOT, normalized_url, reading_destination, reading_snapshot_issue, reading_title
 from material_names import material_filename
 
 
@@ -72,22 +72,23 @@ LESSONS = (
     Lesson(10, "10.EfficientLLMServingBasicsI.IntroToLLMs", "2026-10-19", "Efficient LLM serving basics I: intro to LLMs", "oct-19",
            references=(("Transformers and LLM foundations", "notes/transformers.html"),)),
     Lesson(11, "11.EfficientLLMServingBasicsII.IntroToGPUs", "2026-10-21", "Efficient LLM serving basics II: intro to GPUs", "oct-21"),
-    Lesson(12, "12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism", "2026-11-02", "Efficient LLM serving basics III: Batching, paging, and parallelism", "nov-02"),
-    Lesson(13, "13.EfficientLLMServing.SpeculativeDecoding", "2026-11-04", "Efficient LLM serving: speculative decoding", "nov-04"),
-    Lesson(14, "14.EfficientAgenticSystems.SchedulingAndPrefixCaching", "2026-11-11", "Efficient agentic systems: scheduling and prefix caching", "nov-11"),
-    Lesson(15, "15.EfficientLLMServing.PruningAndQuantization", "2026-11-18", "Efficient LLM serving: pruning and quantization", "nov-18"),
+    Lesson(12, "12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism", "2026-11-04", "Efficient LLM serving basics III: Batching, paging, and parallelism", "nov-04"),
+    Lesson(13, "13.EfficientLLMServing.SpeculativeDecoding", "2026-11-11", "Efficient LLM serving: speculative decoding", "nov-11"),
+    Lesson(14, "14.EfficientAgenticSystems.SchedulingAndPrefixCaching", "2026-11-30", "Efficient agentic systems: scheduling and prefix caching", "nov-30"),
+    Lesson(15, "15.EfficientLLMServing.PruningAndQuantization", "2026-11-23", "Efficient LLM serving: pruning and quantization", "nov-23"),
     Lesson(16, "16.EfficientLLMServing.KVCacheOptimizationAndModelArchitectures", "2026-11-16", "Efficient LLM serving: KV-cache optimization and model architectures", "nov-16",
            references=(("Paper discussion format", "discussion.html"),), paper_discussion=True),
-    Lesson(17, "17.EfficientAgenticSystem.RoutingAndLoadBalancing", "2026-11-30", "Efficient agentic system: routing and load balancing", "nov-30"),
+    Lesson(17, "17.EfficientAgenticSystem.RoutingAndLoadBalancing", "2026-12-02", "Efficient agentic systems: routing and load balancing", "dec-02"),
     # Directory identities remain stable when the official calendar inserts meetings.
     # Historical 18.Others stays on disk but is not a current scheduled meeting.
     Lesson(19, "19.GuestLectureDevelopingAndEvaluatingAgentsInEnterpriseSetting", "2026-10-05", "Guest lecture: Developing and Evaluating Agents in Enterprise Setting", None),
     Lesson(20, "20.GuestLectureWhyInfrastructureSetsThePaceOfAI", "2026-11-09", "Guest lecture: Why Infrastructure sets the pace of AI", None),
     Lesson(21, "21.StudentSharingI", "2026-09-21", "Student sharing I: Learning from Assignment 1", None),
-    Lesson(22, "22.Assignment3StudentSharing", "2026-10-26", "Assignment 3 student sharing", None),
+    Lesson(22, "22.Assignment3StudentSharing", "2026-10-26", "Student sharing II: Harness optimization", None),
     Lesson(23, "23.Assignment3Feedback", "2026-10-28", "Assignment 3 feedback", None),
-    Lesson(24, "24.StudentSharingIII.EngineOptimizationsAndAgentEngineCoDesign", "2026-11-23", "Student sharing III: Engine optimizations and agent-engine co-design", None),
-    Lesson(25, "25.StudentSharingIV", "2026-12-02", "Student sharing IV", None),
+    Lesson(24, "24.StudentSharingIII.EngineOptimizationsAndAgentEngineCoDesign", "2026-11-18", "Student sharing III: Showcase your serving engine (Assignment 4)", None),
+    # 25.StudentSharingIV is retained as an old, unscheduled placeholder.
+    Lesson(26, "26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued", "2026-11-02", "Assignments feedback and agent pitfalls, GPU programming (cont.)", None),
 )
 
 
@@ -112,7 +113,9 @@ def validate_course_layout() -> None:
             continue
         for anchor in cells[3].select("a"):
             anchor.decompose()
-        titles[date] = cells[3].get_text(" ", strip=True)
+        # Nov2 surrounds the PDF anchors with literal [ , ]; they are navigation,
+        # not part of the official meeting title.
+        titles[date] = re.sub(r"\s*\[\s*,?\s*\]\s*$", "", cells[3].get_text(" ", strip=True)).strip()
     layout = json.loads((ROOT.parent / "COURSE_LAYOUT.json").read_text(encoding="utf-8"))
     identities = {Path(row["local_path"]).name: row for row in layout["rows"]
                   if row["course"] == "Harvard CS2680" and row.get("local_path")}
@@ -149,7 +152,7 @@ def slide_access_issue(source: Path) -> str | None:
 
 
 def filename_for(title: str, url: str, number: int, extension: str) -> str:
-    return material_filename(title, url, extension)
+    return material_filename(reading_title(url, title), url, extension)
 
 
 def slide_destination(site_path: str, lesson_folder: Path) -> Path:
@@ -233,7 +236,7 @@ def organize_lessons() -> None:
                     lines += [f"- {markdown_link(label, target, folder)}", f"  - Source: {BASE}{site_path}"]
                     source_number = re.match(r"(\d+)_", source.name)
                     if source_number and int(source_number.group(1)) != lesson.number:
-                        lines.append(f"  - 编号说明：目录 {lesson.number} 按课表日期排序；文件名前缀 {source_number.group(1)} 是官网原始讲义编号。内容按本课日期与主题核对，保留原文件名。")
+                        lines.append(f"  - 编号说明：目录 {lesson.number} 是本仓库稳定编号；文件名前缀 {source_number.group(1)} 是官网原始讲义编号。内容按本课日期与主题核对，保留原文件名。")
                 else:
                     lines += [f"- {label}: source file unavailable", f"  - Source: {BASE}{site_path}"]
         elif lesson.paper_discussion:
@@ -275,9 +278,12 @@ def organize_lessons() -> None:
                     lines += [f"- {title} — [online source]({url})", f"  - Source: {url}"]
         else:
             lines.append("- None listed for this meeting.")
-        for stale in (folder / "readings").glob("*"):
-            if stale.is_file() and stale not in expected_readings and re.match(r"^\d{3}_.+_[0-9a-f]{6}\.(?:pdf|html)$", stale.name):
-                stale.unlink()
+        retained = sorted(path for path in (folder / "readings").glob("*")
+                          if path.is_file() and path not in expected_readings)
+        if retained:
+            lines += ["", "## Retained earlier reading archive", "",
+                      "以下原件来自此前公开阅读清单；当前课表未在本课列出，保留历史归档，不计为本次新增指定阅读。", ""]
+            lines += [f"- {markdown_link(path.name, path, folder)}" for path in retained]
         notes = sorted(path for path in folder.glob("*.md") if path.name not in {"README.md", "SOURCES.md"})
         if notes:
             lines += ["", "## Local study notes", "", "以下为本地中文学习笔记，文件名保留现有名称；教师原始讲义见上方 Slides。", ""]
@@ -374,6 +380,13 @@ def organize_assignments() -> None:
                 lines += ["", "## Slides", "",
                           f"- {markdown_link('Assignment 3 slides', slide_target, folder)}",
                           f"  - Source: {BASE}slides/8_assignment3.pdf"]
+        if number == 5:
+            terminal_bench = ROOT.parent / "329z/10.GuestLectureTerminalBench/readings/Terminal-Bench_Benchmarking_Agents_on_Hard_Realistic_Tasks_in_Command_Line_Interfaces.pdf"
+            if terminal_bench.is_file():
+                lines += ["", "## Referenced benchmark paper", "",
+                          f"- {markdown_link('Terminal-Bench: Benchmarking Agents on Hard, Realistic Tasks in Command Line Interfaces', terminal_bench, folder)}",
+                          "  - Source: https://arxiv.org/abs/2601.11868",
+                          "  - 复用 Stanford CS329Z 已有归档，不计为本次重新下载；版本见原课程 SOURCES.md。"]
         slide_source = ROOT / "site/slides" / f"assignment{number}.pdf"
         if slide_source.exists():
             slide_target = folder / slide_source.name
@@ -449,9 +462,9 @@ def update_course_index() -> None:
                 note_status += " · " + markdown_link("补充学习文档", folder / "SOURCES.md", ROOT)
             sections.append(f"| {lesson.date[5:]} | {markdown_link(f'{lesson.number}. {lesson.title}', entry, ROOT)} | {status} | {note_status} |")
         sections.append("")
-    sections += ["完整日历和材料状态见[完整课表](COURSE_SCHEDULE.md)。目录编号保持稳定，表中按当前官方日期排序；历史 `18.EfficientAgenticSystems.Others` 保留，不计为当前正式课次。原始 PDF 文件名保留官网编号。", ""]
-    sections += ["### 文件名与归档位置核对（2026-10-23）", "",
-                 "本次按课表日期、讲义封面、阅读链接和原始归档的校验值核对全部 18 个课次。264 份阅读副本均与对应原始下载文件一致；其中 LPC 的 HTML 是浏览器验证页，未取得阅读正文，已在第 14 课索引中明确标注。", "",
+    sections += ["完整日历和材料状态见[完整课表](COURSE_SCHEDULE.md)。目录编号保持稳定，表中按当前官方日期排序；历史 `18.EfficientAgenticSystems.Others`、`25.StudentSharingIV` 保留，不计为当前正式课次。原始 PDF 文件名保留官网编号。", ""]
+    sections += ["### 文件名与归档位置核对（2026-10-23 历史记录）", "",
+                 "2026-10-23 曾按当时课表日期、讲义封面、阅读链接和原始归档的校验值核对 18 个课次及 264 份阅读副本；该计数只描述当时版本。当前材料、获取限制及保留的旧阅读以本次 SOURCES.md 和 CHECKSUMS.sha256 为准。LPC 的历史 HTML 是浏览器验证页，不能视为阅读正文。", "",
                  "| 容易混淆的文件 | 核对结论与处理 |", "|---|---|",
                  "| 第 10 课的 `9_llm_serving_basics_1.pdf` | 封面为 Introduction to LLM，对应 10 月 19 日；位置正确，保留官网文件名。 |",
                  "| 第 11 课的 `10_llm_serving_basics_2a.pdf` | 封面为 Intro to GPUs，对应 10 月 21 日；位置正确，保留官网文件名。 |",
@@ -475,7 +488,7 @@ def update_course_index() -> None:
                 "- `assignments/course-repo/`：作业仓库的既有快照。"
                 f"{metadata.get('last_attempt', archive_snapshot_date())} 上游仓库仍不可访问，"
                 f"保留 {metadata.get('snapshot_date', '未记录日期')} 的固定提交；"
-                "状态见 [SNAPSHOT.json](assignments/SNAPSHOT.json)。作业 4 使用课程网站的官方归档。",
+                "状态见 [SNAPSHOT.json](assignments/SNAPSHOT.json)。作业 4、5 使用课程网站的官方归档。",
                 content, count=1)
     if begin in content and end in content:
         content = re.sub(re.escape(begin) + r".*?" + re.escape(end) + r"\s*", lambda _: replacement, content, count=1, flags=re.S)

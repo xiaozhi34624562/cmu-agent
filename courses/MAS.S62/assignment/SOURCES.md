@@ -1,6 +1,6 @@
 # 课程作业
 
-大纲计划四次作业：Context、Harness、Model、Task evolution；具体日期、题目和提交要求以教师最新说明为准。
+当前官方大纲逐项列Context、Harness、Model三项，但概述仍写四次作业；旧版第四项Task evolution是否取消未确认。具体题目和提交要求以教师最新说明为准。
 
 - [课程大纲](../site/syllabus/ai4ai-syllabus.pdf)
 - [Canvas（提交平台，需要对应课程权限）](https://canvas.mit.edu/courses/40521/)

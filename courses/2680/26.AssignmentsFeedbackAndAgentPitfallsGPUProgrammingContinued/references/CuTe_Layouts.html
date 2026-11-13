@@ -1,0 +1,1340 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="4.8.1" name="docs-version" />
+<meta content="repo_docs" name="project-name" />
+
+    <title>CuTe Layouts &#8212; NVIDIA CUTLASS Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/nvidia-sphinx-theme.css?v=df3ac72c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=767de534" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script rel="preload" src="../../../../_static/modal-table.js"></script>
+    <script src="../../../../_static/documentation_options.js?v=dc0bc992"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/scrollspy-patch.js?v=edc4054a"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=65e89d2a"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'media/docs/cpp/cute/01_layout';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = '../versions1.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '4.8.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            true;
+        </script>
+    <script src="../../../../_static/version-patch.js?v=3e13fdd2"></script>
+    <link rel="icon" href="../../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="CuTe Layout Algebra" href="02_layout_algebra.html" />
+    <link rel="prev" title="Getting Started With CuTe" href="00_quickstart.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+    <meta name="docbuild:last-update" content="Oct 16, 2026"/>
+
+    <script src="https://assets.adobedtm.com/5d4962a43b79/c1061d2c5e7b/launch-191c2462b890.min.js" ></script>
+    
+
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="NVIDIA CUTLASS Documentation - Home"/>
+    <img src="../../../../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="NVIDIA CUTLASS Documentation - Home"/>
+  
+  
+    <p class="title logo__title">NVIDIA CUTLASS Documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+
+
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="NVIDIA CUTLASS Documentation - Home"/>
+    <img src="../../../../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="NVIDIA CUTLASS Documentation - Home"/>
+  
+  
+    <p class="title logo__title">NVIDIA CUTLASS Documentation</p>
+  
+</a>
+
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+
+
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Table of Contents">
+  <p class="bd-links__title" role="heading" aria-level="1">Table of Contents</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../CHANGELOG.html">Changelog</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">CUTLASS Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../pythonDSL/overview.html">Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../pythonDSL/quick_start.html">Quick Start Guide</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../pythonDSL/cute_dsl.html">DSL Programming Model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pythonDSL/cute_dsl_general/dsl_introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pythonDSL/cute_dsl_general/dsl_code_generation.html">Code Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pythonDSL/cute_dsl_general/dsl_control_flow.html">Control Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pythonDSL/cute_dsl_general/dsl_jit_arg_generation.html">JIT Argument Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pythonDSL/cute_dsl_general/dsl_dynamic_layout.html">JIT Argument: Layouts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pythonDSL/cute_dsl_general/dsl_struct_types.html">Struct-like JIT Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pythonDSL/cute_dsl_general/dsl_jit_caching.html">JIT Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pythonDSL/cute_dsl_general/dsl_jit_compilation_options.html">JIT Compilation Options</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../pythonDSL/guides.html">Guides</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pythonDSL/guides/notebooks.html">Educational Notebooks</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../pythonDSL/guides/mma/index.html">MMA Programming Guides</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pythonDSL/guides/mma/wmma_programming.html">Warp-Level MMA Instructions Programming Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pythonDSL/guides/mma/wgmma_programming.html">Warpgroup MMA Programming Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pythonDSL/guides/mma/tcgen05_programming.html">tcgen05 MMA Programming Guide</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pythonDSL/guides/framework_integration.html">Integration with Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pythonDSL/guides/debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pythonDSL/guides/iket_profiling.html">In-Kernel Event Tracing (IKET) Profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pythonDSL/guides/autotuning_gemm.html">Autotuning with the DSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pythonDSL/guides/ahead_of_time_compilation.html">Ahead-of-Time (AOT) Compilation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pythonDSL/guides/tvm_ffi_compilation.html">TVM FFI Compilation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../pythonDSL/apis.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pythonDSL/basic_data_types.html">Basic Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pythonDSL/primitives.html">Primitives (experimental)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pythonDSL/cuda.html">CUDA (Jittable)</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../pythonDSL/cute_dsl_api.html">CuTe</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pythonDSL/cute_dsl_api/cute.html">Core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pythonDSL/cute_dsl_api/cute_runtime.html">Runtime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pythonDSL/cute_dsl_api/cute_math.html">Math</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../pythonDSL/cute_dsl_api/gpu_operations.html">GPU Operations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pythonDSL/cute_dsl_api/cute_nvgpu.html">nvgpu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pythonDSL/cute_dsl_api/cute_nvgpu_common.html">nvgpu.common</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pythonDSL/cute_dsl_api/cute_nvgpu_warp.html">nvgpu.warp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pythonDSL/cute_dsl_api/cute_nvgpu_warpgroup.html">nvgpu.warpgroup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pythonDSL/cute_dsl_api/cute_nvgpu_cpasync.html">nvgpu.cpasync</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pythonDSL/cute_dsl_api/cute_nvgpu_tcgen05.html">nvgpu.tcgen05</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pythonDSL/cute_dsl_api/cute_arch.html">arch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pythonDSL/cute_dsl_general/naming_conventions.html">Naming Conventions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pythonDSL/cute_dsl_api/pipeline.html">Pipeline</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../pythonDSL/ts.html">Task Scheduling (experimental)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pythonDSL/ts_general/ts_introduction.html">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pythonDSL/ts_general/ts_resources.html">Resources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pythonDSL/ts_general/ts_pipelines.html">Pipeline Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pythonDSL/ts_general/ts_schedules.html">Schedules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pythonDSL/ts_general/ts_patterns.html">Scheduling Patterns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pythonDSL/ts_general/ts_validation.html">Validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pythonDSL/ts_general/ts_printout.html">Reading the Printed Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pythonDSL/ts_general/ts_allocators.html">Allocators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pythonDSL/ts_general/ts_pipeline_groups.html">Pipeline Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pythonDSL/ts_general/ts_pdl.html">Programmatic Dependent Launch</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../pythonDSL/ts_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pythonDSL/ts_api/ts.html">task_scheduling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pythonDSL/ts_api/resources.html">resources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pythonDSL/ts_api/task.html">task</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pythonDSL/ts_api/task_manager.html">task_manager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pythonDSL/ts_api/schedule_builder.html">schedule_builder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pythonDSL/ts_api/memory.html">memory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pythonDSL/ts_api/pipeline_group.html">pipeline_group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pythonDSL/ts_api/pipeline.html">pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pythonDSL/ts_api/enums.html">enums</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../pythonDSL/cute_dsl_api/utils.html">Utilities</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pythonDSL/cute_dsl_api/utils_sm90.html">Hopper (SM90)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pythonDSL/cute_dsl_api/utils_sm100.html">Blackwell (SM100)</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pythonDSL/cute_dsl_general/resources.html">Talks and Presentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pythonDSL/limitations.html">Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pythonDSL/deprecation.html">Deprecation Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pythonDSL/faqs.html">FAQs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">CUTLASS Operator API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../operators/overview.html">CUTLASS Operator API</a></li>
+
+
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../operators/tutorials/index.html">Tutorials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../operators/tutorials/000_gemm.html">Core concepts and basic GEMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../operators/tutorials/001_gemm_with_fused_epilogue.html">GEMM with fused epilogue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../operators/tutorials/002_bring_your_own_kernel.html">Bringing your own kernel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../operators/tutorials/003_host_latency_best_practices.html">Host latency best practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../operators/tutorials/004_fake_tensors.html">Fake tensors for compilation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../operators/tutorials/005_grouped_gemm_contiguous_offset.html">Grouped GEMM with contiguous offset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../operators/tutorials/006_block_scaled_gemm.html">Block-scaled GEMM (MXFP8)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../operators/tutorials/007_heuristics.html">Heuristics to rank operators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../operators/api_reference/index.html">API reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../operators/api_reference/operator.html">Operator interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../operators/api_reference/arguments.html">Arguments and Operands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../operators/api_reference/discovery.html">Kernel discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../operators/api_reference/heuristics.html">Heuristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../operators/api_reference/metadata.html">Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../operators/api_reference/misc.html">Miscellaneous</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">CUTLASS C++</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../overview.html">Overview</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../getting_started.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ide_setup.html">IDE Setup</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../build/index.html">Build</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../build/building_in_windows_with_visual_studio.html">Building on Windows with Visual Studio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build/building_with_clang_as_host_compiler.html">Building with Clang as host compiler</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../functionality.html">Functionality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../terminology.html">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_types.html">Fundamental Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../programming_guidelines.html">Programming Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../heuristics.html">GEMM Heuristics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../efficient_gemm.html">Efficient GEMM in CUDA</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../pipeline.html">Synchronization primitives</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../profiler.html">CUTLASS Profiler</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../gemm_performance_measurement_methodology_guidelines.html">GEMM Performance Measurement Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dependent_kernel_launch.html">Dependent Kernel Launch</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../blackwell.html">Blackwell Specific</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../blackwell_functionality.html">Blackwell SM100 GEMMs</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../blackwell_cluster_launch_control.html">Blackwell Cluster Launch Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">CuTe</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="00_quickstart.html">00_quickstart</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">01_layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_layout_algebra.html">02_layout_algebra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_tensor.html">03_tensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_algorithms.html">04_algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0t_mma_atom.html">0t_mma_atom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0x_gemm_tutorial.html">0x_gemm_tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0y_predication.html">0y_predication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="0z_tma_tensors.html">0z_tma_tensors</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cutlass_3x.html">CUTLASS 3.x</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cutlass_3x_design.html">Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cutlass_3x_backwards_compatibility.html">GEMM Backwards Compatibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gemm_api_3x.html">GEMM API</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cutlass_2x.html">CUTLASS 2.x</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../layout.html">Layouts and Tensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gemm_api.html">GEMM API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tile_iterator_concept.html">Tile Iterator Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../utilities.html">Utilities</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../code_organization.html">Code Organization</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../grouped_scheduler.html">Grouped Kernel Schedulers</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../implicit_gemm_convolution.html">CUTLASS Convolution</a></li>
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../pythonDSL/license.html">Software License Agreement</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">CuTe</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">CuTe Layouts</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="cute-layouts">
+<h1>CuTe Layouts<a class="headerlink" href="#cute-layouts" title="Link to this heading">#</a></h1>
+<p>This document describes <code class="docutils literal notranslate"><span class="pre">Layout</span></code>, CuTe’s core abstraction.
+Fundamentally, a <code class="docutils literal notranslate"><span class="pre">Layout</span></code> maps from coordinate space(s)
+to an index space.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Layout</span></code>s present a common interface to multidimensional array access
+that abstracts away the details of how the array’s elements are organized in memory.
+This lets users write algorithms that access multidimensional arrays generically,
+so that layouts can change, without users’ code needing to change. For example, a row-major MxN layout and a column-major MxN layout can be treated identically in software.</p>
+<p>CuTe also provides an “algebra of <code class="docutils literal notranslate"><span class="pre">Layout</span></code>s.”
+<code class="docutils literal notranslate"><span class="pre">Layout</span></code>s can be combined and manipulated
+to construct more complicated layouts
+and to tile layouts across other layouts.
+This can help users do things like partition layouts of data over layouts of threads.</p>
+<section id="fundamental-types-and-concepts">
+<h2>Fundamental Types and Concepts<a class="headerlink" href="#fundamental-types-and-concepts" title="Link to this heading">#</a></h2>
+<section id="integers">
+<h3>Integers<a class="headerlink" href="#integers" title="Link to this heading">#</a></h3>
+<p>CuTe makes great use of dynamic (known only at run-time) and static (known at compile-time) integers.</p>
+<ul class="simple">
+<li><p>Dynamic integers (or “run-time integers”) are just ordinary integral types like <code class="docutils literal notranslate"><span class="pre">int</span></code> or <code class="docutils literal notranslate"><span class="pre">size_t</span></code> or <code class="docutils literal notranslate"><span class="pre">uint16_t</span></code>. Anything that is accepted by <code class="docutils literal notranslate"><span class="pre">std::is_integral&lt;T&gt;</span></code> is considered a dynamic integer in CuTe.</p></li>
+<li><p>Static integers (or “compile-time integers”) are instantiations of types like <code class="docutils literal notranslate"><span class="pre">std::integral_constant&lt;Value&gt;</span></code>. These types encode the value as a <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">constexpr</span></code> member. They also support casting to their underlying dynamic types, so they can be used in expressions with dynamic integers. CuTe defines its own CUDA-compatibe static integer types <code class="docutils literal notranslate"><span class="pre">cute::C&lt;Value&gt;</span></code> along with overloaded math operators so that math on static integers results in static integers. CuTe defines shortcut aliases <code class="docutils literal notranslate"><span class="pre">Int&lt;1&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">Int&lt;2&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">Int&lt;3&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">_1</span></code>, <code class="docutils literal notranslate"><span class="pre">_2</span></code>, <code class="docutils literal notranslate"><span class="pre">_3</span></code> as conveniences, which you should see often within examples.</p></li>
+</ul>
+<p>CuTe attempts to handle static and dynamic integers identically. In the examples that follow, all dynamic integers could be replaced with static integers and vice versa. When we say “integer” in CuTe, we almost always mean a static OR dynamic integer.</p>
+<p>CuTe provides a number of traits to work with integers.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cute::is_integral&lt;T&gt;</span></code>: Checks whether <code class="docutils literal notranslate"><span class="pre">T</span></code> is a static or dynamic integer type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cute::is_std_integral&lt;T&gt;</span></code>: Checks whether <code class="docutils literal notranslate"><span class="pre">T</span></code> is a dynamic integer type. Equivalent to <code class="docutils literal notranslate"><span class="pre">std::is_integral&lt;T&gt;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cute::is_static&lt;T&gt;</span></code>: Checks whether <code class="docutils literal notranslate"><span class="pre">T</span></code> is an empty type (so instantiations cannot depend on any dynamic information). Equivalent to <code class="docutils literal notranslate"><span class="pre">std::is_empty</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cute::is_constant&lt;N,T&gt;</span></code>: Checks that <code class="docutils literal notranslate"><span class="pre">T</span></code> is a static integer AND its value is equivalent to <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p></li>
+</ul>
+<p>See the <a class="reference external" href="https://github.com/NVIDIA/cutlass/tree/main/include/cute/numeric/integral_constant.hpp"><code class="docutils literal notranslate"><span class="pre">integral_constant</span></code> implementations</a> for more information.</p>
+</section>
+<section id="tuple">
+<h3>Tuple<a class="headerlink" href="#tuple" title="Link to this heading">#</a></h3>
+<p>A tuple is a finite ordered list of zero or more elements.
+The <a class="reference external" href="https://github.com/NVIDIA/cutlass/tree/main/include/cute/container/tuple.hpp"><code class="docutils literal notranslate"><span class="pre">cute::tuple</span></code> class</a> behaves like <code class="docutils literal notranslate"><span class="pre">std::tuple</span></code>, but works on device and host. It imposes restrictions on its template arguments and strips down the implementation for performance and simplicity.</p>
+</section>
+<section id="inttuple">
+<h3>IntTuple<a class="headerlink" href="#inttuple" title="Link to this heading">#</a></h3>
+<p>CuTe defines the IntTuple concept as either an integer, or a tuple of IntTuples. Note the recursive definition.
+In C++, we define <a class="reference external" href="https://github.com/NVIDIA/cutlass/tree/main/include/cute/int_tuple.hpp">operations on <code class="docutils literal notranslate"><span class="pre">IntTuple</span></code></a>.</p>
+<p>Examples of <code class="docutils literal notranslate"><span class="pre">IntTuple</span></code>s include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">int{2}</span></code>, the dynamic integer 2.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Int&lt;3&gt;{}</span></code>, the static integer 3.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make_tuple(int{2},</span> <span class="pre">Int&lt;3&gt;{})</span></code>, the tuple of dynamic-2, and static-3.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make_tuple(uint16_t{42},</span> <span class="pre">make_tuple(Int&lt;1&gt;{},</span> <span class="pre">int32_t{3}),</span> <span class="pre">Int&lt;17&gt;{})</span></code>, the tuple of dynamic-42, tuple of static-1 and dynamic-3, and static-17.</p></li>
+</ul>
+<p>CuTe reuses the <code class="docutils literal notranslate"><span class="pre">IntTuple</span></code> concept for many different things,
+including Shape, Stride, Step, and Coord
+(see <a class="reference external" href="https://github.com/NVIDIA/cutlass/tree/main/include/cute/layout.hpp"><code class="docutils literal notranslate"><span class="pre">include/cute/layout.hpp</span></code></a>).</p>
+<p>Operations defined on <code class="docutils literal notranslate"><span class="pre">IntTuple</span></code>s include the following.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">rank(IntTuple)</span></code>: The number of elements in an <code class="docutils literal notranslate"><span class="pre">IntTuple</span></code>. A single integer has rank 1, and a tuple has rank <code class="docutils literal notranslate"><span class="pre">tuple_size</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get&lt;I&gt;(IntTuple)</span></code>: The <code class="docutils literal notranslate"><span class="pre">I</span></code>th element of the <code class="docutils literal notranslate"><span class="pre">IntTuple</span></code>, with <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">&lt;</span> <span class="pre">rank</span></code>. For single integers, <code class="docutils literal notranslate"><span class="pre">get&lt;0&gt;</span></code> is just that integer.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">depth(IntTuple)</span></code>: The number of hierarchical <code class="docutils literal notranslate"><span class="pre">IntTuple</span></code>s. A single integer has depth 0, a tuple of integers has depth 1, a tuple that contains a tuple of integers has depth 2, etc.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size(IntTuple)</span></code>: The product of all elements of the <code class="docutils literal notranslate"><span class="pre">IntTuple</span></code>.</p></li>
+</ul>
+<p>We write <code class="docutils literal notranslate"><span class="pre">IntTuple</span></code>s with parentheses to denote the hierarchy. For example, <code class="docutils literal notranslate"><span class="pre">6</span></code>, <code class="docutils literal notranslate"><span class="pre">(2)</span></code>, <code class="docutils literal notranslate"><span class="pre">(4,3)</span></code>, and <code class="docutils literal notranslate"><span class="pre">(3,(6,2),8)</span></code> are all <code class="docutils literal notranslate"><span class="pre">IntTuple</span></code>s.</p>
+</section>
+<section id="shapes-and-strides">
+<h3>Shapes and Strides<a class="headerlink" href="#shapes-and-strides" title="Link to this heading">#</a></h3>
+<p>Both <code class="docutils literal notranslate"><span class="pre">Shape</span></code> and <code class="docutils literal notranslate"><span class="pre">Stride</span></code> are <code class="docutils literal notranslate"><span class="pre">IntTuple</span></code> concepts.</p>
+</section>
+<section id="layout">
+<h3>Layout<a class="headerlink" href="#layout" title="Link to this heading">#</a></h3>
+<p>A <code class="docutils literal notranslate"><span class="pre">Layout</span></code> is a tuple of (<code class="docutils literal notranslate"><span class="pre">Shape</span></code>, <code class="docutils literal notranslate"><span class="pre">Stride</span></code>).
+Semantically, it implements a mapping from
+any coordinate within the Shape to an index via the Stride.</p>
+</section>
+<section id="tensor">
+<h3>Tensor<a class="headerlink" href="#tensor" title="Link to this heading">#</a></h3>
+<p>A <code class="docutils literal notranslate"><span class="pre">Layout</span></code> can be composed with data – e.g., a pointer or an array – to create a <code class="docutils literal notranslate"><span class="pre">Tensor</span></code>. The index generated by the <code class="docutils literal notranslate"><span class="pre">Layout</span></code> is used to subscript an iterator to retrieve the appropriate data. For details on <code class="docutils literal notranslate"><span class="pre">Tensor</span></code>, please refer to the
+<a class="reference internal" href="03_tensor.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">Tensor</span></code> section of the tutorial</span></a>.</p>
+</section>
+</section>
+<section id="layout-creation-and-use">
+<h2>Layout Creation and Use<a class="headerlink" href="#layout-creation-and-use" title="Link to this heading">#</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">Layout</span></code> is a pair of <code class="docutils literal notranslate"><span class="pre">IntTuple</span></code>s: the <code class="docutils literal notranslate"><span class="pre">Shape</span></code> and the <code class="docutils literal notranslate"><span class="pre">Stride</span></code>. The first element defines the abstract <em>shape</em> of the <code class="docutils literal notranslate"><span class="pre">Layout</span></code>, and the second element defines the <em>strides</em>, which map from coordinates within the shape to the index space.</p>
+<p>We define many operations on <code class="docutils literal notranslate"><span class="pre">Layout</span></code>s analogous to those defined on <code class="docutils literal notranslate"><span class="pre">IntTuple</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">rank(Layout)</span></code>: The number of modes in a <code class="docutils literal notranslate"><span class="pre">Layout</span></code>. Equivalent to the tuple size of the <code class="docutils literal notranslate"><span class="pre">Layout</span></code>’s shape.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get&lt;I&gt;(Layout)</span></code>: The <code class="docutils literal notranslate"><span class="pre">I</span></code>th sub-layout of the <code class="docutils literal notranslate"><span class="pre">Layout</span></code>, with <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">&lt;</span> <span class="pre">rank</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">depth(Layout)</span></code>: The depth of the <code class="docutils literal notranslate"><span class="pre">Layout</span></code>’s shape. A single integer has depth 0, a tuple of integers has depth 1, a tuple of tuples of integers has depth 2, etc.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shape(Layout)</span></code>: The shape of the <code class="docutils literal notranslate"><span class="pre">Layout</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stride(Layout)</span></code>: The stride of the <code class="docutils literal notranslate"><span class="pre">Layout</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size(Layout)</span></code>: The size of the <code class="docutils literal notranslate"><span class="pre">Layout</span></code> function’s domain.  Equivalent to <code class="docutils literal notranslate"><span class="pre">size(shape(Layout))</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cosize(Layout)</span></code>: The size of the <code class="docutils literal notranslate"><span class="pre">Layout</span></code> function’s codomain (not necessarily the range). Equivalent to <code class="docutils literal notranslate"><span class="pre">A(size(A)</span> <span class="pre">-</span> <span class="pre">1)</span> <span class="pre">+</span> <span class="pre">1</span></code>.</p></li>
+</ul>
+<section id="hierarchical-access-functions">
+<h3>Hierarchical access functions<a class="headerlink" href="#hierarchical-access-functions" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">IntTuple</span></code>s and <code class="docutils literal notranslate"><span class="pre">Layout</span></code>s can be arbitrarily nested.
+For convenience, we define versions of some of the above functions
+that take a sequence of integers, instead of just one integer.
+This makes it possible to access elements
+inside of nested <code class="docutils literal notranslate"><span class="pre">IntTuple</span></code> or <code class="docutils literal notranslate"><span class="pre">Layout</span></code> more easily.
+For example, we permit <code class="docutils literal notranslate"><span class="pre">get&lt;I...&gt;(x)</span></code>, where <code class="docutils literal notranslate"><span class="pre">I...</span></code> is a “C++ parameter pack” that denotes zero or more (integer) template arguments. These hierarchical access functions include the following.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">get&lt;I0,I1,...,IN&gt;(x)</span> <span class="pre">:=</span> <span class="pre">get&lt;IN&gt;(...(get&lt;I1&gt;(get&lt;I0&gt;(x)))...)</span></code>. Extract the <code class="docutils literal notranslate"><span class="pre">IN</span></code>th of the … of the <code class="docutils literal notranslate"><span class="pre">I1</span></code>st of the <code class="docutils literal notranslate"><span class="pre">I0</span></code>th element of <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rank&lt;I...&gt;(x)</span>&#160; <span class="pre">:=</span> <span class="pre">rank(get&lt;I...&gt;(x))</span></code>. The rank of the <code class="docutils literal notranslate"><span class="pre">I...</span></code>th element of <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">depth&lt;I...&gt;(x)</span> <span class="pre">:=</span> <span class="pre">depth(get&lt;I...&gt;(x))</span></code>. The depth of the <code class="docutils literal notranslate"><span class="pre">I...</span></code>th element of <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shape&lt;I...&gt;(x)</span>&#160; <span class="pre">:=</span> <span class="pre">shape(get&lt;I...&gt;(x))</span></code>. The shape of the <code class="docutils literal notranslate"><span class="pre">I...</span></code>th element of <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size&lt;I...&gt;(x)</span>&#160; <span class="pre">:=</span> <span class="pre">size(get&lt;I...&gt;(x))</span></code>. The size of the <code class="docutils literal notranslate"><span class="pre">I...</span></code>th element of <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p></li>
+</ul>
+<p>In the following examples, you’ll see use of <code class="docutils literal notranslate"><span class="pre">size&lt;0&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">size&lt;1&gt;</span></code> to determine loops bounds for the 0th and 1st mode of a layout or tensor.</p>
+</section>
+<section id="constructing-a-layout">
+<h3>Constructing a Layout<a class="headerlink" href="#constructing-a-layout" title="Link to this heading">#</a></h3>
+<p>A <code class="docutils literal notranslate"><span class="pre">Layout</span></code> can be constructed in many different ways.
+It can include any combination of compile-time (static) integers
+or run-time (dynamic) integers.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">Layout</span><span class="w"> </span><span class="n">s8</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_layout</span><span class="p">(</span><span class="n">Int</span><span class="o">&lt;</span><span class="mi">8</span><span class="o">&gt;</span><span class="p">{});</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">d8</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_layout</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
+
+<span class="n">Layout</span><span class="w"> </span><span class="n">s2xs4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_layout</span><span class="p">(</span><span class="n">make_shape</span><span class="p">(</span><span class="n">Int</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">{},</span><span class="n">Int</span><span class="o">&lt;</span><span class="mi">4</span><span class="o">&gt;</span><span class="p">{}));</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">s2xd4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_layout</span><span class="p">(</span><span class="n">make_shape</span><span class="p">(</span><span class="n">Int</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">{},</span><span class="mi">4</span><span class="p">));</span>
+
+<span class="n">Layout</span><span class="w"> </span><span class="n">s2xd4_a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_layout</span><span class="p">(</span><span class="n">make_shape</span><span class="w"> </span><span class="p">(</span><span class="n">Int</span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;</span><span class="p">{},</span><span class="mi">4</span><span class="p">),</span>
+<span class="w">                             </span><span class="n">make_stride</span><span class="p">(</span><span class="n">Int</span><span class="o">&lt;</span><span class="mi">12</span><span class="o">&gt;</span><span class="p">{},</span><span class="n">Int</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">{}));</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">s2xd4_col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_layout</span><span class="p">(</span><span class="n">make_shape</span><span class="p">(</span><span class="n">Int</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">{},</span><span class="mi">4</span><span class="p">),</span>
+<span class="w">                               </span><span class="n">LayoutLeft</span><span class="p">{});</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">s2xd4_row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_layout</span><span class="p">(</span><span class="n">make_shape</span><span class="p">(</span><span class="n">Int</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">{},</span><span class="mi">4</span><span class="p">),</span>
+<span class="w">                               </span><span class="n">LayoutRight</span><span class="p">{});</span>
+
+<span class="n">Layout</span><span class="w"> </span><span class="n">s2xh4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_layout</span><span class="p">(</span><span class="n">make_shape</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">make_shape</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span>
+<span class="w">                           </span><span class="n">make_stride</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">make_stride</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)));</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">s2xh4_col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_layout</span><span class="p">(</span><span class="n">shape</span><span class="p">(</span><span class="n">s2xh4</span><span class="p">),</span>
+<span class="w">                               </span><span class="n">LayoutLeft</span><span class="p">{});</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">make_layout</span></code> function returns a <code class="docutils literal notranslate"><span class="pre">Layout</span></code>.
+It deduces the types of the function’s arguments and returns a <code class="docutils literal notranslate"><span class="pre">Layout</span></code> with the appropriate template arguments.
+Similarly, the <code class="docutils literal notranslate"><span class="pre">make_shape</span></code> and <code class="docutils literal notranslate"><span class="pre">make_stride</span></code> functions
+return a <code class="docutils literal notranslate"><span class="pre">Shape</span></code> resp. <code class="docutils literal notranslate"><span class="pre">Stride</span></code>.
+CuTe often uses these <code class="docutils literal notranslate"><span class="pre">make_*</span></code> functions
+due to restrictions around constructor template argument deduction (CTAD) and to avoid having to repeat static or dynamic integer types.</p>
+<p>When the <code class="docutils literal notranslate"><span class="pre">Stride</span></code> argument is omitted, it is generated from the provided <code class="docutils literal notranslate"><span class="pre">Shape</span></code> with <code class="docutils literal notranslate"><span class="pre">LayoutLeft</span></code> as default. The <code class="docutils literal notranslate"><span class="pre">LayoutLeft</span></code> tag constructs strides as an exclusive prefix product of the <code class="docutils literal notranslate"><span class="pre">Shape</span></code> from left to right, without regard to the <code class="docutils literal notranslate"><span class="pre">Shape</span></code>’s hierarchy. This can be considered a “generalized column-major stride generation”. The <code class="docutils literal notranslate"><span class="pre">LayoutRight</span></code> tag constructs strides as an exclusive prefix product of the <code class="docutils literal notranslate"><span class="pre">Shape</span></code> from right to left, without regard to the <code class="docutils literal notranslate"><span class="pre">Shape</span></code>’s hierarchy. For shapes of depth one, this can be considered a “row-major stride generation”, but for hierarchical shapes the resulting strides may be surprising. For example, the strides of <code class="docutils literal notranslate"><span class="pre">s2xh4</span></code> above could be generated with <code class="docutils literal notranslate"><span class="pre">LayoutRight</span></code>.</p>
+<p>Calling <code class="docutils literal notranslate"><span class="pre">print</span></code> on each layout above results in the following</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">s8        :  _8:_1</span>
+<span class="go">d8        :  8:_1</span>
+<span class="go">s2xs4     :  (_2,_4):(_1,_2)</span>
+<span class="go">s2xd4     :  (_2,4):(_1,_2)</span>
+<span class="go">s2xd4_a   :  (_2,4):(_12,_1)</span>
+<span class="go">s2xd4_col :  (_2,4):(_1,_2)</span>
+<span class="go">s2xd4_row :  (_2,4):(4,_1)</span>
+<span class="go">s2xh4     :  (2,(2,2)):(4,(2,1))</span>
+<span class="go">s2xh4_col :  (2,(2,2)):(_1,(2,4))</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Shape:Stride</span></code> notation is used quite often for <code class="docutils literal notranslate"><span class="pre">Layout</span></code>. The <code class="docutils literal notranslate"><span class="pre">_N</span></code> notation is shorthand for a static integer while other integers are dynamic integers. Observe that both <code class="docutils literal notranslate"><span class="pre">Shape</span></code> and <code class="docutils literal notranslate"><span class="pre">Stride</span></code> may be composed of both static and dynamic integers.</p>
+<p>Also note that the <code class="docutils literal notranslate"><span class="pre">Shape</span></code> and <code class="docutils literal notranslate"><span class="pre">Stride</span></code> are assumed to be <em>congruent</em>. That is, <code class="docutils literal notranslate"><span class="pre">Shape</span></code> and <code class="docutils literal notranslate"><span class="pre">Stride</span></code> have the same tuple profiles. For every integer in <code class="docutils literal notranslate"><span class="pre">Shape</span></code>, there is a corresponding integer in <code class="docutils literal notranslate"><span class="pre">Stride</span></code>. This can be asserted with</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static_assert</span><span class="p">(</span><span class="n">congruent</span><span class="p">(</span><span class="n">my_shape</span><span class="p">,</span><span class="w"> </span><span class="n">my_stride</span><span class="p">));</span>
+</pre></div>
+</div>
+</section>
+<section id="using-a-layout">
+<h3>Using a Layout<a class="headerlink" href="#using-a-layout" title="Link to this heading">#</a></h3>
+<p>The fundamental use of a <code class="docutils literal notranslate"><span class="pre">Layout</span></code> is to map between coordinate space(s) defined by the <code class="docutils literal notranslate"><span class="pre">Shape</span></code> and an index space defined by the <code class="docutils literal notranslate"><span class="pre">Stride</span></code>. For example, to print an arbitrary rank-2 layout in a 2-D table, we can write the function</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">Shape</span><span class="p">,</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Stride</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">print2D</span><span class="p">(</span><span class="n">Layout</span><span class="o">&lt;</span><span class="n">Shape</span><span class="p">,</span><span class="n">Stride</span><span class="o">&gt;</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="w"> </span><span class="n">layout</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">size</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">(</span><span class="n">layout</span><span class="p">);</span><span class="w"> </span><span class="o">++</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">size</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">layout</span><span class="p">);</span><span class="w"> </span><span class="o">++</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">"%3d  "</span><span class="p">,</span><span class="w"> </span><span class="n">layout</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>which produces the following output for the above examples.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; print2D(s2xs4)</span>
+<span class="go">  0    2    4    6</span>
+<span class="go">  1    3    5    7</span>
+<span class="go">&gt; print2D(s2xd4_a)</span>
+<span class="go">  0    1    2    3</span>
+<span class="go"> 12   13   14   15</span>
+<span class="go">&gt; print2D(s2xh4_col)</span>
+<span class="go">  0    2    4    6</span>
+<span class="go">  1    3    5    7</span>
+<span class="go">&gt; print2D(s2xh4)</span>
+<span class="go">  0    2    1    3</span>
+<span class="go">  4    6    5    7</span>
+</pre></div>
+</div>
+<p>We can see static, dynamic, row-major, column-major, and hierarchical layouts printed here. The statement <code class="docutils literal notranslate"><span class="pre">layout(m,n)</span></code> provides the mapping of
+the logical 2-D coordinate (m,n) to the 1-D index.</p>
+<p>Interestingly, the <code class="docutils literal notranslate"><span class="pre">s2xh4</span></code> example isn’t row-major or column-major. Furthermore, it has three modes but is still interpreted as rank-2 and we’re using a 2-D coordinate. Specifically, <code class="docutils literal notranslate"><span class="pre">s2xh4</span></code> has a 2-D multi-mode in the second mode, but we’re still able to use a 1-D coordinate for that mode. More on this in the next section, but first we can generalize this another step. Let’s use a 1-D coordinate and treat all of the modes of each layout as a single multi-mode.  For instance, the following <code class="docutils literal notranslate"><span class="pre">print1D</span></code> function</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">Shape</span><span class="p">,</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Stride</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">print1D</span><span class="p">(</span><span class="n">Layout</span><span class="o">&lt;</span><span class="n">Shape</span><span class="p">,</span><span class="n">Stride</span><span class="o">&gt;</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="w"> </span><span class="n">layout</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">layout</span><span class="p">);</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%3d  "</span><span class="p">,</span><span class="w"> </span><span class="n">layout</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>produces the following output for the above examples.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; print1D(s2xs4)</span>
+<span class="go">  0    1    2    3    4    5    6    7</span>
+<span class="go">&gt; print1D(s2xd4_a)</span>
+<span class="go">  0   12    1   13    2   14    3   15</span>
+<span class="go">&gt; print1D(s2xh4_col)</span>
+<span class="go">  0    1    2    3    4    5    6    7</span>
+<span class="go">&gt; print1D(s2xh4)</span>
+<span class="go">  0    4    2    6    1    5    3    7</span>
+</pre></div>
+</div>
+<p>Any multi-mode of a layout, including the entire layout itself, can accept a 1-D coordinate. More on this in the following sections.</p>
+<p>CuTe provides more printing utilities for visualizing Layouts. The <code class="docutils literal notranslate"><span class="pre">print_layout</span></code> function produces a formatted 2-D table of the Layout’s mapping.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&gt; print_layout(s2xh4)
+(2,(2,2)):(4,(2,1))
+      0   1   2   3
+    +---+---+---+---+
+ 0  | 0 | 2 | 1 | 3 |
+    +---+---+---+---+
+ 1  | 4 | 6 | 5 | 7 |
+    +---+---+---+---+
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">print_latex</span></code> function generates LaTeX that can be compiled with <code class="docutils literal notranslate"><span class="pre">pdflatex</span></code> into a color-coded vector graphics image of the same 2-D table.</p>
+</section>
+<section id="vector-layouts">
+<h3>Vector Layouts<a class="headerlink" href="#vector-layouts" title="Link to this heading">#</a></h3>
+<p>We define a vector as any <code class="docutils literal notranslate"><span class="pre">Layout</span></code> with <code class="docutils literal notranslate"><span class="pre">rank</span> <span class="pre">==</span> <span class="pre">1</span></code>.
+For example, the layout <code class="docutils literal notranslate"><span class="pre">8:1</span></code> can be interpreted as an 8-element vector whose indices are contiguous.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Layout:  8:1</span>
+<span class="go">Coord :  0  1  2  3  4  5  6  7</span>
+<span class="go">Index :  0  1  2  3  4  5  6  7</span>
+</pre></div>
+</div>
+<p>Similarly,
+the layout <code class="docutils literal notranslate"><span class="pre">8:2</span></code> can be interpreted as an 8-element vector where the indices of the elements are strided by <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Layout:  8:2</span>
+<span class="go">Coord :  0  1  2  3  4  5  6  7</span>
+<span class="go">Index :  0  2  4  6  8 10 12 14</span>
+</pre></div>
+</div>
+<p>By the above rank-1 definition, we <em>also</em> interpret layout <code class="docutils literal notranslate"><span class="pre">((4,2)):((2,1))</span></code> as a vector, since its shape is rank-1. The inner shape looks like a 4x2 row-major matrix, but the extra pair of parenthesis suggest we can interpret those two modes as a 1-D 8-element vector. The strides tell us that the first <code class="docutils literal notranslate"><span class="pre">4</span></code> elements are strided by <code class="docutils literal notranslate"><span class="pre">2</span></code> and then there are <code class="docutils literal notranslate"><span class="pre">2</span></code> of those first elements strided by <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Layout:  ((4,2)):((2,1))</span>
+<span class="go">Coord :  0  1  2  3  4  5  6  7</span>
+<span class="go">Index :  0  2  4  6  1  3  5  7</span>
+</pre></div>
+</div>
+<p>We can see the second set of <code class="docutils literal notranslate"><span class="pre">4</span></code> elements are duplicates of the first <code class="docutils literal notranslate"><span class="pre">4</span></code> with an extra stride of <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<p>Consider the layout <code class="docutils literal notranslate"><span class="pre">((4,2)):((1,4))</span></code>. Again, it’s <code class="docutils literal notranslate"><span class="pre">4</span></code> elements strided by <code class="docutils literal notranslate"><span class="pre">1</span></code> and then <code class="docutils literal notranslate"><span class="pre">2</span></code> of those first elements strided by <code class="docutils literal notranslate"><span class="pre">4</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Layout:  ((4,2)):((1,4))</span>
+<span class="go">Coord :  0  1  2  3  4  5  6  7</span>
+<span class="go">Index :  0  1  2  3  4  5  6  7</span>
+</pre></div>
+</div>
+<p>As a function from integers to integers, it’s identical to <code class="docutils literal notranslate"><span class="pre">8:1</span></code>. It’s the identity function.</p>
+</section>
+<section id="matrix-examples">
+<h3>Matrix examples<a class="headerlink" href="#matrix-examples" title="Link to this heading">#</a></h3>
+<p>Generalizing, we define a matrix as any <code class="docutils literal notranslate"><span class="pre">Layout</span></code> that is rank-2. For example,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Shape :  (4,2)</span>
+<span class="go">Stride:  (1,4)</span>
+<span class="go">  0   4</span>
+<span class="go">  1   5</span>
+<span class="go">  2   6</span>
+<span class="go">  3   7</span>
+</pre></div>
+</div>
+<p>is a 4x2 column-major layout with stride-1 down the columns and stride-4 across the rows, and</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Shape :  (4,2)</span>
+<span class="go">Stride:  (2,1)</span>
+<span class="go">  0   1</span>
+<span class="go">  2   3</span>
+<span class="go">  4   5</span>
+<span class="go">  6   7</span>
+</pre></div>
+</div>
+<p>is a 4x2 row-major layout with stride-2 down the columns and stride-1 across the rows. Majorness is simply which mode has stride-1.</p>
+<p>Just like the vector layouts, each of the modes of the matrix can also be split into <em>multi-modes</em>.
+This lets us express more layouts beyond just row-major and column-major. For example,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Shape:  ((2,2),2)</span>
+<span class="go">Stride: ((4,1),2)</span>
+<span class="go">  0   2</span>
+<span class="go">  4   6</span>
+<span class="go">  1   3</span>
+<span class="go">  5   7</span>
+</pre></div>
+</div>
+<p>is also logically 4x2, with stride-2 across the rows but a multi-stride down the columns. The first <code class="docutils literal notranslate"><span class="pre">2</span></code> elements down the column have a stride of <code class="docutils literal notranslate"><span class="pre">4</span></code> and then there is a copy of those with stride-1. Since this layout is logically 4x2,
+like the column-major and row-major examples above,
+we can <em>still</em> use 2-D coordinates to index into it.</p>
+</section>
+</section>
+<section id="layout-concepts">
+<h2>Layout Concepts<a class="headerlink" href="#layout-concepts" title="Link to this heading">#</a></h2>
+<p>In this section, we’ll introduce the coordinate sets that <code class="docutils literal notranslate"><span class="pre">Layout</span></code>s accept and how the coordinate mappings and index mappings are computed.</p>
+<section id="layout-compatibility">
+<h3>Layout compatibility<a class="headerlink" href="#layout-compatibility" title="Link to this heading">#</a></h3>
+<p>We say that layout A is <em>compatible</em> with layout B if the shape of A is compatible with the shape of B.
+Shape A is compatible with shape B if</p>
+<ul class="simple">
+<li><p>the size of A is equal to the size of B and</p></li>
+<li><p>all coordinates within A are valid coordinates within B.</p></li>
+</ul>
+<p>For example:</p>
+<ul class="simple">
+<li><p>Shape 24 is NOT compatible with Shape 32.</p></li>
+<li><p>Shape 24 is compatible with Shape (4,6).</p></li>
+<li><p>Shape (4,6) is compatible with Shape ((2,2),6).</p></li>
+<li><p>Shape ((2,2),6) is compatible with Shape ((2,2),(3,2)).</p></li>
+<li><p>Shape 24 is compatible with Shape ((2,2),(3,2)).</p></li>
+<li><p>Shape 24 is compatible with Shape ((2,3),4).</p></li>
+<li><p>Shape ((2,3),4) is NOT compatible with Shape ((2,2),(3,2)).</p></li>
+<li><p>Shape ((2,2),(3,2)) is NOT compatible with Shape ((2,3),4).</p></li>
+<li><p>Shape 24 is compatible with Shape (24).</p></li>
+<li><p>Shape (24) is NOT compatible with Shape 24.</p></li>
+<li><p>Shape (24) is NOT compatible with Shape (4,6).</p></li>
+</ul>
+<p>That is, <em>compatible</em> is a weak partial order on Shapes as it is reflexive, antisymmetric, and transitive.</p>
+</section>
+<section id="layouts-coordinates">
+<h3>Layouts Coordinates<a class="headerlink" href="#layouts-coordinates" title="Link to this heading">#</a></h3>
+<p>With the notion of compatibility above, we emphasize that every <code class="docutils literal notranslate"><span class="pre">Layout</span></code> accepts multiple kinds of coordinates. Every <code class="docutils literal notranslate"><span class="pre">Layout</span></code> accepts coordinates for any <code class="docutils literal notranslate"><span class="pre">Shape</span></code> that is compatible with it. CuTe provides mappings between these sets of coordinates via a colexicographical order.</p>
+<p>Thus, all Layouts provide two fundamental mappings:</p>
+<ul class="simple">
+<li><p>the map from an input coordinate to the corresponding natural coordinate via the <code class="docutils literal notranslate"><span class="pre">Shape</span></code>, and</p></li>
+<li><p>the map from a natural coordinate to the index via the <code class="docutils literal notranslate"><span class="pre">Stride</span></code>.</p></li>
+</ul>
+<section id="coordinate-mapping">
+<h4>Coordinate Mapping<a class="headerlink" href="#coordinate-mapping" title="Link to this heading">#</a></h4>
+<p>The map from an input coordinate to a natural coordinate is the application of a colexicographical order (reading right to left, instead of “lexicographical,” which reads left to right) within the <code class="docutils literal notranslate"><span class="pre">Shape</span></code>.</p>
+<p>Take the shape <code class="docutils literal notranslate"><span class="pre">(3,(2,3))</span></code>, for example. This shape has three coordinate sets: the 1-D coordinates, the 2-D coordinates, and the natural (h-D) coordinates.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>1-D</p></th>
+<th class="head"><p>2-D</p></th>
+<th class="head"><p>Natural</p></th>
+<th class="head"><p></p></th>
+<th class="head"><p>1-D</p></th>
+<th class="head"><p>2-D</p></th>
+<th class="head"><p>Natural</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(0,0)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(0,(0,0))</span></code></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">9</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(0,3)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(0,(1,1))</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(1,0)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(1,(0,0))</span></code></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">10</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(1,3)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(1,(1,1))</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(2,0)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(2,(0,0))</span></code></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">11</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(2,3)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(2,(1,1))</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">3</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(0,1)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(0,(1,0))</span></code></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">12</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(0,4)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(0,(0,2))</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">4</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(1,1)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(1,(1,0))</span></code></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">13</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(1,4)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(1,(0,2))</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">5</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(2,1)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(2,(1,0))</span></code></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">14</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(2,4)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(2,(0,2))</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">6</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(0,2)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(0,(0,1))</span></code></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">15</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(0,5)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(0,(1,2))</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">7</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(1,2)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(1,(0,1))</span></code></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">16</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(1,5)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(1,(1,2))</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">8</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(2,2)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(2,(0,1))</span></code></p></td>
+<td><p></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">17</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(2,5)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(2,(1,2))</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Each coordinate into the shape <code class="docutils literal notranslate"><span class="pre">(3,(2,3))</span></code> has two <em>equivalent</em> coordinates and all equivalent coordinates map to the same natural coordinate. To emphasize again, because all of the above coordinates are valid inputs, a Layout with Shape <code class="docutils literal notranslate"><span class="pre">(3,(2,3))</span></code> can be used as if it is a 1-D array of 18 elements by using the 1-D coordinates, a 2-D matrix of 3x6 elements by using the 2-D coordinates, or a h-D tensor of 3x(2x3) elements by using the h-D (natural) coordinates.</p>
+<p>The previous 1-D print demonstrates how CuTe identifies 1-D coordinates with a colexicographical ordering of 2-D coordinates.  Iterating from <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">size(layout)</span></code> and indexing into our layout with the single integer coordinate <code class="docutils literal notranslate"><span class="pre">i</span></code>, traverses the 2-D coordinates in this “generalized-column-major” order, even if the layout maps coordinates to indices in a row-major or more complex fashion.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">cute::idx2crd(idx,</span> <span class="pre">shape)</span></code> is responsible for the coordinate mapping. It will take any coordinate within the shape and compute the equivalent natural coordinate for that shape.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Shape</span><span class="o">&lt;</span><span class="n">_3</span><span class="p">,</span><span class="n">Shape</span><span class="o">&lt;</span><span class="n">_2</span><span class="p">,</span><span class="n">_3</span><span class="o">&gt;&gt;</span><span class="p">{};</span>
+<span class="n">print</span><span class="p">(</span><span class="n">idx2crd</span><span class="p">(</span><span class="w">   </span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="n">shape</span><span class="p">));</span><span class="w">                                </span><span class="c1">// (1,(1,2))</span>
+<span class="n">print</span><span class="p">(</span><span class="n">idx2crd</span><span class="p">(</span><span class="n">_16</span><span class="p">{},</span><span class="w"> </span><span class="n">shape</span><span class="p">));</span><span class="w">                                </span><span class="c1">// (_1,(_1,_2))</span>
+<span class="n">print</span><span class="p">(</span><span class="n">idx2crd</span><span class="p">(</span><span class="n">make_coord</span><span class="p">(</span><span class="w">   </span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="n">shape</span><span class="p">));</span><span class="w">                   </span><span class="c1">// (1,(1,2))</span>
+<span class="n">print</span><span class="p">(</span><span class="n">idx2crd</span><span class="p">(</span><span class="n">make_coord</span><span class="p">(</span><span class="n">_1</span><span class="p">{},</span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="n">shape</span><span class="p">));</span><span class="w">                   </span><span class="c1">// (_1,(1,2))</span>
+<span class="n">print</span><span class="p">(</span><span class="n">idx2crd</span><span class="p">(</span><span class="n">make_coord</span><span class="p">(</span><span class="w">   </span><span class="mi">1</span><span class="p">,</span><span class="n">make_coord</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w">   </span><span class="mi">2</span><span class="p">)),</span><span class="w"> </span><span class="n">shape</span><span class="p">));</span><span class="w">  </span><span class="c1">// (1,(1,2))</span>
+<span class="n">print</span><span class="p">(</span><span class="n">idx2crd</span><span class="p">(</span><span class="n">make_coord</span><span class="p">(</span><span class="n">_1</span><span class="p">{},</span><span class="n">make_coord</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">_2</span><span class="p">{})),</span><span class="w"> </span><span class="n">shape</span><span class="p">));</span><span class="w">  </span><span class="c1">// (_1,(1,_2))</span>
+</pre></div>
+</div>
+</section>
+<section id="index-mapping">
+<h4>Index Mapping<a class="headerlink" href="#index-mapping" title="Link to this heading">#</a></h4>
+<p>The map from a natural coordinate to an index is performed by taking the inner product of the natural coordinate with the <code class="docutils literal notranslate"><span class="pre">Layout</span></code>’s <code class="docutils literal notranslate"><span class="pre">Stride</span></code>.</p>
+<p>Take the layout <code class="docutils literal notranslate"><span class="pre">(3,(2,3)):(3,(12,1))</span></code>, for example. Then a natural coordinate <code class="docutils literal notranslate"><span class="pre">(i,(j,k))</span></code> will result in the index <code class="docutils literal notranslate"><span class="pre">i*3</span> <span class="pre">+</span> <span class="pre">j*12</span> <span class="pre">+</span> <span class="pre">k*1</span></code>. The indices this layout computes are shown in the 2-D table below where <code class="docutils literal notranslate"><span class="pre">i</span></code> is used as the row coordinate and <code class="docutils literal notranslate"><span class="pre">(j,k)</span></code> is used as the column coordinate.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">       0     1     2     3     4     5     &lt;== 1-D col coord</span>
+<span class="go">     (0,0) (1,0) (0,1) (1,1) (0,2) (1,2)   &lt;== 2-D col coord (j,k)</span>
+<span class="go">    +-----+-----+-----+-----+-----+-----+</span>
+<span class="go"> 0  |  0  |  12 |  1  |  13 |  2  |  14 |</span>
+<span class="go">    +-----+-----+-----+-----+-----+-----+</span>
+<span class="go"> 1  |  3  |  15 |  4  |  16 |  5  |  17 |</span>
+<span class="go">    +-----+-----+-----+-----+-----+-----+</span>
+<span class="go"> 2  |  6  |  18 |  7  |  19 |  8  |  20 |</span>
+<span class="go">    +-----+-----+-----+-----+-----+-----+</span>
+</pre></div>
+</div>
+<p>The function <code class="docutils literal notranslate"><span class="pre">cute::crd2idx(c,</span> <span class="pre">shape,</span> <span class="pre">stride)</span></code> is responsible for the index mapping. It will take any coordinate within the shape, compute the equivalent natural coordinate for that shape (if it is not already), and compute the inner product with the strides.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">shape</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">Shape</span><span class="w"> </span><span class="o">&lt;</span><span class="n">_3</span><span class="p">,</span><span class="n">Shape</span><span class="o">&lt;</span><span class="w">  </span><span class="n">_2</span><span class="p">,</span><span class="n">_3</span><span class="o">&gt;&gt;</span><span class="p">{};</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">stride</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stride</span><span class="o">&lt;</span><span class="n">_3</span><span class="p">,</span><span class="n">Stride</span><span class="o">&lt;</span><span class="n">_12</span><span class="p">,</span><span class="n">_1</span><span class="o">&gt;&gt;</span><span class="p">{};</span>
+<span class="n">print</span><span class="p">(</span><span class="n">crd2idx</span><span class="p">(</span><span class="w">   </span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="n">shape</span><span class="p">,</span><span class="w"> </span><span class="n">stride</span><span class="p">));</span><span class="w">       </span><span class="c1">// 17</span>
+<span class="n">print</span><span class="p">(</span><span class="n">crd2idx</span><span class="p">(</span><span class="n">_16</span><span class="p">{},</span><span class="w"> </span><span class="n">shape</span><span class="p">,</span><span class="w"> </span><span class="n">stride</span><span class="p">));</span><span class="w">       </span><span class="c1">// _17</span>
+<span class="n">print</span><span class="p">(</span><span class="n">crd2idx</span><span class="p">(</span><span class="n">make_coord</span><span class="p">(</span><span class="w">   </span><span class="mi">1</span><span class="p">,</span><span class="w">   </span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="n">shape</span><span class="p">,</span><span class="w"> </span><span class="n">stride</span><span class="p">));</span><span class="w">  </span><span class="c1">// 17</span>
+<span class="n">print</span><span class="p">(</span><span class="n">crd2idx</span><span class="p">(</span><span class="n">make_coord</span><span class="p">(</span><span class="n">_1</span><span class="p">{},</span><span class="w">   </span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="n">shape</span><span class="p">,</span><span class="w"> </span><span class="n">stride</span><span class="p">));</span><span class="w">  </span><span class="c1">// 17</span>
+<span class="n">print</span><span class="p">(</span><span class="n">crd2idx</span><span class="p">(</span><span class="n">make_coord</span><span class="p">(</span><span class="n">_1</span><span class="p">{},</span><span class="n">_5</span><span class="p">{}),</span><span class="w"> </span><span class="n">shape</span><span class="p">,</span><span class="w"> </span><span class="n">stride</span><span class="p">));</span><span class="w">  </span><span class="c1">// _17</span>
+<span class="n">print</span><span class="p">(</span><span class="n">crd2idx</span><span class="p">(</span><span class="n">make_coord</span><span class="p">(</span><span class="w">   </span><span class="mi">1</span><span class="p">,</span><span class="n">make_coord</span><span class="p">(</span><span class="w">   </span><span class="mi">1</span><span class="p">,</span><span class="w">   </span><span class="mi">2</span><span class="p">)),</span><span class="w"> </span><span class="n">shape</span><span class="p">,</span><span class="w"> </span><span class="n">stride</span><span class="p">));</span><span class="w">  </span><span class="c1">// 17</span>
+<span class="n">print</span><span class="p">(</span><span class="n">crd2idx</span><span class="p">(</span><span class="n">make_coord</span><span class="p">(</span><span class="n">_1</span><span class="p">{},</span><span class="n">make_coord</span><span class="p">(</span><span class="n">_1</span><span class="p">{},</span><span class="n">_2</span><span class="p">{})),</span><span class="w"> </span><span class="n">shape</span><span class="p">,</span><span class="w"> </span><span class="n">stride</span><span class="p">));</span><span class="w">  </span><span class="c1">// _17</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="layout-manipulation">
+<h2>Layout Manipulation<a class="headerlink" href="#layout-manipulation" title="Link to this heading">#</a></h2>
+<section id="sublayouts">
+<h3>Sublayouts<a class="headerlink" href="#sublayouts" title="Link to this heading">#</a></h3>
+<p>Sublayouts can be retrieved with <code class="docutils literal notranslate"><span class="pre">layout&lt;I...&gt;</span></code></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Layout</span><span class="w"> </span><span class="n">a</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">Layout</span><span class="o">&lt;</span><span class="n">Shape</span><span class="o">&lt;</span><span class="n">_4</span><span class="p">,</span><span class="n">Shape</span><span class="o">&lt;</span><span class="n">_3</span><span class="p">,</span><span class="n">_6</span><span class="o">&gt;&gt;&gt;</span><span class="p">{};</span><span class="w"> </span><span class="c1">// (4,(3,6)):(1,(4,12))</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">a0</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">layout</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="w">                     </span><span class="c1">// 4:1</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">a1</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">layout</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="w">                     </span><span class="c1">// (3,6):(4,12)</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">a10</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">layout</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="w">                   </span><span class="c1">// 3:4</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">a11</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">layout</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="w">                   </span><span class="c1">// 6:12</span>
+</pre></div>
+</div>
+<p>or <code class="docutils literal notranslate"><span class="pre">select&lt;I...&gt;</span></code></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Layout</span><span class="w"> </span><span class="n">a</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">Layout</span><span class="o">&lt;</span><span class="n">Shape</span><span class="o">&lt;</span><span class="n">_2</span><span class="p">,</span><span class="n">_3</span><span class="p">,</span><span class="n">_5</span><span class="p">,</span><span class="n">_7</span><span class="o">&gt;&gt;</span><span class="p">{};</span><span class="w">     </span><span class="c1">// (2,3,5,7):(1,2,6,30)</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">a13</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">select</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="o">&gt;</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="w">                   </span><span class="c1">// (3,7):(2,30)</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">a01</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">select</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="o">&gt;</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="w">                 </span><span class="c1">// (2,3,7):(1,2,30)</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">a2</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">select</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="w">                     </span><span class="c1">// (5):(6)</span>
+</pre></div>
+</div>
+<p>or <code class="docutils literal notranslate"><span class="pre">take&lt;ModeBegin,</span> <span class="pre">ModeEnd&gt;</span></code></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Layout</span><span class="w"> </span><span class="n">a</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">Layout</span><span class="o">&lt;</span><span class="n">Shape</span><span class="o">&lt;</span><span class="n">_2</span><span class="p">,</span><span class="n">_3</span><span class="p">,</span><span class="n">_5</span><span class="p">,</span><span class="n">_7</span><span class="o">&gt;&gt;</span><span class="p">{};</span><span class="w">     </span><span class="c1">// (2,3,5,7):(1,2,6,30)</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">a13</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">take</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="o">&gt;</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="w">                     </span><span class="c1">// (3,5):(2,6)</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">a14</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">take</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="o">&gt;</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="w">                     </span><span class="c1">// (3,5,7):(2,6,30)</span>
+<span class="c1">// take&lt;1,1&gt; not allowed. Empty layouts not allowed.</span>
+</pre></div>
+</div>
+</section>
+<section id="concatenation">
+<h3>Concatenation<a class="headerlink" href="#concatenation" title="Link to this heading">#</a></h3>
+<p>A <code class="docutils literal notranslate"><span class="pre">Layout</span></code> can be provided to <code class="docutils literal notranslate"><span class="pre">make_layout</span></code> to wrap and concatenate</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Layout</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Layout</span><span class="o">&lt;</span><span class="n">_3</span><span class="p">,</span><span class="n">_1</span><span class="o">&gt;</span><span class="p">{};</span><span class="w">                     </span><span class="c1">// 3:1</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Layout</span><span class="o">&lt;</span><span class="n">_4</span><span class="p">,</span><span class="n">_3</span><span class="o">&gt;</span><span class="p">{};</span><span class="w">                     </span><span class="c1">// 4:3</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_layout</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w">                 </span><span class="c1">// (3,4):(1,3)</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_layout</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span><span class="w">                 </span><span class="c1">// (4,3):(3,1)</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">q</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">make_layout</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="p">);</span><span class="w">             </span><span class="c1">// ((3,4),(4,3)):((1,3),(3,1))</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">aa</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">make_layout</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="w">                    </span><span class="c1">// (3):(1)</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">aaa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_layout</span><span class="p">(</span><span class="n">aa</span><span class="p">);</span><span class="w">                   </span><span class="c1">// ((3)):((1))</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">d</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">make_layout</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">make_layout</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="w"> </span><span class="n">a</span><span class="p">);</span><span class="w"> </span><span class="c1">// (3,(3),3):(1,(1),1)</span>
+</pre></div>
+</div>
+<p>or can be combined with <code class="docutils literal notranslate"><span class="pre">append</span></code>, <code class="docutils literal notranslate"><span class="pre">prepend</span></code>, or <code class="docutils literal notranslate"><span class="pre">replace</span></code>.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Layout</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Layout</span><span class="o">&lt;</span><span class="n">_3</span><span class="p">,</span><span class="n">_1</span><span class="o">&gt;</span><span class="p">{};</span><span class="w">                     </span><span class="c1">// 3:1</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Layout</span><span class="o">&lt;</span><span class="n">_4</span><span class="p">,</span><span class="n">_3</span><span class="o">&gt;</span><span class="p">{};</span><span class="w">                     </span><span class="c1">// 4:3</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">ab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w">                       </span><span class="c1">// (3,4):(1,3)</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">ba</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prepend</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w">                      </span><span class="c1">// (4,3):(3,1)</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">c</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">append</span><span class="p">(</span><span class="n">ab</span><span class="p">,</span><span class="w"> </span><span class="n">ab</span><span class="p">);</span><span class="w">                     </span><span class="c1">// (3,4,(3,4)):(1,3,(1,3))</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">d</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">replace</span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w">                   </span><span class="c1">// (3,4,4):(1,3,3)</span>
+</pre></div>
+</div>
+</section>
+<section id="grouping-and-flattening">
+<h3>Grouping and flattening<a class="headerlink" href="#grouping-and-flattening" title="Link to this heading">#</a></h3>
+<p>Layout modes can be grouped with <code class="docutils literal notranslate"><span class="pre">group&lt;ModeBegin,</span> <span class="pre">ModeEnd&gt;</span></code> and flattened with <code class="docutils literal notranslate"><span class="pre">flatten</span></code>.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Layout</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Layout</span><span class="o">&lt;</span><span class="n">Shape</span><span class="o">&lt;</span><span class="n">_2</span><span class="p">,</span><span class="n">_3</span><span class="p">,</span><span class="n">_5</span><span class="p">,</span><span class="n">_7</span><span class="o">&gt;&gt;</span><span class="p">{};</span><span class="w">  </span><span class="c1">// (_2,_3,_5,_7):(_1,_2,_6,_30)</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">group</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="w">                 </span><span class="c1">// ((_2,_3),_5,_7):((_1,_2),_6,_30)</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">group</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="o">&gt;</span><span class="p">(</span><span class="n">b</span><span class="p">);</span><span class="w">                 </span><span class="c1">// ((_2,_3),(_5,_7)):((_1,_2),(_6,_30))</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flatten</span><span class="p">(</span><span class="n">b</span><span class="p">);</span><span class="w">                    </span><span class="c1">// (_2,_3,_5,_7):(_1,_2,_6,_30)</span>
+<span class="n">Layout</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flatten</span><span class="p">(</span><span class="n">c</span><span class="p">);</span><span class="w">                    </span><span class="c1">// (_2,_3,_5,_7):(_1,_2,_6,_30)</span>
+</pre></div>
+</div>
+<p>Grouping, flattening, and reordering modes allows the reinterpretation of tensors in place as matrices, matrices as vectors, vectors as matrices, etc.</p>
+</section>
+<section id="slicing">
+<h3>Slicing<a class="headerlink" href="#slicing" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Layout</span></code>s can be sliced, but slicing is more appropriate to perform on <code class="docutils literal notranslate"><span class="pre">Tensor</span></code>s. See the <a class="reference internal" href="03_tensor.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">Tensor</span></code> section</span></a> for slicing details.</p>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Shape</span></code> of a <code class="docutils literal notranslate"><span class="pre">Layout</span></code> defines its coordinate space(s).</p>
+<ul>
+<li><p>Every <code class="docutils literal notranslate"><span class="pre">Layout</span></code> has a 1-D coordinate space.
+This can be used to iterate over the coordinate spaces in a colexicographical order.</p></li>
+<li><p>Every <code class="docutils literal notranslate"><span class="pre">Layout</span></code> has a R-D coordinate space,
+where R is the rank of the layout.
+The colexicographical enumeration of the R-D coordinates
+correspond to the 1-D coordinates above.</p></li>
+<li><p>Every <code class="docutils literal notranslate"><span class="pre">Layout</span></code> has an h-D (natural) coordinate space where h is “hierarchical.” These are ordered colexicographically and the enumeration of that order corresponds to the 1-D coordinates above. A natural coordinate is <em>congruent</em> to the <code class="docutils literal notranslate"><span class="pre">Shape</span></code> so that each element of the coordinate has a corresponding element of the <code class="docutils literal notranslate"><span class="pre">Shape</span></code>.</p></li>
+</ul>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Stride</span></code> of a <code class="docutils literal notranslate"><span class="pre">Layout</span></code> maps coordinates to indices.</p>
+<ul>
+<li><p>The inner product of the elements of the natural coordinate with the elements of the <code class="docutils literal notranslate"><span class="pre">Stride</span></code> produces the resulting index.</p></li>
+</ul>
+</li>
+</ul>
+<p>For each <code class="docutils literal notranslate"><span class="pre">Layout</span></code> there exists an integral <code class="docutils literal notranslate"><span class="pre">Shape</span></code> that is that compatible with that <code class="docutils literal notranslate"><span class="pre">Layout</span></code>. Namely, that integral shape is <code class="docutils literal notranslate"><span class="pre">size(layout)</span></code>. We can then observe that</p>
+<blockquote>
+<div><p>Layouts are functions from integers to integers.</p>
+</div></blockquote>
+<p>If you’re familiar with the C++23 feature <code class="docutils literal notranslate"><span class="pre">mdspan</span></code>,
+this is an important difference between
+<code class="docutils literal notranslate"><span class="pre">mdspan</span></code> layout mappings and CuTe <code class="docutils literal notranslate"><span class="pre">Layout</span></code>s. In CuTe, <code class="docutils literal notranslate"><span class="pre">Layout</span></code> is a first class citizen, is natively hierarchical to naturally represent functions beyond row-major and column-major, and can similarly be indexed with a hierarchy of coordinates.
+(<code class="docutils literal notranslate"><span class="pre">mdspan</span></code> layout mappings can represent hierarchical functions as well,
+but this requires defining a custom layout.)
+Input coordinates for an <code class="docutils literal notranslate"><span class="pre">mdspan</span></code> must have the same shape as the <code class="docutils literal notranslate"><span class="pre">mdspan</span></code>;
+a multidimensional <code class="docutils literal notranslate"><span class="pre">mdspan</span></code> does not accept 1-D coordinates.</p>
+</section>
+<section id="copyright">
+<h2>Copyright<a class="headerlink" href="#copyright" title="Link to this heading">#</a></h2>
+<p>Copyright (c) 2017 - 2026 NVIDIA CORPORATION &amp; AFFILIATES. All rights reserved.
+SPDX-License-Identifier: BSD-3-Clause</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">  Redistribution and use in source and binary forms, with or without</span>
+<span class="go">  modification, are permitted provided that the following conditions are met:</span>
+
+<span class="go">  1. Redistributions of source code must retain the above copyright notice, this</span>
+<span class="go">  list of conditions and the following disclaimer.</span>
+
+<span class="go">  2. Redistributions in binary form must reproduce the above copyright notice,</span>
+<span class="go">  this list of conditions and the following disclaimer in the documentation</span>
+<span class="go">  and/or other materials provided with the distribution.</span>
+
+<span class="go">  3. Neither the name of the copyright holder nor the names of its</span>
+<span class="go">  contributors may be used to endorse or promote products derived from</span>
+<span class="go">  this software without specific prior written permission.</span>
+
+<span class="go">  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"</span>
+<span class="go">  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE</span>
+<span class="go">  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<span class="go">  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE</span>
+<span class="go">  FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL</span>
+<span class="go">  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR</span>
+<span class="go">  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<span class="go">  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,</span>
+<span class="go">  OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<span class="go">  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="00_quickstart.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Getting Started With CuTe</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02_layout_algebra.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">CuTe Layout Algebra</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+
+
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamental-types-and-concepts">Fundamental Types and Concepts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integers">Integers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuple">Tuple</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inttuple">IntTuple</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shapes-and-strides">Shapes and Strides</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#layout">Layout</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tensor">Tensor</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layout-creation-and-use">Layout Creation and Use</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hierarchical-access-functions">Hierarchical access functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-a-layout">Constructing a Layout</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-layout">Using a Layout</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-layouts">Vector Layouts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-examples">Matrix examples</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layout-concepts">Layout Concepts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#layout-compatibility">Layout compatibility</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#layouts-coordinates">Layouts Coordinates</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinate-mapping">Coordinate Mapping</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#index-mapping">Index Mapping</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layout-manipulation">Layout Manipulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sublayouts">Sublayouts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concatenation">Concatenation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-and-flattening">Grouping and flattening</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing">Slicing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copyright">Copyright</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+<a class="footer-brand logo" href="https://www.nvidia.com">
+  <img src="../../../../_static/nvidia-logo-horiz-rgb-1c-blk-for-screen.svg" class="logo__image only-light" alt="NVIDIA"/>
+  <img src="../../../../_static/nvidia-logo-horiz-rgb-1c-wht-for-screen.svg" class="logo__image only-dark" alt="NVIDIA"/>
+</a></div>
+      
+        <div class="footer-item">
+
+
+
+
+  <p class="copyright">
+    
+      Copyright © 2025-2026, NVIDIA Corporation.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on Oct 16, 2026.
+  <br/>
+</p></div>
+      
+        <div class="footer-item">
+<div class="extra_footer">
+  
+      <script type="text/javascript">if (typeof _satellite !== "undefined") {_satellite.pageBottom();}</script>
+    
+  
+</div></div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

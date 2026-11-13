@@ -49,19 +49,18 @@ Week 6 (10/14): Harness evolution 2 – Multi-agent systems and evolution
 Week 7 (10/21): Model evolution 1 – Continual learning, distillation, test-time training
 Week 8 (10/28): Project midterm presentations
 Week 9 (11/4): Model evolution 2 – Self-play approaches
-Week 10 (11/11): Environment evolution 1 – Synthetic data and tasks, environment generation
-Week 11 (11/18): Environment evolution 2 – World models, evolving evaluation and rewards
-Week 12 (11/25): Future topics – AI for science, multimodal agents
+Week 10 (11/11): Veterans Day no class
+Week 11 (11/18): Environment evolution 1 – Synthetic data and tasks, environment generation
+Week 12 (11/25): Environment evolution 2 – World models, evolving evaluation and rewards
 Week 13 (12/2): Project final presentations
-Week 14 (12/9): Future topics – Embodied harnesses, safe evolution
+Week 14 (12/9): Future topics – AI for science, multimodal agents, embodied harnesses, safe evolution
 
 
 Course Homeworks
 ** Exact timeline subject to change.
-Homework 1 (due in week 4): Context evolution (tentatively on Textgrad or OpenEvolve)
-Homework 2 (due in week 7): Harness evolution (tentatively on SkillOpt, DGM, or Meta-Harness)
-Homework 3 (due in week 10): Model evolution (tentatively on test-time training or continual learning)
-Homework 4 (due in week 12): Task evolution (tentatively on PostTrainBench)
+Homework 1: Context evolution (tentatively on Textgrad or OpenEvolve)
+Homework 2: Harness evolution (tentatively on SkillOpt, DGM, or Meta-Harness)
+Homework 3: Model evolution (tentatively on test-time training or continual learning)
 
 
 Course Project Timeline

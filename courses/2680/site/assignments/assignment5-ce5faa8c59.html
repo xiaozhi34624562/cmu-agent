@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="../vendor/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet"/>
+<script crossorigin="anonymous" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" src="../vendor/bootstrap.bundle.min.js"></script>
+<meta content="CS2680 Assignment 5: improve your Assignment 4 agent into one generic agent for Terminal-Bench 2.0 and Assignment 4's tasks, optionally change the model on one 32 GB RTX PRO 4500, and publish a blog post on what you learned from Assignments 2-5" name="description"/>
+<meta content="Juncheng Yang" name="author"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="CS2680 Modern AI Systems — Assignment 5: Mads-Stack" property="og:title"/>
+<meta content="CS2680 Assignment 5: improve your Assignment 4 agent into one generic agent for Terminal-Bench 2.0 and Assignment 4's tasks, optionally change the model on one 32 GB RTX PRO 4500, and publish a blog post on what you learned from Assignments 2-5" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="CS2680 Modern AI Systems" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<link href="../css/main.css" rel="stylesheet"/>
+<title>CS2680 Modern AI Systems — Assignment 5: Mads-Stack</title>
+</head>
+<body>
+<div id="site-header"></div>
+<script src="../header.js"></script>
+<div class="container page">
+<div class="row">
+<div class="col-12">
+<div class="title">CS2680 Modern AI Systems: Agents and System Optimizations</div>
+</div>
+<div class="col-12 title2">
+Assignment 5 — Mads-Stack: optimize the full stack
+      </div>
+<div class="col-12 section" id="assignment-5">
+<h1>Assignment 5 — Mads-Stack: optimize the full stack <span class="para-heading-inline">(10%)</span></h1>
+<p><strong>Out</strong> Wed Nov 11 · <strong>due</strong> Tue Nov 24, 11:59pm · individual · <a href="../slides/assignment5.pdf">slides</a> · <a href="index.html">all five assignments</a></p>
+<p>Assignment 5 builds on <a href="assignment4.html">Assignment 4</a>. Its goal is a strong agent of your own. Start from your Assignment 4 agent, fix what held it back, and take good ideas from other agent designs. You may also change the model and the serving engine, but you do not have to. You still serve on one <strong>RTX PRO 4500 (32 GB)</strong>.</p>
+<ul><li><strong>Leaderboard (50 points)</strong> for your agent's result on <a href="#terminal-bench">Terminal-Bench 2.0</a>. See <a href="#grading">Grading</a>.</li><li><strong>Blog post (40 points) and video (10 points)</strong> on what you learned from Assignments 2-5. See <a href="#blog-post">Blog post</a>. There is no write-up.</li><li><strong>Bonus (up to 5 percentage points of your course score)</strong> for your rank on Terminal-Bench 2.0 and on the 26 tasks of Assignment 4's leaderboard. See <a href="#bonus">Bonus</a>.</li></ul>
+<p>The same agent runs Terminal-Bench and Assignment 4's tasks, so first <a href="#changes">generalize</a> your Assignment 4 agent.</p>
+<div class="tip"><p><strong>⚠️ ONE RTX PRO 4500 AT A TIME.</strong></p><p>As in Assignment 4, use at most one GPU at a time. The first violation gets a warning, and each further one costs 10% of your score on this assignment.</p></div>
+<div class="tip"><p><strong>⚠️ THE LEADERBOARD DOES NOT ACCEPT LATE DAYS AND STOPS TAKING SUBMISSIONS ON TUESDAY, NOVEMBER 24, AT 11:59 P.M. ET.</strong></p><p>Without a submission by then, you get 0 of the 50 leaderboard points and no bonus. Late days apply only to the blog post and the video.</p></div>
+<div class="tip"><p><strong>⚠️ WRITE YOUR BLOG POST YOURSELF.</strong></p><p>If we find that your blog post was written by AI, we will deduct points.</p></div>
+<h2 id="part-1-set-up-and-adapt-your-agent">Part 1. Set up and adapt your agent</h2>
+<h3 id="set-up">Set up</h3>
+<p>Download the <a download="" href="assignment5.tar.gz">Assignment 5 starter archive</a> into the root of your course repository, extract it, and run <code>bash assignment5/starter_code/init.sh</code> before you start work with Claude Code, as in <a href="assignment4.html#initialize-your-repository">Assignment 4</a>. Copy your Assignment 4 <code>src/</code> and <code>engine/</code> into <code>assignment5/starter_code/</code>. The starter's <code>run_all.py</code> runs your agent on <a href="#terminal-bench">Terminal-Bench 2.0</a> or on the 25 tasks of Assignment 4's starter.</p>
+<p>On the cluster, Assignment 5 has its own course environment, which is Assignment 4's environment with two changes: the model is served as <code>cs2680-model</code>, and <code>engine.json</code> may name a <a href="#model-folder">model folder</a> of your own. Set it in every new shell, and use <code>$A5</code> wherever Assignment 4's page uses <code>$A4</code>:</p>
+<pre><code>export A5=/shared/courseSharedFolders/176914outer/176914/a5   # the course environment</code></pre>
+<p>The <code>A4_*</code> variables that <code>launch.sh</code> gets, such as <code>$A4_PORT</code>, keep their names, and so does the folder <code>~/a4</code>. When you connect your agent as in <a href="assignment4.html#connect-your-agent">Assignment 4</a>, set all three <code>CS2680_MODEL_*</code> variables to <code>cs2680-model</code>, as the starter's <code>README.md</code> shows.</p>
+<h3 id="terminal-bench">Terminal-Bench 2.0</h3>
+<p><a href="https://arxiv.org/abs/2601.11868">Terminal-Bench 2.0</a> is a public benchmark of 89 tasks, from software engineering to system administration, security, data science and model training. Each task gives your agent an instruction and a container with internet access, and sets its own time limit, CPUs and memory. When your agent finishes a task, the task's hidden tests run in the same container and check its final state. The images take about 49 GB compressed and run only on x86_64. Public results for version 2.0 are on its <a href="https://hub.harborframework.com/datasets/terminal-bench/terminal-bench-2/latest?tab=leaderboard">leaderboard on Harbor Hub</a>.</p>
+<h3 id="dispatcher">The dispatcher</h3>
+<p>The dispatcher gives Terminal-Bench tasks and Assignment 4's tasks in the same form, so your agent needs no code for a particular benchmark. Three things change from Assignment 4:</p>
+<ul><li><code>next_task()</code> returns <code>task</code> (the index <em>k</em>), <code>instruction</code> (the whole task as text), <code>sandbox_url</code>, <code>workdir</code> and <code>time_limit_s</code>. <code>time_limit_s</code> is the most seconds the task may stay open: the smaller of its own limit and what is left of the run's limit (for Assignment 4's tasks, what is left of the 4 hours). It is <code>None</code> only when no limit applies, as for an Assignment 4 task in a local run with <code>A3_RUN_LIMIT_S=0</code>.</li><li><code>done(k)</code> ends task <em>k</em>, and the course grades the task's final state. A task still open when <code>time_limit_s</code> runs out is graded at that moment.</li><li><code>evaluate</code>, <code>extract_patch</code>, <code>submit_patch</code> and <code>continue_task</code> are removed.</li></ul>
+<h3 id="changes">Generalize your Assignment 4 agent</h3>
+<p>To generalize your Assignment 4 agent, make seven changes:</p>
+<ol><li><strong>Read the task from <code>instruction</code>.</strong> Remove prompts and code that assume a repository to fix or a patch to produce. The working directory may not be a git repository, and tools and prompts written for code repositories help less on most Terminal-Bench tasks.</li><li id="evaluate"><strong>Check your own work.</strong> Without <code>evaluate(k)</code>, which in Assignment 4 ran a task's hidden tests on your agent's patch before the task ended, your agent must write and run its own checks before <code>done(k)</code>.</li><li><strong>Leave the final state in place.</strong> Files must be where the instruction asks for them. A service the task asks for must still run after <code>done(k)</code>, so start it detached, with its output redirected to a file.</li><li><strong>Handle long and interactive commands.</strong> One sandbox command runs for at most 900 seconds, so run longer jobs in the background and poll them. A command cannot take keyboard input. Drive an interactive program, such as an editor or a REPL, through tmux, which you can install in the container, or use its non-interactive mode.</li><li><strong>Read and write anywhere.</strong> Assignment 4's <code>src/sandbox_server.py</code> refuses paths outside the repository and <code>/work</code>, but tasks may write anywhere, such as <code>/etc</code>. Use the starter's copy, or remove the limit from yours.</li><li><strong>Budget each task's time.</strong> Plan a task's turns and commands within its <code>time_limit_s</code>.</li><li><strong>Take the model name from the environment.</strong> Read it from the <code>CS2680_MODEL_*</code> variables, which the leaderboard sets to <code>cs2680-model</code>. Do not hard-code Assignment 4's model name. Your server no longer lists it, and some engines, such as vLLM, reject a request for it.</li></ol>
+<h2 id="part-2-improve-the-full-stack">Part 2. Improve the full stack</h2>
+<h3 id="agent-and-engine">Keep improving your agent and serving engine</h3>
+<p>Work as in <a href="assignment4.html#part-2-measure">Parts 2</a> and <a href="assignment4.html#part-3-improve">3</a> of Assignment 4: measure, find what limits your run, and fix it. In the agent, study the tasks it fails and try ideas from other agent designs. In the serving engine, continue your Assignment 4 work within its <a href="assignment4.html#what-you-may-change">allowed changes</a>. A faster server also gives your agent more turns within each task's time limit. Results vary between runs, so run a change more than once before you conclude that it helped. Record each mistake your agent makes and each technique you try, including the ones that did not help.</p>
+<p id="the-model">You may also change the model: serve another checkpoint, quantize, prune or distill the model, train or fine-tune one, or add a draft model for speculative decoding. Assignment 4's rules that fix the model do not apply. Your server still serves the name <code>cs2680-model</code> and must be ready within 45 minutes, including loading the weights. You may train a model in any way, except on the tasks and your agent's runs of them (see the <a href="#rules">rules</a> below), and on the course cluster within the one-GPU limit. A smaller model can solve fewer tasks, so measure tasks solved after every model change.</p>
+<p id="model-folder">To serve another model, put it in a folder of your own on the cluster, under <code>/shared/courseSharedFolders/176914outer/176914/a4-models/&lt;your cluster username&gt;/</code>, and set <code>engine.json</code>'s <code>"model"</code> to the folder's path. The folder holds everything your server loads, a draft model included, in at most 48 GiB. Each grading copies it to the GPU node when the grading starts, and the copy counts toward the 45 minutes. The leaderboard's <a href="https://leaderboard.cs2680.com/a5/engines.html#model-folder">Engine conventions</a> page lists the folder's rules, and <code>$A5/bin/check-submission.sh --launch</code> tests a folder as a grading uses it.</p>
+<h3 id="rules">Rules</h3>
+<p>Your harness should work across general tasks rather than being tailored to specific tasks or repositories in the benchmarks. The following practices are considered violations. Any submission containing them will be invalidated and excluded from the leaderboard, and your ranking will revert to those of your best valid submission:</p>
+<ol><li><strong>Using the gold patch:</strong> Do not submit, match against, or use any part of the gold patch (for Terminal-Bench, the reference solution) or the hidden tests. The agent should not be aware that a gold patch exists.</li><li><strong>Hard-coding task- or repository-specific information:</strong> Do not encode specific failure modes, solutions, or repository knowledge into the harness. For example, an instruction such as "For Ansible tasks, be careful with files in folder X" is not allowed.</li><li><strong>Providing lessons learned outside the current evaluation:</strong> Do not include knowledge about particular tasks obtained from offline experimentation. This restriction also applies to instructions that may appear general but encode a benchmark-specific lesson. For example, "If the requirements mention the initializer, modify <code>__init__</code>" is not allowed.</li><li><strong>Copying code between tasks:</strong> Each task is solved from its own starting code. Do not copy code from one task's repository, files or git history into another task, directly or through the model. Your agent may carry notes to other tasks, such as how the tests run or which approach failed, but not the project's code.</li><li><strong>Training on the tasks:</strong> Do not train or fine-tune a model on the tasks of Terminal-Bench 2.0 or Assignment 4 or on your agent's runs of them, before or during a grading, or serve a model you know was trained on them.</li><li><strong>Recognizing tasks in the server:</strong> Rules 2 and 3 also apply to your server and model folder, which may not recognize a task or a prompt, or ship responses or cache contents precomputed from the tasks.</li><li><strong>Using the internet:</strong> In a Terminal-Bench container, your agent may use the internet, for example to install packages, but not to look up Terminal-Bench, a task or its solution.</li></ol>
+<p>The harness may instead guide the agent to inspect relevant source code, examine nearby or similar structures, and derive an appropriate solution during the evaluation. Any task-specific insight should be discovered by the agent as it works and can be verified through the trajectory.</p>
+<p>You may run Terminal-Bench 2.0 and the 25 tasks of Assignment 4's starter yourself, but not the 26 leaderboard tasks, to measure changes, tune general settings such as server flags, and fix general mistakes like those in <a href="#changes">Part 1</a>.</p>
+<p>We keep and review the trajectories, source code, and patches generated during each submission evaluation. If we find a violation, we'll let you know by email. If you're unsure whether your harness design follows these guidelines, feel free to email us before submitting.</p>
+<h2 id="part-3-submission-and-grading">Part 3. Submission and grading</h2>
+<p>You submit three things:</p>
+<ul><li><strong>Code.</strong> As in <a href="assignment4.html#part-4-submission-and-grading">Part 4 of Assignment 4</a>, under <code>assignment5/starter_code/</code>: your agent in <code>src/</code> and your server in <code>engine/</code>, zipped into <code>submission.zip</code> for the leaderboard, and your agent sessions packaged with <code>python3 package_agent_sessions.py</code>.</li><li><strong>Blog post.</strong> A post on the <a href="https://blog.cs2680.com/">course blog</a>, as described in <a href="#blog-post">Blog post</a> below.</li><li><strong>Video.</strong> A clear presentation of the same material in <strong>3 minutes</strong>, with the evidence on screen, uploaded to Canvas.</li></ul>
+<h3 id="leaderboard">Leaderboard</h3>
+<p>The leaderboard is at <a href="https://leaderboard.cs2680.com/a5">https://leaderboard.cs2680.com/a5</a>, and you log in with the same account as in Assignment 4. As in Assignment 4, it starts your server on a fresh RTX PRO 4500 node and runs your agent. Every grading of your <code>submission.zip</code> has two runs: Terminal-Bench 2.0 first, then the 26 tasks, which start only after the Terminal-Bench run has ended. Your server starts once and serves both runs. Each run is measured on tasks solved and end-to-end time:</p>
+<ul><li><strong>Terminal-Bench 2.0:</strong> every task, each under its own limits (see <a href="#terminal-bench">Terminal-Bench 2.0</a>), with 6 hours for the whole run and no limit on how many tasks are open at once. This run decides your 50 leaderboard points and part of your <a href="#bonus">bonus</a>.</li><li><strong>The 26 tasks of Assignment 4's leaderboard</strong>, as in Assignment 4: no network, 4 hours for the whole run, and all tasks may be open at once. This run decides the rest of your <a href="#bonus">bonus</a>.</li></ul>
+<p>Each run's limit and end-to-end time count from the run's start. In both runs, the tasks come in a new random order in every grading, and a task never opened counts as not solved. The course uses the two results to study how much the agent harness changes a benchmark score and how to control the variance between runs. You get <strong>2 gradings a day</strong>, and Assignment 4's other leaderboard rules apply, with two additions for the two runs:</p>
+<ul><li><strong>Cancel</strong> works as in Assignment 4 until the Terminal-Bench run has ended. After that, it stops only the run on the 26 tasks: your Terminal-Bench result counts, and the grading has no result on the 26 tasks.</li><li><strong>Problems on the course's side</strong> are handled as in Assignment 4. A task hit by one is not rerun: it is graded on the state it reached, so it may count as not solved. A grading that fails because of one goes back to the queue to be graded again. Up to three gradings a day that end as <em>Engine check failed</em> or stop for a problem on the course's side do not count toward your 2 gradings a day; any more do. If the grading fails after your Terminal-Bench result is recorded, that result is kept, only the run on the 26 tasks is graded again, and the grading counts toward your 2 gradings a day.</li></ul>
+<h3 id="blog-post">Blog post</h3>
+<p><strong>Write a post on the <a href="https://blog.cs2680.com/">course blog</a> about what you learned from Assignments 2-5.</strong> You do not need to organize it by assignment.</p>
+<p>Before you start, think back over all four assignments and write about as many of your lessons as you can think of. For each lesson, describe what you did, what happened and what you learned, with your own measurements and examples. Mistakes are lessons too, so include them along with what worked.</p>
+<p>Write the post yourself, in your own words. <strong>Don't generate it with AI.</strong> Publish it with the blog's <a href="https://blog.cs2680.com/publish/">publishing guide</a>. The post is public, so make sure there is no private data.</p>
+<h3 id="grading">Grading</h3>
+<p>We expect everyone who puts in enough effort to get full or nearly full marks.</p>
+<p id="baseline"><strong>Baseline.</strong> A submission meets the baseline if its Terminal-Bench 2.0 run reaches either of these two targets:</p>
+<div class="table-responsive"><table class="table table-bordered">
+<thead class="table-light">
+<tr>
+<th>Target</th>
+<th>Tasks solved</th>
+<th>End-to-end time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fast</td>
+<td>at least 20</td>
+<td>at most 2 hours</td>
+</tr>
+<tr>
+<td>Accurate</td>
+<td>at least 30</td>
+<td>at most 6 hours (the whole run)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Both numbers describe one whole run: the tasks it solved and its end-to-end time. As in Assignment 4, the end-to-end time runs from the run's start, when your server is ready, to the moment the last task ends, whether by <code>done(k)</code>, at a time limit, or when your agent stops. For example, a run that solves 22 tasks and whose last task ends 2 hours and 10 minutes after the start misses the fast target, even if it had solved 20 tasks within the first 2 hours.</p>
+<p><strong>Leaderboard score.</strong> If <em>s</em> is the most tasks one of your valid submissions solved on Terminal-Bench 2.0:</p>
+<pre><code>score = 50               if any of your valid submissions meets the baseline
+score = min(2 × s, 40)   otherwise</code></pre>
+<p>For example, if none of your submissions meets the baseline and your best one solved 15 tasks, you get 30 points. A submission that solved 20 or more tasks but missed both targets gets 40. Your score depends only on your own submissions, not on other students' results.</p>
+<p><strong>Terminal-Bench ranking.</strong> The leaderboard ranks every valid submission from all students as in Step 4 of <a href="assignment4.html#leaderboard">Assignment 4's leaderboard</a>, with 20 tasks in place of 7: submissions that solved at least 20 tasks are ranked in rounds over tasks solved and end-to-end time, and students with no valid submission that solved 20 tasks rank below all of them, by the most tasks one of their valid submissions solved. Your rank does not change your score, and the <a href="#bonus">bonus</a> uses its own rankings.</p>
+<h3 id="bonus">Bonus</h3>
+<p>The bonus adds up to 5 percentage points to your final course score: up to 3 from the run on the 26 tasks and up to 2 from the Terminal-Bench run. Only submissions that meet the <a href="#baseline">baseline</a> are qualified for bonus, so the techniques behind a bonus must also work on Terminal-Bench. <strong>The baseline and the bonus must come from the same submission: a submission that does not meet the baseline itself earns no bonus, even if another of your submissions meets it.</strong> Each of the two runs has its own ranking of qualified submissions, in rounds as in the Terminal-Bench ranking above, and the two rankings may use different submissions of yours. The ranking on the 26 tasks counts only submissions that solved at least 7 of them, as in Assignment 4. You get points for the round in which you are ranked:</p>
+<div class="table-responsive"><table class="table table-bordered">
+<thead class="table-light">
+<tr>
+<th>Your round</th>
+<th>The 26 tasks</th>
+<th>Terminal-Bench 2.0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4 or later</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p>For example, if you are ranked in round 1 on the 26 tasks and in round 2 on Terminal-Bench, your bonus is 3 + 1 = 4 percentage points. The bonus counts toward the course's 10% cap on <a href="../policy.html#bonus">bonus credit</a> and does not change your score on this assignment.</p>
+<div class="note-nav">
+<a href="assignment4.html">← Assignment 4 — Mads-Serve</a>
+</div>
+</div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="container">
+<p><a href="https://madsys.seas.harvard.edu/" rel="noopener" target="_blank">MadSys Research Group</a> · <a href="https://seas.harvard.edu/" rel="noopener" target="_blank">Harvard John A. Paulson School of Engineering and Applied Sciences</a></p>
+<p class="footer-policies"><a href="https://trademark.harvard.edu/pages/trademark-notice" rel="noopener" target="_blank">Trademark Notice</a> · <a href="https://accessibility.harvard.edu/" rel="noopener" target="_blank">Accessibility</a> · <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" rel="noopener" target="_blank">Digital Accessibility</a> · <a href="https://privsec.harvard.edu/harvard-university-privacy-statement" rel="noopener" target="_blank">Privacy Statement</a></p>
+<p class="footer-copyright">© 2026 Juncheng Yang</p>
+</div>
+</footer>
+</body>
+</html>

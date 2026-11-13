@@ -2,8 +2,8 @@
 
 - Date: 2026-09-16
 - Source: https://mit-mi.github.io/how2ai-course/fall2026/schedule/
-- 资料归档日期：2026-10-26；最新日历见[完整课表](../COURSE_SCHEDULE.md)。
-- 编号采用官网 Week；原 PDF 内的 Lecture 编号和文件名保持原样。
+- 资料归档日期：2026-11-13；最新日历见[完整课表](../COURSE_SCHEDULE.md)。
+- 目录编号保持稳定；当前官方 Week、日期单独记录，原 PDF 内的 Lecture 编号和文件名保持原样。
 
 ## Topics（归档快照）
 
@@ -32,7 +32,7 @@
 - R01: [Large Language Models Are Human-Level Prompt Engineers](readings/Large_Language_Models_Are_Human-Level_Prompt_Engineers.pdf)
   - Source: https://arxiv.org/abs/2211.01910
   - PDF version: 2211.01910v2
-- R02: [TextGrad: Automatic "Differentiation" via Text](readings/TextGrad_Automatic_Differentiation_via_Text.pdf)
+- R02: [TextGrad: Automatic Differentiation via Text](readings/TextGrad_Automatic_Differentiation_via_Text.pdf)
   - Source: https://arxiv.org/abs/2406.07496
   - PDF version: 2406.07496v1
 - R03: [DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines](readings/DSPy_Compiling_Declarative_Language_Model_Calls_into_Self-Improving_Pipelines.pdf)

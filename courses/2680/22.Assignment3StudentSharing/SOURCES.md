@@ -1,4 +1,4 @@
-# 22. Assignment 3 student sharing
+# 22. Student sharing II: Harness optimization
 
 - Date: 2026-10-26
 

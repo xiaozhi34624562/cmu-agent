@@ -1,6 +1,6 @@
 # MAS.S62 全部来源
 
-- 同步日期：2026-10-26
+- 同步日期：2026-11-13
 - 本学期官网：https://mit-mi.github.io/how2ai-course/fall2026/
 - 下载状态及 SHA256 见 [manifest.json](manifest.json)；HTTP 200 的登录/验证页面不计为阅读正文。
 - [完整课表](COURSE_SCHEDULE.md)可能更新于此归档；新发布但未取得的资料入口保留在逐周 SOURCES.md。
@@ -57,8 +57,22 @@
 | reading | Towards a Science of Scaling Agent Systems | [Towards_a_Science_of_Scaling_Agent_Systems.pdf](readings/papers/Towards_a_Science_of_Scaling_Agent_Systems.pdf) | https://arxiv.org/abs/2512.08296 |
 | reading | Why Do Multi-Agent LLM Systems Fail? | [Why_Do_Multi-Agent_LLM_Systems_Fail.pdf](readings/papers/Why_Do_Multi-Agent_LLM_Systems_Fail.pdf) | https://arxiv.org/abs/2503.13657 |
 | lecture | Lecture 6 — Test-time Training | [lec6 - training.pdf](site/schedule/lec6%20-%20training.pdf) | https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec6 - training.pdf |
-| tutorial | Tutorial — RL and Self-Distillation (pp.1–2: guest introduction) | [lec6 - rl in practice.pdf](site/schedule/lec6%20-%20rl%20in%20practice.pdf) | https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec6 - rl in practice.pdf |
 | guest | Guest — Continual Learning via Self-Distillation | [model_guest.pdf](site/schedule/model_guest.pdf) | https://mit-mi.github.io/how2ai-course/fall2026/schedule/model_guest.pdf |
+| reading | DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning | [DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_Reinforcement_Learning.pdf](readings/papers/DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_Reinforcement_Learning.pdf) | https://arxiv.org/abs/2501.12948 |
+| reading | On-Policy Distillation of Language Models: Learning from Self-Generated Mistakes | [On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf](readings/papers/On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf) | https://arxiv.org/abs/2306.13649 |
+| reading | TTRL: Test-Time Reinforcement Learning | [TTRL_Test-Time_Reinforcement_Learning.pdf](readings/papers/TTRL_Test-Time_Reinforcement_Learning.pdf) | https://arxiv.org/abs/2504.16084 |
+| reading | Self-Rewarding Language Models | [Self-Rewarding_Language_Models.pdf](readings/papers/Self-Rewarding_Language_Models.pdf) | https://arxiv.org/abs/2401.10020 |
+| reading | s1: Simple Test-Time Scaling | [s1_Simple_Test-Time_Scaling.pdf](readings/papers/s1_Simple_Test-Time_Scaling.pdf) | https://arxiv.org/abs/2501.19393 |
+| reading | Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model? | [Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Capacity_in_LLMs_Beyond_the_Base_Model.pdf](readings/papers/Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Capacity_in_LLMs_Beyond_the_Base_Model.pdf) | https://arxiv.org/abs/2504.13837 |
+| reading | Understanding R1-Zero-Like Training: A Critical Perspective | [Understanding_R1-Zero-Like_Training_A_Critical_Perspective.pdf](readings/papers/Understanding_R1-Zero-Like_Training_A_Critical_Perspective.pdf) | https://arxiv.org/abs/2503.20783 |
+| reading | RL's Razor: Why Online Reinforcement Learning Forgets Less | [RL_s_Razor_Why_Online_Reinforcement_Learning_Forgets_Less.pdf](readings/papers/RL_s_Razor_Why_Online_Reinforcement_Learning_Forgets_Less.pdf) | https://arxiv.org/abs/2509.04259 |
+| reading | Self-Distilled Reasoner: On-Policy Self-Distillation for Large Language Models | [Self-Distilled_Reasoner_On-Policy_Self-Distillation_for_Large_Language_Models.pdf](readings/papers/Self-Distilled_Reasoner_On-Policy_Self-Distillation_for_Large_Language_Models.pdf) | https://arxiv.org/abs/2601.18734 |
+| reading | Reinforcement Learning via Self-Distillation | [Reinforcement_Learning_via_Self-Distillation.pdf](readings/papers/Reinforcement_Learning_via_Self-Distillation.pdf) | https://arxiv.org/abs/2601.20802 |
+| reading | Scaling Test-Time Compute Without Verification or RL is Suboptimal | [Scaling_Test-Time_Compute_Without_Verification_or_RL_is_Suboptimal.pdf](readings/papers/Scaling_Test-Time_Compute_Without_Verification_or_RL_is_Suboptimal.pdf) | https://arxiv.org/abs/2502.12118 |
+| tutorial | Tutorial — RL and Self-Distillation in Practice | [lec6 - rl in practice.pdf](site/schedule/lec6%20-%20rl%20in%20practice.pdf) | https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec6 - rl in practice.pdf |
+| reading | Absolute Zero: Reinforced Self-play Reasoning with Zero Data | [Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data.pdf](readings/papers/Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data.pdf) | https://arxiv.org/abs/2505.03335 |
+| reading | R-Zero: Self-Evolving Reasoning LLM from Zero Data | [R-Zero_Self-Evolving_Reasoning_LLM_from_Zero_Data.pdf](readings/papers/R-Zero_Self-Evolving_Reasoning_LLM_from_Zero_Data.pdf) | https://arxiv.org/abs/2508.05004 |
+| reading | Propose, Solve, Verify: Self-Play Through Formal Verification | [Propose_Solve_Verify_Self-Play_Through_Formal_Verification.pdf](readings/papers/Propose_Solve_Verify_Self-Play_Through_Formal_Verification.pdf) | https://arxiv.org/abs/2512.18160 |
 | notebook | TextGrad Tutorial | [Textgrad_tutorial.ipynb](site/tutorials/Textgrad_tutorial.ipynb) | https://colab.research.google.com/drive/1rL24Ydm9yQKRUPoGXHr2-zJumFbBRfvJ |
 | homework | Homework 1 (linked from Lecture 3 p.38) | [OpenEvolve_assignment.ipynb](site/assignments/OpenEvolve_assignment.ipynb) | https://colab.research.google.com/drive/1aavmbVb3ykhv--jnhoCA_q6AylUhq0EW |
 | syllabus | Official syllabus (pdf) | [ai4ai-syllabus.pdf](site/syllabus/ai4ai-syllabus.pdf) | https://docs.google.com/document/d/1H1vs32fhWaxEuP6-nA2GP-a1aFuEmjOXNMcer2UyKpM/export?format=pdf |
@@ -104,6 +118,14 @@
 | asset | academicons.ttf | [academicons.ttf](site/assets/fonts/academicons.ttf) | https://mit-mi.github.io/how2ai-course/assets/fonts/academicons.ttf?v=1.8.2 |
 | asset | academicons.woff | [academicons.woff](site/assets/fonts/academicons.woff) | https://mit-mi.github.io/how2ai-course/assets/fonts/academicons.woff?v=1.8.2 |
 | asset | academicons.svg | [academicons.svg](site/assets/fonts/academicons.svg) | https://mit-mi.github.io/how2ai-course/assets/fonts/academicons.svg?v=1.8.2 |
+
+## 已保留的历史来源版本
+
+旧讲解不自动改绑新版；以下旧字节及版本关系保留用于追溯。
+
+- [Tutorial — RL and Self-Distillation in Practice](site/versions/a9f58ecf4b22164b10315fa24f4f06aa8f955799b167c56b9f26e1fd81342d38/lec6%20-%20rl%20in%20practice.pdf)：SHA256 `a9f58ecf4b22164b10315fa24f4f06aa8f955799b167c56b9f26e1fd81342d38`；Existing unchanged W7 guide cites this 15-page edition; current tutorial is W9。
+- [Official syllabus (pdf)](site/versions/204f9edde27ed5ee5b2a4001df78ad07d41cd273c6ae3a6dd57e171b3badbdb9/ai4ai-syllabus.pdf)：SHA256 `204f9edde27ed5ee5b2a4001df78ad07d41cd273c6ae3a6dd57e171b3badbdb9`；Superseded official source retained for provenance。
+- [Official syllabus (txt)](site/versions/62a0e9c97669b007ab74ccd9b440c92846b821445420965b0e0c602790a210ee/ai4ai-syllabus.txt)：SHA256 `62a0e9c97669b007ab74ccd9b440c92846b821445420965b0e0c602790a210ee`；Superseded official source retained for provenance。
 
 ## 逐课补充来源
 
@@ -152,3 +174,27 @@
 | 7 | verl verl/trainer/ppo/v1/trainer_base.py @ ddf7007 | [trainer_base.py](7.ModelEvolution1/references/verl-ddf7007/trainer_base.py) | https://raw.githubusercontent.com/verl-project/verl/ddf7007/verl/trainer/ppo/v1/trainer_base.py |
 | 7 | verl verl/trainer/ppo/core_algos.py @ ddf7007 | [core_algos.py](7.ModelEvolution1/references/verl-ddf7007/core_algos.py) | https://raw.githubusercontent.com/verl-project/verl/ddf7007/verl/trainer/ppo/core_algos.py |
 | 7 | verl examples/grpo_trainer/run_qwen3_8b_fsdp.sh @ ddf7007 | [run_qwen3_8b_fsdp.sh](7.ModelEvolution1/references/verl-ddf7007/run_qwen3_8b_fsdp.sh) | https://raw.githubusercontent.com/verl-project/verl/ddf7007/examples/grpo_trainer/run_qwen3_8b_fsdp.sh |
+| 9 | On-Policy Distillation of Language Models: Learning from Self-Generated Mistakes | [On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf](9.ModelEvolution2/references/On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf) | https://arxiv.org/abs/2306.13649 |
+| 9 | RL's Razor: Why Online Reinforcement Learning Forgets Less | [RL_s_Razor_Why_Online_Reinforcement_Learning_Forgets_Less.pdf](9.ModelEvolution2/references/RL_s_Razor_Why_Online_Reinforcement_Learning_Forgets_Less.pdf) | https://arxiv.org/abs/2509.04259 |
+| 9 | Self-Distillation Enables Continual Learning | [Self-Distillation_Enables_Continual_Learning.pdf](9.ModelEvolution2/references/Self-Distillation_Enables_Continual_Learning.pdf) | https://arxiv.org/abs/2601.19897 |
+| 9 | OpenClaw-RL: Train Any Agent Simply by Talking | [OpenClaw-RL_Train_Any_Agent_Simply_by_Talking.pdf](9.ModelEvolution2/references/OpenClaw-RL_Train_Any_Agent_Simply_by_Talking.pdf) | https://arxiv.org/abs/2603.10165 |
+| 9 | Proximal Policy Optimization Algorithms | [Proximal_Policy_Optimization_Algorithms.pdf](9.ModelEvolution2/references/Proximal_Policy_Optimization_Algorithms.pdf) | https://arxiv.org/abs/1707.06347 |
+| 9 | DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models | [DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf](9.ModelEvolution2/references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf) | https://arxiv.org/abs/2402.03300 |
+| 9 | Self-Distilled Reasoner: On-Policy Self-Distillation for Large Language Models | [Self-Distilled_Reasoner_On-Policy_Self-Distillation_for_Large_Language_Models.pdf](9.ModelEvolution2/references/Self-Distilled_Reasoner_On-Policy_Self-Distillation_for_Large_Language_Models.pdf) | https://arxiv.org/abs/2601.18734 |
+| 9 | Reinforcement Learning via Self-Distillation | [Reinforcement_Learning_via_Self-Distillation.pdf](9.ModelEvolution2/references/Reinforcement_Learning_via_Self-Distillation.pdf) | https://arxiv.org/pdf/2601.20802 |
+| 9 | verl verl/trainer/ppo/v1/trainer_base.py @ ddf7007 | [trainer_base.py](9.ModelEvolution2/references/verl-ddf7007/trainer_base.py) | https://raw.githubusercontent.com/verl-project/verl/ddf7007/verl/trainer/ppo/v1/trainer_base.py |
+| 9 | verl verl/trainer/ppo/core_algos.py @ ddf7007 | [core_algos.py](9.ModelEvolution2/references/verl-ddf7007/core_algos.py) | https://raw.githubusercontent.com/verl-project/verl/ddf7007/verl/trainer/ppo/core_algos.py |
+| 9 | verl examples/grpo_trainer/run_qwen3_8b_fsdp.sh @ ddf7007 | [run_qwen3_8b_fsdp.sh](9.ModelEvolution2/references/verl-ddf7007/run_qwen3_8b_fsdp.sh) | https://raw.githubusercontent.com/verl-project/verl/ddf7007/examples/grpo_trainer/run_qwen3_8b_fsdp.sh |
+| 9 | High-Dimensional Continuous Control Using Generalized Advantage Estimation | [High-Dimensional_Continuous_Control_Using_Generalized_Advantage_Estimation.pdf](9.ModelEvolution2/references/High-Dimensional_Continuous_Control_Using_Generalized_Advantage_Estimation.pdf) | https://arxiv.org/abs/1506.02438 |
+| 9 | DAPO: An Open-Source LLM Reinforcement Learning System at Scale | [DAPO_An_Open-Source_LLM_Reinforcement_Learning_System_at_Scale.pdf](9.ModelEvolution2/references/DAPO_An_Open-Source_LLM_Reinforcement_Learning_System_at_Scale.pdf) | https://arxiv.org/abs/2503.14476 |
+| 9 | Efficient Memory Management for Large Language Model Serving with PagedAttention | [Efficient_Memory_Management_for_Large_Language_Model_Serving_with_PagedAttention.pdf](9.ModelEvolution2/references/Efficient_Memory_Management_for_Large_Language_Model_Serving_with_PagedAttention.pdf) | https://arxiv.org/abs/2309.06180 |
+| 9 | HybridFlow: A Flexible and Efficient RLHF Framework | [HybridFlow_A_Flexible_and_Efficient_RLHF_Framework.pdf](9.ModelEvolution2/references/HybridFlow_A_Flexible_and_Efficient_RLHF_Framework.pdf) | https://arxiv.org/pdf/2409.19256 |
+| 9 | PyTorch FSDP: Experiences on Scaling Fully Sharded Data Parallel | [PyTorch_FSDP_Experiences_on_Scaling_Fully_Sharded_Data_Parallel.pdf](9.ModelEvolution2/references/PyTorch_FSDP_Experiences_on_Scaling_Fully_Sharded_Data_Parallel.pdf) | https://arxiv.org/pdf/2304.11277 |
+| 9 | ZeRO: Memory Optimizations Toward Training Trillion Parameter Models | [ZeRO_Memory_Optimizations_Toward_Training_Trillion_Parameter_Models.pdf](9.ModelEvolution2/references/ZeRO_Memory_Optimizations_Toward_Training_Trillion_Parameter_Models.pdf) | https://arxiv.org/pdf/1910.02054 |
+| 9 | On-Policy Distillation | [On-Policy_Distillation.html](9.ModelEvolution2/references/On-Policy_Distillation.html) | https://thinkingmachines.ai/blog/on-policy-distillation/ |
+| 9 | verl trainer_sync.py @ ddf7007 | [trainer_sync.py](9.ModelEvolution2/references/verl-ddf7007/trainer_sync.py) | https://raw.githubusercontent.com/verl-project/verl/ddf7007/verl/trainer/ppo/v1/trainer_sync.py |
+| 9 | reef: Continual Self-Improving Agents | [README.md](9.ModelEvolution2/references/reef/b373872e22d6581d3cd53a6077c9180581d599b7/README.md) | https://raw.githubusercontent.com/Human-Agent-Society/reef/b373872e22d6581d3cd53a6077c9180581d599b7/README.md |
+| 9 | Group Relative Policy Optimization (GRPO) — verl documentation | [Group_Relative_Policy_Optimization_GRPO_verl_documentation.html](9.ModelEvolution2/references/Group_Relative_Policy_Optimization_GRPO_verl_documentation.html) | https://verl.readthedocs.io/en/latest/algo/grpo.html |
+| 9 | Quickstart: PPO training on GSM8K dataset — verl documentation | [Quickstart_PPO_training_on_GSM8K_dataset_verl_documentation.html](9.ModelEvolution2/references/Quickstart_PPO_training_on_GSM8K_dataset_verl_documentation.html) | https://verl.readthedocs.io/en/latest/start/quickstart.html |
+| 9 | OpenClaw-RL1 | [OpenClaw-RL1.html](9.ModelEvolution2/references/OpenClaw-RL1.html) | https://yinjjiew.github.io/projects/openclawrl1/ |
+| 9 | lec6 - training.pdf — Model Evolution I lecture | [lec6 - training.pdf](7.ModelEvolution1/slides/lec6%20-%20training.pdf) | https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec6%20-%20training.pdf |

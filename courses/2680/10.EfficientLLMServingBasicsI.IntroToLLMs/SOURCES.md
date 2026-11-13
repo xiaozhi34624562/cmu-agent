@@ -6,7 +6,7 @@
 
 - [Lecture slides](9_llm_serving_basics_1.pdf)
   - Source: https://cs2680.com/slides/9_llm_serving_basics_1.pdf
-  - 编号说明：目录 10 按课表日期排序；文件名前缀 9 是官网原始讲义编号。内容按本课日期与主题核对，保留原文件名。
+  - 编号说明：目录 10 是本仓库稳定编号；文件名前缀 9 是官网原始讲义编号。内容按本课日期与主题核对，保留原文件名。
 
 ## Readings
 

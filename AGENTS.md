@@ -36,14 +36,14 @@
 | `courses/11-768/17.ObservabilityAndMonitoring/` | 10/22 可观测性与监控；等待公开讲义 |
 | `courses/11-768/18.MultiAgentInteraction/` | 10/29 多 Agent 交互；44 页讲义、指定阅读与完整中文讲解 |
 | `courses/11-768/19.HumanAgentInteraction/` | 11/10 人机交互；等待公开讲义 |
-| `courses/11-768/20.RerankingAndCriticModels/` | 11/12 Reranking 与 Critic Models；等待公开讲义 |
+| `courses/11-768/20.RerankingAndCriticModels/` | 11/12 Reranking 与 Critic Models；31页讲义、指定阅读及完整中文讲解已归档 |
 | `courses/11-768/21.TreeSearch/` | 11/17 Tree Search；等待公开讲义 |
 | `courses/11-768/22.GuestLecture20261119/` | 11/19 嘉宾课；题目待定 |
 | `courses/11-768/23.GuestLecture20261124/` | 11/24 嘉宾课；题目待定 |
 
 `courses/2680/` 的 `README.md` 和 `COURSE_SCHEDULE.md` 是课程总入口。原有 18 个目录保留，新增嘉宾及分享目录采用稳定的追加编号；目录编号不等于授课顺序或官方 PDF 编号。各目录 `SOURCES.md` 记录来源和材料状态，历史 others 占位保留。`organize.py` 按其已归档站点版本整理原资料；同步新版官网前需按既有更新流程核对日期、题目与目录映射。
 
-`courses/MAS.S62/` 按官网 14 个 Week 编号，包含项目展示周；周次不等于讲义中的 Lecture 编号。根目录 `README.md`、`SOURCES.md` 与 `manifest.json` 提供课表、来源和下载状态。已公开讲义的教学周在对应目录提供 `notes.zh-CN.md`：以讲义为主线，结合阅读和参考资料解释机制、实验证据、实现、选型、成本及故障诊断，注明页码、版本和工程推导边界。
+`courses/MAS.S62/` 保留稳定主题目录编号，官网Week、日期和PDF Lecture编号分别记录；官方大纲当前Week11/12的Environment主题仍使用目录10/11，11/11停课及来源冲突处理见该课SCHEDULE_OVERRIDES.json。根目录 `README.md`、`SOURCES.md` 与 `manifest.json` 提供课表、来源和下载状态。已公开讲义的教学周在对应目录提供 `notes.zh-CN.md`：以讲义为主线，结合阅读和参考资料解释机制、实验证据、实现、选型、成本及故障诊断，注明页码、版本和工程推导边界。
 
 `courses/329z/` 按官网日期将教学与嘉宾交流课连续编号，分别记录 Week、日期、官网原题和 PDF Lecture 编号；停课和期末展示单独登记。根目录 `README.md`、`SOURCES.md`、`manifest.json` 是课表、来源版本和状态入口，逐课 `notes.zh-CN.md` 沿用上述完整讲解标准。`assignment/` 与 `code/` 的官方 starter 和课堂代码按固定提交归档，保留未实现部分。
 

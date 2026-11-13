@@ -1,0 +1,1265 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Profiling &#8212; NVIDIA DCGM Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=75c7c72ae941e8b558d8" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=75c7c72ae941e8b558d8" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/nvidia-sphinx-theme.css?v=933278ad" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles.css?v=b47e5c9d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom-table.css?v=23330fe5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom-signame.css?v=29b22c67" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=75c7c72ae941e8b558d8"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8" />
+
+
+
+    <script src="../../_static/documentation_options.js?v=c6e86fd7"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=529101c1"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'learn/modules/profiling';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="../../_static/js/google-analytics/google-analytics-tracker.js"></script>
+    <script src="../../_static/js/google-analytics/google-analytics-write.js"></script>
+    <script src="../../_static/switchers.js?v=f4abc38f"></script>
+    <script src="//assets.adobedtm.com/b92787824f2e0e9b68dc2e993f9bd995339fe417/satelliteLib-7ba51e58dc61bcb0e9311aadd02a0108ab24cc6c.js"></script>
+
+    <link rel="canonical" href="https://docs.nvidia.com/datacenter/dcgm/learn/modules/profiling.html" />
+    <link rel="icon" href="../../_static/nvidia.ico"/>
+
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="CPU Monitoring" href="dcgm-cpu-monitoring.html" />
+    <link rel="prev" title="Diagnostics" href="dcgm-diagnostics.html" />
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="color-scheme" content="light dark"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="Version: 4.6 (Latest)" />
+    <meta name="docbuild:last-update" content="2026-11-12"/>
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+
+
+  </head>
+
+  <body data-default-mode="">
+
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button type="button" class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation" aria-expanded="false" aria-controls="pst-primary-sidebar-modal">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../contents.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="NVIDIA DCGM Documentation - Home"/>
+    <img src="../../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="NVIDIA DCGM Documentation - Home"/>
+  
+  
+    <p class="title logo__title">NVIDIA DCGM Documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button type="button" class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button type="button" class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page" aria-expanded="false" aria-controls="pst-secondary-sidebar-modal">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal" tabindex="-1"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../contents.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="NVIDIA DCGM Documentation - Home"/>
+    <img src="../../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="NVIDIA DCGM Documentation - Home"/>
+  
+  
+    <p class="title logo__title">NVIDIA DCGM Documentation</p>
+  
+</a>
+
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button type="button" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg me-1"></i>System Settings</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg me-1"></i>Light</button></li>
+    <li><button type="button" class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Table of Contents">
+  <p class="bd-links__title" role="heading" aria-level="1">Table of Contents</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">About</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../installation/index.html">Installation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html">DCGM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../installation/install-dcgm-exporter.html">DCGM Exporter</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Learn</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../getting-started-for-system-administrators/index.html">Getting Started for System Administrators</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../getting-started-for-system-administrators/systemd-service.html">Customizing the systemd Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting-started-for-system-administrators/configure-prometheus-for-dcgm-exporter.html">Configure Prometheus for DCGM Exporter</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../getting-started-for-application-developers/index.html">Getting Started for Application Developers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../getting-started-for-application-developers/building-your-first-dcgm-clients.html">Build Your First DCGM API Clients</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../core-services/index.html">Core Services</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../core-services/entities-and-groups.html">Entities and Groups</a></li>
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../core-services/fields-and-watches.html">Fields and Watches</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../core-services/topology-and-links.html">Topology and NVLink</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../core-services/process-and-job-statistics.html">Process and Job Statistics</a></li>
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Modules</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="nvswitch.html">NVSwitch and ConnectX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vgpu.html">vGPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introspection.html">Introspection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="health-monitoring.html">Health Monitoring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="policy.html">Policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dcgm-diagnostics.html">Diagnostics</a></li>
+<li class="toctree-l3 current active"><a aria-current="page" class="current reference internal" href="#">Profiling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dcgm-cpu-monitoring.html">CPU Monitoring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dcgm-multinode-diagnostics.html">Multi-Node Diagnostics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../dcgm-detached-gpus.html">Detached GPUs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dcgm-error-injection.html">Error Injection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debugging-and-troubleshooting.html">Debugging and Troubleshooting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../reference/index.html">Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../reference/command-line-reference/index.html">Command Line</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/command-line-reference/nv-hostengine.html">nv-hostengine</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/command-line-reference/dcgmi/index.html">dcgmi</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/command-line-reference/dcgmi/dcgmi-discovery.html">dcgmi discovery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/command-line-reference/dcgmi/dcgmi-group.html">dcgmi group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/command-line-reference/dcgmi/dcgmi-fieldgroup.html">dcgmi fieldgroup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/command-line-reference/dcgmi/dcgmi-config.html">dcgmi config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/command-line-reference/dcgmi/dcgmi-policy.html">dcgmi policy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/command-line-reference/dcgmi/dcgmi-health.html">dcgmi health</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/command-line-reference/dcgmi/dcgmi-set.html">dcgmi set</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/command-line-reference/dcgmi/dcgmi-diag.html">dcgmi diag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/command-line-reference/dcgmi/dcgmi-mndiag.html">dcgmi mndiag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/command-line-reference/dcgmi/dcgmi-stats.html">dcgmi stats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/command-line-reference/dcgmi/dcgmi-dmon.html">dcgmi dmon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/command-line-reference/dcgmi/dcgmi-topo.html">dcgmi topo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/command-line-reference/dcgmi/dcgmi-nvlink.html">dcgmi nvlink</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/command-line-reference/dcgmi/dcgmi-profile.html">dcgmi profile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/command-line-reference/dcgmi/dcgmi-introspect.html">dcgmi introspect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/command-line-reference/dcgmi/dcgmi-modules.html">dcgmi modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/command-line-reference/dcgmi/dcgmi-test.html">dcgmi test</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/command-line-reference/dcgmproftester.html">dcgmproftester</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/command-line-reference/dcgm-exporter.html">dcgm-exporter</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/field-identifiers.html">Field Identifiers</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../reference/diagnostics/index.html">Diagnostics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/diagnostics/configuration.html">Diagnostic Configuration File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/diagnostics/errors.html">Diagnostic Errors</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../reference/diagnostics/plugins/index.html">Diagnostic Plugins</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/diagnostics/plugins/software.html">Software Deployment Checks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/diagnostics/plugins/context-create.html">Context Create Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/diagnostics/plugins/memory.html">GPU Memory Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/diagnostics/plugins/pcie.html">PCIe - GPU Bandwidth Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/diagnostics/plugins/diagnostic.html">Diagnostic Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/diagnostics/plugins/memory-bandwidth.html">Memory Bandwidth Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/diagnostics/plugins/targeted-stress.html">Targeted Stress Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/diagnostics/plugins/targeted-power.html">Targeted Power Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/diagnostics/plugins/nvbandwidth.html">NVBandwidth Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/diagnostics/plugins/memtest.html">Memtest Diagnostic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../reference/diagnostics/plugins/pulse-test.html">Pulse Test Diagnostic</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../reference/multi-node-diagnostics/index.html">Multi-Node Diagnostics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/multi-node-diagnostics/mnubergemm.html">mnubergemm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/multi-node-diagnostics/nvloom.html">nvloom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/multi-node-diagnostics/mnnvbandwidth.html">mnnvbandwidth</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/error-thresholds.html">Error Threshold File</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../reference/dcgm-api/index.html">C/C++ API</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/dcgm-api/dcgm-api-admin.html">Administrative</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/dcgm-api/dcgm-api-system.html">System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/dcgm-api/dcgm-api-config.html">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/dcgm-api/dcgm-api-field-apis.html">Field APIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/dcgm-api/dcgm-api-process-stats.html">Process Statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/dcgm-api/dcgm-api-job-stats.html">Job Statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/dcgm-api/dcgm-api-health-mon.html">Health Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/dcgm-api/dcgm-api-policies.html">Policies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/dcgm-api/dcgm-api-topo.html">Topology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/dcgm-api/dcgm-api-metadata.html">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/dcgm-api/dcgm-api-modules.html">Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/dcgm-api/dcgm-api-profiling.html">Profiling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/dcgm-api/dcgm-api-enums.html">Enums and Macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/dcgm-api/dcgm-api-structs.html">Structure Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/dcgm-api/dcgm-api-field-types.html">Field Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/dcgm-api/dcgm-api-field-scope.html">Field Scope</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/dcgm-api/dcgm-api-field-entity.html">Field Entity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/dcgm-api/dcgm-api-exec-ctrl.html">Execution Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/dcgm-api/dcgm-api-data-structs.html">Data Structures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/dcgm-api/dcgm-api-field-constants.html">Field Constants</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/dcgm-exporter-metrics.html">DCGM Exporter Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/go-dcgm.html">Go SDK</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../release-notes/index.html">Release Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../release-notes/changelog.html">DCGM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../release-notes/dcgm-exporter.html">DCGM Exporter</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../contents.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-house"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Learn</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Modules</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Profiling</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="profiling">
+<span id="dcgm-profiling-metrics"></span><h1>Profiling<a class="headerlink" href="#profiling" title="Link to this heading">#</a></h1>
+<p>The profiling module is module ID 8. It manages low-overhead hardware-counter
+metrics, determines which metrics can be collected together, and coordinates
+access to profiling resources. The module is loaded when profiling fields or
+metric-group information are first requested.</p>
+<p>Use <a class="reference internal" href="../../reference/command-line-reference/dcgmi/dcgmi-profile.html"><span class="doc">dcgmi profile</span></a> to inspect compatible
+metric groups or pause profiling watches, and
+<a class="reference internal" href="../../reference/command-line-reference/dcgmi/dcgmi-dmon.html"><span class="doc">dcgmi dmon</span></a> to stream profiling fields.</p>
+<section id="when-profiling-metrics-are-useful">
+<h2>When profiling metrics are useful<a class="headerlink" href="#when-profiling-metrics-are-useful" title="Link to this heading">#</a></h2>
+<p>Profiling metrics answer broad utilization questions about a running GPU
+workload: whether the graphics/compute engines are active, how much SM or
+tensor-pipe activity is observed, whether device memory is busy, and how much
+PCIe or NVLink traffic crosses the device. They are suited to continuous
+cluster telemetry and to comparing phases or replicas of an application at
+low overhead.</p>
+<p>These metrics are interval averages, not a kernel trace. They do not identify
+which source line, CUDA kernel, or instruction caused a value. Start with DCGM
+to locate an underused or imbalanced device, then use a developer profiler
+such as Nsight Systems or Nsight Compute when the investigation needs
+application-level attribution. Profiling counter resources can conflict, so
+pause DCGM profiling collection before the developer tool takes ownership and
+resume it afterward.</p>
+<p>Profiling builds on core field watches. <code class="docutils literal notranslate"><span class="pre">dcgmi</span> <span class="pre">profile</span></code> discovers which
+profiling fields the selected GPU supports and how older hardware groups
+counters; <code class="docutils literal notranslate"><span class="pre">dcgmi</span> <span class="pre">dmon</span></code> watches and prints the selected fields. The
+<code class="docutils literal notranslate"><span class="pre">dcgmproftester</span></code> executable is an optional active load generator for
+validating the measurement path—it is not required to monitor a real
+application.</p>
+</section>
+<section id="example-characterize-an-application-phase">
+<h2>Example: characterize an application phase<a class="headerlink" href="#example-characterize-an-application-phase" title="Link to this heading">#</a></h2>
+<p>First ask the target GPU for its runtime profiling catalogue. Do not assume
+that a field supported by one GPU generation is available on another:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>dcgmi<span class="w"> </span>profile<span class="w"> </span>--list<span class="w"> </span>--entity-id<span class="w"> </span>gpu:0
+</pre></div>
+</div>
+<p>Suppose the output includes field 1002 (SM activity) and field 1005 (DRAM
+activity). Start a one-second stream in one terminal, then run the application
+on GPU 0 in another terminal:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>dcgmi<span class="w"> </span>dmon<span class="w"> </span>--entity-id<span class="w"> </span>gpu:0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--field-id<span class="w"> </span><span class="m">1002</span>,1005<span class="w"> </span>--delay<span class="w"> </span><span class="m">1000</span>
+</pre></div>
+</div>
+<p>SM activity measures the fraction of time at least one warp was active on an
+SM, averaged over all SMs. DRAM activity measures the fraction of cycles in
+which device-memory traffic was present. A high value in one field does not
+alone prove that the application is compute- or memory-bound; compare several
+related metrics over a representative interval and correlate them with
+application throughput.</p>
+<p>If a developer profiler needs the same hardware resources, coordinate with
+all monitoring clients and pause collection for the entire host engine:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>dcgmi<span class="w"> </span>profile<span class="w"> </span>--pause
+</pre></div>
+</div>
+<p>Run the developer profiler, then always restore DCGM collection:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>dcgmi<span class="w"> </span>profile<span class="w"> </span>--resume
+</pre></div>
+</div>
+<p>While paused, profiling watches return blank values. Pause and resume are
+host-engine-wide, not scoped to GPU 0 or to the client that issued the
+command.</p>
+<p>As GPU-enabled servers become more common in the datacenter, it becomes important to better
+understand applications’ performance and the utilization of GPU resources in the cluster. Profiling
+metrics in DCGM enables the collection of a set of metrics using the hardware counters on the GPU.
+DCGM provides access to device-level metrics at low performance overhead in a continuous manner. This
+feature is supported in production starting with DCGM 1.7.</p>
+<p>The profiling metrics are available as fields through the C, Python, and Go
+interfaces and through <code class="docutils literal notranslate"><span class="pre">dcgmi</span></code>. The <code class="docutils literal notranslate"><span class="pre">dcgmproftester</span></code> load generator can
+produce controlled activity for observing and validating those metrics.</p>
+</section>
+<section id="metrics">
+<h2>Metrics<a class="headerlink" href="#metrics" title="Link to this heading">#</a></h2>
+<p>The following profiling metrics are supported. The definitions and
+corresponding DCGM field IDs are listed.</p>
+<div class="pst-scrollable-table-container"><table class="table" id="id1">
+<caption><span class="caption-text">Device Level GPU Metrics</span><a class="headerlink" href="#id1" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 16.7%" />
+<col style="width: 66.7%" />
+<col style="width: 16.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Metric</p></th>
+<th class="head"><p>Definition</p></th>
+<th class="head"><p>DCGM Field Name and ID</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Graphics Engine Activity</p></td>
+<td><p>The fraction of time any portion of the graphics or compute engines were active.
+The graphics engine is active if a graphics/compute context is bound and the graphics/compute pipe is busy.
+The value represents an average over a time interval and is not an instantaneous value.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DCGM_FI_PROF_GR_ENGINE_UTIL_RATIO</span></code> (ID: 1001)</p></td>
+</tr>
+<tr class="row-odd"><td><p>SM Activity</p></td>
+<td><p>The fraction of time at least one warp was active on a multiprocessor, averaged over all multiprocessors.
+Note that “active” does not necessarily mean a warp is actively computing. For instance, warps waiting on memory
+requests are considered active. The value represents an average over a time interval and is not an instantaneous
+value. A value of 0.8 or greater is necessary, but not sufficient, for effective use of the GPU. A value less than
+0.5 likely indicates ineffective GPU usage.</p>
+<p>Given a simplified GPU architectural view, if a GPU has N SMs then a kernel using N blocks that runs over the entire
+time interval will correspond to an activity of 1 (100%). A kernel using N/5 blocks that runs over the entire time
+interval will correspond to an activity of 0.2 (20%). A kernel using N blocks that runs over one fifth of the time
+interval, with the SMs otherwise idle, will also have an activity of 0.2 (20%). The value is insensitive to the number
+of threads per block (see <code class="docutils literal notranslate"><span class="pre">DCGM_FI_PROF_SM_OCCUPANCY_RATIO</span></code>).</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DCGM_FI_PROF_SM_UTIL_RATIO</span></code> (ID: 1002)</p></td>
+</tr>
+<tr class="row-even"><td><p>SM Occupancy</p></td>
+<td><p>The fraction of resident warps on a multiprocessor, relative to the maximum number of concurrent warps supported on
+a multiprocessor. The value represents an average over a time interval and is not an instantaneous value. Higher occupancy
+does not necessarily indicate better GPU usage. For GPU memory bandwidth limited workloads (see <code class="docutils literal notranslate"><span class="pre">DCGM_FI_PROF_DRAM_UTIL_RATIO</span></code>),
+higher occupancy is indicative of more effective GPU usage. However if the workload is compute limited (i.e. not
+GPU memory bandwidth or latency limited), then higher occupancy does not necessarily correlate with more effective GPU usage.</p>
+<p>Occupancy depends on GPU properties, the number of threads per block, registers per thread, and shared memory per block.
+Use the <a class="reference external" href="https://docs.nvidia.com/cuda/cuda-runtime-api/cuda_runtime_api/group__CUDART__OCCUPANCY.html">CUDA Runtime occupancy APIs</a>
+to calculate occupancy for a kernel configuration.</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DCGM_FI_PROF_SM_OCCUPANCY_RATIO</span></code> (ID: 1003)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tensor Activity</p></td>
+<td><p>The fraction of cycles the tensor (HMMA / IMMA) pipe was active. The value represents an average over a time interval
+and is not an instantaneous value. Higher values indicate higher utilization of the Tensor Cores. An activity of 1 (100%) is
+equivalent to issuing a tensor instruction every other cycle for the entire time interval. An activity of 0.2 (20%) could
+indicate 20% of the SMs are at 100% utilization over the entire time period, 100% of the SMs are at 20% utilization over the
+entire time period, 100% of the SMs are at 100% utilization for 20% of the time period, or any combination in between
+(see <code class="docutils literal notranslate"><span class="pre">DCGM_FI_PROF_SM_UTIL_RATIO</span></code> to help disambiguate these possibilities).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DCGM_FI_PROF_TENSOR_UTIL_RATIO</span></code> (ID: 1004)</p></td>
+</tr>
+<tr class="row-even"><td><p>FP64 Engine Activity</p></td>
+<td><p>The fraction of cycles the FP64 (double precision) pipe was active. The value represents an average over a time interval
+and is not an instantaneous value. Higher values indicate higher utilization of the FP64 cores. An activity of 1 (100%) is
+equivalent to a FP64 instruction on <a class="reference external" href="https://docs.nvidia.com/cuda/volta-tuning-guide/index.html#sm-scheduling">every SM every fourth cycle</a>
+on Volta over the entire time interval. An activity of 0.2 (20%) could indicate 20% of the SMs are at 100% utilization over the entire time
+period, 100% of the SMs are at 20% utilization over the entire time period, 100% of the SMs are at 100% utilization for 20% of the time
+period, or any combination in between (see <code class="docutils literal notranslate"><span class="pre">DCGM_FI_PROF_SM_UTIL_RATIO</span></code> to help disambiguate these possibilities).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DCGM_FI_PROF_FP64_UTIL_RATIO</span></code> (ID: 1006)</p></td>
+</tr>
+<tr class="row-odd"><td><p>FP32 Engine Activity</p></td>
+<td><p>The fraction of cycles the FMA (FP32 (single precision), and integer) pipe was active. The value represents an average over a time
+interval and is not an instantaneous value. Higher values indicate higher utilization of the FP32 cores. An activity of 1 (100%) is
+equivalent to a FP32 instruction every other cycle over the entire time interval. An activity of 0.2 (20%) could indicate 20% of the
+SMs are at 100% utilization over the entire time period, 100% of the SMs are at 20% utilization over the entire time period, 100% of
+the SMs are at 100% utilization for 20% of the time period, or any combination in between (see <code class="docutils literal notranslate"><span class="pre">DCGM_FI_PROF_SM_UTIL_RATIO</span></code> to help
+disambiguate these possibilities).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DCGM_FI_PROF_FP32_UTIL_RATIO</span></code> (ID: 1007)</p></td>
+</tr>
+<tr class="row-even"><td><p>FP16 Engine Activity</p></td>
+<td><p>The fraction of cycles the FP16 (half precision) pipe was active. The value represents an average over a time interval and is
+not an instantaneous value. Higher values indicate higher utilization of the FP16 cores. An activity of 1 (100%) is equivalent
+to a FP16 instruction every other cycle over the entire time interval. An activity of 0.2 (20%) could indicate 20% of the SMs
+are at 100% utilization over the entire time period, 100% of the SMs are at 20% utilization over the entire time period, 100% of
+the SMs are at 100% utilization for 20% of the time period, or any combination in between (see <code class="docutils literal notranslate"><span class="pre">DCGM_FI_PROF_SM_UTIL_RATIO</span></code> to help
+disambiguate these possibilities).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DCGM_FI_PROF_FP16_UTIL_RATIO</span></code> (ID: 1008)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Memory BW Utilization</p></td>
+<td><p>The fraction of cycles where data was sent to or received from device memory. The value represents an average over a time interval
+and is not an instantaneous value.
+Higher values indicate higher utilization of device memory. An activity of 1 (100%) is equivalent
+to a DRAM instruction every cycle over the entire time interval (in practice a peak of ~0.8 (80%) is the maximum achievable).
+An activity of 0.2 (20%) indicates that 20% of the cycles are reading from or writing to device memory over the time interval.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DCGM_FI_PROF_DRAM_UTIL_RATIO</span></code> (ID: 1005)</p></td>
+</tr>
+<tr class="row-even"><td><p>NVLink Bandwidth</p></td>
+<td><p>The rate of data transmitted / received over NVLink, not including protocol headers, in bytes per second. The value represents an average
+over a time interval and is not an instantaneous value. The rate is averaged over the time interval. For example, if 1 GB of
+data is transferred over 1 second, the rate is 1 GB/s regardless of the data transferred at a constant rate or in bursts. The
+theoretical maximum NVLink Gen2 bandwidth is 25 GB/s per link per direction.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DCGM_FI_PROF_NVLINK_TX_BYTES</span></code> (ID: 1011) and <code class="docutils literal notranslate"><span class="pre">DCGM_FI_PROF_NVLINK_RX_BYTES</span></code> (ID: 1012)</p></td>
+</tr>
+<tr class="row-odd"><td><p>PCIe Bandwidth</p></td>
+<td><p>The rate of data transmitted / received over the PCIe bus, including both protocol headers and data payloads, in bytes per second.
+The value represents an average over a time interval and is not an instantaneous value. The rate is averaged over the time interval.
+For example, if 1 GB of data is transferred over 1 second, the rate is 1 GB/s regardless of the data transferred at a constant rate
+or in bursts. The theoretical maximum PCIe Gen3 bandwidth is 985 MB/s per lane.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DCGM_FI_PROF_PCIE_TX_BYTES</span></code> (ID: 1009) and <code class="docutils literal notranslate"><span class="pre">DCGM_FI_PROF_PCIE_RX_BYTES</span></code> (ID: 1010)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="per-link-nvlink-profiling">
+<h2>Per-link NVLink profiling<a class="headerlink" href="#per-link-nvlink-profiling" title="Link to this heading">#</a></h2>
+<p>The NVLink transmit and receive metrics can answer two different questions.
+Watch a GPU to measure its total traffic, or watch individual links to find an
+idle, imbalanced, or unexpectedly busy path. Use the same transmit and receive
+field IDs for both views. See <a class="reference internal" href="../../reference/command-line-reference/dcgmi/dcgmi-profile.html#dcgmi-profile"><span class="std std-ref">dcgmi profile</span></a> and <a class="reference internal" href="../../reference/command-line-reference/dcgmi/dcgmi-dmon.html#dcgmi-dmon"><span class="std std-ref">dcgmi dmon</span></a> for
+the exact entity syntax and <a class="reference internal" href="../../reference/field-identifiers.html#dcgm-field-identifiers-reference"><span class="std std-ref">Field Identifiers</span></a> for the
+programmatic migration from fixed per-link fields.</p>
+<p>Profiling of the GPU counters requires administrator privileges starting with Linux drivers 418.43 or later. This is documented
+<a class="reference external" href="https://developer.nvidia.com/nvidia-development-tools-solutions-ERR_NVGPUCTRPERM-permission-issue-performance-counters">here</a>.
+When using profiling metrics from DCGM, ensure that nv-hostengine is started with superuser privileges.</p>
+</section>
+<section id="multiplexing-of-profiling-counters">
+<h2>Multiplexing of Profiling Counters<a class="headerlink" href="#multiplexing-of-profiling-counters" title="Link to this heading">#</a></h2>
+<p>Some metrics require multiple passes to be collected and therefore all metrics cannot be collected together.
+Due to hardware limitations on the GPUs, only certain groups of metrics can be read together. For example,
+SM Activity | SM Occupancy cannot be collected together with Tensor Utilization on V100 but can be done on T4.
+To overcome these hardware limitations, DCGM supports automatic multiplexing of metrics by statistically sampling
+the requested metrics and performing the groupings internally. This may be transparent to users who requested metrics
+that may not have been able to be collected together.</p>
+<p>A side-effect of multiplexing is that collection at higher frequencies will result in zeroes returned as DCGM
+attempts to group metrics together for collection.</p>
+<p>The metrics that can be collected together for a specific GPU can be determined by running the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>dcgmi<span class="w"> </span>profile<span class="w"> </span>-l<span class="w"> </span>-i<span class="w"> </span><span class="m">0</span>
+<span class="go">+----------------+----------+------------------------------------------------------+</span>
+<span class="go">| Group.Subgroup | Field ID | Field Tag                                            |</span>
+<span class="go">+----------------+----------+------------------------------------------------------+</span>
+<span class="go">| A.1            | 1002     | sm_active                                            |</span>
+<span class="go">| A.1            | 1003     | sm_occupancy                                         |</span>
+<span class="go">| A.1            | 1004     | tensor_active                                        |</span>
+<span class="go">| A.1            | 1007     | fp32_active                                          |</span>
+<span class="go">| A.2            | 1006     | fp64_active                                          |</span>
+<span class="go">| A.3            | 1008     | fp16_active                                          |</span>
+<span class="go">| B.0            | 1005     | dram_active                                          |</span>
+<span class="go">| C.0            | 1009     | pcie_tx_bytes                                        |</span>
+<span class="go">| C.0            | 1010     | pcie_rx_bytes                                        |</span>
+<span class="go">| D.0            | 1001     | gr_engine_active                                     |</span>
+<span class="go">| E.0            | 1011     | nvlink_tx_bytes                                      |</span>
+<span class="go">| E.0            | 1012     | nvlink_rx_bytes                                      |</span>
+<span class="go">+----------------+----------+------------------------------------------------------+</span>
+</pre></div>
+</div>
+<p>From the output above, we can determine that for this GPU (in this example, an NVIDIA T4), a metric from each letter group
+can be collected without multiplexing. From this example, a metric from <code class="docutils literal notranslate"><span class="pre">A.1</span></code> can be collected with another metric from <code class="docutils literal notranslate"><span class="pre">A.1</span></code>
+without multiplexing. A metric from <code class="docutils literal notranslate"><span class="pre">A.1</span></code> will be multiplexed with another metric from <code class="docutils literal notranslate"><span class="pre">A.2</span></code> or <code class="docutils literal notranslate"><span class="pre">A.3</span></code>. Metrics from different
+letter groups can be combined for concurrent collection (without requiring multiplexing by DCGM).</p>
+<p>Building on this example further, on T4 these metrics can be collected together without multiplexing:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sm_active + sm_occupancy + tensor_active + fp32_active</span>
+</pre></div>
+</div>
+<p>The above DCGM command will show what groupings are supported by the hardware for concurrent collection.</p>
+</section>
+<section id="concurrent-usage-of-nvidia-profiling-tools">
+<h2>Concurrent Usage of NVIDIA Profiling Tools<a class="headerlink" href="#concurrent-usage-of-nvidia-profiling-tools" title="Link to this heading">#</a></h2>
+<p>Due to current hardware limitations, collection of profiling metrics with DCGM will conflict with usage of other developer
+tools from NVIDIA such as Nsight Systems or Nsight Compute. Users may encounter an error from DCGM
+(either with <code class="docutils literal notranslate"><span class="pre">dcgmi</span></code> or when using the APIs) such as:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Error setting watches. Result: The requested operation could not be completed because the affected resource is in use.</span>
+</pre></div>
+</div>
+<p>To allow DCGM to co-exist with the usage of other profiling tools, it is recommended to pause metrics collection with
+DCGM when the tools are in use and then resume after the usage of the tools is complete.</p>
+<p>With <code class="docutils literal notranslate"><span class="pre">dcgmi</span> <span class="pre">profile</span></code>, the <code class="docutils literal notranslate"><span class="pre">--pause</span></code> and <code class="docutils literal notranslate"><span class="pre">--resume</span></code> options can be used:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>dcgmi<span class="w"> </span>profile<span class="w"> </span>--pause
+<span class="gp">$ </span>dcgmi<span class="w"> </span>profile<span class="w"> </span>--resume
+</pre></div>
+</div>
+<p>When using DCGM APIs, the following APIs can be called from the monitoring process: <code class="docutils literal notranslate"><span class="pre">dcgmProfPause()</span></code> and <code class="docutils literal notranslate"><span class="pre">dcgmProfResume()</span></code></p>
+<p>When paused, DCGM will publish <code class="docutils literal notranslate"><span class="pre">BLANK</span></code> values for profiling metrics. These <code class="docutils literal notranslate"><span class="pre">BLANK</span></code> values can be tested with <code class="docutils literal notranslate"><span class="pre">DCGM_FP64_IS_BLANK(value)</span></code> in the
+C or Python bindings.</p>
+</section>
+<section id="cuda-test-generator-dcgmproftester">
+<span id="dcgm-cuda-test-generator"></span><h2>CUDA Test Generator (dcgmproftester)<a class="headerlink" href="#cuda-test-generator-dcgmproftester" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">dcgmproftester</span></code> is a CUDA load generator. It can be used to generate deterministic CUDA workloads for reading and
+validating GPU metrics. The tool is shipped as a simple x86_64 Linux binary along with the CUDA kernels compiled to PTX.
+Customers can use the tool in conjunction with <code class="docutils literal notranslate"><span class="pre">dcgmi</span></code> to quickly generate a load on the GPU and view the metrics reported by DCGM via <code class="docutils literal notranslate"><span class="pre">dcgmi</span> <span class="pre">dmon</span></code> on stdout.</p>
+<p>Current packages provide <code class="docutils literal notranslate"><span class="pre">dcgmproftester11</span></code>, <code class="docutils literal notranslate"><span class="pre">dcgmproftester12</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">dcgmproftester13</span></code>. The number at the end is the CUDA major version
+associated with that binary, not the application version. See
+<a class="reference internal" href="../../reference/command-line-reference/dcgmproftester.html"><span class="doc">dcgmproftester</span></a> for binary selection, the
+implemented field catalogue, all options, MIG and NVLink scope, output files,
+and exit-status caveats.</p>
+<p><code class="docutils literal notranslate"><span class="pre">dcgmproftester</span></code> takes two important arguments as input: <code class="docutils literal notranslate"><span class="pre">-t</span></code> for generating load for a particular metric
+(for example use 1004 to generate a half-precision matrix-multiply-accumulate for the Tensor Cores) and <code class="docutils literal notranslate"><span class="pre">-d</span></code> for specifying the test duration.
+Add <code class="docutils literal notranslate"><span class="pre">--no-dcgm-validation</span></code> to let dcgmproftester generate test loads only.</p>
+<p>For a list of all the field IDs that can be used to generate specific test loads, see the table in the Profiling Metrics section. The rest of this section
+includes some examples using the <code class="docutils literal notranslate"><span class="pre">dcgmi</span></code> command line utility.</p>
+<p>For example, generate a Tensor Core load on GPU 0 of an A100 system for 10
+seconds. The sample output reaches close to 253 TFLOPS of FP16 Tensor Core
+performance.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>/usr/bin/dcgmproftester11<span class="w"> </span>--no-dcgm-validation<span class="w"> </span>-i<span class="w"> </span><span class="m">0</span><span class="w"> </span>-t<span class="w"> </span><span class="m">1004</span><span class="w"> </span>-d<span class="w"> </span><span class="m">10</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Skipping CreateDcgmGroups() since DCGM validation is disabled</span>
+<span class="go">Skipping CreateDcgmGroups() since DCGM validation is disabled</span>
+<span class="go">Skipping WatchFields() since DCGM validation is disabled</span>
+<span class="go">Skipping CreateDcgmGroups() since DCGM validation is disabled</span>
+<span class="go">Worker 0:0[1004]: TensorEngineActive: generated ???, dcgm 0.000 (250362.2 gflops)</span>
+<span class="go">Worker 0:0[1004]: TensorEngineActive: generated ???, dcgm 0.000 (252917.0 gflops)</span>
+<span class="go">Worker 0:0[1004]: TensorEngineActive: generated ???, dcgm 0.000 (253971.7 gflops)</span>
+<span class="go">Worker 0:0[1004]: TensorEngineActive: generated ???, dcgm 0.000 (253700.2 gflops)</span>
+<span class="go">Worker 0:0[1004]: TensorEngineActive: generated ???, dcgm 0.000 (252599.0 gflops)</span>
+<span class="go">Worker 0:0[1004]: TensorEngineActive: generated ???, dcgm 0.000 (253134.6 gflops)</span>
+<span class="go">Worker 0:0[1004]: TensorEngineActive: generated ???, dcgm 0.000 (252676.7 gflops)</span>
+<span class="go">Worker 0:0[1004]: TensorEngineActive: generated ???, dcgm 0.000 (252861.4 gflops)</span>
+<span class="go">Worker 0:0[1004]: TensorEngineActive: generated ???, dcgm 0.000 (252764.1 gflops)</span>
+<span class="go">Worker 0:0[1004]: TensorEngineActive: generated ???, dcgm 0.000 (253109.4 gflops)</span>
+<span class="go">Worker 0:0[1004]: Message: Bus ID 00000000:00:04.0 mapped to cuda device ID 0</span>
+<span class="go">DCGM CudaContext Init completed successfully.</span>
+
+<span class="go">CU_DEVICE_ATTRIBUTE_MAX_THREADS_PER_MULTIPROCESSOR: 2048</span>
+<span class="go">CUDA_VISIBLE_DEVICES:</span>
+<span class="go">CU_DEVICE_ATTRIBUTE_MULTIPROCESSOR_COUNT: 108</span>
+<span class="go">CU_DEVICE_ATTRIBUTE_MAX_SHARED_MEMORY_PER_MULTIPROCESSOR: 167936</span>
+<span class="go">CU_DEVICE_ATTRIBUTE_COMPUTE_CAPABILITY_MAJOR: 8</span>
+<span class="go">CU_DEVICE_ATTRIBUTE_COMPUTE_CAPABILITY_MINOR: 0</span>
+<span class="go">CU_DEVICE_ATTRIBUTE_GLOBAL_MEMORY_BUS_WIDTH: 5120</span>
+<span class="go">CU_DEVICE_ATTRIBUTE_MEMORY_CLOCK_RATE: 1215</span>
+<span class="go">Max Memory bandwidth: 1555200000000 bytes (1555.2 GiB)</span>
+<span class="go">CU_DEVICE_ATTRIBUTE_ECC_SUPPORT: true</span>
+</pre></div>
+</div>
+<p>In another console, use the <code class="docutils literal notranslate"><span class="pre">dcgmi</span> <span class="pre">dmon</span> <span class="pre">-e</span></code> command to view the various performance metrics (streamed to stdout) reported by
+DCGM as the CUDA workload runs on the GPU. In this example, DCGM reports the GPU activity, TensorCore activity and Memory utilization
+at a frequency of 1Hz (or 1000ms). As can be seen, the GPU is busy doing work (~99% of Graphics Activity showing that the SMs are busy),
+with the TensorCore activity pegged to ~93%. Note that <code class="docutils literal notranslate"><span class="pre">dcgmi</span></code> is currently returning the metrics for GPU ID: 0. On a multi-GPU system,
+you can specify the GPU ID for which DCGM should return the metrics. By default, the metrics are returned for all the GPUs in the system.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>dcgmi<span class="w"> </span>dmon<span class="w"> </span>-e<span class="w"> </span><span class="m">1001</span>,1004,1005
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Entity<span class="w">  </span>GRACT<span class="w">  </span>TENSO<span class="w">  </span>DRAMA
+<span class="go">      Id</span>
+<span class="go">    GPU 0  0.000  0.000  0.000</span>
+<span class="go">    GPU 0  0.000  0.000  0.000</span>
+<span class="go">    GPU 0  0.000  0.000  0.000</span>
+<span class="go">    GPU 0  0.552  0.527  0.000</span>
+<span class="go">    GPU 0  0.969  0.928  0.000</span>
+<span class="go">    GPU 0  0.973  0.931  0.000</span>
+<span class="go">    GPU 0  0.971  0.929  0.000</span>
+<span class="go">    GPU 0  0.969  0.927  0.000</span>
+<span class="go">    GPU 0  0.971  0.929  0.000</span>
+<span class="go">    GPU 0  0.971  0.930  0.000</span>
+<span class="go">    GPU 0  0.973  0.931  0.000</span>
+<span class="go">    GPU 0  0.974  0.931  0.000</span>
+<span class="go">    GPU 0  0.971  0.930  0.000</span>
+<span class="go">    GPU 0  0.974  0.932  0.000</span>
+<span class="go">    GPU 0  0.972  0.930  0.000</span>
+</pre></div>
+</div>
+</section>
+<section id="metrics-on-multi-instance-gpu">
+<span id="dcgm-profiling-mig-metrics"></span><h2>Metrics on Multi-Instance GPU<a class="headerlink" href="#metrics-on-multi-instance-gpu" title="Link to this heading">#</a></h2>
+<p>The Multi-Instance GPU (MIG) feature allows supported NVIDIA GPUs to be securely partitioned
+into up to seven separate GPU Instances for CUDA applications, providing multiple users with
+separate GPU resources for optimal GPU utilization. This feature is particularly beneficial for
+workloads that do not fully saturate the GPU’s compute capacity and therefore users may want to
+run different workloads in parallel to maximize utilization. For more information on MIG, refer to the
+<a class="reference external" href="https://docs.nvidia.com/datacenter/tesla/mig-user-guide/latest/index.html">MIG User Guide</a>.</p>
+<p>DCGM can provide metrics for workloads that are running on MIG devices. DCGM offers two views of the metrics for MIG:</p>
+<ul class="simple">
+<li><p>GPU device-level metrics</p></li>
+<li><p>MIG device (either GPU Instance or Compute Instance) granularity of the metrics</p></li>
+</ul>
+<section id="example-1">
+<h3>Example 1<a class="headerlink" href="#example-1" title="Link to this heading">#</a></h3>
+<p>In this example, let’s generate a CUDA workload using dcgmproftester and observe metrics using <code class="docutils literal notranslate"><span class="pre">dcgmi</span> <span class="pre">dmon</span></code>.</p>
+<p>In this example, we follow these steps to demonstrate the collection of metrics for MIG devices:</p>
+<ul class="simple">
+<li><p>Create MIG devices (assumes that the GPU has MIG mode enabled)</p></li>
+<li><p>Verify DCGM can list the devices</p></li>
+<li><p>Create a group of devices for DCGM to monitor</p></li>
+<li><p>Run CUDA workloads on the desired MIG device(s)</p></li>
+<li><p>Use <cite>dcgmi dmon</cite> to stream metrics</p></li>
+</ul>
+<div class="line-block">
+<div class="line">Step 1: Create MIG Devices</div>
+<div class="line">Notice that we have partitioned the GPU into two MIG devices with the 3g.20gb profiles.</div>
+</div>
+<p>This device reconfiguration requires administrative GPU access. See
+<a class="reference internal" href="../../installation.html#dcgm-linux-privileges"><span class="std std-ref">the privilege note</span></a> and <a class="reference internal" href="../getting-started-for-system-administrators/index.html#dcgm-linux-process-credentials"><span class="std std-ref">the process-
+credentials note</span></a> if the command is not
+authorized for the current account.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>nvidia-smi<span class="w"> </span>mig<span class="w"> </span>-cgi<span class="w"> </span><span class="m">9</span>,9<span class="w"> </span>-C
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">...</span>
+<span class="go">+-----------------------------------------------------------------------------+</span>
+<span class="go">| MIG devices:                                                                |</span>
+<span class="go">+------------------+----------------------+-----------+-----------------------+</span>
+<span class="go">| GPU  GI  CI  MIG |         Memory-Usage |        Vol|         Shared        |</span>
+<span class="go">|      ID  ID  Dev |           BAR1-Usage | SM     Unc| CE  ENC  DEC  OFA  JPG|</span>
+<span class="go">|                  |                      |        ECC|                       |</span>
+<span class="go">|==================+======================+===========+=======================|</span>
+<span class="go">|  0    1   0   0  |     11MiB / 20096MiB | 42      0 |  3   0    2    0    0 |</span>
+<span class="go">|                  |      0MiB / 32767MiB |           |                       |</span>
+<span class="go">+------------------+----------------------+-----------+-----------------------+</span>
+<span class="go">|  0    2   0   1  |     11MiB / 20096MiB | 42      0 |  3   0    2    0    0 |</span>
+<span class="go">|                  |      0MiB / 32767MiB |           |                       |</span>
+<span class="go">+------------------+----------------------+-----------+-----------------------+</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Step 2: Verify enumeration by DCGM</div>
+<div class="line">We can also observe the devices enumerated by DCGM:</div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>dcgmi<span class="w"> </span>discovery<span class="w"> </span>-c
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+-------------------+--------------------------------------------------------------------+</span>
+<span class="go">| Instance Hierarchy                                                                     |</span>
+<span class="go">+===================+====================================================================+</span>
+<span class="go">| GPU 0             | GPU GPU-5fd15f35-e148-2992-4ecb-9825e534f253 (EntityID: 0)         |</span>
+<span class="go">| -&gt; I 0/1          | GPU Instance (EntityID: 0)                                         |</span>
+<span class="go">|    -&gt; CI 0/1/0    | Compute Instance (EntityID: 0)                                     |</span>
+<span class="go">| -&gt; I 0/2          | GPU Instance (EntityID: 1)                                         |</span>
+<span class="go">|    -&gt; CI 0/2/0    | Compute Instance (EntityID: 1)                                     |</span>
+<span class="go">+-------------------+--------------------------------------------------------------------+</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Step 3: Creation of MIG device groups</div>
+<div class="line">Create groups of devices for DCGM to monitor. In this example, we will add the GPU and the two GPU Instances (using entity IDs 0 and 1) to the group:</div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>dcgmi<span class="w"> </span>group<span class="w"> </span>-c<span class="w"> </span>mig-ex1<span class="w"> </span>-a<span class="w"> </span><span class="m">0</span>,i:0,i:1
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Successfully created group "mig-ex1" with a group ID of 8</span>
+<span class="go">Specified entity ID is valid but unknown: i:0. ParsedResult: ParsedGpu(i:0)</span>
+<span class="go">Specified entity ID is valid but unknown: i:1. ParsedResult: ParsedGpu(i:1)</span>
+<span class="go">Add to group operation successful.</span>
+</pre></div>
+</div>
+<p>Now, we can list the devices added to the group and see that the group contains the GPU (GPU:0), GPU Instances (0 and 1):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>dcgmi<span class="w"> </span>group<span class="w"> </span>-l
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+-------------------+----------------------------------------------------------+</span>
+<span class="go">| GROUPS                                                                       |</span>
+<span class="go">| 1 group found.                                                               |</span>
+<span class="go">+===================+==========================================================+</span>
+<span class="go">| Groups            |                                                          |</span>
+<span class="go">| -&gt; 8              |                                                          |</span>
+<span class="go">|    -&gt; Group ID    | 8                                                        |</span>
+<span class="go">|    -&gt; Group Name  | mig-ex1                                                  |</span>
+<span class="go">|    -&gt; Entities    | GPU 0, GPU_I 0, GPU_I 1                                  |</span>
+<span class="go">+-------------------+----------------------------------------------------------+</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Step 4: Run CUDA workloads</div>
+<div class="line">Launch <code class="docutils literal notranslate"><span class="pre">dcgmproftester</span></code>. Note that <code class="docutils literal notranslate"><span class="pre">dcgmproftester</span></code> will run on all GPU instances available on the GPU.
+There is currently no way to limit the GPU instances from <code class="docutils literal notranslate"><span class="pre">dcgmproftester</span></code> (though one could do this by running a dcgmproftester container,
+which we will see in the next example).</div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>dcgmproftester11<span class="w"> </span>--no-dcgm-validation<span class="w"> </span>-i<span class="w"> </span><span class="m">0</span><span class="w"> </span>-t<span class="w"> </span><span class="m">1004</span><span class="w"> </span>-d<span class="w"> </span><span class="m">120</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Skipping CreateDcgmGroups() since DCGM validation is disabled</span>
+<span class="go">Skipping CreateDcgmGroups() since DCGM validation is disabled</span>
+<span class="go">Skipping CreateDcgmGroups() since DCGM validation is disabled</span>
+<span class="go">Skipping WatchFields() since DCGM validation is disabled</span>
+<span class="go">Skipping CreateDcgmGroups() since DCGM validation is disabled</span>
+<span class="go">Worker 0:0[1004]: TensorEngineActive: generated ???, dcgm { GPU: 0.000, GI: 0.000, CI: 0.000 } (102659.5 gflops)</span>
+<span class="go">Worker 0:1[1004]: TensorEngineActive: generated ???, dcgm { GPU: 0.000, GI: 0.000, CI: 0.000 } (102659.8 gflops)</span>
+<span class="go">Worker 0:0[1004]: TensorEngineActive: generated ???, dcgm { GPU: 0.000, GI: 0.000, CI: 0.000 } (107747.3 gflops)</span>
+<span class="go">Worker 0:1[1004]: TensorEngineActive: generated ???, dcgm { GPU: 0.000, GI: 0.000, CI: 0.000 } (107787.3 gflops)</span>
+<span class="go">Worker 0:0[1004]: TensorEngineActive: generated ???, dcgm { GPU: 0.000, GI: 0.000, CI: 0.000 } (108107.6 gflops)</span>
+<span class="go">Worker 0:1[1004]: TensorEngineActive: generated ???, dcgm { GPU: 0.000, GI: 0.000, CI: 0.000 } (108102.3 gflops)</span>
+<span class="go">Worker 0:0[1004]: TensorEngineActive: generated ???, dcgm { GPU: 0.000, GI: 0.000, CI: 0.000 } (108001.2 gflops)</span>
+
+<span class="go">snip...snip</span>
+
+<span class="go">Worker 0:0[1004]: Message: DCGM CudaContext Init completed successfully.</span>
+
+<span class="go">CU_DEVICE_ATTRIBUTE_MAX_THREADS_PER_MULTIPROCESSOR: 2048</span>
+<span class="go">CUDA_VISIBLE_DEVICES: MIG-GPU-5fd15f35-e148-2992-4ecb-9825e534f253/1/0</span>
+<span class="go">CU_DEVICE_ATTRIBUTE_MULTIPROCESSOR_COUNT: 42</span>
+<span class="go">CU_DEVICE_ATTRIBUTE_MAX_SHARED_MEMORY_PER_MULTIPROCESSOR: 167936</span>
+<span class="go">CU_DEVICE_ATTRIBUTE_COMPUTE_CAPABILITY_MAJOR: 8</span>
+<span class="go">CU_DEVICE_ATTRIBUTE_COMPUTE_CAPABILITY_MINOR: 0</span>
+<span class="go">CU_DEVICE_ATTRIBUTE_GLOBAL_MEMORY_BUS_WIDTH: 5120</span>
+<span class="go">CU_DEVICE_ATTRIBUTE_MEMORY_CLOCK_RATE: 1215</span>
+<span class="go">Max Memory bandwidth: 1555200000000 bytes (1555.2 GiB)</span>
+<span class="go">CU_DEVICE_ATTRIBUTE_ECC_SUPPORT: true</span>
+
+<span class="go">Worker 0:1[1004]: Message: DCGM CudaContext Init completed successfully.</span>
+
+<span class="go">CU_DEVICE_ATTRIBUTE_MAX_THREADS_PER_MULTIPROCESSOR: 2048</span>
+<span class="go">CUDA_VISIBLE_DEVICES: MIG-GPU-5fd15f35-e148-2992-4ecb-9825e534f253/2/0</span>
+<span class="go">CU_DEVICE_ATTRIBUTE_MULTIPROCESSOR_COUNT: 42</span>
+<span class="go">CU_DEVICE_ATTRIBUTE_MAX_SHARED_MEMORY_PER_MULTIPROCESSOR: 167936</span>
+<span class="go">CU_DEVICE_ATTRIBUTE_COMPUTE_CAPABILITY_MAJOR: 8</span>
+<span class="go">CU_DEVICE_ATTRIBUTE_COMPUTE_CAPABILITY_MINOR: 0</span>
+<span class="go">CU_DEVICE_ATTRIBUTE_GLOBAL_MEMORY_BUS_WIDTH: 5120</span>
+<span class="go">CU_DEVICE_ATTRIBUTE_MEMORY_CLOCK_RATE: 1215</span>
+<span class="go">Max Memory bandwidth: 1555200000000 bytes (1555.2 GiB)</span>
+<span class="go">CU_DEVICE_ATTRIBUTE_ECC_SUPPORT: true</span>
+
+<span class="go">Skipping UnwatchFields() since DCGM validation is disabled</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Step 5: Stream metrics via <code class="docutils literal notranslate"><span class="pre">dcgmi</span> <span class="pre">dmon</span></code></div>
+<div class="line">Now in another window, we can observe the metrics being attributed to each MIG device using <code class="docutils literal notranslate"><span class="pre">dcgmi</span> <span class="pre">dmon</span></code>.
+Notice that in this example, we show the GPU Activity (1001) and the Tensor Core Utilization (1004) for the group 8 that we created in Step 3.</div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>dcgmi<span class="w"> </span>dmon<span class="w"> </span>-e<span class="w"> </span><span class="m">1001</span>,1004<span class="w"> </span>-g<span class="w"> </span><span class="m">8</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Entity<span class="w">  </span>GRACT<span class="w">  </span>TENSO
+<span class="go">      Id</span>
+<span class="go">    GPU 0  0.000  0.000</span>
+<span class="go">  GPU-I 0  0.000  0.000</span>
+<span class="go">  GPU-I 1  0.000  0.000</span>
+<span class="go">    GPU 0  0.000  0.000</span>
+<span class="go">  GPU-I 0  0.000  0.000</span>
+<span class="go">  GPU-I 1  0.000  0.000</span>
+<span class="go">    GPU 0  0.457  0.442</span>
+<span class="go">  GPU-I 0  0.534  0.516</span>
+<span class="go">  GPU-I 1  0.533  0.515</span>
+<span class="go">    GPU 0  0.845  0.816</span>
+<span class="go">  GPU-I 0  0.986  0.953</span>
+<span class="go">  GPU-I 1  0.985  0.952</span>
+<span class="go">    GPU 0  0.846  0.817</span>
+<span class="go">  GPU-I 0  0.987  0.953</span>
+<span class="go">  GPU-I 1  0.986  0.953</span>
+<span class="go">    GPU 0  0.846  0.817</span>
+<span class="go">  GPU-I 0  0.987  0.954</span>
+<span class="go">  GPU-I 1  0.986  0.953</span>
+<span class="go">    GPU 0  0.843  0.815</span>
+<span class="go">  GPU-I 0  0.985  0.951</span>
+<span class="go">  GPU-I 1  0.983  0.950</span>
+<span class="go">    GPU 0  0.845  0.817</span>
+<span class="go">  GPU-I 0  0.987  0.953</span>
+<span class="go">  GPU-I 1  0.985  0.952</span>
+<span class="go">    GPU 0  0.844  0.816</span>
+<span class="go">  GPU-I 0  0.985  0.952</span>
+<span class="go">  GPU-I 1  0.984  0.951</span>
+<span class="go">    GPU 0  0.845  0.816</span>
+<span class="go">  GPU-I 0  0.986  0.952</span>
+<span class="go">  GPU-I 1  0.985  0.952</span>
+</pre></div>
+</div>
+</section>
+<section id="understanding-metrics">
+<h3>Understanding Metrics<a class="headerlink" href="#understanding-metrics" title="Link to this heading">#</a></h3>
+<p>To understand the metrics attribution, GRACT is calculated based on the number of allocated compute resources to
+the total number of compute resources available on the GPU. We can see the total number of compute resources (SMs)
+using the <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>nvidia-smi<span class="w"> </span>mig<span class="w"> </span>-lgip
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">+--------------------------------------------------------------------------+</span>
+<span class="go">| GPU instance profiles:                                                   |</span>
+<span class="go">| GPU   Name          ID    Instances   Memory     P2P    SM    DEC   ENC  |</span>
+<span class="go">|                           Free/Total   GiB              CE    JPEG  OFA  |</span>
+<span class="go">|==========================================================================|</span>
+<span class="go">|   0  MIG 1g.5gb     19     0/7        4.75       No     14     0     0   |</span>
+<span class="go">|                                                          1     0     0   |</span>
+<span class="go">+--------------------------------------------------------------------------+</span>
+<span class="go">|   0  MIG 2g.10gb    14     0/3        9.75       No     28     1     0   |</span>
+<span class="go">|                                                          2     0     0   |</span>
+<span class="go">+--------------------------------------------------------------------------+</span>
+<span class="go">|   0  MIG 3g.20gb     9     0/2        19.62      No     42     2     0   |</span>
+<span class="go">|                                                          3     0     0   |</span>
+<span class="go">+--------------------------------------------------------------------------+</span>
+<span class="go">|   0  MIG 4g.20gb     5     0/1        19.62      No     56     2     0   |</span>
+<span class="go">|                                                          4     0     0   |</span>
+<span class="go">+--------------------------------------------------------------------------+</span>
+<span class="go">|   0  MIG 7g.40gb     0     0/1        39.50      No     98     5     0   |</span>
+<span class="go">|                                                          7     1     1   |</span>
+<span class="go">+--------------------------------------------------------------------------+</span>
+</pre></div>
+</div>
+<p>Because the MIG geometry in this example is 3g.20gb, the compute resources are = 2*42/98 or 85.71%. We can now interpret GRACT from the <code class="docutils literal notranslate"><span class="pre">dcgmi</span> <span class="pre">dmon</span></code> output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">  GPU 0  0.845  0.816</span>
+<span class="go">GPU-I 0  0.986  0.952</span>
+<span class="go">GPU-I 1  0.985  0.952</span>
+</pre></div>
+</div>
+<p>Since each GPU instance is 98.6% active, the entire GPU = 0.8571*0.986 or 84.5% utilized. The same interpretation can be extended to Tensor Core utilization.</p>
+</section>
+<section id="platform-support">
+<h3>Platform Support<a class="headerlink" href="#platform-support" title="Link to this heading">#</a></h3>
+<p>Profiling metrics are currently supported on datacenter products starting with the Volta architecture on Linux x86_64, Arm64 (aarch64) and POWER (ppc64le) platforms.</p>
+</section>
+</section>
+<section id="further-reading">
+<h2>Further reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../reference/command-line-reference/dcgmi/dcgmi-profile.html"><span class="doc">dcgmi profile</span></a> is the exhaustive reference
+for runtime metric groups and host-engine-wide pause/resume behavior.</p></li>
+<li><p><a class="reference internal" href="../../reference/command-line-reference/dcgmi/dcgmi-dmon.html"><span class="doc">dcgmi dmon</span></a> documents field watches,
+sampling, and output.</p></li>
+<li><p><a class="reference internal" href="../../reference/command-line-reference/dcgmproftester.html"><span class="doc">dcgmproftester</span></a> documents the active load
+generator, binary selection, implemented workloads, and safety constraints.</p></li>
+<li><p><a class="reference internal" href="../../reference/dcgm-api/dcgm-api-profiling.html#dcgm-api-profiling"><span class="std std-ref">Profiling</span></a> documents profiling metric groups and programmatic
+pause/resume, while <a class="reference internal" href="../../reference/field-identifiers.html#dcgm-field-identifiers-reference"><span class="std std-ref">Field Identifiers</span></a> defines each
+field.</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="dcgm-diagnostics.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Diagnostics</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="dcgm-cpu-monitoring.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">CPU Monitoring</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+
+
+              
+                <dialog id="pst-secondary-sidebar-modal" tabindex="-1"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-profiling-metrics-are-useful">When profiling metrics are useful</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-characterize-an-application-phase">Example: characterize an application phase</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metrics">Metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-link-nvlink-profiling">Per-link NVLink profiling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplexing-of-profiling-counters">Multiplexing of Profiling Counters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#concurrent-usage-of-nvidia-profiling-tools">Concurrent Usage of NVIDIA Profiling Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cuda-test-generator-dcgmproftester">CUDA Test Generator (dcgmproftester)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metrics-on-multi-instance-gpu">Metrics on Multi-Instance GPU</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-metrics">Understanding Metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#platform-support">Platform Support</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further reading</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8"></script>
+
+ 
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+<a class="footer-brand logo" href="https://www.nvidia.com">
+  <img src="../../_static/nvidia-logo-horiz-rgb-1c-blk-for-screen.svg" class="logo__image only-light" alt="NVIDIA"/>
+  <img src="../../_static/nvidia-logo-horiz-rgb-1c-wht-for-screen.svg" class="logo__image only-dark" alt="NVIDIA"/>
+</a></div>
+      
+        <div class="footer-item">
+
+<div class="footer-links">
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/">Privacy Policy</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-center/">Your Privacy Choices</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/terms-of-service/">Terms of Service</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/accessibility/">Accessibility</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/company-policies/">Corporate Policies</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/product-security/">Product Security</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/contact/">Contact</a>
+  
+  
+  
+</div>
+</div>
+      
+        <div class="footer-item">
+
+
+
+
+  <p class="copyright">
+    
+      Copyright © 2018-2026, NVIDIA Corporation.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on 2026-11-12.
+</p></div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <style>
+  a:link, a:visited {
+    color: #76b900;
+  }
+
+  a:hover {
+    color: #8c0;
+  }
+
+  .rst-content dl:not(.docutils) dt {
+    background: rgba(118, 185, 0, 0.1);
+    color: rgba(59,93,0,1);
+    border-top: solid 3px rgba(59,93,0,1);
+  }
+  </style>
+  
+  </body>
+</html>

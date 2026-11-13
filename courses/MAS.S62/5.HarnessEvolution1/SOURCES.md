@@ -2,8 +2,8 @@
 
 - Date: 2026-10-07
 - Source: https://mit-mi.github.io/how2ai-course/fall2026/schedule/
-- 资料归档日期：2026-10-26；最新日历见[完整课表](../COURSE_SCHEDULE.md)。
-- 编号采用官网 Week；原 PDF 内的 Lecture 编号和文件名保持原样。
+- 资料归档日期：2026-11-13；最新日历见[完整课表](../COURSE_SCHEDULE.md)。
+- 目录编号保持稳定；当前官方 Week、日期单独记录，原 PDF 内的 Lecture 编号和文件名保持原样。
 
 ## Topics（归档快照）
 
@@ -26,7 +26,7 @@
 
 ## Assigned readings（归档快照）
 
-- R01: [Darwin Godel Machine: Open-Ended Evolution of Self-Improving Agents](readings/Darwin_G%C3%B6del_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf)
+- R01: [Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents](readings/Darwin_G%C3%B6del_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf)
   - Source: https://arxiv.org/abs/2505.22954
   - PDF version: 2505.22954v3
 - R02: [Recursive Language Models](readings/Recursive_Language_Models.pdf)
@@ -35,7 +35,7 @@
 - R03: [Context Language Models](readings/Context_Language_Models.pdf)
   - Source: https://arxiv.org/abs/2609.37725
   - PDF version: 2609.37725v1
-- R04: [MEM1: Learning to Synergize Memory and Reasoning for Efficient Long-horizon Agents](readings/MEM1_Learning_to_Synergize_Memory_and_Reasoning_for_Efficient_Long-Horizon_Agents.pdf)
+- R04: [MEM1: Learning to Synergize Memory and Reasoning for Efficient Long-Horizon Agents](readings/MEM1_Learning_to_Synergize_Memory_and_Reasoning_for_Efficient_Long-Horizon_Agents.pdf)
   - Source: https://arxiv.org/abs/2506.15841
   - PDF version: 2506.15841v2
 - R05: [Reflexion: Language Agents with Verbal Reinforcement Learning](readings/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf)

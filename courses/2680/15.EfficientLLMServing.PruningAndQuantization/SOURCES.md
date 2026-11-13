@@ -1,10 +1,10 @@
 # 15. Efficient LLM serving: pruning and quantization
 
-- Date: 2026-11-18
+- Date: 2026-11-23
 
 ## Slides
 
-- No slides linked on the course website as of 2026-11-04.
+- No slides linked on the course website as of 2026-11-13.
 
 ## Readings
 
@@ -84,4 +84,4 @@
 ## References
 
 - [Full course reading list](../site/readings.html)
-  - Source: https://cs2680.com/readings.html#nov-18
+  - Source: https://cs2680.com/readings.html#nov-23

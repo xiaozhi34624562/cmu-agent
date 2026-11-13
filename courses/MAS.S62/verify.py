@@ -11,7 +11,7 @@ import re
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 
-from sync import ROOT, inspect_download, material_target, parse_schedule
+from sync import ROOT, inspect_download, material_target, parse_schedule, apply_schedule_overrides
 
 
 def markdown_targets(text):
@@ -44,22 +44,41 @@ def markdown_targets(text):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--require-notes", action="store_true")
+    parser.add_argument("--allow-deferred-notes", action="store_true",
+                        help="Allow only explicit hash-bound deferred entries in REVIEW.json; all other checks remain strict")
+    parser.add_argument("--output", type=Path, help="Optional verification JSON destination")
     args = parser.parse_args()
     manifest = json.loads((ROOT/"manifest.json").read_text())
     errors = []
+    review = json.loads((ROOT/"REVIEW.json").read_text())
+    deferred = {x["week"]: x for x in review.get("deferred_notes", [])}
+    accepted_deferred = []
+    material_hashes = {x.get("sha256") for x in manifest["resources"] if x["status"] == "saved"}
+    for week, item in deferred.items():
+        path = ROOT/item["path"]
+        if not item.get("reason") or item.get("material_sha256") not in material_hashes:
+            errors.append(f"Invalid deferred-note material binding: week {week}")
+        if item["status"] == "review_required" and (not path.exists() or hashlib.sha256(path.read_bytes()).hexdigest() != item.get("sha256")):
+            errors.append(f"Deferred unchanged guide checksum mismatch: {item['path']}")
+        if item["status"] not in {"review_required", "not_written"}:
+            errors.append(f"Unsupported deferred-note state: week {week}")
     # Check the actual archived timetable, not just manifest self-consistency.
-    timetable = parse_schedule((ROOT/"site/schedule/index.html").read_text())
+    try:
+        timetable = apply_schedule_overrides(parse_schedule((ROOT/"site/schedule/index.html").read_text()))
+    except (ValueError, OSError) as exc:
+        errors.append(str(exc))
+        timetable = []
     layout_keys = ("week", "date", "title", "folder")
     archived_layout = [tuple(w[k] for k in layout_keys) for w in timetable]
     indexed_layout = [tuple(w[k] for k in layout_keys) for w in manifest["weeks"]]
     if archived_layout != indexed_layout:
         errors.append("Course folders/dates/titles do not match the archived official timetable")
-    indexed_folders = {w["folder"] for w in manifest["weeks"]} | {"0.CourseInformation"}
+    indexed_folders = {w["folder"] for w in manifest["weeks"] if w.get("folder")} | {"0.CourseInformation"} | set(manifest.get("retained_folders", {}))
     for folder in ROOT.iterdir():
         if folder.is_dir() and re.match(r"^\d+\.", folder.name) and folder.name not in indexed_folders:
             errors.append(f"Numbered folder absent from the official timetable: {folder.name}")
     saved = 0
-    for item in manifest["resources"]:
+    for item in manifest["resources"] + manifest.get("historical_resources", []):
         if item["status"] != "saved":
             continue
         path = ROOT/item["path"]
@@ -73,25 +92,42 @@ def main():
             inspect_download(path)
         except (ValueError, RuntimeError) as exc:
             errors.append(f"Invalid saved body: {item['path']}: {exc}")
+        for relative in item.get("retained_copies", []):
+            retained = ROOT/relative
+            if not retained.is_file() or hashlib.sha256(retained.read_bytes()).hexdigest() != item["sha256"]:
+                errors.append(f"Historical note source checksum mismatch: {relative}")
         saved += 1
     sources = {r["url"]: r for r in manifest["resources"]}
     required_weeks = []
     copies = 0
     notes = []
     for week in manifest["weeks"]:
+        if week.get("folder") is None:
+            if week.get("kind") != "no_class" or week.get("materials") or week.get("readings"):
+                errors.append(f"Invalid schedule-only no-class row: week {week['week']}")
+            continue
         folder = ROOT/week["folder"]
         if not (folder/"SOURCES.md").exists():
             errors.append(f"Missing weekly index: {week['folder']}")
         materials = [r for r in manifest["resources"] if week["week"] in r["weeks"] and r["kind"] in {"lecture", "guest", "tutorial", "notebook", "homework"}]
         if any(r["status"] == "saved" and r["kind"] in {"lecture", "guest", "tutorial"} for r in materials):
             required_weeks.append(week["week"])
-            if args.require_notes and not (folder/"notes.zh-CN.md").exists():
-                errors.append(f"Missing study guide: {week['folder']}")
+            note_missing = not (folder/"notes.zh-CN.md").exists()
+            deferred_item = deferred.get(week["week"])
+            if args.require_notes and (note_missing or deferred_item):
+                if args.allow_deferred_notes and deferred_item and ((note_missing and deferred_item["status"] == "not_written") or (not note_missing and deferred_item["status"] == "review_required")):
+                    accepted_deferred.append(deferred_item)
+                else:
+                    errors.append(f"Missing or review-required study guide: {week['folder']}")
         expected = [(r, material_target(r, folder)) for r in materials if r["status"] == "saved"]
         for index, reading in enumerate(week["readings"], 1):
             r = sources[reading["url"]]
             if r["status"] == "saved":
                 expected.append((r, material_target(r, folder, index)))
+        for historical in manifest.get("historical_resources", []):
+            for relative in historical.get("retained_copies", []):
+                if (ROOT/relative).parent.parent == folder:
+                    expected.append((historical, ROOT/relative))
         expected_paths = {target.resolve() for _, target in expected}
         for subdirectory in ("slides", "tutorials", "readings"):
             for target in (folder/subdirectory).glob("*"):
@@ -161,8 +197,11 @@ def main():
             path = ROOT/item["path"]
             if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != item["sha256"]:
                 errors.append(f"Supplementary manifest checksum mismatch: {item['path']}")
-    result = dict(saved_sources=saved, classification_copies=copies, archive_checksums=checksum_count,
+    result = dict(deferred_notes=accepted_deferred, content_review_complete=not deferred,
+                  saved_sources=saved, classification_copies=copies, archive_checksums=checksum_count,
                   checked_local_links=checked_links, published_weeks=required_weeks, study_guides=notes, errors=errors)
+    if args.output:
+        args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps(result, ensure_ascii=False, indent=2))
     raise SystemExit(1 if errors else 0)
 

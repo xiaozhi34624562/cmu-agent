@@ -20,6 +20,7 @@ import time
 from collections import deque
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
+from functools import lru_cache
 from pathlib import Path, PurePosixPath
 from urllib.parse import unquote, urljoin, urlparse, urlunparse
 from zoneinfo import ZoneInfo
@@ -45,6 +46,7 @@ VENDOR = {
 ALTERNATE_READINGS = {
     "https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents": "https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf",
     "https://docs.nvidia.com/cuda/cuda-c-programming-guide/": "https://docs.nvidia.com/cuda/pdf/CUDA_C_Programming_Guide.pdf",
+    "https://doi.org/10.1177/1094342005051521": "https://www.mcs.anl.gov/~thakur/papers/ijhpca-coll.pdf",
 }
 
 SESSION = requests.Session()
@@ -185,6 +187,7 @@ def reading_destination(url: str, title: str | None = None) -> Path | None:
     if entry:
         name = Path(entry["path"]).name
         return ROOT / "readings" / ("papers" if name.endswith(".pdf") else "web") / name
+    title = reading_title(url, title)
     if url in ALTERNATE_READINGS:
         name = material_filename(title or Path(urlparse(ALTERNATE_READINGS[url]).path).stem, url, ".pdf")
         return ROOT / "readings" / "papers" / name
@@ -204,6 +207,17 @@ def reading_destination(url: str, title: str | None = None) -> Path | None:
     if detected_pdf.exists():
         return detected_pdf
     return ROOT / "readings" / "web" / f"{stem}.html"
+
+
+@lru_cache(maxsize=1)
+def reading_titles() -> dict[str, dict]:
+    path = ROOT / "READING_TITLES.json"
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+
+
+def reading_title(url: str, fallback: str | None = None) -> str:
+    """Keep full titles for newly added readings without changing official labels."""
+    return reading_titles().get(url, {}).get("title") or fallback or url
 
 
 def reading_snapshot_issue(path: Path) -> str | None:
@@ -227,6 +241,13 @@ def download_readings(readings: dict[str, list[str]]) -> tuple[dict[str, Path], 
         if dest.exists():
             if issue := reading_snapshot_issue(dest):
                 return url, None, issue
+            return url, dest, None
+        entry = registered_material(url)
+        original = ROOT.parents[1] / entry["path"] if entry else None
+        if original is not None and original.is_file() and reading_snapshot_issue(original) is None:
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(original, dest)
+            print("REUSED READING", original.relative_to(ROOT.parents[1]), dest.relative_to(ROOT))
             return url, dest, None
         download_url = ALTERNATE_READINGS.get(url, url)
         if urlparse(url).netloc == "arxiv.org":
@@ -281,7 +302,8 @@ def archive_code() -> str | None:
     metadata["last_attempt"] = TODAY
     with tempfile.TemporaryDirectory(prefix="cs2680-") as temp:
         try:
-            subprocess.run(["git", "clone", "--depth", "1", "--quiet", REPO, temp + "/repo"], check=True, timeout=90)
+            subprocess.run(["git", "clone", "--depth", "1", "--quiet", REPO, temp + "/repo"], check=True, timeout=90,
+                           env={**os.environ, "GIT_TERMINAL_PROMPT": "0"})
             sha = subprocess.check_output(["git", "-C", temp + "/repo", "rev-parse", "HEAD"], text=True).strip()
             for source in (Path(temp) / "repo").iterdir():
                 if source.is_dir() and re.fullmatch(r"assignment\d+", source.name):
@@ -328,6 +350,11 @@ def write_sources(mirrored: dict[str, Path], readings: dict[str, list[str]], sav
                 local = f"[验证网页（无阅读正文）]({relative})"
         if path and url in ALTERNATE_READINGS:
             local += f"（[官方替代地址]({ALTERNATE_READINGS[url]})）"
+        entry = registered_material(url)
+        original = ROOT.parents[1] / entry["path"] if entry else None
+        if path and original is not None and original.is_file() and ROOT not in original.parents:
+            relative = os.path.relpath(original, ROOT)
+            local += f"（复用已有归档：[原位置]({relative})；不计为本次重新下载）"
         lines.append(f"| {title} | {local} | {url} |")
     lines += ["", "## 作业代码", ""]
     if sha:

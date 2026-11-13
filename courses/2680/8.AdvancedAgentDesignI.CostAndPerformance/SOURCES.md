@@ -31,7 +31,7 @@
 
 ## References
 
-- [Full course reading list](../site/readings.html)
-  - Source: https://cs2680.com/readings.html#oct-07
+- [Course reading notes](../site/readings/oct-07.html)
+  - Source: https://cs2680.com/readings/oct-07.html
 - [Cost-effective agents](../site/notes/cost-effective-agents.html)
   - Source: https://cs2680.com/notes/cost-effective-agents.html

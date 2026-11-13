@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "executed_at": "2026-11-13T08:27:32.341840+00:00",
+  "python": "3.11.10",
+  "script": "examples.py",
+  "script_sha256": "c40d8d9c80587e0194f3f52612fd9f2dea942eeb3196ce2ab22f6443e65bd0cd",
+  "status": "passed",
+  "scope": "CPU arithmetic, algebra and ownership examples only",
+  "gpu_model_network_experiments_run": false,
+  "checks": {
+    "timing": {
+      "bursty": {
+        "ttft_ms": 200.0,
+        "tpot_ms": 55.99999999999999,
+        "max_tbt_ms": 200.0,
+        "e2e_ms": 480.0
+      },
+      "smooth": {
+        "ttft_ms": 200.0,
+        "tpot_ms": 56.00000000000001,
+        "max_tbt_ms": 56.00000000000005,
+        "e2e_ms": 480.00000000000006
+      },
+      "single_output_tpot": null
+    },
+    "batch_slots": {
+      "static_rounds": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "A"
+        ],
+        [
+          "A"
+        ],
+        [
+          "A"
+        ],
+        [
+          "C"
+        ],
+        [
+          "C"
+        ]
+      ],
+      "continuous_rounds": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "A",
+          "C"
+        ],
+        [
+          "A",
+          "C"
+        ],
+        [
+          "A"
+        ]
+      ],
+      "assumptions": "decode-only, all arrive at zero, two slots, equal round duration"
+    },
+    "chunk_prefix_visits": {
+      "old_prefix_lengths": [
+        0,
+        25,
+        50,
+        75
+      ],
+      "sum": 150,
+      "not_a_measurement_of_hbm_reads": true
+    },
+    "kv_and_transfer": {
+      "kv_bytes_per_token": 131072,
+      "input_2048_kv_mib": 256.0,
+      "transfer_25_GB_per_s_ms": 10.73741824,
+      "transfer_25_Gbit_per_s_ms": 85.89934592,
+      "assumptions": "unsharded homogeneous KV, ideal effective bandwidth, no protocol/queue overhead"
+    },
+    "copy_on_write": {
+      "first": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "X"
+      ],
+      "second": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "Y"
+      ],
+      "full_block_refs": 2,
+      "original_tail_retained_by_second": true,
+      "all_blocks_freed_after_both_release": true
+    },
+    "tensor_parallel_algebra": {
+      "direct": [
+        [
+          3,
+          22
+        ],
+        [
+          -9,
+          25
+        ]
+      ],
+      "combined": [
+        [
+          3,
+          22
+        ],
+        [
+          -9,
+          25
+        ]
+      ],
+      "nonlinear_counterexample": {
+        "relu_sum": 1,
+        "sum_relu": 2
+      },
+      "activation": "ReLU for a compact example, not a model reproduction"
+    },
+    "attention_merge": {
+      "direct": 6.305192592227569,
+      "merged": 6.305192592227569,
+      "incorrect_average_of_local_outputs": 4.327646446575012
+    },
+    "parallelism_costs": {
+      "pipeline_bubble_K4_m4": 0.42857142857142855,
+      "pipeline_bubble_K4_m16": 0.15789473684210525,
+      "tp_sent_bytes_per_global_token_per_gpu": 3932160.0,
+      "pp_sent_bytes_per_token_one_boundary": 16384,
+      "tp_to_one_pp_boundary_ratio": 240,
+      "ep_sent_bytes_per_local_source_token": 3932160.0,
+      "ep_mean_sent_bytes_per_global_token_per_gpu_G4": 983040.0,
+      "assumptions": "balanced forward pipeline; 80 layers, h8192, bf16; TP4 ring; MoE top2 every layer, 3/4 remote"
+    }
+  }
+}

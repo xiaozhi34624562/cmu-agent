@@ -2,8 +2,8 @@
 
 - Date: 2026-10-14
 - Source: https://mit-mi.github.io/how2ai-course/fall2026/schedule/
-- 资料归档日期：2026-10-26；最新日历见[完整课表](../COURSE_SCHEDULE.md)。
-- 编号采用官网 Week；原 PDF 内的 Lecture 编号和文件名保持原样。
+- 资料归档日期：2026-11-13；最新日历见[完整课表](../COURSE_SCHEDULE.md)。
+- 目录编号保持稳定；当前官方 Week、日期单独记录，原 PDF 内的 Lecture 编号和文件名保持原样。
 
 ## Topics（归档快照）
 
@@ -35,7 +35,7 @@
 - R03: [SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks](readings/SkillsBench_Benchmarking_How_Well_Agent_Skills_Work_Across_Diverse_Tasks.pdf)
   - Source: https://arxiv.org/abs/2602.12670
   - PDF version: 2602.12670v4
-- R04: [Voyager: An Open-Ended Embodied Agent with Large Language Models](readings/VOYAGER_An_Open-Ended_Embodied_Agent_with_Large_Language_Models.pdf)
+- R04: [VOYAGER: An Open-Ended Embodied Agent with Large Language Models](readings/VOYAGER_An_Open-Ended_Embodied_Agent_with_Large_Language_Models.pdf)
   - Source: https://arxiv.org/abs/2305.16291
   - PDF version: 2305.16291v2
 - R05: [CORAL: Towards Autonomous Multi-Agent Evolution for Open-Ended Discovery](readings/CORAL_Towards_Autonomous_Multi-Agent_Evolution_for_Open-Ended_Discovery.pdf)

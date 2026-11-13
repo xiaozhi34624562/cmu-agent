@@ -8950,7 +8950,1345 @@
       ],
       "title_basis": "Actual local PDF first-page full title (67pp, cover date2025-10-31); arXiv metadata search title omitted Human",
       "renamed_at": "2026-11-01"
+    },
+    {
+      "old_path": "engineering/4.AgentHarnessEvolution/references/RRSI_Regularized_Recursive_Self-Improvement_of_Agent_Harnesses.pdf",
+      "path": "engineering/4.AgentHarnessEvolution/references/RRSI_Regularized_Recursive_Self-Improvement_of_Agent_Harnesses.pdf",
+      "title": "RRSI: Regularized Recursive Self-Improvement of Agent Harnesses",
+      "sha256": "26f8b5417f8a60c9284bb4a36d3981c41b8e071134aea0bf3402fe9584c8cd76",
+      "urls": [
+        "https://arxiv.org/abs/2609.24972v3",
+        "https://arxiv.org/pdf/2609.24972v3"
+      ],
+      "original_filename": "2609.24972v3",
+      "version": "arXiv 2609.24972v3",
+      "registered_at": "2026-11-13",
+      "action": "new_archive_with_full_title",
+      "title_basis": "Original PDF title metadata and first-page full title; new archive, no historical path rename."
+    },
+    {
+      "old_path": "engineering/4.AgentHarnessEvolution/references/Harness²_Recursive_Agent_Harnessing_for_an_Open_World.pdf",
+      "path": "engineering/4.AgentHarnessEvolution/references/Harness_2_Recursive_Agent_Harnessing_for_an_Open_World.pdf",
+      "title": "Harness^2: Recursive Agent Harnessing for an Open World",
+      "sha256": "440be1f694f3b0fdfb8e612e9b2288ff0d8ab38641cfd1064fd77052ba360282",
+      "urls": [
+        "https://arxiv.org/abs/2610.14224v1",
+        "https://arxiv.org/pdf/2610.14224v1"
+      ],
+      "original_filename": "2610.14224v1",
+      "version": "arXiv 2610.14224v1",
+      "registered_at": "2026-11-13",
+      "action": "new_archive_with_full_title",
+      "title_basis": "Original PDF title metadata and first-page full title; new archive, no historical path rename."
+    },
+    {
+      "old_path": "engineering/4.AgentHarnessEvolution/references/Evo²_Evolving_the_Evolver_through_Weight-Harness_Co-Evolution.pdf",
+      "path": "engineering/4.AgentHarnessEvolution/references/Evo_2_Evolving_the_Evolver_through_Weight-Harness_Co-Evolution.pdf",
+      "title": "Evo^2: Evolving the Evolver through Weight-Harness Co-Evolution",
+      "sha256": "830667d045c0b966c529ba874e2b0480eb8f3c787d31fa4c20e99e56de84e487",
+      "urls": [
+        "https://arxiv.org/abs/2610.13025v1",
+        "https://arxiv.org/pdf/2610.13025v1"
+      ],
+      "original_filename": "2610.13025v1",
+      "version": "arXiv 2610.13025v1",
+      "registered_at": "2026-11-13",
+      "action": "new_archive_with_full_title",
+      "title_basis": "Original PDF title metadata and first-page full title; new archive, no historical path rename."
+    },
+    {
+      "old_path": "engineering/4.AgentHarnessEvolution/references/Object-Oriented_Harness_Evolving_Agent_Harnesses_through_Object-Oriented_Design.pdf",
+      "path": "engineering/4.AgentHarnessEvolution/references/Object-Oriented_Harness_Evolving_Agent_Harnesses_through_Object-Oriented_Design.pdf",
+      "title": "Object-Oriented Harness: Evolving Agent Harnesses through Object-Oriented Design",
+      "sha256": "30d157984f16072ebac9bb42f39eb2630ec0163dfcf0e096fc3a986974fe6a02",
+      "urls": [
+        "https://arxiv.org/abs/2610.28380v1",
+        "https://arxiv.org/pdf/2610.28380v1"
+      ],
+      "original_filename": "2610.28380v1",
+      "version": "arXiv 2610.28380v1",
+      "registered_at": "2026-11-13",
+      "action": "new_archive_with_full_title",
+      "title_basis": "Original PDF title metadata and first-page full title; new archive, no historical path rename."
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/readings/Large_Language_Monkeys_Scaling_Inference_Compute_with_Repeated_Sampling.pdf",
+      "path": "courses/11-768/20.RerankingAndCriticModels/readings/Large_Language_Monkeys_Scaling_Inference_Compute_with_Repeated_Sampling.pdf",
+      "title": "Large Language Monkeys: Scaling Inference Compute with Repeated Sampling",
+      "sha256": "33889c6cb265ae11ed67e50070d3a31cd894036d8c9b404212a38df1783e8884",
+      "urls": [
+        "https://arxiv.org/abs/2407.21787v3"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2407.21787v3.pdf"
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/readings/Rethinking_Thinking_Tokens_LLMs_as_Improvement_Operators.pdf",
+      "path": "courses/11-768/20.RerankingAndCriticModels/readings/Rethinking_Thinking_Tokens_LLMs_as_Improvement_Operators.pdf",
+      "title": "Rethinking Thinking Tokens: LLMs as Improvement Operators",
+      "sha256": "85d5260a4d3660465990851e62571a7f8d0a438099f8e528c358e87f2f8099cb",
+      "urls": [
+        "https://arxiv.org/abs/2510.01123v1"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2510.01123v1.pdf"
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/readings/Scaling_Test-Time_Compute_for_Agentic_Coding.pdf",
+      "path": "courses/11-768/20.RerankingAndCriticModels/readings/Scaling_Test-Time_Compute_for_Agentic_Coding.pdf",
+      "title": "Scaling Test-Time Compute for Agentic Coding",
+      "sha256": "02e9fa7c771a286f6a208c65abfd282b4f38553a057903109edc50abd444d88a",
+      "urls": [
+        "https://arxiv.org/abs/2604.16529v1"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2604.16529v1.pdf"
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/readings/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf",
+      "path": "courses/11-768/20.RerankingAndCriticModels/readings/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf",
+      "title": "Meta-Harness: End-to-End Optimization of Model Harnesses",
+      "sha256": "7d9b90f53a9f4801a090f1a4acb843340cde81e4f865f97d53fff2a6a570eb73",
+      "urls": [
+        "https://arxiv.org/abs/2603.28052v1"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf"
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/references/Evaluating_Large_Language_Models_Trained_on_Code.pdf",
+      "path": "courses/11-768/20.RerankingAndCriticModels/references/Evaluating_Large_Language_Models_Trained_on_Code.pdf",
+      "title": "Evaluating Large Language Models Trained on Code",
+      "sha256": "ebae72ea0e8a5eb2ecbccdb985aec6cc1254a7c4d29e6d4de7866db1e66c4855",
+      "urls": [
+        "https://arxiv.org/abs/2107.03374v2"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "Evaluating_Large_Language_Models_Trained_on_Code.pdf"
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/references/Verbalized_Sampling_How_to_Mitigate_Mode_Collapse_and_Unlock_LLM_Diversity.pdf",
+      "path": "courses/11-768/20.RerankingAndCriticModels/references/Verbalized_Sampling_How_to_Mitigate_Mode_Collapse_and_Unlock_LLM_Diversity.pdf",
+      "title": "Verbalized Sampling: How to Mitigate Mode Collapse and Unlock LLM Diversity",
+      "sha256": "b93019722dcfd841279113c91d9fb812d71090e0158d30899db89c77a1900a64",
+      "urls": [
+        "https://arxiv.org/abs/2510.01171v4"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2510.01171v4.pdf"
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/references/Mode-Conditioning_Unlocks_Superior_Test-Time_Scaling.pdf",
+      "path": "courses/11-768/20.RerankingAndCriticModels/references/Mode-Conditioning_Unlocks_Superior_Test-Time_Scaling.pdf",
+      "title": "Mode-Conditioning Unlocks Superior Test-Time Scaling",
+      "sha256": "6b668c12609cd1fc24a26969f93c7438c300195b77afef99a2d50d4f5cd955a8",
+      "urls": [
+        "https://arxiv.org/abs/2512.01127v1"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2512.01127v1.pdf"
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/references/Rewarding_the_Unlikely_Lifting_GRPO_Beyond_Distribution_Sharpening.pdf",
+      "path": "courses/11-768/20.RerankingAndCriticModels/references/Rewarding_the_Unlikely_Lifting_GRPO_Beyond_Distribution_Sharpening.pdf",
+      "title": "Rewarding the Unlikely: Lifting GRPO Beyond Distribution Sharpening",
+      "sha256": "5daad4497bf1a2af73ee663688ec7873b5d26aa883c5c246acfc0f0fa1e56292",
+      "urls": [
+        "https://arxiv.org/abs/2506.02355v2"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2506.02355v2.pdf"
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/references/Differential_Smoothing_Mitigates_Sharpening_and_Improves_LLM_Reasoning.pdf",
+      "path": "courses/11-768/20.RerankingAndCriticModels/references/Differential_Smoothing_Mitigates_Sharpening_and_Improves_LLM_Reasoning.pdf",
+      "title": "Differential Smoothing Mitigates Sharpening and Improves LLM Reasoning",
+      "sha256": "8d5fd1b77f65ef8432e9068ad6fd9e956d4d44f3cf145c906fb23004fa1a3d78",
+      "urls": [
+        "https://proceedings.mlr.press/v306/gai26a.html"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "gai26a.pdf"
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/references/Maximum_Likelihood_Reinforcement_Learning.pdf",
+      "path": "courses/11-768/20.RerankingAndCriticModels/references/Maximum_Likelihood_Reinforcement_Learning.pdf",
+      "title": "Maximum Likelihood Reinforcement Learning",
+      "sha256": "f7627604393c065473154ac92a70133f3d8cf6ae509b93f18a1abe33f45aaa46",
+      "urls": [
+        "https://proceedings.mlr.press/v306/tajwar26a.html"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "tajwar26a.pdf"
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/references/Training_Software_Engineering_Agents_and_Verifiers_with_SWE-Gym.pdf",
+      "path": "courses/11-768/20.RerankingAndCriticModels/references/Training_Software_Engineering_Agents_and_Verifiers_with_SWE-Gym.pdf",
+      "title": "Training Software Engineering Agents and Verifiers with SWE-Gym",
+      "sha256": "5c35e277544323fcc4ce8929e208bb8cc32efbbd40b8069c7daa084548d79396",
+      "urls": [
+        "https://arxiv.org/abs/2412.21139v2"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "Training_Software_Engineering_Agents_and_Verifiers_with_SWE-Gym.pdf"
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/references/Self-Consistency_Improves_Chain_of_Thought_Reasoning_in_Language_Models.pdf",
+      "path": "courses/11-768/20.RerankingAndCriticModels/references/Self-Consistency_Improves_Chain_of_Thought_Reasoning_in_Language_Models.pdf",
+      "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+      "sha256": "1a49ce0373afc89d2d6e97fb1aa8230f6b818c70590d732a3187f753f4df6aba",
+      "urls": [
+        "https://arxiv.org/abs/2203.11171"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2203.11171.pdf"
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/references/From_Decoding_to_Meta-Generation_Inference-time_Algorithms_for_Large_Language_Models.pdf",
+      "path": "courses/11-768/20.RerankingAndCriticModels/references/From_Decoding_to_Meta-Generation_Inference-time_Algorithms_for_Large_Language_Models.pdf",
+      "title": "From Decoding to Meta-Generation: Inference-time Algorithms for Large Language Models",
+      "sha256": "eb0d6904ecab0092396f6606db799c6b9e0c3cb2bd3d099bbccc993a0213004b",
+      "urls": [
+        "https://arxiv.org/abs/2406.16838v2"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2406.16838v2.pdf"
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/references/Natural_Language_to_Code_Translation_with_Execution.pdf",
+      "path": "courses/11-768/20.RerankingAndCriticModels/references/Natural_Language_to_Code_Translation_with_Execution.pdf",
+      "title": "Natural Language to Code Translation with Execution",
+      "sha256": "fcb3fe04d833fefe3b34e85fa3471e36ee32f03ffb6034163a0aa1a03762fb62",
+      "urls": [
+        "https://aclanthology.org/2022.emnlp-main.231/"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2022.emnlp-main.231.pdf"
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/references/Competition-Level_Code_Generation_with_AlphaCode.pdf",
+      "path": "courses/11-768/20.RerankingAndCriticModels/references/Competition-Level_Code_Generation_with_AlphaCode.pdf",
+      "title": "Competition-Level Code Generation with AlphaCode",
+      "sha256": "4facd32698069e8eda5e3714f12be8519dbe2a184e9386e37a9939d7f4030bea",
+      "urls": [
+        "https://arxiv.org/abs/2203.07814"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2203.07814.pdf"
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/references/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf",
+      "path": "courses/11-768/20.RerankingAndCriticModels/references/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf",
+      "title": "Reflexion: Language Agents with Verbal Reinforcement Learning",
+      "sha256": "6059b6f89fea9959bd3dab553fbb97756a3dfb1b15e3cbab2fbf3ab6664333bd",
+      "urls": [
+        "https://arxiv.org/abs/2303.11366"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2303.11366.pdf"
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/references/Self-Refine_Iterative_Refinement_with_Self-Feedback.pdf",
+      "path": "courses/11-768/20.RerankingAndCriticModels/references/Self-Refine_Iterative_Refinement_with_Self-Feedback.pdf",
+      "title": "Self-Refine: Iterative Refinement with Self-Feedback",
+      "sha256": "81e44592314d80218ad108d3490cd0b84ba5962fefd5c84819987afd77a57087",
+      "urls": [
+        "https://arxiv.org/abs/2303.17651v2"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "Self-Refine_Iterative_Refinement_with_Self-Feedback.pdf"
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/references/Teaching_Large_Language_Models_to_Self-Debug.pdf",
+      "path": "courses/11-768/20.RerankingAndCriticModels/references/Teaching_Large_Language_Models_to_Self-Debug.pdf",
+      "title": "Teaching Large Language Models to Self-Debug",
+      "sha256": "020e06b1fb9e1d4b6c33016a9471e8bd31f8ecfd7a22335d85956c14efa39f75",
+      "urls": [
+        "https://arxiv.org/abs/2304.05128v2"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2304.05128v2.pdf"
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/references/Large_Language_Models_Cannot_Self-Correct_Reasoning_Yet.pdf",
+      "path": "courses/11-768/20.RerankingAndCriticModels/references/Large_Language_Models_Cannot_Self-Correct_Reasoning_Yet.pdf",
+      "title": "Large Language Models Cannot Self-Correct Reasoning Yet",
+      "sha256": "15e1731e255ec6b217792a1e077926807da77e8e46b69e6c57dda30d67794761",
+      "urls": [
+        "https://arxiv.org/abs/2310.01798"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2310.01798.pdf"
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/references/Recursive_Self-Aggregation_Unlocks_Deep_Thinking_in_Large_Language_Models.pdf",
+      "path": "courses/11-768/20.RerankingAndCriticModels/references/Recursive_Self-Aggregation_Unlocks_Deep_Thinking_in_Large_Language_Models.pdf",
+      "title": "Recursive Self-Aggregation Unlocks Deep Thinking in Large Language Models",
+      "sha256": "edff4dc2dc6393dc958d752f8c766221d8eaee77328745fa4d2e3dbc7824ff35",
+      "urls": [
+        "https://arxiv.org/abs/2509.26626v2"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2509.26626v2.pdf"
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/references/WHALE_A_Simple_Recipe_for_Joint_Harness-Weight_Optimization.pdf",
+      "path": "courses/11-768/20.RerankingAndCriticModels/references/WHALE_A_Simple_Recipe_for_Joint_Harness-Weight_Optimization.pdf",
+      "title": "WHALE: A Simple Recipe for Joint Harness-Weight Optimization",
+      "sha256": "f4307846da7686ee75ef070fdc53112c8eb8ca557b9318da0a88838e56b9e602",
+      "urls": [
+        "https://arxiv.org/abs/2609.00196v1"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2609.00196v1.pdf"
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/references/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf",
+      "path": "courses/11-768/20.RerankingAndCriticModels/references/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf",
+      "title": "Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents",
+      "sha256": "13ff4abe0c7ad4a7dd3b4876d19a8bf940e39e70dabbf06065aa774a6c3457de",
+      "urls": [
+        "https://arxiv.org/abs/2505.22954v3"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf"
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/references/Group-Evolving_Agents_Open-Ended_Self-Improvement_via_Experience_Sharing.pdf",
+      "path": "courses/11-768/20.RerankingAndCriticModels/references/Group-Evolving_Agents_Open-Ended_Self-Improvement_via_Experience_Sharing.pdf",
+      "title": "Group-Evolving Agents: Open-Ended Self-Improvement via Experience Sharing",
+      "sha256": "967517dbde132a515386f9c8ac25969be2578658a7b9a7927c893751b009c3c4",
+      "urls": [
+        "https://arxiv.org/abs/2602.04837v1"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2602.04837v1.pdf"
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/references/Tree_Search_for_Language_Model_Agents.pdf",
+      "path": "courses/11-768/20.RerankingAndCriticModels/references/Tree_Search_for_Language_Model_Agents.pdf",
+      "title": "Tree Search for Language Model Agents",
+      "sha256": "0b21710f26db2e9383f768cdaea5755f1a39fb0b5eafffdfa5451a33d106e130",
+      "urls": [
+        "https://arxiv.org/abs/2407.01476"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2407.01476.pdf"
+    },
+    {
+      "old_path": "courses/11-768/20.RerankingAndCriticModels/references/Extended_thinking.html",
+      "path": "courses/11-768/20.RerankingAndCriticModels/references/Extended_thinking.html",
+      "title": "Extended thinking",
+      "sha256": "4ed98be8b3f295a0c86080c128f6b3bf3b69ed3672797d688f986b892c3e8f94",
+      "urls": [
+        "https://platform.claude.com/docs/en/build-with-claude/extended-thinking"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "extended-thinking"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/Fast_Distributed_Inference_Serving_for_Large_Language_Models.pdf",
+      "path": "courses/2680/readings/papers/Fast_Distributed_Inference_Serving_for_Large_Language_Models.pdf",
+      "title": "Fast Distributed Inference Serving for Large Language Models",
+      "sha256": "f3cc10d868e0430bbabc063a9bec25ce5b826134ab876de14958a955c3bc7498",
+      "urls": [
+        "https://arxiv.org/abs/2305.05920"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2305.05920"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/DistillSpec_Improving_Speculative_Decoding_via_Knowledge_Distillation.pdf",
+      "path": "courses/2680/readings/papers/DistillSpec_Improving_Speculative_Decoding_via_Knowledge_Distillation.pdf",
+      "title": "DistillSpec: Improving Speculative Decoding via Knowledge Distillation",
+      "sha256": "c9a399bf8bf5bc0658bb7212990bb589227931e85c1b80cc28e7c89924d9566e",
+      "urls": [
+        "https://arxiv.org/abs/2310.08461"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2310.08461"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/Splitwise_Efficient_Generative_LLM_Inference_Using_Phase_Splitting.pdf",
+      "path": "courses/2680/readings/papers/Splitwise_Efficient_Generative_LLM_Inference_Using_Phase_Splitting.pdf",
+      "title": "Splitwise: Efficient Generative LLM Inference Using Phase Splitting",
+      "sha256": "c7baf19039f7b760c5d83fb61324ec4ffdf384e8a047bd46f2c4e2ad85e3531d",
+      "urls": [
+        "https://arxiv.org/abs/2311.18677"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2311.18677"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/Fairness_in_Serving_Large_Language_Models.pdf",
+      "path": "courses/2680/readings/papers/Fairness_in_Serving_Large_Language_Models.pdf",
+      "title": "Fairness in Serving Large Language Models",
+      "sha256": "2fa74f1e7ff787bdf4ce7702ac0c28be0a4d627ecd08dab19df5b65f530060da",
+      "urls": [
+        "https://arxiv.org/abs/2401.00588"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2401.00588"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/Taming_Throughput-Latency_Tradeoff_in_LLM_Inference_with_Sarathi-Serve.pdf",
+      "path": "courses/2680/readings/papers/Taming_Throughput-Latency_Tradeoff_in_LLM_Inference_with_Sarathi-Serve.pdf",
+      "title": "Taming Throughput-Latency Tradeoff in LLM Inference with Sarathi-Serve",
+      "sha256": "45f59f4474de29baf4d315c785b850625548b69a9bc7be2e036d6fc59f54b54a",
+      "urls": [
+        "https://arxiv.org/abs/2403.02310"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2403.02310"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/Block_Verification_Accelerates_Speculative_Decoding.pdf",
+      "path": "courses/2680/readings/papers/Block_Verification_Accelerates_Speculative_Decoding.pdf",
+      "title": "Block Verification Accelerates Speculative Decoding",
+      "sha256": "d9b527802866f10046adf722c0844797971e414f0a57567ba7dd97413d6593cb",
+      "urls": [
+        "https://arxiv.org/abs/2403.10444"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2403.10444"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/LayerSkip_Enabling_Early_Exit_Inference_and_Self-Speculative_Decoding.pdf",
+      "path": "courses/2680/readings/papers/LayerSkip_Enabling_Early_Exit_Inference_and_Self-Speculative_Decoding.pdf",
+      "title": "LayerSkip: Enabling Early Exit Inference and Self-Speculative Decoding",
+      "sha256": "04359327efd434b5b06a46ce280a37f88044d45f58c42d2fc99088165b1a6ead",
+      "urls": [
+        "https://arxiv.org/abs/2404.16710"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2404.16710"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/TurboSpec_Closed-loop_Speculation_Control_System_for_Optimizing_LLM_Serving_Goodput.pdf",
+      "path": "courses/2680/readings/papers/TurboSpec_Closed-loop_Speculation_Control_System_for_Optimizing_LLM_Serving_Goodput.pdf",
+      "title": "TurboSpec: Closed-loop Speculation Control System for Optimizing LLM Serving Goodput",
+      "sha256": "14cd5f20c6afea8f4dc285ded2167986d23e3aa8a0403d22bc54c216a69af336",
+      "urls": [
+        "https://arxiv.org/abs/2406.14066"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2406.14066"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/Efficient_LLM_Scheduling_by_Learning_to_Rank.pdf",
+      "path": "courses/2680/readings/papers/Efficient_LLM_Scheduling_by_Learning_to_Rank.pdf",
+      "title": "Efficient LLM Scheduling by Learning to Rank",
+      "sha256": "e313118954302b1c81f9ad9a16ad516dfabf9f3f5452f3cab33bd44a3d401464",
+      "urls": [
+        "https://arxiv.org/abs/2408.15792"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2408.15792"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/SWIFT_On-the-Fly_Self-Speculative_Decoding_for_LLM_Inference_Acceleration.pdf",
+      "path": "courses/2680/readings/papers/SWIFT_On-the-Fly_Self-Speculative_Decoding_for_LLM_Inference_Acceleration.pdf",
+      "title": "SWIFT: On-the-Fly Self-Speculative Decoding for LLM Inference Acceleration",
+      "sha256": "257d3655490d7b736117ad2696695cfd513190c188c509ad5bf2aa6bf2600e77",
+      "urls": [
+        "https://arxiv.org/abs/2410.06916"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2410.06916"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/SuffixDecoding_Extreme_Speculative_Decoding_for_Emerging_AI_Applications.pdf",
+      "path": "courses/2680/readings/papers/SuffixDecoding_Extreme_Speculative_Decoding_for_Emerging_AI_Applications.pdf",
+      "title": "SuffixDecoding: Extreme Speculative Decoding for Emerging AI Applications",
+      "sha256": "c3cb7f16b044bbd6d2ac8849d460eba0846974b453734b2d177edae924af60f0",
+      "urls": [
+        "https://arxiv.org/abs/2411.04975"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2411.04975"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/Locality-aware_Fair_Scheduling_in_LLM_Serving.pdf",
+      "path": "courses/2680/readings/papers/Locality-aware_Fair_Scheduling_in_LLM_Serving.pdf",
+      "title": "Locality-aware Fair Scheduling in LLM Serving",
+      "sha256": "440269188e4163e15fecca730a2c91d4e8078f61118fc2df3d60b5a191187a2b",
+      "urls": [
+        "https://arxiv.org/abs/2501.14312"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2501.14312"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/Judge_Decoding_Faster_Speculative_Sampling_Requires_Going_Beyond_Model_Alignment.pdf",
+      "path": "courses/2680/readings/papers/Judge_Decoding_Faster_Speculative_Sampling_Requires_Going_Beyond_Model_Alignment.pdf",
+      "title": "Judge Decoding: Faster Speculative Sampling Requires Going Beyond Model Alignment",
+      "sha256": "3e83b2ef3c9c1cbb3e26b097aea5bfd4768dd993bbeeeda25797ad32a3faec0d",
+      "urls": [
+        "https://arxiv.org/abs/2501.19309"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2501.19309"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/Utility-Driven_Speculative_Decoding_for_Mixture-of-Experts.pdf",
+      "path": "courses/2680/readings/papers/Utility-Driven_Speculative_Decoding_for_Mixture-of-Experts.pdf",
+      "title": "Utility-Driven Speculative Decoding for Mixture-of-Experts",
+      "sha256": "e63de4407621f510d453954acba7b4ca8c2c599a2b1d4efc6626a83a9fe49dd8",
+      "urls": [
+        "https://arxiv.org/abs/2506.20675"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2506.20675"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/On_Evaluating_Performance_of_LLM_Inference_Systems.pdf",
+      "path": "courses/2680/readings/papers/On_Evaluating_Performance_of_LLM_Inference_Systems.pdf",
+      "title": "On Evaluating Performance of LLM Inference Systems",
+      "sha256": "e1747d82adfcd451efec667f3c6121042d848864c55ee8d64216c421d7bd7631",
+      "urls": [
+        "https://arxiv.org/abs/2507.09019"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2507.09019"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/Efficient_Speculative_Decoding_for_Llama_at_Scale_Challenges_and_Solutions.pdf",
+      "path": "courses/2680/readings/papers/Efficient_Speculative_Decoding_for_Llama_at_Scale_Challenges_and_Solutions.pdf",
+      "title": "Efficient Speculative Decoding for Llama at Scale: Challenges and Solutions",
+      "sha256": "a385488675e6f8ff326d1bb7cbd79313794def5fae75d4e48e8da56314b9ef28",
+      "urls": [
+        "https://arxiv.org/abs/2508.08192"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2508.08192"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/DFlash_Block_Diffusion_for_Flash_Speculative_Decoding.pdf",
+      "path": "courses/2680/readings/papers/DFlash_Block_Diffusion_for_Flash_Speculative_Decoding.pdf",
+      "title": "DFlash: Block Diffusion for Flash Speculative Decoding",
+      "sha256": "ffa514e6ce180eb1f7a39c49372f3b8170b99f8bc142d4a4daa0f087bf2ceb91",
+      "urls": [
+        "https://arxiv.org/abs/2602.06036"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2602.06036"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/D-PACE_Dynamic_Position-Aware_Cross-Entropy_for_Parallel_Speculative_Drafting.pdf",
+      "path": "courses/2680/readings/papers/D-PACE_Dynamic_Position-Aware_Cross-Entropy_for_Parallel_Speculative_Drafting.pdf",
+      "title": "D-PACE: Dynamic Position-Aware Cross-Entropy for Parallel Speculative Drafting",
+      "sha256": "dc1b357528e9e99dc9a3570792423d2f88842cd860201a47353d4f28e6b1685e",
+      "urls": [
+        "https://arxiv.org/abs/2605.18810"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2605.18810"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafting_in_Speculative_Decoding.pdf",
+      "path": "courses/2680/readings/papers/Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafting_in_Speculative_Decoding.pdf",
+      "title": "Domino: Decoupling Causal Modeling from Autoregressive Drafting in Speculative Decoding",
+      "sha256": "321128dbada12c8dd7c41b497a031d1b34929d81ceb88ef95266cbba8ed24ade",
+      "urls": [
+        "https://arxiv.org/abs/2605.29707"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2605.29707"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/A_Practical_Investigation_of_Training-free_Relaxed_Speculative_Decoding.pdf",
+      "path": "courses/2680/readings/papers/A_Practical_Investigation_of_Training-free_Relaxed_Speculative_Decoding.pdf",
+      "title": "A Practical Investigation of Training-free Relaxed Speculative Decoding",
+      "sha256": "9634e681a8844ae34f8506214eb9d1fef7f930f753414b9e8dc6c177c52a9b79",
+      "urls": [
+        "https://arxiv.org/abs/2607.08690"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2607.08690"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/D-cut_Adaptive_Verification_Depth_Pruning_for_Batched_Speculative_Decoding.pdf",
+      "path": "courses/2680/readings/papers/D-cut_Adaptive_Verification_Depth_Pruning_for_Batched_Speculative_Decoding.pdf",
+      "title": "D-cut: Adaptive Verification Depth Pruning for Batched Speculative Decoding",
+      "sha256": "adb5e28263f2a942b213e5d1265fdc387ff3b9aa89b834c37b9a51fa3c10f14f",
+      "urls": [
+        "https://arxiv.org/abs/2607.14647"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2607.14647"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/Unlocking_Lossless_Speedups_in_LLMs_via_Discrete_Diffusion.pdf",
+      "path": "courses/2680/readings/papers/Unlocking_Lossless_Speedups_in_LLMs_via_Discrete_Diffusion.pdf",
+      "title": "Unlocking Lossless Speedups in LLMs via Discrete Diffusion",
+      "sha256": "849e47f21dffe66265e5416a50bb70fb49c3340feec970d389130c98a6c5ce67",
+      "urls": [
+        "https://arxiv.org/abs/2609.04010"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2609.04010"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/H-Spec_Parallel_Speculative_Decoding_Without_a_Drafter-Side_KV_Cache.pdf",
+      "path": "courses/2680/readings/papers/H-Spec_Parallel_Speculative_Decoding_Without_a_Drafter-Side_KV_Cache.pdf",
+      "title": "H-Spec: Parallel Speculative Decoding Without a Drafter-Side KV Cache",
+      "sha256": "bde0727044cb594d0e80a2b5d1ac4dbc37b894da3c33cbdd5832b0beea98654d",
+      "urls": [
+        "https://arxiv.org/abs/2609.24197"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2609.24197"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/DSpine_Draft_in_Parallel_Condition_Through_Depth_Adjacent_Causal_Injection_for_Speculative_Decoding.pdf",
+      "path": "courses/2680/readings/papers/DSpine_Draft_in_Parallel_Condition_Through_Depth_Adjacent_Causal_Injection_for_Speculative_Decoding.pdf",
+      "title": "DSpine: Draft in Parallel, Condition Through Depth: Adjacent Causal Injection for Speculative Decoding",
+      "sha256": "9bc9627088e563c52886b4e338adfcdccf9ae1bd7f54ed1d4a57ebe02c0b42d1",
+      "urls": [
+        "https://arxiv.org/abs/2609.36173"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2609.36173"
+    },
+    {
+      "old_path": "courses/2680/readings/web/How_We_Achieved_1000_tok_s_and_16x_Throughput_with_DSpark_for_Ideogram_V4_Prompt_Expander.html",
+      "path": "courses/2680/readings/web/How_We_Achieved_1000_tok_s_and_16x_Throughput_with_DSpark_for_Ideogram_V4_Prompt_Expander.html",
+      "title": "How We Achieved ~1000 tok/s and 16x Throughput with DSpark for Ideogram V4 Prompt Expander",
+      "sha256": "e7596f76f96d6dbf8fb79c993a2d10acb9748b419b19c421298da0719ca59513",
+      "urls": [
+        "https://blog.fal.ai/how-we-achieved-1000-tok-s-and-16x-throughput-with-dspark-for-ideogram-v4-prompt-expander/"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "how-we-achieved-1000-tok-s-and-16x-throughput-with-dspark-for-ideogram-v4-prompt-expander"
+    },
+    {
+      "old_path": "courses/2680/readings/web/Editing_Files_at_1000_Tokens_per_Second.html",
+      "path": "courses/2680/readings/web/Editing_Files_at_1000_Tokens_per_Second.html",
+      "title": "Editing Files at 1000 Tokens per Second",
+      "sha256": "e68b23535dcf9d72db0412e633bade26acebf75ef1ab09c23fee87fab69ec8b1",
+      "urls": [
+        "https://cursor.com/blog/instant-apply"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "instant-apply"
+    },
+    {
+      "old_path": "courses/2680/readings/papers/Optimization_of_Collective_Communication_Operations_in_MPICH.pdf",
+      "path": "courses/2680/readings/papers/Optimization_of_Collective_Communication_Operations_in_MPICH.pdf",
+      "title": "Optimization of Collective Communication Operations in MPICH",
+      "sha256": "6df2d9582ea1b9e39e7d79d7f5d11fe1516b37e48a700537e71f0e2b8287fdca",
+      "urls": [
+        "https://doi.org/10.1177/1094342005051521"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "1094342005051521"
+    },
+    {
+      "old_path": "courses/2680/readings/web/DFlash_2_Keep_Drafting_Parallel.html",
+      "path": "courses/2680/readings/web/DFlash_2_Keep_Drafting_Parallel.html",
+      "title": "DFlash 2: Keep Drafting Parallel",
+      "sha256": "da6544073d5ef4d970694ed5330fe31bb1979356f508d734d74c968c1086d0aa",
+      "urls": [
+        "https://inco.ai/blog/dflash2/"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "dflash2"
+    },
+    {
+      "old_path": "courses/2680/readings/web/Inside_vLLM_Anatomy_of_a_High-Throughput_LLM_Inference_System.html",
+      "path": "courses/2680/readings/web/Inside_vLLM_Anatomy_of_a_High-Throughput_LLM_Inference_System.html",
+      "title": "Inside vLLM: Anatomy of a High-Throughput LLM Inference System",
+      "sha256": "a62181b01aedfb8ea0c852b3eb847361c315eac4b904ac49faf79d9be2fd772c",
+      "urls": [
+        "https://vllm.ai/blog/2025-09-05-anatomy-of-vllm"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2025-09-05-anatomy-of-vllm"
+    },
+    {
+      "old_path": "courses/MAS.S62/readings/papers/DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_Reinforcement_Learning.pdf",
+      "path": "courses/MAS.S62/readings/papers/DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_Reinforcement_Learning.pdf",
+      "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+      "sha256": "b191b0a365a64b4ab2791d117069ed17a2933d03554a662ced58b37df52018f4",
+      "urls": [
+        "https://arxiv.org/abs/2501.12948"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2501.12948"
+    },
+    {
+      "old_path": "courses/MAS.S62/readings/papers/On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf",
+      "path": "courses/MAS.S62/readings/papers/On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf",
+      "title": "On-Policy Distillation of Language Models: Learning from Self-Generated Mistakes",
+      "sha256": "a81c71fa0cd15506642092790d854347f030c29ee1d6aa643b55aa51348e6869",
+      "urls": [
+        "https://arxiv.org/abs/2306.13649"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2306.13649"
+    },
+    {
+      "old_path": "courses/MAS.S62/readings/papers/TTRL_Test-Time_Reinforcement_Learning.pdf",
+      "path": "courses/MAS.S62/readings/papers/TTRL_Test-Time_Reinforcement_Learning.pdf",
+      "title": "TTRL: Test-Time Reinforcement Learning",
+      "sha256": "3828cc886a0133749fe857dc12fff190f76c17dd7421dccfca01c96ec1dd5882",
+      "urls": [
+        "https://arxiv.org/abs/2504.16084"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2504.16084"
+    },
+    {
+      "old_path": "courses/MAS.S62/readings/papers/Self-Rewarding_Language_Models.pdf",
+      "path": "courses/MAS.S62/readings/papers/Self-Rewarding_Language_Models.pdf",
+      "title": "Self-Rewarding Language Models",
+      "sha256": "61bed62389be6445c7a8dc6608641e86a3cc1a4d9b0b19a1f8645fc425997a96",
+      "urls": [
+        "https://arxiv.org/abs/2401.10020"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2401.10020"
+    },
+    {
+      "old_path": "courses/MAS.S62/readings/papers/s1_Simple_Test-Time_Scaling.pdf",
+      "path": "courses/MAS.S62/readings/papers/s1_Simple_Test-Time_Scaling.pdf",
+      "title": "s1: Simple Test-Time Scaling",
+      "sha256": "598932c9f96849cd52495d8b3e12ba4d224e41d5588d2278a78f76c744d8a3bc",
+      "urls": [
+        "https://arxiv.org/abs/2501.19393"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2501.19393"
+    },
+    {
+      "old_path": "courses/MAS.S62/readings/papers/Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Capacity_in_LLMs_Beyond_the_Base_Model.pdf",
+      "path": "courses/MAS.S62/readings/papers/Does_Reinforcement_Learning_Really_Incentivize_Reasoning_Capacity_in_LLMs_Beyond_the_Base_Model.pdf",
+      "title": "Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?",
+      "sha256": "76139ea0ba0e9155569c7aa7b8153502f6a5b23fed717af0ca9934ec9d764f9a",
+      "urls": [
+        "https://arxiv.org/abs/2504.13837"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2504.13837"
+    },
+    {
+      "old_path": "courses/MAS.S62/readings/papers/Understanding_R1-Zero-Like_Training_A_Critical_Perspective.pdf",
+      "path": "courses/MAS.S62/readings/papers/Understanding_R1-Zero-Like_Training_A_Critical_Perspective.pdf",
+      "title": "Understanding R1-Zero-Like Training: A Critical Perspective",
+      "sha256": "98243d51297f011fb5baad8a70a972d061ffbef618f1d7cfc10deea37c5887d0",
+      "urls": [
+        "https://arxiv.org/abs/2503.20783"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2503.20783"
+    },
+    {
+      "old_path": "courses/MAS.S62/readings/papers/RL_s_Razor_Why_Online_Reinforcement_Learning_Forgets_Less.pdf",
+      "path": "courses/MAS.S62/readings/papers/RL_s_Razor_Why_Online_Reinforcement_Learning_Forgets_Less.pdf",
+      "title": "RL's Razor: Why Online Reinforcement Learning Forgets Less",
+      "sha256": "bf3b6ab3b0b5db847aae235cc93a5a9475be2b7aca1e163304822d13d2dd0373",
+      "urls": [
+        "https://arxiv.org/abs/2509.04259"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2509.04259"
+    },
+    {
+      "old_path": "courses/MAS.S62/readings/papers/Self-Distilled_Reasoner_On-Policy_Self-Distillation_for_Large_Language_Models.pdf",
+      "path": "courses/MAS.S62/readings/papers/Self-Distilled_Reasoner_On-Policy_Self-Distillation_for_Large_Language_Models.pdf",
+      "title": "Self-Distilled Reasoner: On-Policy Self-Distillation for Large Language Models",
+      "sha256": "e521ed6c2939dc612daec5fe6fb47bef554a291228c02cafae07102b9729bad8",
+      "urls": [
+        "https://arxiv.org/abs/2601.18734"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2601.18734"
+    },
+    {
+      "old_path": "courses/MAS.S62/readings/papers/Reinforcement_Learning_via_Self-Distillation.pdf",
+      "path": "courses/MAS.S62/readings/papers/Reinforcement_Learning_via_Self-Distillation.pdf",
+      "title": "Reinforcement Learning via Self-Distillation",
+      "sha256": "2714e7734c43cf849c2e7c49fc95cf57a6533c0833465a01983b87eb7f72d190",
+      "urls": [
+        "https://arxiv.org/abs/2601.20802"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2601.20802"
+    },
+    {
+      "old_path": "courses/MAS.S62/readings/papers/Scaling_Test-Time_Compute_Without_Verification_or_RL_is_Suboptimal.pdf",
+      "path": "courses/MAS.S62/readings/papers/Scaling_Test-Time_Compute_Without_Verification_or_RL_is_Suboptimal.pdf",
+      "title": "Scaling Test-Time Compute Without Verification or RL is Suboptimal",
+      "sha256": "8b34352448f43e17c171621f29253dc501d11b0faf2fa1f5c7b9d1a897c418c2",
+      "urls": [
+        "https://arxiv.org/abs/2502.12118"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2502.12118"
+    },
+    {
+      "old_path": "courses/MAS.S62/readings/papers/Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data.pdf",
+      "path": "courses/MAS.S62/readings/papers/Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data.pdf",
+      "title": "Absolute Zero: Reinforced Self-play Reasoning with Zero Data",
+      "sha256": "6217ccee964c70e42fba116004ae23400c11d2ecc687c37aed062c3689098e18",
+      "urls": [
+        "https://arxiv.org/abs/2505.03335"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2505.03335"
+    },
+    {
+      "old_path": "courses/MAS.S62/readings/papers/R-Zero_Self-Evolving_Reasoning_LLM_from_Zero_Data.pdf",
+      "path": "courses/MAS.S62/readings/papers/R-Zero_Self-Evolving_Reasoning_LLM_from_Zero_Data.pdf",
+      "title": "R-Zero: Self-Evolving Reasoning LLM from Zero Data",
+      "sha256": "5e577e627e4d6501544955922257313ca2cd94fbc3c7715cfa0dd200cfe9d139",
+      "urls": [
+        "https://arxiv.org/abs/2508.05004"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2508.05004"
+    },
+    {
+      "old_path": "courses/MAS.S62/readings/papers/Propose_Solve_Verify_Self-Play_Through_Formal_Verification.pdf",
+      "path": "courses/MAS.S62/readings/papers/Propose_Solve_Verify_Self-Play_Through_Formal_Verification.pdf",
+      "title": "Propose, Solve, Verify: Self-Play Through Formal Verification",
+      "sha256": "5773464aa521f9932f488a34d15408ea652734b3e995cb3a25ba3f1c854b1f13",
+      "urls": [
+        "https://arxiv.org/abs/2512.18160"
+      ],
+      "title_basis": "Verified original PDF cover or page title during 2026-11-13 materials sync; no Chinese content review",
+      "registered_at": "2026-11-13",
+      "original_filename": "2512.18160"
+    },
+    {
+      "old_path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Stream-K_Work-centric_Parallel_Decomposition_for_Dense_Matrix-Matrix_Multiplication_on_the_GPU.pdf",
+      "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Stream-K_Work-centric_Parallel_Decomposition_for_Dense_Matrix-Matrix_Multiplication_on_the_GPU.pdf",
+      "title": "Stream-K: Work-centric Parallel Decomposition for Dense Matrix-Matrix Multiplication on the GPU",
+      "sha256": "f2db58086debe599590650cac1069102ddf9396ac398e5a57284d3d524832cc5",
+      "urls": [
+        "https://arxiv.org/abs/2301.03598"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/KernelBench_Can_LLMs_Write_Efficient_GPU_Kernels.pdf",
+      "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/KernelBench_Can_LLMs_Write_Efficient_GPU_Kernels.pdf",
+      "title": "KernelBench: Can LLMs Write Efficient GPU Kernels?",
+      "sha256": "fb1765807098915b853cca7a007aaa4bccdcd1a45eb1baef0d3919948abd7a6b",
+      "urls": [
+        "https://arxiv.org/abs/2502.10517"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/AutoMegaKernel_A_Statically-Checked_Agent_Harness_for_Self-Retargeting_Megakernel_Synthesis.pdf",
+      "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/AutoMegaKernel_A_Statically-Checked_Agent_Harness_for_Self-Retargeting_Megakernel_Synthesis.pdf",
+      "title": "AutoMegaKernel: A Statically-Checked Agent Harness for Self-Retargeting Megakernel Synthesis",
+      "sha256": "d15c2f1de8601cb824700d2ae0ed5f8b0603a41ed55adf84b5ecf5b90b607e21",
+      "urls": [
+        "https://arxiv.org/abs/2606.09682"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/ThunderKittens_Simple_Fast_and_Adorable_AI_Kernels.pdf",
+      "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/ThunderKittens_Simple_Fast_and_Adorable_AI_Kernels.pdf",
+      "title": "ThunderKittens: Simple, Fast, and Adorable AI Kernels",
+      "sha256": "262204198eea890622265616d68eca4d95bdeb1173d6108041f594f7ddc56268",
+      "urls": [
+        "https://arxiv.org/abs/2410.20399"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/TileLang_A_Composable_Tiled_Programming_Model_for_AI_Systems.pdf",
+      "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/TileLang_A_Composable_Tiled_Programming_Model_for_AI_Systems.pdf",
+      "title": "TileLang: A Composable Tiled Programming Model for AI Systems",
+      "sha256": "1c4c86d6f2b90b226c42af3e3d7a61eb90bfd9c66137660fb858e35769862574",
+      "urls": [
+        "https://arxiv.org/abs/2504.17577"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Reducing_Activation_Recomputation_in_Large_Transformer_Models.pdf",
+      "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Reducing_Activation_Recomputation_in_Large_Transformer_Models.pdf",
+      "title": "Reducing Activation Recomputation in Large Transformer Models",
+      "sha256": "5fcd24e92a086f5671cbb8c0624cd42251d2d43324245da9d93b0b2289e46abc",
+      "urls": [
+        "https://arxiv.org/abs/2205.05198"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/PaLM_Scaling_Language_Modeling_with_Pathways.pdf",
+      "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/PaLM_Scaling_Language_Modeling_with_Pathways.pdf",
+      "title": "PaLM: Scaling Language Modeling with Pathways",
+      "sha256": "1e88f1f3027cd1abecb1713c1c08a89137c7730582549ec7ca78ca329f3f975d",
+      "urls": [
+        "https://arxiv.org/abs/2204.02311"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Making_AI_Less_Thirsty_Uncovering_and_Addressing_the_Secret_Water_Footprint_of_AI_Models.pdf",
+      "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Making_AI_Less_Thirsty_Uncovering_and_Addressing_the_Secret_Water_Footprint_of_AI_Models.pdf",
+      "title": "Making AI Less “Thirsty”: Uncovering and Addressing the Secret Water Footprint of AI Models",
+      "sha256": "eb2cb1678ff54142698acdb4be736d6923504cd4e5c1e418b6bab97b9b406d56",
+      "urls": [
+        "https://arxiv.org/abs/2304.03271"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Look_Ma_No_Bubbles_Designing_a_Low-Latency_Megakernel_for_Llama-1B.html",
+      "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Look_Ma_No_Bubbles_Designing_a_Low-Latency_Megakernel_for_Llama-1B.html",
+      "title": "Look Ma, No Bubbles! Designing a Low-Latency Megakernel for Llama-1B",
+      "sha256": "e46989d56b58b544f924bb30d943e5554a87a80935488432a4f7f568aeb6e65d",
+      "urls": [
+        "https://hazyresearch.stanford.edu/blog/2025-05-27-no-bubbles"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Flash-Decoding_for_long-context_inference.html",
+      "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Flash-Decoding_for_long-context_inference.html",
+      "title": "Flash-Decoding for long-context inference",
+      "sha256": "668ef1ccd6f12e329aa15439d012a3f335b67b690fcbcff87da0868181ee9ebd",
+      "urls": [
+        "https://crfm.stanford.edu/2023/10/12/flashdecoding.html"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Programmatic_Dependent_Launch_and_Synchronization_CUDA_Programming_Guide.html",
+      "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Programmatic_Dependent_Launch_and_Synchronization_CUDA_Programming_Guide.html",
+      "title": "Programmatic Dependent Launch and Synchronization — CUDA Programming Guide",
+      "sha256": "41a826f308dce730688957edffbd746b92e9531ca9409079ff2e735f94873796",
+      "urls": [
+        "https://docs.nvidia.com/cuda/cuda-programming-guide/04-special-topics/programmatic-dependent-launch.html"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/CUDA_C++_Best_Practices_Guide.html",
+      "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/CUDA_C++_Best_Practices_Guide.html",
+      "title": "CUDA C++ Best Practices Guide",
+      "sha256": "fcacb0b62ce545e154a6b7dc49778ec663162d7dfb469f85d74b0551e0341f68",
+      "urls": [
+        "https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/index.html"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/NVIDIA_DCGM_Profiling.html",
+      "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/NVIDIA_DCGM_Profiling.html",
+      "title": "NVIDIA DCGM Profiling",
+      "sha256": "6f7aea35d935b1f5f13819fead823277fc54fa10153978bbde305aecf45dc37c",
+      "urls": [
+        "https://docs.nvidia.com/datacenter/dcgm/latest/learn/modules/profiling.html"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Nsight_Compute_Profiling_Guide.html",
+      "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Nsight_Compute_Profiling_Guide.html",
+      "title": "Nsight Compute Profiling Guide",
+      "sha256": "6bdd25d8f532f4a9500e5cc4c2abfc7ec506f5bc3cce1bde349cdfa87b8eb967",
+      "urls": [
+        "https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Nsight_Systems_User_Guide.html",
+      "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Nsight_Systems_User_Guide.html",
+      "title": "Nsight Systems User Guide",
+      "sha256": "55c048476ded375d7f00a16ab960e9d3047aa452bcb3fbede2f462dce8ebf1b0",
+      "urls": [
+        "https://docs.nvidia.com/nsight-systems/UserGuide/index.html"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/LLM_Inference_Performance_Engineering_Best_Practices.html",
+      "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/LLM_Inference_Performance_Engineering_Best_Practices.html",
+      "title": "LLM Inference Performance Engineering: Best Practices",
+      "sha256": "f2741e9e100e1cffae51f059a10f062928d62f9231be85ed947520dcb5087938",
+      "urls": [
+        "https://www.databricks.com/blog/llm-inference-performance-engineering-best-practices"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/NVIDIA_HGX_Platform_Data_Center_Physical_Requirements_Guide.html",
+      "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/NVIDIA_HGX_Platform_Data_Center_Physical_Requirements_Guide.html",
+      "title": "NVIDIA HGX Platform: Data Center Physical Requirements Guide",
+      "sha256": "cb6f9fb7d74c5aa5bfc1c67ad2cabb1e701f0658308c988866152234e2701815",
+      "urls": [
+        "https://intuitionlabs.ai/articles/nvidia-hgx-data-center-requirements"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/CUTLASS_Overview.html",
+      "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/CUTLASS_Overview.html",
+      "title": "CUTLASS Overview",
+      "sha256": "b61dbf71174cb353513afcb2d8b8a2156506a36ed5034d4cf5422aa573e04296",
+      "urls": [
+        "https://docs.nvidia.com/cutlass/latest/overview.html"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/CuTe_Layouts.html",
+      "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/CuTe_Layouts.html",
+      "title": "CuTe Layouts",
+      "sha256": "de17e13066d60e0ed2930204e85a57dc51b975ce4f2f5470612b82b887d35170",
+      "urls": [
+        "https://docs.nvidia.com/cutlass/latest/media/docs/cpp/cute/01_layout.html"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Triton_Vector_Addition.html",
+      "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Triton_Vector_Addition.html",
+      "title": "Triton Vector Addition",
+      "sha256": "5d4f7c223af55b37cf4c8ea004e4d9e5de175b3862e34550810fb724709c17e9",
+      "urls": [
+        "https://triton-lang.org/main/getting-started/tutorials/01-vector-add.html"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/CUDA_Tile_Programming_Model.html",
+      "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/CUDA_Tile_Programming_Model.html",
+      "title": "CUDA Tile Programming Model",
+      "sha256": "b864712e485450c7d41dba8a4eb5befdf3303f29f9b86602b667628db8fa4d8c",
+      "urls": [
+        "https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/writing-tile-kernels.html"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/NVIDIA_CUDA_Compiler_Driver.html",
+      "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/NVIDIA_CUDA_Compiler_Driver.html",
+      "title": "NVIDIA CUDA Compiler Driver",
+      "sha256": "6c9720e69697e86c105bfbc901c6131ddb1daf5fed21df7901735fa1676b901c",
+      "urls": [
+        "https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Triton_Documentation.html",
+      "path": "courses/2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/references/Triton_Documentation.html",
+      "title": "Triton Documentation",
+      "sha256": "bae2aae0f2986e29e71474bba96e6bdabea44563797f4deb84a5d6c2e390cc1f",
+      "urls": [
+        "https://triton-lang.org/main/index.html"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/references/Orca_A_Distributed_Serving_System_for_Transformer-Based_Generative_Models.pdf",
+      "path": "courses/2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/references/Orca_A_Distributed_Serving_System_for_Transformer-Based_Generative_Models.pdf",
+      "title": "Orca: A Distributed Serving System for Transformer-Based Generative Models",
+      "sha256": "b8038438ad8ff99bb131c1a6e16f7df10cf2f962aeb1bf4f1c00cc37e70658ca",
+      "urls": [
+        "https://www.usenix.org/system/files/osdi22-yu.pdf"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/On-Policy_Distillation_of_Language_Models_Learning_from_Self-Generated_Mistakes.pdf",
+      "title": "On-Policy Distillation of Language Models: Learning from Self-Generated Mistakes",
+      "sha256": "a81c71fa0cd15506642092790d854347f030c29ee1d6aa643b55aa51348e6869",
+      "urls": [
+        "https://arxiv.org/abs/2306.13649"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/RL_s_Razor_Why_Online_Reinforcement_Learning_Forgets_Less.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/RL_s_Razor_Why_Online_Reinforcement_Learning_Forgets_Less.pdf",
+      "title": "RL's Razor: Why Online Reinforcement Learning Forgets Less",
+      "sha256": "bf3b6ab3b0b5db847aae235cc93a5a9475be2b7aca1e163304822d13d2dd0373",
+      "urls": [
+        "https://arxiv.org/abs/2509.04259"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/Self-Distillation_Enables_Continual_Learning.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/Self-Distillation_Enables_Continual_Learning.pdf",
+      "title": "Self-Distillation Enables Continual Learning",
+      "sha256": "8e79ea6fc872f599b7076ab6d05a0037ed9e7f2e504c8610aea129546e497e14",
+      "urls": [
+        "https://arxiv.org/abs/2601.19897"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/OpenClaw-RL_Train_Any_Agent_Simply_by_Talking.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/OpenClaw-RL_Train_Any_Agent_Simply_by_Talking.pdf",
+      "title": "OpenClaw-RL: Train Any Agent Simply by Talking",
+      "sha256": "4d8c1aa05fdb439201b5edfca65208fc610eee3169b0ba0689f4378f2c4fe6ae",
+      "urls": [
+        "https://arxiv.org/abs/2603.10165"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/Proximal_Policy_Optimization_Algorithms.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/Proximal_Policy_Optimization_Algorithms.pdf",
+      "title": "Proximal Policy Optimization Algorithms",
+      "sha256": "e78feadadbdbb0b601b3c2bcc81404722cd431a489b307545f9b7bea1e8c4f5b",
+      "urls": [
+        "https://arxiv.org/abs/1707.06347"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/DeepSeekMath_Pushing_the_Limits_of_Mathematical_Reasoning_in_Open_Language_Models.pdf",
+      "title": "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models",
+      "sha256": "6cc20b3c5b8d25b8b53868fc4ec1792c144f07d67bdf7395138efd4422197e7b",
+      "urls": [
+        "https://arxiv.org/abs/2402.03300"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/Self-Distilled_Reasoner_On-Policy_Self-Distillation_for_Large_Language_Models.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/Self-Distilled_Reasoner_On-Policy_Self-Distillation_for_Large_Language_Models.pdf",
+      "title": "Self-Distilled Reasoner: On-Policy Self-Distillation for Large Language Models",
+      "sha256": "e521ed6c2939dc612daec5fe6fb47bef554a291228c02cafae07102b9729bad8",
+      "urls": [
+        "https://arxiv.org/abs/2601.18734"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/Reinforcement_Learning_via_Self-Distillation.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/Reinforcement_Learning_via_Self-Distillation.pdf",
+      "title": "Reinforcement Learning via Self-Distillation",
+      "sha256": "2714e7734c43cf849c2e7c49fc95cf57a6533c0833465a01983b87eb7f72d190",
+      "urls": [
+        "https://arxiv.org/pdf/2601.20802"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/High-Dimensional_Continuous_Control_Using_Generalized_Advantage_Estimation.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/High-Dimensional_Continuous_Control_Using_Generalized_Advantage_Estimation.pdf",
+      "title": "High-Dimensional Continuous Control Using Generalized Advantage Estimation",
+      "sha256": "5aa736ccf3517a1f36d0ca8146982e69beaf9a2bdccac2ae324f780743bc045e",
+      "urls": [
+        "https://arxiv.org/abs/1506.02438"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/DAPO_An_Open-Source_LLM_Reinforcement_Learning_System_at_Scale.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/DAPO_An_Open-Source_LLM_Reinforcement_Learning_System_at_Scale.pdf",
+      "title": "DAPO: An Open-Source LLM Reinforcement Learning System at Scale",
+      "sha256": "f01e4fd347530cadd68e5c36b1998532a6d1adb272c817e73b927453c26e9d79",
+      "urls": [
+        "https://arxiv.org/abs/2503.14476"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/Efficient_Memory_Management_for_Large_Language_Model_Serving_with_PagedAttention.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/Efficient_Memory_Management_for_Large_Language_Model_Serving_with_PagedAttention.pdf",
+      "title": "Efficient Memory Management for Large Language Model Serving with PagedAttention",
+      "sha256": "55b3b324d779a67c59dac2519445e3b07c14e6ff5c656fadb47a3d7b5997469e",
+      "urls": [
+        "https://arxiv.org/abs/2309.06180"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/HybridFlow_A_Flexible_and_Efficient_RLHF_Framework.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/HybridFlow_A_Flexible_and_Efficient_RLHF_Framework.pdf",
+      "title": "HybridFlow: A Flexible and Efficient RLHF Framework",
+      "sha256": "4807a008bdea448c7a6aecc3b0aa65ffc45f1f4ca83c056bfe562b5e2397ce98",
+      "urls": [
+        "https://arxiv.org/pdf/2409.19256"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/PyTorch_FSDP_Experiences_on_Scaling_Fully_Sharded_Data_Parallel.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/PyTorch_FSDP_Experiences_on_Scaling_Fully_Sharded_Data_Parallel.pdf",
+      "title": "PyTorch FSDP: Experiences on Scaling Fully Sharded Data Parallel",
+      "sha256": "7ee0f202b567627d668deae8b786e2a7a48920fbed22cc125a060f4c6da27cab",
+      "urls": [
+        "https://arxiv.org/pdf/2304.11277"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/ZeRO_Memory_Optimizations_Toward_Training_Trillion_Parameter_Models.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/ZeRO_Memory_Optimizations_Toward_Training_Trillion_Parameter_Models.pdf",
+      "title": "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models",
+      "sha256": "c531734c7d9ee647fda9b4f0e1a6abd6d58ad34e862bc945451b09032be3167e",
+      "urls": [
+        "https://arxiv.org/pdf/1910.02054"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/On-Policy_Distillation.html",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/On-Policy_Distillation.html",
+      "title": "On-Policy Distillation",
+      "sha256": "71e5e7290c252360141716602885fe83d4e9e81b6a18a3598e96840016507985",
+      "urls": [
+        "https://thinkingmachines.ai/blog/on-policy-distillation/"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/Group_Relative_Policy_Optimization_GRPO_verl_documentation.html",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/Group_Relative_Policy_Optimization_GRPO_verl_documentation.html",
+      "title": "Group Relative Policy Optimization (GRPO) — verl documentation",
+      "sha256": "b1a6d5d4ce854795fd4421d44bfaf7cdb25b845b54b4cf56f5e7809784a21b49",
+      "urls": [
+        "https://verl.readthedocs.io/en/latest/algo/grpo.html"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/Quickstart_PPO_training_on_GSM8K_dataset_verl_documentation.html",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/Quickstart_PPO_training_on_GSM8K_dataset_verl_documentation.html",
+      "title": "Quickstart: PPO training on GSM8K dataset — verl documentation",
+      "sha256": "47e2f90081476d916cecdeda84b0b7c5564a410faa229e1c5aeae913ed16d133",
+      "urls": [
+        "https://verl.readthedocs.io/en/latest/start/quickstart.html"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/OpenClaw-RL1.html",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/OpenClaw-RL1.html",
+      "title": "OpenClaw-RL1",
+      "sha256": "1029b89c9c32fc617aebd4a06d7868814303769ef56f68a67d774c642dae5591",
+      "urls": [
+        "https://yinjjiew.github.io/projects/openclawrl1/"
+      ],
+      "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
+      "registered_at": "2026-11-13"
     }
   ],
-  "last_updated": "2026-10-28"
+  "last_updated": "2026-11-13"
 }

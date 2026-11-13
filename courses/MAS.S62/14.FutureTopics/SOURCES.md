@@ -2,24 +2,15 @@
 
 - Date: 2026-12-09
 - Source: https://mit-mi.github.io/how2ai-course/fall2026/schedule/
-- 资料归档日期：2026-10-26；最新日历见[完整课表](../COURSE_SCHEDULE.md)。
-- 编号采用官网 Week；原 PDF 内的 Lecture 编号和文件名保持原样。
+- 资料归档日期：2026-11-13；最新日历见[完整课表](../COURSE_SCHEDULE.md)。
+- 目录编号保持稳定；当前官方 Week、日期单独记录，原 PDF 内的 Lecture 编号和文件名保持原样。
 
-## 最新完整课表（2026-11-01）
-
-- [完整课表](../COURSE_SCHEDULE.md)：2026-12-09 · Future topics。
-- 本节更新课表入口与指定阅读分类；未重新下载的正文不计作新版本，下面另保留旧归档及其讲解。
-
-### Lecture links
-
-- 最新完整课表尚未列出可下载讲义。
-
-### Assigned readings
-
-- 最新完整课表未单列指定阅读。
+- 当前安排依据[官方大纲及冲突处理](../SCHEDULE_OVERRIDES.json)；网页旧课表正文保留，未据此改写。
 
 ## Topics（归档快照）
 
+- AI for scientific discovery
+- Multimodal agents
 - Embodied harnesses
 - Safe evolution
 
@@ -30,7 +21,7 @@
 
 ## Assigned readings（归档快照）
 
-- 此次归档课表未单列本周阅读。最新指定阅读见上方更新节；讲义引用及补充材料见下方 References。
+- 此次归档课表未单列本周阅读。讲义引用及补充材料见下方 References。
 
 ## References and local study guide
 
