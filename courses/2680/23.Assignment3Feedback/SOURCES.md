@@ -6,7 +6,7 @@
 
 - [Lecture slides（受限原件）](../site/slides/assignment3_feedback_protected.pdf)
   - Source: https://cs2680.com/slides/assignment3_feedback_protected.pdf
-  - 状态：原始 PDF 需要密码；未取得可读正文，不编写内容讲解。
+  - 状态：原始 PDF 需要密码；正文与页数未核实，未取得可读正文。
 
 ## Readings
 

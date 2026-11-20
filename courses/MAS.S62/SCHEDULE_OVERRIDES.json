@@ -1,26 +1,35 @@
 {
   "schema_version": 1,
-  "as_of": "2026-11-13",
+  "as_of": "2026-11-20",
   "purpose": "Use explicit official syllabus closure/date plan while retaining conflicting official HTML verbatim. This is a documented source-priority decision, not an upstream correction.",
   "authority": {
     "url": "https://docs.google.com/document/d/1H1vs32fhWaxEuP6-nA2GP-a1aFuEmjOXNMcer2UyKpM/export?format=pdf",
     "path": "site/syllabus/ai4ai-syllabus.pdf",
-    "sha256": "c31e74cd0d8616d579ac60f34f361f2660fb70bb52814fe56642b9de96de9725",
+    "sha256": "47a16850c66b5da58a3af67a60e88bd26c0bcfefbb61a12dc6167ff200ba6414",
     "pages": [
       2
-    ]
+    ],
+    "content_comparison": {
+      "previous_sha256": "c31e74cd0d8616d579ac60f34f361f2660fb70bb52814fe56642b9de96de9725",
+      "text_equal": true,
+      "all_5_page_renders_equal": true,
+      "change": "PDF producer m159 to m160 only; no substantive content change observed",
+      "checked_at": "2026-11-20"
+    }
   },
   "conflicting_source": {
     "url": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
     "path": "site/schedule/index.html",
-    "observed_sha256": "058ca1a130f2c7597dd768d3ce551901065cd9a1f3db58ee360730f8851219b7",
+    "observed_sha256": "5bf6225c50f1895cd9530c9cc86081050d817147387f685e085f8f3e8c89fa3f",
     "conflicts": [
       "HTML W10 Nov11 Environment evolution1 vs syllabus Veterans Day no class",
       "HTML W11 Nov18 Environment evolution2 vs syllabus Environment evolution1",
       "HTML W12 Nov25 Future topics vs syllabus Environment evolution2",
       "Syllabus merges four Future topics at W14 Dec9"
     ],
-    "semantic_sha256": "f7afc4617b71a79b77882cfecfca2adddbf2e015c53d66e78e3acb6aa85ff915"
+    "semantic_sha256": "53205ce0a9e55c83a616c6cdbfbfd2ca2047fb7e4a9748c2cf49ccc25b2f4c90",
+    "rechecked_at": "2026-11-20",
+    "change_scope": "Week 9 adds LLM Self-Play slides 2; overridden Weeks 10-14 remain unchanged."
   },
   "directory_policy": "Stable topic folders do not equal current official Week numbers. Existing directories are retained; W10 no-class is a schedule-only row.",
   "weeks": {

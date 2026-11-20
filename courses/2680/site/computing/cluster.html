@@ -105,7 +105,7 @@ claude # sign in, then /exit</div>
 </tr>
 <tr>
 <td><code>-t 2:00:00</code></td>
-<td>Time limit, <code>HH:MM:SS</code>. The job ends when it is reached. Always set it.</td>
+<td>Time limit, <code>HH:MM:SS</code>, or <code>D-HH:MM:SS</code> for a day or more. The job ends when it is reached. Always set it.</td>
 </tr>
 <tr>
 <td><code>--gres=gpu:&lt;type&gt;:1</code></td>
@@ -144,6 +144,7 @@ claude # sign in, then /exit</div>
 <td><code>srun -p general -c 4 --mem=16G -t 2:00:00 --pty bash</code></td>
 </tr>
 </table></div>
+<p>The Request column asks for a few hours. A job can ask for up to its partition's longest job, for example <code>-t 14-00:00:00</code> (14 days) on <code>gpu-g7-reserved</code>.</p>
 <p><a href="../assignments/index.html#assignment-4">Assignment 4</a> uses the RTX PRO 4500. Other GPU partitions on the cluster need a TF's approval before you use them for course work.</p>
 <p>In a GPU job, <code>echo $CUDA_VISIBLE_DEVICES</code> should print a device number. If it prints nothing, the job has no GPU: you left out <code>--gres</code>. (<code>nvidia-smi</code> lists the card either way, so it does not tell you.)</p>
 <div class="subsection" id="serving">

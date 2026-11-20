@@ -1,8 +1,8 @@
 # 四门课程完整公开课表与目录覆盖
 
-CMU、Harvard、MIT核对及同步日期2026-11-13；Stanford沿用2026-11-04版本。94条当前日历记录采用稳定目录，历史占位另列；本次新增四节课已补完整中文讲解，历史讲解正文未改写。
+CMU、Harvard、MIT资料核对及同步日期2026-11-20；Stanford沿用2026-11-04版本。94条当前日历记录采用稳定目录，历史占位另列。CMU 两课和 Harvard 推测解码已补中文讲解，MIT 第 9 周已整合 Self-Play。
 
-[逐讲路线](ROADMAP.zh-CN.md) · [当前映射](COURSE_LAYOUT.json) · [官方来源与冲突处理](syllabus-snapshots/2026-11-13/README.md)
+[逐讲路线](ROADMAP.zh-CN.md) · [当前映射](COURSE_LAYOUT.json) · [官方来源与冲突处理](syllabus-snapshots/2026-11-20/README.md)
 
 ## CMU 11-768
 
@@ -31,15 +31,15 @@ CMU、Harvard、MIT核对及同步日期2026-11-13；Stanford沿用2026-11-04版
 | 2026-10-27 | Agents and the Future of Work | [16.AgentsAndTheFutureOfWork](11-768/16.AgentsAndTheFutureOfWork/SOURCES.md) | [第 51 步](ROADMAP.zh-CN.md#step-51) | 公开讲义已归档；既有中文讲解保持原版 |
 | 2026-10-29 | Interaction 1: Multi-Agent Interaction | [18.MultiAgentInteraction](11-768/18.MultiAgentInteraction/SOURCES.md) | [第 25 步](ROADMAP.zh-CN.md#step-25) | 公开讲义已归档；既有中文讲解保持原版 |
 | 2026-11-03 | University holiday (no class) | 停课 | 停课，无学习任务 | 停课；保留日历记录 |
-| 2026-11-05 | Project hours | [project](11-768/project/SOURCES.md) | [项目节点](ROADMAP.zh-CN.md#project-cmu) | 公开项目要求已归档；活动安排见来源索引 |
-| 2026-11-10 | Interaction 2: Human-Agent Interaction | [19.HumanAgentInteraction](11-768/19.HumanAgentInteraction/SOURCES.md) | [第 52 步](ROADMAP.zh-CN.md#step-52) | 官网尚无公开讲义正文；已有阅读与获取状态见来源索引 |
-| 2026-11-12 | Search 1: Reranking and Critic Models | [20.RerankingAndCriticModels](11-768/20.RerankingAndCriticModels/SOURCES.md) | [第 56 步](ROADMAP.zh-CN.md#step-56) | 讲义、阅读与完整中文讲解已归档；审核版本见 REVIEW.json |
-| 2026-11-17 | Search 2: Tree Search | [21.TreeSearch](11-768/21.TreeSearch/SOURCES.md) | [第 57 步](ROADMAP.zh-CN.md#step-57) | 官网尚无公开讲义正文；已有阅读与获取状态见来源索引 |
-| 2026-11-19 | Guest Lecture | [22.GuestLecture20261119](11-768/22.GuestLecture20261119/SOURCES.md) | [待定位](ROADMAP.zh-CN.md#pending-c22) | 官网尚无公开讲义正文；已有阅读与获取状态见来源索引 |
-| 2026-11-24 | Guest Lecture | [23.GuestLecture20261124](11-768/23.GuestLecture20261124/SOURCES.md) | [待定位](ROADMAP.zh-CN.md#pending-c23) | 官网尚无公开讲义正文；已有阅读与获取状态见来源索引 |
+| 2026-11-05 | Project hours | [project](11-768/project/SOURCES.md) | [项目节点](ROADMAP.zh-CN.md#project-cmu) | 公开项目要求已归档；报告12/4 23:59截止，最多3天late days至12/7 23:59，官网未注明时区 |
+| 2026-11-10 | Interaction 2: Human-Agent Interaction | [19.HumanAgentInteraction](11-768/19.HumanAgentInteraction/SOURCES.md) | [第 52 步](ROADMAP.zh-CN.md#step-52) | 89页讲义已归档；5项指定阅读、10项参考资料及获取限制见来源索引；完整中文讲解已复读 |
+| 2026-11-12 | Search 1: Reranking and Critic Models | [20.RerankingAndCriticModels](11-768/20.RerankingAndCriticModels/SOURCES.md) | [第 56 步](ROADMAP.zh-CN.md#step-56) | 讲义、阅读与完整中文讲解已归档；内容审核版本见课程 REVIEW.json |
+| 2026-11-17 | Search 2: Tree Search | [21.TreeSearch](11-768/21.TreeSearch/SOURCES.md) | [第 57 步](ROADMAP.zh-CN.md#step-57) | 100页讲义已归档；6项指定阅读、20项参考资料及获取限制见来源索引；完整中文讲解已复读 |
+| 2026-11-19 | How to Trust Your AI Agents | [22.GuestLecture20261119](11-768/22.GuestLecture20261119/SOURCES.md) | [待定位](ROADMAP.zh-CN.md#pending-c22) | 嘉宾题目已明确；官网尚无讲义或阅读正文链接，待资料公开后定位学习内容 |
+| 2026-11-24 | Lessons in Building a Coding Agent | [23.GuestLecture20261124](11-768/23.GuestLecture20261124/SOURCES.md) | [待定位](ROADMAP.zh-CN.md#pending-c23) | 嘉宾题目已明确；官网尚无讲义或阅读正文链接，待资料公开后定位学习内容 |
 | 2026-11-26 | Thanksgiving - No class | 停课 | 停课，无学习任务 | 停课；保留日历记录 |
-| 2026-12-01 | Final presentations (posters) | [project](11-768/project/SOURCES.md) | [项目节点](ROADMAP.zh-CN.md#project-cmu) | 公开项目要求已归档；活动安排见来源索引 |
-| 2026-12-03 | Final presentations (posters) | [project](11-768/project/SOURCES.md) | [项目节点](ROADMAP.zh-CN.md#project-cmu) | 公开项目要求已归档；活动安排见来源索引 |
+| 2026-12-01 | Final presentations (posters) | [project](11-768/project/SOURCES.md) | [项目节点](ROADMAP.zh-CN.md#project-cmu) | 公开项目要求已归档；报告12/4 23:59截止，最多3天late days至12/7 23:59，官网未注明时区 |
+| 2026-12-03 | Final presentations (posters) | [project](11-768/project/SOURCES.md) | [项目节点](ROADMAP.zh-CN.md#project-cmu) | 公开项目要求已归档；报告12/4 23:59截止，最多3天late days至12/7 23:59，官网未注明时区 |
 
 ## Harvard CS2680
 
@@ -64,12 +64,12 @@ CMU、Harvard、MIT核对及同步日期2026-11-13；Stanford沿用2026-11-04版
 | 2026-10-21 | Efficient LLM serving basics II: intro to GPUs | [11.EfficientLLMServingBasicsII.IntroToGPUs](2680/11.EfficientLLMServingBasicsII.IntroToGPUs/SOURCES.md) | [第 69 步](ROADMAP.zh-CN.md#step-69) | 公开讲义已归档；既有中文讲解保持原版 |
 | 2026-10-26 | Student sharing II: Harness optimization | [22.Assignment3StudentSharing](2680/22.Assignment3StudentSharing/SOURCES.md) | [第 59 步](ROADMAP.zh-CN.md#step-59) | 官网尚无公开讲义正文；已有阅读与获取状态见来源索引 |
 | 2026-10-28 | Assignment 3 feedback | [23.Assignment3Feedback](2680/23.Assignment3Feedback/SOURCES.md) | [第 60 步](ROADMAP.zh-CN.md#step-60) | 官网尚无公开讲义正文；已有阅读与获取状态见来源索引 |
-| 2026-11-02 | Assignments feedback and agent pitfalls, GPU programming (cont.) | [26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued](2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/SOURCES.md) | [第69a步](ROADMAP.zh-CN.md#step-69a) | 讲义、阅读与完整中文讲解已归档；审核版本见 REVIEW.json |
-| 2026-11-04 | Efficient LLM serving basics III: Batching, paging, and parallelism | [12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism](2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/SOURCES.md) | [第 70 步](ROADMAP.zh-CN.md#step-70) | 讲义、阅读与完整中文讲解已归档；审核版本见 REVIEW.json |
+| 2026-11-02 | Assignments feedback and agent pitfalls, GPU programming (cont.) | [26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued](2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/SOURCES.md) | [第69a步](ROADMAP.zh-CN.md#step-69a) | 讲义、阅读与完整中文讲解已归档；内容审核版本见课程 REVIEW.json |
+| 2026-11-04 | Efficient LLM serving basics III: Batching, paging, and parallelism | [12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism](2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/SOURCES.md) | [第 70 步](ROADMAP.zh-CN.md#step-70) | 讲义、阅读与完整中文讲解已归档；内容审核版本见课程 REVIEW.json |
 | 2026-11-09 | Guest lecture: Why Infrastructure sets the pace of AI | [20.GuestLectureWhyInfrastructureSetsThePaceOfAI](2680/20.GuestLectureWhyInfrastructureSetsThePaceOfAI/SOURCES.md) | [第 77 步](ROADMAP.zh-CN.md#step-77) | 官网尚无公开讲义正文；已有阅读与获取状态见来源索引 |
-| 2026-11-11 | Efficient LLM serving: speculative decoding | [13.EfficientLLMServing.SpeculativeDecoding](2680/13.EfficientLLMServing.SpeculativeDecoding/SOURCES.md) | [第 72 步](ROADMAP.zh-CN.md#step-72) | 官网尚无公开讲义正文；已有阅读与获取状态见来源索引 |
+| 2026-11-11 | Efficient LLM serving: speculative decoding | [13.EfficientLLMServing.SpeculativeDecoding](2680/13.EfficientLLMServing.SpeculativeDecoding/SOURCES.md) | [第 72 步](ROADMAP.zh-CN.md#step-72) | 78页推测解码讲义已归档；既有阅读保留；完整中文讲解已复读 |
 | 2026-11-16 | Efficient LLM serving: KV-cache optimization and model architectures | [16.EfficientLLMServing.KVCacheOptimizationAndModelArchitectures](2680/16.EfficientLLMServing.KVCacheOptimizationAndModelArchitectures/SOURCES.md) | [第 74 步](ROADMAP.zh-CN.md#step-74) | 官网尚无公开讲义正文；已有阅读与获取状态见来源索引 |
-| 2026-11-18 | Student sharing III: Showcase your serving engine (Assignment 4) | [24.StudentSharingIII.EngineOptimizationsAndAgentEngineCoDesign](2680/24.StudentSharingIII.EngineOptimizationsAndAgentEngineCoDesign/SOURCES.md) | [第 78 步](ROADMAP.zh-CN.md#step-78) | 官网尚无公开讲义正文；已有阅读与获取状态见来源索引 |
+| 2026-11-18 | Student sharing III: Showcase your serving engine (Assignment 4) | [24.StudentSharingIII.EngineOptimizationsAndAgentEngineCoDesign](2680/24.StudentSharingIII.EngineOptimizationsAndAgentEngineCoDesign/SOURCES.md) | [第 78 步](ROADMAP.zh-CN.md#step-78) | 分享PDF原件已归档但需密码，正文不可读、页数未核实；不计为已取得可读讲义 |
 | 2026-11-23 | Efficient LLM serving: pruning and quantization | [15.EfficientLLMServing.PruningAndQuantization](2680/15.EfficientLLMServing.PruningAndQuantization/SOURCES.md) | [第 75 步](ROADMAP.zh-CN.md#step-75) | 官网尚无公开讲义正文；已有阅读与获取状态见来源索引 |
 | 2026-11-25 | No class — Thanksgiving recess | 停课 | 停课，无学习任务 | 停课；保留日历记录 |
 | 2026-11-30 | Efficient agentic systems: scheduling and prefix caching | [14.EfficientAgenticSystems.SchedulingAndPrefixCaching](2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/SOURCES.md) | [第 73 步](ROADMAP.zh-CN.md#step-73) | 官网尚无公开讲义正文；已有阅读与获取状态见来源索引 |
@@ -90,7 +90,7 @@ CMU、Harvard、MIT核对及同步日期2026-11-13；Stanford沿用2026-11-04版
 | 2026-10-14 | Harness evolution 2 | [6.HarnessEvolution2](MAS.S62/6.HarnessEvolution2/SOURCES.md) | [第 66 步](ROADMAP.zh-CN.md#step-66) | 公开讲义已归档；既有中文讲解保持原版 |
 | 2026-10-21 | Model evolution 1 | [7.ModelEvolution1](MAS.S62/7.ModelEvolution1/SOURCES.md) | [第 88 步](ROADMAP.zh-CN.md#step-88) | 主讲与嘉宾归档；旧15页教程随原讲解保留，资料修订影响待复核 |
 | 2026-10-28 | Project midterm presentations | [8.ProjectMidtermPresentations](MAS.S62/8.ProjectMidtermPresentations/SOURCES.md) | [项目节点](ROADMAP.zh-CN.md#project-mit-midterm) | 项目活动；按官方要求另排个人里程碑 |
-| 2026-11-04 | Model evolution 2 | [9.ModelEvolution2](MAS.S62/9.ModelEvolution2/SOURCES.md) | [第 89 步](ROADMAP.zh-CN.md#step-89) | 19页RL实践教程、指定阅读与完整中文讲解已归档 |
+| 2026-11-04 | Model evolution 2 | [9.ModelEvolution2](MAS.S62/9.ModelEvolution2/SOURCES.md) | [第 89 步](ROADMAP.zh-CN.md#step-89) | 19页RL实践教程及63页LLM Self-Play讲义已归档；完整中文讲解已整合两份材料 |
 | 2026-11-11 | Veterans Day — no class | 停课 | 停课，无学习任务 | 11/11停课：官方大纲与MIT Registrar校历一致 |
 | 2026-11-18 | Environment evolution 1 | [10.EnvironmentEvolution1](MAS.S62/10.EnvironmentEvolution1/SOURCES.md) | [第 91 步](ROADMAP.zh-CN.md#step-91) | 按大纲为11/18；无公开讲义正文 |
 | 2026-11-25 | Environment evolution 2 | [11.EnvironmentEvolution2](MAS.S62/11.EnvironmentEvolution2/SOURCES.md) | [第 92 步](ROADMAP.zh-CN.md#step-92) | 按大纲为11/25；无公开讲义正文 |

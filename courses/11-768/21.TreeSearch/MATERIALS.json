@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Search and Planning",
+    "official_schedule_title": "Search 2: Tree Search",
+    "url": "https://www.cmu-agents.com/slides/2026-11-17-jy-koh.pdf",
+    "final_url": "https://www.cmu-agents.com/slides/2026-11-17-jy-koh.pdf",
+    "path": "2026-11-17-jy-koh.pdf",
+    "role": "lecture",
+    "status": "saved",
+    "pages": 100,
+    "lecturer": "JY Koh",
+    "lecture_date": "2026-11-17",
+    "original_filename": "2026-11-17-jy-koh.pdf",
+    "bytes": 3904670,
+    "sha256": "ae36ec248377b87ceee1ff34be11f8a20d31b705f4acf70994cec6127a2bc5e6",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "retrieved_at": "2026-11-20T01:13:51.597830+00:00",
+    "archived_at": "2026-11-20T01:29:54.381094+00:00",
+    "acquisition_note": "Downloaded and verified as complete PDF on 2026-11-20; raw bytes and official filename retained. Structure/pages/cover checked; no Chinese teaching-note content review performed."
+  }
+]

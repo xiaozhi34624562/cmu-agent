@@ -1,6 +1,6 @@
 # CMU 11-768：完整课表与目录
 
-核对日期：2026-11-13。目录编号保持稳定，授课顺序与官方Week单独记录。原始来源与采用规则见[本轮来源](../syllabus-snapshots/2026-11-13/README.md)。
+核对日期：2026-11-20。目录编号保持稳定，授课顺序与官方Week单独记录。原始来源与采用规则见[本轮来源](../syllabus-snapshots/2026-11-20/README.md)。
 
 | 日期 | 官方Week | 当前题目 | 稳定目录 | 材料状态 | 阶段 |
 |---|---|---|---|---|---|
@@ -26,13 +26,13 @@
 | 2026-10-29 | — | Interaction 1: Multi-Agent Interaction | [18.MultiAgentInteraction](18.MultiAgentInteraction/SOURCES.md) | 公开讲义已归档；既有中文讲解保持原版 | P2 |
 | 2026-11-03 | — | University holiday (no class) | 停课 | 停课；保留日历记录 | BREAK |
 | 2026-11-05 | — | Project hours | [project](project/SOURCES.md) | 公开项目要求已归档；活动安排见来源索引 | PROJECT |
-| 2026-11-10 | — | Interaction 2: Human-Agent Interaction | [19.HumanAgentInteraction](19.HumanAgentInteraction/SOURCES.md) | 官网尚无公开讲义正文；已有阅读与获取状态见来源索引 | P4 |
+| 2026-11-10 | — | Interaction 2: Human-Agent Interaction | [19.HumanAgentInteraction](19.HumanAgentInteraction/SOURCES.md) | 89 页讲义、5 篇阅读和 10 项参考已归档；[完整中文讲解](19.HumanAgentInteraction/notes.zh-CN.md) | P4 |
 | 2026-11-12 | — | Search 1: Reranking and Critic Models | [20.RerankingAndCriticModels](20.RerankingAndCriticModels/SOURCES.md) | 讲义、阅读与完整中文讲解已归档；审核版本见 REVIEW.json | P5 |
-| 2026-11-17 | — | Search 2: Tree Search | [21.TreeSearch](21.TreeSearch/SOURCES.md) | 官网尚无公开讲义正文；已有阅读与获取状态见来源索引 | P5 |
-| 2026-11-19 | — | Guest Lecture | [22.GuestLecture20261119](22.GuestLecture20261119/SOURCES.md) | 官网尚无公开讲义正文；已有阅读与获取状态见来源索引 | PENDING |
-| 2026-11-24 | — | Guest Lecture | [23.GuestLecture20261124](23.GuestLecture20261124/SOURCES.md) | 官网尚无公开讲义正文；已有阅读与获取状态见来源索引 | PENDING |
+| 2026-11-17 | — | Search 2: Tree Search | [21.TreeSearch](21.TreeSearch/SOURCES.md) | 100 页讲义、6 篇阅读和 20 项参考已归档；[完整中文讲解](21.TreeSearch/notes.zh-CN.md) | P5 |
+| 2026-11-19 | — | How to Trust Your AI Agents | [22.GuestLecture20261119](22.GuestLecture20261119/SOURCES.md) | 题目和嘉宾已公开；暂无讲义/阅读/参考 | PENDING |
+| 2026-11-24 | — | Lessons in Building a Coding Agent | [23.GuestLecture20261124](23.GuestLecture20261124/SOURCES.md) | 题目和嘉宾已公开；暂无讲义/阅读/参考 | PENDING |
 | 2026-11-26 | — | Thanksgiving - No class | 停课 | 停课；保留日历记录 | BREAK |
 | 2026-12-01 | — | Final presentations (posters) | [project](project/SOURCES.md) | 公开项目要求已归档；活动安排见来源索引 | PROJECT |
 | 2026-12-03 | — | Final presentations (posters) | [project](project/SOURCES.md) | 公开项目要求已归档；活动安排见来源索引 | PROJECT |
 
-[学习路线](../ROADMAP.zh-CN.md) · [完整映射](../COURSE_LAYOUT.json)。本次新增四节课提供完整中文讲解；历史讲解正文保留，MIT W7 的受影响内容仍待另行审核。
+[学习路线](../ROADMAP.zh-CN.md) · [完整映射](../COURSE_LAYOUT.json)。第 19、21 课完整讲解的版本与核查范围见 [REVIEW.json](REVIEW.json)。项目报告 12/4 23:59 截止、最迟可用 late days 至 12/7 23:59，详见项目来源索引（网页未注明时区）。

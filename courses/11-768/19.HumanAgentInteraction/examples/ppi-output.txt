@@ -1,0 +1,3 @@
+A: labels 4.50, residual -0.10, corrected 4.00
+B: labels 3.50, residual +0.00, corrected 3.40
+A - B: labels +1.00, predictions +0.70, corrected +0.60

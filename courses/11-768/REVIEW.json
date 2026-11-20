@@ -1,8 +1,8 @@
 {
   "course": "11-768",
-  "review_date": "2026-11-13",
+  "review_date": "2026-11-20",
   "standard": "面向有 Java 经验的 LLM Developer：以讲义问题链组织完整中文教学；检查前置知识、机制推导、案例、自测和来源证据；修改后的最终版本完整复读两遍。",
-  "scope": "当前逐篇内容审核状态。2026-11-13 仅新增公开课的讲解完成内容审核与全文复读；历史讲解正文保持不变，原审核日期和实际来源范围分别保留。结构校验不代替语义审核。",
+  "scope": "2026-11-20 完成第 19、21 课中文讲解、原文核读和全文复读。其余讲解的原审核日期及实际来源范围保留。",
   "documents": [
     {
       "note": "courses/11-768/1.WhatIsAnAgent/notes.zh-CN.md",
@@ -3502,6 +3502,218 @@
       "reread_sha256": "c4c75f4bf4e270d5dda5580db41b02c722fede663201452761516d1deda370fc"
     },
     {
+      "note": "courses/11-768/19.HumanAgentInteraction/notes.zh-CN.md",
+      "lesson": 19,
+      "status": "passed",
+      "final_sha256": "e43f3f33badce0443335517de3d111cc7758bd03ea6461a4692d3d12b22adcd5",
+      "content_review_sha256": "e43f3f33badce0443335517de3d111cc7758bd03ea6461a4692d3d12b22adcd5",
+      "reviewed_at": "2026-11-20T10:13:31+08:00",
+      "coverage": "完整读过 89 页主讲义，对图表和截图另做目视核对。5 项指定阅读和 10 项官方参考均查阅相关正文，逐项记录页序与用途。Java CSV 串起交接、反馈估计、候选选择与后续维护，提供可运行 PPI 算例和八题自测。不能将摘读关键章节理解为逐页阅读所有附录。",
+      "sources_read": [
+        {
+          "path": "courses/11-768/19.HumanAgentInteraction/2026-11-10-valerie-chen.pdf",
+          "sha256": "981b6643d14b951983395f1eadd5806be15330039d20f268a0f1fe1a133801d9",
+          "title": "Rethinking Human-AI Collaboration in the Agentic Era",
+          "role": "lecture",
+          "version": "2026-11-10 archived lecture",
+          "pages": "1–89",
+          "sections": "全讲义，重点图与截图目视核对：6、9、18、20、21、24–26、30–33、36、38、42、54–56、60、67–68、75–78、80–81、83–86。",
+          "contribution": "咖啡店的过程价值、主动权交接、PULSE 估计、critic、人因和技能训练；三阶段主线。",
+          "limits": "课堂 p.83–86 的 upskilling 研究按课件讨论，未取得公开正文。"
+        },
+        {
+          "path": "courses/11-768/19.HumanAgentInteraction/readings/Guidelines_for_Human-AI_Interaction.pdf",
+          "sha256": "82fff584c6b986f573608361478e93447538c6ce707e4b9b04d45d584272ea03",
+          "title": "Guidelines for Human-AI Interaction",
+          "role": "assigned",
+          "version": "CHI 2019 camera-ready PDF from Microsoft Research",
+          "pages": "2–10",
+          "sections": "Table 1；验证流程、用户检查、适用性及局限。",
+          "contribution": "18条指南及课件的前中后映射。",
+          "limits": "启发式评估是设计线索，与本课 Agent 的随机实验分开。"
+        },
+        {
+          "path": "courses/11-768/19.HumanAgentInteraction/readings/Completion_Collaboration_Scaling_Collaborative_Effort_with_Agents.pdf",
+          "sha256": "9ac36fe8e639e54de5582a795155f9040f9a0bc3846abeda1c4334cf568067c6",
+          "title": "Completion ≠ Collaboration: Scaling Collaborative Effort with Agents",
+          "role": "assigned",
+          "version": "2510.25744v2",
+          "pages": "2–12",
+          "sections": "§2–5，案例、效用曲线和中断、实验设定与限制。",
+          "contribution": "过程价值与用户投入，首稿、最高效用及离开损失。",
+          "limits": "旅行实验使用模拟用户。"
+        },
+        {
+          "path": "courses/11-768/19.HumanAgentInteraction/readings/How_can_we_assess_human-agent_interactions_Case_studies_in_software_agent_design.pdf",
+          "sha256": "7896f5bccb65cf054606a39a0570ec7e730aa112feb48170ce40133c2cad0f76",
+          "title": "How can we assess human-agent interactions? Case studies in software agent design",
+          "role": "assigned",
+          "version": "2510.09801v3",
+          "pages": "1–9、12–13、18–19",
+          "sections": "§3–8，片段、15 特征、模板评分、估计量、平台数据、图 4、表 2/3/5、预测模型说明。",
+          "contribution": "PULSE 两条件比较、PPI 校准和抽样、置信区间。",
+          "limits": "标注与无标注分布差异；附录表和正文呈现口径分别保留。"
+        },
+        {
+          "path": "courses/11-768/19.HumanAgentInteraction/readings/Code_with_Me_or_for_Me_How_Increasing_AI_Automation_Transforms_Developer_Workflows.pdf",
+          "sha256": "01444cdaab637219cec52a717e7f5ef7ebe91efae29f50ff77a303eaa6b7b72c",
+          "title": "Code with Me or for Me? How Increasing AI Automation Transforms Developer Workflows",
+          "role": "assigned",
+          "version": "2507.08149v1",
+          "pages": "3–13",
+          "sections": "§3–5，参与者、工具、任务、活动时间、Figure 4、主观体验和讨论。",
+          "contribution": "区分任务正确率、主动投入、等待与主观体验。",
+          "limits": "工具组合比较及成功样本上的耗时，不能外推统一加速倍数。"
+        },
+        {
+          "path": "courses/11-768/19.HumanAgentInteraction/readings/Im_Paired_Programming_Coding_Agents_Improve_Productivity_but_Harm_Understanding.pdf",
+          "sha256": "774a575510539b7ca3b7b3e91927eccb67fae537e86a23ea455841c3f5ae5e30",
+          "title": "(Im)Paired Programming: Coding Agents Improve Productivity but Harm Understanding",
+          "role": "assigned",
+          "version": "2607.26375v1",
+          "pages": "3–9、18–19",
+          "sections": "§3–6、Figure 4–7、附录 A.9 题目有效性与分项。",
+          "contribution": "起始正确率、按作品出题的理解、chatbot 扩展。",
+          "limits": "扩展差异不显著，子组分析探索性。"
+        },
+        {
+          "path": "courses/11-768/19.HumanAgentInteraction/references/Mixed-Initiative_Interaction.pdf",
+          "sha256": "c52c6a3ac77b48dcdd4009992ec89f202b958db9a068d7581e5ddf8523cfc1ea",
+          "title": "Mixed-Initiative Interaction",
+          "role": "additional",
+          "version": "IEEE Intelligent Systems, September/October 1999; Microsoft Research PDF",
+          "pages": "1–6",
+          "sections": "专题导言、Allen 的对话和主动权层级、Horvitz 的直接操控与不确定性。",
+          "contribution": "混合主动权的历史与交接中断问题。",
+          "limits": "历史原型，不提供 LLM 场景效应。"
+        },
+        {
+          "path": "courses/11-768/19.HumanAgentInteraction/references/Principles_of_Mixed-Initiative_User_Interfaces.pdf",
+          "sha256": "9f2596af326e186cc1eb27da5d0f0beda8d2ff15794b82958788c636693938d2",
+          "title": "Principles of Mixed-Initiative User Interfaces",
+          "role": "additional",
+          "version": "CHI 1999; Microsoft Research PDF",
+          "pages": "1–6",
+          "sections": "LookOut 调用、预期效用、注意力与不确定性。",
+          "contribution": "不确定意图下等待、提示或准备草案的选择。",
+          "limits": "CSV 的数字由教学推导。"
+        },
+        {
+          "path": "courses/11-768/19.HumanAgentInteraction/references/ToM-SWE_User_Mental_Modeling_for_Software_Engineering_Agents.pdf",
+          "sha256": "6c500b58a5c0456fc4ebe50f67cdd3ec38122116762fd5286403d02c3904dee2",
+          "title": "ToM-SWE: User Mental Modeling for Software Engineering Agents",
+          "role": "additional",
+          "version": "2510.21903v2",
+          "pages": "3–8",
+          "sections": "§3–6、模拟基准与实际开发者使用、图6。",
+          "contribution": "用户建模伙伴、长期偏好、建议接受指标。",
+          "limits": "86.2% 分母为建议数，采用观察性研究。"
+        },
+        {
+          "path": "courses/11-768/19.HumanAgentInteraction/references/Developer_Interaction_Patterns_with_Proactive_AI_A_Five-Day_Field_Study.pdf",
+          "sha256": "95cfdb080064d75b2ad2419e6a70c46ba85e8837d49df491b4c1f218b95defec",
+          "title": "Developer Interaction Patterns with Proactive AI: A Five-Day Field Study",
+          "role": "additional",
+          "version": "2601.10253v1",
+          "pages": "4–9",
+          "sections": "§3–5，工作流干预、采样口径、图4、问卷与发现。",
+          "contribution": "不同阶段的主动提示可接受性。",
+          "limits": "参与与触发时机内容一起变化，样本较小。"
+        },
+        {
+          "path": "courses/11-768/19.HumanAgentInteraction/references/Training_language_models_to_follow_instructions_with_human_feedback.pdf",
+          "sha256": "c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98",
+          "title": "Training language models to follow instructions with human feedback",
+          "role": "additional",
+          "version": "2203.02155v1",
+          "pages": "5–8",
+          "sections": "§3.1–3.4，图2、示范、偏好标注和 PPO。",
+          "contribution": "单次回答场景的偏好学习基础。",
+          "limits": "工作段和整条轨迹的比较不是 InstructGPT 原实验。"
+        },
+        {
+          "path": "courses/11-768/19.HumanAgentInteraction/references/Cognitive_Architectures_for_Language_Agents.pdf",
+          "sha256": "fd93d2ef1b94f963b652136b8c792b01d7326d861f5ce918926c043934a48dbe",
+          "title": "Cognitive Architectures for Language Agents",
+          "role": "additional",
+          "version": "2309.02427v3",
+          "pages": "7–15",
+          "sections": "§3.3、§4，图4/5，工作记忆、长期记忆、动作及循环。",
+          "contribution": "Agent 作为模型与工作流组合来比较。",
+          "limits": "分类是概念框架，不是提升因果证据。"
+        },
+        {
+          "path": "courses/11-768/19.HumanAgentInteraction/references/Prediction-Powered_Inference.pdf",
+          "sha256": "a16bf2c108fea9f559d00708c731d29d673c1dcce5d4acfd65e64a694b7ae17a",
+          "title": "Prediction-Powered Inference",
+          "role": "additional",
+          "version": "2301.09633v4",
+          "pages": "1–4",
+          "sections": "§1.1–1.3，均值估计、纠偏量、独立性和区间。",
+          "contribution": "PPI 的期望、方差与假设。",
+          "limits": "教学加权和案例依据 PULSE 版本；不推断总体效果。"
+        },
+        {
+          "path": "courses/11-768/19.HumanAgentInteraction/references/A_Rubric-Supervised_Critic_from_Sparse_Real-World_Outcomes.pdf",
+          "sha256": "6a3e61d7820b68065f4df664da008e36b58cf0da142c2b567f9bba0358ae0761",
+          "title": "A Rubric-Supervised Critic from Sparse Real-World Outcomes",
+          "role": "additional",
+          "version": "2603.03800v1",
+          "pages": "3–12",
+          "sections": "§2–5、Fig.2、Table 2/3，片段归因、rubric、对照、早停、数据选择。",
+          "contribution": "Reranking 及训练筛选机制。",
+          "limits": "AUC 与 Best@8 对照不同，后者限于混合结果子集。"
+        },
+        {
+          "path": "courses/11-768/19.HumanAgentInteraction/references/40_Years_of_Designing_Code_Comprehension_Experiments_A_Systematic_Mapping_Study.pdf",
+          "sha256": "44307f7075a54b293f509357754a6a8ecb40bb4bb0546ac76cc5505007056296",
+          "title": "40 Years of Designing Code Comprehension Experiments: A Systematic Mapping Study",
+          "role": "additional",
+          "version": "ACM Computing Surveys 56(4), Article 106, DOI 10.1145/3626522; author-hosted published PDF",
+          "pages": "3–6、21–25",
+          "sections": "§2、§4.7，代码理解的概念区分、任务与指标。",
+          "contribution": "按真实代码设计理解测验，并说明可比性。",
+          "limits": "综述不是本课 Java 示例的实证。"
+        },
+        {
+          "path": "courses/11-768/19.HumanAgentInteraction/references/Is_Agent_Code_Less_Maintainable_Than_Human_Code.pdf",
+          "sha256": "489443bfefdb55197a404dde073c9785c63363be34fa000937bb9660fca5309c",
+          "title": "Is Agent Code Less Maintainable Than Human Code?",
+          "role": "additional",
+          "version": "2606.21804v2",
+          "pages": "3–9",
+          "sections": "§3–5、讨论限制、Table 2/4、行为漂移追踪。",
+          "contribution": "HA 和 AA 的两步维护对照、输入与异常契约。",
+          "limits": "没有人接手条件，限制在筛选后的前置成功实例。"
+        }
+      ],
+      "readback": {
+        "first": "全文首轮复读及原件回查。补了协作效用小例子、ToM-SWE 三周现场口径、PPI 贴合假设与原文计划分项区间、BCE-floor 及 PR 后续任务的实验范围。纠正 G8 是撤下建议而非取消整个 Agent 工作流，区分 PPO 目标裁剪与硬步长限制。",
+        "final": "变更后全文第二次复读，检查章节连续性、动机—机制—案例链、研究条件和自测答案。最终文本已通过本课链接、页码、16 个原件 SHA-256 及 Java 算例输出对照。"
+      },
+      "remaining_issues": [],
+      "limitations": [
+        "仅运行固定数据的 PPI 算例，没有部署 PULSE/ProAIDE、训练 critic、调用模型/API/GPU 或复现论文结果。",
+        "p.83–86 的技能训练为课堂材料，未取得公开论文全文，研究设置和外推边界按课件说明。",
+        "阅读链接指向本库锁定的版本。版本与归档校验见 REFERENCES.json，引用的数值不作为产品当前表现。"
+      ],
+      "examples": {
+        "path": "courses/11-768/19.HumanAgentInteraction/examples/PpiRatings.java",
+        "sha256": "296fa70f21530006159aa1a22a1413229a6a5badb97cc89812aa203264ca04e1",
+        "command": "java examples/PpiRatings.java",
+        "working_directory": "courses/11-768/19.HumanAgentInteraction",
+        "results_path": "courses/11-768/19.HumanAgentInteraction/examples/ppi-output.txt",
+        "results_sha256": "902c67bef59f92f5484b9a1bb6ef9715b2101d8247cbc0ceb875795fa88bacc8",
+        "execution": "本地 OpenJDK 21.0.10 执行两次，保存三行固定算例输出，二次按字节一致。"
+      },
+      "final_cross_review": {
+        "sha256": "e43f3f33badce0443335517de3d111cc7758bd03ea6461a4692d3d12b22adcd5",
+        "scope": "终稿全文172行，含读者前置、贯穿例子、八道自测与阅读地图。交叉回查 PULSE p5/7/18、协作、rubric critic 与用户实验。",
+        "result": "PULSE 正文百分数与表 5 的估计量、区间、手算和自测各自一致。",
+        "revision_checked": "PULSE 正文百分数与附录表 5 的估计量分开说明。"
+      }
+    },
+    {
       "note": "courses/11-768/20.RerankingAndCriticModels/notes.zh-CN.md",
       "lesson": 20,
       "status": "passed",
@@ -3926,6 +4138,413 @@
           "checked": "SWE-Gym Figure3 pass16 42.8 versus Best16 32.0; N8 figure/prose discrepancy avoided"
         }
       ]
+    },
+    {
+      "note": "courses/11-768/21.TreeSearch/notes.zh-CN.md",
+      "lesson": 21,
+      "status": "passed",
+      "final_sha256": "9814aed9d8ae8b7c116bd7d4bb316486a7972d2f397f38a27e9673381ec3927e",
+      "content_review_sha256": "9814aed9d8ae8b7c116bd7d4bb316486a7972d2f397f38a27e9673381ec3927e",
+      "reviewed_at": "2026-11-20T10:13:31+08:00",
+      "coverage": "完整阅读100页讲义。阅读6项指定材料及20项官方参考的相关方法、实验和限制正文，并记录实际页序、版本及贡献。讲义五段主题、关键附录、七道自测与答案均纳入。面向有Java与LLM应用经验的读者。",
+      "sources_read": [
+        {
+          "path": "courses/11-768/21.TreeSearch/2026-11-17-jy-koh.pdf",
+          "sha256": "ae36ec248377b87ceee1ff34be11f8a20d31b705f4acf70994cec6127a2bc5e6",
+          "pages": "1–100",
+          "sections": "完整讲义五段主线、总结、附录与参考目录。目视核对实际页14、17–21、35–36、50、64、69、95、98–99的流程图、表格及公式。",
+          "contribution": "控制教学顺序、状态与操作建模、例题、实验和工程衔接。",
+          "limits": "题号21与讲义的物理页、印刷页码分别处理。讲义图示与固定教学算例均不作为模型实测。"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/readings/Tree_of_Thoughts_Deliberate_Problem_Solving_with_Large_Language_Models.pdf",
+          "sha256": "79c5237e3f63953a73f2b0d6894327702ee1f7e981450c251bb1b5cb4f8d7b8f",
+          "title": "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+          "role": "assigned",
+          "version": "2305.10601v2",
+          "pages": "5–7",
+          "sections": "§4.1, Table 2 and Fig. 3",
+          "contribution": "候选生成、部分解评价、宽度搜索；74%、45%、4.0%、9.0%、49%及取样口径",
+          "limits": "任务、模型与预算限定；oracle并非多数投票"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/readings/Stream_of_Search_SoS_Learning_to_Search_in_Language.pdf",
+          "sha256": "e32e64bb15692a2ed1a5f554f147b0628bf1e6e8e74eb0459ebef0c7608ecccb",
+          "title": "Stream of Search (SoS): Learning to Search in Language",
+          "role": "assigned",
+          "version": "2404.03683v1",
+          "pages": "5–7, 16",
+          "sections": "§§5–6, Appendix D Table 1",
+          "contribution": "SoS训练500k轨迹，OP控制和STaR/APA追加训练",
+          "limits": "同梯度步数不等于等token；见过目标值但输入新"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/readings/Tree_Search_for_Language_Model_Agents.pdf",
+          "sha256": "0b21710f26db2e9383f768cdaea5755f1a39fb0b5eafffdfa5451a33d106e130",
+          "title": "Tree Search for Language Model Agents",
+          "role": "assigned",
+          "version": "2407.01476v4",
+          "pages": "5–7, 19",
+          "sections": "§§3.3, 4.1–4.2, Appendix A.4.1",
+          "contribution": "父分数入队、叶节点估值与实际环境恢复；VWA/WA两个结果",
+          "limits": "5步上限不是总交互预算；实际网页恢复依赖环境"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/readings/Is_Your_LLM_Secretly_a_World_Model_of_the_Internet_Model-Based_Planning_for_Web_Agents.pdf",
+          "sha256": "ed7e9cd6629bfb30086153d3b6b02f91e1d576ab8f6d07f0ad5b9b4d9ebdcf33",
+          "title": "Is Your LLM Secretly a World Model of the Internet? Model-Based Planning for Web Agents",
+          "role": "assigned",
+          "version": "2411.06559v2",
+          "pages": "5–8",
+          "sections": "§§3.2, 4, 5.1, Tables 1–2 and Fig. 5",
+          "contribution": "模拟后评分、一阶真实动作、视距消融与真实树搜索成本",
+          "limits": "模拟预测不是执行证据；本论文重跑基线"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/readings/Recursive_Language_Models.pdf",
+          "sha256": "8567362c22768d9b50d4a4a8d63bb28dda2c2b2051be30d67f70f645170429ca",
+          "title": "Recursive Language Models",
+          "role": "assigned",
+          "version": "2512.24601v3",
+          "pages": "5–8",
+          "sections": "§§3–4, Table 1",
+          "contribution": "REPL外部上下文、递归深度、顺序子调用；两个任务指标以及CodeQA反例",
+          "limits": "不是增加模型原生窗口；基准使用指定根和子模型"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/readings/Multi-Agent_Computer_Use.pdf",
+          "sha256": "5a8e347bd731600d1ab92633130aa971d4fb72b10df684519793b307ddb6751e",
+          "title": "Multi-Agent Computer Use",
+          "role": "assigned",
+          "version": "2606.01533v1",
+          "pages": "3–7",
+          "sections": "§§3–4, Fig. 2 and Table 1",
+          "contribution": "可变DAG、状态与结果交接、经理模型配对和质量成本",
+          "limits": "中位耗时与成功率分开，Opus manager改变归因"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/references/Thinking_Fast_and_Slow_with_Deep_Learning_and_Tree_Search.pdf",
+          "sha256": "4a9b9df2614c6c96cde4c3d575275d31fea443b876edf9074f87e0dc1347b1af",
+          "title": "Thinking Fast and Slow with Deep Learning and Tree Search",
+          "role": "additional",
+          "version": "1705.08439v4",
+          "pages": "2–3",
+          "sections": "§3 and Algorithm 1",
+          "contribution": "专家改进和模仿两阶段",
+          "limits": "搜索训练数据术语与推理选择分开"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/references/Mastering_the_Game_of_Go_without_Human_Knowledge.pdf",
+          "sha256": "a23add75aa06054c5a008befff55fb23af5da70a88c99004e0ff863eadf60ca1",
+          "title": "Mastering the Game of Go without Human Knowledge",
+          "role": "additional",
+          "version": "Author accepted manuscript, UCL Discovery 10045895; 42-page unformatted edition",
+          "pages": "2–5",
+          "sections": "§1, Figs. 1–2",
+          "contribution": "政策价值双头、自博弈与用网络估值的MCTS",
+          "limits": "UCL接受稿；AlphaGo与AlphaGo Zero的rollout不同"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/references/A_General_Reinforcement_Learning_Algorithm_That_Masters_Chess_Shogi_and_Go_through_Self-Play.pdf",
+          "sha256": "9e298fbfbcfbb50c46379707cc77a9eaec303e9d310dbbb85a31d04896da4b5f",
+          "title": "A General Reinforcement Learning Algorithm That Masters Chess, Shogi, and Go through Self-Play",
+          "role": "additional",
+          "version": "Author accepted manuscript, UCL Discovery 10069050; 32-page accepted edition",
+          "pages": "2–3, 17",
+          "sections": "Eq. 1 and Supplementary Methods",
+          "contribution": "根访问分布、PUCT和损失",
+          "limits": "UCL接受稿；课堂简例固定探索系数并省正则"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/references/ReST-MCTS_LLM_Self-Training_via_Process_Reward_Guided_Tree_Search.pdf",
+          "sha256": "c0be21a7b1731e3530b5a851acef66875ce180225856c0998c090782f4916d6c",
+          "title": "ReST-MCTS*: LLM Self-Training via Process Reward Guided Tree Search",
+          "role": "additional",
+          "version": "2406.03816v3",
+          "pages": "3–5",
+          "sections": "§3 and Fig. 1",
+          "contribution": "已知终局答案、推理距离估计、过程奖励与策略交替训练",
+          "limits": "有已知答案，不代表一般可自动监督全部步骤"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/references/Graph_of_Thoughts_Solving_Elaborate_Problems_with_Large_Language_Models.pdf",
+          "sha256": "73caa3c05813105e5db38edfbb58e1b660771a00dfdb74768c8845e15263c5da",
+          "title": "Graph of Thoughts: Solving Elaborate Problems with Large Language Models",
+          "role": "additional",
+          "version": "2308.09687v4",
+          "pages": "4, 8–9",
+          "sections": "§7.2, Figs. 5–6",
+          "contribution": "聚合与重新评分；排序中位数与交集严格正确",
+          "limits": "62%对ToT配置，不是成功率百分点"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/references/Beyond_A_Better_Planning_with_Transformers_via_Search_Dynamics_Bootstrapping.pdf",
+          "sha256": "5318460e2562fcc942cf4123433c513947bd97e654d44268db0f6b27774257a8",
+          "title": "Beyond A*: Better Planning with Transformers via Search Dynamics Bootstrapping",
+          "role": "additional",
+          "version": "2402.14083v2",
+          "pages": "4–5, 7–8",
+          "sections": "§§3.3, 4.3",
+          "contribution": "模仿A*、验证终局后用更短搜索序列自举",
+          "limits": "用训练任务自举，保留通过验证的轨迹"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/references/DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_Reinforcement_Learning.pdf",
+          "sha256": "52d8ca3ac93e88cef9944e1fd03b0e04aec5954495a8250fb2fadf8fa20a4dad",
+          "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+          "role": "additional",
+          "version": "2501.12948v1",
+          "pages": "15–16",
+          "sections": "v1 §4.2",
+          "contribution": "PRM/MCTS尝试局限与token动作空间",
+          "limits": "历史负结果局限于该训练方案"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/references/Language_Agent_Tree_Search_Unifies_Reasoning_Acting_and_Planning_in_Language_Models.pdf",
+          "sha256": "04c1e9cb00f384052739c53bcecb75626bf1f58f66c379cc289ea60ffc988635",
+          "title": "Language Agent Tree Search Unifies Reasoning, Acting, and Planning in Language Models",
+          "role": "additional",
+          "version": "2310.04406v3",
+          "pages": "4–6",
+          "sections": "§3, Fig. 2",
+          "contribution": "环境反馈后估值，UCT、备份与反思",
+          "limits": "与纯语言ToT/RAP及真实网页best-first区分"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/references/DeepSeek-Prover-V1.5_Harnessing_Proof_Assistant_Feedback_for_Reinforcement_Learning_and_Monte-Carlo_Tree_Search.pdf",
+          "sha256": "18b9bf9ce4a553b7c54ed4aab49f1f5a008f9b7e9915f2f164c8ef4da59559cd",
+          "title": "DeepSeek-Prover-V1.5: Harnessing Proof Assistant Feedback for Reinforcement Learning and Monte-Carlo Tree Search",
+          "role": "additional",
+          "version": "2408.08152v1",
+          "pages": "3, 8–9",
+          "sections": "§3.1–3.2, Figs. 2 and 4",
+          "contribution": "Lean tactic状态、切断失败前缀、回到已检状态",
+          "limits": "本地v1图号与讲义链接的会议版不同"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/references/Mastering_Atari_Go_Chess_and_Shogi_by_Planning_with_a_Learned_Model.pdf",
+          "sha256": "25588ee1d48690b33359a08a42fadfe86335aefefeee241d465b8bbd5eaa445c",
+          "title": "Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model",
+          "role": "additional",
+          "version": "1911.08265v2",
+          "pages": "3–4",
+          "sections": "Methods overview and Fig. 1",
+          "contribution": "潜在状态、奖励动态、策略价值预测",
+          "limits": "用arXiv v2，预测目标无需复原可见状态"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/references/Reasoning_with_Language_Model_is_Planning_with_World_Model.pdf",
+          "sha256": "f67d075c889d885db80355f6d398fb2aa6830406340c365140e234af05056dc3",
+          "title": "Reasoning with Language Model is Planning with World Model",
+          "role": "additional",
+          "version": "EMNLP 2023 proceedings, pages 8154-8173",
+          "pages": "3–5",
+          "sections": "§§3.1–3.4",
+          "contribution": "行动提示与转移提示分离、模拟和任务奖励",
+          "limits": "与实际执行产生观察区分"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/references/CWM_An_Open-Weights_LLM_for_Research_on_Code_Generation_with_World_Models.pdf",
+          "sha256": "2ae224342fd03066046f82416c6d56e2041f658fdd0362f2fb01848d887ed583",
+          "title": "CWM: An Open-Weights LLM for Research on Code Generation with World Models",
+          "role": "additional",
+          "version": "2510.02387v1",
+          "pages": "2–6",
+          "sections": "§2 and Figs. 1, 3",
+          "contribution": "Python内存轨迹与可执行容器交互",
+          "limits": "执行预测无法独立证明真实运行结果"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/references/WorldCoder_a_Model-Based_LLM_Agent_Building_World_Models_by_Writing_Code_and_Interacting_with_the_Environment.pdf",
+          "sha256": "55c47b1df146967ecab1933518783059885b693460d3ebbc7554aaec0eeb101f",
+          "title": "WorldCoder, a Model-Based LLM Agent: Building World Models by Writing Code and Interacting with the Environment",
+          "role": "additional",
+          "version": "2402.12275v3",
+          "pages": "3–5",
+          "sections": "§2 and Algorithm 1",
+          "contribution": "从真实经验合成状态转移和奖励程序",
+          "limits": "模型归纳是否泛化要独立验证"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/references/Generating_Code_World_Models_with_Large_Language_Models_Guided_by_Monte_Carlo_Tree_Search.pdf",
+          "sha256": "64c9d0504344661f3477eebd0d92e1290da36f173805cef2d79a571152bf67f2",
+          "title": "Generating Code World Models with Large Language Models Guided by Monte Carlo Tree Search",
+          "role": "additional",
+          "version": "2405.15383v2",
+          "pages": "5–6",
+          "sections": "§3, Fig. 2",
+          "contribution": "Generate, Improve, Fix给程序搜索不同动作",
+          "limits": "文章讨论实验中的确定性设置，工程应用须另验"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/references/Recursive_Agent_Optimization.pdf",
+          "sha256": "78d5d1fbcd5be9f4b3946310d937100d8936600af3e4bdb1b8e82b8dbe1325ce",
+          "title": "Recursive Agent Optimization",
+          "role": "additional",
+          "version": "2605.06639v1",
+          "pages": "3–5, 8–10",
+          "sections": "§§2–4, Tables 1–3",
+          "contribution": "共享策略、局部评分与委派、可并行和强依赖任务",
+          "limits": "本地v1机制与讲义所用v2结果单列"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/references/ADaPT_As-Needed_Decomposition_and_Planning_with_Language_Models.pdf",
+          "sha256": "65f4827525b2e77326e2cfa69b4928d71bd9e76350dfd3a77673173798ed4cc4",
+          "title": "ADaPT: As-Needed Decomposition and Planning with Language Models",
+          "role": "additional",
+          "version": "Findings of NAACL 2024, pages 4226-4252",
+          "pages": "4–5",
+          "sections": "§3 and Figs. 1–2",
+          "contribution": "按需分解与AND/OR式合成",
+          "limits": "规划触发与学习策略不是同类机制"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/references/HuggingGPT_Solving_AI_Tasks_with_ChatGPT_and_its_Friends_in_Hugging_Face.pdf",
+          "sha256": "bfac5794a2550fced04efbaee7539f0525b8fade538dc06e393a80150edab428",
+          "title": "HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face",
+          "role": "additional",
+          "version": "NeurIPS 2023 proceedings",
+          "pages": "4–5",
+          "sections": "§3.1, Table 1",
+          "contribution": "带任务ID与依赖字段的工具计划",
+          "limits": "依赖边表达实际输入，任务结构受工具限制"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/references/An_LLM_Compiler_for_Parallel_Function_Calling.pdf",
+          "sha256": "36dde899ed8abe0df728215e054aab21d1699add719afeb0ddadbb4e4eb23263",
+          "title": "An LLM Compiler for Parallel Function Calling",
+          "role": "additional",
+          "version": "PMLR 235, ICML 2024 proceedings, pages 24370-24391",
+          "pages": "4–5",
+          "sections": "§§3–4 and Fig. 2",
+          "contribution": "任务获取、就绪调度、流式规划与重新规划",
+          "limits": "关键路径数字为教学而非该论文实测"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/references/Effective_Strategies_for_Asynchronous_Software_Engineering_Agents.pdf",
+          "sha256": "7db67ce0a2b2d4188149b5d84dd44f2a2aab6dc6edd1de02d5508ff561834e62",
+          "title": "Effective Strategies for Asynchronous Software Engineering Agents",
+          "role": "additional",
+          "version": "2603.21489v2",
+          "pages": "3–4, 6–7",
+          "sections": "§§2, 4.2, Fig. 3",
+          "contribution": "隔离工作树、测试集成、人员规模对照",
+          "limits": "工作树不隔离数据库和服务等外部状态"
+        },
+        {
+          "path": "courses/11-768/21.TreeSearch/references/Discriminative_World_Models_for_Web_Agents.pdf",
+          "sha256": "8984769b011698352fba9532e6eed4d81a1683451e888ee85a2caa8042149e8b",
+          "title": "Discriminative World Models for Web Agents",
+          "role": "additional",
+          "version": "2609.02885v1",
+          "pages": "3–4, 6–7",
+          "sections": "§§3–4, Fig. 2",
+          "contribution": "区分下一状态并分层评价行动排序、实际轨迹",
+          "limits": "用于主题延伸，不误作本课主实验"
+        },
+        {
+          "url": "https://arxiv.org/html/2605.06639v2",
+          "title": "Recursive Agent Optimization, v2",
+          "role": "online lecture citation",
+          "version": "2605.06639v2",
+          "sections": "§§2, 4 and Tables 1–3",
+          "contribution": "对照讲义核查任务、固定窗口与共同完成时延",
+          "limits": "查询作者HTML，不替换本地v1 PDF"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/princeton-nlp/tree-of-thought-llm/master/src/tot/tasks/game24.py",
+          "title": "ToT Game of 24 task code",
+          "role": "online lecture citation",
+          "sections": "value_outputs_unwrap，末行标签映射",
+          "contribution": "核对20、1、0.001相加",
+          "limits": "作者活动分支，仅参照本次正文读取"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/spcl/graph-of-thoughts/main/examples/sorting/utils.py",
+          "title": "GoT sorting scoring code",
+          "role": "online lecture citation",
+          "sections": "test_sorting and num_errors",
+          "contribution": "核对排序错误函数",
+          "limits": "作者活动分支，仅参照本次正文读取"
+        },
+        {
+          "url": "https://papers.neurips.cc/paper_files/paper/2018/hash/2de5d16682c3c35007e4e92982f1a2ba-Abstract.html",
+          "title": "Recurrent World Models Facilitate Policy Evolution",
+          "role": "online lecture citation",
+          "sections": "作者摘要及DoomRNN演示入口",
+          "contribution": "核对讲义p.45的历史上下文",
+          "limits": "用于背景，不重新运行演示或做实验分析"
+        }
+      ],
+      "reread_result": [
+        {
+          "pass": 1,
+          "perspective": "从教学目的到首个工作例子",
+          "scope": "完整初稿标题至阅读地图，并逐节查相关讲义与论文",
+          "findings_fixed": [
+            "补Java record的可变组件边界与A*前置",
+            "补AlphaGo Zero可复用规则与语言搜索差别、交叉熵直觉",
+            "核实公式转义、ToT末行解析、GoT数字计数和DeepSeek-Prover本地v1图号",
+            "把RLM深度结果与泛化解释分开；逐项核对RAO不同版本与奖励归因"
+          ]
+        },
+        {
+          "pass": 2,
+          "perspective": "修订后全文、来源边界与算例一致性",
+          "scope": "完整终稿 219 行，含7道自测、阅读地图、五段正文。",
+          "result": "通过。逐段检查方法区别、输入限制、来源版次、页号和运行结果，未发现检验范围内的未解决问题。",
+          "sha256": "2ef7892579bd6427d561e2a92df814e5355c99acd9ffa20965906e339da53fc7"
+        }
+      ],
+      "final_full_rereads": 1,
+      "reread_sha256": "9814aed9d8ae8b7c116bd7d4bb316486a7972d2f397f38a27e9673381ec3927e",
+      "remaining_issues": [],
+      "limitations": [
+        "阅读覆盖的是26项论文与其他材料的相关段落，不声称逐页复核每份长附录。",
+        "未运行模型、GPU、远程API、浏览器或官方论文代码。实验表数字来自原文。",
+        "固定CPU算例核对算术、可行组合与理论DAG时间，不测量真实时延、搜索算法整体性能或论文结果。",
+        "线上核对的RAO v2为作者原文，原有本地v1 PDF保留。"
+      ],
+      "examples": {
+        "path": "courses/11-768/21.TreeSearch/examples/search_primitives.py",
+        "sha256": "1d5660d5c01c1cc49079f742e0d7ae2cb534adc8d1b63a252efa7458b5177fac",
+        "command": "python3 courses/11-768/21.TreeSearch/examples/search_primitives.py",
+        "results_path": "courses/11-768/21.TreeSearch/examples/RESULTS.json",
+        "results_sha256": "7fb7cb96a2c5f5573132ff8044901c538baa57cd361625ecdb72c340d7af7b4d",
+        "python": "Python 3.11.10",
+        "execution": "已运行并将JSON输出逐项与记录比较，退出码0。",
+        "checks": [
+          "24点式等于24",
+          "PUCT 三分数和A更新后Q=.54",
+          "仅F2+B满足硬约束，总价720",
+          "理论串行12分钟、并行下界7分钟"
+        ]
+      },
+      "visual_checks": {
+        "actual_pdf_pages": [
+          14,
+          17,
+          18,
+          19,
+          20,
+          21,
+          35,
+          36,
+          50,
+          64,
+          69,
+          95,
+          98,
+          99
+        ],
+        "scope": "渲染后目视核对24点求解图、算法流程、实验证据及公式。"
+      },
+      "final_cross_review": {
+        "sha256": "9814aed9d8ae8b7c116bd7d4bb316486a7972d2f397f38a27e9673381ec3927e",
+        "scope": "终稿全文219行及自测、阅读地图。交叉回查 PUCT、A* 前提、ToT、GoT、SoS、网页搜索及 RAO/MACU。",
+        "result": "对照、页码和搜索前提清楚，LLM 估分与 A* 最优性条件分开。",
+        "revision_checked": "补明确 A* 图搜索的非负边、可采纳估计、重开和目标出队条件。"
+      }
     }
   ],
   "original_sources": {
@@ -4474,7 +5093,9 @@
     "courses/11-768/20.RerankingAndCriticModels/references/Tree_Search_for_Language_Model_Agents.pdf": "0b21710f26db2e9383f768cdaea5755f1a39fb0b5eafffdfa5451a33d106e130",
     "courses/11-768/20.RerankingAndCriticModels/references/Extended_thinking.html": "4ed98be8b3f295a0c86080c128f6b3bf3b69ed3672797d688f986b892c3e8f94",
     "courses/11-768/20.RerankingAndCriticModels/references/code/DeepSeek-R1/README.md": "4ed979e497121ae4dd9f1573da1668219f43be55d62cc0bf2be5429211a67486",
-    "courses/11-768/20.RerankingAndCriticModels/references/code/meta-harness/reference_examples/text_classification/agents/fewshot_memory.py": "daa346dbae5a83ffd58c6507eca99cb9e718f1e406be80d95b2fa72d90576240"
+    "courses/11-768/20.RerankingAndCriticModels/references/code/meta-harness/reference_examples/text_classification/agents/fewshot_memory.py": "daa346dbae5a83ffd58c6507eca99cb9e718f1e406be80d95b2fa72d90576240",
+    "courses/11-768/19.HumanAgentInteraction/2026-11-10-valerie-chen.pdf": "981b6643d14b951983395f1eadd5806be15330039d20f268a0f1fe1a133801d9",
+    "courses/11-768/21.TreeSearch/2026-11-17-jy-koh.pdf": "ae36ec248377b87ceee1ff34be11f8a20d31b705f4acf70994cec6127a2bc5e6"
   },
   "deferred_notes": []
 }

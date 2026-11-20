@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Rethinking Human-AI Collaboration in the Agentic Era",
+    "official_schedule_title": "Interaction 2: Human-Agent Interaction",
+    "url": "https://www.cmu-agents.com/slides/2026-11-10-valerie-chen.pdf",
+    "final_url": "https://www.cmu-agents.com/slides/2026-11-10-valerie-chen.pdf",
+    "path": "2026-11-10-valerie-chen.pdf",
+    "role": "lecture",
+    "status": "saved",
+    "pages": 89,
+    "lecturer": "Valerie Chen",
+    "lecture_date": "2026-11-10",
+    "original_filename": "2026-11-10-valerie-chen.pdf",
+    "bytes": 25257371,
+    "sha256": "981b6643d14b951983395f1eadd5806be15330039d20f268a0f1fe1a133801d9",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "retrieved_at": "2026-11-20T01:23:51.298607+00:00",
+    "archived_at": "2026-11-20T01:29:54.381094+00:00",
+    "acquisition_note": "Downloaded and verified as complete PDF on 2026-11-20; raw bytes and official filename retained. Structure/pages/cover checked; no Chinese teaching-note content review performed."
+  }
+]

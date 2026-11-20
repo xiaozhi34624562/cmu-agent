@@ -6,7 +6,7 @@
 
 本目录按 CMU 11-768 资料库的方式，**以课次为单位**整理 Harvard CS2680: Modern AI Systems: Agents and System Optimizations（2026 年秋季学期）。目录保持稳定编号，当前授课顺序以官方日期为准；名称保留官网课程原题的词语及 I、II、III 等分节标记，课表后续改题时保留既有目录路径。每个目录包含原始讲义、`readings/` 阅读文件和逐课 `SOURCES.md`；本地课次包含论文讨论课，因此目录编号不等同于官网 PDF 文件名中的编号。
 
-官网同步日期：**2026-11-13**。[原课程网站](https://cs2680.com/) · [完整来源索引](SOURCES.md) · [课程信息](0.CourseInformation/SOURCES.md)
+官网同步日期：**2026-11-20**。[原课程网站](https://cs2680.com/) · [完整来源索引](SOURCES.md) · [课程信息](0.CourseInformation/SOURCES.md)
 
 <!-- BEGIN COURSE INDEX -->
 
@@ -37,9 +37,9 @@
 | 11-02 | [26. Assignments feedback and agent pitfalls, GPU programming (cont.)](26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/README.md) | [feedback_assignment.pdf](26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/feedback_assignment.pdf) · [10_llm_serving_basics_2b.pdf](26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/10_llm_serving_basics_2b.pdf) | [中文讲解](26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/notes.zh-CN.md) |
 | 11-04 | [12. Efficient LLM serving basics III: Batching, paging, and parallelism](12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/SOURCES.md) | [11_llm_serving_basics_3.pdf](12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/11_llm_serving_basics_3.pdf) | [中文讲解](12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/notes.zh-CN.md) |
 | 11-09 | [20. Guest lecture: Why Infrastructure sets the pace of AI](20.GuestLectureWhyInfrastructureSetsThePaceOfAI/README.md) | 官网尚未提供 | 暂无中文讲解 |
-| 11-11 | [13. Efficient LLM serving: speculative decoding](13.EfficientLLMServing.SpeculativeDecoding/SOURCES.md) | 官网尚未提供 | 暂无中文讲解 |
+| 11-11 | [13. Efficient LLM serving: speculative decoding](13.EfficientLLMServing.SpeculativeDecoding/SOURCES.md) | [12_llm_serving_spec_decoding.pdf](13.EfficientLLMServing.SpeculativeDecoding/12_llm_serving_spec_decoding.pdf) | [中文讲解](13.EfficientLLMServing.SpeculativeDecoding/notes.zh-CN.md) |
 | 11-16 | [16. Efficient LLM serving: KV-cache optimization and model architectures](16.EfficientLLMServing.KVCacheOptimizationAndModelArchitectures/SOURCES.md) | 论文讨论课；官网未提供讲义 PDF | 暂无中文讲解 |
-| 11-18 | [24. Student sharing III: Showcase your serving engine (Assignment 4)](24.StudentSharingIII.EngineOptimizationsAndAgentEngineCoDesign/README.md) | 官网尚未提供 | 暂无中文讲解 |
+| 11-18 | [24. Student sharing III: Showcase your serving engine (Assignment 4)](24.StudentSharingIII.EngineOptimizationsAndAgentEngineCoDesign/README.md) | PDF 需要密码；原件已归档，正文未取得 | 暂无中文讲解 |
 | 11-23 | [15. Efficient LLM serving: pruning and quantization](15.EfficientLLMServing.PruningAndQuantization/SOURCES.md) | 官网尚未提供 | 暂无中文讲解 |
 | 11-30 | [14. Efficient agentic systems: scheduling and prefix caching](14.EfficientAgenticSystems.SchedulingAndPrefixCaching/SOURCES.md) | 官网尚未提供 | 暂无中文讲解 |
 | 12-02 | [17. Efficient agentic systems: routing and load balancing](17.EfficientAgenticSystem.RoutingAndLoadBalancing/SOURCES.md) | 官网尚未提供 | 暂无中文讲解 |
@@ -78,11 +78,11 @@
 
 ## 原始归档与更新
 
-官网页面最近同步于 2026-11-13；完整学期安排见 [COURSE_SCHEDULE.md](COURSE_SCHEDULE.md)。已有外部阅读复用此前归档，获取状态见 [SOURCES.md](SOURCES.md)，不将页面同步日期当作论文重新下载日期。部分 PDF 存在非致命解析告警；原始字节保留，局部渲染抽查可读不代表每张图均已检查。
+官网页面最近同步于 2026-11-20；完整学期安排见 [COURSE_SCHEDULE.md](COURSE_SCHEDULE.md)。已有外部阅读复用此前归档，获取状态见 [SOURCES.md](SOURCES.md)，不将页面同步日期当作论文重新下载日期。部分 PDF 存在非致命解析告警；原始字节保留，局部渲染抽查可读不代表每张图均已检查。
 
 - `site/`：课程网站的网页、幻灯片、样式和图片，保留原站目录结构。
 - `readings/`：外部论文与网页的原始下载归档；编号课次目录中有按主题命名的学习副本。
-- `assignments/course-repo/`：作业仓库的既有快照。2026-11-13 上游仓库仍不可访问，保留 2026-10-13 的固定提交；状态见 [SNAPSHOT.json](assignments/SNAPSHOT.json)。作业 4、5 使用课程网站的官方归档。
+- `assignments/course-repo/`：作业仓库的既有快照。2026-11-20 上游仓库仍不可访问，保留 2026-10-13 的固定提交；状态见 [SNAPSHOT.json](assignments/SNAPSHOT.json)。作业 4、5 使用课程网站的官方归档。
 - [CHECKSUMS.sha256](CHECKSUMS.sha256)：原始归档文件的校验值。
 
 视频和无法自动下载的网页保留在对应课次的 `SOURCES.md` 中；失败原因汇总于根目录 [SOURCES.md](SOURCES.md)。
@@ -91,8 +91,12 @@
 
 ## 中文讲解复核与维护
 
-第 1–12 课及 11/2 的稳定目录 26 均有完整中文讲解；第9课按官方18篇阅读与讨论要求组织，没有教师讲义PDF。第2课另保留一篇补充工程讲解。当前讲解版本、内容审核范围和限制见 [REVIEW.json](REVIEW.json)。运行 `python3 tools/verify_course_notes.py --course 2680` 检查引用与资料完整性，结果输出到终端。后续更新需同步维护讲解与补充资料索引；自动检查不能代替原文精读。
+第 1–13 课及 11/2 的稳定目录 26 均有完整中文讲解；第9课按官方18篇阅读与讨论要求组织，没有教师讲义PDF。第2课另保留一篇补充工程讲解。当前讲解版本、内容审核范围和限制见 [REVIEW.json](REVIEW.json)。运行 `python3 tools/verify_course_notes.py --course 2680` 检查讲解覆盖、引用和资料完整性。后续更新需同步维护讲解与补充资料索引；自动检查不能代替原文精读。
 
-## 2026-11-13 资料同步范围
+## 当前资料同步范围（2026-11-20）
 
-第 12、26 目录的新公开讲义及作业 5 已归档，两篇新增完整中文讲解已完成来源核查、全文复读和 CPU 教学示例运行；实际审核范围与最终哈希见 REVIEW.json。已有中文笔记正文保持原样。目录 26 对应 11/2 作业反馈与 GPU 续讲，目录 12 对应 11/4 批处理、分页与并行；目录编号不代表授课先后。新增阅读的完整标题及原始出处见 [READING_TITLES.json](READING_TITLES.json)；同 URL 的已有论文沿用既有归档版本，未重新下载。
+新增 11/11 推测解码的 78 页公开讲义，归入稳定目录 [13](13.EfficientLLMServing.SpeculativeDecoding/SOURCES.md)，保留官网文件名 `12_llm_serving_spec_decoding.pdf`；文件编号 12 不等于本地目录编号。11/18 作业 4 分享的受密码保护原件已归档，入口见目录 [24](24.StudentSharingIII.EngineOptimizationsAndAgentEngineCoDesign/SOURCES.md)，正文和页数未核实。10/26、10/28 的受保护原件仍需密码。
+
+阅读页与导航已刷新，没有新增指定阅读；集群指南补充了 Slurm 跨天时限格式和最长 14 天作业示例。作业 5 的说明、6 页讲义和 starter archive 与上次归档一致，未来课程日期、题目和期限未变。当前源文件校验值及此前内容审核来源版本的关系保留在 REVIEW.json；外部阅读沿用已有归档，不把本次同步日期当作重新下载日期。
+
+新增 [推测解码完整中文讲解](13.EfficientLLMServing.SpeculativeDecoding/notes.zh-CN.md)，覆盖草稿、验证、提交、KV 管理与系统测量。完整复读记录和来源获取限制见 [REVIEW.json](REVIEW.json)。

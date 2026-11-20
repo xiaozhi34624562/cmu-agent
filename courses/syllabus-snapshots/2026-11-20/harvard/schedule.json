@@ -1,0 +1,813 @@
+[
+  {
+    "date": "2026-09-02",
+    "cells": [
+      "1",
+      "2026-09-02",
+      "Juncheng Yang",
+      "Course overview and logistics [slide]",
+      "",
+      "Assignment 1 out (Mads-Lens: Watch the\n                agent work); Sign up for AWS"
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [
+        {
+          "label": "[slide]",
+          "url": "https://cs2680.com/slides/1_intro.pdf"
+        }
+      ],
+      [],
+      [
+        {
+          "label": "Assignment 1",
+          "url": "https://cs2680.com/assignments/assignment1.html"
+        }
+      ]
+    ]
+  },
+  {
+    "date": "2026-09-07",
+    "cells": [
+      "2",
+      "2026-09-07",
+      "No class — Labor Day"
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      []
+    ]
+  },
+  {
+    "date": "2026-09-09",
+    "cells": [
+      "2",
+      "2026-09-09",
+      "Juncheng Yang",
+      "Agents use I: How Claude Code Works [slide]",
+      "How I use LLMs ; Best practices for Claude Code ; Agentic Engineering Patterns ; more reading →",
+      ""
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [
+        {
+          "label": "[slide]",
+          "url": "https://cs2680.com/slides/2_agent_use_1.pdf"
+        }
+      ],
+      [
+        {
+          "label": "How I use LLMs",
+          "url": "https://www.youtube.com/watch?v=EWvNQjAaOHw"
+        },
+        {
+          "label": "Best practices for Claude Code",
+          "url": "https://code.claude.com/docs/en/best-practices"
+        },
+        {
+          "label": "Agentic Engineering Patterns",
+          "url": "https://simonwillison.net/guides/agentic-engineering-patterns/"
+        },
+        {
+          "label": "more reading →",
+          "url": "https://cs2680.com/readings/sep-09.html"
+        }
+      ],
+      []
+    ]
+  },
+  {
+    "date": "2026-09-14",
+    "cells": [
+      "3",
+      "2026-09-14",
+      "Juncheng Yang",
+      "Agents use II: 100x Engineer with Multi-agents [slide]",
+      "Claude Code agent teams ; Software is changing (again) ; Research acceleration: The view inside OpenAI ; more reading →",
+      ""
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [
+        {
+          "label": "[slide]",
+          "url": "https://cs2680.com/slides/3_agent_use_2.pdf"
+        }
+      ],
+      [
+        {
+          "label": "Claude Code agent teams",
+          "url": "https://code.claude.com/docs/en/agent-teams"
+        },
+        {
+          "label": "Software is changing (again)",
+          "url": "https://www.youtube.com/watch?v=LCEmiRjPEtQ"
+        },
+        {
+          "label": "Research acceleration: The view inside OpenAI",
+          "url": "https://openai.com/index/research-acceleration-view-inside-openai/"
+        },
+        {
+          "label": "more reading →",
+          "url": "https://cs2680.com/readings/sep-14.html"
+        }
+      ],
+      []
+    ]
+  },
+  {
+    "date": "2026-09-16",
+    "cells": [
+      "3",
+      "2026-09-16",
+      "Juncheng Yang",
+      "Agents design I: context management and tool design [slide]",
+      "ReAct ; A practical guide to building agents ; LLM Powered Autonomous Agents ; more reading →",
+      "Assignment 1 due Sun Sep 20, 11:59pm"
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [
+        {
+          "label": "[slide]",
+          "url": "https://cs2680.com/slides/4_agent_design_1.pdf"
+        }
+      ],
+      [
+        {
+          "label": "ReAct",
+          "url": "https://arxiv.org/abs/2210.03629"
+        },
+        {
+          "label": "A practical guide to building agents",
+          "url": "https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents"
+        },
+        {
+          "label": "LLM Powered Autonomous Agents",
+          "url": "https://lilianweng.github.io/posts/2023-06-23-agent"
+        },
+        {
+          "label": "more reading →",
+          "url": "https://cs2680.com/readings/sep-16.html"
+        }
+      ],
+      [
+        {
+          "label": "Assignment 1",
+          "url": "https://cs2680.com/assignments/assignment1.html"
+        }
+      ]
+    ]
+  },
+  {
+    "date": "2026-09-21",
+    "cells": [
+      "4",
+      "2026-09-21",
+      "Students",
+      "Student sharing I: Learning from Assignment 1",
+      "",
+      "Assignment 2 out (Mads-Loop: Build\n                the loop)"
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "label": "Assignment 2",
+          "url": "https://cs2680.com/assignments/index.html#assignment-2"
+        }
+      ]
+    ]
+  },
+  {
+    "date": "2026-09-23",
+    "cells": [
+      "4",
+      "2026-09-23",
+      "Juncheng Yang",
+      "Agents design II: multi-agent architecture, coordination, and communication [slide]",
+      "multi-agent research system ; scaling agent systems ; don’t build multi-agents ; more reading →",
+      ""
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [
+        {
+          "label": "[slide]",
+          "url": "https://cs2680.com/slides/5_agent_design_2.pdf"
+        }
+      ],
+      [
+        {
+          "label": "multi-agent research system",
+          "url": "https://www.anthropic.com/engineering/multi-agent-research-system"
+        },
+        {
+          "label": "scaling agent systems",
+          "url": "https://arxiv.org/pdf/2512.08296"
+        },
+        {
+          "label": "don’t build multi-agents",
+          "url": "https://cognition.com/blog/dont-build-multi-agents"
+        },
+        {
+          "label": "more reading →",
+          "url": "https://cs2680.com/readings/sep-23.html"
+        }
+      ],
+      []
+    ]
+  },
+  {
+    "date": "2026-09-28",
+    "cells": [
+      "5",
+      "2026-09-28",
+      "Juncheng Yang",
+      "Agents design III: agent memory and reliability [slide]",
+      "where agents fail ; MemGPT ; more reading →"
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [
+        {
+          "label": "[slide]",
+          "url": "https://cs2680.com/slides/6_agent_design_3.pdf"
+        }
+      ],
+      [
+        {
+          "label": "where agents fail",
+          "url": "https://arxiv.org/abs/2509.25370"
+        },
+        {
+          "label": "MemGPT",
+          "url": "https://arxiv.org/abs/2310.08560"
+        },
+        {
+          "label": "more reading →",
+          "url": "https://cs2680.com/readings/sep-28.html"
+        }
+      ]
+    ]
+  },
+  {
+    "date": "2026-09-30",
+    "cells": [
+      "5",
+      "2026-09-30",
+      "Juncheng Yang",
+      "Agent design IV: agent evaluation [slide]",
+      "Agent evaluation and benchmarks",
+      "Assignment 2 due Sun Oct 4, 11:59pm"
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [
+        {
+          "label": "[slide]",
+          "url": "https://cs2680.com/slides/7_agent_design_4.pdf"
+        }
+      ],
+      [
+        {
+          "label": "Agent evaluation and benchmarks",
+          "url": "https://cs2680.com/notes/agent-evaluation.html"
+        }
+      ],
+      [
+        {
+          "label": "Assignment 2",
+          "url": "https://cs2680.com/assignments/index.html#assignment-2"
+        }
+      ]
+    ]
+  },
+  {
+    "date": "2026-10-05",
+    "cells": [
+      "6",
+      "2026-10-05",
+      "Harsh Nilesh Pathak (Snowflake)",
+      "Guest lecture: Developing and Evaluating Agents in Enterprise Setting",
+      "",
+      "Assignment 3 out (Mads-Opt: Make\n                every token count)"
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "label": "Assignment 3",
+          "url": "https://cs2680.com/assignments/index.html#assignment-3"
+        }
+      ]
+    ]
+  },
+  {
+    "date": "2026-10-07",
+    "cells": [
+      "6",
+      "2026-10-07",
+      "Juncheng Yang",
+      "Advanced agent design I: Cost and performance [slide]",
+      "Cost-effective agents",
+      "Pre-proposal due (optional and only submit if you want to discuss your ideas)"
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [
+        {
+          "label": "[slide]",
+          "url": "https://cs2680.com/slides/8_agent_design_5.pdf"
+        }
+      ],
+      [
+        {
+          "label": "Cost-effective agents",
+          "url": "https://cs2680.com/notes/cost-effective-agents.html"
+        }
+      ],
+      []
+    ]
+  },
+  {
+    "date": "2026-10-12",
+    "cells": [
+      "7",
+      "2026-10-12",
+      "No class — Indigenous Peoples’ Day"
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      []
+    ]
+  },
+  {
+    "date": "2026-10-14",
+    "cells": [
+      "7",
+      "2026-10-14",
+      "Students",
+      "Advanced agent design II: agent safety, self-evolving harness",
+      "OWASP agentic top 10 ; more reading →",
+      ""
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "label": "OWASP agentic top 10",
+          "url": "https://genai.owasp.org/download/52117/?tmstv=1765059207"
+        },
+        {
+          "label": "more reading →",
+          "url": "https://cs2680.com/readings/oct-14.html"
+        }
+      ],
+      []
+    ]
+  },
+  {
+    "date": "2026-10-19",
+    "cells": [
+      "8",
+      "2026-10-19",
+      "Juncheng Yang",
+      "Efficient LLM serving basics I: intro to LLMs [slide]",
+      "Transformer ; Llama 3 ; Mixtral ; more reading →",
+      "Assignment 3 due Tue Oct 20,\n                11:59pm"
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [
+        {
+          "label": "[slide]",
+          "url": "https://cs2680.com/slides/9_llm_serving_basics_1.pdf"
+        }
+      ],
+      [
+        {
+          "label": "Transformer",
+          "url": "https://arxiv.org/abs/1706.03762"
+        },
+        {
+          "label": "Llama 3",
+          "url": "https://arxiv.org/abs/2407.21783"
+        },
+        {
+          "label": "Mixtral",
+          "url": "https://arxiv.org/abs/2401.04088"
+        },
+        {
+          "label": "more reading →",
+          "url": "https://cs2680.com/readings/oct-19.html"
+        }
+      ],
+      [
+        {
+          "label": "Assignment 3",
+          "url": "https://cs2680.com/assignments/index.html#assignment-3"
+        }
+      ]
+    ]
+  },
+  {
+    "date": "2026-10-21",
+    "cells": [
+      "8",
+      "2026-10-21",
+      "Juncheng Yang",
+      "Efficient LLM serving basics II: intro to GPUs [slide]",
+      "CUDA programming guide ; more reading →",
+      "Assignment 4 out (Mads-Serve: Own\n                the serving engine)"
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [
+        {
+          "label": "[slide]",
+          "url": "https://cs2680.com/slides/10_llm_serving_basics_2a.pdf"
+        }
+      ],
+      [
+        {
+          "label": "CUDA programming guide",
+          "url": "https://docs.nvidia.com/cuda/cuda-c-programming-guide/"
+        },
+        {
+          "label": "more reading →",
+          "url": "https://cs2680.com/readings/oct-21.html"
+        }
+      ],
+      [
+        {
+          "label": "Assignment 4",
+          "url": "https://cs2680.com/assignments/index.html#assignment-4"
+        }
+      ]
+    ]
+  },
+  {
+    "date": "2026-10-26",
+    "cells": [
+      "9",
+      "2026-10-26",
+      "Students",
+      "Student sharing II: Harness optimization [slide]",
+      "",
+      ""
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [
+        {
+          "label": "[slide]",
+          "url": "https://cs2680.com/slides/assignment3_sharing_protected.pdf"
+        }
+      ],
+      [],
+      []
+    ]
+  },
+  {
+    "date": "2026-10-28",
+    "cells": [
+      "9",
+      "2026-10-28",
+      "Yunjia Zheng and Juncheng Yang",
+      "Assignment 3 feedback [slide]",
+      "",
+      "Project proposal due"
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [
+        {
+          "label": "[slide]",
+          "url": "https://cs2680.com/slides/assignment3_feedback_protected.pdf"
+        }
+      ],
+      [],
+      [
+        {
+          "label": "Project proposal due",
+          "url": "https://cs2680.com/project.html#proposal"
+        }
+      ]
+    ]
+  },
+  {
+    "date": "2026-11-02",
+    "cells": [
+      "10",
+      "2026-11-02",
+      "Juncheng Yang",
+      "Assignments feedback and agent pitfalls, GPU programming (cont.) [ assignment , gpu ]",
+      "",
+      ""
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [
+        {
+          "label": "assignment",
+          "url": "https://cs2680.com/slides/feedback_assignment.pdf"
+        },
+        {
+          "label": "gpu",
+          "url": "https://cs2680.com/slides/10_llm_serving_basics_2b.pdf"
+        }
+      ],
+      [],
+      []
+    ]
+  },
+  {
+    "date": "2026-11-04",
+    "cells": [
+      "10",
+      "2026-11-04",
+      "Juncheng Yang",
+      "Efficient LLM serving basics III: Batching, paging, and parallelism [slide]",
+      "Orca ; vLLM ; more reading →",
+      ""
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [
+        {
+          "label": "[slide]",
+          "url": "https://cs2680.com/slides/11_llm_serving_basics_3.pdf"
+        }
+      ],
+      [
+        {
+          "label": "Orca",
+          "url": "https://www.usenix.org/conference/osdi22/presentation/yu"
+        },
+        {
+          "label": "vLLM",
+          "url": "https://arxiv.org/abs/2309.06180"
+        },
+        {
+          "label": "more reading →",
+          "url": "https://cs2680.com/readings/nov-04.html"
+        }
+      ],
+      []
+    ]
+  },
+  {
+    "date": "2026-11-09",
+    "cells": [
+      "11",
+      "2026-11-09",
+      "Xianzheng Dou and Haythem Memmi (Meta)",
+      "Guest lecture: Why Infrastructure sets the pace of AI",
+      "",
+      "Assignment 4 due Tue Nov 10, 11:59pm"
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "label": "Assignment 4",
+          "url": "https://cs2680.com/assignments/index.html#assignment-4"
+        }
+      ]
+    ]
+  },
+  {
+    "date": "2026-11-11",
+    "cells": [
+      "11",
+      "2026-11-11",
+      "Juncheng Yang",
+      "Efficient LLM serving: speculative decoding [slide]",
+      "speculative decoding ; EAGLE ; Medusa ; DSpark ; more reading →",
+      "Assignment 5 out (Mads-Stack:\n                Optimize the full stack)"
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [
+        {
+          "label": "[slide]",
+          "url": "https://cs2680.com/slides/12_llm_serving_spec_decoding.pdf"
+        }
+      ],
+      [
+        {
+          "label": "speculative decoding",
+          "url": "https://arxiv.org/abs/2211.17192"
+        },
+        {
+          "label": "EAGLE",
+          "url": "https://arxiv.org/abs/2401.15077"
+        },
+        {
+          "label": "Medusa",
+          "url": "https://arxiv.org/abs/2401.10774"
+        },
+        {
+          "label": "DSpark",
+          "url": "https://arxiv.org/abs/2607.05147"
+        },
+        {
+          "label": "more reading →",
+          "url": "https://cs2680.com/readings/nov-11.html"
+        }
+      ],
+      [
+        {
+          "label": "Assignment 5",
+          "url": "https://cs2680.com/assignments/index.html#assignment-5"
+        }
+      ]
+    ]
+  },
+  {
+    "date": "2026-11-16",
+    "cells": [
+      "12",
+      "2026-11-16",
+      "Students",
+      "Efficient LLM serving: KV-cache optimization and model architectures",
+      "",
+      ""
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ]
+  },
+  {
+    "date": "2026-11-18",
+    "cells": [
+      "12",
+      "2026-11-18",
+      "Students",
+      "Student sharing III: Showcase your serving engine (Assignment 4) [slide]",
+      "",
+      ""
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [
+        {
+          "label": "[slide]",
+          "url": "https://cs2680.com/slides/assignment4_sharing_protected.pdf"
+        }
+      ],
+      [],
+      []
+    ]
+  },
+  {
+    "date": "2026-11-23",
+    "cells": [
+      "13",
+      "2026-11-23",
+      "Juncheng Yang",
+      "Efficient LLM serving: pruning and quantization",
+      "",
+      "Assignment 5 due Tue Nov 24, 11:59pm"
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [
+        {
+          "label": "Assignment 5",
+          "url": "https://cs2680.com/assignments/index.html#assignment-5"
+        }
+      ]
+    ]
+  },
+  {
+    "date": "2026-11-25",
+    "cells": [
+      "13",
+      "2026-11-25",
+      "No class — Thanksgiving recess"
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      []
+    ]
+  },
+  {
+    "date": "2026-11-30",
+    "cells": [
+      "14",
+      "2026-11-30",
+      "Juncheng Yang",
+      "Efficient agentic systems: scheduling and prefix caching",
+      "",
+      ""
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ]
+  },
+  {
+    "date": "2026-12-02",
+    "cells": [
+      "14",
+      "2026-12-02",
+      "Juncheng Yang",
+      "Efficient agentic systems: routing and load balancing",
+      "",
+      ""
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ]
+  },
+  {
+    "date": "2026-12-07",
+    "cells": [
+      "14",
+      "2026-12-07",
+      "Students",
+      "Final project poster and demo",
+      "Present your final project as a poster and a live demo. Location: SEC 1.402 from\n                  9:00 AM to 1:00 PM",
+      "Final project due Tue Dec 8, 11:59pm"
+    ],
+    "links_by_cell": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ]
+  }
+]

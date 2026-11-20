@@ -13,4 +13,4 @@
 
 目录数包含有材料、待更新、MIT 项目展示周与保留的 Harvard 历史占位，不等于已公开讲义数量。全部课程位于本目录；缺少正文的课次和计划作业提供 SOURCES.md/README.md 明确状态。
 
-[当前目录映射](COURSE_LAYOUT.json) · [2026-11-01 大纲快照](syllabus-snapshots/2026-11-01/README.md)
+[当前目录映射](COURSE_LAYOUT.json) · [2026-11-20 大纲快照](syllabus-snapshots/2026-11-20/README.md)

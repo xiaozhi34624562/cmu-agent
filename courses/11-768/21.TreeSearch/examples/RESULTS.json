@@ -1,0 +1,25 @@
+{
+  "scope": "deterministic examples with fixed inputs; no model calls, network, or timing measurements",
+  "game_of_24": 24,
+  "puct_scores": {
+    "A": 0.96,
+    "B": 0.5875,
+    "C": 0.7
+  },
+  "selected_edge": "A",
+  "updated_edge": {
+    "visits": 5,
+    "mean": 0.54
+  },
+  "feasible_trips": [
+    [
+      "F2",
+      "B",
+      720
+    ]
+  ],
+  "dag_illustrative_minutes": {
+    "serial": 12,
+    "parallel_lower_bound": 7
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "executed_at": "2026-11-20T01:56:08.947901+00:00",
+  "runtime": "Python 3.11.10",
+  "command": "python3 courses/2680/13.EfficientLLMServing.SpeculativeDecoding/examples/speculative_sampling.py",
+  "status": "passed",
+  "scope": "Standard-library exact probability enumeration and idealized weights-only roofline arithmetic. No model, server, network or GPU execution.",
+  "script_sha256": "252b8c3ccaff4e5be2310e33577fd790741ade93db2d7720af76bc99c34b5716",
+  "outputs": {
+    "target": [
+      "3/5",
+      "3/10",
+      "1/10"
+    ],
+    "overlap_acceptance": "7/10",
+    "residual_after_rejection": [
+      "1",
+      "0",
+      "0"
+    ],
+    "exact_output": [
+      "3/5",
+      "3/10",
+      "1/10"
+    ],
+    "output_if_wrong_fallback": [
+      "12/25",
+      "39/100",
+      "13/100"
+    ],
+    "two_token_joint": {
+      "0,0": "9/50",
+      "0,1": "9/25",
+      "0,2": "3/50",
+      "1,0": "3/50",
+      "1,1": "9/50",
+      "1,2": "3/50",
+      "2,0": "0",
+      "2,1": "1/10",
+      "2,2": "0"
+    },
+    "weight_only_roofline": [
+      {
+        "batch": 16,
+        "plain_tokens_per_second": 300.0,
+        "speculative_tokens_per_second": 1008.48
+      },
+      {
+        "batch": 64,
+        "plain_tokens_per_second": 300.0,
+        "speculative_tokens_per_second": 649.34
+      },
+      {
+        "batch": 256,
+        "plain_tokens_per_second": 241.46,
+        "speculative_tokens_per_second": 162.34
+      }
+    ]
+  }
+}

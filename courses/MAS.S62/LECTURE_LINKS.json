@@ -1681,6 +1681,156 @@
   },
   {
     "weeks": [
+      9
+    ],
+    "pdf": "site/schedule/lec7 - self play.pdf",
+    "sha256": "71d7831ac65721a59709c08111dd0f06c3294f54d4333554482fb7d696fbede2",
+    "version_status": "current",
+    "page": 5,
+    "url": "http://www.youtube.com/watch?v=WXuK6gekU1Y"
+  },
+  {
+    "weeks": [
+      9
+    ],
+    "pdf": "site/schedule/lec7 - self play.pdf",
+    "sha256": "71d7831ac65721a59709c08111dd0f06c3294f54d4333554482fb7d696fbede2",
+    "version_status": "current",
+    "page": 41,
+    "url": "https://arxiv.org/abs/2509.07414"
+  },
+  {
+    "weeks": [
+      9
+    ],
+    "pdf": "site/schedule/lec7 - self play.pdf",
+    "sha256": "71d7831ac65721a59709c08111dd0f06c3294f54d4333554482fb7d696fbede2",
+    "version_status": "current",
+    "page": 41,
+    "url": "https://arxiv.org/abs/2505.03335"
+  },
+  {
+    "weeks": [
+      9
+    ],
+    "pdf": "site/schedule/lec7 - self play.pdf",
+    "sha256": "71d7831ac65721a59709c08111dd0f06c3294f54d4333554482fb7d696fbede2",
+    "version_status": "current",
+    "page": 41,
+    "url": "https://arxiv.org/abs/2508.05004"
+  },
+  {
+    "weeks": [
+      9
+    ],
+    "pdf": "site/schedule/lec7 - self play.pdf",
+    "sha256": "71d7831ac65721a59709c08111dd0f06c3294f54d4333554482fb7d696fbede2",
+    "version_status": "current",
+    "page": 41,
+    "url": "https://arxiv.org/abs/2502.00212"
+  },
+  {
+    "weeks": [
+      9
+    ],
+    "pdf": "site/schedule/lec7 - self play.pdf",
+    "sha256": "71d7831ac65721a59709c08111dd0f06c3294f54d4333554482fb7d696fbede2",
+    "version_status": "current",
+    "page": 41,
+    "url": "https://arxiv.org/abs/2506.01716"
+  },
+  {
+    "weeks": [
+      9
+    ],
+    "pdf": "site/schedule/lec7 - self play.pdf",
+    "sha256": "71d7831ac65721a59709c08111dd0f06c3294f54d4333554482fb7d696fbede2",
+    "version_status": "current",
+    "page": 41,
+    "url": "https://arxiv.org/abs/2607.22529"
+  },
+  {
+    "weeks": [
+      9
+    ],
+    "pdf": "site/schedule/lec7 - self play.pdf",
+    "sha256": "71d7831ac65721a59709c08111dd0f06c3294f54d4333554482fb7d696fbede2",
+    "version_status": "current",
+    "page": 53,
+    "url": "https://arxiv.org/abs/2604.20209"
+  },
+  {
+    "weeks": [
+      9
+    ],
+    "pdf": "site/schedule/lec7 - self play.pdf",
+    "sha256": "71d7831ac65721a59709c08111dd0f06c3294f54d4333554482fb7d696fbede2",
+    "version_status": "current",
+    "page": 53,
+    "url": "https://arxiv.org/abs/2503.00735"
+  },
+  {
+    "weeks": [
+      9
+    ],
+    "pdf": "site/schedule/lec7 - self play.pdf",
+    "sha256": "71d7831ac65721a59709c08111dd0f06c3294f54d4333554482fb7d696fbede2",
+    "version_status": "current",
+    "page": 53,
+    "url": "https://arxiv.org/abs/2506.10943"
+  },
+  {
+    "weeks": [
+      9
+    ],
+    "pdf": "site/schedule/lec7 - self play.pdf",
+    "sha256": "71d7831ac65721a59709c08111dd0f06c3294f54d4333554482fb7d696fbede2",
+    "version_status": "current",
+    "page": 53,
+    "url": "https://arxiv.org/abs/2602.02979"
+  },
+  {
+    "weeks": [
+      9
+    ],
+    "pdf": "site/schedule/lec7 - self play.pdf",
+    "sha256": "71d7831ac65721a59709c08111dd0f06c3294f54d4333554482fb7d696fbede2",
+    "version_status": "current",
+    "page": 53,
+    "url": "https://arxiv.org/abs/2609.32228"
+  },
+  {
+    "weeks": [
+      9
+    ],
+    "pdf": "site/schedule/lec7 - self play.pdf",
+    "sha256": "71d7831ac65721a59709c08111dd0f06c3294f54d4333554482fb7d696fbede2",
+    "version_status": "current",
+    "page": 53,
+    "url": "https://arxiv.org/abs/2609.30063"
+  },
+  {
+    "weeks": [
+      9
+    ],
+    "pdf": "site/schedule/lec7 - self play.pdf",
+    "sha256": "71d7831ac65721a59709c08111dd0f06c3294f54d4333554482fb7d696fbede2",
+    "version_status": "current",
+    "page": 61,
+    "url": "https://papers.neurips.cc/paper_files/paper/2025/hash/3380e8116452e0efbf36f35d95e88c94-Abstract-Conference.html"
+  },
+  {
+    "weeks": [
+      9
+    ],
+    "pdf": "site/schedule/lec7 - self play.pdf",
+    "sha256": "71d7831ac65721a59709c08111dd0f06c3294f54d4333554482fb7d696fbede2",
+    "version_status": "current",
+    "page": 62,
+    "url": "https://arxiv.org/abs/2412.01951"
+  },
+  {
+    "weeks": [
       7
     ],
     "pdf": "site/versions/a9f58ecf4b22164b10315fa24f4f06aa8f955799b167c56b9f26e1fd81342d38/lec6 - rl in practice.pdf",

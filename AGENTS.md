@@ -35,11 +35,11 @@
 | `courses/11-768/16.AgentsAndTheFutureOfWork/` | 面向人类工作的 Agent、任务自动化与增强、职业任务评测和人机协作 |
 | `courses/11-768/17.ObservabilityAndMonitoring/` | 10/22 可观测性与监控；等待公开讲义 |
 | `courses/11-768/18.MultiAgentInteraction/` | 10/29 多 Agent 交互；44 页讲义、指定阅读与完整中文讲解 |
-| `courses/11-768/19.HumanAgentInteraction/` | 11/10 人机交互；等待公开讲义 |
+| `courses/11-768/19.HumanAgentInteraction/` | 11/10 人机交互；89页讲义、指定阅读、参考资料与完整中文讲解已归档 |
 | `courses/11-768/20.RerankingAndCriticModels/` | 11/12 Reranking 与 Critic Models；31页讲义、指定阅读及完整中文讲解已归档 |
-| `courses/11-768/21.TreeSearch/` | 11/17 Tree Search；等待公开讲义 |
-| `courses/11-768/22.GuestLecture20261119/` | 11/19 嘉宾课；题目待定 |
-| `courses/11-768/23.GuestLecture20261124/` | 11/24 嘉宾课；题目待定 |
+| `courses/11-768/21.TreeSearch/` | 11/17 Tree Search；100页讲义、指定阅读、参考资料与完整中文讲解已归档 |
+| `courses/11-768/22.GuestLecture20261119/` | 11/19 How to Trust Your AI Agents；等待公开讲义 |
+| `courses/11-768/23.GuestLecture20261124/` | 11/24 Lessons in Building a Coding Agent；等待公开讲义 |
 
 `courses/2680/` 的 `README.md` 和 `COURSE_SCHEDULE.md` 是课程总入口。原有 18 个目录保留，新增嘉宾及分享目录采用稳定的追加编号；目录编号不等于授课顺序或官方 PDF 编号。各目录 `SOURCES.md` 记录来源和材料状态，历史 others 占位保留。`organize.py` 按其已归档站点版本整理原资料；同步新版官网前需按既有更新流程核对日期、题目与目录映射。
 

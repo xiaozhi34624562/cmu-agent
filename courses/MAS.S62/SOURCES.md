@@ -1,6 +1,6 @@
 # MAS.S62 全部来源
 
-- 同步日期：2026-11-13
+- 同步日期：2026-11-20
 - 本学期官网：https://mit-mi.github.io/how2ai-course/fall2026/
 - 下载状态及 SHA256 见 [manifest.json](manifest.json)；HTTP 200 的登录/验证页面不计为阅读正文。
 - [完整课表](COURSE_SCHEDULE.md)可能更新于此归档；新发布但未取得的资料入口保留在逐周 SOURCES.md。
@@ -70,6 +70,7 @@
 | reading | Reinforcement Learning via Self-Distillation | [Reinforcement_Learning_via_Self-Distillation.pdf](readings/papers/Reinforcement_Learning_via_Self-Distillation.pdf) | https://arxiv.org/abs/2601.20802 |
 | reading | Scaling Test-Time Compute Without Verification or RL is Suboptimal | [Scaling_Test-Time_Compute_Without_Verification_or_RL_is_Suboptimal.pdf](readings/papers/Scaling_Test-Time_Compute_Without_Verification_or_RL_is_Suboptimal.pdf) | https://arxiv.org/abs/2502.12118 |
 | tutorial | Tutorial — RL and Self-Distillation in Practice | [lec6 - rl in practice.pdf](site/schedule/lec6%20-%20rl%20in%20practice.pdf) | https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec6 - rl in practice.pdf |
+| lecture | LLM Self-Play (Alex Wilf, 2026-11-04) | [lec7 - self play.pdf](site/schedule/lec7%20-%20self%20play.pdf) | https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec7 - self play.pdf |
 | reading | Absolute Zero: Reinforced Self-play Reasoning with Zero Data | [Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data.pdf](readings/papers/Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data.pdf) | https://arxiv.org/abs/2505.03335 |
 | reading | R-Zero: Self-Evolving Reasoning LLM from Zero Data | [R-Zero_Self-Evolving_Reasoning_LLM_from_Zero_Data.pdf](readings/papers/R-Zero_Self-Evolving_Reasoning_LLM_from_Zero_Data.pdf) | https://arxiv.org/abs/2508.05004 |
 | reading | Propose, Solve, Verify: Self-Play Through Formal Verification | [Propose_Solve_Verify_Self-Play_Through_Formal_Verification.pdf](readings/papers/Propose_Solve_Verify_Self-Play_Through_Formal_Verification.pdf) | https://arxiv.org/abs/2512.18160 |
@@ -125,6 +126,7 @@
 
 - [Tutorial — RL and Self-Distillation in Practice](site/versions/a9f58ecf4b22164b10315fa24f4f06aa8f955799b167c56b9f26e1fd81342d38/lec6%20-%20rl%20in%20practice.pdf)：SHA256 `a9f58ecf4b22164b10315fa24f4f06aa8f955799b167c56b9f26e1fd81342d38`；Existing unchanged W7 guide cites this 15-page edition; current tutorial is W9。
 - [Official syllabus (pdf)](site/versions/204f9edde27ed5ee5b2a4001df78ad07d41cd273c6ae3a6dd57e171b3badbdb9/ai4ai-syllabus.pdf)：SHA256 `204f9edde27ed5ee5b2a4001df78ad07d41cd273c6ae3a6dd57e171b3badbdb9`；Superseded official source retained for provenance。
+- [Official syllabus (pdf)](site/versions/c31e74cd0d8616d579ac60f34f361f2660fb70bb52814fe56642b9de96de9725/ai4ai-syllabus.pdf)：SHA256 `c31e74cd0d8616d579ac60f34f361f2660fb70bb52814fe56642b9de96de9725`；Previous Google Docs PDF export retained; current m160 export has identical extracted text and all five page renders to this m159 export, so no substantive content change was observed.。
 - [Official syllabus (txt)](site/versions/62a0e9c97669b007ab74ccd9b440c92846b821445420965b0e0c602790a210ee/ai4ai-syllabus.txt)：SHA256 `62a0e9c97669b007ab74ccd9b440c92846b821445420965b0e0c602790a210ee`；Superseded official source retained for provenance。
 
 ## 逐课补充来源
@@ -198,3 +200,21 @@
 | 9 | Quickstart: PPO training on GSM8K dataset — verl documentation | [Quickstart_PPO_training_on_GSM8K_dataset_verl_documentation.html](9.ModelEvolution2/references/Quickstart_PPO_training_on_GSM8K_dataset_verl_documentation.html) | https://verl.readthedocs.io/en/latest/start/quickstart.html |
 | 9 | OpenClaw-RL1 | [OpenClaw-RL1.html](9.ModelEvolution2/references/OpenClaw-RL1.html) | https://yinjjiew.github.io/projects/openclawrl1/ |
 | 9 | lec6 - training.pdf — Model Evolution I lecture | [lec6 - training.pdf](7.ModelEvolution1/slides/lec6%20-%20training.pdf) | https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec6%20-%20training.pdf |
+| 9 | Language Self-Play For Data-Free Training | [Language_Self-Play_For_Data-Free_Training.pdf](9.ModelEvolution2/references/Language_Self-Play_For_Data-Free_Training.pdf) | https://arxiv.org/abs/2509.07414 |
+| 9 | Absolute Zero: Reinforced Self-play Reasoning with Zero Data | [Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data.pdf](9.ModelEvolution2/readings/Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data.pdf) | https://arxiv.org/abs/2505.03335 |
+| 9 | R-Zero: Self-Evolving Reasoning LLM from Zero Data | [R-Zero_Self-Evolving_Reasoning_LLM_from_Zero_Data.pdf](9.ModelEvolution2/readings/R-Zero_Self-Evolving_Reasoning_LLM_from_Zero_Data.pdf) | https://arxiv.org/abs/2508.05004 |
+| 9 | STP: Self-play LLM Theorem Provers with Iterative Conjecturing and Proving | [STP_Self-play_LLM_Theorem_Provers_with_Iterative_Conjecturing_and_Proving.pdf](9.ModelEvolution2/references/STP_Self-play_LLM_Theorem_Provers_with_Iterative_Conjecturing_and_Proving.pdf) | https://arxiv.org/abs/2502.00212 |
+| 9 | Self-Challenging Language Model Agents | [Self-Challenging_Language_Model_Agents.pdf](9.ModelEvolution2/references/Self-Challenging_Language_Model_Agents.pdf) | https://arxiv.org/abs/2506.01716 |
+| 9 | Skill Self-Play: Pushing the Frontier of LLM Capability with Co-Evolving Skills | [Skill_Self-Play_Pushing_the_Frontier_of_LLM_Capability_with_Co-Evolving_Skills.pdf](9.ModelEvolution2/references/Skill_Self-Play_Pushing_the_Frontier_of_LLM_Capability_with_Co-Evolving_Skills.pdf) | https://arxiv.org/abs/2607.22529 |
+| 9 | Scaling Self-Play with Self-Guidance | [Scaling_Self-Play_with_Self-Guidance.pdf](9.ModelEvolution2/references/Scaling_Self-Play_with_Self-Guidance.pdf) | https://arxiv.org/abs/2604.20209 |
+| 9 | LADDER: Self-Improving LLMs Through Recursive Problem Decomposition | [LADDER_Self-Improving_LLMs_Through_Recursive_Problem_Decomposition.pdf](9.ModelEvolution2/references/LADDER_Self-Improving_LLMs_Through_Recursive_Problem_Decomposition.pdf) | https://arxiv.org/abs/2503.00735 |
+| 9 | Self-Adapting Language Models | [Self-Adapting_Language_Models.pdf](9.ModelEvolution2/references/Self-Adapting_Language_Models.pdf) | https://arxiv.org/abs/2506.10943 |
+| 9 | CPMobius: Iterative Coach-Player Reasoning for Data-Free Reinforcement Learning | [CPMobius_Iterative_Coach-Player_Reasoning_for_Data-Free_Reinforcement_Learning.pdf](9.ModelEvolution2/references/CPMobius_Iterative_Coach-Player_Reasoning_for_Data-Free_Reinforcement_Learning.pdf) | https://arxiv.org/abs/2602.02979 |
+| 9 | CompassPlay: Rewarding the Proposer for Where It Moves the Solver | [CompassPlay_Rewarding_the_Proposer_for_Where_It_Moves_the_Solver.pdf](9.ModelEvolution2/references/CompassPlay_Rewarding_the_Proposer_for_Where_It_Moves_the_Solver.pdf) | https://arxiv.org/abs/2609.32228 |
+| 9 | Self-Play Pretraining with Zero Data | [Self-Play_Pretraining_with_Zero_Data.pdf](9.ModelEvolution2/references/Self-Play_Pretraining_with_Zero_Data.pdf) | https://arxiv.org/abs/2609.30063 |
+| 9 | Self-Verification Provably Prevents Model Collapse in Recursive Synthetic Training | [Self-Verification_Provably_Prevents_Model_Collapse_in_Recursive_Synthetic_Training.pdf](9.ModelEvolution2/references/Self-Verification_Provably_Prevents_Model_Collapse_in_Recursive_Synthetic_Training.pdf) | https://papers.neurips.cc/paper_files/paper/2025/hash/3380e8116452e0efbf36f35d95e88c94-Abstract-Conference.html |
+| 9 | Self-Improvement in Language Models: The Sharpening Mechanism | [Self-Improvement_in_Language_Models_The_Sharpening_Mechanism.pdf](9.ModelEvolution2/references/Self-Improvement_in_Language_Models_The_Sharpening_Mechanism.pdf) | https://arxiv.org/abs/2412.01951 |
+| 9 | Teaching Models to Teach Themselves: Reasoning at the Edge of Learnability | [Teaching_Models_to_Teach_Themselves_Reasoning_at_the_Edge_of_Learnability.pdf](9.ModelEvolution2/references/Teaching_Models_to_Teach_Themselves_Reasoning_at_the_Edge_of_Learnability.pdf) | https://arxiv.org/abs/2601.18778 |
+| 9 | Goedel-Code-Prover: Hierarchical Proof Search for Open State-of-the-Art Code Verification | [Goedel-Code-Prover_Hierarchical_Proof_Search_for_Open_State-of-the-Art_Code_Verification.pdf](9.ModelEvolution2/references/Goedel-Code-Prover_Hierarchical_Proof_Search_for_Open_State-of-the-Art_Code_Verification.pdf) | https://arxiv.org/abs/2603.19329 |
+| 9 | Mind the Gap: Examining the Self-Improvement Capabilities of Large Language Models | [Mind_the_Gap_Examining_the_Self-Improvement_Capabilities_of_Large_Language_Models.pdf](9.ModelEvolution2/references/Mind_the_Gap_Examining_the_Self-Improvement_Capabilities_of_Large_Language_Models.pdf) | https://arxiv.org/abs/2412.02674 |
+| 9 | T1: Tool-integrated Self-verification for Test-time Compute Scaling in Small Language Models | [T1_Tool-integrated_Self-verification_for_Test-time_Compute_Scaling_in_Small_Language_Models.pdf](9.ModelEvolution2/references/T1_Tool-integrated_Self-verification_for_Test-time_Compute_Scaling_in_Small_Language_Models.pdf) | https://arxiv.org/abs/2504.04718 |

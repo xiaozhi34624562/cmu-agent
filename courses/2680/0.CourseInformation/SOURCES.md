@@ -1,6 +1,6 @@
 # 0. Course information
 
-- Snapshot date: 2026-11-13
+- Snapshot date: 2026-11-20
 
 ## Course pages
 

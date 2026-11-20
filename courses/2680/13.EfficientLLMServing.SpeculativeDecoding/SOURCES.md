@@ -4,7 +4,9 @@
 
 ## Slides
 
-- No slides linked on the course website as of 2026-11-13.
+- [Lecture slides](12_llm_serving_spec_decoding.pdf)
+  - Source: https://cs2680.com/slides/12_llm_serving_spec_decoding.pdf
+  - 编号说明：目录 13 是本仓库稳定编号；文件名前缀 12 是官网原始讲义编号。内容按本课日期与主题核对，保留原文件名。
 
 ## Readings
 
@@ -101,7 +103,36 @@
 - [D-PACE](readings/D-PACE_Dynamic_Position-Aware_Cross-Entropy_for_Parallel_Speculative_Drafting.pdf)
   - Source: https://arxiv.org/abs/2605.18810
 
+## Local study notes
+
+以下为本地中文学习笔记，文件名保留现有名称；教师原始讲义见上方 Slides。
+
+- [notes.zh-CN.md](notes.zh-CN.md)
+
 ## References
 
 - [Course reading notes](../site/readings/nov-11.html)
   - Source: https://cs2680.com/readings/nov-11.html
+
+## Supplemental primary sources
+
+以下为中文讲解补充的一手资料；与上方官网指定 Readings 分开登记。版本、获取状态与校验值见 [REFERENCES.json](REFERENCES.json)。
+
+- [Various Techniques Used in Connection With Random Digits](https://mcnp-green.lanl.gov/pdf_files/InBook_Computing_1961_Neumann_JohnVonNeumannCollectedWorks_VariousTechniquesUsedinConnectionwithRandomDigits.pdf)（已在线核对正文，未另存原件）
+  - Source: https://mcnp-green.lanl.gov/pdf_files/InBook_Computing_1961_Neumann_JohnVonNeumannCollectedWorks_VariousTechniquesUsedinConnectionwithRandomDigits.pdf
+- [Introducing EAGLE-4: One Flexible Drafter for All Batch Sizes and Hardware](https://blog.eagle.ai/blog/introducing-eagle-4)（已在线核对正文，未另存原件）
+  - Source: https://blog.eagle.ai/blog/introducing-eagle-4
+- [EAGLE-4: One Flexible Drafter for All Batch Sizes and Hardware](references/EAGLE-4_One_Flexible_Drafter_for_All_Batch_Sizes_and_Hardware.pdf)
+  - Source: https://github.com/eagle-hq/EAGLE-4/blob/main/EAGLE4_Paper.pdf
+- [How to train custom EAGLE-3 heads for speculative decoding](references/How_to_train_custom_EAGLE-3_heads_for_speculative_decoding.html)
+  - Source: https://www.baseten.co/blog/how-to-train-custom-eagle-3-heads-for-speculative-decoding/
+- [Insights into DeepSeek-V3: Scaling Challenges and Reflections on Hardware for AI Architectures](https://arxiv.org/html/2505.09343v2)（已在线核对正文，未另存原件）
+  - Source: https://arxiv.org/html/2505.09343v2
+- [Boost Inference Performance up to 15x on NVIDIA Blackwell Using DFlash Speculative Decoding](references/Boost_Inference_Performance_up_to_15x_on_NVIDIA_Blackwell_Using_DFlash_Speculative_Decoding.html)
+  - Source: https://developer.nvidia.com/blog/boost-inference-performance-up-to-15x-on-nvidia-blackwell-using-dflash-speculative-decoding/
+- [Predicted Outputs](references/Predicted_Outputs.html)
+  - Source: https://developers.openai.com/api/docs/guides/predicted-outputs
+- [Speculative Decoding - SGLang Documentation](references/Speculative_Decoding_-_SGLang_Documentation.html)
+  - Source: https://docs.sglang.io/docs/advanced_features/speculative_decoding
+- [[RFC]: Consistent semantics for drafted, verified and accepted spec decode tokens](https://github.com/vllm-project/vllm/issues/64099)（已在线核对正文，未另存原件）
+  - Source: https://github.com/vllm-project/vllm/issues/64099

@@ -4,7 +4,9 @@
 
 ## Slides
 
-- No slides linked on the course website as of 2026-11-13.
+- [Lecture slides（受限原件）](../site/slides/assignment4_sharing_protected.pdf)
+  - Source: https://cs2680.com/slides/assignment4_sharing_protected.pdf
+  - 状态：原始 PDF 需要密码；正文与页数未核实，未取得可读正文。
 
 ## Readings
 

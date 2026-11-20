@@ -6,14 +6,14 @@
     "role": "project_guidance",
     "status": "saved",
     "material_type": "extracted_spa_html",
-    "version": "Official course SPA snapshot 2026-11-13",
-    "source_script_url": "https://www.cmu-agents.com/assets/index-CP4uKDdk.js",
-    "source_script_sha256": "7b6c8b18714c28c260786d9774ea092e0e3244b07d5c7f0c4bf42275eaf92d69",
-    "source_snapshot": "../../syllabus-snapshots/2026-11-13/cmu/app.js",
-    "source_retrieved_at": "2026-11-13T06:18:17.007381+00:00",
-    "extracted_at": "2026-11-13T07:29:00.794033+00:00",
-    "sha256": "ea70b7b9a8a0f95ac41c0773b04c7c88cf8b22d0be642544fc0f39f4f303431c",
-    "bytes": 11511,
-    "extraction_note": "Static rendering of the exact official project React component and its original schedule, grading and report-section arrays; original English text retained. CSS and interactive scrolling omitted. Raw SPA remains in source snapshot."
+    "version": "Official course SPA snapshot 2026-11-20",
+    "source_script_url": "https://www.cmu-agents.com/assets/index-eMZEoOoX.js",
+    "source_script_sha256": "744f7706f96be0653b57a69c2949a7e0ebaf53b03cac9ca233877ce79396239d",
+    "source_snapshot": "../../syllabus-snapshots/2026-11-20/cmu/app.js",
+    "source_retrieved_at": "2026-11-20T01:09:33.594847+00:00",
+    "extracted_at": "2026-11-20T01:28:10.269663+00:00",
+    "sha256": "7b51b5bd3ad3340ab789b9a0d138602108fd6b5542acf7433c0847ea2373ab92",
+    "bytes": 11967,
+    "extraction_note": "Static rendering of official Project component and its schedule, grading and report-section arrays. Compared complete old/current component; updated only the exact new Report due-date paragraph and late-days FAQ. Original English body retained; CSS and interactive scrolling omitted."
   }
 ]

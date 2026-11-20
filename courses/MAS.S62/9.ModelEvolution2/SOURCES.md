@@ -2,7 +2,7 @@
 
 - Date: 2026-11-04
 - Source: https://mit-mi.github.io/how2ai-course/fall2026/schedule/
-- 资料归档日期：2026-11-13；最新日历见[完整课表](../COURSE_SCHEDULE.md)。
+- 资料归档日期：2026-11-20；最新日历见[完整课表](../COURSE_SCHEDULE.md)。
 - 目录编号保持稳定；当前官方 Week、日期单独记录，原 PDF 内的 Lecture 编号和文件名保持原样。
 
 ## Topics（归档快照）
@@ -17,6 +17,11 @@
   - Source: https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec6 - rl in practice.pdf
   - SHA256: `746f0bcca12b0ffb04c2f16dc5f6a32b3e358065eb54142c3f5418a225f88080`
   - PDF pages: 19
+- [lec7 - self play.pdf](slides/lec7%20-%20self%20play.pdf) — lecture
+  - 内容：LLM Self-Play (Alex Wilf, 2026-11-04)
+  - Source: https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec7 - self play.pdf
+  - SHA256: `71d7831ac65721a59709c08111dd0f06c3294f54d4333554482fb7d696fbede2`
+  - PDF pages: 63
 
 ## Assigned readings（归档快照）
 
@@ -81,4 +86,40 @@
   - Source: https://yinjjiew.github.io/projects/openclawrl1/
 - [lec6 - training.pdf — Model Evolution I lecture](../7.ModelEvolution1/slides/lec6%20-%20training.pdf)
   - Source: https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec6%20-%20training.pdf
+- [Language Self-Play For Data-Free Training](references/Language_Self-Play_For_Data-Free_Training.pdf)
+  - Source: https://arxiv.org/abs/2509.07414
+- [Absolute Zero: Reinforced Self-play Reasoning with Zero Data](readings/Absolute_Zero_Reinforced_Self-play_Reasoning_with_Zero_Data.pdf)
+  - Source: https://arxiv.org/abs/2505.03335
+- [R-Zero: Self-Evolving Reasoning LLM from Zero Data](readings/R-Zero_Self-Evolving_Reasoning_LLM_from_Zero_Data.pdf)
+  - Source: https://arxiv.org/abs/2508.05004
+- [STP: Self-play LLM Theorem Provers with Iterative Conjecturing and Proving](references/STP_Self-play_LLM_Theorem_Provers_with_Iterative_Conjecturing_and_Proving.pdf)
+  - Source: https://arxiv.org/abs/2502.00212
+- [Self-Challenging Language Model Agents](references/Self-Challenging_Language_Model_Agents.pdf)
+  - Source: https://arxiv.org/abs/2506.01716
+- [Skill Self-Play: Pushing the Frontier of LLM Capability with Co-Evolving Skills](references/Skill_Self-Play_Pushing_the_Frontier_of_LLM_Capability_with_Co-Evolving_Skills.pdf)
+  - Source: https://arxiv.org/abs/2607.22529
+- [Scaling Self-Play with Self-Guidance](references/Scaling_Self-Play_with_Self-Guidance.pdf)
+  - Source: https://arxiv.org/abs/2604.20209
+- [LADDER: Self-Improving LLMs Through Recursive Problem Decomposition](references/LADDER_Self-Improving_LLMs_Through_Recursive_Problem_Decomposition.pdf)
+  - Source: https://arxiv.org/abs/2503.00735
+- [Self-Adapting Language Models](references/Self-Adapting_Language_Models.pdf)
+  - Source: https://arxiv.org/abs/2506.10943
+- [CPMobius: Iterative Coach-Player Reasoning for Data-Free Reinforcement Learning](references/CPMobius_Iterative_Coach-Player_Reasoning_for_Data-Free_Reinforcement_Learning.pdf)
+  - Source: https://arxiv.org/abs/2602.02979
+- [CompassPlay: Rewarding the Proposer for Where It Moves the Solver](references/CompassPlay_Rewarding_the_Proposer_for_Where_It_Moves_the_Solver.pdf)
+  - Source: https://arxiv.org/abs/2609.32228
+- [Self-Play Pretraining with Zero Data](references/Self-Play_Pretraining_with_Zero_Data.pdf)
+  - Source: https://arxiv.org/abs/2609.30063
+- [Self-Verification Provably Prevents Model Collapse in Recursive Synthetic Training](references/Self-Verification_Provably_Prevents_Model_Collapse_in_Recursive_Synthetic_Training.pdf)
+  - Source: https://papers.neurips.cc/paper_files/paper/2025/hash/3380e8116452e0efbf36f35d95e88c94-Abstract-Conference.html
+- [Self-Improvement in Language Models: The Sharpening Mechanism](references/Self-Improvement_in_Language_Models_The_Sharpening_Mechanism.pdf)
+  - Source: https://arxiv.org/abs/2412.01951
+- [Teaching Models to Teach Themselves: Reasoning at the Edge of Learnability](references/Teaching_Models_to_Teach_Themselves_Reasoning_at_the_Edge_of_Learnability.pdf)
+  - Source: https://arxiv.org/abs/2601.18778
+- [Goedel-Code-Prover: Hierarchical Proof Search for Open State-of-the-Art Code Verification](references/Goedel-Code-Prover_Hierarchical_Proof_Search_for_Open_State-of-the-Art_Code_Verification.pdf)
+  - Source: https://arxiv.org/abs/2603.19329
+- [Mind the Gap: Examining the Self-Improvement Capabilities of Large Language Models](references/Mind_the_Gap_Examining_the_Self-Improvement_Capabilities_of_Large_Language_Models.pdf)
+  - Source: https://arxiv.org/abs/2412.02674
+- [T1: Tool-integrated Self-verification for Test-time Compute Scaling in Small Language Models](references/T1_Tool-integrated_Self-verification_for_Test-time_Compute_Scaling_in_Small_Language_Models.pdf)
+  - Source: https://arxiv.org/abs/2504.04718
 - [完整中文课程讲解](notes.zh-CN.md)

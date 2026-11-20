@@ -1,6 +1,6 @@
 # 课程信息与大纲
 
-- Snapshot: 2026-11-13
+- Snapshot: 2026-11-20
 - [官网](https://mit-mi.github.io/how2ai-course/fall2026/)
 
 - [Course home](../site/index.html)

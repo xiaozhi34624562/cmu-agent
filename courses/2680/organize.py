@@ -146,7 +146,7 @@ def slide_access_issue(source: Path) -> str | None:
     import fitz
     try:
         with fitz.open(source) as pdf:
-            return "原始 PDF 需要密码；未取得可读正文，不编写内容讲解" if pdf.needs_pass else None
+            return "原始 PDF 需要密码；正文与页数未核实，未取得可读正文" if pdf.needs_pass else None
     except (RuntimeError, ValueError) as exc:
         return f"无法读取 PDF 正文：{exc}"
 
@@ -157,7 +157,7 @@ def filename_for(title: str, url: str, number: int, extension: str) -> str:
 
 def slide_destination(site_path: str, lesson_folder: Path) -> Path:
     name = Path(site_path).name
-    if name.startswith(("assignment3_sharing_", "assignment3_feedback_")):
+    if re.match(r"assignment\d+_(?:sharing|feedback)_", name):
         return lesson_folder / name
     assignment = re.search(r"assignment(\d+)", name, re.I)
     if assignment:
@@ -310,7 +310,12 @@ def organize_lessons() -> None:
                 path = item.get("path")
                 target = folder / path if path else None
                 title = item.get("title", path or "Reference")
-                label = markdown_link(title, target, folder) if target and target.is_file() else title + "（未获取正文）"
+                if target and target.is_file():
+                    label = markdown_link(title, target, folder)
+                elif item.get("status") == "online_checked":
+                    label = f"[{title}]({item['url']})（已在线核对正文，未另存原件）"
+                else:
+                    label = title + "（未获取正文）"
                 lines += [f"- {label}", f"  - Source: {item['url']}"]
         (folder / "SOURCES.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("ORGANIZED", len(LESSONS), "lesson folders,", total_copies, "reading copies")

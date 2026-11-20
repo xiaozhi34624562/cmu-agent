@@ -1,15 +1,15 @@
-# Guest Lecture
+# How to Trust Your AI Agents
 
 - 课程：CMU 11-768
 - 官网日期：2026-11-19
 - 官方条目标识：CMU-13b
 - 学习阶段：PENDING
-- 材料状态：嘉宾已安排，具体题目和讲义尚未公开；目录按日期定位，内容待核实。
-- 官网讲者：Karthik Narasimhan
-- 状态核对日期：2026-11-01（Asia/Shanghai）。
+- 材料状态：题目和嘉宾已公开；官网未列出讲义、指定阅读、参考资料，保留等待状态。
+- 官网讲者：[Karthik Narasimhan](https://karthiknarasimhan.com/)
+- 状态核对日期：2026-11-20（Asia/Shanghai）。
 
 - [官方课表](https://www.cmu-agents.com/#/schedule)
-- [本次完整大纲快照](../../syllabus-snapshots/2026-11-01/cmu/schedule.json)
+- [本次完整大纲快照](../../syllabus-snapshots/2026-11-20/cmu/schedule.json)
 - [课程完整目录](../COURSE_SCHEDULE.md)
 - [学习路线](../../ROADMAP.zh-CN.md)
 
@@ -17,4 +17,4 @@
 
 ## 后续补齐
 
-取得正式内容后，核实日期、题目和版本，保存原文，维护来源索引与状态；有教师讲义时再补对应中文讲解及复核记录。题目未知时保留未知状态。
+取得正式内容后，核实日期、题目和版本，保存原文，维护来源索引与状态；有教师讲义时再补对应中文讲解及复核记录。

@@ -1,10 +1,18 @@
 # CS2680 来源索引
 
 - 课程：[CS2680 Modern AI Systems](https://cs2680.com/)（2026 Fall）
-- 本地同步日期：2026-11-13
+- 本地同步日期：2026-11-20
 - `site/` 保存课程网站公开页面和站内文件；网页中的站内链接已改为本地路径。
 - `readings/` 保存可获取的外部论文 PDF 和网页快照；视频保留原始链接。
 - 原始网页内容、PDF 和作业代码均未翻译或修改；网页仅调整了站内链接。
+
+## 当前材料状态
+
+- 11/11 推测解码新增 78 页可读讲义，归入稳定目录 13，官网文件名编号为 12；已完成[中文讲解](13.EfficientLLMServing.SpeculativeDecoding/notes.zh-CN.md)及[复核记录](REVIEW.json)。
+- 11/18 学生分享的 `assignment4_sharing_protected.pdf` 为真实 PDF 原件，但需要密码；正文不可读、页数未核实。10/26、10/28 受保护 PDF 仍需密码。公开链接和文件下载不等于已取得正文。
+- 阅读页与索引已刷新，无新增指定阅读；既有外部论文沿用已归档版本，未批量重新下载。集群指南补充 Slurm 跨天时限格式与最长 14 天作业示例，原网页已同步。
+- 作业 5 说明、6 页 PDF 与 starter archive 和上次归档一致；GitHub 作业仓库仍不可访问，保留 2026-10-13 固定提交。
+- 本次只同步资料与索引，没有新增、修订或重新内容审核中文讲解；当前待办见 REVIEW.json。
 
 ## 课程网站
 
@@ -63,6 +71,7 @@
 | [site/slides/10_llm_serving_basics_2a.pdf](site/slides/10_llm_serving_basics_2a.pdf) | https://cs2680.com/slides/10_llm_serving_basics_2a.pdf |
 | [site/slides/10_llm_serving_basics_2b.pdf](site/slides/10_llm_serving_basics_2b.pdf) | https://cs2680.com/slides/10_llm_serving_basics_2b.pdf |
 | [site/slides/11_llm_serving_basics_3.pdf](site/slides/11_llm_serving_basics_3.pdf) | https://cs2680.com/slides/11_llm_serving_basics_3.pdf |
+| [site/slides/12_llm_serving_spec_decoding.pdf](site/slides/12_llm_serving_spec_decoding.pdf) | https://cs2680.com/slides/12_llm_serving_spec_decoding.pdf |
 | [site/slides/1_intro.pdf](site/slides/1_intro.pdf) | https://cs2680.com/slides/1_intro.pdf |
 | [site/slides/2_agent_use_1.pdf](site/slides/2_agent_use_1.pdf) | https://cs2680.com/slides/2_agent_use_1.pdf |
 | [site/slides/3_agent_use_2.pdf](site/slides/3_agent_use_2.pdf) | https://cs2680.com/slides/3_agent_use_2.pdf |
@@ -76,6 +85,7 @@
 | [site/slides/assignment3_feedback_protected.pdf](site/slides/assignment3_feedback_protected.pdf) | https://cs2680.com/slides/assignment3_feedback_protected.pdf |
 | [site/slides/assignment3_sharing_protected.pdf](site/slides/assignment3_sharing_protected.pdf) | https://cs2680.com/slides/assignment3_sharing_protected.pdf |
 | [site/slides/assignment4.pdf](site/slides/assignment4.pdf) | https://cs2680.com/slides/assignment4.pdf |
+| [site/slides/assignment4_sharing_protected.pdf](site/slides/assignment4_sharing_protected.pdf) | https://cs2680.com/slides/assignment4_sharing_protected.pdf |
 | [site/slides/assignment5.pdf](site/slides/assignment5.pdf) | https://cs2680.com/slides/assignment5.pdf |
 | [site/slides/feedback_assignment.pdf](site/slides/feedback_assignment.pdf) | https://cs2680.com/slides/feedback_assignment.pdf |
 | [site/sponsors/aws.png](site/sponsors/aws.png) | https://cs2680.com/sponsors/aws.png |
@@ -118,7 +128,11 @@
 | Mixtral | [readings/papers/Mixtral_of_Experts.pdf](readings/papers/Mixtral_of_Experts.pdf) | https://arxiv.org/abs/2401.04088 |
 | CUDA programming guide, CUDA graphs | [readings/papers/CUDA_C++_Programming_Guide.pdf](readings/papers/CUDA_C++_Programming_Guide.pdf)（[官方替代地址](https://docs.nvidia.com/cuda/pdf/CUDA_C_Programming_Guide.pdf)） | https://docs.nvidia.com/cuda/cuda-c-programming-guide/ |
 | Orca | [readings/web/Orca_A_Distributed_Serving_System_for_Transformer-Based_Generative_Models.html](readings/web/Orca_A_Distributed_Serving_System_for_Transformer-Based_Generative_Models.html) | https://www.usenix.org/conference/osdi22/presentation/yu |
-| vLLM, vLLM / PagedAttention | [readings/papers/Efficient_Memory_Management_for_Large_Language_Model_Serving_with_PagedAttention.pdf](readings/papers/Efficient_Memory_Management_for_Large_Language_Model_Serving_with_PagedAttention.pdf) | https://arxiv.org/abs/2309.06180 |
+| vLLM, vLLM / PagedAttention | [readings/papers/Efficient_Memory_Management_for_Large_Language_Model_Serving_with_PagedAttention.pdf](readings/papers/Efficient_Memory_Management_for_Large_Language_Model_Serving_with_PagedAttention.pdf)（复用已有归档：[原位置](../MAS.S62/9.ModelEvolution2/references/Efficient_Memory_Management_for_Large_Language_Model_Serving_with_PagedAttention.pdf)；不计为本次重新下载） | https://arxiv.org/abs/2309.06180 |
+| speculative decoding | [readings/papers/Fast_Inference_from_Transformers_via_Speculative_Decoding.pdf](readings/papers/Fast_Inference_from_Transformers_via_Speculative_Decoding.pdf) | https://arxiv.org/abs/2211.17192 |
+| EAGLE | [readings/papers/EAGLE_Speculative_Sampling_Requires_Rethinking_Feature_Uncertainty.pdf](readings/papers/EAGLE_Speculative_Sampling_Requires_Rethinking_Feature_Uncertainty.pdf) | https://arxiv.org/abs/2401.15077 |
+| Medusa | [readings/papers/Medusa_Simple_LLM_Inference_Acceleration_Framework_with_Multiple_Decoding_Heads.pdf](readings/papers/Medusa_Simple_LLM_Inference_Acceleration_Framework_with_Multiple_Decoding_Heads.pdf) | https://arxiv.org/abs/2401.10774 |
+| DSpark | [readings/papers/DSpark_Confidence-Scheduled_Speculative_Decoding_with_Semi-Autoregressive_Generation.pdf](readings/papers/DSpark_Confidence-Scheduled_Speculative_Decoding_with_Semi-Autoregressive_Generation.pdf) | https://arxiv.org/abs/2607.05147 |
 | Equipping agents for the real world with Agent Skills | [readings/web/Equipping_agents_for_the_real_world_with_Agent_Skills.html](readings/web/Equipping_agents_for_the_real_world_with_Agent_Skills.html) | https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills |
 | Code execution with MCP | [readings/web/Code_execution_with_MCP_building_more_efficient_AI_agents.html](readings/web/Code_execution_with_MCP_building_more_efficient_AI_agents.html) | https://www.anthropic.com/engineering/code-execution-with-mcp |
 | demystifying skills and MCPs | [readings/web/How_skills_and_MCPs_actually_work.html](readings/web/How_skills_and_MCPs_actually_work.html) | https://blog.lawrencejones.dev/demystifying-skills-and-mcps |
@@ -176,12 +190,12 @@
 | securing agents against prompt injection | [readings/papers/Design_Patterns_for_Securing_LLM_Agents_against_Prompt_Injections.pdf](readings/papers/Design_Patterns_for_Securing_LLM_Agents_against_Prompt_Injections.pdf) | https://arxiv.org/abs/2506.08837 |
 | AI control | [readings/papers/AI_Control_Improving_Safety_Despite_Intentional_Subversion.pdf](readings/papers/AI_Control_Improving_Safety_Despite_Intentional_Subversion.pdf) | https://arxiv.org/abs/2312.06942 |
 | AgentDojo | [readings/papers/AgentDojo_A_Dynamic_Environment_to_Evaluate_Prompt_Injection_Attacks_and_Defenses_for_LLM_Agents.pdf](readings/papers/AgentDojo_A_Dynamic_Environment_to_Evaluate_Prompt_Injection_Attacks_and_Defenses_for_LLM_Agents.pdf) | https://arxiv.org/abs/2406.13352 |
-| Reflexion | [readings/papers/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf](readings/papers/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf)（复用已有归档：[原位置](../MAS.S62/readings/papers/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf)；不计为本次重新下载） | https://arxiv.org/abs/2303.11366 |
-| Self-Refine | [readings/papers/Self-Refine_Iterative_Refinement_with_Self-Feedback.pdf](readings/papers/Self-Refine_Iterative_Refinement_with_Self-Feedback.pdf)（复用已有归档：[原位置](../MAS.S62/3.ContextEvolution2/references/Self-Refine_Iterative_Refinement_with_Self-Feedback.pdf)；不计为本次重新下载） | https://arxiv.org/abs/2303.17651 |
+| Reflexion | [readings/papers/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf](readings/papers/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf)（复用已有归档：[原位置](../11-768/20.RerankingAndCriticModels/references/Reflexion_Language_Agents_with_Verbal_Reinforcement_Learning.pdf)；不计为本次重新下载） | https://arxiv.org/abs/2303.11366 |
+| Self-Refine | [readings/papers/Self-Refine_Iterative_Refinement_with_Self-Feedback.pdf](readings/papers/Self-Refine_Iterative_Refinement_with_Self-Feedback.pdf)（复用已有归档：[原位置](../11-768/20.RerankingAndCriticModels/references/Self-Refine_Iterative_Refinement_with_Self-Feedback.pdf)；不计为本次重新下载） | https://arxiv.org/abs/2303.17651 |
 | ADAS | [readings/papers/Automated_Design_of_Agentic_Systems.pdf](readings/papers/Automated_Design_of_Agentic_Systems.pdf) | https://arxiv.org/abs/2408.08435 |
-| Darwin Gödel Machine | [readings/papers/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf](readings/papers/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf)（复用已有归档：[原位置](../MAS.S62/readings/papers/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf)；不计为本次重新下载） | https://arxiv.org/abs/2505.22954 |
+| Darwin Gödel Machine | [readings/papers/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf](readings/papers/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf)（复用已有归档：[原位置](../11-768/20.RerankingAndCriticModels/references/Darwin_Gödel_Machine_Open-Ended_Evolution_of_Self-Improving_Agents.pdf)；不计为本次重新下载） | https://arxiv.org/abs/2505.22954 |
 | ACE | [readings/papers/Agentic_Context_Engineering_Evolving_Contexts_for_Self-Improving_Language_Models.pdf](readings/papers/Agentic_Context_Engineering_Evolving_Contexts_for_Self-Improving_Language_Models.pdf)（复用已有归档：[原位置](../MAS.S62/2.ContextEvolution1/references/Agentic_Context_Engineering_Evolving_Contexts_for_Self-Improving_Language_Models.pdf)；不计为本次重新下载） | https://arxiv.org/abs/2510.04618 |
-| Meta-Harness | [readings/papers/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf](readings/papers/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf)（复用已有归档：[原位置](../MAS.S62/readings/papers/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf)；不计为本次重新下载） | https://arxiv.org/abs/2603.28052 |
+| Meta-Harness | [readings/papers/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf](readings/papers/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf)（复用已有归档：[原位置](../11-768/20.RerankingAndCriticModels/readings/Meta-Harness_End-to-End_Optimization_of_Model_Harnesses.pdf)；不计为本次重新下载） | https://arxiv.org/abs/2603.28052 |
 | agentic harness engineering | [readings/papers/Agentic_Harness_Engineering_Observability-Driven_Automatic_Evolution_of_Coding-Agent_Harnesses.pdf](readings/papers/Agentic_Harness_Engineering_Observability-Driven_Automatic_Evolution_of_Coding-Agent_Harnesses.pdf) | https://arxiv.org/abs/2604.25850 |
 | Live-SWE-agent | [readings/papers/Live-SWE-agent_Can_Software_Engineering_Agents_Self-Evolve_on_the_Fly.pdf](readings/papers/Live-SWE-agent_Can_Software_Engineering_Agents_Self-Evolve_on_the_Fly.pdf) | https://arxiv.org/abs/2511.13646 |
 | BPE | [readings/papers/Neural_Machine_Translation_of_Rare_Words_with_Subword_Units.pdf](readings/papers/Neural_Machine_Translation_of_Rare_Words_with_Subword_Units.pdf) | https://arxiv.org/abs/1508.07909 |
@@ -226,21 +240,17 @@
 | Megatron-LM | [readings/papers/Megatron-LM_Training_Multi-Billion_Parameter_Language_Models_Using_Model_Parallelism.pdf](readings/papers/Megatron-LM_Training_Multi-Billion_Parameter_Language_Models_Using_Model_Parallelism.pdf) | https://arxiv.org/abs/1909.08053 |
 | GPipe | [readings/papers/GPipe_Easy_Scaling_with_Micro-Batch_Pipeline_Parallelism.pdf](readings/papers/GPipe_Easy_Scaling_with_Micro-Batch_Pipeline_Parallelism.pdf) | https://arxiv.org/abs/1811.06965 |
 | LoongServe | [readings/papers/LoongServe_Efficiently_Serving_Long-Context_Large_Language_Models_with_Elastic_Sequence_Parallelism.pdf](readings/papers/LoongServe_Efficiently_Serving_Long-Context_Large_Language_Models_with_Elastic_Sequence_Parallelism.pdf) | https://arxiv.org/abs/2404.09526 |
-| speculative decoding | [readings/papers/Fast_Inference_from_Transformers_via_Speculative_Decoding.pdf](readings/papers/Fast_Inference_from_Transformers_via_Speculative_Decoding.pdf) | https://arxiv.org/abs/2211.17192 |
 | speculative sampling | [readings/papers/Accelerating_Large_Language_Model_Decoding_with_Speculative_Sampling.pdf](readings/papers/Accelerating_Large_Language_Model_Decoding_with_Speculative_Sampling.pdf) | https://arxiv.org/abs/2302.01318 |
 | blockwise parallel decoding | [readings/papers/Blockwise_Parallel_Decoding_for_Deep_Autoregressive_Models.pdf](readings/papers/Blockwise_Parallel_Decoding_for_Deep_Autoregressive_Models.pdf) | https://arxiv.org/abs/1811.03115 |
 | DistillSpec | [readings/papers/DistillSpec_Improving_Speculative_Decoding_via_Knowledge_Distillation.pdf](readings/papers/DistillSpec_Improving_Speculative_Decoding_via_Knowledge_Distillation.pdf) | https://arxiv.org/abs/2310.08461 |
 | self-speculative | [readings/papers/Draft_Verify_Lossless_Large_Language_Model_Acceleration_via_Self-Speculative_Decoding.pdf](readings/papers/Draft_Verify_Lossless_Large_Language_Model_Acceleration_via_Self-Speculative_Decoding.pdf) | https://arxiv.org/abs/2309.08168 |
 | LayerSkip | [readings/papers/LayerSkip_Enabling_Early_Exit_Inference_and_Self-Speculative_Decoding.pdf](readings/papers/LayerSkip_Enabling_Early_Exit_Inference_and_Self-Speculative_Decoding.pdf) | https://arxiv.org/abs/2404.16710 |
 | SWIFT | [readings/papers/SWIFT_On-the-Fly_Self-Speculative_Decoding_for_LLM_Inference_Acceleration.pdf](readings/papers/SWIFT_On-the-Fly_Self-Speculative_Decoding_for_LLM_Inference_Acceleration.pdf) | https://arxiv.org/abs/2410.06916 |
-| Medusa | [readings/papers/Medusa_Simple_LLM_Inference_Acceleration_Framework_with_Multiple_Decoding_Heads.pdf](readings/papers/Medusa_Simple_LLM_Inference_Acceleration_Framework_with_Multiple_Decoding_Heads.pdf) | https://arxiv.org/abs/2401.10774 |
-| EAGLE | [readings/papers/EAGLE_Speculative_Sampling_Requires_Rethinking_Feature_Uncertainty.pdf](readings/papers/EAGLE_Speculative_Sampling_Requires_Rethinking_Feature_Uncertainty.pdf) | https://arxiv.org/abs/2401.15077 |
 | EAGLE-2 | [readings/papers/EAGLE-2_Faster_Inference_of_Language_Models_with_Dynamic_Draft_Trees.pdf](readings/papers/EAGLE-2_Faster_Inference_of_Language_Models_with_Dynamic_Draft_Trees.pdf) | https://arxiv.org/abs/2406.16858 |
 | EAGLE-3 | [readings/papers/EAGLE-3_Scaling_up_Inference_Acceleration_of_Large_Language_Models_via_Training-Time_Test.pdf](readings/papers/EAGLE-3_Scaling_up_Inference_Acceleration_of_Large_Language_Models_via_Training-Time_Test.pdf) | https://arxiv.org/abs/2503.01840 |
 | EAGLE at Meta | [readings/papers/Efficient_Speculative_Decoding_for_Llama_at_Scale_Challenges_and_Solutions.pdf](readings/papers/Efficient_Speculative_Decoding_for_Llama_at_Scale_Challenges_and_Solutions.pdf) | https://arxiv.org/abs/2508.08192 |
 | DFlash | [readings/papers/DFlash_Block_Diffusion_for_Flash_Speculative_Decoding.pdf](readings/papers/DFlash_Block_Diffusion_for_Flash_Speculative_Decoding.pdf) | https://arxiv.org/abs/2602.06036 |
 | Domino | [readings/papers/Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafting_in_Speculative_Decoding.pdf](readings/papers/Domino_Decoupling_Causal_Modeling_from_Autoregressive_Drafting_in_Speculative_Decoding.pdf) | https://arxiv.org/abs/2605.29707 |
-| DSpark | [readings/papers/DSpark_Confidence-Scheduled_Speculative_Decoding_with_Semi-Autoregressive_Generation.pdf](readings/papers/DSpark_Confidence-Scheduled_Speculative_Decoding_with_Semi-Autoregressive_Generation.pdf) | https://arxiv.org/abs/2607.05147 |
 | DFlash 2 | [readings/web/DFlash_2_Keep_Drafting_Parallel.html](readings/web/DFlash_2_Keep_Drafting_Parallel.html) | https://inco.ai/blog/dflash2/ |
 | DSpine | [readings/papers/DSpine_Draft_in_Parallel_Condition_Through_Depth_Adjacent_Causal_Injection_for_Speculative_Decoding.pdf](readings/papers/DSpine_Draft_in_Parallel_Condition_Through_Depth_Adjacent_Causal_Injection_for_Speculative_Decoding.pdf) | https://arxiv.org/abs/2609.36173 |
 | H-Spec | [readings/papers/H-Spec_Parallel_Speculative_Decoding_Without_a_Drafter-Side_KV_Cache.pdf](readings/papers/H-Spec_Parallel_Speculative_Decoding_Without_a_Drafter-Side_KV_Cache.pdf) | https://arxiv.org/abs/2609.24197 |

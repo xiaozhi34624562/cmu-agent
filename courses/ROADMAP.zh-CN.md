@@ -11,7 +11,7 @@
 1. **一行对应一讲或一份作业。** 先沿“主讲义”确定本讲的问题，再配合“中文讲解”逐段学习；“全部资料”包含指定 readings、references、嘉宾和其他学习材料，按讲义主线穿插阅读。四门课的所有内容均保留。
 2. **遇到作业行就做作业。** 按正式原题完成必做要求，不等四门课全部看完才开始；同一时间只推进一项主要编码作业。
 3. **遇到“回访”只补本行明确的章节/目标。** 本讲所有部分、指定阅读与相应练习完成后，才标记整讲完成；不是把同一讲重新从头看一遍。
-4. **遇到“待讲义/待题目”保留待回访状态，继续下一条前置已满足的任务。** CMU、Harvard、MIT材料状态于2026-11-13同步；Stanford维持11/4版本，本次新增四节课已补完整中文讲解；MIT W7 受资料版本变化影响的历史讲解仍待另行审核；历史版本与获取限制保留在来源索引。未来课次的学习重点是规划，发布后按正文修订。
+4. **遇到“待讲义/待题目”保留待回访状态，继续下一条前置已满足的任务。** CMU、Harvard、MIT材料状态于2026-11-20同步；Stanford维持11/4版本。CMU 19、21 与 Harvard 13 已补完整中文讲解，MIT W9 已整合新增 Self-Play 讲义。MIT W7 的历史讲解仍待复核，版本与获取限制见各课来源索引。未来课次的学习重点是规划，发布后按正文修订。
 
 你当前的掌握程度和每周投入时间尚未测量，所以这里给出明确顺序和验收，不编造完成日期或已学进度。
 
@@ -142,7 +142,7 @@
 | <a id="step-49"></a>49 | Harvard 09 · Agent Safety / Self-evolving Harness 讨论（后续 [第 64 步](#step-64)） | [讲解定位](2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/notes.zh-CN.md#1-先定义系统状态与授权而不是先背攻击名称) · [全部资料](2680/9.AdvancedAgentDesignII.AgentSafetySelfEvolvingHarness/SOURCES.md) · **论文讨论，无教师讲义** | **本次读 §0–8、§17、§19–21 的安全部分**；按官方分组阅读安全论文，不等不存在的教师讲义。 |
 | <a id="step-50"></a>50 | Stanford 17 · Agent Safety & Guardrails | [全部资料](329z/17.AgentSafetyGuardrails/SOURCES.md) · **待讲义/分享材料** | 待讲义；核对正式 guardrails 课程，与现有权限和工具边界实验对照。 |
 | <a id="step-51"></a>51 | CMU 16 · Agents and the Future of Work（10/27） | [中文讲解](11-768/16.AgentsAndTheFutureOfWork/notes.zh-CN.md) · [主讲义](11-768/16.AgentsAndTheFutureOfWork/2026-10-27-zora-wang.pdf) · [全部资料](11-768/16.AgentsAndTheFutureOfWork/SOURCES.md) | 理解自动化与增强的不同评价；用真实工作任务和人类交付要求定义价值。 |
-| <a id="step-52"></a>52 | CMU 19 · Human-Agent Interaction（11/10） | [全部资料](11-768/19.HumanAgentInteraction/SOURCES.md) · **待讲义/分享材料** | 待讲义；补人工接管、反馈和 Human-Agent Interaction 的正式内容。 |
+| <a id="step-52"></a>52 | CMU 19 · Human-Agent Interaction（11/10） | [89页讲义](11-768/19.HumanAgentInteraction/2026-11-10-valerie-chen.pdf) · [全部资料](11-768/19.HumanAgentInteraction/SOURCES.md) · [完整中文讲解](11-768/19.HumanAgentInteraction/notes.zh-CN.md) | 讲义与阅读已归档；按正式内容学习人工接管、反馈与人机协作。 |
 | <a id="step-53"></a>53 | Stanford 19 · Proactive Agents | [全部资料](329z/19.ProactiveAgents/SOURCES.md) · **待讲义/分享材料** | 待讲义；核对主动执行的任务触发、授权、打扰与退出边界。 |
 
 **本阶段验收：** 在长期项目实际测试工具写入后崩溃、超时/限流、重启恢复、取消、权限拒绝和回滚；说明哪些情况仍需人工处理。
@@ -160,7 +160,7 @@
 | <a id="step-54"></a>54 | Harvard 08 · Agent Cost & Performance | [中文讲解](2680/8.AdvancedAgentDesignI.CostAndPerformance/lecture-08_agent_cost_and_performance.md) · [主讲义](2680/8.AdvancedAgentDesignI.CostAndPerformance/8_agent_design_5.pdf) · [全部资料](2680/8.AdvancedAgentDesignI.CostAndPerformance/SOURCES.md) | 把成功率、时延、token 和每成功任务成本放在同一比较条件下。 |
 | <a id="step-55"></a>55 | Stanford 09 · Optimization（后续 [第 85 步](#step-85)） | [讲解定位](329z/9.Optimization/notes.zh-CN.md#1-优化之前先把可改变的对象写清楚) · [主讲义](329z/9.Optimization/slides/lecture09.pdf) · [全部资料](329z/9.Optimization/SOURCES.md) | **本次读 §1–7、§11–15**：示例/提示/程序优化、反馈、候选选择与实验流程；§8–10 在阶段 7 学。 |
 | <a id="step-56"></a>56 | CMU 20 · Reranking & Critic Models（11/12） | [31页主讲义](11-768/20.RerankingAndCriticModels/lecture-20-search-basics.pdf) · [全部资料](11-768/20.RerankingAndCriticModels/SOURCES.md) · **中文讲解暂缓** | 从采样覆盖到 verifier、反馈、PDR、长轨迹选择与 harness 搜索；配 Java 例子与概率推导。 |
-| <a id="step-57"></a>57 | CMU 21 · Tree Search（11/17） | [全部资料](11-768/21.TreeSearch/SOURCES.md) · **待讲义/分享材料** | 待讲义；在 critic/reranking 后学 Tree Search；比较时显式计入额外推理预算。 |
+| <a id="step-57"></a>57 | CMU 21 · Tree Search（11/17） | [100页讲义](11-768/21.TreeSearch/2026-11-17-jy-koh.pdf) · [全部资料](11-768/21.TreeSearch/SOURCES.md) · [完整中文讲解](11-768/21.TreeSearch/notes.zh-CN.md) | 在 critic/reranking 后学 Tree Search；比较时显式计入额外推理预算。 |
 | <a id="step-58"></a>58 | **Harvard HW3 · Mads-Opt** | [原题](2680/site/assignments/assignment3.html) · [starter](2680/assignment/assignment-3/SOURCES.md) | 在 HW2 基线上完成原题优化；同任务、同预算比较成功率、耗时与成本，说明每项改动的作用。 |
 | <a id="step-59"></a>59 | Harvard 22 · Student Sharing II: Harness Optimization | [全部资料](2680/22.Assignment3StudentSharing/SOURCES.md) · **原件有密码保护，正文待取得** | 在 HW3 后展示基线、改动、失败与取舍；官方分享材料待取得。 |
 | <a id="step-60"></a>60 | Harvard 23 · Assignment 3 Feedback | [全部资料](2680/23.Assignment3Feedback/SOURCES.md) · **原件有密码保护，正文待取得** | 在 HW3 后吸收正式反馈；把反馈转成可验证的下一项改动。 |
@@ -189,13 +189,13 @@
 | <a id="step-69a"></a>69a | Harvard 26 · 作业反馈与GPU续讲（11/2） | [全部原始资料](2680/26.AssignmentsFeedbackAndAgentPitfallsGPUProgrammingContinued/SOURCES.md) · **中文讲解暂缓** | 整合作业反馈与 GPU 续讲：可信迭代、执行与测量、融合、attention、调度和通信。 |
 | <a id="step-70"></a>70 | Harvard 12 · Batching, Paging & Parallelism（11/4） | [59页主讲义](2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/11_llm_serving_basics_3.pdf) · [全部资料](2680/12.EfficientLLMServingBasicsIII.BatchingPagingAndParallelism/SOURCES.md) · **中文讲解暂缓** | 从迭代批处理到 KV 分页、调度与多卡并行；配 CPU 算例、代价和诊断。 |
 | <a id="step-71"></a>71 | **Harvard HW4 · Mads-Serve** | [原题](2680/site/assignments/assignment4.html) · [作业讲义](2680/assignment/assignment-4/assignment4.pdf) · [starter](2680/assignment/assignment-4/SOURCES.md) | 完成原题的服务实现与实验，先留下端到端基线。后续课程未有讲义时，按已公开 handout 推进其允许的部分。 |
-| <a id="step-72"></a>72 | Harvard 13 · Speculative Decoding | [全部资料](2680/13.EfficientLLMServing.SpeculativeDecoding/SOURCES.md) · **待讲义/分享材料** | 待讲义；理解 speculative decoding 的适用条件，测量端到端收益。 |
+| <a id="step-72"></a>72 | Harvard 13 · Speculative Decoding | [78页讲义](2680/13.EfficientLLMServing.SpeculativeDecoding/12_llm_serving_spec_decoding.pdf) · [全部资料](2680/13.EfficientLLMServing.SpeculativeDecoding/SOURCES.md) · [完整中文讲解](2680/13.EfficientLLMServing.SpeculativeDecoding/notes.zh-CN.md) | 理解 speculative decoding 的适用条件，测量端到端收益。 |
 | <a id="step-73"></a>73 | Harvard 14 · Scheduling & Prefix Caching | [全部资料](2680/14.EfficientAgenticSystems.SchedulingAndPrefixCaching/SOURCES.md) · **待讲义/分享材料** | 待讲义；连接调度、prefix reuse、等待时间与吞吐。 |
 | <a id="step-74"></a>74 | Harvard 16 · KV Cache & Model Architectures | [全部资料](2680/16.EfficientLLMServing.KVCacheOptimizationAndModelArchitectures/SOURCES.md) · **待讲义/分享材料** | 待讲义；分析 KV cache 优化与模型架构对容量和性能的影响。 |
 | <a id="step-75"></a>75 | Harvard 15 · Pruning & Quantization | [全部资料](2680/15.EfficientLLMServing.PruningAndQuantization/SOURCES.md) · **待讲义/分享材料** | 待讲义；分析剪枝/量化的质量、内存和真实速度取舍。 |
 | <a id="step-76"></a>76 | Harvard 17 · Routing & Load Balancing | [全部资料](2680/17.EfficientAgenticSystem.RoutingAndLoadBalancing/SOURCES.md) · **待讲义/分享材料** | 待讲义；分析 routing、load balancing 与不同请求的服务质量。 |
 | <a id="step-77"></a>77 | Harvard 20 · Why Infrastructure Sets the Pace of AI | [全部资料](2680/20.GuestLectureWhyInfrastructureSetsThePaceOfAI/SOURCES.md) · **待讲义/分享材料** | 待嘉宾材料；用前面的测量理解基础设施为什么约束可实现的 AI 产品。 |
-| <a id="step-78"></a>78 | Harvard 24 · Showcase Your Serving Engine（11/18） | [全部资料](2680/24.StudentSharingIII.EngineOptimizationsAndAgentEngineCoDesign/SOURCES.md) · **待分享材料** | 当前官网为Assignment4学生展示；目录名保留原稳定编号。 |
+| <a id="step-78"></a>78 | Harvard 24 · Showcase Your Serving Engine（11/18） | [全部资料](2680/24.StudentSharingIII.EngineOptimizationsAndAgentEngineCoDesign/SOURCES.md) · **分享PDF需密码** | Assignment4学生展示文件已原样归档，正文暂不可读，不计为已取得可读讲义；目录名保留原稳定编号。 |
 | <a id="step-79"></a>79 | **Harvard HW5 · Mads-Stack** | [完整原题](2680/site/assignments/assignment5.html) · [6页作业PDF](2680/assignment/assignment-5/assignment5.pdf) · [starter与来源](2680/assignment/assignment-5/SOURCES.md) | 正式材料已公开，按原题完成任务、实验与提交；保留starter未实现部分。 |
 | <a id="step-80"></a>80 | Harvard 25 · 历史分享占位 | [历史入口](2680/25.StudentSharingIV/SOURCES.md) | 当前12/2已改为Routing课程，不再额外安排一次旧分享课。 |
 
@@ -218,8 +218,8 @@
 | <a id="step-85"></a>85 | Stanford 09 · Optimization **（回访）** | [讲解定位](329z/9.Optimization/notes.zh-CN.md#8-sft让模型更像经过筛选的成功行为) · [主讲义](329z/9.Optimization/slides/lecture09.pdf) · [全部资料](329z/9.Optimization/SOURCES.md) | **回访 §8–10，并对照 §7、§13**：SFT、GRPO、on-policy distillation；解释何时该改权重。 |
 | <a id="step-86"></a>86 | CMU 12 · RL Systems | [中文讲解](11-768/12.TrainingRLSystems/notes.zh-CN.md) · [主讲义](11-768/12.TrainingRLSystems/lecture-12-rl-systems.pdf) · [全部资料](11-768/12.TrainingRLSystems/SOURCES.md) | 理解 rollout、训练和版本同步的系统约束，连接前面的 serving 经验。 |
 | <a id="step-87"></a>87 | **CMU HW3 · Training** | [原题](11-768/assignment/assignment-3/ASSIGNMENT.md) · [starter 与运行边界](11-768/assignment/assignment-3/SOURCES.md) | 完成轨迹处理、同步 REINFORCE/GRPO、异步 GRPO、TextCraft 和原题必做实验；真实训练结果与离线测试分开记录。 |
-| <a id="step-88"></a>88 | MIT W07 · Model Evolution 1 | [中文讲解](MAS.S62/7.ModelEvolution1/notes.zh-CN.md) · [主讲义](<MAS.S62/7.ModelEvolution1/slides/lec6 - training.pdf>) · [嘉宾讲义](MAS.S62/7.ModelEvolution1/slides/model_guest.pdf) · [教程](<MAS.S62/7.ModelEvolution1/tutorials/lec6 - rl in practice.pdf>) · [全部资料](MAS.S62/7.ModelEvolution1/SOURCES.md) | 读 Model Evolution 主讲、嘉宾与 RL 实践教程，比较训练和自蒸馏机制。 |
-| <a id="step-89"></a>89 | MIT W09 · Model Evolution 2 | [当前资料](MAS.S62/9.ModelEvolution2/SOURCES.md) · [完整中文讲解](MAS.S62/9.ModelEvolution2/notes.zh-CN.md) | 以19页教程为主线讲 RL 训练与自蒸馏，再接三篇指定自博弈阅读；旧15页版与W7历史讲解保持独立。 |
+| <a id="step-88"></a>88 | MIT W07 · Model Evolution 1 | [旧版中文讲解（待复核）](MAS.S62/7.ModelEvolution1/notes.zh-CN.md) · [主讲义](<MAS.S62/7.ModelEvolution1/slides/lec6 - training.pdf>) · [嘉宾讲义](MAS.S62/7.ModelEvolution1/slides/model_guest.pdf) · [教程](<MAS.S62/7.ModelEvolution1/tutorials/lec6 - rl in practice.pdf>) · [全部资料](MAS.S62/7.ModelEvolution1/SOURCES.md) | 读 Model Evolution 主讲、嘉宾与 RL 实践教程，比较训练和自蒸馏机制。 |
+| <a id="step-89"></a>89 | MIT W09 · Model Evolution 2 | [19页RL教程](<MAS.S62/9.ModelEvolution2/tutorials/lec6 - rl in practice.pdf>) · [63页Self-Play讲义](<MAS.S62/9.ModelEvolution2/slides/lec7 - self play.pdf>) · [完整中文讲解](MAS.S62/9.ModelEvolution2/notes.zh-CN.md) · [全部资料](MAS.S62/9.ModelEvolution2/SOURCES.md) | 从 RL 反馈与蒸馏接到竞争和协作式自博弈，解释任务生成、验证差距和学习循环。 |
 | <a id="step-90"></a>90 | **MIT Model Evolution · 计划作业** | [计划作业 3](MAS.S62/assignment/assignment-3/SOURCES.md) | **待完整题目。** 以大纲暂定的 test-time training / continual learning 方向预习，正文公开后核对实现要求。 |
 
 **本阶段验收：** 能构造有效训练样本并解释 loss/reward；完成原题必做训练与消融，区分真实训练、离线测试和未运行计划。
@@ -242,7 +242,7 @@
 
 **本阶段验收：** 以新任务或新环境检验泛化，保留反例和复现条件；交付能运行的系统、实验记录、报告与演示。
 
-**项目节点：** 完成 [四课项目与展示](#projects)，并回访 [尚未定题的嘉宾课](#pending)。
+**项目节点：** 完成 [四课项目与展示](#projects)，并回访 [尚待公开材料的嘉宾课](#pending)。
 
 <a id="projects"></a>
 
@@ -253,11 +253,11 @@
 | 项目 / 活动 | 在上面哪一阶段做 | 直接入口与交付 |
 |---|---|---|
 | <a id="project-stanford"></a>Stanford project | 阶段 1 proposal → 阶段 4 midpoint → 阶段 8 final | [项目要求](329z/project/SOURCES.md)：任务/数据/环境、工作原型、评测、报告与演示；官网演示明确为 12/09 15:30–18:30，最终报告日期仍为 Dec 7–11/TBA；均为 Pacific Time。 |
-| <a id="project-cmu"></a>CMU mini research project | 阶段 3 问题/proposal → 阶段 5 check-in → 阶段 8 report/poster | [项目要求](11-768/project/SOURCES.md)：研究问题、基线、机制实验与反例；11/05 project hours、12/01 和 12/03 poster 均保留。完整项目指南已归档：2–4人，Project Hours 5%、Poster 15%、Report 30%；报告ACL格式正文6–9页。 |
+| <a id="project-cmu"></a>CMU mini research project | 阶段 3 问题/proposal → 阶段 5 check-in → 阶段 8 report/poster | [项目要求](11-768/project/SOURCES.md)：研究问题、基线、机制实验与反例；11/05 project hours、12/01 和 12/03 poster 均保留。完整项目指南已归档：2–4人，Project Hours 5%、Poster 15%、Report 30%；报告ACL格式正文6–9页。报告12/4 23:59截止，可使用最多3天late days至12/7 23:59；官网未注明时区，Project Hours与Poster不可late days。 |
 | <a id="project-harvard"></a>Harvard project | 阶段 3 proposal → 阶段 6 性能/产品实验 → 阶段 8 final | [正式要求](2680/project/SOURCES.md)：选择 product/research track；按原题完成比较、消融、反例、成本与可复现报告；12/07 poster/demo 保留。 |
 | <a id="project-mit-proposal"></a>MIT W4 · Project Proposal | 阶段 3 结束前 | [W4 活动](MAS.S62/4.ProjectProposalPresentations/SOURCES.md) · [本学期大纲](MAS.S62/site/syllabus/ai4ai-syllabus.pdf)：明确演化对象、研究问题与可信评测，提交相关工作综述和初步基线结果，并做 proposal 展示。 |
 | <a id="project-mit-midterm"></a>MIT W8 · Project Midterm | 阶段 7 的模型实验形成基线后 | [W8 活动](MAS.S62/8.ProjectMidtermPresentations/SOURCES.md)：说明已得到的证据、失败与下一步假设。 |
-| <a id="project-mit-final"></a>MIT W13 · Project Final | 阶段 8 收束 | [W13 活动](MAS.S62/13.ProjectFinalPresentations/SOURCES.md) · [项目入口](MAS.S62/project/SOURCES.md)：最终研究报告与展示；项目入口中的往届案例仅供参考。 |
+| <a id="project-mit-final"></a>MIT W13 · Project Final | 阶段 8 收束 | [W13 活动](MAS.S62/13.ProjectFinalPresentations/SOURCES.md) · [项目入口](MAS.S62/project/SOURCES.md)：W13（12/2）期末展示，最终报告按官方大纲在W14提交；项目入口中的往届案例仅供参考。 |
 
 <a id="paper-work"></a>
 
@@ -278,12 +278,12 @@
 
 | 课次 | 直接入口 | 安排 |
 |---|---|---|
-| <a id="pending-c22"></a>CMU 22 · Guest Lecture（11/19，题目待定） | [全部资料](11-768/22.GuestLecture20261119/SOURCES.md) · **待讲义/分享材料** | 主题/资料核实后决定具体学习位置，完成前保持待回访。 |
-| <a id="pending-c23"></a>CMU 23 · Guest Lecture（11/24，题目待定） | [全部资料](11-768/23.GuestLecture20261124/SOURCES.md) · **待讲义/分享材料** | 主题/资料核实后决定具体学习位置，完成前保持待回访。 |
+| <a id="pending-c22"></a>CMU 22 · How to Trust Your AI Agents（11/19） | [全部资料](11-768/22.GuestLecture20261119/SOURCES.md) · **待讲义/分享材料** | 题目已明确；待公开正文后决定具体学习位置，完成前保持待回访。 |
+| <a id="pending-c23"></a>CMU 23 · Lessons in Building a Coding Agent（11/24） | [全部资料](11-768/23.GuestLecture20261124/SOURCES.md) · **待讲义/分享材料** | 题目已明确；待公开正文后决定具体学习位置，完成前保持待回访。 |
 | <a id="pending-s14"></a>Stanford 14 · Fireside Chat with Andrew Ng（11/09） | [全部资料](329z/14.FiresideChatWithAndrewNg/SOURCES.md) · **待讲义/分享材料** | 主题/资料核实后决定具体学习位置，完成前保持待回访。 |
 | <a id="legacy-h18"></a>Harvard 18 · Others 历史占位 | [保留资料与状态](2680/18.EfficientAgenticSystems.Others/SOURCES.md) | 已不对应当前正式课表的确定主题；资料保留，有明确内容后再归位，不额外虚构一讲。 |
 
-10 条停课记录仍保留在 [完整日历](SYLLABUS-COVERAGE.zh-CN.md)：CMU 4 条、Harvard 3 条、MIT 1 条、Stanford 2 条。停课不产生学习任务。主表覆盖所有已定主题的教学/讨论/分享，另表覆盖 3 次待定嘉宾、8 条项目日历与历史占位。
+10 条停课记录仍保留在 [完整日历](SYLLABUS-COVERAGE.zh-CN.md)：CMU 4 条、Harvard 3 条、MIT 1 条、Stanford 2 条。停课不产生学习任务。主表覆盖已取得资料或已安排学习步骤的教学/讨论/分享，另表覆盖 3 次待公开材料的嘉宾课、8 条项目日历与历史占位。
 
 <a id="homework-method"></a>
 
@@ -303,6 +303,6 @@
 - 每讲以 lecture slides 决定主线，readings 补机制与证据，references 补背景与实现；讨论课按正式阅读要求组织。每个“全部资料”入口都保留未取得材料的状态。
 - 一个阶段可以“可执行部分完成，仍有待回访项”。后续讲义未发布时，继续前置已满足的任务；不把占位、阅读过概要或下载文件记成学会。
 - 同 URL 正文修订时保留来源版本，复查受影响的讲解、页码和作业约束；日期变更只调整课表，知识依赖有变化才重排步骤。
-- 内容公开后更新当前步骤、材料链接和 [课表覆盖表](SYLLABUS-COVERAGE.zh-CN.md)，不新增一份平行 roadmap。完整官方脉络与来源见 [COURSE_LAYOUT.json](COURSE_LAYOUT.json) 和 [大纲来源](syllabus-snapshots/2026-11-13/README.md)。
+- 内容公开后更新当前步骤、材料链接和 [课表覆盖表](SYLLABUS-COVERAGE.zh-CN.md)，不新增一份平行 roadmap。完整官方脉络与来源见 [COURSE_LAYOUT.json](COURSE_LAYOUT.json) 和 [大纲来源](syllabus-snapshots/2026-11-20/README.md)。
 
 学到 Senior 所需的证据包括：能运行、能解释失败、能做设计取舍、能在变化的任务中检验边界，并让他人理解和复现。课程项目提供练习场，真实运行维护和协作继续检验这些能力。

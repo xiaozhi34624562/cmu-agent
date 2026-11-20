@@ -10288,7 +10288,780 @@
       ],
       "title_basis": "Verified local source title and relevant body during new-lesson writing; reading scope in course REVIEW.json",
       "registered_at": "2026-11-13"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/Language_Self-Play_For_Data-Free_Training.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/Language_Self-Play_For_Data-Free_Training.pdf",
+      "title": "Language Self-Play For Data-Free Training",
+      "sha256": "16f6fea2b0703bc2ae2510536a13b767aded0b13541066b0a35adb760b9b753f",
+      "urls": [
+        "https://arxiv.org/abs/2509.07414",
+        "https://arxiv.org/pdf/2509.07414"
+      ],
+      "title_basis": "Official landing-page title and PDF first-page title verified on 2026-11-20; archived under complete title from first acquisition.",
+      "original_filename": "2509.07414",
+      "acquired_at": "2026-11-20",
+      "version": "2509.07414v3"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/STP_Self-play_LLM_Theorem_Provers_with_Iterative_Conjecturing_and_Proving.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/STP_Self-play_LLM_Theorem_Provers_with_Iterative_Conjecturing_and_Proving.pdf",
+      "title": "STP: Self-play LLM Theorem Provers with Iterative Conjecturing and Proving",
+      "sha256": "a8c8bd39f5a4e0a241f04f71202162fb6323a63ddfc20b617d44f3599325dc8d",
+      "urls": [
+        "https://arxiv.org/abs/2502.00212",
+        "https://arxiv.org/pdf/2502.00212"
+      ],
+      "title_basis": "Official landing-page title and PDF first-page title verified on 2026-11-20; archived under complete title from first acquisition.",
+      "original_filename": "2502.00212",
+      "acquired_at": "2026-11-20",
+      "version": "2502.00212v4"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/Self-Challenging_Language_Model_Agents.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/Self-Challenging_Language_Model_Agents.pdf",
+      "title": "Self-Challenging Language Model Agents",
+      "sha256": "3b8cbcfef6e9dcadc881d42ae0bf681b3ee79be696851ba0326b64345d7511e3",
+      "urls": [
+        "https://arxiv.org/abs/2506.01716",
+        "https://arxiv.org/pdf/2506.01716"
+      ],
+      "title_basis": "Official landing-page title and PDF first-page title verified on 2026-11-20; archived under complete title from first acquisition.",
+      "original_filename": "2506.01716",
+      "acquired_at": "2026-11-20",
+      "version": "2506.01716v1"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/Skill_Self-Play_Pushing_the_Frontier_of_LLM_Capability_with_Co-Evolving_Skills.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/Skill_Self-Play_Pushing_the_Frontier_of_LLM_Capability_with_Co-Evolving_Skills.pdf",
+      "title": "Skill Self-Play: Pushing the Frontier of LLM Capability with Co-Evolving Skills",
+      "sha256": "59ceb22a7620b98326f6a2430e1ab303e5b589eaf6d765463cd4c51bd69477cd",
+      "urls": [
+        "https://arxiv.org/abs/2607.22529",
+        "https://arxiv.org/pdf/2607.22529"
+      ],
+      "title_basis": "Official landing-page title and PDF first-page title verified on 2026-11-20; archived under complete title from first acquisition.",
+      "original_filename": "2607.22529",
+      "acquired_at": "2026-11-20",
+      "version": "2607.22529v1"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/Scaling_Self-Play_with_Self-Guidance.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/Scaling_Self-Play_with_Self-Guidance.pdf",
+      "title": "Scaling Self-Play with Self-Guidance",
+      "sha256": "e5578cb4c120375fdc46f6399ac6650d047028057383968a039f3f8d63cb166e",
+      "urls": [
+        "https://arxiv.org/abs/2604.20209",
+        "https://arxiv.org/pdf/2604.20209"
+      ],
+      "title_basis": "Official landing-page title and PDF first-page title verified on 2026-11-20; archived under complete title from first acquisition.",
+      "original_filename": "2604.20209",
+      "acquired_at": "2026-11-20",
+      "version": "2604.20209v2"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/LADDER_Self-Improving_LLMs_Through_Recursive_Problem_Decomposition.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/LADDER_Self-Improving_LLMs_Through_Recursive_Problem_Decomposition.pdf",
+      "title": "LADDER: Self-Improving LLMs Through Recursive Problem Decomposition",
+      "sha256": "cf1ac2ce2cb52fbeeddb7b266d0543d57da36698fc327b44a28c435363aa6e8a",
+      "urls": [
+        "https://arxiv.org/abs/2503.00735",
+        "https://arxiv.org/pdf/2503.00735"
+      ],
+      "title_basis": "Official landing-page title and PDF first-page title verified on 2026-11-20; archived under complete title from first acquisition.",
+      "original_filename": "2503.00735",
+      "acquired_at": "2026-11-20",
+      "version": "2503.00735v3"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/Self-Adapting_Language_Models.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/Self-Adapting_Language_Models.pdf",
+      "title": "Self-Adapting Language Models",
+      "sha256": "3abf83bcf05862d5e6e72078dc0e47ebfcf2e72866e9fdfe1dbc3663c72a9dc6",
+      "urls": [
+        "https://arxiv.org/abs/2506.10943",
+        "https://arxiv.org/pdf/2506.10943"
+      ],
+      "title_basis": "Official landing-page title and PDF first-page title verified on 2026-11-20; archived under complete title from first acquisition.",
+      "original_filename": "2506.10943",
+      "acquired_at": "2026-11-20",
+      "version": "2506.10943v2"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/CPMobius_Iterative_Coach-Player_Reasoning_for_Data-Free_Reinforcement_Learning.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/CPMobius_Iterative_Coach-Player_Reasoning_for_Data-Free_Reinforcement_Learning.pdf",
+      "title": "CPMobius: Iterative Coach-Player Reasoning for Data-Free Reinforcement Learning",
+      "sha256": "2eff9e26fb9756cad6421b267779ef9a57f2619b8442635a0666a47541ce73ed",
+      "urls": [
+        "https://arxiv.org/abs/2602.02979",
+        "https://arxiv.org/pdf/2602.02979"
+      ],
+      "title_basis": "Official landing-page title and PDF first-page title verified on 2026-11-20; archived under complete title from first acquisition.",
+      "original_filename": "2602.02979",
+      "acquired_at": "2026-11-20",
+      "version": "2602.02979v3"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/CompassPlay_Rewarding_the_Proposer_for_Where_It_Moves_the_Solver.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/CompassPlay_Rewarding_the_Proposer_for_Where_It_Moves_the_Solver.pdf",
+      "title": "CompassPlay: Rewarding the Proposer for Where It Moves the Solver",
+      "sha256": "9fab4daa14b131031723ad79cc6b6e14947b1fef27af15b8ced1ce051eaa207f",
+      "urls": [
+        "https://arxiv.org/abs/2609.32228",
+        "https://arxiv.org/pdf/2609.32228"
+      ],
+      "title_basis": "Official landing-page title and PDF first-page title verified on 2026-11-20; archived under complete title from first acquisition.",
+      "original_filename": "2609.32228",
+      "acquired_at": "2026-11-20",
+      "version": "2609.32228v1"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/Self-Play_Pretraining_with_Zero_Data.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/Self-Play_Pretraining_with_Zero_Data.pdf",
+      "title": "Self-Play Pretraining with Zero Data",
+      "sha256": "bcf7107020989eee86a894bfb622a5a4eeb864d2b248fe03f1cf3f9e4454f180",
+      "urls": [
+        "https://arxiv.org/abs/2609.30063",
+        "https://arxiv.org/pdf/2609.30063"
+      ],
+      "title_basis": "Official landing-page title and PDF first-page title verified on 2026-11-20; archived under complete title from first acquisition.",
+      "original_filename": "2609.30063",
+      "acquired_at": "2026-11-20",
+      "version": "2609.30063v1"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/Self-Verification_Provably_Prevents_Model_Collapse_in_Recursive_Synthetic_Training.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/Self-Verification_Provably_Prevents_Model_Collapse_in_Recursive_Synthetic_Training.pdf",
+      "title": "Self-Verification Provably Prevents Model Collapse in Recursive Synthetic Training",
+      "sha256": "d724a853b34d98c9d487015eb19583d794c014ed4bec951c2f51672b451b732e",
+      "urls": [
+        "https://papers.neurips.cc/paper_files/paper/2025/hash/3380e8116452e0efbf36f35d95e88c94-Abstract-Conference.html",
+        "https://papers.neurips.cc/paper_files/paper/2025/file/3380e8116452e0efbf36f35d95e88c94-Paper-Conference.pdf"
+      ],
+      "title_basis": "Official landing-page title and PDF first-page title verified on 2026-11-20; archived under complete title from first acquisition.",
+      "original_filename": "3380e8116452e0efbf36f35d95e88c94-Paper-Conference.pdf",
+      "acquired_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/Self-Improvement_in_Language_Models_The_Sharpening_Mechanism.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/Self-Improvement_in_Language_Models_The_Sharpening_Mechanism.pdf",
+      "title": "Self-Improvement in Language Models: The Sharpening Mechanism",
+      "sha256": "df66bfb7d1cc8a34033a4783da1b21d4d9854ddcd87240f7d65930c5067b81fc",
+      "urls": [
+        "https://arxiv.org/abs/2412.01951",
+        "https://arxiv.org/pdf/2412.01951"
+      ],
+      "title_basis": "Official landing-page title and PDF first-page title verified on 2026-11-20; archived under complete title from first acquisition.",
+      "original_filename": "2412.01951",
+      "acquired_at": "2026-11-20",
+      "version": "2412.01951v2"
+    },
+    {
+      "old_path": "courses/11-768/19.HumanAgentInteraction/readings/Guidelines_for_Human-AI_Interaction.pdf",
+      "path": "courses/11-768/19.HumanAgentInteraction/readings/Guidelines_for_Human-AI_Interaction.pdf",
+      "title": "Guidelines for Human-AI Interaction",
+      "sha256": "82fff584c6b986f573608361478e93447538c6ce707e4b9b04d45d584272ea03",
+      "urls": [
+        "https://www.microsoft.com/en-us/research/publication/guidelines-for-human-ai-interaction/",
+        "https://www.microsoft.com/en-us/research/wp-content/uploads/2019/01/Guidelines-for-Human-AI-Interaction-camera-ready.pdf"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/19.HumanAgentInteraction/readings/Completion_Collaboration_Scaling_Collaborative_Effort_with_Agents.pdf",
+      "path": "courses/11-768/19.HumanAgentInteraction/readings/Completion_Collaboration_Scaling_Collaborative_Effort_with_Agents.pdf",
+      "title": "Completion ≠ Collaboration: Scaling Collaborative Effort with Agents",
+      "sha256": "9ac36fe8e639e54de5582a795155f9040f9a0bc3846abeda1c4334cf568067c6",
+      "urls": [
+        "https://arxiv.org/abs/2510.25744",
+        "https://arxiv.org/pdf/2510.25744"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/19.HumanAgentInteraction/readings/How_can_we_assess_human-agent_interactions_Case_studies_in_software_agent_design.pdf",
+      "path": "courses/11-768/19.HumanAgentInteraction/readings/How_can_we_assess_human-agent_interactions_Case_studies_in_software_agent_design.pdf",
+      "title": "How can we assess human-agent interactions? Case studies in software agent design",
+      "sha256": "7896f5bccb65cf054606a39a0570ec7e730aa112feb48170ce40133c2cad0f76",
+      "urls": [
+        "https://arxiv.org/abs/2510.09801",
+        "https://arxiv.org/pdf/2510.09801"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/19.HumanAgentInteraction/readings/Code_with_Me_or_for_Me_How_Increasing_AI_Automation_Transforms_Developer_Workflows.pdf",
+      "path": "courses/11-768/19.HumanAgentInteraction/readings/Code_with_Me_or_for_Me_How_Increasing_AI_Automation_Transforms_Developer_Workflows.pdf",
+      "title": "Code with Me or for Me? How Increasing AI Automation Transforms Developer Workflows",
+      "sha256": "01444cdaab637219cec52a717e7f5ef7ebe91efae29f50ff77a303eaa6b7b72c",
+      "urls": [
+        "https://arxiv.org/abs/2507.08149"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/19.HumanAgentInteraction/readings/Im_Paired_Programming_Coding_Agents_Improve_Productivity_but_Harm_Understanding.pdf",
+      "path": "courses/11-768/19.HumanAgentInteraction/readings/Im_Paired_Programming_Coding_Agents_Improve_Productivity_but_Harm_Understanding.pdf",
+      "title": "(Im)Paired Programming: Coding Agents Improve Productivity but Harm Understanding",
+      "sha256": "774a575510539b7ca3b7b3e91927eccb67fae537e86a23ea455841c3f5ae5e30",
+      "urls": [
+        "https://arxiv.org/abs/2607.26375",
+        "https://arxiv.org/pdf/2607.26375"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/19.HumanAgentInteraction/references/Mixed-Initiative_Interaction.pdf",
+      "path": "courses/11-768/19.HumanAgentInteraction/references/Mixed-Initiative_Interaction.pdf",
+      "title": "Mixed-Initiative Interaction",
+      "sha256": "c52c6a3ac77b48dcdd4009992ec89f202b958db9a068d7581e5ddf8523cfc1ea",
+      "urls": [
+        "https://www.microsoft.com/en-us/research/publication/mixed-initiative-interaction/",
+        "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/11/mixedinit.pdf"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/19.HumanAgentInteraction/references/Principles_of_Mixed-Initiative_User_Interfaces.pdf",
+      "path": "courses/11-768/19.HumanAgentInteraction/references/Principles_of_Mixed-Initiative_User_Interfaces.pdf",
+      "title": "Principles of Mixed-Initiative User Interfaces",
+      "sha256": "9f2596af326e186cc1eb27da5d0f0beda8d2ff15794b82958788c636693938d2",
+      "urls": [
+        "https://www.microsoft.com/en-us/research/publication/principles-mixed-initiative-user-interfaces/",
+        "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/11/chi99horvitz-1.pdf"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/19.HumanAgentInteraction/references/ToM-SWE_User_Mental_Modeling_for_Software_Engineering_Agents.pdf",
+      "path": "courses/11-768/19.HumanAgentInteraction/references/ToM-SWE_User_Mental_Modeling_for_Software_Engineering_Agents.pdf",
+      "title": "ToM-SWE: User Mental Modeling for Software Engineering Agents",
+      "sha256": "6c500b58a5c0456fc4ebe50f67cdd3ec38122116762fd5286403d02c3904dee2",
+      "urls": [
+        "https://arxiv.org/abs/2510.21903",
+        "https://arxiv.org/pdf/2510.21903"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/19.HumanAgentInteraction/references/Developer_Interaction_Patterns_with_Proactive_AI_A_Five-Day_Field_Study.pdf",
+      "path": "courses/11-768/19.HumanAgentInteraction/references/Developer_Interaction_Patterns_with_Proactive_AI_A_Five-Day_Field_Study.pdf",
+      "title": "Developer Interaction Patterns with Proactive AI: A Five-Day Field Study",
+      "sha256": "95cfdb080064d75b2ad2419e6a70c46ba85e8837d49df491b4c1f218b95defec",
+      "urls": [
+        "https://arxiv.org/abs/2601.10253",
+        "https://arxiv.org/pdf/2601.10253"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/19.HumanAgentInteraction/references/Training_language_models_to_follow_instructions_with_human_feedback.pdf",
+      "path": "courses/11-768/19.HumanAgentInteraction/references/Training_language_models_to_follow_instructions_with_human_feedback.pdf",
+      "title": "Training language models to follow instructions with human feedback",
+      "sha256": "c1984bb50a5b90fddb895fdc3a0f72e5bc977148c9f63ef6040cbe7a3e1f0d98",
+      "urls": [
+        "https://arxiv.org/abs/2203.02155"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/19.HumanAgentInteraction/references/Cognitive_Architectures_for_Language_Agents.pdf",
+      "path": "courses/11-768/19.HumanAgentInteraction/references/Cognitive_Architectures_for_Language_Agents.pdf",
+      "title": "Cognitive Architectures for Language Agents",
+      "sha256": "fd93d2ef1b94f963b652136b8c792b01d7326d861f5ce918926c043934a48dbe",
+      "urls": [
+        "https://arxiv.org/abs/2309.02427"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/19.HumanAgentInteraction/references/Prediction-Powered_Inference.pdf",
+      "path": "courses/11-768/19.HumanAgentInteraction/references/Prediction-Powered_Inference.pdf",
+      "title": "Prediction-Powered Inference",
+      "sha256": "a16bf2c108fea9f559d00708c731d29d673c1dcce5d4acfd65e64a694b7ae17a",
+      "urls": [
+        "https://arxiv.org/abs/2301.09633",
+        "https://arxiv.org/pdf/2301.09633"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/19.HumanAgentInteraction/references/A_Rubric-Supervised_Critic_from_Sparse_Real-World_Outcomes.pdf",
+      "path": "courses/11-768/19.HumanAgentInteraction/references/A_Rubric-Supervised_Critic_from_Sparse_Real-World_Outcomes.pdf",
+      "title": "A Rubric-Supervised Critic from Sparse Real-World Outcomes",
+      "sha256": "6a3e61d7820b68065f4df664da008e36b58cf0da142c2b567f9bba0358ae0761",
+      "urls": [
+        "https://arxiv.org/abs/2603.03800",
+        "https://arxiv.org/pdf/2603.03800"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/19.HumanAgentInteraction/references/40_Years_of_Designing_Code_Comprehension_Experiments_A_Systematic_Mapping_Study.pdf",
+      "path": "courses/11-768/19.HumanAgentInteraction/references/40_Years_of_Designing_Code_Comprehension_Experiments_A_Systematic_Mapping_Study.pdf",
+      "title": "40 Years of Designing Code Comprehension Experiments: A Systematic Mapping Study",
+      "sha256": "44307f7075a54b293f509357754a6a8ecb40bb4bb0546ac76cc5505007056296",
+      "urls": [
+        "https://doi.org/10.1145/3626522",
+        "https://www.se.cs.uni-saarland.de/publications/docs/wyrich202340.pdf"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/19.HumanAgentInteraction/references/Is_Agent_Code_Less_Maintainable_Than_Human_Code.pdf",
+      "path": "courses/11-768/19.HumanAgentInteraction/references/Is_Agent_Code_Less_Maintainable_Than_Human_Code.pdf",
+      "title": "Is Agent Code Less Maintainable Than Human Code?",
+      "sha256": "489443bfefdb55197a404dde073c9785c63363be34fa000937bb9660fca5309c",
+      "urls": [
+        "https://arxiv.org/abs/2606.21804",
+        "https://arxiv.org/pdf/2606.21804"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/readings/Tree_of_Thoughts_Deliberate_Problem_Solving_with_Large_Language_Models.pdf",
+      "path": "courses/11-768/21.TreeSearch/readings/Tree_of_Thoughts_Deliberate_Problem_Solving_with_Large_Language_Models.pdf",
+      "title": "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+      "sha256": "79c5237e3f63953a73f2b0d6894327702ee1f7e981450c251bb1b5cb4f8d7b8f",
+      "urls": [
+        "https://arxiv.org/abs/2305.10601",
+        "https://arxiv.org/pdf/2305.10601"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/readings/Stream_of_Search_SoS_Learning_to_Search_in_Language.pdf",
+      "path": "courses/11-768/21.TreeSearch/readings/Stream_of_Search_SoS_Learning_to_Search_in_Language.pdf",
+      "title": "Stream of Search (SoS): Learning to Search in Language",
+      "sha256": "e32e64bb15692a2ed1a5f554f147b0628bf1e6e8e74eb0459ebef0c7608ecccb",
+      "urls": [
+        "https://arxiv.org/abs/2404.03683",
+        "https://arxiv.org/pdf/2404.03683"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/readings/Tree_Search_for_Language_Model_Agents.pdf",
+      "path": "courses/11-768/21.TreeSearch/readings/Tree_Search_for_Language_Model_Agents.pdf",
+      "title": "Tree Search for Language Model Agents",
+      "sha256": "0b21710f26db2e9383f768cdaea5755f1a39fb0b5eafffdfa5451a33d106e130",
+      "urls": [
+        "https://arxiv.org/abs/2407.01476"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/readings/Is_Your_LLM_Secretly_a_World_Model_of_the_Internet_Model-Based_Planning_for_Web_Agents.pdf",
+      "path": "courses/11-768/21.TreeSearch/readings/Is_Your_LLM_Secretly_a_World_Model_of_the_Internet_Model-Based_Planning_for_Web_Agents.pdf",
+      "title": "Is Your LLM Secretly a World Model of the Internet? Model-Based Planning for Web Agents",
+      "sha256": "ed7e9cd6629bfb30086153d3b6b02f91e1d576ab8f6d07f0ad5b9b4d9ebdcf33",
+      "urls": [
+        "https://arxiv.org/abs/2411.06559",
+        "https://arxiv.org/pdf/2411.06559"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/readings/Recursive_Language_Models.pdf",
+      "path": "courses/11-768/21.TreeSearch/readings/Recursive_Language_Models.pdf",
+      "title": "Recursive Language Models",
+      "sha256": "8567362c22768d9b50d4a4a8d63bb28dda2c2b2051be30d67f70f645170429ca",
+      "urls": [
+        "https://arxiv.org/abs/2512.24601"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/readings/Multi-Agent_Computer_Use.pdf",
+      "path": "courses/11-768/21.TreeSearch/readings/Multi-Agent_Computer_Use.pdf",
+      "title": "Multi-Agent Computer Use",
+      "sha256": "5a8e347bd731600d1ab92633130aa971d4fb72b10df684519793b307ddb6751e",
+      "urls": [
+        "https://arxiv.org/abs/2606.01533"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/references/Thinking_Fast_and_Slow_with_Deep_Learning_and_Tree_Search.pdf",
+      "path": "courses/11-768/21.TreeSearch/references/Thinking_Fast_and_Slow_with_Deep_Learning_and_Tree_Search.pdf",
+      "title": "Thinking Fast and Slow with Deep Learning and Tree Search",
+      "sha256": "4a9b9df2614c6c96cde4c3d575275d31fea443b876edf9074f87e0dc1347b1af",
+      "urls": [
+        "https://arxiv.org/abs/1705.08439",
+        "https://arxiv.org/pdf/1705.08439"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/references/Mastering_the_Game_of_Go_without_Human_Knowledge.pdf",
+      "path": "courses/11-768/21.TreeSearch/references/Mastering_the_Game_of_Go_without_Human_Knowledge.pdf",
+      "title": "Mastering the Game of Go without Human Knowledge",
+      "sha256": "a23add75aa06054c5a008befff55fb23af5da70a88c99004e0ff863eadf60ca1",
+      "urls": [
+        "https://www.nature.com/articles/nature24270",
+        "https://discovery.ucl.ac.uk/id/eprint/10045895/1/agz_unformatted_nature.pdf"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/references/A_General_Reinforcement_Learning_Algorithm_That_Masters_Chess_Shogi_and_Go_through_Self-Play.pdf",
+      "path": "courses/11-768/21.TreeSearch/references/A_General_Reinforcement_Learning_Algorithm_That_Masters_Chess_Shogi_and_Go_through_Self-Play.pdf",
+      "title": "A General Reinforcement Learning Algorithm That Masters Chess, Shogi, and Go through Self-Play",
+      "sha256": "9e298fbfbcfbb50c46379707cc77a9eaec303e9d310dbbb85a31d04896da4b5f",
+      "urls": [
+        "https://doi.org/10.1126/science.aar6404",
+        "https://discovery.ucl.ac.uk/id/eprint/10069050/1/alphazero_preprint.pdf"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/references/ReST-MCTS_LLM_Self-Training_via_Process_Reward_Guided_Tree_Search.pdf",
+      "path": "courses/11-768/21.TreeSearch/references/ReST-MCTS_LLM_Self-Training_via_Process_Reward_Guided_Tree_Search.pdf",
+      "title": "ReST-MCTS*: LLM Self-Training via Process Reward Guided Tree Search",
+      "sha256": "c0be21a7b1731e3530b5a851acef66875ce180225856c0998c090782f4916d6c",
+      "urls": [
+        "https://arxiv.org/abs/2406.03816",
+        "https://arxiv.org/pdf/2406.03816"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/references/Graph_of_Thoughts_Solving_Elaborate_Problems_with_Large_Language_Models.pdf",
+      "path": "courses/11-768/21.TreeSearch/references/Graph_of_Thoughts_Solving_Elaborate_Problems_with_Large_Language_Models.pdf",
+      "title": "Graph of Thoughts: Solving Elaborate Problems with Large Language Models",
+      "sha256": "73caa3c05813105e5db38edfbb58e1b660771a00dfdb74768c8845e15263c5da",
+      "urls": [
+        "https://arxiv.org/abs/2308.09687",
+        "https://arxiv.org/pdf/2308.09687"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/references/Beyond_A_Better_Planning_with_Transformers_via_Search_Dynamics_Bootstrapping.pdf",
+      "path": "courses/11-768/21.TreeSearch/references/Beyond_A_Better_Planning_with_Transformers_via_Search_Dynamics_Bootstrapping.pdf",
+      "title": "Beyond A*: Better Planning with Transformers via Search Dynamics Bootstrapping",
+      "sha256": "5318460e2562fcc942cf4123433c513947bd97e654d44268db0f6b27774257a8",
+      "urls": [
+        "https://arxiv.org/abs/2402.14083",
+        "https://arxiv.org/pdf/2402.14083"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/references/DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_Reinforcement_Learning.pdf",
+      "path": "courses/11-768/21.TreeSearch/references/DeepSeek-R1_Incentivizing_Reasoning_Capability_in_LLMs_via_Reinforcement_Learning.pdf",
+      "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+      "sha256": "52d8ca3ac93e88cef9944e1fd03b0e04aec5954495a8250fb2fadf8fa20a4dad",
+      "urls": [
+        "https://arxiv.org/html/2501.12948v1#S4.SS2",
+        "https://arxiv.org/pdf/2501.12948v1"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/references/Language_Agent_Tree_Search_Unifies_Reasoning_Acting_and_Planning_in_Language_Models.pdf",
+      "path": "courses/11-768/21.TreeSearch/references/Language_Agent_Tree_Search_Unifies_Reasoning_Acting_and_Planning_in_Language_Models.pdf",
+      "title": "Language Agent Tree Search Unifies Reasoning, Acting, and Planning in Language Models",
+      "sha256": "04c1e9cb00f384052739c53bcecb75626bf1f58f66c379cc289ea60ffc988635",
+      "urls": [
+        "https://arxiv.org/abs/2310.04406",
+        "https://arxiv.org/pdf/2310.04406"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/references/DeepSeek-Prover-V1.5_Harnessing_Proof_Assistant_Feedback_for_Reinforcement_Learning_and_Monte-Carlo_Tree_Search.pdf",
+      "path": "courses/11-768/21.TreeSearch/references/DeepSeek-Prover-V1.5_Harnessing_Proof_Assistant_Feedback_for_Reinforcement_Learning_and_Monte-Carlo_Tree_Search.pdf",
+      "title": "DeepSeek-Prover-V1.5: Harnessing Proof Assistant Feedback for Reinforcement Learning and Monte-Carlo Tree Search",
+      "sha256": "18b9bf9ce4a553b7c54ed4aab49f1f5a008f9b7e9915f2f164c8ef4da59559cd",
+      "urls": [
+        "https://arxiv.org/abs/2408.08152",
+        "https://arxiv.org/pdf/2408.08152"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/references/Mastering_Atari_Go_Chess_and_Shogi_by_Planning_with_a_Learned_Model.pdf",
+      "path": "courses/11-768/21.TreeSearch/references/Mastering_Atari_Go_Chess_and_Shogi_by_Planning_with_a_Learned_Model.pdf",
+      "title": "Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model",
+      "sha256": "25588ee1d48690b33359a08a42fadfe86335aefefeee241d465b8bbd5eaa445c",
+      "urls": [
+        "https://www.nature.com/articles/s41586-020-03051-4",
+        "https://arxiv.org/pdf/1911.08265"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/references/Reasoning_with_Language_Model_is_Planning_with_World_Model.pdf",
+      "path": "courses/11-768/21.TreeSearch/references/Reasoning_with_Language_Model_is_Planning_with_World_Model.pdf",
+      "title": "Reasoning with Language Model is Planning with World Model",
+      "sha256": "f67d075c889d885db80355f6d398fb2aa6830406340c365140e234af05056dc3",
+      "urls": [
+        "https://aclanthology.org/2023.emnlp-main.507/",
+        "https://aclanthology.org/2023.emnlp-main.507.pdf"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/references/CWM_An_Open-Weights_LLM_for_Research_on_Code_Generation_with_World_Models.pdf",
+      "path": "courses/11-768/21.TreeSearch/references/CWM_An_Open-Weights_LLM_for_Research_on_Code_Generation_with_World_Models.pdf",
+      "title": "CWM: An Open-Weights LLM for Research on Code Generation with World Models",
+      "sha256": "2ae224342fd03066046f82416c6d56e2041f658fdd0362f2fb01848d887ed583",
+      "urls": [
+        "https://arxiv.org/abs/2510.02387",
+        "https://arxiv.org/pdf/2510.02387"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/references/WorldCoder_a_Model-Based_LLM_Agent_Building_World_Models_by_Writing_Code_and_Interacting_with_the_Environment.pdf",
+      "path": "courses/11-768/21.TreeSearch/references/WorldCoder_a_Model-Based_LLM_Agent_Building_World_Models_by_Writing_Code_and_Interacting_with_the_Environment.pdf",
+      "title": "WorldCoder, a Model-Based LLM Agent: Building World Models by Writing Code and Interacting with the Environment",
+      "sha256": "55c47b1df146967ecab1933518783059885b693460d3ebbc7554aaec0eeb101f",
+      "urls": [
+        "https://arxiv.org/abs/2402.12275",
+        "https://arxiv.org/pdf/2402.12275"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/references/Generating_Code_World_Models_with_Large_Language_Models_Guided_by_Monte_Carlo_Tree_Search.pdf",
+      "path": "courses/11-768/21.TreeSearch/references/Generating_Code_World_Models_with_Large_Language_Models_Guided_by_Monte_Carlo_Tree_Search.pdf",
+      "title": "Generating Code World Models with Large Language Models Guided by Monte Carlo Tree Search",
+      "sha256": "64c9d0504344661f3477eebd0d92e1290da36f173805cef2d79a571152bf67f2",
+      "urls": [
+        "https://arxiv.org/abs/2405.15383"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/references/Recursive_Agent_Optimization.pdf",
+      "path": "courses/11-768/21.TreeSearch/references/Recursive_Agent_Optimization.pdf",
+      "title": "Recursive Agent Optimization",
+      "sha256": "78d5d1fbcd5be9f4b3946310d937100d8936600af3e4bdb1b8e82b8dbe1325ce",
+      "urls": [
+        "https://arxiv.org/abs/2605.06639"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/references/ADaPT_As-Needed_Decomposition_and_Planning_with_Language_Models.pdf",
+      "path": "courses/11-768/21.TreeSearch/references/ADaPT_As-Needed_Decomposition_and_Planning_with_Language_Models.pdf",
+      "title": "ADaPT: As-Needed Decomposition and Planning with Language Models",
+      "sha256": "65f4827525b2e77326e2cfa69b4928d71bd9e76350dfd3a77673173798ed4cc4",
+      "urls": [
+        "https://aclanthology.org/2024.findings-naacl.264/",
+        "https://aclanthology.org/2024.findings-naacl.264.pdf"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/references/HuggingGPT_Solving_AI_Tasks_with_ChatGPT_and_its_Friends_in_Hugging_Face.pdf",
+      "path": "courses/11-768/21.TreeSearch/references/HuggingGPT_Solving_AI_Tasks_with_ChatGPT_and_its_Friends_in_Hugging_Face.pdf",
+      "title": "HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face",
+      "sha256": "bfac5794a2550fced04efbaee7539f0525b8fade538dc06e393a80150edab428",
+      "urls": [
+        "https://proceedings.neurips.cc/paper_files/paper/2023/hash/77c33e6a367922d003ff102ffb92b658-Abstract-Conference.html",
+        "https://proceedings.neurips.cc/paper_files/paper/2023/file/77c33e6a367922d003ff102ffb92b658-Paper-Conference.pdf"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/references/An_LLM_Compiler_for_Parallel_Function_Calling.pdf",
+      "path": "courses/11-768/21.TreeSearch/references/An_LLM_Compiler_for_Parallel_Function_Calling.pdf",
+      "title": "An LLM Compiler for Parallel Function Calling",
+      "sha256": "36dde899ed8abe0df728215e054aab21d1699add719afeb0ddadbb4e4eb23263",
+      "urls": [
+        "https://proceedings.mlr.press/v235/kim24y.html",
+        "https://raw.githubusercontent.com/mlresearch/v235/main/assets/kim24y/kim24y.pdf"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/references/Effective_Strategies_for_Asynchronous_Software_Engineering_Agents.pdf",
+      "path": "courses/11-768/21.TreeSearch/references/Effective_Strategies_for_Asynchronous_Software_Engineering_Agents.pdf",
+      "title": "Effective Strategies for Asynchronous Software Engineering Agents",
+      "sha256": "7db67ce0a2b2d4188149b5d84dd44f2a2aab6dc6edd1de02d5508ff561834e62",
+      "urls": [
+        "https://arxiv.org/abs/2603.21489"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/21.TreeSearch/references/Discriminative_World_Models_for_Web_Agents.pdf",
+      "path": "courses/11-768/21.TreeSearch/references/Discriminative_World_Models_for_Web_Agents.pdf",
+      "title": "Discriminative World Models for Web Agents",
+      "sha256": "8984769b011698352fba9532e6eed4d81a1683451e888ee85a2caa8042149e8b",
+      "urls": [
+        "https://arxiv.org/abs/2609.02885",
+        "https://arxiv.org/pdf/2609.02885"
+      ],
+      "title_basis": "Verified actual PDF first-page title against official assigned/reference label; original filename and version in lesson REFERENCES.json",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/11-768/project/Research_Project.html",
+      "path": "courses/11-768/project/Research_Project.html",
+      "title": "Research Project",
+      "sha256": "7b51b5bd3ad3340ab789b9a0d138602108fd6b5542acf7433c0847ea2373ab92",
+      "urls": [
+        "https://www.cmu-agents.com/#/project"
+      ],
+      "title_basis": "Official Project component, current 2026-11-20 source snapshot",
+      "registered_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/Teaching_Models_to_Teach_Themselves_Reasoning_at_the_Edge_of_Learnability.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/Teaching_Models_to_Teach_Themselves_Reasoning_at_the_Edge_of_Learnability.pdf",
+      "title": "Teaching Models to Teach Themselves: Reasoning at the Edge of Learnability",
+      "sha256": "2f76ac87f8eaa16861583df4fa4cf80dfb0c66e715c8bc968a75375a3e925cc5",
+      "urls": [
+        "https://arxiv.org/abs/2601.18778",
+        "https://arxiv.org/pdf/2601.18778v3"
+      ],
+      "title_basis": "Verified first-page title and embedded arXiv version.",
+      "version": "2601.18778v3",
+      "original_filename": "2601.18778v3.pdf",
+      "acquired_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/Goedel-Code-Prover_Hierarchical_Proof_Search_for_Open_State-of-the-Art_Code_Verification.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/Goedel-Code-Prover_Hierarchical_Proof_Search_for_Open_State-of-the-Art_Code_Verification.pdf",
+      "title": "Goedel-Code-Prover: Hierarchical Proof Search for Open State-of-the-Art Code Verification",
+      "sha256": "176ca524237d946844e57ac234424dfa94b8935924b0a2425890e4cc25d4cbfa",
+      "urls": [
+        "https://arxiv.org/abs/2603.19329",
+        "https://arxiv.org/pdf/2603.19329v3"
+      ],
+      "title_basis": "Verified first-page title and embedded arXiv version.",
+      "version": "2603.19329v3",
+      "original_filename": "2603.19329v3.pdf",
+      "acquired_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/Mind_the_Gap_Examining_the_Self-Improvement_Capabilities_of_Large_Language_Models.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/Mind_the_Gap_Examining_the_Self-Improvement_Capabilities_of_Large_Language_Models.pdf",
+      "title": "Mind the Gap: Examining the Self-Improvement Capabilities of Large Language Models",
+      "sha256": "a26a6f741ceef98ff44fc459634de105ebc8b410c03986b1ae5a1249b4c22114",
+      "urls": [
+        "https://arxiv.org/abs/2412.02674",
+        "https://arxiv.org/pdf/2412.02674v2"
+      ],
+      "title_basis": "Verified first-page title and embedded arXiv version.",
+      "version": "2412.02674v2",
+      "original_filename": "2412.02674v2.pdf",
+      "acquired_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/MAS.S62/9.ModelEvolution2/references/T1_Tool-integrated_Self-verification_for_Test-time_Compute_Scaling_in_Small_Language_Models.pdf",
+      "path": "courses/MAS.S62/9.ModelEvolution2/references/T1_Tool-integrated_Self-verification_for_Test-time_Compute_Scaling_in_Small_Language_Models.pdf",
+      "title": "T1: Tool-integrated Self-verification for Test-time Compute Scaling in Small Language Models",
+      "sha256": "aff1d4be3d3fd0fce2686d2d77d7111bdf7e1a34e70e3d8a669050dcbc30baac",
+      "urls": [
+        "https://arxiv.org/abs/2504.04718",
+        "https://arxiv.org/pdf/2504.04718v2"
+      ],
+      "title_basis": "Verified first-page title and embedded arXiv version.",
+      "version": "2504.04718v2",
+      "original_filename": "2504.04718v2.pdf",
+      "acquired_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/references/EAGLE-4_One_Flexible_Drafter_for_All_Batch_Sizes_and_Hardware.pdf",
+      "path": "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/references/EAGLE-4_One_Flexible_Drafter_for_All_Batch_Sizes_and_Hardware.pdf",
+      "title": "EAGLE-4: One Flexible Drafter for All Batch Sizes and Hardware",
+      "sha256": "9b3f4833f7dcb49643edac3756b9aa93eaf740c4ba88e574adbf21f6bc126901",
+      "urls": [
+        "https://github.com/eagle-hq/EAGLE-4/blob/main/EAGLE4_Paper.pdf",
+        "https://raw.githubusercontent.com/eagle-hq/EAGLE-4/main/EAGLE4_Paper.pdf"
+      ],
+      "title_basis": "Primary-source published title checked against archived original.",
+      "acquired_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/references/How_to_train_custom_EAGLE-3_heads_for_speculative_decoding.html",
+      "path": "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/references/How_to_train_custom_EAGLE-3_heads_for_speculative_decoding.html",
+      "title": "How to train custom EAGLE-3 heads for speculative decoding",
+      "sha256": "981ecbb13612529e53cf05d9390e508cd3132a8c7fb8b168a49fe7f9eacec9bc",
+      "urls": [
+        "https://www.baseten.co/blog/how-to-train-custom-eagle-3-heads-for-speculative-decoding/"
+      ],
+      "title_basis": "Primary-source published title checked against archived original.",
+      "acquired_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/references/Boost_Inference_Performance_up_to_15x_on_NVIDIA_Blackwell_Using_DFlash_Speculative_Decoding.html",
+      "path": "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/references/Boost_Inference_Performance_up_to_15x_on_NVIDIA_Blackwell_Using_DFlash_Speculative_Decoding.html",
+      "title": "Boost Inference Performance up to 15x on NVIDIA Blackwell Using DFlash Speculative Decoding",
+      "sha256": "faca9759f21299b4c46db3bfdbe03b869132782f7b011741411d33abaa655a3e",
+      "urls": [
+        "https://developer.nvidia.com/blog/boost-inference-performance-up-to-15x-on-nvidia-blackwell-using-dflash-speculative-decoding/"
+      ],
+      "title_basis": "Primary-source published title checked against archived original.",
+      "acquired_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/references/Predicted_Outputs.html",
+      "path": "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/references/Predicted_Outputs.html",
+      "title": "Predicted Outputs",
+      "sha256": "362f3f7c61991125dce547417ea5b7daa5cef82ba883bbaaba733d33a7757408",
+      "urls": [
+        "https://developers.openai.com/api/docs/guides/predicted-outputs"
+      ],
+      "title_basis": "Primary-source published title checked against archived original.",
+      "acquired_at": "2026-11-20"
+    },
+    {
+      "old_path": "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/references/Speculative_Decoding_-_SGLang_Documentation.html",
+      "path": "courses/2680/13.EfficientLLMServing.SpeculativeDecoding/references/Speculative_Decoding_-_SGLang_Documentation.html",
+      "title": "Speculative Decoding - SGLang Documentation",
+      "sha256": "7a84885cf7bbb545f703b6d02619a37707c7a63e86fc119954336f4c682d9c9b",
+      "urls": [
+        "https://docs.sglang.io/docs/advanced_features/speculative_decoding"
+      ],
+      "title_basis": "Primary-source published title checked against archived original.",
+      "acquired_at": "2026-11-20"
     }
   ],
-  "last_updated": "2026-11-13"
+  "last_updated": "2026-11-20"
 }

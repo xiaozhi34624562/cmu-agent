@@ -1,0 +1,69 @@
+{
+  "checked_at": "2026-11-20",
+  "scope": "CMU/Harvard/MIT public materials; videos and Chinese teaching content deferred by user; Stanford not refreshed",
+  "sources": [
+    {
+      "url": "https://www.cmu-agents.com/",
+      "path": "cmu/index.html",
+      "retrieved_at": "2026-11-20",
+      "status": "saved",
+      "sha256": "878c3d4b9e4c6fe04d730d8c5a799936cddf5a343ff7165ad2691d4af930878a"
+    },
+    {
+      "url": "https://www.cmu-agents.com/assets/index-eMZEoOoX.js",
+      "path": "cmu/app.js",
+      "retrieved_at": "2026-11-20",
+      "status": "saved",
+      "sha256": "744f7706f96be0653b57a69c2949a7e0ebaf53b03cac9ca233877ce79396239d"
+    },
+    {
+      "url": "https://cs2680.com/",
+      "path": "harvard/index.html",
+      "retrieved_at": "2026-11-20",
+      "status": "saved",
+      "sha256": "3bf948af7b17b7b32c8b4d3d6afbd566e955bf3ed71ad6b8d8cbdf31b723a2ef"
+    },
+    {
+      "url": "https://cs2680.com/assignments/",
+      "path": "harvard/assignments.html",
+      "retrieved_at": "2026-11-20",
+      "status": "saved",
+      "sha256": "561968dc9ce54feef7a19da4201fb61870c7ca34e16352ada3be924db16a26fc"
+    },
+    {
+      "url": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/",
+      "path": "mit/schedule.html",
+      "retrieved_at": "2026-11-20",
+      "status": "saved",
+      "sha256": "5bf6225c50f1895cd9530c9cc86081050d817147387f685e085f8f3e8c89fa3f"
+    },
+    {
+      "url": "https://docs.google.com/document/d/1H1vs32fhWaxEuP6-nA2GP-a1aFuEmjOXNMcer2UyKpM/export?format=txt",
+      "path": "mit/syllabus.txt",
+      "retrieved_at": "2026-11-20",
+      "status": "saved",
+      "sha256": "3083c73b3203a5c31d966b2ea221ddc0670d9a6f7b2e20a0285cfe9268eb855e"
+    },
+    {
+      "url": "https://docs.google.com/document/d/1H1vs32fhWaxEuP6-nA2GP-a1aFuEmjOXNMcer2UyKpM/export?format=pdf",
+      "path": "mit/syllabus.pdf",
+      "retrieved_at": "2026-11-20",
+      "status": "saved",
+      "sha256": "47a16850c66b5da58a3af67a60e88bd26c0bcfefbb61a12dc6167ff200ba6414"
+    }
+  ],
+  "derived": [
+    {
+      "path": "cmu/schedule.json",
+      "derived_from": "cmu/app.js",
+      "method": "Ui schedule array extracted from official SPA without executing JavaScript",
+      "sha256": "c527e02793755547b934bb95e2bf5379a2b7349e121818dcd662696d50cf7efa"
+    },
+    {
+      "path": "harvard/schedule.json",
+      "derived_from": "harvard/index.html",
+      "method": "Official table cells and absolute links extracted from HTML",
+      "sha256": "eb8366934f20919458532c8ba0ab816922ec71676c2a243793dc44c47969a341"
+    }
+  ]
+}

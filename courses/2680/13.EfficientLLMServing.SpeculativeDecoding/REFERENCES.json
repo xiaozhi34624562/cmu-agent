@@ -1,0 +1,102 @@
+[
+  {
+    "title": "Various Techniques Used in Connection With Random Digits",
+    "url": "https://mcnp-green.lanl.gov/pdf_files/InBook_Computing_1961_Neumann_JohnVonNeumannCollectedWorks_VariousTechniquesUsedinConnectionwithRandomDigits.pdf",
+    "path": null,
+    "status": "online_checked",
+    "role": "lecture_reference",
+    "lecture_physical_page": 8,
+    "checked_at": "2026-11-20",
+    "scope": "LANL 的三页 PDF，可在线查看并核对标题和历史抽样背景。客户端未取得本地归档。"
+  },
+  {
+    "title": "Introducing EAGLE-4: One Flexible Drafter for All Batch Sizes and Hardware",
+    "url": "https://blog.eagle.ai/blog/introducing-eagle-4",
+    "path": null,
+    "status": "online_checked",
+    "role": "lecture_reference",
+    "lecture_physical_page": 34,
+    "checked_at": "2026-11-20",
+    "scope": "作者技术文章核对成本模型、两级 LM head 与 Qwen 测试条件。直连未完整下载，保留线上核对。"
+  },
+  {
+    "title": "EAGLE-4: One Flexible Drafter for All Batch Sizes and Hardware",
+    "url": "https://github.com/eagle-hq/EAGLE-4/blob/main/EAGLE4_Paper.pdf",
+    "path": "references/EAGLE-4_One_Flexible_Drafter_for_All_Batch_Sizes_and_Hardware.pdf",
+    "status": "saved",
+    "role": "lecture_reference",
+    "lecture_physical_page": 34,
+    "checked_at": "2026-11-20",
+    "scope": "论文全文可读。核对 §3–4 自回归草稿、两阶段 LM head、EAGLE-Harness、p9 Table 2 测试条件和并发口径。",
+    "pages": 12,
+    "sha256": "9b3f4833f7dcb49643edac3756b9aa93eaf740c4ba88e574adbf21f6bc126901",
+    "original_filename": "EAGLE4_Paper.pdf",
+    "download_url": "https://raw.githubusercontent.com/eagle-hq/EAGLE-4/main/EAGLE4_Paper.pdf",
+    "version": "Git blob 08f5e51156504a6511dc0eff8e749ee471dc7102"
+  },
+  {
+    "title": "How to train custom EAGLE-3 heads for speculative decoding",
+    "url": "https://www.baseten.co/blog/how-to-train-custom-eagle-3-heads-for-speculative-decoding/",
+    "path": "references/How_to_train_custom_EAGLE-3_heads_for_speculative_decoding.html",
+    "status": "saved",
+    "role": "lecture_reference",
+    "lecture_physical_page": 36,
+    "checked_at": "2026-11-20",
+    "scope": "Qwen3-4B 训练数据、训练时试跑、发布和调试。",
+    "sha256": "981ecbb13612529e53cf05d9390e508cd3132a8c7fb8b168a49fe7f9eacec9bc"
+  },
+  {
+    "title": "Insights into DeepSeek-V3: Scaling Challenges and Reflections on Hardware for AI Architectures",
+    "url": "https://arxiv.org/html/2505.09343v2",
+    "path": null,
+    "status": "online_checked",
+    "role": "lecture_reference",
+    "lecture_physical_page": 38,
+    "checked_at": "2026-11-20",
+    "scope": "已在线核对 2505.09343v2 §2.3.3，作者注明此版本不可再分发，保留原链接。"
+  },
+  {
+    "title": "Boost Inference Performance up to 15x on NVIDIA Blackwell Using DFlash Speculative Decoding",
+    "url": "https://developer.nvidia.com/blog/boost-inference-performance-up-to-15x-on-nvidia-blackwell-using-dflash-speculative-decoding/",
+    "path": "references/Boost_Inference_Performance_up_to_15x_on_NVIDIA_Blackwell_Using_DFlash_Speculative_Decoding.html",
+    "status": "saved",
+    "role": "lecture_reference",
+    "lecture_physical_page": 42,
+    "checked_at": "2026-11-20",
+    "scope": "Table 2 按目标、硬件、并发与任务区分吞吐对照。",
+    "sha256": "faca9759f21299b4c46db3bfdbe03b869132782f7b011741411d33abaa655a3e"
+  },
+  {
+    "title": "Predicted Outputs",
+    "url": "https://developers.openai.com/api/docs/guides/predicted-outputs",
+    "path": "references/Predicted_Outputs.html",
+    "status": "saved",
+    "role": "lecture_reference",
+    "lecture_physical_page": 45,
+    "checked_at": "2026-11-20",
+    "scope": "应用接口、接受/拒绝的计数与计费。",
+    "sha256": "362f3f7c61991125dce547417ea5b7daa5cef82ba883bbaaba733d33a7757408"
+  },
+  {
+    "title": "Speculative Decoding - SGLang Documentation",
+    "url": "https://docs.sglang.io/docs/advanced_features/speculative_decoding",
+    "path": "references/Speculative_Decoding_-_SGLang_Documentation.html",
+    "status": "saved",
+    "role": "lecture_reference",
+    "lecture_physical_page": 54,
+    "checked_at": "2026-11-20",
+    "scope": "深度、候选宽度与核验 token 预算，作为参数含义参考。",
+    "sha256": "7a84885cf7bbb545f703b6d02619a37707c7a63e86fc119954336f4c682d9c9b"
+  },
+  {
+    "title": "[RFC]: Consistent semantics for drafted, verified and accepted spec decode tokens",
+    "url": "https://github.com/vllm-project/vllm/issues/64099",
+    "path": null,
+    "status": "online_checked",
+    "role": "lecture_reference",
+    "lecture_physical_page": 63,
+    "checked_at": "2026-11-20",
+    "scope": "已通过官方 API 核对 RFC 正文、worked examples 和 Appendix A。此文是提案，部署时需对照实际 vLLM 版本。",
+    "version": "Public GitHub issue, updated 2026-11-13T18:01:58Z"
+  }
+]

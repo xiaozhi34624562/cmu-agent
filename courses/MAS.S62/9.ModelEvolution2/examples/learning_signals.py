@@ -130,6 +130,22 @@ def main():
             "majority_answer": majority_answer, "consistency": votes / len(candidate_answers),
             "verified_answer": verified_answer,
         },
+        "self_play_search_target": {
+            "policy_prior": [0.6, 0.4],
+            "visit_counts": [3, 7],
+            "visit_policy": [count / (3 + 7) for count in (3, 7)],
+            "terminal_value_for_winner": 1,
+        },
+        "self_play_filtering": [
+            {
+                "true_accepts": correct,
+                "false_accepts": wrong,
+                "acceptance_rate": (correct + wrong) / 100,
+                "precision": correct / (correct + wrong),
+                "recall": correct / 30,
+            }
+            for correct, wrong in [(24, 7), (6, 28)]
+        ],
     }
     print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))
 

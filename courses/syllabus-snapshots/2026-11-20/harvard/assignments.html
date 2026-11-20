@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <meta name="description" content="Five CS2680 assignments that build one agent system, measure it, self-host it, and optimize it end to end">
+  <meta name="author" content="Juncheng Yang">
+
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+
+  <meta property="og:title" content="CS2680 Modern AI Systems &mdash; Assignments">
+  <meta property="og:description" content="Build one agent system, then progressively take control of the agent loop, model, and serving stack">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CS2680 Modern AI Systems">
+  <meta name="twitter:card" content="summary">
+
+  <link href="../css/main.css" rel="stylesheet">
+
+  <title>CS2680 Modern AI Systems &mdash; Assignments</title>
+</head>
+
+<body>
+  <div id="site-header"></div>
+  <script src="../header.js"></script>
+
+  <div class="container page">
+    <div class="row">
+      <div class="col-12">
+        <div class="title">CS2680 Modern AI Systems: Agents and System Optimizations</div>
+      </div>
+
+      <div class="col-12 title2">
+        Assignments
+      </div>
+
+      <div class="col-12 section" id="assignments">
+        <h1>Use, build, and optimize a single agent system across five assignments</h1>
+
+        <p class="lead">
+          The assignments are not five unrelated exercises. They are one system that you progressively take apart and take control of.
+          You will first use an existing coding agent to build an agent application, then replace the agent runtime with your own loop
+          and build the evaluation set the rest of the sequence is graded on, then optimize everything around a black-box model API,
+          then replace that API with a model you serve yourself, and finally optimize the entire agent stack.
+        </p>
+        <p>
+          Assignments 1, 2, and 5 are worth 10% each. Assignments 3 and 4 are worth 20% each.
+          Together, the assignments account for 70% of the course grade. There is no exam.
+          The remaining major build is the <a href="../project.html">final project</a> (20%), where you choose the problem yourself.
+        </p>
+
+        <p>
+          Assignments 1, 2 and 4 include a writeup, committed to the repository alongside the code. Assignments 3 and 5 each include a <a href="https://blog.cs2680.com/publish/">published blog post</a>. <strong>All five are individual.</strong> Estimated effort runs 4&ndash;6 hours for Assignment 1, 10&ndash;12 for Assignment 2, 10&ndash;15 for Assignment 3, 10&ndash;14 for Assignment 4, and 12&ndash;18 for Assignment 5.
+        </p>
+
+        <p>
+          All five assignments submit code through one <strong>private GitHub repository</strong>. Create it once, and keep each assignment's code, write-up files, benchmark outputs, and session archives under <code>assignmentN/</code>, where <code>N</code> is the assignment number (<code>assignment1/</code> through <code>assignment5/</code>). Keep the repository private, and add the instructor and the four TFs as collaborators so they can access it: <a href="https://github.com/1a1a11a" target="_blank" rel="noopener"><code>1a1a11a</code></a>, <a href="https://github.com/LauYeeYu" target="_blank" rel="noopener"><code>LauYeeYu</code></a>, <a href="https://github.com/SeverinaZheng" target="_blank" rel="noopener"><code>SeverinaZheng</code></a>, <a href="https://github.com/G6KlayWang" target="_blank" rel="noopener"><code>G6KlayWang</code></a>, and <a href="https://github.com/AdvaithRavishankar" target="_blank" rel="noopener"><code>AdvaithRavishankar</code></a>.
+        </p>
+        <br>
+
+        <div class="notes-list notes-grid">
+
+          <a class="note-card" id="assignment-1" href="assignment1.html"> <div class="note-card-label">Assignment 1 &middot; out Wed Sep 2 &middot; due Sun Sep 20 &middot; 10%</div> <div class="note-card-title">Mads-Lens<sup aria-hidden="true">1</sup>: Watch the agent work</div> <p class="note-card-summary"> Start as an agent user. Use Claude Code to build a web UI for Claude Code itself, a browser front end that drives a real agent session: submit a prompt, watch the trajectory stream live (every tool call, with its input and result), see it branch into a tree when the agent spawns subagents, see when a run fails, continue the session, and see what each run cost. Serve it on your own machine (a public CloudLab or AWS deployment is optional), and write up what you learned. The assignment is deliberately small, and it is the one assignment nothing later in the course is measured against. </p> </a>
+
+          <a class="note-card" id="assignment-2" href="assignment2.html"> <div class="note-card-label">Assignment 2 &middot; out Mon Sep 21 &middot; due Sun Oct 4 &middot; 10%</div> <div class="note-card-title">Mads-Loop: Build the loop</div> <p class="note-card-summary"> Build the loop yourself around a model API from provided starter code: tool calling with machine-readable schemas, context management, retries, termination, and graceful failure under malformed output and broken tools. Evaluate on a provided benchmark, find whether the agent can help with your own tasks, and understand where the agent limit is. Hidden tests probe the runtime, not the model. </p> </a>
+
+          <a class="note-card" id="assignment-3" href="assignment3.html"> <div class="note-card-label">Assignment 3 &middot; out Mon Oct 5 &middot; due Tue Oct 20 &middot; 20%</div> <div class="note-card-title">Mads-Opt: Make every token count</div> <p class="note-card-summary"> The model is still a black-box API, so optimize everything around it. Reduce unnecessary tokens and calls, choose cheaper models where they are sufficient, overlap tool execution, compress or restructure context, and redesign the control flow. Hold task success fixed while driving cost and latency down. </p> </a>
+
+          <a class="note-card" id="assignment-4" href="assignment4.html"> <div class="note-card-label">Assignment 4 &middot; out Wed Oct 21 &middot; due Tue Nov 10 &middot; 20%</div> <div class="note-card-title">Mads-Serve: Own the serving engine</div> <p class="note-card-summary"> Remove the frontier API. Serve the model yourself on one RTX PRO 4500 (32 GB), run your Assignment 3 agent against it, and find what limits the run. Then make it faster by changing the serving engine or the agent, with the model held fixed. The leaderboard ranks submissions on tasks solved and end-to-end time. </p> </a>
+
+          <a class="note-card" id="assignment-5" href="assignment5.html"> <div class="note-card-label">Assignment 5 &middot; out Wed Nov 11 &middot; due Tue Nov 24 &middot; 10%</div> <div class="note-card-title">Mads-Stack: Optimize the full stack</div> <p class="note-card-summary"> Builds on Assignment 4. Make your own agent strong: fix what held it back and take good ideas from other agent designs. You may also change the model and the serving engine on one RTX PRO 4500 (32 GB). The leaderboard runs Terminal-Bench 2.0, and a submission that meets its baseline gets full leaderboard points. Your rank on Assignment 4's 26 tasks earns a bonus. You also publish a blog post on what you learned from Assignments 2-5. </p> </a>
+
+        </div>
+        <p id="mads-name-footnote" class="small text-muted"><sup>1</sup> “Mads” abbreviates Modern Agent Design and Systems, the arc of this course, and nods to <a href="https://madsys.seas.harvard.edu/" target="_blank" rel="noopener noreferrer">MaDSys</a>, Harvard’s Measurement and Design of Systems research group, which teaches and supports it.</p>
+        <hr>
+      </div>
+
+      <div class="col-12 section" id="related">
+        <h1>Related</h1>
+        <ul>
+          <li>
+            <a href="../computing/index.html">Computing setup</a>. Claude Code, the model API, the HPC (GPU nodes), and AWS.
+          </li>
+          <li>
+            <a href="../policy.html#late-days">Late days</a>. Four for the semester, usable across all assignments.
+          </li>
+          <li>
+            <a href="../policy.html#ai-policy">AI use policy</a>. AI use is encouraged and must be disclosed.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+
+      <p><a href="https://madsys.seas.harvard.edu/" target="_blank" rel="noopener">MadSys Research Group</a> &middot; <a href="https://seas.harvard.edu/" target="_blank" rel="noopener">Harvard John A. Paulson School of Engineering and Applied Sciences</a></p>
+      <p class="footer-policies"><a href="https://trademark.harvard.edu/pages/trademark-notice" target="_blank" rel="noopener">Trademark Notice</a> &middot; <a href="https://accessibility.harvard.edu/" target="_blank" rel="noopener">Accessibility</a> &middot; <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" target="_blank" rel="noopener">Digital Accessibility</a> &middot; <a href="https://privsec.harvard.edu/harvard-university-privacy-statement" target="_blank" rel="noopener">Privacy Statement</a></p>
+      <p class="footer-copyright">&copy; 2026 Juncheng Yang</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>

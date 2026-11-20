@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-13",
+  "as_of": "2026-11-20",
   "timezone": "Asia/Shanghai",
   "scope": "完整公开日历；phase/local_path/status 为规划与本地核对字段，不是官方学习顺序",
   "phases": {
@@ -2240,6 +2240,10 @@
           "label": "Lecture 10 slides",
           "url": "/slides/lecture-10-deep-research-agents.pdf"
         },
+        "recording": {
+          "label": "Lecture 10 recording",
+          "url": "https://www.youtube.com/watch?v=nKUBrXFQBUM&list=PLSN0qpDfUvTM&index=10"
+        },
         "readings": [
           {
             "label": "OpenScholar",
@@ -2472,6 +2476,10 @@
           "label": "Lecture 11 slides",
           "url": "/slides/lecture-11-rl-advanced.pdf"
         },
+        "recording": {
+          "label": "Lecture 11 recording",
+          "url": "https://www.youtube.com/watch?v=jKx7_fOZRzg&list=PLSN0qpDfUvTM&index=11"
+        },
         "references": [
           {
             "label": "MIXER",
@@ -2608,6 +2616,10 @@
         "slides": {
           "label": "Lecture 12 slides",
           "url": "/slides/lecture-12-rl-systems.pdf"
+        },
+        "recording": {
+          "label": "Lecture 12 recording",
+          "url": "https://www.youtube.com/watch?v=dwR6NP9nI-8&list=PLSN0qpDfUvTM&index=12"
         },
         "milestone": "Assignment 2 due: Eval"
       },
@@ -2761,6 +2773,10 @@
         "slides": {
           "label": "Lecture 13 slides",
           "url": "/slides/lecture-13-agent-safety.pdf"
+        },
+        "recording": {
+          "label": "Lecture 13 recording",
+          "url": "https://www.youtube.com/watch?v=Mbonnq-PUGM&list=PLSN0qpDfUvTM&index=13"
         },
         "references": [
           {
@@ -2999,6 +3015,10 @@
         "slides": {
           "label": "Lecture 14 slides",
           "url": "/slides/lecture-14-openhands.pdf"
+        },
+        "recording": {
+          "label": "Lecture 14 recording",
+          "url": "https://www.youtube.com/watch?v=VAzZkT68h2Q&list=PLSN0qpDfUvTM&index=14"
         },
         "references": [
           {
@@ -3596,7 +3616,7 @@
         "code": "10a",
         "date": "Tue, Oct 27",
         "title": "Agents and the Future of Work",
-        "module": "Interaction and Projects",
+        "module": "Interaction",
         "lecturer": {
           "name": "Zora Wang",
           "url": "https://zorazrw.github.io/"
@@ -3873,7 +3893,7 @@
         "code": "10b",
         "date": "Thu, Oct 29",
         "title": "Interaction 1: Multi-Agent Interaction",
-        "module": "Interaction and Projects",
+        "module": "Interaction",
         "lecturer": {
           "name": "Saujas Vaduguru",
           "url": "https://saujasv.github.io/"
@@ -4026,7 +4046,7 @@
         "description": "Meet in your project group with your assigned TA. Schedule will be posted on piazza",
         "module": null
       },
-      "material_status": "公开项目要求已归档；活动安排见来源索引",
+      "material_status": "公开项目要求已归档；报告12/4 23:59截止，最多3天late days至12/7 23:59，官网未注明时区",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4036,9 +4056,76 @@
       "title": "Interaction 2: Human-Agent Interaction",
       "kind": "teaching",
       "phase": "P4",
-      "materials": [],
-      "readings": [],
-      "references": [],
+      "materials": [
+        {
+          "label": "Valerie Chen lecture slides",
+          "url": "https://www.cmu-agents.com/slides/2026-11-10-valerie-chen.pdf"
+        }
+      ],
+      "readings": [
+        {
+          "label": "Guidelines for Human-AI Interaction",
+          "url": "https://www.microsoft.com/en-us/research/publication/guidelines-for-human-ai-interaction/"
+        },
+        {
+          "label": "Completion ≠ Collaboration: Scaling Collaborative Effort with Agents",
+          "url": "https://arxiv.org/abs/2510.25744"
+        },
+        {
+          "label": "How can we assess human-agent interactions? Case studies in software agent design",
+          "url": "https://arxiv.org/abs/2510.09801"
+        },
+        {
+          "label": "Code with Me or for Me? How Increasing AI Automation Transforms Developer Workflows",
+          "url": "https://arxiv.org/abs/2507.08149"
+        },
+        {
+          "label": "(Im)Paired Programming: Coding Agents Improve Productivity but Harm Understanding",
+          "url": "https://arxiv.org/abs/2607.26375"
+        }
+      ],
+      "references": [
+        {
+          "label": "Mixed-Initiative Interaction",
+          "url": "https://www.microsoft.com/en-us/research/publication/mixed-initiative-interaction/"
+        },
+        {
+          "label": "Principles of Mixed-Initiative User Interfaces",
+          "url": "https://www.microsoft.com/en-us/research/publication/principles-mixed-initiative-user-interfaces/"
+        },
+        {
+          "label": "TOM-SWE: User Mental Modeling for Software Engineering Agents",
+          "url": "https://arxiv.org/abs/2510.21903"
+        },
+        {
+          "label": "Developer Interaction Patterns with Proactive AI: A Five-Day Field Study",
+          "url": "https://arxiv.org/abs/2601.10253"
+        },
+        {
+          "label": "Training language models to follow instructions with human feedback",
+          "url": "https://arxiv.org/abs/2203.02155"
+        },
+        {
+          "label": "Cognitive Architectures for Language Agents",
+          "url": "https://arxiv.org/abs/2309.02427"
+        },
+        {
+          "label": "Prediction-Powered Inference",
+          "url": "https://arxiv.org/abs/2301.09633"
+        },
+        {
+          "label": "A Rubric-Supervised Critic from Sparse Real-World Outcomes",
+          "url": "https://arxiv.org/abs/2603.03800"
+        },
+        {
+          "label": "40 Years of Designing Code Comprehension Experiments: A Systematic Mapping Study",
+          "url": "https://doi.org/10.1145/3626522"
+        },
+        {
+          "label": "Is Agent Code Less Maintainable Than Human Code?",
+          "url": "https://arxiv.org/abs/2606.21804"
+        }
+      ],
       "local_path": "courses/11-768/19.HumanAgentInteraction",
       "source": "https://www.cmu-agents.com/#/schedule",
       "evidence": "cmu/schedule.json",
@@ -4046,13 +4133,82 @@
         "code": "12a",
         "date": "Tue, Nov 10",
         "title": "Interaction 2: Human-Agent Interaction",
-        "module": "Interaction and Projects",
+        "module": "Interaction",
         "lecturer": {
           "name": "Valerie Chen",
           "url": "https://valeriechen.github.io/"
-        }
+        },
+        "description": "Rethinking Human-AI Collaboration in the Agentic Era",
+        "slides": {
+          "label": "Valerie Chen lecture slides",
+          "url": "/slides/2026-11-10-valerie-chen.pdf"
+        },
+        "readings": [
+          {
+            "label": "Guidelines for Human-AI Interaction",
+            "url": "https://www.microsoft.com/en-us/research/publication/guidelines-for-human-ai-interaction/"
+          },
+          {
+            "label": "Completion ≠ Collaboration: Scaling Collaborative Effort with Agents",
+            "url": "https://arxiv.org/abs/2510.25744"
+          },
+          {
+            "label": "How can we assess human-agent interactions? Case studies in software agent design",
+            "url": "https://arxiv.org/abs/2510.09801"
+          },
+          {
+            "label": "Code with Me or for Me? How Increasing AI Automation Transforms Developer Workflows",
+            "url": "https://arxiv.org/abs/2507.08149"
+          },
+          {
+            "label": "(Im)Paired Programming: Coding Agents Improve Productivity but Harm Understanding",
+            "url": "https://arxiv.org/abs/2607.26375"
+          }
+        ],
+        "references": [
+          {
+            "label": "Mixed-Initiative Interaction",
+            "url": "https://www.microsoft.com/en-us/research/publication/mixed-initiative-interaction/"
+          },
+          {
+            "label": "Principles of Mixed-Initiative User Interfaces",
+            "url": "https://www.microsoft.com/en-us/research/publication/principles-mixed-initiative-user-interfaces/"
+          },
+          {
+            "label": "TOM-SWE: User Mental Modeling for Software Engineering Agents",
+            "url": "https://arxiv.org/abs/2510.21903"
+          },
+          {
+            "label": "Developer Interaction Patterns with Proactive AI: A Five-Day Field Study",
+            "url": "https://arxiv.org/abs/2601.10253"
+          },
+          {
+            "label": "Training language models to follow instructions with human feedback",
+            "url": "https://arxiv.org/abs/2203.02155"
+          },
+          {
+            "label": "Cognitive Architectures for Language Agents",
+            "url": "https://arxiv.org/abs/2309.02427"
+          },
+          {
+            "label": "Prediction-Powered Inference",
+            "url": "https://arxiv.org/abs/2301.09633"
+          },
+          {
+            "label": "A Rubric-Supervised Critic from Sparse Real-World Outcomes",
+            "url": "https://arxiv.org/abs/2603.03800"
+          },
+          {
+            "label": "40 Years of Designing Code Comprehension Experiments: A Systematic Mapping Study",
+            "url": "https://doi.org/10.1145/3626522"
+          },
+          {
+            "label": "Is Agent Code Less Maintainable Than Human Code?",
+            "url": "https://arxiv.org/abs/2606.21804"
+          }
+        ]
       },
-      "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
+      "material_status": "89页讲义、5项指定阅读、10项参考及完整中文讲解已归档，审核范围见课程 REVIEW.json",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4315,9 +4471,120 @@
       "title": "Search 2: Tree Search",
       "kind": "teaching",
       "phase": "P5",
-      "materials": [],
-      "readings": [],
-      "references": [],
+      "materials": [
+        {
+          "label": "JY Koh lecture slides: Search and Planning",
+          "url": "https://www.cmu-agents.com/slides/2026-11-17-jy-koh.pdf"
+        }
+      ],
+      "readings": [
+        {
+          "label": "Tree of Thoughts",
+          "url": "https://arxiv.org/abs/2305.10601"
+        },
+        {
+          "label": "Stream of Search (SoS)",
+          "url": "https://arxiv.org/abs/2404.03683"
+        },
+        {
+          "label": "Tree Search for Language Model Agents",
+          "url": "https://arxiv.org/abs/2407.01476"
+        },
+        {
+          "label": "WebDreamer: Model-Based Planning for Web Agents",
+          "url": "https://arxiv.org/abs/2411.06559"
+        },
+        {
+          "label": "Recursive Language Models",
+          "url": "https://arxiv.org/abs/2512.24601"
+        },
+        {
+          "label": "Multi-Agent Computer Use (MACU)",
+          "url": "https://arxiv.org/abs/2606.01533"
+        }
+      ],
+      "references": [
+        {
+          "label": "Expert Iteration: Thinking Fast and Slow with Deep Learning and Tree Search",
+          "url": "https://arxiv.org/abs/1705.08439"
+        },
+        {
+          "label": "AlphaGo Zero: Mastering the Game of Go without Human Knowledge",
+          "url": "https://www.nature.com/articles/nature24270"
+        },
+        {
+          "label": "AlphaZero: A General Reinforcement Learning Algorithm That Masters Chess, Shogi, and Go through Self-Play",
+          "url": "https://doi.org/10.1126/science.aar6404"
+        },
+        {
+          "label": "ReST-MCTS*: LLM Self-Training via Process Reward Guided Tree Search",
+          "url": "https://arxiv.org/abs/2406.03816"
+        },
+        {
+          "label": "Graph of Thoughts",
+          "url": "https://arxiv.org/abs/2308.09687"
+        },
+        {
+          "label": "Searchformer: Beyond A*",
+          "url": "https://arxiv.org/abs/2402.14083"
+        },
+        {
+          "label": "DeepSeek-R1 (original report, Section 4.2: MCTS)",
+          "url": "https://arxiv.org/html/2501.12948v1#S4.SS2"
+        },
+        {
+          "label": "Language Agent Tree Search (LATS)",
+          "url": "https://arxiv.org/abs/2310.04406"
+        },
+        {
+          "label": "DeepSeek-Prover-V1.5",
+          "url": "https://arxiv.org/abs/2408.08152"
+        },
+        {
+          "label": "MuZero: Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model",
+          "url": "https://www.nature.com/articles/s41586-020-03051-4"
+        },
+        {
+          "label": "Reasoning via Planning (RAP): Reasoning with Language Model is Planning with World Model",
+          "url": "https://aclanthology.org/2023.emnlp-main.507/"
+        },
+        {
+          "label": "CWM: An Open-Weights LLM for Research on Code Generation with World Models",
+          "url": "https://arxiv.org/abs/2510.02387"
+        },
+        {
+          "label": "WorldCoder",
+          "url": "https://arxiv.org/abs/2402.12275"
+        },
+        {
+          "label": "Generating Code World Models with Large Language Models Guided by Monte Carlo Tree Search",
+          "url": "https://arxiv.org/abs/2405.15383"
+        },
+        {
+          "label": "Recursive Agent Optimization",
+          "url": "https://arxiv.org/abs/2605.06639"
+        },
+        {
+          "label": "ADaPT: As-Needed Decomposition and Planning with Language Models",
+          "url": "https://aclanthology.org/2024.findings-naacl.264/"
+        },
+        {
+          "label": "HuggingGPT",
+          "url": "https://proceedings.neurips.cc/paper_files/paper/2023/hash/77c33e6a367922d003ff102ffb92b658-Abstract-Conference.html"
+        },
+        {
+          "label": "LLMCompiler: An LLM Compiler for Parallel Function Calling",
+          "url": "https://proceedings.mlr.press/v235/kim24y.html"
+        },
+        {
+          "label": "CAID: Effective Strategies for Asynchronous Software Engineering Agents",
+          "url": "https://arxiv.org/abs/2603.21489"
+        },
+        {
+          "label": "Discriminative World Models for Web Agents",
+          "url": "https://arxiv.org/abs/2609.02885"
+        }
+      ],
       "local_path": "courses/11-768/21.TreeSearch",
       "source": "https://www.cmu-agents.com/#/schedule",
       "evidence": "cmu/schedule.json",
@@ -4329,16 +4596,128 @@
         "lecturer": {
           "name": "JY Koh",
           "url": "https://jykoh.com/"
-        }
+        },
+        "slides": {
+          "label": "JY Koh lecture slides: Search and Planning",
+          "url": "/slides/2026-11-17-jy-koh.pdf"
+        },
+        "readings": [
+          {
+            "label": "Tree of Thoughts",
+            "url": "https://arxiv.org/abs/2305.10601"
+          },
+          {
+            "label": "Stream of Search (SoS)",
+            "url": "https://arxiv.org/abs/2404.03683"
+          },
+          {
+            "label": "Tree Search for Language Model Agents",
+            "url": "https://arxiv.org/abs/2407.01476"
+          },
+          {
+            "label": "WebDreamer: Model-Based Planning for Web Agents",
+            "url": "https://arxiv.org/abs/2411.06559"
+          },
+          {
+            "label": "Recursive Language Models",
+            "url": "https://arxiv.org/abs/2512.24601"
+          },
+          {
+            "label": "Multi-Agent Computer Use (MACU)",
+            "url": "https://arxiv.org/abs/2606.01533"
+          }
+        ],
+        "references": [
+          {
+            "label": "Expert Iteration: Thinking Fast and Slow with Deep Learning and Tree Search",
+            "url": "https://arxiv.org/abs/1705.08439"
+          },
+          {
+            "label": "AlphaGo Zero: Mastering the Game of Go without Human Knowledge",
+            "url": "https://www.nature.com/articles/nature24270"
+          },
+          {
+            "label": "AlphaZero: A General Reinforcement Learning Algorithm That Masters Chess, Shogi, and Go through Self-Play",
+            "url": "https://doi.org/10.1126/science.aar6404"
+          },
+          {
+            "label": "ReST-MCTS*: LLM Self-Training via Process Reward Guided Tree Search",
+            "url": "https://arxiv.org/abs/2406.03816"
+          },
+          {
+            "label": "Graph of Thoughts",
+            "url": "https://arxiv.org/abs/2308.09687"
+          },
+          {
+            "label": "Searchformer: Beyond A*",
+            "url": "https://arxiv.org/abs/2402.14083"
+          },
+          {
+            "label": "DeepSeek-R1 (original report, Section 4.2: MCTS)",
+            "url": "https://arxiv.org/html/2501.12948v1#S4.SS2"
+          },
+          {
+            "label": "Language Agent Tree Search (LATS)",
+            "url": "https://arxiv.org/abs/2310.04406"
+          },
+          {
+            "label": "DeepSeek-Prover-V1.5",
+            "url": "https://arxiv.org/abs/2408.08152"
+          },
+          {
+            "label": "MuZero: Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model",
+            "url": "https://www.nature.com/articles/s41586-020-03051-4"
+          },
+          {
+            "label": "Reasoning via Planning (RAP): Reasoning with Language Model is Planning with World Model",
+            "url": "https://aclanthology.org/2023.emnlp-main.507/"
+          },
+          {
+            "label": "CWM: An Open-Weights LLM for Research on Code Generation with World Models",
+            "url": "https://arxiv.org/abs/2510.02387"
+          },
+          {
+            "label": "WorldCoder",
+            "url": "https://arxiv.org/abs/2402.12275"
+          },
+          {
+            "label": "Generating Code World Models with Large Language Models Guided by Monte Carlo Tree Search",
+            "url": "https://arxiv.org/abs/2405.15383"
+          },
+          {
+            "label": "Recursive Agent Optimization",
+            "url": "https://arxiv.org/abs/2605.06639"
+          },
+          {
+            "label": "ADaPT: As-Needed Decomposition and Planning with Language Models",
+            "url": "https://aclanthology.org/2024.findings-naacl.264/"
+          },
+          {
+            "label": "HuggingGPT",
+            "url": "https://proceedings.neurips.cc/paper_files/paper/2023/hash/77c33e6a367922d003ff102ffb92b658-Abstract-Conference.html"
+          },
+          {
+            "label": "LLMCompiler: An LLM Compiler for Parallel Function Calling",
+            "url": "https://proceedings.mlr.press/v235/kim24y.html"
+          },
+          {
+            "label": "CAID: Effective Strategies for Asynchronous Software Engineering Agents",
+            "url": "https://arxiv.org/abs/2603.21489"
+          },
+          {
+            "label": "Discriminative World Models for Web Agents",
+            "url": "https://arxiv.org/abs/2609.02885"
+          }
+        ]
       },
-      "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
+      "material_status": "100页讲义、6项指定阅读、20项参考及完整中文讲解已归档，审核范围见课程 REVIEW.json",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
       "course": "CMU 11-768",
       "id": "CMU-13b",
       "date": "2026-11-19",
-      "title": "Guest Lecture",
+      "title": "How to Trust Your AI Agents",
       "kind": "teaching",
       "phase": "PENDING",
       "materials": [],
@@ -4350,21 +4729,21 @@
       "raw": {
         "code": "13b",
         "date": "Thu, Nov 19",
-        "title": "Guest Lecture",
+        "title": "How to Trust Your AI Agents",
         "module": "Advanced Topics",
         "lecturer": {
           "name": "Karthik Narasimhan",
-          "url": "https://www.cs.princeton.edu/~karthikn/"
+          "url": "https://karthiknarasimhan.com/"
         }
       },
-      "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
+      "material_status": "嘉宾题目已明确；官网尚无讲义或阅读正文链接，待资料公开后定位学习内容",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
       "course": "CMU 11-768",
       "id": "CMU-14a",
       "date": "2026-11-24",
-      "title": "Guest Lecture",
+      "title": "Lessons in Building a Coding Agent",
       "kind": "teaching",
       "phase": "PENDING",
       "materials": [],
@@ -4376,14 +4755,14 @@
       "raw": {
         "code": "14a",
         "date": "Tue, Nov 24",
-        "title": "Guest Lecture",
+        "title": "Lessons in Building a Coding Agent",
         "module": "Advanced Topics",
         "lecturer": {
           "name": "Sasha Rush",
-          "url": "https://srush.github.io/"
+          "url": "https://rush-nlp.com/"
         }
       },
-      "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
+      "material_status": "嘉宾题目已明确；官网尚无讲义或阅读正文链接，待资料公开后定位学习内容",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4427,7 +4806,7 @@
         "title": "Final presentations (posters)",
         "module": null
       },
-      "material_status": "公开项目要求已归档；活动安排见来源索引",
+      "material_status": "公开项目要求已归档；报告12/4 23:59截止，最多3天late days至12/7 23:59，官网未注明时区",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4449,7 +4828,7 @@
         "title": "Final presentations (posters)",
         "module": null
       },
-      "material_status": "公开项目要求已归档；活动安排见来源索引",
+      "material_status": "公开项目要求已归档；报告12/4 23:59截止，最多3天late days至12/7 23:59，官网未注明时区",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -4478,7 +4857,8 @@
         "Assignment 1 out (Mads-Lens: Watch the\n                agent work); Sign up for AWS"
       ],
       "material_status": "公开讲义已归档；既有中文讲解保持原版",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 1
     },
     {
       "course": "Harvard CS2680",
@@ -4498,7 +4878,8 @@
         "No class — Labor Day"
       ],
       "material_status": "停课；保留日历记录",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 2
     },
     {
       "course": "Harvard CS2680",
@@ -4543,7 +4924,8 @@
         ""
       ],
       "material_status": "公开讲义已归档；既有中文讲解保持原版",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 2
     },
     {
       "course": "Harvard CS2680",
@@ -4588,7 +4970,8 @@
         ""
       ],
       "material_status": "公开讲义已归档；既有中文讲解保持原版",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 3
     },
     {
       "course": "Harvard CS2680",
@@ -4633,7 +5016,8 @@
         "Assignment 1 due Sun Sep 20, 11:59pm"
       ],
       "material_status": "公开讲义已归档；既有中文讲解保持原版",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 3
     },
     {
       "course": "Harvard CS2680",
@@ -4656,7 +5040,8 @@
         "Assignment 2 out (Mads-Loop: Build\n                the loop)"
       ],
       "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 4
     },
     {
       "course": "Harvard CS2680",
@@ -4701,7 +5086,8 @@
         ""
       ],
       "material_status": "公开讲义已归档；既有中文讲解保持原版",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 4
     },
     {
       "course": "Harvard CS2680",
@@ -4741,7 +5127,8 @@
         "where agents fail ; MemGPT ; more reading →"
       ],
       "material_status": "公开讲义已归档；既有中文讲解保持原版",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 5
     },
     {
       "course": "Harvard CS2680",
@@ -4774,7 +5161,8 @@
         "Assignment 2 due Sun Oct 4, 11:59pm"
       ],
       "material_status": "公开讲义已归档；既有中文讲解保持原版",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 5
     },
     {
       "course": "Harvard CS2680",
@@ -4797,7 +5185,8 @@
         "Assignment 3 out (Mads-Opt: Make\n                every token count)"
       ],
       "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 6
     },
     {
       "course": "Harvard CS2680",
@@ -4830,7 +5219,8 @@
         "Pre-proposal due (optional and only submit if you want to discuss your ideas)"
       ],
       "material_status": "公开讲义已归档；既有中文讲解保持原版",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 6
     },
     {
       "course": "Harvard CS2680",
@@ -4850,7 +5240,8 @@
         "No class — Indigenous Peoples’ Day"
       ],
       "material_status": "停课；保留日历记录",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 7
     },
     {
       "course": "Harvard CS2680",
@@ -4882,7 +5273,8 @@
         ""
       ],
       "material_status": "官方论文讨论课，无教师讲义PDF；阅读及原讲解已保留",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 7
     },
     {
       "course": "Harvard CS2680",
@@ -4927,7 +5319,8 @@
         "Assignment 3 due Tue Oct 20,\n                11:59pm"
       ],
       "material_status": "公开讲义已归档；既有中文讲解保持原版",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 8
     },
     {
       "course": "Harvard CS2680",
@@ -4964,7 +5357,8 @@
         "Assignment 4 out (Mads-Serve: Own\n                the serving engine)"
       ],
       "material_status": "公开讲义已归档；既有中文讲解保持原版",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 8
     },
     {
       "course": "Harvard CS2680",
@@ -4992,7 +5386,8 @@
         ""
       ],
       "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 9
     },
     {
       "course": "Harvard CS2680",
@@ -5020,7 +5415,8 @@
         "Project proposal due"
       ],
       "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 9
     },
     {
       "course": "Harvard CS2680",
@@ -5052,7 +5448,8 @@
         ""
       ],
       "material_status": "讲义、阅读与完整中文讲解已归档；内容审核版本见课程 REVIEW.json",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 10
     },
     {
       "course": "Harvard CS2680",
@@ -5093,7 +5490,8 @@
         ""
       ],
       "material_status": "讲义、阅读与完整中文讲解已归档；内容审核版本见课程 REVIEW.json",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 10
     },
     {
       "course": "Harvard CS2680",
@@ -5116,7 +5514,8 @@
         "Assignment 4 due Tue Nov 10, 11:59pm"
       ],
       "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 11
     },
     {
       "course": "Harvard CS2680",
@@ -5125,8 +5524,34 @@
       "title": "Efficient LLM serving: speculative decoding",
       "kind": "teaching",
       "phase": "P6",
-      "materials": [],
-      "readings": [],
+      "materials": [
+        {
+          "label": "[slide]",
+          "url": "https://cs2680.com/slides/12_llm_serving_spec_decoding.pdf"
+        }
+      ],
+      "readings": [
+        {
+          "label": "speculative decoding",
+          "url": "https://arxiv.org/abs/2211.17192"
+        },
+        {
+          "label": "EAGLE",
+          "url": "https://arxiv.org/abs/2401.15077"
+        },
+        {
+          "label": "Medusa",
+          "url": "https://arxiv.org/abs/2401.10774"
+        },
+        {
+          "label": "DSpark",
+          "url": "https://arxiv.org/abs/2607.05147"
+        },
+        {
+          "label": "more reading →",
+          "url": "https://cs2680.com/readings/nov-11.html"
+        }
+      ],
       "local_path": "courses/2680/13.EfficientLLMServing.SpeculativeDecoding",
       "source": "https://cs2680.com/",
       "evidence": "harvard/index.html",
@@ -5134,12 +5559,13 @@
         "11",
         "2026-11-11",
         "Juncheng Yang",
-        "Efficient LLM serving: speculative decoding",
-        "",
+        "Efficient LLM serving: speculative decoding [slide]",
+        "speculative decoding ; EAGLE ; Medusa ; DSpark ; more reading →",
         "Assignment 5 out (Mads-Stack:\n                Optimize the full stack)"
       ],
-      "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "material_status": "78页推测解码讲义、阅读材料和完整中文讲解已归档，审核范围见课程 REVIEW.json",
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 11
     },
     {
       "course": "Harvard CS2680",
@@ -5162,7 +5588,8 @@
         ""
       ],
       "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 12
     },
     {
       "course": "Harvard CS2680",
@@ -5171,7 +5598,12 @@
       "title": "Student sharing III: Showcase your serving engine (Assignment 4)",
       "kind": "sharing",
       "phase": "P6",
-      "materials": [],
+      "materials": [
+        {
+          "label": "[slide]",
+          "url": "https://cs2680.com/slides/assignment4_sharing_protected.pdf"
+        }
+      ],
       "readings": [],
       "local_path": "courses/2680/24.StudentSharingIII.EngineOptimizationsAndAgentEngineCoDesign",
       "source": "https://cs2680.com/",
@@ -5180,12 +5612,13 @@
         "12",
         "2026-11-18",
         "Students",
-        "Student sharing III: Showcase your serving engine (Assignment 4)",
+        "Student sharing III: Showcase your serving engine (Assignment 4) [slide]",
         "",
         ""
       ],
-      "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "material_status": "分享PDF原件已归档但需密码，正文不可读、页数未核实；不计为已取得可读讲义",
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 12
     },
     {
       "course": "Harvard CS2680",
@@ -5208,7 +5641,8 @@
         "Assignment 5 due Tue Nov 24, 11:59pm"
       ],
       "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 13
     },
     {
       "course": "Harvard CS2680",
@@ -5228,7 +5662,8 @@
         "No class — Thanksgiving recess"
       ],
       "material_status": "停课；保留日历记录",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 13
     },
     {
       "course": "Harvard CS2680",
@@ -5251,7 +5686,8 @@
         ""
       ],
       "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 14
     },
     {
       "course": "Harvard CS2680",
@@ -5274,7 +5710,8 @@
         ""
       ],
       "material_status": "官网尚无公开讲义正文；已有阅读与获取状态见来源索引",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 14
     },
     {
       "course": "Harvard CS2680",
@@ -5297,7 +5734,8 @@
         "Final project due Tue Dec 8, 11:59pm"
       ],
       "material_status": "公开项目要求已归档；活动安排见来源索引",
-      "learning_status": "unknown_to_be_confirmed_by_learner"
+      "learning_status": "unknown_to_be_confirmed_by_learner",
+      "week": 14
     },
     {
       "course": "MIT MAS.S62",
@@ -5709,6 +6147,10 @@
         {
           "label": "[slides 1]",
           "url": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec6 - rl in practice.pdf"
+        },
+        {
+          "label": "[slides 2]",
+          "url": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec7 - self play.pdf"
         }
       ],
       "placeholder_links": [],
@@ -5731,10 +6173,10 @@
       "evidence": "mit/schedule.html",
       "raw_cells": [
         "11/4",
-        "Week 9 Model evolution 2 [slides 1] RL in practice Self-play approaches",
+        "Week 9 Model evolution 2 [slides 1] [slides 2] RL in practice Self-play approaches",
         "Absolute Zero: Reinforced Self-play Reasoning with Zero Data R-Zero: Self-Evolving Reasoning LLM from Zero Data Propose, Solve, Verify: Self-Play Through Formal Verification"
       ],
-      "material_status": "讲义、阅读与完整中文讲解已归档；内容审核版本见课程 REVIEW.json",
+      "material_status": "19页RL实践教程及63页LLM Self-Play讲义已归档，完整中文讲解已整合两份材料，审核范围见课程 REVIEW.json",
       "learning_status": "unknown_to_be_confirmed_by_learner",
       "week": 9,
       "source_schedule": "https://mit-mi.github.io/how2ai-course/fall2026/schedule/"
@@ -6702,8 +7144,8 @@
       "description": "3:30–6:30 p.m. Pacific Time; location TBA"
     }
   ],
-  "layout_updated_at": "2026-11-13",
-  "source_snapshot": "courses/syllabus-snapshots/2026-11-13/README.md",
+  "layout_updated_at": "2026-11-20",
+  "source_snapshot": "courses/syllabus-snapshots/2026-11-20/README.md",
   "legacy_items": [
     {
       "local_path": "courses/2680/18.EfficientAgenticSystems.Others",
@@ -6724,9 +7166,9 @@
     "courses/MAS.S62/assignment/assignment-4"
   ],
   "course_checked_at": {
-    "CMU 11-768": "2026-11-13",
-    "Harvard CS2680": "2026-11-13",
-    "MIT MAS.S62": "2026-11-13",
+    "CMU 11-768": "2026-11-20",
+    "Harvard CS2680": "2026-11-20",
+    "MIT MAS.S62": "2026-11-20",
     "Stanford CS329Z": "2026-11-04"
   },
   "homework_uncertainties": [

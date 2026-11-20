@@ -2,7 +2,7 @@
 
 - Date: 2026-10-14
 - Source: https://mit-mi.github.io/how2ai-course/fall2026/schedule/
-- 资料归档日期：2026-11-13；最新日历见[完整课表](../COURSE_SCHEDULE.md)。
+- 资料归档日期：2026-11-20；最新日历见[完整课表](../COURSE_SCHEDULE.md)。
 - 目录编号保持稳定；当前官方 Week、日期单独记录，原 PDF 内的 Lecture 编号和文件名保持原样。
 
 ## Topics（归档快照）

@@ -1,8 +1,8 @@
 {
   "course": "MAS.S62",
-  "review_date": "2026-11-13",
+  "review_date": "2026-11-20",
   "standard": "面向有 Java 经验的 LLM Developer：以讲义问题链组织完整中文教学；检查前置知识、机制推导、案例、自测和来源证据；修改后的最终版本完整复读两遍。",
-  "scope": "当前逐篇内容审核状态。2026-11-13 新增 W9 完整讲解并完成内容审核与全文复读；历史正文不变。W7 对保留旧版教程的审核延期标记继续有效，不因 W9 交付而解除。",
+  "scope": "2026-11-20 完成 W9 两份讲义的整合、原文核读和全文复读。W7 原有复核延期仍有效。",
   "study_guides": [
     {
       "path": "courses/MAS.S62/1.CourseIntroduction/notes.zh-CN.md",
@@ -801,10 +801,10 @@
       "path": "courses/MAS.S62/9.ModelEvolution2/notes.zh-CN.md",
       "week": 9,
       "status": "passed",
-      "sha256": "e2258e19a7dbf88136a548f9cbe60ff3dabf07be2a0f1a36220b42342d65a3cf",
-      "content_review_sha256": "e2258e19a7dbf88136a548f9cbe60ff3dabf07be2a0f1a36220b42342d65a3cf",
-      "reviewed_at": "2026-11-13T16:36:02.467260+08:00",
-      "coverage": "19页当前 RL 实践讲义为主线；三篇指定阅读正文与相关附录，24项参考资料按记录范围核读。覆盖RL/优化前提、GRPO/PPO/KL、训练状态与显存、资源与实验归因、自博弈及验证反馈，贯穿函数案例、自测与答案。",
+      "sha256": "da6bb3371e0f4d4488372d5f32c33227df831e9e9e436db03afd19d827db16be",
+      "content_review_sha256": "da6bb3371e0f4d4488372d5f32c33227df831e9e9e436db03afd19d827db16be",
+      "reviewed_at": "2026-11-20T10:13:31+08:00",
+      "coverage": "19页 RL 实践教程与63页 LLM Self-Play 双主线。第12节整合 AlphaZero、PSV、协作式出题、生成–验证差距与三篇指定阅读。补充教学生成、验证、状态和可归因的对照设计，贯穿 sum_even，14 道自测含答案。",
       "sources_read": [
         {
           "title": "Propose, Solve, Verify: Self-Play Through Formal Verification",
@@ -1147,50 +1147,185 @@
           "role": "reference",
           "reused_from": "courses/MAS.S62/7.ModelEvolution1/slides/lec6 - training.pdf",
           "total_pdf_pages": 45
+        },
+        {
+          "title": "LLM Self-Play (Alex Wilf)",
+          "path": "courses/MAS.S62/9.ModelEvolution2/slides/lec7 - self play.pdf",
+          "sha256": "71d7831ac65721a59709c08111dd0f06c3294f54d4333554482fb7d696fbede2",
+          "role": "lecture",
+          "total_pdf_pages": 63,
+          "pages_read": "1–63",
+          "sections_read": "全 PDF 文本，核心图目视，讲义的简图和论文机制对照。",
+          "contribution": "自博弈和数据、对局搜索、竞争、协作、验证差距。"
+        },
+        {
+          "title": "Language Self-Play For Data-Free Training",
+          "path": "courses/MAS.S62/9.ModelEvolution2/references/Language_Self-Play_For_Data-Free_Training.pdf",
+          "sha256": "16f6fea2b0703bc2ae2510536a13b767aded0b13541066b0a35adb760b9b753f",
+          "version": "2509.07414v3",
+          "total_pdf_pages": 18,
+          "role": "supplemental_reference",
+          "sections_read": "§2–3 与 Algorithm 1，共享参数和学习的反馈。"
+        },
+        {
+          "title": "STP: Self-play LLM Theorem Provers with Iterative Conjecturing and Proving",
+          "path": "courses/MAS.S62/9.ModelEvolution2/references/STP_Self-play_LLM_Theorem_Provers_with_Iterative_Conjecturing_and_Proving.pdf",
+          "sha256": "a8c8bd39f5a4e0a241f04f71202162fb6323a63ddfc20b617d44f3599325dc8d",
+          "version": "2502.00212v4",
+          "total_pdf_pages": 25,
+          "role": "supplemental_reference",
+          "sections_read": "迭代猜想与证明、Lean 判据及有效题目分布。"
+        },
+        {
+          "title": "Self-Challenging Language Model Agents",
+          "path": "courses/MAS.S62/9.ModelEvolution2/references/Self-Challenging_Language_Model_Agents.pdf",
+          "sha256": "3b8cbcfef6e9dcadc881d42ae0bf681b3ee79be696851ba0326b64345d7511e3",
+          "version": "2506.01716v1",
+          "total_pdf_pages": 25,
+          "role": "supplemental_reference",
+          "sections_read": "框架机制及环境构造、任务筛选。"
+        },
+        {
+          "title": "Skill Self-Play: Pushing the Frontier of LLM Capability with Co-Evolving Skills",
+          "path": "courses/MAS.S62/9.ModelEvolution2/references/Skill_Self-Play_Pushing_the_Frontier_of_LLM_Capability_with_Co-Evolving_Skills.pdf",
+          "sha256": "59ceb22a7620b98326f6a2430e1ab303e5b589eaf6d765463cd4c51bd69477cd",
+          "version": "2607.22529v1",
+          "total_pdf_pages": 30,
+          "role": "supplemental_reference",
+          "sections_read": "技能控制器、任务策划与维护的状态。"
+        },
+        {
+          "title": "Scaling Self-Play with Self-Guidance",
+          "path": "courses/MAS.S62/9.ModelEvolution2/references/Scaling_Self-Play_with_Self-Guidance.pdf",
+          "sha256": "e5578cb4c120375fdc46f6399ac6650d047028057383968a039f3f8d63cb166e",
+          "version": "2604.20209v2",
+          "total_pdf_pages": 30,
+          "role": "supplemental_reference",
+          "sections_read": "方法与 Algorithm 1，Guide 的相关性和自然度。"
+        },
+        {
+          "title": "LADDER: Self-Improving LLMs Through Recursive Problem Decomposition",
+          "path": "courses/MAS.S62/9.ModelEvolution2/references/LADDER_Self-Improving_LLMs_Through_Recursive_Problem_Decomposition.pdf",
+          "sha256": "cf1ac2ce2cb52fbeeddb7b266d0543d57da36698fc327b44a28c435363aa6e8a",
+          "version": "2503.00735v3",
+          "total_pdf_pages": 13,
+          "role": "supplemental_reference",
+          "sections_read": "Algorithm 1，构造更简单且和目标相关的变体。"
+        },
+        {
+          "title": "Self-Adapting Language Models",
+          "path": "courses/MAS.S62/9.ModelEvolution2/references/Self-Adapting_Language_Models.pdf",
+          "sha256": "3abf83bcf05862d5e6e72078dc0e47ebfcf2e72866e9fdfe1dbc3663c72a9dc6",
+          "version": "2506.10943v2",
+          "total_pdf_pages": 25,
+          "role": "supplemental_reference",
+          "sections_read": "方法与 Algorithm 1，自我编辑、更新与表现回评。"
+        },
+        {
+          "title": "CPMobius: Iterative Coach-Player Reasoning for Data-Free Reinforcement Learning",
+          "path": "courses/MAS.S62/9.ModelEvolution2/references/CPMobius_Iterative_Coach-Player_Reasoning_for_Data-Free_Reinforcement_Learning.pdf",
+          "sha256": "2eff9e26fb9756cad6421b267779ef9a57f2619b8442635a0666a47541ce73ed",
+          "version": "2602.02979v3",
+          "total_pdf_pages": 20,
+          "role": "supplemental_reference",
+          "sections_read": "教练和选手的训练闭环及任务筛选。"
+        },
+        {
+          "title": "CompassPlay: Rewarding the Proposer for Where It Moves the Solver",
+          "path": "courses/MAS.S62/9.ModelEvolution2/references/CompassPlay_Rewarding_the_Proposer_for_Where_It_Moves_the_Solver.pdf",
+          "sha256": "9fab4daa14b131031723ad79cc6b6e14947b1fef27af15b8ced1ce051eaa207f",
+          "version": "2609.32228v1",
+          "total_pdf_pages": 17,
+          "role": "supplemental_reference",
+          "sections_read": "作用在求解者梯度的代理信号、参考任务与训练预算。"
+        },
+        {
+          "title": "Self-Play Pretraining with Zero Data",
+          "path": "courses/MAS.S62/9.ModelEvolution2/references/Self-Play_Pretraining_with_Zero_Data.pdf",
+          "sha256": "bcf7107020989eee86a894bfb622a5a4eeb864d2b248fe03f1cf3f9e4454f180",
+          "version": "2609.30063v1",
+          "total_pdf_pages": 32,
+          "role": "supplemental_reference",
+          "sections_read": "§2，程序生成字节序列、生成器与学习者目标。"
+        },
+        {
+          "title": "Self-Verification Provably Prevents Model Collapse in Recursive Synthetic Training",
+          "path": "courses/MAS.S62/9.ModelEvolution2/references/Self-Verification_Provably_Prevents_Model_Collapse_in_Recursive_Synthetic_Training.pdf",
+          "sha256": "d724a853b34d98c9d487015eb19583d794c014ed4bec951c2f51672b451b732e",
+          "version": null,
+          "total_pdf_pages": 54,
+          "role": "supplemental_reference",
+          "sections_read": "§4，错误积累与可信过滤理论前提。"
+        },
+        {
+          "title": "Self-Improvement in Language Models: The Sharpening Mechanism",
+          "path": "courses/MAS.S62/9.ModelEvolution2/references/Self-Improvement_in_Language_Models_The_Sharpening_Mechanism.pdf",
+          "sha256": "df66bfb7d1cc8a34033a4783da1b21d4d9854ddcd87240f7d65930c5067b81fc",
+          "version": "2412.01951v2",
+          "total_pdf_pages": 59,
+          "role": "supplemental_reference",
+          "sections_read": "§3–4，自评分、筛选目标和计算摊销。"
+        },
+        {
+          "title": "Teaching Models to Teach Themselves: Reasoning at the Edge of Learnability",
+          "path": "courses/MAS.S62/9.ModelEvolution2/references/Teaching_Models_to_Teach_Themselves_Reasoning_at_the_Edge_of_Learnability.pdf",
+          "sha256": "2f76ac87f8eaa16861583df4fa4cf80dfb0c66e715c8bc968a75375a3e925cc5",
+          "version": "2601.18778v3",
+          "total_pdf_pages": 39,
+          "role": "supplemental_reference",
+          "sections_read": "§3–5、附录 B/C，内外层训练、难题筛选与 pass@32。"
+        },
+        {
+          "title": "Goedel-Code-Prover: Hierarchical Proof Search for Open State-of-the-Art Code Verification",
+          "path": "courses/MAS.S62/9.ModelEvolution2/references/Goedel-Code-Prover_Hierarchical_Proof_Search_for_Open_State-of-the-Art_Code_Verification.pdf",
+          "sha256": "176ca524237d946844e57ac234424dfa94b8935924b0a2425890e4cc25d4cbfa",
+          "version": "2603.19329v3",
+          "total_pdf_pages": 27,
+          "role": "supplemental_reference",
+          "sections_read": "§2–5、附录 H.4，分层证明、消融和推理预算。"
+        },
+        {
+          "title": "Mind the Gap: Examining the Self-Improvement Capabilities of Large Language Models",
+          "path": "courses/MAS.S62/9.ModelEvolution2/references/Mind_the_Gap_Examining_the_Self-Improvement_Capabilities_of_Large_Language_Models.pdf",
+          "sha256": "a26a6f741ceef98ff44fc459634de105ebc8b410c03986b1ae5a1249b4c22114",
+          "version": "2412.02674v2",
+          "total_pdf_pages": 41,
+          "role": "supplemental_reference",
+          "sections_read": "§2、§4，差距定义、可更新性与趋势适用条件。"
+        },
+        {
+          "title": "T1: Tool-integrated Self-verification for Test-time Compute Scaling in Small Language Models",
+          "path": "courses/MAS.S62/9.ModelEvolution2/references/T1_Tool-integrated_Self-verification_for_Test-time_Compute_Scaling_in_Small_Language_Models.pdf",
+          "sha256": "aff1d4be3d3fd0fce2686d2d77d7111bdf7e1a34e70e3d8a669050dcbc30baac",
+          "version": "2504.04718v2",
+          "total_pdf_pages": 32,
+          "role": "supplemental_reference",
+          "sections_read": "§3–5 + Figure 1，工具支持验证的原理与证据边界。"
+        },
+        {
+          "title": "AlphaZero, archived author-accepted manuscript",
+          "path": "courses/11-768/21.TreeSearch/references/A_General_Reinforcement_Learning_Algorithm_That_Masters_Chess_Shogi_and_Go_through_Self-Play.pdf",
+          "sha256": "9e298fbfbcfbb50c46379707cc77a9eaec303e9d310dbbb85a31d04896da4b5f",
+          "role": "supplemental_reference",
+          "sections_read": "Methods and supplementary algorithm: search, policy targets and terminal value.",
+          "reused_from": "courses/11-768/21.TreeSearch/references/A_General_Reinforcement_Learning_Algorithm_That_Masters_Chess_Shogi_and_Go_through_Self-Play.pdf"
         }
       ],
-      "reread_result": [
-        {
-          "pass_id": "pedagogical_full_read",
-          "scope": "Entire initial note (35,117 characters), all sections and source map",
-          "findings": [
-            "Expanded prerequisites: SFT/RL/rollout/PPO/GRPO, softmax and log probabilities, mask, forward/backward/update roles",
-            "Added explicit E expectation, G/i/t notation, finite-difference explanation",
-            "Added thinking-mode, JS/tail, attention/GQA definitions and Avg@k vs pass@k explanation"
-          ],
-          "status": "Changes applied; subsequently fully reread"
+      "reread_result": {
+        "first_full_read": {
+          "scope": "标题至第15节及来源地图，回查课堂图与关键论文。",
+          "findings_fixed": [
+            "分开 PSV 训练时的验证消融与最终评测",
+            "补足课件第4页引入及新算例验证",
+            "更新双讲义页码地图及旧教学段落衔接"
+          ]
         },
-        {
-          "pass_id": "technical_full_read",
-          "scope": "Entire revised note in three contiguous chunks, all equations, budgets, paper conditions and source map",
-          "findings": [
-            "Checked reverse-KL signs and finite-difference match",
-            "Checked sample vs population std, PPO four cases, conditional memory and dynamic-batch caveat",
-            "Checked AZR vs R-Zero reward shapes, PSV RFT/reset, SDFT/OPSD/SDPO divergence/version distinctions",
-            "Corrected tutorial title page to actual PDF p2",
-            "Changed majority example to compute oracle/mode rather than hardcode result"
-          ],
-          "status": "Changes applied; subsequently fully reread"
-        },
-        {
-          "pass_id": "peer_full_read",
-          "reviewer": "/root/plan_cmu20",
-          "scope": "All635lines,15sections,selftestand source map",
-          "findings": [
-            "Clarify same checkpoint does not imply same role",
-            "Avoid wording implying GAE updates before rollout completion"
-          ],
-          "status": "Both changes applied; no blocking issue",
-          "limits": "Peer checked teaching logic and formula consistency, not all reference originals"
-        },
-        {
-          "pass_id": "final_full_read_after_fixes",
-          "scope": "All635lines /37502characters read in contiguous 0:12500,12500:25000,25000:end chunks",
-          "findings": [],
-          "status": "Passed; coherent learning path, mathematical/experimental boundaries retained",
-          "sha256": "e2258e19a7dbf88136a548f9cbe60ff3dabf07be2a0f1a36220b42342d65a3cf"
+        "final_full_read": {
+          "sha256": "da6bb3371e0f4d4488372d5f32c33227df831e9e9e436db03afd19d827db16be",
+          "scope": "整合后终稿全文729行。覆盖导读、第 1–15 节、十四道自测和两份讲义的阅读地图。逐段回查新第 12 节。",
+          "result": "定稿全文复读通过。PSV 去筛选消融、SOAR 内外层反馈和最终测试、Goedel 推理预算、稳定的验证差距趋势均按原件核对。CPU 运行结果一致。"
         }
-      ],
+      },
       "remaining_issues": [],
       "limitations": [
         "No LLM/API/GPU training, throughput, peak-memory or benchmark reproduction; no arbitrary generated-code execution, Verus proof or Reef service run.",
@@ -1199,17 +1334,19 @@
         "All assigned main bodies and relevant appendices read; reference material reading ranges are explicit, not an assertion of every appendix or full upstream repository audit.",
         "CPU example validates arithmetic and hand-written function behavior only; model experiments in notes remain unexecuted designs.",
         "Prior W7 raw slides and archives reused without editing W7; source copies remain unchanged.",
-        "Reef fixed README warns ongoing control-plane/workers refactor and possible failing recipes; interface reading is not deployment acceptance."
+        "Reef fixed README warns ongoing control-plane/workers refactor and possible failing recipes; interface reading is not deployment acceptance.",
+        "Self-Play 例子只执行静态 CPU 数值检查。未执行模型、合成训练、自博弈、验证引擎或论文规模对照。",
+        "Self-Play 参考按相关正文、实验和适用边界核读，不将附录全部、发布网页或视频当成复现。"
       ],
       "examples": [
         {
           "script": "courses/MAS.S62/9.ModelEvolution2/examples/learning_signals.py",
-          "script_sha256": "3046afc98ce7b5da6c2f523fd63521dcaa0e1cc0c5cfe9222c12301cd7774110",
+          "script_sha256": "93c14308cc6f32fed4261880bdee65832c9a28ea0d57ab7802bb1036558e75fa",
           "result": "courses/MAS.S62/9.ModelEvolution2/examples/RESULTS.json",
-          "result_sha256": "26c2e3dc68374aa72f8e96e5655de360a336299535c60d878dfbc562723157a8",
+          "result_sha256": "9341d5a4c13dadbcdd3b57996ea6196857cd96b1cafdfa9c4431257cfb75ed20",
           "command": "python3 examples/learning_signals.py",
           "python": "3.11.10",
-          "execution": "actual CPU run plus matching rerun",
+          "execution": "2026-11-20 CPU run",
           "checks": [
             "five function inputs",
             "group advantage both standard deviations",
@@ -1218,7 +1355,9 @@
             "reverse-KL analytical vs finite-difference gradient and local descent",
             "batch/memory ledger",
             "AZR/R-Zero reward shapes",
-            "wrong consensus vs independently computed function result"
+            "wrong consensus vs independently computed function result",
+            "归一化 AlphaZero 示意根节点访问数",
+            "按固定候选的真假计数校验两种验证器通过率、精度及召回率"
           ]
         }
       ],
@@ -1258,36 +1397,36 @@
             42
           ],
           "focus": "Hyperparameters/distillation divergences and top-k"
+        },
+        {
+          "path": "courses/MAS.S62/9.ModelEvolution2/slides/lec7 - self play.pdf",
+          "pages": "7,10,29,35,37–39,50–51,56–58,60",
+          "scope": "课件主要流程、回传示意、消融、验证与协作实验图；图中文字与引用对照。"
         }
       ],
       "cross_review": {
-        "file": "courses/MAS.S62/9.ModelEvolution2/notes.zh-CN.md",
-        "sha256_observed_after_read": "79d1918e7076e667b583911e681c8fb249aa6ac014c481a398cc7f2d7b453d66",
-        "read_scope": "Full notes, lines 1 through EOF (635 lines observed initially), all 15 sections, exercises and source map",
-        "perspective": "LLM developer with Java backend experience; prerequisites, notation, problem chain, learning utility",
-        "result": "Passed; two minor clarity suggestions sent to author",
-        "findings": [
-          {
-            "section": "3",
-            "issue": "起始checkpoint相同不等于职责相同 wording",
-            "severity": "minor"
-          },
-          {
-            "section": "2.3",
-            "issue": "GAE use of critic bootstrap should not suggest asynchronous mid-rollout training",
-            "severity": "minor"
-          }
-        ],
-        "source_audit_limit": "Did not independently reread all MIT source papers; this is a full-note pedagogical and internal-consistency cross-review, not an independent source-number audit"
+        "scope": "交叉全文复读并复核原论文与自测。",
+        "findings_fixed": [
+          "SOAR 内层用生成标签，外层用真实训练难题，最终 test 切片隔离",
+          "Goedel-Code-Prover 的 Verina 结果与不同推理预算",
+          "明确验证差距的观察方向和稳定验证规则条件"
+        ]
+      },
+      "current_source_coverage": "RL 实践与 LLM Self-Play 两份讲义、三篇指定阅读、相关参考已按下列范围核读。",
+      "previous_content_review": {
+        "date": "2026-11-13",
+        "sha256": "e2258e19a7dbf88136a548f9cbe60ff3dabf07be2a0f1a36220b42342d65a3cf",
+        "scope": "19 页 RL 实践教程与当时已归档阅读。保留原版本哈希。"
       }
     }
   ],
   "materials_sync": {
-    "date": "2026-11-13",
+    "date": "2026-11-20",
     "notes_updated": true,
-    "scope": "Public materials, source versions and schedule synchronized. Only new W9 guide authored and reviewed after synchronization; old guides unchanged. W7 retained archive remains explicitly review_required.",
+    "scope": "Integrated the 63-page LLM Self-Play lecture into Week 9 and verified the revised guide. Existing Week 7 deferral remains.",
     "notes_sha256_unchanged": false,
-    "historical_notes_sha256_unchanged": true
+    "historical_notes_sha256_unchanged": true,
+    "content_review_complete": false
   },
   "deferred_notes": [
     {
