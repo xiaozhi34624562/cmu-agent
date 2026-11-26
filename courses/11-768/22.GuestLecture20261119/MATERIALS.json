@@ -1,0 +1,24 @@
+[
+  {
+    "title": "How to Trust Your AI Agents",
+    "subtitle": "Evaluation when generation is cheap",
+    "official_schedule_title": "How to Trust Your AI Agents",
+    "url": "https://www.cmu-agents.com/slides/2026-11-19-karthik-narasimhan.pdf",
+    "final_url": "https://www.cmu-agents.com/slides/2026-11-19-karthik-narasimhan.pdf",
+    "path": "2026-11-19-karthik-narasimhan.pdf",
+    "role": "lecture",
+    "status": "saved",
+    "pages": 25,
+    "lecturer": "Karthik Narasimhan",
+    "lecture_date": "2026-11-19",
+    "original_filename": "2026-11-19-karthik-narasimhan.pdf",
+    "bytes": 6295260,
+    "sha256": "262f599d7c9d0b26c952cfc42cfacb5a5e9cc527362397bf030eb1c3c083ee48",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "retrieved_at": "2026-11-26",
+    "archived_at": "2026-11-26T15:31:29+08:00",
+    "first_page_text": "? How to Trust Your AI Agents Evaluation when generation is cheap Karthik Narasimhan Princeton University",
+    "acquisition_note": "复用本轮官网核查已下载的原始文件。已核对 PDF 文件头、封面与页数，原名和字节保留。"
+  }
+]

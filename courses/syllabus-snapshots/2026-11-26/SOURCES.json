@@ -1,0 +1,28 @@
+{
+  "checked_at": "2026-11-26",
+  "scope": "CMU 11-768 course schedule and guest lecture only",
+  "sources": [
+    {
+      "url": "https://www.cmu-agents.com/",
+      "path": "cmu/index.html",
+      "retrieved_at": "2026-11-26",
+      "status": "saved",
+      "sha256": "478b2d00d9c53b5d0a8e06ee5f4b1f744d5e0458750269eb52700376e39509ae"
+    },
+    {
+      "url": "https://www.cmu-agents.com/assets/index-BJ2mTrgs.js",
+      "path": "cmu/app.js",
+      "retrieved_at": "2026-11-26",
+      "status": "saved",
+      "sha256": "01c6c9ebd7946093762ca2832924ed6e430901a7d4c6f3c90e819f57b4384312"
+    }
+  ],
+  "derived": [
+    {
+      "path": "cmu/schedule.json",
+      "derived_from": "cmu/app.js",
+      "method": "Extract the JavaScript schedule array by balanced bracket scanning and parse it as JSON5 without executing JavaScript.",
+      "sha256": "e5519611f9c38524ca535569978497b8721a97bc32c7d279c80d1c3eef10b485"
+    }
+  ]
+}

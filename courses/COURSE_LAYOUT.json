@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-20",
+  "as_of": "2026-11-26",
   "timezone": "Asia/Shanghai",
   "scope": "完整公开日历；phase/local_path/status 为规划与本地核对字段，不是官方学习顺序",
   "phases": {
@@ -4719,13 +4719,128 @@
       "date": "2026-11-19",
       "title": "How to Trust Your AI Agents",
       "kind": "teaching",
-      "phase": "PENDING",
-      "materials": [],
-      "readings": [],
-      "references": [],
+      "phase": "P3",
+      "materials": [
+        {
+          "label": "Karthik Narasimhan lecture slides: How to Trust Your AI Agents",
+          "url": "https://www.cmu-agents.com/slides/2026-11-19-karthik-narasimhan.pdf"
+        }
+      ],
+      "readings": [
+        {
+          "label": "WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents",
+          "url": "https://arxiv.org/abs/2207.01206"
+        },
+        {
+          "label": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
+          "url": "https://arxiv.org/abs/2310.06770"
+        },
+        {
+          "label": "τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains",
+          "url": "https://arxiv.org/abs/2406.12045"
+        },
+        {
+          "label": "Establishing Best Practices for Building Rigorous Agentic Benchmarks (Agentic Benchmark Checklist)",
+          "url": "https://arxiv.org/abs/2507.02825"
+        },
+        {
+          "label": "Trust in Automation: Designing for Appropriate Reliance",
+          "url": "https://doi.org/10.1518/hfes.46.1.50_30392"
+        }
+      ],
+      "references": [
+        {
+          "label": "Dynabench: Rethinking Benchmarking in NLP",
+          "url": "https://aclanthology.org/2021.naacl-main.324/"
+        },
+        {
+          "label": "WebArena: A Realistic Web Environment for Building Autonomous Agents",
+          "url": "https://arxiv.org/abs/2307.13854"
+        },
+        {
+          "label": "Mind2Web: Towards a Generalist Agent for the Web",
+          "url": "https://arxiv.org/abs/2306.06070"
+        },
+        {
+          "label": "VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks",
+          "url": "https://arxiv.org/abs/2401.13649"
+        },
+        {
+          "label": "WebVoyager: Building an End-to-End Web Agent with Large Multimodal Models",
+          "url": "https://arxiv.org/abs/2401.13919"
+        },
+        {
+          "label": "WorkArena: How Capable Are Web Agents at Solving Common Knowledge Work Tasks?",
+          "url": "https://arxiv.org/abs/2403.07718"
+        },
+        {
+          "label": "BrowseComp: A Simple Yet Challenging Benchmark for Browsing Agents",
+          "url": "https://arxiv.org/abs/2504.12516"
+        },
+        {
+          "label": "OSWorld-Verified",
+          "url": "https://os-world.github.io/"
+        },
+        {
+          "label": "GDPval: Evaluating AI Model Performance on Real-World Economically Valuable Tasks",
+          "url": "https://arxiv.org/abs/2510.04374"
+        },
+        {
+          "label": "Finance Agent Benchmark: Benchmarking LLMs on Real-world Financial Research Tasks",
+          "url": "https://arxiv.org/abs/2508.00828"
+        },
+        {
+          "label": "Introducing BigLaw Bench to Evaluate LLMs",
+          "url": "https://www.harvey.ai/blog/introducing-biglaw-bench"
+        },
+        {
+          "label": "SWE-Bench Pro: Can AI Agents Solve Long-Horizon Software Engineering Tasks?",
+          "url": "https://arxiv.org/abs/2509.16941"
+        },
+        {
+          "label": "Terminal-Bench 2.0 and Harbor",
+          "url": "https://www.tbench.ai/news/announcement-2-0"
+        },
+        {
+          "label": "MLE-bench: Evaluating Machine Learning Agents on Machine Learning Engineering",
+          "url": "https://arxiv.org/abs/2410.07095"
+        },
+        {
+          "label": "RE-Bench: Evaluating Frontier AI R&D Capabilities of Language Model Agents against Human Experts",
+          "url": "https://arxiv.org/abs/2411.15114"
+        },
+        {
+          "label": "PaperBench: Evaluating AI’s Ability to Replicate AI Research",
+          "url": "https://arxiv.org/abs/2504.01848"
+        },
+        {
+          "label": "GAIA: A Benchmark for General AI Assistants",
+          "url": "https://arxiv.org/abs/2311.12983"
+        },
+        {
+          "label": "τ²-Bench: Evaluating Conversational Agents in a Dual-Control Environment",
+          "url": "https://arxiv.org/abs/2506.07982"
+        },
+        {
+          "label": "MCP-Atlas: A Large-Scale Benchmark for Tool-Use Competency with Real MCP Servers",
+          "url": "https://arxiv.org/abs/2602.00933"
+        },
+        {
+          "label": "Measuring AI Ability to Complete Long Software Tasks (METR)",
+          "url": "https://arxiv.org/abs/2503.14499"
+        },
+        {
+          "label": "SWE-bench Goes Live!",
+          "url": "https://arxiv.org/abs/2505.23419"
+        },
+        {
+          "label": "LiveCodeBench: Holistic and Contamination Free Evaluation of Large Language Models for Code",
+          "url": "https://arxiv.org/abs/2403.07974"
+        }
+      ],
       "local_path": "courses/11-768/22.GuestLecture20261119",
       "source": "https://www.cmu-agents.com/#/schedule",
-      "evidence": "cmu/schedule.json",
+      "evidence": "../2026-11-26/cmu/schedule.json",
       "raw": {
         "code": "13b",
         "date": "Thu, Nov 19",
@@ -4734,9 +4849,125 @@
         "lecturer": {
           "name": "Karthik Narasimhan",
           "url": "https://karthiknarasimhan.com/"
-        }
+        },
+        "slides": {
+          "label": "Karthik Narasimhan lecture slides: How to Trust Your AI Agents",
+          "url": "/slides/2026-11-19-karthik-narasimhan.pdf"
+        },
+        "readings": [
+          {
+            "label": "WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents",
+            "url": "https://arxiv.org/abs/2207.01206"
+          },
+          {
+            "label": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
+            "url": "https://arxiv.org/abs/2310.06770"
+          },
+          {
+            "label": "τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains",
+            "url": "https://arxiv.org/abs/2406.12045"
+          },
+          {
+            "label": "Establishing Best Practices for Building Rigorous Agentic Benchmarks (Agentic Benchmark Checklist)",
+            "url": "https://arxiv.org/abs/2507.02825"
+          },
+          {
+            "label": "Trust in Automation: Designing for Appropriate Reliance",
+            "url": "https://doi.org/10.1518/hfes.46.1.50_30392"
+          }
+        ],
+        "references": [
+          {
+            "label": "Dynabench: Rethinking Benchmarking in NLP",
+            "url": "https://aclanthology.org/2021.naacl-main.324/"
+          },
+          {
+            "label": "WebArena: A Realistic Web Environment for Building Autonomous Agents",
+            "url": "https://arxiv.org/abs/2307.13854"
+          },
+          {
+            "label": "Mind2Web: Towards a Generalist Agent for the Web",
+            "url": "https://arxiv.org/abs/2306.06070"
+          },
+          {
+            "label": "VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks",
+            "url": "https://arxiv.org/abs/2401.13649"
+          },
+          {
+            "label": "WebVoyager: Building an End-to-End Web Agent with Large Multimodal Models",
+            "url": "https://arxiv.org/abs/2401.13919"
+          },
+          {
+            "label": "WorkArena: How Capable Are Web Agents at Solving Common Knowledge Work Tasks?",
+            "url": "https://arxiv.org/abs/2403.07718"
+          },
+          {
+            "label": "BrowseComp: A Simple Yet Challenging Benchmark for Browsing Agents",
+            "url": "https://arxiv.org/abs/2504.12516"
+          },
+          {
+            "label": "OSWorld-Verified",
+            "url": "https://os-world.github.io/"
+          },
+          {
+            "label": "GDPval: Evaluating AI Model Performance on Real-World Economically Valuable Tasks",
+            "url": "https://arxiv.org/abs/2510.04374"
+          },
+          {
+            "label": "Finance Agent Benchmark: Benchmarking LLMs on Real-world Financial Research Tasks",
+            "url": "https://arxiv.org/abs/2508.00828"
+          },
+          {
+            "label": "Introducing BigLaw Bench to Evaluate LLMs",
+            "url": "https://www.harvey.ai/blog/introducing-biglaw-bench"
+          },
+          {
+            "label": "SWE-Bench Pro: Can AI Agents Solve Long-Horizon Software Engineering Tasks?",
+            "url": "https://arxiv.org/abs/2509.16941"
+          },
+          {
+            "label": "Terminal-Bench 2.0 and Harbor",
+            "url": "https://www.tbench.ai/news/announcement-2-0"
+          },
+          {
+            "label": "MLE-bench: Evaluating Machine Learning Agents on Machine Learning Engineering",
+            "url": "https://arxiv.org/abs/2410.07095"
+          },
+          {
+            "label": "RE-Bench: Evaluating Frontier AI R&D Capabilities of Language Model Agents against Human Experts",
+            "url": "https://arxiv.org/abs/2411.15114"
+          },
+          {
+            "label": "PaperBench: Evaluating AI’s Ability to Replicate AI Research",
+            "url": "https://arxiv.org/abs/2504.01848"
+          },
+          {
+            "label": "GAIA: A Benchmark for General AI Assistants",
+            "url": "https://arxiv.org/abs/2311.12983"
+          },
+          {
+            "label": "τ²-Bench: Evaluating Conversational Agents in a Dual-Control Environment",
+            "url": "https://arxiv.org/abs/2506.07982"
+          },
+          {
+            "label": "MCP-Atlas: A Large-Scale Benchmark for Tool-Use Competency with Real MCP Servers",
+            "url": "https://arxiv.org/abs/2602.00933"
+          },
+          {
+            "label": "Measuring AI Ability to Complete Long Software Tasks (METR)",
+            "url": "https://arxiv.org/abs/2503.14499"
+          },
+          {
+            "label": "SWE-bench Goes Live!",
+            "url": "https://arxiv.org/abs/2505.23419"
+          },
+          {
+            "label": "LiveCodeBench: Holistic and Contamination Free Evaluation of Large Language Models for Code",
+            "url": "https://arxiv.org/abs/2403.07974"
+          }
+        ]
       },
-      "material_status": "嘉宾题目已明确；官网尚无讲义或阅读正文链接，待资料公开后定位学习内容",
+      "material_status": "25 页嘉宾讲义与完整中文讲解已归档。5 项指定阅读与 22 项参考入口及正文状态见课次来源索引。",
       "learning_status": "unknown_to_be_confirmed_by_learner"
     },
     {
@@ -7144,7 +7375,7 @@
       "description": "3:30–6:30 p.m. Pacific Time; location TBA"
     }
   ],
-  "layout_updated_at": "2026-11-20",
+  "layout_updated_at": "2026-11-26",
   "source_snapshot": "courses/syllabus-snapshots/2026-11-20/README.md",
   "legacy_items": [
     {
@@ -7166,7 +7397,7 @@
     "courses/MAS.S62/assignment/assignment-4"
   ],
   "course_checked_at": {
-    "CMU 11-768": "2026-11-20",
+    "CMU 11-768": "2026-11-26",
     "Harvard CS2680": "2026-11-20",
     "MIT MAS.S62": "2026-11-20",
     "Stanford CS329Z": "2026-11-04"

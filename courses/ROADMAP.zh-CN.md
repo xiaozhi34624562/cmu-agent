@@ -11,7 +11,7 @@
 1. **一行对应一讲或一份作业。** 先沿“主讲义”确定本讲的问题，再配合“中文讲解”逐段学习；“全部资料”包含指定 readings、references、嘉宾和其他学习材料，按讲义主线穿插阅读。四门课的所有内容均保留。
 2. **遇到作业行就做作业。** 按正式原题完成必做要求，不等四门课全部看完才开始；同一时间只推进一项主要编码作业。
 3. **遇到“回访”只补本行明确的章节/目标。** 本讲所有部分、指定阅读与相应练习完成后，才标记整讲完成；不是把同一讲重新从头看一遍。
-4. **遇到“待讲义/待题目”保留待回访状态，继续下一条前置已满足的任务。** CMU、Harvard、MIT材料状态于2026-11-20同步；Stanford维持11/4版本。CMU 19、21 与 Harvard 13 已补完整中文讲解，MIT W9 已整合新增 Self-Play 讲义。MIT W7 的历史讲解仍待复核，版本与获取限制见各课来源索引。未来课次的学习重点是规划，发布后按正文修订。
+4. **遇到“待讲义/待题目”保留待回访状态，继续下一条前置已满足的任务。** CMU 归档更新至 11/26（新增第 22 课讲解），Harvard、MIT 沿用 11/20 的归档，Stanford 沿用 11/4 版本。MIT W7 的历史讲解仍待复核，版本与获取限制见各课来源索引。未来课次的学习重点是规划，发布后按正文修订。
 
 你当前的掌握程度和每周投入时间尚未测量，所以这里给出明确顺序和验收，不编造完成日期或已学进度。
 
@@ -115,6 +115,7 @@
 | <a id="step-35"></a>35 | Stanford 11 · What Data Do Agents Need? | [中文讲解](329z/11.WhatDataDoAgentsNeed/notes.zh-CN.md) · [主讲义](329z/11.WhatDataDoAgentsNeed/slides/lecture11.pdf) · [全部资料](329z/11.WhatDataDoAgentsNeed/SOURCES.md) | 区分执行、训练、评测数据，检查来源、拆分、泄漏和合成反馈。 |
 | <a id="step-36"></a>36 | Stanford 12 · Data Selection & Quality | [全部资料](329z/12.DataSelectionQuality/SOURCES.md) · **待讲义/分享材料** | 待讲义；正式数据选择与质量课补到这里，已有数据实践可继续。 |
 | <a id="step-37"></a>37 | Harvard 07 · Agent Evaluation | [中文讲解](2680/7.AgentDesignIV.AgentEvaluation/Agent_Eval_Lecture07_Integrated_Notes.md) · [主讲义](2680/7.AgentDesignIV.AgentEvaluation/7_agent_design_4.pdf) · [全部资料](2680/7.AgentDesignIV.AgentEvaluation/SOURCES.md) | 定义任务成功、评测单位与协议，检查可靠性指标的含义。 |
+| <a id="step-37a"></a><a id="pending-c22"></a>37a | CMU 22 · How to Trust Your AI Agents（11/19） | [完整中文讲解](11-768/22.GuestLecture20261119/notes.zh-CN.md) · [25 页讲义](11-768/22.GuestLecture20261119/2026-11-19-karthik-narasimhan.pdf) · [全部资料](11-768/22.GuestLecture20261119/SOURCES.md) | 用重复试验、轨迹检查和可核验的证据，决定人应在何时介入以及 Agent 可获何种权限。 |
 | <a id="step-38"></a>38 | **CMU HW2 · Eval** | [原题](11-768/assignment/assignment-2/ASSIGNMENT.md) · [代码与环境](11-768/assignment/assignment-2/README.md) | 完成可视化 Agent 评分与任务/环境要求；用失败案例检验评分器是否测到了原题目标。 |
 | <a id="step-39"></a>39 | Stanford 13 · Evaluation & Benchmark Design | [全部资料](329z/13.EvaluationFundamentalsBenchmarkDesign/SOURCES.md) · **待讲义/分享材料** | 待讲义；核对任务采样、benchmark 设计和结果解释。 |
 | <a id="step-40"></a>40 | Stanford 15 · LLM-as-Judge & Evaluation Infrastructure | [全部资料](329z/15.LLMAsJudgeEvaluationInfrastructure/SOURCES.md) · **待讲义/分享材料** | 待讲义；重点检查 Judge 校准、误差分析和评测基础设施的实际要求。 |
@@ -274,16 +275,15 @@
 
 ## 等内容明确后再定位的课程
 
-下面三项有正式课表位置。材料公开后依据实际主题和前置插入阶段 2–8；检查点设在阶段 8 收束前，不将待定主题猜成已学内容。
+下面两次嘉宾交流有正式课表位置。材料公开后依据实际主题和前置插入阶段 2–8；检查点设在阶段 8 收束前，不将待定主题猜成已学内容。
 
 | 课次 | 直接入口 | 安排 |
 |---|---|---|
-| <a id="pending-c22"></a>CMU 22 · How to Trust Your AI Agents（11/19） | [全部资料](11-768/22.GuestLecture20261119/SOURCES.md) · **待讲义/分享材料** | 题目已明确；待公开正文后决定具体学习位置，完成前保持待回访。 |
 | <a id="pending-c23"></a>CMU 23 · Lessons in Building a Coding Agent（11/24） | [全部资料](11-768/23.GuestLecture20261124/SOURCES.md) · **待讲义/分享材料** | 题目已明确；待公开正文后决定具体学习位置，完成前保持待回访。 |
 | <a id="pending-s14"></a>Stanford 14 · Fireside Chat with Andrew Ng（11/09） | [全部资料](329z/14.FiresideChatWithAndrewNg/SOURCES.md) · **待讲义/分享材料** | 主题/资料核实后决定具体学习位置，完成前保持待回访。 |
 | <a id="legacy-h18"></a>Harvard 18 · Others 历史占位 | [保留资料与状态](2680/18.EfficientAgenticSystems.Others/SOURCES.md) | 已不对应当前正式课表的确定主题；资料保留，有明确内容后再归位，不额外虚构一讲。 |
 
-10 条停课记录仍保留在 [完整日历](SYLLABUS-COVERAGE.zh-CN.md)：CMU 4 条、Harvard 3 条、MIT 1 条、Stanford 2 条。停课不产生学习任务。主表覆盖已取得资料或已安排学习步骤的教学/讨论/分享，另表覆盖 3 次待公开材料的嘉宾课、8 条项目日历与历史占位。
+10 条停课记录仍保留在 [完整日历](SYLLABUS-COVERAGE.zh-CN.md)：CMU 4 条、Harvard 3 条、MIT 1 条、Stanford 2 条。停课不产生学习任务。主表覆盖已取得资料或已安排学习步骤的教学/讨论/分享，另表覆盖 2 次待公开材料的嘉宾课、8 条项目日历与历史占位。
 
 <a id="homework-method"></a>
 
@@ -303,6 +303,6 @@
 - 每讲以 lecture slides 决定主线，readings 补机制与证据，references 补背景与实现；讨论课按正式阅读要求组织。每个“全部资料”入口都保留未取得材料的状态。
 - 一个阶段可以“可执行部分完成，仍有待回访项”。后续讲义未发布时，继续前置已满足的任务；不把占位、阅读过概要或下载文件记成学会。
 - 同 URL 正文修订时保留来源版本，复查受影响的讲解、页码和作业约束；日期变更只调整课表，知识依赖有变化才重排步骤。
-- 内容公开后更新当前步骤、材料链接和 [课表覆盖表](SYLLABUS-COVERAGE.zh-CN.md)，不新增一份平行 roadmap。完整官方脉络与来源见 [COURSE_LAYOUT.json](COURSE_LAYOUT.json) 和 [大纲来源](syllabus-snapshots/2026-11-20/README.md)。
+- 内容公开后更新当前步骤、材料链接和 [课表覆盖表](SYLLABUS-COVERAGE.zh-CN.md)，不新增一份平行 roadmap。完整课表映射和官网证据可查阅 [COURSE_LAYOUT.json](COURSE_LAYOUT.json)、[CMU 来源](syllabus-snapshots/2026-11-26/README.md)和[其他课程归档](syllabus-snapshots/2026-11-20/README.md)。
 
 学到 Senior 所需的证据包括：能运行、能解释失败、能做设计取舍、能在变化的任务中检验边界，并让他人理解和复现。课程项目提供练习场，真实运行维护和协作继续检验这些能力。

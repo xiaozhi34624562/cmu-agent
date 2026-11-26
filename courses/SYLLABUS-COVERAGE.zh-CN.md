@@ -1,8 +1,8 @@
 # 四门课程完整公开课表与目录覆盖
 
-CMU、Harvard、MIT资料核对及同步日期2026-11-20；Stanford沿用2026-11-04版本。94条当前日历记录采用稳定目录，历史占位另列。CMU 两课和 Harvard 推测解码已补中文讲解，MIT 第 9 周已整合 Self-Play。
+CMU 归档更新至 2026-11-26，Harvard、MIT 沿用 2026-11-20 的归档，Stanford 沿用 2026-11-04 版本。94 条日历记录采用稳定目录，历史占位另列。
 
-[逐讲路线](ROADMAP.zh-CN.md) · [当前映射](COURSE_LAYOUT.json) · [官方来源与冲突处理](syllabus-snapshots/2026-11-20/README.md)
+[逐讲路线](ROADMAP.zh-CN.md) · [当前映射](COURSE_LAYOUT.json) · [CMU 来源](syllabus-snapshots/2026-11-26/README.md) · [其他课程归档与冲突处理](syllabus-snapshots/2026-11-20/README.md)
 
 ## CMU 11-768
 
@@ -35,7 +35,7 @@ CMU、Harvard、MIT资料核对及同步日期2026-11-20；Stanford沿用2026-11
 | 2026-11-10 | Interaction 2: Human-Agent Interaction | [19.HumanAgentInteraction](11-768/19.HumanAgentInteraction/SOURCES.md) | [第 52 步](ROADMAP.zh-CN.md#step-52) | 89页讲义已归档；5项指定阅读、10项参考资料及获取限制见来源索引；完整中文讲解已复读 |
 | 2026-11-12 | Search 1: Reranking and Critic Models | [20.RerankingAndCriticModels](11-768/20.RerankingAndCriticModels/SOURCES.md) | [第 56 步](ROADMAP.zh-CN.md#step-56) | 讲义、阅读与完整中文讲解已归档；内容审核版本见课程 REVIEW.json |
 | 2026-11-17 | Search 2: Tree Search | [21.TreeSearch](11-768/21.TreeSearch/SOURCES.md) | [第 57 步](ROADMAP.zh-CN.md#step-57) | 100页讲义已归档；6项指定阅读、20项参考资料及获取限制见来源索引；完整中文讲解已复读 |
-| 2026-11-19 | How to Trust Your AI Agents | [22.GuestLecture20261119](11-768/22.GuestLecture20261119/SOURCES.md) | [待定位](ROADMAP.zh-CN.md#pending-c22) | 嘉宾题目已明确；官网尚无讲义或阅读正文链接，待资料公开后定位学习内容 |
+| 2026-11-19 | How to Trust Your AI Agents | [22.GuestLecture20261119](11-768/22.GuestLecture20261119/SOURCES.md) | [第 37a 步](ROADMAP.zh-CN.md#step-37a) | 25 页嘉宾讲义与完整中文讲解已归档，5 项指定阅读和 22 项参考见课次来源索引 |
 | 2026-11-24 | Lessons in Building a Coding Agent | [23.GuestLecture20261124](11-768/23.GuestLecture20261124/SOURCES.md) | [待定位](ROADMAP.zh-CN.md#pending-c23) | 嘉宾题目已明确；官网尚无讲义或阅读正文链接，待资料公开后定位学习内容 |
 | 2026-11-26 | Thanksgiving - No class | 停课 | 停课，无学习任务 | 停课；保留日历记录 |
 | 2026-12-01 | Final presentations (posters) | [project](11-768/project/SOURCES.md) | [项目节点](ROADMAP.zh-CN.md#project-cmu) | 公开项目要求已归档；报告12/4 23:59截止，最多3天late days至12/7 23:59，官网未注明时区 |

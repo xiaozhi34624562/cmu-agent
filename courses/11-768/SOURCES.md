@@ -1,14 +1,14 @@
 # CMU 11-768 来源总入口
 
 - [官方课程](https://www.cmu-agents.com/) · [官方课表](https://www.cmu-agents.com/#/schedule) · [官方作业](https://www.cmu-agents.com/#/assignments)。
-- [课程入口](README.md) · [完整课表与待更新目录](COURSE_SCHEDULE.md) · [官方大纲来源](../syllabus-snapshots/2026-11-20/README.md)。
-- 材料最近同步核对日期：2026-11-20；完整学期课表核对日期：2026-11-20。各课 SOURCES.md 保留官方 URL、取得状态及版本边界，补充来源见 REFERENCES.json。
+- [课程入口](README.md) · [完整课表与待更新目录](COURSE_SCHEDULE.md) · [官方大纲来源](../syllabus-snapshots/2026-11-26/README.md)。
+- 材料最近同步及完整学期课表核对日期：2026-11-26。各课 SOURCES.md 保留官方 URL、取得状态及版本边界，补充来源见 REFERENCES.json。
 
 ## 当前归档与材料状态
 
+- 2026-11-26 归档 11/19 [How to Trust Your AI Agents](22.GuestLecture20261119/SOURCES.md)（Karthik Narasimhan）的 25 页官方讲义、指定阅读与参考入口，以及[完整中文讲解](22.GuestLecture20261119/notes.zh-CN.md)。11/24 **Lessons in Building a Coding Agent**（Sasha Rush）仍待公开讲义。
 - 2026-11-20 补齐 [Human-Agent Interaction](19.HumanAgentInteraction/SOURCES.md) 的 89 页讲义、5 篇指定阅读和 10 项参考，以及 [Tree Search](21.TreeSearch/SOURCES.md) 的 100 页讲义、6 篇指定阅读和 20 项参考。41 项正文全部保存，32 项本轮下载、9 项复用既有归档并保留原路径与版本；讲义与论文原始字节保留。
 - 新增 [人机交互中文讲解](19.HumanAgentInteraction/notes.zh-CN.md) 和 [树搜索中文讲解](21.TreeSearch/notes.zh-CN.md)。实际来源和全文复读范围见 [REVIEW.json](REVIEW.json)。
-- 11/19、11/24 嘉宾课题目现为 **How to Trust Your AI Agents**（Karthik Narasimhan）、**Lessons in Building a Coding Agent**（Sasha Rush）；稳定目录保持不变，仍无公开讲义/阅读/参考。
 - [研究项目](project/SOURCES.md)已同步当前原文：报告 2026-12-04 23:59 截止，可用最多 3 天 late days，最迟 12/7 23:59，之后不接受；Project Hours/Poster 不可 late days。官网未注明该截止字段的时区。
 
 - 2026-11-13 重新取得官网当前 18 份主讲义：既有 Lecture 1–15、10/27 嘉宾课和 Lecture 18 共 17 份与本地归档逐字节一致；新增 Lecture 20，31 页。原讲义来源与哈希见各课索引，新资料记录在对应 MATERIALS.json/REFERENCES.json。旧讲解内容审核记录不因资料同步而更新。

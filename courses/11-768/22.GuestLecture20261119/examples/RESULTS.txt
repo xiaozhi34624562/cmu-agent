@@ -1,0 +1,7 @@
+A  k=1  pass^k= 60.00%  pass@k= 60.00%
+A  k=2  pass^k= 60.00%  pass@k= 60.00%
+A  k=8  pass^k= 60.00%  pass@k= 60.00%
+B  k=1  pass^k= 60.00%  pass@k= 60.00%
+B  k=2  pass^k= 32.86%  pass@k= 87.14%
+B  k=8  pass^k=  0.00%  pass@k=100.00%
+All fixed-data checks passed.

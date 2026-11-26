@@ -1,6 +1,6 @@
 # CMU 11-768：完整课表与目录
 
-核对日期：2026-11-20。目录编号保持稳定，授课顺序与官方Week单独记录。原始来源与采用规则见[本轮来源](../syllabus-snapshots/2026-11-20/README.md)。
+核对日期：2026-11-26。目录编号保持稳定，授课顺序与官方Week单独记录。原始来源与采用规则见[本轮来源](../syllabus-snapshots/2026-11-26/README.md)。
 
 | 日期 | 官方Week | 当前题目 | 稳定目录 | 材料状态 | 阶段 |
 |---|---|---|---|---|---|
@@ -29,7 +29,7 @@
 | 2026-11-10 | — | Interaction 2: Human-Agent Interaction | [19.HumanAgentInteraction](19.HumanAgentInteraction/SOURCES.md) | 89 页讲义、5 篇阅读和 10 项参考已归档；[完整中文讲解](19.HumanAgentInteraction/notes.zh-CN.md) | P4 |
 | 2026-11-12 | — | Search 1: Reranking and Critic Models | [20.RerankingAndCriticModels](20.RerankingAndCriticModels/SOURCES.md) | 讲义、阅读与完整中文讲解已归档；审核版本见 REVIEW.json | P5 |
 | 2026-11-17 | — | Search 2: Tree Search | [21.TreeSearch](21.TreeSearch/SOURCES.md) | 100 页讲义、6 篇阅读和 20 项参考已归档；[完整中文讲解](21.TreeSearch/notes.zh-CN.md) | P5 |
-| 2026-11-19 | — | How to Trust Your AI Agents | [22.GuestLecture20261119](22.GuestLecture20261119/SOURCES.md) | 题目和嘉宾已公开；暂无讲义/阅读/参考 | PENDING |
+| 2026-11-19 | — | How to Trust Your AI Agents | [22.GuestLecture20261119](22.GuestLecture20261119/SOURCES.md) | 25 页嘉宾讲义，[完整中文讲解](22.GuestLecture20261119/notes.zh-CN.md)，5 项指定阅读与 22 项参考见来源索引 | P3 |
 | 2026-11-24 | — | Lessons in Building a Coding Agent | [23.GuestLecture20261124](23.GuestLecture20261124/SOURCES.md) | 题目和嘉宾已公开；暂无讲义/阅读/参考 | PENDING |
 | 2026-11-26 | — | Thanksgiving - No class | 停课 | 停课；保留日历记录 | BREAK |
 | 2026-12-01 | — | Final presentations (posters) | [project](project/SOURCES.md) | 公开项目要求已归档；活动安排见来源索引 | PROJECT |
